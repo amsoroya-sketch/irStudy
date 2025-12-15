@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Issues Summary - ICRP Study Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+</div>
+        
+        <h1>GitHub Issues Summary - ICRP Study Project</h1>
+
+<strong>Created</strong>: December 15, 2025
+<strong>Repository</strong>: https://github.com/amsoroya-sketch/irStudy
+<strong>Total Issues Created</strong>: 7
+
+<hr>
+
+<h2>📊 Issues Overview</h2>
+
+<p>
+| # | Title | Priority | Requires Books | Labels |
+|---|-------|----------|----------------|--------|
+| <a href="https://github.com/amsoroya-sketch/irStudy/issues/1">#1</a> | 📚 Create Medicine Module: Endocrinology - Diabetes Management | 🔴 High | ✅ Yes | content-creation, medicine, osce-preparation |
+| <a href="https://github.com/amsoroya-sketch/irStudy/issues/2">#2</a> | 🩺 Create Additional Physical Examination Modules (5 Systems) | 🟡 Medium | ✅ Yes | content-creation, medicine, osce-preparation |
+| <a href="https://github.com/amsoroya-sketch/irStudy/issues/3">#3</a> | 🎯 Create 12 Additional Mock OSCE Stations | 🔴 High | ✅ Yes | content-creation, osce-preparation |
+| <a href="https://github.com/amsoroya-sketch/irStudy/issues/4">#4</a> | 📊 Create Master Differential Diagnosis Guide | 🟡 Medium | ✅ Yes | documentation, content-creation, osce-preparation |
+| <a href="https://github.com/amsoroya-sketch/irStudy/issues/5">#5</a> | 📚 Create Expanded Case Bank (50-100 Cases) | 🟡 Medium | ✅ Yes | content-creation, practice-tools |
+| <a href="https://github.com/amsoroya-sketch/irStudy/issues/6">#6</a> | 📖 Acquire Required Medical Textbooks & Resources | 🔴 High | N/A | documentation, high-priority |
+| <a href="https://github.com/amsoroya-sketch/irStudy/issues/7">#7</a> | 📅 Create Interactive Study Timeline & Progress Tracker | 🟡 Medium | ❌ No | practice-tools, enhancement |
+</p>
+
+<hr>
+
+<h2>🎯 Priority Recommendations</h2>
+
+<h3>🔴 <strong>CRITICAL PRIORITY - DO FIRST</strong></h3>
+
+<h4>Issue #6: Acquire Required Books ($645-$1,140)</h4>
+<strong>Why First</strong>: This blocks all other content creation tasks.
+
+<strong>Minimum Essential Books</strong> ($645):
+<ol>
+<li>✅ Therapeutic Guidelines (eTG) 2025 - $385 (or FREE institutional)</li>
+<li>✅ Talley & O'Connor Clinical Examination - $130</li>
+<li>✅ AMC Handbook MCQs - $180</li>
+<li>✅ Murtagh's General Practice - $180</li>
+<li>✅ Australian Medicines Handbook - $155</li>
+<p>
+</ol>
+</p>
+
+<strong>Action Items</strong>:
+<ul>
+<li><input type="checkbox"> Check institutional access (eTG, AMH)</li>
+<li><input type="checkbox"> Purchase Talley & O'Connor (needed for Issue #2)</li>
+<li><input type="checkbox"> Purchase Murtagh's (needed for Issues #1, #3, #4, #5)</li>
+<li><input type="checkbox"> Purchase AMC Handbook (needed for Issue #3)</li>
+<p>
+</ul>
+</p>
+
+<strong>Budget Alternative</strong>: Start with FREE resources (StatPearls) while acquiring books
+
+<hr>
+
+<h3>🔴 <strong>HIGH PRIORITY - DO NEXT</strong></h3>
+
+<h4>Issue #1: Diabetes Management Module (~4 hours)</h4>
+<strong>Why Important</strong>:
+<ul>
+<li>Diabetes heavily tested in AMC/ICRP</li>
+<li>Common chronic disease in Australia</li>
+<li>Requires Australian PBS knowledge</li>
+<p>
+</ul>
+</p>
+
+<strong>Required Books</strong>:
+<ul>
+<li>eTG 2025 (diabetes management protocols)</li>
+<li>Murtagh's GP (primary care approach)</li>
+<li>AMH 2025 (medication dosing)</li>
+<li>Davidson's/Harrison's (pathophysiology)</li>
+<p>
+</ul>
+</p>
+
+<strong>Deliverable</strong>: <code>Medicine/05<em>Endocrinology</em>Diabetes_Management.md</code> (~1,200 lines)
+
+<hr>
+
+<h4>Issue #3: 12 Additional Mock OSCE Stations (~12-15 hours)</h4>
+<strong>Why Important</strong>:
+<ul>
+<li>Practice is critical for OSCE success</li>
+<li>Need variety across specialties</li>
+<li>Realistic exam simulation</li>
+<p>
+</ul>
+</p>
+
+<strong>Required Books</strong>:
+<ul>
+<li>AMC Handbook (official exam format)</li>
+<li>Talley & O'Connor (examination stations)</li>
+<li>Murtagh's GP (primary care scenarios)</li>
+<p>
+</ul>
+</p>
+
+<strong>Deliverable</strong>: 12 new mock station files (~15,000 lines total)
+
+<hr>
+
+<h3>🟡 <strong>MEDIUM PRIORITY - DO AFTER HIGH PRIORITY</strong></h3>
+
+<h4>Issue #2: Physical Examination Modules (5 Systems) (~8-10 hours)</h4>
+<strong>Modules</strong>: ENT, MSK, Peripheral Vascular, Thyroid, Lymph Nodes
+
+<strong>Required Books</strong>:
+<ul>
+<li>Talley & O'Connor (ESSENTIAL - no adequate substitute)</li>
+<p>
+</ul>
+</p>
+
+<strong>Deliverable</strong>: 5 new examination modules (~5,000 lines total)
+
+<hr>
+
+<h4>Issue #4: Master Differential Diagnosis Guide (~6-8 hours)</h4>
+<strong>Why Useful</strong>: Quick reference consolidating all differentials
+
+<strong>Required Books</strong>:
+<ul>
+<li>Davidson's/Harrison's (comprehensive differentials)</li>
+<li>Murtagh's GP (primary care differentials)</li>
+<li>eTG 2025 (Australian management pathways)</li>
+<p>
+</ul>
+</p>
+
+<strong>Deliverable</strong>: <code>Master<em>Differential</em>Diagnosis_Guide.md</code> (~3,500 lines)
+
+<hr>
+
+<h4>Issue #5: Expanded Case Bank (50-100 Cases) (~15-40 hours)</h4>
+<strong>Scope Options</strong>:
+<ul>
+<li>Minimum (50 cases): ~15-20 hours</li>
+<li>Full (100 cases): ~30-40 hours</li>
+<p>
+</ul>
+</p>
+
+<strong>Required Books</strong>: All core books
+
+<strong>Recommendation</strong>: Start with 50 highest-yield cases
+
+<hr>
+
+<h4>Issue #7: Interactive Study Timeline (~6-8 hours)</h4>
+<strong>Why Useful</strong>: Visual progress tracking for 3-month prep
+
+<strong>Required</strong>: HTML/CSS/JavaScript skills (no medical books)
+
+<strong>Deliverable</strong>: Interactive HTML tracker with localStorage
+
+<hr>
+
+<h2>📚 Required Books Breakdown</h2>
+
+<h3>Books Needed for Content Creation</h3>
+
+<p>
+| Book | Cost | Needed For | Priority |
+|------|------|------------|----------|
+| <strong>eTG 2025</strong> | $385 (or FREE) | Issues #1, #3, #4, #5 | 🔴 Critical |
+| <strong>Talley & O'Connor</strong> | $130 | Issues #2, #3 | 🔴 Critical |
+| <strong>Murtagh's GP</strong> | $180 | Issues #1, #3, #4, #5 | 🔴 Critical |
+| <strong>AMH 2025</strong> | $155 (or FREE) | Issues #1, #5 | 🔴 Critical |
+| <strong>AMC Handbook</strong> | $180 | Issues #3, #5 | 🔴 Critical |
+| <strong>Davidson's/Harrison's</strong> | $110-200 | Issues #1, #4, #5 | 🟡 High |
+| <strong>Specialty books</strong> | $710 | Issue #5 (optional) | 🟢 Medium |
+</p>
+
+<h3>Budget Summary</h3>
+
+<p>
+| Budget Scenario | Books Acquired | Issues You Can Complete |
+|-----------------|----------------|-------------------------|
+| <strong>$0 (FREE)</strong> | StatPearls, Guidelines | Issue #7 only |
+| <strong>$645</strong> | Top 5 Essential | Issues #1, #2, #3 (partial) |
+| <strong>$1,140</strong> | Top 5 + Davidson's | Issues #1, #2, #3, #4, #5 (partial) |
+| <strong>$2,190</strong> | All 12 books | All issues |
+</p>
+
+<strong>Recommendation</strong>: Start with <strong>$645 budget</strong> (Top 5) - enables Issues #1, #2, #3
+
+<hr>
+
+<h2>📅 Recommended Timeline</h2>
+
+<h3>Phase 1: Resource Acquisition (Week 1-2)</h3>
+<ul>
+<li><input type="checkbox"> Complete Issue #6 (Acquire books)</li>
+<li><input type="checkbox"> Download free resources (StatPearls)</li>
+<li><input type="checkbox"> Check institutional access (eTG, AMH)</li>
+<p>
+</ul>
+</p>
+
+<h3>Phase 2: High-Priority Content (Week 3-6)</h3>
+<ul>
+<li><input type="checkbox"> Complete Issue #1 (Diabetes module) - 4 hours</li>
+<li><input type="checkbox"> Complete Issue #3 (12 Mock OSCE stations) - 15 hours</li>
+<li><strong>Estimated</strong>: 19 hours total</li>
+<p>
+</ul>
+</p>
+
+<h3>Phase 3: Medium-Priority Content (Week 7-10)</h3>
+<ul>
+<li><input type="checkbox"> Complete Issue #2 (5 Physical exam modules) - 10 hours</li>
+<li><input type="checkbox"> Complete Issue #4 (Differential guide) - 8 hours</li>
+<li><input type="checkbox"> Start Issue #5 (50 cases MVP) - 20 hours</li>
+<li><strong>Estimated</strong>: 38 hours total</li>
+<p>
+</ul>
+</p>
+
+<h3>Phase 4: Enhancement (Week 11-12)</h3>
+<ul>
+<li><input type="checkbox"> Complete Issue #7 (Study timeline) - 8 hours</li>
+<li><input type="checkbox"> Expand Issue #5 (100 cases full version) - 20 hours</li>
+<li><strong>Estimated</strong>: 28 hours total</li>
+<p>
+</ul>
+</p>
+
+<strong>Total Estimated Work</strong>: ~85 hours over 12 weeks (~7 hours/week)
+
+<hr>
+
+<h2>🔗 Issue Dependencies</h2>
+
+<pre><code>Issue #6 (Acquire Books)
+<p>
+    ↓
+    ├─→ Issue #1 (Diabetes) [Needs: eTG, Murtagh's, AMH, Davidson's]
+    ├─→ Issue #2 (Physical Exam) [Needs: Talley & O'Connor]
+    ├─→ Issue #3 (Mock OSCEs) [Needs: AMC Handbook, Talley, Murtagh's]
+    ├─→ Issue #4 (Differentials) [Needs: Davidson's, Murtagh's, eTG]
+    └─→ Issue #5 (Case Bank) [Needs: All books]
+</p>
+
+<p>
+Issue #7 (Study Timeline) [No dependencies - can start anytime]
+</code></pre>
+</p>
+
+<strong>Key Insight</strong>: Issue #6 must be completed first to unlock Issues #1-5
+
+<hr>
+
+<h2>📊 Estimated Content Output</h2>
+
+<p>
+When all issues are completed:
+</p>
+
+<p>
+| Category | Current | After Issues | Increase |
+|----------|---------|--------------|----------|
+| <strong>OSCE Modules</strong> | 37 | 43 | +16% |
+| <strong>Mock Stations</strong> | 3 | 15 | +400% |
+| <strong>Clinical Cases</strong> | ~10 | 100 | +900% |
+| <strong>Study Tools</strong> | 11 HTML | 12 HTML | +9% |
+| <strong>Total Lines of Content</strong> | ~170,000 | ~240,000 | +41% |
+</p>
+
+<hr>
+
+<h2>🎯 Success Metrics</h2>
+
+<p>
+After completing all issues:
+</p>
+
+<ul>
+<li>✅ <strong>100% OSCE coverage</strong> - All major specialties and systems</li>
+<li>✅ <strong>15 mock stations</strong> - Full breadth practice</li>
+<li>✅ <strong>100 clinical cases</strong> - Extensive case-based learning</li>
+<li>✅ <strong>Interactive timeline</strong> - Visual progress tracking</li>
+<li>✅ <strong>Consolidated references</strong> - Master differential guide</li>
+<li>✅ <strong>Australian-compliant</strong> - All content follows eTG/AMH/AHPRA</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>💰 Cost-Benefit Analysis</h2>
+
+<h3>Without Books (Issue #6 incomplete):</h3>
+<ul>
+<li>✅ Can complete Issue #7 only</li>
+<li>❌ Cannot create Australian-specific content</li>
+<li>❌ AMC exam accuracy compromised</li>
+<li><strong>Cost</strong>: $0</li>
+<li><strong>Value</strong>: Limited (not ICRP-ready)</li>
+<p>
+</ul>
+</p>
+
+<h3>With Minimal Books ($645):</h3>
+<ul>
+<li>✅ Can complete Issues #1, #2, #3</li>
+<li>✅ Australian protocols included</li>
+<li>✅ OSCE practice stations accurate</li>
+<li>✅ Physical exam meets Australian standards</li>
+<li><strong>Cost</strong>: $645</li>
+<li><strong>Value</strong>: High (ICRP-ready for most content)</li>
+<p>
+</ul>
+</p>
+
+<h3>With Recommended Books ($1,140):</h3>
+<ul>
+<li>✅ Can complete ALL issues (#1-7)</li>
+<li>✅ Comprehensive coverage</li>
+<li>✅ Professional-quality content</li>
+<li><strong>Cost</strong>: $1,140</li>
+<li><strong>Value</strong>: Very High (complete ICRP preparation system)</li>
+<p>
+</ul>
+</p>
+
+<strong>ROI</strong>: $1,140 investment → Complete ICRP preparation platform (worth $2,000-3,000 if purchasing commercial course)
+
+<hr>
+
+<h2>📞 Quick Actions</h2>
+
+<h3>Start Today (No Budget):</h3>
+<ol>
+<li>View issues: https://github.com/amsoroya-sketch/irStudy/issues</li>
+<li>Download StatPearls: https://www.ncbi.nlm.nih.gov/books/NBK430685/</li>
+<li>Complete Issue #7 (Study Timeline) - no books needed</li>
+<p>
+</ol>
+</p>
+
+<h3>This Week (With Budget):</h3>
+<ol>
+<li>Complete Issue #6 (order books)</li>
+<li>Begin Issue #1 (Diabetes module)</li>
+<li>Plan timeline for Issues #2-5</li>
+<p>
+</ol>
+</p>
+
+<h3>This Month:</h3>
+<ol>
+<li>Receive books (1-2 week delivery)</li>
+<li>Complete Issue #1 (Diabetes)</li>
+<li>Start Issue #3 (Mock OSCEs)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>📝 How to Work with Issues</h2>
+
+<h3>View All Issues:</h3>
+<pre><code>gh issue list
+<p>
+</code></pre>
+</p>
+
+<h3>View Specific Issue:</h3>
+<pre><code>gh issue view 1  # Diabetes module
+<p>
+</code></pre>
+</p>
+
+<h3>Comment on Issue:</h3>
+<pre><code>gh issue comment 1 --body "Started working on this issue"
+<p>
+</code></pre>
+</p>
+
+<h3>Close Issue When Complete:</h3>
+<pre><code>gh issue close 1 --comment "Completed diabetes module - see Medicine/05<em>Endocrinology</em>Diabetes_Management.md"
+<p>
+</code></pre>
+</p>
+
+<h3>Filter Issues by Label:</h3>
+<pre><code>gh issue list --label "high-priority"
+<p>
+gh issue list --label "requires-books"
+</code></pre>
+</p>
+
+<hr>
+
+<h2>🎓 Conclusion</h2>
+
+<strong>7 comprehensive issues created</strong>, covering:
+<ul>
+<li>✅ Content expansion (diabetes, physical exams, OSCEs, cases)</li>
+<li>✅ Resource acquisition (critical dependency)</li>
+<li>✅ Documentation (differential guide)</li>
+<li>✅ Enhancement (study timeline)</li>
+<p>
+</ul>
+</p>
+
+<strong>Next Step</strong>: <strong>Complete Issue #6 (Acquire Books)</strong> - this unlocks all content creation tasks.
+
+<strong>Estimated Total Work</strong>: 85 hours over 12 weeks (~7 hours/week)
+
+<strong>Investment Required</strong>: $645-$1,140 in medical textbooks
+
+<strong>Expected Output</strong>: +70,000 lines of Australian-specific ICRP content
+
+<hr>
+
+<strong>Repository</strong>: https://github.com/amsoroya-sketch/irStudy
+<strong>Issues</strong>: https://github.com/amsoroya-sketch/irStudy/issues
+<strong>Last Updated</strong>: December 15, 2025
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:32</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>
