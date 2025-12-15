@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking Bad News - Additional Scenarios (Part 2)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Ethics Communication</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Ethics Communication Navigation</h3>
+<ul>
+<li><a href="01_Communication_Skills_Role_Play_Scripts.html">Communication Skills</a></li>
+</ul>
+</div>
+        <h1>Breaking Bad News - Additional Scenarios (Part 2)</h1>
+<h2>AMC Clinical / ICRP NSW Young Hospital Preparation</h2>
+
+<strong>Purpose</strong>: Extended breaking bad news scenarios - Death notification, paediatric, and dementia
+<strong>Target Time</strong>: 8 minutes per station
+<strong>Format</strong>: SPIKES framework with word-for-word scripts and Australian context
+<strong>Created</strong>: December 14, 2025
+
+<hr>
+
+<h2>TABLE OF CONTENTS</h2>
+
+<ol>
+<li><a href="#scenario-4-death-notification-to-family">Scenario 4: Death Notification to Family</a></li>
+<li><a href="#scenario-5-serious-illness-in-child-to-parents">Scenario 5: Serious Illness in Child (to Parents)</a></li>
+<li><a href="#scenario-6-dementia-diagnosis">Scenario 6: Dementia Diagnosis</a></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>SCENARIO 4: DEATH NOTIFICATION TO FAMILY</h2>
+
+<h3>Clinical Context</h3>
+
+<strong>Clinical Sequence</strong>:
+<ul>
+<li>Patient: Mr Thomas Chen, 45, brought to ED by ambulance</li>
+<li>Presentation: Witnessed collapse at home, wife performed CPR</li>
+<li>Initial assessment: VF cardiac arrest, shocked x3, ROSC achieved briefly</li>
+<li>Resuscitation: 45 minutes of advanced life support</li>
+<li>Outcome: Unable to sustain output, declared dead at 14:35</li>
+<li>Likely cause: Massive myocardial infarction (pending post-mortem)</li>
+<p>
+</ul>
+</p>
+
+<h3>Scenario</h3>
+
+<p>
+You are an ED doctor. Mr Thomas Chen, 45, was brought in by ambulance after collapsing at home. His wife performed CPR. Despite 45 minutes of resuscitation, he has died. You need to inform his wife, who is waiting in the relatives' room. She does not know he has died - she was told "we're doing everything we can."
+</p>
+
+<h3>Preparation (Before Entering Room)</h3>
+
+<strong>What you MUST do before this conversation</strong>:
+<ul>
+<li>Ensure body is presentable (if family will view - sheet to neck, tubes removed if possible)</li>
+<li>Have tissues in room</li>
+<li>Have another staff member with you (nurse or social worker)</li>
+<li>Remove pager/phone or give to colleague - NO INTERRUPTIONS</li>
+<li>Sit down - NEVER give death notification standing</li>
+<li>Allow enough time - minimum 15-20 minutes, longer if needed</li>
+<p>
+</ul>
+</p>
+
+<strong>What you MUST know</strong>:
+<ul>
+<li>Patient's name (correct pronunciation)</li>
+<li>Exact time of death</li>
+<li>Brief summary of what happened</li>
+<li>Whether coroner needs to be involved (yes in this case - unexpected death)</li>
+<p>
+</ul>
+</p>
+
+<h3>Opening (60 seconds)</h3>
+
+<strong>SETTING - This is the most important conversation of this person's life</strong>:
+<ul>
+<li>Quiet private room (relatives' room)</li>
+<li><em>Enter with nurse</em></li>
+<li>"Mrs Chen, I'm Dr [Name], I'm one of the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> doctors who has been looking after Thomas."</li>
+<li><em>Introduce nurse</em>: "This is Sarah, one of our nurses."</li>
+<p>
+</ul>
+</p>
+
+<strong>Sit down IMMEDIATELY</strong>:
+<ul>
+<li><em>Sit down before saying anything else</em></li>
+<li><em>Gesture for wife to sit if she's standing</em></li>
+<li>The act of sitting signals bad news - family often realize immediately</li>
+<p>
+</ul>
+</p>
+
+<strong>Read the room</strong>:
+<ul>
+<li>Wife may already be crying (suspects the worst)</li>
+<li>Wife may be standing, rigid with fear</li>
+<li>Wife may ask immediately: "Is he okay? Can I see him?"</li>
+<p>
+</ul>
+</p>
+
+<h3>NO "PERCEPTION" PHASE - Don't delay in death notification</h3>
+
+<p>
+In death notification, we <strong>DO NOT</strong> ask "What have you been told?" or delay.
+Family needs to know immediately.
+</p>
+
+<h3>KNOWLEDGE - Delivering News of Death (60 seconds)</h3>
+
+<strong>CRITICAL: Use the word "DIED" or "DEAD" - not euphemisms</strong>
+
+<strong>Warning shot</strong>:
+<ul>
+<li>"Mrs Chen, I'm very sorry, but I have some very sad news."</li>
+<li><em>Pause 2-3 seconds</em></li>
+<p>
+</ul>
+</p>
+
+<strong>Deliver news clearly</strong>:
+<ul>
+<li>"We did everything we could to save Thomas's life, but I'm very sorry to tell you that he has died."</li>
+<li>OR</li>
+<li>"Despite all our efforts, Thomas has died."</li>
+<p>
+</ul>
+</p>
+
+<strong>DO NOT use euphemisms</strong>:
+<ul>
+<li>❌ "He didn't make it"</li>
+<li>❌ "He's passed"</li>
+<li>❌ "We lost him"</li>
+<li>❌ "He's gone"</li>
+<li>✅ "He has died" or "He is dead"</li>
+<p>
+</ul>
+</p>
+
+<em>Families need clarity in their worst moment</em>
+
+<strong>State time of death</strong>:
+<ul>
+<li>"He died at 2:35 this afternoon."</li>
+<p>
+</ul>
+</p>
+
+<strong>Immediate reaction - SILENCE</strong>:
+<ul>
+<li><em>Stop talking</em></li>
+<li><em>Wait</em></li>
+<li>Observe reaction</li>
+<li>Have tissues ready</li>
+<p>
+</ul>
+</p>
+
+<h3>COMMON REACTIONS TO DEATH NOTIFICATION (120 seconds)</h3>
+
+<strong>If wife collapses/faints</strong>:
+<ul>
+<li>Catch her if possible</li>
+<li>Lower to floor or chair</li>
+<li>"Sarah, can you help Mrs Chen please?"</li>
+<li>Call for medical assistance if needed</li>
+<li>Once recovered: "Take your time. There's no rush."</li>
+<p>
+</ul>
+</p>
+
+<strong>If wife wails/screams</strong> (common in some cultures):
+<ul>
+<li>Allow it - this is normal grief</li>
+<li>Don't try to "calm her down"</li>
+<li>Sit with her</li>
+<li>Tissues</li>
+<li>After a minute: "I'm so, so sorry."</li>
+<p>
+</ul>
+</p>
+
+<strong>If wife goes silent/numb</strong>:
+<ul>
+<li>Sit in silence (30-60 seconds)</li>
+<li>"I know this is an enormous shock."</li>
+<p>
+</ul>
+</p>
+
+<strong>If wife asks "Are you sure? Can I see him?"</strong>:
+<ul>
+<li>"Yes, I'm certain. I'm so sorry."</li>
+<li>"Yes, of course you can see him. I'll take you to him very soon."</li>
+<p>
+</ul>
+</p>
+
+<strong>If wife asks "What happened? He was fine this morning!"</strong>:
+<ul>
+<li>"We believe he had a massive heart attack."</li>
+<li>"This type of heart attack can happen very suddenly, without warning."</li>
+<li>"Even with CPR and all our <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> treatment, we couldn't save him."</li>
+<p>
+</ul>
+</p>
+
+<strong>If wife asks "Did he suffer?"</strong>:
+<ul>
+<li>If cardiac arrest (as in this case): "No. When the heart stops, you lose consciousness immediately. He wouldn't have felt pain."</li>
+<li>Be honest but compassionate</li>
+<p>
+</ul>
+</p>
+
+<strong>If wife asks "Was it my fault? Should I have done something different?"</strong>:
+<ul>
+<li>"No, this was absolutely not your fault."</li>
+<li>"You did everything right. You called 000 immediately and started CPR."</li>
+<li>"You gave him the best possible chance."</li>
+<li>"Sometimes, even when everything is done right, we can't save someone."</li>
+<p>
+</ul>
+</p>
+
+<strong>If wife asks "Did he say anything?"</strong>:
+<ul>
+<li>If yes, share it (only if appropriate)</li>
+<li>Usually: "He was unconscious when he arrived. He didn't suffer."</li>
+<p>
+</ul>
+</p>
+
+<h3>Explaining What Happened (90 seconds)</h3>
+
+<strong>Keep it simple</strong>:
+<ul>
+<li>"From what paramedics told us, Thomas collapsed suddenly at home."</li>
+<li>"You started CPR immediately - that was the right thing to do."</li>
+<li>"Paramedics arrived and continued CPR and brought him here."</li>
+<li>"When he arrived, his heart was in a dangerous rhythm."</li>
+<li>"We tried multiple shocks to restart his heart, medications, CPR - everything we could."</li>
+<li>"For a brief moment, we got his heart beating again, but we couldn't sustain it."</li>
+<li>"After 45 minutes, it became clear that we couldn't save him."</li>
+<p>
+</ul>
+</p>
+
+<strong>Avoid excessive medical detail unless asked</strong>:
+<ul>
+<li>Don't mention every drug, every shock, every procedure</li>
+<li>Focus on: we tried everything</li>
+<p>
+</ul>
+</p>
+
+<h3>Viewing the Body (90 seconds)</h3>
+
+<strong>ALWAYS offer</strong>:
+<ul>
+<li>"Would you like to see Thomas now?"</li>
+<li>Most will say yes immediately</li>
+<p>
+</ul>
+</p>
+
+<strong>If yes</strong>:
+<ul>
+<li>"I'll take you to him in just a moment."</li>
+<li>"I want to prepare you: he'll be in the resuscitation bay. There will be medical equipment around."</li>
+<li>"We've removed most tubes, but he'll have a sheet over him."</li>
+<li>"You can touch him, hold his hand, speak to him."</li>
+<li>"You can spend as much time as you need with him."</li>
+<p>
+</ul>
+</p>
+
+<strong>If she wants to call family first</strong>:
+<ul>
+<li>"Of course. Take all the time you need."</li>
+<li>"Would you like privacy to make calls, or would you like us to stay with you?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Cultural considerations - ASK</strong>:
+<ul>
+<li>"Do you have any cultural or religious needs for Thomas's care?"</li>
+<li>"Is there anyone from your faith community you'd like us to call?"</li>
+<p>
+</ul>
+</p>
+
+<strong>When taking to body</strong>:
+<ul>
+<li>Walk slowly with family</li>
+<li>Have nurse accompany</li>
+<li>Give them privacy with body</li>
+<li>Check on them periodically: "Can I get you anything? Water? More tissues?"</li>
+<p>
+</ul>
+</p>
+
+<h3>Practical Matters (60 seconds)</h3>
+
+<strong>Mention only briefly - family can't absorb much</strong>:
+
+<strong>Coroner</strong>:
+<ul>
+<li>"Because Thomas's death was sudden and unexpected, the Coroner needs to be involved."</li>
+<li>"This is standard procedure - it's not because we think anything was wrong."</li>
+<li>"The Coroner may want to do a post-mortem to determine the exact cause."</li>
+<li>"This may delay the funeral slightly - usually a few days to a week."</li>
+<p>
+</ul>
+</p>
+
+<strong>Belongings</strong>:
+<ul>
+<li>"We'll collect Thomas's personal belongings for you."</li>
+<li>"You don't need to worry about that right now."</li>
+<p>
+</ul>
+</p>
+
+<strong>Death certificate</strong>:
+<ul>
+<li>"The Coroner will issue a death certificate."</li>
+<li>"You'll need this for funeral arrangements and legal matters."</li>
+<p>
+</ul>
+</p>
+
+<strong>Funeral home</strong>:
+<ul>
+<li>"When you're ready - not now, but in the next day or two - you'll need to contact a funeral home."</li>
+<li>"They'll arrange to collect Thomas from here."</li>
+<p>
+</ul>
+</p>
+
+<strong>Support</strong>:
+<ul>
+<li>"Is there anyone we can call for you? Family? Friends?"</li>
+<li>"You shouldn't be alone tonight. Is there someone who can stay with you?"</li>
+<p>
+</ul>
+</p>
+
+<h3>EMOTIONS - Supporting Acute Grief (90 seconds)</h3>
+
+<strong>Validate all emotions</strong>:
+<ul>
+<li>"There's no right or wrong way to feel right now."</li>
+<li>"Shock, disbelief, anger, numbness - all of these are normal."</li>
+<p>
+</ul>
+</p>
+
+<strong>If wife blames herself</strong>:
+<ul>
+<li>"You did everything you could."</li>
+<li>"This was not your fault."</li>
+<li>"Thomas was lucky to have you there to start CPR immediately."</li>
+<p>
+</ul>
+</p>
+
+<strong>If wife is in denial</strong> ("He can't be dead, he was fine this morning"):
+<ul>
+<li>"I know this doesn't feel real."</li>
+<li>"This has happened so suddenly, your brain can't process it."</li>
+<li>"That's a normal reaction to sudden loss."</li>
+<p>
+</ul>
+</p>
+
+<strong>If wife asks about organ donation</strong>:
+<ul>
+<li>In this scenario (cardiac arrest, prolonged resuscitation): Usually not suitable</li>
+<li>"Unfortunately, because of the circumstances of Thomas's death, organ donation isn't possible."</li>
+<li>"His organs wouldn't be suitable for transplant."</li>
+<li>If donation IS possible: "That's a very generous thought. I can have the organ donation team speak with you if you'd like."</li>
+<p>
+</ul>
+</p>
+
+<h3>Cultural Considerations (60 seconds)</h3>
+
+<strong>Ask about cultural needs</strong>:
+<ul>
+<li>"Do you have any cultural or religious requirements we should know about?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Common cultural variations</strong>:
+
+<strong>Islamic</strong>:
+<ul>
+<li>Family may want to wash body themselves</li>
+<li>Burial should be as soon as possible (ideally within 24 hours)</li>
+<li>Coroner involvement may distress family (explain it's legal requirement)</li>
+<li>Imam may need to be called</li>
+<p>
+</ul>
+</p>
+
+<strong>Buddhist/Hindu</strong>:
+<ul>
+<li>May want monks/priests present</li>
+<li>Specific prayers or rituals</li>
+<li>Body positioning may matter</li>
+<p>
+</ul>
+</p>
+
+<strong>Indigenous Australian</strong>:
+<ul>
+<li>May have Sorry Business protocols</li>
+<li>May not want to say deceased's name</li>
+<li>May need Aboriginal Liaison Officer</li>
+<li>Extended family/community involvement</li>
+<p>
+</ul>
+</p>
+
+<strong>Jewish</strong>:
+<ul>
+<li>Burial within 24-48 hours</li>
+<li>Body shouldn't be left alone</li>
+<li>May want Jewish burial society (Chevra Kadisha) involved</li>
+<p>
+</ul>
+</p>
+
+<strong>If you don't know</strong>:
+<ul>
+<li>"I want to be respectful of your cultural and religious practices. What's important for Thomas's care?"</li>
+<p>
+</ul>
+</p>
+
+<h3>Closing (30 seconds)</h3>
+
+<strong>Before leaving them with body</strong>:
+<ul>
+<li>"I'm going to give you privacy with Thomas now."</li>
+<li>"There's no rush. Take all the time you need."</li>
+<li>"Sarah will check on you every few minutes. If you need anything at all, press this call button."</li>
+<p>
+</ul>
+</p>
+
+<strong>Final words</strong>:
+<ul>
+<li>"Mrs Chen, I'm deeply sorry for your loss."</li>
+<li>"We'll be here to support you with whatever you need."</li>
+<p>
+</ul>
+</p>
+
+<strong>DO NOT say</strong>:
+<ul>
+<li>❌ "I know how you feel" (you don't)</li>
+<li>❌ "He's in a better place" (religious assumption)</li>
+<li>❌ "At least he didn't suffer" (minimizes loss)</li>
+<li>❌ "You're young, you can remarry" (inappropriate, insensitive)</li>
+<li>✅ Simply: "I'm very sorry"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>SCENARIO 5: SERIOUS ILLNESS IN CHILD (TO PARENTS)</h2>
+
+<h3>Clinical Context</h3>
+
+<strong>Differential Diagnosis Journey</strong>:
+<ul>
+<li>Patient: Lily Thompson, 4 years old</li>
+<li>Presentation: 6 weeks of fatigue, pallor, bruising, recurrent infections</li>
+<li>Initial differential: Iron deficiency anaemia, leukaemia, aplastic anaemia, viral illness</li>
+<li>Investigations: FBC (WCC 45, Hb 65, platelets 28), blood film (>90% blast cells), bone marrow biopsy</li>
+<li>Diagnosis confirmed: Acute lymphoblastic leukaemia (ALL)</li>
+<li>Good prognostic features: Age 4, WCC <50, pre-B cell type</li>
+<p>
+</ul>
+</p>
+
+<h3>Scenario</h3>
+
+<p>
+You are a paediatric registrar. Lily Thompson, 4 years old, has been investigated for pallor and bruising. Her bone marrow biopsy confirms acute lymphoblastic leukaemia (ALL). You need to break this news to her parents, Sarah and David Thompson. Lily is in the playroom - she doesn't know yet.
+</p>
+
+<h3>Opening (60 seconds)</h3>
+
+<strong>SETTING - Both parents present if possible</strong>:
+<ul>
+<li>Private consultation room</li>
+<li><em>Both parents invited</em>: "Mr and Mrs Thompson, thank you for coming in."</li>
+<li>"I've received the results of Lily's bone marrow test."</li>
+<p>
+</ul>
+</p>
+
+<strong>Child NOT present</strong>:
+<ul>
+<li>Breaking news of childhood cancer should be to parents FIRST</li>
+<li>Afterwards, you'll help parents tell the child in age-appropriate way</li>
+<p>
+</ul>
+</p>
+
+<strong>Check who's present</strong>:
+<ul>
+<li>"Is it just the two of you, or is there anyone else you'd like with you?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Sit down</strong>:
+<ul>
+<li><em>All sit</em></li>
+<p>
+</ul>
+</p>
+
+<h3>PERCEPTION (60 seconds)</h3>
+
+<strong>Assess what they know</strong>:
+<ul>
+<li>"Before we discuss the results, can you tell me what you've understood about Lily's illness so far?"</li>
+<li><em>Parents may say</em>: "They said her blood counts were very abnormal and they needed to do a bone marrow test."</li>
+<p>
+</ul>
+</p>
+
+<strong>Assess expectations</strong>:
+<ul>
+<li>"What were you worried the tests might show?"</li>
+<li>Many parents already fear leukaemia but hope they're wrong</li>
+<p>
+</ul>
+</p>
+
+<h3>INVITATION (30 seconds)</h3>
+
+<strong>Permission</strong>:
+<ul>
+<li>"Is it alright if I go through the results with you now?"</li>
+<p>
+</ul>
+</p>
+
+<h3>KNOWLEDGE - Delivering the Diagnosis (90 seconds)</h3>
+
+<strong>Warning shot</strong>:
+<ul>
+<li>"I'm afraid the results show something serious."</li>
+<li><em>Pause</em></li>
+<p>
+</ul>
+</p>
+
+<strong>Give diagnosis clearly</strong>:
+<ul>
+<li>"Lily's bone marrow test shows that she has leukaemia."</li>
+<li><em>Pause - observe reaction</em></li>
+<p>
+</ul>
+</p>
+
+<strong>Most common reaction: Parent cries/gasps</strong>:
+<ul>
+<li>Hand tissues</li>
+<li>Allow brief silence (10-15 seconds)</li>
+<li>"I know this is devastating news."</li>
+<p>
+</ul>
+</p>
+
+<strong>Explain what leukaemia is</strong> (simple language):
+<ul>
+<li>"Leukaemia is a type of cancer of the blood and bone marrow."</li>
+<li><em>Pause</em></li>
+<li>"Bone marrow is the spongy tissue inside bones that makes blood cells."</li>
+<li>"In leukaemia, the bone marrow makes abnormal white blood cells that don't work properly."</li>
+<li>"These abnormal cells crowd out the normal cells."</li>
+<li>"That's why Lily has been tired - she doesn't have enough red blood cells."</li>
+<li>"And why she's been bruising - she doesn't have enough platelets."</li>
+<p>
+</ul>
+</p>
+
+<strong>Check understanding</strong>:
+<ul>
+<li>"Does that make sense so far?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Specify type</strong>:
+<ul>
+<li>"The specific type Lily has is called Acute Lymphoblastic Leukaemia, or ALL."</li>
+<li>"ALL is the most common type of leukaemia in children."</li>
+<p>
+</ul>
+</p>
+
+<h3>EMOTIONS - Parental Reactions (120 seconds)</h3>
+
+<strong>Common parental questions/reactions</strong>:
+
+<strong>"Is she going to die?"</strong> (Usually the first question):
+<ul>
+<li>❌ Don't say "we're all going to die"</li>
+<li>❌ Don't say "let's not think about that"</li>
+<li>✅ "Childhood ALL is very treatable. Most children - about 85-90% - are cured."</li>
+<li>"This is serious, but there's real reason for hope."</li>
+<li>"We have very good treatments for ALL."</li>
+<p>
+</ul>
+</p>
+
+<strong>"Did we cause this?"</strong> (Parental guilt):
+<ul>
+<li>"No. Absolutely not."</li>
+<li>"You didn't cause this."</li>
+<li>"There's nothing you did or didn't do that caused Lily's leukaemia."</li>
+<li>"Childhood leukaemia happens due to random genetic changes in blood cells."</li>
+<li>"It's not hereditary - it's not passed down in families."</li>
+<li>"It's not caused by anything in the environment or diet."</li>
+<p>
+</ul>
+</p>
+
+<strong>"Why didn't we notice sooner? Should we have brought her in earlier?"</strong>:
+<ul>
+<li>"The symptoms of leukaemia - tiredness, pallor, bruising - can look like many other things."</li>
+<li>"You brought her to medical attention when you noticed something wasn't right."</li>
+<li>"Earlier diagnosis wouldn't have changed the treatment or outcome."</li>
+<li>"You've done exactly what good parents do - you got her help."</li>
+<p>
+</ul>
+</p>
+
+<strong>If parents blame each other or argue</strong> (stress reaction):
+<ul>
+<li>"I can see you're both very stressed. That's completely understandable."</li>
+<li>"This is not anyone's fault."</li>
+<li>"Lily needs you both right now, supporting each other."</li>
+<p>
+</ul>
+</p>
+
+<strong>If parents ask "Why Lily? Why our family?"</strong>:
+<ul>
+<li>"I wish I could answer that. It's not fair."</li>
+<li>"About 1 in 2,000 children develop leukaemia. It's random and devastating when it happens to your child."</li>
+<p>
+</ul>
+</p>
+
+<h3>Treatment Discussion (180 seconds)</h3>
+
+<strong>Overview of treatment</strong>:
+<ul>
+<li>"I know you have lots of questions about treatment. Let me give you an overview, and then a specialist oncologist will go into much more detail with you."</li>
+<p>
+</ul>
+</p>
+
+<strong>Treatment structure</strong>:
+<ul>
+<li>"Treatment for childhood ALL has three main phases:</li>
+<p>
+</ul>
+  1. <strong>Induction</strong> (1-2 months): Intensive chemotherapy to get the leukaemia into remission - meaning we can't detect leukaemia cells anymore
+  2. <strong>Consolidation</strong> (6-9 months): More chemotherapy to kill any remaining cells
+  3. <strong>Maintenance</strong> (2-3 years): Lower-dose chemotherapy to keep the leukaemia away
+</p>
+
+<p>
+  Total treatment is about 2 to 2.5 years."
+</p>
+
+<strong>Hospital vs home</strong>:
+<ul>
+<li>"Lily will need to be in hospital a lot, especially in the first few months."</li>
+<li>"Some parts of treatment can be done as an outpatient."</li>
+<li>"You'll be given accommodation near the hospital if you live far away."</li>
+<p>
+</ul>
+</p>
+
+<strong>Side effects</strong> (brief overview - oncologist will detail):
+<ul>
+<li>"Chemotherapy has side effects. I want to be honest about this:</li>
+<p>
+</ul>
+  - Hair loss (temporary - grows back after treatment ends)
+  - Nausea and vomiting (we have good medications for this)
+  - Increased infection risk (because chemo affects immune system)
+  - Fatigue
+  - Some children need blood transfusions or platelet transfusions"
+</p>
+
+<strong>Central line</strong>:
+<ul>
+<li>"Lily will need a central line - a special IV line that goes into a large vein."</li>
+<li>"This stays in place throughout treatment so we don't have to keep putting needles in her arms."</li>
+<p>
+</ul>
+</p>
+
+<strong>Check understanding</strong>:
+<ul>
+<li>"This is a lot of information. What questions do you have?"</li>
+<p>
+</ul>
+</p>
+
+<h3>Prognosis (60 seconds)</h3>
+
+<strong>Be honest but provide hope</strong>:
+<ul>
+<li>"I want to give you realistic hope."</li>
+<li>"Childhood ALL is one of the success stories of paediatric oncology."</li>
+<li>"30 years ago, most children died. Now, most children are cured."</li>
+<p>
+</ul>
+</p>
+
+<strong>Specific numbers</strong>:
+<ul>
+<li>"For children like Lily - her age, her type of ALL, her white blood cell count - about 85-90% are cured."</li>
+<li>"That means 85-90 out of 100 children with exactly Lily's type never have the leukaemia come back."</li>
+<p>
+</ul>
+</p>
+
+<strong>Realistic about difficulty</strong>:
+<ul>
+<li>"But I also need to be honest: the next 2-3 years will be very hard."</li>
+<li>"There will be hospital admissions, side effects, scary moments."</li>
+<li>"Lily will miss a lot of school."</li>
+<li>"Your whole family life will change."</li>
+<p>
+</ul>
+</p>
+
+<h3>Impact on Family (90 seconds)</h3>
+
+<strong>Siblings</strong>:
+<ul>
+<li>"Do you have other children?"</li>
+<li><em>If yes</em>: "This will affect them too. They may feel scared, jealous of attention Lily gets, angry."</li>
+<li>"There are support groups for siblings of children with cancer."</li>
+<p>
+</ul>
+</p>
+
+<strong>Marriage/relationship stress</strong>:
+<ul>
+<li>"I want to warn you: childhood cancer puts enormous stress on relationships."</li>
+<li>"You and your partner may cope differently - one wants to talk, one wants to distract."</li>
+<li>"You may blame each other or argue more."</li>
+<li>"That's normal. But please try to support each other."</li>
+<li>"Couples counselling is available if you need it."</li>
+<p>
+</ul>
+</p>
+
+<strong>Work</strong>:
+<ul>
+<li>"You'll both likely need time off work."</li>
+<li>"Talk to your employers - you're entitled to unpaid parental leave."</li>
+<li>"There's also Centrelink carer allowance you can apply for."</li>
+<p>
+</ul>
+</p>
+
+<strong>Financial</strong>:
+<ul>
+<li>"Cancer treatment for children is fully funded by Medicare in Australia."</li>
+<li>"You won't pay for Lily's chemotherapy, hospital stays, or clinic visits."</li>
+<li>"But there are other costs - parking, meals, accommodation if you live far away."</li>
+<li>"Social work can help with financial assistance applications."</li>
+<p>
+</ul>
+</p>
+
+<h3>STRATEGY - The Plan Forward (120 seconds)</h3>
+
+<strong>Immediate next steps</strong>:
+<ul>
+<li>"Here's what happens next:</li>
+<p>
+</ul>
+  1. Today: Lily will have a central line inserted (under general anaesthetic)
+  2. Tomorrow: We'll start the first chemotherapy
+  3. You'll meet the oncology team - they'll be Lily's main doctors going forward
+  4. Oncologist will explain treatment in detail and answer all your questions"
+</p>
+
+<strong>Admission</strong>:
+<ul>
+<li>"Lily will be admitted to the paediatric oncology ward today."</li>
+<li>"You can stay with her - we have parent beds in the room."</li>
+<p>
+</ul>
+</p>
+
+<strong>Support services - AUSTRALIAN CONTEXT</strong>:
+<ul>
+<li>"You'll have a whole team supporting you:</li>
+<p>
+</ul>
+  - Paediatric oncologist (cancer specialist)
+  - Oncology nurses (specialized in childhood cancer)
+  - Social worker (practical support, finances, accommodation)
+  - Psychologist (for Lily and for you)
+  - Child life therapist (helps Lily cope with procedures through play)
+  - Teacher (hospital school so Lily doesn't fall behind)
+  - Chaplain if you'd like spiritual support"
+</p>
+
+<strong>External support organizations</strong>:
+<ul>
+<li>"<strong>Redkite</strong>: Australian charity supporting children with cancer and their families. They provide:</li>
+<p>
+</ul>
+  - Financial assistance
+  - Counselling
+  - Educational support
+  - Social work
+  - Call 1800 733 548"
+</p>
+<ul>
+<li>"<strong>Starlight Foundation</strong>: Brightening the hospital experience (Captain Starlight visits, Starlight room)</li>
+<li>"<strong>Camp Quality</strong>: Camps and recreation for kids with cancer</li>
+<li>"<strong>Kids Cancer Project</strong>: Research and support"</li>
+<p>
+</ul>
+</p>
+
+<strong>Telling Lily</strong>:
+<ul>
+<li>"Have you thought about how to tell Lily?"</li>
+<li><em>Parents usually haven't</em></li>
+<li>"The child life therapist will help you."</li>
+<li>"For a 4-year-old, we keep it simple:</li>
+<p>
+</ul>
+  - 'You have an illness called leukaemia. It means your blood is sick.'
+  - 'The doctors will give you special medicine to make the sick blood better.'
+  - 'The medicine might make you feel yucky sometimes, but it will help you get better.'
+  - 'Mummy and Daddy will be with you the whole time.'"
+</p>
+<ul>
+<li>"We don't use the word 'cancer' with very young children - it's too abstract."</li>
+<li>"We answer questions honestly as they come up."</li>
+<p>
+</ul>
+</p>
+
+<strong>School</strong>:
+<ul>
+<li>"Lily won't be able to go to preschool/kinder during treatment because of infection risk."</li>
+<li>"The hospital school will work with her."</li>
+<li>"After treatment ends, she'll return to normal school."</li>
+<p>
+</ul>
+</p>
+
+<strong>Normal life</strong>:
+<ul>
+<li>"Try to keep life as normal as possible for Lily."</li>
+<li>"She can still play (within limits), watch TV, have treats."</li>
+<li>"Discipline still matters - don't let cancer be an excuse for no boundaries."</li>
+<li>"Siblings shouldn't be completely neglected - they need you too."</li>
+<p>
+</ul>
+</p>
+
+<h3>Addressing Specific Fears (60 seconds)</h3>
+
+<strong>"Will she be in pain?"</strong>:
+<ul>
+<li>"We'll manage her pain very carefully."</li>
+<li>"She'll have some painful procedures (bone marrow tests, lumbar punctures)."</li>
+<li>"These are done under sedation or anaesthetic so she doesn't feel them."</li>
+<li>"If she has pain, we have excellent pain relief."</li>
+<p>
+</ul>
+</p>
+
+<strong>"Will she suffer?"</strong>:
+<ul>
+<li>"We'll do everything to minimize suffering."</li>
+<li>"Modern cancer treatment is much better than even 10 years ago at managing side effects."</li>
+<p>
+</ul>
+</p>
+
+<strong>"What if the treatment doesn't work?"</strong>:
+<ul>
+<li>"Let's focus on the fact that it usually does work."</li>
+<li>"90% success rate is very good."</li>
+<li>"If first-line treatment doesn't work, there are second-line options."</li>
+<li>"But we're expecting Lily to do well."</li>
+<p>
+</ul>
+</p>
+
+<h3>Closing (60 seconds)</h3>
+
+<strong>Summarize with hope</strong>:
+<ul>
+<li>"I know this is the worst news you could imagine as parents."</li>
+<li>"Lily has leukaemia - that's devastating and frightening."</li>
+<li>"But childhood ALL is very treatable. Most children are cured."</li>
+<li>"The next 2-3 years will be hard, but you won't be alone."</li>
+<li>"You'll have a whole team supporting you and Lily."</li>
+<li>"We're going to do everything we can to cure Lily."</li>
+<p>
+</ul>
+</p>
+
+<strong>Immediate plan</strong>:
+<ul>
+<li>"Right now, I'm going to take you to the oncology ward."</li>
+<li>"You'll meet the nurses and get settled in Lily's room."</li>
+<li>"The oncologist will come and talk to you later this afternoon."</li>
+<li>"Do you have any questions for me right now?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Empathy</strong>:
+<ul>
+<li>"I'm so sorry to have given you this news."</li>
+<li>"But I want you to know: there's real hope. This is beatable."</li>
+<p>
+</ul>
+</p>
+
+<strong>Practical</strong>:
+<ul>
+<li>"Have you got family who can bring you clothes and things you need for hospital?"</li>
+<li>"Do you need help contacting anyone?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>SCENARIO 6: DEMENTIA DIAGNOSIS</h2>
+
+<h3>Clinical Context</h3>
+
+<strong>Differential Diagnosis Journey</strong>:
+<ul>
+<li>Patient: Mrs Margaret Foster, 72</li>
+<li>Presentation: 18 months of progressive memory loss, getting lost in familiar places, difficulty managing finances, personality change</li>
+<li>Initial differential: Alzheimer's dementia, vascular dementia, depression (pseudodementia), normal aging, vitamin B12 deficiency, thyroid disorder</li>
+<li>Investigations: MMSE 18/30, MoCA 15/30, MRI brain (cortical atrophy, no stroke), bloods normal (TSH, B12, folate normal)</li>
+<li>Diagnosis: Alzheimer's disease (most likely), moderate stage</li>
+<p>
+</ul>
+</p>
+
+<h3>Scenario</h3>
+
+<p>
+You are a GP. Mrs Margaret Foster, 72, has been having progressive memory problems for 18 months. Her husband has brought her in. Memory testing and MRI confirm dementia, most likely Alzheimer's disease. You need to discuss this diagnosis with both of them.
+</p>
+
+<h3>Opening (60 seconds)</h3>
+
+<strong>SETTING - Involve patient as much as possible</strong>:
+<ul>
+<li>Both patient and husband present</li>
+<li><em>Address patient first</em>: "Hello Mrs Foster, Mr Foster. Thank you both for coming in today."</li>
+<li>"I've received the results of your memory tests and brain scan, Margaret."</li>
+<p>
+</ul>
+</p>
+
+<strong>Include patient in conversation</strong>:
+<ul>
+<li>Even though patient has cognitive impairment, speak TO her, not just to husband</li>
+<li>She deserves to know her diagnosis</li>
+<p>
+</ul>
+</p>
+
+<strong>Sit down</strong>:
+<ul>
+<li>"Please, sit down."</li>
+<p>
+</ul>
+</p>
+
+<h3>PERCEPTION (60 seconds)</h3>
+
+<strong>Ask patient first</strong>:
+<ul>
+<li><em>To patient</em>: "Margaret, before we discuss the results, can you tell me what you've noticed about your memory?"</li>
+<li>Patient may have limited insight: "I forget things sometimes, but I'm just getting older."</li>
+<p>
+</ul>
+</p>
+
+<strong>Ask spouse</strong>:
+<ul>
+<li><em>To husband</em>: "What have you noticed?"</li>
+<li>Spouse usually has more insight: "She's forgetting conversations, getting lost, can't manage money anymore, personality has changed."</li>
+<p>
+</ul>
+</p>
+
+<strong>Assess expectations</strong>:
+<ul>
+<li>"What were you worried the tests might show?"</li>
+<li>Many families fear dementia but hope it's something reversible</li>
+<p>
+</ul>
+</p>
+
+<h3>INVITATION (30 seconds)</h3>
+
+<strong>Permission</strong>:
+<ul>
+<li>"Is it alright if we discuss the results together?"</li>
+<p>
+</ul>
+</p>
+
+<h3>KNOWLEDGE - Delivering the Diagnosis (90 seconds)</h3>
+
+<strong>Warning shot</strong>:
+<ul>
+<li>"The tests show something I need to discuss with you."</li>
+<li><em>Pause</em></li>
+<p>
+</ul>
+</p>
+
+<strong>Give diagnosis clearly</strong>:
+<ul>
+<li>"Margaret, the memory tests and brain scan show that you have dementia."</li>
+<li><em>Pause - observe reaction</em></li>
+<p>
+</ul>
+</p>
+
+<strong>Patient may say</strong>:
+<ul>
+<li>"What does that mean?"</li>
+<li>OR may look confused</li>
+<li>OR may say "I thought so" (some have insight)</li>
+<p>
+</ul>
+</p>
+
+<strong>Explain what dementia is</strong>:
+<ul>
+<li>"Dementia is when problems with memory and thinking affect your ability to do everyday activities."</li>
+<li>"It's caused by changes in the brain."</li>
+<li>"It's not normal ageing - it's a medical condition."</li>
+<p>
+</ul>
+</p>
+
+<strong>Specify type</strong>:
+<ul>
+<li>"Based on the pattern of your symptoms and the brain scan, this is most likely <strong>Alzheimer's disease</strong>."</li>
+<li>"Alzheimer's is the most common type of dementia - about 60-70% of dementia cases."</li>
+<p>
+</ul>
+</p>
+
+<strong>Explain Alzheimer's simply</strong>:
+<ul>
+<li>"In Alzheimer's, proteins build up in the brain and cause brain cells to die."</li>
+<li>"This affects memory first, then other thinking skills."</li>
+<p>
+</ul>
+</p>
+
+<h3>EMOTIONS - Multiple Levels (120 seconds)</h3>
+
+<strong>Patient's reaction</strong> (may have limited insight):
+<ul>
+<li>Patient may be confused: "What's happening?"</li>
+<li>Patient may deny: "I'm fine, I don't have dementia."</li>
+<li>Patient may be relieved: "At least now I know why I've been struggling."</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient denies</strong>:
+<ul>
+<li>Don't argue</li>
+<li>"I understand this is hard to hear."</li>
+<li>"The test results are clear, but I know it takes time to process."</li>
+<p>
+</ul>
+</p>
+
+<strong>Spouse's reaction</strong> (usually more distressed):
+<ul>
+<li>Often cries</li>
+<li>"I knew it, but I was hoping I was wrong."</li>
+<li>Hand tissues to spouse</li>
+<p>
+</ul>
+</p>
+
+<strong>Spouse's fears</strong>:
+
+<strong>"Will she forget who I am?"</strong>:
+<ul>
+<li>"In advanced Alzheimer's, that can happen, but not for a long time - usually many years."</li>
+<li>"Right now, Margaret knows you well."</li>
+<p>
+</ul>
+</p>
+
+<strong>"How long does she have?"</strong>:
+<ul>
+<li>"Dementia affects how long you live, but it's very variable."</li>
+<li>"Some people live 3-5 years after diagnosis, some live 10-15 years."</li>
+<li>"It's impossible to predict for an individual person."</li>
+<p>
+</ul>
+</p>
+
+<strong>"Is this my future too? Is it hereditary?"</strong>:
+<ul>
+<li>"Most Alzheimer's is not hereditary."</li>
+<li>"If you have a parent with Alzheimer's, your risk is slightly higher than average, but still relatively low."</li>
+<li>"The majority of people with a parent with Alzheimer's don't develop it themselves."</li>
+<p>
+</ul>
+</p>
+
+<strong>Patient may ask "Am I going to forget everything?"</strong>:
+<ul>
+<li>"Memory will get worse over time."</li>
+<li>"But we're going to do everything we can to slow that down and help you cope."</li>
+<p>
+</ul>
+</p>
+
+<h3>Prognosis and Stages (90 seconds)</h3>
+
+<strong>Explain progression</strong>:
+<ul>
+<li>"Dementia is a progressive condition - that means it gets worse over time."</li>
+<li>"Alzheimer's usually progresses slowly - over years, not months."</li>
+<p>
+</ul>
+</p>
+
+<strong>Stages</strong> (keep simple):
+<ul>
+<li>"We think of Alzheimer's in three stages:</li>
+<p>
+</ul>
+  1. <strong>Early/mild</strong>: Memory problems, some difficulty with complex tasks, but can still live independently. Margaret is past this stage.
+  2. <strong>Moderate</strong> (where Margaret is now): More significant memory loss, needs help with some daily activities like managing money, medication, may get confused about time and place.
+  3. <strong>Advanced</strong>: Severe memory loss, needs full-time care, difficulty with basic activities like eating and toileting."
+</p>
+
+<strong>Timeline</strong>:
+<ul>
+<li>"Progression from moderate to advanced is usually 2-5 years, but it's very variable."</li>
+<li>"Some people progress slowly, others faster."</li>
+<p>
+</ul>
+</p>
+
+<strong>What will decline</strong>:
+<ul>
+<li>"Over time, Alzheimer's affects:</li>
+<p>
+</ul>
+  - Memory (short-term first, then long-term)
+  - Ability to find words
+  - Reasoning and judgement
+  - Ability to do familiar tasks
+  - Personality and behavior"
+</p>
+
+<h3>Treatment - Realistic Expectations (120 seconds)</h3>
+
+<strong>Set realistic expectations - there's no cure</strong>:
+<ul>
+<li>"I need to be honest with you: we can't cure Alzheimer's."</li>
+<li>"But we have treatments that can slow it down and manage symptoms."</li>
+<p>
+</ul>
+</p>
+
+<strong>Medication options</strong>:
+<ul>
+<li>"There are two types of medication:</li>
+<p>
+</ul>
+  1. <strong>Cholinesterase inhibitors</strong> (donepezil, galantamine, rivastigmine): For mild to moderate Alzheimer's
+     - Can slow progression for 6-12 months
+     - Don't work for everyone
+     - Side effects: nausea, diarrhea
+  2. <strong>Memantine</strong>: For moderate to severe
+     - Can help with daily function
+     - Side effects: dizziness, headache"
+</p>
+
+<strong>Australian PBS</strong>:
+<ul>
+<li>"These medications are on the PBS."</li>
+<li>"With a healthcare card: $7.70 per script."</li>
+<li>"Without: $31.60 per script."</li>
+<p>
+</ul>
+</p>
+
+<strong>Medication decision</strong>:
+<ul>
+<li>"I'd recommend trying donepezil to see if it helps slow progression."</li>
+<li>"We start at a low dose and increase gradually."</li>
+<li>"If it doesn't help or has bad side effects, we can stop."</li>
+<p>
+</ul>
+</p>
+
+<strong>Non-medication management</strong>:
+<ul>
+<li>"Just as important as medication:</li>
+<p>
+</ul>
+  - Mental stimulation (puzzles, reading, social interaction)
+  - Physical exercise (30 min walk most days)
+  - Social engagement (don't withdraw from friends/activities)
+  - Healthy diet (Mediterranean diet seems protective)
+  - Good sleep
+  - Management of other health conditions (blood pressure, diabetes, cholesterol)"
+</p>
+
+<h3>Driving - Critical Safety Issue (90 seconds)</h3>
+
+<strong>This is often the hardest part</strong>:
+<ul>
+<li>"Margaret, we need to talk about driving."</li>
+<li><em>Pause</em></li>
+<p>
+</ul>
+</p>
+
+<strong>Legal requirement</strong>:
+<ul>
+<li>"In Australia, when you're diagnosed with dementia, you're legally required to notify your state licensing authority - in NSW, that's Service NSW; in VIC, VicRoads."</li>
+<li>"I'm required to notify them as well."</li>
+<p>
+</ul>
+</p>
+
+<strong>Driving assessment</strong>:
+<ul>
+<li>"You'll need an occupational therapy driving assessment."</li>
+<li>"This tests whether it's safe for you to drive."</li>
+<li>"Some people with early dementia pass and can continue driving with regular reassessments."</li>
+<li>"Others don't pass and need to stop driving."</li>
+<p>
+</ul>
+</p>
+
+<strong>Patient will often say "But I'm a good driver! I've been driving for 50 years!"</strong>:
+<ul>
+<li>"I understand driving is important to you."</li>
+<li>"This isn't about how good a driver you've been - it's about safety now."</li>
+<li>"Dementia affects reaction time, judgement, and navigation."</li>
+<li>"The assessment will determine if it's safe."</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient refuses assessment</strong>:
+<ul>
+<li>"I understand this is difficult."</li>
+<li>"But it's a legal requirement."</li>
+<li>"If you drive without completing the assessment, your car insurance is invalid."</li>
+<li>"If you had an accident, you'd be personally liable."</li>
+<p>
+</ul>
+</p>
+
+<strong>To spouse</strong>:
+<ul>
+<li>"In the meantime, I'd strongly recommend you do the driving."</li>
+<li><em>Lower voice, direct to spouse</em>: "If you're concerned she's unsafe, you can remove car keys."</li>
+<p>
+</ul>
+</p>
+
+<h3>Practical Planning - Critical Conversation (120 seconds)</h3>
+
+<strong>Financial/legal planning</strong>:
+<ul>
+<li>"Now is the time to plan for the future - while Margaret still has capacity."</li>
+<p>
+</ul>
+</p>
+
+<strong>Power of Attorney</strong>:
+<ul>
+<li>"Have you completed a Power of Attorney?"</li>
+<li><em>Usually no</em></li>
+<li>"Power of Attorney is a legal document where Margaret appoints someone - usually you - to make decisions on her behalf if she becomes unable to."</li>
+<li>"There are two types:</li>
+<p>
+</ul>
+  1. <strong>Financial Power of Attorney</strong>: For managing money, property, bills
+  2. <strong>Medical Power of Attorney</strong> (Enduring Guardian in NSW): For health decisions"
+</p>
+<ul>
+<li>"Margaret still has capacity now to sign these documents."</li>
+<li>"You should do this soon, while she can."</li>
+<li>"See a solicitor who specializes in elder law."</li>
+<p>
+</ul>
+</p>
+
+<strong>Advanced Care Directive</strong>:
+<ul>
+<li>"An Advanced Care Directive is where Margaret documents what medical treatment she'd want if she can't speak for herself."</li>
+<li>"For example: resuscitation wishes, intensive care, feeding tubes."</li>
+<li>"This ensures her wishes are known and followed."</li>
+<p>
+</ul>
+</p>
+
+<strong>Will</strong>:
+<ul>
+<li>"Make sure Margaret's will is up to date."</li>
+<p>
+</ul>
+</p>
+
+<strong>Financial affairs</strong>:
+<ul>
+<li>"Consider:</li>
+<p>
+</ul>
+  - Joint bank accounts (so spouse can access money)
+  - Automatic bill payments
+  - Simplifying financial affairs"
+</p>
+
+<strong>To spouse - gently</strong>:
+<ul>
+<li>"I also recommend you protect Margaret from financial exploitation."</li>
+<li>"People with dementia can be vulnerable to scams."</li>
+<li>"Consider monitoring bank accounts, limiting access to large amounts."</li>
+<p>
+</ul>
+</p>
+
+<h3>Future Care Needs (90 seconds)</h3>
+
+<strong>Progression of care needs</strong>:
+<ul>
+<li>"Right now, Margaret can live at home with some support."</li>
+<li>"Over time, care needs will increase."</li>
+<p>
+</ul>
+</p>
+
+<strong>Support services - Australian context</strong>:
+<ul>
+<li>"I'm going to refer you to <strong>My Aged Care</strong> - 1800 200 422."</li>
+<li>"They'll do an assessment and organize a care package."</li>
+<li>"This can include:</li>
+<p>
+</ul>
+  - Home help (cleaning, shopping)
+  - Personal care (showering, dressing)
+  - Meals on wheels
+  - Respite care (to give you a break)
+  - Adult day programs"
+</p>
+
+<strong>Cost</strong>:
+<ul>
+<li>"Government-subsidized based on your income and assets."</li>
+<li>"Most people pay a co-contribution."</li>
+<p>
+</ul>
+</p>
+
+<strong>Residential care</strong>:
+<ul>
+<li>"At some point - not now, but in the future - Margaret may need residential aged care."</li>
+<li>"This is usually when care needs become too high for home care."</li>
+<li>"I know that's hard to think about, but it's worth being aware."</li>
+<p>
+</ul>
+</p>
+
+<h3>Carer Support - Critical (90 seconds)</h3>
+
+<em>To spouse</em>:
+<ul>
+<li>"Mr Foster, I want to talk to you specifically."</li>
+<li>"You're going to be Margaret's main carer."</li>
+<li>"This is one of the hardest jobs in the world."</li>
+<p>
+</ul>
+</p>
+
+<strong>Warn about carer burden</strong>:
+<ul>
+<li>"Caring for someone with dementia is physically and emotionally exhausting."</li>
+<li>"You may feel:</li>
+<p>
+</ul>
+  - Grief (for the person Margaret was)
+  - Frustration and anger
+  - Guilt (for feeling frustrated)
+  - Isolation (friends may not understand)
+  - Exhaustion"
+</p>
+<ul>
+<li>"All of this is normal."</li>
+<p>
+</ul>
+</p>
+
+<strong>Carer support services</strong>:
+<ul>
+<li>"<strong>Dementia Australia</strong> - 1800 100 500:</li>
+<p>
+</ul>
+  - Information and education
+  - Support groups
+  - Counselling
+  - Dementia advisers who can guide you"
+</p>
+<ul>
+<li>"<strong>Carer Gateway</strong> - 1800 422 737:</li>
+<p>
+</ul>
+  - Respite care funding
+  - Carer counselling
+  - Skills training"
+</p>
+<ul>
+<li>"Local carer support groups - connect with other people in your situation"</li>
+<p>
+</ul>
+</p>
+
+<strong>Encourage respite</strong>:
+<ul>
+<li>"You MUST take breaks."</li>
+<li>"Use respite care - day programs, overnight respite."</li>
+<li>"You can't care for Margaret if you burn out."</li>
+<li>"Looking after yourself is not selfish - it's essential."</li>
+<p>
+</ul>
+</p>
+
+<strong>See own doctor</strong>:
+<ul>
+<li>"Please see your own GP for your own health."</li>
+<li>"Carers often neglect their own health."</li>
+<p>
+</ul>
+</p>
+
+<h3>Behavior Changes and Safety (60 seconds)</h3>
+
+<strong>Warn about future behavioral symptoms</strong>:
+<ul>
+<li>"As dementia progresses, Margaret may develop behavioral symptoms:</li>
+<p>
+</ul>
+  - Agitation or aggression
+  - Wandering
+  - Sundowning (worse confusion in evening)
+  - Hallucinations or delusions
+  - Sleep disturbance"
+</p>
+<ul>
+<li>"If these happen, we can help manage them."</li>
+<p>
+</ul>
+</p>
+
+<strong>Safety at home</strong>:
+<ul>
+<li>"Consider:</li>
+<p>
+</ul>
+  - Removing trip hazards
+  - Installing grab rails
+  - Clear labeling of rooms
+  - Medication management (you'll need to supervise)
+  - Turning off gas stove or switching to electric
+  - Wandering prevention (locks, alarms)"
+</p>
+
+<strong>Occupational therapy home assessment</strong>:
+<ul>
+<li>"I can arrange an OT home visit to assess safety and recommend modifications."</li>
+<p>
+</ul>
+</p>
+
+<h3>Follow-Up and Monitoring (60 seconds)</h3>
+
+<strong>Regular review</strong>:
+<ul>
+<li>"I'd like to see you both every 3 months."</li>
+<li>"We'll monitor:</li>
+<p>
+</ul>
+  - How the medication is working
+  - How you're both coping
+  - Any new symptoms
+  - Care needs"
+</p>
+
+<strong>Dementia clinic referral</strong>:
+<ul>
+<li>"I'm also referring you to a geriatrician or dementia clinic."</li>
+<li>"They specialize in dementia care."</li>
+<li>"Wait time is usually 3-6 months."</li>
+<p>
+</ul>
+</p>
+
+<strong>Memory monitoring</strong>:
+<ul>
+<li>"We'll repeat memory tests yearly to track progression."</li>
+<p>
+</ul>
+</p>
+
+<h3>Closing (60 seconds)</h3>
+
+<strong>Summarize with realism and support</strong>:
+<ul>
+<li>"Margaret, you have Alzheimer's disease - a type of dementia. This will progress over time, but we have treatments to slow it down and support to help you both cope. We're going to start medication, organize support services through My Aged Care, and see you regularly to monitor how you're doing."</li>
+<p>
+</ul>
+</p>
+
+<strong>To patient directly</strong>:
+<ul>
+<li><em>Look at Margaret</em>: "Margaret, I know this is frightening. But you're not alone. We're going to support you."</li>
+<p>
+</ul>
+</p>
+
+<strong>To spouse</strong>:
+<ul>
+<li><em>Look at husband</em>: "And Mr Foster, caring for someone with dementia is incredibly hard. Please use the support services - you can't do this alone."</li>
+<p>
+</ul>
+</p>
+
+<strong>Hope within honesty</strong>:
+<ul>
+<li>"This is a difficult diagnosis, but people with dementia can still have quality of life, especially with good support."</li>
+<li>"Focus on today and this week - don't jump ahead to worst-case scenarios."</li>
+<li>"Enjoy the time you have together now."</li>
+<p>
+</ul>
+</p>
+
+<strong>Questions</strong>:
+<ul>
+<li>"This is a lot of information. What questions do you have?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Written information</strong>:
+<ul>
+<li>"I'm giving you information sheets about Alzheimer's and about support services."</li>
+<li>"Read them when you're ready."</li>
+<p>
+</ul>
+</p>
+
+<strong>Final empathy</strong>:
+<ul>
+<li>"I'm sorry to have given you this diagnosis. But we'll walk this journey with you."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Last Updated</strong>: December 14, 2025
+<strong>Version</strong>: 1.0
+<strong>Author</strong>: ICRP NSW Young Hospital Preparation Team
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

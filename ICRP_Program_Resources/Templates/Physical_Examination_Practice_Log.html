@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physical Examination Practice Log</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        h2, h3 {
+            color: #764ba2;
+        }
+        .practice-header {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+        .five-ps {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .checklist {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .checklist-item {
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #667eea;
+            color: white;
+        }
+        .alert {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        input[type="text"], input[type="number"], textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            min-height: 60px;
+            resize: vertical;
+        }
+        @media print {
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🩺 Physical Examination Practice Log</h1>
+
+        <div class="alert no-print">
+            <h3>How to Use This Log</h3>
+            <ul>
+                <li><strong>One log per examination</strong> - Complete immediately after each practice</li>
+                <li><strong>Follow the 5 Ps framework</strong> - Preparation, Position, Permission, Perform, Present</li>
+                <li><strong>Use system-specific checklists</strong> - Ensure thorough, systematic examination</li>
+                <li><strong>Time yourself</strong> - Aim for 8-15 minutes depending on system</li>
+                <li><strong>Self-assess honestly</strong> - Track improvement areas</li>
+            </ul>
+        </div>
+
+        <div class="practice-header">
+            <h2 style="margin-top: 0;">Practice Session Details</h2>
+            <p><strong>Date:</strong> <input type="text" placeholder="e.g., Monday, December 16, 2025" style="width: 300px;"></p>
+            <p><strong>Practice #:</strong> <input type="number" min="1" max="100" style="width: 100px;"> <em>(Track toward 100 total)</em></p>
+            <p><strong>Week:</strong> <input type="number" min="1" max="13" style="width: 80px;"> of 13 prep weeks</p>
+        </div>
+
+        <h2>🎯 Examination Details</h2>
+        <table>
+            <tr>
+                <th>Detail</th>
+                <th>Information</th>
+            </tr>
+            <tr>
+                <td><strong>System Examined</strong></td>
+                <td>
+                    <select id="system-select">
+                        <option value="">Select system...</option>
+                        <option value="cardiovascular">Cardiovascular</option>
+                        <option value="respiratory">Respiratory</option>
+                        <option value="abdominal">Abdominal</option>
+                        <option value="neurological">Neurological</option>
+                        <option value="musculoskeletal">Musculoskeletal</option>
+                        <option value="general">General examination</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Practice Partner</strong></td>
+                <td><input type="text" placeholder="e.g., Family member, friend, mannequin, video"></td>
+            </tr>
+            <tr>
+                <td><strong>Practice Method</strong></td>
+                <td>
+                    <select>
+                        <option value="">Select method...</option>
+                        <option value="real-person">Real person</option>
+                        <option value="mannequin">Mannequin/simulation</option>
+                        <option value="video">Video tutorial follow-along</option>
+                        <option value="supervised">Supervised practice</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Total Time</strong></td>
+                <td><input type="text" style="width: 150px;" placeholder="e.g., 12 min"></td>
+            </tr>
+        </table>
+
+        <div class="five-ps">
+            <h2 style="color: white; margin-top: 0;">The 5 Ps Framework</h2>
+            <p style="margin: 5px 0;"><strong>P1:</strong> Preparation - Wash hands, gather equipment, introduce self</p>
+            <p style="margin: 5px 0;"><strong>P2:</strong> Position - Position patient appropriately for examination</p>
+            <p style="margin: 5px 0;"><strong>P3:</strong> Permission - Explain procedure and obtain consent</p>
+            <p style="margin: 5px 0;"><strong>P4:</strong> Perform - Conduct systematic examination</p>
+            <p style="margin: 5px 0;"><strong>P5:</strong> Present - Summarize findings clearly</p>
+        </div>
+
+        <h2>✅ The 5 Ps Checklist</h2>
+        <div class="checklist">
+            <h3>P1: Preparation</h3>
+            <div class="checklist-item">☐ Washed hands / used sanitizer</div>
+            <div class="checklist-item">☐ Introduced self appropriately</div>
+            <div class="checklist-item">☐ Confirmed patient identity</div>
+            <div class="checklist-item">☐ Gathered necessary equipment</div>
+            <div class="checklist-item">☐ Ensured adequate privacy</div>
+            <p><strong>Quality (1-5):</strong> <input type="number" min="1" max="5" style="width: 60px;"></p>
+
+            <h3>P2: Position</h3>
+            <div class="checklist-item">☐ Positioned patient correctly for system being examined</div>
+            <div class="checklist-item">☐ Ensured patient comfort</div>
+            <div class="checklist-item">☐ Appropriate exposure (maintaining dignity)</div>
+            <p><strong>Quality (1-5):</strong> <input type="number" min="1" max="5" style="width: 60px;"></p>
+
+            <h3>P3: Permission</h3>
+            <div class="checklist-item">☐ Explained what I would be doing</div>
+            <div class="checklist-item">☐ Explained why (clinical indication)</div>
+            <div class="checklist-item">☐ Asked permission to proceed</div>
+            <div class="checklist-item">☐ Checked for pain/discomfort before starting</div>
+            <p><strong>Quality (1-5):</strong> <input type="number" min="1" max="5" style="width: 60px;"></p>
+
+            <h3>P4: Perform</h3>
+            <div class="checklist-item">☐ Followed systematic approach (see system-specific checklist below)</div>
+            <div class="checklist-item">☐ Performed all key maneuvers</div>
+            <div class="checklist-item">☐ Maintained patient comfort throughout</div>
+            <div class="checklist-item">☐ Observed for signs of distress</div>
+            <p><strong>Quality (1-5):</strong> <input type="number" min="1" max="5" style="width: 60px;"></p>
+
+            <h3>P5: Present</h3>
+            <div class="checklist-item">☐ Thanked patient</div>
+            <div class="checklist-item">☐ Helped patient reposition/dress</div>
+            <div class="checklist-item">☐ Summarized key findings</div>
+            <div class="checklist-item">☐ Structured presentation clearly</div>
+            <p><strong>Quality (1-5):</strong> <input type="number" min="1" max="5" style="width: 60px;"></p>
+        </div>
+
+        <h2>🔍 System-Specific Examination Checklist</h2>
+        <p><em>Complete the appropriate checklist for the system you examined:</em></p>
+
+        <!-- CARDIOVASCULAR -->
+        <div id="cardio-checklist" class="checklist">
+            <h3>Cardiovascular Examination (Target: 10 min)</h3>
+            <h4>General Inspection</h4>
+            <div class="checklist-item">☐ General appearance & comfort at rest</div>
+            <div class="checklist-item">☐ Breathlessness, pallor, cyanosis</div>
+            <div class="checklist-item">☐ Peripheral oedema</div>
+
+            <h4>Hands</h4>
+            <div class="checklist-item">☐ Clubbing, splinter hemorrhages, Osler's nodes</div>
+            <div class="checklist-item">☐ Capillary refill time</div>
+
+            <h4>Pulses & BP</h4>
+            <div class="checklist-item">☐ Radial pulse (rate, rhythm, character)</div>
+            <div class="checklist-item">☐ Brachial pulse</div>
+            <div class="checklist-item">☐ Carotid pulse (if appropriate)</div>
+            <div class="checklist-item">☐ Blood pressure</div>
+
+            <h4>Face & Neck</h4>
+            <div class="checklist-item">☐ Eyes (conjunctival pallor, xanthelasma)</div>
+            <div class="checklist-item">☐ Mouth (central cyanosis, dental hygiene)</div>
+            <div class="checklist-item">☐ JVP assessment</div>
+            <div class="checklist-item">☐ Carotid pulsation</div>
+
+            <h4>Chest - Inspection</h4>
+            <div class="checklist-item">☐ Scars, pacemaker, deformities</div>
+            <div class="checklist-item">☐ Apex beat location</div>
+
+            <h4>Chest - Palpation</h4>
+            <div class="checklist-item">☐ Apex beat (location, character)</div>
+            <div class="checklist-item">☐ Heaves and thrills</div>
+
+            <h4>Chest - Auscultation</h4>
+            <div class="checklist-item">☐ Aortic area</div>
+            <div class="checklist-item">☐ Pulmonary area</div>
+            <div class="checklist-item">☐ Tricuspid area</div>
+            <div class="checklist-item">☐ Mitral area</div>
+            <div class="checklist-item">☐ Listened with diaphragm and bell</div>
+            <div class="checklist-item">☐ Listened in different positions (if indicated)</div>
+
+            <h4>Completion</h4>
+            <div class="checklist-item">☐ Peripheral pulses (if indicated)</div>
+            <div class="checklist-item">☐ Lung bases for crepitations</div>
+            <div class="checklist-item">☐ Ankle oedema</div>
+        </div>
+
+        <!-- RESPIRATORY -->
+        <div id="resp-checklist" class="checklist">
+            <h3>Respiratory Examination (Target: 8 min)</h3>
+            <h4>General Inspection</h4>
+            <div class="checklist-item">☐ Respiratory distress, position, breathing pattern</div>
+            <div class="checklist-item">☐ Cyanosis, pallor</div>
+            <div class="checklist-item">☐ Sputum pot, inhalers, oxygen</div>
+
+            <h4>Hands</h4>
+            <div class="checklist-item">☐ Clubbing, tar staining, tremor</div>
+            <div class="checklist-item">☐ Peripheral cyanosis</div>
+
+            <h4>Face & Neck</h4>
+            <div class="checklist-item">☐ Central cyanosis</div>
+            <div class="checklist-item">☐ Horner's syndrome</div>
+            <div class="checklist-item">☐ Tracheal position</div>
+            <div class="checklist-item">☐ Lymph nodes</div>
+
+            <h4>Chest - Inspection</h4>
+            <div class="checklist-item">☐ Scars, chest shape, symmetry</div>
+            <div class="checklist-item">☐ Respiratory rate and pattern</div>
+            <div class="checklist-item">☐ Use of accessory muscles</div>
+
+            <h4>Chest - Palpation</h4>
+            <div class="checklist-item">☐ Chest expansion (anterior and posterior)</div>
+            <div class="checklist-item">☐ Tactile vocal fremitus</div>
+
+            <h4>Chest - Percussion</h4>
+            <div class="checklist-item">☐ Systematic percussion all zones</div>
+            <div class="checklist-item">☐ Compared right vs left</div>
+
+            <h4>Chest - Auscultation</h4>
+            <div class="checklist-item">☐ Breath sounds all zones</div>
+            <div class="checklist-item">☐ Added sounds (crackles, wheeze, rub)</div>
+            <div class="checklist-item">☐ Vocal resonance (if indicated)</div>
+
+            <h4>Completion</h4>
+            <div class="checklist-item">☐ Ankle oedema</div>
+            <div class="checklist-item">☐ Offer to check peak flow/oxygen saturation</div>
+        </div>
+
+        <!-- ABDOMINAL -->
+        <div id="abd-checklist" class="checklist">
+            <h3>Abdominal Examination (Target: 10 min)</h3>
+            <h4>General Inspection</h4>
+            <div class="checklist-item">☐ Patient comfort, position</div>
+            <div class="checklist-item">☐ Jaundice, pallor, cachexia</div>
+
+            <h4>Hands</h4>
+            <div class="checklist-item">☐ Clubbing, leukonychia, palmar erythema</div>
+            <div class="checklist-item">☐ Dupuytren's contracture</div>
+            <div class="checklist-item">☐ Flapping tremor (asterixis)</div>
+
+            <h4>Arms & Face</h4>
+            <div class="checklist-item">☐ Spider naevi</div>
+            <div class="checklist-item">☐ Conjunctival pallor</div>
+            <div class="checklist-item">☐ Scleral icterus</div>
+            <div class="checklist-item">☐ Mouth (ulcers, angular stomatitis)</div>
+
+            <h4>Chest & Neck</h4>
+            <div class="checklist-item">☐ Gynaecomastia</div>
+            <div class="checklist-item">☐ Lymphadenopathy (Virchow's node)</div>
+
+            <h4>Abdomen - Inspection</h4>
+            <div class="checklist-item">☐ Scars, distension, visible peristalsis</div>
+            <div class="checklist-item">☐ Hernias, masses</div>
+            <div class="checklist-item">☐ Striae, caput medusae</div>
+
+            <h4>Abdomen - Palpation (Light)</h4>
+            <div class="checklist-item">☐ Asked about pain first</div>
+            <div class="checklist-item">☐ Watched patient's face</div>
+            <div class="checklist-item">☐ All 9 regions systematically</div>
+
+            <h4>Abdomen - Palpation (Deep)</h4>
+            <div class="checklist-item">☐ Liver (size, surface, edge)</div>
+            <div class="checklist-item">☐ Spleen</div>
+            <div class="checklist-item">☐ Kidneys (balloting)</div>
+            <div class="checklist-item">☐ Aorta</div>
+            <div class="checklist-item">☐ Bladder</div>
+
+            <h4>Abdomen - Percussion</h4>
+            <div class="checklist-item">☐ Liver span</div>
+            <div class="checklist-item">☐ Spleen</div>
+            <div class="checklist-item">☐ Shifting dullness (if ascites suspected)</div>
+
+            <h4>Abdomen - Auscultation</h4>
+            <div class="checklist-item">☐ Bowel sounds</div>
+            <div class="checklist-item">☐ Renal bruits (if indicated)</div>
+
+            <h4>Completion</h4>
+            <div class="checklist-item">☐ Hernial orifices</div>
+            <div class="checklist-item">☐ External genitalia (state would examine)</div>
+            <div class="checklist-item">☐ PR exam (state would perform)</div>
+            <div class="checklist-item">☐ Ankle oedema</div>
+        </div>
+
+        <h2>📊 Self-Assessment</h2>
+
+        <h3>Overall Performance</h3>
+        <p><strong>Overall Quality (1-10):</strong> <input type="number" min="1" max="10" style="width: 80px;"></p>
+        <p><strong>Completeness (%):</strong> <input type="number" min="0" max="100" style="width: 80px;">% of checklist items completed</p>
+        <p><strong>Confidence Level (1-10):</strong> <input type="number" min="1" max="10" style="width: 80px;"></p>
+
+        <h3>What Went Well</h3>
+        <textarea placeholder="e.g., Remembered all steps of cardiac auscultation, good systematic approach, maintained patient comfort"></textarea>
+
+        <h3>Areas for Improvement</h3>
+        <textarea placeholder="e.g., Need to work on identifying JVP, percussion technique needs practice, presentation was disorganized"></textarea>
+
+        <h3>Findings Identified (if real patient/realistic scenario)</h3>
+        <textarea placeholder="e.g., Normal cardiac examination, heard systolic murmur loudest at apex, bilateral basal crackles noted"></textarea>
+
+        <h3>Feedback Received</h3>
+        <textarea placeholder="Feedback from supervisor, partner, or self-reflection watching video"></textarea>
+
+        <h2>📈 Progress Notes</h2>
+
+        <h3>Compared to Last Practice of This System:</h3>
+        <p>
+            <input type="radio" name="progress" value="better"> Significant improvement<br>
+            <input type="radio" name="progress" value="some"> Some improvement<br>
+            <input type="radio" name="progress" value="same"> About the same<br>
+            <input type="radio" name="progress" value="worse"> Need more practice
+        </p>
+
+        <h3>Next Practice Focus:</h3>
+        <textarea placeholder="What specific skills will I focus on next time? e.g., Work on percussion technique, practice heart sound identification, improve presentation structure"></textarea>
+
+        <div class="success">
+            <h3>✅ Key Takeaways</h3>
+            <p><strong>Most important learning:</strong></p>
+            <textarea placeholder="e.g., The systematic approach really helps not miss anything"></textarea>
+            <p><strong>One thing to remember for next time:</strong></p>
+            <input type="text" placeholder="e.g., Always warm hands first!">
+        </div>
+
+        <div style="margin-top: 30px; text-align: center;">
+            <button onclick="window.print()" style="background: #667eea; color: white; padding: 12px 30px; border: none; border-radius: 5px; font-size: 1em; cursor: pointer;">
+                🖨️ Print/Save This Practice Log
+            </button>
+        </div>
+
+        <div style="margin-top: 30px; padding: 15px; border-top: 2px solid #ddd; text-align: center; color: #666;">
+            <p><strong>ICRP Preparation</strong> | Physical Examination Practice Log</p>
+            <p>Track every practice toward your goal of 100+ examinations!</p>
+        </div>
+    </div>
+</body>
+</html>

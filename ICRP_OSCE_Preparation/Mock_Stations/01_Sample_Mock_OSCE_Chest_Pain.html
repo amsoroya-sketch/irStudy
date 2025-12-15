@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock OSCE Station - Chest Pain History</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Mock Stations</span>
+</div>
+        
+        <h1>Mock OSCE Station - Chest Pain History</h1>
+<h2>AMC Clinical Style with Examiner Marking Checklist</h2>
+
+<strong>Station Number</strong>: 1 (Example)
+<strong>System</strong>: Cardiovascular
+<strong>Task</strong>: History-taking
+<strong>Time</strong>: 8 minutes
+<strong>Difficulty</strong>: Medium
+<strong>Created</strong>: December 14, 2025
+
+<hr>
+
+<h2>FOR THE CANDIDATE</h2>
+
+<h3>INSTRUCTIONS (Read Before Entering Station - 1 minute)</h3>
+
+<p>
+You are a junior doctor in the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department at Young District Hospital, NSW.
+</p>
+
+<strong>Task</strong>: Take a focused history from this patient.
+
+<strong>Patient Details</strong>:
+<ul>
+<li>Name: Mr James Wilson</li>
+<li>Age: 58 years old</li>
+<li>Presenting Complaint: Chest pain</li>
+<p>
+</ul>
+</p>
+
+<strong>You have 8 minutes for this station.</strong>
+
+<p>
+At the 7-minute mark, the examiner will ask you to summarize your findings and provide your differential diagnoses.
+</p>
+
+<em>You may now enter the station.</em>
+
+<hr>
+
+<h2>FOR THE SIMULATED PATIENT</h2>
+
+<h3>BACKGROUND INFORMATION (Candidate CANNOT see this)</h3>
+
+<strong>Name</strong>: Mr James Wilson
+<strong>Age</strong>: 58 years old
+<strong>Occupation</strong>: Office manager (sedentary job)
+
+<h3>YOUR SCENARIO</h3>
+
+<p>
+You are at the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department because you had chest pain about 2 hours ago while playing tennis. The pain was quite severe - you had to stop playing and sit down. It's mostly settled now but you still feel a bit of discomfort.
+</p>
+
+<h3>HISTORY OF PRESENTING COMPLAINT</h3>
+
+<strong>When asked about the pain, describe it as follows</strong>:
+
+<strong>Site</strong>:
+<ul>
+<li>"It was in the middle of my chest" (point to centre of sternum)</li>
+<p>
+</ul>
+</p>
+
+<strong>Onset</strong>:
+<ul>
+<li>"I was playing tennis with my mate - we'd been playing for about 30 minutes when it came on quite suddenly"</li>
+<li>"I'd just served and felt this tightness in my chest"</li>
+<li>Time: "About 2 hours ago, around 10am"</li>
+<p>
+</ul>
+</p>
+
+<strong>Character</strong>:
+<ul>
+<li>"It felt like a heavy weight on my chest, like someone was sitting on it"</li>
+<li>"Tight, pressing feeling"</li>
+<li>NOT sharp, NOT burning</li>
+<p>
+</ul>
+</p>
+
+<strong>Radiation</strong>:
+<ul>
+<li>"It spread to my left arm" (point to left upper arm)</li>
+<li>"And a bit into my jaw" (only if specifically asked)</li>
+<p>
+</ul>
+</p>
+
+<strong>Associations</strong>:
+<ul>
+<li>"I felt a bit sweaty and clammy"</li>
+<li>"A bit short of breath"</li>
+<li>"Felt a bit sick in my stomach but didn't vomit"</li>
+<li>NO palpitations, NO dizziness</li>
+<p>
+</ul>
+</p>
+
+<strong>Time course</strong>:
+<ul>
+<li>"It lasted about 15-20 minutes"</li>
+<li>"It's mostly gone now but I still feel a dull ache"</li>
+<p>
+</ul>
+</p>
+
+<strong>Exacerbating factors</strong>:
+<ul>
+<li>"Definitely worse with exertion - I had to stop playing"</li>
+<p>
+</ul>
+</p>
+
+<strong>Relieving factors</strong>:
+<ul>
+<li>"When I sat down and rested, it gradually got better"</li>
+<li>If asked: "My wife gave me one of my GTN sprays and that seemed to help a bit"</li>
+<p>
+</ul>
+</p>
+
+<strong>Severity</strong>:
+<ul>
+<li>"At its worst, I'd say 7 out of 10"</li>
+<li>"Now it's about 2 out of 10"</li>
+<p>
+</ul>
+</p>
+
+<h3>PAST MEDICAL HISTORY</h3>
+
+<strong>If asked</strong>:
+<ul>
+<li>"I have high blood pressure - I take tablets for that"</li>
+<li>"And high cholesterol - also on tablets"</li>
+<li>"I had angina diagnosed about 6 months ago after a stress test"</li>
+<li>"I've never had a heart attack though"</li>
+<p>
+</ul>
+</p>
+
+<h3>MEDICATIONS</h3>
+
+<strong>If asked</strong>:
+<ul>
+<li>"I take amlodipine for my blood pressure"</li>
+<li>"Atorvastatin for cholesterol"</li>
+<li>"GTN spray when I get chest pain - but I don't use it very often"</li>
+<li>"And aspirin - a small dose every day"</li>
+<p>
+</ul>
+</p>
+
+<h3>ALLERGIES</h3>
+
+<strong>If asked</strong>:
+<ul>
+<li>"No allergies to medications"</li>
+<p>
+</ul>
+</p>
+
+<h3>FAMILY HISTORY</h3>
+
+<strong>If asked</strong>:
+<ul>
+<li>"My dad died of a heart attack when he was 63"</li>
+<li>"My brother had a stent put in his heart last year - he's 62"</li>
+<p>
+</ul>
+</p>
+
+<h3>SOCIAL HISTORY</h3>
+
+<strong>Smoking</strong>:
+<ul>
+<li>"I used to smoke for about 30 years - a pack a day"</li>
+<li>"Quit 3 years ago"</li>
+<p>
+</ul>
+</p>
+
+<strong>Alcohol</strong>:
+<ul>
+<li>"Social drinker - maybe a couple of beers on the weekend"</li>
+<p>
+</ul>
+</p>
+
+<strong>Exercise</strong>:
+<ul>
+<li>"I play tennis twice a week usually"</li>
+<li>"And walk the dog most days"</li>
+<p>
+</ul>
+</p>
+
+<h3>SYSTEMS REVIEW</h3>
+
+<strong>If asked about other systems</strong> (only volunteer if specifically asked):
+<ul>
+<li>No cough</li>
+<li>No leg swelling</li>
+<li>No recent surgery or long flights</li>
+<li>No indigestion problems</li>
+<p>
+</ul>
+</p>
+
+<h3>EMOTIONS & BEHAVIOR</h3>
+
+<strong>Emotional State</strong>:
+<ul>
+<li>You're worried but trying to stay calm</li>
+<li>You're particularly worried because of your family history</li>
+<li>If doctor shows empathy, you open up more</li>
+<p>
+</ul>
+</p>
+
+<strong>If asked "What are you most worried about?"</strong>:
+<ul>
+<li>"Well, with my dad and brother both having heart problems, I'm worried this could be a heart attack"</li>
+<p>
+</ul>
+</p>
+
+<strong>If doctor shows good communication</strong>:
+<ul>
+<li>Be more forthcoming with information</li>
+<li>Thank them for their concern</li>
+<p>
+</ul>
+</p>
+
+<strong>If doctor is rushed or dismissive</strong>:
+<ul>
+<li>Become more anxious</li>
+<li>May withhold information</li>
+<p>
+</ul>
+</p>
+
+<h3>QUESTIONS YOU SHOULD ASK (at appropriate time)</h3>
+
+<ul>
+<li>"Do you think it's my heart?"</li>
+<li>"Do I need to be admitted?"</li>
+<li>"Can I still play tennis?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>FOR THE EXAMINER</h2>
+
+<h3>EXAMINER INSTRUCTIONS</h3>
+
+<strong>Your Role</strong>:
+<ul>
+<li>Observe the candidate silently</li>
+<li>Mark using the checklist below</li>
+<li>At 7 minutes, say: <em>"You have 1 minute remaining. Please summarize your findings and provide your differential diagnoses."</em></li>
+<li>At 8 minutes, say: <em>"Thank you, time is up."</em></li>
+<p>
+</ul>
+</p>
+
+<strong>Do NOT</strong>:
+<ul>
+<li>Interrupt the candidate</li>
+<li>Give hints or feedback during the station</li>
+<li>Answer questions for the simulated patient</li>
+<p>
+</ul>
+</p>
+
+<h3>STATION OBJECTIVES</h3>
+
+<p>
+This station assesses the candidate's ability to:
+</p>
+<ol>
+<li>Take a focused cardiovascular history using a systematic approach (SOCRATES)</li>
+<li>Identify <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s for acute coronary syndrome</li>
+<li>Assess cardiovascular risk factors</li>
+<li>Generate appropriate differential diagnoses</li>
+<li>Communicate effectively with empathy and professionalism</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>EXAMINER MARKING CHECKLIST</h2>
+
+<strong>Candidate Name</strong>: <strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong></em>__
+<strong>Candidate Number</strong>: <strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong></em>__
+<strong>Date</strong>: <strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong></em>__
+
+<h3>SECTION 1: INTRODUCTION & COMMUNICATION (10 points)</h3>
+
+<p>
+| Criteria | Yes | No | Comments |
+|----------|-----|-----|----------|
+| <strong>1.1</strong> Hand hygiene performed | ☐ | ☐ | |
+| <strong>1.2</strong> Introduced self appropriately | ☐ | ☐ | |
+| <strong>1.3</strong> Confirmed patient name/age | ☐ | ☐ | |
+| <strong>1.4</strong> Explained purpose of consultation | ☐ | ☐ | |
+| <strong>1.5</strong> Obtained verbal consent to proceed | ☐ | ☐ | |
+| <strong>1.6</strong> Demonstrated empathy (e.g., acknowledged patient concern) | ☐ | ☐ | |
+| <strong>1.7</strong> Used open-ended questions initially | ☐ | ☐ | |
+| <strong>1.8</strong> Active listening (eye contact, not interrupting) | ☐ | ☐ | |
+| <strong>1.9</strong> Checked understanding ("Does that make sense?") | ☐ | ☐ | |
+| <strong>1.10</strong> Professional manner throughout | ☐ | ☐ | |
+</p>
+
+<strong>Section 1 Score</strong>: <em>_</em>_/10
+
+<hr>
+
+<h3>SECTION 2: HISTORY OF PRESENTING COMPLAINT (SOCRATES) (25 points)</h3>
+
+<p>
+| Criteria | Yes | No | Comments |
+|----------|-----|-----|----------|
+| <strong>2.1</strong> <strong>S - Site</strong>: Asked where pain located | ☐ | ☐ | |
+| <strong>2.2</strong> <strong>O - Onset</strong>: Asked when started, what doing, sudden vs gradual | ☐ | ☐ | 2-3 points awarded |
+| <strong>2.3</strong> <strong>C - Character</strong>: Asked to describe pain (tight, sharp, burning, etc.) | ☐ | ☐ | |
+| <strong>2.4</strong> <strong>R - Radiation</strong>: Asked if pain spread elsewhere | ☐ | ☐ | |
+| <strong>2.5</strong> <strong>A - Associations</strong>: Asked about other symptoms | ☐ | ☐ | |
+| <strong>2.6</strong> Specifically asked about: Shortness of breath | ☐ | ☐ | |
+| <strong>2.7</strong> Specifically asked about: Sweating | ☐ | ☐ | |
+| <strong>2.8</strong> Specifically asked about: Nausea/vomiting | ☐ | ☐ | |
+| <strong>2.9</strong> Specifically asked about: Palpitations | ☐ | ☐ | |
+| <strong>2.10</strong> <strong>T - Time course</strong>: Asked about duration, constant vs intermittent | ☐ | ☐ | |
+| <strong>2.11</strong> <strong>E - Exacerbating factors</strong>: Asked what makes pain worse | ☐ | ☐ | |
+| <strong>2.12</strong> <strong>E - Relieving factors</strong>: Asked what makes pain better | ☐ | ☐ | |
+| <strong>2.13</strong> <strong>S - Severity</strong>: Asked to rate pain (e.g., out of 10) | ☐ | ☐ | |
+| <strong>2.14</strong> Current status: Asked if pain present now | ☐ | ☐ | |
+| <strong>2.15</strong> Previous episodes: Asked if similar pain before | ☐ | ☐ | |
+</p>
+
+<strong>Section 2 Score</strong>: <em>_</em>_/25
+
+<hr>
+
+<h3>SECTION 3: CARDIOVASCULAR RISK FACTORS (15 points)</h3>
+
+<p>
+| Criteria | Yes | No | Comments |
+|----------|-----|-----|----------|
+| <strong>3.1</strong> Asked about previous heart disease/angina | ☐ | ☐ | |
+| <strong>3.2</strong> Asked about high blood pressure | ☐ | ☐ | |
+| <strong>3.3</strong> Asked about diabetes | ☐ | ☐ | |
+| <strong>3.4</strong> Asked about high cholesterol | ☐ | ☐ | |
+| <strong>3.5</strong> Asked about smoking history (current/past) | ☐ | ☐ | |
+| <strong>3.6</strong> <strong>If smoker</strong>: Quantified (pack-years or cigarettes/day × years) | ☐ | ☐ | |
+| <strong>3.7</strong> Asked about family history of heart disease | ☐ | ☐ | |
+| <strong>3.8</strong> <strong>If positive family history</strong>: Asked about age of relatives | ☐ | ☐ | |
+| <strong>3.9</strong> Asked about current medications | ☐ | ☐ | |
+| <strong>3.10</strong> Asked about allergies | ☐ | ☐ | |
+| <strong>3.11</strong> Asked about alcohol intake | ☐ | ☐ | |
+| <strong>3.12</strong> Asked about exercise/activity level | ☐ | ☐ | |
+| <strong>3.13</strong> Asked about recent surgery/immobility (PE risk) | ☐ | ☐ | |
+| <strong>3.14</strong> Asked about leg swelling/DVT symptoms (PE risk) | ☐ | ☐ | |
+| <strong>3.15</strong> Systematic approach to risk factors | ☐ | ☐ | |
+</p>
+
+<strong>Section 3 Score</strong>: <em>_</em>_/15
+
+<hr>
+
+<h3>SECTION 4: CLINICAL REASONING (20 points)</h3>
+
+<p>
+| Criteria | Yes | No | Comments |
+|----------|-----|-----|----------|
+| <strong>4.1</strong> Recognized <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s for ACS (exertional pain, radiation to arm/jaw, sweating) | ☐ | ☐ | |
+| <strong>4.2</strong> Identified this as potentially serious/<span style="color: #e74c3c; font-weight: bold;">URGENT</span> | ☐ | ☐ | |
+| <strong>4.3</strong> <strong>Differential 1</strong>: Acute Coronary Syndrome/Unstable Angina mentioned | ☐ | ☐ | |
+| <strong>4.4</strong> Justified differential 1 with clinical features | ☐ | ☐ | |
+| <strong>4.5</strong> <strong>Differential 2</strong>: Appropriate (e.g., PE, GORD, musculoskeletal) | ☐ | ☐ | |
+| <strong>4.6</strong> Justified differential 2 | ☐ | ☐ | |
+| <strong>4.7</strong> <strong>Differential 3</strong>: Appropriate | ☐ | ☐ | |
+| <strong>4.8</strong> Justified differential 3 | ☐ | ☐ | |
+| <strong>4.9</strong> Differentials ranked by likelihood or urgency | ☐ | ☐ | |
+| <strong>4.10</strong> Mentioned need for <span style="color: #e74c3c; font-weight: bold;">URGENT</span> investigations (ECG, troponin) | ☐ | ☐ | |
+</p>
+
+<strong>Section 4 Score</strong>: <em>_</em>_/20
+
+<hr>
+
+<h3>SECTION 5: MANAGEMENT & SAFETY (15 points)</h3>
+
+<p>
+| Criteria | Yes | No | Comments |
+|----------|-----|-----|----------|
+| <strong>5.1</strong> Stated would arrange <span style="color: #e74c3c; font-weight: bold;">URGENT</span> ECG | ☐ | ☐ | |
+| <strong>5.2</strong> Stated would check troponin (serial if needed) | ☐ | ☐ | |
+| <strong>5.3</strong> Mentioned chest X-ray | ☐ | ☐ | |
+| <strong>5.4</strong> Mentioned basic bloods (FBC, UEC, lipids) | ☐ | ☐ | |
+| <strong>5.5</strong> Appropriate immediate management if ACS (e.g., mentioned aspirin, GTN, pain relief) | ☐ | ☐ | |
+| <strong>5.6</strong> Recognized need for senior review/cardiology input | ☐ | ☐ | |
+| <strong>5.7</strong> Safety-netting: Advised patient to report worsening symptoms | ☐ | ☐ | |
+| <strong>5.8</strong> Safety-netting: Gave specific <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s (e.g., "If pain returns or worsens, call for help immediately") | ☐ | ☐ | |
+| <strong>5.9</strong> Addressed patient's concerns (e.g., about family history) | ☐ | ☐ | |
+| <strong>5.10</strong> Did NOT discharge patient or suggest going home (unsafe given ACS suspicion) | ☐ | ☐ | |
+</p>
+
+<strong>Section 5 Score</strong>: <em>_</em>_/15
+
+<hr>
+
+<h3>SECTION 6: AUSTRALIAN CONTEXT & PROFESSIONALISM (15 points)</h3>
+
+<p>
+| Criteria | Yes | No | Comments |
+|----------|-----|-----|----------|
+| <strong>6.1</strong> Used Australian terminology (e.g., "GP" not "PCP", "ED" not "ER") | ☐ | ☐ | |
+| <strong>6.2</strong> Mentioned Australian guidelines/context (e.g., "I'll refer you to cardiology") | ☐ | ☐ | |
+| <strong>6.3</strong> Time management: Completed within 8 minutes | ☐ | ☐ | |
+| <strong>6.4</strong> Time management: Able to provide summary when prompted | ☐ | ☐ | |
+| <strong>6.5</strong> Systematic approach evident (didn't jump around randomly) | ☐ | ☐ | |
+| <strong>6.6</strong> Appropriate prioritization (focused on cardiac cause given history) | ☐ | ☐ | |
+| <strong>6.7</strong> No medical jargon used with patient (or explained if used) | ☐ | ☐ | |
+| <strong>6.8</strong> Respectful and courteous throughout | ☐ | ☐ | |
+| <strong>6.9</strong> Appropriate eye contact and body language | ☐ | ☐ | |
+| <strong>6.10</strong> Asked if patient had any questions | ☐ | ☐ | |
+| <strong>6.11</strong> Thanked patient at end | ☐ | ☐ | |
+| <strong>6.12</strong> Overall professional impression | ☐ | ☐ | |
+| <strong>6.13</strong> No major communication errors | ☐ | ☐ | |
+| <strong>6.14</strong> Patient appeared comfortable and reassured | ☐ | ☐ | |
+| <strong>6.15</strong> Would you feel confident having this doctor see your family member? | ☐ | ☐ | |
+</p>
+
+<strong>Section 6 Score</strong>: <em>_</em>_/15
+
+<hr>
+
+<h2>SCORING SUMMARY</h2>
+
+<p>
+| Section | Score | Maximum | Percentage |
+|---------|-------|---------|------------|
+| 1. Introduction & Communication | <strong><em>/10 | 10 | </em></strong>% |
+| 2. History of Presenting Complaint | <strong><em>/25 | 25 | </em></strong>% |
+| 3. Cardiovascular Risk Factors | <strong><em>/15 | 15 | </em></strong>% |
+| 4. Clinical Reasoning | <strong><em>/20 | 20 | </em></strong>% |
+| 5. Management & Safety | <strong><em>/15 | 15 | </em></strong>% |
+| 6. Australian Context & Professionalism | <strong><em>/15 | 15 | </em></strong>% |
+| <strong>TOTAL</strong> | <strong><strong><em>/100</strong> | <strong>100</strong> | <strong></em></strong>%</strong> |
+</p>
+
+<hr>
+
+<h2>OVERALL ASSESSMENT</h2>
+
+<strong>Performance Level</strong> (tick one):
+
+<ul>
+<li>☐ <strong>CLEAR PASS</strong> (≥70%): Confident, systematic, safe practice. Would pass in real AMC Clinical.</li>
+<p>
+</ul>
+</p>
+
+<ul>
+<li>☐ <strong>BORDERLINE PASS</strong> (60-69%): Adequate performance with minor deficiencies. Needs polishing but demonstrates safe practice.</li>
+<p>
+</ul>
+</p>
+
+<ul>
+<li>☐ <strong>BORDERLINE FAIL</strong> (50-59%): Significant deficiencies but not unsafe. Needs substantial improvement.</li>
+<p>
+</ul>
+</p>
+
+<ul>
+<li>☐ <strong>CLEAR FAIL</strong> (<50%): Major deficiencies, disorganized, or unsafe practice. Not ready for AMC Clinical.</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>CRITICAL ERRORS (Automatic Fail if Present)</h2>
+
+<strong>Tick if any of the following occurred</strong>:
+
+<ul>
+<li>☐ <strong>Safety Issue</strong>: Missed life-threatening diagnosis (ACS) or suggested unsafe discharge</li>
+<li>☐ <strong>Gross Disorganization</strong>: Unable to take coherent history</li>
+<li>☐ <strong>Unprofessional Behavior</strong>: Rude, dismissive, or inappropriate</li>
+<li>☐ <strong>Time Management Failure</strong>: Unable to provide any summary even when prompted</li>
+<p>
+</ul>
+</p>
+
+<strong>If ANY critical error ticked, overall grade is FAIL regardless of score.</strong>
+
+<hr>
+
+<h2>EXAMINER FEEDBACK</h2>
+
+<h3>Strengths (What the candidate did well):</h3>
+
+<strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong></em>_
+
+<strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong></em>_
+
+<strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong></em>_
+
+<h3>Areas for Improvement (Specific feedback):</h3>
+
+<strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong></em>_
+
+<strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong></em>_
+
+<strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong></em>_
+
+<h3>Key Learning Points for This Candidate:</h3>
+
+<strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong></em>_
+
+<strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong></em>_
+
+<strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong></em>_
+
+<hr>
+
+<h2>ANSWER KEY (What Candidate Should Have Done)</h2>
+
+<h3>IDEAL APPROACH</h3>
+
+<strong>Opening (30 sec)</strong>:
+<ul>
+<li>Hand hygiene, introduction, consent</li>
+<li>"Hello Mr Wilson, I'm Dr [Name]. I understand you've come in with chest pain today. I'd like to ask you some questions about this. Is that alright?"</li>
+<p>
+</ul>
+</p>
+
+<strong>SOCRATES History (3-4 min)</strong>:
+<ul>
+<li>Systematically cover all 8 components</li>
+<li>Identify <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s: Exertional, central, tight, radiating to arm/jaw, associated sweating + SOB</li>
+<p>
+</ul>
+</p>
+
+<strong>Risk Factors (2 min)</strong>:
+<ul>
+<li>Past history: Angina, hypertension, hypercholesterolaemia</li>
+<li>Medications: Aspirin, statin, antihypertensive, GTN</li>
+<li>Smoking: Ex-smoker (30 pack-years)</li>
+<li>Family history: Strong (father died MI at 63, brother had stent)</li>
+<p>
+</ul>
+</p>
+
+<strong>Summary to Examiner (1 min)</strong>:
+<p>
+"This is a 58-year-old man with exertional central chest pain, radiating to left arm and jaw, associated with sweating and shortness of breath, partially relieved by rest and GTN.
+</p>
+
+<p>
+He has multiple cardiovascular risk factors including known angina, hypertension, hypercholesterolaemia, ex-smoker with 30 pack-year history, and strong family history of ischaemic heart disease.
+</p>
+
+<strong>My top 3 differentials are</strong>:
+<ol>
+<li><strong>Acute Coronary Syndrome</strong> (unstable angina or NSTEMI) - most likely given exertional pain, cardiac risk factors, radiation pattern</li>
+<li><strong>Progression of stable angina</strong> - though concerning that pain lasted 15-20 min (longer than typical angina)</li>
+<li><strong>Pulmonary embolism</strong> - less likely as no risk factors for DVT/PE, but pleuritic component possible</li>
+<p>
+</ol>
+</p>
+
+<strong>Immediate management</strong>:
+<ul>
+<li><span style="color: #e74c3c; font-weight: bold;">URGENT</span> ECG (within 10 minutes)</li>
+<li>Serial troponins (0 and 3 hours)</li>
+<li>Chest X-ray</li>
+<li>Bloods: FBC, UEC, CRP</li>
+<li>If troponin elevated: MONA (morphine if needed, oxygen if SpO2 <94%, nitrates, aspirin 300mg)</li>
+<li><span style="color: #e74c3c; font-weight: bold;">URGENT</span> cardiology consult</li>
+<li>Admit for observation</li>
+<p>
+</ul>
+</p>
+
+<p>
+This patient should <strong>not be discharged</strong> from ED."
+</p>
+
+<hr>
+
+<strong>Last Updated</strong>: December 14, 2025
+<strong>Version</strong>: 1.0
+<strong>Author</strong>: ICRP NSW Young Hospital Preparation Team
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obstetric Examination</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>ObGyn</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 ObGyn Navigation</h3>
+<ul>
+<li><a href="01_Obstetric_History_Differentials.html">Obstetric History</a></li>
+<li><a href="02_Gynaecological_History_Differentials.html">Gynae History</a></li>
+</ul>
+</div>
+        <h1>Obstetric Examination</h1>
+<h2>ICRP OSCE Preparation - Obstetrics & Gynaecology Module</h2>
+<h3>Following Dr. Amir Soufi's Differential-Driven Approach (IMG4IMGS Methodology)</h3>
+
+<hr>
+
+<h2>Target Audience</h2>
+<ul>
+<li>IMGs preparing for AMC Clinical OSCE</li>
+<li>ICRP participants at NSW Young Hospital Program</li>
+<li>Medical students/residents rotating through obstetrics</li>
+<li>Focus: 8-minute OSCE stations with systematic examination</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Learning Objectives</h2>
+
+<p>
+By the end of this module, you will be able to:
+</p>
+
+<ol>
+<li><strong>Perform systematic antenatal examination</strong> using the 5 Ps framework</li>
+<li><strong>Measure and interpret symphysis-fundal height</strong> (SFH)</li>
+<li><strong>Perform Leopold's manoeuvres</strong> to determine fetal lie, presentation, and engagement</li>
+<li><strong>Auscultate fetal heart</strong> and interpret rate</li>
+<li><strong>Recognize abnormal findings</strong> requiring further assessment</li>
+<li><strong>Assess fetal wellbeing</strong> clinically</li>
+<li><strong>Integrate examination findings</strong> with gestational age and clinical context</li>
+<li><strong>Communicate findings</strong> clearly to patient and examiner</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Dr. Amir Soufi's Core Principle Applied to Obstetric Examination</h2>
+
+<h3>The Gestational Age-Based Examination Approach</h3>
+
+<strong>Traditional Approach (WRONG for OSCE)</strong>:
+<ol>
+<li>Perform examination mechanically</li>
+<li>Record findings without interpretation</li>
+<li>Don't relate findings to gestational age</li>
+<p>
+</ol>
+</p>
+
+<strong>Dr. Amir's Approach (CORRECT for OSCE)</strong>:
+<ol>
+<li><strong>Know the gestational age BEFORE you start</strong> (from history or given in OSCE)</li>
+<li><strong>Your examination is INTERPRETED based on gestational age</strong>:</li>
+<p>
+</ol>
+   - "28 weeks, SFH 26cm" → Think: <strong>Small for gestational age</strong> (SGA) - IUGR? Dating wrong? Oligohydramnios?
+   - "32 weeks, SFH 36cm" → Think: <strong>Large for gestational age</strong> (LGA) - Macrosomia? GDM? Polyhydramnios? Multiple pregnancy?
+   - "36 weeks, cephalic, 4/5 palpable" → Think: <strong>Not engaged yet</strong> - normal for primigravida, but monitor
+</p>
+<ol>
+<li><strong>Always correlate</strong>: What you expect vs what you find</li>
+<li><strong>Verbalize interpretation</strong>: Don't just say "SFH 26cm" - say "SFH 26cm at 28 weeks, which is 2cm less than expected, suggesting small for dates"</li>
+<p>
+</ol>
+</p>
+
+<strong>This gestational age-based interpretation is CRITICAL for OSCE success.</strong>
+
+<hr>
+
+<h2>Part 1: The 5 Ps Framework for Obstetric Examination</h2>
+
+<h3>P1 - PREPARATION</h3>
+
+<strong>Introduction and Consent</strong>:
+<p>
+"Hello Mrs. Smith, I'm Dr. [Name]. I understand you're <input type="checkbox" checked> weeks pregnant. I'd like to examine your tummy to check how baby is growing and positioned. Is that alright with you?"
+</p>
+
+<strong>Chaperone</strong>:
+<ul>
+<li>Offer chaperone (especially male examiner)</li>
+<li>"Would you like a chaperone present for the examination?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Wash Hands</strong>:
+<ul>
+<li>Wash hands with soap or alcohol gel in front of patient</li>
+<li>"I'm just going to wash my hands"</li>
+<p>
+</ul>
+</p>
+
+<strong>Equipment Needed</strong>:
+<ul>
+<li>Tape measure (for symphysis-fundal height)</li>
+<li>Doppler/Pinard stethoscope (for fetal heart)</li>
+<li>Ultrasound gel (for Doppler)</li>
+<li>Watch/timer (to count fetal heart rate)</li>
+<p>
+</ul>
+</p>
+
+<strong>Explain Examination</strong>:
+<p>
+"I'm going to feel your tummy to check baby's size and position, measure from your pubic bone to the top of your womb, and listen to baby's heartbeat. Please let me know if anything is uncomfortable."
+</p>
+
+<hr>
+
+<h3>P2 - POSITION</h3>
+
+<strong>Patient Positioning</strong>:
+<ul>
+<li><strong>Supine</strong> (lying flat on back) with head on one pillow</li>
+<li><strong>Knees slightly bent</strong> (relaxes abdominal muscles)</li>
+<li><strong>Arms by sides</strong> (not crossed over abdomen)</li>
+<p>
+</ul>
+</p>
+
+<strong>Appropriate Exposure</strong>:
+<ul>
+<li>Expose abdomen from <strong>below breasts to pubic symphysis</strong></li>
+<li>Keep chest covered with gown/sheet</li>
+<li>Keep legs covered with sheet</li>
+<li>Maintain dignity</li>
+<p>
+</ul>
+</p>
+
+<strong>CRITICAL for OSCE</strong>:
+<ul>
+<li>Don't over-expose (unprofessional)</li>
+<li>Don't under-expose (can't examine properly)</li>
+<li><strong>"From the xiphisternum to the pubic symphysis"</strong> is the standard phrase</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>P3 - PERMISSION</h3>
+
+<strong>Before Touching</strong>:
+<p>
+"I'm going to start the examination now. Is that okay? Please tell me if you feel any discomfort."
+</p>
+
+<strong>Warm Hands</strong>:
+<ul>
+<li>Rub hands together if cold</li>
+<li>"I'll make sure my hands are warm"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>P4 - PERFORM</h3>
+
+<strong>Systematic Approach: "INSPECTION → PALPATION → AUSCULTATION"</strong>
+
+<hr>
+
+<h2>Part 2: INSPECTION</h2>
+
+<strong>Stand at the end of the bed and observe</strong>:
+
+<h3>What to Look For</h3>
+
+<strong>1. Abdominal Shape and Size</strong>:
+<ul>
+<li><strong>Gravid abdomen</strong>: Appropriate size for gestational age?</li>
+<p>
+</ul>
+  - Small → Think: Wrong dates, IUGR, oligohydramnios
+  - Large → Think: Macrosomia, GDM, polyhydramnios, multiple pregnancy, wrong dates
+</p>
+<ul>
+<li><strong>Asymmetry</strong>: Uterus deviates to one side (normal - dextrorotation common)</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Skin Changes</strong>:
+<ul>
+<li><strong>Striae gravidarum</strong> (stretch marks): Pink/purple (new) or silver (old)</li>
+<li><strong>Linea nigra</strong>: Dark line from umbilicus to pubic symphysis (normal, due to increased melanin)</li>
+<li><strong>Surgical scars</strong>:</li>
+<p>
+</ul>
+  - <strong>Pfannenstiel scar</strong> (transverse suprapubic) → Previous caesarean section
+    - <strong>CRITICAL</strong>: If present, ask about previous CS → Risk of uterine rupture in labour, placenta accreta
+  - <strong>Midline laparotomy scar</strong> → Previous abdominal surgery
+</p>
+
+<strong>3. Fetal Movements</strong>:
+<ul>
+<li><strong>Visible movements</strong>: Reassuring (healthy, active fetus)</li>
+<li>Document if seen</li>
+<p>
+</ul>
+</p>
+
+<strong>4. Uterine Contractions</strong>:
+<ul>
+<li><strong>Visible tightening</strong> of abdomen (Braxton Hicks or labour contractions)</li>
+<li>Note frequency and duration if observed</li>
+<p>
+</ul>
+</p>
+
+<strong>OSCE Statement</strong>:
+<p>
+"On inspection, I can see a gravid abdomen appropriate for [gestational age] weeks. There is a Pfannenstiel scar consistent with previous caesarean section. I can see fetal movements. The skin shows striae gravidarum and linea nigra."
+</p>
+
+<hr>
+
+<h2>Part 3: PALPATION</h2>
+
+<h3>Symphysis-Fundal Height (SFH) Measurement</h3>
+
+<strong>When to Measure</strong>:
+<ul>
+<li>From <strong>20-24 weeks onwards</strong> (before this, uterus is in pelvis)</li>
+<li><strong>Every antenatal visit</strong> from 24 weeks</li>
+<p>
+</ul>
+</p>
+
+<strong>Equipment</strong>:
+<ul>
+<li>Non-stretch tape measure</li>
+<p>
+</ul>
+</p>
+
+<strong>Technique</strong>:
+
+<strong>Step 1: Identify Fundus</strong> (top of uterus)
+<ul>
+<li>Place ulnar border of left hand flat on abdomen</li>
+<li>Start at xiphisternum</li>
+<li>Move hand down abdomen until you feel the <strong>rounded, firm top of uterus</strong></li>
+<li>This is the <strong>fundus</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Step 2: Identify Symphysis Pubis</strong>
+<ul>
+<li>Palpate suprapubic area to locate <strong>symphysis pubis</strong> (bony prominence)</li>
+<p>
+</ul>
+</p>
+
+<strong>Step 3: Measure</strong>
+<ul>
+<li>Place <strong>zero end of tape measure on symphysis pubis</strong></li>
+<li>Stretch tape measure over abdomen to <strong>fundus</strong></li>
+<li>Keep tape measure in <strong>midline</strong></li>
+<li>Measure in <strong>centimeters</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Interpretation</strong>:
+
+<strong>Normal</strong>:
+<ul>
+<li><strong>SFH (in cm) ≈ Gestational age (in weeks) ± 2cm</strong></li>
+<li>Example: 28 weeks pregnant → SFH should be 26-30cm</li>
+<p>
+</ul>
+</p>
+
+<strong>Abnormal</strong>:
+
+<p>
+| <strong>Finding</strong> | <strong>Interpretation</strong> | <strong>Differential Diagnosis</strong> | <strong>Action</strong> |
+|-------------|-------------------|---------------------------|-----------|
+| <strong>SFH <expected by >2cm</strong> (e.g., 24cm at 28 weeks) | <strong>Small for gestational age (SGA)</strong> | Wrong dates (most common), IUGR (placental insufficiency), Oligohydramnios, Fetal anomaly | Ultrasound growth scan, umbilical artery Dopplers |
+| <strong>SFH >expected by >2cm</strong> (e.g., 32cm at 28 weeks) | <strong>Large for gestational age (LGA)</strong> | Wrong dates, Macrosomia (GDM, maternal obesity), Polyhydramnios, Multiple pregnancy, Fibroids, Molar pregnancy | Ultrasound scan, OGTT if not done |
+| <strong>SFH static</strong> (not growing) | IUGR, oligohydramnios | Placental insufficiency | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> ultrasound, Doppler studies, CTG |
+</p>
+
+<strong>Limitations of SFH</strong>:
+<ul>
+<li><strong>Inaccurate if</strong>:</li>
+<p>
+</ul>
+  - Obesity (BMI >35)
+  - Polyhydramnios or oligohydramnios
+  - Multiple pregnancy
+  - Fibroids
+  - Maternal position not standardized
+  - Full bladder (ask patient to empty bladder before measuring)
+</p>
+
+<strong>OSCE Statement</strong>:
+<p>
+"The symphysis-fundal height is 28cm at 28 weeks gestation, which is appropriate for gestational age."
+</p>
+
+<p>
+OR
+</p>
+
+<p>
+"The symphysis-fundal height is 25cm at 30 weeks gestation, which is 5cm less than expected. This suggests the baby may be small for gestational age, and I would arrange an ultrasound growth scan to assess fetal growth and amniotic fluid volume."
+</p>
+
+<hr>
+
+<h3>Leopold's Manoeuvres (Abdominal Palpation)</h3>
+
+<strong>Purpose</strong>:
+<ul>
+<li>Determine <strong>fetal lie</strong> (longitudinal, transverse, oblique)</li>
+<li>Determine <strong>fetal presentation</strong> (cephalic, breech, shoulder)</li>
+<li>Determine <strong>fetal position</strong> (which way baby is facing)</li>
+<li>Assess <strong>engagement</strong> (how far baby has descended into pelvis)</li>
+<li>Estimate <strong>fetal size</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Perform at ≥32-34 weeks</strong> (before this, baby changes position frequently)
+
+<hr>
+
+<h4>Leopold's Manoeuvre 1: FUNDAL PALPATION</h4>
+
+<strong>Purpose</strong>: Determine which fetal pole (head or bottom) is in the fundus
+
+<strong>Technique</strong>:
+<ol>
+<li><strong>Face the patient's head</strong></li>
+<li>Place <strong>both hands on fundus</strong> (top of uterus)</li>
+<li><strong>Palpate gently</strong> to feel what's at the top</li>
+<p>
+</ol>
+</p>
+
+<strong>What You're Feeling</strong>:
+
+<p>
+| <strong>Finding</strong> | <strong>Interpretation</strong> |
+|-------------|-------------------|
+| <strong>Hard, round, ballottable</strong> (can move it side to side) | <strong>Fetal head</strong> in fundus → <strong>Breech presentation</strong> |
+| <strong>Soft, irregular, large mass</strong> (doesn't ballotte) | <strong>Fetal bottom</strong> (breech) in fundus → <strong>Cephalic presentation</strong> |
+</p>
+
+<strong>OSCE Statement</strong>:
+<p>
+"On fundal palpation, I feel a soft, irregular mass which is the fetal breech, indicating a cephalic presentation."
+</p>
+
+<p>
+OR
+</p>
+
+<p>
+"On fundal palpation, I feel a hard, round, ballottable mass which is the fetal head, indicating a breech presentation."
+</p>
+
+<hr>
+
+<h4>Leopold's Manoeuvre 2: LATERAL PALPATION</h4>
+
+<strong>Purpose</strong>: Determine fetal position (which side the back and limbs are on)
+
+<strong>Technique</strong>:
+<ol>
+<li><strong>Still facing patient's head</strong></li>
+<li>Place hands on <strong>either side of abdomen</strong></li>
+<li>Use <strong>one hand to steady</strong> one side, <strong>other hand to palpate</strong> opposite side</li>
+<li><strong>Alternate sides</strong> (palpate right, then left)</li>
+<p>
+</ol>
+</p>
+
+<strong>What You're Feeling</strong>:
+
+<p>
+| <strong>Finding</strong> | <strong>Interpretation</strong> |
+|-------------|-------------------|
+| <strong>Smooth, firm, continuous resistance</strong> on one side | <strong>Fetal back</strong> |
+| <strong>Irregular, knobbly, small parts</strong> on other side | <strong>Fetal limbs</strong> |
+</p>
+
+<strong>Fetal Position</strong>:
+<ul>
+<li>If back on <strong>right side</strong> → Right occipito-anterior (ROA) or right occipito-posterior (ROP)</li>
+<li>If back on <strong>left side</strong> → Left occipito-anterior (LOA) or left occipito-posterior (LOP)</li>
+<li><strong>Occipito-anterior (OA)</strong> = baby's back anterior (toward mother's belly button) - <strong>optimal for delivery</strong></li>
+<li><strong>Occipito-posterior (OP)</strong> = baby's back posterior (toward mother's spine) - "back-to-back" - longer labour, more back pain</li>
+<p>
+</ul>
+</p>
+
+<strong>OSCE Statement</strong>:
+<p>
+"On lateral palpation, I feel the smooth, firm fetal back on the left side and small irregular limb parts on the right, indicating a left occipito-anterior position."
+</p>
+
+<hr>
+
+<h4>Leopold's Manoeuvre 3: PELVIC GRIP (Pawlik's Grip)</h4>
+
+<strong>Purpose</strong>: Confirm presenting part and assess mobility/engagement
+
+<strong>Technique</strong>:
+<ol>
+<li><strong>Still facing patient's head</strong></li>
+<li>Grasp the <strong>presenting part</strong> (above symphysis pubis) between <strong>thumb and fingers of one hand</strong></li>
+<li><strong>Gently move</strong> side to side to assess mobility</li>
+<p>
+</ol>
+</p>
+
+<strong>What You're Assessing</strong>:
+
+<p>
+| <strong>Finding</strong> | <strong>Interpretation</strong> |
+|-------------|-------------------|
+| <strong>Hard, round, ballottable</strong> | <strong>Fetal head</strong> → Cephalic presentation confirmed |
+| <strong>Soft, irregular</strong> | <strong>Fetal breech</strong> → Breech presentation confirmed |
+| <strong>Can move side to side easily</strong> | <strong>Not engaged</strong> (head mobile above pelvis) |
+| <strong>Fixed, cannot move</strong> | <strong>Engaged</strong> (head descended into pelvis) |
+</p>
+
+<strong>CRITICAL</strong>: This manoeuvre can be uncomfortable for patient - be gentle!
+
+<strong>OSCE Statement</strong>:
+<p>
+"On pelvic grip, I confirm the presenting part is the fetal head, which is mobile, indicating it is not yet engaged."
+</p>
+
+<hr>
+
+<h4>Leopold's Manoeuvre 4: PELVIC PALPATION (Engagement Assessment)</h4>
+
+<strong>Purpose</strong>: Assess how much of the fetal head is palpable above the pelvic brim (engagement)
+
+<strong>Technique</strong>:
+<ol>
+<li><strong>Turn and face patient's feet</strong> (only manoeuvre facing feet)</li>
+<li>Place <strong>both hands on either side of presenting part</strong> (above symphysis pubis)</li>
+<li><strong>Palpate how much of head is above pelvic brim</strong> using fingertips</li>
+<p>
+</ol>
+</p>
+
+<strong>What You're Assessing - "Fifths Palpable"</strong>:
+
+<strong>5/5 palpable</strong>: Entire head above pelvic brim (not descended at all)
+<strong>4/5 palpable</strong>: Most of head above brim
+<strong>3/5 palpable</strong>: Half of head above brim (at brim, not engaged)
+<strong>2/5 palpable</strong>: Less than half above brim (<strong>engaged</strong>)
+<strong>1/5 palpable</strong>: Sinciput (top of head) just palpable
+<strong>0/5 palpable</strong>: Head completely below brim (fully engaged, often in second stage of labour)
+
+<strong>Engagement Defined</strong>:
+<ul>
+<li><strong>Engaged</strong> = <strong>≤2/5 palpable</strong> (widest part of head has passed pelvic brim)</li>
+<li><strong>Not engaged</strong> = <strong>≥3/5 palpable</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Clinical Significance</strong>:
+
+<p>
+| <strong>Finding</strong> | <strong>Interpretation</strong> |
+|-------------|-------------------|
+| <strong>Primigravida, 36-38 weeks, not engaged (3-4/5)</strong> | <strong>Normal</strong> (often engage in late pregnancy or early labour) |
+| <strong>Primigravida, 40 weeks, not engaged (4-5/5)</strong> | May indicate <strong>cephalopelvic disproportion</strong> (CPD), <strong>malpresentation</strong>, or <strong>placenta praevia</strong> → Needs assessment |
+| <strong>Multigravida, term, not engaged</strong> | <strong>Normal</strong> (often engage during labour) |
+| <strong>Any gestation, breech, deeply engaged</strong> | Requires <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> assessment</strong> (breech should not engage - risk cord prolapse if membranes rupture) |
+</p>
+
+<strong>OSCE Statement</strong>:
+<p>
+"On pelvic palpation facing the patient's feet, I assess engagement. I palpate 2 fifths of the fetal head above the pelvic brim, indicating the head is engaged."
+</p>
+
+<hr>
+
+<h3>Summary of Leopold's Manoeuvres</h3>
+
+<strong>Manoeuvre</strong> | <strong>Purpose</strong> | <strong>Facing</strong> | <strong>What You Feel</strong>
+<p>
+---|---|---|---
+</p>
+<strong>1. Fundal</strong> | Identify pole in fundus | Head | Hard/round = head (breech), Soft/irregular = bottom (cephalic)
+<strong>2. Lateral</strong> | Identify back and limbs | Head | Smooth/firm = back, Knobbly = limbs
+<strong>3. Pelvic grip</strong> | Confirm presenting part, assess mobility | Head | Hard/round = head, Soft = breech, Mobile = not engaged
+<strong>4. Pelvic palpation</strong> | Assess engagement (fifths palpable) | <strong>Feet</strong> | 0-2/5 = engaged, 3-5/5 = not engaged
+
+<hr>
+
+<h3>Estimating Fetal Size</h3>
+
+<strong>During palpation, assess</strong>:
+<ul>
+<li><strong>Overall size of uterus</strong> (large vs small for dates)</li>
+<li><strong>Fetal pole size</strong> (large head/bottom suggests macrosomia, small suggests IUGR)</li>
+<p>
+</ul>
+</p>
+
+<strong>Limitations</strong>:
+<ul>
+<li>Very inaccurate (±500g error)</li>
+<li>Affected by maternal obesity, liquor volume</li>
+<li><strong>Ultrasound is gold standard</strong> for fetal weight estimation</li>
+<p>
+</ul>
+</p>
+
+<strong>OSCE Statement</strong>:
+<p>
+"The fetus palpates as appropriate size for gestational age, though clinical estimation of fetal weight is imprecise."
+</p>
+
+<hr>
+
+<h2>Part 4: AUSCULTATION (Fetal Heart)</h2>
+
+<h3>Equipment</h3>
+
+<strong>Pinard Stethoscope</strong> (traditional):
+<ul>
+<li>Horn-shaped stethoscope</li>
+<li>Place flat end on maternal abdomen over fetal back (where you palpated)</li>
+<li>Listen through open end</li>
+<li><strong>Difficult to use</strong> - requires practice, quiet room</li>
+<li>Rarely used in modern practice</li>
+<p>
+</ul>
+</p>
+
+<strong>Handheld Doppler</strong> (ultrasound):
+<ul>
+<li><strong>Most common</strong> in antenatal clinic</li>
+<li>Apply ultrasound gel to abdomen</li>
+<li>Place Doppler over fetal back (where heart is closest to surface)</li>
+<li>Count heart rate for 1 minute</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Technique</h3>
+
+<strong>Where to Listen</strong>:
+<ul>
+<li><strong>Fetal back</strong> (determined by Leopold's 2)</li>
+<li><strong>Below umbilicus</strong> if cephalic presentation</li>
+<li><strong>Above umbilicus</strong> if breech presentation</li>
+<p>
+</ul>
+</p>
+
+<strong>Differentiate from Maternal Pulse</strong>:
+<ul>
+<li><strong>Fetal heart rate</strong>: 110-160 bpm (average 120-140)</li>
+<li><strong>Maternal pulse</strong>: 60-100 bpm (average 70-80)</li>
+<li><strong>Check maternal pulse simultaneously</strong> while listening to fetal heart to confirm they're different</li>
+<p>
+</ul>
+</p>
+
+<strong>Count Rate</strong>:
+<ul>
+<li>Count for <strong>full 60 seconds</strong> (or 30 seconds and multiply by 2)</li>
+<li>Document rate</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Interpretation</h3>
+
+<strong>Normal Fetal Heart Rate</strong>: <strong>110-160 bpm</strong>
+
+<p>
+| <strong>Finding</strong> | <strong>Interpretation</strong> | <strong>Action</strong> |
+|-------------|-------------------|-----------|
+| <strong>110-160 bpm</strong> | <strong>Normal</strong> | Reassuring |
+| <strong>>160 bpm</strong> | <strong>Fetal tachycardia</strong> | Causes: Maternal fever, fetal distress, fetal arrhythmia, maternal tachycardia → <strong>CTG monitoring</strong> |
+| <strong><110 bpm</strong> | <strong>Fetal bradycardia</strong> | Causes: Fetal distress, complete heart block, maternal medication (beta-blockers) → <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> CTG</strong>, may need <strong>immediate delivery</strong> |
+| <strong>Cannot hear</strong> | Equipment issue, wrong location, fetal demise (if <12 weeks, Doppler may not detect) | Try different location, check equipment, <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> ultrasound</strong> if concerns |
+</p>
+
+<strong>OSCE Statement</strong>:
+<p>
+"On auscultation with Doppler, the fetal heart rate is 140 beats per minute, which is reassuring and within normal range."
+</p>
+
+<p>
+OR
+</p>
+
+<p>
+"The fetal heart rate is 180 beats per minute, which is tachycardic. This could indicate fetal distress or maternal fever. I would check maternal temperature and arrange continuous CTG monitoring."
+</p>
+
+<hr>
+
+<h2>Part 5: PRESENTATION (P5)</h2>
+
+<h3>Summarizing Findings to Examiner</h3>
+
+<strong>Structured Presentation</strong>:
+
+<p>
+"Mrs. Smith is a [primigravida/multigravida] at <input type="checkbox" checked> weeks gestation.
+</p>
+
+<strong>On inspection</strong>, the abdomen is gravid and appropriate for gestational age [mention any scars, movements seen].
+
+<strong>On palpation</strong>:
+<ul>
+<li><strong>Symphysis-fundal height</strong> is <input type="checkbox" checked>cm, which is [appropriate/small/large] for gestational age</li>
+<li><strong>Fetal lie</strong> is [longitudinal/transverse/oblique]</li>
+<li><strong>Presentation</strong> is [cephalic/breech/shoulder]</li>
+<li><strong>Position</strong> is [LOA/ROA/LOP/ROP - if cephalic]</li>
+<li><strong>Engagement</strong> is [engaged/not engaged] - <input type="checkbox" checked>/5 palpable above pelvic brim</li>
+<p>
+</ul>
+</p>
+
+<strong>On auscultation</strong>, the fetal heart rate is <input type="checkbox" checked> bpm, which is [reassuring/concerning].
+
+<strong>Overall assessment</strong>: [Normal antenatal examination / Small for dates requiring growth scan / Large for dates requiring investigation, etc.]"
+
+<hr>
+
+<h3>Example Presentation 1: Normal Examination</h3>
+
+<p>
+"Mrs. Lee is a primigravida at 32 weeks gestation.
+</p>
+
+<p>
+On inspection, the abdomen is gravid and appropriate for 32 weeks. There are no scars. I can see fetal movements.
+</p>
+
+<p>
+On palpation:
+</p>
+<ul>
+<li>Symphysis-fundal height is 32cm, appropriate for 32 weeks</li>
+<li>Fetal lie is longitudinal</li>
+<li>Presentation is cephalic (soft irregular mass in fundus, hard round mass in pelvis)</li>
+<li>Position is left occipito-anterior (fetal back on left)</li>
+<li>The head is not engaged - 4 fifths palpable above pelvic brim, which is normal for a primigravida at 32 weeks</li>
+<p>
+</ul>
+</p>
+
+<p>
+On auscultation, the fetal heart rate is 140 beats per minute, which is reassuring.
+</p>
+
+<p>
+Overall, this is a normal antenatal examination for a woman at 32 weeks gestation."
+</p>
+
+<hr>
+
+<h3>Example Presentation 2: Abnormal - Small for Dates</h3>
+
+<p>
+"Mrs. Patel is a multigravida at 34 weeks gestation.
+</p>
+
+<p>
+On inspection, the abdomen appears small for gestational age.
+</p>
+
+<p>
+On palpation:
+</p>
+<ul>
+<li>Symphysis-fundal height is 28cm, which is <strong>6cm less than expected</strong> for 34 weeks, indicating <strong>small for gestational age</strong></li>
+<li>Fetal lie is longitudinal</li>
+<li>Presentation is cephalic</li>
+<li>Position is right occipito-anterior</li>
+<li>The head is not engaged - 3 fifths palpable, which is normal for a multigravida</li>
+<p>
+</ul>
+</p>
+
+<p>
+On auscultation, the fetal heart rate is 135 beats per minute, which is reassuring.
+</p>
+
+<strong>My concern</strong> is that this baby is measuring significantly small for gestational age. The differential diagnosis includes:
+<ol>
+<li>Incorrect dates (most common)</li>
+<li>Intrauterine growth restriction (IUGR) - due to placental insufficiency</li>
+<li>Oligohydramnios (reduced amniotic fluid)</li>
+<li>Constitutionally small baby</li>
+<p>
+</ol>
+</p>
+
+<p>
+I would arrange an <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> ultrasound growth scan</strong> to assess fetal biometry, estimated fetal weight, amniotic fluid index, and umbilical artery Doppler studies. If IUGR is confirmed, increased surveillance with serial scans and CTG monitoring would be needed, with possible early delivery if fetal compromise develops."
+</p>
+
+<hr>
+
+<h3>Example Presentation 3: Abnormal - Breech Presentation at Term</h3>
+
+<p>
+"Mrs. Chen is a primigravida at 38 weeks gestation.
+</p>
+
+<p>
+On inspection, the abdomen is gravid and appropriate for gestational age.
+</p>
+
+<p>
+On palpation:
+</p>
+<ul>
+<li>Symphysis-fundal height is 38cm, appropriate for gestational age</li>
+<li>Fetal lie is longitudinal</li>
+<li><strong>Presentation is breech</strong> (hard round ballottable head in fundus, soft irregular mass in pelvis)</li>
+<li>Position - breech (cannot determine as per cephalic)</li>
+<li>The <strong>breech is not engaged</strong> - 4 fifths palpable</li>
+<p>
+</ul>
+</p>
+
+<p>
+On auscultation, the fetal heart rate is 145 beats per minute, which is reassuring.
+</p>
+
+<strong>My concern</strong> is that this is a <strong>breech presentation at 38 weeks</strong> in a primigravida. At this gestation, only 3-4% of babies are breech.
+
+<p>
+Management options include:
+</p>
+<ol>
+<li><strong>External cephalic version (ECV)</strong> - attempt to turn baby to cephalic by external manipulation (success rate ~50% in primigravida)</li>
+<li><strong>Planned vaginal breech delivery</strong> - if mother wishes and meets criteria (estimated fetal weight 2.5-3.8kg, flexed breech, adequate pelvis)</li>
+<li><strong>Elective caesarean section</strong> at 39 weeks - reduces perinatal mortality compared to planned vaginal breech (Term Breech Trial)</li>
+<p>
+</ol>
+</p>
+
+<p>
+I would discuss these options with the patient, refer for ECV if she wishes, and if unsuccessful or declined, plan elective caesarean section."
+</p>
+
+<hr>
+
+<h2>Part 6: Special Scenarios</h2>
+
+<h3>Multiple Pregnancy</h3>
+
+<strong>Examination Findings</strong>:
+<ul>
+<li><strong>SFH >expected</strong> for gestational age (often >4cm above expected)</li>
+<li><strong>Two or more fetal poles</strong> palpable</li>
+<li><strong>Multiple fetal heart rates</strong> detected in different locations (but difficult to confirm clinically)</li>
+<p>
+</ul>
+</p>
+
+<strong>OSCE Statement</strong>:
+<p>
+"The symphysis-fundal height is significantly larger than expected for gestational age, and I palpate multiple fetal poles. This raises the possibility of a multiple pregnancy, which should be confirmed on ultrasound."
+</p>
+
+<strong>NOTE</strong>: Most multiple pregnancies are diagnosed on first-trimester ultrasound, so rarely a surprise on examination
+
+<hr>
+
+<h3>Polyhydramnios (Excess Amniotic Fluid)</h3>
+
+<strong>Examination Findings</strong>:
+<ul>
+<li><strong>SFH >expected</strong></li>
+<li><strong>Tense, shiny abdomen</strong></li>
+<li><strong>Difficult to palpate fetal parts</strong> (fluid cushion)</li>
+<li><strong>Fluid thrill</strong> (ballottement - can bounce baby between hands)</li>
+<p>
+</ul>
+</p>
+
+<strong>Causes</strong>:
+<ul>
+<li><strong>Maternal</strong>: Gestational diabetes (most common), diabetes mellitus</li>
+<li><strong>Fetal</strong>: GI obstruction (oesophageal/duodenal atresia), anencephaly, hydrops fetalis, twin-to-twin transfusion (in monochorionic twins)</li>
+<li><strong>Idiopathic</strong>: 60%</li>
+<p>
+</ul>
+</p>
+
+<strong>Complications</strong>:
+<ul>
+<li>Preterm labour (uterine overdistension)</li>
+<li>Malpresentation (baby floats freely)</li>
+<li>Cord prolapse (when membranes rupture)</li>
+<li>Postpartum haemorrhage (uterine atony)</li>
+<p>
+</ul>
+</p>
+
+<strong>OSCE Statement</strong>:
+<p>
+"The uterus is large for dates with tense abdomen and difficulty palpating fetal parts, suggesting polyhydramnios. I would confirm with ultrasound and investigate causes, particularly performing OGTT to exclude gestational diabetes."
+</p>
+
+<hr>
+
+<h3>Oligohydramnios (Reduced Amniotic Fluid)</h3>
+
+<strong>Examination Findings</strong>:
+<ul>
+<li><strong>SFH <expected</strong></li>
+<li><strong>Easily palpable fetal parts</strong> (no fluid cushion - can feel every limb)</li>
+<li><strong>Uterus moulded around fetus</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Causes</strong>:
+<ul>
+<li><strong>Fetal renal problems</strong>: Renal agenesis, polycystic kidneys (reduced fetal urine output)</li>
+<li><strong>Placental insufficiency</strong>: IUGR, post-dates pregnancy</li>
+<li><strong>Ruptured membranes</strong>: Preterm prelabour rupture of membranes (PPROM)</li>
+<p>
+</ul>
+</p>
+
+<strong>Complications</strong>:
+<ul>
+<li>Pulmonary hypoplasia (severe oligohydramnios <24 weeks)</li>
+<li>Limb deformities (compression)</li>
+<li>Cord compression in labour (variable decelerations)</li>
+<li>Meconium aspiration</li>
+<p>
+</ul>
+</p>
+
+<strong>OSCE Statement</strong>:
+<p>
+"The uterus is small for dates and I can easily palpate all fetal parts, suggesting oligohydramnios. I would confirm with ultrasound measuring amniotic fluid index, assess for fetal renal anomalies, and consider placental insufficiency with Doppler studies."
+</p>
+
+<hr>
+
+<h3>Transverse Lie</h3>
+
+<strong>Examination Findings</strong>:
+<ul>
+<li><strong>SFH less than expected</strong> (uterus is wider than it is long)</li>
+<li><strong>No pole in fundus or pelvis</strong> (Leopold's 1 and 3 feel empty)</li>
+<li><strong>Fetal head or bottom felt on lateral palpation</strong> (Leopold's 2)</li>
+<p>
+</ul>
+</p>
+
+<strong>Clinical Significance</strong>:
+<ul>
+<li><strong>Common before 32 weeks</strong> (baby has room to move) - usually corrects spontaneously</li>
+<li><strong>Persistent transverse lie at term</strong>:</li>
+<p>
+</ul>
+  - <strong>Absolute indication for caesarean section</strong> (cannot deliver vaginally)
+  - Risk of cord prolapse if membranes rupture
+</p>
+
+<strong>Causes of Persistent Transverse Lie</strong>:
+<ul>
+<li>Placenta praevia (prevents engagement)</li>
+<li>Polyhydramnios (baby floats)</li>
+<li>Uterine anomaly (bicornuate uterus)</li>
+<li>Grand multiparity (lax uterus)</li>
+<li>Pelvic tumour (prevents engagement)</li>
+<p>
+</ul>
+</p>
+
+<strong>OSCE Statement</strong>:
+<p>
+"I cannot palpate a fetal pole in either fundus or pelvis, and I feel the head on the left lateral side, indicating a transverse lie. At term, this would be an absolute indication for caesarean section. I would arrange ultrasound to confirm lie and assess placental location."
+</p>
+
+<hr>
+
+<h2>Part 7: Common IMG Mistakes in Obstetric Examination</h2>
+
+<h3>Mistake 1: Not Knowing Gestational Age Before Examination</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Start examination without confirming dates</li>
+<li>Can't interpret SFH without knowing expected measurement</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Always confirm gestational age first</strong> (from history or OSCE brief)</li>
+<li>Calculate expected SFH before measuring</li>
+<li>Interpret findings in context of gestational age</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 2: Not Measuring SFH Correctly</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Measure from umbilicus instead of symphysis pubis</li>
+<li>Don't keep tape measure in midline</li>
+<li>Measure over patient's clothing</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Zero on symphysis pubis</strong> (bony prominence)</li>
+<li><strong>Stretch tape to fundus</strong> in midline</li>
+<li>Expose abdomen adequately</li>
+<li>Measure in centimeters</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 3: Not Turning to Face Feet for Leopold's 4</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Perform all four Leopold's facing patient's head</li>
+<li>Don't assess engagement properly</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Turn and face patient's feet</strong> for Leopold's 4 only</li>
+<li>This is the ONLY manoeuvre facing feet</li>
+<li>Properly assess how much of head is palpable above brim</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 4: Confusing "Engaged" vs "Not Engaged"</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Say "3/5 engaged" (incorrect terminology)</li>
+<li>Think engaged = 3/5 palpable</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Engaged</strong> = ≤2/5 palpable (less than half of head above brim)</li>
+<li><strong>Not engaged</strong> = ≥3/5 palpable</li>
+<li>Say "2/5 palpable, the head is engaged" OR "4/5 palpable, not engaged"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 5: Not Checking Maternal Pulse While Listening to Fetal Heart</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Hear a heartbeat and assume it's fetal</li>
+<li>Miss that they're hearing maternal pulse through uterine vessels</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Always check maternal pulse simultaneously</strong> while listening to fetal heart</li>
+<li>Confirm fetal heart is faster than maternal pulse (typically 140 vs 80 bpm)</li>
+<li>If rates similar → Reposition Doppler</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 6: Not Verbalizing Findings During Examination</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Perform examination silently</li>
+<li>Don't explain to examiner what they're feeling/hearing</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Think aloud</strong>: "I'm now going to palpate the fundus... I feel a soft, irregular mass which is the fetal bottom, indicating cephalic presentation"</li>
+<li>Shows your reasoning to examiner</li>
+<li>In real clinical practice, reassures patient you know what you're doing</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 7: Not Relating Findings to Clinical Significance</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>"SFH is 26cm at 32 weeks" [stops there]</li>
+<li>Don't interpret the significance</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>"SFH is 26cm at 32 weeks, which is 6cm less than expected. This suggests the baby may be small for gestational age, and I would arrange an ultrasound growth scan to assess for IUGR"</li>
+<li>Always interpret, don't just report</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 8: OSCE Practice Station</h2>
+
+<h3>OSCE Station: Antenatal Examination at 36 Weeks</h3>
+
+<strong>Candidate Instructions</strong>:
+<p>
+"Mrs. Williams is 36 weeks pregnant attending for routine antenatal check. Perform an antenatal examination. A mannequin will be used. You have 8 minutes."
+</p>
+
+<strong>Approach</strong> (Model Performance):
+
+<strong>Introduction and Consent</strong> (30 seconds):
+<p>
+"Hello Mrs. Williams, I'm Dr. [Name]. I understand you're 36 weeks pregnant and here for your routine check. I'd like to examine your tummy to check baby's size and position, and listen to baby's heartbeat. Is that alright?"
+[Patient agrees]
+"Thank you. Would you like a chaperone present?"
+[Patient declines]
+"I'm just going to wash my hands."
+</p>
+
+<strong>Positioning</strong> (15 seconds):
+<p>
+"Can I ask you to lie back on the bed with your head on one pillow and knees slightly bent? I'll need to expose your tummy from below your breasts to your pubic bone. I'll keep you covered with this sheet as much as possible."
+[Position patient, expose abdomen appropriately]
+</p>
+
+<strong>Inspection</strong> (30 seconds):
+<p>
+[Stand at end of bed and observe]
+"On inspection, I can see a gravid abdomen appropriate for 36 weeks gestation. There is a Pfannenstiel scar indicating previous caesarean section. I can see fetal movements. The skin shows striae gravidarum and linea nigra. There are no signs of distress."
+</p>
+
+<strong>Palpation</strong> (4 minutes):
+
+<strong>SFH Measurement</strong>:
+<p>
+"I'm now going to measure your tummy from the pubic bone to the top of the womb."
+[Palpate to locate fundus, identify symphysis pubis, measure with tape]
+"The symphysis-fundal height is 36cm, which is appropriate for 36 weeks gestation."
+</p>
+
+<strong>Leopold's Manoeuvre 1</strong> (Fundal):
+<p>
+"I'm going to feel what part of baby is at the top of your womb."
+[Palpate fundus with both hands]
+"I feel a soft, irregular, large mass at the fundus which is the baby's bottom, indicating a cephalic presentation."
+</p>
+
+<strong>Leopold's Manoeuvre 2</strong> (Lateral):
+<p>
+"Now I'm going to feel which way baby is lying."
+[Palpate lateral sides alternately]
+"I feel the smooth, firm fetal back on the right side, and small irregular limb parts on the left. This indicates a right occipito-anterior position."
+</p>
+
+<strong>Leopold's Manoeuvre 3</strong> (Pelvic grip):
+<p>
+"I'm going to confirm which part of baby is lowest."
+[Gently grasp presenting part above symphysis]
+"I confirm the presenting part is the fetal head, and it feels relatively fixed, suggesting engagement."
+</p>
+
+<strong>Leopold's Manoeuvre 4</strong> (Pelvic palpation for engagement):
+<p>
+"Finally, I'm going to turn around and assess how far baby has descended into the pelvis."
+[Turn to face patient's feet, palpate either side of presenting part]
+"I palpate 2 fifths of the fetal head above the pelvic brim, indicating the head is engaged. This is reassuring for a primigravida at 36 weeks."
+</p>
+
+<strong>Auscultation</strong> (1.5 minutes):
+<p>
+"Now I'm going to listen to baby's heartbeat using this Doppler. I'll put some gel on your tummy first."
+[Apply gel, place Doppler over fetal back - right side based on palpation]
+"I can hear the heartbeat clearly."
+[Check maternal pulse simultaneously with fingers on maternal wrist]
+"The maternal pulse is 75 beats per minute."
+[Count fetal heart for 60 seconds]
+"The fetal heart rate is 140 beats per minute, which is reassuring and within the normal range of 110-160 beats per minute."
+</p>
+
+<strong>Complete Examination</strong> (15 seconds):
+<p>
+"I'm done with the examination now. Let me wipe off this gel and help you sit up."
+[Clean gel, assist patient, allow re-dressing]
+"Thank you, Mrs. Williams."
+</p>
+
+<strong>Presentation to Examiner</strong> (1.5 minutes):
+
+<p>
+"Mrs. Williams is a primigravida at 36 weeks gestation with one previous caesarean section.
+</p>
+
+<p>
+On inspection, the abdomen is gravid and appropriate for gestational age with a Pfannenstiel scar. Fetal movements were visible.
+</p>
+
+<p>
+On palpation:
+</p>
+<ul>
+<li>Symphysis-fundal height is 36cm, appropriate for 36 weeks</li>
+<li>Fetal lie is longitudinal</li>
+<li>Presentation is cephalic</li>
+<li>Position is right occipito-anterior</li>
+<li>The head is engaged - 2 fifths palpable above the pelvic brim</li>
+<p>
+</ul>
+</p>
+
+<p>
+On auscultation, the fetal heart rate is 140 beats per minute, which is reassuring.
+</p>
+
+<strong>Overall assessment</strong>: This is a normal antenatal examination for a woman at 36 weeks gestation. The baby is growing appropriately, in a good position for delivery (cephalic, ROA), and the head is engaged which is reassuring.
+
+<strong>Regarding the previous caesarean section</strong>, I would discuss mode of delivery - options include vaginal birth after caesarean (VBAC) or elective repeat caesarean section at 39 weeks. VBAC has a 60-75% success rate but carries a 0.5% risk of uterine rupture. I would support her in whichever she chooses after informed discussion."
+
+<hr>
+
+<h2>Summary: Key Takeaways</h2>
+
+<h3>For Obstetric Examination:</h3>
+<ol>
+<li><strong>5 Ps Framework</strong>: Preparation, Position, Permission, Perform, Present</li>
+<li><strong>Systematic approach</strong>: Inspection → Palpation → Auscultation</li>
+<li><strong>Always know gestational age</strong> before starting examination</li>
+<p>
+</ol>
+</p>
+
+<h3>For SFH Measurement:</h3>
+<ol>
+<li><strong>Measure from symphysis pubis to fundus</strong> in midline</li>
+<li><strong>Normal</strong>: SFH (cm) ≈ Gestational age (weeks) ± 2cm</li>
+<li><strong>Abnormal</strong>: >2cm discrepancy requires ultrasound assessment</li>
+<p>
+</ol>
+</p>
+
+<h3>For Leopold's Manoeuvres:</h3>
+<ol>
+<li><strong>Leopold's 1 (Fundal)</strong>: Which pole in fundus? (Hard = head = breech, Soft = bottom = cephalic)</li>
+<li><strong>Leopold's 2 (Lateral)</strong>: Where is back? (Smooth = back, Knobbly = limbs)</li>
+<li><strong>Leopold's 3 (Pelvic grip)</strong>: Confirm presenting part and mobility</li>
+<li><strong>Leopold's 4 (Pelvic palpation)</strong>: Assess engagement - <strong>ONLY manoeuvre facing feet</strong></li>
+<p>
+</ol>
+</p>
+
+<h3>For Engagement:</h3>
+<ol>
+<li><strong>Engaged</strong> = ≤2/5 palpable (widest part through pelvic brim)</li>
+<li><strong>Not engaged</strong> = ≥3/5 palpable</li>
+<li><strong>Primigravida</strong>: Often engage 36-38 weeks</li>
+<li><strong>Multigravida</strong>: Often engage during labour</li>
+<p>
+</ol>
+</p>
+
+<h3>For Fetal Heart:</h3>
+<ol>
+<li><strong>Normal</strong>: 110-160 bpm</li>
+<li><strong>Always check maternal pulse</strong> simultaneously (ensure hearing fetal heart, not maternal)</li>
+<li><strong>Abnormal rates</strong> → CTG monitoring</li>
+<p>
+</ol>
+</p>
+
+<h3>For Presentations:</h3>
+<ol>
+<li><strong>Cephalic (head down)</strong>: 95% at term - normal</li>
+<li><strong>Breech (bottom down)</strong>: 3-4% at term - ECV or elective CS</li>
+<li><strong>Transverse</strong>: At term = absolute indication for CS</li>
+<p>
+</ol>
+</p>
+
+<h3>For OSCE Success:</h3>
+<ol>
+<li><strong>Verbalize what you're doing and feeling</strong>: "I feel a soft mass in the fundus..."</li>
+<li><strong>Interpret findings</strong>: Don't just report "SFH 26cm" - say "26cm at 32 weeks, 6cm less than expected, suggests SGA"</li>
+<li><strong>Relate to clinical significance</strong>: "Head engaged at 36 weeks in primigravida is reassuring"</li>
+<li><strong>Always mention previous CS</strong> if Pfannenstiel scar present (implications for delivery)</li>
+<li><strong>Check maternal pulse</strong> when auscultating fetal heart</li>
+<li><strong>Face patient's feet ONLY for Leopold's 4</strong> - examiners check this</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<strong>This completes the fourth ObGyn document! Next and final for this module: Gynaecological Examination</strong>
+
+<strong>Word Count</strong>: ~15,000 words
+<strong>Last Updated</strong>: December 2025 for ICRP NSW Young Hospital Program (March 2026 intake)
+<strong>Author</strong>: ICRP OSCE Preparation Team
+<strong>Reference</strong>: Dr. Amir Soufi (IMG4IMGS), RANZCOG Guidelines, eTG 2024, AMC Clinical OSCE Format
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

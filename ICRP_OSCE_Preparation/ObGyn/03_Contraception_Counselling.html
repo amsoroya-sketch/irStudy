@@ -1,0 +1,2515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contraception Counselling</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>ObGyn</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 ObGyn Navigation</h3>
+<ul>
+<li><a href="01_Obstetric_History_Differentials.html">Obstetric History</a></li>
+<li><a href="02_Gynaecological_History_Differentials.html">Gynae History</a></li>
+</ul>
+</div>
+        <h1>Contraception Counselling</h1>
+<h2>ICRP OSCE Preparation - Obstetrics & Gynaecology Module</h2>
+<h3>Following Dr. Amir Soufi's Differential-Driven Approach (IMG4IMGS Methodology)</h3>
+
+<hr>
+
+<h2>Target Audience</h2>
+<ul>
+<li>IMGs preparing for AMC Clinical OSCE</li>
+<li>ICRP participants at NSW Young Hospital Program</li>
+<li>Medical students/residents in general practice/gynaecology</li>
+<li>Focus: 8-minute OSCE stations on contraceptive counselling</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Learning Objectives</h2>
+
+<p>
+By the end of this module, you will be able to:
+</p>
+
+<ol>
+<li><strong>Counsel patients</strong> on all contraceptive options systematically</li>
+<li><strong>Apply WHO Medical Eligibility Criteria (WHO MEC)</strong> for contraception</li>
+<li><strong>Recognize contraindications</strong> to hormonal contraception</li>
+<li><strong>Discuss efficacy</strong> using typical-use and perfect-use failure rates</li>
+<li><strong>Provide <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> contraception</strong> appropriately</li>
+<li><strong>Navigate Australian contraceptive access</strong> (PBS, Medicare, prescription requirements)</li>
+<li><strong>Communicate effectively</strong> about sensitive topics (contraception, sexual health, abortion)</li>
+<li><strong>Address common myths and misconceptions</strong> about contraception</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Dr. Amir Soufi's Core Principle Applied to Contraception Counselling</h2>
+
+<h3>The Patient-Centred, Shared Decision-Making Approach</h3>
+
+<strong>Traditional Approach (WRONG for OSCE)</strong>:
+<ol>
+<li>Patient asks about contraception</li>
+<li>Doctor recommends what they think is "best"</li>
+<li>Patient passively receives information</li>
+<p>
+</ol>
+</p>
+
+<strong>Dr. Amir's Approach (CORRECT for OSCE)</strong>:
+<ol>
+<li><strong>Explore patient's needs, preferences, and concerns FIRST</strong>:</li>
+<p>
+</ol>
+   - "What's important to you in choosing contraception?"
+   - "Have you thought about what method you'd prefer?"
+   - "What worries you about contraception?"
+</p>
+<ol>
+<li><strong>Tailor information to patient's priorities</strong>:</li>
+<p>
+</ol>
+   - If efficacy is top priority → Emphasize LARC (long-acting reversible contraception)
+   - If non-hormonal preferred → Focus on copper IUD, barrier methods
+   - If irregular periods are a problem → Highlight methods that reduce/stop periods (Mirena, Implanon)
+</p>
+<ol>
+<li><strong>Present options in balanced way</strong> - don't push your favorite method</li>
+<li><strong>Address misconceptions</strong> directly and compassionately</li>
+<li><strong>Shared decision-making</strong> - patient chooses with your support</li>
+<p>
+</ol>
+</p>
+
+<strong>This patient-centred, eliciting-concerns-first approach is essential for contraception counselling OSCE success.</strong>
+
+<hr>
+
+<h2>Part 1: Framework for Contraception Counselling - "CONTRACEPTION"</h2>
+
+<h3>C - <strong>CURRENT Situation and Needs</strong></h3>
+
+<strong>Opening</strong>:
+<p>
+"I understand you're interested in discussing contraception. I'd like to ask you some questions so I can help you find the best option for you. Is that alright?"
+</p>
+
+<strong>Key Questions</strong>:
+
+<ol>
+<li><strong>"Are you currently using any contraception?"</strong></li>
+<p>
+</ol>
+   - If yes: "What are you using? Are you happy with it? Any problems or side effects?"
+   - If no: "Have you used contraception before?"
+</p>
+
+<ol>
+<li><strong>"What brings you in today? Are you looking to start contraception, or change your current method?"</strong></li>
+<p>
+</ol>
+</p>
+
+<ol>
+<li><strong>"What's most important to you in choosing contraception?"</strong></li>
+<p>
+</ol>
+   - Efficacy (preventing pregnancy)
+   - Convenience (low maintenance)
+   - Avoiding hormones (natural preference)
+   - Improving periods (heavy/painful periods)
+   - Reversibility (planning pregnancy in future)
+   - Non-contraceptive benefits (acne, hirsutism control)
+</p>
+
+<ol>
+<li><strong>"Have you thought about what type of contraception you'd prefer?"</strong></li>
+<p>
+</ol>
+   - Gauges patient's knowledge and preferences
+</p>
+
+<hr>
+
+<h3>O - <strong>OBSTETRIC and Gynaecological History</strong></h3>
+
+<strong>Key Questions</strong>:
+
+<ol>
+<li><strong>"Have you had any pregnancies?"</strong></li>
+<p>
+</ol>
+   - Gravida, para
+   - If recent delivery: "When did you give birth? Are you breastfeeding?"
+     - Breastfeeding affects contraceptive choices (progesterone-only methods preferred)
+</p>
+
+<ol>
+<li><strong>"Are you planning to have children in the future? If so, when?"</strong></li>
+<p>
+</ol>
+   - <strong>Near future (<1 year)</strong>: May prefer short-acting methods
+   - <strong>Distant future (>1-2 years)</strong>: LARC ideal
+   - <strong>Completed family</strong>: Consider permanent methods (sterilization) or LARC
+</p>
+
+<ol>
+<li><strong>"Tell me about your periods - are they regular, heavy, painful?"</strong></li>
+<p>
+</ol>
+   - <strong>Heavy/painful periods</strong>: Mirena IUD ideal (reduces bleeding by 90%, treats dysmenorrhoea)
+   - <strong>Irregular periods</strong> (PCOS): COCP or Implanon can regulate
+</p>
+
+<ol>
+<li><strong>"Any history of ovarian cysts, fibroids, or endometriosis?"</strong></li>
+<p>
+</ol>
+   - May influence choice (e.g., continuous COCP suppresses endometriosis)
+</p>
+
+<hr>
+
+<h3>N - <strong>NEED for Pregnancy Prevention (Assess Risk)</strong></h3>
+
+<strong>"Are you currently sexually active?"</strong>
+<ul>
+<li>If yes: "How often? Do you use condoms?"</li>
+<li>If not currently: "When do you think you might become sexually active?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Assess pregnancy risk</strong>:
+<ul>
+<li>Regular sexual activity without contraception = high pregnancy risk</li>
+<li>Irregular activity = may prefer on-demand or barrier methods</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>T - <strong>TIMING</strong> (When to Start)</h3>
+
+<strong>"When would you like to start contraception?"</strong>
+
+<strong>Quick-start method</strong> (can start today):
+<ul>
+<li>COCP, POP, Implanon, Depo-Provera, condoms, <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> contraception</li>
+<li>Pregnancy test if last sex >3 weeks ago</li>
+<li>Backup contraception (condoms) for first 7 days (COCP/POP) or 7 days (Implanon)</li>
+<p>
+</ul>
+</p>
+
+<strong>Needs appointment</strong> (later start):
+<ul>
+<li>IUD insertion (Mirena, copper IUD) - book appointment with trained provider</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>R - <strong>RISKS and Contraindications</strong> (Medical History)</h3>
+
+<strong>CRITICAL for Hormonal Contraception</strong>:
+
+<strong>Cardiovascular</strong>:
+<ol>
+<li><strong>"Do you have high blood pressure, or any heart problems?"</strong></li>
+<p>
+</ol>
+   - <strong>Hypertension</strong>: COCP contraindicated if BP >160/100 or poorly controlled
+   - <strong>Cardiac disease</strong>: Assess individually
+</p>
+
+<ol>
+<li><strong>"Have you or anyone in your family had blood clots - DVT or pulmonary embolism?"</strong></li>
+<p>
+</ol>
+   - <strong>Personal history VTE</strong>: COCP contraindicated (estrogen increases clot risk)
+   - <strong>Family history VTE</strong> (first-degree relative <45 years): Relative contraindication to COCP
+</p>
+
+<ol>
+<li><strong>"Do you get migraines? If yes, do you get visual symptoms like flashing lights?"</strong></li>
+<p>
+</ol>
+   - <strong>Migraine with aura</strong>: COCP contraindicated (stroke risk)
+   - <strong>Migraine without aura</strong>: COCP usually safe if age <35
+</p>
+
+<ol>
+<li><strong>"Have you ever had a stroke or heart attack?"</strong></li>
+<p>
+</ol>
+   - Absolute contraindication to COCP
+</p>
+
+<strong>Cancer</strong>:
+<ol>
+<li><strong>"Any personal history of breast cancer?"</strong></li>
+<p>
+</ol>
+   - Contraindication to all hormonal contraception (estrogen and progesterone)
+</p>
+
+<ol>
+<li><strong>"Any history of cervical, ovarian, or uterine cancer?"</strong></li>
+<p>
+</ol>
+   - May affect IUD suitability
+</p>
+
+<strong>Liver</strong>:
+<ol>
+<li><strong>"Any liver problems, hepatitis, or jaundice?"</strong></li>
+<p>
+</ol>
+   - Active liver disease = contraindication to hormonal contraception
+</p>
+
+<strong>Other</strong>:
+<ol>
+<li><strong>"Do you smoke? How many cigarettes per day?"</strong></li>
+<p>
+</ol>
+   - <strong>Smoking + age ≥35</strong>: COCP contraindicated (cardiovascular risk)
+   - <strong>Smoking + age <35</strong>: COCP relatively safe (counsel cessation)
+</p>
+
+<ol>
+<li><strong>"What's your weight/BMI?"</strong></li>
+<p>
+</ol>
+   - <strong>Obesity (BMI >35)</strong>: COCP relatively contraindicated (VTE risk), progesterone-only methods safer
+</p>
+
+<ol>
+<li><strong>"Are you on any medications?"</strong></li>
+<p>
+</ol>
+    - <strong>Enzyme-inducers</strong> (rifampicin, carbamazepine, phenytoin): Reduce COCP/POP efficacy → Use higher-dose COCP or non-hormonal method
+    - <strong>Lamotrigine</strong>: COCP reduces lamotrigine levels (seizure risk)
+</p>
+
+<hr>
+
+<h3>A - <strong>ALLERGIES</strong></h3>
+
+<strong>"Do you have any allergies to medications?"</strong>
+<ul>
+<li>Latex allergy → Avoid latex condoms (use polyurethane)</li>
+<li>Copper allergy → Avoid copper IUD (very rare)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>C - <strong>CONCERNS and Misconceptions</strong></h3>
+
+<strong>"Do you have any worries or concerns about contraception?"</strong>
+
+<strong>Common Concerns to Explore</strong>:
+<ul>
+<li><strong>Weight gain</strong>: "Will it make me gain weight?"</li>
+<li><strong>Fertility</strong>: "Will it affect my ability to get pregnant in the future?"</li>
+<li><strong>Cancer</strong>: "Does it cause cancer?"</li>
+<li><strong>Side effects</strong>: "Will I get mood changes, acne, irregular bleeding?"</li>
+<li><strong>Hormones</strong>: "I don't want hormones - are there natural options?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Address these directly</strong> with evidence-based information (covered later)
+
+<hr>
+
+<h3>E - <strong>EXPLAIN Options</strong> (Tailored to Patient)</h3>
+
+<strong>Present contraceptive options</strong> based on:
+<ul>
+<li>Patient's preferences</li>
+<li>Medical eligibility (no contraindications)</li>
+<li>Lifestyle factors</li>
+<p>
+</ul>
+</p>
+
+<strong>Categories</strong>:
+<ol>
+<li><strong>Long-Acting Reversible Contraception (LARC)</strong>: Most effective</li>
+<p>
+</ol>
+   - Mirena IUD, Copper IUD, Implanon
+</p>
+<ol>
+<li><strong>Short-Acting Hormonal</strong>: Require regular use</li>
+<p>
+</ol>
+   - COCP (pill), POP (mini-pill), Depo-Provera (injection), Vaginal ring, Patch
+</p>
+<ol>
+<li><strong>Barrier Methods</strong>: On-demand</li>
+<p>
+</ol>
+   - Condoms (male/female), Diaphragm
+</p>
+<ol>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Contraception</strong></li>
+<li><strong>Permanent</strong>: Sterilization</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>P - <strong>PEARL Index</strong> (Efficacy Discussion)</h3>
+
+<strong>Explain efficacy using failure rates</strong>:
+
+<strong>"No contraception is 100% effective. We measure effectiveness by how many women out of 100 would get pregnant in a year of using that method."</strong>
+
+<p>
+Present <strong>typical use</strong> (real-world, includes user error):
+</p>
+
+<p>
+| <strong>Method</strong> | <strong>Typical Use Failure Rate</strong> | <strong>Perfect Use Failure Rate</strong> |
+|-----------|----------------------------|----------------------------|
+| <strong>LARC</strong> (Mirena, Copper IUD, Implanon) | <strong><1%</strong> | <1% (user-independent) |
+| <strong>COCP, POP</strong> | <strong>9%</strong> (1 in 11 women) | 0.3% (if never miss pills) |
+| <strong>Depo-Provera</strong> | <strong>6%</strong> | 0.2% |
+| <strong>Male condom</strong> | <strong>18%</strong> (nearly 1 in 5) | 2% (if perfect use every time) |
+| <strong>Withdrawal</strong> | <strong>22%</strong> | 4% |
+| <strong>No method</strong> | <strong>85%</strong> | N/A |
+</p>
+
+<strong>Key Message</strong>: "The most effective methods are those you don't have to remember every day - the IUD and implant."
+
+<hr>
+
+<h3>T - <strong>TIMELINE for Return to Fertility</strong></h3>
+
+<strong>"All methods except sterilization are reversible. Fertility returns:"</strong>
+<ul>
+<li><strong>Immediately</strong>: COCP, POP, Implanon, IUD, barrier methods</li>
+<li><strong>Delayed</strong>: Depo-Provera (average 10 months, range 6-18 months, after last injection)</li>
+<li><strong>Permanent</strong>: Sterilization (tubal ligation, vasectomy)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>I - <strong>INFORM about Side Effects and Benefits</strong></h3>
+
+<strong>Balanced discussion</strong> of common side effects and non-contraceptive benefits for each method (detailed later)
+
+<hr>
+
+<h3>O - <strong>OFFER Choice and Support</strong></h3>
+
+<strong>"Based on what we've discussed, which option interests you most?"</strong>
+
+<strong>Respect patient autonomy</strong>:
+<ul>
+<li>If patient chooses less effective method → Support their choice, ensure they understand efficacy</li>
+<li>Never coerce or judge</li>
+<p>
+</ul>
+</p>
+
+<strong>Provide resources</strong>:
+<ul>
+<li>Information leaflets</li>
+<li>Family Planning NSW website (fpnsw.org.au)</li>
+<li>Follow-up appointment if needed</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>N - <strong>NEXT Steps</strong></h3>
+
+<strong>If starting today</strong>:
+<ul>
+<li>Prescribe (COCP, POP, condoms)</li>
+<li>Insert Implanon (if trained) or refer</li>
+<li>Provide <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> contraception if needed</li>
+<p>
+</ul>
+</p>
+
+<strong>If needs further appointment</strong>:
+<ul>
+<li>Book IUD insertion</li>
+<li>Refer to family planning clinic</li>
+<p>
+</ul>
+</p>
+
+<strong>Follow-up</strong>:
+<ul>
+<li>Review at 3 months (check side effects, compliance, satisfaction)</li>
+<li>Annual review thereafter</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 2: Detailed Contraceptive Methods (Australian Context)</h2>
+
+<h3>LONG-ACTING REVERSIBLE CONTRACEPTION (LARC)</h3>
+
+<strong>"First-tier" methods</strong> - most effective, recommended for all women including nulliparous and adolescents (RANZCOG)
+
+<hr>
+
+<h4>1. MIRENA IUD (Levonorgestrel Intrauterine System)</h4>
+
+<strong>Description</strong>:
+<ul>
+<li>T-shaped device inserted into uterus</li>
+<li>Releases levonorgestrel (progestogen) locally</li>
+<li><strong>Lasts 5 years</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Mechanism</strong>:
+<ul>
+<li>Thickens cervical mucus (prevents sperm entry)</li>
+<li>Thins endometrium (reduces periods)</li>
+<li>Some ovulation suppression</li>
+<p>
+</ul>
+</p>
+
+<strong>Efficacy</strong>:
+<ul>
+<li><strong>>99% effective</strong> (<1% failure rate)</li>
+<li>Pearl index: 0.2</li>
+<p>
+</ul>
+</p>
+
+<strong>Benefits</strong>:
+<ul>
+<li><strong>Extremely effective</strong></li>
+<li><strong>Reduces menstrual bleeding by 90%</strong> (many women become amenorrhoeic)</li>
+<li><strong>Treats dysmenorrhoea</strong> (period pain)</li>
+<li><strong>Treats endometriosis</strong> (suppresses endometrial growth)</li>
+<li><strong>Treats heavy menstrual bleeding</strong> (HMB) - PBS-approved for this indication</li>
+<li>No daily/weekly action required</li>
+<li>Fertility returns immediately after removal</li>
+<li>Safe in breastfeeding</li>
+<li>Low systemic hormone absorption (local effect)</li>
+<p>
+</ul>
+</p>
+
+<strong>Side Effects</strong>:
+<ul>
+<li><strong>Irregular bleeding/spotting</strong> first 3-6 months (most common reason for removal - warn patient)</li>
+<li><strong>Amenorrhoea</strong> (60-80% at 1 year - reassure this is safe and reversible)</li>
+<li>Ovarian cysts (usually asymptomatic, resolve spontaneously)</li>
+<li>Mood changes, acne, breast tenderness (less common than COCP due to local action)</li>
+<li><strong>Expulsion</strong> (5%, usually first 3 months)</li>
+<li><strong>Perforation</strong> (1 in 1000 at insertion)</li>
+<p>
+</ul>
+</p>
+
+<strong>Contraindications</strong>:
+<ul>
+<li><strong>Pregnancy</strong> (exclude before insertion)</li>
+<li><strong>Active PID</strong> or STI (treat first, then insert)</li>
+<li><strong>Unexplained vaginal bleeding</strong> (investigate first)</li>
+<li><strong>Uterine anomaly</strong> distorting cavity (bicornuate uterus, large fibroids)</li>
+<li><strong>Current breast cancer</strong> (progesterone-sensitive)</li>
+<li><strong>Gestational trophoblastic disease</strong> with elevated βhCG</li>
+<p>
+</ul>
+</p>
+
+<strong>Insertion</strong>:
+<ul>
+<li>Performed by trained provider (GP with training, gynaecologist, sexual health clinic)</li>
+<li>Timing:</li>
+<p>
+</ul>
+  - <strong>Anytime in cycle</strong> if reasonably certain not pregnant
+  - <strong>During period</strong> (cervix softer, confirms not pregnant)
+  - <strong>Immediately postpartum</strong> or at 6 weeks postnatal
+</p>
+<ul>
+<li>Takes 5-10 minutes</li>
+<li>Some cramping during/after insertion (ibuprofen 30 min before helps)</li>
+<p>
+</ul>
+</p>
+
+<strong>Follow-up</strong>:
+<ul>
+<li><strong>Check threads</strong> at 6 weeks (patient can feel with fingers in vagina, or clinician checks)</li>
+<li>Annual review</li>
+<li><strong>Remove/replace at 5 years</strong> (or earlier if desired)</li>
+<p>
+</ul>
+</p>
+
+<strong>Cost (Australia)</strong>:
+<ul>
+<li><strong>Mirena</strong>: ~$40 with PBS (general patient), ~$6.80 concession</li>
+<li><strong>Insertion</strong>: Medicare rebate for GP insertion (Item 35600, ~$80 rebate), out-of-pocket varies</li>
+<p>
+</ul>
+</p>
+
+<strong>Counselling Points</strong>:
+<p>
+"The Mirena is one of the most effective contraceptives available. It's a small T-shaped device inserted into your uterus that releases a tiny amount of hormone locally. It lasts 5 years but can be removed anytime if you want to get pregnant or if you're not happy with it.
+</p>
+
+<p>
+Most women find their periods become much lighter or stop altogether - this is safe and reversible. In the first few months, you might have irregular spotting, but this usually settles. It's also used to treat heavy periods and period pain, so if that's an issue for you, it's a great choice.
+</p>
+
+<p>
+The insertion takes about 10 minutes and you might have some cramping, but we can give you pain relief beforehand."
+</p>
+
+<hr>
+
+<h4>2. COPPER IUD</h4>
+
+<strong>Description</strong>:
+<ul>
+<li>T-shaped device with copper wire wrapped around it</li>
+<li><strong>Lasts 5-10 years</strong> (depending on brand)</li>
+<p>
+</ul>
+</p>
+
+<strong>Mechanism</strong>:
+<ul>
+<li><strong>Copper is toxic to sperm</strong> (prevents fertilization)</li>
+<li>Creates inflammatory reaction in endometrium (hostile to implantation)</li>
+<li><strong>Non-hormonal</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Efficacy</strong>:
+<ul>
+<li><strong>>99% effective</strong> (<1% failure rate)</li>
+<li>Pearl index: 0.6-0.8</li>
+<p>
+</ul>
+</p>
+
+<strong>Benefits</strong>:
+<ul>
+<li><strong>Extremely effective</strong></li>
+<li><strong>Non-hormonal</strong> (ideal for women who can't/don't want hormones)</li>
+<li><strong>Long-lasting</strong> (5-10 years)</li>
+<li>No daily action required</li>
+<li>Fertility returns immediately after removal</li>
+<li>Safe in breastfeeding</li>
+<li><strong>Can be used as <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> contraception</strong> (if inserted within 5 days of unprotected sex - most effective EC)</li>
+<p>
+</ul>
+</p>
+
+<strong>Side Effects</strong>:
+<ul>
+<li><strong>Heavier, longer, more painful periods</strong> (most common reason for removal)</li>
+<li>Irregular bleeding first 3-6 months</li>
+<li>Increased cramping</li>
+<li><strong>Expulsion</strong> (5%)</li>
+<li><strong>Perforation</strong> (1 in 1000)</li>
+<p>
+</ul>
+</p>
+
+<strong>Contraindications</strong>:
+<ul>
+<li>Same as Mirena, plus:</li>
+<li><strong>Menorrhagia</strong> (heavy periods) - copper IUD worsens bleeding</li>
+<li><strong>Severe dysmenorrhoea</strong> (painful periods) - copper IUD worsens pain</li>
+<li><strong>Wilson's disease</strong> (copper metabolism disorder)</li>
+<li><strong>Copper allergy</strong> (rare)</li>
+<p>
+</ul>
+</p>
+
+<strong>Insertion, follow-up, cost</strong>:
+<ul>
+<li>Similar to Mirena</li>
+<li>Cost: ~$80-100 (not PBS-subsidized as not hormone), Medicare rebate for insertion</li>
+<p>
+</ul>
+</p>
+
+<strong>Counselling Points</strong>:
+<p>
+"The copper IUD is the most effective non-hormonal contraception. It lasts up to 10 years and has no hormones, which some women prefer. However, it often makes periods heavier and more painful, so it's not ideal if you already have heavy or painful periods. If you have light periods and want to avoid hormones, it's an excellent choice."
+</p>
+
+<hr>
+
+<h4>3. IMPLANON NXT (Etonogestrel Implant)</h4>
+
+<strong>Description</strong>:
+<ul>
+<li><strong>Single flexible rod</strong> (4cm long, 2mm diameter) inserted under skin of upper arm</li>
+<li>Releases etonogestrel (progestogen)</li>
+<li><strong>Lasts 3 years</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Mechanism</strong>:
+<ul>
+<li>Suppresses ovulation</li>
+<li>Thickens cervical mucus</li>
+<p>
+</ul>
+</p>
+
+<strong>Efficacy</strong>:
+<ul>
+<li><strong>>99% effective</strong> (<1% failure rate)</li>
+<li>Pearl index: 0.05 (most effective reversible contraception)</li>
+<p>
+</ul>
+</p>
+
+<strong>Benefits</strong>:
+<ul>
+<li><strong>Most effective</strong> reversible contraception</li>
+<li>No daily action required</li>
+<li><strong>Lasts 3 years</strong></li>
+<li>Fertility returns immediately (often within days)</li>
+<li>Safe in breastfeeding</li>
+<li>Safe with <strong>VTE history</strong> (progesterone-only, no estrogen)</li>
+<li>Safe with <strong>migraine with aura</strong></li>
+<li>Reduces dysmenorrhoea</li>
+<li>Reduces ovarian cyst formation</li>
+<p>
+</ul>
+</p>
+
+<strong>Side Effects</strong>:
+<ul>
+<li><strong>Irregular bleeding</strong> (most common, most troublesome):</li>
+<p>
+</ul>
+  - 20% amenorrhoea (no periods)
+  - 50% infrequent/irregular bleeding
+  - 20% frequent/prolonged bleeding (may need removal)
+</p>
+<ul>
+<li>Weight gain (average 1-2kg, not universal)</li>
+<li>Mood changes (depression reported, causality unclear)</li>
+<li>Acne (in some women)</li>
+<li>Headaches</li>
+<li>Breast tenderness</li>
+<li><strong>Ovarian cysts</strong> (usually asymptomatic, resolve)</li>
+<p>
+</ul>
+</p>
+
+<strong>Contraindications</strong>:
+<ul>
+<li>Pregnancy</li>
+<li>Current breast cancer</li>
+<li>Unexplained vaginal bleeding</li>
+<li>Active liver disease</li>
+<li>Enzyme-inducing drugs (reduce efficacy)</li>
+<p>
+</ul>
+</p>
+
+<strong>Insertion</strong>:
+<ul>
+<li>Performed by trained provider (GP with training, family planning clinic)</li>
+<li>Takes 2-3 minutes</li>
+<li>Subdermal in non-dominant arm (medial side of upper arm)</li>
+<li>Local anaesthetic (lignocaine)</li>
+<li><strong>Palpable after insertion</strong> (can feel rod under skin)</li>
+<p>
+</ul>
+</p>
+
+<strong>Removal</strong>:
+<ul>
+<li>Takes 5 minutes</li>
+<li>Local anaesthetic</li>
+<li>Small incision, pull out rod with forceps</li>
+<li>Can insert new implant immediately if continuing contraception</li>
+<p>
+</ul>
+</p>
+
+<strong>Follow-up</strong>:
+<ul>
+<li>Review at 3 months (assess bleeding pattern, side effects)</li>
+<li><strong>Remove/replace at 3 years</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Cost (Australia)</strong>:
+<ul>
+<li><strong>Implanon NXT</strong>: ~$40 with PBS (~$6.80 concession)</li>
+<li><strong>Insertion</strong>: Medicare rebate (Item 35603, ~$60), may have out-of-pocket</li>
+<p>
+</ul>
+</p>
+
+<strong>Counselling Points</strong>:
+<p>
+"The Implanon is a small flexible rod inserted under the skin of your arm. It's the most effective contraception available and lasts 3 years. It's invisible from the outside but you can feel it if you touch your arm.
+</p>
+
+<p>
+The main side effect is irregular bleeding - some women have no periods (which is safe), some have occasional spotting, and some have more frequent bleeding. We can try medications to help regulate bleeding if it's troublesome. If you're not happy with it, we can remove it anytime and your fertility returns immediately."
+</p>
+
+<hr>
+
+<h3>SHORT-ACTING HORMONAL CONTRACEPTION</h3>
+
+<hr>
+
+<h4>4. COMBINED ORAL CONTRACEPTIVE PILL (COCP) - "The Pill"</h4>
+
+<strong>Description</strong>:
+<ul>
+<li>Pill containing <strong>estrogen + progestogen</strong></li>
+<li>Taken daily, 21 active pills + 7 inactive (or 24+4, or continuous)</li>
+<p>
+</ul>
+</p>
+
+<strong>Mechanism</strong>:
+<ul>
+<li>Suppresses ovulation (main mechanism)</li>
+<li>Thickens cervical mucus</li>
+<li>Thins endometrium</li>
+<p>
+</ul>
+</p>
+
+<strong>Efficacy</strong>:
+<ul>
+<li><strong>Perfect use</strong>: 0.3% failure</li>
+<li><strong>Typical use</strong>: 9% failure (1 in 11 women pregnant per year - due to missed pills)</li>
+<p>
+</ul>
+</p>
+
+<strong>Types</strong> (Australian brands):
+
+<strong>Monophasic</strong> (same dose each active pill):
+<ul>
+<li><strong>Microgynon 30</strong> (levonorgestrel 150mcg + ethinylestradiol 30mcg) - most commonly prescribed</li>
+<li><strong>Levlen ED</strong> (same as Microgynon but with 7 iron pills instead of inactive)</li>
+<li><strong>Yasmin</strong> (drospirenone 3mg + ethinylestradiol 30mcg) - anti-androgenic (helps acne, hirsutism, PCOS)</li>
+<li><strong>Yaz</strong> (drospirenone 3mg + ethinylestradiol 20mcg, 24+4 regimen) - lower estrogen</li>
+<li><strong>Marvelon</strong> (desogestrel 150mcg + ethinylestradiol 30mcg)</li>
+<li><strong>Diane-35</strong> (cyproterone acetate 2mg + ethinylestradiol 35mcg) - <strong>not primarily for contraception</strong> (PBS for acne/hirsutism only, but has contraceptive effect)</li>
+<p>
+</ul>
+</p>
+
+<strong>Triphasic</strong> (varying dose - mimics natural cycle):
+<ul>
+<li>Less commonly used now</li>
+<p>
+</ul>
+</p>
+
+<strong>Benefits</strong>:
+<ul>
+<li><strong>Highly effective</strong> if taken correctly</li>
+<li><strong>Regular, predictable, lighter periods</strong></li>
+<li><strong>Reduces dysmenorrhoea</strong> (period pain)</li>
+<li><strong>Non-contraceptive benefits</strong>:</li>
+<p>
+</ul>
+  - Reduces acne (especially Yasmin, Diane-35)
+  - Reduces hirsutism (Yasmin, Diane-35)
+  - Treats PCOS (regulates cycles)
+  - <strong>Reduces ovarian cancer risk</strong> by 50% (protective effect lasts years after stopping)
+  - <strong>Reduces endometrial cancer risk</strong> by 50%
+  - <strong>Reduces colorectal cancer risk</strong>
+  - Reduces ovarian cysts
+  - Reduces benign breast disease
+</p>
+<ul>
+<li><strong>Can skip periods</strong> (continuous or extended use - take active pills back-to-back, skip placebo week)</li>
+<li>Reversible immediately</li>
+<p>
+</ul>
+</p>
+
+<strong>Side Effects</strong>:
+<ul>
+<li><strong>Breakthrough bleeding</strong> first 3 months (usually settles)</li>
+<li><strong>Nausea</strong> (take at night with food to minimize)</li>
+<li><strong>Breast tenderness</strong></li>
+<li><strong>Mood changes</strong> (controversial - some women report, but large studies show no clear link)</li>
+<li><strong>Headaches</strong></li>
+<li><strong>Weight gain</strong> (no proven causal link in trials, but some women report)</li>
+<li><strong>Reduced libido</strong> (some women)</li>
+<p>
+</ul>
+</p>
+
+<strong>Serious Adverse Effects</strong> (rare):
+<ul>
+<li><strong>VTE</strong> (DVT/PE): Risk 5-12 per 10,000 women-years (vs 2 per 10,000 in non-users)</li>
+<p>
+</ul>
+  - <strong>Highest risk first year</strong> and with 3rd/4th generation progestogens (desogestrel, drospirenone, gestodene)
+</p>
+<ul>
+<li><strong>Stroke</strong> (ischaemic): Small increased risk, especially if migraine with aura</li>
+<li><strong>MI</strong>: Small increased risk, especially if other risk factors (smoking, hypertension)</li>
+<li><strong>Cervical cancer</strong>: Small increased risk with long-term use (>5 years), returns to baseline after stopping</li>
+<p>
+</ul>
+</p>
+
+<strong>Contraindications</strong> (WHO MEC Category 4 - <strong>unacceptable health risk</strong>):
+
+<strong>Cardiovascular</strong>:
+<ul>
+<li><strong>Age ≥35 + smoking ≥15 cigarettes/day</strong></li>
+<li><strong>Hypertension</strong>: SBP ≥160 or DBP ≥100, or vascular disease</li>
+<li><strong>Current or past VTE</strong> (DVT/PE)</li>
+<li><strong>Thrombophilia</strong> (known) - Factor V Leiden, Protein C/S deficiency</li>
+<li><strong>Major surgery with prolonged immobilization</strong></li>
+<li><strong>Ischaemic heart disease, stroke</strong></li>
+<li><strong>Complicated valvular heart disease</strong> (pulmonary hypertension, AF, endocarditis history)</li>
+<p>
+</ul>
+</p>
+
+<strong>Neurological</strong>:
+<ul>
+<li><strong>Migraine with aura</strong> (stroke risk)</li>
+<p>
+</ul>
+</p>
+
+<strong>Cancer</strong>:
+<ul>
+<li><strong>Current breast cancer</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Liver</strong>:
+<ul>
+<li><strong>Active viral hepatitis, severe cirrhosis, liver tumors</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Other</strong>:
+<ul>
+<li><strong>Pregnancy</strong></li>
+<li><strong><6 weeks postpartum</strong> if breastfeeding (suppresses lactation)</li>
+<p>
+</ul>
+</p>
+
+<strong>Relative Contraindications</strong> (WHO MEC Category 3 - risks usually outweigh benefits):
+<ul>
+<li>Age ≥35 + smoking <15 cigarettes/day</li>
+<li>Migraine without aura + age ≥35</li>
+<li>Controlled hypertension</li>
+<li>Family history VTE (first-degree relative <45 years)</li>
+<li>BMI ≥35</li>
+<li>Diabetes with complications</li>
+<p>
+</ul>
+</p>
+
+<strong>Drug Interactions</strong>:
+<ul>
+<li><strong>Enzyme inducers</strong> (reduce COCP efficacy):</li>
+<p>
+</ul>
+  - Rifampicin, rifabutin (TB treatment)
+  - Carbamazepine, phenytoin, phenobarbital (anti-epileptics)
+  - St John's Wort
+  - Some antiretrovirals
+  - <strong>Management</strong>: Use additional contraception (condoms) or increase COCP dose, or switch to LARC
+</p>
+<ul>
+<li><strong>Lamotrigine</strong>: COCP reduces lamotrigine levels → Seizure risk</li>
+<p>
+</ul>
+</p>
+
+<strong>How to Start</strong>:
+<ul>
+<li><strong>Day 1 start</strong>: First day of period (immediately effective)</li>
+<li><strong>Quick start</strong>: Anytime in cycle if reasonably certain not pregnant (use backup contraception for 7 days)</li>
+<li><strong>Sunday start</strong> (less common): First Sunday after period starts</li>
+<p>
+</ul>
+</p>
+
+<strong>How to Take</strong>:
+<ul>
+<li><strong>Same time every day</strong> (set alarm/reminder)</li>
+<li>If missed pill:</li>
+<p>
+</ul>
+  - <strong><24 hours late</strong>: Take as soon as remember, continue as normal
+  - <strong>24-48 hours late</strong>: Take as soon as remember (may take 2 pills), use condoms for 7 days
+  - <strong>>48 hours or missed 2+ pills</strong>: Restart packet, use condoms for 7 days, consider <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> contraception if unprotected sex in last 5 days
+</p>
+
+<strong>Cost (Australia)</strong>:
+<ul>
+<li><strong>PBS-subsidized</strong>: ~$15-25 for 4 months (~$6.80 concession)</li>
+<li>Some brands cheaper (generic)</li>
+<p>
+</ul>
+</p>
+
+<strong>Counselling Points</strong>:
+<p>
+"The pill is highly effective if taken correctly - same time every day. It makes periods lighter, more regular, and less painful. It also protects against ovarian and uterine cancer. The main downside is you have to remember to take it daily, and if you miss pills, you're at risk of pregnancy.
+</p>
+
+<p>
+There's a small increased risk of blood clots, so we check you don't have risk factors like smoking over 35, migraine with aura, or history of clots. Most women tolerate it very well."
+</p>
+
+<hr>
+
+<h4>5. PROGESTERONE-ONLY PILL (POP) - "Mini-Pill"</h4>
+
+<strong>Description</strong>:
+<ul>
+<li>Pill containing <strong>only progestogen</strong> (no estrogen)</li>
+<li>Taken <strong>every day</strong> at same time (no pill-free week)</li>
+<p>
+</ul>
+</p>
+
+<strong>Types in Australia</strong>:
+<ul>
+<li><strong>Traditional POP</strong>: Levonorgestrel 30mcg (Microlut, Noriday)</li>
+<p>
+</ul>
+  - <strong>Must take within 3-hour window</strong> (very strict timing)
+</p>
+<ul>
+<li><strong>Desogestrel POP</strong>: Desogestrel 75mcg (Cerazette)</li>
+<p>
+</ul>
+  - <strong>12-hour window</strong> (more forgiving)
+  - Suppresses ovulation in most women (unlike traditional POP)
+</p>
+
+<strong>Mechanism</strong>:
+<ul>
+<li><strong>Traditional POP</strong>: Thickens cervical mucus (main), some ovulation suppression</li>
+<li><strong>Desogestrel POP</strong>: Suppresses ovulation + thickens mucus</li>
+<p>
+</ul>
+</p>
+
+<strong>Efficacy</strong>:
+<ul>
+<li><strong>Perfect use</strong>: 0.3-1%</li>
+<li><strong>Typical use</strong>: 9% (similar to COCP)</li>
+<p>
+</ul>
+</p>
+
+<strong>Benefits</strong>:
+<ul>
+<li><strong>No estrogen</strong> → Safe when estrogen contraindicated:</li>
+<p>
+</ul>
+  - <strong>VTE history</strong>, thrombophilia
+  - <strong>Migraine with aura</strong>
+  - <strong>Age >35 + smoking</strong>
+  - <strong>Hypertension</strong>
+  - <strong>Breastfeeding</strong> (doesn't suppress lactation)
+</p>
+<ul>
+<li>Reduces dysmenorrhoea</li>
+<li>Reduces menstrual blood loss (some women become amenorrhoeic, especially desogestrel)</li>
+<p>
+</ul>
+</p>
+
+<strong>Side Effects</strong>:
+<ul>
+<li><strong>Irregular bleeding</strong> (most common - unpredictable spotting)</li>
+<p>
+</ul>
+  - 50% have irregular bleeding
+  - 20% amenorrhoea (desogestrel)
+</p>
+<ul>
+<li>Mood changes</li>
+<li>Acne (can worsen)</li>
+<li>Breast tenderness</li>
+<li><strong>Ovarian cysts</strong> (functional, usually asymptomatic)</li>
+<p>
+</ul>
+</p>
+
+<strong>Contraindications</strong> (fewer than COCP):
+<ul>
+<li>Pregnancy</li>
+<li>Current breast cancer</li>
+<li>Unexplained vaginal bleeding</li>
+<li>Active liver disease</li>
+<li><strong>Enzyme-inducing drugs</strong> (use alternative or additional contraception)</li>
+<p>
+</ul>
+</p>
+
+<strong>How to Take</strong>:
+<ul>
+<li><strong>Same time every day</strong> (even more critical than COCP)</li>
+<li><strong>Traditional POP</strong>: If >3 hours late → Use condoms for 48 hours</li>
+<li><strong>Desogestrel POP</strong>: If >12 hours late → Use condoms for 48 hours</li>
+<p>
+</ul>
+</p>
+
+<strong>Cost</strong>:
+<ul>
+<li>PBS-subsidized: ~$15-25 for 4 months</li>
+<p>
+</ul>
+</p>
+
+<strong>Counselling Points</strong>:
+<p>
+"The mini-pill is a progesterone-only pill with no estrogen, so it's safer if you have risk factors like migraine with aura or if you smoke and are over 35. It's also safe while breastfeeding. The main downside is you MUST take it at the same time every day - if you're more than 3 hours late (traditional) or 12 hours late (desogestrel), you need backup contraception. Many women get irregular bleeding."
+</p>
+
+<hr>
+
+<h4>6. DEPO-PROVERA (Medroxyprogesterone Injection)</h4>
+
+<strong>Description</strong>:
+<ul>
+<li><strong>Intramuscular injection</strong> of depot medroxyprogesterone acetate (DMPA)</li>
+<li><strong>Given every 12 weeks</strong> (3 months)</li>
+<p>
+</ul>
+</p>
+
+<strong>Mechanism</strong>:
+<ul>
+<li>Suppresses ovulation</li>
+<li>Thickens cervical mucus</li>
+<li>Thins endometrium</li>
+<p>
+</ul>
+</p>
+
+<strong>Efficacy</strong>:
+<ul>
+<li><strong>Perfect use</strong>: 0.2%</li>
+<li><strong>Typical use</strong>: 6% (due to missed injections)</li>
+<p>
+</ul>
+</p>
+
+<strong>Benefits</strong>:
+<ul>
+<li><strong>Highly effective</strong></li>
+<li><strong>Only need to remember every 3 months</strong> (more convenient than daily pill)</li>
+<li>No estrogen (safe with VTE history, migraine with aura, etc.)</li>
+<li><strong>Amenorrhoea</strong> in 50% by 1 year (no periods - some women like this)</li>
+<li>Reduces endometriosis symptoms</li>
+<li>Reduces sickle cell crises</li>
+<li>Safe in breastfeeding</li>
+<p>
+</ul>
+</p>
+
+<strong>Side Effects</strong>:
+<ul>
+<li><strong>Irregular bleeding</strong> first 3-6 months (then usually amenorrhoea)</li>
+<li><strong>Weight gain</strong> (average 2-3kg in first year, some women gain more)</li>
+<li><strong>Delayed return to fertility</strong>: Average 10 months after last injection (range 6-18 months)</li>
+<p>
+</ul>
+  - <strong>Counsel patient</strong>: Not ideal if planning pregnancy in next 12 months
+</p>
+<ul>
+<li><strong>Bone density loss</strong> (reversible after stopping):</li>
+<p>
+</ul>
+  - <strong>Black box warning</strong> in some countries
+  - <strong>Concern in adolescents</strong> (peak bone mass acquisition) and peri-menopausal women
+  - <strong>Reassurance</strong>: Bone density recovers after stopping, fracture risk not proven increased
+  - <strong>Recommendation</strong>: Not first-line in adolescents <18 or women >45 unless other methods unsuitable
+</p>
+<ul>
+<li>Mood changes (depression reported)</li>
+<li>Reduced libido</li>
+<li>Bloating</li>
+<p>
+</ul>
+</p>
+
+<strong>Contraindications</strong>:
+<ul>
+<li>Pregnancy</li>
+<li>Current breast cancer</li>
+<li>Unexplained vaginal bleeding</li>
+<li>Severe liver disease</li>
+<p>
+</ul>
+</p>
+
+<strong>Administration</strong>:
+<ul>
+<li><strong>IM injection</strong> (deltoid or gluteal)</li>
+<li><strong>150mg every 12 weeks</strong> (can be given up to 14 weeks late without needing backup contraception)</li>
+<li>Can start anytime if reasonably certain not pregnant (use backup for 7 days)</li>
+<p>
+</ul>
+</p>
+
+<strong>Cost</strong>:
+<ul>
+<li>PBS-subsidized: ~$6-8 per injection</li>
+<p>
+</ul>
+</p>
+
+<strong>Counselling Points</strong>:
+<p>
+"Depo-Provera is an injection you get every 3 months, so you don't have to remember daily pills. It's very effective and most women stop having periods after 6-12 months, which some find convenient. However, it can cause weight gain in some women, and when you stop it, fertility can take up to a year to return, so it's not ideal if you're planning pregnancy soon. There's also a small effect on bone density, which is why we don't use it as first-line in teenagers or older women."
+</p>
+
+<hr>
+
+<h3>BARRIER METHODS</h3>
+
+<h4>7. MALE CONDOM</h4>
+
+<strong>Description</strong>:
+<ul>
+<li>Latex (or polyurethane/polyisoprene if latex allergy) sheath worn on penis</li>
+<p>
+</ul>
+</p>
+
+<strong>Mechanism</strong>:
+<ul>
+<li>Physical barrier prevents sperm entering vagina</li>
+<p>
+</ul>
+</p>
+
+<strong>Efficacy</strong>:
+<ul>
+<li><strong>Perfect use</strong>: 2%</li>
+<li><strong>Typical use</strong>: 18% (nearly 1 in 5 pregnancies per year - due to incorrect use, breakage, slipping)</li>
+<p>
+</ul>
+</p>
+
+<strong>Benefits</strong>:
+<ul>
+<li><strong>Only method that protects against STIs</strong> (including HIV)</li>
+<li><strong>Recommended for all new/casual relationships</strong> even if using other contraception (dual protection)</li>
+<li>No hormones</li>
+<li>No prescription needed</li>
+<li>Cheap, accessible</li>
+<li>Male involvement/responsibility</li>
+<p>
+</ul>
+</p>
+
+<strong>Disadvantages</strong>:
+<ul>
+<li><strong>Lower efficacy</strong> than hormonal/LARC methods</li>
+<li>Requires use every time</li>
+<li>Can break or slip off</li>
+<li>Reduced sensation (some men)</li>
+<li>Latex allergy (use polyurethane/polyisoprene)</li>
+<li>Requires planning/interruption</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Use</strong> (counsel patients):
+<ul>
+<li>Check expiry date</li>
+<li>Open carefully (don't use teeth/scissors)</li>
+<li>Pinch tip, roll down erect penis (before any genital contact)</li>
+<li>Withdraw while penis still erect, hold base of condom</li>
+<li>Use once only</li>
+<li><strong>Use with water-based lubricant</strong> (oil-based lubricants damage latex)</li>
+<p>
+</ul>
+</p>
+
+<strong>Cost</strong>:
+<ul>
+<li><strong>Free</strong> at sexual health clinics, some GP clinics, university health services</li>
+<li>$10-20 for pack of 12-24 at supermarket/pharmacy</li>
+<p>
+</ul>
+</p>
+
+<strong>Counselling Points</strong>:
+<p>
+"Condoms are the only contraception that also protects against STIs, so we recommend using them in addition to other contraception if you have new or casual partners. They're less effective at preventing pregnancy than hormonal methods or IUDs, mainly because of user error, so if pregnancy prevention is your top priority, consider combining condoms with another method."
+</p>
+
+<hr>
+
+<h4>8. FEMALE CONDOM</h4>
+
+<strong>Description</strong>:
+<ul>
+<li>Polyurethane pouch inserted into vagina before sex</li>
+<p>
+</ul>
+</p>
+
+<strong>Efficacy</strong>:
+<ul>
+<li><strong>Perfect use</strong>: 5%</li>
+<li><strong>Typical use</strong>: 21%</li>
+<p>
+</ul>
+</p>
+
+<strong>Benefits</strong>:
+<ul>
+<li>Protects against STIs</li>
+<li>Can be inserted hours before sex (less interruption)</li>
+<li>No latex (safe if allergy)</li>
+<li>Female-controlled</li>
+<p>
+</ul>
+</p>
+
+<strong>Disadvantages</strong>:
+<ul>
+<li><strong>Less effective</strong> than male condom</li>
+<li>More expensive</li>
+<li>Difficult to obtain in Australia (not widely available)</li>
+<li>Can be noisy during sex</li>
+<li>Learning curve for insertion</li>
+<p>
+</ul>
+</p>
+
+<strong>Not commonly used in Australia</strong> - mention briefly in OSCE if asked about barrier methods
+
+<hr>
+
+<h3><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> CONTRACEPTION (EC)</h3>
+
+<strong>Indications</strong>:
+<ul>
+<li>Unprotected intercourse</li>
+<li>Condom breakage/slippage</li>
+<li>Missed pills (>2 in a row)</li>
+<li>Late Depo-Provera injection (>14 weeks)</li>
+<li>Sexual assault</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>9. LEVONORGESTREL EC (Plan B, Postinor)</h4>
+
+<strong>Description</strong>:
+<ul>
+<li>Single dose levonorgestrel 1.5mg tablet (or 2 x 0.75mg tablets)</li>
+<li><strong>"Morning-after pill"</strong> (misnomer - can be taken up to 3-4 days after sex)</li>
+<p>
+</ul>
+</p>
+
+<strong>Mechanism</strong>:
+<ul>
+<li>Delays/inhibits ovulation (if taken before ovulation)</li>
+<li><strong>Does NOT work if already ovulated</strong></li>
+<li><strong>NOT abortifacient</strong> (doesn't affect implanted pregnancy)</li>
+<p>
+</ul>
+</p>
+
+<strong>Efficacy</strong>:
+<ul>
+<li><strong>Effectiveness decreases with time</strong>:</li>
+<p>
+</ul>
+  - <24 hours: 95% effective
+  - 24-48 hours: 85% effective
+  - 48-72 hours: 58% effective
+  - Up to 96 hours (4 days): May still work but reduced efficacy
+</p>
+<ul>
+<li><strong>Less effective if BMI >26</strong> or weight >70kg (consider double dose 3mg or copper IUD)</li>
+<p>
+</ul>
+</p>
+
+<strong>How to Use</strong>:
+<ul>
+<li><strong>Take as soon as possible</strong> after unprotected sex (sooner = more effective)</li>
+<li>Single dose 1.5mg (or 2 x 0.75mg tablets taken together)</li>
+<li>Can take anytime in menstrual cycle</li>
+<li>If vomits within 3 hours → Take another dose</li>
+<p>
+</ul>
+</p>
+
+<strong>Side Effects</strong>:
+<ul>
+<li>Nausea (10%), vomiting (1%)</li>
+<li>Irregular bleeding (next period may be early, late, or irregular)</li>
+<li>Fatigue, headache, dizziness, breast tenderness</li>
+<p>
+</ul>
+</p>
+
+<strong>Follow-up</strong>:
+<ul>
+<li><strong>Pregnancy test</strong> if period >7 days late</li>
+<li><strong>Start ongoing contraception</strong> immediately (don't wait for next period)</li>
+<p>
+</ul>
+</p>
+
+<strong>Cost (Australia)</strong>:
+<ul>
+<li><strong>Over-the-counter</strong> (no prescription needed since 2004)</li>
+<li>~$20-35 at pharmacy</li>
+<li><strong>Free</strong> at sexual health clinics, some GP clinics</li>
+<p>
+</ul>
+</p>
+
+<strong>Counselling Points</strong>:
+<p>
+"The <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> contraceptive pill works by delaying ovulation. It's most effective in the first 24 hours, but can be taken up to 4 days after unprotected sex. It's not 100% effective, so take a pregnancy test if your period is more than a week late. It's safe to use multiple times, but it's not as effective as regular contraception, so let's discuss ongoing options."
+</p>
+
+<hr>
+
+<h4>10. ULIPRISTAL ACETATE (EllaOne)</h4>
+
+<strong>Description</strong>:
+<ul>
+<li>Ulipristal acetate 30mg tablet</li>
+<li><strong>Selective progesterone receptor modulator</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Mechanism</strong>:
+<ul>
+<li>Delays/inhibits ovulation (even if close to ovulation - more effective than levonorgestrel at this stage)</li>
+<p>
+</ul>
+</p>
+
+<strong>Efficacy</strong>:
+<ul>
+<li><strong>More effective than levonorgestrel</strong>, especially 72-120 hours after sex</li>
+<li>Maintains ~85% efficacy up to <strong>120 hours (5 days)</strong></li>
+<li><strong>Not affected by BMI</strong> (as much as levonorgestrel)</li>
+<p>
+</ul>
+</p>
+
+<strong>How to Use</strong>:
+<ul>
+<li>Single dose 30mg</li>
+<li>Take <strong>up to 120 hours (5 days)</strong> after unprotected sex</li>
+<li><strong>Prescription required</strong> in Australia</li>
+<p>
+</ul>
+</p>
+
+<strong>Side Effects</strong>:
+<ul>
+<li>Similar to levonorgestrel</li>
+<p>
+</ul>
+</p>
+
+<strong>Advantages over Levonorgestrel</strong>:
+<ul>
+<li>Longer window (5 days vs 4 days)</li>
+<li>More effective 72-120 hours</li>
+<li>Better efficacy in obese women</li>
+<p>
+</ul>
+</p>
+
+<strong>Cost</strong>:
+<ul>
+<li>~$35-45 with prescription</li>
+<li><strong>Not PBS-subsidized</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Counselling Points</strong>:
+<p>
+"EllaOne is more effective than the standard morning-after pill, especially if it's been more than 3 days since unprotected sex. It works up to 5 days after sex and is more effective in women with higher BMI. It requires a prescription."
+</p>
+
+<hr>
+
+<h4>11. COPPER IUD as EC</h4>
+
+<strong>Description</strong>:
+<ul>
+<li>Copper IUD inserted <strong>within 5 days</strong> of unprotected sex (or up to 5 days after earliest estimated ovulation date)</li>
+<p>
+</ul>
+</p>
+
+<strong>Mechanism</strong>:
+<ul>
+<li>Prevents fertilization</li>
+<li>Prevents implantation</li>
+<p>
+</ul>
+</p>
+
+<strong>Efficacy</strong>:
+<ul>
+<li><strong>>99% effective</strong> - <strong>MOST EFFECTIVE <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> contraception</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Benefits</strong>:
+<ul>
+<li>Most effective EC</li>
+<li>Provides ongoing contraception (lasts 5-10 years)</li>
+<li>Non-hormonal</li>
+<p>
+</ul>
+</p>
+
+<strong>Disadvantages</strong>:
+<ul>
+<li>Requires <span style="color: #e74c3c; font-weight: bold;">URGENT</span> appointment with trained provider</li>
+<li>Insertion procedure needed</li>
+<li>May not be available within 5-day window</li>
+<p>
+</ul>
+</p>
+
+<strong>Cost</strong>:
+<ul>
+<li>~$80-100 for IUD + insertion fee (Medicare rebate)</li>
+<p>
+</ul>
+</p>
+
+<strong>Counselling Points</strong>:
+<p>
+"The copper IUD is the most effective <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> contraception - over 99%. It needs to be inserted by a doctor within 5 days. The advantage is it then provides ongoing contraception for up to 10 years, so you don't need to worry about contraception again unless you want to remove it."
+</p>
+
+<hr>
+
+<h3>PERMANENT CONTRACEPTION (STERILIZATION)</h3>
+
+<h4>12. FEMALE STERILIZATION (Tubal Ligation / Bilateral Salpingectomy)</h4>
+
+<strong>Description</strong>:
+<ul>
+<li>Surgical procedure to occlude, clip, or remove fallopian tubes</li>
+<li><strong>Permanent</strong> (consider irreversible)</li>
+<p>
+</ul>
+</p>
+
+<strong>Mechanism</strong>:
+<ul>
+<li>Prevents egg from reaching uterus (tubal occlusion)</li>
+<p>
+</ul>
+</p>
+
+<strong>Efficacy</strong>:
+<ul>
+<li><strong>>99% effective</strong> (failure rate 0.5%)</li>
+<li><strong>Not 100%</strong> - small risk of ectopic pregnancy if fails</li>
+<p>
+</ul>
+</p>
+
+<strong>Procedure</strong>:
+<ul>
+<li><strong>Laparoscopic</strong> (keyhole surgery) under general anaesthetic</li>
+<li>Day surgery or overnight stay</li>
+<li>Tubes clipped (Filshie clips) or removed (bilateral salpingectomy - now preferred as reduces ovarian cancer risk)</li>
+<p>
+</ul>
+</p>
+
+<strong>Benefits</strong>:
+<ul>
+<li>Permanent (no ongoing contraception needed)</li>
+<li>No hormones</li>
+<li>No effect on menstrual cycle</li>
+<li>Bilateral salpingectomy reduces ovarian cancer risk by 50%</li>
+<p>
+</ul>
+</p>
+
+<strong>Disadvantages</strong>:
+<ul>
+<li><strong>Irreversible</strong> (reversal surgery difficult, expensive, not guaranteed successful)</li>
+<li>Requires surgery (anaesthetic risk, surgical complications)</li>
+<li><strong>Regret</strong> (especially if done young, or life circumstances change - divorce, child dies)</li>
+<p>
+</ul>
+  - Regret rate higher if <30 years at sterilization
+</p>
+
+<strong>Contraindications</strong>:
+<ul>
+<li>Uncertainty about decision</li>
+<li>Coercion (partner/family pressuring)</li>
+<li>Post-partum (ideally wait 6 weeks - post-partum sterilization has higher regret)</li>
+<p>
+</ul>
+</p>
+
+<strong>Cost</strong>:
+<ul>
+<li><strong>Public hospital</strong>: Free (Medicare), waiting list</li>
+<li><strong>Private</strong>: $2000-5000 (gap payment after Medicare/insurance)</li>
+<p>
+</ul>
+</p>
+
+<strong>Counselling Points</strong>:
+<p>
+"Tubal ligation is a permanent procedure - we consider it irreversible. It's very effective, but it involves surgery with anaesthetic risks. If there's any chance you might want children in the future, even if circumstances change, this isn't the right choice. There's also a small failure rate, so it's not 100%. Have you considered long-acting reversible options like the IUD or Implanon? They're just as effective but reversible."
+</p>
+
+<hr>
+
+<h4>13. MALE STERILIZATION (Vasectomy)</h4>
+
+<strong>Description</strong>:
+<ul>
+<li>Surgical procedure to cut/seal <strong>vas deferens</strong> (tubes carrying sperm)</li>
+<li><strong>Permanent</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Mechanism</strong>:
+<ul>
+<li>Prevents sperm from entering ejaculate</li>
+<p>
+</ul>
+</p>
+
+<strong>Efficacy</strong>:
+<ul>
+<li><strong>>99% effective</strong> once confirmed by semen analysis</li>
+<li><strong>Not immediate</strong> - takes 3 months / 20 ejaculations to clear sperm</li>
+<p>
+</ul>
+</p>
+
+<strong>Procedure</strong>:
+<ul>
+<li>Outpatient procedure under local anaesthetic</li>
+<li>Takes 15-30 minutes</li>
+<li>Scalpel or "no-scalpel" technique</li>
+<li>Recovery 2-3 days</li>
+<p>
+</ul>
+</p>
+
+<strong>Follow-up</strong>:
+<ul>
+<li><strong>Semen analysis</strong> at 3 months - must show <strong>azoospermia</strong> (no sperm) before stopping other contraception</li>
+<li>May need repeat test if sperm still present</li>
+<p>
+</ul>
+</p>
+
+<strong>Benefits</strong>:
+<ul>
+<li><strong>More effective, simpler, safer, cheaper</strong> than female sterilization</li>
+<li>No hormones</li>
+<li>No effect on sexual function or testosterone</li>
+<li>One-time procedure</li>
+<p>
+</ul>
+</p>
+
+<strong>Disadvantages</strong>:
+<ul>
+<li><strong>Irreversible</strong> (reversal expensive, not guaranteed successful)</li>
+<li>Requires partner's cooperation</li>
+<li>Not immediate (need backup contraception for 3 months)</li>
+<li>Regret (if life circumstances change)</li>
+<p>
+</ul>
+</p>
+
+<strong>Cost</strong>:
+<ul>
+<li>~$600-1200 (Medicare rebate ~$200-300, so out-of-pocket ~$400-900)</li>
+<li>Cheaper than female sterilization</li>
+<p>
+</ul>
+</p>
+
+<strong>Counselling Points</strong>:
+<p>
+"Vasectomy is simpler, safer, and cheaper than female sterilization. It's done under local anaesthetic and takes 15-30 minutes. However, it's not immediate - you need to use other contraception for 3 months until we confirm there's no sperm in the semen. Like female sterilization, consider it permanent and irreversible."
+</p>
+
+<hr>
+
+<h2>Part 3: Addressing Common Myths and Misconceptions</h2>
+
+<h3>Myth 1: "The Pill Makes You Gain Weight"</h3>
+
+<strong>Reality</strong>:
+<ul>
+<li><strong>Large systematic reviews show no significant weight gain</strong> with COCP or POP</li>
+<li><strong>Depo-Provera</strong> does cause average 2-3kg weight gain</li>
+<li>Some women report weight gain (may be unrelated, or fluid retention in first months)</li>
+<p>
+</ul>
+</p>
+
+<strong>How to Address</strong>:
+<p>
+"Many women worry about weight gain with the pill. Large studies show the pill itself doesn't cause weight gain in most women. Some women notice fluid retention in the first few months, which settles. Depo-Provera (the injection) can cause weight gain. If you're concerned, we can monitor your weight and switch methods if needed."
+</p>
+
+<hr>
+
+<h3>Myth 2: "The Pill Causes Cancer"</h3>
+
+<strong>Reality</strong>:
+<ul>
+<li><strong>COCP reduces risk</strong> of ovarian cancer (50%), endometrial cancer (50%), and colorectal cancer</li>
+<li><strong>Small increased risk</strong> of cervical cancer (with long-term use >5 years, returns to baseline after stopping)</li>
+<li><strong>Small increased risk</strong> of breast cancer (1 extra case per 7,000 women per year), returns to baseline 10 years after stopping</li>
+<p>
+</ul>
+</p>
+
+<strong>Overall: Protective effect outweighs cancer risks</strong>
+
+<strong>How to Address</strong>:
+<p>
+"The pill actually protects against ovarian and womb cancers - it halves the risk. There's a very small increased risk of breast and cervical cancer, but overall, the pill is protective against cancer."
+</p>
+
+<hr>
+
+<h3>Myth 3: "You Need a Break from the Pill"</h3>
+
+<strong>Reality</strong>:
+<ul>
+<li><strong>No medical reason to take a break</strong> from COCP</li>
+<li>"Pill-free break" is a myth</li>
+<li>Can take continuously for years if desired</li>
+<p>
+</ul>
+</p>
+
+<strong>How to Address</strong>:
+<p>
+"There's no need to take a break from the pill. You can take it continuously for as long as you need contraception. The 7-day break each month is just to allow a withdrawal bleed, but you can even skip that if you want to avoid periods."
+</p>
+
+<hr>
+
+<h3>Myth 4: "The Pill Affects Future Fertility"</h3>
+
+<strong>Reality</strong>:
+<ul>
+<li><strong>Fertility returns immediately</strong> after stopping COCP, POP, Implanon, IUD</li>
+<li><strong>Depo-Provera</strong>: Delayed return to fertility (average 10 months), but eventually returns</li>
+<li><strong>No long-term effect on fertility</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>How to Address</strong>:
+<p>
+"The pill doesn't affect your ability to get pregnant in the future. Fertility returns to normal as soon as you stop, except for Depo-Provera, which takes about 10 months on average."
+</p>
+
+<hr>
+
+<h3>Myth 5: "IUDs Cause Infertility/Only for Women Who've Had Children"</h3>
+
+<strong>Reality</strong>:
+<ul>
+<li><strong>IUDs do NOT cause infertility</strong></li>
+<li>Old data from Dalkon Shield (1970s, withdrawn) - not applicable to modern IUDs</li>
+<li><strong>RANZCOG recommends IUDs for nulliparous women and adolescents</strong></li>
+<li>Small increased PID risk in first 20 days after insertion (screening for STIs before insertion minimizes this)</li>
+<p>
+</ul>
+</p>
+
+<strong>How to Address</strong>:
+<p>
+"Modern IUDs are safe for women who haven't had children and don't affect future fertility. That's an old myth from a faulty IUD in the 1970s. Current IUDs are recommended for all women, including teenagers."
+</p>
+
+<hr>
+
+<h3>Myth 6: "Hormonal Contraception is Unnatural/Dangerous"</h3>
+
+<strong>Reality</strong>:
+<ul>
+<li><strong>Millions of women use hormonal contraception safely</strong></li>
+<li>Benefits (pregnancy prevention, cancer protection, menstrual benefits) outweigh risks for most women</li>
+<li>Serious risks (VTE, stroke) are <strong>rare</strong> and screened for</li>
+<p>
+</ul>
+</p>
+
+<strong>How to Address</strong>:
+<p>
+"Hormonal contraception is one of the most studied medications. While there are small risks, for most healthy women, the benefits far outweigh them. We carefully screen for risk factors before prescribing. If you prefer non-hormonal options, the copper IUD is very effective."
+</p>
+
+<hr>
+
+<h2>Part 4: Special Populations</h2>
+
+<h3>Adolescents (<20 years)</h3>
+
+<strong>Key Considerations</strong>:
+<ul>
+<li><strong>Confidentiality</strong>: Can provide contraception to adolescents <16 years if Gillick competent (understands risks/benefits, mature enough to consent)</li>
+<li><strong>Encourage parental involvement</strong>, but not mandatory</li>
+<li><strong>LARC</strong> (Implanon, IUD) recommended (most effective, no compliance issues)</li>
+<li><strong>Condoms</strong> essential (STI protection - highest STI rates in 15-24 age group)</li>
+<li><strong>COCP/POP</strong> if preferred, but compliance issues (typical-use failure rate higher)</li>
+<li><strong>Avoid Depo-Provera</strong> as first-line (bone density concerns during peak bone mass acquisition)</li>
+<p>
+</ul>
+</p>
+
+<strong>Counselling Points</strong>:
+<p>
+"Everything we discuss is confidential. I'd encourage you to talk to your parents if you feel comfortable, but you don't have to. The most effective options for someone your age are the Implanon or IUD - they last years and you don't have to remember daily pills. I also recommend using condoms to protect against STIs."
+</p>
+
+<hr>
+
+<h3>Breastfeeding Women</h3>
+
+<strong>Safe Options</strong>:
+<ul>
+<li><strong>Progesterone-only methods</strong>: POP, Implanon, Depo-Provera, Mirena (no effect on milk supply)</li>
+<li><strong>Copper IUD</strong> (non-hormonal)</li>
+<li><strong>Condoms</strong></li>
+<li><strong>LAM</strong> (Lactational Amenorrhoea Method) - if exclusively breastfeeding, amenorrhoeic, <6 months postpartum (98% effective)</li>
+<p>
+</ul>
+</p>
+
+<strong>Avoid</strong>:
+<ul>
+<li><strong>COCP</strong> in first 6 weeks postpartum (suppresses lactation)</li>
+<li>Can start COCP after 6 weeks if breastfeeding established (but progesterone-only methods preferred)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Perimenopausal Women (>40 years)</h3>
+
+<strong>Considerations</strong>:
+<ul>
+<li>Still need contraception (fertility declines but pregnancy possible until menopause confirmed)</li>
+<li><strong>Contraception needed until</strong>: 2 years amenorrhoea if <50, or 1 year amenorrhoea if ≥50</li>
+<p>
+</ul>
+</p>
+
+<strong>Safe Options</strong>:
+<ul>
+<li><strong>Mirena IUD</strong> (ideal - contraception + HMB treatment + can be used as progestogen component of HRT)</li>
+<li><strong>Copper IUD</strong></li>
+<li><strong>Implanon</strong></li>
+<li><strong>POP</strong> (safe)</li>
+<li><strong>COCP</strong> if no contraindications (smoking, VTE risk, hypertension, migraine with aura)</li>
+<p>
+</ul>
+  - Consider switching to POP or LARC at age 50
+</p>
+
+<strong>Avoid</strong>:
+<ul>
+<li><strong>Depo-Provera</strong> (bone density concerns, difficult to distinguish Depo-induced amenorrhoea from menopause)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Obese Women (BMI >30)</h3>
+
+<strong>Considerations</strong>:
+<ul>
+<li>COCP less effective (possibly - controversial data)</li>
+<li>Higher VTE risk with COCP</li>
+<li><strong>Implanon may be less effective</strong> if BMI >35 (can replace at 2.5 years instead of 3)</li>
+<li><strong>Levonorgestrel EC</strong> less effective if BMI >26 or weight >70kg (consider ulipristal or copper IUD)</li>
+<p>
+</ul>
+</p>
+
+<strong>Recommended</strong>:
+<ul>
+<li><strong>LARC</strong> (Mirena, copper IUD, Implanon)</li>
+<li><strong>POP, Depo-Provera</strong> (progesterone-only methods safer than COCP)</li>
+<li>Avoid COCP if BMI >35 (VTE risk)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 5: OSCE Practice Stations</h2>
+
+<h3>OSCE Station 1: Contraception Counselling - Requesting LARC</h3>
+
+<strong>Candidate Instructions</strong>:
+<p>
+"Ms. Chen is a 28-year-old woman who would like to discuss contraception. She's currently taking the combined pill but keeps forgetting to take it. She's interested in something more reliable. Counsel her on contraceptive options. You have 8 minutes."
+</p>
+
+<strong>Approach</strong> (Model Answer):
+
+<strong>Opening</strong> (30 seconds):
+<p>
+"Hello Ms. Chen, I understand you'd like to discuss contraception. You're currently on the pill but finding it difficult to remember. I'd like to ask you a few questions and then we can discuss the best options for you. Is that alright?"
+</p>
+
+<strong>Assess Current Situation</strong> (1 minute):
+<ol>
+<li>"You mentioned you're on the pill - how often do you forget to take it?"</li>
+<p>
+</ol>
+   - Patient: "Maybe 2-3 times a week"
+</p>
+<ol>
+<li>"Are you in a relationship? Sexually active?"</li>
+<p>
+</ol>
+   - Patient: "Yes, regular partner, sexually active"
+</p>
+<ol>
+<li>"Are you planning to have children in the future?"</li>
+<p>
+</ol>
+   - Patient: "Not for at least 3-5 years"
+</p>
+<ol>
+<li>"What's most important to you in contraception?"</li>
+<p>
+</ol>
+   - Patient: "I want something really effective that I don't have to think about every day"
+</p>
+
+<strong>Medical History</strong> (1 minute):
+<ol>
+<li>"Any medical conditions - high blood pressure, migraines, blood clots?"</li>
+<p>
+</ol>
+   - Patient: "No, I'm healthy"
+</p>
+<ol>
+<li>"Do you smoke?"</li>
+<p>
+</ol>
+   - Patient: "No"
+</p>
+<ol>
+<li>"Tell me about your periods - are they heavy or painful?"</li>
+<p>
+</ol>
+   - Patient: "Quite heavy and painful, actually"
+</p>
+
+<strong>Present Options</strong> (3 minutes):
+
+<p>
+"Based on what you've told me, I'd recommend considering long-acting reversible contraception - LARC. These are the most effective methods and you don't have to remember anything daily. There are three main options:
+</p>
+
+<strong>1. Mirena IUD</strong>:
+<p>
+This is a small T-shaped device we insert into your uterus. It releases a tiny amount of hormone locally and lasts 5 years. It's over 99% effective - more effective than the pill. Because you mentioned heavy and painful periods, this would be ideal for you - it makes periods much lighter (most women's periods become very light or stop altogether after 6-12 months), and it treats period pain. The insertion takes about 10 minutes. You might have some irregular spotting for the first 3-6 months, but this usually settles. It costs about $40 with PBS and can be removed anytime if you want to get pregnant.
+</p>
+
+<strong>2. Copper IUD</strong>:
+<p>
+This is similar to the Mirena but has no hormones - it's wrapped in copper which prevents pregnancy. It also lasts 5-10 years and is over 99% effective. However, it often makes periods heavier and more painful, so given your heavy periods, I wouldn't recommend this for you.
+</p>
+
+<strong>3. Implanon</strong>:
+<p>
+This is a small rod inserted under the skin of your arm - you can't see it but you can feel it if you touch your arm. It lasts 3 years and is the most effective reversible contraception available - over 99%. The main side effect is irregular bleeding - some women have no periods, some have spotting, and some have more frequent bleeding. If bleeding is troublesome, we can give you medication to help, or remove it.
+</p>
+
+<strong>My Recommendation</strong>:
+<p>
+Given that you want something highly effective that you don't have to remember, and you have heavy painful periods, I'd recommend the <strong>Mirena IUD</strong>. It will solve both problems - extremely effective contraception and treatment for your heavy periods.
+</p>
+
+<p>
+What do you think? Do you have any questions?"
+</p>
+
+<strong>Address Questions/Concerns</strong> (2 minutes):
+
+<p>
+Patient: "Will it hurt to have it inserted?"
+"The insertion takes about 10 minutes. You'll have some cramping during and after insertion, similar to period cramps. I recommend taking ibuprofen 30 minutes before to help with pain. Most women tolerate it well. The cramping usually settles within a day or two."
+</p>
+
+<p>
+Patient: "Will I gain weight?"
+"The Mirena releases hormone locally in the uterus, so there's very little systemic absorption. Weight gain is not a common side effect. If you do notice weight gain, we can remove it anytime."
+</p>
+
+<p>
+Patient: "Can my partner feel it during sex?"
+"He shouldn't feel the device itself - it sits inside your uterus. There are two thin threads that come through your cervix, and very occasionally a partner might feel these, but it's rare. If it's a problem, we can trim the threads."
+</p>
+
+<strong>Next Steps</strong> (30 seconds):
+<p>
+"If you'd like to go ahead with the Mirena, I can book you an appointment for insertion. It can be inserted anytime in your cycle as long as we're reasonably certain you're not pregnant. I'd recommend continuing the pill until the insertion, or using condoms if you stop the pill. Does that sound good?"
+</p>
+
+<hr>
+
+<h3>OSCE Station 2: <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Contraception</h3>
+
+<strong>Candidate Instructions</strong>:
+<p>
+"Ms. Patel is a 22-year-old woman presenting to the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> department. She had unprotected intercourse 36 hours ago when the condom broke. She's worried about pregnancy. Counsel her on <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> contraception options. You have 8 minutes."
+</p>
+
+<strong>Approach</strong>:
+
+<strong>Assess Situation</strong> (1 minute):
+<p>
+"I understand you had unprotected sex about 36 hours ago when the condom broke. I can help you with <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> contraception. Can I ask when your last period was?"
+</p>
+<ul>
+<li>Patient: "It started 10 days ago, so I think I'm around mid-cycle"</li>
+<li>"That's when you're most fertile (around ovulation), so it's good you've come in. Are you on any regular contraception?"</li>
+<li>Patient: "No"</li>
+<p>
+</ul>
+</p>
+
+<strong>Explain Options</strong> (4 minutes):
+
+<p>
+"There are three <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> contraception options available:
+</p>
+
+<strong>1. Levonorgestrel Pill (Plan B, Postinor)</strong> - "Morning-after pill":
+<ul>
+<li>This is a single pill you take once. It works by delaying ovulation. It's most effective in the first 24 hours (95% effective), but since it's been 36 hours for you, it's about 85% effective. You can take it up to 4 days (96 hours) after sex, but effectiveness decreases with time.</li>
+<li>Side effects: Mild nausea, your next period might be early or late.</li>
+<li>You can buy this over-the-counter at the pharmacy for about $20-35, no prescription needed.</li>
+<li><strong>However</strong>, given you're mid-cycle (likely around ovulation), and it's been 36 hours, there's a better option...</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Ulipristal (EllaOne)</strong>:
+<ul>
+<li>This is similar to the levonorgestrel pill but more effective, especially after 24 hours. It works up to 5 days (120 hours) and maintains about 85% effectiveness throughout. It's also more effective if you're around ovulation time, which you likely are.</li>
+<li>Side effects: Similar to levonorgestrel.</li>
+<li>This requires a prescription, which I can give you today. It costs about $35-45.</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Copper IUD</strong> - Most effective:
+<ul>
+<li>We can insert a copper IUD within 5 days of unprotected sex - it's over 99% effective as <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> contraception, the most effective option.</li>
+<li>The advantage is it then provides ongoing contraception for up to 10 years.</li>
+<li>The downside is you'd need an <span style="color: #e74c3c; font-weight: bold;">URGENT</span> appointment with a doctor trained in IUD insertion, which might be difficult to arrange within the 5-day window.</li>
+<p>
+</ul>
+</p>
+
+<strong>My Recommendation</strong>:
+<p>
+Given you're mid-cycle (around ovulation) and it's been 36 hours, I'd recommend <strong>ulipristal (EllaOne)</strong> - it's more effective than the standard morning-after pill at this stage of your cycle. If you're interested in long-term contraception and we can arrange it quickly, the copper IUD would be the most effective option.
+</p>
+
+<p>
+What would you prefer?"
+</p>
+
+<strong>Patient Chooses Ulipristal</strong> (2 minutes):
+
+<p>
+"Great, I'll prescribe that for you now. Take it as soon as possible - the sooner the better. If you vomit within 3 hours of taking it, you'll need to take another dose.
+</p>
+
+<strong>Important information</strong>:
+<ul>
+<li>Your next period might be early or late - that's normal.</li>
+<li>If your period is more than 7 days late, take a pregnancy test.</li>
+<li>The <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> pill is not 100% effective, so there's still a small chance of pregnancy.</li>
+<p>
+</ul>
+</p>
+
+<strong>Ongoing contraception</strong>:
+<p>
+<span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> contraception is not a regular method - it's less effective than regular contraception. Can we discuss starting a regular contraceptive method?
+</p>
+
+<p>
+[If patient agrees, discuss LARC/COCP/POP options]
+</p>
+
+<p>
+You can start the pill today if you'd like - we call this 'quick start'. You'll need to use condoms for the first week.
+</p>
+
+<p>
+Do you have any questions?"
+</p>
+
+<strong>Counsel on STI Risk</strong> (1 minute):
+<p>
+"Since the condom broke, there's also a risk of sexually transmitted infections. I'd recommend getting tested for STIs in 2 weeks (window period for chlamydia/gonorrhoea). Would you like me to arrange that?"
+</p>
+
+<hr>
+
+<h2>Summary: Key Takeaways</h2>
+
+<h3>For Contraception Counselling:</h3>
+<ol>
+<li><strong>Patient-centered approach</strong>: Explore needs/preferences FIRST before recommending</li>
+<li><strong>CONTRACEPTION framework</strong>: Current situation, Obstetric history, Need, Timing, Risks, Allergies, Concerns, Explain options, Pearl index, Timeline, Inform, Offer, Next steps</li>
+<li><strong>Shared decision-making</strong>: Present balanced information, let patient choose</li>
+<li><strong>Address misconceptions</strong>: Weight gain, cancer, fertility effects, IUD myths</li>
+<p>
+</ol>
+</p>
+
+<h3>For Contraceptive Options:</h3>
+<ol>
+<li><strong>LARC is first-tier</strong>: Mirena, Copper IUD, Implanon (>99% effective, user-independent)</li>
+<li><strong>Tailor to patient</strong>:</li>
+<p>
+</ol>
+   - Heavy periods → Mirena
+   - Non-hormonal preference → Copper IUD
+   - VTE history, migraine with aura, age >35 + smoking → Progesterone-only methods (POP, Implanon, Mirena)
+   - Adolescents → LARC + condoms (STI protection)
+</p>
+<ol>
+<li><strong>COCP contraindications</strong>: VTE, migraine with aura, age ≥35 + smoking, breast cancer, uncontrolled hypertension</li>
+<p>
+</ol>
+</p>
+
+<h3>For <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Contraception:</h3>
+<ol>
+<li><strong>Three options</strong>: Levonorgestrel (OTC, up to 4 days), Ulipristal (Rx, up to 5 days, more effective), Copper IUD (most effective, up to 5 days)</li>
+<li><strong>Sooner is better</strong>: Effectiveness decreases with time</li>
+<li><strong>Start ongoing contraception</strong>: EC is not for regular use</li>
+<p>
+</ol>
+</p>
+
+<h3>For Australian Context:</h3>
+<ol>
+<li><strong>PBS subsidies</strong>: COCP, POP, Mirena, Implanon all PBS-listed (~$6.80 concession, ~$15-40 general)</li>
+<li><strong>Over-the-counter</strong>: Levonorgestrel EC (no prescription needed)</li>
+<li><strong>Medicare rebates</strong>: IUD insertion, Implanon insertion (~$60-80)</li>
+<li><strong>Free access</strong>: Family Planning NSW clinics, sexual health clinics, some GP clinics</li>
+<p>
+</ol>
+</p>
+
+<h3>For OSCE Success:</h3>
+<ol>
+<li><strong>Explore before recommending</strong>: "What's important to you?" BEFORE "I recommend..."</li>
+<li><strong>Tailor to patient</strong>: Heavy periods + wants LARC → "Mirena would be ideal for you"</li>
+<li><strong>Balanced discussion</strong>: Mention benefits AND side effects</li>
+<li><strong>Address concerns directly</strong>: "Many women worry about weight gain - let me explain what the evidence shows"</li>
+<li><strong>WHO MEC knowledge</strong>: Know absolute contraindications (COCP: VTE, migraine with aura, age ≥35 + smoking, breast cancer)</li>
+<li><strong>Efficacy numbers</strong>: "Over 99% effective" (LARC), "9% typical use failure" (COCP)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<strong>This completes the third ObGyn document! Next: Obstetric Examination, then Gynaecological Examination to complete the module.</strong>
+
+<strong>Word Count</strong>: ~16,000 words
+<strong>Last Updated</strong>: December 2025 for ICRP NSW Young Hospital Program (March 2026 intake)
+<strong>Author</strong>: ICRP OSCE Preparation Team
+<strong>Reference</strong>: Dr. Amir Soufi (IMG4IMGS), WHO Medical Eligibility Criteria (MEC), RANZCOG Guidelines, FSRH (UK) Guidelines, eTG 2024, PBS Australia, AMC Clinical OSCE Format
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

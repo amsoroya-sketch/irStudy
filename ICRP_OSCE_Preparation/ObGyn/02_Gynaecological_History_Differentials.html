@@ -1,0 +1,2107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gynaecological History-Taking with Differential Diagnosis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>ObGyn</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 ObGyn Navigation</h3>
+<ul>
+<li><a href="01_Obstetric_History_Differentials.html">Obstetric History</a></li>
+<li><a href="02_Gynaecological_History_Differentials.html">Gynae History</a></li>
+</ul>
+</div>
+        <h1>Gynaecological History-Taking with Differential Diagnosis</h1>
+<h2>ICRP OSCE Preparation - Obstetrics & Gynaecology Module</h2>
+<h3>Following Dr. Amir Soufi's Differential-Driven Approach (IMG4IMGS Methodology)</h3>
+
+<hr>
+
+<h2>Target Audience</h2>
+<ul>
+<li>IMGs preparing for AMC Clinical OSCE</li>
+<li>ICRP participants at NSW Young Hospital Program</li>
+<li>Medical students/residents rotating through gynaecology</li>
+<li>Focus: 8-minute OSCE stations with differential diagnosis emphasis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Learning Objectives</h2>
+
+<p>
+By the end of this module, you will be able to:
+</p>
+
+<ol>
+<li><strong>Take systematic gynaecological history</strong> using differential-driven approach</li>
+<li><strong>Generate differential diagnosis</strong> for common gynaecological presentations (abnormal bleeding, pelvic pain, discharge, menopause symptoms)</li>
+<li><strong>Identify <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong> requiring <span style="color: #e74c3c; font-weight: bold;">URGENT</span> investigation (malignancy, ectopic pregnancy, ovarian torsion)</li>
+<li><strong>Assess menstrual cycle</strong> systematically and recognize abnormal patterns</li>
+<li><strong>Conduct sexual health history</strong> sensitively and comprehensively</li>
+<li><strong>Apply Australian gynaecological guidelines</strong> (RANZCOG, Cancer Council cervical screening, eTG 2024)</li>
+<li><strong>Communicate effectively</strong> about sensitive topics (contraception, STIs, sexual dysfunction)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Dr. Amir Soufi's Core Principle Applied to Gynaecological History</h2>
+
+<h3>The Differential-Driven Mindset for Gynaecological Presentations</h3>
+
+<strong>Traditional Approach (WRONG for OSCE)</strong>:
+<ol>
+<li>Patient presents with gynaecological complaint</li>
+<li>Take full history mechanically</li>
+<li>Think about diagnosis at the end</li>
+<p>
+</ol>
+</p>
+
+<strong>Dr. Amir's Approach (CORRECT for OSCE)</strong>:
+<ol>
+<li><strong>Immediately think based on age + symptom</strong>:</li>
+<p>
+</ol>
+   - "25-year-old with heavy periods" → Think: Fibroids (less likely at this age), Bleeding disorder (vWD), Anovulation, PCOS
+   - "55-year-old with postmenopausal bleeding" → Think: <strong>Endometrial cancer until proven otherwise</strong>, Atrophic vaginitis, Polyp, HRT effect
+   - "18-year-old with pelvic pain" → Think: PID, Ovarian cyst (torsion/rupture), Ectopic (if sexually active), Endometriosis
+</p>
+<ol>
+<li><strong>Age is CRITICAL</strong> - determines probability of malignancy and hormonal status</li>
+<li><strong>Your questions are DRIVEN by differential and <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong></li>
+<li><strong>Pattern recognition</strong>: Heavy periods + pressure symptoms = fibroids, Irregular bleeding + hirsutism = PCOS</li>
+<p>
+</ol>
+</p>
+
+<strong>Example</strong>:
+<ul>
+<li>Patient: "I'm 52 and having irregular heavy bleeding"</li>
+<li><strong>Think immediately</strong>: "Perimenopausal - likely anovulatory cycles, BUT must exclude endometrial hyperplasia/cancer (age >45 + abnormal bleeding = needs endometrial sampling)"</li>
+<li><strong>Your next questions</strong>: "When was your last normal period? How heavy is the bleeding? Any bleeding between periods or after sex? Any weight loss?" (cancer screening)</li>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> assessment</strong>: Postmenopausal bleeding, intermenstrual bleeding, post-coital bleeding = cancer until proven otherwise</li>
+<p>
+</ul>
+</p>
+
+<strong>This age-based and pattern-based differential thinking is essential for gynaecology OSCE success.</strong>
+
+<hr>
+
+<h2>Part 1: Systematic Menstrual History Assessment</h2>
+
+<h3>The "PALM-COEIN" Framework for Abnormal Uterine Bleeding</h3>
+
+<strong>PALM-COEIN</strong> is the FIGO (International Federation of Gynecology and Obstetrics) classification for causes of abnormal uterine bleeding (AUB).
+
+<strong>Structural Causes (PALM)</strong> - diagnosed by imaging/histology:
+<ul>
+<li><strong>P</strong>: Polyp (endometrial polyp)</li>
+<li><strong>A</strong>: Adenomyosis (endometrium in myometrium)</li>
+<li><strong>L</strong>: Leiomyoma (fibroids)</li>
+<li><strong>M</strong>: Malignancy and hyperplasia (endometrial cancer, hyperplasia, cervical cancer)</li>
+<p>
+</ul>
+</p>
+
+<strong>Non-Structural Causes (COEIN)</strong>:
+<ul>
+<li><strong>C</strong>: Coagulopathy (bleeding disorders - von Willebrand disease, platelet disorders)</li>
+<li><strong>O</strong>: Ovulatory dysfunction (PCOS, perimenopause, hypothalamic amenorrhoea)</li>
+<li><strong>E</strong>: Endometrial (local endometrial dysfunction not due to other causes)</li>
+<li><strong>I</strong>: Iatrogenic (IUD, anticoagulants, hormonal contraception)</li>
+<li><strong>N</strong>: Not yet classified</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Menstrual History: "LMNOP" Framework</h3>
+
+<h4>L - <strong>LAST MENSTRUAL PERIOD (LMP)</strong></h4>
+
+<strong>"When was the first day of your last period?"</strong>
+<ul>
+<li>Document exact date</li>
+<li><strong>Establish if patient could be pregnant</strong> (critical before investigations/medications)</li>
+<p>
+</ul>
+</p>
+
+<strong>"Was that period normal for you?"</strong>
+<ul>
+<li>If abnormal → May indicate current problem</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>M - <strong>MENARCHE</strong> (Age of First Period)</h4>
+
+<strong>"How old were you when you started your periods?"</strong>
+<ul>
+<li><strong>Normal</strong>: 11-15 years (average 12-13 in developed countries)</li>
+<li><strong>Primary amenorrhoea</strong>: No periods by age 16 (or by 14 if no secondary sexual characteristics)</li>
+<p>
+</ul>
+  - Differential: Hypothalamic/pituitary (low GnRH), ovarian (Turner syndrome, PCOS), anatomical (imperforate hymen, absent uterus)
+</p>
+
+<hr>
+
+<h4>N - <strong>NORMAL CYCLE</strong> (Establish Baseline)</h4>
+
+<strong>"Tell me about your normal periods before this problem started"</strong>
+
+<strong>Cycle Length</strong>:
+<ul>
+<li><strong>"How often do you get your period? Every how many days?"</strong></li>
+<li><strong>Normal</strong>: 21-35 days (average 28 days)</li>
+<li><strong>Polymenorrhoea</strong>: <21 days (frequent)</li>
+<li><strong>Oligomenorrhoea</strong>: >35 days (infrequent)</li>
+<p>
+</ul>
+</p>
+
+<strong>Duration</strong>:
+<ul>
+<li><strong>"How many days does your period last?"</strong></li>
+<li><strong>Normal</strong>: 3-7 days</li>
+<li><strong>Prolonged</strong>: >7 days (menorrhagia if also heavy)</li>
+<p>
+</ul>
+</p>
+
+<strong>Flow</strong>:
+<ul>
+<li><strong>"How heavy is your period normally?"</strong></li>
+<li><strong>Quantify objectively</strong>:</li>
+<p>
+</ul>
+  - "How many pads/tampons do you use per day?"
+  - "Do you pass clots? What size?"
+  - "Do you ever flood through to your clothes?"
+  - "Does it affect your daily activities or work?"
+</p>
+<ul>
+<li><strong>Menorrhagia (heavy menstrual bleeding - HMB)</strong>: >80mL per cycle, but practically:</li>
+<p>
+</ul>
+  - Flooding through protection
+  - Passing clots >2cm
+  - Using >7 pads/tampons per day on heavy days
+  - Affecting quality of life
+</p>
+
+<strong>Regularity</strong>:
+<ul>
+<li><strong>"Are your periods regular or irregular?"</strong></li>
+<li><strong>Regular</strong>: Cycle length varies by <4 days</li>
+<li><strong>Irregular</strong>: Unpredictable, varying cycle length</li>
+<p>
+</ul>
+</p>
+
+<strong>Pain</strong> (Dysmenorrhoea):
+<ul>
+<li><strong>"Do you get period pain?"</strong></li>
+<li><strong>Primary dysmenorrhoea</strong>: Painful periods from menarche, no pathology (prostaglandin-mediated)</li>
+<li><strong>Secondary dysmenorrhoea</strong>: New onset or worsening pain, underlying pathology (endometriosis, adenomyosis, fibroids)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>O - <strong>OVULATION SYMPTOMS</strong></h4>
+
+<strong>"Do you notice any symptoms mid-cycle?"</strong>
+<ul>
+<li><strong>Mittelschmerz</strong>: Mid-cycle pain (ovulation pain) - unilateral, brief</li>
+<li><strong>Mid-cycle spotting</strong>: Small amount of bleeding at ovulation</li>
+<li><strong>Changes in cervical mucus</strong>: Clear, stretchy ("egg white") at ovulation</li>
+<p>
+</ul>
+</p>
+
+<strong>Why This Matters</strong>:
+<ul>
+<li>Confirms ovulatory cycles (regular cycles + mittelschmerz = likely ovulating)</li>
+<li>Anovulatory cycles (PCOS, perimenopause) = irregular, heavy bleeding</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>P - <strong>PRESENT COMPLAINT</strong> (Current Problem)</h4>
+
+<strong>Describe the Change</strong>:
+<strong>"What's changed with your periods that's brought you in today?"</strong>
+
+<strong>Categories of Abnormal Uterine Bleeding</strong>:
+
+<ol>
+<li><strong>Heavy Menstrual Bleeding (HMB)</strong> - previously called menorrhagia:</li>
+<p>
+</ol>
+   - Excessive blood loss interfering with quality of life
+   - <strong>Ask</strong>: "Compared to your normal periods, how much heavier is it?"
+</p>
+
+<ol>
+<li><strong>Intermenstrual Bleeding (IMB)</strong>:</li>
+<p>
+</ol>
+   - Bleeding between periods
+   - <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> for cervical/endometrial pathology</strong>
+   - <strong>Ask</strong>: "Do you bleed between your periods? How much?"
+</p>
+
+<ol>
+<li><strong>Post-coital Bleeding (PCB)</strong>:</li>
+<p>
+</ol>
+   - Bleeding after sexual intercourse
+   - <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> for cervical cancer/pathology</strong>
+   - <strong>Ask</strong>: "Do you bleed after sex?"
+</p>
+
+<ol>
+<li><strong>Postmenopausal Bleeding (PMB)</strong>:</li>
+<p>
+</ol>
+   - Any bleeding >12 months after last period
+   - <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> for endometrial cancer (10% of PMB cases)</strong>
+   - <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> investigation required</strong>
+</p>
+
+<ol>
+<li><strong>Amenorrhoea</strong>:</li>
+<p>
+</ol>
+   - <strong>Primary</strong>: No periods by age 16
+   - <strong>Secondary</strong>: Absence of periods for ≥3 months (in previously menstruating woman)
+   - <strong>Exclude pregnancy first</strong>
+</p>
+
+<ol>
+<li><strong>Irregular Bleeding</strong>:</li>
+<p>
+</ol>
+   - Unpredictable timing, variable flow
+   - Common causes: PCOS, perimenopause, hormonal contraception
+</p>
+
+<hr>
+
+<h2>Part 2: Symptom-Based Gynaecological History</h2>
+
+<h3>HEAVY MENSTRUAL BLEEDING (HMB)</h3>
+
+<strong>Differential Diagnosis by Age</strong>:
+
+<h4>Reproductive Age (18-45 years)</h4>
+
+<p>
+| <strong>Diagnosis</strong> | <strong>Key Features</strong> | <strong>Investigations</strong> | <strong>Management</strong> |
+|--------------|-----------------|-------------------|---------------|
+| <strong>Fibroids (Leiomyoma)</strong> | Heavy periods, pressure symptoms (urinary frequency, constipation), palpable abdominal mass, <strong>regular cycles</strong> | Ultrasound (intramural, subserosal, submucosal), MRI if planning surgery | Medical (Mirena IUD, tranexamic acid, NSAIDs) or surgical (myomectomy, hysterectomy, uterine artery embolization) |
+| <strong>Adenomyosis</strong> | Heavy, painful periods (secondary dysmenorrhoea), <strong>bulky tender uterus</strong>, often age >35, worse with parity | Ultrasound (bulky uterus, myometrial thickening), MRI (gold standard) | Medical (Mirena, NSAIDs, tranexamic acid) or hysterectomy (definitive) |
+| <strong>Endometrial polyp</strong> | Heavy or irregular bleeding, IMB, PCB | Ultrasound (may see polyp), hysteroscopy + biopsy | Hysteroscopic polypectomy |
+| <strong>PCOS</strong> | Irregular, heavy cycles, anovulation, obesity, hirsutism, acne, infertility | Ultrasound (polycystic ovaries), LH:FSH ratio, testosterone, glucose/insulin | Weight loss, Mirena or COCP (regulate cycles), metformin if insulin resistant |
+| <strong>Coagulopathy (von Willebrand disease)</strong> | <strong>HMB since menarche</strong>, bruising easily, nosebleeds, bleeding after dental work, family history | FBC, coagulation screen, vWF antigen and activity | Tranexamic acid, DDAVP, haematology referral |
+| <strong>Hypothyroidism</strong> | HMB, weight gain, fatigue, constipation, cold intolerance | TFTs (high TSH, low T4) | Thyroxine replacement |
+| <strong>Mirena IUD (initial months)</strong> | Irregular bleeding/spotting first 3-6 months (then usually amenorrhoea) | History (IUD inserted recently) | Reassurance (settles), remove if intolerable |
+| <strong>Dysfunctional uterine bleeding</strong> | Diagnosis of exclusion (no structural cause found) | Normal ultrasound, normal bloods | Mirena IUD, tranexamic acid, NSAIDs, COCP |
+</p>
+
+<hr>
+
+<h4>Perimenopausal (45-55 years)</h4>
+
+<p>
+| <strong>Diagnosis</strong> | <strong>Key Features</strong> | <strong>Investigations</strong> | <strong>Management</strong> |
+|--------------|-----------------|-------------------|---------------|
+| <strong>Anovulatory cycles</strong> | Irregular, heavy bleeding, skipped periods, hot flushes, night sweats | FSH (if >30 and amenorrhoea >4 months = menopause), <strong>endometrial sampling if age >45</strong> | Mirena IUD (first-line), COCP (if suitable), tranexamic acid |
+| <strong>Endometrial hyperplasia</strong> | Irregular heavy bleeding, obesity, unopposed oestrogen (PCOS, HRT without progesterone) | <strong>Endometrial biopsy</strong> (pipelle or hysteroscopy) | Progestogen therapy (Mirena, cyclical progesterone), hysterectomy if atypical hyperplasia |
+| <strong>Endometrial cancer</strong> | <strong>PMB</strong> or irregular bleeding, age >45, obesity, diabetes, nulliparity, late menopause, PCOS | <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> endometrial biopsy</strong>, ultrasound (endometrial thickness >4mm in PMB warrants biopsy), CA125 if advanced | Hysterectomy + bilateral salpingo-oophorectomy ± radiotherapy/chemotherapy |
+</p>
+
+<hr>
+
+<h3>History-Taking for Heavy Menstrual Bleeding</h3>
+
+<strong>Key Questions</strong> (Differential-Driven):
+
+<strong>Quantify Impact</strong>:
+<ol>
+<li><strong>"How is this affecting your life?"</strong></li>
+<p>
+</ol>
+   - Work absence, social activities restricted, anaemia symptoms (fatigue, SOB)
+</p>
+<ol>
+<li><strong>"How many pads/tampons do you use on your heaviest day?"</strong></li>
+<li><strong>"Do you pass clots? What size?"</strong> (>2cm = significant)</li>
+<li><strong>"Do you ever flood through to your clothes or bedding?"</strong></li>
+<li><strong>"Do you feel tired or short of breath?"</strong> (Anaemia from HMB)</li>
+<p>
+</ol>
+</p>
+
+<strong>Structural Causes</strong>:
+<ol>
+<li><strong>"Any pressure symptoms like needing to urinate frequently or constipation?"</strong></li>
+<p>
+</ol>
+   - <strong>Large fibroids</strong> can compress bladder/bowel
+</p>
+<ol>
+<li><strong>"Can you feel a lump in your tummy?"</strong> (Large fibroid)</li>
+<li><strong>"Any pain with your periods? Has the pain gotten worse?"</strong></li>
+<p>
+</ol>
+   - New/worsening pain = <strong>secondary dysmenorrhoea</strong> → Think adenomyosis, endometriosis, fibroids
+</p>
+
+<strong>Malignancy Screening</strong> (CRITICAL if age >45 or risk factors):
+<ol>
+<li><strong>"Any bleeding between periods or after sex?"</strong> (IMB/PCB = <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong>)</li>
+<li><strong>"When was your last period? Are you going through menopause?"</strong> (PMB = <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong>)</li>
+<li><strong>"Any weight loss, bloating, change in bowel habits?"</strong> (Ovarian/endometrial cancer)</li>
+<p>
+</ol>
+</p>
+
+<strong>PCOS Screening</strong> (if reproductive age + irregular cycles):
+<ol>
+<li><strong>"Are your periods regular or irregular?"</strong></li>
+<li><strong>"Any excess hair growth on face, chest, or tummy?"</strong> (Hirsutism)</li>
+<li><strong>"Any acne or oily skin?"</strong></li>
+<li><strong>"Have you had difficulty getting pregnant?"</strong> (PCOS = common cause infertility)</li>
+<p>
+</ol>
+</p>
+
+<strong>Coagulopathy Screening</strong>:
+<ol>
+<li><strong>"Have you always had heavy periods since they started?"</strong> (vWD)</li>
+<li><strong>"Do you bruise easily or get frequent nosebleeds?"</strong></li>
+<li><strong>"Any family history of bleeding disorders?"</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Iatrogenic</strong>:
+<ol>
+<li><strong>"Are you on any contraception? IUD, pill?"</strong></li>
+<li><strong>"Any medications like aspirin or blood thinners?"</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Thyroid Screening</strong>:
+<ol>
+<li><strong>"Any weight changes, fatigue, feeling hot or cold?"</strong> (Hypo/hyperthyroid)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S in Heavy Menstrual Bleeding</h3>
+
+<strong>Require <span style="color: #e74c3c; font-weight: bold;">URGENT</span> Investigation</strong> (within 2 weeks):
+
+<ol>
+<li><strong>Age >45 with new/changed bleeding pattern</strong> → Endometrial sampling (exclude cancer)</li>
+<li><strong>Postmenopausal bleeding</strong> → <strong>Endometrial cancer until proven otherwise</strong> → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> ultrasound + endometrial biopsy</li>
+<li><strong>Intermenstrual bleeding</strong> or <strong>post-coital bleeding</strong> → Cervical/endometrial pathology → Speculum exam + cervical screening, ± endometrial sampling</li>
+<li><strong>Severe anaemia</strong> (Hb <80 g/L) → May need transfusion, IV iron</li>
+<li><strong>Palpable pelvic/abdominal mass</strong> → Large fibroid or ovarian mass → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> ultrasound</li>
+<li><strong>Weight loss, bloating, early satiety</strong> → Ovarian cancer → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> ultrasound + CA125</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Part 3: PELVIC PAIN</h2>
+
+<h3>Differential Diagnosis by Timing and Character</h3>
+
+<h4>Acute Pelvic Pain (<24 hours onset)</h4>
+
+<strong>GYNAECOLOGICAL EMERGENCIES</strong>:
+
+<p>
+| <strong>Diagnosis</strong> | <strong>Key Features</strong> | <strong>Examination</strong> | <strong>Investigations</strong> | <strong>Management</strong> |
+|--------------|-----------------|-----------------|-------------------|---------------|
+| <strong>Ectopic pregnancy</strong> | Sudden unilateral pain, vaginal bleeding, <strong>amenorrhoea</strong> (missed period), shoulder tip pain (if ruptured), risk factors (PID, IUD, previous ectopic) | Tender adnexal mass, cervical excitation, peritonism if ruptured | <strong>Pregnancy test (βhCG)</strong>, <strong>ultrasound</strong> (no intrauterine pregnancy, possible adnexal mass, free fluid), βhCG trend (doesn't double in 48h) | Medical (methotrexate if stable, βhCG <5000, unruptured, <3cm) or <strong>surgical (laparoscopy)</strong> if ruptured/unstable → <strong>Life-threatening <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong> |
+| <strong>Ovarian torsion</strong> | Sudden severe unilateral pain, <strong>intermittent</strong> (twists and untwists), nausea/vomiting, ovarian mass (cyst, teratoma) | Tender adnexal mass, rebound tenderness | <strong>Ultrasound with Doppler</strong> (reduced/absent ovarian blood flow, "whirlpool sign"), pregnancy test (exclude ectopic) | <strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> laparoscopy</strong> - detorsion ± oophorectomy (time-critical - ovary infarcts if >6-8h) |
+| <strong>Ruptured ovarian cyst</strong> | Sudden severe unilateral pain, preceded by dull ache (stretching cyst), may have haemoperitoneum (shoulder tip pain, shock) | Tender adnexum, peritonism if significant haemoperitoneum | Ultrasound (free fluid, ruptured cyst), FBC (Hb drop if bleeding), pregnancy test | Conservative (analgesia, monitor) if haemodynamically stable, <strong>laparoscopy</strong> if unstable (bleeding corpus luteum cyst) |
+| <strong>Pelvic inflammatory disease (PID)</strong> | Bilateral lower abdominal pain, deep dyspareunia, abnormal discharge, fever, recent new sexual partner/unprotected sex | <strong>Cervical excitation</strong>, adnexal tenderness (bilateral), purulent discharge on speculum | <strong>High vaginal swab (HVS)</strong> + endocervical swabs (chlamydia, gonorrhoea NAAT), elevated CRP/WBC | <strong>Antibiotics</strong> (doxycycline 100mg BD 14 days + metronidazole 400mg BD 14 days + ceftriaxone 500mg IM stat), contact tracing, screen for other STIs |
+</p>
+
+<strong>NON-GYNAECOLOGICAL ACUTE CAUSES</strong>:
+<ul>
+<li><strong>Appendicitis</strong>: RLQ pain, fever, nausea, rebound tenderness → CT abdomen, surgical referral</li>
+<li><strong>Urinary tract infection</strong>: Suprapubic pain, dysuria, frequency → Urinalysis, antibiotics</li>
+<li><strong>Renal colic</strong>: Severe colicky loin-to-groin pain, haematuria → CT KUB, analgesia</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Chronic Pelvic Pain (>6 months)</h4>
+
+<p>
+| <strong>Diagnosis</strong> | <strong>Key Features</strong> | <strong>Investigations</strong> | <strong>Management</strong> |
+|--------------|-----------------|-------------------|---------------|
+| <strong>Endometriosis</strong> | Cyclical pelvic pain (worse with periods), severe <strong>dysmenorrhoea</strong> (secondary), <strong>deep dyspareunia</strong> (pain with sex), <strong>dyschezia</strong> (pain on defecation), subfertility, family history | Laparoscopy (gold standard - visualize endometriotic deposits), ultrasound (endometriomas - "chocolate cysts"), CA125 may be elevated | NSAIDs, COCP (continuous to suppress periods), Mirena IUD, GnRH analogues, laparoscopic excision/ablation of endometriosis |
+| <strong>Adenomyosis</strong> | Heavy painful periods, dysmenorrhoea, dyspareunia, age >35, parous, <strong>bulky tender uterus</strong> | Ultrasound (bulky uterus, myometrial thickening), MRI (diagnostic) | Mirena IUD, NSAIDs, GnRH analogues, hysterectomy (definitive) |
+| <strong>Fibroids</strong> | Pressure/dragging pain, HMB, urinary frequency, palpable mass | Ultrasound (fibroids - location and size) | As per HMB management |
+| <strong>Chronic PID</strong> | Bilateral dull ache, deep dyspareunia, previous acute PID, history STI | Swabs (may be negative if chronic), laparoscopy (adhesions) | Antibiotics if active infection, analgesia, physiotherapy |
+| <strong>Adhesions</strong> (post-surgical) | Chronic pelvic pain, previous pelvic surgery (caesarean, appendicectomy), variable pain | Laparoscopy (visualize adhesions) | Adhesiolysis (but may recur), pain management |
+| <strong>Irritable bowel syndrome (IBS)</strong> | Abdominal pain, bloating, altered bowel habit (diarrhoea/constipation), relieved by defecation, no <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s | Clinical diagnosis (exclude organic pathology) | Dietary modification (low FODMAP), antispasmodics, psychological support |
+| <strong>Interstitial cystitis</strong> | Suprapubic pain, urinary frequency/urgency, dysuria, pain worse with full bladder, relieved by voiding | Cystoscopy (Hunner's ulcers, glomerulations), urodynamics | Bladder training, amitriptyline, pentosan polysulfate, intravesical treatments |
+</p>
+
+<hr>
+
+<h3>History-Taking for Pelvic Pain</h3>
+
+<strong>SOCRATES Framework</strong> (adapted):
+
+<strong>S - Site</strong>:
+<ul>
+<li><strong>"Where is the pain?"</strong></li>
+<li>Unilateral (ovarian pathology, ectopic) vs bilateral (PID, IBS) vs central (uterine, bowel)</li>
+<p>
+</ul>
+</p>
+
+<strong>O - Onset</strong>:
+<ul>
+<li><strong>"When did it start? Sudden or gradual?"</strong></li>
+<li>Sudden (torsion, ruptured cyst, ectopic) vs gradual (endometriosis, PID)</li>
+<p>
+</ul>
+</p>
+
+<strong>C - Character</strong>:
+<ul>
+<li><strong>"What does the pain feel like?"</strong></li>
+<li>Sharp/stabbing (torsion, ruptured cyst), cramping (dysmenorrhoea), dull ache (chronic), colicky (bowel)</li>
+<p>
+</ul>
+</p>
+
+<strong>R - Radiation</strong>:
+<ul>
+<li><strong>"Does it go anywhere else?"</strong></li>
+<li><strong>Shoulder tip pain</strong> = haemoperitoneum (ruptured ectopic, ruptured cyst)</li>
+<p>
+</ul>
+</p>
+
+<strong>A - Associated Symptoms</strong>:
+
+<strong>Gynaecological</strong>:
+<ul>
+<li><strong>"Any vaginal bleeding or discharge?"</strong></li>
+<li><strong>"Could you be pregnant? When was your last period?"</strong> (ALWAYS exclude pregnancy in reproductive age)</li>
+<li><strong>"Any pain with sex?"</strong> (Dyspareunia - deep = endometriosis, superficial = vulvodynia/infection)</li>
+<p>
+</ul>
+</p>
+
+<strong>Systemic</strong>:
+<ul>
+<li><strong>"Any fever, chills?"</strong> (PID, appendicitis)</li>
+<li><strong>"Any nausea or vomiting?"</strong> (Torsion, appendicitis)</li>
+<p>
+</ul>
+</p>
+
+<strong>Urinary</strong>:
+<ul>
+<li><strong>"Any burning when you pass urine?"</strong> (UTI)</li>
+<p>
+</ul>
+</p>
+
+<strong>Bowel</strong>:
+<ul>
+<li><strong>"Any change in bowel habits, diarrhoea, constipation?"</strong> (IBS, endometriosis affecting bowel)</li>
+<li><strong>"Any pain when opening your bowels?"</strong> (Dyschezia - endometriosis)</li>
+<p>
+</ul>
+</p>
+
+<strong>T - Timing/Pattern</strong>:
+<ul>
+<li><strong>"Is the pain constant or does it come and go?"</strong></li>
+<li><strong>"Does it relate to your menstrual cycle?"</strong></li>
+<p>
+</ul>
+  - <strong>Cyclical pain (worse with periods)</strong> = endometriosis, adenomyosis, dysmenorrhoea
+  - <strong>Mid-cycle pain</strong> = mittelschmerz (ovulation)
+</p>
+<ul>
+<li><strong>"Does it relate to eating, bowel movements, urination, or sex?"</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>E - Exacerbating/Relieving Factors</strong>:
+<ul>
+<li>Worse with exercise/movement (torsion), worse with periods (endometriosis), relieved by defecation (IBS)</li>
+<p>
+</ul>
+</p>
+
+<strong>S - Severity</strong>:
+<ul>
+<li><strong>"On a scale of 0-10, how bad is the pain?"</strong></li>
+<li><strong>"Does it affect your daily activities or work?"</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 4: VAGINAL DISCHARGE</h2>
+
+<h3>Normal vs Abnormal Discharge</h3>
+
+<strong>Normal Physiological Discharge</strong>:
+<ul>
+<li><strong>Clear or white</strong> in color</li>
+<li><strong>No odor</strong> or mild smell</li>
+<li><strong>Varies with menstrual cycle</strong>: Thick and white early cycle, clear and stretchy mid-cycle (ovulation), thick again late cycle</li>
+<li><strong>Asymptomatic</strong> (no itch, soreness, dysuria)</li>
+<p>
+</ul>
+</p>
+
+<strong>Abnormal Discharge</strong> (suggests infection or pathology):
+<ul>
+<li><strong>Change in color</strong>: Yellow, green, grey</li>
+<li><strong>Change in consistency</strong>: Thick "cottage cheese", frothy</li>
+<li><strong>Odor</strong>: Fishy, offensive</li>
+<li><strong>Associated symptoms</strong>: Itch, soreness, dysuria, dyspareunia</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Differential Diagnosis of Vaginal Discharge</h3>
+
+<p>
+| <strong>Diagnosis</strong> | <strong>Color/Consistency</strong> | <strong>Odor</strong> | <strong>Symptoms</strong> | <strong>Cause</strong> | <strong>Treatment</strong> |
+|--------------|----------------------|----------|-------------|----------|---------------|
+| <strong>Bacterial vaginosis (BV)</strong> | Grey, thin, watery | <strong>Fishy</strong> (worse after sex/periods) | Usually no itch, may have vaginal irritation | Overgrowth of anaerobes (Gardnerella), disrupted normal flora | <strong>Metronidazole</strong> 400mg BD 5-7 days PO or 0.75% gel PV |
+| <strong>Candidiasis (Thrush)</strong> | <strong>Thick, white "cottage cheese"</strong> | None | <strong>Intense vulval itch</strong>, soreness, dysuria, dyspareunia, vulval erythema | Candida albicans (fungal), common in pregnancy, diabetes, antibiotics, immunosuppression | <strong>Fluconazole</strong> 150mg PO single dose or <strong>clotrimazole</strong> pessary 500mg PV single dose |
+| <strong>Trichomoniasis</strong> | Yellow-green, <strong>frothy</strong> | Offensive | Vulvovaginal irritation, dysuria, dyspareunia, "strawberry cervix" on speculum | Trichomonas vaginalis (protozoan), <strong>sexually transmitted</strong> | <strong>Metronidazole</strong> 400mg BD 7 days or 2g stat, treat partner, test for other STIs |
+| <strong>Chlamydia</strong> | Mucopurulent (if cervicitis) | None | Often <strong>asymptomatic</strong>, may have IMB, PCB, dysuria, PID if ascends | Chlamydia trachomatis, <strong>most common bacterial STI</strong> in Australia | <strong>Azithromycin</strong> 1g PO stat or doxycycline 100mg BD 7 days, contact tracing, test for other STIs |
+| <strong>Gonorrhoea</strong> | Purulent, yellow | None | Often asymptomatic, may have dysuria, IMB, PCB, PID if ascends | Neisseria gonorrhoeae, <strong>sexually transmitted</strong> | <strong>Ceftriaxone</strong> 500mg IM stat (+ azithromycin 1g PO to cover chlamydia), contact tracing, test of cure at 2 weeks |
+| <strong>Cervical ectropion</strong> | Mucoid discharge | None | Excessive mucus, may have PCB, asymptomatic | Normal variant (columnar epithelium on ectocervix), common in pregnancy/COCP | Usually none needed (reassurance), cautery if troublesome |
+| <strong>Cervical polyp</strong> | Mucoid or bloodstained | None | Discharge, PCB | Benign overgrowth of cervical tissue | Polypectomy (avulsion in clinic or hysteroscopy) |
+| <strong>Cervical cancer</strong> | Watery, bloodstained, offensive | Offensive (necrotic tumor) | PCB, IMB, PMB, discharge, pelvic pain (advanced) | HPV-related squamous cell carcinoma (90%) or adenocarcinoma | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> gynaecology referral, staging, treatment (surgery, radiotherapy, chemotherapy) |
+</p>
+
+<hr>
+
+<h3>History-Taking for Vaginal Discharge</h3>
+
+<strong>Key Questions</strong>:
+
+<strong>Characterize Discharge</strong>:
+<ol>
+<li><strong>"What color is the discharge?"</strong></li>
+<li><strong>"How much discharge? More than usual?"</strong></li>
+<li><strong>"Does it have a smell?"</strong> (Fishy = BV, offensive = trichomoniasis or cancer)</li>
+<li><strong>"What consistency? Thick, thin, frothy, cottage cheese-like?"</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Associated Symptoms</strong>:
+<ol>
+<li><strong>"Any itching, soreness, or burning?"</strong></li>
+<p>
+</ol>
+   - <strong>Itch dominant</strong> = Candidiasis
+   - <strong>No itch, fishy odor</strong> = BV
+</p>
+<ol>
+<li><strong>"Any bleeding - between periods, after sex, or after menopause?"</strong></li>
+<p>
+</ol>
+   - <strong>PCB</strong> = <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> for cervical pathology</strong> (cancer, polyp, ectropion)
+</p>
+<ol>
+<li><strong>"Any pain in your pelvis or pain with sex?"</strong> (PID)</li>
+<li><strong>"Any pain or burning when you pass urine?"</strong> (UTI, STI)</li>
+<p>
+</ol>
+</p>
+
+<strong>Sexual History</strong> (CRITICAL for STI risk assessment):
+<ol>
+<li><strong>"Are you sexually active?"</strong></li>
+<li><strong>"When was your last sexual contact?"</strong></li>
+<li><strong>"Do you have sex with men, women, or both?"</strong></li>
+<li><strong>"Do you use condoms?"</strong></li>
+<li><strong>"Have you had any new sexual partners recently?"</strong></li>
+<li><strong>"Has your partner had any symptoms?"</strong></li>
+<li><strong>"Have you or your partner ever had any sexually transmitted infections?"</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Risk Factors</strong>:
+<ol>
+<li><strong>"Are you on any antibiotics currently or recently?"</strong> (Candidiasis risk)</li>
+<li><strong>"Do you have diabetes?"</strong> (Candidiasis risk)</li>
+<li><strong>"Are you pregnant?"</strong> (Candidiasis common)</li>
+<li><strong>"Have you used any vaginal products like douches or perfumed soaps?"</strong> (Disrupts flora → BV)</li>
+<p>
+</ol>
+</p>
+
+<strong>Cervical Screening</strong>:
+<ol>
+<li><strong>"When was your last Pap smear? Was it normal?"</strong></li>
+<p>
+</ol>
+   - Overdue cervical screening + symptoms = higher cervical cancer risk
+</p>
+
+<hr>
+
+<h2>Part 5: MENOPAUSE ASSESSMENT</h2>
+
+<h3>Stages of Menopause</h3>
+
+<strong>Perimenopause</strong> (Menopausal Transition):
+<ul>
+<li>Irregular periods (cycles vary by >7 days)</li>
+<li>Onset of vasomotor symptoms (hot flushes, night sweats)</li>
+<li>Usually lasts 4-8 years</li>
+<li><strong>Average age</strong>: 47-48 years</li>
+<p>
+</ul>
+</p>
+
+<strong>Menopause</strong>:
+<ul>
+<li><strong>Definition</strong>: Permanent cessation of menstruation</li>
+<li><strong>Diagnosed retrospectively</strong>: 12 months of amenorrhoea</li>
+<li><strong>Average age</strong>: 51-52 years in Australia</li>
+<p>
+</ul>
+</p>
+
+<strong>Premature Menopause</strong>:
+<ul>
+<li>Menopause before age 40</li>
+<li><strong>Causes</strong>: Idiopathic (most common), autoimmune (thyroid, Addison's), chemotherapy/radiotherapy, surgical (bilateral oophorectomy), genetic (Turner syndrome, Fragile X premutation)</li>
+<li><strong>Implications</strong>: Increased cardiovascular disease risk, osteoporosis, psychological impact, infertility</li>
+<p>
+</ul>
+</p>
+
+<strong>Postmenopause</strong>:
+<ul>
+<li>Period after menopause (all years following final menstrual period)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Symptoms of Menopause</h3>
+
+<strong>Vasomotor Symptoms</strong> (most common):
+<ul>
+<li><strong>Hot flushes</strong>: Sudden sensation of heat, flushing of face/chest, sweating</li>
+<li><strong>Night sweats</strong>: Disrupt sleep → Fatigue, mood changes</li>
+<li><strong>Affect 75-80% of women</strong>, last median 7.4 years</li>
+<p>
+</ul>
+</p>
+
+<strong>Genitourinary Syndrome of Menopause (GSM)</strong> - previously "vaginal atrophy":
+<ul>
+<li><strong>Vaginal dryness</strong>, dyspareunia (painful sex)</li>
+<li><strong>Urinary symptoms</strong>: Frequency, urgency, recurrent UTIs</li>
+<li><strong>Due to low oestrogen</strong> → Thinning of vaginal epithelium</li>
+<p>
+</ul>
+</p>
+
+<strong>Psychological</strong>:
+<ul>
+<li>Mood changes, irritability, anxiety, low mood</li>
+<li>Sleep disturbance (often due to night sweats)</li>
+<li>Difficulty concentrating ("brain fog")</li>
+<p>
+</ul>
+</p>
+
+<strong>Other</strong>:
+<ul>
+<li>Joint aches</li>
+<li>Reduced libido</li>
+<li>Skin changes (dryness, thinning)</li>
+<p>
+</ul>
+</p>
+
+<strong>Long-term Health Risks</strong>:
+<ul>
+<li><strong>Osteoporosis</strong>: Accelerated bone loss (oestrogen protects bone)</li>
+<li><strong>Cardiovascular disease</strong>: Risk increases post-menopause</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>History-Taking for Menopause Assessment</h3>
+
+<strong>Key Questions</strong>:
+
+<strong>Menstrual Pattern</strong>:
+<ol>
+<li><strong>"Tell me about your periods. Are they still regular?"</strong></li>
+<p>
+</ol>
+   - Irregular = perimenopause, Absent >12 months = menopause
+</p>
+<ol>
+<li><strong>"When was your last period?"</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Vasomotor Symptoms</strong>:
+<ol>
+<li><strong>"Do you get hot flushes or night sweats?"</strong></li>
+<li><strong>"How often? How severe? Do they affect your sleep or daily life?"</strong></li>
+<p>
+</ol>
+   - Quantify impact (mild/moderate/severe)
+</p>
+
+<strong>Genitourinary Symptoms</strong>:
+<ol>
+<li><strong>"Any vaginal dryness or pain with sex?"</strong></li>
+<li><strong>"Any urinary symptoms like frequency, urgency, or recurrent infections?"</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Psychological</strong>:
+<ol>
+<li><strong>"How has your mood been? Any anxiety or low mood?"</strong></li>
+<li><strong>"How are you sleeping?"</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Quality of Life</strong>:
+<ol>
+<li><strong>"How are these symptoms affecting your life - work, relationships, daily activities?"</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Contraception</strong>:
+<ol>
+<li><strong>"Are you using contraception?"</strong></li>
+<p>
+</ol>
+    - <strong>Pregnancy still possible in perimenopause</strong> (irregular cycles, but may still ovulate)
+    - <strong>Contraception needed until</strong>: 2 years amenorrhoea if age <50, or 1 year amenorrhoea if age ≥50
+</p>
+
+<strong>Exclude Other Causes</strong>:
+<ol>
+<li><strong>"Any weight change, feeling hot or cold all the time?"</strong> (Thyroid disease can mimic menopause)</li>
+<li><strong>"Any headaches, visual changes, breast discharge?"</strong> (Prolactinoma)</li>
+<p>
+</ol>
+</p>
+
+<strong>HRT Assessment</strong> (if considering Hormone Replacement Therapy):
+
+<strong>Indications for HRT</strong>:
+<ul>
+<li>Moderate-severe vasomotor symptoms</li>
+<li>GSM symptoms</li>
+<li>Premature menopause (for bone/cardiovascular protection until age 50-51)</li>
+<p>
+</ul>
+</p>
+
+<strong>Contraindications to HRT</strong>:
+<ul>
+<li><strong>Absolute</strong>: Breast cancer, endometrial cancer, undiagnosed vaginal bleeding, active VTE or high VTE risk, active liver disease, pregnancy</li>
+<li><strong>Relative</strong>: History VTE (can use transdermal oestrogen), cardiovascular disease (caution), migraine with aura</li>
+<p>
+</ul>
+</p>
+
+<strong>Risk Assessment</strong>:
+<ol>
+<li><strong>"Any personal or family history of breast cancer?"</strong></li>
+<p>
+</ol>
+    - <strong>First-degree relative with breast cancer</strong> = relative contraindication (individualize risk-benefit)
+</p>
+<ol>
+<li><strong>"Any history of blood clots, DVT, or PE?"</strong></li>
+<p>
+</ol>
+    - Previous VTE = avoid oral HRT (use transdermal - lower VTE risk)
+</p>
+<ol>
+<li><strong>"Any history of heart attack, stroke, or angina?"</strong></li>
+<li><strong>"When was your last mammogram and cervical screening?"</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Current Medications</strong>:
+<ol>
+<li><strong>"Are you on any medications?"</strong></li>
+<p>
+</ol>
+    - Especially antidepressants (may help vasomotor symptoms if HRT contraindicated)
+</p>
+
+<hr>
+
+<h3>HRT Types and Regimens (Australian Context)</h3>
+
+<strong>Components</strong>:
+<ul>
+<li><strong>Oestrogen</strong>: For vasomotor symptoms, GSM, bone protection</li>
+<li><strong>Progesterone</strong>: <strong>Required if woman has uterus</strong> (protects endometrium from hyperplasia/cancer)</li>
+<p>
+</ul>
+  - <strong>NOT needed if post-hysterectomy</strong> → Oestrogen-only HRT
+</p>
+
+<strong>Regimens</strong>:
+
+<strong>Perimenopausal (still having periods, irregular)</strong>:
+<ul>
+<li><strong>Cyclical combined HRT</strong>: Oestrogen daily + progesterone for 12-14 days per month</li>
+<li><strong>Results in withdrawal bleed</strong> (when stop progesterone)</li>
+<p>
+</ul>
+</p>
+
+<strong>Postmenopausal (>12 months amenorrhoea)</strong>:
+<ul>
+<li><strong>Continuous combined HRT</strong>: Oestrogen + progesterone daily</li>
+<li><strong>No withdrawal bleeds</strong> (endometrial atrophy)</li>
+<li><strong>Irregular bleeding common first 3-6 months</strong> (reassure, but if persists >6 months → Investigate with endometrial biopsy)</li>
+<p>
+</ul>
+</p>
+
+<strong>Routes</strong>:
+<ul>
+<li><strong>Oral</strong>: Tablets (e.g., oestradiol valerate, conjugated oestrogens)</li>
+<li><strong>Transdermal</strong>: Patches or gel (e.g., estradiol patches)</li>
+<p>
+</ul>
+  - <strong>Preferred if</strong>: Previous VTE (lower VTE risk than oral), cardiovascular disease, migraines, obesity, age >60
+</p>
+<ul>
+<li><strong>Vaginal</strong>: Oestrogen cream/pessary for GSM only (very low systemic absorption, no need for progesterone even if uterus present)</li>
+<p>
+</ul>
+</p>
+
+<strong>Common Australian HRT Options</strong>:
+<ul>
+<li><strong>Femoston</strong> (oestradiol + dydrogesterone) - continuous combined</li>
+<li><strong>Kliogest</strong> (oestradiol + norethisterone) - continuous combined</li>
+<li><strong>Estradot patches</strong> (oestradiol) - transdermal, add progesterone if uterus</li>
+<li><strong>Vagifem</strong> (oestradiol pessary) - vaginal, for GSM</li>
+<p>
+</ul>
+</p>
+
+<strong>Duration</strong>:
+<ul>
+<li><strong>No time limit</strong> - continue as long as benefits outweigh risks</li>
+<li><strong>Review annually</strong>: Symptoms, side effects, risk factors</li>
+<li><strong>Lowest effective dose</strong> for symptom control</li>
+<p>
+</ul>
+</p>
+
+<strong>Alternatives to HRT</strong> (if contraindicated or woman declines):
+<ul>
+<li><strong>SSRIs/SNRIs</strong>: Venlafaxine, paroxetine (reduce hot flushes by ~50%)</li>
+<li><strong>Clonidine</strong>: Alpha-agonist, reduces hot flushes</li>
+<li><strong>Gabapentin</strong>: Reduces hot flushes</li>
+<li><strong>Vaginal oestrogen</strong>: For GSM (safe even if breast cancer, as very low systemic absorption)</li>
+<li><strong>Lifestyle</strong>: Layered clothing, fans, avoid triggers (spicy food, alcohol, caffeine), regular exercise, weight loss</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 6: SEXUAL HEALTH HISTORY</h2>
+
+<h3>The "5 Ps" Framework for Sexual History</h3>
+
+<strong>Ask Permission First</strong>:
+<p>
+"I'd like to ask you some questions about your sexual health to make sure I can give you the best care. Is that alright? Everything you tell me is confidential."
+</p>
+
+<h4>P1 - <strong>PARTNERS</strong></h4>
+
+<ol>
+<li><strong>"Do you have sex with men, women, or both?"</strong> (Establishes orientation, avoids assumptions)</li>
+<li><strong>"How many sexual partners have you had in the last 3 months? Last 12 months?"</strong></li>
+<li><strong>"Is your current partner male or female?"</strong></li>
+<li><strong>"Is your relationship exclusive, or do you or your partner have other partners?"</strong></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h4>P2 - <strong>PRACTICES</strong></h4>
+
+<strong>"What types of sexual contact do you have?"</strong>
+<ul>
+<li>Vaginal, anal, oral (transmission risks differ)</li>
+<li><strong>Anal sex</strong>: Higher HIV risk, rectal STI screening needed</li>
+<li><strong>Oral sex</strong>: Can transmit gonorrhoea, chlamydia, HSV</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>P3 - <strong>PROTECTION</strong></h4>
+
+<ol>
+<li><strong>"Do you use condoms?"</strong></li>
+<p>
+</ol>
+   - Always, sometimes, never
+</p>
+<ol>
+<li><strong>"If not always, why not?"</strong> (Barriers to use - education opportunity)</li>
+<li><strong>"Are you using any contraception?"</strong> (If relevant)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h4>P4 - <strong>PAST HISTORY of STIs</strong></h4>
+
+<ol>
+<li><strong>"Have you ever had a sexually transmitted infection?"</strong></li>
+<p>
+</ol>
+   - Which one, when, was it treated, test of cure done?
+</p>
+<ol>
+<li><strong>"Has your partner ever had an STI?"</strong></li>
+<li><strong>"When was your last STI screening?"</strong></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h4>P5 - <strong>PREGNANCY PREVENTION/PLANNING</strong></h4>
+
+<ol>
+<li><strong>"Could you be pregnant?"</strong> (Always ask before investigations/treatment)</li>
+<li><strong>"Are you trying to get pregnant, or would you like to prevent pregnancy?"</strong></li>
+<li><strong>"What contraception are you using? Are you happy with it?"</strong></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>Additional Sexual History Questions</h3>
+
+<strong>Symptoms</strong>:
+<ul>
+<li><strong>"Any discharge, sores, lumps, or itching in your genital area?"</strong></li>
+<li><strong>"Any pain or bleeding with sex?"</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Context</strong>:
+<ul>
+<li><strong>"Have you ever been forced or pressured into sexual activity you didn't want?"</strong> (Sexual assault screening)</li>
+<li><strong>"Do you feel safe with your partner?"</strong> (Domestic violence screening)</li>
+<p>
+</ul>
+</p>
+
+<strong>For MSM (Men who have Sex with Men)</strong> - not directly relevant for gynaecology but good to know for OSCE:
+<ul>
+<li><strong>"Do you use PrEP (pre-exposure prophylaxis)?"</strong> (HIV prevention)</li>
+<li><strong>Higher STI screening frequency</strong> (every 3-6 months if high risk)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 7: Australian Cervical Screening Program</h2>
+
+<h3>National Cervical Screening Program (Renewed Program from 2017)</h3>
+
+<strong>Key Changes</strong> (from 2-yearly Pap smears):
+
+<strong>Who</strong>: Women and people with a cervix aged <strong>25-74 years</strong>
+
+<strong>How Often</strong>: <strong>Every 5 years</strong>
+
+<strong>Test</strong>: <strong>Cervical Screening Test (CST)</strong> - detects <strong>HPV (human papillomavirus)</strong>
+<ul>
+<li>Previous: Pap smear (detected cellular changes)</li>
+<li>New: HPV test (detects virus causing cervical cancer)</li>
+<p>
+</ul>
+</p>
+
+<strong>Method</strong>:
+<ul>
+<li><strong>Clinician-collected</strong> (speculum examination) - standard</li>
+<li><strong>Self-collected</strong> option available (if >30 years and overdue, or in specific circumstances)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>When to Start/Stop Cervical Screening</h3>
+
+<strong>Start</strong>:
+<ul>
+<li><strong>Age 25</strong> (or 2 years after first sexual contact, whichever is later)</li>
+<li><strong>No screening before age 25</strong> (even if sexually active) - cervical cancer rare in this age group, high rate of HPV clearance</li>
+<p>
+</ul>
+</p>
+
+<strong>Stop</strong>:
+<ul>
+<li><strong>Age 74</strong> (if had 2 consecutive negative CSTs in last 10 years)</li>
+<li><strong>Post-hysterectomy</strong>: If cervix removed and no history of high-grade abnormality → No screening needed</li>
+<p>
+</ul>
+</p>
+
+<strong>Continue screening past 74</strong>:
+<ul>
+<li>If inadequate screening history or previous high-grade abnormality</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>CST Results and Management</h3>
+
+<p>
+| <strong>Result</strong> | <strong>Management</strong> |
+|-----------|---------------|
+| <strong>HPV not detected</strong> | Routine screening in 5 years |
+| <strong>HPV detected (not 16/18), negative LBC</strong> | Repeat CST in 12 months (most will clear HPV) |
+| <strong>HPV 16 or 18 detected</strong> | <strong>Refer for colposcopy</strong> (regardless of LBC) - these strains cause 70% of cervical cancers |
+| <strong>HPV detected + abnormal LBC</strong> (low-grade or high-grade) | <strong>Refer for colposcopy</strong> |
+</p>
+
+<strong>Colposcopy</strong>: Magnified visualization of cervix, directed biopsies, treatment (LLETZ/excision) if high-grade
+
+<hr>
+
+<h3>HPV Vaccination (Gardasil 9)</h3>
+
+<strong>National Immunisation Program</strong>:
+<ul>
+<li><strong>Free for ages 12-13</strong> (school-based program)</li>
+<li><strong>Catch-up</strong>: Free until age 25 (extended recently)</li>
+<p>
+</ul>
+</p>
+
+<strong>Protection</strong>:
+<ul>
+<li><strong>Gardasil 9</strong>: 9 HPV types (6, 11, 16, 18, 31, 33, 45, 52, 58)</li>
+<p>
+</ul>
+  - Types 16, 18 cause 70% cervical cancers
+  - Types 6, 11 cause 90% genital warts
+</p>
+
+<strong>Schedule</strong>:
+<ul>
+<li><strong>Age 12-14</strong>: 2 doses (0 and 6-12 months)</li>
+<li><strong>Age ≥15</strong>: 3 doses (0, 2, and 6 months)</li>
+<p>
+</ul>
+</p>
+
+<strong>Still need cervical screening</strong>: Vaccine doesn't cover all oncogenic HPV types
+
+<hr>
+
+<h2>Part 8: Common IMG Mistakes in Gynaecological History</h2>
+
+<h3>Mistake 1: Not Excluding Pregnancy in Reproductive Age</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Take gynaecological history without asking about LMP or pregnancy possibility</li>
+<li>Order investigations (X-rays, some medications) that may harm fetus</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>ALWAYS ask LMP and "Could you be pregnant?"</strong> in women of reproductive age (15-50 years)</li>
+<li>Pregnancy test before investigations/treatment if any doubt</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 2: Missing Cervical/Endometrial Cancer <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Attribute postmenopausal bleeding to "atrophic vaginitis" without investigation</li>
+<li>Don't recognize post-coital bleeding as <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Postmenopausal bleeding</strong> = endometrial cancer until proven otherwise → <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> ultrasound + endometrial biopsy</strong></li>
+<li><strong>Post-coital bleeding</strong> = cervical pathology → Speculum exam + cervical screening ± colposcopy</li>
+<li><strong>Age >45 + new/changed bleeding</strong> → Endometrial sampling</li>
+<p>
+</ul>
+</p>
+
+<strong>OSCE Statement</strong>: "Postmenopausal bleeding is endometrial cancer until proven otherwise, so she needs <span style="color: #e74c3c; font-weight: bold;">URGENT</span> investigation with transvaginal ultrasound and endometrial biopsy."
+
+<hr>
+
+<h3>Mistake 3: Not Taking Sexual History for Pelvic Pain/Discharge</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Miss sexually transmitted infections (chlamydia, gonorrhoea) causing PID</li>
+<li>Don't ask about sexual activity due to cultural discomfort</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Sexual history is MEDICAL HISTORY</strong> - essential for diagnosis</li>
+<li>Use the "5 Ps" framework professionally</li>
+<li>Ask permission first, explain why you're asking</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 4: Performing Pelvic Exam Before Pregnancy Test in Acute Pelvic Pain</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Patient with pelvic pain → Do bimanual exam → Cause ruptured ectopic to bleed more</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Acute pelvic pain in reproductive age woman</strong> → <strong>Pregnancy test FIRST</strong> (urine βhCG)</li>
+<li>If positive → High suspicion ectopic → Gentle exam only, ultrasound <span style="color: #e74c3c; font-weight: bold;">URGENT</span>ly</li>
+<li><strong>Never dismiss early pregnancy</strong> - ectopic can rupture at any gestation</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 5: Over-investigating Menopause</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Woman age 52, amenorrhoea 14 months, hot flushes → Order FSH levels</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Menopause is a CLINICAL diagnosis</strong> in women >45 years with typical symptoms</li>
+<li><strong>FSH testing NOT needed</strong> if age >45, amenorrhoea >12 months, typical symptoms</li>
+<li><strong>FSH useful if</strong>: Age <45 (premature menopause), hysterectomy (no periods to track), uncertain diagnosis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 6: Not Offering HRT to Symptomatic Menopausal Women</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>"HRT causes breast cancer, I wouldn't recommend it"</li>
+<li>Withhold HRT due to exaggerated risk perception</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>HRT is first-line for moderate-severe vasomotor symptoms</strong></li>
+<li><strong>Benefits outweigh risks</strong> for most women age <60 or within 10 years of menopause</li>
+<li><strong>Breast cancer risk</strong>: Small increase with combined HRT (extra 4 cases per 1000 women over 5 years) - similar to obesity, alcohol</li>
+<li><strong>Offer and discuss</strong> - let woman make informed decision</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 9: OSCE Practice Stations</h2>
+
+<h3>OSCE Station 1: Heavy Menstrual Bleeding in Reproductive Age</h3>
+
+<strong>Candidate Instructions</strong>:
+<p>
+"Ms. Thompson is a 35-year-old woman presenting with heavy periods for the last 6 months. Take a focused gynaecological history. You have 8 minutes."
+</p>
+
+<strong>Approach</strong> (Model Answer):
+
+<strong>Introduction</strong>:
+<p>
+"Hello Ms. Thompson, I'm Dr. [Name]. I understand you've been having heavy periods. I'd like to ask you some questions about this. Is that alright?"
+</p>
+
+<strong>Present Complaint</strong> (2 minutes):
+<ol>
+<li>"Tell me about your periods. What's changed in the last 6 months?"</li>
+<li>"How heavy are they now compared to before?"</li>
+<p>
+</ol>
+   - "How many pads/tampons do you use on your heaviest day?"
+   - "Do you pass clots? What size?"
+   - "Do you ever flood through to your clothes?"
+</p>
+<ol>
+<li>"How is this affecting your life - work, social activities?"</li>
+<li>"Do you feel tired or short of breath?" (Anaemia)</li>
+<p>
+</ol>
+</p>
+
+<strong>Menstrual History</strong> (2 minutes):
+<ol>
+<li>"Before this started, what were your periods normally like?"</li>
+<p>
+</ol>
+   - Cycle length, duration, flow
+</p>
+<ol>
+<li>"Are your periods regular or irregular now?"</li>
+<li>"Do you get period pain? Has it gotten worse?" (Secondary dysmenorrhoea → Adenomyosis/fibroids)</li>
+<li>"Any bleeding between periods or after sex?" (<span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>)</li>
+<p>
+</ol>
+</p>
+
+<strong>Differential-Driven Questions</strong> (2 minutes):
+
+<strong>Structural causes</strong>:
+<ol>
+<li>"Any pressure symptoms like needing to urinate frequently or constipation?" (Fibroids)</li>
+<li>"Can you feel any lumps in your tummy?" (Large fibroid)</li>
+<p>
+</ol>
+</p>
+
+<strong>PCOS</strong> (if irregular):
+<ol>
+<li>"Any excess hair growth, acne, or difficulty getting pregnant?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Coagulopathy</strong>:
+<ol>
+<li>"Have you always had heavy periods since they started?" (vWD)</li>
+<li>"Do you bruise easily or get nosebleeds?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Thyroid</strong>:
+<ol>
+<li>"Any weight changes, fatigue, feeling hot or cold?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Obstetric/Gynae History</strong> (1 minute):
+<ol>
+<li>"Have you had any pregnancies? Any children?"</li>
+<li>"Are you using any contraception? IUD?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Exclude Pregnancy</strong> (Critical):
+<ol>
+<li>"When was your last period?"</li>
+<li>"Could you be pregnant?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Impact and Expectations</strong> (1 minute):
+<ol>
+<li>"What would you like to achieve from treatment?"</li>
+<li>"Is fertility important to you?" (Affects treatment choice - hysterectomy vs uterine-sparing)</li>
+<p>
+</ol>
+</p>
+
+<strong>Presentation</strong>:
+<p>
+"Ms. Thompson is a 35-year-old woman presenting with 6 months of heavy menstrual bleeding, using 10-12 pads per day on heavy days, passing large clots, with flooding episodes affecting her work. She also reports increasing period pain and urinary frequency. Her periods are regular every 28 days. She has no intermenstrual or post-coital bleeding. She's para 2, completed family, not using contraception but not sexually active currently.
+</p>
+
+<p>
+Given her age, heavy regular periods, secondary dysmenorrhoea, and pressure symptoms, my main differential is <strong>fibroids</strong>, with adenomyosis also possible. I'd also consider PCOS (though cycles regular), thyroid dysfunction, and coagulopathy.
+</p>
+
+<p>
+My initial management would include:
+</p>
+<ol>
+<li><strong>Examination</strong>: Abdominal exam for masses, bimanual exam for uterine size/tenderness</li>
+<li><strong>Investigations</strong>:</li>
+<p>
+</ol>
+   - FBC (check for anaemia)
+   - TFTs (thyroid)
+   - Pregnancy test (exclude pregnancy)
+   - <strong>Pelvic ultrasound</strong> (assess for fibroids, adenomyosis, ovarian pathology)
+</p>
+<ol>
+<li><strong>Treatment</strong>: Pending investigations, options include:</li>
+<p>
+</ol>
+   - <strong>Mirena IUD</strong> (first-line for HMB, reduces bleeding by 90%, effective contraception)
+   - <strong>Tranexamic acid</strong> (antifibrinolytic, take during periods)
+   - NSAIDs (mefenamic acid)
+   - If fibroids confirmed and large/symptomatic: Surgical options (myomectomy if fertility desired, hysterectomy if family complete, uterine artery embolization)
+</p>
+<ol>
+<li><strong>Iron replacement</strong> if anaemic (oral or IV)"</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>OSCE Station 2: Postmenopausal Bleeding</h3>
+
+<strong>Candidate Instructions</strong>:
+<p>
+"Mrs. Nguyen is a 58-year-old woman presenting with vaginal bleeding. She went through menopause 5 years ago. Take a focused history and explain your management plan. You have 8 minutes."
+</p>
+
+<strong>Approach</strong>:
+
+<strong>History</strong> (4 minutes):
+
+<strong>Opening</strong>: "Hello Mrs. Nguyen. I understand you've been experiencing some vaginal bleeding. Can you tell me about it?"
+
+<strong>Quantify Bleeding</strong>:
+<ol>
+<li>"When did the bleeding start?"</li>
+<li>"How much bleeding? Light spotting or heavier like a period?"</li>
+<li>"How many episodes have you had?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Menopause Confirmation</strong>:
+<ol>
+<li>"When did your periods stop completely?"</li>
+<p>
+</ol>
+   - Confirms postmenopausal status (>12 months amenorrhoea)
+</p>
+<ol>
+<li>"Have you had any bleeding in the last 5 years until now?"</li>
+<p>
+</ol>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> Screening</strong> (Endometrial/Cervical Cancer):
+<ol>
+<li>"Any pain in your pelvis or tummy?"</li>
+<li>"Any weight loss, loss of appetite, bloating?"</li>
+<li>"Any change in bowel or bladder habits?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Risk Factors for Endometrial Cancer</strong>:
+<ol>
+<li>"What's your weight?" (Obesity = unopposed oestrogen)</li>
+<li>"Do you have diabetes?"</li>
+<li>"Have you ever taken HRT? If yes, what type and for how long?"</li>
+<p>
+</ol>
+    - Oestrogen-only HRT (if given to woman with uterus) = endometrial hyperplasia/cancer risk
+    - Combined HRT = protective (progesterone protects endometrium)
+</p>
+<ol>
+<li>"Have you had breast cancer and been on tamoxifen?"</li>
+<p>
+</ol>
+    - Tamoxifen = weak oestrogenic effect on endometrium
+</p>
+
+<strong>Cervical Screening</strong>:
+<ol>
+<li>"When was your last cervical screening test? Was it normal?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Explanation and Management</strong> (4 minutes):
+
+<p>
+"Mrs. Nguyen, any bleeding after menopause needs to be investigated <span style="color: #e74c3c; font-weight: bold;">URGENT</span>ly because, while there are several possible causes, one of them is cancer of the lining of the womb (endometrium). I want to reassure you that most of the time it's NOT cancer - it can be due to thinning of the vaginal tissues or benign polyps - but we need to check carefully.
+</p>
+
+<p>
+I'd like to do some investigations:
+</p>
+
+<ol>
+<li><strong>Examination today</strong>:</li>
+<p>
+</ol>
+   - Speculum examination to look at your cervix and see where the bleeding is coming from
+   - May take a cervical screening test if you're overdue
+</p>
+
+<ol>
+<li><strong>Ultrasound scan</strong>:</li>
+<p>
+</ol>
+   - <strong>Transvaginal ultrasound</strong> to measure the thickness of the womb lining
+   - If the lining is thin (<4mm), cancer is very unlikely
+   - If thick (≥4mm), we need to take a sample to check
+</p>
+
+<ol>
+<li><strong>Endometrial biopsy</strong>:</li>
+<p>
+</ol>
+   - Taking a small sample of the womb lining to examine under the microscope
+   - Can be done as an outpatient procedure (pipelle biopsy - thin tube inserted through cervix)
+   - Or in theatre with hysteroscopy (camera to look inside womb)
+</p>
+
+<ol>
+<li><strong>Timeline</strong>:</li>
+<p>
+</ol>
+   - These investigations are <span style="color: #e74c3c; font-weight: bold;">URGENT</span> - ideally within 2 weeks
+   - I'll refer you to the gynaecology clinic as a priority
+</p>
+
+<strong>Most likely causes</strong>:
+<ul>
+<li>Atrophic vaginitis (thin, dry vaginal tissues) - most common, benign</li>
+<li>Endometrial polyp - benign growth</li>
+<li>Endometrial hyperplasia - thickening of lining, pre-cancerous</li>
+<li>Endometrial cancer - about 10% of women with postmenopausal bleeding</li>
+<p>
+</ul>
+</p>
+
+<p>
+Do you have any questions?"
+</p>
+
+<hr>
+
+<h3>OSCE Station 3: Acute Pelvic Pain - ?Ectopic</h3>
+
+<strong>Candidate Instructions</strong>:
+<p>
+"Ms. Lee is a 28-year-old woman presenting to ED with sudden onset left-sided pelvic pain for 3 hours. She looks pale and unwell. Take a focused history and explain your initial management. You have 8 minutes."
+</p>
+
+<strong>History</strong> (4 minutes):
+
+<strong>ABCDE Assessment First</strong> (if looks unwell):
+<p>
+"Ms. Lee looks unwell. I would first assess her haemodynamic status - check BP, HR, ensure IV access, and commence resuscitation if needed."
+</p>
+
+<strong>Pain History</strong> (SOCRATES):
+<ol>
+<li>"Tell me about the pain. Where exactly is it?"</li>
+<p>
+</ol>
+   - Left-sided = think left ovarian pathology or left ectopic
+</p>
+<ol>
+<li>"When did it start? Sudden or gradual?"</li>
+<p>
+</ol>
+   - Sudden = torsion, ruptured cyst/ectopic
+</p>
+<ol>
+<li>"What does it feel like?"</li>
+<li>"Does it go anywhere else, like your shoulder?"</li>
+<p>
+</ol>
+   - <strong>Shoulder tip pain = haemoperitoneum</strong> → Ruptured ectopic
+</p>
+
+<strong>CRITICAL - Exclude Pregnancy</strong>:
+<ol>
+<li>"Could you be pregnant? When was your last period?"</li>
+<p>
+</ol>
+   - <strong>If MISSED PERIOD + pelvic pain</strong> = <strong>ectopic pregnancy until proven otherwise</strong>
+</p>
+<ol>
+<li>"Are your periods usually regular?"</li>
+<li>"Do you use contraception?" (Can still have ectopic with IUD in situ)</li>
+<p>
+</ol>
+</p>
+
+<strong>Associated Symptoms</strong>:
+<ol>
+<li>"Any vaginal bleeding?"</li>
+<p>
+</ol>
+   - Ectopic often has bleeding (but absence doesn't exclude)
+</p>
+<ol>
+<li>"Any dizziness or feeling faint?"</li>
+<p>
+</ol>
+   - Haemodynamic compromise = ruptured ectopic
+</p>
+<ol>
+<li>"Any nausea or vomiting?"</li>
+<p>
+</ol>
+    - Torsion, ruptured ectopic
+</p>
+
+<strong>Risk Factors for Ectopic</strong>:
+<ol>
+<li>"Have you ever had pelvic inflammatory disease or sexually transmitted infections?"</li>
+<p>
+</ol>
+   - PID → Tubal damage → Ectopic risk
+</p>
+<ol>
+<li>"Have you had an ectopic pregnancy before?"</li>
+<p>
+</ol>
+   - 10-15% recurrence risk
+</p>
+<ol>
+<li>"Have you had tubal surgery or tubal ligation?"</li>
+<li>"Do you have an IUD?"</li>
+<p>
+</ol>
+   - If pregnancy occurs with IUD in situ, higher chance ectopic
+</p>
+
+<strong>Management</strong> (4 minutes):
+
+<p>
+"Given Ms. Lee's presentation - sudden severe unilateral pelvic pain, looking pale and unwell, and she's of reproductive age - I'm very concerned about a <strong>ruptured ectopic pregnancy</strong>. This is a life-threatening <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span>.
+</p>
+
+<strong>Immediate Management</strong>:
+
+<ol>
+<li><strong>Resuscitation</strong>:</li>
+<p>
+</ol>
+   - Two large-bore IV cannulas (14G or 16G)
+   - Bloods: <strong>FBC, group and save (or cross-match 4 units), βhCG</strong>
+   - IV fluids (1L Hartmann's rapid bolus)
+   - Keep nil by mouth (may need <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> surgery)
+</p>
+
+<ol>
+<li><strong>Investigations</strong>:</li>
+<p>
+</ol>
+   - <strong>Urine or serum βhCG (pregnancy test)</strong> - most <span style="color: #e74c3c; font-weight: bold;">URGENT</span>
+   - <strong>Bedside ultrasound (FAST scan)</strong> - look for free fluid in pelvis (haemoperitoneum)
+   - <strong>Formal transvaginal ultrasound</strong> - looking for:
+     - Intrauterine pregnancy (if seen, ectopic very unlikely)
+     - Adnexal mass
+     - Free fluid
+</p>
+
+<ol>
+<li><strong>If ectopic confirmed and haemodynamically unstable</strong>:</li>
+<p>
+</ol>
+   - <strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> laparoscopy</strong> (or laparotomy if too unstable)
+   - Salpingectomy (remove affected tube) or salpingotomy (conserve tube if possible)
+   - <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> gynaecology/surgical team activation</strong>
+</p>
+
+<ol>
+<li><strong>If stable and ectopic confirmed</strong>:</li>
+<p>
+</ol>
+   - May be candidate for medical management (methotrexate) if:
+     - Haemodynamically stable
+     - No signs of rupture
+     - βhCG <5000
+     - Mass <3.5cm
+     - No fetal heartbeat
+</p>
+
+<strong>I would involve senior ED/gynaecology team immediately given the concerning features and potential for rapid deterioration.</strong>"
+
+<hr>
+
+<h2>Summary: Key Takeaways</h2>
+
+<h3>For Menstrual History:</h3>
+<ol>
+<li><strong>LMNOP framework</strong>: Last period, Menarche, Normal cycle, Ovulation, Present complaint</li>
+<li><strong>Quantify HMB objectively</strong>: Pads/day, clots, flooding, impact on life, anaemia symptoms</li>
+<li><strong>Age-based differentials</strong>:</li>
+<p>
+</ol>
+   - Reproductive age: Fibroids, adenomyosis, PCOS, coagulopathy
+   - Perimenopausal: Anovulation, hyperplasia, cancer (if >45)
+</p>
+<ol>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong>: Age >45 + new bleeding, IMB, PCB, PMB → Investigate <span style="color: #e74c3c; font-weight: bold;">URGENT</span>ly</li>
+<p>
+</ol>
+</p>
+
+<h3>For Pelvic Pain:</h3>
+<ol>
+<li><strong>Acute vs chronic</strong>: Timing determines differential</li>
+<li><strong>Acute emergencies</strong>: Ectopic (exclude pregnancy FIRST), torsion, ruptured cyst, PID</li>
+<li><strong>Chronic</strong>: Endometriosis (cyclical, dysmenorrhoea, dyspareunia, dyschezia), adenomyosis, adhesions</li>
+<li><strong>Always think</strong>: Could this be ectopic? (pregnancy test mandatory)</li>
+<p>
+</ol>
+</p>
+
+<h3>For Discharge:</h3>
+<ol>
+<li><strong>Characterize</strong>: Color, odor, consistency, associated symptoms</li>
+<li><strong>Common causes</strong>: BV (fishy), Candida (thick white, itch), Trichomoniasis (frothy, offensive), STIs (chlamydia, gonorrhoea)</li>
+<li><strong>Sexual history</strong>: Essential for STI risk assessment (5 Ps framework)</li>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong>: PCB, IMB, PMB → Cervical/endometrial pathology</li>
+<p>
+</ol>
+</p>
+
+<h3>For Menopause:</h3>
+<ol>
+<li><strong>Clinical diagnosis</strong>: Age >45 + amenorrhoea >12 months + typical symptoms (no FSH needed)</li>
+<li><strong>HRT</strong>: First-line for moderate-severe symptoms, benefits outweigh risks in most women <60</li>
+<li><strong>GSM</strong>: Vaginal oestrogen safe and effective (even if breast cancer)</li>
+<p>
+</ol>
+</p>
+
+<h3>For Australian Context:</h3>
+<ol>
+<li><strong>Cervical screening</strong>: Every 5 years (age 25-74), HPV test (not Pap), start age 25</li>
+<li><strong>HRT options</strong>: PBS-listed options available (Femoston, Kliogest), vaginal oestrogen (Vagifem)</li>
+<li><strong>Cancer referral</strong>: 2-week pathway for PMB, PCB, abnormal cervical screening</li>
+<p>
+</ol>
+</p>
+
+<h3>For OSCE Success:</h3>
+<ol>
+<li><strong>Exclude pregnancy</strong>: ALWAYS in reproductive age women before anything else</li>
+<li><strong>Recognize <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong>: PMB = cancer until proven otherwise, PCB = cervical pathology, Shoulder tip pain = haemoperitoneum</li>
+<li><strong>State urgency</strong>: "Postmenopausal bleeding needs <span style="color: #e74c3c; font-weight: bold;">URGENT</span> investigation within 2 weeks"</li>
+<li><strong>Sexual history</strong>: Ask professionally using 5 Ps, explain why you're asking</li>
+<li><strong>Age-based thinking</strong>: "She's 52, so perimenopausal - likely anovulatory, but must exclude endometrial pathology given age >45"</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<strong>This completes the second ObGyn document! Next: Contraception Counselling</strong>
+
+<strong>Word Count</strong>: ~17,000 words
+<strong>Last Updated</strong>: December 2025 for ICRP NSW Young Hospital Program (March 2026 intake)
+<strong>Author</strong>: ICRP OSCE Preparation Team
+<strong>Reference</strong>: Dr. Amir Soufi (IMG4IMGS), RANZCOG Guidelines, National Cervical Screening Program, eTG 2024, FSRH (UK) Guidelines adapted for Australia, AMC Clinical OSCE Format
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

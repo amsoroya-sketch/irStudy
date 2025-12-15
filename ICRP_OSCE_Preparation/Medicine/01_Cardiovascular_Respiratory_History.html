@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine OSCE Master Notes - Cardiovascular & Respiratory</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Medicine</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Medicine Navigation</h3>
+<ul>
+<li><a href="MASTER_INDEX.html">Master Index</a></li>
+<li><a href="01_Cardiovascular_Respiratory_History.html">CV/Resp History</a></li>
+<li><a href="02_Physical_Examination_Cardiovascular_Respiratory.html">CV/Resp Exam</a></li>
+<li><a href="03_Physical_Examination_Abdominal_Neurological.html">Abdo/Neuro Exam</a></li>
+</ul>
+</div>
+        <h1>Medicine OSCE Master Notes - Cardiovascular & Respiratory</h1>
+<h2>AMC Clinical / ICRP NSW Young Hospital Preparation</h2>
+
+<strong>Purpose</strong>: AMC Clinical-style OSCE notes for medicine history-taking stations
+<strong>Target Time</strong>: 8 minutes per station
+<strong>Format</strong>: Australian teaching hospital standard
+<strong>Created</strong>: December 14, 2025
+
+<hr>
+
+<h2>CHEST PAIN</h2>
+
+<h3>Opening Statement (30 seconds)</h3>
+<p>
+"Good morning, I'm Dr [Name]. I understand you've come in today with chest pain. I'd like to ask you some questions about your symptoms to better understand what might be causing this. Is that alright with you?"
+</p>
+
+<h3>Focused History (SOCRATES Framework)</h3>
+
+<strong>S - Site</strong>: "Can you point to where exactly you feel the pain?"
+
+<strong>O - Onset</strong>: "When did the pain start? What were you doing when it started? Did it come on suddenly or gradually?"
+
+<strong>C - Character</strong>: "Can you describe what the pain feels like? Is it sharp, dull, crushing, tight, burning, or stabbing?"
+
+<strong>R - Radiation</strong>: "Does the pain spread anywhere else? To your arm, jaw, neck, back, or shoulder?"
+
+<strong>A - Associations</strong>:
+<ul>
+<li>"Do you have any other symptoms with the pain?"</li>
+<li>Specifically ask: shortness of breath, sweating, nausea, vomiting, palpitations, dizziness</li>
+<p>
+</ul>
+</p>
+
+<strong>T - Time course</strong>: "Is the pain constant or does it come and go? How long does each episode last? How long has this been happening?"
+
+<strong>E - Exacerbating/Relieving factors</strong>:
+<ul>
+<li>"Does anything make the pain worse?" (exertion, deep breathing, movement, eating, lying flat)</li>
+<li>"Does anything make it better?" (rest, GTN spray, antacids, changing position)</li>
+<p>
+</ul>
+</p>
+
+<strong>S - Severity</strong>: "On a scale of 0-10, with 10 being the worst pain imaginable, how would you rate your pain right now?"
+
+<h3>Additional Systematic Questions</h3>
+
+<strong>Cardiovascular Risk Factors</strong>:
+<ul>
+<li>"Do you have high blood pressure, diabetes, or high cholesterol?"</li>
+<li>"Do you smoke or have you smoked in the past?"</li>
+<li>"Any family history of heart disease, especially at young age?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Past Medical History</strong>: "Have you ever had any heart problems, blood clots, or lung disease?"
+
+<strong>Medications</strong>: "Are you taking any medications? Particularly aspirin, blood pressure tablets, or cholesterol medication?"
+
+<strong>Allergies</strong>: "Do you have any allergies to medications?"
+
+<strong>Social History</strong>: "Do you drink alcohol? How much exercise do you normally do?"
+
+<h3>Top 3 Differentials (Ranked)</h3>
+
+<strong>1. Acute Coronary Syndrome (ACS)</strong> - Most concerning, requires <span style="color: #e74c3c; font-weight: bold;">URGENT</span> exclusion
+<ul>
+<li><strong>Features</strong>: Central crushing/tight chest pain, radiation to left arm/jaw/neck</li>
+<li><strong>Associated symptoms</strong>: Sweating, nausea, dyspnoea, pallor</li>
+<li><strong>Risk factors</strong>: Age >45, male, smoking, diabetes, hypertension, hyperlipidaemia, family history</li>
+<li><strong>Urgency</strong>: IMMEDIATE - call for senior help</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Pulmonary Embolism (PE)</strong> - Life-threatening
+<ul>
+<li><strong>Features</strong>: Sharp, pleuritic chest pain (worse on deep breathing)</li>
+<li><strong>Associated symptoms</strong>: Dyspnoea, haemoptysis, tachycardia, hypoxia</li>
+<li><strong>Risk factors</strong>: Recent surgery/immobility, long-haul flight, cancer, oral contraceptive pill, pregnancy, thrombophilia</li>
+<li><strong>Urgency</strong>: <span style="color: #e74c3c; font-weight: bold;">URGENT</span> - needs imaging and anticoagulation</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Gastro-oesophageal Reflux Disease (GORD)</strong> - Most common, benign
+<ul>
+<li><strong>Features</strong>: Burning retrosternal pain, sour taste in mouth</li>
+<li><strong>Timing</strong>: Related to meals, worse lying flat or bending over</li>
+<li><strong>Relieved by</strong>: Antacids, sitting upright</li>
+<li><strong>Risk factors</strong>: Obesity, hiatus hernia, certain foods (spicy, fatty, caffeine)</li>
+<p>
+</ul>
+</p>
+
+<strong>Other Important Differentials</strong>:
+<ul>
+<li>Musculoskeletal pain (reproducible on palpation, worse with movement)</li>
+<li>Pericarditis (sharp, worse lying flat, relieved sitting forward)</li>
+<li>Pneumonia (pleuritic pain, fever, cough, sputum)</li>
+<li>Aortic dissection (tearing pain radiating to back, sudden onset)</li>
+<p>
+</ul>
+</p>
+
+<h3>Investigations (Australian Context)</h3>
+
+<strong>Immediate (Medicare bulk-billed)</strong>:
+<ul>
+<li><strong>ECG</strong> - MUST be done within 10 minutes for suspected ACS</li>
+<li><strong>Troponin</strong> - 0 hours and 3 hours (serial troponins)</li>
+<li><strong>Chest X-ray</strong> - look for pneumonia, pneumothorax, widened mediastinum</li>
+<li><strong>Bloods</strong>: FBC, UEC, CRP, lipid profile</li>
+<p>
+</ul>
+</p>
+
+<strong>Further investigations if indicated</strong>:
+<ul>
+<li><strong>D-dimer</strong> - if PE suspected and low pre-test probability (Wells score)</li>
+<li><strong>CT pulmonary angiogram (CTPA)</strong> - if moderate-high suspicion of PE (not bulk-billed, ~$300-500)</li>
+<li><strong>Exercise stress test</strong> - if ACS suspected but troponin negative and stable</li>
+<li><strong>Coronary angiography</strong> - if high-risk ACS or positive stress test</li>
+<p>
+</ul>
+</p>
+
+<h3>Management (Therapeutic Guidelines eTG 2024)</h3>
+
+<strong>If ACS suspected - IMMEDIATE</strong>:
+<ol>
+<li>Call for senior help (registrar/consultant)</li>
+<li><strong>MONA</strong>:</li>
+<p>
+</ol>
+   - <strong>M</strong>orphine 2.5-5mg IV (for pain relief)
+   - <strong>O</strong>xygen (only if SpO₂ <94%)
+   - <strong>N</strong>itrates - GTN 300-600mcg sublingual (repeat every 5 min if needed)
+   - <strong>A</strong>spirin 300mg chewed (loading dose)
+</p>
+<ol>
+<li>Nil by mouth</li>
+<li>IV access, continuous ECG monitoring</li>
+<li>Clopidogrel 300mg or ticagrelor 180mg (P2Y12 inhibitor)</li>
+<li><span style="color: #e74c3c; font-weight: bold;">URGENT</span> cardiology consult</li>
+<p>
+</ol>
+</p>
+
+<strong>If PE suspected</strong>:
+<ul>
+<li>Oxygen if SpO₂ <94%</li>
+<li>Anticoagulation: enoxaparin 1.5mg/kg SC or apixaban/rivaroxaban (if high suspicion)</li>
+<li><span style="color: #e74c3c; font-weight: bold;">URGENT</span> CTPA</li>
+<li>Admit for observation and treatment</li>
+<p>
+</ul>
+</p>
+
+<strong>If GORD likely</strong>:
+<ul>
+<li><strong>Lifestyle modifications</strong>: Avoid triggers (fatty/spicy foods, caffeine, alcohol), elevate head of bed, weight loss if obese</li>
+<li><strong>Proton pump inhibitor</strong>: Esomeprazole 20mg daily or pantoprazole 40mg daily (PBS-listed)</li>
+<li>Trial for 4-8 weeks</li>
+<li>Review and consider step-down to H2-antagonist (ranitidine 150mg BD) or PRN antacids</li>
+<p>
+</ul>
+</p>
+
+<strong>If musculoskeletal</strong>:
+<ul>
+<li>Simple analgesia: Paracetamol 1g QID regular</li>
+<li>NSAIDs if no contraindications: Ibuprofen 400mg TDS (with food)</li>
+<li>Reassurance</li>
+<p>
+</ul>
+</p>
+
+<h3>Safety-Netting (<span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s to Return For)</h3>
+
+<p>
+"I'm going to give you some specific warning signs. If you experience ANY of these, please call 000 or come back to the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department immediately:
+</p>
+
+<p>
+✋ <strong>Call 000 if</strong>:
+</p>
+<ul>
+<li>The chest pain becomes severe or feels different from before</li>
+<li>You develop shortness of breath, sweating, or feel faint</li>
+<li>The pain spreads to your arm, jaw, or back</li>
+<li>You feel like something is seriously wrong</li>
+<p>
+</ul>
+</p>
+
+<p>
+🏥 <strong>Return to ED if</strong>:
+</p>
+<ul>
+<li>The pain doesn't improve with the treatment we've discussed within 24-48 hours</li>
+<li>You develop a fever or start coughing up blood</li>
+<li>You notice any leg swelling or calf pain</li>
+<li>You have any concerns at all - it's better to be checked"</li>
+<p>
+</ul>
+</p>
+
+<h3>Common IMG Mistakes ❌</h3>
+
+<ol>
+<li>❌ <strong>Not asking about radiation to jaw/arm</strong> - Critical for ACS diagnosis</li>
+<li>❌ <strong>Forgetting cardiovascular risk factors</strong> - Age, smoking, diabetes, family history essential</li>
+<li>❌ <strong>Using US drug names</strong> - Say "GTN" not "nitroglycerin", "paracetamol" not "acetaminophen"</li>
+<li>❌ <strong>Not mentioning Medicare status</strong> - Patients want to know costs</li>
+<li>❌ <strong>Vague safety-netting</strong> - Say specific <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s, not just "come back if worse"</li>
+<li>❌ <strong>No introduction/consent</strong> - Always introduce, confirm name, get verbal consent</li>
+<li>❌ <strong>Not considering PE</strong> - Don't anchor on ACS, always think PE in chest pain</li>
+<li>❌ <strong>Asking about "PCP" or "ER"</strong> - Use "GP" and "<span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department" in Australia</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>SHORTNESS OF BREATH (DYSPNOEA)</h2>
+
+<h3>Opening Statement (30 seconds)</h3>
+<p>
+"Good morning, I'm Dr [Name]. I understand you've been experiencing shortness of breath. I'd like to ask you some questions to work out what might be causing this. Is that okay?"
+</p>
+
+<h3>Focused History (Systematic Approach)</h3>
+
+<strong>Onset & Duration</strong>:
+<ul>
+<li>"When did the shortness of breath start?"</li>
+<li>"Did it come on suddenly or gradually over time?"</li>
+<li>"How long have you had this symptom?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Severity & Progression</strong>:
+<ul>
+<li>"How bad is it now compared to when it started?"</li>
+<li>"What can you no longer do because of the breathlessness?" (functional assessment)</li>
+<li>Examples: "Can you climb stairs? Walk to the shops? Dress yourself?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Timing & Pattern</strong>:
+<ul>
+<li>"Is it constant or does it come and go?"</li>
+<li>"Is it worse at any particular time of day?"</li>
+<li>"Does it wake you up at night?"</li>
+<li>"Do you need extra pillows to sleep?" (orthopnoea)</li>
+<li>"Do you ever wake up gasping for air?" (paroxysmal nocturnal dyspnoea - PND)</li>
+<p>
+</ul>
+</p>
+
+<strong>Exacerbating/Relieving Factors</strong>:
+<ul>
+<li>"Does anything make it worse?" (exercise, lying flat, cold air, allergens, stress)</li>
+<li>"Does anything make it better?" (rest, sitting upright, inhalers)</li>
+<p>
+</ul>
+</p>
+
+<strong>Associated Symptoms</strong>:
+<ul>
+<li><strong>Cardiac</strong>: Chest pain, palpitations, ankle swelling, weight gain</li>
+<li><strong>Respiratory</strong>: Cough (dry vs productive), sputum (colour, amount), wheeze, haemoptysis</li>
+<li><strong>Systemic</strong>: Fever, night sweats, weight loss, fatigue</li>
+<p>
+</ul>
+</p>
+
+<h3>Specific System Questions</h3>
+
+<strong>Cardiac History</strong>:
+<ul>
+<li>"Do you have any heart problems? High blood pressure? Previous heart attack?"</li>
+<li>"Do your ankles swell, especially in the evening?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Respiratory History</strong>:
+<ul>
+<li>"Do you have asthma, COPD, or any lung disease?"</li>
+<li>"Have you ever smoked? How many cigarettes per day and for how many years?" (calculate pack-years)</li>
+<li>"Any exposure to dust, asbestos, or other lung irritants at work?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Risk Factors for PE</strong>:
+<ul>
+<li>"Any recent surgery or long periods of immobility?"</li>
+<li>"Any recent long-haul flights?"</li>
+<li>"Any leg pain or swelling?"</li>
+<li>For women: "Are you on the oral contraceptive pill or hormone replacement therapy?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Medications</strong>: "What medications are you currently taking? Do you use inhalers?"
+
+<strong>Allergies</strong>: "Any allergies, particularly to medications?"
+
+<strong>Social Impact</strong>: "How is this affecting your daily life and ability to work?"
+
+<h3>Top 3 Differentials (Ranked by Acuity)</h3>
+
+<strong>1. Pulmonary Embolism (PE)</strong> - Life-threatening, acute presentation
+<ul>
+<li><strong>Features</strong>: Sudden onset dyspnoea, pleuritic chest pain</li>
+<li><strong>Associated</strong>: Tachycardia, tachypnoea, hypoxia, haemoptysis</li>
+<li><strong>Risk factors</strong>: Recent surgery, immobility, malignancy, pregnancy/OCP, previous VTE</li>
+<li><strong>Urgency</strong>: IMMEDIATE assessment</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Acute Exacerbation of Asthma/COPD</strong> - Common, potentially life-threatening
+<ul>
+<li><strong>Asthma</strong>: Wheeze, cough, chest tightness, nocturnal symptoms, triggered by exercise/allergens</li>
+<li><strong>COPD</strong>: Chronic productive cough, smoking history, progressive dyspnoea, barrel chest</li>
+<li><strong>Urgency</strong>: <span style="color: #e74c3c; font-weight: bold;">URGENT</span> - assess severity, may need hospital admission</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Heart Failure</strong> - Chronic presentation, common in elderly
+<ul>
+<li><strong>Features</strong>: Progressive dyspnoea, orthopnoea, PND, ankle oedema</li>
+<li><strong>Associated</strong>: Fatigue, reduced exercise tolerance, history of IHD/hypertension</li>
+<li><strong>Examination</strong>: Raised JVP, bibasal crackles, peripheral oedema</li>
+<li><strong>Urgency</strong>: <span style="color: #e74c3c; font-weight: bold;">URGENT</span> if acute, routine if chronic stable</li>
+<p>
+</ul>
+</p>
+
+<strong>Other Important Differentials</strong>:
+<ul>
+<li>Pneumonia (fever, cough, purulent sputum, pleuritic pain)</li>
+<li>Pneumothorax (sudden onset, pleuritic pain, reduced breath sounds)</li>
+<li>Anaemia (fatigue, pallor, symptoms on exertion)</li>
+<li>Anxiety/panic attack (young patient, hyperventilation, no abnormal examination)</li>
+<p>
+</ul>
+</p>
+
+<h3>Investigations (Australian Context)</h3>
+
+<strong>Immediate (Medicare bulk-billed)</strong>:
+<ul>
+<li><strong>Pulse oximetry</strong> - bedside, free</li>
+<li><strong>Peak expiratory flow rate (PEFR)</strong> - if asthma suspected</li>
+<li><strong>ECG</strong> - look for arrhythmias, RV strain (PE), ischaemia</li>
+<li><strong>Chest X-ray</strong> - pneumonia, pulmonary oedema, pneumothorax, lung masses</li>
+<li><strong>Bloods</strong>: FBC (anaemia), UEC, CRP, troponin, BNP/NT-proBNP (heart failure)</li>
+<p>
+</ul>
+</p>
+
+<strong>Further investigations</strong>:
+<ul>
+<li><strong>Arterial blood gas (ABG)</strong> - if severe dyspnoea or suspected Type 2 respiratory failure</li>
+<li><strong>D-dimer</strong> - if PE suspected and low-moderate pre-test probability</li>
+<li><strong>CTPA</strong> - if moderate-high suspicion of PE (~$300-500, not bulk-billed)</li>
+<li><strong>Echocardiogram</strong> - if heart failure suspected (bulk-billed in public system)</li>
+<li><strong>Spirometry</strong> - for COPD/asthma diagnosis (bulk-billed with GP referral)</li>
+<p>
+</ul>
+</p>
+
+<h3>Management (eTG 2024)</h3>
+
+<strong>If PE suspected - IMMEDIATE</strong>:
+<ul>
+<li>Oxygen to maintain SpO₂ >94%</li>
+<li>Anticoagulation: Enoxaparin 1.5mg/kg SC or apixaban 10mg BD × 7 days</li>
+<li><span style="color: #e74c3c; font-weight: bold;">URGENT</span> CTPA</li>
+<li>Admit</li>
+<p>
+</ul>
+</p>
+
+<strong>If Acute Asthma</strong>:
+<ul>
+<li><strong>Mild-Moderate</strong>: Salbutamol 100mcg 6-12 puffs via spacer, repeat every 20 min</li>
+<li><strong>Severe</strong>: Nebulised salbutamol 5mg + ipratropium bromide 500mcg, oxygen, prednisolone 37.5-50mg PO (or hydrocortisone 100mg IV)</li>
+<li><strong>Life-threatening</strong>: Call MET, continuous nebulisers, IV magnesium sulfate 2g over 20 min</li>
+<li>Admit if poor response</li>
+<p>
+</ul>
+</p>
+
+<strong>If COPD Exacerbation</strong>:
+<ul>
+<li>Oxygen (target SpO₂ 88-92% if known CO₂ retainer)</li>
+<li>Nebulised bronchodilators: Salbutamol 5mg + ipratropium 500mcg QID</li>
+<li>Prednisolone 37.5mg daily × 5 days</li>
+<li>Antibiotics if purulent sputum: Amoxicillin 500mg TDS × 5 days or doxycycline 100mg daily</li>
+<li>Consider admission if severe</li>
+<p>
+</ul>
+</p>
+
+<strong>If Heart Failure</strong>:
+<ul>
+<li><strong>Acute pulmonary oedema</strong>: Sit upright, high-flow oxygen, frusemide 40mg IV, GTN infusion</li>
+<li><strong>Chronic stable</strong>: Optimise medications (ACE-I, beta-blocker, diuretics), fluid restriction, salt restriction</li>
+<li>Cardiology referral</li>
+<p>
+</ul>
+</p>
+
+<h3>Safety-Netting</h3>
+
+<p>
+"Please call 000 or return to ED immediately if:
+</p>
+<ul>
+<li>Your breathing becomes worse or you can't speak in full sentences</li>
+<li>You develop chest pain or start coughing up blood</li>
+<li>You feel faint, dizzy, or confused</li>
+<li>Your lips or face turn blue</li>
+<li>Your symptoms don't improve with the treatment within 24-48 hours</li>
+<p>
+</ul>
+</p>
+
+<p>
+If you have asthma, make sure you have a written asthma action plan and know when to increase your inhalers or seek help."
+</p>
+
+<h3>Common IMG Mistakes ❌</h3>
+
+<ol>
+<li>❌ <strong>Not asking about orthopnoea/PND</strong> - Key features of heart failure</li>
+<li>❌ <strong>Forgetting to calculate pack-years</strong> - (cigarettes per day ÷ 20) × years smoked</li>
+<li>❌ <strong>Not assessing functional capacity</strong> - "How far can you walk?" is more useful than subjective severity</li>
+<li>❌ <strong>Missing PE risk factors</strong> - Always ask about surgery, travel, OCP, leg swelling</li>
+<li>❌ <strong>Using "albuterol"</strong> - It's "salbutamol" in Australia</li>
+<li>❌ <strong>Not differentiating asthma from COPD</strong> - Age, smoking history, reversibility</li>
+<li>❌ <strong>Forgetting oxygen targets in COPD</strong> - 88-92% for known CO₂ retainers, NOT 94-98%</li>
+<li>❌ <strong>No asthma action plan discussion</strong> - Essential for asthma management in Australia</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>PALPITATIONS</h2>
+
+<h3>Opening Statement</h3>
+<p>
+"Good morning, I'm Dr [Name]. I understand you've been experiencing palpitations or a rapid heartbeat. I'd like to ask some questions to understand what's going on. Is that alright?"
+</p>
+
+<h3>Focused History</h3>
+
+<strong>Character of Palpitations</strong>:
+<ul>
+<li>"Can you describe what the palpitations feel like?"</li>
+<li>"Is your heart beating fast, slow, irregular, or pounding?"</li>
+<li>"Can you tap out the rhythm on the desk?" (useful for diagnosis)</li>
+<p>
+</ul>
+</p>
+
+<strong>Onset & Duration</strong>:
+<ul>
+<li>"When did you first notice the palpitations?"</li>
+<li>"Do they come on suddenly or gradually?"</li>
+<li>"How long do they last? Seconds, minutes, or hours?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Frequency</strong>:
+<ul>
+<li>"How often do they happen? Daily, weekly, or less often?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Triggers</strong>:
+<ul>
+<li>"Have you noticed anything that brings them on?" (exercise, stress, caffeine, alcohol, lack of sleep)</li>
+<p>
+</ul>
+</p>
+
+<strong>Associated Symptoms</strong>:
+<ul>
+<li>"Do you feel dizzy, lightheaded, or faint when you have palpitations?"</li>
+<li>"Any chest pain or shortness of breath?"</li>
+<li>"Do you ever black out or lose consciousness?"</li>
+<li>"Any sweating or feeling anxious?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Relieving Factors</strong>:
+<ul>
+<li>"Does anything stop the palpitations?" (rest, vagal manoeuvres like breath-holding)</li>
+<p>
+</ul>
+</p>
+
+<strong>Past Medical History</strong>:
+<ul>
+<li>"Any history of heart problems, thyroid disease, or anxiety?"</li>
+<li>"Ever had an ECG or heart monitoring before?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Medications & Substances</strong>:
+<ul>
+<li>"What medications are you taking?" (especially decongestants, asthma inhalers, antidepressants)</li>
+<li>"Do you drink caffeine? How many cups of coffee/tea/energy drinks per day?"</li>
+<li>"Do you drink alcohol? How much per week?"</li>
+<li>"Do you smoke or use any recreational drugs?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Family History</strong>: "Any family history of sudden cardiac death or heart rhythm problems?"
+
+<h3>Top 3 Differentials</h3>
+
+<strong>1. Supraventricular Tachycardia (SVT)</strong> - Most common pathological cause
+<ul>
+<li><strong>Features</strong>: Sudden onset, rapid regular palpitations (150-250 bpm), abrupt termination</li>
+<li><strong>Associated</strong>: Lightheadedness, dyspnoea, chest discomfort</li>
+<li><strong>Triggers</strong>: Stress, caffeine, alcohol</li>
+<li><strong>May respond to</strong>: Vagal manoeuvres (Valsalva, carotid massage)</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Atrial Fibrillation (AF)</strong> - Common, especially in elderly
+<ul>
+<li><strong>Features</strong>: Irregularly irregular heartbeat, continuous or paroxysmal</li>
+<li><strong>Associated</strong>: Dyspnoea, fatigue, reduced exercise tolerance</li>
+<li><strong>Risk factors</strong>: Age >65, hypertension, heart disease, hyperthyroidism, alcohol</li>
+<li><strong>Complications</strong>: Stroke risk (needs CHA₂DS₂-VASc score)</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Anxiety/Panic Disorder</strong> - Most common overall cause (diagnosis of exclusion)
+<ul>
+<li><strong>Features</strong>: Palpitations associated with anxiety, stress, or panic attacks</li>
+<li><strong>Associated</strong>: Hyperventilation, sweating, tremor, sense of impending doom</li>
+<li><strong>Context</strong>: Young patient, no structural heart disease, normal ECG</li>
+<li><strong>Triggers</strong>: Stressful situations, specific phobias</li>
+<p>
+</ul>
+</p>
+
+<strong>Other Differentials</strong>:
+<ul>
+<li>Sinus tachycardia (exercise, fever, anaemia, hyperthyroidism)</li>
+<li>Ventricular tachycardia (more concerning, associated with syncope/cardiac arrest)</li>
+<li>Ectopic beats (benign, described as "skipped beats" or "flutter")</li>
+<li>Hyperthyroidism (weight loss, tremor, heat intolerance)</li>
+<p>
+</ul>
+</p>
+
+<h3>Investigations</h3>
+
+<strong>Immediate</strong>:
+<ul>
+<li><strong>ECG</strong> - MUST be done (often normal if not currently having palpitations)</li>
+<li><strong>Bloods</strong>: FBC (anaemia), UEC, TFTs (hyperthyroidism), glucose (hypoglycaemia)</li>
+<p>
+</ul>
+</p>
+
+<strong>Further investigations</strong>:
+<ul>
+<li><strong>24-hour Holter monitor</strong> - if palpitations are daily</li>
+<li><strong>7-day event monitor</strong> - if palpitations are weekly</li>
+<li><strong>Echocardiogram</strong> - if structural heart disease suspected</li>
+<li><strong>Exercise stress test</strong> - if exercise-induced</li>
+<p>
+</ul>
+</p>
+
+<h3>Management (eTG 2024)</h3>
+
+<strong>If SVT and currently symptomatic</strong>:
+<ol>
+<li>Vagal manoeuvres first: Valsalva, carotid sinus massage (if trained)</li>
+<li>Adenosine 6mg rapid IV push (warn patient: "You'll feel awful for a few seconds")</li>
+<li>If no response: Adenosine 12mg, then 18mg</li>
+<li>Continuous ECG monitoring</li>
+<li>Cardiology referral for possible ablation (curative in >90%)</li>
+<p>
+</ol>
+</p>
+
+<strong>If AF</strong>:
+<ol>
+<li><strong>Rate control</strong>: Metoprolol 25-50mg BD or diltiazem 60mg TDS</li>
+<li><strong>Anticoagulation</strong>: Calculate CHA₂DS₂-VASc score</li>
+<p>
+</ol>
+   - Score ≥2 (men) or ≥3 (women): Start anticoagulation (apixaban 5mg BD or rivaroxaban 20mg daily - PBS listed)
+</p>
+<ol>
+<li><strong>Rhythm control</strong>: Consider if young, symptomatic, first episode</li>
+<li>Cardiology referral</li>
+<p>
+</ol>
+</p>
+
+<strong>If anxiety-related</strong>:
+<ul>
+<li>Reassurance after excluding cardiac causes</li>
+<li>Avoid triggers: Reduce caffeine, alcohol, stress</li>
+<li>Consider CBT or relaxation techniques</li>
+<li>If severe: Consider SSRI (sertraline 50mg daily) or beta-blocker (propranolol 10mg PRN)</li>
+<p>
+</ul>
+</p>
+
+<strong>If hyperthyroidism</strong>:
+<ul>
+<li>Beta-blocker for symptom control: Propranolol 40mg TDS</li>
+<li>Carbimazole 20-40mg daily</li>
+<li>Endocrinology referral</li>
+<p>
+</ul>
+</p>
+
+<h3>Safety-Netting</h3>
+
+<p>
+"Please call 000 or return to ED immediately if:
+</p>
+<ul>
+<li>You have palpitations with chest pain or severe shortness of breath</li>
+<li>You feel faint or lose consciousness</li>
+<li>The palpitations last more than 30 minutes and don't settle</li>
+<li>You develop any new concerning symptoms</li>
+<p>
+</ul>
+</p>
+
+<p>
+Otherwise, avoid caffeine and alcohol, and we'll review the results of your heart monitoring."
+</p>
+
+<h3>Common IMG Mistakes ❌</h3>
+
+<ol>
+<li>❌ <strong>Not asking patient to tap out rhythm</strong> - Very helpful for diagnosis</li>
+<li>❌ <strong>Forgetting to ask about caffeine/alcohol</strong> - Common reversible causes</li>
+<li>❌ <strong>Not asking about syncope</strong> - <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> for ventricular arrhythmia</li>
+<li>❌ <strong>Missing hyperthyroidism</strong> - Always check TFTs in new-onset palpitations</li>
+<li>❌ <strong>Not calculating CHA₂DS₂-VASc in AF</strong> - Essential for stroke prevention</li>
+<li>❌ <strong>Using "acetaminophen" or "ER"</strong> - Use Australian terminology</li>
+<li>❌ <strong>Not mentioning PBS for anticoagulants</strong> - Patients want to know about costs</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<strong>Last Updated</strong>: December 14, 2025
+<strong>Version</strong>: 1.0
+<strong>Author</strong>: ICRP NSW Young Hospital Preparation Team
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

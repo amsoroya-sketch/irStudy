@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Required Medical Textbooks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>docs</span>
+</div>
+        
+        <h1>Required Medical Textbooks</h1>
+<h2>Complete Book List for ICRP, AMC MCQ, and AMC Clinical Preparation</h2>
+
+<strong>Last Updated:</strong> December 14, 2025
+<strong>Purpose:</strong> Medical Education AI System - Content Source Material
+
+<hr>
+
+<h2>📚 Priority 1: Essential Books (Top 5)</h2>
+
+<p>
+These 5 books provide the strongest foundation for ICRP and AMC exam preparation. They are <strong>Australian-specific</strong> and directly align with exam content.
+</p>
+
+<h3>1. Therapeutic Guidelines (eTG)</h3>
+
+<strong>Edition:</strong> 2025 Digital Subscription
+<strong>Cost:</strong> $385/year
+<strong>Publisher:</strong> Therapeutic Guidelines Limited
+<strong>URL:</strong> https://tgldcdp.tg.org.au/
+
+<strong>Why You Need This:</strong>
+<ul>
+<li>✅ <strong>#1 most important resource for AMC/ICRP</strong></li>
+<li>✅ Australian treatment protocols (what Australian doctors actually use)</li>
+<li>✅ Evidence-based prescribing guidelines</li>
+<li>✅ Drug dosages, interactions, contraindications</li>
+<li>✅ AMC exam questions directly reference eTG protocols</li>
+<p>
+</ul>
+</p>
+
+<strong>Content Coverage:</strong>
+<ul>
+<li>Antibiotic guidelines</li>
+<li>Cardiovascular therapeutics</li>
+<li>Endocrine guidelines</li>
+<li>Neurological therapeutics</li>
+<li>Respiratory therapeutics</li>
+<li>And 20+ more specialty areas</li>
+<p>
+</ul>
+</p>
+
+<strong>Alternative Access:</strong>
+<ul>
+<li><strong>FREE via hospital/university:</strong> Check if you have institutional access</li>
+<li>Many Australian hospitals provide staff access</li>
+<li>University medical students get free access</li>
+<p>
+</ul>
+</p>
+
+<strong>Download Format:</strong> PDF (if institutional access) or online platform
+
+<hr>
+
+<h3>2. Talley & O'Connor Clinical Examination (9th Edition)</h3>
+
+<strong>Authors:</strong> Nicholas J. Talley, Simon O'Connor
+<strong>Cost:</strong> ~$130 AUD
+<strong>Publisher:</strong> Elsevier Australia
+<strong>ISBN:</strong> 978-0729543736
+
+<strong>Why You Need This:</strong>
+<ul>
+<li>✅ <strong>Essential for AMC Clinical exam (OSCE)</strong></li>
+<li>✅ Physical examination techniques (step-by-step)</li>
+<li>✅ Clinical reasoning approach</li>
+<li>✅ Australian-specific clinical scenarios</li>
+<li>✅ Most widely used clinical exam text in Australia</li>
+<p>
+</ul>
+</p>
+
+<strong>Content Coverage:</strong>
+<ul>
+<li>History taking</li>
+<li>Physical examination by system</li>
+<li>Clinical reasoning</li>
+<li>OSCE scenarios</li>
+<li>Examination mnemonics</li>
+<p>
+</ul>
+</p>
+
+<strong>Alternative:</strong>
+<ul>
+<li>8th Edition (older, may find cheaper/used)</li>
+<li>Macleod's Clinical Examination (UK equivalent, less Australia-specific)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>3. AMC Handbook of Multiple Choice Questions</h3>
+
+<strong>Publisher:</strong> Australian Medical Council
+<strong>Cost:</strong> ~$180 AUD
+<strong>URL:</strong> https://www.amc.org.au/ (official AMC resources)
+
+<strong>Why You Need This:</strong>
+<ul>
+<li>✅ <strong>Official AMC question format</strong></li>
+<li>✅ Understand question style and difficulty</li>
+<li>✅ Practice questions with explanations</li>
+<li>✅ Directly from the exam creators</li>
+<li>✅ Essential for understanding AMC MCQ exam</li>
+<p>
+</ul>
+</p>
+
+<strong>Content Coverage:</strong>
+<ul>
+<li>200+ practice MCQs</li>
+<li>AMC question format</li>
+<li>Difficulty calibration</li>
+<li>Detailed explanations</li>
+<li>Coverage across all specialties</li>
+<p>
+</ul>
+</p>
+
+<strong>Note:</strong> This is an <strong>official AMC publication</strong> - no free alternative exists.
+
+<hr>
+
+<h3>4. Murtagh's General Practice (8th Edition)</h3>
+
+<strong>Author:</strong> John Murtagh, Jill Rosenblatt
+<strong>Cost:</strong> ~$180 AUD
+<strong>Publisher:</strong> McGraw-Hill Australia
+<strong>ISBN:</strong> 978-1743761502
+
+<strong>Why You Need This:</strong>
+<ul>
+<li>✅ <strong>Australian primary care medicine</strong></li>
+<li>✅ ICRP heavily tests general practice scenarios</li>
+<li>✅ Common presentations in Australian GP setting</li>
+<li>✅ Referral pathways, Medicare, PBS</li>
+<li>✅ AMC exam favors primary care questions</li>
+<p>
+</ul>
+</p>
+
+<strong>Content Coverage:</strong>
+<ul>
+<li>Common GP presentations</li>
+<li>Diagnosis and management</li>
+<li>Preventive medicine</li>
+<li>Mental health in primary care</li>
+<li>Chronic disease management</li>
+<li>Pediatrics in general practice</li>
+<li>Women's health</li>
+<li>Geriatrics</li>
+<p>
+</ul>
+</p>
+
+<strong>Alternative:</strong>
+<ul>
+<li>7th Edition (older, cheaper)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>5. Australian Medicines Handbook (AMH)</h3>
+
+<strong>Edition:</strong> 2025 Annual Edition
+<strong>Cost:</strong> ~$155 AUD
+<strong>Publisher:</strong> AMH Pty Ltd
+<strong>URL:</strong> https://amhonline.amh.net.au/
+
+<strong>Why You Need This:</strong>
+<ul>
+<li>✅ <strong>Australian drug formulary</strong></li>
+<li>✅ PBS (Pharmaceutical Benefits Scheme) information</li>
+<li>✅ Drug dosages specific to Australia</li>
+<li>✅ Prescribing in special populations</li>
+<li>✅ AMC tests Australian prescribing practices</li>
+<p>
+</ul>
+</p>
+
+<strong>Content Coverage:</strong>
+<ul>
+<li>All PBS medications</li>
+<li>Dosage guidelines</li>
+<li>Drug interactions</li>
+<li>Contraindications</li>
+<li>Pregnancy/breastfeeding categories</li>
+<li>Renal/hepatic dosing</li>
+<p>
+</ul>
+</p>
+
+<strong>Alternative Access:</strong>
+<ul>
+<li>Free for Australian medical students (check eligibility)</li>
+<li>Hospital institutional access</li>
+<li>AMH online subscription (cheaper than book)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>📖 Priority 2: Core Medicine Books (3 Books)</h2>
+
+<p>
+Comprehensive internal medicine references. <strong>One of these is highly recommended</strong>; you don't necessarily need all three.
+</p>
+
+<h3>6. Harrison's Principles of Internal Medicine (21st Edition)</h3>
+
+<strong>Editors:</strong> Joseph Loscalzo, et al.
+<strong>Cost:</strong> ~$200 USD
+<strong>Publisher:</strong> McGraw-Hill
+<strong>ISBN:</strong> 978-1264268504
+<strong>Pages:</strong> ~4,500
+
+<strong>Why You Need This:</strong>
+<ul>
+<li>✅ Most comprehensive internal medicine textbook</li>
+<li>✅ Gold standard reference</li>
+<li>✅ Excellent pathophysiology explanations</li>
+<li>✅ Covers rare conditions</li>
+<p>
+</ul>
+</p>
+
+<strong>Content Coverage:</strong> All internal medicine specialties in depth
+
+<strong>Alternative:</strong>
+<ul>
+<li>20th Edition (older, may find free/cheap)</li>
+<li><strong>FREE:</strong> Older editions sometimes available on NCBI Bookshelf</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>7. Kumar & Clark Clinical Medicine (10th Edition)</h3>
+
+<strong>Authors:</strong> Parveen Kumar, Michael Clark
+<strong>Cost:</strong> ~$140 AUD
+<strong>Publisher:</strong> Elsevier
+<strong>ISBN:</strong> 978-0702078682
+<strong>Pages:</strong> ~1,400
+
+<strong>Why You Need This:</strong>
+<ul>
+<li>✅ More concise than Harrison's</li>
+<li>✅ UK/Commonwealth approach (similar to Australia)</li>
+<li>✅ Excellent clinical focus</li>
+<li>✅ Better for exam preparation (less encyclopedic)</li>
+<p>
+</ul>
+</p>
+
+<strong>Content Coverage:</strong> All clinical medicine, systems-based
+
+<strong>Alternative:</strong>
+<ul>
+<li>9th Edition (older)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>8. Davidson's Principles and Practice of Medicine (24th Edition)</h3>
+
+<strong>Editors:</strong> Stuart H. Ralston, et al.
+<strong>Cost:</strong> ~$110 AUD
+<strong>Publisher:</strong> Elsevier
+<strong>ISBN:</strong> 978-0702083853
+<strong>Pages:</strong> ~1,350
+
+<strong>Why You Need This:</strong>
+<ul>
+<li>✅ Most concise of the three core texts</li>
+<li>✅ UK/Commonwealth medicine</li>
+<li>✅ Excellent for exam preparation</li>
+<li>✅ Clear, practical approach</li>
+<p>
+</ul>
+</p>
+
+<strong>Content Coverage:</strong> All clinical medicine, systems-based
+
+<strong>Recommendation:</strong> <strong>Choose ONE of these three</strong> (Davidson's is most concise and exam-focused)
+
+<hr>
+
+<h2>🏥 Priority 3: Specialty Books (4 Books)</h2>
+
+<p>
+Add these as budget allows, based on your weak areas.
+</p>
+
+<h3>9. Nelson Textbook of Pediatrics (21st Edition)</h3>
+
+<strong>Editors:</strong> Robert M. Kliegman, et al.
+<strong>Cost:</strong> ~$200 USD
+<strong>Publisher:</strong> Elsevier
+<strong>ISBN:</strong> 978-0323529501
+
+<strong>Why You Need This:</strong>
+<ul>
+<li>Comprehensive pediatrics</li>
+<li>AMC tests pediatric emergencies</li>
+<li>ICRP includes pediatric cases</li>
+<p>
+</ul>
+</p>
+
+<strong>Alternative:</strong>
+<ul>
+<li><strong>FREE:</strong> StatPearls Pediatrics section</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>10. Williams Obstetrics (26th Edition)</h3>
+
+<strong>Authors:</strong> F. Gary Cunningham, et al.
+<strong>Cost:</strong> ~$180 USD
+<strong>Publisher:</strong> McGraw-Hill
+<strong>ISBN:</strong> 978-1260456868
+
+<strong>Why You Need This:</strong>
+<ul>
+<li>Comprehensive obstetrics</li>
+<li>AMC tests antenatal care, labor management</li>
+<li>ICRP includes OB/GYN scenarios</li>
+<p>
+</ul>
+</p>
+
+<strong>Alternative:</strong>
+<ul>
+<li><strong>FREE:</strong> StatPearls Obstetrics section</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>11. Bailey & Love's Short Practice of Surgery (28th Edition)</h3>
+
+<strong>Editors:</strong> P. Ronan O'Connell, et al.
+<strong>Cost:</strong> ~$150 USD
+<strong>Publisher:</strong> CRC Press
+<strong>ISBN:</strong> 978-1498796057
+
+<strong>Why You Need This:</strong>
+<ul>
+<li>Comprehensive general surgery</li>
+<li>Surgical emergencies (AMC favorite topic)</li>
+<li>Acute abdomen, trauma</li>
+<p>
+</ul>
+</p>
+
+<strong>Alternative:</strong>
+<ul>
+<li>Sabiston Textbook of Surgery</li>
+<li><strong>FREE:</strong> StatPearls Surgery section</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>12. Kaplan & Sadock's Synopsis of Psychiatry (12th Edition)</h3>
+
+<strong>Authors:</strong> Benjamin J. Sadock, et al.
+<strong>Cost:</strong> ~$180 USD
+<strong>Publisher:</strong> Wolters Kluwer
+<strong>ISBN:</strong> 978-1975145569
+
+<strong>Why You Need This:</strong>
+<ul>
+<li>Comprehensive psychiatry</li>
+<li>Mental health is heavily tested (AMC/ICRP)</li>
+<li>Suicide risk assessment, psychosis management</li>
+<p>
+</ul>
+</p>
+
+<strong>Alternative:</strong>
+<ul>
+<li>Oxford Textbook of Psychiatry</li>
+<li><strong>FREE:</strong> StatPearls Psychiatry section</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>💰 Budget Scenarios</h2>
+
+<h3>Scenario 1: Zero Budget ($0)</h3>
+
+<strong>Start with these FREE resources:</strong>
+
+<ol>
+<li><strong>StatPearls</strong> (FREE)</li>
+<p>
+</ol>
+   - URL: https://www.ncbi.nlm.nih.gov/books/NBK430685/
+   - 10,000+ medical articles
+   - Comprehensive coverage of all specialties
+   - <strong>Download:</strong> Available as HTML (can convert to PDF)
+</p>
+
+<ol>
+<li><strong>NCBI Bookshelf</strong> (FREE)</li>
+<p>
+</ol>
+   - URL: https://www.ncbi.nlm.nih.gov/books/
+   - Free medical textbooks
+   - Includes some Harrison's chapters (older editions)
+</p>
+
+<ol>
+<li><strong>Australian Government Guidelines</strong> (FREE)</li>
+<p>
+</ol>
+   - Therapeutic Guidelines (if institutional access)
+   - NSW Health Clinical Guidelines
+   - Cancer Council Australia Guidelines
+   - Asthma Handbook (National Asthma Council)
+</p>
+
+<ol>
+<li><strong>PubMed Central</strong> (FREE)</li>
+<p>
+</ol>
+   - 3+ million free full-text articles
+   - Latest research and reviews
+</p>
+
+<strong>Can you build the system with only free resources?</strong>
+<p>
+✅ <strong>YES</strong> - StatPearls alone provides enough content to:
+</p>
+<ul>
+<li>Test the PDF processing pipeline</li>
+<li>Build the RAG system</li>
+<li>Generate 1,000+ practice questions</li>
+<li>Validate the entire system</li>
+<p>
+</ul>
+</p>
+
+<p>
+❌ <strong>BUT</strong> - You'll miss:
+</p>
+<ul>
+<li>Australian-specific content (eTG, AMH, Murtagh's)</li>
+<li>Official AMC question format</li>
+<li>Australian prescribing practices</li>
+<p>
+</ul>
+</p>
+
+<strong>Recommendation:</strong> Start with free resources, prove the system works, then invest in Australian-specific books.
+
+<hr>
+
+<h3>Scenario 2: Minimal Budget ($645)</h3>
+
+<strong>Buy the Top 5 Essential Books (assuming eTG institutional access):</strong>
+
+<ol>
+<li>Therapeutic Guidelines (eTG) - $0 (institutional)</li>
+<li>Talley & O'Connor Clinical Examination - $130</li>
+<li>AMC Handbook of MCQs - $180</li>
+<li>Murtagh's General Practice - $180</li>
+<li>Australian Medicines Handbook - $155</li>
+<p>
+</ol>
+</p>
+
+<strong>Total: $645</strong>
+
+<strong>What you get:</strong>
+<p>
+✅ All Australian-specific content
+✅ AMC exam format
+✅ Clinical examination for OSCE
+✅ General practice (ICRP focus)
+</p>
+
+<strong>What you're missing:</strong>
+<ul>
+<li>Core medicine references (use StatPearls)</li>
+<li>Specialty textbooks (use StatPearls)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Scenario 3: Recommended Budget ($1,800)</h3>
+
+<strong>Top 5 + Core Medicine:</strong>
+
+<strong>Essential (Top 5):</strong>
+<ol>
+<li>Therapeutic Guidelines - $385</li>
+<li>Talley & O'Connor - $130</li>
+<li>AMC Handbook - $180</li>
+<li>Murtagh's General Practice - $180</li>
+<li>Australian Medicines Handbook - $155</li>
+<p>
+</ol>
+</p>
+
+<strong>Core Medicine (choose 1):</strong>
+<ol>
+<li>Davidson's Principles - $110 <em>(most exam-focused)</em></li>
+<p>
+</ol>
+</p>
+
+<strong>Total: $1,140</strong>
+
+<strong>OR add all 3 core texts:</strong>
+<ul>
+<li>Harrison's ($200) + Kumar & Clark ($140) + Davidson's ($110) = $450</li>
+<p>
+</ul>
+</p>
+<strong>Total with all 3: $1,590</strong>
+
+<strong>What you get:</strong>
+<p>
+✅ Complete Australian coverage
+✅ Comprehensive internal medicine
+✅ Everything needed for AMC/ICRP
+</p>
+
+<hr>
+
+<h3>Scenario 4: Comprehensive Budget ($3,500)</h3>
+
+<strong>All 12 Books:</strong>
+
+<strong>Essential:</strong> $1,030
+<strong>Core Medicine:</strong> $450
+<strong>Specialties:</strong> $710
+<ul>
+<li>Nelson Pediatrics: $200</li>
+<li>Williams Obstetrics: $180</li>
+<li>Bailey & Love Surgery: $150</li>
+<li>Kaplan & Sadock Psychiatry: $180</li>
+<p>
+</ul>
+</p>
+
+<strong>Total: $2,190</strong>
+
+<strong>Plus annual subscriptions:</strong>
+<ul>
+<li>eTG updates: $385/year</li>
+<li>AMH updates: $155/year</li>
+<li>Journal subscriptions: $500-1,000/year</li>
+<p>
+</ul>
+</p>
+
+<strong>Grand Total: ~$3,230 + ongoing</strong>
+
+<hr>
+
+<h2>🎯 Recommended Acquisition Strategy</h2>
+
+<h3>Phase 1: Immediate (Week 1)</h3>
+<strong>Cost: $0</strong>
+<ol>
+<li>Download StatPearls</li>
+<li>Access NCBI Bookshelf</li>
+<li>Collect Australian government guidelines</li>
+<li><strong>Test your system with free resources</strong></li>
+<p>
+</ol>
+</p>
+
+<h3>Phase 2: Validate (Week 2-3)</h3>
+<strong>Cost: $0</strong>
+<ol>
+<li>Process StatPearls through PDF pipeline</li>
+<li>Generate first 100 test questions</li>
+<li>Validate quality</li>
+<li><strong>If quality is good, proceed to Phase 3</strong></li>
+<p>
+</ol>
+</p>
+
+<h3>Phase 3: Essential Australian Content (Week 4)</h3>
+<strong>Cost: $645-1,030</strong>
+<ol>
+<li>Check for eTG institutional access (save $385)</li>
+<li>Buy AMC Handbook ($180) - <strong>No substitute for this</strong></li>
+<li>Buy Murtagh's General Practice ($180) - <strong>Critical for ICRP</strong></li>
+<li>Buy Talley & O'Connor ($130) - <strong>Essential for AMC Clinical</strong></li>
+<li>Buy AMH ($155) or get institutional access</li>
+<p>
+</ol>
+</p>
+
+<h3>Phase 4: Core Medicine (Month 2)</h3>
+<strong>Cost: $110-450</strong>
+<ol>
+<li>Buy Davidson's ($110) - Most concise</li>
+<li>OR buy all 3 if budget allows</li>
+<p>
+</ol>
+</p>
+
+<h3>Phase 5: Specialties (Month 3-6)</h3>
+<strong>Cost: $710</strong>
+<ol>
+<li>Buy based on weak areas</li>
+<li>Prioritize specialties heavily tested on AMC</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>📥 Download Links (Free Resources)</h2>
+
+<h3>StatPearls</h3>
+<ul>
+<li><strong>URL:</strong> https://www.ncbi.nlm.nih.gov/books/NBK430685/</li>
+<li><strong>Format:</strong> HTML (individual chapters)</li>
+<li><strong>How to Download:</strong></li>
+<p>
+</ul>
+  - Browse by specialty
+  - Right-click → Save As → PDF
+  - Or use bulk download script (see FREE<em>RESOURCES</em>SETUP.md)
+</p>
+
+<h3>NCBI Bookshelf</h3>
+<ul>
+<li><strong>URL:</strong> https://www.ncbi.nlm.nih.gov/books/</li>
+<li><strong>Available Books:</strong></li>
+<p>
+</ul>
+  - Harrison's (older editions, select chapters)
+  - Various medical textbooks
+  - NIH guidelines
+</p>
+
+<h3>Australian Government Resources</h3>
+
+<ol>
+<li><strong>Therapeutic Guidelines</strong> (institutional)</li>
+<p>
+</ol>
+   - URL: https://tgldcdp.tg.org.au/
+   - Check hospital/university access
+</p>
+
+<ol>
+<li><strong>NSW Health Clinical Guidelines</strong></li>
+<p>
+</ol>
+   - URL: https://www1.health.nsw.gov.au/pds/Pages/pds-by-topic.aspx
+   - All free PDFs
+</p>
+
+<ol>
+<li><strong>National Asthma Handbook</strong></li>
+<p>
+</ol>
+   - URL: https://www.asthmahandbook.org.au/
+   - Free online access
+</p>
+
+<ol>
+<li><strong>Cancer Council Guidelines</strong></li>
+<p>
+</ol>
+   - URL: https://www.cancer.org.au/
+   - Free clinical guidelines
+</p>
+
+<ol>
+<li><strong>Australian Immunisation Handbook</strong></li>
+<p>
+</ol>
+   - URL: https://immunisationhandbook.health.gov.au/
+   - Free online
+</p>
+
+<ol>
+<li><strong>Royal Australian College of General Practitioners (RACGP) Guidelines</strong></li>
+<p>
+</ol>
+   - URL: https://www.racgp.org.au/clinical-resources/clinical-guidelines
+   - Many free guidelines (some require membership)
+</p>
+
+<hr>
+
+<h2>📊 Book Comparison Matrix</h2>
+
+<p>
+| Book | Cost | Australian-Specific | Essential for AMC | Essential for ICRP | Free Alternative |
+|------|------|---------------------|-------------------|--------------------|--------------------|
+| <strong>eTG</strong> | $385/yr | ✅ Yes | ✅✅✅ Critical | ✅✅✅ Critical | Institutional access |
+| <strong>Talley & O'Connor</strong> | $130 | ✅ Yes | ✅✅✅ Critical (Clinical) | ✅✅ High | None |
+| <strong>AMC Handbook</strong> | $180 | ✅ Yes | ✅✅✅ Critical | ✅ Moderate | None (official AMC) |
+| <strong>Murtagh's GP</strong> | $180 | ✅ Yes | ✅✅✅ Critical | ✅✅✅ Critical | None |
+| <strong>AMH</strong> | $155 | ✅ Yes | ✅✅ High | ✅✅ High | Institutional access |
+| <strong>Harrison's</strong> | $200 | ❌ No | ✅✅ High | ✅ Moderate | StatPearls, NCBI |
+| <strong>Kumar & Clark</strong> | $140 | ❌ No | ✅✅ High | ✅ Moderate | StatPearls |
+| <strong>Davidson's</strong> | $110 | ❌ No | ✅✅ High | ✅ Moderate | StatPearls |
+| <strong>Nelson Pediatrics</strong> | $200 | ❌ No | ✅ Moderate | ✅ Moderate | StatPearls |
+| <strong>Williams OB</strong> | $180 | ❌ No | ✅ Moderate | ✅ Moderate | StatPearls |
+| <strong>Bailey & Love</strong> | $150 | ❌ No | ✅ Moderate | ✅ Moderate | StatPearls |
+| <strong>Kaplan Psych</strong> | $180 | ❌ No | ✅ Moderate | ✅ Moderate | StatPearls |
+</p>
+
+<hr>
+
+<h2>🔍 Where to Buy</h2>
+
+<h3>Australian Booksellers</h3>
+<ol>
+<li><strong>Book Depository</strong> - Free international shipping</li>
+<li><strong>Booktopia</strong> - Australian online bookstore</li>
+<li><strong>Amazon Australia</strong> - Often has good prices</li>
+<li><strong>Elsevier Australia</strong> - Direct from publisher</li>
+<p>
+</ol>
+</p>
+
+<h3>University Bookstores</h3>
+<ul>
+<li>Often have student discounts (10-20% off)</li>
+<p>
+</ul>
+</p>
+
+<h3>Second-Hand Options</h3>
+<ul>
+<li><strong>StudentVIP</strong> - Australian student marketplace</li>
+<li><strong>eBay Australia</strong> - Used textbooks</li>
+<li><strong>Gumtree</strong> - Local classifieds</li>
+<li><strong>Facebook Marketplace</strong> - Medical student groups</li>
+<p>
+</ul>
+</p>
+
+<h3>Digital Editions</h3>
+<ul>
+<li>Often 20-30% cheaper than print</li>
+<li>Immediate access</li>
+<li>Searchable (great for RAG system)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>✅ Final Recommendations</h2>
+
+<h3>For Immediate Start (Next 7 Days):</h3>
+<ol>
+<li>✅ Download StatPearls (FREE)</li>
+<li>✅ Access NCBI Bookshelf (FREE)</li>
+<li>✅ Collect Australian government guidelines (FREE)</li>
+<li>✅ Test your PDF processing pipeline</li>
+<li>✅ Generate first 100 questions</li>
+<li>✅ Validate system works</li>
+<p>
+</ol>
+</p>
+
+<h3>For Long-term Success (Month 1-2):</h3>
+<ol>
+<li>✅ Acquire Top 5 Australian-specific books ($645-1,030)</li>
+<li>✅ Add Davidson's for core medicine ($110)</li>
+<li>✅ Process all PDFs through pipeline</li>
+<li>✅ Generate 1,000+ validated questions</li>
+<p>
+</ol>
+</p>
+
+<h3>For Comprehensive Coverage (Month 3+):</h3>
+<ol>
+<li>✅ Add specialty books as needed ($710)</li>
+<li>✅ Scale to 5,000+ questions</li>
+<li>✅ Beta test with real students</li>
+<li>✅ Launch platform</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>📞 Questions?</h2>
+
+<p>
+See:
+</p>
+<ul>
+<li><strong>FREE<em>RESOURCES</em>SETUP.md</strong> - How to download and process free resources</li>
+<li><strong>NEXT_STEPS.md</strong> - What to do after acquiring books</li>
+<li><strong>SYSTEM_OVERVIEW.md</strong> - Overall system architecture</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Last Updated:</strong> December 14, 2025
+<strong>Status:</strong> Ready to start with FREE resources today, scale to paid books as budget allows
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

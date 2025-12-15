@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking Bad News - Complete Mock OSCE Stations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Mock Stations</span>
+</div>
+        
+        <h1>Breaking Bad News - Complete Mock OSCE Stations</h1>
+<h2>AMC Clinical / ICRP NSW Young Hospital Preparation</h2>
+
+<strong>Purpose</strong>: Complete mock OSCE stations for breaking bad news with examiner checklists
+<strong>Format</strong>: 6 complete 8-minute stations
+<strong>Created</strong>: December 14, 2025
+
+<hr>
+
+<h2>TABLE OF CONTENTS</h2>
+
+<ol>
+<li><a href="#station-1-positive-hiv-test-result">Station 1: Positive HIV Test Result</a></li>
+<li><a href="#station-2-miscarriage">Station 2: Miscarriage</a></li>
+<li><a href="#station-3-stroke-with-permanent-disability">Station 3: Stroke with Permanent Disability - Family Meeting</a></li>
+<li><a href="#station-4-death-notification-to-spouse">Station 4: Death Notification to Spouse</a></li>
+<li><a href="#station-5-childhood-leukemia">Station 5: Childhood Leukemia - Breaking News to Parents</a></li>
+<li><a href="#station-6-dementia-diagnosis">Station 6: Dementia Diagnosis</a></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>HOW TO USE THESE MOCK STATIONS</h2>
+
+<h3>For Self-Practice:</h3>
+<ol>
+<li>Read candidate instructions only (don't read actor script or examiner checklist)</li>
+<li>Set 8-minute timer</li>
+<li>Practice aloud (ideally record yourself)</li>
+<li>After 8 minutes, review examiner checklist - mark yourself honestly</li>
+<li>Watch recording (if made) - assess body language, silence tolerance, empathy</li>
+<p>
+</ol>
+</p>
+
+<h3>For Peer Practice:</h3>
+<ol>
+<li><strong>Candidate</strong>: Reads candidate instructions only</li>
+<li><strong>Actor</strong>: Reads actor script, follows emotional cues</li>
+<li><strong>Examiner</strong> (optional 3rd person): Uses checklist to mark in real-time</li>
+<li>Run 8-minute station</li>
+<li>Feedback session:</li>
+<p>
+</ol>
+   - Actor feedback: "I felt...", "It would have helped if..."
+   - Examiner feedback: Checklist scores + observations
+   - Candidate reflection: "I struggled with...", "I did well on..."
+</p>
+<ol>
+<li>Rotate roles</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>STATION 1: POSITIVE HIV TEST RESULT</h2>
+
+<h3>CANDIDATE INSTRUCTIONS</h3>
+<strong>(Posted outside examination room - you have 2 minutes to read)</strong>
+
+<strong>STATION 1: COMMUNICATION SKILLS - BREAKING BAD NEWS (8 minutes)</strong>
+
+<p>
+You are a GP. Mr James Mitchell, 32, attended 2 weeks ago with recurrent oral thrush, unexplained weight loss, and night sweats. You ordered HIV serology, which has returned positive.
+</p>
+
+<strong>Recent investigations:</strong>
+<ul>
+<li>HIV ELISA: Positive</li>
+<li>HIV Western blot (confirmatory): Positive</li>
+<li>CD4 count: 450 cells/μL (normal >500)</li>
+<li>HIV viral load: 45,000 copies/mL</li>
+<p>
+</ul>
+</p>
+
+<strong>Tasks:</strong>
+<ol>
+<li>Break the news of his HIV diagnosis</li>
+<li>Explain what HIV means and the difference between HIV and AIDS</li>
+<li>Discuss treatment briefly</li>
+<li>Address his concerns appropriately</li>
+<li>Outline next steps</li>
+<p>
+</ol>
+</p>
+
+<p>
+You have 8 minutes for this consultation.
+</p>
+
+<hr>
+
+<h3>SIMULATED PATIENT SCRIPT</h3>
+
+<strong>Name</strong>: James Mitchell
+<strong>Age</strong>: 32
+<strong>Occupation</strong>: Graphic designer
+<strong>Background</strong>:
+<ul>
+<li>Has been feeling unwell for 3 months</li>
+<li>Recurrent oral thrush that won't clear</li>
+<li>Lost 6kg without trying</li>
+<li>Night sweats</li>
+<li>Had unprotected sex with casual partners over past year</li>
+<li>Worried but hoped it was "just stress"</li>
+<li>No medical background in family</li>
+<li>Currently single</li>
+<p>
+</ul>
+</p>
+
+<strong>Opening Demeanor</strong>: Nervous, fidgeting
+
+<strong>Emotional Trajectory</strong>:
+
+<strong>When diagnosis delivered</strong>:
+<ul>
+<li>Go silent for 10 seconds, stare at doctor</li>
+<li>Then quietly say: "Are you sure?"</li>
+<li>After doctor confirms, start crying quietly</li>
+<p>
+</ul>
+</p>
+
+<strong>After initial crying</strong> (30-60 seconds in):
+<ul>
+<li>"Am I going to die? I thought HIV was a death sentence."</li>
+<li><em>This is your key fear - you think you're going to die soon</em></li>
+<p>
+</ul>
+</p>
+
+<strong>If doctor explains treatment well</strong>:
+<ul>
+<li>Some relief visible</li>
+<li>"So this is manageable? Like diabetes or something?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Key Concerns to Raise</strong> (if doctor doesn't address):
+<ol>
+<li>"Am I going to die?" → Want reassurance about lifespan</li>
+<li>"Did I give this to anyone?" → Guilt about past partners</li>
+<li>"Do I have to tell people?" → Fear of stigma, privacy concerns</li>
+<li>"Will I be on medication forever?" → Want to understand treatment duration</li>
+<p>
+</ol>
+</p>
+
+<strong>If candidate does well</strong>:
+<ul>
+<li>Engage with questions</li>
+<li>Show some relief when treatment explained</li>
+<li>Thank doctor</li>
+<p>
+</ul>
+</p>
+
+<strong>If candidate does poorly</strong> (rushes, lacks empathy):
+<ul>
+<li>Become more withdrawn</li>
+<li>Stop asking questions</li>
+<li>Look distressed but shut down</li>
+<p>
+</ul>
+</p>
+
+<strong>Cues to Give</strong>:
+<ul>
+<li>[Early] <em>Fidgeting with hands</em>: "I've been really worried about this test."</li>
+<li>[After diagnosis] <em>Crying</em>: "This can't be happening."</li>
+<li>[Mid-station] <em>Anxiously</em>: "Who do I have to tell? Do I have to tell my family?"</li>
+<li>[Late] <em>Cautiously hopeful</em>: "So people actually live normal lives with this now?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>EXAMINER MARKING CHECKLIST</h3>
+
+<strong>STATION 1: Breaking News of HIV Diagnosis</strong>
+<strong>Total: 100 points</strong>
+
+<strong>Candidate Number: <strong><em></strong></em></strong>
+<strong>Examiner Number: <strong><em></strong></em></strong>
+
+<hr>
+
+<h4><strong>1. SETTING & OPENING (10 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Introduces self and role</strong> (2 pts)</li>
+<li><input type="checkbox"> <strong>Ensures privacy appropriate</strong> (door closed, confidentiality emphasized) (3 pts)</li>
+<li><input type="checkbox"> <strong>Sits down</strong> (1 pt)</li>
+<li><input type="checkbox"> <strong>Asks if patient wants anyone present</strong> ("Is there anyone you'd like with you?") (2 pts)</li>
+<li><input type="checkbox"> <strong>Sets agenda appropriately</strong> ("I wanted to discuss your test results") (2 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /10</strong>
+
+<hr>
+
+<h4><strong>2. PERCEPTION - Assessing Patient Understanding (10 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Asks what patient has been thinking/worried about</strong> (3 pts)</li>
+<li><input type="checkbox"> <strong>Explores patient's understanding of why test was done</strong> (3 pts)</li>
+<li><input type="checkbox"> <strong>Assesses expectations</strong> ("What were you hoping the test would show?") (2 pts)</li>
+<li><input type="checkbox"> <strong>Listens actively without interrupting</strong> (2 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /10</strong>
+
+<hr>
+
+<h4><strong>3. KNOWLEDGE - Delivering the Diagnosis (25 points)</strong></h4>
+
+<strong>Delivering News:</strong>
+<ul>
+<li><input type="checkbox"> <strong>Gives warning shot</strong> ("I'm afraid I have some difficult news") (3 pts)</li>
+<li><input type="checkbox"> <strong>States diagnosis clearly</strong> ("Your HIV test has come back positive") (5 pts)</li>
+<li><input type="checkbox"> <strong>Pauses after delivering news</strong> (allows silence 5-10 seconds) (4 pts)</li>
+<li><input type="checkbox"> <strong>Uses simple, non-technical language</strong> (avoids jargon) (3 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Explaining HIV:</strong>
+<ul>
+<li><input type="checkbox"> <strong>Explains what HIV is</strong> (virus affecting immune system) (3 pts)</li>
+<li><input type="checkbox"> <strong>Clarifies HIV vs AIDS distinction</strong> (important - not the same thing) (4 pts)</li>
+<li><input type="checkbox"> <strong>Gives information in chunks with pauses</strong> (3 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /25</strong>
+
+<hr>
+
+<h4><strong>4. EMOTIONS - Responding to Patient Distress (20 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Observes and acknowledges patient's emotional response</strong> ("I can see this is very difficult for you") (4 pts)</li>
+<li><input type="checkbox"> <strong>Uses empathetic statements</strong> ("I'm sorry to give you this news") (4 pts)</li>
+<li><input type="checkbox"> <strong>Allows silence when patient cries</strong> (doesn't rush) (5 pts)</li>
+<li><input type="checkbox"> <strong>Provides tissues</strong> (1 pt)</li>
+<li><input type="checkbox"> <strong>Validates feelings</strong> ("This is understandable") (3 pts)</li>
+<li><input type="checkbox"> <strong>Addresses "Am I going to die?" appropriately</strong> (reassures about modern treatment, normal lifespan) (3 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /20</strong>
+
+<hr>
+
+<h4><strong>5. KNOWLEDGE - Treatment Discussion (15 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Explains treatment is available and effective</strong> (antiretroviral therapy) (3 pts)</li>
+<li><input type="checkbox"> <strong>Explains treatment goal</strong> (undetectable viral load, U=U concept) (4 pts)</li>
+<li><input type="checkbox"> <strong>Mentions Australian PBS coverage</strong> (affordable treatment) (2 pts)</li>
+<li><input type="checkbox"> <strong>Explains this is lifelong but manageable</strong> (usually one pill daily) (3 pts)</li>
+<li><input type="checkbox"> <strong>Realistic optimism</strong> ("People with HIV live normal lifespans with treatment") (3 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /15</strong>
+
+<hr>
+
+<h4><strong>6. STRATEGY & SUMMARY - Next Steps (15 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Outlines next steps clearly</strong> (referral to infectious diseases specialist, start treatment, monitoring) (4 pts)</li>
+<li><input type="checkbox"> <strong>Discusses partner notification</strong> (legal/ethical obligation to tell sexual partners) (3 pts)</li>
+<li><input type="checkbox"> <strong>Offers support services</strong> (ACON, Positive Life, sexual health clinic, counselling) (3 pts)</li>
+<li><input type="checkbox"> <strong>Provides written information</strong> (2 pts)</li>
+<li><input type="checkbox"> <strong>Arranges follow-up</strong> (2 pts)</li>
+<li><input type="checkbox"> <strong>Safety-netting</strong> (when to seek help, contact information) (1 pt)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /15</strong>
+
+<hr>
+
+<h4><strong>7. COMMUNICATION SKILLS (5 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Maintains appropriate eye contact</strong> (1 pt)</li>
+<li><input type="checkbox"> <strong>Appropriate body language</strong> (open posture, forward lean) (1 pt)</li>
+<li><input type="checkbox"> <strong>Tone of voice compassionate</strong> (1 pt)</li>
+<li><input type="checkbox"> <strong>Appropriate pace</strong> (not rushed) (1 pt)</li>
+<li><input type="checkbox"> <strong>Summarizes appropriately</strong> (1 pt)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /5</strong>
+
+<hr>
+
+<h4><strong>CRITICAL ERRORS</strong> (Automatic Fail if ANY Occur)</h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Breaches confidentiality</strong> (e.g., "I need to tell the health department about your sexual partners")</li>
+<li><input type="checkbox"> <strong>Says patient will die / gives specific short timeframe without qualification</strong></li>
+<li><input type="checkbox"> <strong>Shows visible discomfort, judgment, or stigma about HIV</strong></li>
+<li><input type="checkbox"> <strong>Provides incorrect medical information</strong> (e.g., "HIV is curable")</li>
+<li><input type="checkbox"> <strong>Leaves room during patient distress</strong></li>
+<li><input type="checkbox"> <strong>Fails to explain difference between HIV and AIDS</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Critical Error? YES / NO</strong> (Circle one)
+
+<hr>
+
+<h4><strong>OVERALL PERFORMANCE</strong></h4>
+
+<strong>Total Score: <em>_</em> /100</strong>
+
+<strong>Timing</strong>: Did candidate finish within 8 minutes? YES / NO
+
+<strong>Global Rating</strong> (Circle one):
+<ul>
+<li><strong>Clear Pass (75-100)</strong>: Excellent communication, empathetic, structured, addressed all key points</li>
+<li><strong>Borderline Pass (60-74)</strong>: Adequate, some gaps but acceptable</li>
+<li><strong>Borderline Fail (50-59)</strong>: Significant gaps, poor communication</li>
+<li><strong>Clear Fail (<50)</strong>: Major deficiencies, critical errors</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Examiner Comments</strong>:
+
+<strong>Strengths</strong>:
+<strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong>__
+<strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong>__
+
+<strong>Areas for Improvement</strong>:
+<strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong>__
+<strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong><strong><em></em></em></strong>__
+
+<strong>Examiner Signature</strong>: <strong><em><em></em></strong><strong><em></em></em></strong><strong><em> <strong>Date</strong>: </em></strong><strong><em><em></em></strong></em>__
+
+<hr>
+
+<h3>MODEL ANSWER - HIGH-SCORING APPROACH</h3>
+
+<strong>Time Breakdown</strong>:
+<ul>
+<li>Opening & Perception: 90 seconds</li>
+<li>Delivering news & emotional response: 120 seconds</li>
+<li>Explaining HIV & treatment: 120 seconds</li>
+<li>Next steps & closing: 90 seconds</li>
+<li><strong>Total: 7-8 minutes</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Opening</strong> (30 sec):
+<p>
+"Hello James, I'm Dr [Name]. Thank you for coming in. <em>[Sit down]</em> I've received the results of your HIV test, and I wanted to discuss them with you. Is there anyone you'd like to have with you for this conversation, or are you okay to talk alone?"
+</p>
+
+<strong>Perception</strong> (60 sec):
+<p>
+"Before I go through the results, can I ask what you've been thinking about since we did the test? [Listen] What do you understand about why we did the HIV test? [Listen] What were you hoping it would show? [Listen]"
+</p>
+
+<strong>Delivering News</strong> (30 sec):
+<p>
+"I'm afraid I have some difficult news to share with you. <em>[Pause 2 seconds]</em> Your HIV test has come back positive. <em>[Pause 5-10 seconds - observe reaction]</em>"
+</p>
+
+<strong>Emotional Response</strong> (60 sec):
+<em>[Patient goes silent, then cries quietly]</em>
+<em>[Hand tissues, lean forward, allow 15-20 seconds of silence]</em>
+<p>
+"I can see this is very difficult news for you. I'm sorry to have to tell you this. Take your time."
+</p>
+<em>[Patient asks: "Am I going to die?"]</em>
+<p>
+"I understand that's your first fear, and that's completely understandable. I want to tell you something very important: with modern treatment, people with HIV live normal lifespans. This is not a death sentence. HIV is now a manageable chronic condition, like diabetes."
+</p>
+
+<strong>Explaining HIV</strong> (90 sec):
+<p>
+"Let me explain what HIV is. HIV stands for Human Immunodeficiency Virus. It's a virus that affects your immune system - the part of your body that fights infections. That's why you've been having the oral thrush - your immune system has been weakened. [Pause]
+</p>
+
+<p>
+Now, HIV and AIDS are not the same thing - this is important. HIV is the virus. AIDS is the advanced stage that happens if HIV isn't treated. With treatment, you will never develop AIDS. [Pause] Do you understand the difference?"
+</p>
+
+<strong>Treatment</strong> (90 sec):
+<p>
+"The good news - and there is good news - is that we have excellent treatments for HIV. Treatment is called antiretroviral therapy. It's usually one pill once a day. This medication stops the virus from multiplying in your body.
+</p>
+
+<p>
+The goal is to get your virus level down to undetectable. When you're undetectable, you can't pass HIV to others, even through sex. This is called U=U: Undetectable equals Untransmittable.
+</p>
+
+<p>
+All HIV medications in Australia are on the PBS - the Pharmaceutical Benefits Scheme - so they're very affordable. About $31 per script, or $7 with a healthcare card. So treatment is accessible here.
+</p>
+
+<p>
+What questions do you have about treatment?"
+</p>
+
+<strong>Addressing Concerns</strong> (variable):
+<em>[If patient asks about telling people]</em>:
+<p>
+"You don't have to tell everyone - this is your private medical information. However, you do have a legal and ethical obligation to tell any sexual partners. We have a partner notification service that can help - they can notify partners anonymously if you prefer."
+</p>
+
+<strong>Next Steps</strong> (60 sec):
+<p>
+"Here's what happens next. I'm going to refer you to an infectious diseases specialist. They'll usually see you within 1-2 weeks. They'll do some additional blood tests and start you on treatment. Within 3-6 months, your viral load should be undetectable.
+</p>
+
+<p>
+I'm also going to give you information about support services. In NSW, there's ACON - they provide counselling, support groups, and information for people with HIV. Positive Life NSW is another great organization. I can also refer you to a counsellor if that would help.
+</p>
+
+<p>
+I'd like to see you again in a few days to check how you're doing and answer any questions that come up. Here's my number if you need to talk before then.
+</p>
+
+<p>
+Does that all make sense? What questions do you have?"
+</p>
+
+<strong>Closing</strong> (30 sec):
+<p>
+"Just to recap: You have HIV. This is serious, but it's very treatable. With medication, you'll live a normal life and won't be able to transmit the virus. We're referring you to a specialist, and there are support services available. I'll see you in a few days.
+</p>
+
+<p>
+I'm sorry to have given you this difficult news, but I want you to know there's real hope. How are you feeling right now? Are you safe to drive home?"
+</p>
+
+<strong>Key Differences Between 90% and 70% Performance</strong>:
+
+<strong>90% candidate</strong>:
+<ul>
+<li>Comfortable with silence (counts to 10)</li>
+<li>Empathy statements feel genuine, not scripted</li>
+<li>Addresses "Am I going to die?" proactively and compassionately</li>
+<li>Explains U=U concept clearly</li>
+<li>Mentions PBS coverage</li>
+<li>Checks understanding frequently</li>
+<li>Body language shows comfort with difficult conversation</li>
+<p>
+</ul>
+</p>
+
+<strong>70% candidate</strong>:
+<ul>
+<li>Allows some silence but rushes slightly</li>
+<li>Uses empathy statements but they feel more formulaic</li>
+<li>Addresses death fear when asked but not as reassuringly</li>
+<li>Explains treatment but misses U=U or PBS</li>
+<li>Checks understanding once or twice</li>
+<li>Body language shows some discomfort</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>STATION 2: MISCARRIAGE</h2>
+
+<h3>CANDIDATE INSTRUCTIONS</h3>
+
+<strong>STATION 2: COMMUNICATION SKILLS - BREAKING BAD NEWS (8 minutes)</strong>
+
+<p>
+You are a GP. Mrs Emma Wilson, 28, presented to the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department yesterday with vaginal bleeding at 10 weeks gestation.
+</p>
+
+<strong>Results:</strong>
+<ul>
+<li>Transvaginal ultrasound: Empty gestational sac, no fetal heartbeat</li>
+<li>βHCG levels: Day 1: 8,000 mIU/mL → Day 2: 2,500 mIU/mL (falling)</li>
+<li>Diagnosis: Complete miscarriage (missed abortion)</li>
+<p>
+</ul>
+</p>
+
+<p>
+She has been discharged from ED and is here for follow-up.
+</p>
+
+<strong>Tasks:</strong>
+<ol>
+<li>Break the news that she has had a miscarriage</li>
+<li>Address her emotional response appropriately</li>
+<li>Address any guilt or self-blame</li>
+<li>Explain what happens next physically</li>
+<li>Discuss future pregnancy prospects</li>
+<li>Provide appropriate support</li>
+<p>
+</ol>
+</p>
+
+<p>
+You have 8 minutes for this consultation.
+</p>
+
+<hr>
+
+<h3>SIMULATED PATIENT SCRIPT</h3>
+
+<strong>Name</strong>: Emma Wilson
+<strong>Age</strong>: 28
+<strong>Occupation</strong>: Primary school teacher
+<strong>Background</strong>:
+<ul>
+<li>First pregnancy, planned and wanted</li>
+<li>Married to David (husband) for 3 years</li>
+<li>Had been feeling pregnant (nausea, tired), symptoms stopped a week ago but thought it was normal</li>
+<li>Presented to ED with bleeding and cramping yesterday</li>
+<li>ED doctors said "tests needed, come back to GP for results"</li>
+<li>Hoping bleeding was normal pregnancy bleeding, but deep down fears the worst</li>
+<p>
+</ul>
+</p>
+
+<strong>Opening Demeanor</strong>: Anxious, hopeful but scared
+
+<strong>Emotional Trajectory</strong>:
+
+<strong>When diagnosis delivered</strong>:
+<ul>
+<li>Immediate tears, hand to mouth</li>
+<li>Cry for 30-45 seconds</li>
+<li>Need tissues</li>
+<p>
+</ul>
+</p>
+
+<strong>First question</strong> (through tears):
+<ul>
+<li>"Are you sure? Could the test be wrong?"</li>
+<li>Need definitive answer</li>
+<p>
+</ul>
+</p>
+
+<strong>Second wave</strong> (60-90 seconds in):
+<ul>
+<li><strong>Guilt</strong> - this is key emotional focus</li>
+<li>"Did I cause this? I lifted some heavy boxes at school last week. Did I kill my baby?"</li>
+<li><em>NEED direct, firm reassurance that it's not her fault</em></li>
+<p>
+</ul>
+</p>
+
+<strong>If guilt addressed well</strong>:
+<ul>
+<li>Some relief</li>
+<li>"I've been blaming myself. I thought I did something wrong."</li>
+<p>
+</ul>
+</p>
+
+<strong>Third concern</strong> (2-3 minutes in):
+<ul>
+<li>"Can I still have children? Will this happen again?"</li>
+<li><em>Fear about future</em></li>
+<p>
+</ul>
+</p>
+
+<strong>If candidate does well</strong>:
+<ul>
+<li>Gradual calming</li>
+<li>Asks practical questions ("When will bleeding stop?")</li>
+<li>"What do I tell people? I had told some friends I was pregnant."</li>
+<p>
+</ul>
+</p>
+
+<strong>If candidate does poorly</strong> (rushes, medicalizes, doesn't address guilt):
+<ul>
+<li>Continues crying</li>
+<li>Withdraws</li>
+<li>Doesn't ask questions</li>
+<p>
+</ul>
+</p>
+
+<strong>Cues to Give</strong>:
+<ul>
+<li>[Opening] <em>Anxious</em>: "The ED said I needed to see you for results. Is everything okay?"</li>
+<li>[After diagnosis, crying] <em>Through tears</em>: "But I felt pregnant. How can the baby be gone?"</li>
+<li>[Guilt] <em>Desperate</em>: "I lifted something heavy. Did I cause this?"</li>
+<li>[Later] <em>Quietly</em>: "Will I be able to have children?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>EXAMINER MARKING CHECKLIST</h3>
+
+<strong>STATION 2: Breaking News of Miscarriage</strong>
+<strong>Total: 100 points</strong>
+
+<h4><strong>1. SETTING & OPENING (8 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Introduces self</strong> (1 pt)</li>
+<li><input type="checkbox"> <strong>Ensures privacy</strong> (1 pt)</li>
+<li><input type="checkbox"> <strong>Sits down</strong> (1 pt)</li>
+<li><input type="checkbox"> <strong>Asks if partner/support person present or wanted</strong> (3 pts)</li>
+<li><input type="checkbox"> <strong>Empathetic opening</strong> (acknowledges ED visit) (2 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /8</strong>
+
+<h4><strong>2. PERCEPTION (8 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Asks what ED told her</strong> (3 pts)</li>
+<li><input type="checkbox"> <strong>Assesses what patient is hoping/fearing</strong> (3 pts)</li>
+<li><input type="checkbox"> <strong>Listens actively</strong> (2 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /8</strong>
+
+<h4><strong>3. KNOWLEDGE - Delivering Diagnosis (20 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Warning shot</strong> ("I'm sorry, but I have sad news") (3 pts)</li>
+<li><input type="checkbox"> <strong>Clear diagnosis</strong> ("The ultrasound and blood tests confirm that you've had a miscarriage") (5 pts)</li>
+<li><input type="checkbox"> <strong>Pauses after delivering news</strong> (allows silence) (4 pts)</li>
+<li><input type="checkbox"> <strong>Uses sensitive language</strong> (uses patient's language - "baby" if she says baby) (3 pts)</li>
+<li><input type="checkbox"> <strong>Confirms certainty when asked</strong> ("I'm certain. I'm very sorry.") (3 pts)</li>
+<li><input type="checkbox"> <strong>Explains medical facts gently</strong> (pregnancy stopped developing) (2 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /20</strong>
+
+<h4><strong>4. EMOTIONS - Addressing Grief & Guilt (30 points) [CRITICAL SECTION]</strong></h4>
+
+<strong>Allowing Grief:</strong>
+<ul>
+<li><input type="checkbox"> <strong>Provides tissues immediately</strong> (2 pts)</li>
+<li><input type="checkbox"> <strong>Allows crying without interrupting</strong> (at least 20 seconds silence) (5 pts)</li>
+<li><input type="checkbox"> <strong>Empathy statements</strong> ("I'm so sorry", "This is heartbreaking") (4 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Addressing Guilt - CRITICAL:</strong>
+<ul>
+<li><input type="checkbox"> <strong>Proactively addresses guilt</strong> ("This is not your fault") OR responds immediately when patient expresses guilt (5 pts)</li>
+<li><input type="checkbox"> <strong>Direct, firm reassurance</strong> ("You did NOT cause this") (5 pts)</li>
+<li><input type="checkbox"> <strong>Addresses specific guilt</strong> (lifting boxes did not cause miscarriage) (4 pts)</li>
+<li><input type="checkbox"> <strong>Explains actual cause</strong> (usually chromosomal abnormality, random) (3 pts)</li>
+<li><input type="checkbox"> <strong>Validates grief</strong> ("This is a real loss") (2 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /30</strong>
+
+<h4><strong>5. KNOWLEDGE - Physical Recovery & Future (15 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Explains physical recovery</strong> (bleeding will settle, 1-2 weeks) (3 pts)</li>
+<li><input type="checkbox"> <strong>Future pregnancy reassurance</strong> (85% success rate after one miscarriage) (5 pts)</li>
+<li><input type="checkbox"> <strong>Timing</strong> (medically safe to try after one period) (2 pts)</li>
+<li><input type="checkbox"> <strong>Safety-netting</strong> (when to go to ED: heavy bleeding, fever, severe pain) (3 pts)</li>
+<li><input type="checkbox"> <strong>When to investigate</strong> (not after first miscarriage, only after 3 recurrent) (2 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /15</strong>
+
+<h4><strong>6. STRATEGY - Support (14 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Assesses support at home</strong> (partner, family) (2 pts)</li>
+<li><input type="checkbox"> <strong>Offers counselling</strong> (2 pts)</li>
+<li><input type="checkbox"> <strong>Provides support organization info</strong> (SANDS 1300 072 637) (3 pts)</li>
+<li><input type="checkbox"> <strong>Partner grief</strong> (acknowledges partner grieves too) (2 pts)</li>
+<li><input type="checkbox"> <strong>Practical</strong> (offers medical certificate if needed) (2 pts)</li>
+<li><input type="checkbox"> <strong>Follow-up</strong> (arranges to see again in 2 weeks) (2 pts)</li>
+<li><input type="checkbox"> <strong>Written information</strong> (1 pt)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /14</strong>
+
+<h4><strong>7. COMMUNICATION (5 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Eye contact</strong> (1 pt)</li>
+<li><input type="checkbox"> <strong>Body language</strong> (1 pt)</li>
+<li><input type="checkbox"> <strong>Tone</strong> (1 pt)</li>
+<li><input type="checkbox"> <strong>Pace</strong> (1 pt)</li>
+<li><input type="checkbox"> <strong>Summary</strong> (1 pt)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /5</strong>
+
+<h4><strong>CRITICAL ERRORS</strong> (Automatic Fail)</h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Minimizes loss</strong> (e.g., "At least it was early", "You can try again")</li>
+<li><input type="checkbox"> <strong>Doesn't address guilt</strong> or does so weakly</li>
+<li><input type="checkbox"> <strong>Medicalizes without emotion</strong> (treats like routine medical event)</li>
+<li><input type="checkbox"> <strong>Says something to reinforce guilt</strong> ("Were you stressed?" "Did you rest enough?")</li>
+<p>
+</ul>
+</p>
+
+<strong>Critical Error? YES / NO</strong>
+
+<strong>Total Score: <em>_</em> /100</strong>
+
+<strong>Global Rating</strong>:
+<ul>
+<li>Clear Pass (75-100)</li>
+<li>Borderline Pass (60-74)</li>
+<li>Borderline Fail (50-59)</li>
+<li>Clear Fail (<50)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>MODEL ANSWER</h3>
+
+<strong>[Opening - 30 sec]</strong>
+<p>
+"Hello Emma, I'm Dr [Name]. Thank you for coming in. I know you went to the ED yesterday with bleeding. Please, sit down. Is your husband with you, or would you like him to join us?"
+</p>
+
+<strong>[Perception - 45 sec]</strong>
+<p>
+"Before we discuss the results, can you tell me what the doctors at the ED said to you? [Listen] What have you been thinking might be happening?"
+</p>
+
+<strong>[Delivering News - 30 sec]</strong>
+<p>
+"Emma, I'm very sorry, but I have sad news. <em>[Pause]</em> The ultrasound and blood tests confirm that you've had a miscarriage. The pregnancy has ended. <em>[Pause - observe, wait]</em>"
+</p>
+
+<strong>[Emotional Response - 60 sec]</strong>
+<em>[Patient cries - hand tissues immediately]</em>
+<em>[Silence 20-30 seconds - lean forward, stay present]</em>
+<p>
+"I'm so sorry, Emma. This is heartbreaking news. Take your time."
+</p>
+
+<strong>[Addressing Guilt - CRITICAL - 90 sec]</strong>
+<em>[Patient asks through tears: "Did I cause this? I lifted heavy boxes..."]</em>
+<p>
+"Emma, I want to tell you something very important: <strong>This is not your fault. You did not cause this. Lifting boxes did not cause your miscarriage.</strong>
+</p>
+
+<p>
+Nothing you did or didn't do caused this. You didn't cause it by working, exercising, lifting things, or anything else. Miscarriage is very common - about 1 in 4 to 1 in 5 pregnancies end in miscarriage. Most of the time, it's due to a random chromosomal abnormality in the embryo - something that was never compatible with life. This was going to happen regardless of what you did.
+</p>
+
+<p>
+You did nothing wrong. Do you understand that?"
+</p>
+
+<strong>[Physical Recovery - 45 sec]</strong>
+<p>
+"Physically, your bleeding should settle over the next week or so. The ultrasound shows you've had a complete miscarriage, which means the pregnancy tissue has passed. You won't need medication or surgery.
+</p>
+
+<p>
+If you develop very heavy bleeding - soaking two pads an hour for two hours - or fever, or severe pain, please go to ED. Otherwise, your body will recover naturally."
+</p>
+
+<strong>[Future Pregnancy - 60 sec]</strong>
+<em>[Patient asks: "Can I have children? Will this happen again?"]</em>
+<p>
+"Having one miscarriage doesn't mean you'll have another. About 85% of women who've had one miscarriage go on to have successful next pregnancies. Most miscarriages are one-off events.
+</p>
+
+<p>
+When you're ready to try again - and only when you're ready emotionally - medically, you can try after you've had one normal period. That's mainly so we can date the next pregnancy.
+</p>
+
+<p>
+We don't usually do investigations unless someone's had three miscarriages in a row. After one miscarriage, the chances of it happening again are low."
+</p>
+
+<strong>[Support - 60 sec]</strong>
+<p>
+"How are you coping emotionally? Do you have support at home - your husband, family, friends? [Listen]
+</p>
+
+<p>
+I can refer you to a counsellor who specializes in pregnancy loss if that would help. There's also an organization called SANDS - Stillbirth and Neonatal Death Support - their number is 1300 072 637. They support people after miscarriage. They have online forums and support groups.
+</p>
+
+<p>
+Your husband is grieving too. Partners often grieve differently, but he's lost this pregnancy too. It's okay to talk about it together, or for him to seek support as well.
+</p>
+
+<p>
+If you need time off work, I can write you a medical certificate - you don't have to tell your employer the reason."
+</p>
+
+<strong>[Closing - 30 sec]</strong>
+<p>
+"I'm very sorry for your loss, Emma. This is a real loss, and it's okay to grieve. I'd like to see you again in 2 weeks to make sure you've recovered physically and check how you're coping emotionally. Please call if you need anything before then. Do you have any questions for me right now?"
+</p>
+
+<hr>
+
+<em>[Due to length, Stations 3-6 follow in next message or separate document]</em>
+
+<strong>Last Updated</strong>: December 14, 2025
+<strong>Version</strong>: 1.0 (Part 1 of 2)
+<strong>Author</strong>: ICRP NSW Young Hospital Preparation Team
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

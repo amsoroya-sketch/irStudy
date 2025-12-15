@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Agents Infrastructure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>docs</span>
+</div>
+        
+        <h1>Expert Agents Infrastructure</h1>
+<h2>Implementation Guide for 46-Agent System</h2>
+
+<strong>Last Updated:</strong> December 14, 2025
+<strong>Purpose:</strong> Infrastructure setup for multi-agent orchestration
+
+<strong>Status:</strong> Base classes complete ✅ | 45 agents to implement ⏳
+
+<hr>
+
+<h2>📋 Table of Contents</h2>
+
+<ol>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#agent-registry--discovery">Agent Registry & Discovery</a></li>
+<li><a href="#inter-agent-communication">Inter-Agent Communication</a></li>
+<li><a href="#agent-state-management">Agent State Management</a></li>
+<li><a href="#agent-monitoring">Agent Monitoring</a></li>
+<li><a href="#agent-testing-framework">Agent Testing Framework</a></li>
+<li><a href="#agent-deployment">Agent Deployment</a></li>
+<li><a href="#implementation-roadmap">Implementation Roadmap</a></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Overview</h2>
+
+<h3>Current Status</h3>
+
+<strong>✅ Complete:</strong>
+<ul>
+<li><code>BaseAgent</code> class (src/agents/base_agent.py)</li>
+<li><code>PM-001</code> Project Manager (src/agents/pm<em>001</em>project_manager.py)</li>
+<li>3 LangGraph workflows (src/agents/workflows/orchestration.py)</li>
+<li>Agent specifications (docs/AGENT_SPECIFICATIONS.md)</li>
+<p>
+</ul>
+</p>
+
+<strong>⏳ To Implement:</strong>
+<ul>
+<li>45 remaining agents (DEV-001 to MED-015)</li>
+<li>Agent registry system</li>
+<li>Inter-agent message queue</li>
+<li>Agent state persistence</li>
+<li>Monitoring dashboards</li>
+<li>Testing infrastructure</li>
+<p>
+</ul>
+</p>
+
+<h3>Architecture</h3>
+
+<pre><code>┌─────────────────────────────────────────────────────────┐
+<p>
+│                    PM-001 (Coordinator)                  │
+└─────────────────────────────────────────────────────────┘
+                            ↓
+┌─────────────────────────────────────────────────────────┐
+│                   Agent Registry                         │
+│  (Service Discovery + Agent Metadata)                    │
+└─────────────────────────────────────────────────────────┘
+                            ↓
+┌─────────────────────────────────────────────────────────┐
+│              Message Queue (Redis Pub/Sub)               │
+│         (Inter-Agent Communication)                      │
+└─────────────────────────────────────────────────────────┘
+                            ↓
+┌───────────┬─────────────┬──────────────┬───────────────┐
+│ DEV-001   │  AI-001     │  DEVOPS-001  │   QA-001      │
+│ to        │  to         │  to          │   to          │
+│ DEV-012   │  AI-008     │  DEVOPS-006  │   QA-004      │
+│           │             │              │               │
+│ MED-001   │             │              │               │
+│ to        │             │              │               │
+│ MED-015   │             │              │               │
+└───────────┴─────────────┴──────────────┴───────────────┘
+                            ↓
+┌─────────────────────────────────────────────────────────┐
+│                 State Store (PostgreSQL + Redis)         │
+│            (Agent State + Task History)                  │
+└─────────────────────────────────────────────────────────┘
+                            ↓
+┌─────────────────────────────────────────────────────────┐
+│              Monitoring (Prometheus + Grafana)           │
+│      (Agent Performance + Task Metrics)                  │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+</p>
+
+<hr>
+
+<h2>1. Agent Registry & Discovery</h2>
+
+<strong>Purpose:</strong> Central registry for all 46 agents with service discovery
+
+<h3>Database Schema</h3>
+
+<p>
+Create <code>src/agents/registry/schema.sql</code>:
+</p>
+
+<pre><code>-- Agent Registry Table
+<p>
+CREATE TABLE agent_registry (
+    agent_id VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    status VARCHAR(20) DEFAULT 'offline',  -- online, offline, busy, error
+    host VARCHAR(255),
+    port INTEGER,
+    last_heartbeat TIMESTAMP,
+    created_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB  -- capabilities, technologies, etc.
+);
+</p>
+
+<p>
+-- Agent Capabilities Table
+CREATE TABLE agent_capabilities (
+    id SERIAL PRIMARY KEY,
+    agent<em>id VARCHAR(20) REFERENCES agent</em>registry(agent_id),
+    capability VARCHAR(100) NOT NULL,
+    proficiency<em>level INTEGER CHECK (proficiency</em>level >= 1 AND proficiency_level <= 10)
+);
+</p>
+
+<p>
+-- Agent Load Table (for load balancing)
+CREATE TABLE agent_load (
+    agent<em>id VARCHAR(20) REFERENCES agent</em>registry(agent_id),
+    current_tasks INTEGER DEFAULT 0,
+    max_tasks INTEGER DEFAULT 3,
+    avg<em>task</em>duration_sec FLOAT,
+    total<em>tasks</em>completed INTEGER DEFAULT 0,
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+</p>
+
+<p>
+CREATE INDEX idx<em>agent</em>status ON agent_registry(status);
+CREATE INDEX idx<em>agent</em>role ON agent_registry(role);
+</code></pre>
+</p>
+
+<h3>Agent Registry Service</h3>
+
+<p>
+Create <code>src/agents/registry/registry_service.py</code>:
+</p>
+
+<pre><code>#!/usr/bin/env python3
+<p>
+"""
+Agent Registry Service
+Central service discovery and registration for all 46 agents
+"""
+</p>
+
+<p>
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+from typing import List, Optional, Dict, Any
+from datetime import datetime
+import asyncpg
+import uvicorn
+</p>
+
+<p>
+app = FastAPI(title="Agent Registry Service")
+</p>
+
+<h1>Database connection pool</h1>
+<p>
+db_pool: Optional[asyncpg.Pool] = None
+</p>
+
+<p>
+class AgentRegistration(BaseModel):
+    agent_id: str
+    name: str
+    role: str
+    host: str
+    port: int
+    metadata: Dict[str, Any]
+</p>
+
+<p>
+class AgentStatus(BaseModel):
+    agent_id: str
+    status: str  # online, offline, busy, error
+</p>
+
+<p>
+@app.on_event("startup")
+async def startup():
+    """Initialize database connection pool"""
+    global db_pool
+    db<em>pool = await asyncpg.create</em>pool(
+        host="localhost",
+        port=5432,
+        user="postgres",
+        password="postgres",
+        database="medical_ai"
+    )
+</p>
+
+<p>
+@app.on_event("shutdown")
+async def shutdown():
+    """Close database connection pool"""
+    await db_pool.close()
+</p>
+
+<p>
+@app.post("/api/agents/register")
+async def register_agent(agent: AgentRegistration):
+    """
+    Register a new agent with the registry.
+</p>
+
+<p>
+    Example:
+        POST /api/agents/register
+        {
+          "agent_id": "DEV-001",
+          "name": "Senior Backend Architect",
+          "role": "backend_dev",
+          "host": "localhost",
+          "port": 6001,
+          "metadata": {"technologies": ["FastAPI", "SQLAlchemy"]}
+        }
+    """
+    async with db_pool.acquire() as conn:
+        # Insert or update agent registration
+        await conn.execute("""
+            INSERT INTO agent<em>registry (agent</em>id, name, role, status, host, port, last_heartbeat, metadata)
+            VALUES ($1, $2, $3, 'online', $4, $5, NOW(), $6)
+            ON CONFLICT (agent_id)
+            DO UPDATE SET
+                status = 'online',
+                host = $4,
+                port = $5,
+                last_heartbeat = NOW(),
+                metadata = $6
+        """, agent.agent_id, agent.name, agent.role, agent.host, agent.port, agent.metadata)
+</p>
+
+<p>
+    return {"status": "registered", "agent<em>id": agent.agent</em>id}
+</p>
+
+<p>
+@app.post("/api/agents/{agent_id}/heartbeat")
+async def agent<em>heartbeat(agent</em>id: str):
+    """
+    Update agent heartbeat to show it's still alive.
+</p>
+
+<p>
+    Agents should send heartbeat every 30 seconds.
+    """
+    async with db_pool.acquire() as conn:
+        result = await conn.execute("""
+            UPDATE agent_registry
+            SET last_heartbeat = NOW(), status = 'online'
+            WHERE agent_id = $1
+        """, agent_id)
+</p>
+
+<p>
+        if result == "UPDATE 0":
+            raise HTTPException(status_code=404, detail="Agent not found")
+</p>
+
+<p>
+    return {"status": "ok"}
+</p>
+
+<p>
+@app.get("/api/agents")
+async def list_agents(role: Optional[str] = None, status: Optional[str] = None):
+    """
+    List all registered agents.
+</p>
+
+<p>
+    Filters:
+        - role: Filter by agent role (backend<em>dev, ai</em>engineer, etc.)
+        - status: Filter by status (online, offline, busy)
+    """
+    async with db_pool.acquire() as conn:
+        query = "SELECT * FROM agent_registry WHERE 1=1"
+        params = []
+</p>
+
+<p>
+        if role:
+            params.append(role)
+            query += f" AND role = ${len(params)}"
+</p>
+
+<p>
+        if status:
+            params.append(status)
+            query += f" AND status = ${len(params)}"
+</p>
+
+<p>
+        rows = await conn.fetch(query, *params)
+</p>
+
+<p>
+        agents = []
+        for row in rows:
+            agents.append({
+                "agent<em>id": row['agent</em>id'],
+                "name": row['name'],
+                "role": row['role'],
+                "status": row['status'],
+                "host": row['host'],
+                "port": row['port'],
+                "last<em>heartbeat": row['last</em>heartbeat'].isoformat() if row['last_heartbeat'] else None,
+                "metadata": row['metadata']
+            })
+</p>
+
+<p>
+        return {"agents": agents, "total": len(agents)}
+</p>
+
+<p>
+@app.get("/api/agents/{agent_id}")
+async def get<em>agent(agent</em>id: str):
+    """Get specific agent details"""
+    async with db_pool.acquire() as conn:
+        row = await conn.fetchrow("""
+            SELECT * FROM agent<em>registry WHERE agent</em>id = $1
+        """, agent_id)
+</p>
+
+<p>
+        if not row:
+            raise HTTPException(status_code=404, detail="Agent not found")
+</p>
+
+<p>
+        return {
+            "agent<em>id": row['agent</em>id'],
+            "name": row['name'],
+            "role": row['role'],
+            "status": row['status'],
+            "host": row['host'],
+            "port": row['port'],
+            "last<em>heartbeat": row['last</em>heartbeat'].isoformat() if row['last_heartbeat'] else None,
+            "metadata": row['metadata']
+        }
+</p>
+
+<p>
+@app.post("/api/agents/{agent_id}/status")
+async def update<em>agent</em>status(agent_id: str, status: AgentStatus):
+    """Update agent status (online, offline, busy, error)"""
+    async with db_pool.acquire() as conn:
+        await conn.execute("""
+            UPDATE agent_registry
+            SET status = $2
+            WHERE agent_id = $1
+        """, agent_id, status.status)
+</p>
+
+<p>
+    return {"status": "updated"}
+</p>
+
+<p>
+@app.get("/api/agents/discover/{role}")
+async def discover<em>agents</em>by<em>role(role: str, max</em>load: int = 3):
+    """
+    Discover available agents by role with load balancing.
+</p>
+
+<p>
+    Returns agents that:
+    - Match the requested role
+    - Are online
+    - Have capacity (current<em>tasks < max</em>tasks)
+</p>
+
+<p>
+    Sorted by current load (least busy first).
+    """
+    async with db_pool.acquire() as conn:
+        rows = await conn.fetch("""
+            SELECT r.*, l.current<em>tasks, l.max</em>tasks
+            FROM agent_registry r
+            JOIN agent<em>load l ON r.agent</em>id = l.agent_id
+            WHERE r.role = $1
+              AND r.status = 'online'
+              AND l.current<em>tasks < l.max</em>tasks
+            ORDER BY l.current_tasks ASC
+        """, role)
+</p>
+
+<p>
+        agents = []
+        for row in rows:
+            agents.append({
+                "agent<em>id": row['agent</em>id'],
+                "name": row['name'],
+                "current<em>tasks": row['current</em>tasks'],
+                "max<em>tasks": row['max</em>tasks'],
+                "load<em>percentage": (row['current</em>tasks'] / row['max_tasks']) * 100
+            })
+</p>
+
+<p>
+        return {"agents": agents, "available_count": len(agents)}
+</p>
+
+<p>
+if <strong>name</strong> == "<strong>main</strong>":
+    uvicorn.run(app, host="0.0.0.0", port=5100)
+</code></pre>
+</p>
+
+<hr>
+
+<h2>2. Inter-Agent Communication</h2>
+
+<strong>Purpose:</strong> Message queue for agents to communicate
+
+<h3>Using Redis Pub/Sub</h3>
+
+<p>
+Create <code>src/agents/messaging/message_queue.py</code>:
+</p>
+
+<pre><code>#!/usr/bin/env python3
+<p>
+"""
+Agent Message Queue
+Redis Pub/Sub for inter-agent communication
+"""
+</p>
+
+<p>
+import redis
+import json
+from typing import Dict, Any, Callable
+from dataclasses import dataclass, asdict
+from datetime import datetime
+</p>
+
+<p>
+@dataclass
+class AgentMessage:
+    """Message format for inter-agent communication"""
+    from_agent: str
+    to_agent: str
+    message<em>type: str  # task</em>request, task_response, notification, etc.
+    payload: Dict[str, Any]
+    timestamp: str = None
+    correlation_id: str = None
+</p>
+
+<p>
+    def <strong>post_init</strong>(self):
+        if not self.timestamp:
+            self.timestamp = datetime.now().isoformat()
+</p>
+
+<p>
+class AgentMessageQueue:
+    """
+    Message queue for agent communication using Redis Pub/Sub.
+</p>
+
+<p>
+    Usage:
+        queue = AgentMessageQueue()
+</p>
+
+<p>
+        # Agent sends message
+        queue.send<em>message("DEV-001", "PM-001", "task</em>complete", {"task_id": "123"})
+</p>
+
+<p>
+        # Agent subscribes to messages
+        queue.subscribe("PM-001", callback_function)
+    """
+</p>
+
+<p>
+    def <strong>init</strong>(self, redis<em>host: str = "localhost", redis</em>port: int = 6379):
+        self.redis<em>client = redis.Redis(host=redis</em>host, port=redis<em>port, decode</em>responses=True)
+        self.pubsub = self.redis_client.pubsub()
+</p>
+
+<p>
+    def send<em>message(self, from</em>agent: str, to<em>agent: str, message</em>type: str, payload: Dict[str, Any]):
+        """
+        Send a message from one agent to another.
+</p>
+
+<p>
+        Args:
+            from_agent: Sender agent ID
+            to_agent: Recipient agent ID
+            message_type: Type of message
+            payload: Message data
+        """
+        message = AgentMessage(
+            from<em>agent=from</em>agent,
+            to<em>agent=to</em>agent,
+            message<em>type=message</em>type,
+            payload=payload
+        )
+</p>
+
+<p>
+        # Publish to agent's channel
+        channel = f"agent:{to_agent}"
+        self.redis_client.publish(channel, json.dumps(asdict(message)))
+</p>
+
+<p>
+    def broadcast<em>message(self, from</em>agent: str, message_type: str, payload: Dict[str, Any]):
+        """
+        Broadcast message to all agents.
+</p>
+
+<p>
+        Args:
+            from_agent: Sender agent ID
+            message_type: Type of message
+            payload: Message data
+        """
+        message = AgentMessage(
+            from<em>agent=from</em>agent,
+            to_agent="ALL",
+            message<em>type=message</em>type,
+            payload=payload
+        )
+</p>
+
+<p>
+        # Publish to broadcast channel
+        self.redis_client.publish("agent:broadcast", json.dumps(asdict(message)))
+</p>
+
+<p>
+    def subscribe(self, agent_id: str, callback: Callable[[AgentMessage], None]):
+        """
+        Subscribe to messages for this agent.
+</p>
+
+<p>
+        Args:
+            agent_id: Agent ID to subscribe for
+            callback: Function to call when message received
+        """
+        # Subscribe to agent-specific channel
+        self.pubsub.subscribe(f"agent:{agent_id}")
+</p>
+
+<p>
+        # Also subscribe to broadcast channel
+        self.pubsub.subscribe("agent:broadcast")
+</p>
+
+<p>
+        # Listen for messages
+        for message in self.pubsub.listen():
+            if message['type'] == 'message':
+                try:
+                    msg_data = json.loads(message['data'])
+                    agent<em>message = AgentMessage(**msg</em>data)
+</p>
+
+<p>
+                    # Filter: only process messages for this agent or broadcasts
+                    if agent<em>message.to</em>agent == agent<em>id or agent</em>message.to_agent == "ALL":
+                        callback(agent_message)
+                except Exception as e:
+                    print(f"Error processing message: {e}")
+</p>
+
+<h1>Example usage</h1>
+<p>
+if <strong>name</strong> == "<strong>main</strong>":
+    queue = AgentMessageQueue()
+</p>
+
+<p>
+    # Callback function
+    def handle_message(message: AgentMessage):
+        print(f"Received from {message.from<em>agent}: {message.message</em>type}")
+        print(f"Payload: {message.payload}")
+</p>
+
+<p>
+    # Agent PM-001 subscribes to messages
+    queue.subscribe("PM-001", handle_message)
+</code></pre>
+</p>
+
+<h3>Integration with BaseAgent</h3>
+
+<p>
+Update <code>src/agents/base_agent.py</code> to include messaging:
+</p>
+
+<pre><code>class BaseAgent(ABC):
+<p>
+    def <strong>init</strong>(self, metadata: AgentMetadata):
+        # ... existing code ...
+</p>
+
+<p>
+        # Message queue
+        from .messaging.message_queue import AgentMessageQueue
+        self.message_queue = AgentMessageQueue()
+</p>
+
+<p>
+    def send<em>message(self, to</em>agent: str, message_type: str, payload: Dict[str, Any]):
+        """Send message to another agent"""
+        self.message<em>queue.send</em>message(
+            from<em>agent=self.metadata.agent</em>id,
+            to<em>agent=to</em>agent,
+            message<em>type=message</em>type,
+            payload=payload
+        )
+        self.logger.info(f"Sent message to {to<em>agent}: {message</em>type}")
+</p>
+
+<p>
+    def start_listening(self):
+        """Start listening for messages"""
+        def handle_message(message):
+            self.logger.info(f"Received message: {message.message<em>type} from {message.from</em>agent}")
+            self.handle<em>incoming</em>message(message)
+</p>
+
+<p>
+        self.message<em>queue.subscribe(self.metadata.agent</em>id, handle_message)
+</p>
+
+<p>
+    def handle<em>incoming</em>message(self, message):
+        """Override in subclass to handle messages"""
+        pass
+</code></pre>
+</p>
+
+<hr>
+
+<h2>3. Agent State Management</h2>
+
+<strong>Purpose:</strong> Persist agent state across restarts
+
+<h3>State Store Schema</h3>
+
+<pre><code>-- Agent State Table
+<p>
+CREATE TABLE agent_state (
+    agent_id VARCHAR(20) PRIMARY KEY,
+    state JSONB NOT NULL,  -- Agent-specific state
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+</p>
+
+<p>
+-- Task History Table
+CREATE TABLE task_history (
+    task<em>id UUID PRIMARY KEY DEFAULT gen</em>random_uuid(),
+    agent<em>id VARCHAR(20) REFERENCES agent</em>registry(agent_id),
+    task_title VARCHAR(500),
+    task_description TEXT,
+    status VARCHAR(20),  -- pending, in_progress, completed, failed
+    created_at TIMESTAMP DEFAULT NOW(),
+    started_at TIMESTAMP,
+    completed_at TIMESTAMP,
+    result JSONB,
+    error TEXT
+);
+</p>
+
+<p>
+CREATE INDEX idx<em>task</em>agent ON task<em>history(agent</em>id);
+CREATE INDEX idx<em>task</em>status ON task_history(status);
+</code></pre>
+</p>
+
+<h3>State Manager</h3>
+
+<p>
+Create <code>src/agents/state/state_manager.py</code>:
+</p>
+
+<pre><code>#!/usr/bin/env python3
+<p>
+"""Agent State Manager"""
+</p>
+
+<p>
+import asyncpg
+import json
+from typing import Dict, Any, Optional
+</p>
+
+<p>
+class AgentStateManager:
+    """
+    Manage persistent state for agents.
+</p>
+
+<p>
+    Features:
+    - Save agent state to PostgreSQL
+    - Load agent state on startup
+    - Task history tracking
+    """
+</p>
+
+<p>
+    def <strong>init</strong>(self, db_pool: asyncpg.Pool):
+        self.db<em>pool = db</em>pool
+</p>
+
+<p>
+    async def save<em>state(self, agent</em>id: str, state: Dict[str, Any]):
+        """Save agent state"""
+        async with self.db_pool.acquire() as conn:
+            await conn.execute("""
+                INSERT INTO agent<em>state (agent</em>id, state, updated_at)
+                VALUES ($1, $2, NOW())
+                ON CONFLICT (agent_id)
+                DO UPDATE SET state = $2, updated_at = NOW()
+            """, agent_id, json.dumps(state))
+</p>
+
+<p>
+    async def load<em>state(self, agent</em>id: str) -> Optional[Dict[str, Any]]:
+        """Load agent state"""
+        async with self.db_pool.acquire() as conn:
+            row = await conn.fetchrow("""
+                SELECT state FROM agent<em>state WHERE agent</em>id = $1
+            """, agent_id)
+</p>
+
+<p>
+            if row:
+                return json.loads(row['state'])
+            return None
+</p>
+
+<p>
+    async def save<em>task(self, task</em>data: Dict[str, Any]):
+        """Save task to history"""
+        async with self.db_pool.acquire() as conn:
+            await conn.execute("""
+                INSERT INTO task_history
+                (agent<em>id, task</em>title, task<em>description, status, started</em>at)
+                VALUES ($1, $2, $3, $4, NOW())
+            """, task<em>data['agent</em>id'], task_data['title'],
+                task<em>data['description'], task</em>data['status'])
+</p>
+
+<p>
+    async def update<em>task(self, task</em>id: str, status: str, result: Optional[Dict] = None, error: Optional[str] = None):
+        """Update task status"""
+        async with self.db_pool.acquire() as conn:
+            await conn.execute("""
+                UPDATE task_history
+                SET status = $2,
+                    result = $3,
+                    error = $4,
+                    completed_at = CASE WHEN $2 IN ('completed', 'failed') THEN NOW() ELSE NULL END
+                WHERE task_id = $1
+            """, task_id, status, json.dumps(result) if result else None, error)
+</code></pre>
+</p>
+
+<hr>
+
+<h2>4. Agent Monitoring</h2>
+
+<strong>Purpose:</strong> Monitor agent health and performance
+
+<h3>Prometheus Metrics</h3>
+
+<p>
+Create <code>src/agents/monitoring/metrics.py</code>:
+</p>
+
+<pre><code>#!/usr/bin/env python3
+<p>
+"""Agent Monitoring Metrics"""
+</p>
+
+<p>
+from prometheus<em>client import Counter, Histogram, Gauge, start</em>http_server
+</p>
+
+<h1>Agent metrics</h1>
+<p>
+agent<em>tasks</em>total = Counter(
+    'agent<em>tasks</em>total',
+    'Total tasks processed by agent',
+    ['agent_id', 'status']
+)
+</p>
+
+<p>
+agent<em>task</em>duration = Histogram(
+    'agent<em>task</em>duration_seconds',
+    'Task execution duration',
+    ['agent_id']
+)
+</p>
+
+<p>
+agent<em>active</em>tasks = Gauge(
+    'agent<em>active</em>tasks',
+    'Number of currently active tasks',
+    ['agent_id']
+)
+</p>
+
+<p>
+agent_errors = Counter(
+    'agent<em>errors</em>total',
+    'Total errors encountered',
+    ['agent<em>id', 'error</em>type']
+)
+</p>
+
+<h1>Start Prometheus metrics server</h1>
+<p>
+start<em>http</em>server(9200)
+</code></pre>
+</p>
+
+<h3>Grafana Dashboard</h3>
+
+<p>
+Create <code>docker/grafana/dashboards/agent_metrics.json</code>:
+</p>
+
+<pre><code>{
+<p>
+  "dashboard": {
+    "title": "Agent System Metrics",
+    "panels": [
+      {
+        "title": "Tasks by Agent",
+        "targets": [
+          {
+            "expr": "sum(agent<em>tasks</em>total) by (agent_id)"
+          }
+        ]
+      },
+      {
+        "title": "Task Duration (p95)",
+        "targets": [
+          {
+            "expr": "histogram<em>quantile(0.95, agent</em>task<em>duration</em>seconds)"
+          }
+        ]
+      },
+      {
+        "title": "Active Tasks",
+        "targets": [
+          {
+            "expr": "sum(agent<em>active</em>tasks) by (agent_id)"
+          }
+        ]
+      }
+    ]
+  }
+}
+</code></pre>
+</p>
+
+<hr>
+
+<h2>5. Agent Testing Framework</h2>
+
+<strong>Purpose:</strong> Test agents before deployment
+
+<h3>Mock Agent for Testing</h3>
+
+<p>
+Create <code>tests/agents/mock_agent.py</code>:
+</p>
+
+<pre><code>#!/usr/bin/env python3
+<p>
+"""Mock Agent for Testing"""
+</p>
+
+<p>
+from src.agents import BaseAgent, AgentMetadata, AgentRole, AgentTask
+from typing import Dict, Any, List
+</p>
+
+<p>
+class MockAgent(BaseAgent):
+    """Mock agent for testing workflows"""
+</p>
+
+<p>
+    def <strong>init</strong>(self, agent_id: str, responses: Dict[str, Any] = None):
+        metadata = AgentMetadata(
+            agent<em>id=agent</em>id,
+            name=f"Mock Agent {agent_id}",
+            role=AgentRole.BACKEND_DEV,
+            experience_years=10,
+            technologies=["Mock"],
+            specializations=["Testing"],
+            pros=["Fast", "Predictable"],
+            cons=["Not real"]
+        )
+        super().<strong>init</strong>(metadata)
+</p>
+
+<p>
+        self.responses = responses or {}
+        self.received_tasks = []
+</p>
+
+<p>
+    def execute_task(self, task: AgentTask) -> Dict[str, Any]:
+        """Return predefined response"""
+        self.received_tasks.append(task)
+</p>
+
+<p>
+        # Return predefined response or default success
+        response_key = task.title
+        if response_key in self.responses:
+            return self.responses[response_key]
+</p>
+
+<p>
+        return {
+            'status': 'success',
+            'output': {'mock': True, 'task': task.title}
+        }
+</p>
+
+<p>
+    def validate_output(self, task: AgentTask, output: Dict[str, Any]) -> tuple[bool, List[str]]:
+        """Always pass validation in mock"""
+        return True, []
+</code></pre>
+</p>
+
+<h3>Agent Unit Tests</h3>
+
+<p>
+Create <code>tests/agents/test<em>base</em>agent.py</code>:
+</p>
+
+<pre><code>#!/usr/bin/env python3
+<p>
+"""Unit tests for BaseAgent"""
+</p>
+
+<p>
+import pytest
+from src.agents import AgentTask, TaskStatus
+from tests.agents.mock_agent import MockAgent
+</p>
+
+<p>
+def test<em>agent</em>can<em>accept</em>task():
+    """Test agent task capacity"""
+    agent = MockAgent("TEST-001")
+</p>
+
+<p>
+    # Agent should be able to accept tasks
+    assert agent.can<em>accept</em>task() == True
+</p>
+
+<p>
+    # Assign max tasks
+    for i in range(agent.metadata.max<em>concurrent</em>tasks):
+        task = AgentTask(title=f"Task {i}", description="Test")
+        agent.assign_task(task)
+</p>
+
+<p>
+    # Should not accept more
+    assert agent.can<em>accept</em>task() == False
+</p>
+
+<p>
+def test<em>agent</em>executes_task():
+    """Test agent task execution"""
+    agent = MockAgent("TEST-001", responses={
+        "Test Task": {"status": "success", "result": 42}
+    })
+</p>
+
+<p>
+    task = AgentTask(title="Test Task", description="Run test")
+    completed<em>task = agent.run</em>task(task)
+</p>
+
+<p>
+    assert completed_task.status == TaskStatus.COMPLETED
+    assert completed_task.result['result'] == 42
+</p>
+
+<p>
+def test<em>agent</em>validation_failure():
+    """Test agent validation failure"""
+    class FailingAgent(MockAgent):
+        def validate_output(self, task, output):
+            return False, ["Validation failed"]
+</p>
+
+<p>
+    agent = FailingAgent("TEST-002")
+    task = AgentTask(title="Test", description="Test")
+    completed<em>task = agent.run</em>task(task)
+</p>
+
+<p>
+    assert completed_task.status == TaskStatus.FAILED
+    assert "Validation failed" in completed_task.error
+</code></pre>
+</p>
+
+<hr>
+
+<h2>6. Agent Deployment</h2>
+
+<strong>Purpose:</strong> Deploy agents as Docker containers or processes
+
+<h3>Docker Deployment</h3>
+
+<p>
+Create <code>docker/agents/Dockerfile</code>:
+</p>
+
+<pre><code>FROM python:3.11-slim
+
+<p>
+WORKDIR /app
+</p>
+
+<h1>Install dependencies</h1>
+<p>
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+</p>
+
+<h1>Copy agent code</h1>
+<p>
+COPY src/ ./src/
+COPY scripts/ ./scripts/
+</p>
+
+<h1>Environment variables</h1>
+<p>
+ENV AGENT_ID=""
+ENV AGENT_PORT=6000
+</p>
+
+<h1>Run agent</h1>
+<p>
+CMD ["python", "-m", "src.agents.agent_runner"]
+</code></pre>
+</p>
+
+<h3>Agent Runner</h3>
+
+<p>
+Create <code>src/agents/agent_runner.py</code>:
+</p>
+
+<pre><code>#!/usr/bin/env python3
+<p>
+"""Agent Runner - Starts agent as standalone service"""
+</p>
+
+<p>
+import os
+import sys
+import asyncio
+from fastapi import FastAPI
+import uvicorn
+</p>
+
+<h1>Get agent ID from environment</h1>
+<p>
+AGENT<em>ID = os.getenv("AGENT</em>ID")
+AGENT<em>PORT = int(os.getenv("AGENT</em>PORT", 6000))
+</p>
+
+<p>
+if not AGENT_ID:
+    print("Error: AGENT_ID environment variable not set")
+    sys.exit(1)
+</p>
+
+<h1>Import agent class dynamically</h1>
+<p>
+agent<em>module = f"src.agents.{AGENT</em>ID.lower().replace('-', '_')}"
+agent<em>class</em>name = AGENT_ID.replace("-", "") + "Agent"
+</p>
+
+<p>
+try:
+    module = <strong>import</strong>(agent<em>module, fromlist=[agent</em>class_name])
+    AgentClass = getattr(module, agent<em>class</em>name)
+except ImportError:
+    print(f"Error: Could not import {agent<em>class</em>name} from {agent_module}")
+    sys.exit(1)
+</p>
+
+<h1>Create agent instance</h1>
+<p>
+agent = AgentClass()
+</p>
+
+<h1>Create FastAPI app for agent</h1>
+<p>
+app = FastAPI(title=f"{agent.metadata.name} API")
+</p>
+
+<p>
+@app.post("/task")
+async def execute<em>task(task</em>data: dict):
+    """Execute a task"""
+    from src.agents import AgentTask
+    task = AgentTask(**task_data)
+    result = agent.run_task(task)
+    return {"task<em>id": result.task</em>id, "status": result.status.value}
+</p>
+
+<p>
+@app.get("/health")
+async def health():
+    """Health check"""
+    return {"status": "healthy", "agent<em>id": agent.metadata.agent</em>id}
+</p>
+
+<p>
+@app.get("/status")
+async def status():
+    """Agent status"""
+    return agent.get<em>status</em>report()
+</p>
+
+<p>
+if <strong>name</strong> == "<strong>main</strong>":
+    print(f"Starting {agent.metadata.name} on port {AGENT_PORT}")
+    uvicorn.run(app, host="0.0.0.0", port=AGENT_PORT)
+</code></pre>
+</p>
+
+<h3>Docker Compose for Agents</h3>
+
+<p>
+Add to <code>docker-compose.yml</code>:
+</p>
+
+<pre><code>services:
+<p>
+  # ... existing services ...
+</p>
+
+<p>
+  agent-dev-001:
+    build: ./docker/agents
+    container<em>name: agent</em>dev_001
+    environment:
+      - AGENT_ID=DEV-001
+      - AGENT_PORT=6001
+    ports:
+      - "6001:6001"
+    depends_on:
+      - postgres
+      - redis
+</p>
+
+<p>
+  agent-ai-001:
+    build: ./docker/agents
+    container<em>name: agent</em>ai_001
+    environment:
+      - AGENT_ID=AI-001
+      - AGENT_PORT=6002
+    ports:
+      - "6002:6002"
+    depends_on:
+      - qdrant
+      - redis
+</p>
+
+<p>
+  # Add more agents as needed...
+</code></pre>
+</p>
+
+<hr>
+
+<h2>7. Implementation Roadmap</h2>
+
+<h3>Week 1-2: Core Infrastructure</h3>
+
+<strong>Tasks:</strong>
+<ul>
+<li><input type="checkbox" checked> BaseAgent class (complete)</li>
+<li><input type="checkbox" checked> PM-001 implementation (complete)</li>
+<li><input type="checkbox"> Agent Registry Service</li>
+<li><input type="checkbox"> Message Queue system</li>
+<li><input type="checkbox"> State Management</li>
+<li><input type="checkbox"> Testing framework</li>
+<p>
+</ul>
+</p>
+
+<strong>Deliverables:</strong>
+<ul>
+<li>Agent registry running on port 5100</li>
+<li>Redis Pub/Sub for messaging</li>
+<li>PostgreSQL schema for state</li>
+<li>Mock agents for testing</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 3-4: First 5 Agents</h3>
+
+<strong>Priority agents to implement:</strong>
+<ol>
+<li><strong>AI-001:</strong> RAG System Architect</li>
+<li><strong>DEV-001:</strong> Backend Architect</li>
+<li><strong>DEV-002:</strong> Frontend Architect</li>
+<li><strong>QA-001:</strong> Medical QA Specialist</li>
+<li><strong>MED-001:</strong> Cardiology Expert</li>
+<p>
+</ol>
+</p>
+
+<strong>Tasks per agent:</strong>
+<ul>
+<li>Create agent class (inherit from BaseAgent)</li>
+<li>Implement execute_task()</li>
+<li>Implement validate_output()</li>
+<li>Write unit tests</li>
+<li>Deploy as Docker container</li>
+<li>Register with registry</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 5-8: Next 15 Agents</h3>
+
+<strong>Implement remaining DEV and AI agents:</strong>
+<ul>
+<li>DEV-003 to DEV-012 (10 agents)</li>
+<li>AI-002 to AI-008 (7 agents)</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 9-12: DevOps & QA Agents</h3>
+
+<strong>Implement:</strong>
+<ul>
+<li>DEVOPS-001 to DEVOPS-006 (6 agents)</li>
+<li>QA-002 to QA-004 (3 agents)</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 13-16: Medical Expert Agents</h3>
+
+<strong>Implement:</strong>
+<ul>
+<li>MED-002 to MED-015 (14 agents)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>📊 Summary</h2>
+
+<strong>Infrastructure Components:</strong>
+<ol>
+<li>✅ Agent Registry (service discovery, load balancing)</li>
+<li>✅ Message Queue (Redis Pub/Sub for inter-agent communication)</li>
+<li>✅ State Management (PostgreSQL for persistence)</li>
+<li>✅ Monitoring (Prometheus + Grafana dashboards)</li>
+<li>✅ Testing Framework (mock agents, unit tests)</li>
+<li>✅ Deployment (Docker containers, agent runner)</li>
+<p>
+</ol>
+</p>
+
+<strong>Implementation Status:</strong>
+<ul>
+<li>✅ Base infrastructure designed</li>
+<li>✅ PM-001 implemented</li>
+<li>⏳ 45 agents to implement</li>
+<li>⏳ Registry service to deploy</li>
+<li>⏳ Monitoring dashboards to create</li>
+<p>
+</ul>
+</p>
+
+<strong>Next Steps:</strong>
+<ol>
+<li>Deploy Agent Registry Service</li>
+<li>Implement first 5 priority agents</li>
+<li>Test complete workflow (MCQ generation)</li>
+<li>Scale to remaining 40 agents</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<strong>Last Updated:</strong> December 14, 2025
+<strong>Status:</strong> Infrastructure designed, ready for implementation 🚀
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

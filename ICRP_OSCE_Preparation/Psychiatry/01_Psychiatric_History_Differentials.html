@@ -1,0 +1,2187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychiatric History Taking with Differential Diagnosis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Psychiatry</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Psychiatry Navigation</h3>
+<ul>
+<li><a href="01_Psychiatric_History_Differentials.html">Psych History</a></li>
+<li><a href="02_Mental_State_Examination.html">MSE</a></li>
+</ul>
+</div>
+        <h1>Psychiatric History Taking with Differential Diagnosis</h1>
+
+<strong>Target Audience</strong>: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Program rotations in Psychiatry
+
+<strong>Learning Objectives</strong>: By the end of this document, you will be able to:
+<ol>
+<li>Apply Dr. Amir Soufi's differential-driven methodology to psychiatric presentations</li>
+<li>Use the PSYCHIATRIC framework for systematic history-taking</li>
+<li>Formulate differentials from presenting complaints (low mood, anxiety, psychosis, mania)</li>
+<li>Conduct risk assessment integrated into history (suicide, violence, self-neglect)</li>
+<li>Gather collateral history appropriately</li>
+<li>Understand Australian mental health legislation and services (Mental Health Act, Medicare items, headspace, Beyond Blue)</li>
+<li>Avoid common IMG mistakes in psychiatric history-taking</li>
+<li>Complete psychiatric history OSCE stations confidently</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Dr. Amir Soufi's Principle Applied to Psychiatry</h2>
+
+<blockquote><strong>"In psychiatry, your differential forms from the FIRST symptom: Low mood = Depression vs bipolar (depressed phase) vs adjustment disorder vs grief vs organic (hypothyroid, medication). Anxiety = GAD vs panic disorder vs PTSD vs substance withdrawal vs cardiac (MI, arrhythmia). Psychosis = Schizophrenia vs drug-induced vs affective psychosis (bipolar, depression with psychotic features) vs delirium vs organic (brain tumor, encephalitis). ALWAYS rule out ORGANIC causes and SUBSTANCE use FIRST - medical illnesses and drugs can mimic ANY psychiatric disorder."</strong></blockquote>
+
+<h3>The Psychiatric Differential Mindset</h3>
+
+<strong>Traditional Approach</strong>:
+<ul>
+<li>Take full psychiatric history systematically</li>
+<li>Perform mental state examination</li>
+<li>At end, formulate diagnosis</li>
+<li><strong>Problem</strong>: Misses medical causes (hypothyroidism presenting as depression, delirium presenting as psychosis), delays treatment, fails to integrate risk assessment</li>
+<p>
+</ul>
+</p>
+
+<strong>Dr. Amir's Differential-Driven Approach</strong>:
+
+<ol>
+<li><strong>From First Symptom: Generate Differential</strong></li>
+<p>
+</ol>
+   - <strong>Low mood</strong> → Think immediately: Major depression, bipolar depression, adjustment disorder, grief, hypothyroidism, medications (beta-blockers, steroids), chronic illness
+   - <strong>Anxiety</strong> → Think immediately: GAD, panic disorder, PTSD, substance withdrawal (alcohol, benzodiazepines), hyperthyroidism, cardiac (MI, arrhythmia), caffeine excess
+   - <strong>Psychosis</strong> (hallucinations, delusions) → Think immediately: Schizophrenia, drug-induced (amphetamines, cannabis, steroids), affective psychosis (bipolar mania with psychosis, depression with psychotic features), delirium, organic (brain tumor, encephalitis, SLE)
+   - <strong>Mania</strong> (elevated mood, increased energy) → Think immediately: Bipolar disorder type I, drug-induced (amphetamines, steroids, antidepressants), hyperthyroidism, organic (frontal lobe tumor)
+</p>
+
+<ol>
+<li><strong>Rule Out Organic FIRST</strong></li>
+<p>
+</ol>
+   - Medical illnesses can present with psychiatric symptoms
+   - <strong>ALWAYS ask</strong>: Physical health, medications, substance use, recent medical investigations
+   - <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s for organic cause</strong>:
+     - New-onset psychiatric symptoms in older adult (>65 years)
+     - Acute onset (hours-days)
+     - Fluctuating course (delirium)
+     - Visual hallucinations (organic until proven otherwise)
+     - Neurological signs (confusion, disorientation, memory impairment, seizures)
+     - No psychiatric history
+</p>
+
+<ol>
+<li><strong>Integrate Risk Assessment Throughout</strong></li>
+<p>
+</ol>
+   - Risk assessment is NOT a separate section at the end
+   - Ask about suicidal thoughts when discussing low mood
+   - Ask about violence/aggression when discussing anger/irritability
+   - Ask about self-neglect when discussing functional impairment
+</p>
+
+<ol>
+<li><strong>Collateral History is ESSENTIAL</strong></li>
+<p>
+</ol>
+   - Patient may have poor insight (psychosis, mania, dementia)
+   - Patient may minimize symptoms (substance use, eating disorder)
+   - Patient may be unable to provide history (severe depression, psychosis, confusion)
+   - <strong>ALWAYS seek collateral</strong> (family, friends, GP, previous treating team)
+</p>
+
+<hr>
+
+<h2>The PSYCHIATRIC Framework for History-Taking</h2>
+
+<strong>P - Presenting complaint</strong> (in patient's own words)
+
+<strong>S - Symptom exploration</strong> (detailed, using screening tools)
+
+<strong>Y - Years of symptoms</strong> (onset, course, triggers)
+
+<strong>C - Collateral history</strong> (family, friends, previous medical records)
+
+<strong>H - History of psychiatric illness</strong> (diagnoses, hospitalizations, treatments)
+
+<strong>I - Impact on function</strong> (work, relationships, self-care, activities of daily living)
+
+<strong>A - Associated substance use</strong> (alcohol, illicit drugs, prescribed medications, caffeine, nicotine)
+
+<strong>T - Treatment history</strong> (medications, psychotherapy, ECT, admissions)
+
+<strong>R - Risk assessment</strong> (suicide, violence, self-neglect, vulnerability)
+
+<strong>I - Insight and understanding</strong> (patient's view of illness, willingness to engage with treatment)
+
+<strong>C - Co-morbid medical illness</strong> (physical health, medications that may affect mental health)
+
+<hr>
+
+<h2>Opening the Psychiatric Consultation</h2>
+
+<h3>Creating a Safe Environment</h3>
+
+<strong>Setting</strong>:
+<ul>
+<li><strong>Private room</strong>, door closed (but not locked - patient should feel they can leave)</li>
+<li><strong>Seating</strong>: Chairs at 90° angle (not directly opposite - less confrontational), equal height</li>
+<li><strong>No barriers</strong>: Don't sit behind desk</li>
+<li><strong>Safety</strong>: Sit nearest to door (your exit route), remove potential weapons from room</li>
+<li><strong>Time</strong>: Adequate time (minimum 30-45 minutes for initial assessment)</li>
+<p>
+</ul>
+</p>
+
+<strong>Introduction</strong> (1-2 minutes):
+<ul>
+<li>"Hello, I'm Dr [Name], one of the doctors here. What should I call you?" [Use patient's preferred name]</li>
+<li><strong>Explain purpose</strong>: "I'd like to talk with you today about how you've been feeling and what's been going on. This will take about 30-45 minutes. Is that okay?"</li>
+<li><strong>Confidentiality</strong>: "What we discuss is confidential, but I need to let you know that if I'm concerned about your safety or someone else's safety, I may need to share information with the team."</li>
+<li><strong>Rapport building</strong>: Open body language, empathic tone, active listening</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Step 1: Presenting Complaint</h2>
+
+<strong>Open question</strong>:
+<ul>
+<li>"What's brought you in today?"</li>
+<li>"How can I help you?"</li>
+<li>"Tell me what's been happening."</li>
+<p>
+</ul>
+</p>
+
+<strong>Listen without interrupting</strong> (1-2 minutes) - let patient tell their story
+
+<strong>Reflect back</strong> (show you're listening):
+<ul>
+<li>"So it sounds like you've been feeling very low in mood for the past few weeks?"</li>
+<li>"You mentioned you've been hearing voices - tell me more about that."</li>
+<p>
+</ul>
+</p>
+
+<strong>Document in patient's own words</strong>:
+<ul>
+<li>PC: "I've been feeling really down and I can't see a way out. I just want it to stop." (45-year-old male)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Step 2: Symptom Exploration (Based on Presenting Complaint)</h2>
+
+<strong>From the presenting complaint, generate differential and explore symptoms systematically</strong>
+
+<hr>
+
+<h3>LOW MOOD / DEPRESSION</h3>
+
+<strong>Immediate Differential</strong>:
+<ol>
+<li><strong>Major Depressive Disorder</strong> (MDD)</li>
+<li><strong>Bipolar Disorder</strong> (depressive episode)</li>
+<li><strong>Adjustment Disorder</strong> (in response to stressor within 3 months)</li>
+<li><strong>Persistent Depressive Disorder</strong> (Dysthymia - chronic low mood >2 years)</li>
+<li><strong>Grief / Bereavement</strong></li>
+<li><strong>Organic</strong>:</li>
+<p>
+</ol>
+   - Hypothyroidism
+   - Medications (beta-blockers, steroids, isotretinoin, interferon)
+   - Chronic illnesses (cancer, chronic pain, heart failure)
+   - Neurological (stroke, Parkinson's disease, dementia)
+</p>
+<ol>
+<li><strong>Substance-induced</strong>: Alcohol, cannabis withdrawal</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h4>Screening for Depression (DSM-5 Criteria)</h4>
+
+<strong>Use the 9 symptoms of depression</strong> (mnemonic: <strong>SIG E CAPS</strong> + depressed mood)
+
+<p>
+Ask: "Over the past 2 weeks, have you noticed any of the following?"
+</p>
+
+<strong>S - Sleep disturbance</strong>
+<ul>
+<li>"How's your sleep?"</li>
+<li><strong>Insomnia</strong>: Difficulty falling asleep (initial insomnia), waking during night (middle insomnia), early morning waking (terminal insomnia - classic in depression)</li>
+<li><strong>Hypersomnia</strong>: Sleeping excessively (atypical depression)</li>
+<p>
+</ul>
+</p>
+
+<strong>I - Interest (loss of) / Anhedonia</strong>
+<ul>
+<li>"Have you lost interest in things you used to enjoy?"</li>
+<li>"Do you still get pleasure from activities?"</li>
+<li><strong>Anhedonia</strong> = core symptom of depression</li>
+<p>
+</ul>
+</p>
+
+<strong>G - Guilt / Worthlessness</strong>
+<ul>
+<li>"Do you feel guilty about things?"</li>
+<li>"How do you feel about yourself?"</li>
+<li>"Do you feel you've let people down?"</li>
+<li><strong>Pathological guilt</strong> (out of proportion, delusional guilt in severe depression)</li>
+<p>
+</ul>
+</p>
+
+<strong>E - Energy (decreased) / Fatigue</strong>
+<ul>
+<li>"How are your energy levels?"</li>
+<li>"Do you feel tired all the time, even after rest?"</li>
+<p>
+</ul>
+</p>
+
+<strong>C - Concentration (impaired)</strong>
+<ul>
+<li>"How's your concentration?"</li>
+<li>"Can you focus when reading or watching TV?"</li>
+<li>"Are you able to make decisions?"</li>
+<p>
+</ul>
+</p>
+
+<strong>A - Appetite / Weight change</strong>
+<ul>
+<li>"How's your appetite?"</li>
+<li>"Have you lost or gained weight recently?" (>5% body weight in 1 month)</li>
+<li><strong>Decreased appetite</strong> (typical depression), <strong>increased appetite</strong> (atypical depression)</li>
+<p>
+</ul>
+</p>
+
+<strong>P - Psychomotor changes</strong>
+<ul>
+<li><strong>Agitation</strong>: "Do you feel restless, unable to sit still?"</li>
+<li><strong>Retardation</strong>: Observe slowness of movement, speech, thought (ask: "Do you feel everything has slowed down?")</li>
+<p>
+</ul>
+</p>
+
+<strong>S - Suicidal thoughts</strong> (CRITICAL - ask EVERY patient with low mood)
+<ul>
+<li>See Risk Assessment section below</li>
+<p>
+</ul>
+</p>
+
+<strong>Plus: Depressed mood</strong>
+<ul>
+<li>"How would you describe your mood?"</li>
+<li>"Do you feel sad, down, empty, hopeless most of the day, nearly every day?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>DSM-5 Diagnosis of Major Depressive Disorder</strong>:
+<ul>
+<li><strong>5 or more</strong> symptoms present during same 2-week period</li>
+<li><strong>Must include</strong> (1) depressed mood OR (2) loss of interest/pleasure (anhedonia)</li>
+<li>Symptoms cause significant distress or functional impairment</li>
+<li>Not attributable to substance or medical condition</li>
+<p>
+</ul>
+</p>
+
+<strong>Severity</strong>:
+<ul>
+<li><strong>Mild</strong>: Few symptoms, minor functional impairment</li>
+<li><strong>Moderate</strong>: Symptoms/functional impairment between mild and severe</li>
+<li><strong>Severe</strong>: Most symptoms, marked functional impairment, may have psychotic features</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Differentiating Diagnoses</h4>
+
+<strong>Bipolar Depression vs Unipolar Depression</strong>:
+<ul>
+<li><strong>ALWAYS ask about mania/hypomania</strong> in ANY patient presenting with depression</li>
+<li>"Have you ever had periods where your mood was the opposite - where you felt very high, energized, needed less sleep?"</li>
+<li>"Have you ever had periods where you felt 'too good', more confident than usual, spent more money than you should, or got into trouble?"</li>
+<li><strong>If yes</strong> → Screen for mania (see below)</li>
+<li><strong>Why this matters</strong>: Antidepressants alone can trigger mania in bipolar disorder → Need mood stabilizer</li>
+<p>
+</ul>
+</p>
+
+<strong>Adjustment Disorder</strong>:
+<ul>
+<li>Clear stressor within past 3 months (job loss, relationship breakdown, bereavement)</li>
+<li>Symptoms out of proportion to stressor OR causing significant functional impairment</li>
+<li>Duration: Symptoms resolve within 6 months of stressor ending</li>
+<li>Doesn't meet criteria for MDD</li>
+<p>
+</ul>
+</p>
+
+<strong>Grief / Bereavement</strong>:
+<ul>
+<li>Recent loss (death of loved one)</li>
+<li><strong>Normal grief</strong>: Waves of sadness triggered by reminders, able to experience positive emotions, no pervasive worthlessness/suicidal ideation</li>
+<li><strong>Complicated grief / MDD</strong>: Persistent, pervasive low mood, anhedonia, guilt/worthlessness not related to deceased, suicidal ideation, functional impairment >2 months</li>
+<li>Can have grief AND depression concurrently</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>ANXIETY</h3>
+
+<strong>Immediate Differential</strong>:
+<ol>
+<li><strong>Generalized Anxiety Disorder</strong> (GAD)</li>
+<li><strong>Panic Disorder</strong></li>
+<li><strong>Social Anxiety Disorder</strong> (Social Phobia)</li>
+<li><strong>Specific Phobia</strong></li>
+<li><strong>Post-Traumatic Stress Disorder</strong> (PTSD)</li>
+<li><strong>Obsessive-Compulsive Disorder</strong> (OCD)</li>
+<li><strong>Substance-induced</strong>: Caffeine excess, alcohol/benzodiazepine withdrawal, amphetamines, cannabis</li>
+<li><strong>Organic</strong>:</li>
+<p>
+</ol>
+   - <strong>Hyperthyroidism</strong> (tremor, heat intolerance, weight loss, palpitations)
+   - <strong>Cardiac</strong>: MI, arrhythmias, valvular disease
+   - <strong>Respiratory</strong>: Asthma, COPD, pulmonary embolism
+   - <strong>Endocrine</strong>: Pheochromocytoma (rare), hypoglycemia
+</p>
+
+<hr>
+
+<h4>Screening for Generalized Anxiety Disorder (GAD)</h4>
+
+<strong>Core symptom</strong>: Excessive worry about multiple domains (work, health, family, finances) for <strong>≥6 months</strong>, difficult to control
+
+<strong>GAD-7 Screening Questions</strong>:
+<p>
+"Over the past 2 weeks, how often have you been bothered by:"
+</p>
+<ol>
+<li>Feeling nervous, anxious, or on edge</li>
+<li>Not being able to stop or control worrying</li>
+<li>Worrying too much about different things</li>
+<li>Trouble relaxing</li>
+<li>Being so restless that it's hard to sit still</li>
+<li>Becoming easily annoyed or irritable</li>
+<li>Feeling afraid as if something awful might happen</li>
+<p>
+</ol>
+</p>
+
+<strong>Scoring</strong>: 0 (not at all), 1 (several days), 2 (more than half the days), 3 (nearly every day)
+<ul>
+<li>Total 0-4: Minimal anxiety</li>
+<li>Total 5-9: Mild anxiety</li>
+<li>Total 10-14: Moderate anxiety</li>
+<li>Total 15-21: Severe anxiety</li>
+<p>
+</ul>
+</p>
+
+<strong>Physical symptoms of anxiety</strong> (ask specifically):
+<ul>
+<li>Palpitations, chest tightness</li>
+<li>Shortness of breath, hyperventilation</li>
+<li>Tremor, sweating</li>
+<li>Dizziness, lightheadedness</li>
+<li>Nausea, abdominal discomfort, diarrhea</li>
+<li>Muscle tension, aches</li>
+<li>Tingling/numbness (hyperventilation-induced)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Screening for Panic Disorder</h4>
+
+<strong>Panic attack</strong> = Discrete episode of intense fear/discomfort, reaching peak within 10 minutes, with ≥4 of:
+<ul>
+<li>Palpitations, racing heart</li>
+<li>Sweating</li>
+<li>Trembling, shaking</li>
+<li>Shortness of breath, feeling of choking</li>
+<li>Chest pain/discomfort</li>
+<li>Nausea, abdominal distress</li>
+<li>Dizziness, lightheadedness, faint</li>
+<li>Derealization (feelings of unreality) or depersonalization (feeling detached from self)</li>
+<li>Fear of losing control or "going crazy"</li>
+<li>Fear of dying</li>
+<li>Numbness/tingling</li>
+<li>Chills or hot flushes</li>
+<p>
+</ul>
+</p>
+
+<strong>Questions</strong>:
+<ul>
+<li>"Do you have sudden episodes of intense fear or anxiety that come on quickly?"</li>
+<li>"During these episodes, do you have physical symptoms like racing heart, sweating, shortness of breath?"</li>
+<li>"Do you worry about having another panic attack?"</li>
+<li>"Do you avoid situations where panic attacks have occurred?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Panic Disorder</strong> = Recurrent unexpected panic attacks + ≥1 month of:
+<ul>
+<li>Persistent worry about having another panic attack</li>
+<li>Maladaptive change in behavior to avoid attacks (agoraphobia)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Screening for PTSD</h4>
+
+<strong>Ask about trauma</strong> (be sensitive):
+<ul>
+<li>"Have you experienced or witnessed any traumatic events?" (life-threatening, serious injury, sexual violence)</li>
+<p>
+</ul>
+</p>
+
+<strong>If yes, screen for PTSD symptoms</strong> (≥1 month duration):
+
+<strong>1. Intrusion symptoms</strong> (re-experiencing):
+<ul>
+<li>"Do you have distressing memories or nightmares about the event?"</li>
+<li>"Do you feel like it's happening again (flashbacks)?"</li>
+<li>"Do you get very upset when reminded of the event?"</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Avoidance</strong>:
+<ul>
+<li>"Do you avoid thinking or talking about the event?"</li>
+<li>"Do you avoid places, people, or activities that remind you of it?"</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Negative alterations in cognition/mood</strong>:
+<ul>
+<li>"Do you have trouble remembering parts of the event?"</li>
+<li>"Do you blame yourself or others for what happened?"</li>
+<li>"Do you feel detached from others?"</li>
+<li>"Have you lost interest in activities?"</li>
+<p>
+</ul>
+</p>
+
+<strong>4. Hyperarousal</strong>:
+<ul>
+<li>"Are you more irritable or angry than before?"</li>
+<li>"Do you feel on guard or easily startled?"</li>
+<li>"Do you have trouble concentrating or sleeping?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Differentiating Anxiety Disorders</h4>
+
+<p>
+| Disorder | Key Discriminator |
+|----------|------------------|
+| <strong>GAD</strong> | Excessive worry about MULTIPLE domains, ≥6 months, difficult to control |
+| <strong>Panic Disorder</strong> | Recurrent UNEXPECTED panic attacks, worry about future attacks, avoidance |
+| <strong>Social Anxiety</strong> | Fear/anxiety specific to SOCIAL situations (public speaking, eating in public, meeting new people), fear of negative evaluation |
+| <strong>Specific Phobia</strong> | Fear/anxiety specific to ONE object/situation (heights, spiders, flying, blood/needles) |
+| <strong>PTSD</strong> | Trauma history, intrusion symptoms (flashbacks, nightmares), avoidance, hyperarousal ≥1 month |
+| <strong>OCD</strong> | Obsessions (intrusive thoughts) + Compulsions (repetitive behaviors to reduce anxiety) |
+</p>
+
+<hr>
+
+<h3>PSYCHOSIS (Hallucinations, Delusions, Disorganized Thinking)</h3>
+
+<strong>Immediate Differential</strong>:
+<ol>
+<li><strong>Schizophrenia</strong> (chronic, >6 months)</li>
+<li><strong>Schizophreniform Disorder</strong> (1-6 months)</li>
+<li><strong>Brief Psychotic Disorder</strong> (<1 month)</li>
+<li><strong>Drug-Induced Psychosis</strong>: Amphetamines, cannabis, cocaine, synthetic cannabinoids ("spice"), steroids, L-DOPA</li>
+<li><strong>Affective Psychosis</strong>:</li>
+<p>
+</ol>
+   - Bipolar disorder with psychotic features (mania or depression)
+   - Major depression with psychotic features
+</p>
+<ol>
+<li><strong>Delirium</strong> (acute confusional state - fluctuating consciousness, inattention, disorientation)</li>
+<li><strong>Organic</strong>:</li>
+<p>
+</ol>
+   - Brain tumor, stroke, encephalitis, SLE, HIV, syphilis (neurosyphilis)
+   - Temporal lobe epilepsy (complex partial seizures - may have olfactory/gustatory hallucinations)
+   - Dementia (Lewy body dementia - visual hallucinations)
+</p>
+
+<hr>
+
+<h4>Screening for Psychotic Symptoms</h4>
+
+<strong>Hallucinations</strong> (perception without external stimulus):
+
+<strong>Auditory</strong> (most common in schizophrenia):
+<ul>
+<li>"Do you ever hear things that other people don't hear?"</li>
+<li>"Do you hear voices when no one is around?"</li>
+<li><strong>If yes</strong>: "How many voices? Male or female? What do they say?"</li>
+<p>
+</ul>
+  - <strong>Running commentary</strong>: Voices commenting on patient's actions
+  - <strong>Third-person</strong>: Voices talking about patient ("He's stupid", "She's going to hurt herself")
+  - <strong>Command hallucinations</strong>: Voices telling patient to do things → <strong>Risk assessment needed</strong> (What do they tell you to do? Do you feel compelled to obey?)
+</p>
+
+<strong>Visual</strong> (more common in organic psychosis, delirium, Lewy body dementia):
+<ul>
+<li>"Do you see things that others don't see?"</li>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong>: New-onset visual hallucinations → Think organic cause, delirium</li>
+<p>
+</ul>
+</p>
+
+<strong>Olfactory/Gustatory</strong> (smell/taste - temporal lobe epilepsy, brain tumor):
+<ul>
+<li>"Do you smell or taste unusual things that others don't?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Tactile</strong> (touch - formication in cocaine/amphetamine use, alcohol withdrawal):
+<ul>
+<li>"Do you feel sensations on your skin like bugs crawling?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Delusions</strong> (fixed, false beliefs not shared by cultural/religious group):
+
+<strong>Screening questions</strong>:
+<ul>
+<li>"Do you have any beliefs that others find unusual?"</li>
+<li>"Do you feel people are trying to harm you or plot against you?" (Persecutory delusion)</li>
+<li>"Do you feel you have special powers or abilities?" (Grandiose delusion)</li>
+<li>"Do you feel people are sending you special messages through TV/radio/internet?" (Ideas of reference)</li>
+<li>"Do you feel your thoughts are being controlled by an outside force?" (Thought insertion, withdrawal, broadcasting - first-rank symptoms of schizophrenia)</li>
+<p>
+</ul>
+</p>
+
+<strong>Types of delusions</strong>:
+<ul>
+<li><strong>Persecutory</strong>: Being followed, spied on, poisoned, plotted against (most common)</li>
+<li><strong>Grandiose</strong>: Special powers, wealth, identity (e.g., "I'm the son of God")</li>
+<li><strong>Referential</strong>: Events have special personal significance (e.g., "TV news is about me")</li>
+<li><strong>Erotomanic</strong>: False belief that someone (usually higher status) is in love with patient</li>
+<li><strong>Nihilistic</strong>: Belief that self, others, or world doesn't exist or is about to end</li>
+<li><strong>Somatic</strong>: Belief about body (e.g., "I have cancer", "Worms are eating my brain")</li>
+<p>
+</ul>
+</p>
+
+<strong>Disorganized thinking</strong> (assess through speech):
+<ul>
+<li>Tangential (goes off-topic, doesn't return)</li>
+<li>Circumstantial (eventually gets to point, but very indirect)</li>
+<li>Loose associations (knight's move thinking - jumps between unrelated topics)</li>
+<li>Word salad (incomprehensible speech)</li>
+<li>Neologisms (made-up words)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Differentiating Psychotic Disorders</h4>
+
+<strong>Schizophrenia</strong> (DSM-5 criteria):
+<ul>
+<li><strong>≥2 symptoms</strong> (for significant portion of 1 month), at least one must be (1), (2), or (3):</li>
+<p>
+</ul>
+  1. Delusions
+  2. Hallucinations
+  3. Disorganized speech
+  4. Grossly disorganized or catatonic behavior
+  5. Negative symptoms (flat affect, avolition, alogia, anhedonia)
+</p>
+<ul>
+<li><strong>Duration</strong>: ≥6 months (including prodrome, residual symptoms)</li>
+<li><strong>Functional decline</strong>: Work, relationships, self-care</li>
+<li>Rule out substance, medical condition</li>
+<p>
+</ul>
+</p>
+
+<strong>Drug-Induced Psychosis</strong>:
+<ul>
+<li>Clear temporal relationship to substance use (within hours-days of use)</li>
+<li>Resolves within days-weeks of stopping substance</li>
+<li>Common drugs: Amphetamines, cannabis (esp. high-THC strains), cocaine, synthetic cannabinoids, steroids</li>
+<p>
+</ul>
+</p>
+
+<strong>Delirium</strong> (vs psychosis):
+<ul>
+<li><strong>Acute onset</strong> (hours-days)</li>
+<li><strong>Fluctuating consciousness</strong>, worse at night (sundowning)</li>
+<li><strong>Inattention</strong> (cannot focus, easily distracted)</li>
+<li><strong>Disorientation</strong> (time, place, person)</li>
+<li><strong>Reversible</strong> (treat underlying cause)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>MANIA (Elevated Mood, Increased Energy)</h3>
+
+<strong>Immediate Differential</strong>:
+<ol>
+<li><strong>Bipolar Disorder Type I</strong> (mania)</li>
+<li><strong>Bipolar Disorder Type II</strong> (hypomania)</li>
+<li><strong>Drug-Induced</strong>: Amphetamines, cocaine, steroids, antidepressants (can trigger mania in bipolar)</li>
+<li><strong>Organic</strong>: Hyperthyroidism, frontal lobe tumor/stroke, SLE, HIV</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h4>Screening for Mania</h4>
+
+<strong>Core symptoms</strong>: Elevated, expansive, or irritable mood + increased energy/activity for ≥1 week (mania) or ≥4 days (hypomania)
+
+<strong>DIG FAST</strong> mnemonic (≥3 needed):
+
+<strong>D - Distractibility</strong>
+<ul>
+<li>"Do you find your thoughts jumping from one thing to another?"</li>
+<p>
+</ul>
+</p>
+
+<strong>I - Irresponsibility / Indiscretion</strong>
+<ul>
+<li>Excessive involvement in pleasurable activities with potential for painful consequences</li>
+<li>"Have you done things recently that are out of character? Spent money you don't have? Had risky sexual encounters?"</li>
+<p>
+</ul>
+</p>
+
+<strong>G - Grandiosity</strong>
+<ul>
+<li>"Do you feel more confident than usual?"</li>
+<li>"Do you feel you have special powers or abilities?"</li>
+<p>
+</ul>
+</p>
+
+<strong>F - Flight of ideas</strong>
+<ul>
+<li>Racing thoughts</li>
+<li>"Do your thoughts race? Do you have so many ideas you can't keep up?"</li>
+<p>
+</ul>
+</p>
+
+<strong>A - Activity increase / Agitation</strong>
+<ul>
+<li>Increased goal-directed activity (work, social, sexual)</li>
+<li>Psychomotor agitation</li>
+<p>
+</ul>
+</p>
+
+<strong>S - Sleep (decreased need)</strong>
+<ul>
+<li>"How much sleep are you getting?"</li>
+<li>"Do you feel rested after only a few hours of sleep?" (not insomnia - genuinely need less sleep)</li>
+<p>
+</ul>
+</p>
+
+<strong>T - Talkativeness</strong>
+<ul>
+<li>Pressured speech (rapid, difficult to interrupt)</li>
+<li>Observe: Is patient talking excessively, rapidly, loudly?</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Mania vs Hypomania</strong>:
+<p>
+| Feature | Mania | Hypomania |
+|---------|-------|-----------|
+| Duration | ≥7 days | ≥4 days |
+| Severity | Marked impairment in function, may require hospitalization, may have psychotic features | No marked impairment, no psychotic features, no hospitalization |
+| Diagnosis | Bipolar I | Bipolar II |
+</p>
+
+<strong>Mixed Episode</strong>: Features of both mania AND depression simultaneously (e.g., elevated mood + suicidal thoughts, or depressed mood + racing thoughts, increased energy)
+
+<hr>
+
+<h2>Step 3: Years of Symptoms (Onset, Course, Triggers)</h2>
+
+<strong>Onset</strong>:
+<ul>
+<li>"When did you first notice these symptoms?"</li>
+<li>"Was there anything happening in your life at that time?" (Triggers: stressors, life events, trauma)</li>
+<p>
+</ul>
+</p>
+
+<strong>Course</strong>:
+<ul>
+<li><strong>First episode</strong> vs <strong>Recurrent</strong></li>
+<li><strong>Continuous</strong> vs <strong>Episodic</strong> (periods of wellness between episodes)</li>
+<li><strong>Getting better, worse, or staying the same?</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Triggers</strong>:
+<ul>
+<li>Life events (job loss, relationship breakdown, bereavement, trauma)</li>
+<li>Seasonal pattern (seasonal affective disorder - depression in winter)</li>
+<li>Menstrual cycle (premenstrual dysphoric disorder)</li>
+<p>
+</ul>
+</p>
+
+<strong>Previous similar episodes</strong>:
+<ul>
+<li>"Have you felt like this before?"</li>
+<li><strong>If yes</strong>: "How many times? What helped? What didn't help?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Step 4: Collateral History</h2>
+
+<strong>Why Essential in Psychiatry</strong>:
+<ul>
+<li>Patient may lack insight (psychosis, mania, dementia)</li>
+<li>Patient may minimize (substance use, eating disorder)</li>
+<li>Patient may be unable to provide history (severe depression, psychosis, confusion)</li>
+<p>
+</ul>
+</p>
+
+<strong>Sources</strong>:
+<ul>
+<li>Family, friends, partner</li>
+<li>GP (previous medical records, medications)</li>
+<li>Previous treating psychiatrist/psychologist</li>
+<li>Hospital records (previous admissions)</li>
+<p>
+</ul>
+</p>
+
+<strong>How to Obtain</strong>:
+<ul>
+<li><strong>With patient's consent</strong> (if patient has capacity)</li>
+<li><strong>Without consent</strong> if patient lacks capacity OR safety concern (risk to self/others)</li>
+<p>
+</ul>
+</p>
+
+<strong>What to Ask Collateral</strong>:
+<ul>
+<li>"What changes have you noticed in [patient's] behavior/mood?"</li>
+<li>"How long have you noticed these changes?"</li>
+<li>"Have you noticed any triggers?"</li>
+<li>"Any substance use you're aware of?"</li>
+<li>"Any concerns about safety (suicide, violence, self-neglect)?"</li>
+<li>"What was [patient] like before this episode?" (Baseline functioning)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Step 5: History of Psychiatric Illness</h2>
+
+<strong>Previous diagnoses</strong>:
+<ul>
+<li>"Have you been diagnosed with any mental health conditions before?"</li>
+<li>"Depression, anxiety, bipolar disorder, schizophrenia, PTSD, eating disorder?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Previous hospitalizations</strong>:
+<ul>
+<li>"Have you been admitted to a psychiatric unit before?"</li>
+<li><strong>If yes</strong>: "How many times? When was the most recent? How long? Voluntary or involuntary?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Previous treatments</strong>:
+<ul>
+<li>See Step 7 below</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Step 6: Impact on Function (Work, Relationships, Self-care)</h2>
+
+<strong>Work/Study</strong>:
+<ul>
+<li>"Are you working/studying?"</li>
+<li>"How have your symptoms affected your work/study?"</li>
+<li>"Have you had time off? Lost your job?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Relationships</strong>:
+<ul>
+<li>"How are your relationships with family/friends/partner?"</li>
+<li>"Have your symptoms affected these relationships?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Self-care</strong>:
+<ul>
+<li>"How are you managing day-to-day tasks?"</li>
+<li>"Are you eating regularly? Showering? Leaving the house?"</li>
+<li><strong>Severe depression</strong>: Patient may be bed-bound, not eating, not washing</li>
+<p>
+</ul>
+</p>
+
+<strong>Activities of Daily Living (ADLs)</strong>:
+<ul>
+<li>"Can you cook, clean, manage finances, shop for groceries?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Social activities</strong>:
+<ul>
+<li>"What do you do for fun?"</li>
+<li>"Have you withdrawn from activities you used to enjoy?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Step 7: Associated Substance Use</h2>
+
+<strong>CRITICAL</strong>: Substance use can CAUSE or EXACERBATE psychiatric symptoms
+
+<strong>Alcohol</strong>:
+<ul>
+<li>"Do you drink alcohol? How much per week?"</li>
+<li><strong>AUDIT-C</strong> (quick screen):</li>
+<p>
+</ul>
+  1. "How often do you have a drink containing alcohol?" (0 = Never to 4 = 4+ times/week)
+  2. "How many standard drinks do you have on a typical day?" (0 = 1-2 to 4 = 10+)
+  3. "How often do you have 6 or more standard drinks on one occasion?" (0 = Never to 4 = Daily)
+  - Score ≥4 (men) or ≥3 (women) = Possible alcohol use disorder
+</p>
+<ul>
+<li><strong>Standard drink in Australia</strong>: 10g alcohol = 100mL wine, 30mL spirits, 285mL beer</li>
+<p>
+</ul>
+</p>
+
+<strong>Illicit drugs</strong>:
+<ul>
+<li>"Do you use any recreational drugs?"</li>
+<li><strong>Non-judgmental tone</strong>, normalize: "Many people use substances to cope with stress. I need to ask to give you the best care."</li>
+<li>Ask specifically: Cannabis, amphetamines (ice, speed), cocaine, MDMA (ecstasy), heroin, synthetic drugs</li>
+<p>
+</ul>
+</p>
+
+<strong>Prescription medications</strong>:
+<ul>
+<li>"Are you taking any medications prescribed by a doctor?"</li>
+<li><strong>Benzodiazepines</strong> (diazepam, alprazolam): Dependence, withdrawal</li>
+<li><strong>Opioids</strong> (oxycodone, codeine): Dependence, misuse</li>
+<li><strong>Stimulants</strong> (dexamphetamine for ADHD): Misuse potential</li>
+<p>
+</ul>
+</p>
+
+<strong>Caffeine</strong>:
+<ul>
+<li>"How much coffee/energy drinks do you have per day?"</li>
+<li>Excessive caffeine (>400mg/day = 4 cups coffee) → Anxiety, palpitations, insomnia</li>
+<p>
+</ul>
+</p>
+
+<strong>Nicotine</strong>:
+<ul>
+<li>"Do you smoke? How many per day?"</li>
+<li>Smoking rates higher in psychiatric patients</li>
+<p>
+</ul>
+</p>
+
+<strong>Dependence screen</strong> (if substance use identified):
+<ul>
+<li>"Have you tried to cut down but couldn't?"</li>
+<li>"Do you need more to get the same effect?" (Tolerance)</li>
+<li>"Do you get withdrawal symptoms when you stop?" (Withdrawal)</li>
+<li>"Does it interfere with your life?" (Work, relationships, legal problems)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Step 8: Treatment History</h2>
+
+<strong>Medications</strong>:
+<ul>
+<li>"Have you tried any medications for your mental health?"</li>
+<li><strong>If yes</strong>: "Which ones? What dose? How long? Did they help? Any side effects? Why did you stop?"</li>
+<li><strong>Document</strong>: Previous antidepressants (SSRIs, SNRIs, TCAs, MAOIs), antipsychotics, mood stabilizers, benzodiazepines</li>
+<p>
+</ul>
+</p>
+
+<strong>Psychotherapy</strong>:
+<ul>
+<li>"Have you seen a psychologist or counselor?"</li>
+<li><strong>If yes</strong>: "What type of therapy? (CBT, DBT, psychodynamic) How long? Was it helpful?"</li>
+<p>
+</ul>
+</p>
+
+<strong>ECT (Electroconvulsive Therapy)</strong>:
+<ul>
+<li>"Have you ever had ECT?"</li>
+<li><strong>Used for</strong>: Severe depression (especially with psychotic features), catatonia, treatment-resistant mania</li>
+<p>
+</ul>
+</p>
+
+<strong>Hospitalizations</strong>:
+<ul>
+<li>Number, duration, voluntary vs involuntary (Mental Health Act)</li>
+<p>
+</ul>
+</p>
+
+<strong>Current treatment</strong>:
+<ul>
+<li>"Are you taking any medications currently?"</li>
+<li>"Are you seeing a psychiatrist, psychologist, or counselor?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Step 9: Risk Assessment (Integrated Throughout History)</h2>
+
+<strong>CRITICAL</strong>: Risk assessment is NOT a separate section at the end - integrate throughout consultation
+
+<h3>Suicide Risk</h3>
+
+<strong>Screen ALL patients with depression, anxiety, psychosis, substance use</strong>
+
+<strong>Graduated approach</strong> (start gently, become more specific):
+
+<strong>Level 1: Hopelessness</strong>
+<ul>
+<li>"How do you see the future?"</li>
+<li>"Do you feel hopeless?" (Strong predictor of suicide)</li>
+<p>
+</ul>
+</p>
+
+<strong>Level 2: Passive suicidal ideation</strong>
+<ul>
+<li>"Do you ever feel life isn't worth living?"</li>
+<li>"Do you ever wish you could go to sleep and not wake up?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Level 3: Active suicidal ideation</strong>
+<ul>
+<li>"Do you have thoughts of harming yourself or ending your life?"</li>
+<li><strong>If yes</strong> → Assess severity:</li>
+<p>
+</ul>
+  - <strong>Frequency</strong>: "How often do you have these thoughts?"
+  - <strong>Intent</strong>: "Do you intend to act on these thoughts?"
+  - <strong>Plan</strong>: "Have you thought about how you would do it?" (Specific plan = higher risk)
+  - <strong>Access to means</strong>: "Do you have access to [method]?" (e.g., tablets, rope, firearms)
+  - <strong>Timeline</strong>: "When are you planning to do this?"
+  - <strong>Protective factors</strong>: "What's stopped you so far?" (Family, pets, religious beliefs, fear of pain)
+</p>
+
+<strong>Level 4: Suicide attempts</strong>
+<ul>
+<li>"Have you ever tried to harm yourself or attempt suicide?"</li>
+<li><strong>If yes</strong>: "When? How? What happened? Did you receive medical treatment?"</li>
+<li><strong>Recent attempt</strong> = HIGH RISK</li>
+<p>
+</ul>
+</p>
+
+<strong>Level 5: Self-harm (non-suicidal)</strong>
+<ul>
+<li>"Do you harm yourself in other ways?" (Cutting, burning, head-banging)</li>
+<li>Differentiate: <strong>Non-suicidal self-harm</strong> (to relieve emotional pain, no intent to die) vs <strong>Suicide attempt</strong> (intent to die)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Risk Factors for Suicide</strong> (SAD PERSONS):
+
+<strong>S - Sex</strong> (Male > Female for completed suicide, though females have higher attempt rate)
+<strong>A - Age</strong> (<25 or >65)
+<strong>D - Depression</strong> (especially severe, with hopelessness, psychotic features)
+<strong>P - Previous attempts</strong> (strongest predictor)
+<strong>E - Ethanol/substance use</strong>
+<strong>R - Rational thinking loss</strong> (psychosis, impulsivity)
+<strong>S - Social support lacking</strong> (isolated, divorced, bereaved)
+<strong>O - Organized plan</strong> (specific, lethal method, access to means)
+<strong>N - No spouse</strong> (single, divorced, widowed)
+<strong>S - Sickness</strong> (chronic illness, chronic pain, terminal illness)
+
+<strong>Immediate risk (requires <span style="color: #e74c3c; font-weight: bold;">URGENT</span> intervention)</strong>:
+<ul>
+<li>Current suicidal ideation + intent + plan + access to means</li>
+<li>Recent suicide attempt</li>
+<li>Command hallucinations telling patient to harm self</li>
+<li>Severe hopelessness, agitation</li>
+<li>Intoxication</li>
+<li>No protective factors</li>
+<p>
+</ul>
+</p>
+
+<strong>Management of immediate risk</strong>:
+<ul>
+<li><strong>Do not leave patient alone</strong></li>
+<li><strong>Remove means</strong> (medications, sharps, ligature points)</li>
+<li><strong>Psychiatric assessment</strong> <span style="color: #e74c3c; font-weight: bold;">URGENT</span>ly (psychiatry team, Crisis Assessment Team)</li>
+<li><strong>Consider involuntary admission</strong> (Mental Health Act - see later)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Violence Risk</h3>
+
+<strong>Screen if</strong>: History of violence, forensic history, current anger/irritability, paranoid delusions, command hallucinations
+
+<strong>Questions</strong>:
+<ul>
+<li>"Do you ever feel angry or aggressive?"</li>
+<li>"Have you ever hurt someone else?"</li>
+<li>"Do you have thoughts of harming anyone?"</li>
+<li><strong>If yes</strong>: "Who? Why? Do you have a plan? Access to weapons?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Risk factors</strong>:
+<ul>
+<li>Previous violence (strongest predictor)</li>
+<li>Substance use (alcohol, amphetamines)</li>
+<li>Psychosis (especially paranoid delusions, command hallucinations)</li>
+<li>Antisocial personality disorder</li>
+<li>Male gender</li>
+<li>Young age</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li>Ensure safety (staff, other patients, self)</li>
+<li><strong>De-escalation</strong> (calm tone, non-threatening posture, offer food/drink, negotiate)</li>
+<li><strong>Medications</strong> (IM antipsychotic, benzodiazepine if needed)</li>
+<li><strong>Seclusion/restraint</strong> (last resort, documented, reviewed regularly)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Self-Neglect / Vulnerability</h3>
+
+<strong>Screen if</strong>: Severe depression, psychosis, dementia, eating disorder, homelessness
+
+<strong>Questions</strong>:
+<ul>
+<li>"Are you eating regularly?"</li>
+<li>"Are you taking care of yourself - showering, changing clothes?"</li>
+<li>"Where are you living? Do you have stable housing?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Risk factors</strong>:
+<ul>
+<li>Severe mental illness (catatonia, severe depression, dementia)</li>
+<li>Homelessness</li>
+<li>Financial exploitation</li>
+<li>Physical health problems (diabetes, wounds)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Social work referral</strong></li>
+<li><strong>Community mental health team</strong> (home visits, medication supervision)</li>
+<li><strong>Guardian</strong> (if lacks capacity for self-care)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Step 10: Insight and Understanding</h2>
+
+<strong>Insight</strong> = Patient's awareness of having mental illness and need for treatment
+
+<strong>Ask</strong>:
+<ul>
+<li>"What do you think is causing how you're feeling?"</li>
+<li>"Do you think you have a mental health condition?"</li>
+<li>"Do you think you need treatment?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Levels of insight</strong>:
+<ul>
+<li><strong>Full insight</strong>: "I have depression and need treatment"</li>
+<li><strong>Partial insight</strong>: "I'm not well but I don't think it's mental illness / I don't think I need medication"</li>
+<li><strong>No insight</strong>: "There's nothing wrong with me, I don't need help" (common in psychosis, mania)</li>
+<p>
+</ul>
+</p>
+
+<strong>Capacity to consent to treatment</strong>:
+<ul>
+<li>Can patient understand information, retain it, weigh options, communicate decision?</li>
+<li><strong>If lacks capacity</strong> → May need involuntary treatment (Mental Health Act)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Step 11: Co-morbid Medical Illness</h2>
+
+<strong>ALWAYS ask about physical health</strong>:
+<ul>
+<li>"Do you have any medical conditions?"</li>
+<li>Chronic illnesses: Diabetes, heart disease, cancer, chronic pain, HIV, hepatitis C</li>
+<li><strong>Bidirectional relationship</strong>: Physical illness → depression; depression → poor medical outcomes</li>
+<p>
+</ul>
+</p>
+
+<strong>Medications</strong>:
+<ul>
+<li>"What medications do you take?" (including over-the-counter, herbal)</li>
+<li><strong>Medications that can cause/worsen psychiatric symptoms</strong>:</li>
+<p>
+</ul>
+  - <strong>Depression</strong>: Beta-blockers, steroids, isotretinoin, interferon, some anticonvulsants
+  - <strong>Anxiety</strong>: Stimulants, bronchodilators (salbutamol), thyroid hormones
+  - <strong>Psychosis</strong>: Steroids, L-DOPA, high-dose steroids
+  - <strong>Mania</strong>: Steroids, antidepressants (in bipolar)
+</p>
+
+<strong>Recent medical investigations</strong>:
+<ul>
+<li>"Have you had any blood tests or scans recently?"</li>
+<li>Especially if new-onset psychiatric symptoms → May need investigations to rule out organic cause</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Organic Causes of Psychiatric Symptoms (<span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s)</h2>
+
+<strong>When to suspect organic cause</strong>:
+<ul>
+<li><strong>New-onset psychiatric symptoms</strong> in older adult (>65 years)</li>
+<li><strong>Acute onset</strong> (hours-days)</li>
+<li><strong>Fluctuating course</strong></li>
+<li><strong>Visual hallucinations</strong> (more common in organic than functional psychosis)</li>
+<li><strong>Neurological signs</strong> (confusion, disorientation, memory impairment, seizures, focal neurology)</li>
+<li><strong>No psychiatric history</strong></li>
+<li><strong>Treatment-resistant</strong> (doesn't respond to standard psychiatric treatment)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Investigations to Consider</strong> (if organic cause suspected):
+
+<strong>Bedside</strong>:
+<ul>
+<li><strong>Blood glucose</strong> (hypoglycemia, hyperglycemia)</li>
+<li><strong>Urine drug screen</strong> (amphetamines, cannabis, benzodiazepines, opioids)</li>
+<p>
+</ul>
+</p>
+
+<strong>Blood tests</strong>:
+<ul>
+<li><strong>FBC</strong> (anemia, infection)</li>
+<li><strong>U&E</strong> (hyponatremia → confusion, psychosis)</li>
+<li><strong>LFTs</strong> (hepatic encephalopathy)</li>
+<li><strong>TFTs</strong> (hyperthyroidism → anxiety, mania; hypothyroidism → depression)</li>
+<li><strong>Calcium</strong> (hypercalcemia → confusion, depression)</li>
+<li><strong>Vitamin B12, folate</strong> (deficiency → depression, cognitive impairment)</li>
+<li><strong>CRP</strong> (infection, inflammation)</li>
+<li><strong>Syphilis serology</strong> (neurosyphilis)</li>
+<li><strong>HIV</strong> (HIV encephalopathy)</li>
+<p>
+</ul>
+</p>
+
+<strong>Imaging</strong>:
+<ul>
+<li><strong>CT head</strong> (stroke, tumor, bleed)</li>
+<li><strong>MRI brain</strong> (more sensitive - encephalitis, dementia, MS, tumor)</li>
+<p>
+</ul>
+</p>
+
+<strong>Other</strong>:
+<ul>
+<li><strong>EEG</strong> (seizures - temporal lobe epilepsy can present with psychosis)</li>
+<li><strong>Lumbar puncture</strong> (if encephalitis, meningitis suspected)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Australian Mental Health Services and Legislation</h2>
+
+<h3>Medicare Mental Health Items</h3>
+
+<strong>GP Mental Health Treatment Plan</strong> (Items 2700-2727):
+<ul>
+<li>GP assesses patient, creates mental health treatment plan</li>
+<li>Patient eligible for <strong>up to 10 subsidized psychology sessions per calendar year</strong> (Medicare rebate ~$93 per session)</li>
+<li>Reviewed by GP at 6 sessions</li>
+<p>
+</ul>
+</p>
+
+<strong>Psychiatrist Consultations</strong> (MBS Items):
+<ul>
+<li>Initial consultation (291-293): 45+ minutes</li>
+<li>Subsequent consultations (296-299): 15-45 minutes</li>
+<li>Medicare rebate available (but often gap fees)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Crisis Services</h3>
+
+<strong>Lifeline</strong>: 13 11 14 (24/7 crisis support, suicide prevention)
+<strong>Beyond Blue</strong>: 1300 22 4636 (depression, anxiety support)
+<strong>Suicide Call Back Service</strong>: 1300 659 467
+<strong>Headspace</strong>: Youth mental health service (12-25 years) - free counseling
+<strong>1800 RESPECT</strong>: 1800 737 732 (domestic violence, sexual assault support)
+
+<strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Psychiatric Services</strong>:
+<ul>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department</strong> (24/7)</li>
+<li><strong>Crisis Assessment Team (CAT)</strong> / <strong>Mental Health Crisis Team</strong>: 24/7, can assess patient at home or in ED, decide if admission needed</li>
+<li><strong>Community Mental Health Team</strong>: Outpatient follow-up, home visits</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mental Health Act (NSW Mental Health Act 2007)</h3>
+
+<strong>Involuntary Treatment</strong> (Schedule 1):
+
+<strong>Criteria for involuntary admission/treatment</strong>:
+<p>
+Patient must meet ALL:
+</p>
+<ol>
+<li><strong>Mental illness</strong> (or mental disorder)</li>
+<li><strong>Immediate risk</strong> to health or safety of self or others (due to mental illness)</li>
+<li><strong>Treatment cannot be provided in less restrictive way</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Forms</strong>:
+<ul>
+<li><strong>Form 1</strong>: <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> examination (medical practitioner can detain patient for up to 12 hours for psychiatric assessment)</li>
+<li><strong>Schedule 1</strong>: Involuntary patient order (psychiatrist can admit patient involuntarily for up to 3 months initially, then reviewed by Mental Health Review Tribunal)</li>
+<p>
+</ul>
+</p>
+
+<strong>Rights of involuntary patients</strong>:
+<ul>
+<li>Right to appeal to Mental Health Review Tribunal</li>
+<li>Right to legal representation</li>
+<li>Right to least restrictive treatment</li>
+<p>
+</ul>
+</p>
+
+<strong>Voluntary vs Involuntary</strong>:
+<ul>
+<li>Most psychiatric admissions are <strong>voluntary</strong> (patient consents)</li>
+<li>Involuntary only if meets criteria above</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Common IMG Mistakes in Psychiatric History-Taking</h2>
+
+<h3>Mistake 1: Not Ruling Out Organic Causes</h3>
+
+<strong>Problem</strong>: Assuming all psychiatric symptoms are functional (primary psychiatric illness), not asking about physical health, medications, substance use
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Medical illnesses can present with psychiatric symptoms (hypothyroidism → depression, hyperthyroidism → anxiety, brain tumor → psychosis)</li>
+<li>Medications can cause symptoms (steroids → psychosis/mania)</li>
+<li>Substance use can mimic psychiatric disorders (amphetamines → psychosis, alcohol withdrawal → anxiety/seizures)</li>
+<li>Missing organic cause → Delays appropriate treatment, medicolegal risk</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>ALWAYS ask</strong>: "Do you have any medical conditions? What medications do you take? Do you use alcohol or drugs?"</li>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s for organic</strong>: New-onset in older adult, acute onset, visual hallucinations, neurological signs</li>
+<li><strong>Investigate if suspected</strong>: Bloods (FBC, U&E, TFTs, B12, glucose), imaging (CT/MRI brain)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 2: Not Asking About Suicidal Thoughts</h3>
+
+<strong>Problem</strong>: Afraid to ask about suicide, worry it will "plant the idea"
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li><strong>Asking about suicide does NOT increase risk</strong> - research shows it REDUCES distress</li>
+<li><strong>Suicide is leading cause of death</strong> in young adults in Australia</li>
+<li>Failing to ask → Miss high-risk patient → Preventable death</li>
+<li><strong>Medicolegal risk</strong>: If patient dies by suicide and you didn't ask/document</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>ALWAYS screen for suicidal thoughts</strong> in patients with depression, anxiety, psychosis, substance use</li>
+<li>Use graduated approach (hopelessness → passive → active → plan → attempt)</li>
+<li><strong>Document thoroughly</strong>: "Denies current suicidal ideation, no plan, no recent attempts. Identified protective factors: supportive family, religious beliefs."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 3: Not Seeking Collateral History</h3>
+
+<strong>Problem</strong>: Relying solely on patient's account, not contacting family/GP/previous treating team
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Patient may lack insight (psychosis, mania), minimize (substance use), or be unable to provide history (severe depression, confusion)</li>
+<li>Collateral provides crucial information (baseline functioning, triggers, previous treatments, substance use)</li>
+<li>Missing information → Inaccurate diagnosis, inappropriate treatment</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>ALWAYS seek collateral</strong> in psychiatric presentations</li>
+<li>With patient's consent (or without if lacks capacity/safety concern)</li>
+<li>Ask family: "What changes have you noticed? How long? Any substance use? Safety concerns?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 4: Not Screening for Bipolar in Depression</h3>
+
+<strong>Problem</strong>: Patient presents with depression, you diagnose MDD without asking about mania/hypomania
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li><strong>~20% of patients with depression have bipolar disorder</strong></li>
+<li>Antidepressants alone in bipolar → Can trigger mania/rapid cycling</li>
+<li>Need mood stabilizer (lithium, valproate, antipsychotic) not just antidepressant</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>ALWAYS ask about mania/hypomania</strong> in ANY patient with depression:</li>
+<p>
+</ul>
+  - "Have you ever had periods where your mood was the opposite - very high, energized, needed less sleep?"
+</p>
+<ul>
+<li>Screen with DIG FAST if yes</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 5: Using Medical Jargon</h3>
+
+<strong>Problem</strong>: "You have anhedonia with neurovegetative symptoms and psychomotor retardation"
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Patient doesn't understand</li>
+<li>Damages rapport, reduces engagement with treatment</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Plain language</strong>: "You've lost interest in things you used to enjoy, you're sleeping poorly, and everything feels slowed down"</li>
+<li>Check understanding: "Does that make sense?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 6: Not Assessing Functional Impairment</h3>
+
+<strong>Problem</strong>: Documenting symptoms without asking how they affect patient's life
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Functional impairment is KEY to diagnosis (DSM-5 requires symptoms cause "significant distress or impairment")</li>
+<li>Severity assessment guides treatment (mild depression → psychological therapy first; severe depression → medication + therapy)</li>
+<li>Monitoring: Functional improvement = treatment working</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>ALWAYS ask</strong>: "How have these symptoms affected your work/study/relationships/self-care?"</li>
+<li>Document: "Patient reports symptoms significantly impair function - unable to work for past 4 weeks, withdrawn from friends, struggling with self-care."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 7: Being Judgmental About Substance Use</h3>
+
+<strong>Problem</strong>: "Why are you using drugs?" (judgmental tone)
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Patient feels judged, shamed → Stops disclosing → Inaccurate history</li>
+<li>Substance use is often coping mechanism for mental illness (self-medication)</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Non-judgmental, normalize</strong>: "Many people use substances to cope with stress. I need to ask so I can give you the best care."</li>
+<li>"Do you use any recreational drugs or alcohol? If so, what and how much?"</li>
+<li><strong>Harm minimization approach</strong>, not abstinence-only (meet patient where they are)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>OSCE Practice Stations</h2>
+
+<h3>Station 1: Depression with Suicide Risk Assessment</h3>
+
+<strong>Scenario</strong>: You are a GP. A 35-year-old woman, Sarah, has presented with low mood for the past month. Take a focused psychiatric history including risk assessment. (8 minutes)
+
+<strong>Key Information to Elicit</strong>:
+<ul>
+<li><strong>Depression symptoms</strong>: Low mood, anhedonia, insomnia (early morning waking), poor appetite with 5kg weight loss, low energy, poor concentration, feelings of worthlessness</li>
+<li><strong>Onset</strong>: 1 month ago, after relationship breakdown</li>
+<li><strong>Functional impairment</strong>: Off work for 2 weeks, withdrawn from friends</li>
+<li><strong>Suicidal ideation</strong>: Passive ("I wish I could go to sleep and not wake up"), no active plan, no intent, no previous attempts</li>
+<li><strong>Protective factors</strong>: Supportive family, responsibility to children</li>
+<li><strong>No substance use</strong>, no previous psychiatric history</li>
+<li><strong>No organic <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Model Performance</strong> (8 minutes):
+
+<strong>Minutes 0-1: Introduction + PC</strong>
+<ul>
+<li>"Hello Sarah, I'm Dr [Name]. Thanks for coming in. How can I help you today?"</li>
+<li>[Sarah: "I've been feeling really low for the past month."]</li>
+<li>"I'm sorry to hear that. Tell me more about how you've been feeling."</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 1-4: Depression Screening (SIG E CAPS)</strong>
+<ul>
+<li><strong>Mood</strong>: "How would you describe your mood?" [Very low, sad most of the day]</li>
+<li><strong>Anhedonia</strong>: "Have you lost interest in things you used to enjoy?" [Yes, don't enjoy anything anymore]</li>
+<li><strong>Sleep</strong>: "How's your sleep?" [Waking at 4am, can't get back to sleep]</li>
+<li><strong>Appetite</strong>: "How's your appetite?" [No appetite, lost 5kg]</li>
+<li><strong>Energy</strong>: "How are your energy levels?" [Exhausted all the time]</li>
+<li><strong>Concentration</strong>: "Can you concentrate?" [Can't focus on anything]</li>
+<li><strong>Guilt/Worthlessness</strong>: "How do you feel about yourself?" [Feel like a failure, worthless]</li>
+<li><strong>Psychomotor</strong>: Observe - appears slowed</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 4-5: Suicide Risk Assessment</strong>
+<ul>
+<li><strong>Hopelessness</strong>: "How do you see the future?" [Can't see it getting better, feels hopeless]</li>
+<li><strong>Passive SI</strong>: "Do you ever feel life isn't worth living?" [Yes, sometimes wish I could go to sleep and not wake up]</li>
+<li><strong>Active SI</strong>: "Do you have thoughts of harming yourself or ending your life?" [No, I wouldn't do that]</li>
+<li><strong>Previous attempts</strong>: "Have you ever tried to harm yourself before?" [No]</li>
+<li><strong>Protective factors</strong>: "What's stopped you from having those thoughts?" [My children - I couldn't do that to them]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 5-6: Onset, Triggers, Function</strong>
+<ul>
+<li><strong>Onset</strong>: "When did you first notice these symptoms?" [About a month ago]</li>
+<li><strong>Triggers</strong>: "Was anything happening at that time?" [My relationship ended, it's been really hard]</li>
+<li><strong>Function</strong>: "How have these symptoms affected your life?" [Off work for 2 weeks, can't cope, stopped seeing friends]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 6-7: Rule Out Organic, Substance, Bipolar</strong>
+<ul>
+<li><strong>Organic</strong>: "Do you have any medical conditions? Take any medications?" [No]</li>
+<li><strong>Substance</strong>: "Do you use alcohol or drugs?" [No]</li>
+<li><strong>Bipolar</strong>: "Have you ever had periods where your mood was the opposite - very high, lots of energy, needed less sleep?" [No, never]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 7-8: Collateral, Previous Hx, Insight</strong>
+<ul>
+<li><strong>Previous psychiatric history</strong>: "Have you experienced depression before?" [No, first time]</li>
+<li><strong>Collateral</strong>: "Is there anyone I could speak with who knows you well - family member or friend?" [Yes, my sister]</li>
+<li><strong>Insight</strong>: "What do you think is causing how you're feeling?" [I think I'm depressed because of the breakup]</li>
+<p>
+</ul>
+</p>
+
+<strong>Formulation</strong>:
+<p>
+"Sarah is a 35-year-old woman presenting with first episode of major depression (7/9 symptoms, 1-month duration) triggered by relationship breakdown. Moderate severity with significant functional impairment. Passive suicidal ideation, no intent/plan, protective factors present (children). No substance use, no previous psychiatric history, no organic <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s. Risk: LOW (passive SI only, protective factors, good insight). Plan: Antidepressant (SSRI), psychologist referral (GP Mental Health Plan), review in 1 week (safety check), crisis numbers provided (Lifeline), collateral from sister."
+</p>
+
+<hr>
+
+<h3>Station 2: First Episode Psychosis</h3>
+
+<strong>Scenario</strong>: You are in the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department. A 22-year-old male, James, has been brought in by police after behaving strangely in public. Take a focused psychiatric history. (8 minutes)
+
+<strong>Key Information</strong>:
+<ul>
+<li><strong>Psychotic symptoms</strong>: Auditory hallucinations (voices commenting on actions), paranoid delusions (believes police are following him), thought broadcasting</li>
+<li><strong>Onset</strong>: 2 months, gradual</li>
+<li><strong>Substance use</strong>: Cannabis daily for past year, amphetamine use occasionally</li>
+<li><strong>Functional decline</strong>: Dropped out of university 2 months ago, isolated from friends</li>
+<li><strong>No previous psychiatric history</strong></li>
+<li><strong>Family history</strong>: Mother has schizophrenia</li>
+<p>
+</ul>
+</p>
+
+<strong>Model Performance</strong>:
+
+<strong>Minutes 0-1: Introduction + Rapport</strong>
+<ul>
+<li>"Hello James, I'm Dr [Name]. I'm one of the doctors here. The police brought you in because they were concerned about you. I'd like to understand what's been happening. Is that okay?"</li>
+<li>[James: Appears guarded, suspicious]</li>
+<li><strong>Rapport</strong>: "I'm here to help. Anything you tell me is to make sure you're safe and well."</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 1-3: Psychotic Symptoms</strong>
+<ul>
+<li><strong>Hallucinations</strong>: "Have you noticed anything unusual recently? Heard things others don't hear?"</li>
+<p>
+</ul>
+  - [James: "The voices won't stop. They keep commenting on everything I do."]
+  - "What do the voices say?" ["They say 'He's walking now', 'He's opening the door'"]
+  - "How many voices?" [Two voices, male]
+</p>
+<ul>
+<li><strong>Delusions</strong>: "Do you feel safe at the moment?"</li>
+<p>
+</ul>
+  - [James: "No, the police are following me. They're watching me all the time."]
+  - "Why do you think the police are following you?" [Because I know too much, they want to stop me]
+</p>
+<ul>
+<li><strong>Thought disorder</strong>: "Do you feel your thoughts are your own?"</li>
+<p>
+</ul>
+  - [James: "No, everyone can hear my thoughts. They're being broadcast on the radio."]
+</p>
+
+<strong>Minutes 3-4: Onset, Course, Function</strong>
+<ul>
+<li>"When did you first notice the voices?" [Started about 2 months ago, getting worse]</li>
+<li>"How has this affected your life?" [Had to drop out of uni, can't concentrate, friends don't understand]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 4-5: Substance Use (CRITICAL)</strong>
+<ul>
+<li><strong>Non-judgmental</strong>: "Many people use substances. I need to ask - do you use cannabis or other drugs?"</li>
+<p>
+</ul>
+  - [James: "I smoke weed every day, helps me relax"]
+  - "When did you start?" [About a year ago]
+  - "How much per day?" [3-4 joints]
+  - "Any other drugs?" [Sometimes ice (methamphetamine), last used 3 days ago]
+</p>
+
+<strong>Minutes 5-6: Organic Screen, Previous Hx</strong>
+<ul>
+<li>"Do you have any medical conditions?" [No]</li>
+<li>"Have you ever experienced anything like this before?" [No]</li>
+<li>"Any family history of mental health problems?" [My mum has schizophrenia]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 6-7: Risk Assessment</strong>
+<ul>
+<li><strong>Suicide</strong>: "How do you feel about the future?" [Scared, confused]</li>
+<p>
+</ul>
+  - "Any thoughts of harming yourself?" [No]
+</p>
+<ul>
+<li><strong>Violence</strong>: "The voices - do they ever tell you to hurt yourself or others?"</li>
+<p>
+</ul>
+  - [James: "Sometimes they tell me to punch people, but I don't"]
+  - "Do you feel you might act on what they say?" [No, I ignore them]
+</p>
+<ul>
+<li><strong>Self-neglect</strong>: "Are you eating, looking after yourself?" [Not really, haven't showered in days]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 7-8: Insight, Collateral</strong>
+<ul>
+<li>"What do you think is causing the voices and these feelings?"</li>
+<p>
+</ul>
+  - [James: "I don't know, maybe the weed? But everyone can really hear my thoughts."] → Partial insight
+</p>
+<ul>
+<li>"Is there family or friends I can speak with?" [Can call my dad]</li>
+<p>
+</ul>
+</p>
+
+<strong>Formulation</strong>:
+<p>
+"James is a 22-year-old male presenting with first episode psychosis (auditory hallucinations, paranoid delusions, thought broadcasting, 2-month duration) with significant functional decline. Differential: 1) Drug-induced psychosis (cannabis, amphetamine use), 2) Schizophrenia (family history, gradual onset, negative symptoms - social withdrawal). Risk: MODERATE (command hallucinations present, though not acting on them; self-neglect). Plan: Admit to psychiatric unit (voluntary or involuntary if refuses), cease substances, antipsychotic medication (olanzapine/risperidone), urine drug screen, investigate organic causes (FBC, U&E, TFTs, CT head), collateral from father, Early Psychosis Intervention Program referral."
+</p>
+
+<hr>
+
+<h2>Summary: Key Takeaways for Psychiatric History-Taking</h2>
+
+<h3>1. Differential from First Symptom</h3>
+<ul>
+<li>Low mood → Depression, bipolar, adjustment disorder, grief, organic</li>
+<li>Anxiety → GAD, panic, PTSD, substance, cardiac, thyroid</li>
+<li>Psychosis → Schizophrenia, drug-induced, affective, delirium, organic</li>
+<li>Mania → Bipolar, drug-induced, organic</li>
+<p>
+</ul>
+</p>
+
+<h3>2. ALWAYS Rule Out Organic and Substance</h3>
+<ul>
+<li>Ask about medical conditions, medications, substance use</li>
+<li><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s: New-onset in older adult, acute onset, visual hallucinations, neurological signs</li>
+<li>Investigate if suspected</li>
+<p>
+</ul>
+</p>
+
+<h3>3. Integrated Risk Assessment</h3>
+<ul>
+<li>Screen ALL patients with depression/anxiety for suicide</li>
+<li>Use graduated approach (hopelessness → passive → active → plan)</li>
+<li>Assess violence risk if history, paranoia, command hallucinations</li>
+<li>Document thoroughly</li>
+<p>
+</ul>
+</p>
+
+<h3>4. Collateral History is Essential</h3>
+<ul>
+<li>Patient may lack insight, minimize, or be unable to provide history</li>
+<li>Contact family, GP, previous treating team (with consent or if safety concern)</li>
+<p>
+</ul>
+</p>
+
+<h3>5. Screen for Bipolar in Depression</h3>
+<ul>
+<li>ALWAYS ask about mania/hypomania in depression</li>
+<li>Antidepressants alone in bipolar → Can trigger mania</li>
+<p>
+</ul>
+</p>
+
+<h3>6. Functional Impairment = Severity</h3>
+<ul>
+<li>Ask: "How have symptoms affected work/relationships/self-care?"</li>
+<li>Guides treatment intensity</li>
+<p>
+</ul>
+</p>
+
+<h3>7. Non-Judgmental About Substance Use</h3>
+<ul>
+<li>Normalize: "Many people use substances to cope"</li>
+<li>Harm minimization approach</li>
+<p>
+</ul>
+</p>
+
+<h3>8. Australian Mental Health Services</h3>
+<ul>
+<li>GP Mental Health Plan → 10 subsidized psychology sessions</li>
+<li>Crisis: Lifeline 13 11 14, Beyond Blue 1300 22 4636</li>
+<li>Mental Health Act: Involuntary only if mental illness + risk + no less restrictive option</li>
+<p>
+</ul>
+</p>
+
+<h3>9. Common IMG Mistakes to Avoid</h3>
+<ul>
+<li>❌ Not ruling out organic causes</li>
+<li>❌ Not asking about suicidal thoughts</li>
+<li>❌ Not seeking collateral history</li>
+<li>❌ Not screening for bipolar in depression</li>
+<li>❌ Using medical jargon</li>
+<li>❌ Not assessing functional impairment</li>
+<li>❌ Being judgmental about substance use</li>
+<p>
+</ul>
+</p>
+
+<h3>10. Documentation</h3>
+<ul>
+<li>Document risk assessment thoroughly</li>
+<li>Use patient's own words for presenting complaint</li>
+<li>Clear formulation: Diagnosis, differential, risk level, plan</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>You've completed the first Psychiatry document! Next: Mental State Examination (MSE), then Risk Assessment, Common Psychiatric Presentations, and Capacity Assessment. Keep going - you're doing brilliantly!</strong>
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

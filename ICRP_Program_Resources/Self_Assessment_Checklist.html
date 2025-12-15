@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICRP Preparation Self-Assessment Checklist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP Program Resources</span>
+</div>
+        
+        <h1>ICRP Preparation Self-Assessment Checklist</h1>
+
+<h2>Purpose</h2>
+<p>
+Use this comprehensive checklist to:
+</p>
+<ul>
+<li><strong>Track your progress</strong> across all skill areas</li>
+<li><strong>Identify gaps</strong> in your preparation</li>
+<li><strong>Build confidence</strong> as you check off completed items</li>
+<li><strong>Ensure readiness</strong> before ICRP starts on March 2, 2026</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>How to Use This Checklist</h2>
+
+<ol>
+<li><strong>Review monthly</strong> - Assess yourself at the end of each preparation month</li>
+<li><strong>Be honest</strong> - This is for you, not for anyone else</li>
+<li><strong>Set priorities</strong> - Focus on unchecked items</li>
+<li><strong>Celebrate progress</strong> - Acknowledge what you've achieved</li>
+<li><strong>Final check</strong> - Complete full assessment week before ICRP starts</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>SECTION 1: History Taking Skills</h2>
+
+<h3>Foundation Skills</h3>
+<ul>
+<li><input type="checkbox"> I can introduce myself professionally and build rapport</li>
+<li><input type="checkbox"> I understand and can explain the 9-step history structure</li>
+<li><input type="checkbox"> I can conduct a complete history in 8-12 minutes</li>
+<li><input type="checkbox"> I consistently ask open-ended questions first</li>
+<li><input type="checkbox"> I practice active listening without interrupting</li>
+<p>
+</ul>
+</p>
+
+<h3>SOCRATES Pain Assessment</h3>
+<ul>
+<li><input type="checkbox"> I know what each letter of SOCRATES stands for</li>
+<li><input type="checkbox"> I can assess pain systematically using SOCRATES</li>
+<li><input type="checkbox"> I don't forget any components when assessing pain</li>
+<li><input type="checkbox"> I can adapt SOCRATES questions based on patient responses</li>
+<p>
+</ul>
+</p>
+
+<h3>History Components - Mastery</h3>
+<ul>
+<li><input type="checkbox"> Presenting Complaint - Can identify and document clearly</li>
+<li><input type="checkbox"> HPC - Can take detailed chronological history</li>
+<li><input type="checkbox"> Past Medical History - Know what to ask</li>
+<li><input type="checkbox"> Medications - Ask about name, dose, frequency, compliance</li>
+<li><input type="checkbox"> Allergies - Always ask, document reaction type</li>
+<li><input type="checkbox"> Family History - Know which conditions are relevant</li>
+<li><input type="checkbox"> Social History - Cover all aspects (SNAP: Smoking, Nutrition, Alcohol, Physical activity)</li>
+<li><input type="checkbox"> Review of Systems - Can screen all systems efficiently</li>
+<li><input type="checkbox"> ICE - Consistently explore Ideas, Concerns, Expectations</li>
+<p>
+</ul>
+</p>
+
+<h3>Practice Volume</h3>
+<ul>
+<li><input type="checkbox"> Completed 50+ practice histories</li>
+<li><input type="checkbox"> Completed 100+ practice histories</li>
+<li><input type="checkbox"> Completed 150+ practice histories</li>
+<li><input type="checkbox"> Completed 200+ practice histories</li>
+<li><input type="checkbox"> Completed 250+ practice histories</li>
+<li><input type="checkbox"> Completed 300+ practice histories</li>
+<li><input type="checkbox"> Completed 350+ practice histories</li>
+<li><input type="checkbox"> <strong>Completed 400+ practice histories (GOAL)</strong></li>
+<p>
+</ul>
+</p>
+
+<h3>System-Specific Histories (10+ each)</h3>
+<ul>
+<li><input type="checkbox"> Cardiovascular histories (e.g., chest pain, palpitations)</li>
+<li><input type="checkbox"> Respiratory histories (e.g., SOB, cough)</li>
+<li><input type="checkbox"> Gastrointestinal histories (e.g., abdominal pain, vomiting)</li>
+<li><input type="checkbox"> Neurological histories (e.g., headache, weakness)</li>
+<li><input type="checkbox"> Musculoskeletal histories (e.g., joint pain)</li>
+<p>
+</ul>
+</p>
+
+<h3>Communication Skills</h3>
+<ul>
+<li><input type="checkbox"> Patient says I'm easy to talk to</li>
+<li><input type="checkbox"> I maintain appropriate eye contact</li>
+<li><input type="checkbox"> I use simple language, avoid jargon</li>
+<li><input type="checkbox"> I show empathy and sensitivity</li>
+<li><input type="checkbox"> I can handle difficult or emotional situations</li>
+<li><input type="checkbox"> I summarize accurately at end of history</li>
+<li><input type="checkbox"> I check patient understanding</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>SECTION 2: Physical Examination Skills</h2>
+
+<h3>Foundation Skills - The 5 Ps</h3>
+<ul>
+<li><input type="checkbox"> <strong>P1 Preparation:</strong> Always wash hands, introduce self, gather equipment</li>
+<li><input type="checkbox"> <strong>P2 Position:</strong> Know correct patient position for each examination</li>
+<li><input type="checkbox"> <strong>P3 Permission:</strong> Consistently explain and ask consent</li>
+<li><input type="checkbox"> <strong>P4 Perform:</strong> Follow systematic approach</li>
+<li><input type="checkbox"> <strong>P5 Present:</strong> Can summarize findings clearly</li>
+<p>
+</ul>
+</p>
+
+<h3>Cardiovascular Examination</h3>
+<ul>
+<li><input type="checkbox"> Know the complete examination sequence</li>
+<li><input type="checkbox"> Can complete in 10 minutes</li>
+<li><input type="checkbox"> Can identify heart sounds S1 and S2</li>
+<li><input type="checkbox"> Can palpate all peripheral pulses</li>
+<li><input type="checkbox"> Can assess JVP</li>
+<li><input type="checkbox"> Can measure blood pressure correctly</li>
+<li><input type="checkbox"> Can identify common murmurs</li>
+<li><input type="checkbox"> Practiced 15+ complete cardiovascular exams</li>
+<p>
+</ul>
+</p>
+
+<h3>Respiratory Examination</h3>
+<ul>
+<li><input type="checkbox"> Know the complete examination sequence</li>
+<li><input type="checkbox"> Can complete in 8 minutes</li>
+<li><input type="checkbox"> Can perform correct percussion technique</li>
+<li><input type="checkbox"> Can identify different breath sounds</li>
+<li><input type="checkbox"> Can identify added sounds (crackles, wheeze)</li>
+<li><input type="checkbox"> Can assess chest expansion properly</li>
+<li><input type="checkbox"> Practiced 15+ complete respiratory exams</li>
+<p>
+</ul>
+</p>
+
+<h3>Abdominal Examination</h3>
+<ul>
+<li><input type="checkbox"> Know the complete examination sequence</li>
+<li><input type="checkbox"> Can complete in 10 minutes</li>
+<li><input type="checkbox"> Can perform light and deep palpation correctly</li>
+<li><input type="checkbox"> Can palpate liver, spleen, kidneys</li>
+<li><input type="checkbox"> Can perform correct percussion technique</li>
+<li><input type="checkbox"> Always look at patient's face during palpation</li>
+<li><input type="checkbox"> Know when to stop if patient in pain</li>
+<li><input type="checkbox"> Practiced 15+ complete abdominal exams</li>
+<p>
+</ul>
+</p>
+
+<h3>Neurological Examination</h3>
+<ul>
+<li><input type="checkbox"> Can perform cranial nerve examination</li>
+<li><input type="checkbox"> Can assess motor function systematically</li>
+<li><input type="checkbox"> Can assess sensory function</li>
+<li><input type="checkbox"> Can assess reflexes</li>
+<li><input type="checkbox"> Can assess coordination</li>
+<li><input type="checkbox"> Can calculate Glasgow Coma Scale (GCS)</li>
+<li><input type="checkbox"> Practiced 10+ neurological exams</li>
+<p>
+</ul>
+</p>
+
+<h3>Practice Volume</h3>
+<ul>
+<li><input type="checkbox"> Completed 25+ total examinations</li>
+<li><input type="checkbox"> Completed 50+ total examinations</li>
+<li><input type="checkbox"> Completed 75+ total examinations</li>
+<li><input type="checkbox"> <strong>Completed 100+ total examinations (GOAL)</strong></li>
+<p>
+</ul>
+</p>
+
+<h3>General Examination Skills</h3>
+<ul>
+<li><input type="checkbox"> I maintain patient dignity throughout</li>
+<li><input type="checkbox"> I warm my hands before examining</li>
+<li><input type="checkbox"> I explain what I'm doing as I go</li>
+<li><input type="checkbox"> I watch for signs of patient discomfort</li>
+<li><input type="checkbox"> I can present findings in structured way</li>
+<li><input type="checkbox"> I identify abnormal findings accurately</li>
+<li><input type="checkbox"> I link examination findings to diagnoses</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>SECTION 3: Typing & Computer Skills</h2>
+
+<h3>Touch Typing Foundation</h3>
+<ul>
+<li><input type="checkbox"> Can type without looking at keyboard for all letters</li>
+<li><input type="checkbox"> Can type numbers without looking</li>
+<li><input type="checkbox"> Can type punctuation without looking</li>
+<li><input type="checkbox"> Proper finger placement on home row</li>
+<li><input type="checkbox"> Good posture while typing</li>
+<p>
+</ul>
+</p>
+
+<h3>Speed Milestones</h3>
+<ul>
+<li><input type="checkbox"> Baseline speed recorded</li>
+<li><input type="checkbox"> Achieved 25 WPM</li>
+<li><input type="checkbox"> Achieved 30 WPM</li>
+<li><input type="checkbox"> Achieved 35 WPM</li>
+<li><input type="checkbox"> <strong>Achieved 40+ WPM (GOAL)</strong></li>
+<li><input type="checkbox"> Achieved 45+ WPM (STRETCH GOAL)</li>
+<li><input type="checkbox"> Achieved 50+ WPM (EXCELLENT)</li>
+<p>
+</ul>
+</p>
+
+<h3>Accuracy Milestones</h3>
+<ul>
+<li><input type="checkbox"> Typing accuracy 90%+</li>
+<li><input type="checkbox"> Typing accuracy 93%+</li>
+<li><input type="checkbox"> <strong>Typing accuracy 95%+ (GOAL)</strong></li>
+<li><input type="checkbox"> Typing accuracy 97%+ (EXCELLENT)</li>
+<p>
+</ul>
+</p>
+
+<h3>Medical Typing</h3>
+<ul>
+<li><input type="checkbox"> Can type common medical terms without looking</li>
+<li><input type="checkbox"> Can type medical abbreviations accurately</li>
+<li><input type="checkbox"> Can type SOAP notes fluently</li>
+<li><input type="checkbox"> Familiar with medical autocorrect issues</li>
+<li><input type="checkbox"> Know dangerous abbreviations to avoid</li>
+<p>
+</ul>
+</p>
+
+<h3>Practice Volume</h3>
+<ul>
+<li><input type="checkbox"> Practiced 7+ consecutive days</li>
+<li><input type="checkbox"> Practiced 14+ consecutive days</li>
+<li><input type="checkbox"> Practiced 21+ consecutive days</li>
+<li><input type="checkbox"> Practiced 30+ consecutive days</li>
+<li><input type="checkbox"> Practiced 60+ consecutive days</li>
+<li><input type="checkbox"> Practiced 90+ consecutive days</li>
+<li><input type="checkbox"> Total practice time: 20+ hours</li>
+<li><input type="checkbox"> Total practice time: 50+ hours</li>
+<li><input type="checkbox"> Total practice time: 75+ hours</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>SECTION 4: Clinical Documentation</h2>
+
+<h3>SOAP Note Format</h3>
+<ul>
+<li><input type="checkbox"> Understand SOAP format structure</li>
+<li><input type="checkbox"> Know what goes in each section</li>
+<li><input type="checkbox"> Can write concise but complete notes</li>
+<li><input type="checkbox"> Include all relevant information</li>
+<li><input type="checkbox"> Exclude irrelevant details</li>
+<p>
+</ul>
+</p>
+
+<h3>Documentation Speed</h3>
+<ul>
+<li><input type="checkbox"> Baseline time recorded (likely 30+ min)</li>
+<li><input type="checkbox"> Can complete SOAP note in 25 min</li>
+<li><input type="checkbox"> Can complete SOAP note in 20 min</li>
+<li><input type="checkbox"> Can complete SOAP note in 15 min</li>
+<li><input type="checkbox"> <strong>Can complete SOAP note in 10-15 min (GOAL)</strong></li>
+<p>
+</ul>
+</p>
+
+<h3>Documentation Quality</h3>
+<ul>
+<li><input type="checkbox"> Use appropriate medical terminology</li>
+<li><input type="checkbox"> Quote patient statements in Subjective</li>
+<li><input type="checkbox"> Record all objective findings</li>
+<li><input type="checkbox"> Link assessment to findings</li>
+<li><input type="checkbox"> Plan is specific and actionable</li>
+<li><input type="checkbox"> Include safety netting advice</li>
+<li><input type="checkbox"> Document patient education provided</li>
+<p>
+</ul>
+</p>
+
+<h3>Practice Volume</h3>
+<ul>
+<li><input type="checkbox"> Written 10+ SOAP notes</li>
+<li><input type="checkbox"> Written 20+ SOAP notes</li>
+<li><input type="checkbox"> Written 30+ SOAP notes (GOAL)</li>
+<li><input type="checkbox"> Written 50+ SOAP notes (EXCELLENT)</li>
+<p>
+</ul>
+</p>
+
+<h3>Systems Documented (5+ each)</h3>
+<ul>
+<li><input type="checkbox"> Cardiovascular cases</li>
+<li><input type="checkbox"> Respiratory cases</li>
+<li><input type="checkbox"> Gastrointestinal cases</li>
+<li><input type="checkbox"> Neurological cases</li>
+<li><input type="checkbox"> Musculoskeletal cases</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>SECTION 5: Clinical Knowledge</h2>
+
+<h3><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s - Can Identify</h3>
+<ul>
+<li><input type="checkbox"> Cardiac <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s (chest pain, MI symptoms)</li>
+<li><input type="checkbox"> Respiratory <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s (PE, pneumothorax)</li>
+<li><input type="checkbox"> Neurological <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s (SAH, stroke, meningitis)</li>
+<li><input type="checkbox"> Abdominal <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s (acute abdomen, AAA)</li>
+<li><input type="checkbox"> Headache <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s (SNNOOP10)</li>
+<p>
+</ul>
+</p>
+
+<h3>Common Presentations - Can Manage</h3>
+<ul>
+<li><input type="checkbox"> Chest pain assessment and management</li>
+<li><input type="checkbox"> Shortness of breath assessment</li>
+<li><input type="checkbox"> Abdominal pain assessment</li>
+<li><input type="checkbox"> Headache assessment</li>
+<li><input type="checkbox"> Fever in adult</li>
+<li><input type="checkbox"> Diabetic emergencies (DKA, hypoglycemia)</li>
+<li><input type="checkbox"> Asthma exacerbation</li>
+<li><input type="checkbox"> COPD exacerbation</li>
+<li><input type="checkbox"> Acute stroke</li>
+<li><input type="checkbox"> Anaphylaxis</li>
+<p>
+</ul>
+</p>
+
+<h3>Practical Skills</h3>
+<ul>
+<li><input type="checkbox"> Can calculate drug doses</li>
+<li><input type="checkbox"> Know common medication doses</li>
+<li><input type="checkbox"> Understand basic ECG interpretation</li>
+<li><input type="checkbox"> Can interpret basic blood results</li>
+<li><input type="checkbox"> Can interpret basic X-rays</li>
+<li><input type="checkbox"> Know normal vital sign ranges</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>SECTION 6: Professional Skills</h2>
+
+<h3>Communication</h3>
+<ul>
+<li><input type="checkbox"> Can introduce myself professionally</li>
+<li><input type="checkbox"> Can build rapport quickly</li>
+<li><input type="checkbox"> Can explain medical information clearly</li>
+<li><input type="checkbox"> Can handle difficult conversations</li>
+<li><input type="checkbox"> Can show empathy appropriately</li>
+<li><input type="checkbox"> Can work with interpreters (if needed)</li>
+<p>
+</ul>
+</p>
+
+<h3>Cultural Competency</h3>
+<ul>
+<li><input type="checkbox"> Understand Australian healthcare system</li>
+<li><input type="checkbox"> Familiar with Australian medical culture</li>
+<li><input type="checkbox"> Understand rural healthcare challenges</li>
+<li><input type="checkbox"> Respectful of diverse patient backgrounds</li>
+<p>
+</ul>
+</p>
+
+<h3>Time Management</h3>
+<ul>
+<li><input type="checkbox"> Can prioritize tasks</li>
+<li><input type="checkbox"> Can work efficiently under pressure</li>
+<li><input type="checkbox"> Can complete documentation promptly</li>
+<li><input type="checkbox"> Don't leave tasks incomplete</li>
+<p>
+</ul>
+</p>
+
+<h3>Professionalism</h3>
+<ul>
+<li><input type="checkbox"> Understand doctor-patient boundaries</li>
+<li><input type="checkbox"> Maintain patient confidentiality</li>
+<li><input type="checkbox"> Punctual and reliable</li>
+<li><input type="checkbox"> Take feedback constructively</li>
+<li><input type="checkbox"> Ask for help when needed</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>SECTION 7: ICRP Program Readiness</h2>
+
+<h3>Logistics</h3>
+<ul>
+<li><input type="checkbox"> Accommodation in Young, NSW arranged</li>
+<li><input type="checkbox"> Transportation arranged</li>
+<li><input type="checkbox"> Financial planning complete (budget $20-30K)</li>
+<li><input type="checkbox"> Professional clothing ready</li>
+<li><input type="checkbox"> Stethoscope and medical equipment ready</li>
+<p>
+</ul>
+</p>
+
+<h3>Documentation</h3>
+<ul>
+<li><input type="checkbox"> AHPRA registration status checked</li>
+<li><input type="checkbox"> Medical indemnity insurance arranged</li>
+<li><input type="checkbox"> Police check completed (if required)</li>
+<li><input type="checkbox"> Working with children check (if required)</li>
+<li><input type="checkbox"> All required paperwork submitted</li>
+<p>
+</ul>
+</p>
+
+<h3>Mental Preparation</h3>
+<ul>
+<li><input type="checkbox"> Confident in core clinical skills</li>
+<li><input type="checkbox"> Prepared for long hours</li>
+<li><input type="checkbox"> Support system in place</li>
+<li><input type="checkbox"> Stress management strategies ready</li>
+<li><input type="checkbox"> Realistic expectations set</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>SECTION 8: Monthly Milestone Check</h2>
+
+<h3>End of Month 1 (December 2025)</h3>
+<ul>
+<li><input type="checkbox"> Typing: 25-30 WPM achieved</li>
+<li><input type="checkbox"> History: 50-75 histories completed</li>
+<li><input type="checkbox"> Exam: 15-20 examinations completed</li>
+<li><input type="checkbox"> SOAP: 10+ notes written</li>
+<li><input type="checkbox"> Consistent daily practice established</li>
+<p>
+</ul>
+</p>
+
+<h3>End of Month 2 (January 2026)</h3>
+<ul>
+<li><input type="checkbox"> Typing: 35-40 WPM achieved</li>
+<li><input type="checkbox"> History: 150-200 histories completed</li>
+<li><input type="checkbox"> Exam: 40-60 examinations completed</li>
+<li><input type="checkbox"> SOAP: 20+ notes written</li>
+<li><input type="checkbox"> Confident in core systems</li>
+<p>
+</ul>
+</p>
+
+<h3>End of Month 3 (February 2026)</h3>
+<ul>
+<li><input type="checkbox"> Typing: 40+ WPM achieved with 95%+ accuracy</li>
+<li><input type="checkbox"> History: 300-400 histories completed</li>
+<li><input type="checkbox"> Exam: 75-100 examinations completed</li>
+<li><input type="checkbox"> SOAP: 30+ notes written in 10-15 min</li>
+<li><input type="checkbox"> All logistics arranged</li>
+<li><input type="checkbox"> <strong>READY FOR ICRP START MARCH 2, 2026</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Final Pre-ICRP Assessment (Last Week of February)</h2>
+
+<h3>Skills Confidence (Rate 1-10, aim for 8+):</h3>
+<ul>
+<li>History taking: <em>_</em> / 10</li>
+<li>Physical examination: <em>_</em> / 10</li>
+<li>Typing speed: <em>_</em> / 10</li>
+<li>Documentation: <em>_</em> / 10</li>
+<li>Clinical knowledge: <em>_</em> / 10</li>
+<li>Communication: <em>_</em> / 10</li>
+<li>Overall readiness: <em>_</em> / 10</li>
+<p>
+</ul>
+</p>
+
+<h3>Final Check</h3>
+<ul>
+<li><input type="checkbox"> All practice targets met or close</li>
+<li><input type="checkbox"> Feel confident in core clinical skills</li>
+<li><input type="checkbox"> All weaknesses significantly improved</li>
+<li><input type="checkbox"> All logistics arranged</li>
+<li><input type="checkbox"> Mentally prepared for program</li>
+<li><input type="checkbox"> <strong>READY TO SUCCEED IN ICRP</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Scoring Guide</h2>
+
+<strong>Count your total checkmarks:</strong>
+
+<ul>
+<li><strong>0-50 checks:</strong> Just getting started - keep practicing!</li>
+<li><strong>51-100 checks:</strong> Good progress - maintain consistency</li>
+<li><strong>101-150 checks:</strong> Solid preparation - you're on track</li>
+<li><strong>151-200 checks:</strong> Excellent preparation - almost ready</li>
+<li><strong>201+ checks:</strong> Outstanding - you're very well prepared!</li>
+<p>
+</ul>
+</p>
+
+<strong>Minimum target before ICRP:</strong> 150+ checkmarks
+
+<hr>
+
+<strong>Remember:</strong> This is a guide, not a test. The goal is progress, not perfection. Focus on continuous improvement and honest self-assessment.
+
+<strong>Last Updated:</strong> December 2025
+<strong>For:</strong> ICRP NSW Preparation - Young District Hospital
+<strong>Program Start:</strong> March 2, 2026
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

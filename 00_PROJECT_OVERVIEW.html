@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICRP NSW Young Hospital - Complete Study Package</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+</div>
+        
+        <h1>ICRP NSW Young Hospital - Complete Study Package</h1>
+<h2>Project Overview & Navigation</h2>
+
+<strong>Program</strong>: International Clinical Rotation Program (ICRP)
+<strong>Location</strong>: Young District Hospital, NSW, Australia
+<strong>Duration</strong>: March 2, 2026 - May 22, 2026 (12 weeks)
+<strong>Preparation Period</strong>: December 2025 - February 2026
+
+<strong>Created</strong>: December 13-14, 2025
+<strong>Last Updated</strong>: December 14, 2025
+
+<hr>
+
+<h2>📂 PROJECT STRUCTURE</h2>
+
+<p>
+This study package is organized into <strong>TWO main folders</strong>:
+</p>
+
+<h3>1️⃣ <strong>ICRP<em>Program</em>Resources/</strong> - General ICRP Preparation</h3>
+<strong>What's inside</strong>: General preparation materials, practice logs, reference materials
+
+<pre><code>ICRP<em>Program</em>Resources/
+<p>
+├── 00_README.html - Overview of ICRP program resources
+├── Weakness_Improvement/
+│   ├── 01<em>History</em>Taking<em>Mastery</em>Guide.md
+│   ├── 02<em>Physical</em>Examination<em>Skills</em>Guide.md
+│   └── 03<em>Computer</em>Skills<em>Typing</em>Improvement_Plan.html
+├── Templates/
+│   ├── SOAP<em>Note</em>Template.md
+│   ├── History<em>Taking</em>Practice_Log.html
+│   ├── Physical<em>Examination</em>Practice_Log.html
+│   └── Weekly<em>Study</em>Schedule.html
+├── Trackers/
+│   ├── Daily<em>Practice</em>Log.html
+│   ├── Weekly<em>Progress</em>Tracker.html
+│   └── Typing<em>Progress</em>Tracker.html
+├── Reference_Materials/
+│   ├── Medical<em>Terminology</em>Practice_Lists.md
+│   └── EMR<em>Documentation</em>Guide.md
+├── Case_Scenarios/
+│   └── Sample<em>Cases</em>For_Practice.md
+└── Self<em>Assessment</em>Checklist.md
+</code></pre>
+</p>
+
+<strong>Purpose</strong>:
+<ul>
+<li>Daily practice tracking</li>
+<li>Typing improvement (target: 40+ WPM)</li>
+<li>Documentation speed improvement (target: 10-15 min per note)</li>
+<li>General clinical skills practice</li>
+<p>
+</ul>
+</p>
+
+<strong>When to use</strong>: Daily practice logging, typing drills, general skill improvement
+
+<hr>
+
+<h3>2️⃣ <strong>ICRP<em>OSCE</em>Preparation/</strong> - AMC Clinical OSCE Specific</h3>
+<strong>What's inside</strong>: Complete AMC Clinical-style OSCE preparation materials
+
+<pre><code>ICRP<em>OSCE</em>Preparation/
+<p>
+├── START_HERE.md ⭐ Read this first!
+├── 00<em>MASTER</em>INDEX<em>AMC</em>CLINICAL_OSCE.md
+├── Medicine/
+│   ├── 01<em>Cardiovascular</em>Respiratory_History.md
+│   ├── 02<em>Physical</em>Examination<em>Cardiovascular</em>Respiratory.md
+│   └── 03<em>Physical</em>Examination<em>Abdominal</em>Neurological.md
+├── Ethics_Communication/
+│   └── 01<em>Communication</em>Skills<em>Role</em>Play_Scripts.md
+├── Mock_Stations/
+│   └── 01<em>Sample</em>Mock<em>OSCE</em>Chest_Pain.md
+├── Surgery/ (coming soon)
+├── Paediatrics/ (coming soon)
+├── ObGyn/ (coming soon)
+├── Psychiatry/ (coming soon)
+└── Practice_Logs/ (your practice records)
+</code></pre>
+</p>
+
+<strong>Purpose</strong>:
+<ul>
+<li>AMC Clinical exam preparation</li>
+<li>OSCE station practice (8-minute format)</li>
+<li>Australian medical context (eTG, AMH, Medicare, PBS)</li>
+<li>Role-play scripts and communication skills</li>
+<p>
+</ul>
+</p>
+
+<strong>When to use</strong>: OSCE practice, mock exams, exam-specific preparation
+
+<hr>
+
+<h2>🚀 QUICK START GUIDE</h2>
+
+<h3><strong>If You're Just Starting</strong> (Day 1):</h3>
+
+<strong>Step 1</strong>: Read project standards
+<ul>
+<li>Open: <code>PROJECT_CONSTRAINTS.md</code> (in this directory)</li>
+<li>Understand: Document standards, medical documentation format, practice targets</li>
+<p>
+</ul>
+</p>
+
+<strong>Step 2</strong>: Start OSCE preparation
+<ul>
+<li>Navigate to: <code>ICRP<em>OSCE</em>Preparation/</code></li>
+<li>Open: <code>START_HERE.md</code></li>
+<li>Follow the 3-month study plan</li>
+<p>
+</ul>
+</p>
+
+<strong>Step 3</strong>: Set up daily practice tracking
+<ul>
+<li>Navigate to: <code>ICRP<em>Program</em>Resources/Trackers/</code></li>
+<li>Open: <code>Daily<em>Practice</em>Log.html</code></li>
+<li>Start logging your practice</li>
+<p>
+</ul>
+</p>
+
+<h3><strong>Daily Workflow</strong>:</h3>
+
+<strong>Morning</strong> (60-90 minutes):
+<ol>
+<li>Open <code>ICRP<em>OSCE</em>Preparation/Medicine/01<em>Cardiovascular</em>Respiratory_History.md</code></li>
+<li>Practice 2 history-taking scenarios OUT LOUD (15-20 min each)</li>
+<li>Log in <code>ICRP<em>Program</em>Resources/Trackers/Daily<em>Practice</em>Log.html</code></li>
+<p>
+</ol>
+</p>
+
+<strong>Afternoon</strong> (60 minutes):
+<ol>
+<li>Practice 1 physical examination (from OSCE materials)</li>
+<li>Practice typing (30-60 min) using <code>Weakness<em>Improvement/03</em>Computer<em>Skills</em>Typing<em>Improvement</em>Plan.html</code></li>
+<p>
+</ol>
+</p>
+
+<strong>Evening</strong> (30 minutes):
+<ol>
+<li>Review common IMG mistakes</li>
+<li>Practice 1 SOAP note</li>
+<li>Update weekly progress tracker</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>📊 PROGRESS TRACKING</h2>
+
+<h3><strong>Monthly Targets</strong> (from PROJECT_CONSTRAINTS.md):</h3>
+
+<strong>Month 1 (December 2025)</strong>:
+<ul>
+<li>✅ 60 history-taking practices</li>
+<li>✅ 20 physical examinations</li>
+<li>✅ Typing: 25-30 WPM</li>
+<li>✅ Documentation: 20-25 min per note</li>
+<p>
+</ul>
+</p>
+
+<strong>Month 2 (January 2026)</strong>:
+<ul>
+<li>✅ 90 additional histories (Total: 150)</li>
+<li>✅ 30 additional exams (Total: 50)</li>
+<li>✅ Typing: 35-40 WPM</li>
+<li>✅ Documentation: 15-20 min per note</li>
+<p>
+</ul>
+</p>
+
+<strong>Month 3 (February 2026)</strong>:
+<ul>
+<li>✅ 120 additional histories (Total: 270+)</li>
+<li>✅ 40 additional exams (Total: 90+)</li>
+<li>✅ Typing: 40+ WPM</li>
+<li>✅ Documentation: 10-15 min per note</li>
+<p>
+</ul>
+</p>
+
+<h3><strong>How to Track</strong>:</h3>
+<ul>
+<li><strong>Daily</strong>: Use <code>ICRP<em>Program</em>Resources/Trackers/Daily<em>Practice</em>Log.html</code></li>
+<li><strong>Weekly</strong>: Use <code>ICRP<em>Program</em>Resources/Trackers/Weekly<em>Progress</em>Tracker.html</code></li>
+<li><strong>Typing</strong>: Use <code>ICRP<em>Program</em>Resources/Trackers/Typing<em>Progress</em>Tracker.html</code></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>🎯 KEY DOCUMENTS BY PURPOSE</h2>
+
+<h3><strong>Want to practice OSCE stations?</strong></h3>
+<p>
+→ <code>ICRP<em>OSCE</em>Preparation/START_HERE.md</code>
+</p>
+
+<h3><strong>Want to improve typing speed?</strong></h3>
+<p>
+→ <code>ICRP<em>Program</em>Resources/Weakness<em>Improvement/03</em>Computer<em>Skills</em>Typing<em>Improvement</em>Plan.html</code>
+</p>
+
+<h3><strong>Want to practice history-taking?</strong></h3>
+<p>
+→ <code>ICRP<em>OSCE</em>Preparation/Medicine/01<em>Cardiovascular</em>Respiratory_History.md</code>
+→ <code>ICRP<em>Program</em>Resources/Weakness<em>Improvement/01</em>History<em>Taking</em>Mastery_Guide.md</code>
+</p>
+
+<h3><strong>Want to practice physical examination?</strong></h3>
+<p>
+→ <code>ICRP<em>OSCE</em>Preparation/Medicine/02<em>Physical</em>Examination<em>Cardiovascular</em>Respiratory.md</code>
+→ <code>ICRP<em>Program</em>Resources/Weakness<em>Improvement/02</em>Physical<em>Examination</em>Skills_Guide.md</code>
+</p>
+
+<h3><strong>Want to practice clinical documentation?</strong></h3>
+<p>
+→ <code>ICRP<em>Program</em>Resources/Templates/SOAP<em>Note</em>Template.md</code>
+→ <code>ICRP<em>Program</em>Resources/Reference<em>Materials/EMR</em>Documentation_Guide.md</code>
+</p>
+
+<h3><strong>Want to practice communication skills?</strong></h3>
+<p>
+→ <code>ICRP<em>OSCE</em>Preparation/Ethics<em>Communication/01</em>Communication<em>Skills</em>Role<em>Play</em>Scripts.md</code>
+</p>
+
+<h3><strong>Want to do a mock OSCE exam?</strong></h3>
+<p>
+→ <code>ICRP<em>OSCE</em>Preparation/Mock<em>Stations/01</em>Sample<em>Mock</em>OSCE<em>Chest</em>Pain.md</code>
+</p>
+
+<h3><strong>Want to track your progress?</strong></h3>
+<p>
+→ <code>ICRP<em>Program</em>Resources/Trackers/</code> (all trackers)
+</p>
+
+<hr>
+
+<h2>📚 ESSENTIAL READING (In Order)</h2>
+
+<strong>First Time Setup</strong> (Read once):
+<ol>
+<li><code>PROJECT_CONSTRAINTS.md</code> (this directory) - Standards and requirements</li>
+<li><code>ICRP<em>OSCE</em>Preparation/START_HERE.md</code> - OSCE preparation overview</li>
+<li><code>ICRP<em>OSCE</em>Preparation/00<em>MASTER</em>INDEX<em>AMC</em>CLINICAL_OSCE.md</code> - Complete OSCE guide</li>
+<li><code>ICRP<em>Program</em>Resources/00_README.html</code> - General resources overview</li>
+<p>
+</ol>
+</p>
+
+<strong>Daily Practice</strong> (Use regularly):
+<ol>
+<li>OSCE materials in <code>ICRP<em>OSCE</em>Preparation/Medicine/</code></li>
+<li>Practice logs in <code>ICRP<em>Program</em>Resources/Trackers/</code></li>
+<li>Templates in <code>ICRP<em>Program</em>Resources/Templates/</code></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>⚙️ SYSTEM FEATURES</h2>
+
+<h3><strong>Available Resources</strong>:</h3>
+<ul>
+<li>✅ Medical AI chatbot (via <code>medical_ai.py</code>)</li>
+<li>✅ Docker containerization (via <code>docker-compose.yml</code>)</li>
+<li>✅ Setup scripts (via <code>setup.sh</code>)</li>
+<li>✅ Testing framework (via <code>tests/</code>)</li>
+<p>
+</ul>
+</p>
+
+<h3><strong>Quick Commands</strong>:</h3>
+<pre><code><h1>Start medical AI system</h1>
+<p>
+./setup.sh
+</p>
+
+<h1>Run medical AI chatbot</h1>
+<p>
+python medical_ai.py
+</p>
+
+<h1>Start Docker environment</h1>
+<p>
+docker-compose up -d
+</p>
+
+<h1>View system overview</h1>
+<p>
+cat SYSTEM_OVERVIEW.md
+</p>
+
+<h1>View quick start guide</h1>
+<p>
+cat QUICKSTART.md
+</code></pre>
+</p>
+
+<hr>
+
+<h2>🎓 STUDY PATHWAYS</h2>
+
+<h3><strong>Pathway 1: OSCE-Focused</strong> (For AMC Clinical Exam)</h3>
+<ol>
+<li>Start in <code>ICRP<em>OSCE</em>Preparation/</code></li>
+<li>Follow 3-month study plan in <code>START_HERE.md</code></li>
+<li>Practice mock stations</li>
+<li>Track in <code>Practice_Logs/</code></li>
+<p>
+</ol>
+</p>
+
+<h3><strong>Pathway 2: General Skills</strong> (For Overall ICRP Preparation)</h3>
+<ol>
+<li>Start in <code>ICRP<em>Program</em>Resources/</code></li>
+<li>Use trackers daily</li>
+<li>Practice typing (target: 40+ WPM)</li>
+<li>Practice documentation (target: 10-15 min)</li>
+<li>Build general clinical skills</li>
+<p>
+</ol>
+</p>
+
+<h3><strong>Pathway 3: Integrated</strong> (Recommended - Best Results)</h3>
+<strong>Morning</strong>: OSCE practice (<code>ICRP<em>OSCE</em>Preparation/</code>)
+<strong>Afternoon</strong>: Typing & documentation (<code>ICRP<em>Program</em>Resources/</code>)
+<strong>Evening</strong>: Review & track progress (both folders)
+
+<hr>
+
+<h2>📞 SUPPORT & INFORMATION</h2>
+
+<h3><strong>ICRP Program Information</strong>:</h3>
+<ul>
+<li><strong>Hospital</strong>: Young District Hospital, NSW</li>
+<li><strong>Start Date</strong>: March 2, 2026</li>
+<li><strong>End Date</strong>: May 22, 2026</li>
+<li><strong>Duration</strong>: 12 weeks</li>
+<li><strong>Coordinator</strong>: Contact via hospital</li>
+<p>
+</ul>
+</p>
+
+<h3><strong>Important Websites</strong>:</h3>
+<ul>
+<li><strong>AHPRA</strong>: www.ahpra.gov.au (Medical registration)</li>
+<li><strong>NSW Health</strong>: www.health.nsw.gov.au</li>
+<li><strong>AMC</strong>: www.amc.org.au (If taking AMC Clinical exam)</li>
+<li><strong>Therapeutic Guidelines</strong>: www.tg.org.au (eTG)</li>
+<li><strong>Australian Medicines Handbook</strong>: www.amh.net.au</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>🔧 TECHNICAL NOTES</h2>
+
+<h3><strong>File Formats</strong>:</h3>
+<ul>
+<li><strong>Markdown (.md)</strong>: For guides, notes, educational content</li>
+<li><strong>HTML (.html)</strong>: For interactive trackers, templates, forms</li>
+<li><strong>Python (.py)</strong>: For medical AI system</li>
+<li><strong>Configuration</strong>: Docker, scripts, requirements</li>
+<p>
+</ul>
+</p>
+
+<h3><strong>Editing Files</strong>:</h3>
+<ul>
+<li><strong>Markdown</strong>: Any text editor (VS Code, Sublime, nano, vim)</li>
+<li><strong>HTML</strong>: Open in web browser (editable in text editor)</li>
+<li><strong>Python</strong>: Text editor or IDE</li>
+<p>
+</ul>
+</p>
+
+<h3><strong>Version Control</strong>:</h3>
+<ul>
+<li>All documents include "Last Updated" date</li>
+<li>Check version numbers before using</li>
+<li>Refer to CREATION_SUMMARY.md for change history</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>✅ VALIDATION & QUALITY</h2>
+
+<p>
+All materials validated for:
+</p>
+<ul>
+<li>✅ <strong>Australian spelling</strong> (paediatric, anaemia, colour)</li>
+<li>✅ <strong>Australian terminology</strong> (GP, <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department, paracetamol)</li>
+<li>✅ <strong>Australian guidelines</strong> (eTG, AMH, Medicare, PBS)</li>
+<li>✅ <strong>AHPRA standards</strong> (Clinical competency requirements)</li>
+<li>✅ <strong>NSW Health protocols</strong> (Young District Hospital context)</li>
+<li>✅ <strong>AMC Clinical format</strong> (8-minute OSCE stations)</li>
+<p>
+</ul>
+</p>
+
+<strong>No US terminology</strong> in teaching materials (only in "mistakes to avoid" sections)
+
+<hr>
+
+<h2>🗺️ NEXT STEPS</h2>
+
+<h3><strong>Today</strong> (December 14, 2025):</h3>
+<ol>
+<li>✅ Read this overview document</li>
+<li>✅ Navigate to <code>ICRP<em>OSCE</em>Preparation/</code></li>
+<li>✅ Open and read <code>START_HERE.md</code></li>
+<li>✅ Start first practice session</li>
+<p>
+</ol>
+</p>
+
+<h3><strong>This Week</strong>:</h3>
+<ol>
+<li>Read all OSCE materials in <code>ICRP<em>OSCE</em>Preparation/Medicine/</code></li>
+<li>Set up daily practice tracking</li>
+<li>Complete first 5-10 history-taking practices</li>
+<li>Begin typing improvement program</li>
+<p>
+</ol>
+</p>
+
+<h3><strong>By End of Month 1</strong> (December 31, 2025):</h3>
+<ol>
+<li>60 history-taking practices completed</li>
+<li>20 physical examinations completed</li>
+<li>Typing speed: 25-30 WPM</li>
+<li>All OSCE frameworks memorized (SOCRATES, 5 Ps, SPIKES)</li>
+<p>
+</ol>
+</p>
+
+<h3><strong>By ICRP Start</strong> (March 2, 2026):</h3>
+<ol>
+<li>270+ history-taking practices</li>
+<li>90+ physical examinations</li>
+<li>Typing speed: 40+ WPM</li>
+<li>Documentation: 10-15 min per note</li>
+<li><strong>READY FOR YOUNG DISTRICT HOSPITAL!</strong></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>📂 FOLDER SUMMARY</h2>
+
+<p>
+| Folder | Purpose | When to Use |
+|--------|---------|-------------|
+| <code>ICRP<em>OSCE</em>Preparation/</code> | AMC Clinical OSCE exam prep | OSCE practice, mock exams |
+| <code>ICRP<em>Program</em>Resources/</code> | General ICRP skill building | Daily tracking, typing, documentation |
+| <code>docs/</code> | Technical documentation | System setup, API docs |
+| <code>src/</code> | Medical AI source code | Development/customization |
+| <code>tests/</code> | Testing framework | Quality assurance |
+| <code>scripts/</code> | Setup & utility scripts | Installation, automation |
+| <code>data/</code> | Data files for AI system | AI training/reference |
+| <code>config/</code> | Configuration files | System settings |
+| <code>docker/</code> | Docker containerization | Deployment |
+</p>
+
+<hr>
+
+<h2>🎯 YOUR SUCCESS FORMULA</h2>
+
+<strong>3-Month Formula</strong>:
+<ol>
+<li><strong>Practice OUT LOUD</strong> (not silent reading)</li>
+<li><strong>Time yourself</strong> (8 minutes strict for OSCE)</li>
+<li><strong>Track daily</strong> (use logs in ICRP<em>Program</em>Resources)</li>
+<li><strong>Review mistakes</strong> (Common IMG mistakes in OSCE materials)</li>
+<li><strong>Stay consistent</strong> (15-20 hours/week minimum)</li>
+<p>
+</ol>
+</p>
+
+<strong>Daily Minimums</strong>:
+<ul>
+<li>✅ 2-3 history-taking practices (30-60 min)</li>
+<li>✅ 1 physical examination (15-20 min)</li>
+<li>✅ 30-60 min typing practice</li>
+<li>✅ 1 SOAP note (real or simulated case)</li>
+<p>
+</ul>
+</p>
+
+<strong>Weekly Reviews</strong>:
+<ul>
+<li>✅ Check progress against targets</li>
+<li>✅ Identify weak areas</li>
+<li>✅ Adjust study plan as needed</li>
+<li>✅ Self-assessment using mock OSCEs</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>🚀 Ready to start? Navigate to <code>ICRP<em>OSCE</em>Preparation/</code> and open <code>START_HERE.md</code>!</strong>
+
+<hr>
+
+<strong>Last Updated</strong>: December 14, 2025
+<strong>Version</strong>: 1.0
+<strong>Total Documents</strong>: 20+ files across both folders
+<strong>Study Materials Status</strong>: Core materials complete, additional content in development
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acute Abdomen - History Taking with Differential Diagnosis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Surgery</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Surgery Navigation</h3>
+<ul>
+<li><a href="01_Acute_Abdomen_History_Differentials.html">Acute Abdomen</a></li>
+<li><a href="02_Acute_Abdomen_Physical_Examination.html">Abdo Exam</a></li>
+</ul>
+</div>
+        <h1>Acute Abdomen - History Taking with Differential Diagnosis</h1>
+<h2>AMC Clinical / ICRP NSW Young Hospital Preparation</h2>
+
+<strong>Purpose</strong>: Systematic approach to acute abdominal pain with differential diagnosis emphasis
+<strong>Target</strong>: 8-minute OSCE history-taking station
+<strong>Dr. Amir Soufi Methodology</strong>: Structure + Differentials + Clinical Reasoning
+<strong>Created</strong>: December 14, 2025
+
+<hr>
+
+<h2>TABLE OF CONTENTS</h2>
+
+<ol>
+<li><a href="#introduction">Introduction - The Differential-Driven Approach</a></li>
+<li><a href="#the-9-step-structured-history">The 9-Step Structured History</a></li>
+<li><a href="#pain-characteristics">Pain Characteristics - SOCRATES with Differential Thinking</a></li>
+<li><a href="#differential-diagnosis-by-pain-location">Differential Diagnosis by Pain Location</a></li>
+<li><a href="#red-flags"><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s - Don't Miss Diagnoses</a></li>
+<li><a href="#systematic-review">Systematic Review for Acute Abdomen</a></li>
+<li><a href="#clinical-reasoning">Clinical Reasoning - Narrowing the Differential</a></li>
+<li><a href="#investigation-planning">Investigation Planning</a></li>
+<li><a href="#common-img-mistakes">Common IMG Mistakes</a></li>
+<li><a href="#practice-cases">Practice Cases</a></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>INTRODUCTION</h2>
+
+<h3>The Differential-Driven Approach (Dr. Amir Soufi Method)</h3>
+
+<strong>Traditional approach</strong>: Take complete history → Think about diagnosis at end
+
+<strong>Dr. Amir's approach</strong>: Start thinking differentials FROM THE FIRST QUESTION → Let differential guide your questions → Narrow differential with each answer
+
+<strong>Example</strong>:
+<ul>
+<li>Patient says "right lower quadrant pain"</li>
+<li><strong>Immediately think</strong>: Appendicitis, ectopic pregnancy (if female), ovarian pathology, inflammatory bowel disease, right ureteric colic</li>
+<li><strong>Your next questions are driven by differentials</strong>: "Are you pregnant?", "Any fever?", "Any urinary symptoms?"</li>
+<p>
+</ul>
+</p>
+
+<h3>Why This Matters for OSCE</h3>
+
+<strong>AMC Clinical examiners assess</strong>:
+<ul>
+<li>Can you generate a sensible differential diagnosis?</li>
+<li>Do your questions logically narrow the differential?</li>
+<li>Do you identify <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s?</li>
+<li>Can you formulate a management plan based on differential?</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>THE 9-STEP STRUCTURED HISTORY</h2>
+
+<h3>Overview - 8 Minutes Total</h3>
+
+<strong>Time Allocation</strong>:
+<ol>
+<li>Introduction & PC: 30 sec</li>
+<li>HPC (including SOCRATES): 3.5 min</li>
+<li>Systemic Review: 1.5 min</li>
+<li>PMHx/PSHx: 1 min</li>
+<li>Medications: 30 sec</li>
+<li>Allergies: 15 sec</li>
+<li>Family Hx: 15 sec</li>
+<li>Social Hx: 30 sec</li>
+<li>Summarize & Differential: 1 min</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>STEP 1: INTRODUCTION & PRESENTING COMPLAINT (30 seconds)</h3>
+
+<strong>Opening</strong>:
+<p>
+"Hello, I'm Dr [Name]. I'm one of the doctors here in the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department. I understand you've come in with abdominal pain. Is that right?"
+</p>
+
+<strong>Permission</strong>:
+<p>
+"I'd like to ask you some questions about your pain and your health to work out what might be causing it. Is that okay?"
+</p>
+
+<strong>Open Question - Let Patient Tell Story</strong>:
+<p>
+"Can you tell me about this abdominal pain - when did it start and what's it been like?"
+</p>
+
+<em>[Listen to patient's narrative for 30-60 seconds - don't interrupt]</em>
+
+<hr>
+
+<h3>STEP 2: HISTORY OF PRESENTING COMPLAINT (3.5 minutes)</h3>
+
+<strong>This is where differential thinking happens</strong>
+
+<hr>
+
+<h2>PAIN CHARACTERISTICS - SOCRATES WITH DIFFERENTIAL THINKING</h2>
+
+<h3><strong>S - SITE</strong></h3>
+
+<strong>Question</strong>: "Where exactly is the pain? Can you point to it with one finger?"
+
+<strong>Differential Thinking by Location</strong>:
+
+<h4><strong>Right Upper Quadrant (RUQ) Pain</strong></h4>
+<strong>Think immediately</strong>:
+<ol>
+<li>Cholecystitis / biliary colic</li>
+<li>Hepatitis</li>
+<li>Right lower lobe pneumonia</li>
+<li>Peptic ulcer (duodenal)</li>
+<li>Retrocaecal appendicitis (can present high)</li>
+<p>
+</ol>
+</p>
+
+<h4><strong>Epigastric Pain</strong></h4>
+<strong>Think immediately</strong>:
+<ol>
+<li>Peptic ulcer (gastric or duodenal)</li>
+<li>Gastritis / GORD</li>
+<li>Pancreatitis</li>
+<li>Abdominal aortic aneurysm (AAA)</li>
+<li>Myocardial infarction (referred)</li>
+<p>
+</ol>
+</p>
+
+<h4><strong>Left Upper Quadrant (LUQ) Pain</strong></h4>
+<strong>Think immediately</strong>:
+<ol>
+<li>Splenic pathology (rupture, infarct)</li>
+<li>Gastric ulcer</li>
+<li>Pancreatitis (can be LUQ or epigastric)</li>
+<li>Left lower lobe pneumonia</li>
+<li>Splenic flexure pathology</li>
+<p>
+</ol>
+</p>
+
+<h4><strong>Right Lower Quadrant (RLQ) Pain</strong></h4>
+<strong>Think immediately</strong>:
+<ol>
+<li><strong>Appendicitis</strong> (most common)</li>
+<li><strong>Ectopic pregnancy</strong> (if female of childbearing age) - MUST EXCLUDE</li>
+<li>Ovarian pathology (cyst torsion, rupture)</li>
+<li>Inflammatory bowel disease (Crohn's - terminal ileum)</li>
+<li>Right ureteric colic</li>
+<li>Meckel's diverticulitis (rare)</li>
+<p>
+</ol>
+</p>
+
+<h4><strong>Left Lower Quadrant (LLQ) Pain</strong></h4>
+<strong>Think immediately</strong>:
+<ol>
+<li>Diverticulitis</li>
+<li>Inflammatory bowel disease (ulcerative colitis)</li>
+<li>Ovarian pathology (if female)</li>
+<li>Left ureteric colic</li>
+<li>Sigmoid volvulus (elderly)</li>
+<p>
+</ol>
+</p>
+
+<h4><strong>Central/Periumbilical Pain</strong></h4>
+<strong>Think immediately</strong>:
+<ol>
+<li><strong>Early appendicitis</strong> (starts central, migrates to RLQ)</li>
+<li>Small bowel obstruction</li>
+<li>Early mesenteric ischaemia</li>
+<li>Abdominal aortic aneurysm</li>
+<li>Gastroenteritis</li>
+<p>
+</ol>
+</p>
+
+<h4><strong>Suprapubic Pain</strong></h4>
+<strong>Think immediately</strong>:
+<ol>
+<li>Urinary tract infection / cystitis</li>
+<li>Urinary retention</li>
+<li>Pelvic inflammatory disease (if female)</li>
+<li>Ectopic pregnancy (if female)</li>
+<p>
+</ol>
+</p>
+
+<h4><strong>Diffuse/Generalized Pain</strong></h4>
+<strong>Think immediately</strong>:
+<ol>
+<li><strong>Peritonitis</strong> (perforated viscus) - <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></li>
+<li><strong>Ruptured AAA</strong> - <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></li>
+<li>Bowel obstruction</li>
+<li>Mesenteric ischaemia</li>
+<li>Gastroenteritis (usually less severe)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3><strong>O - ONSET</strong></h3>
+
+<strong>Question</strong>: "How did the pain start - suddenly or gradually?"
+
+<strong>Differential Thinking</strong>:
+
+<strong>SUDDEN onset (seconds to minutes)</strong>:
+<ul>
+<li><strong>Perforated viscus</strong> (peptic ulcer, diverticular)</li>
+<li><strong>Ruptured AAA</strong></li>
+<li><strong>Ruptured ectopic pregnancy</strong></li>
+<li><strong>Renal colic</strong> (ureteric stone)</li>
+<li><strong>Ovarian cyst rupture/torsion</strong></li>
+<li><strong>Mesenteric ischaemia</strong> (if vascular occlusion)</li>
+<p>
+</ul>
+</p>
+
+<strong>Gradual onset (hours)</strong>:
+<ul>
+<li>Appendicitis</li>
+<li>Cholecystitis</li>
+<li>Diverticulitis</li>
+<li>Pancreatitis</li>
+<li>Bowel obstruction</li>
+<p>
+</ul>
+</p>
+
+<strong>Question</strong>: "What were you doing when it started?"
+
+<strong>Differential Clues</strong>:
+<ul>
+<li>Started after eating fatty meal → Cholecystitis</li>
+<li>Started during/after heavy lifting → Incarcerated hernia</li>
+<li>Started after trauma → Splenic rupture, solid organ injury</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3><strong>C - CHARACTER</strong></h3>
+
+<strong>Question</strong>: "Can you describe what the pain feels like?"
+
+<strong>Differential Thinking</strong>:
+
+<strong>Colicky (comes in waves, cramping)</strong>:
+<ul>
+<li><strong>Ureteric colic</strong> (renal stone) - "worst pain of my life", comes in waves</li>
+<li><strong>Bowel obstruction</strong> - crampy, intermittent</li>
+<li><strong>Biliary colic</strong> (early, before cholecystitis)</li>
+<p>
+</ul>
+</p>
+
+<strong>Constant, Sharp</strong>:
+<ul>
+<li><strong>Peritonitis</strong> - sharp, constant, worse with movement</li>
+<li><strong>Appendicitis</strong> (once established)</li>
+<li><strong>Diverticulitis</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Constant, Dull/Aching</strong>:
+<ul>
+<li><strong>Cholecystitis</strong></li>
+<li><strong>Pancreatitis</strong> (boring, deep)</li>
+<li><strong>AAA</strong> (deep, constant)</li>
+<p>
+</ul>
+</p>
+
+<strong>Burning</strong>:
+<ul>
+<li><strong>Peptic ulcer</strong></li>
+<li><strong>GORD</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3><strong>R - RADIATION</strong></h3>
+
+<strong>Question</strong>: "Does the pain spread anywhere else?"
+
+<strong>Differential Thinking</strong>:
+
+<strong>RUQ → Right shoulder/scapula</strong>:
+<ul>
+<li><strong>Cholecystitis</strong> (referred via phrenic nerve)</li>
+<p>
+</ul>
+</p>
+
+<strong>Epigastric → Back</strong>:
+<ul>
+<li><strong>Pancreatitis</strong> (classic - "boring through to back")</li>
+<li><strong>Peptic ulcer</strong> (posterior wall perforation)</li>
+<li><strong>AAA</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Loin → Groin</strong>:
+<ul>
+<li><strong>Ureteric colic</strong> (renal stone)</li>
+<p>
+</ul>
+</p>
+
+<strong>No radiation</strong>:
+<ul>
+<li>More likely localized pathology (appendicitis, diverticulitis)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3><strong>A - ASSOCIATED SYMPTOMS</strong></h3>
+
+<strong>This is CRITICAL for differential diagnosis</strong>
+
+<strong>Ask systematically</strong>:
+
+<strong>Gastrointestinal</strong>:
+<ul>
+<li>"Any nausea or vomiting?"</li>
+<p>
+</ul>
+  - Vomiting BEFORE pain → Gastroenteritis
+  - Pain BEFORE vomiting → Surgical abdomen (appendicitis, cholecystitis, obstruction)
+</p>
+
+<ul>
+<li>"Any change in bowel habit - diarrhea or constipation?"</li>
+<p>
+</ul>
+  - Diarrhea → Gastroenteritis, IBD
+  - Constipation + no flatus → Bowel obstruction
+</p>
+
+<ul>
+<li>"Any blood in vomit or stool?"</li>
+<p>
+</ul>
+  - Haematemesis → Peptic ulcer, gastritis
+  - PR bleeding → IBD, diverticulitis, ischaemic colitis
+</p>
+
+<strong>Urinary</strong>:
+<ul>
+<li>"Any urinary symptoms - burning, frequency, blood in urine?"</li>
+<p>
+</ul>
+  - Dysuria + frequency → UTI
+  - Haematuria → Renal stone, UTI
+</p>
+
+<strong>Gynecological (if female)</strong>:
+<ul>
+<li>"When was your last menstrual period?"</li>
+<p>
+</ul>
+  - Late period + abdominal pain → <strong>ECTOPIC PREGNANCY</strong> until proven otherwise
+</p>
+
+<ul>
+<li>"Any vaginal bleeding or discharge?"</li>
+<p>
+</ul>
+  - Bleeding + pain → Ectopic pregnancy, miscarriage, PID
+</p>
+
+<ul>
+<li>"Is there any chance you could be pregnant?"</li>
+<p>
+</ul>
+  - <strong>MUST ASK every female of childbearing age (12-55)</strong>
+</p>
+
+<strong>Constitutional</strong>:
+<ul>
+<li>"Any fever or chills?"</li>
+<p>
+</ul>
+  - Fever → Infection (appendicitis, cholecystitis, diverticulitis, PID)
+</p>
+
+<ul>
+<li>"Any weight loss?"</li>
+<p>
+</ul>
+  - Unintentional weight loss → Malignancy, IBD
+</p>
+
+<strong>Cardiovascular</strong>:
+<ul>
+<li>"Any chest pain or shortness of breath?"</li>
+<p>
+</ul>
+  - May indicate MI (referred to epigastrium), pneumonia (referred to upper abdomen)
+</p>
+
+<hr>
+
+<h3><strong>T - TIME COURSE / TIMING</strong></h3>
+
+<strong>Questions</strong>:
+<ul>
+<li>"How long have you had this pain?"</li>
+<li>"Has it been constant or does it come and go?"</li>
+<li>"Is it getting better, worse, or staying the same?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential Thinking</strong>:
+
+<strong>Hours (hyperacute)</strong>:
+<ul>
+<li>Appendicitis (typically <24 hours at presentation)</li>
+<li>Cholecystitis</li>
+<li>Renal colic</li>
+<li>Perforated viscus</li>
+<p>
+</ul>
+</p>
+
+<strong>Days</strong>:
+<ul>
+<li>Diverticulitis</li>
+<li>Pancreatitis</li>
+<p>
+</ul>
+</p>
+
+<strong>Weeks-Months (chronic, now acute)</strong>:
+<ul>
+<li>IBD flare</li>
+<li>Malignancy (with acute complication)</li>
+<p>
+</ul>
+</p>
+
+<strong>Pattern</strong>:
+<ul>
+<li><strong>Constant and worsening</strong> → Appendicitis, peritonitis, ischaemia</li>
+<li><strong>Comes and goes</strong> → Biliary colic, renal colic, bowel obstruction</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3><strong>E - EXACERBATING/RELIEVING FACTORS</strong></h3>
+
+<strong>Questions</strong>:
+<ul>
+<li>"Is there anything that makes the pain worse?"</li>
+<li>"Is there anything that makes it better?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential Thinking</strong>:
+
+<strong>Worse with movement/coughing</strong> → <strong>Peritonitis</strong> (patient lies still)
+
+<strong>Worse with eating</strong> → Peptic ulcer, cholecystitis, pancreatitis
+
+<strong>Better with eating</strong> → Duodenal ulcer (classic - pain 2-3 hours after eating, relieved by food)
+
+<strong>Better with leaning forward</strong> → Pancreatitis
+
+<strong>Better after vomiting</strong> → Gastritis, GORD
+
+<strong>Worse with urination</strong> → UTI
+
+<strong>Can't find comfortable position</strong> → Renal colic (patient writhes in pain, contrasts with peritonitis where patient lies still)
+
+<hr>
+
+<h3><strong>S - SEVERITY</strong></h3>
+
+<strong>Question</strong>: "On a scale of 0 to 10, with 0 being no pain and 10 being the worst pain imaginable, how would you rate your pain?"
+
+<strong>Also ask</strong>: "Is this the worst pain you've ever had?"
+
+<strong>Differential Thinking</strong>:
+
+<strong>10/10 "worst pain of my life"</strong>:
+<ul>
+<li><strong>Ruptured AAA</strong></li>
+<li><strong>Perforated viscus</strong></li>
+<li><strong>Renal colic</strong></li>
+<li><strong>Ruptured ectopic</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>7-9/10 severe</strong>:
+<ul>
+<li>Appendicitis</li>
+<li>Cholecystitis</li>
+<li>Pancreatitis</li>
+<p>
+</ul>
+</p>
+
+<strong>4-6/10 moderate</strong>:
+<ul>
+<li>Gastroenteritis</li>
+<li>UTI</li>
+<li>Constipation</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>DIFFERENTIAL DIAGNOSIS BY PAIN LOCATION</h2>
+
+<h3>Comprehensive Tables</h3>
+
+<hr>
+
+<h3>RIGHT UPPER QUADRANT (RUQ) PAIN</h3>
+
+<p>
+| Diagnosis | Key Features | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s | Investigation |
+|-----------|--------------|-----------|---------------|
+| <strong>Cholecystitis</strong> | • RUQ pain radiating to right shoulder<br>• Postprandial (after fatty meal)<br>• Fever<br>• Murphy's sign positive | • Jaundice (ascending cholangitis)<br>• Rigors (sepsis)<br>• Hypotension | • Bloods: ↑WCC, ↑CRP, ↑ALP/GGT (if CBD stone)<br>• Ultrasound abdomen: Gallstones, thick GB wall, pericholecystic fluid |
+| <strong>Biliary colic</strong> | • Severe RUQ/epigastric pain<br>• Colicky initially<br>• Post-prandial<br>• No fever<br>• Resolves in hours | • None (unless progresses to cholecystitis) | • USS: Gallstones<br>• Normal bloods |
+| <strong>Hepatitis</strong> | • RUQ dull ache<br>• Jaundice<br>• Dark urine<br>• Risk factors (IVDU, travel, alcohol) | • Coagulopathy (↑INR)<br>• Encephalopathy<br>• Hypoglycemia | • Bloods: ↑ALT/AST, ↑bilirubin<br>• Hepatitis serology |
+| <strong>Peptic ulcer (duodenal)</strong> | • Epigastric/RUQ<br>• Relieved by food<br>• Pain 2-3hr post-prandial<br>• Hx of NSAID/aspirin use | • Perforation (sudden, severe, peritonitis)<br>• Bleeding (haematemesis, melaena) | • OGD (endoscopy)<br>• If perforation: Erect CXR (free air under diaphragm) |
+| <strong>Pneumonia (RLL)</strong> | • Pleuritic chest pain (worse with breathing)<br>• Cough, sputum, fever<br>• Referred to RUQ | • Respiratory distress<br>• Hypoxia | • CXR: Infiltrate<br>• Bloods: ↑WCC |
+</p>
+
+<hr>
+
+<h3>EPIGASTRIC PAIN</h3>
+
+<p>
+| Diagnosis | Key Features | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s | Investigation |
+|-----------|--------------|-----------|---------------|
+| <strong>Peptic ulcer</strong> | • Burning epigastric pain<br>• Gastric: worse with food<br>• Duodenal: relieved by food<br>• Hx of NSAID/aspirin/H. pylori | • Perforation (sudden, severe, peritonitis, shoulder tip pain)<br>• Bleeding (haematemesis, melaena) | • OGD<br>• H. pylori testing<br>• If perforation: Erect CXR |
+| <strong>Acute pancreatitis</strong> | • Severe epigastric pain radiating to back<br>• Constant, boring<br>• Nausea, vomiting<br>• Worse lying flat, better leaning forward<br>• Risk: Alcohol, gallstones (GET SMASHED) | • Severe pancreatitis (Ranson's criteria)<br>• Hypotension, tachycardia<br>• Hypocalcemia<br>• Acute kidney injury | • Bloods: ↑Lipase (>3x ULN), ↑Amylase<br>• CT abdomen with contrast (after 48-72hr for severity assessment) |
+| <strong>AAA (intact)</strong> | • Deep, constant epigastric/central pain<br>• Radiates to back<br>• Pulsatile abdominal mass<br>• Age >65, smoker, male, vascular disease | • <strong>RUPTURED AAA</strong>: Hypotension, pulsatile mass, flank ecchymosis<br>• <strong>SURGICAL <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong> | • <span style="color: #e74c3c; font-weight: bold;">URGENT</span> CT angiogram (if stable)<br>• Bedside USS (if unstable → OR) |
+| <strong>Myocardial infarction</strong> | • Epigastric pain (can present as "indigestion")<br>• Elderly, diabetic especially<br>• Cardiovascular risk factors<br>• Associated SOB, diaphoresis | • STEMI<br>• Cardiogenic shock | • ECG<br>• Troponin<br>• CXR |
+| <strong>GORD / Gastritis</strong> | • Burning epigastric pain<br>• Worse lying down<br>• Relieved by antacids<br>• Chronic history usually | • None (unless progresses to ulcer) | • Clinical diagnosis<br>• OGD if alarm features (weight loss, dysphagia, anaemia) |
+</p>
+
+<hr>
+
+<h3>RIGHT LOWER QUADRANT (RLQ) PAIN</h3>
+
+<p>
+| Diagnosis | Key Features | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s | Investigation |
+|-----------|--------------|-----------|---------------|
+| <strong>Appendicitis</strong> | • <strong>Central pain initially → migrates to RLQ</strong> (McBurney's point)<br>• Anorexia<br>• Nausea, vomiting (AFTER pain onset)<br>• Fever<br>• Rebound tenderness, guarding | • Peritonitis (generalized)<br>• Perforation<br>• Sepsis | • <strong>Clinical diagnosis</strong><br>• Bloods: ↑WCC, ↑CRP<br>• CT abdomen if unclear (dilated appendix >6mm, periappendiceal inflammation) |
+| <strong>Ectopic pregnancy</strong> | • <strong>MUST EXCLUDE in all females of childbearing age</strong><br>• Missed period / amenorrhoea<br>• RLQ or LLQ pain<br>• Vaginal bleeding<br>• Shoulder tip pain (haemoperitoneum) | • <strong>RUPTURED ECTOPIC</strong>: Hypotension, tachycardia, shock<br>• <strong>SURGICAL <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong> | • βHCG (urine and serum)<br>• Transvaginal USS (no intrauterine pregnancy, adnexal mass, free fluid) |
+| <strong>Ovarian cyst torsion/rupture</strong> | • Sudden severe RLQ or LLQ pain<br>• Nausea, vomiting<br>• Hx of known cyst<br>• Localized tenderness | • Torsion → ischaemia → necrosis (surgical <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span>) | • Pelvic USS (Doppler to assess blood flow in torsion)<br>• βHCG to exclude pregnancy |
+| <strong>PID (Pelvic Inflammatory Disease)</strong> | • Bilateral lower abdominal pain<br>• Vaginal discharge<br>• Fever<br>• Dyspareunia, post-coital bleeding<br>• Cervical motion tenderness | • Tubo-ovarian abscess<br>• Sepsis | • High vaginal swab (gonorrhoea, chlamydia)<br>• Bloods: ↑WCC, ↑CRP<br>• Pelvic USS if abscess suspected |
+| <strong>Crohn's disease (terminal ileum)</strong> | • RLQ pain (terminal ileum involvement)<br>• Chronic diarrhoea (may be bloody)<br>• Weight loss<br>• Young patient<br>• RLQ mass palpable | • Perforation<br>• Abscess<br>• Obstruction | • CT abdomen: Terminal ileum thickening<br>• Colonoscopy + biopsy (skip lesions, transmural inflammation) |
+| <strong>Renal colic (right)</strong> | • Severe colicky pain<br>• <strong>Loin to groin</strong><br>• Haematuria<br>• Nausea, vomiting<br>• Patient can't stay still (writhes) | • Infected stone (pyonephrosis)<br>• Acute kidney injury | • Urinalysis: Haematuria<br>• Non-contrast CT KUB (gold standard - stone location, size) |
+</p>
+
+<hr>
+
+<h3>LEFT LOWER QUADRANT (LLQ) PAIN</h3>
+
+<p>
+| Diagnosis | Key Features | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s | Investigation |
+|-----------|--------------|-----------|---------------|
+| <strong>Diverticulitis</strong> | • LLQ pain and tenderness<br>• Fever<br>• Change in bowel habit (diarrhoea or constipation)<br>• Age >50<br>• Western diet (low fiber) | • Perforation (peritonitis)<br>• Abscess<br>• Fistula<br>• Obstruction | • CT abdomen with IV contrast: Sigmoid wall thickening, pericolic fat stranding, abscess |
+| <strong>Ulcerative colitis (flare)</strong> | • LLQ pain (sigmoid involvement)<br>• Bloody diarrhoea<br>• Urgency, tenesmus<br>• Known IBD history usually | • Toxic megacolon (colon >6cm, systemic toxicity)<br>• Perforation | • Bloods: ↑WCC, ↑CRP, ↓albumin<br>• AXR (if severe: assess for toxic megacolon)<br>• Colonoscopy when stable (continuous inflammation, ulceration) |
+| <strong>Ovarian pathology</strong> | • Similar to RLQ ovarian pathology<br>• Sudden or gradual<br>• Nausea | • Torsion<br>• Rupture | • Pelvic USS<br>• βHCG |
+| <strong>Renal colic (left)</strong> | • Loin to groin<br>• Haematuria<br>• Colicky | • Infected stone | • CT KUB |
+</p>
+
+<hr>
+
+<h3>DIFFUSE/GENERALIZED ABDOMINAL PAIN</h3>
+
+<p>
+| Diagnosis | Key Features | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s | Investigation |
+|-----------|--------------|-----------|---------------|
+| <strong>Peritonitis (perforated viscus)</strong> | • <strong>Sudden severe pain → generalized</strong><br>• <strong>Board-like rigidity</strong><br>• <strong>Patient lies completely still</strong> (movement hurts)<br>• Rebound tenderness, guarding<br>• Absent bowel sounds | • <strong>SURGICAL <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong><br>• Sepsis<br>• Shock | • <strong>Erect CXR: Free air under diaphragm</strong><br>• CT abdomen: Pneumoperitoneum, fluid<br>• <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> SURGICAL CONSULT</strong> |
+| <strong>Ruptured AAA</strong> | • Sudden severe epigastric/central pain<br>• Radiates to back/flank<br>• Pulsatile mass (may be hard to feel if ruptured)<br>• <strong>Hypotension, tachycardia</strong><br>• <strong>Flank ecchymosis</strong> (Grey Turner's sign) | • <strong>SURGICAL <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong><br>• Shock<br>• Death imminent | • <strong>DO NOT DELAY for imaging if unstable</strong><br>• Activate massive transfusion<br>• → OPERATING ROOM<br>• If stable: CT angiogram |
+| <strong>Bowel obstruction</strong> | • Colicky central abdominal pain<br>• Vomiting (early if high obstruction)<br>• Absolute constipation (no flatus or stool)<br>• Distension<br>• Tinkling bowel sounds | • Ischaemia (if strangulated)<br>• Perforation<br>• Dehydration | • AXR: Dilated loops, air-fluid levels<br>• CT abdomen: Transition point, cause (adhesions, hernia, tumor) |
+| <strong>Mesenteric ischaemia</strong> | • Sudden severe central pain<br>• <strong>"Pain out of proportion to examination"</strong> (severe pain but soft abdomen initially)<br>• Elderly, AF, vascular disease<br>• Bloody diarrhoea (late sign) | • Bowel infarction<br>• Peritonitis<br>• High mortality | • <strong>High index of suspicion</strong><br>• ↑Lactate<br>• CT angiogram: Vessel occlusion<br>• <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> VASCULAR SURGERY</strong> |
+| <strong>Gastroenteritis</strong> | • Diffuse crampy pain<br>• Diarrhoea (watery, may be bloody)<br>• Vomiting BEFORE pain<br>• Fever<br>• Recent travel, food exposure | • Severe dehydration<br>• HUS (E. coli O157:H7 - bloody diarrhoea in child) | • Usually clinical diagnosis<br>• Stool culture if severe/bloody/immunocompromised |
+</p>
+
+<hr>
+
+<h2><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S - DON'T MISS DIAGNOSES</h2>
+
+<h3>The SURGICAL EMERGENCIES (Recognize Immediately)</h3>
+
+<strong>1. RUPTURED AAA</strong>
+<ul>
+<li>Triad: Abdominal/back pain + Pulsatile mass + Hypotension</li>
+<li><strong>→ Activate massive transfusion → OR</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>2. RUPTURED ECTOPIC PREGNANCY</strong>
+<ul>
+<li>Triad: Abdominal pain + Amenorrhoea + Shock</li>
+<li><strong>→ βHCG + USS → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> gynae consult</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>3. PERFORATED VISCUS</strong>
+<ul>
+<li>Sudden severe pain → Board-like rigidity → Peritonitis</li>
+<li><strong>→ Erect CXR → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> surgical consult</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>4. MESENTERIC ISCHAEMIA</strong>
+<ul>
+<li>Pain out of proportion to examination + AF + Bloody diarrhoea</li>
+<li><strong>→ ↑Lactate + CT angiogram → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> vascular surgery</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>5. ACUTE APPENDICITIS WITH PERFORATION</strong>
+<ul>
+<li>Peritonitis, sepsis</li>
+<li><strong>→ <span style="color: #e74c3c; font-weight: bold;">URGENT</span> surgical consult</strong></li>
+<p>
+</ul>
+</p>
+
+<h3><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> Features</h3>
+
+<strong>Vital Signs</strong>:
+<ul>
+<li>Hypotension (SBP <90)</li>
+<li>Tachycardia (HR >120)</li>
+<li>Fever >38.5°C (sepsis)</li>
+<li>Tachypnea (peritonitis, sepsis)</li>
+<p>
+</ul>
+</p>
+
+<strong>Pain</strong>:
+<ul>
+<li>Sudden onset severe pain</li>
+<li>Pain migrating to generalized</li>
+<li>"Worst pain of my life"</li>
+<p>
+</ul>
+</p>
+
+<strong>Examination</strong> (you won't do this in history station, but know it):
+<ul>
+<li>Rigidity, rebound tenderness (peritonitis)</li>
+<li>Pulsatile mass (AAA)</li>
+<li>Absent bowel sounds (ileus, peritonitis)</li>
+<p>
+</ul>
+</p>
+
+<strong>History</strong>:
+<ul>
+<li>Age >65 + vascular disease (AAA risk)</li>
+<li>Female + amenorrhoea + pain (ectopic)</li>
+<li>Recent surgery (bowel obstruction from adhesions)</li>
+<li>AF + abdominal pain (mesenteric ischaemia)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>SYSTEMATIC REVIEW FOR ACUTE ABDOMEN</h2>
+
+<strong>After SOCRATES and associated symptoms, quickly screen systems</strong>:
+
+<strong>Cardiovascular</strong>: "Any chest pain, palpitations, or leg swelling?"
+<ul>
+<li>MI, DVT/PE</li>
+<p>
+</ul>
+</p>
+
+<strong>Respiratory</strong>: "Any cough, shortness of breath?"
+<ul>
+<li>Pneumonia (referred pain to upper abdomen)</li>
+<p>
+</ul>
+</p>
+
+<strong>Remaining GI</strong>: "Any difficulty swallowing, heartburn, change in appetite?"
+
+<strong>Genitourinary</strong>: <em>Already covered</em> (urinary symptoms, LMP)
+
+<strong>Constitutional</strong>: "Any night sweats, unintentional weight loss, fatigue?"
+<ul>
+<li>Malignancy</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>CLINICAL REASONING - NARROWING THE DIFFERENTIAL</h2>
+
+<h3>The Mental Process (Dr. Amir's Approach)</h3>
+
+<strong>STEP 1: Location gives you starting differential (5-7 possibilities)</strong>
+
+<strong>STEP 2: Onset narrows it</strong>
+<ul>
+<li>Sudden → Perforation, rupture, torsion, stone</li>
+<li>Gradual → Inflammatory (appendicitis, cholecystitis, diverticulitis)</li>
+<p>
+</ul>
+</p>
+
+<strong>STEP 3: Character helps</strong>
+<ul>
+<li>Colicky → Stone, obstruction</li>
+<li>Constant sharp → Peritonitis, appendicitis</li>
+<li>Burning → Ulcer</li>
+<p>
+</ul>
+</p>
+
+<strong>STEP 4: Associated symptoms NARROW SIGNIFICANTLY</strong>
+<ul>
+<li>Fever → Infection (appendicitis, cholecystitis, diverticulitis, PID)</li>
+<li>Vomiting before pain → Gastroenteritis (medical)</li>
+<li>Pain before vomiting → Surgical</li>
+<li>Haematuria → Stone</li>
+<li>Missed period → Ectopic</li>
+<li>Bloody stool → IBD, diverticulitis, ischaemia</li>
+<p>
+</ul>
+</p>
+
+<strong>STEP 5: <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s identify EMERGENCIES</strong>
+
+<h3>Example Clinical Reasoning</h3>
+
+<strong>Case</strong>: 25F, RLQ pain, missed period by 1 week, vaginal spotting, shoulder tip pain
+
+<strong>Step 1 (Location - RLQ)</strong>: Appendicitis, ectopic, ovarian, renal stone, IBD
+
+<strong>Step 2 (Onset - sudden)</strong>: Favors ectopic rupture, ovarian torsion, stone over appendicitis
+
+<strong>Step 3 (Character - sharp)</strong>: Consistent with rupture or torsion
+
+<strong>Step 4 (Associated - missed period, vaginal bleeding)</strong>: <strong>ECTOPIC PREGNANCY</strong> moves to top
+
+<strong>Step 5 (<span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> - shoulder tip pain)</strong>: Haemoperitoneum → <strong>RUPTURED ECTOPIC</strong> → <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span>
+
+<strong>Your differential in presentation</strong>:
+<ol>
+<li><strong>Ruptured ectopic pregnancy</strong> (most likely, <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span>)</li>
+<li>Ovarian cyst rupture/torsion</li>
+<li>Appendicitis (less likely given sudden onset and gynae symptoms)</li>
+<p>
+</ol>
+</p>
+
+<strong>Your next steps</strong>: βHCG, <span style="color: #e74c3c; font-weight: bold;">URGENT</span> USS, gynae consult
+
+<hr>
+
+<h2>INVESTIGATION PLANNING</h2>
+
+<h3>Based on Differential</h3>
+
+<strong>General Bloods for Most Acute Abdomen</strong>:
+<ul>
+<li>FBC (WCC for infection)</li>
+<li>CRP (inflammation)</li>
+<li>U&E (dehydration, renal function before contrast)</li>
+<li>LFTs (if RUQ pain or jaundice)</li>
+<li>Lipase (if epigastric pain - pancreatitis)</li>
+<li>Lactate (if concerned about ischaemia)</li>
+<li>Blood cultures (if septic)</li>
+<p>
+</ul>
+</p>
+
+<strong>Specific Investigations by Differential</strong>:
+
+<p>
+| Differential | Investigation | What You're Looking For |
+|--------------|---------------|-------------------------|
+| Appendicitis | Clinical diagnosis<br>CT abdomen if unclear | Dilated appendix >6mm, periappendiceal fat stranding |
+| Cholecystitis | USS abdomen | Gallstones, thick GB wall (>4mm), pericholecystic fluid, sonographic Murphy's sign |
+| Pancreatitis | Lipase (>3x ULN)<br>CT after 48-72hr | Lipase ↑↑↑<br>CT: Pancreatic inflammation, necrosis |
+| Perforated viscus | Erect CXR<br>CT abdomen | Free air under diaphragm<br>Pneumoperitoneum |
+| Bowel obstruction | AXR<br>CT abdomen | Dilated loops, air-fluid levels<br>Transition point |
+| AAA | CT angiogram (if stable)<br>Bedside USS (if unstable) | Aneurysm >3cm, rupture |
+| Ectopic pregnancy | βHCG<br>Transvaginal USS | +ve βHCG, no intrauterine pregnancy, adnexal mass, free fluid |
+| Renal stone | Urinalysis<br>CT KUB (non-contrast) | Haematuria<br>Stone location, size, hydronephrosis |
+| Diverticulitis | CT abdomen with IV contrast | Sigmoid wall thickening, pericolic fat stranding, abscess |
+</p>
+
+<hr>
+
+<h2>COMMON IMG MISTAKES</h2>
+
+<h3>Mistake 1: Not Thinking Differential from Start</h3>
+<p>
+❌ Taking complete unfocused history → Thinking about diagnosis at end
+✅ Think differential from location → Let differential guide your questions
+</p>
+
+<h3>Mistake 2: Not Excluding Ectopic Pregnancy</h3>
+<p>
+❌ Forgetting to ask LMP in female with abdominal pain
+✅ <strong>ALWAYS ask LMP in females 12-55 years old</strong>
+</p>
+
+<h3>Mistake 3: Not Identifying <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</h3>
+<p>
+❌ Focusing only on common diagnoses (appendicitis, gastroenteritis)
+✅ Actively screen for emergencies (ruptured AAA, perforated viscus, ruptured ectopic)
+</p>
+
+<h3>Mistake 4: Not Using SOCRATES Systematically</h3>
+<p>
+❌ Jumping around, missing key features
+✅ Methodical SOCRATES every time
+</p>
+
+<h3>Mistake 5: Not Summarizing with Differential</h3>
+<p>
+❌ Ending history without differential diagnosis
+✅ "Based on this history, my main differential diagnoses are..."
+</p>
+
+<hr>
+
+<h2>PRACTICE CASES</h2>
+
+<h3>Case 1: Appendicitis</h3>
+
+<strong>Patient</strong>: 22M, RLQ pain for 12 hours
+
+<strong>Your Questions Lead to</strong>:
+<ul>
+<li>Started central, migrated to RLQ (classic appendicitis)</li>
+<li>Constant, sharp</li>
+<li>Anorexia, nausea, then vomiting</li>
+<li>Low-grade fever</li>
+<li>No urinary symptoms</li>
+<li>Worse with movement</li>
+<p>
+</ul>
+</p>
+
+<strong>Your Differential</strong>: Appendicitis (most likely), IBD, Meckel's diverticulitis
+
+<strong>Investigations</strong>: Clinical diagnosis, bloods (↑WCC), CT if unclear
+
+<hr>
+
+<h3>Case 2: Cholecystitis</h3>
+
+<strong>Patient</strong>: 45F, RUQ pain, worse after eating fish and chips
+
+<strong>Your Questions Lead to</strong>:
+<ul>
+<li>RUQ pain radiating to right shoulder</li>
+<li>Post-prandial (after fatty meal)</li>
+<li>Constant, aching</li>
+<li>Fever, rigors</li>
+<li>Nausea, vomiting</li>
+<li>No jaundice</li>
+<p>
+</ul>
+</p>
+
+<strong>Your Differential</strong>: Cholecystitis (most likely), biliary colic, hepatitis
+
+<strong>Investigations</strong>: Bloods (↑WCC, ↑CRP, check ALP/GGT), USS abdomen
+
+<hr>
+
+<h3>Case 3: Ruptured Ectopic</h3>
+
+<strong>Patient</strong>: 28F, sudden severe LLQ pain, missed period
+
+<strong>Your Questions Lead to</strong>:
+<ul>
+<li>Sudden onset severe pain</li>
+<li>LLQ</li>
+<li>LMP 6 weeks ago (missed period)</li>
+<li>Vaginal spotting</li>
+<li><strong>Shoulder tip pain</strong> (haemoperitoneum)</li>
+<li>Feels faint</li>
+<p>
+</ul>
+</p>
+
+<strong>Your Differential</strong>: <strong>Ruptured ectopic pregnancy</strong> (<span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span>), ovarian cyst rupture
+
+<strong>Immediate Actions</strong>: βHCG, USS, gynae consult <span style="color: #e74c3c; font-weight: bold;">URGENT</span>LY
+
+<hr>
+
+<strong>Last Updated</strong>: December 14, 2025
+<strong>Version</strong>: 1.0
+<strong>Author</strong>: ICRP NSW Young Hospital Preparation Team
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

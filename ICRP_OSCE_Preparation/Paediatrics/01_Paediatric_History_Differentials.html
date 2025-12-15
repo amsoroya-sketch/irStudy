@@ -1,0 +1,2021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paediatric History Taking with Differential Diagnosis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Paediatrics</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Paediatrics Navigation</h3>
+<ul>
+<li><a href="01_Paediatric_History_Differentials.html">Paeds History</a></li>
+<li><a href="03_Paediatric_Physical_Examination.html">Paeds Exam</a></li>
+</ul>
+</div>
+        <h1>Paediatric History Taking with Differential Diagnosis</h1>
+
+<strong>Target Audience</strong>: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Program rotations in Paediatrics
+
+<strong>Learning Objectives</strong>: By the end of this document, you will be able to:
+<ol>
+<li>Apply Dr. Amir Soufi's differential-driven methodology to paediatric presentations</li>
+<li>Use age-based pattern recognition to formulate differentials from the first question</li>
+<li>Systematically take paediatric histories incorporating parent/caregiver information</li>
+<li>Recognize <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s requiring <span style="color: #e74c3c; font-weight: bold;">URGENT</span> intervention (sepsis, dehydration, safeguarding concerns)</li>
+<li>Incorporate Australian immunization schedules and developmental milestones</li>
+<li>Avoid common IMG mistakes in paediatric history-taking</li>
+<li>Complete an 8-minute paediatric history OSCE station confidently</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Dr. Amir Soufi's Principle Applied to Paediatrics</h2>
+
+<blockquote><strong>"In paediatrics, age IS the differential. From your FIRST question, think: What can cause this symptom at THIS age? A febrile neonate is sepsis until proven otherwise. A febrile toddler with rash might be viral exanthem. A febrile adolescent with headache could be meningitis. The SAME symptom has DIFFERENT life-threatening differentials based on AGE."</strong></blockquote>
+
+<h3>The Paediatric Differential Mindset</h3>
+
+<strong>Traditional Approach</strong>:
+<ul>
+<li>Take full history systematically</li>
+<li>Examine child</li>
+<li>At end, consider differentials</li>
+<li><strong>Problem</strong>: Missed critical <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s, delayed recognition of life-threatening conditions</li>
+<p>
+</ul>
+</p>
+
+<strong>Dr. Amir's Differential-Driven Approach</strong>:
+<ol>
+<li><strong>Age + Presenting Symptom = Immediate Differential</strong></li>
+<p>
+</ol>
+   - First question: "How old is [child's name]?" → Establishes age group
+   - Chief complaint + age → Generates age-specific differential list
+   - Example: "3-week-old with fever" → Think immediately: Sepsis, meningitis, UTI (until proven otherwise)
+</p>
+
+<ol>
+<li><strong>Let Differential Guide History</strong></li>
+<p>
+</ol>
+   - Each subsequent question narrows or expands differential
+   - Questions targeted to rule in/out life-threatening causes first
+   - Example: Fever + rash → Ask about purpura, capillary refill, GCS → Ruling out meningococcal septicaemia
+</p>
+
+<ol>
+<li><strong>Pattern Recognition by Age</strong></li>
+<p>
+</ol>
+   - <strong>Neonate (0-28 days)</strong>: Sepsis, congenital abnormalities, metabolic disorders, birth trauma
+   - <strong>Infant (1-12 months)</strong>: Bronchiolitis, gastroenteritis, febrile convulsion, non-accidental injury, congenital heart disease
+   - <strong>Child (1-12 years)</strong>: Viral illnesses, asthma, appendicitis, Kawasaki disease, meningitis
+   - <strong>Adolescent (12-18 years)</strong>: Mental health, substance use, sexual health, eating disorders, chronic disease management
+</p>
+
+<ol>
+<li><strong>Triple Assessment in Paediatrics</strong></li>
+<p>
+</ol>
+   - <strong>Severity assessment</strong>: Well vs unwell vs critically unwell (ALWAYS first)
+   - <strong>Diagnosis</strong>: What is causing symptoms?
+   - <strong>Safeguarding</strong>: Is this child safe? Non-accidental injury concerns?
+</p>
+
+<hr>
+
+<h2>Age Groups in Paediatrics: Critical Definitions</h2>
+
+<p>
+Understanding age classifications is ESSENTIAL for differential diagnosis:
+</p>
+
+<p>
+| Age Group | Definition | Key Differential Considerations |
+|-----------|-----------|--------------------------------|
+| <strong>Neonate</strong> | 0-28 days | Sepsis (GBS, E. coli, Listeria), congenital abnormalities, birth trauma, metabolic disorders, neonatal jaundice |
+| <strong>Infant</strong> | 1-12 months | Bronchiolitis (RSV), gastroenteritis, febrile convulsion, developmental delay, non-accidental injury |
+| <strong>Toddler</strong> | 1-3 years | Viral URTIs, croup, foreign body aspiration/ingestion, behavioural issues |
+| <strong>Preschool</strong> | 3-5 years | Viral exanthems, asthma, accidents/injuries |
+| <strong>School-age</strong> | 5-12 years | Asthma, appendicitis, Kawasaki disease, migraine, ADHD |
+| <strong>Adolescent</strong> | 12-18 years | Mental health (depression, anxiety), substance use, sexual health, eating disorders, chronic disease compliance |
+</p>
+
+<hr>
+
+<h2>The PAEDIATRIC Framework for History-Taking</h2>
+
+<p>
+A systematic approach ensuring nothing is missed:
+</p>
+
+<strong>P - Presenting complaint</strong> (from parent/child/both)
+<strong>A - Age, birth history, and development</strong>
+<strong>E - Eating and hydration status</strong> (critical for dehydration assessment)
+<strong>D - Detail of current illness</strong> (SOCRATES for pain, FEVERISH for fever)
+<strong>I - Immunization status</strong> (Australian schedule)
+<strong>A - Antenatal, Birth, and Perinatal history</strong> (especially infants)
+<strong>T - Treatment already tried</strong> (including OTC, doses, response)
+<strong>R - Relevant past medical, surgical, family, social history</strong>
+<strong>I - Impact on child and family</strong> (school absence, parent work, social concerns)
+<strong>C - Concerns of parent and child</strong> (ICE - Ideas, Concerns, Expectations)
+
+<hr>
+
+<h2>Opening the Consultation: Building Rapport</h2>
+
+<h3>Introduction (30 seconds)</h3>
+
+<strong>Greet parent AND child</strong> (even if infant - acknowledge the child):
+<ul>
+<li>"Good morning! I'm Dr [Name]. Thanks for coming in today."</li>
+<li><strong>Address child by name</strong>: "And this must be [child's name]! Hello [child's name]!"</li>
+<li><strong>Introduce to parent</strong>: "Are you [child's] mum/dad/carer?"</li>
+<li><strong>Confirm relationship</strong>: "Lovely. And what should I call you?" [Use parent's preferred name throughout]</li>
+<p>
+</ul>
+</p>
+
+<strong>Establish rapport with child</strong> (age-appropriate):
+<ul>
+<li><strong>Infants</strong>: Smile, gentle voice, comment positively ("What a beautiful baby!", "Such lovely eyes!")</li>
+<li><strong>Toddlers/Preschoolers</strong>: Get to eye level, ask about toy/comfort item ("Is that your special teddy?")</li>
+<li><strong>School-age</strong>: Friendly questions ("What year are you in at school?", "What's your favourite subject?")</li>
+<li><strong>Adolescents</strong>: Direct questions, respect autonomy ("I'll ask both you and your mum some questions, is that okay?")</li>
+<p>
+</ul>
+</p>
+
+<strong>Common IMG Mistake</strong>: Only addressing parent, ignoring child completely. In Australia, child-centered care is expected.
+
+<hr>
+
+<h2>Step 1: Presenting Complaint + AGE = Immediate Differential</h2>
+
+<h3>The Opening Question Sequence</h3>
+
+<strong>Question 1 - Confirm Age</strong> (CRITICAL):
+<ul>
+<li>"First, can you confirm [child's] date of birth for me?"</li>
+<li><strong>Calculate exact age</strong> (mentally or on paper): Days old (if <28 days), months old (if <2 years), years + months</li>
+<li><strong>Immediate age-based differential forms in your mind</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Question 2 - Chief Complaint</strong> (open):
+<ul>
+<li>"What's brought you in to see me today?"</li>
+<li><strong>Listen without interrupting</strong> (let parent speak for 30-60 seconds)</li>
+<li><strong>Note exact words</strong> (for documentation and understanding parent concerns)</li>
+<p>
+</ul>
+</p>
+
+<strong>Question 3 - Timeline</strong>:
+<ul>
+<li>"When did you first notice [symptom]?"</li>
+<li><strong>Acute vs chronic</strong>: <48 hours = acute (infection, trauma), >2 weeks = chronic (may need specialist referral)</li>
+<p>
+</ul>
+</p>
+
+<h3>Age-Based Differential Formulation</h3>
+
+<strong>Example 1</strong>: "3-week-old baby with fever"
+<ul>
+<li><strong>Age</strong>: Neonate (0-28 days)</li>
+<li><strong>Symptom</strong>: Fever</li>
+<li><strong>IMMEDIATE DIFFERENTIAL</strong> (think this NOW):</li>
+<p>
+</ul>
+  1. <strong>Sepsis</strong> (GBS, E. coli, Listeria) - LIFE-THREATENING
+  2. Meningitis - LIFE-THREATENING
+  3. UTI (especially if uncircumcised male)
+  4. Viral illness (less likely in neonate with fever)
+  5. Over-bundling (environmental)
+</p>
+<ul>
+<li><strong>Next questions</strong> target ruling out sepsis: Feeding? Rash? Irritability? Lethargy? Tone?</li>
+<p>
+</ul>
+</p>
+
+<strong>Example 2</strong>: "18-month-old with fever and rash"
+<ul>
+<li><strong>Age</strong>: Infant/toddler (1-12 months, 1-3 years overlap)</li>
+<li><strong>Symptom</strong>: Fever + rash</li>
+<li><strong>IMMEDIATE DIFFERENTIAL</strong>:</li>
+<p>
+</ul>
+  1. <strong>Meningococcal septicaemia</strong> (non-blanching rash) - LIFE-THREATENING
+  2. <strong>Kawasaki disease</strong> (if fever >5 days + rash + other features) - SERIOUS
+  3. Viral exanthem (measles, rubella, roseola, hand-foot-mouth)
+  4. Scarlet fever (Group A Strep)
+  5. Drug reaction
+</p>
+<ul>
+<li><strong>Next questions</strong>: Blanching vs non-blanching? Fever duration? Immunization status? Contacts?</li>
+<p>
+</ul>
+</p>
+
+<strong>Example 3</strong>: "7-year-old with abdominal pain"
+<ul>
+<li><strong>Age</strong>: School-age child (5-12 years)</li>
+<li><strong>Symptom</strong>: Abdominal pain</li>
+<li><strong>IMMEDIATE DIFFERENTIAL</strong>:</li>
+<p>
+</ul>
+  1. <strong>Appendicitis</strong> - SURGICAL <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span>
+  2. Gastroenteritis
+  3. Constipation
+  4. Mesenteric adenitis (post-viral)
+  5. UTI
+  6. Diabetic ketoacidosis (if new-onset Type 1 DM)
+  7. <strong>Non-accidental injury</strong> (if inconsistent history)
+</p>
+<ul>
+<li><strong>Next questions</strong>: Location? Migration? Vomiting? Bowel movements? Urinary symptoms? SOCRATES?</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Step 2: Detailed History of Presenting Complaint</h2>
+
+<h3>For FEVER (Common Paediatric Presentation)</h3>
+
+<p>
+Use <strong>FEVERISH</strong> framework:
+</p>
+
+<strong>F - Fever onset and pattern</strong>
+<ul>
+<li>"When did the fever start?"</li>
+<li>"Have you measured it? What was the temperature?" (Australian parents often use degrees Celsius)</li>
+<li>"Is it constant or coming and going?"</li>
+<li>"Does it respond to paracetamol/ibuprofen?"</li>
+<p>
+</ul>
+</p>
+
+<strong>E - Eating and drinking</strong>
+<ul>
+<li>"How is [child] feeding/eating?" (CRITICAL for hydration assessment)</li>
+<li>"Any vomiting or diarrhea?"</li>
+<li>"How many wet nappies today?" (infants) or "How often are they urinating?" (older children)</li>
+<p>
+</ul>
+</p>
+
+<strong>V - Vital signs at home</strong> (if measured)
+<ul>
+<li>"Have you noticed fast breathing or any difficulty breathing?"</li>
+<p>
+</ul>
+</p>
+
+<strong>E - Energy levels and behaviour</strong>
+<ul>
+<li>"How is their energy? Playful as usual or more tired?"</li>
+<li>"Any drowsiness or difficulty waking them?"</li>
+<li>"How's their mood? Irritable or inconsolable crying?"</li>
+<p>
+</ul>
+</p>
+
+<strong>R - Rash</strong>
+<ul>
+<li>"Have you noticed any rash?"</li>
+<li><strong>If yes</strong>: "Can I check - if you press on it with a glass, does it disappear or stay there?" (blanching vs non-blanching)</li>
+<p>
+</ul>
+</p>
+
+<strong>I - Immunization status</strong>
+<ul>
+<li>"Are they up to date with their vaccinations?" (Australian schedule - see section below)</li>
+<p>
+</ul>
+</p>
+
+<strong>S - Source of infection</strong>
+<ul>
+<li><strong>Respiratory</strong>: "Any cough? Runny nose? Ear pulling?"</li>
+<li><strong>GI</strong>: "Any vomiting? Diarrhea? Tummy pain?"</li>
+<li><strong>Urinary</strong>: "Any pain with urination? Funny-smelling urine?"</li>
+<li><strong>Neurological</strong>: "Any headache? Neck stiffness? Sensitivity to light?"</li>
+<li><strong>Contacts</strong>: "Anyone at home or childcare unwell?"</li>
+<p>
+</ul>
+</p>
+
+<strong>H - History of similar episodes</strong>
+<ul>
+<li>"Has this happened before?"</li>
+<li>"Any history of febrile convulsions?"</li>
+<p>
+</ul>
+</p>
+
+<h3>For COUGH/RESPIRATORY SYMPTOMS</h3>
+
+<p>
+Use <strong>BREATHE</strong> framework:
+</p>
+
+<strong>B - Breathing pattern</strong>
+<ul>
+<li>"How's their breathing? Fast? Difficult?"</li>
+<li>"Any grunting sounds?" (infant respiratory distress)</li>
+<li>"Are they working hard to breathe? Using tummy muscles?"</li>
+<p>
+</ul>
+</p>
+
+<strong>R - Recession</strong> (ask parent to describe or observe)
+<ul>
+<li>"Have you noticed any sucking in between the ribs or at the neck when breathing?"</li>
+<p>
+</ul>
+</p>
+
+<strong>E - Exercise tolerance</strong> (age-appropriate)
+<ul>
+<li>Infants: "Can they finish a full feed without getting breathless?"</li>
+<li>Older children: "Can they play normally or do they get breathless quickly?"</li>
+<p>
+</ul>
+</p>
+
+<strong>A - Associated symptoms</strong>
+<ul>
+<li>"Any fever? Runny nose? Wheeze?"</li>
+<li>"Any coughing up phlegm? What colour?"</li>
+<p>
+</ul>
+</p>
+
+<strong>T - Timing and triggers</strong>
+<ul>
+<li>"When does the cough occur? Night-time? With exercise?"</li>
+<li>"Anything that makes it better or worse?"</li>
+<p>
+</ul>
+</p>
+
+<strong>H - History of asthma/atopy</strong>
+<ul>
+<li>"Any history of asthma, eczema, or allergies in the family?"</li>
+<li>"Have they been diagnosed with asthma before?"</li>
+<p>
+</ul>
+</p>
+
+<strong>E - Exposures</strong>
+<ul>
+<li>"Any smokers at home?"</li>
+<li>"Any pets?"</li>
+<li>"Could they have breathed in or swallowed something small?" (foreign body)</li>
+<p>
+</ul>
+</p>
+
+<h3>For ABDOMINAL PAIN</h3>
+
+<p>
+Use <strong>SOCRATES</strong> (adapted for children):
+</p>
+
+<strong>S - Site</strong>
+<ul>
+<li>"Where is the pain? Can you point with one finger?" (periumbilical vs localized)</li>
+<li><strong>Ask child directly if old enough</strong> (>3 years)</li>
+<p>
+</ul>
+</p>
+
+<strong>O - Onset</strong>
+<ul>
+<li>"When did it start?"</li>
+<li>"Did it come on suddenly or gradually?"</li>
+<p>
+</ul>
+</p>
+
+<strong>C - Character</strong>
+<ul>
+<li>"What does the pain feel like?" (sharp, crampy, constant)</li>
+<li><strong>Use age-appropriate language</strong>: "Does it feel like a sharp poke or a squeezy feeling?"</li>
+<p>
+</ul>
+</p>
+
+<strong>R - Radiation</strong>
+<ul>
+<li>"Does the pain move anywhere else?"</li>
+<li>Appendicitis: Periumbilical → RIF migration</li>
+<p>
+</ul>
+</p>
+
+<strong>A - Associated symptoms</strong>
+<ul>
+<li>"Any vomiting? Diarrhea? Fever?"</li>
+<li>"Any pain when urinating?"</li>
+<li>"Any bleeding from bottom?"</li>
+<p>
+</ul>
+</p>
+
+<strong>T - Timing</strong>
+<ul>
+<li>"Is the pain constant or does it come and go?"</li>
+<li>"Does it wake them from sleep?" (organic cause more likely)</li>
+<p>
+</ul>
+</p>
+
+<strong>E - Exacerbating/Relieving factors</strong>
+<ul>
+<li>"Does anything make it worse? Movement? Eating?"</li>
+<li>"Does anything make it better? Lying still? Paracetamol?"</li>
+<p>
+</ul>
+</p>
+
+<strong>S - Severity</strong>
+<ul>
+<li><strong>Pain scale</strong> (age-appropriate):</li>
+<p>
+</ul>
+  - <4 years: Faces pain scale
+  - 4-7 years: "On a scale of 0-5, how bad is the pain?"
+  - >7 years: "On a scale of 0-10, how bad is the pain?"
+</p>
+<ul>
+<li><strong>Functional impact</strong>: "Can they still play/eat/sleep?"</li>
+<p>
+</ul>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S for Abdominal Pain</strong>:
+<ul>
+<li>Bile-stained (green) vomiting → Bowel obstruction</li>
+<li>Periumbilical pain migrating to RIF → Appendicitis</li>
+<li>Severe pain + bloody diarrhea → Intussusception (currant jelly stool)</li>
+<li>Abdominal distension + not passing stool/flatus → Obstruction</li>
+<li>Pain + testicular/scrotal pain → Testicular torsion</li>
+<li>Inconsistent history + bruising → Non-accidental injury</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Step 3: Eating, Hydration, and Dehydration Assessment</h2>
+
+<strong>CRITICAL in paediatrics</strong>: Children dehydrate FASTER than adults due to:
+<ul>
+<li>Higher surface area to volume ratio</li>
+<li>Higher metabolic rate</li>
+<li>Inability to independently access fluids (especially infants)</li>
+<p>
+</ul>
+</p>
+
+<h3>Hydration Assessment Questions</h3>
+
+<strong>For Infants</strong> (<12 months):
+<ul>
+<li>"How many bottles/breastfeeds have they had today compared to usual?"</li>
+<li>"Are they finishing feeds or stopping partway through?"</li>
+<li>"How many wet nappies today?" (Normal: ≥6/day for infants)</li>
+<li>"When was the last wet nappy?"</li>
+<li>"Are the nappies as heavy as usual or lighter?"</li>
+<p>
+</ul>
+</p>
+
+<strong>For Children</strong> (>12 months):
+<ul>
+<li>"How much are they drinking today compared to usual?"</li>
+<li>"How many times have they urinated today?" (Normal: ≥4/day for children)</li>
+<li>"When was the last time they passed urine?"</li>
+<li>"What does the urine look like? Dark or pale?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Vomiting</strong>:
+<ul>
+<li>"How many times have they vomited?"</li>
+<li>"What comes up? Food? Fluid? Bile (green/yellow)?"</li>
+<li>"Can they keep anything down? Even small sips?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Diarrhea</strong>:
+<ul>
+<li>"How many episodes of diarrhea?"</li>
+<li>"What does it look like?" (watery, bloody, mucousy)</li>
+<li>"Any blood in the stool?"</li>
+<p>
+</ul>
+</p>
+
+<h3>Clinical Dehydration Assessment (to confirm on examination)</h3>
+
+<p>
+| Feature | No Dehydration | Some Dehydration (3-5%) | Severe Dehydration (>5%) |
+|---------|----------------|------------------------|-------------------------|
+| Appearance | Alert, well | Restless, irritable | Lethargic, drowsy, floppy |
+| Eyes | Normal | Sunken | Very sunken |
+| Tears | Present | Reduced | Absent |
+| Mouth/Tongue | Moist | Dry | Very dry |
+| Skin turgor | Normal | Reduced | Tenting |
+| Urine output | Normal | Reduced | Minimal/none |
+| Capillary refill | <2 sec | 2-3 sec | >3 sec |
+</p>
+
+<strong>Dehydration = Admission for IV fluids</strong> (if severe or unable to tolerate oral)
+
+<hr>
+
+<h2>Step 4: Birth History and Development (ESPECIALLY for Infants <2 years)</h2>
+
+<h3>Antenatal History</h3>
+
+<strong>Pregnancy complications</strong>:
+<ul>
+<li>"How was the pregnancy? Any complications?"</li>
+<li>"Any infections during pregnancy?" (CMV, toxoplasmosis, rubella → congenital abnormalities)</li>
+<li>"Did mum take any medications during pregnancy?"</li>
+<p>
+</ul>
+</p>
+
+<h3>Birth History</h3>
+
+<strong>Delivery</strong>:
+<ul>
+<li>"How was the delivery? Vaginal or caesarean?"</li>
+<li>"Were there any complications during delivery?"</li>
+<li>"Was [child] born at full term or early?" (Gestational age at birth)</li>
+<p>
+</ul>
+</p>
+
+<strong>Immediate post-birth</strong>:
+<ul>
+<li>"Did [child] cry straight away?"</li>
+<li>"Did they need any help with breathing or go to special care?"</li>
+<li>"What was the birth weight?" (Normal: 2.5-4.5 kg)</li>
+<p>
+</ul>
+</p>
+
+<strong>Neonatal period</strong>:
+<ul>
+<li>"Any jaundice needing phototherapy?"</li>
+<li>"Any problems with feeding in the first few weeks?"</li>
+<p>
+</ul>
+</p>
+
+<h3>Developmental Milestones</h3>
+
+<strong>Ask age-appropriate questions</strong>:
+
+<strong>Gross motor</strong>:
+<ul>
+<li>6 months: "Can they sit unsupported?"</li>
+<li>12 months: "Are they walking yet or cruising?"</li>
+<li>18 months: "Can they walk confidently? Run?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Fine motor</strong>:
+<ul>
+<li>6 months: "Can they reach for toys and pass them hand to hand?"</li>
+<li>12 months: "Can they pick up small objects with finger and thumb (pincer grip)?"</li>
+<li>18 months: "Can they scribble with a crayon?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Speech/Language</strong>:
+<ul>
+<li>12 months: "Do they say any words? Like 'mama' or 'dada'?"</li>
+<li>18 months: "How many words can they say?" (Should have ≥6 words)</li>
+<li>2 years: "Can they put two words together?" (e.g., "more milk")</li>
+<p>
+</ul>
+</p>
+
+<strong>Social</strong>:
+<ul>
+<li>6 months: "Do they smile at you? Laugh?"</li>
+<li>12 months: "Do they wave bye-bye?"</li>
+<li>18 months: "Can they point to things they want?"</li>
+<p>
+</ul>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S - Developmental Delay</strong>:
+<ul>
+<li>Not sitting by 9 months</li>
+<li>Not walking by 18 months</li>
+<li>No words by 18 months</li>
+<li>Loss of previously acquired skills (REGRESSION) → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> investigation (autism, metabolic disorder, neurodegenerative)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Step 5: Immunization Status (Australian Schedule)</h2>
+
+<strong>Always ask</strong>: "Are they up to date with their vaccinations?"
+
+<h3>Australian National Immunization Program (NIP) Schedule 2024</h3>
+
+<p>
+| Age | Vaccines |
+|-----|----------|
+| <strong>Birth</strong> | Hep B (if high-risk mother) |
+| <strong>2 months</strong> | 6-in-1 (DTaP-Hep B-IPV-Hib), Pneumococcal, Rotavirus |
+| <strong>4 months</strong> | 6-in-1, Pneumococcal, Rotavirus |
+| <strong>6 months</strong> | 6-in-1, Pneumococcal (if Aboriginal/Torres Strait Islander or high-risk) |
+| <strong>12 months</strong> | MMR, Meningococcal ACWY, Pneumococcal |
+| <strong>18 months</strong> | 4-in-1 (DTaP-IPV), Hib, Meningococcal B (if Aboriginal/Torres Strait Islander) |
+| <strong>4 years</strong> | 4-in-1 (DTaP-IPV), MMR |
+| <strong>10-15 years</strong> | HPV (2 doses, 6-12 months apart), dTpa (Year 7) |
+</p>
+
+<strong>Why Immunization Status Matters</strong>:
+<ul>
+<li><strong>Unvaccinated child with fever + rash</strong> → Think measles, rubella (rare but serious)</li>
+<li><strong>Missed Hib vaccine + epiglottitis</strong> → Haemophilus influenzae B</li>
+<li><strong>Missed pneumococcal + severe pneumonia</strong> → S. pneumoniae</li>
+<p>
+</ul>
+</p>
+
+<strong>Document</strong>: "Vaccinations up to date as per Australian NIP schedule" OR "Vaccinations delayed - last vaccine was <input type="checkbox" checked> at [age]"
+
+<hr>
+
+<h2>Step 6: Past Medical, Surgical, and Family History</h2>
+
+<h3>Past Medical History</h3>
+
+<strong>Chronic conditions</strong> (affect management):
+<ul>
+<li>"Does [child] have any ongoing medical conditions?"</li>
+<li>Asthma, eczema, diabetes, epilepsy, congenital heart disease, immune deficiency</li>
+<p>
+</ul>
+</p>
+
+<strong>Previous hospitalizations</strong>:
+<ul>
+<li>"Have they been admitted to hospital before? What for?"</li>
+<li>Recurrent admissions → Think chronic condition or safeguarding concern</li>
+<p>
+</ul>
+</p>
+
+<strong>Allergies</strong>:
+<ul>
+<li>"Any allergies to medications or foods?"</li>
+<li><strong>If yes</strong>: "What happens when they're exposed?" (anaphylaxis vs intolerance)</li>
+<p>
+</ul>
+</p>
+
+<h3>Medications</h3>
+
+<ul>
+<li>"Are they on any regular medications?" (Including inhalers, supplements)</li>
+<li>"Have you given anything for this illness?" (Paracetamol, ibuprofen, cough medicine)</li>
+<li><strong>Document doses</strong>: "How much paracetamol did you give and when?"</li>
+<li><strong>Check correct dosing</strong>: Paracetamol 15 mg/kg/dose (max 4 doses/day)</li>
+<p>
+</ul>
+</p>
+
+<h3>Family History</h3>
+
+<strong>Relevant conditions</strong>:
+<ul>
+<li>"Any family history of asthma, eczema, allergies?" (atopy)</li>
+<li>"Any family history of sudden death in childhood?" (cardiac conditions, SIDS)</li>
+<li>"Anyone in the family with similar symptoms?" (infection contacts)</li>
+<p>
+</ul>
+</p>
+
+<h3>Social History</h3>
+
+<strong>Household</strong>:
+<ul>
+<li>"Who lives at home with [child]?"</li>
+<li>"Any smokers at home?" (respiratory illness risk, SIDS risk)</li>
+<li>"Any pets?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Childcare/School</strong>:
+<ul>
+<li>"Does [child] go to childcare or school?"</li>
+<li>"How are they going there? Any concerns from teachers?"</li>
+<li>"Any recent absences due to illness?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Safeguarding screen</strong> (ask sensitively):
+<ul>
+<li>"How are things at home generally?"</li>
+<li><strong>If injury</strong>: "Can you tell me exactly how this happened?" (Mechanism matches injury?)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Age-Specific Differential Diagnosis Tables</h2>
+
+<h3>NEONATE (0-28 days) WITH FEVER (>38°C)</h3>
+
+<strong>Fever in neonate = SEPSIS until proven otherwise → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> hospital admission</strong>
+
+<p>
+| Diagnosis | Key Features | Investigations | Management |
+|-----------|--------------|----------------|------------|
+| <strong>Neonatal sepsis</strong> | Fever >38°C OR hypothermia <36°C, poor feeding, lethargy, hypotonia, irritability, tachypnoea | Blood culture, FBC, CRP, urine MCS, LP (if stable) | IV antibiotics immediately (benzylpenicillin + gentamicin), admit NICU/PICU |
+| <strong>Meningitis</strong> | Fever, irritability, high-pitched cry, bulging fontanelle, seizures | LP (CSF MCS, glucose, protein, cell count) | IV antibiotics + acyclovir (if HSV suspected), admit PICU |
+| <strong>UTI</strong> | Fever, vomiting, poor feeding (often no localizing signs) | Urine MCS (catheter/SPA - NOT bag specimen) | IV antibiotics (gentamicin), USS renal tract |
+| <strong>HSV infection</strong> | Vesicular rash, seizures, hepatomegaly, disseminated disease | HSV PCR (CSF, blood, skin), LFTs | IV acyclovir, admit PICU |
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S - NEONATAL SEPSIS</strong>:
+<ul>
+<li>Temperature instability (fever >38°C OR hypothermia <36°C)</li>
+<li>Respiratory distress, apnoea</li>
+<li>Cyanosis, mottled skin</li>
+<li>Hypotonia, lethargy</li>
+<li>Poor feeding, vomiting</li>
+<li>Irritability, high-pitched cry</li>
+<li>Seizures</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>: ANY fever in neonate <28 days → Full septic screen + empirical IV antibiotics + admission
+
+<hr>
+
+<h3>INFANT (1-12 months) - Common Presentations</h3>
+
+<h4>1. FEVER (3-month-old to 12-month-old)</h4>
+
+<p>
+| Age/Fever Pattern | Differential | Key Discriminators |
+|-------------------|--------------|-------------------|
+| <strong>3-6 months + fever</strong> | Viral URTI (most common), UTI (especially uncircumcised males), bronchiolitis (RSV), otitis media | Localizing signs? Urine dipstick/MCS, respiratory symptoms |
+| <strong>6-12 months + fever + first seizure</strong> | <strong>Febrile convulsion</strong> (most common), meningitis, encephalitis | Post-ictal confusion (normal in febrile convulsion), neck stiffness, photophobia (meningitis) |
+| <strong>High fever >5 days + rash</strong> | <strong>Kawasaki disease</strong>, viral exanthem | Kawasaki criteria: Fever >5 days + 4 of: bilateral conjunctivitis, mucositis, cervical lymphadenopathy, polymorphous rash, extremity changes |
+</p>
+
+<h4>2. COUGH + RESPIRATORY DISTRESS</h4>
+
+<p>
+| Diagnosis | Age Peak | Key Features | Management |
+|-----------|----------|--------------|------------|
+| <strong>Bronchiolitis</strong> | <12 months (peak 3-6 months) | Coryzal prodrome, wheeze, crackles, feeding difficulty, apnoea (young infants) | Supportive (O₂, NG feeds), admit if O₂ sats <92%, severe respiratory distress, or age <3 months |
+| <strong>Croup</strong> | 6 months - 3 years | Barking cough, inspiratory stridor, worse at night | Dexamethasone 0.15 mg/kg PO (single dose), admit if severe |
+| <strong>Whooping cough</strong> | Any age (unvaccinated) | Paroxysmal cough with inspiratory whoop, post-tussive vomiting, apnoea in infants | Azithromycin, notify public health, admit if <3 months |
+</p>
+
+<h4>3. VOMITING AND DIARRHEA</h4>
+
+<p>
+| Diagnosis | Key Features | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s | Management |
+|-----------|--------------|-----------|------------|
+| <strong>Gastroenteritis</strong> | Vomiting, watery diarrhea, fever, contacts | Dehydration, bloody stool, bile-stained vomit | Oral rehydration (Gastrolyte), ondansetron if needed, admit if dehydrated |
+| <strong>Intussusception</strong> | Episodic severe abdominal pain (drawing legs up), "redcurrant jelly" stool, sausage-shaped mass RUQ | Bile-stained vomiting, lethargy between episodes | Air enema (diagnostic + therapeutic), <span style="color: #e74c3c; font-weight: bold;">URGENT</span> surgical review |
+| <strong>Pyloric stenosis</strong> | Projectile non-bilious vomiting (3-6 weeks old), always hungry after vomiting, palpable "olive" epigastrium | Hypochloraemic hypokalaemic metabolic alkalosis | USS abdomen, surgical pyloromyotomy |
+</p>
+
+<hr>
+
+<h3>TODDLER/PRESCHOOL (1-5 years) - Common Presentations</h3>
+
+<h4>1. FEVER + RASH (Viral Exanthems)</h4>
+
+<p>
+| Diagnosis | Rash Description | Associated Features | Complications |
+|-----------|------------------|---------------------|--------------|
+| <strong>Measles</strong> | Maculopapular, starts face → spreads down, blanching, confluent | Prodrome: 3 Cs (Cough, Coryza, Conjunctivitis), Koplik spots (white spots on buccal mucosa) | Pneumonia, encephalitis, death (1 in 5000) |
+| <strong>Rubella</strong> | Pink maculopapular, starts face → spreads down, blanching | Mild fever, lymphadenopathy (post-auricular, suboccipital) | Congenital rubella (if pregnant contact) |
+| <strong>Roseola</strong> | Diffuse maculopapular rash AFTER fever settles (fever then rash) | High fever 3-5 days, irritability | Febrile convulsion |
+| <strong>Scarlet fever</strong> | Diffuse erythematous "sandpaper" rash, spares face, blanching, strawberry tongue | Sore throat (Strep A), fever | Rheumatic fever, glomerulonephritis |
+| <strong>Hand-foot-mouth</strong> | Vesicular rash on palms, soles, mouth ulcers | Mild fever, irritability, reduced oral intake | Usually self-limiting |
+| <strong>Meningococcal</strong> | <strong>Non-blanching purpuric rash</strong> (petechiae → purpura), starts peripheries | Fever, headache, neck stiffness, photophobia, drowsiness, <strong>rapid deterioration</strong> | Death (10%), limb loss, multi-organ failure |
+</p>
+
+<strong>GLASS TEST</strong>: Press clear glass on rash. If rash does NOT disappear → NON-BLANCHING → <strong>MENINGOCOCCAL SEPTICAEMIA</strong> → <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> admission + IM/IV benzylpenicillin immediately
+
+<h4>2. STRIDOR</h4>
+
+<p>
+| Diagnosis | Age | Key Features | Management |
+|-----------|-----|--------------|------------|
+| <strong>Croup</strong> | 6 months - 3 years | Barking cough, inspiratory stridor, worse at night, preceding URTI | Dexamethasone 0.15 mg/kg PO, nebulized adrenaline if severe |
+| <strong>Epiglottitis</strong> | 2-7 years (rare post-Hib vaccine) | Drooling, sitting forward, muffled voice, tripod position, HIGH fever, toxic appearance | <strong>DO NOT examine throat</strong>, <span style="color: #e74c3c; font-weight: bold;">URGENT</span> anaesthetic review, IV ceftriaxone |
+| <strong>Foreign body</strong> | 1-3 years | Sudden onset stridor, witnessed choking, unilateral wheeze | Bronchoscopy, rigid laryngoscopy |
+</p>
+
+<hr>
+
+<h3>SCHOOL-AGE CHILD (5-12 years) - Common Presentations</h3>
+
+<h4>1. ABDOMINAL PAIN</h4>
+
+<p>
+| Diagnosis | Key Features | Examination Findings | Management |
+|-----------|--------------|---------------------|------------|
+| <strong>Appendicitis</strong> | Periumbilical pain → RIF migration, anorexia, vomiting, fever (low-grade) | Guarding RIF, McBurney's point tenderness, Rovsing's sign positive, psoas sign | Surgical review, appendicectomy |
+| <strong>Gastroenteritis</strong> | Crampy abdominal pain, vomiting, diarrhea, contacts | Diffusely tender, no guarding | Supportive, oral rehydration |
+| <strong>Constipation</strong> | Crampy abdominal pain, hard infrequent stools, overflow diarrhea | Palpable stool-loaded colon (LIF) | Movicol, increase fluids/fibre |
+| <strong>Mesenteric adenitis</strong> | Abdominal pain (often RIF), recent URTI, fever | Vague tenderness, no guarding (appendicitis mimic) | Supportive, safety-net |
+| <strong>UTI</strong> | Abdominal pain, dysuria, frequency, fever | Suprapubic tenderness | Urine MCS, antibiotics (trimethoprim) |
+| <strong>DKA</strong> | Abdominal pain, polyuria, polydipsia, weight loss, vomiting, Kussmaul breathing | Dehydration, fruity breath, drowsiness | BGL, VBG, ketones → IV fluids + insulin infusion, PICU |
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S</strong>:
+<ul>
+<li>Bile-stained (green) vomiting → Bowel obstruction/malrotation</li>
+<li>Severe pain + guarding + fever → Appendicitis/peritonitis</li>
+<li>Testicular/scrotal pain in male → Testicular torsion (6-hour window)</li>
+<p>
+</ul>
+</p>
+
+<h4>2. HEADACHE</h4>
+
+<p>
+| Diagnosis | Key Features | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s | Management |
+|-----------|--------------|-----------|------------|
+| <strong>Migraine</strong> | Unilateral throbbing, photophobia, phonophobia, nausea, aura (visual), family history | Sudden-onset "thunderclap", worst headache ever (SAH) | Ibuprofen + dark quiet room, consider propranolol prophylaxis |
+| <strong>Tension headache</strong> | Bilateral, "tight band" around head, no photophobia | Progressive worsening, early morning vomiting (raised ICP) | Reassurance, stress management |
+| <strong>Meningitis</strong> | Severe headache, fever, neck stiffness, photophobia, vomiting, rash (non-blanching) | Drowsiness, seizures, petechial rash | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> LP, IV ceftriaxone + dexamethasone, admit |
+</p>
+
+<hr>
+
+<h3>ADOLESCENT (12-18 years) - Common Presentations</h3>
+
+<h4>1. HEADACHE + MENTAL HEALTH CONCERNS</h4>
+
+<p>
+| Presentation | Key Differentials | Questions to Ask |
+|--------------|-------------------|------------------|
+| Recurrent headaches | Migraine, tension headache, medication overuse headache, <strong>depression/anxiety</strong> | "How are things at school? Friends? Home?", "How's your mood been?", "Any worries or stress?" |
+| Fatigue + poor school performance | Depression, anxiety, glandular fever (EBV), anaemia, hypothyroidism | "How's your sleep?", "Any low mood or loss of interest?", "Any thoughts of self-harm?" |
+</p>
+
+<strong>HEADSS Assessment for Adolescents</strong> (age 12+):
+
+<strong>H - Home</strong>: "Who do you live with? How are things at home?"
+<strong>E - Education/Employment</strong>: "How's school going? Attendance? Grades? Bullying?"
+<strong>A - Activities</strong>: "What do you do for fun? Sports? Hobbies?"
+<strong>D - Drugs</strong>: "Do any of your friends smoke or drink? Have you tried?"
+<strong>S - Sexuality</strong>: "Are you in a relationship? Are you sexually active? Contraception?"
+<strong>S - Suicide/Self-harm</strong>: "How's your mood? Ever felt so down you've thought of hurting yourself?"
+
+<strong>Confidentiality in Adolescents</strong>:
+<ul>
+<li>Offer to speak to adolescent alone (with parent's permission)</li>
+<li>"What we discuss is confidential unless I'm worried about your safety or someone else's safety"</li>
+<li>Balance autonomy with safeguarding</li>
+<p>
+</ul>
+</p>
+
+<h4>2. ABDOMINAL PAIN (ADOLESCENT FEMALES)</h4>
+
+<p>
+| Diagnosis | Key Features | Management |
+|-----------|--------------|------------|
+| <strong>Dysmenorrhoea</strong> | Crampy lower abdominal pain with periods, starts day 1-2 of bleeding | NSAIDs (ibuprofen, mefenamic acid), COCP if severe |
+| <strong>Ectopic pregnancy</strong> | Unilateral pain, missed period, PV bleeding, shoulder tip pain (ruptured), collapse | Urine βhCG, <span style="color: #e74c3c; font-weight: bold;">URGENT</span> USS, surgical review |
+| <strong>PID</strong> | Lower abdominal pain, PV discharge, dyspareunia, cervical excitation | Swabs (chlamydia/gonorrhoea), doxycycline + metronidazole |
+| <strong>Ovarian torsion</strong> | Sudden-onset severe unilateral pain, vomiting, previous ovarian cyst | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> USS with Doppler, surgical review |
+</p>
+
+<strong>ALWAYS consider pregnancy in adolescent females with abdominal pain</strong> → Urine βhCG
+
+<hr>
+
+<h2><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S in Paediatrics: When to Escalate <span style="color: #e74c3c; font-weight: bold;">URGENT</span>ly</h2>
+
+<h3>TRAFFIC LIGHT SYSTEM (NICE Feverish Child Guidelines)</h3>
+
+<strong>RED (High Risk - <span style="color: #e74c3c; font-weight: bold;">URGENT</span> Hospital Admission)</strong>:
+<ul>
+<li>Age <3 months with fever ≥38°C</li>
+<li>Non-blanching rash</li>
+<li>Cyanosis, grunting, severe respiratory distress</li>
+<li>Reduced consciousness, not responding to social cues</li>
+<li>Bulging fontanelle</li>
+<li>Neck stiffness</li>
+<li>Bile-stained vomiting</li>
+<li>Seizure</li>
+<p>
+</ul>
+</p>
+
+<strong>AMBER (Intermediate Risk - Clinical Review within 2-4 hours)</strong>:
+<ul>
+<li>Age 3-6 months with fever ≥39°C</li>
+<li>Fever ≥5 days</li>
+<li>Reduced activity, not smiling</li>
+<li>Dry mucous membranes, reduced urine output</li>
+<li>Nasal flaring, tachypnoea</li>
+<p>
+</ul>
+</p>
+
+<strong>GREEN (Low Risk - Discharge with Safety-Net)</strong>:
+<ul>
+<li>Age >6 months, feeding normally, alert, responsive</li>
+<li>Moist mucous membranes, normal urine output</li>
+<li>Fever responding to antipyretics</li>
+<p>
+</ul>
+</p>
+
+<h3>SEPSIS <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S (Paediatric Sepsis 6)</h3>
+
+<strong>Any child with suspected sepsis</strong> → Activate Paediatric Sepsis Pathway:
+<ol>
+<li>Give high-flow oxygen</li>
+<li>Obtain IV/IO access, take bloods (FBC, CRP, lactate, blood cultures)</li>
+<li>Give IV antibiotics (within 1 hour)</li>
+<li>Consider IV fluid resuscitation (20 mL/kg bolus)</li>
+<li>Involve senior clinician early</li>
+<li>Consider inotropic support (PICU)</li>
+<p>
+</ol>
+</p>
+
+<strong>Sepsis Features</strong>:
+<ul>
+<li>Tachycardia, tachypnoea</li>
+<li>Prolonged capillary refill >2 seconds</li>
+<li>Hypotension (late sign)</li>
+<li>Mottled/pale/cyanosed skin</li>
+<li>Reduced consciousness</li>
+<li>Fever or hypothermia</li>
+<p>
+</ul>
+</p>
+
+<h3>NON-ACCIDENTAL INJURY (NAI) <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S</h3>
+
+<strong>Always consider safeguarding</strong>:
+
+<strong>History</strong>:
+<ul>
+<li>Inconsistent/changing history</li>
+<li>Delay in seeking medical attention</li>
+<li>Mechanism doesn't match injury</li>
+<li>Injury inconsistent with developmental stage (e.g., bruising in non-mobile infant)</li>
+<p>
+</ul>
+</p>
+
+<strong>Examination</strong>:
+<ul>
+<li>Bruises in unusual locations (ears, neck, genitalia)</li>
+<li>Patterned bruises (handprints, ligature marks)</li>
+<li>Multiple injuries at different stages of healing</li>
+<li>Fractures in infants (especially ribs, metaphyseal fractures)</li>
+<li>Retinal haemorrhages (shaken baby syndrome)</li>
+<li>Burns with clear demarcation (immersion burns)</li>
+<p>
+</ul>
+</p>
+
+<strong>Action</strong>:
+<ul>
+<li>Document carefully (body map, photographs with consent)</li>
+<li>Discuss with senior colleague</li>
+<li>Contact paediatric safeguarding team</li>
+<li>Notify Child Protection Helpline (if immediate risk)</li>
+<li><strong>NEVER accuse parents</strong> - remain professional and empathetic</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Common IMG Mistakes in Paediatric History-Taking</h2>
+
+<h3>Mistake 1: Not Building Rapport with Child</h3>
+
+<strong>Problem</strong>: Only addressing parent, ignoring child completely
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Child feels excluded, may not cooperate with examination</li>
+<li>Australian child-centered care expects child engagement</li>
+<li>Misses opportunity to assess child's demeanor, responsiveness, development</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>Greet child by name, get to eye level</li>
+<li>Use age-appropriate language and questions</li>
+<li>Observe child throughout consultation (Are they playing? Alert? Interactive?)</li>
+<li>For adolescents, offer to speak alone</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 2: Not Assessing Age-Appropriate Developmental Milestones</h3>
+
+<strong>Problem</strong>: Taking history without asking about development (especially <2 years)
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Developmental delay is common presentation in paediatrics</li>
+<li>Early intervention improves outcomes (autism, cerebral palsy)</li>
+<li><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> for safeguarding (neglect, abuse)</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>For ALL children <2 years, ask: "How is [child] developing compared to other children their age?"</li>
+<li>Ask specific milestone questions (see earlier section)</li>
+<li>Document: "Developmental milestones appropriate for age" OR "Concern about [specific domain] delay"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 3: Not Asking About Immunization Status</h3>
+
+<strong>Problem</strong>: Forgetting to ask if child is vaccinated
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Affects differential (unvaccinated → measles, Hib epiglottitis, invasive pneumococcal disease)</li>
+<li>Public health notification required for vaccine-preventable diseases</li>
+<li>Opportunity for catch-up vaccination</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>Always ask: "Is [child] up to date with their vaccinations?"</li>
+<li>If not, document which vaccines missed</li>
+<li>Consider differential based on vaccination status</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 4: Not Assessing Hydration Status in Vomiting/Diarrhea</h3>
+
+<strong>Problem</strong>: Taking history about vomiting/diarrhea without asking about fluid intake and urine output
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Dehydration is main risk in gastroenteritis</li>
+<li>Determines management (oral vs IV rehydration, admission vs discharge)</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>For ANY vomiting/diarrhea: "How much are they drinking? How many wet nappies/toilet trips?"</li>
+<li>Ask about last urine output: "When did they last wee?"</li>
+<li>Assess severity: "Are they keeping any fluids down?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 5: Not Screening for Safeguarding Concerns</h3>
+
+<strong>Problem</strong>: Not asking "How did this injury happen?" for any trauma/bruising
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Missed opportunity to identify non-accidental injury</li>
+<li>Legal obligation to report child protection concerns in Australia</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>For ANY injury: "Can you tell me exactly how this happened?"</li>
+<li>Ask child (if verbal): "How did you hurt yourself?"</li>
+<li>Document mechanism in detail</li>
+<li>If inconsistent → Discuss with senior, safeguarding team</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 6: Using Medical Jargon with Parents</h3>
+
+<strong>Problem</strong>: "Does your child have dyspnoea?" "Any haematemesis?"
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Parents don't understand medical terminology</li>
+<li>Miscommunication leads to missed diagnoses</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>Use plain language: "Is their breathing fast or difficult?" "Any blood in the vomit?"</li>
+<li>Check understanding: "Does that make sense?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 7: Not Involving Adolescent in Consultation</h3>
+
+<strong>Problem</strong>: Speaking only to parent when adolescent is present
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Disrespects adolescent's autonomy</li>
+<li>Misses opportunity to assess mental health, risk behaviours</li>
+<li>Adolescent less likely to disclose sensitive information (sexual health, substance use)</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>Direct questions to adolescent: "How are you feeling?"</li>
+<li>Offer confidential time alone: "Would it be okay if I speak to [adolescent's name] alone for a few minutes?"</li>
+<li>Use HEADSS assessment</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 8: Not Checking Medication Dosing</h3>
+
+<strong>Problem</strong>: Accepting "I gave paracetamol" without asking dose/frequency
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Paracetamol overdose is hepatotoxic</li>
+<li>Underdosing → ineffective fever management</li>
+<li>Determines if fever truly "not responding to paracetamol" vs inadequate dosing</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>"What dose of paracetamol did you give? How much does [child] weigh?"</li>
+<li><strong>Correct dosing</strong>: Paracetamol 15 mg/kg/dose, max 4 doses/day (60 mg/kg/day)</li>
+<li>Example: 10 kg child → 150 mg/dose (7.5 mL of paracetamol 100 mg/5 mL syrup)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>OSCE Practice Stations</h2>
+
+<h3>Station 1: Febrile 4-Month-Old</h3>
+
+<strong>Scenario</strong>:
+<p>
+You are a junior doctor in the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department. A 4-month-old baby, Riley, has been brought in by their mother with fever. Take a focused history. You have 8 minutes.
+</p>
+
+<strong>Key Information to Elicit</strong>:
+<ul>
+<li>Age: 4 months old (INFANT - differential: viral URTI, bronchiolitis, UTI, otitis media, febrile convulsion if seizure)</li>
+<li>Fever: Temp 38.5°C, started yesterday, responds to paracetamol</li>
+<li>Eating: Still breastfeeding but taking less, wet nappies reduced (3 today, usually 6)</li>
+<li>Respiratory: Runny nose, cough, no difficulty breathing</li>
+<li>Rash: None</li>
+<li>Behaviour: A bit more sleepy than usual but still smiling</li>
+<li>Immunizations: Up to date (2-month vaccines received)</li>
+<li>Contacts: Older sibling has cold</li>
+<li>Birth history: Full-term, normal delivery, no complications</li>
+<li>Development: Rolling, smiling, cooing (appropriate for age)</li>
+<p>
+</ul>
+</p>
+
+<strong>Model Performance</strong> (8 minutes):
+
+<strong>Minutes 0-1: Introduction + Rapport</strong>
+<ul>
+<li>"Good morning! I'm Dr [Name]. Thanks for bringing Riley in today."</li>
+<li><strong>Address baby</strong>: "Hello Riley! Aren't you gorgeous!"</li>
+<li><strong>To mother</strong>: "And are you Riley's mum? Lovely to meet you. What should I call you?"</li>
+<li>"What pronouns does Riley use?" [Mother: "She/her"]</li>
+<li>"Great, thank you. So what's brought you in with Riley today?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 1-3: Presenting Complaint + Differential Formation</strong>
+<ul>
+<li>[Mother: "She's had a fever since yesterday and I'm worried"]</li>
+<li><strong>Age confirmation</strong>: "First, can I just confirm Riley's date of birth?" [Calculate: 4 months old → INFANT]</li>
+<li><strong>IMMEDIATE DIFFERENTIAL FORMS</strong>: Viral URTI, bronchiolitis, UTI, otitis media</li>
+<li>"When did you first notice the fever?"</li>
+<li>"Have you measured her temperature? What was it?" [38.5°C]</li>
+<li>"Have you given her any paracetamol? Did it bring the fever down?" [Yes, came down to 37.8°C]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 3-5: FEVERISH Framework</strong>
+<ul>
+<li><strong>Eating</strong>: "How is Riley feeding? Is she breastfed or bottle-fed?" [Breastfed] "How many feeds has she had today compared to usual?" [4 today, usually 6]</li>
+<li><strong>Hydration</strong>: "How many wet nappies has Riley had today?" [3 today, usually 6] → <strong>DEHYDRATION RISK</strong></li>
+<li><strong>Rash</strong>: "Have you noticed any rash at all?" [No]</li>
+<li><strong>Source</strong>:</li>
+<p>
+</ul>
+  - <strong>Respiratory</strong>: "Any cough? Runny nose?" [Yes, runny nose and cough] "Any difficulty breathing or fast breathing?" [No]
+  - <strong>GI</strong>: "Any vomiting or diarrhea?" [No]
+  - <strong>Urinary</strong>: "Any funny-smelling urine or crying when passing urine?" [No, but wet nappies are reduced]
+  - <strong>Neuro</strong>: "How is her energy? Still playful or more sleepy?" [A bit more sleepy but still smiling]
+</p>
+<ul>
+<li><strong>Contacts</strong>: "Anyone else at home unwell?" [Yes, older sibling has cold]</li>
+<li><strong>Immunizations</strong>: "Is Riley up to date with her vaccinations?" [Yes, had 2-month vaccines]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 5-6: Birth History + Development</strong>
+<ul>
+<li>"How was the pregnancy and delivery?" [Normal]</li>
+<li>"Was Riley born full-term?" [Yes]</li>
+<li>"Any complications after birth?" [No]</li>
+<li>"How is Riley developing? Can she roll over?" [Yes]</li>
+<li>"Does she smile and coo at you?" [Yes] → <strong>Development appropriate</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 6-7: Past History + <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong>
+<ul>
+<li>"Any previous admissions to hospital?" [No]</li>
+<li>"Any medical conditions?" [No]</li>
+<li>"Any medications or allergies?" [No]</li>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> screen</strong>: "Any neck stiffness? Floppy or stiff? Any rash that doesn't disappear when you press on it?" [No to all]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 7-8: ICE + Summarize</strong>
+<ul>
+<li>"What are you most worried about?" [Mother: "I'm worried it's meningitis"]</li>
+<li><strong>Empathy</strong>: "I can understand why you're worried. The good news is Riley doesn't have signs of meningitis like a rash or neck stiffness."</li>
+<li><strong>Summarize</strong>: "So Riley is a 4-month-old with fever since yesterday, runny nose and cough, taking less feeds, and reduced wet nappies. Her older sibling has a cold. This sounds like a viral upper respiratory infection."</li>
+<li><strong>Plan</strong>: "I'd like to examine Riley and check her urine to rule out a urine infection, as that can cause fever without obvious symptoms in babies. We'll also check her hydration. Does that sound okay?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Examiner's Expected Differential</strong>:
+<ol>
+<li>Viral URTI (most likely - contacts, coryzal symptoms)</li>
+<li>UTI (reduced wet nappies, no localizing signs)</li>
+<li>Bronchiolitis (cough, age 4 months)</li>
+<li>Otitis media (examine ears)</li>
+<p>
+</ol>
+</p>
+
+<strong>Investigations</strong>:
+<ul>
+<li>Urine MCS (catheter specimen)</li>
+<li>Assess hydration clinically</li>
+<li>Examine ENT (otoscopy)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Station 2: 6-Year-Old with Abdominal Pain</h3>
+
+<strong>Scenario</strong>:
+<p>
+You are a GP. A 6-year-old child, Alex, has been brought in by their father with abdominal pain. Take a focused history. You have 8 minutes.
+</p>
+
+<strong>Key Information to Elicit</strong>:
+<ul>
+<li>Age: 6 years old (SCHOOL-AGE - differential: appendicitis, gastroenteritis, constipation, mesenteric adenitis, UTI)</li>
+<li>Pain: Started yesterday around belly button, now moved to right lower tummy</li>
+<li>Character: Sharp, constant, worse with movement</li>
+<li>Associated: Vomited once this morning, no appetite</li>
+<li>Fever: Low-grade fever 37.8°C</li>
+<li>Bowels: Last opened 2 days ago (normal)</li>
+<li>Urinary: No dysuria, no frequency</li>
+<li>School: Missed school today, usually enjoys school (no bullying/stress)</li>
+<p>
+</ul>
+</p>
+
+<strong>Model Performance</strong> (8 minutes):
+
+<strong>Minutes 0-1: Introduction + Rapport</strong>
+<ul>
+<li>"Good morning! I'm Dr [Name]."</li>
+<li><strong>To child</strong>: "You must be Alex! What year are you in at school?" [Year 1] "Oh lovely! What's your favourite subject?" [Art]</li>
+<li><strong>To father</strong>: "And you're Alex's dad? What should I call you?" [Call me Tom]</li>
+<li>"So Tom, what's brought you in with Alex today?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 1-2: Presenting Complaint</strong>
+<ul>
+<li>[Father: "He's got tummy pain and he's not himself"]</li>
+<li><strong>Confirm age</strong>: "Can I just confirm Alex's date of birth?" [6 years old → SCHOOL-AGE]</li>
+<li><strong>IMMEDIATE DIFFERENTIAL</strong>: Appendicitis, gastroenteritis, constipation, mesenteric adenitis, UTI, <strong>DKA</strong></li>
+<li>"When did the tummy pain start?"</li>
+<li>"Where is the pain? Alex, can you point with one finger where it hurts?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 2-4: SOCRATES</strong>
+<ul>
+<li><strong>Site</strong>: [Points to RIF now, but started periumbilically] → <strong>APPENDICITIS <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> - migration</strong></li>
+<li><strong>Onset</strong>: "Did it come on suddenly or gradually?" [Gradually yesterday]</li>
+<li><strong>Character</strong>: "What does it feel like? Sharp or crampy?" [Sharp]</li>
+<li><strong>Radiation</strong>: "Does it move anywhere else?" [No]</li>
+<li><strong>Associated</strong>:</li>
+<p>
+</ul>
+  - "Any vomiting?" [Yes, once this morning]
+  - "Any diarrhea or constipation?" [No diarrhea, last poo 2 days ago - normal for him]
+  - "Any fever?" [Low-grade 37.8°C]
+  - "Any pain when passing urine?" [No]
+</p>
+<ul>
+<li><strong>Timing</strong>: "Is it constant or does it come and go?" [Constant]</li>
+<li><strong>Exacerbating</strong>: "Does anything make it worse?" [Movement, coughing]</li>
+<li><strong>Relieving</strong>: "Does anything make it better?" [Lying still]</li>
+<li><strong>Severity</strong>: "On a scale of 0-10, how bad is it?" [7/10]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 4-5: <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> Screen</strong>
+<ul>
+<li>"Has Alex been eating and drinking?" [No appetite today, sipping water]</li>
+<li><strong>Bile-stained vomit?</strong>: "What did the vomit look like? Any green or yellow?" [No, just food]</li>
+<li><strong>Bowels</strong>: "When did he last open his bowels?" [2 days ago, normal]</li>
+<li><strong>Urine</strong>: "Any blood in urine or stool?" [No]</li>
+<li><strong>Testicular</strong>: "Any pain in the testicles or groin?" [No]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 5-6: Past History + Immunizations</strong>
+<ul>
+<li>"Any previous tummy pain like this?" [No]</li>
+<li>"Any medical conditions or operations?" [No]</li>
+<li>"Any medications or allergies?" [No]</li>
+<li>"Is Alex up to date with vaccinations?" [Yes]</li>
+<li><strong>Diabetes screen</strong>: "Any increased thirst or passing urine more frequently recently?" [No]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 6-7: Social + School</strong>
+<ul>
+<li>"How's school going? Any problems or stress?" [Enjoys school, no bullying]</li>
+<li>"This might seem like an odd question, but has anyone ever hurt Alex at home?" [No]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 7-8: ICE + Summarize</strong>
+<ul>
+<li><strong>To child</strong>: "Alex, what do you think is causing the pain?" [Don't know]</li>
+<li><strong>To father</strong>: "Tom, what are you most worried about?" [Father: "Could it be appendicitis?"]</li>
+<li><strong>Empathy</strong>: "I can see you're worried. The good news is we can examine Alex and do some tests to work out what's going on."</li>
+<li><strong>Summarize</strong>: "So Alex is 6 years old with tummy pain that started around the belly button yesterday and has now moved to the right lower tummy. It's sharp, constant, worse with movement. He's vomited once and has a low-grade fever. This could be appendicitis, so I'd like to examine Alex's tummy carefully and possibly arrange some blood tests and an ultrasound."</li>
+<li><strong>Safety-net</strong>: "If the pain gets worse, he develops a high fever, or he can't keep fluids down, come back straight away or go to the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department."</li>
+<p>
+</ul>
+</p>
+
+<strong>Examiner's Expected Differential</strong>:
+<ol>
+<li><strong>Appendicitis</strong> (most likely - periumbilical → RIF migration, anorexia, vomiting, low-grade fever)</li>
+<li>Mesenteric adenitis (post-viral, but less likely with migration)</li>
+<li>Constipation (less likely - no abdominal distension, bowels opened 2 days ago is normal)</li>
+<li>Gastroenteritis (no diarrhea)</li>
+<p>
+</ol>
+</p>
+
+<strong>Investigations</strong>:
+<ul>
+<li>Examination (McBurney's point tenderness, guarding, Rovsing's sign)</li>
+<li>FBC (raised WCC), CRP (raised)</li>
+<li>USS abdomen (thickened appendix >6 mm)</li>
+<li>Surgical review</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Station 3: 15-Year-Old with Recurrent Headaches</h3>
+
+<strong>Scenario</strong>:
+<p>
+You are a GP. A 15-year-old, Jordan, has been brought in by their mother with recurrent headaches. Take a focused history. You have 8 minutes.
+</p>
+
+<strong>Key Information to Elicit</strong>:
+<ul>
+<li>Age: 15 years old (ADOLESCENT - consider migraine, tension headache, medication overuse, <strong>depression/anxiety</strong>, brain tumor)</li>
+<li>Headache: Recurrent for 3 months, throbbing, unilateral, photophobia</li>
+<li>Triggers: Stress, lack of sleep</li>
+<li>School: Missed several days, falling behind, being bullied</li>
+<li>Mental health: Low mood, poor sleep, withdrawn</li>
+<p>
+</ul>
+</p>
+
+<strong>Model Performance</strong> (8 minutes):
+
+<strong>Minutes 0-1: Introduction</strong>
+<ul>
+<li>"Good morning! I'm Dr [Name]. Jordan, is that right?" [Yes] "Great to meet you."</li>
+<li><strong>To mother</strong>: "And you're Jordan's mum? Thanks for coming in."</li>
+<li><strong>Offer confidential time</strong>: "Jordan, I'd like to hear from you about what's going on. Would it be okay if I speak to you alone for part of the consultation, or would you prefer your mum to stay?" [Mother can stay for now]</li>
+<li>"So Jordan, what's brought you in today?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 1-3: Headache History (SOCRATES)</strong>
+<ul>
+<li>"Tell me about these headaches."</li>
+<li><strong>Site</strong>: "Where do you feel the pain?" [One side of head, usually left]</li>
+<li><strong>Onset</strong>: "When did they start?" [About 3 months ago]</li>
+<li><strong>Character</strong>: "What does it feel like?" [Throbbing, pounding]</li>
+<li><strong>Associated</strong>: "Any nausea, vomiting, visual changes?" [Yes, sometimes see zigzag lines before headache starts = AURA → MIGRAINE]</li>
+<li><strong>Timing</strong>: "How often do you get them?" [2-3 times per week]</li>
+<li><strong>Exacerbating</strong>: "Does anything trigger them?" [Stress, lack of sleep]</li>
+<li><strong>Severity</strong>: "On a scale of 0-10, how bad?" [7-8/10]</li>
+<li><strong>Photophobia/Phonophobia</strong>: "Does light or noise bother you during the headache?" [Yes, I go to a dark room]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 3-4: <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> Screen</strong>
+<ul>
+<li>"Any headaches that wake you from sleep?" [No]</li>
+<li>"Any morning vomiting?" [No]</li>
+<li>"Any weakness, numbness, or tingling?" [No]</li>
+<li>"Any fever or neck stiffness?" [No]</li>
+<li>"Any changes in vision apart from the zigzag lines?" [No]</li>
+<li><strong>Medication overuse</strong>: "Are you taking any painkillers regularly?" [Yes, ibuprofen almost daily]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 4-5: School + HEADSS (Start with H, E, A)</strong>
+<ul>
+<li><strong>Education</strong>: "How's school going?" [Not great, I'm falling behind]</li>
+<li>"How's your attendance?" [Missed a lot of days because of headaches]</li>
+<li>"Any problems at school? Bullying?" [Yes, some girls have been mean to me]</li>
+<li><strong>Activities</strong>: "What do you do for fun? Sports? Hobbies?" [Used to play netball but stopped]</li>
+<li><strong>Home</strong>: "How are things at home?" [Okay]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 5-6: Mental Health Screen</strong>
+<ul>
+<li><strong>Mood</strong>: "How's your mood been?" [Not great, I feel down a lot]</li>
+<li>"Have you lost interest in things you used to enjoy?" [Yes]</li>
+<li><strong>Sleep</strong>: "How are you sleeping?" [Poor, can't fall asleep, wake up early]</li>
+<li><strong>Appetite</strong>: "How's your appetite?" [Not eating much]</li>
+<li><strong>Suicide/Self-harm</strong>: "When you're feeling really down, have you ever had thoughts of hurting yourself?" [Sometimes I think about it but I wouldn't do it]</li>
+<li><strong>Safety</strong>: "Have you ever tried to hurt yourself?" [No]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 6-7: Offer Confidential Time</strong>
+<ul>
+<li>"Jordan, would it be okay if I speak to you alone for a moment?" [Mother leaves]</li>
+<li><strong>D - Drugs</strong>: "Do any of your friends smoke or drink alcohol?" [Some do] "Have you tried?" [No]</li>
+<li><strong>S - Sexuality</strong>: "Are you in a relationship?" [No]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 7-8: ICE + Summarize</strong>
+<ul>
+<li>[Mother returns]</li>
+<li><strong>To Jordan</strong>: "Thank you for being so open with me. It sounds like you're going through a really tough time."</li>
+<li><strong>To mother</strong>: "Jordan's been experiencing migraines triggered by stress, and it sounds like there are some difficulties at school with bullying that are affecting their mood and sleep."</li>
+<li><strong>Plan</strong>: "I'd like to start treatment for the migraines and also talk about support for the bullying and low mood. Jordan, would you be open to speaking with a counselor?" [Yes]</li>
+<li><strong>Safety-net</strong>: "Jordan, if you ever feel unsafe or have thoughts of hurting yourself, please tell a trusted adult or call Lifeline on 13 11 14. Okay?" [Okay]</li>
+<p>
+</ul>
+</p>
+
+<strong>Examiner's Expected Differential</strong>:
+<ol>
+<li><strong>Migraine with aura</strong> (throbbing, unilateral, photophobia, aura)</li>
+<li><strong>Medication overuse headache</strong> (daily ibuprofen use)</li>
+<li><strong>Depression/Anxiety</strong> (low mood, poor sleep, bullying, withdrawn)</li>
+<li>Tension headache (contributing)</li>
+<p>
+</ol>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li>Migraine: Ibuprofen + metoclopramide for acute, consider propranolol prophylaxis</li>
+<li>Stop daily ibuprofen (medication overuse headache)</li>
+<li>Mental health: GP Mental Health Care Plan, psychologist referral, school support, bullying intervention</li>
+<li>Headache diary</li>
+<li>Safety-net for <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Summary: Key Takeaways for Paediatric History-Taking</h2>
+
+<h3>1. Age-Based Differential Thinking</h3>
+<ul>
+<li><strong>From the FIRST question (age), formulate differential</strong></li>
+<li>Same symptom = different diagnoses based on age</li>
+<li>Neonate with fever = sepsis. Toddler with fever + rash = viral vs meningococcal. Adolescent with headache = migraine vs mental health</li>
+<p>
+</ul>
+</p>
+
+<h3>2. Triple Assessment Every Time</h3>
+<ul>
+<li><strong>Severity</strong>: Well, unwell, or critically unwell?</li>
+<li><strong>Diagnosis</strong>: What's causing symptoms?</li>
+<li><strong>Safeguarding</strong>: Is this child safe?</li>
+<p>
+</ul>
+</p>
+
+<h3>3. Hydration Assessment is CRITICAL</h3>
+<ul>
+<li>For any vomiting/diarrhea: Ask about fluid intake + urine output</li>
+<li>"How many wet nappies?" (infants) or "When did they last wee?" (children)</li>
+<li>Dehydration → Admission for IV fluids</li>
+<p>
+</ul>
+</p>
+
+<h3>4. Always Ask About Development (Especially <2 years)</h3>
+<ul>
+<li>Gross motor, fine motor, speech, social</li>
+<li><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s: Not sitting by 9 months, not walking by 18 months, no words by 18 months</li>
+<li><strong>Regression</strong> (loss of skills) = <span style="color: #e74c3c; font-weight: bold;">URGENT</span> investigation</li>
+<p>
+</ul>
+</p>
+
+<h3>5. Immunization Status Affects Differential</h3>
+<ul>
+<li>Unvaccinated + fever/rash → Think measles, Hib epiglottitis, invasive pneumococcal</li>
+<li>Always ask: "Are they up to date with vaccinations?"</li>
+<p>
+</ul>
+</p>
+
+<h3>6. Build Rapport with BOTH Parent and Child</h3>
+<ul>
+<li>Greet child by name, get to eye level</li>
+<li>Use age-appropriate language</li>
+<li>Observe child throughout (alert? playful? responsive?)</li>
+<p>
+</ul>
+</p>
+
+<h3>7. <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s Requiring <span style="color: #e74c3c; font-weight: bold;">URGENT</span> Action</h3>
+<ul>
+<li><strong>Neonate <28 days with fever ≥38°C</strong> → Septic screen + IV antibiotics + admission</li>
+<li><strong>Non-blanching rash</strong> → Meningococcal septicaemia → IM/IV benzylpenicillin immediately</li>
+<li><strong>Bile-stained vomiting</strong> → Bowel obstruction/malrotation → Surgical review</li>
+<li><strong>Periumbilical pain → RIF migration</strong> → Appendicitis → Surgical review</li>
+<p>
+</ul>
+</p>
+
+<h3>8. Safeguarding is Part of Every Consultation</h3>
+<ul>
+<li>For injuries: "How did this happen?"</li>
+<li>Inconsistent history, delay in seeking help, developmental stage mismatch → NAI concern</li>
+<li>Document carefully, discuss with senior, contact safeguarding team</li>
+<p>
+</ul>
+</p>
+
+<h3>9. Adolescent-Specific Approach</h3>
+<ul>
+<li>Offer confidential time alone (with parent's permission)</li>
+<li>Use HEADSS assessment</li>
+<li>Screen for mental health, substance use, sexual health</li>
+<li>Balance autonomy with safeguarding</li>
+<p>
+</ul>
+</p>
+
+<h3>10. Common IMG Mistakes to Avoid</h3>
+<ul>
+<li>❌ Not building rapport with child</li>
+<li>❌ Not asking about development</li>
+<li>❌ Not asking about immunizations</li>
+<li>❌ Not assessing hydration in vomiting/diarrhea</li>
+<li>❌ Not screening for safeguarding</li>
+<li>❌ Using medical jargon with parents</li>
+<li>❌ Not involving adolescent in consultation</li>
+<li>❌ Not checking medication dosing</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Practice, Practice, Practice</strong>: Use these frameworks in every paediatric case. The more you practice age-based differential thinking, the more instinctive it becomes. Remember: In paediatrics, age IS the differential!
+
+<hr>
+
+<strong>Next Steps</strong>:
+<ul>
+<li>Practice with mock OSCE stations above</li>
+<li>Review Australian immunization schedule (know it by heart!)</li>
+<li>Learn developmental milestones for each age group</li>
+<li>Study <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s for sepsis, dehydration, safeguarding</li>
+<li>Practice HEADSS assessment for adolescents</li>
+<p>
+</ul>
+</p>
+
+<strong>Good luck with your ICRP preparation! You've got this!</strong>
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

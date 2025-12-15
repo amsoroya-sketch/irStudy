@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Additional Medical Resources</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>docs</span>
+</div>
+        
+        <h1>Additional Medical Resources</h1>
+<h2>APIs, Datasets, Tools & Services for Medical AI System</h2>
+
+<strong>Last Updated:</strong> December 14, 2025
+<strong>Purpose:</strong> Comprehensive list of external resources to enhance your platform
+
+<strong>All FREE or Open Source ✅</strong>
+
+<hr>
+
+<h2>📋 Table of Contents</h2>
+
+<ol>
+<li><a href="#1-medical-apis">Medical APIs</a></li>
+<li><a href="#2-medical-datasets">Medical Datasets</a></li>
+<li><a href="#3-clinical-tools--calculators">Clinical Tools & Calculators</a></li>
+<li><a href="#4-medical-ontologies--terminologies">Medical Ontologies & Terminologies</a></li>
+<li><a href="#5-study-tools-integration">Study Tools Integration</a></li>
+<li><a href="#6-medical-image-databases">Medical Image Databases</a></li>
+<li><a href="#7-clinical-trial-data">Clinical Trial Data</a></li>
+<li><a href="#8-medical-education-resources">Medical Education Resources</a></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>1. Medical APIs</h2>
+
+<h3>1.1 RxNorm API (Drug Information)</h3>
+
+<strong>URL:</strong> https://rxnav.nlm.nih.gov/APIs.html
+<strong>Cost:</strong> FREE
+<strong>Purpose:</strong> Drug names, codes, relationships
+
+<strong>Features:</strong>
+<ul>
+<li>Drug name normalization</li>
+<li>RxCUI (concept unique identifier)</li>
+<li>Drug relationships (ingredients, strengths)</li>
+<li>NDC (National Drug Code) mapping</li>
+<p>
+</ul>
+</p>
+
+<strong>Example Usage:</strong>
+
+<pre><code>import requests
+
+<h1>Get drug information</h1>
+<p>
+def get<em>drug</em>info(drug_name):
+    url = f"https://rxnav.nlm.nih.gov/REST/drugs.json?name={drug_name}"
+    response = requests.get(url)
+    return response.json()
+</p>
+
+<h1>Example: Aspirin</h1>
+<p>
+result = get<em>drug</em>info("aspirin")
+print(result)
+</p>
+
+<h1>Get drug interactions</h1>
+<p>
+def check<em>interactions(drug1</em>rxcui, drug2_rxcui):
+    url = f"https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis={drug1<em>rxcui}+{drug2</em>rxcui}"
+    response = requests.get(url)
+    return response.json()
+</code></pre>
+</p>
+
+<strong>Integration:</strong> Use in Drug Database MCP Server
+
+<hr>
+
+<h3>1.2 UMLS API (Unified Medical Language System)</h3>
+
+<strong>URL:</strong> https://www.nlm.nih.gov/research/umls/
+<strong>Cost:</strong> FREE (requires API key)
+<strong>Purpose:</strong> Comprehensive medical terminology
+
+<strong>Features:</strong>
+<ul>
+<li>3+ million biomedical concepts</li>
+<li>Relationships between concepts</li>
+<li>Multilingual support</li>
+<li>Cross-terminology mapping</li>
+<p>
+</ul>
+</p>
+
+<strong>Get API Key:</strong> https://uts.nlm.nih.gov/uts/signup-login
+
+<strong>Example Usage:</strong>
+
+<pre><code>import requests
+
+<p>
+UMLS<em>API</em>KEY = "your<em>api</em>key"
+</p>
+
+<p>
+def search_umls(term):
+    url = "https://uts-ws.nlm.nih.gov/rest/search/current"
+    params = {
+        "string": term,
+        "apiKey": UMLS<em>API</em>KEY
+    }
+    response = requests.get(url, params=params)
+    return response.json()
+</p>
+
+<h1>Search for "diabetes"</h1>
+<p>
+results = search_umls("diabetes mellitus")
+</code></pre>
+</p>
+
+<hr>
+
+<h3>1.3 FDA Drug Database API</h3>
+
+<strong>URL:</strong> https://open.fda.gov/apis/
+<strong>Cost:</strong> FREE
+<strong>Purpose:</strong> FDA-approved drugs, adverse events, recalls
+
+<strong>Features:</strong>
+<ul>
+<li>Drug labels and indications</li>
+<li>Adverse event reports</li>
+<li>Drug recalls and safety alerts</li>
+<li>Manufacturer information</li>
+<p>
+</ul>
+</p>
+
+<strong>Example Usage:</strong>
+
+<pre><code>import requests
+
+<p>
+def search<em>fda</em>drugs(drug_name):
+    url = "https://api.fda.gov/drug/label.json"
+    params = {
+        "search": f"openfda.brand<em>name:{drug</em>name}",
+        "limit": 1
+    }
+    response = requests.get(url, params=params)
+    return response.json()
+</p>
+
+<h1>Get label for Aspirin</h1>
+<p>
+label = search<em>fda</em>drugs("aspirin")
+</code></pre>
+</p>
+
+<hr>
+
+<h3>1.4 ClinicalTrials.gov API</h3>
+
+<strong>URL:</strong> https://clinicaltrials.gov/api/
+<strong>Cost:</strong> FREE
+<strong>Purpose:</strong> Clinical trials information
+
+<strong>Features:</strong>
+<ul>
+<li>Ongoing and completed trials</li>
+<li>Trial eligibility criteria</li>
+<li>Trial results</li>
+<li>Recruitment status</li>
+<p>
+</ul>
+</p>
+
+<strong>Example Usage:</strong>
+
+<pre><code>import requests
+
+<p>
+def search_trials(condition):
+    url = "https://clinicaltrials.gov/api/query/full_studies"
+    params = {
+        "expr": condition,
+        "fmt": "json",
+        "max_rnk": 10
+    }
+    response = requests.get(url, params=params)
+    return response.json()
+</p>
+
+<h1>Search trials for heart failure</h1>
+<p>
+trials = search_trials("heart failure")
+</code></pre>
+</p>
+
+<hr>
+
+<h3>1.5 PubChem API (Chemical/Drug Database)</h3>
+
+<strong>URL:</strong> https://pubchem.ncbi.nlm.nih.gov/docs/pug-rest
+<strong>Cost:</strong> FREE
+<strong>Purpose:</strong> Chemical structures, properties, bioactivity
+
+<strong>Example Usage:</strong>
+
+<pre><code>import requests
+
+<p>
+def get<em>compound</em>info(compound_name):
+    url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{compound_name}/JSON"
+    response = requests.get(url)
+    return response.json()
+</p>
+
+<h1>Get aspirin chemical data</h1>
+<p>
+aspirin = get<em>compound</em>info("aspirin")
+</code></pre>
+</p>
+
+<hr>
+
+<h3>1.6 NCBI E-utilities (Literature & Databases)</h3>
+
+<strong>URL:</strong> https://www.ncbi.nlm.nih.gov/home/develop/api/
+<strong>Cost:</strong> FREE
+<strong>Purpose:</strong> Access all NCBI databases
+
+<strong>Databases:</strong>
+<ul>
+<li>PubMed (literature)</li>
+<li>PubMed Central (full-text articles)</li>
+<li>Gene</li>
+<li>Protein</li>
+<li>ClinVar (genetic variants)</li>
+<p>
+</ul>
+</p>
+
+<strong>Already implemented in PubMed MCP Server</strong> ✅
+
+<hr>
+
+<h2>2. Medical Datasets</h2>
+
+<h3>2.1 MIMIC-III (Medical ICU Data)</h3>
+
+<strong>URL:</strong> https://physionet.org/content/mimiciii/
+<strong>Cost:</strong> FREE (requires credentialing)
+<strong>Purpose:</strong> De-identified ICU patient data
+
+<strong>Content:</strong>
+<ul>
+<li>40,000+ ICU patients</li>
+<li>Vital signs, lab results, medications</li>
+<li>Clinical notes</li>
+<li>Excellent for training ML models</li>
+<p>
+</ul>
+</p>
+
+<strong>How to Access:</strong>
+<ol>
+<li>Complete CITI training</li>
+<li>Sign data use agreement</li>
+<li>Download dataset (48 GB)</li>
+<p>
+</ol>
+</p>
+
+<strong>Use Cases:</strong>
+<ul>
+<li>Train ML models on clinical data</li>
+<li>Practice clinical reasoning</li>
+<li>Generate realistic case scenarios</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>2.2 Medical Question Answering Datasets</h3>
+
+<h4>MedQA</h4>
+<strong>URL:</strong> https://github.com/jind11/MedQA
+<strong>Format:</strong> JSON
+<strong>Content:</strong> 61,000+ medical exam questions (USMLE-style)
+
+<pre><code><h1>Load MedQA dataset</h1>
+<p>
+import json
+</p>
+
+<p>
+with open('medqa_dataset.json', 'r') as f:
+    questions = json.load(f)
+</p>
+
+<h1>Use for training/validation</h1>
+<p>
+for q in questions:
+    print(q['question'])
+    print(q['options'])
+    print(q['answer'])
+</code></pre>
+</p>
+
+<h4>PubMedQA</h4>
+<strong>URL:</strong> https://pubmedqa.github.io/
+<strong>Content:</strong> 1,000+ biomedical QA pairs from PubMed abstracts
+
+<hr>
+
+<h3>2.3 Clinical Case Reports</h3>
+
+<strong>ChestX-ray14</strong>
+<ul>
+<li>URL: https://nihcc.app.box.com/v/ChestXray-NIHCC</li>
+<li>112,000+ chest X-rays with labels</li>
+<li>14 disease categories</li>
+<p>
+</ul>
+</p>
+
+<strong>MIMIC-CXR</strong>
+<ul>
+<li>URL: https://physionet.org/content/mimic-cxr/</li>
+<li>377,000+ chest X-rays</li>
+<li>Radiology reports</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>3. Clinical Tools & Calculators</h2>
+
+<h3>3.1 MDCalc Integration</h3>
+
+<strong>URL:</strong> https://www.mdcalc.com/
+<strong>Calculators:</strong> 500+
+
+<strong>Top Calculators to Implement:</strong>
+
+<ol>
+<li><strong>CURB-65</strong> (Pneumonia severity)</li>
+<li><strong>CHA2DS2-VASc</strong> (Stroke risk in AF)</li>
+<li><strong>HEART Score</strong> (Chest pain risk)</li>
+<li><strong>Wells Score</strong> (DVT/PE probability)</li>
+<li><strong>Ranson's Criteria</strong> (Pancreatitis)</li>
+<li><strong>APACHE II</strong> (ICU mortality)</li>
+<li><strong>Glasgow Coma Scale</strong></li>
+<li><strong>CHADS2</strong></li>
+<li><strong>PERC Rule</strong> (PE rule-out)</li>
+<li><strong>NIH Stroke Scale</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Already implemented in Clinical Calculator MCP Server</strong> ✅
+
+<hr>
+
+<h3>3.2 Medical Calculators to Add</h3>
+
+<p>
+Create <code>src/calculators/medical_calculators.py</code>:
+</p>
+
+<pre><code>#!/usr/bin/env python3
+<p>
+"""Medical Calculators"""
+</p>
+
+<p>
+from pydantic import BaseModel
+</p>
+
+<p>
+class BMICalculator:
+    """Body Mass Index calculator"""
+</p>
+
+<p>
+    @staticmethod
+    def calculate(weight<em>kg: float, height</em>m: float) -> dict:
+        bmi = weight<em>kg / (height</em>m ** 2)
+</p>
+
+<p>
+        if bmi < 18.5:
+            category = "Underweight"
+        elif bmi < 25:
+            category = "Normal"
+        elif bmi < 30:
+            category = "Overweight"
+        else:
+            category = "Obese"
+</p>
+
+<p>
+        return {
+            "bmi": round(bmi, 1),
+            "category": category
+        }
+</p>
+
+<p>
+class eGFRCalculator:
+    """Estimated Glomerular Filtration Rate (CKD-EPI)"""
+</p>
+
+<p>
+    @staticmethod
+    def calculate(creatinine<em>umol</em>l: float, age: int, is<em>female: bool, is</em>black: bool) -> dict:
+        # Convert to mg/dL
+        creatinine<em>mg</em>dl = creatinine<em>umol</em>l / 88.4
+</p>
+
+<p>
+        # CKD-EPI formula
+        kappa = 0.7 if is_female else 0.9
+        alpha = -0.329 if is_female else -0.411
+</p>
+
+<p>
+        egfr = 141 <em> min(creatinine<em>mg</em>dl / kappa, 1) </em>* alpha
+        egfr <em>= max(creatinine<em>mg</em>dl / kappa, 1) </em>* -1.209
+        egfr <em>= 0.993 </em>* age
+</p>
+
+<p>
+        if is_female:
+            egfr *= 1.018
+        if is_black:
+            egfr *= 1.159
+</p>
+
+<p>
+        # CKD stage
+        if egfr >= 90:
+            stage = "G1"
+        elif egfr >= 60:
+            stage = "G2"
+        elif egfr >= 45:
+            stage = "G3a"
+        elif egfr >= 30:
+            stage = "G3b"
+        elif egfr >= 15:
+            stage = "G4"
+        else:
+            stage = "G5"
+</p>
+
+<p>
+        return {
+            "egfr": round(egfr, 1),
+            "ckd_stage": stage
+        }
+</p>
+
+<p>
+class ABGInterpreter:
+    """Arterial Blood Gas interpreter"""
+</p>
+
+<p>
+    @staticmethod
+    def interpret(ph: float, pco2: float, hco3: float) -> dict:
+        """
+        Interpret ABG results
+</p>
+
+<p>
+        Args:
+            ph: 7.35-7.45 (normal)
+            pco2: 35-45 mmHg (normal)
+            hco3: 22-26 mEq/L (normal)
+        """
+        # Determine primary disturbance
+        if ph < 7.35:
+            primary = "Acidosis"
+        elif ph > 7.45:
+            primary = "Alkalosis"
+        else:
+            primary = "Normal"
+</p>
+
+<p>
+        # Determine metabolic vs respiratory
+        if pco2 > 45:
+            respiratory = "Respiratory Acidosis"
+        elif pco2 < 35:
+            respiratory = "Respiratory Alkalosis"
+        else:
+            respiratory = "Normal"
+</p>
+
+<p>
+        if hco3 < 22:
+            metabolic = "Metabolic Acidosis"
+        elif hco3 > 26:
+            metabolic = "Metabolic Alkalosis"
+        else:
+            metabolic = "Normal"
+</p>
+
+<p>
+        return {
+            "ph": ph,
+            "pco2": pco2,
+            "hco3": hco3,
+            "primary_disturbance": primary,
+            "respiratory_component": respiratory,
+            "metabolic_component": metabolic
+        }
+</code></pre>
+</p>
+
+<hr>
+
+<h2>4. Medical Ontologies & Terminologies</h2>
+
+<h3>4.1 SNOMED CT</h3>
+
+<strong>URL:</strong> https://www.snomed.org/
+<strong>Cost:</strong> FREE for member countries (Australia, USA, UK, etc.)
+<strong>Purpose:</strong> Comprehensive clinical terminology
+
+<strong>Content:</strong>
+<ul>
+<li>350,000+ medical concepts</li>
+<li>Hierarchical relationships</li>
+<li>Multi-lingual support</li>
+<p>
+</ul>
+</p>
+
+<strong>Download:</strong> https://www.nlm.nih.gov/healthit/snomedct/
+
+<strong>Integration:</strong>
+<pre><code><h1>Load SNOMED CT into Neo4j knowledge graph</h1>
+<p>
+from neo4j import GraphDatabase
+</p>
+
+<p>
+driver = GraphDatabase.driver("bolt://localhost:7687", auth=("neo4j", "password"))
+</p>
+
+<p>
+def load<em>snomed</em>concepts(concepts_file):
+    with driver.session() as session:
+        with open(concepts_file, 'r') as f:
+            for line in f:
+                concept_id, term = line.strip().split('\t')
+</p>
+
+<p>
+                session.run("""
+                    CREATE (c:SnomedConcept {id: $id, term: $term})
+                """, id=concept_id, term=term)
+</code></pre>
+</p>
+
+<hr>
+
+<h3>4.2 ICD-10</h3>
+
+<strong>URL:</strong> https://www.who.int/standards/classifications/classification-of-diseases
+<strong>Cost:</strong> FREE
+<strong>Purpose:</strong> Disease classification
+
+<strong>Download:</strong> https://icd.who.int/browse10/2019/en
+
+<hr>
+
+<h3>4.3 LOINC (Lab Tests)</h3>
+
+<strong>URL:</strong> https://loinc.org/
+<strong>Cost:</strong> FREE
+<strong>Purpose:</strong> Laboratory test codes
+
+<strong>Use Case:</strong> Normalize laboratory test names
+
+<hr>
+
+<h2>5. Study Tools Integration</h2>
+
+<h3>5.1 Anki Integration</h3>
+
+<strong>Purpose:</strong> Spaced repetition flashcards
+
+<strong>Create Anki Deck from Generated Questions:</strong>
+
+<pre><code>#!/usr/bin/env python3
+<p>
+"""Export questions to Anki deck"""
+</p>
+
+<p>
+import genanki
+import random
+</p>
+
+<h1>Create Anki model</h1>
+<p>
+medical_model = genanki.Model(
+    random.randrange(1 << 30, 1 << 31),
+    'Medical MCQ Model',
+    fields=[
+        {'name': 'Question'},
+        {'name': 'Answer'},
+        {'name': 'Explanation'},
+        {'name': 'Source'}
+    ],
+    templates=[
+        {
+            'name': 'Card 1',
+            'qfmt': '{{Question}}',
+            'afmt': '{{FrontSide}}<hr id="answer">{{Answer}}<br><br>{{Explanation}}<br><br><i>Source: {{Source}}</i>',
+        },
+    ])
+</p>
+
+<h1>Create deck</h1>
+<p>
+deck = genanki.Deck(
+    random.randrange(1 << 30, 1 << 31),
+    'AMC Preparation - Cardiology'
+)
+</p>
+
+<h1>Add notes from your question database</h1>
+<p>
+questions = [
+    {
+        'question': 'What is the first-line treatment for STEMI?',
+        'answer': 'Primary PCI within 90 minutes',
+        'explanation': 'Primary PCI is superior to thrombolysis...',
+        'source': 'Therapeutic Guidelines: Cardiovascular'
+    }
+    # Add more...
+]
+</p>
+
+<p>
+for q in questions:
+    note = genanki.Note(
+        model=medical_model,
+        fields=[q['question'], q['answer'], q['explanation'], q['source']]
+    )
+    deck.add_note(note)
+</p>
+
+<h1>Export</h1>
+<p>
+genanki.Package(deck).write<em>to</em>file('amc_cardiology.apkg')
+</code></pre>
+</p>
+
+<strong>Install:</strong> <code>pip install genanki</code>
+
+<hr>
+
+<h3>5.2 Spaced Repetition Algorithm</h3>
+
+<strong>SM-2 Algorithm (SuperMemo 2):</strong>
+
+<pre><code>#!/usr/bin/env python3
+<p>
+"""Spaced Repetition System"""
+</p>
+
+<p>
+from datetime import datetime, timedelta
+from enum import Enum
+</p>
+
+<p>
+class ReviewQuality(Enum):
+    FORGOT = 0
+    HARD = 1
+    GOOD = 2
+    EASY = 3
+</p>
+
+<p>
+class SpacedRepetitionCard:
+    def <strong>init</strong>(self, question_id: str):
+        self.question<em>id = question</em>id
+        self.easiness_factor = 2.5
+        self.interval = 0
+        self.repetitions = 0
+        self.next_review = datetime.now()
+</p>
+
+<p>
+    def review(self, quality: ReviewQuality) -> datetime:
+        """
+        Update card based on review quality.
+</p>
+
+<p>
+        Returns next review date.
+        """
+        q = quality.value
+</p>
+
+<p>
+        # Update easiness factor
+        self.easiness_factor = max(
+            1.3,
+            self.easiness_factor + (0.1 - (3 - q) <em> (0.08 + (3 - q) </em> 0.02))
+        )
+</p>
+
+<p>
+        # Update repetitions
+        if q < 2:
+            self.repetitions = 0
+            self.interval = 0
+        else:
+            self.repetitions += 1
+</p>
+
+<p>
+            if self.repetitions == 1:
+                self.interval = 1
+            elif self.repetitions == 2:
+                self.interval = 6
+            else:
+                self.interval = round(self.interval * self.easiness_factor)
+</p>
+
+<p>
+        # Calculate next review date
+        self.next_review = datetime.now() + timedelta(days=self.interval)
+</p>
+
+<p>
+        return self.next_review
+</code></pre>
+</p>
+
+<strong>Database Schema:</strong>
+
+<pre><code>CREATE TABLE spaced_repetition (
+<p>
+    user_id UUID,
+    question_id UUID,
+    easiness_factor FLOAT DEFAULT 2.5,
+    interval INTEGER DEFAULT 0,
+    repetitions INTEGER DEFAULT 0,
+    next_review TIMESTAMP,
+    last_review TIMESTAMP,
+    PRIMARY KEY (user<em>id, question</em>id)
+);
+</code></pre>
+</p>
+
+<hr>
+
+<h2>6. Medical Image Databases</h2>
+
+<h3>6.1 Radiopaedia</h3>
+
+<strong>URL:</strong> https://radiopaedia.org/
+<strong>Cost:</strong> FREE
+<strong>Content:</strong> 50,000+ radiology cases
+
+<strong>Use Case:</strong> Generate radiology questions with images
+
+<hr>
+
+<h3>6.2 OpenNeuro</h3>
+
+<strong>URL:</strong> https://openneuro.org/
+<strong>Content:</strong> Neuroimaging datasets
+<strong>Cost:</strong> FREE
+
+<hr>
+
+<h2>7. Clinical Trial Data</h2>
+
+<h3>7.1 ClinicalTrials.gov</h3>
+
+<strong>Already covered in APIs section</strong> ✅
+
+<h3>7.2 EudraCT (European Trials)</h3>
+
+<strong>URL:</strong> https://eudract.ema.europa.eu/
+<strong>Content:</strong> European clinical trials
+
+<hr>
+
+<h2>8. Medical Education Resources</h2>
+
+<h3>8.1 Khan Academy Medical</h3>
+
+<strong>URL:</strong> https://www.khanacademy.org/science/health-and-medicine
+<strong>Content:</strong> Free video lectures
+<strong>Cost:</strong> FREE
+
+<strong>Integration:</strong> Link to videos in explanations
+
+<hr>
+
+<h3>8.2 Osmosis</h3>
+
+<strong>URL:</strong> https://www.osmosis.org/
+<strong>Content:</strong> Medical education videos
+<strong>Cost:</strong> Some free content
+
+<hr>
+
+<h3>8.3 Lecturio Medical</h3>
+
+<strong>URL:</strong> https://www.lecturio.com/medical-education/
+<strong>Content:</strong> Medical lectures
+<strong>Cost:</strong> Freemium
+
+<hr>
+
+<h2>📊 Integration Roadmap</h2>
+
+<h3>Phase 1: APIs (Week 1-2)</h3>
+<ul>
+<li><input type="checkbox" checked> RxNorm API integration</li>
+<li><input type="checkbox" checked> UMLS API integration</li>
+<li><input type="checkbox" checked> PubMed API (already done)</li>
+<li><input type="checkbox"> FDA Drug API</li>
+<li><input type="checkbox"> ClinicalTrials.gov API</li>
+<p>
+</ul>
+</p>
+
+<h3>Phase 2: Calculators (Week 3)</h3>
+<ul>
+<li><input type="checkbox" checked> CURB-65, eGFR (already done)</li>
+<li><input type="checkbox"> CHA2DS2-VASc</li>
+<li><input type="checkbox"> HEART Score</li>
+<li><input type="checkbox"> Wells Score</li>
+<li><input type="checkbox"> BMI, BSA</li>
+<p>
+</ul>
+</p>
+
+<h3>Phase 3: Datasets (Week 4-6)</h3>
+<ul>
+<li><input type="checkbox"> Download MedQA dataset</li>
+<li><input type="checkbox"> Download PubMedQA dataset</li>
+<li><input type="checkbox"> Access MIMIC-III (credentialing required)</li>
+<li><input type="checkbox"> Integrate with training pipeline</li>
+<p>
+</ul>
+</p>
+
+<h3>Phase 4: Study Tools (Week 7-8)</h3>
+<ul>
+<li><input type="checkbox"> Anki deck export</li>
+<li><input type="checkbox"> Spaced repetition system</li>
+<li><input type="checkbox"> Progress tracking</li>
+<li><input type="checkbox"> Analytics dashboard</li>
+<p>
+</ul>
+</p>
+
+<h3>Phase 5: Terminologies (Week 9-10)</h3>
+<ul>
+<li><input type="checkbox"> Load SNOMED CT into Neo4j</li>
+<li><input type="checkbox"> ICD-10 mapping</li>
+<li><input type="checkbox"> LOINC integration</li>
+<li><input type="checkbox"> Cross-terminology mapping</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>🔧 Quick Setup Scripts</h2>
+
+<h3>Install All API Clients</h3>
+
+<pre><code>#!/bin/bash
+<h1>Install all medical API clients</h1>
+
+<p>
+pip install biopython  # For NCBI APIs
+pip install genanki    # For Anki deck generation
+pip install requests   # For HTTP APIs
+pip install pandas     # For data manipulation
+pip install neo4j      # For SNOMED CT graph
+</code></pre>
+</p>
+
+<h3>Test All APIs</h3>
+
+<pre><code>#!/usr/bin/env python3
+<p>
+"""Test all medical APIs"""
+</p>
+
+<p>
+import requests
+from Bio import Entrez
+</p>
+
+<h1>Test RxNorm</h1>
+<p>
+print("Testing RxNorm API...")
+response = requests.get("https://rxnav.nlm.nih.gov/REST/drugs.json?name=aspirin")
+assert response.status_code == 200
+print("✓ RxNorm API working")
+</p>
+
+<h1>Test PubMed</h1>
+<p>
+print("Testing PubMed API...")
+Entrez.email = "test@example.com"
+handle = Entrez.esearch(db="pubmed", term="diabetes", retmax=1)
+record = Entrez.read(handle)
+handle.close()
+assert len(record["IdList"]) > 0
+print("✓ PubMed API working")
+</p>
+
+<h1>Test FDA</h1>
+<p>
+print("Testing FDA API...")
+response = requests.get("https://api.fda.gov/drug/label.json?limit=1")
+assert response.status_code == 200
+print("✓ FDA API working")
+</p>
+
+<p>
+print("\n✅ All APIs working!")
+</code></pre>
+</p>
+
+<hr>
+
+<h2>📚 Summary</h2>
+
+<strong>Available Resources:</strong>
+<ul>
+<li>✅ 7 Medical APIs (RxNorm, UMLS, FDA, PubMed, ClinicalTrials, PubChem, NCBI)</li>
+<li>✅ 5 Major Datasets (MIMIC-III, MedQA, PubMedQA, ChestX-ray, MIMIC-CXR)</li>
+<li>✅ 50+ Clinical Calculators (CURB-65, CHA2DS2-VASc, eGFR, etc.)</li>
+<li>✅ 4 Medical Terminologies (SNOMED CT, ICD-10, LOINC, UMLS)</li>
+<li>✅ Study Tools (Anki, Spaced Repetition)</li>
+<li>✅ Medical Image Databases (Radiopaedia, OpenNeuro)</li>
+<li>✅ Clinical Trial Data (ClinicalTrials.gov, EudraCT)</li>
+<p>
+</ul>
+</p>
+
+<strong>All FREE ✅</strong>
+
+<strong>Integration Status:</strong>
+<ul>
+<li>✅ PubMed API (implemented in MCP server)</li>
+<li>✅ Basic calculators (implemented in MCP server)</li>
+<li>⏳ Other APIs (documented, ready to implement)</li>
+<li>⏳ Datasets (documented, ready to download)</li>
+<li>⏳ Study tools (documented, ready to integrate)</li>
+<p>
+</ul>
+</p>
+
+<strong>Next Steps:</strong>
+<ol>
+<li>Implement remaining API integrations</li>
+<li>Download and process datasets</li>
+<li>Build study tool features</li>
+<li>Load medical terminologies into Neo4j</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<strong>Last Updated:</strong> December 14, 2025
+<strong>Status:</strong> Comprehensive resource catalog ready for integration 🚀
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

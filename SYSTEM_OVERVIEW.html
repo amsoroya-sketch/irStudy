@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Education AI System - Overview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+</div>
+        
+        <h1>Medical Education AI System - Overview</h1>
+<h2>Complete Infrastructure Ready for Medical Textbook Processing</h2>
+
+<strong>Status:</strong> ✅ Infrastructure Complete - Ready for PDF Processing
+<strong>Date:</strong> December 14, 2025
+<strong>Version:</strong> 0.1.0-alpha
+
+<hr>
+
+<h2>🎯 What We've Built</h2>
+
+<p>
+A complete, self-hosted AI system for medical education that:
+</p>
+<ul>
+<li>Uses <strong>local LLMs</strong> (no API costs)</li>
+<li>Processes <strong>medical textbooks</strong> into searchable knowledge base</li>
+<li>Generates <strong>unlimited exam questions</strong> using AI</li>
+<li>Provides <strong>semantic search</strong> across all medical content</li>
+<li>Runs <strong>100% locally</strong> (no cloud required)</li>
+<p>
+</ul>
+</p>
+
+<strong>Cost:</strong> $0/month operational (just electricity)
+
+<hr>
+
+<h2>📦 System Components</h2>
+
+<h3>1. PDF Processing Pipeline ✅</h3>
+<strong>Scripts:</strong>
+<ul>
+<li><code>scripts/extract_pdfs.py</code> - Extract text from medical PDFs (handles OCR for scanned pages)</li>
+<li><code>scripts/chunk<em>medical</em>texts.py</code> - Intelligently chunk texts while preserving medical context</li>
+<li><code>scripts/generate_embeddings.py</code> - Generate PubMedBERT embeddings (768-dimensional)</li>
+<li><code>scripts/index_qdrant.py</code> - Upload embeddings to Qdrant vector database</li>
+<p>
+</ul>
+</p>
+
+<strong>Features:</strong>
+<ul>
+<li>Handles both digital and scanned PDFs</li>
+<li>Preserves tables, drug dosages, lists intact</li>
+<li>Smart chunking (1000 tokens with 150-token overlap)</li>
+<li>OCR for scanned pages</li>
+<li>Progress tracking and error handling</li>
+<p>
+</ul>
+</p>
+
+<h3>2. Local LLM Integration ✅</h3>
+<strong>File:</strong> <code>src/models/ollama_client.py</code>
+
+<strong>Available Models:</strong>
+<ul>
+<li><code>meditron:7b</code> - Medical expert (Yale-trained on medical literature)</li>
+<li><code>biomistral:7b</code> - Biomedical LLM</li>
+<li><code>llama3.1:70b</code> - Best reasoning (question generation)</li>
+<li><code>mixtral:8x7b</code> - Excellent quality (content generation)</li>
+<li><code>deepseek-coder:6.7b</code> - Structured output (JSON, code)</li>
+<li><code>qwen2.5:7b</code> - Fast general purpose</li>
+<li><code>qwen2.5vl:7b</code> - Vision-language (for medical images)</li>
+<li><code>phi3:mini</code> - Lightweight, fast tasks</li>
+<p>
+</ul>
+</p>
+
+<strong>Usage:</strong>
+<pre><code>from src.models.ollama_client import OllamaClient
+
+<p>
+client = OllamaClient()
+response = client.generate(
+    prompt="What are symptoms of acute coronary syndrome?",
+    model_name="meditron:7b"
+)
+</code></pre>
+</p>
+
+<h3>3. Vector Database (Qdrant) ✅</h3>
+<strong>Service:</strong> Running in Docker at <code>http://localhost:6333</code>
+
+<strong>Features:</strong>
+<ul>
+<li>768-dimensional vector search</li>
+<li>COSINE similarity</li>
+<li>Metadata filtering (source, page, specialty, exam type)</li>
+<li>Dashboard UI for monitoring</li>
+<li>Fast retrieval (<500ms)</li>
+<p>
+</ul>
+</p>
+
+<strong>Collections:</strong>
+<ul>
+<li><code>medical_knowledge</code> - All medical textbook chunks</li>
+<p>
+</ul>
+</p>
+
+<strong>Capacity:</strong> Billions of vectors (we'll use ~40,000)
+
+<h3>4. Knowledge Graph (Neo4j) ✅</h3>
+<strong>Service:</strong> Running in Docker at <code>http://localhost:7474</code>
+
+<strong>Purpose:</strong>
+<ul>
+<li>Medical entity relationships</li>
+<li>SNOMED CT ontology</li>
+<li>Disease-symptom-treatment connections</li>
+<li>Multi-hop reasoning</li>
+<p>
+</ul>
+</p>
+
+<strong>Credentials:</strong>
+<ul>
+<li>Username: <code>neo4j</code></li>
+<li>Password: <code>medical<em>ai</em>password_2025</code></li>
+<p>
+</ul>
+</p>
+
+<h3>5. Supporting Infrastructure ✅</h3>
+
+<p>
+| Service | URL | Purpose | Status |
+|---------|-----|---------|--------|
+| <strong>PostgreSQL</strong> | localhost:5432 | User data, questions, progress | ✅ Running |
+| <strong>Redis</strong> | localhost:6379 | Caching, job queue | ✅ Running |
+| <strong>Prometheus</strong> | http://localhost:9090 | Metrics collection | ✅ Running |
+| <strong>Grafana</strong> | http://localhost:3001 | Monitoring dashboards | ✅ Running |
+</p>
+
+<h3>6. CLI Management Tool ✅</h3>
+<strong>File:</strong> <code>medical_ai.py</code>
+
+<strong>Commands:</strong>
+<pre><code><h1>Process PDFs</h1>
+<p>
+./medical_ai.py process pdfs
+./medical_ai.py process chunk
+./medical_ai.py process embed
+./medical_ai.py process index
+./medical_ai.py process all  # Run entire pipeline
+</p>
+
+<h1>Test system</h1>
+<p>
+./medical_ai.py test llm --model meditron:7b
+./medical_ai.py test search "acute coronary syndrome"
+</p>
+
+<h1>Manage services</h1>
+<p>
+./medical_ai.py services start
+./medical_ai.py services stop
+./medical_ai.py services status
+./medical_ai.py services logs
+</p>
+
+<h1>System info</h1>
+<p>
+./medical_ai.py info
+</code></pre>
+</p>
+
+<h3>7. Setup Automation ✅</h3>
+<strong>File:</strong> <code>setup.sh</code>
+
+<strong>What it does:</strong>
+<ul>
+<li>Checks all prerequisites</li>
+<li>Installs dependencies</li>
+<li>Downloads Ollama models</li>
+<li>Starts Docker services</li>
+<li>Creates folder structure</li>
+<p>
+</ul>
+</p>
+
+<strong>Run:</strong> <code>./setup.sh</code>
+
+<h3>8. Documentation ✅</h3>
+<ul>
+<li><code>README.md</code> - Complete system documentation</li>
+<li><code>QUICKSTART.md</code> - 1-hour setup guide</li>
+<li><code>SYSTEM_OVERVIEW.md</code> - This file</li>
+<li><code>requirements.txt</code> - All Python dependencies</li>
+<li><code>docker-compose.yml</code> - Infrastructure configuration</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>📊 Current Status</h2>
+
+<h3>✅ Completed</h3>
+<ul>
+<li><input type="checkbox" checked> Project folder structure</li>
+<li><input type="checkbox" checked> PDF extraction pipeline</li>
+<li><input type="checkbox" checked> Text chunking system</li>
+<li><input type="checkbox" checked> Embedding generation (PubMedBERT)</li>
+<li><input type="checkbox" checked> Qdrant vector database</li>
+<li><input type="checkbox" checked> Local LLM integration (Ollama)</li>
+<li><input type="checkbox" checked> Docker infrastructure (Qdrant, Neo4j, PostgreSQL, Redis, Prometheus, Grafana)</li>
+<li><input type="checkbox" checked> CLI management tool</li>
+<li><input type="checkbox" checked> Setup automation</li>
+<li><input type="checkbox" checked> Complete documentation</li>
+<p>
+</ul>
+</p>
+
+<h3>⏳ Waiting For</h3>
+<ul>
+<li><input type="checkbox"> <strong>Medical textbook PDFs</strong> (user acquiring)</li>
+<p>
+</ul>
+</p>
+
+<h3>🔜 Next Steps (After PDFs)</h3>
+<ol>
+<li>Run <code>./medical_ai.py process all</code> to process PDFs</li>
+<li>Build RAG query system</li>
+<li>Create multi-agent system (28 medical expert agents)</li>
+<li>Generate first MCQ questions</li>
+<li>Build FastAPI backend</li>
+<li>Create Next.js frontend</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>💾 Data Flow</h2>
+
+<pre><code>Medical Textbook PDFs (20 books)
+<p>
+    ↓
+[extract_pdfs.py] → Extract text (35,000 pages)
+    ↓
+[chunk<em>medical</em>texts.py] → Chunk into 40,000 pieces
+    ↓
+[generate_embeddings.py] → Generate 768-dim vectors (PubMedBERT)
+    ↓
+[index_qdrant.py] → Upload to Qdrant
+    ↓
+Qdrant Vector Database (40,000 searchable chunks)
+    ↓
+Local LLM (Ollama) queries Qdrant for relevant context
+    ↓
+Generate MCQ questions, explanations, clinical scenarios
+</code></pre>
+</p>
+
+<hr>
+
+<h2>🎓 Required Medical Textbooks</h2>
+
+<h3>Essential (Top 5):</h3>
+<ol>
+<li>Therapeutic Guidelines (eTG)</li>
+<li>Talley & O'Connor Clinical Examination</li>
+<li>AMC Handbook of MCQs</li>
+<li>Murtagh's General Practice</li>
+<li>Australian Medicines Handbook</li>
+<p>
+</ol>
+</p>
+
+<h3>Full List (20 books):</h3>
+<p>
+See <code>README.md</code> for complete list
+</p>
+
+<strong>Cost:</strong> $800-2,000 (or $0 if using free resources)
+
+<hr>
+
+<h2>🚀 Quick Start (Once You Have PDFs)</h2>
+
+<pre><code><h1>1. Run setup (10-15 min)</h1>
+<p>
+./setup.sh
+</p>
+
+<h1>2. Place PDFs in data/pdfs/ folders</h1>
+
+<h1>3. Process everything (4-6 hours total)</h1>
+<p>
+./medical_ai.py process all
+</p>
+
+<h1>4. Test</h1>
+<p>
+./medical_ai.py test search "heart failure management"
+./medical_ai.py test llm --model meditron:7b
+</p>
+
+<h1>5. Access services</h1>
+<h1>Qdrant: http://localhost:6333/dashboard</h1>
+<h1>Neo4j: http://localhost:7474</h1>
+<h1>Grafana: http://localhost:3001</h1>
+<p>
+</code></pre>
+</p>
+
+<hr>
+
+<h2>📈 Expected Performance</h2>
+
+<h3>Processing Times:</h3>
+<ul>
+<li><strong>PDF Extraction:</strong> 30-60 minutes (20 books, 35,000 pages)</li>
+<li><strong>Text Chunking:</strong> 10-20 minutes (40,000 chunks)</li>
+<li><strong>Embedding Generation:</strong> 2-4 hours (GPU accelerated)</li>
+<li><strong>Qdrant Indexing:</strong> 20-40 minutes (upload 40,000 vectors)</li>
+<p>
+</ul>
+</p>
+
+<h3>Inference Speed (Local LLM):</h3>
+<ul>
+<li><strong>7B models:</strong> 40-60 tokens/second</li>
+<li><strong>70B models:</strong> 5-10 tokens/second</li>
+<li><strong>MCQ generation:</strong> 5-10 seconds per question</li>
+<li><strong>OSCE scenario:</strong> 15-30 seconds per scenario</li>
+<p>
+</ul>
+</p>
+
+<h3>Storage Requirements:</h3>
+<ul>
+<li><strong>PDFs:</strong> ~5 GB</li>
+<li><strong>Extracted text:</strong> ~500 MB</li>
+<li><strong>Embeddings:</strong> ~500 MB</li>
+<li><strong>Qdrant index:</strong> ~1 GB</li>
+<li><strong>Total:</strong> ~7 GB</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>🔧 Technology Stack</h2>
+
+<p>
+| Component | Technology | License | Cost |
+|-----------|-----------|---------|------|
+| <strong>LLMs</strong> | Ollama (Meditron, Mixtral, Llama 3.1) | Open Source | $0 |
+| <strong>Embeddings</strong> | PubMedBERT | Apache 2.0 | $0 |
+| <strong>Vector DB</strong> | Qdrant | Apache 2.0 | $0 |
+| <strong>Knowledge Graph</strong> | Neo4j Community | GPL | $0 |
+| <strong>Database</strong> | PostgreSQL | PostgreSQL | $0 |
+| <strong>Cache/Queue</strong> | Redis | BSD | $0 |
+| <strong>Backend</strong> | FastAPI | MIT | $0 |
+| <strong>Frontend</strong> | Next.js | MIT | $0 |
+| <strong>Monitoring</strong> | Prometheus + Grafana | Apache 2.0 | $0 |
+</p>
+
+<strong>Total Infrastructure Cost:</strong> $0/month
+
+<hr>
+
+<h2>🎯 Project Goals</h2>
+
+<h3>Short-term (1-2 months):</h3>
+<ul>
+<li><input type="checkbox" checked> Infrastructure setup</li>
+<li><input type="checkbox" checked> PDF processing pipeline</li>
+<li><input type="checkbox"> Process 20 medical textbooks</li>
+<li><input type="checkbox"> Build RAG query system</li>
+<li><input type="checkbox"> Create first AI medical expert agent</li>
+<li><input type="checkbox"> Generate 500 test MCQ questions</li>
+<p>
+</ul>
+</p>
+
+<h3>Medium-term (3-4 months):</h3>
+<ul>
+<li><input type="checkbox"> Multi-agent system (28 specialized agents)</li>
+<li><input type="checkbox"> 5,000 MCQ questions (ICRP + AMC)</li>
+<li><input type="checkbox"> 500 clinical scenarios (AMC Clinical)</li>
+<li><input type="checkbox"> FastAPI backend</li>
+<li><input type="checkbox"> Basic web interface</li>
+<p>
+</ul>
+</p>
+
+<h3>Long-term (6-9 months):</h3>
+<ul>
+<li><input type="checkbox"> 18,000+ MCQ questions</li>
+<li><input type="checkbox"> 3,000+ clinical scenarios</li>
+<li><input type="checkbox"> Full Next.js platform</li>
+<li><input type="checkbox"> Adaptive learning algorithms</li>
+<li><input type="checkbox"> Spaced repetition system</li>
+<li><input type="checkbox"> Beta testing with real students</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>💡 Key Innovations</h2>
+
+<ol>
+<li><strong>100% Self-Hosted</strong> - No cloud dependencies, no monthly costs</li>
+<li><strong>Local Medical LLMs</strong> - Meditron, BioMistral trained on medical literature</li>
+<li><strong>Hybrid RAG</strong> - Vector search + knowledge graph for better accuracy</li>
+<li><strong>Unlimited Generation</strong> - AI creates questions on-demand</li>
+<li><strong>Australian-Focused</strong> - Therapeutic Guidelines, NSW protocols, AMC format</li>
+<li><strong>Multi-Agent System</strong> - 28 specialized agents for each medical domain</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>🔒 Privacy & Security</h2>
+
+<ul>
+<li>✅ All data stored locally</li>
+<li>✅ No external API calls</li>
+<li>✅ No cloud services</li>
+<li>✅ Medical content stays on your machine</li>
+<li>✅ HIPAA-ready architecture (if needed later)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>📞 Support</h2>
+
+<p>
+For questions or issues:
+</p>
+<ol>
+<li>Check <code>README.md</code></li>
+<li>Check <code>QUICKSTART.md</code></li>
+<li>Create an issue in repository</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>🎉 What's Ready</h2>
+
+<p>
+You can start using:
+</p>
+<ul>
+<li>✅ <strong>PDF processing</strong> - Place PDFs, run scripts</li>
+<li>✅ <strong>Semantic search</strong> - Search medical knowledge</li>
+<li>✅ <strong>Local LLMs</strong> - Generate medical text</li>
+<li>✅ <strong>CLI tool</strong> - Manage entire system</li>
+<li>✅ <strong>Monitoring</strong> - Grafana dashboards</li>
+<p>
+</ul>
+</p>
+
+<strong>Everything is ready for you to acquire the medical textbook PDFs and start processing!</strong>
+
+<hr>
+
+<strong>Next Action:</strong> Acquire medical textbook PDFs → Place in <code>data/pdfs/</code> → Run <code>./medical_ai.py process all</code>
+
+<hr>
+
+<strong>Last Updated:</strong> December 14, 2025
+<strong>Status:</strong> Infrastructure Complete ✅
+<strong>Ready for:</strong> PDF Processing 📚
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

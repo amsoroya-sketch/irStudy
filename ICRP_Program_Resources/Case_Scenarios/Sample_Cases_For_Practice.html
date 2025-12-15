@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Clinical Cases for Practice</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP Program Resources</span>
+<span>→</span>
+<span>Case Scenarios</span>
+</div>
+        
+        <h1>Sample Clinical Cases for Practice</h1>
+
+<h2>Purpose</h2>
+<p>
+Use these cases to practice:
+</p>
+<ul>
+<li>History taking (roleplay with partner reading the case)</li>
+<li>SOAP note documentation</li>
+<li>Clinical reasoning</li>
+<li>Differential diagnosis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Case 1: Chest Pain - Cardiac</h2>
+
+<h3>Patient Presentation</h3>
+<strong>Name:</strong> John Smith
+<strong>Age:</strong> 58 years
+<strong>Sex:</strong> Male
+<strong>Presenting Complaint:</strong> "I have severe chest pain"
+
+<h3>If Asked (History Taking Practice):</h3>
+
+<strong>HPC (History of Presenting Complaint):</strong>
+<ul>
+<li><strong>Onset:</strong> Started 2 hours ago while mowing the lawn</li>
+<li><strong>Site:</strong> Central chest</li>
+<li><strong>Character:</strong> Heavy, crushing, "like an elephant sitting on my chest"</li>
+<li><strong>Radiation:</strong> Radiates to left arm and jaw</li>
+<li><strong>Severity:</strong> 9/10</li>
+<li><strong>Duration:</strong> Constant since onset</li>
+<li><strong>Associated symptoms:</strong> Sweating profusely, nausea, short of breath</li>
+<li><strong>Relieving factors:</strong> Nothing helps, tried resting</li>
+<li><strong>Exacerbating factors:</strong> Any movement makes it worse</li>
+<p>
+</ul>
+</p>
+
+<strong>PMH:</strong>
+<ul>
+<li>Hypertension (10 years)</li>
+<li>Type 2 Diabetes (5 years)</li>
+<li>High cholesterol</li>
+<p>
+</ul>
+</p>
+
+<strong>Medications:</strong>
+<ul>
+<li>Metformin 1000mg BD</li>
+<li>Amlodipine 10mg daily</li>
+<li>Atorvastatin 40mg nocte</li>
+<p>
+</ul>
+</p>
+
+<strong>Allergies:</strong> None known
+
+<strong>FH:</strong>
+<ul>
+<li>Father had heart attack at age 60</li>
+<li>Mother has diabetes</li>
+<p>
+</ul>
+</p>
+
+<strong>SH:</strong>
+<ul>
+<li>Smokes 20 cigarettes/day for 30 years (30 pack-years)</li>
+<li>Occasional alcohol (2-3 beers on weekends)</li>
+<li>Works as accountant (sedentary)</li>
+<li>Lives with wife</li>
+<li>No regular exercise</li>
+<p>
+</ul>
+</p>
+
+<h3>Physical Examination Findings:</h3>
+
+<strong>Vitals:</strong>
+<ul>
+<li>BP: 160/95 mmHg</li>
+<li>HR: 110 bpm, regular</li>
+<li>RR: 22/min</li>
+<li>Temp: 36.8°C</li>
+<li>O₂ Sat: 94% on room air</li>
+<p>
+</ul>
+</p>
+
+<strong>General:</strong> Distressed, sweating, clutching chest
+
+<strong>CVS:</strong> Heart sounds normal, no murmurs. Peripheral pulses present.
+
+<strong>Respiratory:</strong> Clear breath sounds bilaterally
+
+<strong>Other:</strong> NAD
+
+<h3>Expected Management:</h3>
+<ul>
+<li><strong>MONA protocol:</strong> Morphine, Oxygen, Nitrates, Aspirin</li>
+<li><strong>ECG immediately</strong></li>
+<li><strong>Bloods:</strong> Troponin, FBC, U&E</li>
+<li><strong>Cardiology consult</strong></li>
+<li><strong>Admission</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Likely Diagnosis:</strong> Acute Coronary Syndrome (STEMI or NSTEMI)
+
+<hr>
+
+<h2>Case 2: Shortness of Breath - Respiratory</h2>
+
+<h3>Patient Presentation</h3>
+<strong>Name:</strong> Mary Johnson
+<strong>Age:</strong> 72 years
+<strong>Sex:</strong> Female
+<strong>Presenting Complaint:</strong> "I can't breathe properly"
+
+<h3>If Asked:</h3>
+
+<strong>HPC:</strong>
+<ul>
+<li><strong>Onset:</strong> Worsening over 3 days</li>
+<li><strong>Character:</strong> Feels like can't get enough air</li>
+<li><strong>Associated:</strong> Productive cough with green sputum, fever, chills</li>
+<li><strong>Severity:</strong> Can only speak in short sentences</li>
+<li><strong>Exacerbating:</strong> Worse when lying flat</li>
+<li><strong>Relieving:</strong> Sitting up helps slightly</li>
+<li><strong>No chest pain</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>PMH:</strong>
+<ul>
+<li>COPD (diagnosed 5 years ago)</li>
+<li>Previous pneumonia 2 years ago</li>
+<p>
+</ul>
+</p>
+
+<strong>Medications:</strong>
+<ul>
+<li>Salbutamol inhaler PRN</li>
+<li>Tiotropium inhaler daily</li>
+<li>Doesn't use inhaled steroids (ran out)</li>
+<p>
+</ul>
+</p>
+
+<strong>Allergies:</strong> Penicillin (rash)
+
+<strong>SH:</strong>
+<ul>
+<li>Ex-smoker (quit 5 years ago, 40 pack-year history)</li>
+<li>Widowed, lives alone</li>
+<li>Daughter visits daily</li>
+<li>Uses walking frame at home</li>
+<p>
+</ul>
+</p>
+
+<h3>Physical Examination Findings:</h3>
+
+<strong>Vitals:</strong>
+<ul>
+<li>BP: 135/80 mmHg</li>
+<li>HR: 105 bpm</li>
+<li>RR: 28/min</li>
+<li>Temp: 38.5°C</li>
+<li>O₂ Sat: 88% on room air</li>
+<p>
+</ul>
+</p>
+
+<strong>General:</strong> Dyspnoeic, using accessory muscles
+
+<strong>Respiratory:</strong>
+<ul>
+<li>Reduced air entry right base</li>
+<li>Coarse crackles right lower zone</li>
+<li>Dull to percussion right base</li>
+<li>Tactile vocal fremitus increased right base</li>
+<p>
+</ul>
+</p>
+
+<strong>CVS:</strong> Tachycardic, regular, HS normal
+
+<strong>Other:</strong> NAD
+
+<h3>Expected Management:</h3>
+<ul>
+<li><strong>Oxygen</strong> - Target 88-92% in COPD patient</li>
+<li><strong>CXR</strong></li>
+<li><strong>Bloods:</strong> FBC, CRP, U&E, cultures</li>
+<li><strong>Antibiotics</strong> (not penicillin - patient allergic!)</li>
+<li><strong>Bronchodilators</strong></li>
+<li><strong>Admission likely</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Likely Diagnosis:</strong> Community-acquired pneumonia with COPD exacerbation
+
+<hr>
+
+<h2>Case 3: Abdominal Pain - Surgical Abdomen</h2>
+
+<h3>Patient Presentation</h3>
+<strong>Name:</strong> Sarah Williams
+<strong>Age:</strong> 32 years
+<strong>Sex:</strong> Female
+<strong>Presenting Complaint:</strong> "Severe stomach pain"
+
+<h3>If Asked:</h3>
+
+<strong>HPC:</strong>
+<ul>
+<li><strong>Onset:</strong> Started 8 hours ago around umbilicus</li>
+<li><strong>Migration:</strong> Now localized to right lower quadrant</li>
+<li><strong>Character:</strong> Sharp, constant</li>
+<li><strong>Severity:</strong> 8/10, worst pain ever experienced</li>
+<li><strong>Associated:</strong> Nausea, vomited twice, fever</li>
+<li><strong>Movement:</strong> Pain worse with movement, coughing</li>
+<li><strong>Appetite:</strong> Lost appetite since yesterday</li>
+<li><strong>Last ate:</strong> 12 hours ago</li>
+<li><strong>Bowels:</strong> Last opened yesterday, normal</li>
+<li><strong>No urinary symptoms</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>PMH:</strong> Generally healthy, appendectomy? No!
+
+<strong>Medications:</strong> Oral contraceptive pill
+
+<strong>Allergies:</strong> None
+
+<strong>Gynae History:</strong>
+<ul>
+<li>LMP: 2 weeks ago (normal)</li>
+<li>Not pregnant (did test)</li>
+<li>Regular periods</li>
+<li>Sexually active (uses contraception)</li>
+<p>
+</ul>
+</p>
+
+<strong>SH:</strong>
+<ul>
+<li>Non-smoker</li>
+<li>Social drinker</li>
+<li>Works as teacher</li>
+<p>
+</ul>
+</p>
+
+<h3>Physical Examination Findings:</h3>
+
+<strong>Vitals:</strong>
+<ul>
+<li>BP: 125/75 mmHg</li>
+<li>HR: 98 bpm</li>
+<li>RR: 18/min</li>
+<li>Temp: 38.2°C</li>
+<li>O₂ Sat: 98% on RA</li>
+<p>
+</ul>
+</p>
+
+<strong>General:</strong> In pain, lying still, flushed
+
+<strong>Abdomen:</strong>
+<ul>
+<li><strong>Inspection:</strong> Moving with respiration but guarding</li>
+<li><strong>Palpation:</strong></li>
+<p>
+</ul>
+  - Tender RLQ (right lower quadrant)
+  - McBurney's point maximally tender
+  - Rebound tenderness present
+  - Rovsing's sign positive
+  - Guarding present
+</p>
+<ul>
+<li><strong>Percussion:</strong> Tender RLQ</li>
+<li><strong>Auscultation:</strong> Reduced bowel sounds</li>
+<p>
+</ul>
+</p>
+
+<strong>Other systems:</strong> NAD
+
+<h3>Expected Management:</h3>
+<ul>
+<li><strong>NBM (nil by mouth)</strong></li>
+<li><strong>IV access and fluids</strong></li>
+<li><strong>Analgesia</strong></li>
+<li><strong>Bloods:</strong> FBC, CRP, U&E, pregnancy test</li>
+<li><strong>Imaging:</strong> Ultrasound or CT abdomen</li>
+<li><strong>Surgical consult</strong></li>
+<li><strong>Likely appendicectomy</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Likely Diagnosis:</strong> Acute appendicitis
+
+<hr>
+
+<h2>Case 4: Headache - Neurological</h2>
+
+<h3>Patient Presentation</h3>
+<strong>Name:</strong> David Chen
+<strong>Age:</strong> 45 years
+<strong>Sex:</strong> Male
+<strong>Presenting Complaint:</strong> "Worst headache of my life"
+
+<h3>If Asked:</h3>
+
+<strong>HPC:</strong>
+<ul>
+<li><strong>Onset:</strong> Sudden onset 3 hours ago, "like thunderclap"</li>
+<li><strong>Severity:</strong> 10/10, never had pain this bad</li>
+<li><strong>Site:</strong> All over head, worse occipitally</li>
+<li><strong>Character:</strong> Intense, throbbing</li>
+<li><strong>Associated:</strong></li>
+<p>
+</ul>
+  - Photophobia (can't tolerate light)
+  - Nausea and vomited twice
+  - Neck stiffness
+  - No loss of consciousness
+  - No seizures
+</p>
+<ul>
+<li><strong>No recent head trauma</strong></li>
+<li><strong>No recent infection</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>PMH:</strong>
+<ul>
+<li>Occasional migraines (but this is completely different)</li>
+<li>Hypertension (well-controlled)</li>
+<p>
+</ul>
+</p>
+
+<strong>Medications:</strong>
+<ul>
+<li>Ramipril 5mg daily</li>
+<li>Occasional paracetamol for migraines</li>
+<p>
+</ul>
+</p>
+
+<strong>Allergies:</strong> None
+
+<strong>FH:</strong>
+<ul>
+<li>Mother had stroke at 68</li>
+<li>No family history of aneurysm</li>
+<p>
+</ul>
+</p>
+
+<strong>SH:</strong>
+<ul>
+<li>Non-smoker</li>
+<li>Minimal alcohol</li>
+<li>Office worker</li>
+<li>No recreational drugs</li>
+<p>
+</ul>
+</p>
+
+<h3>Physical Examination Findings:</h3>
+
+<strong>Vitals:</strong>
+<ul>
+<li>BP: 175/100 mmHg (elevated)</li>
+<li>HR: 88 bpm</li>
+<li>RR: 16/min</li>
+<li>Temp: 37.1°C</li>
+<li>O₂ Sat: 99% on RA</li>
+<p>
+</ul>
+</p>
+
+<strong>General:</strong> Alert but in severe distress, photophobic
+
+<strong>Neurological:</strong>
+<ul>
+<li>GCS 15/15 (E4 V5 M6)</li>
+<li>Pupils equal and reactive</li>
+<li>No focal neurological deficit</li>
+<li><strong>Neck stiffness present</strong></li>
+<li><strong>Kernig's sign positive</strong></li>
+<li>Fundoscopy: No papilloedema</li>
+<p>
+</ul>
+</p>
+
+<strong>Other:</strong> CVS and Resp NAD
+
+<h3>Expected Management:</h3>
+<ul>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> - <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> HEADACHE</strong></li>
+<li><strong>Senior review immediately</strong></li>
+<li><strong>CT head</strong> (rule out SAH)</li>
+<li><strong>Lumbar puncture</strong> (if CT negative)</li>
+<li><strong>Bloods:</strong> FBC, coag, glucose</li>
+<li><strong>Analgesia and anti-emetic</strong></li>
+<li><strong>Neurology/Neurosurgery consult</strong></li>
+<li><strong>Admission</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Likely Diagnosis:</strong> ? Subarachnoid haemorrhage (SAH) vs ? Meningitis
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S:</strong>
+<ul>
+<li>Sudden thunderclap onset</li>
+<li>"Worst headache ever"</li>
+<li>Neck stiffness</li>
+<li>Photophobia</li>
+<li>Elevated BP</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Case 5: Diabetic Patient - Endocrine <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></h2>
+
+<h3>Patient Presentation</h3>
+<strong>Name:</strong> Emma Brown
+<strong>Age:</strong> 24 years
+<strong>Sex:</strong> Female
+<strong>Presenting Complaint:</strong> "Feeling very unwell, can't stop vomiting"
+
+<h3>If Asked:</h3>
+
+<strong>HPC:</strong>
+<ul>
+<li><strong>Duration:</strong> Unwell for 2 days</li>
+<li><strong>Symptoms:</strong></li>
+<p>
+</ul>
+  - Nausea and vomiting - can't keep anything down
+  - Severe abdominal pain
+  - Excessive thirst
+  - Passing urine frequently
+  - Feeling weak and dizzy
+  - Breathing feels "weird"
+</p>
+<ul>
+<li><strong>Recent illness:</strong> Had flu-like illness last week</li>
+<li><strong>Insulin:</strong> Type 1 diabetic - hasn't taken insulin for 2 days because vomiting</li>
+<p>
+</ul>
+</p>
+
+<strong>PMH:</strong>
+<ul>
+<li>Type 1 Diabetes (diagnosed age 12)</li>
+<li>Usually well-controlled</li>
+<p>
+</ul>
+</p>
+
+<strong>Medications:</strong>
+<ul>
+<li>Insulin: NovoRapid TDS and Lantus nocte</li>
+<li><strong>Has NOT taken for 48 hours</strong> (afraid to because vomiting)</li>
+<p>
+</ul>
+</p>
+
+<strong>Allergies:</strong> None
+
+<strong>SH:</strong>
+<ul>
+<li>University student</li>
+<li>Non-smoker</li>
+<li>Social drinker</li>
+<li>Lives in shared accommodation</li>
+<p>
+</ul>
+</p>
+
+<h3>Physical Examination Findings:</h3>
+
+<strong>Vitals:</strong>
+<ul>
+<li>BP: 95/60 mmHg (low)</li>
+<li>HR: 120 bpm, regular</li>
+<li>RR: 32/min, deep (Kussmaul breathing)</li>
+<li>Temp: 37.5°C</li>
+<li>O₂ Sat: 98% on RA</li>
+<li><strong>BGL:</strong> 28 mmol/L (extremely high)</li>
+<p>
+</ul>
+</p>
+
+<strong>General:</strong>
+<ul>
+<li>Appears dehydrated, unwell</li>
+<li>Dry mucous membranes</li>
+<li>Reduced skin turgor</li>
+<li><strong>Acetone breath</strong> (fruity smell)</li>
+<li>Drowsy but rousable</li>
+<p>
+</ul>
+</p>
+
+<strong>Abdomen:</strong> Diffuse tenderness, no guarding
+
+<strong>CVS/Resp:</strong> Tachycardic, Kussmaul breathing pattern
+
+<h3>Expected Management:</h3>
+<ul>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> - DKA (Diabetic Ketoacidosis)</strong></li>
+<li><strong>IV access × 2</strong></li>
+<li><strong>Aggressive fluid resuscitation</strong></li>
+<li><strong>Insulin infusion</strong> (NOT bolus!)</li>
+<li><strong>Bloods:</strong></li>
+<p>
+</ul>
+  - VBG (venous blood gas) - check pH, ketones
+  - U&E, glucose, FBC
+  - Lactate
+</p>
+<ul>
+<li><strong>Urinalysis:</strong> Ketones</li>
+<li><strong>Monitor:</strong> BGL hourly, continuous cardiac monitoring</li>
+<li><strong>HDU/ICU admission likely</strong></li>
+<li><strong>Endocrinology consult</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Diagnosis:</strong> Diabetic Ketoacidosis (DKA)
+
+<strong>Key Learning:</strong> Never stop insulin when sick! "Sick day rules" education critical.
+
+<hr>
+
+<h2>How to Use These Cases</h2>
+
+<h3>For History Taking Practice:</h3>
+<ol>
+<li>Have a partner read the case</li>
+<li>Practice taking a complete history</li>
+<li>Time yourself (aim for 8-12 minutes)</li>
+<li>Use the 9-step structure</li>
+<li>Use SOCRATES for pain cases</li>
+<p>
+</ol>
+</p>
+
+<h3>For Documentation Practice:</h3>
+<ol>
+<li>Read the case</li>
+<li>Write a complete SOAP note</li>
+<li>Time yourself (aim for 10-15 minutes)</li>
+<li>Include all relevant information</li>
+<li>Develop differential diagnoses</li>
+<p>
+</ol>
+</p>
+
+<h3>For Clinical Reasoning:</h3>
+<ol>
+<li>Identify <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</li>
+<li>List differential diagnoses</li>
+<li>Justify investigations</li>
+<li>Plan management systematically</li>
+<p>
+</ol>
+</p>
+
+<h3>For Examination Practice:</h3>
+<ol>
+<li>Identify what examination findings you would look for</li>
+<li>Practice presenting findings</li>
+<li>Link findings to diagnosis</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>More Cases Available In:</h2>
+<ul>
+<li><strong>Cardiovascular Cases:</strong> 10 additional scenarios</li>
+<li><strong>Respiratory Cases:</strong> 10 additional scenarios</li>
+<li><strong>Gastrointestinal Cases:</strong> 10 additional scenarios</li>
+<li><strong>Neurological Cases:</strong> 10 additional scenarios</li>
+<li><strong>Paediatric Cases:</strong> 10 additional scenarios</li>
+<p>
+</ul>
+</p>
+
+<em>These can be created if needed - request specific system focus</em>
+
+<hr>
+
+<strong>Practice Target:</strong> Complete 50+ case scenarios before ICRP
+
+<strong>Last Updated:</strong> December 2025
+<strong>For:</strong> ICRP NSW Preparation
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

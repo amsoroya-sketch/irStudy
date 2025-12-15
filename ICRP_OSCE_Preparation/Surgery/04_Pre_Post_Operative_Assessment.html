@@ -1,0 +1,2489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-operative and Post-operative Assessment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Surgery</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Surgery Navigation</h3>
+<ul>
+<li><a href="01_Acute_Abdomen_History_Differentials.html">Acute Abdomen</a></li>
+<li><a href="02_Acute_Abdomen_Physical_Examination.html">Abdo Exam</a></li>
+</ul>
+</div>
+        <h1>Pre-operative and Post-operative Assessment</h1>
+<h2>ICRP OSCE Preparation - Surgery Module</h2>
+<h3>Following Dr. Amir Soufi's Differential-Driven Approach (IMG4IMGS Methodology)</h3>
+
+<hr>
+
+<h2>Target Audience</h2>
+<ul>
+<li>IMGs preparing for AMC Clinical OSCE</li>
+<li>ICRP participants at NSW Young Hospital Program</li>
+<li>Medical students/residents rotating through general surgery</li>
+<li>Focus: 8-minute OSCE stations with clinical reasoning emphasis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Learning Objectives</h2>
+
+<p>
+By the end of this module, you will be able to:
+</p>
+
+<ol>
+<li><strong>Perform systematic pre-operative assessment</strong> including risk stratification and fitness for surgery</li>
+<li><strong>Recognize and manage post-operative complications</strong> using differential-driven approach</li>
+<li><strong>Assess post-operative patients</strong> systematically to identify complications early</li>
+<li><strong>Apply ASA classification</strong> and cardiac risk assessment tools</li>
+<li><strong>Obtain informed consent</strong> appropriately for surgical procedures</li>
+<li><strong>Integrate Australian surgical safety protocols</strong> (WHO checklist, eTG guidelines)</li>
+<li><strong>Communicate effectively</strong> with patients and families about surgical risks and recovery</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Dr. Amir Soufi's Core Principle Applied to Perioperative Care</h2>
+
+<h3>The Differential-Driven Mindset for Post-operative Complications</h3>
+
+<strong>Traditional Approach (WRONG for OSCE)</strong>:
+<ol>
+<li>"Patient is day 3 post laparotomy"</li>
+<li>Take full history and examine</li>
+<li>Think about what might be wrong at the end</li>
+<p>
+</ol>
+</p>
+
+<strong>Dr. Amir's Approach (CORRECT for OSCE)</strong>:
+<ol>
+<li>"Patient is day 3 post laparotomy"</li>
+<li><strong>IMMEDIATELY think</strong>: "What are the complications on day 3 post-op? The 5 Ws: Wind (chest infection), Water (UTI), Walking (DVT/PE), Wound (infection), Wonder drugs (adverse reactions)"</li>
+<li><strong>Your questions DRIVEN by differential</strong>:</li>
+<p>
+</ol>
+   - "Any fever?" (infection)
+   - "Any chest pain, shortness of breath?" (PE, chest infection)
+   - "Any calf pain or swelling?" (DVT)
+   - "How is the wound? Any redness or discharge?" (wound infection)
+   - "Passing urine normally?" (UTI, urinary retention)
+</p>
+<ol>
+<li><strong>Examination targeted at most likely complications</strong></li>
+<li><strong>Early recognition = better outcomes</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>This temporal pattern recognition (what happens when post-op) is critical for OSCE success.</strong>
+
+<hr>
+
+<h2>Part 1: Pre-operative Assessment</h2>
+
+<h3>Framework: "PREPARE" for Surgery</h3>
+
+<h4>P - <strong>PRESENTING PROBLEM</strong> (Why Surgery Needed)</h4>
+
+<strong>Key Questions</strong>:
+<ol>
+<li>"What operation are you having?"</li>
+<li>"Why is this operation needed?"</li>
+<li>"When is the surgery scheduled?"</li>
+<li>"Is this an <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> or elective operation?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Differential Thinking</strong>:
+<ul>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> surgery</strong> (appendicitis, bowel obstruction, trauma) → Higher risk, less time for optimization</li>
+<li><strong>Elective surgery</strong> (hernia repair, cholecystectomy) → Time to optimize medical conditions</li>
+<p>
+</ul>
+</p>
+
+<strong>Urgency Classification</strong> (Australian Surgical Society):
+
+<p>
+| <strong>Category</strong> | <strong>Definition</strong> | <strong>Timeframe</strong> | <strong>Examples</strong> |
+|--------------|---------------|--------------|-------------|
+| <strong>Category 1</strong> | Life-threatening, organ failure imminent | Within 24 hours | Ruptured AAA, perforated viscus, trauma |
+| <strong>Category 2</strong> | Potential threat to life/organ function | Within 30 days | Symptomatic cancer, unstable angina |
+| <strong>Category 3</strong> | Not life-threatening but needs surgery | Within 365 days | Elective hernia, gallstones, joint replacement |
+</p>
+
+<strong>Why This Matters</strong>:
+<ul>
+<li><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> surgery = higher risk, cannot optimize fully</li>
+<li>Elective surgery = opportunity to optimize diabetes, hypertension, smoking cessation</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>R - <strong>RISK STRATIFICATION</strong> (ASA Classification and Cardiac Risk)</h4>
+
+<h3>ASA Physical Status Classification (MUST KNOW)</h3>
+
+<strong>Used universally in anaesthesia and surgery for risk stratification</strong>
+
+<p>
+| <strong>ASA Class</strong> | <strong>Definition</strong> | <strong>Examples</strong> | <strong>Mortality Risk</strong> |
+|---------------|---------------|-------------|-------------------|
+| <strong>ASA I</strong> | Normal healthy patient | No systemic disease, non-smoker | <0.1% |
+| <strong>ASA II</strong> | Mild systemic disease, no functional limitation | Well-controlled HTN/DM, smoker, obesity (BMI 30-40), mild asthma | 0.1-0.2% |
+| <strong>ASA III</strong> | Severe systemic disease, some functional limitation | Poorly controlled HTN/DM, COPD, obesity (BMI >40), history of MI/CVA, ESRF on dialysis | 0.4-1.8% |
+| <strong>ASA IV</strong> | Severe systemic disease, constant threat to life | Recent MI/CVA, ongoing cardiac ischaemia, severe valve disease, sepsis, DIC | 7.8-23% |
+| <strong>ASA V</strong> | Moribund, not expected to survive without surgery | Ruptured AAA, massive trauma, massive PE | 9.4-50% |
+| <strong>ASA VI</strong> | Brain-dead patient for organ donation | Organ donor | N/A |
+</p>
+
+<strong>Add "E" for <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> surgery</strong> (e.g., ASA 2E for <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> appendicectomy in otherwise healthy patient)
+
+<strong>OSCE Application</strong>:
+<ul>
+<li>You may be asked to classify a patient's ASA status</li>
+<li>Higher ASA = higher risk = may need ICU post-op, more intensive monitoring</li>
+<p>
+</ul>
+</p>
+
+<strong>Example</strong>:
+<ul>
+<li>45-year-old with well-controlled type 2 diabetes for elective cholecystectomy = <strong>ASA II</strong></li>
+<li>70-year-old with previous MI (5 years ago), on aspirin and statin, for elective hernia repair = <strong>ASA III</strong></li>
+<li>60-year-old with recent MI (2 weeks ago), unstable angina, for <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> bowel resection = <strong>ASA 4E</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Cardiac Risk Assessment: Revised Cardiac Risk Index (RCRI)</h3>
+
+<strong>Used to predict risk of major cardiac complications (MI, cardiac arrest, death) after non-cardiac surgery</strong>
+
+<strong>6 Risk Factors</strong> (1 point each):
+<ol>
+<li><strong>High-risk surgery</strong>: Intraperitoneal, intrathoracic, suprainguinal vascular surgery</li>
+<li><strong>History of ischaemic heart disease</strong>: Previous MI, angina, positive stress test, Q waves on ECG</li>
+<li><strong>History of heart failure</strong>: Previous pulmonary oedema, bilateral crackles, S3 gallop, CXR with pulmonary vascular redistribution</li>
+<li><strong>History of cerebrovascular disease</strong>: Previous TIA or CVA</li>
+<li><strong>Insulin-dependent diabetes mellitus</strong></li>
+<li><strong>Chronic kidney disease</strong>: Creatinine >177 μmol/L (>2 mg/dL)</li>
+<p>
+</ol>
+</p>
+
+<strong>Risk Stratification</strong>:
+
+<p>
+| <strong>RCRI Score</strong> | <strong>Risk of Major Cardiac Event</strong> | <strong>Management</strong> |
+|----------------|--------------------------------|---------------|
+| <strong>0 points</strong> | 0.4% | Proceed with surgery |
+| <strong>1 point</strong> | 0.9% | Proceed, consider cardiology review if concerns |
+| <strong>2 points</strong> | 6.6% | Cardiology review, optimize, consider stress test/echo |
+| <strong>≥3 points</strong> | 11% | <strong>Mandatory cardiology review</strong>, stress test, consider coronary angiography, delay elective surgery if possible |
+</p>
+
+<strong>OSCE Application</strong>:
+<ul>
+<li>Calculate RCRI for a given patient</li>
+<li>Recognize when cardiology referral needed (≥2 points)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>E - <strong>EXAMINE Systems Review</strong> (Fitness for Anaesthesia and Surgery)</h4>
+
+<strong>Systematic Review by System</strong>:
+
+<h3>Cardiovascular System</h3>
+
+<strong>Key Questions</strong>:
+<ol>
+<li>"Do you have any heart problems? High blood pressure, angina, heart attacks?"</li>
+<li>"Can you climb a flight of stairs without stopping? How many?"</li>
+<p>
+</ol>
+   - <strong>Functional capacity</strong>: <4 METs (unable to climb 1 flight) = high risk
+</p>
+<ol>
+<li>"Any chest pain, palpitations, shortness of breath?"</li>
+<li>"Any leg swelling?"</li>
+<p>
+</ol>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong>:
+<ul>
+<li>Recent MI (<6 months) → Delay elective surgery if possible</li>
+<li>Unstable angina → Cardiology review, optimize before surgery</li>
+<li>Severe aortic stenosis → High risk, may need valve replacement before non-cardiac surgery</li>
+<li>Uncontrolled heart failure → Optimize (diuretics, ACEi) before surgery</li>
+<p>
+</ul>
+</p>
+
+<strong>Functional Capacity (METs - Metabolic Equivalents)</strong>:
+
+<p>
+| <strong>METs</strong> | <strong>Activity</strong> | <strong>Surgical Risk</strong> |
+|----------|-------------|------------------|
+| <strong>1 MET</strong> | Rest, eating, dressing | N/A |
+| <strong>4 METs</strong> | Climb 1 flight of stairs, walk on level ground at 4 mph | Cutoff: <4 METs = high risk |
+| <strong>>10 METs</strong> | Heavy housework, running, swimming | Low risk |
+</p>
+
+<strong>If <4 METs functional capacity + high-risk surgery → Consider stress test/echo</strong>
+
+<hr>
+
+<h3>Respiratory System</h3>
+
+<strong>Key Questions</strong>:
+<ol>
+<li>"Any lung problems? Asthma, COPD, chronic cough?"</li>
+<li>"Do you get short of breath? How far can you walk?"</li>
+<li>"Do you smoke? How much?" (Pack-years = packs/day × years)</li>
+<li>"Any recent chest infections?"</li>
+<p>
+</ol>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong>:
+<ul>
+<li><strong>Active smoking</strong> → 4-6x higher risk of pulmonary complications → <strong>Advise cessation ≥4 weeks before surgery</strong></li>
+<li><strong>COPD with FEV1 <50%</strong> → High risk of respiratory failure post-op → May need ICU, consider pre-op spirometry</li>
+<li><strong>Recent chest infection (<4 weeks)</strong> → Delay elective surgery until resolved</li>
+<p>
+</ul>
+</p>
+
+<strong>Spirometry Indications</strong> (pre-op):
+<ul>
+<li>Thoracic or upper abdominal surgery + lung disease</li>
+<li>Severe COPD/asthma</li>
+<li>Unexplained dyspnoea</li>
+<p>
+</ul>
+</p>
+
+<strong>Optimization</strong>:
+<ul>
+<li>Smoking cessation (≥4 weeks if possible, but even 24 hours helps reduce CO levels)</li>
+<li>Optimize asthma/COPD (inhalers, consider prednisolone burst if needed)</li>
+<li>Chest physiotherapy education</li>
+<li>Incentive spirometry post-op</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Renal System</h3>
+
+<strong>Key Questions</strong>:
+<ol>
+<li>"Any kidney problems?"</li>
+<li>"Are you on dialysis?"</li>
+<li>"How often do you pass urine? Any difficulty?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Why It Matters</strong>:
+<ul>
+<li><strong>Chronic kidney disease</strong> → Higher risk perioperatively (fluid overload, electrolyte imbalance, drug dosing adjustments)</li>
+<li><strong>ESRF on dialysis</strong> → ASA III minimum, may need dialysis on day before surgery</li>
+<p>
+</ul>
+</p>
+
+<strong>Pre-op Tests</strong>:
+<ul>
+<li>U&Es (urea, creatinine, eGFR)</li>
+<li>If CKD, also check: Calcium, phosphate, PTH</li>
+<p>
+</ul>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong>:
+<ul>
+<li>Creatinine >177 μmol/L (>2 mg/dL) = part of RCRI (cardiac risk)</li>
+<li>Acute kidney injury → Delay elective surgery, investigate cause</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Endocrine System (Especially Diabetes)</h3>
+
+<strong>Key Questions</strong>:
+<ol>
+<li>"Do you have diabetes? Type 1 or type 2?"</li>
+<li>"How is it controlled? Diet, tablets, insulin?"</li>
+<li>"What is your usual blood sugar level? Any recent hypos?"</li>
+<li>"Any complications of diabetes?" (neuropathy, retinopathy, nephropathy, vascular disease)</li>
+<p>
+</ol>
+</p>
+
+<strong>Why Diabetes Matters Perioperatively</strong>:
+<ul>
+<li><strong>Infection risk</strong>: Poor wound healing, higher surgical site infection rate</li>
+<li><strong>Cardiovascular risk</strong>: Often co-exists with IHD</li>
+<li><strong>Metabolic</strong>: Risk of hypo/hyperglycaemia during fasting and surgery</li>
+<p>
+</ul>
+</p>
+
+<strong>Perioperative Diabetes Management</strong> (Australian Diabetes Society Guidelines):
+
+<strong>For Insulin-Dependent Diabetes (Type 1 or Type 2 on insulin)</strong>:
+<ul>
+<li><strong>Day before surgery</strong>: Normal insulin and meals</li>
+<li><strong>Morning of surgery</strong>:</li>
+<p>
+</ul>
+  - <strong>Morning list</strong>: Omit morning insulin, start IV dextrose + insulin infusion (Variable Rate IV Insulin Infusion - VRIII)
+  - <strong>Afternoon list</strong>: Give 50% usual morning insulin with light breakfast
+</p>
+<ul>
+<li><strong>During surgery</strong>: VRIII (adjust insulin rate based on hourly BSL)</li>
+<li><strong>Post-op</strong>: Continue VRIII until eating, then restart subcutaneous insulin</li>
+<p>
+</ul>
+</p>
+
+<strong>For Non-Insulin-Dependent Diabetes (Type 2 on oral agents)</strong>:
+<ul>
+<li><strong>Metformin</strong>: Omit on morning of surgery (risk of lactic acidosis with fasting)</li>
+<li><strong>Sulfonylureas</strong> (gliclazide): Omit on morning of surgery (risk of hypoglycaemia)</li>
+<li><strong>SGLT2 inhibitors</strong> (dapagliflozin): <strong>Stop 3 days before surgery</strong> (risk of euglycaemic DKA)</li>
+<p>
+</ul>
+</p>
+
+<strong>Target BSL Perioperatively</strong>: 6-10 mmol/L
+
+<strong>OSCE Tip</strong>: If asked about perioperative diabetes management, mention:
+<ul>
+<li>Omit oral hypoglycaemics on morning of surgery</li>
+<li>VRIII for insulin-dependent</li>
+<li>Hourly BSL monitoring</li>
+<li>Resume usual regimen when eating</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Haematology (Bleeding and Clotting Risk)</h3>
+
+<strong>Key Questions</strong>:
+<ol>
+<li>"Do you bleed or bruise easily?"</li>
+<li>"Any family history of bleeding disorders?"</li>
+<li>"Have you had surgery before? Any problems with bleeding?"</li>
+<li>"Are you on any blood thinners?" (Warfarin, DOACs, aspirin, clopidogrel)</li>
+<p>
+</ol>
+</p>
+
+<strong>Anticoagulation Management</strong> (Critical for OSCE):
+
+<strong>Warfarin</strong>:
+<ul>
+<li><strong>Stop 5 days before surgery</strong> (allow INR to normalize to <1.5)</li>
+<li>Check INR on day before surgery</li>
+<li><strong>If high VTE risk</strong> (mechanical heart valve, AF with high CHA2DS2-VASc, recent VTE): Bridge with LMWH (enoxaparin)</li>
+<p>
+</ul>
+  - Start LMWH 3 days before surgery when INR <2
+  - Last dose LMWH 24 hours before surgery
+  - Restart LMWH 24 hours after surgery (if haemostasis achieved)
+  - Restart warfarin on evening after surgery
+  - Continue LMWH until INR therapeutic (2-3) for 2 consecutive days
+</p>
+
+<strong>DOACs</strong> (Apixaban, Rivaroxaban, Dabigatran):
+<ul>
+<li><strong>Standard risk surgery</strong>: Omit DOAC for 24 hours before surgery (last dose 2 days before)</li>
+<li><strong>High bleeding risk surgery</strong> (neuro, spinal, major vascular): Omit DOAC for 48-72 hours before</li>
+<li><strong>Restart</strong>: 24-48 hours post-op depending on haemostasis</li>
+<p>
+</ul>
+</p>
+
+<strong>Aspirin</strong>:
+<ul>
+<li><strong>Continue for most surgeries</strong> (cardiovascular benefit outweighs bleeding risk)</li>
+<li><strong>Stop 7 days before</strong> if high bleeding risk surgery (intracranial, spinal, vitreoretinal)</li>
+<p>
+</ul>
+</p>
+
+<strong>Clopidogrel/Ticagrelor</strong>:
+<ul>
+<li><strong>If on for recent coronary stent</strong>:</li>
+<p>
+</ul>
+  - <strong><6 weeks post-stent</strong>: <strong>DO NOT stop</strong> (risk of stent thrombosis >> bleeding risk) → Delay elective surgery if possible
+  - <strong>6 weeks - 12 months post-stent</strong>: Discuss with cardiologist
+  - <strong>>12 months post-stent</strong>: Stop 5-7 days before surgery
+</p>
+<ul>
+<li><strong>If on for secondary prevention without recent stent</strong>: Stop 5-7 days before</li>
+<p>
+</ul>
+</p>
+
+<strong>Pre-op Tests</strong>:
+<ul>
+<li>FBC (check Hb, platelets)</li>
+<li>Coagulation screen if on anticoagulants or history of bleeding (INR, APTT)</li>
+<li>Group and Save (for surgeries with possible transfusion)</li>
+<li>Cross-match (for surgeries with high transfusion risk)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Liver Disease</h3>
+
+<strong>Key Questions</strong>:
+<ol>
+<li>"Any liver problems? Hepatitis, cirrhosis?"</li>
+<li>"Do you drink alcohol? How much?" (Standard drinks per week)</li>
+<li>"Any jaundice, abdominal swelling?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Why It Matters</strong>:
+<ul>
+<li><strong>Cirrhosis</strong> → High perioperative risk (poor wound healing, coagulopathy, encephalopathy, renal failure)</li>
+<li><strong>Child-Pugh Score</strong>: Used to risk-stratify cirrhotic patients</li>
+<p>
+</ul>
+</p>
+
+<strong>Child-Pugh Classification</strong>:
+
+<p>
+| <strong>Parameter</strong> | <strong>1 point</strong> | <strong>2 points</strong> | <strong>3 points</strong> |
+|--------------|------------|-------------|-------------|
+| Bilirubin (μmol/L) | <34 | 34-50 | >50 |
+| Albumin (g/L) | >35 | 28-35 | <28 |
+| INR | <1.7 | 1.7-2.3 | >2.3 |
+| Ascites | None | Mild (controlled) | Moderate-severe |
+| Encephalopathy | None | Grade 1-2 | Grade 3-4 |
+</p>
+
+<ul>
+<li><strong>Class A (5-6 points)</strong>: Mortality 10% for abdominal surgery</li>
+<li><strong>Class B (7-9 points)</strong>: Mortality 30%</li>
+<li><strong>Class C (10-15 points)</strong>: Mortality 76-82% → <strong>Consider surgery only if life-saving</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Medications and Allergies</h3>
+
+<strong>CRITICAL to Document</strong>:
+
+<strong>Medications to Continue</strong>:
+<ul>
+<li><strong>Beta-blockers</strong>: Continue (abrupt cessation → rebound tachycardia, HTN)</li>
+<li><strong>Statins</strong>: Continue (reduce cardiovascular events)</li>
+<li><strong>Antihypertensives</strong>: Usually continue (except ACEi/ARBs - see below)</li>
+<li><strong>Thyroid replacement</strong>: Continue</li>
+<li><strong>Corticosteroids</strong>: Continue + stress-dose steroid if on long-term steroids (>5mg prednisolone >3 weeks) → Give hydrocortisone 100mg IV at induction</li>
+<p>
+</ul>
+</p>
+
+<strong>Medications to Adjust</strong>:
+<ul>
+<li><strong>ACEi/ARBs</strong>: Omit on morning of surgery (risk of intraoperative hypotension)</li>
+<li><strong>Diuretics</strong>: Omit on morning of surgery (risk of hypovolaemia)</li>
+<li><strong>Metformin</strong>: Omit on morning of surgery</li>
+<li><strong>SGLT2 inhibitors</strong>: <strong>Stop 3 days before</strong></li>
+<li><strong>Anticoagulants</strong>: As above</li>
+<p>
+</ul>
+</p>
+
+<strong>Allergies</strong>:
+<ul>
+<li><strong>Document clearly</strong>: Drug name, reaction (rash, anaphylaxis, GI upset)</li>
+<li><strong>Distinguish allergy vs intolerance</strong>: "Nausea with morphine" = intolerance (can use with antiemetic), "Anaphylaxis with penicillin" = true allergy (avoid all beta-lactams)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>P - <strong>PAST MEDICAL and SURGICAL HISTORY</strong></h4>
+
+<strong>Key Questions</strong>:
+<ol>
+<li>"Any other medical conditions?"</li>
+<li>"Have you had operations before? Any problems with anaesthesia?"</li>
+<li>"Any family history of anaesthetic problems?"</li>
+<p>
+</ol>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong>:
+<ul>
+<li><strong>Difficult intubation</strong> previously → Inform anaesthetist, may need fibreoptic intubation</li>
+<li><strong>Malignant hyperthermia</strong> (family history) → <strong>Absolute contraindication to volatile anaesthetics and suxamethonium</strong> → Use TIVA (total IV anaesthesia)</li>
+<li><strong>Previous VTE</strong> (DVT/PE) → Higher risk perioperatively → Ensure VTE prophylaxis (LMWH, TEDs, intermittent pneumatic compression)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>A - <strong>AIRWAY ASSESSMENT</strong> (for Anaesthetist)</h4>
+
+<strong>Not always required in OSCE, but useful to know</strong>
+
+<strong>Components</strong>:
+<ol>
+<li><strong>Mallampati Score</strong>: Assess oropharyngeal view (Class I-IV, higher = more difficult intubation)</li>
+<li><strong>Mouth opening</strong>: Should be ≥3 fingerbreadths</li>
+<li><strong>Thyromental distance</strong>: From thyroid notch to chin, should be ≥6.5cm</li>
+<li><strong>Neck mobility</strong>: Assess cervical spine flexion/extension</li>
+<li><strong>Obesity</strong>: BMI >35 = difficult intubation risk</li>
+<li><strong>Beard</strong>: Can make mask ventilation difficult</li>
+<p>
+</ol>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s for Difficult Airway</strong>:
+<ul>
+<li>Previous difficult intubation</li>
+<li>Mallampati Class III or IV</li>
+<li>Limited mouth opening or neck extension</li>
+<li>Large tongue, small jaw (micrognathia)</li>
+<li>Severe obesity (BMI >40)</li>
+<p>
+</ul>
+</p>
+
+<strong>If Difficult Airway Suspected</strong> → Inform anaesthetist, may need awake fibreoptic intubation
+
+<hr>
+
+<h4>R - <strong>RESPIRATORY EXAMINATION and CARDIOVASCULAR EXAMINATION</strong></h4>
+
+<strong>In Pre-op Assessment OSCE</strong>:
+<ul>
+<li>May be asked to perform focused cardiovascular and respiratory examination</li>
+<li>Looking for: Undiagnosed heart failure, murmurs, respiratory disease</li>
+<p>
+</ul>
+</p>
+
+<strong>Key Findings That Change Management</strong>:
+<ul>
+<li><strong>Severe aortic stenosis</strong> (slow-rising pulse, narrow pulse pressure, ESM radiating to carotids, soft S2) → High-risk for non-cardiac surgery → Cardiology review</li>
+<li><strong>Uncontrolled heart failure</strong> (raised JVP, bilateral crackles, peripheral oedema, S3 gallop) → Optimize with diuretics before surgery</li>
+<li><strong>COPD</strong> (barrel chest, prolonged expiration, wheeze) → Optimize with bronchodilators, consider spirometry</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>E - <strong>EXPLAIN and CONSENT</strong></h4>
+
+<h3>Informed Consent: Essential Components</h3>
+
+<strong>For consent to be valid (Australian law)</strong>:
+<ol>
+<li><strong>Patient must have capacity</strong> to make the decision</li>
+<li><strong>Information must be provided</strong> about:</li>
+<p>
+</ol>
+   - Nature of procedure (what will be done)
+   - Benefits and expected outcomes
+   - <strong>Material risks</strong> (risks that a reasonable person would want to know)
+   - Alternatives (including non-surgical options)
+</p>
+<ol>
+<li><strong>Consent must be voluntary</strong> (not coerced)</li>
+<li><strong>Consent must be documented</strong> (written consent for procedures)</li>
+<p>
+</ol>
+</p>
+
+<strong>Material Risk Definition</strong> (Montgomery ruling, applies in Australia):
+<ul>
+<li>A risk is "material" if:</li>
+<p>
+</ul>
+  - A reasonable person in the patient's position would attach significance to it, OR
+  - The doctor knows or should know that this particular patient would attach significance to it
+</p>
+
+<strong>Common Material Risks for Surgery</strong>:
+<ul>
+<li><strong>General risks</strong> (for all surgeries):</li>
+<p>
+</ul>
+  - Bleeding (risk of transfusion if >500ml expected blood loss)
+  - Infection (surgical site infection ~1-5% depending on surgery)
+  - VTE (DVT/PE) (~1-3% without prophylaxis)
+  - Anaesthetic risks (nausea, dental damage, anaphylaxis, awareness)
+</p>
+<ul>
+<li><strong>Procedure-specific risks</strong>:</li>
+<p>
+</ul>
+  - Thyroidectomy: Recurrent laryngeal nerve injury (1-2%), hypoparathyroidism
+  - Cholecystectomy: Bile duct injury (0.5%), conversion to open
+  - Hernia repair: Recurrence (1-3%), chronic pain (10-12%), damage to vas deferens/testicular vessels
+  - Bowel resection: Anastomotic leak (5-10%), stoma formation
+</p>
+
+<strong>How to Explain Risks in OSCE</strong>:
+<p>
+"Mr. Smith, I need to discuss the risks of this operation with you. Most people recover well, but like all operations, there are some risks. The common risks include bleeding, infection, and blood clots in the legs or lungs. For this particular hernia operation, there is a small risk of the hernia coming back, about 1-3%, and some patients experience ongoing pain in the area. We take precautions to minimize these risks, including antibiotics to prevent infection and blood-thinning medication to prevent clots. Do you have any questions about the risks?"
+</p>
+
+<hr>
+
+<h3>Assessing Capacity to Consent</h3>
+
+<strong>Four-Part Capacity Test</strong> (must pass ALL four):
+
+<ol>
+<li><strong>Understand the information</strong> relevant to the decision</li>
+<p>
+</ol>
+   - Test: "Can you tell me in your own words what operation you're having?"
+</p>
+<ol>
+<li><strong>Retain the information</strong> long enough to make the decision</li>
+<p>
+</ol>
+   - Test: Ask patient to repeat information after 5 minutes
+</p>
+<ol>
+<li><strong>Use or weigh the information</strong> to arrive at a decision</li>
+<p>
+</ol>
+   - Test: "Can you tell me why you've decided to have this operation? What are the pros and cons?"
+</p>
+<ol>
+<li><strong>Communicate the decision</strong></li>
+<p>
+</ol>
+   - Test: Patient can express choice clearly
+</p>
+
+<strong>If Patient Lacks Capacity</strong>:
+<ul>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> life-saving surgery</strong>: Proceed under doctrine of necessity (in patient's best interest)</li>
+<li><strong>Elective surgery</strong>: Seek consent from legal guardian/enduring power of attorney, or apply to tribunal (NCAT in NSW)</li>
+<li><strong>Do NOT get consent from family members</strong> (common IMG mistake) - family can provide input on patient's wishes, but cannot give legal consent</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 2: Post-operative Assessment and Complications</h2>
+
+<h3>Framework: The "5 Ws" of Post-operative Complications (by Timing)</h3>
+
+<strong>Dr. Amir's Emphasis: PATTERN RECOGNITION by time since surgery</strong>
+
+<p>
+| <strong>Timing</strong> | <strong>"W"</strong> | <strong>Complication</strong> | <strong>Think Immediately</strong> |
+|------------|---------|-----------------|----------------------|
+| <strong>Day 0-1</strong> | <strong>Wind</strong> | <strong>Respiratory</strong> | Atelectasis, aspiration, pulmonary oedema |
+| <strong>Day 2-3</strong> | <strong>Water</strong> | <strong>Urinary</strong> | UTI, urinary retention |
+| <strong>Day 3-5</strong> | <strong>Walking</strong> | <strong>VTE</strong> | DVT, PE |
+| <strong>Day 5-7</strong> | <strong>Wound</strong> | <strong>Wound infection</strong> | Surgical site infection, dehiscence |
+| <strong>Day 7-10</strong> | <strong>Wonder drugs</strong> | <strong>Drug reaction</strong> | Antibiotic-associated diarrhoea (C. diff), drug fever |
+| <strong>Day 7-14</strong> | <strong>(Bonus W)</strong> | <strong>Wound breakdown</strong> | Anastomotic leak, dehiscence, abscess |
+</p>
+
+<strong>This temporal pattern is GOLD for OSCE</strong>:
+<ul>
+<li>Patient post-op day 1 with fever → Think respiratory (atelectasis, aspiration)</li>
+<li>Patient post-op day 4 with fever → Think DVT/PE or early wound infection</li>
+<li>Patient post-op day 7 with fever + abdominal pain after bowel resection → Think anastomotic leak</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Detailed Post-operative Complications</h3>
+
+<h4>Day 0-1: WIND (Respiratory Complications)</h4>
+
+<strong>Common Complications</strong>:
+<ol>
+<li><strong>Atelectasis</strong> (most common cause of fever in first 48 hours)</li>
+<li><strong>Aspiration pneumonia</strong></li>
+<li><strong>Pulmonary oedema</strong> (fluid overload)</li>
+<li><strong>Pneumothorax</strong> (if central line inserted, thoracic surgery)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h5>1. Atelectasis</h5>
+
+<strong>Pathophysiology</strong>: Collapse of alveoli due to shallow breathing, mucus plugging
+
+<strong>Risk Factors</strong>:
+<ul>
+<li>Upper abdominal or thoracic surgery (painful to breathe deeply)</li>
+<li>Smokers, pre-existing lung disease</li>
+<li>Prolonged anaesthesia</li>
+<li>Obesity</li>
+<p>
+</ul>
+</p>
+
+<strong>Clinical Features</strong>:
+<ul>
+<li><strong>Low-grade fever</strong> (typically <38.5°C)</li>
+<li><strong>Reduced air entry</strong> at lung bases</li>
+<li><strong>Tachypnoea</strong>, increased work of breathing</li>
+<li><strong>Hypoxia</strong> (SpO2 <95% on room air)</li>
+<li>CXR: Basilar opacities, volume loss</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential Diagnosis</strong>:
+<ul>
+<li>Atelectasis vs pneumonia (pneumonia has productive cough, higher fever, consolidation on CXR)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Incentive spirometry</strong> (10 deep breaths every hour)</li>
+<li><strong>Chest physiotherapy</strong></li>
+<li><strong>Mobilization</strong> (get patient out of bed)</li>
+<li><strong>Analgesia</strong> (so patient can breathe deeply without pain)</li>
+<li><strong>Supplemental O2</strong> if hypoxic</li>
+<p>
+</ul>
+</p>
+
+<strong>Prevention</strong> (CRITICAL - mention in OSCE):
+<ul>
+<li>Pre-op: Smoking cessation, incentive spirometry teaching</li>
+<li>Intra-op: Lung-protective ventilation</li>
+<li>Post-op: Early mobilization, adequate analgesia, chest physiotherapy</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h5>2. Aspiration Pneumonia</h5>
+
+<strong>Pathophysiology</strong>: Inhalation of gastric contents during induction or emergence from anaesthesia
+
+<strong>Risk Factors</strong>:
+<ul>
+<li><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> surgery (not adequately fasted)</li>
+<li>Difficult intubation</li>
+<li>GORD, hiatus hernia</li>
+<li>Reduced consciousness</li>
+<p>
+</ul>
+</p>
+
+<strong>Clinical Features</strong>:
+<ul>
+<li><strong>Sudden onset</strong> during or immediately after surgery</li>
+<li><strong>Hypoxia</strong>, tachypnoea, bronchospasm</li>
+<li><strong>Fever</strong>, productive cough (may be purulent or bloodstained)</li>
+<li>CXR: Right lower lobe infiltrate (most common site)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Supplemental O2</strong>, may need mechanical ventilation if severe</li>
+<li><strong>IV antibiotics</strong>: Ceftriaxone + metronidazole (cover anaerobes)</li>
+<li><strong>Chest physiotherapy</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Prevention</strong>:
+<ul>
+<li>Adequate fasting (6 hours food, 2 hours clear fluids)</li>
+<li>Rapid sequence induction for <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> surgery</li>
+<li>Cricoid pressure during induction</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h5>3. Pulmonary Oedema (Fluid Overload)</h5>
+
+<strong>Pathophysiology</strong>: Excessive IV fluid administration
+
+<strong>Risk Factors</strong>:
+<ul>
+<li>Elderly</li>
+<li>Heart failure, renal failure</li>
+<li>Over-resuscitation in theatre</li>
+<p>
+</ul>
+</p>
+
+<strong>Clinical Features</strong>:
+<ul>
+<li><strong>Dyspnoea</strong>, orthopnoea</li>
+<li><strong>Bilateral basal crackles</strong></li>
+<li><strong>Raised JVP</strong></li>
+<li><strong>Hypoxia</strong></li>
+<li>CXR: Bilateral infiltrates, Kerley B lines, cardiomegaly, pleural effusions</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Sit patient upright</strong></li>
+<li><strong>Supplemental O2</strong></li>
+<li><strong>IV furosemide</strong> 40mg (reduce preload)</li>
+<li><strong>Fluid restrict</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Day 2-3: WATER (Urinary Complications)</h4>
+
+<strong>Common Complications</strong>:
+<ol>
+<li><strong>UTI</strong> (catheter-associated)</li>
+<li><strong>Urinary retention</strong></li>
+<li><strong>Acute kidney injury</strong> (less common)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h5>1. Catheter-Associated UTI (CAUTI)</h5>
+
+<strong>Risk Factors</strong>:
+<ul>
+<li>Urinary catheter in situ (risk increases with duration)</li>
+<li>Female sex</li>
+<li>Diabetes</li>
+<li>Immunosuppression</li>
+<p>
+</ul>
+</p>
+
+<strong>Clinical Features</strong>:
+<ul>
+<li><strong>Fever</strong>, rigors (if pyelonephritis or urosepsis)</li>
+<li><strong>Dysuria</strong> (if catheter removed), frequency, urgency</li>
+<li><strong>Suprapubic tenderness</strong></li>
+<li>Urine: Cloudy, offensive smell</li>
+<p>
+</ul>
+</p>
+
+<strong>Diagnosis</strong>:
+<ul>
+<li><strong>Urinalysis</strong>: Leucocytes, nitrites, blood</li>
+<li><strong>Urine culture</strong>: >10^5 CFU/mL</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Remove catheter</strong> if no longer needed (most important step)</li>
+<li><strong>IV antibiotics</strong> if septic: Ceftriaxone or gentamicin (adjust based on culture)</li>
+<li><strong>Oral antibiotics</strong> if not septic: Trimethoprim or nitrofurantoin</li>
+<p>
+</ul>
+</p>
+
+<strong>Prevention</strong>:
+<ul>
+<li><strong>Avoid unnecessary catheterization</strong></li>
+<li><strong>Remove catheter ASAP</strong></li>
+<li>Aseptic insertion technique</li>
+<li>Closed drainage system</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h5>2. Urinary Retention</h5>
+
+<strong>Risk Factors</strong>:
+<ul>
+<li>Older males (BPH)</li>
+<li>Spinal/epidural anaesthesia</li>
+<li>Anticholinergic drugs</li>
+<li>Pelvic surgery (rectal, gynaecological)</li>
+<p>
+</ul>
+</p>
+
+<strong>Clinical Features</strong>:
+<ul>
+<li><strong>Unable to pass urine</strong> >6 hours post-op</li>
+<li><strong>Suprapubic pain and distension</strong></li>
+<li><strong>Palpable bladder</strong> (dull to percussion above pubic symphysis)</li>
+<li><strong>Overflow incontinence</strong> (dribbling) if chronic</li>
+<p>
+</ul>
+</p>
+
+<strong>Diagnosis</strong>:
+<ul>
+<li><strong>Bladder scan</strong>: >500mL confirms retention</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Catheterization</strong> (in-out catheter or IDC)</li>
+<li><strong>Alpha-blocker</strong> (tamsulosin) if due to BPH</li>
+<li><strong>Treat constipation</strong> if contributing</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Day 3-5: WALKING (Venous Thromboembolism)</h4>
+
+<strong>Common Complications</strong>:
+<ol>
+<li><strong>DVT</strong> (Deep Vein Thrombosis)</li>
+<li><strong>PE</strong> (Pulmonary Embolism)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h5>1. Deep Vein Thrombosis (DVT)</h5>
+
+<strong>Pathophysiology</strong>: Virchow's triad (venous stasis, hypercoagulability, endothelial injury) - all present post-op
+
+<strong>Risk Factors</strong> (Caprini Score):
+<ul>
+<li>Surgery (especially pelvic, orthopaedic)</li>
+<li>Immobility</li>
+<li>Previous VTE</li>
+<li>Cancer</li>
+<li>Obesity</li>
+<li>Thrombophilia</li>
+<li>Pregnancy/OCP/HRT</li>
+<p>
+</ul>
+</p>
+
+<strong>Clinical Features</strong>:
+<ul>
+<li><strong>Unilateral leg swelling</strong> (measure calf circumference - >3cm difference = significant)</li>
+<li><strong>Calf tenderness</strong></li>
+<li><strong>Warmth, erythema</strong> over affected area</li>
+<li><strong>Homan's sign</strong> (pain on dorsiflexion of foot - unreliable, do not use)</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential Diagnosis</strong>:
+<ul>
+<li>DVT vs cellulitis (bilateral, fever, more erythema in cellulitis)</li>
+<li>DVT vs ruptured Baker's cyst</li>
+<p>
+</ul>
+</p>
+
+<strong>Diagnosis</strong>:
+<ul>
+<li><strong>Wells Score</strong> for DVT (if ≥2 points, high probability)</li>
+<li><strong>D-dimer</strong> (if low Wells score and low clinical suspicion - high sensitivity, low specificity)</li>
+<li><strong>Doppler ultrasound</strong> of leg veins (gold standard - sensitivity ~95%)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Anticoagulation</strong>:</li>
+<p>
+</ul>
+  - <strong>LMWH</strong> (enoxaparin 1.5mg/kg SC daily) or <strong>Fondaparinux</strong> (if recent HIT)
+  - Start <strong>DOAC</strong> (apixaban or rivaroxaban) - can start immediately without warfarin
+  - <strong>Duration</strong>: 3 months if provoked (post-op), 6 months if unprovoked or recurrent
+</p>
+<ul>
+<li><strong>Mobilization</strong> (bed rest is NOT recommended - does not reduce PE risk and increases complications)</li>
+<p>
+</ul>
+</p>
+
+<strong>Prevention</strong> (VTE Prophylaxis - CRITICAL for OSCE):
+
+<strong>Pharmacological</strong>:
+<ul>
+<li><strong>LMWH</strong> (enoxaparin 40mg SC daily) - start 6 hours post-op if haemostasis achieved</li>
+<li><strong>Fondaparinux</strong> 2.5mg SC daily (alternative)</li>
+<li><strong>DOACs</strong>: Not yet approved for VTE prophylaxis in Australia</li>
+<p>
+</ul>
+</p>
+
+<strong>Mechanical</strong>:
+<ul>
+<li><strong>TED stockings</strong> (thromboembolic deterrent stockings)</li>
+<li><strong>Intermittent pneumatic compression</strong> (IPC) devices during and after surgery</li>
+<li><strong>Early mobilization</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Who Needs VTE Prophylaxis?</strong> (Australian NHMRC Guidelines):
+<ul>
+<li><strong>All surgical patients</strong> unless contraindicated (active bleeding, high bleeding risk)</li>
+<li><strong>High risk</strong>: Major surgery (>30 min), orthopaedic, cancer, previous VTE → <strong>LMWH + mechanical prophylaxis</strong></li>
+<li><strong>Moderate risk</strong>: Minor surgery, age >60, obesity → <strong>Mechanical prophylaxis ± LMWH</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Duration</strong>: Continue until fully mobile (minimum 7 days, up to 28 days for high-risk like orthopaedic surgery)
+
+<hr>
+
+<h5>2. Pulmonary Embolism (PE)</h5>
+
+<strong>Clinical Features</strong>:
+<ul>
+<li><strong>Sudden onset dyspnoea</strong> (most common symptom)</li>
+<li><strong>Pleuritic chest pain</strong></li>
+<li><strong>Tachycardia</strong>, tachypnoea</li>
+<li><strong>Hypoxia</strong> (SpO2 <95%)</li>
+<li><strong>Haemoptysis</strong> (if pulmonary infarction)</li>
+<li><strong>Syncope, hypotension</strong> (if massive PE with RV strain)</li>
+<p>
+</ul>
+</p>
+
+<strong>Examination</strong>:
+<ul>
+<li><strong>Tachycardia</strong> (often only sign)</li>
+<li><strong>Signs of DVT</strong> in leg (only ~50% of PE patients)</li>
+<li><strong>Raised JVP</strong>, loud P2, RV heave (if RV strain)</li>
+<li><strong>Pleural rub</strong> (if pulmonary infarction)</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential Diagnosis</strong>:
+<ul>
+<li>PE vs MI (PE more likely if pleuritic pain, no cardiac risk factors)</li>
+<li>PE vs pneumonia (PE more sudden onset, less fever)</li>
+<li>PE vs pneumothorax (pneumothorax has hyperresonance, reduced breath sounds)</li>
+<p>
+</ul>
+</p>
+
+<strong>Diagnosis</strong>:
+<ol>
+<li><strong>Wells Score for PE</strong> (score ≥4 = PE likely)</li>
+<li><strong>D-dimer</strong> (if Wells score <4)</li>
+<li><strong>CTPA</strong> (CT pulmonary angiogram) - gold standard (sensitivity 90%, specificity 95%)</li>
+<li><strong>V/Q scan</strong> if CTPA contraindicated (renal failure, contrast allergy)</li>
+<p>
+</ol>
+</p>
+
+<strong>ECG Findings</strong> (not diagnostic, but supportive):
+<ul>
+<li><strong>Sinus tachycardia</strong> (most common)</li>
+<li><strong>S1Q3T3</strong> pattern (large S wave in lead I, Q wave and inverted T in lead III) - classic but only 20% of cases</li>
+<li><strong>Right heart strain</strong> (RBBB, right axis deviation)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+
+<strong>Haemodynamically Stable PE</strong>:
+<ul>
+<li><strong>Anticoagulation</strong>: Same as DVT (LMWH + DOAC, or LMWH + warfarin)</li>
+<li><strong>Supplemental O2</strong></li>
+<li><strong>Analgesia</strong> for pleuritic pain</li>
+<p>
+</ul>
+</p>
+
+<strong>Haemodynamically Unstable PE</strong> (Massive PE):
+<ul>
+<li><strong>Resuscitation</strong>: High-flow O2, IV access, fluids</li>
+<li><strong>Thrombolysis</strong>: Alteplase 50mg IV (if no contraindications - recent surgery IS a contraindication)</li>
+<li><strong>Embolectomy</strong>: Surgical or catheter-directed if thrombolysis contraindicated</li>
+<p>
+</ul>
+</p>
+
+<strong>Prevention</strong>: Same as DVT prophylaxis
+
+<hr>
+
+<h4>Day 5-7: WOUND (Wound Complications)</h4>
+
+<strong>Common Complications</strong>:
+<ol>
+<li><strong>Surgical site infection (SSI)</strong></li>
+<li><strong>Wound dehiscence</strong></li>
+<li><strong>Haematoma/seroma</strong></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h5>1. Surgical Site Infection (SSI)</h5>
+
+<strong>Classification</strong> (CDC):
+<ul>
+<li><strong>Superficial incisional</strong>: Skin and subcutaneous tissue only (most common)</li>
+<li><strong>Deep incisional</strong>: Fascial and muscle layers</li>
+<li><strong>Organ/space</strong>: Within anatomical space opened during surgery (e.g., intra-abdominal abscess)</li>
+<p>
+</ul>
+</p>
+
+<strong>Risk Factors</strong>:
+<ul>
+<li>Contaminated/dirty surgery (bowel perforation, abscess)</li>
+<li>Diabetes, obesity, smoking</li>
+<li>Prolonged surgery (>3 hours)</li>
+<li>Malnutrition, immunosuppression</li>
+<li>Hypothermia intra-op</li>
+<p>
+</ul>
+</p>
+
+<strong>Clinical Features</strong>:
+<ul>
+<li><strong>Fever</strong> (usually day 5-7 post-op)</li>
+<li><strong>Wound erythema, warmth, tenderness</strong></li>
+<li><strong>Purulent discharge</strong> from wound</li>
+<li><strong>Fluctuance</strong> (abscess formation)</li>
+<li><strong>Systemic sepsis</strong> if severe</li>
+<p>
+</ul>
+</p>
+
+<strong>Diagnosis</strong>:
+<ul>
+<li><strong>Clinical diagnosis</strong></li>
+<li><strong>Wound swab</strong> for culture (before starting antibiotics)</li>
+<li><strong>CT abdomen</strong> if organ/space SSI suspected (abscess)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+
+<strong>Superficial SSI</strong>:
+<ul>
+<li><strong>Open wound</strong> (remove sutures/staples to allow drainage)</li>
+<li><strong>Wound cleaning</strong> and dressing changes</li>
+<li><strong>Antibiotics</strong>: Flucloxacillin (if cellulitis spreading beyond wound edges) or Cephalexin</li>
+<li>Usually heals by secondary intention</li>
+<p>
+</ul>
+</p>
+
+<strong>Deep SSI/Abscess</strong>:
+<ul>
+<li><strong>Surgical drainage</strong> (re-operation or percutaneous under CT/USS guidance)</li>
+<li><strong>IV antibiotics</strong>: Ceftriaxone + metronidazole (broad-spectrum, cover anaerobes)</li>
+<li><strong>Wound VAC</strong> (vacuum-assisted closure) for large defects</li>
+<p>
+</ul>
+</p>
+
+<strong>Prevention</strong> (Surgical Site Infection Prevention Guidelines):
+<ul>
+<li><strong>Pre-op</strong>: Shower/bath, clip hair (do not shave), antibiotics within 60 min of incision</li>
+<li><strong>Intra-op</strong>: Aseptic technique, maintain normothermia and normoglycaemia, re-dose antibiotics if surgery >3 hours</li>
+<li><strong>Post-op</strong>: Sterile dressing for 24-48 hours, aseptic technique for dressing changes</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h5>2. Wound Dehiscence (Burst Abdomen)</h5>
+
+<strong>Definition</strong>: Separation of wound layers (superficial = skin, deep = fascial)
+
+<strong>Risk Factors</strong>:
+<ul>
+<li><strong>Coughing, straining</strong> (increases intra-abdominal pressure)</li>
+<li>Poor tissue healing: Diabetes, malnutrition, obesity, steroids</li>
+<li>Wound infection</li>
+<li>Poor surgical technique</li>
+<p>
+</ul>
+</p>
+
+<strong>Clinical Features</strong>:
+
+<strong>Superficial Dehiscence</strong>:
+<ul>
+<li>Skin edges separate, but fascia intact</li>
+<li>Serosanguinous discharge from wound</li>
+<p>
+</ul>
+</p>
+
+<strong>Deep Dehiscence (Fascial Dehiscence)</strong>:
+<ul>
+<li><strong>"Burst abdomen"</strong>: Sudden gush of serosanguinous fluid ("pink salmon-colored discharge")</li>
+<li><strong>Evisceration</strong>: Bowel visible or protruding through wound (surgical <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span>)</li>
+<li>Patient reports <strong>"popping" or "tearing" sensation</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+
+<strong>Superficial Dehiscence</strong>:
+<ul>
+<li>Wound care, dressing changes</li>
+<li>May heal by secondary intention or need delayed closure</li>
+<p>
+</ul>
+</p>
+
+<strong>Deep Dehiscence/Evisceration</strong>:
+<ul>
+<li><strong>SURGICAL <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong></li>
+<li><strong>Cover bowel with sterile saline-soaked dressings</strong></li>
+<li><strong>IV access, fluids, NBM</strong></li>
+<li><strong>IV antibiotics</strong>: Ceftriaxone + metronidazole</li>
+<li><strong>Return to theatre for re-suturing</strong> (often use tension sutures or mesh)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h5>3. Anastomotic Leak (Specific to Bowel Surgery)</h5>
+
+<strong>Definition</strong>: Breakdown of surgical join between two bowel ends
+
+<strong>Timing</strong>: Usually <strong>day 5-10</strong> post-op
+
+<strong>Risk Factors</strong>:
+<ul>
+<li>Poor blood supply to anastomosis</li>
+<li>Tension on anastomosis</li>
+<li>Malnutrition, diabetes, smoking, steroids</li>
+<li>Contaminated field at time of surgery</li>
+<p>
+</ul>
+</p>
+
+<strong>Clinical Features</strong>:
+<ul>
+<li><strong>Fever</strong>, tachycardia</li>
+<li><strong>Abdominal pain</strong>, peritonism</li>
+<li><strong>Prolonged ileus</strong> (failure to pass flatus/stool)</li>
+<li><strong>Wound discharge</strong> (if leak tracks to wound)</li>
+<li><strong>Feculent discharge</strong> from drain (pathognomonic)</li>
+<li><strong>Sepsis</strong> (hypotension, confusion, oliguria)</li>
+<p>
+</ul>
+</p>
+
+<strong>Diagnosis</strong>:
+<ul>
+<li><strong>CT abdomen with IV and PO contrast</strong>: Shows fluid collection, free air, extravasation of oral contrast</li>
+<li><strong>Drain fluid</strong>: Elevated amylase (if pancreatic), feculent</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Resuscitation</strong>: IV fluids, broad-spectrum antibiotics (piperacillin-tazobactam or meropenem)</li>
+<li><strong>NBM</strong>, NG tube decompression</li>
+<li><strong>Drainage</strong>: Percutaneous (if contained leak and accessible) or <strong>surgical re-exploration</strong> (if peritonitis, sepsis)</li>
+<li><strong>May require stoma</strong> formation (diverting ileostomy/colostomy to protect leak)</li>
+<p>
+</ul>
+</p>
+
+<strong>Prognosis</strong>:
+<ul>
+<li>Mortality 10-20% (higher if delayed diagnosis)</li>
+<li>Early recognition = better outcomes</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Day 7-10: WONDER DRUGS (Drug-Related Complications)</h4>
+
+<strong>Common Complications</strong>:
+<ol>
+<li><strong>Antibiotic-associated diarrhoea</strong> (C. difficile)</li>
+<li><strong>Drug fever</strong></li>
+<li><strong>Antibiotic allergy</strong></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h5>1. Clostridioides difficile (C. diff) Infection</h5>
+
+<strong>Pathophysiology</strong>: Antibiotic use disrupts normal gut flora → C. diff overgrowth → toxin production (Toxin A and B)
+
+<strong>Risk Factors</strong>:
+<ul>
+<li><strong>Antibiotic use</strong> (especially cephalosporins, clindamycin, fluoroquinolones)</li>
+<li>Elderly</li>
+<li>Prolonged hospitalization</li>
+<li>PPI use</li>
+<p>
+</ul>
+</p>
+
+<strong>Clinical Features</strong>:
+<ul>
+<li><strong>Watery diarrhoea</strong> (often profuse, foul-smelling)</li>
+<li><strong>Abdominal pain, cramping</strong></li>
+<li><strong>Fever</strong>, leucocytosis</li>
+<li><strong>Complications</strong>: Toxic megacolon, bowel perforation</li>
+<p>
+</ul>
+</p>
+
+<strong>Diagnosis</strong>:
+<ul>
+<li><strong>Stool C. diff toxin PCR</strong> (most sensitive and specific)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+
+<strong>First episode</strong>:
+<ul>
+<li><strong>Stop offending antibiotic</strong> if possible</li>
+<li><strong>Oral vancomycin</strong> 125mg QDS for 10 days (first-line in Australia - eTG 2024)</li>
+<li>Alternative: <strong>Metronidazole</strong> 400mg TDS PO (if vancomycin unavailable)</li>
+<li><strong>Avoid antidiarrhoeal agents</strong> (loperamide) - risk of toxic megacolon</li>
+<p>
+</ul>
+</p>
+
+<strong>Severe/Complicated</strong>:
+<ul>
+<li><strong>Oral vancomycin</strong> 125mg QDS + <strong>IV metronidazole</strong> 500mg TDS</li>
+<li><strong>Surgical consult</strong> if toxic megacolon, perforation</li>
+<p>
+</ul>
+</p>
+
+<strong>Recurrent C. diff</strong>:
+<ul>
+<li><strong>Oral vancomycin</strong> (prolonged/tapered course) or <strong>Fidaxomicin</strong></li>
+<li><strong>Faecal microbiota transplant</strong> (FMT) for multiple recurrences</li>
+<p>
+</ul>
+</p>
+
+<strong>Prevention</strong>:
+<ul>
+<li><strong>Antibiotic stewardship</strong> (avoid unnecessary antibiotics)</li>
+<li><strong>Hand hygiene</strong>: Soap and water (alcohol gel does NOT kill C. diff spores)</li>
+<li><strong>Isolation</strong>: Contact precautions for infected patients</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 3: Systematic Post-operative Patient Assessment (OSCE)</h2>
+
+<h3>OSCE Scenario: "Review a Post-operative Patient"</h3>
+
+<strong>Typical Candidate Instructions</strong>:
+<p>
+"You are the surgical intern. Mr. Jones is day 3 post laparoscopic cholecystectomy. The nurse has asked you to review him as he has developed a fever. Take a focused history, examine the patient, and present your differential diagnosis and management plan."
+</p>
+
+<hr>
+
+<h3>Approach: "POST-OP" Framework</h3>
+
+<h4>P - <strong>PROCEDURE</strong> (What surgery, when, why)</h4>
+
+<strong>Opening Question</strong>:
+<p>
+"Hello Mr. Jones, I'm Dr. [Name], one of the surgical doctors. I understand you've had an operation recently. Can you tell me what operation you had and when?"
+</p>
+
+<strong>Key Information to Obtain</strong>:
+<ol>
+<li><strong>Type of surgery</strong>: Laparoscopic vs open, elective vs <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></li>
+<li><strong>Indication</strong>: Why was surgery needed?</li>
+<li><strong>Date of surgery</strong>: Post-op day? (Critical for differential diagnosis)</li>
+<li><strong>Complications during surgery</strong>: "Were there any problems during the operation that you were told about?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Differential Thinking</strong>:
+<ul>
+<li><strong>Type of surgery determines complications</strong>: Bowel surgery → anastomotic leak, Thoracic surgery → pneumothorax, Vascular surgery → bleeding</li>
+<li><strong>Timing determines differential</strong>: Day 1 = respiratory, Day 3 = DVT/UTI, Day 7 = wound infection/anastomotic leak</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>O - <strong>ONGOING SYMPTOMS</strong> (Current Complaints)</h4>
+
+<strong>Key Questions</strong>:
+<ol>
+<li>"How are you feeling today?"</li>
+<li>"What symptoms are you experiencing?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Systematic Review Based on 5 Ws</strong>:
+
+<strong>Fever</strong>:
+<ul>
+<li>"Have you felt feverish? Any chills or rigors?"</li>
+<li>Think: Infection (respiratory, urinary, wound, intra-abdominal), VTE</li>
+<p>
+</ul>
+</p>
+
+<strong>Respiratory (WIND)</strong>:
+<ul>
+<li>"Any shortness of breath?"</li>
+<li>"Any cough? Bringing up sputum?"</li>
+<li>"Any chest pain?" (If yes: "Sharp pain when you breathe in?" - pleuritic suggests PE or pneumonia)</li>
+<p>
+</ul>
+</p>
+
+<strong>Urinary (WATER)</strong>:
+<ul>
+<li>"Any problems passing urine?"</li>
+<li>"Do you have a catheter? When was it removed?"</li>
+<li>"Any burning when you pass urine?"</li>
+<p>
+</ul>
+</p>
+
+<strong>DVT/PE (WALKING)</strong>:
+<ul>
+<li>"Any leg pain or swelling?"</li>
+<li>"Any calf tenderness?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Wound (WOUND)</strong>:
+<ul>
+<li>"How is your wound? Any pain, redness, or discharge?"</li>
+<li>"Have the dressings been changed? What did the wound look like?"</li>
+<p>
+</ul>
+</p>
+
+<strong>GI (Especially if abdominal surgery)</strong>:
+<ul>
+<li>"Are you passing wind? Have your bowels opened?"</li>
+<li>"Any nausea or vomiting?"</li>
+<li>"Any abdominal pain?" (New pain or worsening pain → think complication)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>S - <strong>SUPPORTIVE CARE</strong> (Analgesia, Fluids, Drains, Catheters)</h4>
+
+<strong>Key Questions</strong>:
+<ol>
+<li>"What pain relief are you on? Is it controlling your pain?"</li>
+<p>
+</ol>
+   - Adequate analgesia = patient can breathe deeply, mobilize → reduces complications
+</p>
+<ol>
+<li>"Are you on a drip? Are you eating and drinking?"</li>
+<p>
+</ol>
+   - Still on IV fluids? → May indicate ileus, not tolerating diet
+</p>
+<ol>
+<li>"Do you have any drains? What color is the fluid?"</li>
+<p>
+</ol>
+   - Drain output: Bloody (bleeding), bile-stained (bile leak), feculent (anastomotic leak)
+</p>
+<ol>
+<li>"Do you have a catheter? Are you passing urine?"</li>
+<p>
+</ol>
+   - Urine output: Oliguria (<0.5mL/kg/hr) suggests hypovolaemia or AKI
+</p>
+
+<hr>
+
+<h4>T - <strong>TREATMENT and PROPHYLAXIS</strong> (Medications, VTE Prophylaxis)</h4>
+
+<strong>Key Questions</strong>:
+<ol>
+<li>"What medications are you on now?"</li>
+<li>"Are you getting injections for blood clots?" (LMWH - VTE prophylaxis)</li>
+<li>"Are you wearing compression stockings?"</li>
+<li>"Have you been mobilizing? Getting out of bed?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Why This Matters</strong>:
+<ul>
+<li>If patient NOT on VTE prophylaxis and immobile → High risk of DVT/PE</li>
+<li>Mention in presentation: "Patient has not been mobilizing and is not on VTE prophylaxis, increasing risk of DVT"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>O - <strong>OBSERVATIONS</strong> (Vital Signs)</h4>
+
+<strong>ALWAYS Review Vital Signs</strong> (often provided in OSCE):
+
+<strong>Temperature</strong>:
+<ul>
+<li><strong>Fever</strong> (>38°C): Suggests infection, VTE</li>
+<li><strong>Hypothermia</strong> (<36°C): Suggests sepsis (late sign, poor prognosis)</li>
+<p>
+</ul>
+</p>
+
+<strong>Heart Rate</strong>:
+<ul>
+<li><strong>Tachycardia</strong>: Suggests hypovolaemia, pain, infection, PE, bleeding</li>
+<li><strong>Bradycardia</strong>: If on beta-blocker (less concerning), or severe hypoxia (concerning)</li>
+<p>
+</ul>
+</p>
+
+<strong>Blood Pressure</strong>:
+<ul>
+<li><strong>Hypotension</strong>: Suggests hypovolaemia (bleeding), sepsis, PE (massive)</li>
+<li><strong>Hypertension</strong>: Suggests pain, fluid overload</li>
+<p>
+</ul>
+</p>
+
+<strong>Respiratory Rate</strong> (MOST IMPORTANT VITAL SIGN):
+<ul>
+<li><strong>Tachypnoea</strong> (RR >20): Suggests respiratory compromise (PE, pneumonia, atelectasis), sepsis, pain</li>
+<li>RR >25 = severe illness, may need rapid response team</li>
+<p>
+</ul>
+</p>
+
+<strong>SpO2</strong>:
+<ul>
+<li><strong>Hypoxia</strong> (SpO2 <95% on room air): Suggests respiratory complication (atelectasis, pneumonia, PE, pulmonary oedema)</li>
+<p>
+</ul>
+</p>
+
+<strong>Urine Output</strong>:
+<ul>
+<li><strong>Oliguria</strong> (<0.5mL/kg/hr or <30mL/hr): Suggests hypovolaemia, AKI</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>P - <strong>PHYSICAL EXAMINATION</strong></h4>
+
+<strong>General Inspection</strong>:
+<ul>
+<li><strong>Patient appearance</strong>: Comfortable vs distressed, pale (anaemia/bleeding), jaundiced, cyanosed</li>
+<li><strong>Hydration status</strong>: Dry mucous membranes (dehydrated), peripheral oedema (fluid overload)</li>
+<p>
+</ul>
+</p>
+
+<strong>Focused Examination Based on Differential</strong>:
+
+<strong>Respiratory Examination</strong> (if fever day 0-2, or dyspnoea):
+<ul>
+<li><strong>Inspection</strong>: Respiratory rate, use of accessory muscles</li>
+<li><strong>Palpation</strong>: Chest expansion (reduced on affected side)</li>
+<li><strong>Percussion</strong>: Dull = consolidation/effusion, hyperresonant = pneumothorax</li>
+<li><strong>Auscultation</strong>: Reduced air entry (atelectasis), crackles (pneumonia, pulmonary oedema), wheeze (bronchospasm)</li>
+<p>
+</ul>
+</p>
+
+<strong>Cardiovascular Examination</strong> (if tachycardia, hypotension, or chest pain):
+<ul>
+<li><strong>JVP</strong>: Raised (heart failure, fluid overload, PE with RV strain)</li>
+<li><strong>Heart sounds</strong>: S3 gallop (heart failure), loud P2 (pulmonary hypertension in PE)</li>
+<li><strong>Peripheral oedema</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Abdominal Examination</strong> (if abdominal surgery or abdominal symptoms):
+<ul>
+<li><strong>Inspection</strong>: Distension (ileus, obstruction), scars, stoma (if present)</li>
+<li><strong>Auscultation</strong>: <strong>Do this FIRST</strong> in post-op patient</li>
+<p>
+</ul>
+  - <strong>Bowel sounds</strong>: Present (normal), absent (ileus), high-pitched (obstruction)
+</p>
+<ul>
+<li><strong>Palpation</strong>: Tenderness, guarding, rigidity (peritonitis suggests perforation or anastomotic leak)</li>
+<li><strong>Drains</strong>: Inspect site, type of fluid</li>
+<p>
+</ul>
+</p>
+
+<strong>Wound Examination</strong> (for ALL post-op patients):
+<ul>
+<li><strong>Inspection</strong>: Erythema, swelling, dehiscence, evisceration</li>
+<li><strong>Palpation</strong>: Tenderness, warmth, fluctuance (abscess)</li>
+<li><strong>Discharge</strong>: Serous (normal), purulent (infection), feculent (anastomotic leak to wound)</li>
+<li><strong>Remove dressing</strong>: Always offer to remove dressing in OSCE (examiner may say "not required" or provide photo)</li>
+<p>
+</ul>
+</p>
+
+<strong>Lower Limb Examination</strong> (if suspecting DVT/PE):
+<ul>
+<li><strong>Inspection</strong>: Unilateral swelling, erythema</li>
+<li><strong>Palpation</strong>: Calf tenderness, warmth, pitting oedema</li>
+<li><strong>Measurement</strong>: Calf circumference (>3cm difference = significant)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Presenting Your Findings (OSCE)</h3>
+
+<strong>Structure</strong>:
+<ol>
+<li><strong>Summary</strong>: "Mr. Jones is a [age]-year-old gentleman who is post-op day <input type="checkbox" checked> from [procedure]. He presents with [main symptoms]."</li>
+<li><strong>Vital signs</strong>: "His vital signs show [temperature], [HR], [BP], [RR], [SpO2]."</li>
+<li><strong>Examination findings</strong>: "On examination, [key positive and relevant negative findings]."</li>
+<li><strong>Differential diagnosis</strong>: "Given the timing and presentation, my differential diagnosis includes [list 3 differentials in order of likelihood, with justification]."</li>
+<li><strong>Management plan</strong>: "I would like to [investigations], [initial management], and [escalation plan]."</li>
+<p>
+</ol>
+</p>
+
+<strong>Example Presentation</strong>:
+<p>
+"Mr. Jones is a 65-year-old gentleman who is post-op day 3 from an elective laparoscopic cholecystectomy. He presents with fever to 38.5°C and right calf pain. His vital signs show temperature 38.5°C, heart rate 105, blood pressure 130/80, respiratory rate 18, and SpO2 96% on room air. On examination, his chest is clear, abdomen is soft and non-tender with clean wounds, but his right calf is tender with 2cm greater circumference compared to the left. Given the timing on day 3 post-op and clinical features, my differential diagnosis includes:
+</p>
+<ol>
+<li><strong>Right lower limb DVT</strong> (most likely - unilateral calf swelling and tenderness, timing day 3, risk factors of recent surgery)</li>
+<li>UTI (less likely - no urinary symptoms, but catheter was in situ until this morning)</li>
+<li>Early wound infection (less likely - wounds appear clean, no purulent discharge)</li>
+<p>
+</ol>
+</p>
+
+<p>
+I would like to calculate a Wells score for DVT, send blood tests including FBC, CRP, and D-dimer, and organize a Doppler ultrasound of the right leg. I would start LMWH if the Wells score is ≥2 or ultrasound confirms DVT, ensure the patient is on VTE prophylaxis if not already, and encourage mobilization."
+</p>
+
+<hr>
+
+<h2>Part 4: Common IMG Mistakes in Perioperative Care</h2>
+
+<h3>Mistake 1: Not Thinking About Timing of Complications</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Treat all post-op fevers the same, regardless of timing</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Day 1 fever</strong> → Think respiratory (atelectasis)</li>
+<li><strong>Day 3 fever</strong> → Think UTI, DVT</li>
+<li><strong>Day 7 fever</strong> → Think wound infection, anastomotic leak</li>
+<p>
+</ul>
+</p>
+
+<strong>Why It Matters</strong>:
+<ul>
+<li>Temporal pattern recognition is key to efficient diagnosis</li>
+<li>Examiners expect you to use timing to guide differential</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 2: Not Examining the Wound</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Forget to inspect wound, or say "I would inspect the wound" without offering</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>ALWAYS offer to inspect the wound</strong>: "I'd like to remove the dressing and inspect the wound. May I do that?"</li>
+<li>Describe findings systematically</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 3: Not Checking VTE Prophylaxis</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Forget to ask about LMWH, TEDs, mobilization</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Always ask</strong>: "Are you getting injections for blood clots? Are you wearing stockings? Have you been getting out of bed?"</li>
+<li>Mention in presentation: "Patient is/is not on VTE prophylaxis"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 4: Not Recognizing Anastomotic Leak Early</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Attribute fever and abdominal pain post bowel surgery to "normal post-op course"</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>High index of suspicion</strong> for anastomotic leak after bowel surgery</li>
+<li><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s: Fever, abdominal pain, prolonged ileus, feculent drain output → <strong>Needs <span style="color: #e74c3c; font-weight: bold;">URGENT</span> CT and surgical review</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 5: Not Stopping Anticoagulation Correctly Pre-op</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Tell patient to stop warfarin the day before surgery (not enough time for INR to normalize)</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Warfarin</strong>: Stop 5 days before, check INR day before surgery</li>
+<li><strong>DOACs</strong>: Stop 24-48 hours before (depending on bleeding risk of surgery)</li>
+<li><strong>Aspirin</strong>: Usually continue</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 6: Getting Consent from Family Member</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Patient lacks capacity → Get consent from family (legal in some countries, NOT legal in Australia)</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>If patient lacks capacity</strong>:</li>
+<p>
+</ul>
+  - <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> life-saving surgery → Proceed under "best interest"
+  - Elective surgery → Seek legal guardian/enduring power of attorney, or tribunal
+</p>
+<ul>
+<li><strong>Family cannot give legal consent</strong> (but can provide input on patient's wishes)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 5: Quick Reference Tables</h2>
+
+<h3>Pre-operative Risk Stratification</h3>
+
+<p>
+| <strong>Tool</strong> | <strong>Purpose</strong> | <strong>When to Use</strong> |
+|----------|------------|----------------|
+| <strong>ASA Classification</strong> | General surgical risk | All patients |
+| <strong>Revised Cardiac Risk Index (RCRI)</strong> | Cardiac complication risk | Age >45 or cardiac history |
+| <strong>Wells Score (DVT/PE)</strong> | VTE risk | Post-op patient with symptoms |
+| <strong>Child-Pugh Score</strong> | Surgical risk in cirrhosis | Known cirrhosis |
+</p>
+
+<hr>
+
+<h3>Post-operative Complications by Timing (5 Ws)</h3>
+
+<p>
+| <strong>Day</strong> | <strong>W</strong> | <strong>Complication</strong> | <strong>Key Features</strong> | <strong>Management</strong> |
+|---------|-------|-----------------|------------------|----------------|
+| <strong>0-1</strong> | Wind | Atelectasis | Low fever, reduced air entry | Incentive spirometry, mobilization |
+| <strong>0-1</strong> | Wind | Aspiration | Sudden hypoxia, right lower lobe infiltrate | O2, antibiotics (ceftriaxone + metronidazole) |
+| <strong>2-3</strong> | Water | UTI | Dysuria, fever, cloudy urine | Remove catheter, antibiotics |
+| <strong>2-3</strong> | Water | Retention | Unable to void, suprapubic pain | Catheterization |
+| <strong>3-5</strong> | Walking | DVT | Unilateral calf swelling, tenderness | Doppler USS, LMWH |
+| <strong>3-5</strong> | Walking | PE | Sudden dyspnoea, pleuritic pain | CTPA, anticoagulation |
+| <strong>5-7</strong> | Wound | SSI | Erythema, purulent discharge | Open wound, antibiotics |
+| <strong>5-10</strong> | Wound | Anastomotic leak | Fever, abdominal pain, feculent drain | CT abdomen, surgical re-exploration |
+| <strong>7-10</strong> | Wonder drugs | C. diff | Watery diarrhoea, abdominal pain | Stool PCR, oral vancomycin |
+</p>
+
+<hr>
+
+<h3>Perioperative Medication Management</h3>
+
+<p>
+| <strong>Medication</strong> | <strong>Pre-operative</strong> | <strong>Post-operative</strong> |
+|----------------|------------------|-------------------|
+| <strong>Warfarin</strong> | Stop 5 days before, bridge with LMWH if high VTE risk | Restart evening after surgery, continue LMWH until INR therapeutic |
+| <strong>DOACs</strong> | Stop 24-48 hours before | Restart 24-48 hours post-op (when haemostasis achieved) |
+| <strong>Aspirin</strong> | Continue (stop only for high bleeding risk surgery) | Continue |
+| <strong>Clopidogrel</strong> | Stop 5-7 days before (or continue if recent stent <6 weeks) | Restart when haemostasis achieved |
+| <strong>Metformin</strong> | Omit on morning of surgery | Restart when eating normally |
+| <strong>SGLT2 inhibitors</strong> | Stop 3 days before | Restart when eating, drinking, well |
+| <strong>Beta-blockers</strong> | Continue | Continue |
+| <strong>ACEi/ARBs</strong> | Omit on morning of surgery | Restart post-op day 1-2 |
+| <strong>Insulin</strong> | VRIII (Variable Rate IV Insulin Infusion) | Continue VRIII until eating, then restart SC insulin |
+| <strong>Steroids (long-term)</strong> | Continue + stress-dose steroid (hydrocortisone 100mg IV at induction) | Wean back to usual dose |
+</p>
+
+<hr>
+
+<h3>VTE Prophylaxis Guidelines</h3>
+
+<p>
+| <strong>Risk Level</strong> | <strong>Criteria</strong> | <strong>Prophylaxis</strong> |
+|----------------|-------------|----------------|
+| <strong>Low risk</strong> | Minor surgery (<30 min), age <40, mobile | Early mobilization only |
+| <strong>Moderate risk</strong> | Minor surgery age >60, or major surgery age <40 | TEDs + IPC ± LMWH |
+| <strong>High risk</strong> | Major surgery age >40, cancer, previous VTE, thrombophilia | TEDs + IPC + LMWH 40mg SC daily |
+| <strong>Very high risk</strong> | Orthopaedic (hip/knee), pelvic cancer surgery | Extended LMWH (28 days) or DOAC (rivaroxaban, apixaban) |
+</p>
+
+<hr>
+
+<h2>Part 6: Practice OSCE Stations</h2>
+
+<h3>OSCE Station 1: Pre-operative Assessment</h3>
+
+<strong>Candidate Instructions</strong>:
+<p>
+"Mrs. Smith is a 68-year-old woman scheduled for elective right hemicolectomy for colon cancer in 2 weeks. Perform a pre-operative assessment and identify any issues that need optimization before surgery. You have 8 minutes."
+</p>
+
+<strong>Key Points to Cover</strong>:
+<ol>
+<li><strong>Presenting problem</strong>: Confirm surgery type, indication (cancer), urgency (elective)</li>
+<li><strong>Systems review</strong>: Cardiovascular (functional capacity - can she climb stairs?), respiratory (smoking history, COPD), renal, diabetes</li>
+<li><strong>Medications</strong>: Anticoagulants (if on warfarin - plan to stop 5 days before), antihypertensives, diabetes medications</li>
+<li><strong>PMHx</strong>: Previous MI (→ RCRI score), previous VTE (→ need VTE prophylaxis)</li>
+<li><strong>ASA classification</strong>: Likely ASA II-III</li>
+<li><strong>RCRI score</strong>: Calculate (if history of IHD, heart failure, CVA, diabetes, renal impairment, high-risk surgery)</li>
+<li><strong>Optimization</strong>: Smoking cessation, optimize diabetes control, ensure on VTE prophylaxis post-op</li>
+<li><strong>Consent</strong>: Discuss risks (bleeding, infection, VTE, anastomotic leak 5-10%, may need stoma)</li>
+<p>
+</ol>
+</p>
+
+<strong>Expected Findings</strong> (in simulated patient script):
+<ul>
+<li>Type 2 diabetes on metformin (HbA1c 7.5%)</li>
+<li>Hypertension on ramipril</li>
+<li>Previous MI 3 years ago, on aspirin and statin</li>
+<li>Smoker 20 cigarettes/day</li>
+<p>
+</ul>
+</p>
+
+<strong>Candidate Should Identify</strong>:
+<ul>
+<li><strong>ASA III</strong> (diabetes, previous MI)</li>
+<li><strong>RCRI score 3</strong>: High-risk surgery (1) + IHD (1) + Diabetes (1) = 6.6% cardiac event risk → <strong>Needs cardiology review</strong></li>
+<li><strong>Optimization needed</strong>: Smoking cessation counselling, continue aspirin, optimize diabetes (target HbA1c <7% ideally), ensure VTE prophylaxis post-op</li>
+<li><strong>Medications</strong>: Continue aspirin, stop metformin on morning of surgery, omit ramipril on morning of surgery</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>OSCE Station 2: Post-operative Fever - Day 3</h3>
+
+<strong>Candidate Instructions</strong>:
+<p>
+"Mr. Brown is a 55-year-old man who is post-op day 3 from an open inguinal hernia repair. He has developed a fever. Take a focused history, examine the patient, and present your differential diagnosis and initial management plan. You have 8 minutes."
+</p>
+
+<strong>Key Points to Cover in History</strong>:
+<ol>
+<li><strong>Procedure</strong>: Open inguinal hernia repair, day 3</li>
+<li><strong>Symptoms</strong>: Fever (ask about rigors), urinary symptoms (dysuria, frequency - UTI), calf pain/swelling (DVT), wound (pain, discharge)</li>
+<li><strong>Catheter</strong>: Was there a catheter? When removed? (if removed today and now has fever → UTI likely)</li>
+<li><strong>Mobilization</strong>: Has he been getting out of bed? (if immobile → DVT risk)</li>
+<li><strong>VTE prophylaxis</strong>: On LMWH? Wearing TEDs?</li>
+<p>
+</ol>
+</p>
+
+<strong>Key Points in Examination</strong>:
+<ol>
+<li><strong>Vital signs</strong>: Temperature 38.2°C, HR 92, BP 135/80, RR 16, SpO2 98% RA</li>
+<li><strong>Chest</strong>: Clear (rules out respiratory cause)</li>
+<li><strong>Wound</strong>: Inspect groin wound - slight erythema at edges, no discharge, no fluctuance</li>
+<li><strong>Abdomen</strong>: Soft, non-tender, bowel sounds present</li>
+<li><strong>Lower limbs</strong>: No calf tenderness, no swelling</li>
+<p>
+</ol>
+</p>
+
+<strong>Expected Simulated Patient Information</strong>:
+<ul>
+<li>Urinary catheter removed this morning</li>
+<li>Has passed urine 3 times since removal, last void had "burning" sensation</li>
+<li>Not been mobilizing much due to groin pain</li>
+<li>Wearing TEDs, had LMWH injection this morning</li>
+<p>
+</ul>
+</p>
+
+<strong>Candidate Should Identify</strong>:
+<ul>
+<li><strong>Most likely diagnosis: Catheter-associated UTI</strong> (timing day 3, catheter removed today, dysuria, fever)</li>
+<li>Differentials: Early wound infection (erythema, but no discharge - less likely), DVT (no calf symptoms)</li>
+<li><strong>Management</strong>:</li>
+<p>
+</ul>
+  - <strong>Investigations</strong>: Urinalysis (expect leucocytes, nitrites), urine culture, FBC, CRP
+  - <strong>Treatment</strong>:
+    - If systemically well: Oral trimethoprim or nitrofurantoin (empiric)
+    - If septic: IV ceftriaxone or gentamicin
+  - <strong>Ensure VTE prophylaxis</strong> continuing
+  - <strong>Encourage mobilization</strong>
+</p>
+
+<hr>
+
+<h3>OSCE Station 3: Post-operative Shortness of Breath - Suspected PE</h3>
+
+<strong>Candidate Instructions</strong>:
+<p>
+"Mrs. Lee is a 62-year-old woman who is post-op day 4 from a total abdominal hysterectomy. She has developed sudden onset shortness of breath. Assess the patient and present your differential diagnosis and management plan. You have 8 minutes."
+</p>
+
+<strong>Key Points to Cover in History</strong>:
+<ol>
+<li><strong>Procedure</strong>: TAH, day 4</li>
+<li><strong>Symptoms</strong>:</li>
+<p>
+</ol>
+   - <strong>Onset</strong>: Sudden (PE, pneumothorax) vs gradual (pulmonary oedema, pneumonia)
+   - <strong>Dyspnoea</strong>: Severity, at rest vs exertion
+   - <strong>Chest pain</strong>: Pleuritic (sharp, worse on inspiration - suggests PE or pneumonia)
+   - <strong>Calf symptoms</strong>: Pain, swelling (DVT source for PE)
+   - <strong>Haemoptysis</strong>: (PE with pulmonary infarction)
+</p>
+<ol>
+<li><strong>VTE risk factors</strong>: Mobilization? VTE prophylaxis?</li>
+<p>
+</ol>
+</p>
+
+<strong>Key Points in Examination</strong>:
+<ol>
+<li><strong>Vital signs</strong>: Temperature 37.8°C, HR 110, BP 125/75, RR 24, SpO2 92% RA</li>
+<li><strong>General</strong>: Tachypnoeic, distressed</li>
+<li><strong>Chest</strong>: Equal expansion, resonant percussion, clear breath sounds bilaterally</li>
+<li><strong>CVS</strong>: Tachycardic, normal heart sounds, no raised JVP</li>
+<li><strong>Lower limbs</strong>: Right calf tender, swollen (2cm larger than left)</li>
+<p>
+</ol>
+</p>
+
+<strong>Expected Simulated Patient Information</strong>:
+<ul>
+<li>Sudden onset dyspnoea 30 minutes ago</li>
+<li>Right-sided pleuritic chest pain</li>
+<li>Right calf has been sore since yesterday</li>
+<li>Has been in bed most of the time, only getting up to toilet</li>
+<li>Not on LMWH ("I don't think so")</li>
+<li>No TEDs</li>
+<p>
+</ul>
+</p>
+
+<strong>Candidate Should Identify</strong>:
+<ul>
+<li><strong>Most likely diagnosis: Pulmonary embolism</strong> (sudden dyspnoea, pleuritic pain, tachycardia, hypoxia, clinical DVT in right calf, timing day 4, risk factors)</li>
+<li>Differentials: Pneumonia (less likely - no consolidation signs), pneumothorax (less likely - equal expansion, no hyperresonance)</li>
+<li><strong>Management</strong>:</li>
+<p>
+</ul>
+  - <strong>Immediate</strong>:
+    - <strong>High-flow oxygen</strong> (target SpO2 >94%)
+    - <strong>IV access</strong>
+    - <strong>Cardiac monitor</strong>
+  - <strong>Investigations</strong>:
+    - <strong>Wells score for PE</strong> (likely ≥4 - clinical DVT (3 points) + PE most likely diagnosis (3 points) + tachycardia (1.5 points) = 7.5 → PE likely)
+    - <strong>ECG</strong>: Look for sinus tachycardia, S1Q3T3 pattern
+    - <strong>Bloods</strong>: FBC, coag, D-dimer (not needed if Wells ≥4), troponin, ABG
+    - <strong>CTPA</strong> (definitive diagnosis)
+    - <strong>Doppler ultrasound right leg</strong> (confirm DVT)
+  - <strong>Treatment</strong>:
+    - <strong>Anticoagulation</strong>: Start LMWH (enoxaparin 1.5mg/kg SC) immediately (don't wait for CTPA if high clinical suspicion)
+    - <strong>DOAC</strong>: Start apixaban or rivaroxaban
+  - <strong>Escalation</strong>: If haemodynamically unstable → ICU, consider thrombolysis (but recent surgery is relative contraindication)
+  - <strong>VTE prophylaxis failure</strong>: Document that patient was NOT on prophylaxis despite high risk → Quality improvement issue
+</p>
+
+<hr>
+
+<h2>Summary: Key Takeaways</h2>
+
+<h3>For Pre-operative Assessment:</h3>
+<ol>
+<li><strong>Use PREPARE framework</strong>: Presenting problem, Risk stratification (ASA, RCRI), Examine systems, Past history, Airway, Respiratory/CVS exam, Explain and consent</li>
+<li><strong>Risk stratification</strong>: ASA (all patients), RCRI (cardiac risk if age >45 or cardiac history), functional capacity (<4 METs = high risk)</li>
+<li><strong>Medication management</strong>: Know which to stop (warfarin 5 days, DOACs 24-48h, SGLT2i 3 days) and which to continue (beta-blockers, statins, aspirin usually)</li>
+<li><strong>Optimize before surgery</strong>: Smoking cessation, diabetes control, treat active infection, optimize heart failure/COPD</li>
+<li><strong>Consent</strong>: Material risks (what a reasonable person would want to know), ensure capacity, document</li>
+<p>
+</ol>
+</p>
+
+<h3>For Post-operative Assessment:</h3>
+<ol>
+<li><strong>Use 5 Ws by timing</strong>: Wind (day 0-1), Water (day 2-3), Walking (day 3-5), Wound (day 5-7), Wonder drugs (day 7-10)</li>
+<li><strong>Always check</strong>: Vital signs (especially RR), wound, VTE prophylaxis status, mobilization, drains/catheters</li>
+<li><strong>High-risk complications</strong>: PE (sudden dyspnoea, pleuritic pain), anastomotic leak (fever, abdominal pain day 5-10 post bowel surgery), wound dehiscence (gush of fluid, "popping" sensation)</li>
+<li><strong>VTE prophylaxis</strong>: All surgical patients need prophylaxis (LMWH + mechanical) unless contraindicated</li>
+<li><strong>Early recognition saves lives</strong>: High index of suspicion, don't dismiss symptoms as "normal post-op course"</li>
+<p>
+</ol>
+</p>
+
+<h3>For OSCE Success:</h3>
+<ol>
+<li><strong>Use timing to guide differential</strong>: "This is day 3 post-op, so I'm thinking UTI or DVT"</li>
+<li><strong>Always examine the wound</strong>: Offer to remove dressing</li>
+<li><strong>Check VTE prophylaxis</strong>: Ask about LMWH, TEDs, mobilization in every post-op patient</li>
+<li><strong>Present systematically</strong>: Summary → Vitals → Examination → Differential (with justification) → Management plan</li>
+<li><strong>Safety-net</strong>: "I would escalate to senior if patient deteriorates, ensure VTE prophylaxis, and arrange follow-up"</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<strong>This module was created following Dr. Amir Soufi's differential-driven methodology from IMG4IMGS, emphasizing temporal pattern recognition and systematic perioperative assessment for OSCE success.</strong>
+
+<strong>Next module</strong>: Trauma Assessment (completing Surgery module)
+
+<hr>
+
+<strong>Word Count</strong>: ~18,000 words
+<strong>Last Updated</strong>: December 2025 for ICRP NSW Young Hospital Program (March 2026 intake)
+<strong>Author</strong>: ICRP OSCE Preparation Team
+<strong>Reference</strong>: Dr. Amir Soufi (IMG4IMGS), eTG 2024, Australian Perioperative Guidelines, AMC Clinical OSCE Format
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

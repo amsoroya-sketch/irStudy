@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Assessment: Suicide, Violence, and Self-Neglect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Psychiatry</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Psychiatry Navigation</h3>
+<ul>
+<li><a href="01_Psychiatric_History_Differentials.html">Psych History</a></li>
+<li><a href="02_Mental_State_Examination.html">MSE</a></li>
+</ul>
+</div>
+        <h1>Risk Assessment: Suicide, Violence, and Self-Neglect</h1>
+
+<strong>Target Audience</strong>: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Program rotations in Psychiatry
+
+<strong>Learning Objectives</strong>: By the end of this document, you will be able to:
+<ol>
+<li>Perform comprehensive suicide risk assessment using graduated approach</li>
+<li>Assess violence and aggression risk systematically</li>
+<li>Identify and manage self-neglect and vulnerability</li>
+<li>Apply evidence-based risk assessment tools (SAD PERSONS, HCR-20)</li>
+<li>Formulate risk level (low, moderate, high) with supporting evidence</li>
+<li>Implement immediate safety interventions for high-risk patients</li>
+<li>Understand Australian suicide prevention strategies and crisis services</li>
+<li>Document risk assessment thoroughly for medicolegal protection</li>
+<li>Avoid common IMG mistakes in risk assessment</li>
+<li>Complete risk assessment OSCE stations confidently</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Dr. Amir Soufi's Principle Applied to Risk Assessment</h2>
+
+<blockquote><strong>"Risk assessment is NOT about predicting the future - it's about identifying CURRENT risk factors and PROTECTIVE factors, then implementing IMMEDIATE safety measures. NEVER say 'zero risk' or 'no risk' - suicide and violence are inherently unpredictable. Say 'LOW risk based on current assessment' and ALWAYS safety-net. The most important question is NOT 'Will they kill themselves?' but 'What can I do RIGHT NOW to keep them safe?'"</strong></blockquote>
+
+<h3>The Risk Assessment Mindset</h3>
+
+<strong>Traditional Approach</strong>:
+<ul>
+<li>Ask "Do you want to kill yourself?"</li>
+<li>If patient says "No" → Document "No suicidal ideation, low risk" → Discharge</li>
+<li><strong>Problem</strong>: Misses patients who minimize risk, fluctuating risk, doesn't identify modifiable risk factors, no safety plan</li>
+<p>
+</ul>
+</p>
+
+<strong>Dr. Amir's Evidence-Based Approach</strong>:
+
+<ol>
+<li><strong>Use Graduated Questioning</strong> (gentle → specific)</li>
+<p>
+</ol>
+   - Start with hopelessness, move to passive ideation, then active ideation, plan, intent
+   - Patients more likely to disclose with graduated approach
+</p>
+
+<ol>
+<li><strong>Assess STATIC and DYNAMIC Risk Factors</strong></li>
+<p>
+</ol>
+   - <strong>Static</strong> (unchangeable): Previous attempts, age, sex, chronic illness
+   - <strong>Dynamic</strong> (changeable, target for intervention): Current ideation, intoxication, access to means, psychosis, impulsivity
+</p>
+
+<ol>
+<li><strong>Assess PROTECTIVE Factors</strong> (Often Overlooked)</li>
+<p>
+</ol>
+   - Family support, religious beliefs, fear of death, responsibility to children, future plans
+   - Strong protective factors can significantly reduce risk
+</p>
+
+<ol>
+<li><strong>Formulate Risk Level with EVIDENCE</strong></li>
+<p>
+</ol>
+   - Don't just say "high risk" - say "HIGH risk due to: active suicidal ideation with specific plan (overdose), access to means (saved 200 paracetamol tablets), high intent, previous attempt 3 months ago, no protective factors identified"
+</p>
+
+<ol>
+<li><strong>Immediate Safety Interventions</strong></li>
+<p>
+</ol>
+   - Remove means (medications, sharps, ligatures)
+   - Constant observation (1:1 nursing if admitted)
+   - Involve family/supports
+   - Crisis numbers (Lifeline 13 11 14)
+   - Follow-up plan (when, who, safety plan)
+</p>
+
+<ol>
+<li><strong>Documentation is CRITICAL</strong></li>
+<p>
+</ol>
+   - Medicolegal: If patient dies by suicide and you didn't document thorough assessment → Negligence claim
+   - Document: Questions asked, responses, risk factors, protective factors, formulation, management plan, follow-up
+</p>
+
+<hr>
+
+<h2>SUICIDE RISK ASSESSMENT</h2>
+
+<strong>Epidemiology in Australia</strong>:
+<ul>
+<li>~3000 deaths by suicide per year (9 per 100,000 population)</li>
+<li><strong>Leading cause of death</strong> in 15-44 year olds</li>
+<li>Males: 3x higher rate than females (males use more lethal means)</li>
+<li>Highest rates: Aboriginal and Torres Strait Islander peoples, LGBTIQ+ community, rural/remote areas</li>
+<li><strong>1 in 6 Australians</strong> have suicidal thoughts in their lifetime</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>The Graduated Approach to Suicide Assessment</h3>
+
+<strong>Start GENTLY, become more SPECIFIC</strong> - builds rapport, increases disclosure
+
+<h4>Level 1: HOPELESSNESS (Gateway to Suicidal Ideation)</h4>
+
+<strong>Hopelessness is strongest predictor of suicide</strong> - stronger than depression severity
+
+<strong>Questions</strong>:
+<ul>
+<li>"How do you see the future?"</li>
+<li>"Can you see things getting better?"</li>
+<li>"Do you feel hopeless?"</li>
+<p>
+</ul>
+</p>
+
+<strong>If YES → Proceed to Level 2</strong>
+
+<hr>
+
+<h4>Level 2: PASSIVE SUICIDAL IDEATION (Wish to Be Dead)</h4>
+
+<strong>Passive ideation</strong> = Wish to be dead WITHOUT active plan to die
+
+<strong>Questions</strong>:
+<ul>
+<li>"Do you ever feel life isn't worth living?"</li>
+<li>"Do you ever wish you could go to sleep and not wake up?"</li>
+<li>"Do you ever wish you were dead?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Significance</strong>:
+<ul>
+<li>Common in depression (up to 50% have passive ideation)</li>
+<li>Usually LOWER risk than active ideation (but still requires monitoring)</li>
+<li>Can progress to active ideation</li>
+<p>
+</ul>
+</p>
+
+<strong>If YES → Proceed to Level 3</strong>
+
+<hr>
+
+<h4>Level 3: ACTIVE SUICIDAL IDEATION (Thoughts of Harming Self)</h4>
+
+<strong>Active ideation</strong> = Thoughts of actively ending one's life
+
+<strong>Questions</strong>:
+<ul>
+<li>"Do you have thoughts of harming yourself or ending your life?"</li>
+<li>"Have you been thinking about suicide?"</li>
+<p>
+</ul>
+</p>
+
+<strong>If YES → IMMEDIATE detailed assessment needed (Levels 4-7)</strong>
+
+<hr>
+
+<h4>Level 4: FREQUENCY and DURATION</h4>
+
+<strong>Questions</strong>:
+<ul>
+<li>"How often do you have these thoughts?"</li>
+<p>
+</ul>
+  - Daily? Multiple times per day? Constant?
+</p>
+<ul>
+<li>"How long do the thoughts last?"</li>
+<p>
+</ul>
+  - Fleeting (seconds) vs persistent (hours)
+</p>
+<ul>
+<li>"When did these thoughts start?"</li>
+<p>
+</ul>
+  - Recent onset vs longstanding
+</p>
+
+<strong>Significance</strong>:
+<ul>
+<li><strong>Frequent, persistent thoughts</strong> = Higher risk</li>
+<li><strong>Recent onset</strong> with rapid escalation = Higher risk (especially if triggered by acute stressor)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Level 5: PLAN (Specificity Increases Risk)</h4>
+
+<strong>Questions</strong>:
+<ul>
+<li>"Have you thought about HOW you would do it?"</li>
+<li>"Do you have a plan?"</li>
+<p>
+</ul>
+</p>
+
+<strong>If YES</strong>:
+<ul>
+<li>"What is your plan?" (Document details)</li>
+<li>"Have you gathered [means]?" (e.g., saved tablets, bought rope)</li>
+<li>"Have you rehearsed or practiced?" (e.g., tied noose, researched methods)</li>
+<p>
+</ul>
+</p>
+
+<strong>Methods by lethality</strong>:
+<ul>
+<li><strong>High lethality</strong>: Hanging, firearms, jumping from height, train/vehicle impact</li>
+<li><strong>Medium lethality</strong>: Overdose (depends on substance), carbon monoxide, drowning</li>
+<li><strong>Lower lethility</strong>: Cutting wrists (low fatality rate, often cry for help)</li>
+<p>
+</ul>
+</p>
+
+<strong>Significance</strong>:
+<ul>
+<li><strong>Specific, detailed plan</strong> = Higher risk</li>
+<li><strong>Access to lethal means</strong> = Higher risk</li>
+<li><strong>Rehearsal/preparation</strong> = Very high risk (indicates premeditation)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Level 6: INTENT (Does Patient INTEND to Act?)</h4>
+
+<strong>Intent</strong> = Desire/determination to die
+
+<strong>Questions</strong>:
+<ul>
+<li>"Do you intend to act on these thoughts?"</li>
+<li>"Are you planning to end your life?"</li>
+<li>"What's stopped you so far?" (Assesses protective factors AND intent)</li>
+<p>
+</ul>
+</p>
+
+<strong>Assessing Intent</strong>:
+<ul>
+<li><strong>High intent</strong>: "Yes, I'm going to do it", "I've decided", "Nothing will stop me"</li>
+<li><strong>Ambivalence</strong>: "I don't know", "Part of me wants to, part doesn't"</li>
+<li><strong>Low intent</strong>: "I have the thoughts but I wouldn't act on them"</li>
+<p>
+</ul>
+</p>
+
+<strong>Significance</strong>:
+<ul>
+<li><strong>High intent + specific plan + access to means</strong> = VERY HIGH RISK (requires immediate intervention)</li>
+<li>Ambivalence is common (utilize in safety planning - strengthen reasons to live)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Level 7: TIMELINE (When?)</h4>
+
+<strong>Questions</strong>:
+<ul>
+<li>"When are you planning to do this?"</li>
+<li>"Is there a specific time or date you've thought about?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Significance</strong>:
+<ul>
+<li><strong>Imminent timeline</strong> (today, tonight, this week) = <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> (requires immediate admission)</li>
+<li><strong>Future timeline</strong> (when specific event happens, "when I've sorted out my affairs") = High risk but may allow time for intervention</li>
+<li><strong>No specific timeline</strong> = Lower immediate risk (but still requires intervention)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Level 8: PROTECTIVE FACTORS (What's Keeping Patient Safe?)</h4>
+
+<strong>CRITICAL to assess</strong> - often determines risk level and management
+
+<strong>Questions</strong>:
+<ul>
+<li>"What's stopped you from acting on these thoughts?"</li>
+<li>"What keeps you going?"</li>
+<li>"What are your reasons for living?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Common Protective Factors</strong>:
+<ul>
+<li><strong>Family/relationships</strong>: "I couldn't do that to my children/partner/parents"</li>
+<li><strong>Pets</strong>: "Who would look after my dog?"</li>
+<li><strong>Religious/spiritual beliefs</strong>: "Suicide is a sin", "It's against my faith"</li>
+<li><strong>Fear</strong>: Fear of death, fear of pain, fear of failure (attempt might not work)</li>
+<li><strong>Future plans</strong>: "I want to see my daughter graduate", "I have holiday booked"</li>
+<li><strong>Responsibility</strong>: Job, caring for family member</li>
+<li><strong>Treatment hope</strong>: "Maybe therapy will help"</li>
+<p>
+</ul>
+</p>
+
+<strong>Document</strong>: "Protective factors identified: Responsibility to two young children, supportive partner, religious beliefs (Catholic - believes suicide is sin)"
+
+<strong>Significance</strong>:
+<ul>
+<li><strong>Strong protective factors</strong> can significantly reduce risk</li>
+<li><strong>No protective factors</strong> = Higher risk</li>
+<li><strong>Weakening protective factors</strong> = Escalating risk (e.g., "I used to think about my kids, but now I think they'd be better off without me")</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Level 9: PREVIOUS SUICIDE ATTEMPTS (STRONGEST PREDICTOR)</h4>
+
+<strong>Previous suicide attempt is STRONGEST predictor of future suicide</strong>
+
+<strong>Questions</strong>:
+<ul>
+<li>"Have you ever tried to harm yourself or attempt suicide before?"</li>
+<p>
+</ul>
+</p>
+
+<strong>If YES</strong>:
+<ul>
+<li>"When was that?" (Recent attempt = higher risk)</li>
+<li>"How did you try?" (Method, lethality)</li>
+<li>"What happened?" (Medical treatment needed? Intensive care admission?)</li>
+<li>"How did you feel when you survived?" (Relief? Regret that attempt failed?)</li>
+<li>"How many times have you attempted?" (Multiple attempts = higher risk)</li>
+<p>
+</ul>
+</p>
+
+<strong>Significance</strong>:
+<ul>
+<li><strong>Recent attempt</strong> (within 3-12 months) = Very high risk (highest risk is first 3 months after discharge from psychiatric admission)</li>
+<li><strong>High-lethality attempt</strong> (required ICU admission, near-fatal) = Higher risk</li>
+<li><strong>Regret that attempt failed</strong> = Very high risk (high intent)</li>
+<li><strong>Multiple attempts</strong> = Higher risk (especially if escalating lethality)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Level 10: CURRENT STRESSORS and PRECIPITANTS</h4>
+
+<strong>Acute stressors increase suicide risk</strong> (especially if multiple, recent, perceived as insurmountable)
+
+<strong>Common Stressors</strong>:
+<ul>
+<li><strong>Relationship breakdown</strong>: Separation, divorce, bereavement</li>
+<li><strong>Occupational</strong>: Job loss, financial crisis, retirement</li>
+<li><strong>Legal</strong>: Criminal charges, imprisonment, court appearance</li>
+<li><strong>Health</strong>: Chronic pain, terminal illness diagnosis, functional decline</li>
+<li><strong>Social</strong>: Bullying, social isolation, homelessness</li>
+<li><strong>Trauma</strong>: Recent assault, abuse</li>
+<p>
+</ul>
+</p>
+
+<strong>Questions</strong>:
+<ul>
+<li>"What's been happening in your life recently?"</li>
+<li>"Has anything changed or happened that's made things worse?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Risk Factors for Suicide (SAD PERSONS)</h3>
+
+<strong>Mnemonic to remember major risk factors</strong>:
+
+<strong>S - Sex</strong> (Male)
+<ul>
+<li>Males 3x more likely to die by suicide (use more lethal means: hanging, firearms)</li>
+<li>Females higher attempt rate (use less lethal means: overdose)</li>
+<p>
+</ul>
+</p>
+
+<strong>A - Age</strong>
+<ul>
+<li><strong>Young adults</strong> (15-24): High rate, impulsivity</li>
+<li><strong>Elderly</strong> (>65): High rate, especially males, often more lethal attempts, associated with depression, chronic illness, bereavement</li>
+<p>
+</ul>
+</p>
+
+<strong>D - Depression</strong> (and other mental illness)
+<ul>
+<li>Major depression (especially with hopelessness, anhedonia, insomnia, agitation)</li>
+<li>Bipolar disorder (especially mixed episodes - depressed mood + elevated energy)</li>
+<li>Schizophrenia (especially with command hallucinations, paranoid delusions)</li>
+<li>Substance use disorders (alcohol, drugs)</li>
+<li>Eating disorders, PTSD, borderline personality disorder</li>
+<p>
+</ul>
+</p>
+
+<strong>P - Previous Attempts</strong> (STRONGEST PREDICTOR)
+<ul>
+<li>Risk highest in first 3 months after psychiatric discharge or previous attempt</li>
+<p>
+</ul>
+</p>
+
+<strong>E - Ethanol/Substance Use</strong>
+<ul>
+<li>Alcohol and drugs increase impulsivity, disinhibition, impair judgment</li>
+<li>Acute intoxication = higher risk</li>
+<li>Alcohol use disorder (chronic)</li>
+<p>
+</ul>
+</p>
+
+<strong>R - Rational Thinking Loss</strong>
+<ul>
+<li>Psychosis (command hallucinations "kill yourself", nihilistic delusions "I'm already dead")</li>
+<li>Severe cognitive impairment (dementia with depression)</li>
+<li>Impulsivity (borderline personality disorder, ADHD, intoxication)</li>
+<p>
+</ul>
+</p>
+
+<strong>S - Social Support Lacking</strong>
+<ul>
+<li>Isolated, no close relationships</li>
+<li>Estranged from family</li>
+<li>Living alone</li>
+<li>Homeless</li>
+<p>
+</ul>
+</p>
+
+<strong>O - Organized Plan</strong> (Specific + Access to Means)
+<ul>
+<li>Specific method, detailed plan, access to means = HIGH RISK</li>
+<p>
+</ul>
+</p>
+
+<strong>N - No Spouse</strong>
+<ul>
+<li>Single, divorced, widowed, separated</li>
+<p>
+</ul>
+</p>
+
+<strong>S - Sickness</strong> (Chronic Medical Illness)
+<ul>
+<li>Chronic pain, cancer, HIV, COPD, neurological disease (Parkinson's, MS, stroke), renal failure on dialysis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Additional Risk Factors</h3>
+
+<strong>Psychiatric</strong>:
+<ul>
+<li>Recent psychiatric hospitalization (highest risk in first week after discharge)</li>
+<li>Treatment non-adherence</li>
+<li>Severe anxiety, agitation, insomnia</li>
+<p>
+</ul>
+</p>
+
+<strong>Social</strong>:
+<ul>
+<li>LGBTIQ+ (2-6x higher risk, especially if lack of family support, discrimination)</li>
+<li>Aboriginal and Torres Strait Islander peoples (2x higher rate)</li>
+<li>Veterans</li>
+<li>Healthcare workers (especially doctors, nurses - access to means)</li>
+<li>Unemployment, financial hardship</li>
+<p>
+</ul>
+</p>
+
+<strong>Recent Events</strong>:
+<ul>
+<li>Recent discharge from psychiatric hospital (first 7 days)</li>
+<li>Recent bereavement (especially if suicide of family member or friend - "suicide cluster")</li>
+<li>Recent access to means (purchased rope, stockpiled medications)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Formulating Suicide Risk Level</h3>
+
+<strong>Risk level = Clinical judgment based on BALANCE of risk factors and protective factors</strong>
+
+<strong>Risk formulation should include</strong>:
+<ol>
+<li>Risk factors present</li>
+<li>Protective factors present</li>
+<li>Current ideation (passive vs active, plan, intent, timeline)</li>
+<li>Previous attempts</li>
+<li>Acute stressors/precipitants</li>
+<li>Mental state (especially hopelessness, agitation, psychosis)</li>
+<p>
+</ol>
+</p>
+
+<strong>Risk Levels</strong>:
+
+<h4>LOW RISK</h4>
+
+<strong>Features</strong>:
+<ul>
+<li>No current suicidal ideation (or fleeting passive ideation only)</li>
+<li>No plan, no intent</li>
+<li>No previous attempts (or remote attempt with very different circumstances)</li>
+<li>Good social support</li>
+<li>Strong protective factors</li>
+<li>Engaging with treatment</li>
+<p>
+</ul>
+</p>
+
+<strong>Example Documentation</strong>:
+<p>
+"LOW suicide risk based on current assessment:
+</p>
+<ul>
+<li>Denies current suicidal ideation</li>
+<li>No previous suicide attempts</li>
+<li>Protective factors: Supportive family, responsibility to two young children, future plans (holiday booked)</li>
+<li>Engaging with treatment (willing to start antidepressant, psychologist referral accepted)</li>
+<li>Good insight, willing to access crisis support if ideation worsens (Lifeline number provided)"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>MODERATE RISK</h4>
+
+<strong>Features</strong>:
+<ul>
+<li>Passive or active suicidal ideation WITHOUT specific plan OR low intent</li>
+<li>Previous suicide attempt (not recent, low lethality)</li>
+<li>Some protective factors present</li>
+<li>Some risk factors (depression, substance use, social stressors)</li>
+<p>
+</ul>
+</p>
+
+<strong>Example Documentation</strong>:
+<p>
+"MODERATE suicide risk based on current assessment:
+</p>
+<ul>
+<li>Active suicidal ideation present ('I think about ending my life') but no specific plan, states would not act ('I wouldn't do it')</li>
+<li>Previous suicide attempt 5 years ago (overdose, low lethality), regrets attempt</li>
+<li>Risk factors: Major depression, recent relationship breakdown, living alone</li>
+<li>Protective factors: Supportive sister, religious beliefs (Muslim - suicide prohibited)</li>
+<li>Plan: Start antidepressant, GP review in 1 week, crisis numbers provided (Lifeline 13 11 14), safety plan developed (will contact sister if ideation worsens), patient agrees to attend ED if intent increases"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>HIGH RISK</h4>
+
+<strong>Features</strong>:
+<ul>
+<li>Active suicidal ideation + specific plan + intent</li>
+<li>Access to means</li>
+<li>Recent suicide attempt (especially high lethality)</li>
+<li>Multiple risk factors, few protective factors</li>
+<li>Acute psychiatric crisis (severe depression with agitation, psychosis with command hallucinations)</li>
+<li>Intoxication with suicidal ideation</li>
+<p>
+</ul>
+</p>
+
+<strong>Example Documentation</strong>:
+<p>
+"HIGH suicide risk based on current assessment:
+</p>
+<ul>
+<li>Active suicidal ideation with specific plan (overdose on saved medications), high intent ('I'm going to do it tonight'), imminent timeline</li>
+<li>Access to means (saved 200 paracetamol tablets at home)</li>
+<li>Previous high-lethality attempt 3 months ago (hanging, required ICU admission), expresses regret attempt failed</li>
+<li>Risk factors: Severe depression with psychotic features (nihilistic delusions), recent job loss, estranged from family, living alone, alcohol intoxication on presentation</li>
+<li>Minimal protective factors identified</li>
+<li><strong>IMMEDIATE ACTION</strong>: Admitted involuntarily to psychiatric unit (Mental Health Act Schedule 1), 1:1 nursing observation, means removed (no sharps, medications, ligature points), psychiatry review, collateral from family contacted"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Immediate Management Based on Risk Level</h3>
+
+<h4>LOW RISK</h4>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Outpatient treatment</strong>: GP, psychologist, psychiatrist (outpatient)</li>
+<li><strong>Safety plan</strong>: Develop with patient</li>
+<p>
+</ul>
+  - Identify triggers
+  - Coping strategies (call friend, go for walk, distraction)
+  - Crisis contacts (Lifeline 13 11 14, Suicide Call Back Service 1300 659 467, family/friend contact)
+  - Remove means (give medications to family member, dispose of sharps)
+</p>
+<ul>
+<li><strong>Follow-up</strong>: GP review 1-7 days, sooner if worsens</li>
+<li><strong>Crisis numbers</strong>: Lifeline, Beyond Blue, Suicide Call Back Service</li>
+<li><strong>Document</strong>: Risk assessment, safety plan, follow-up plan, crisis contacts provided</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>MODERATE RISK</h4>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>More intensive outpatient support</strong> OR <strong>brief admission</strong> (crisis bed, short stay unit) if:</li>
+<p>
+</ul>
+  - Limited supports at home
+  - Significant stressors
+  - Patient requests admission
+</p>
+<ul>
+<li><strong>Crisis Assessment Team (CAT)</strong> referral: Can assess patient at home, provide intensive home-based support, facilitate admission if needed</li>
+<li><strong>Safety plan</strong> (as above, more detailed)</li>
+<li><strong>Frequent follow-up</strong>: GP/psychiatrist review within 1-3 days</li>
+<li><strong>Involve family/supports</strong>: With patient consent, provide education, ask them to monitor</li>
+<li><strong>Consider</strong>: Admission if risk escalates, limited supports, patient prefers admission</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>HIGH RISK</h4>
+
+<strong>Management</strong> (IMMEDIATE action required):
+
+<strong>1. Ensure Safety</strong>:
+<ul>
+<li><strong>DO NOT leave patient alone</strong></li>
+<li>Constant observation (1:1 staff supervision)</li>
+<li>Remove means:</li>
+<p>
+</ul>
+  - Medications (all tablets, including patient's own)
+  - Sharps (razors, scissors, glass)
+  - Ligature points (belts, shoelaces, cords)
+  - Other (plastic bags if suffocation risk)
+</p>
+
+<strong>2. Assess Capacity</strong>:
+<ul>
+<li>Does patient have capacity to consent to admission?</li>
+<li>If YES and willing → Voluntary admission</li>
+<li>If NO or refuses → <strong>Involuntary admission</strong> (Mental Health Act - see below)</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Admission</strong>:
+<ul>
+<li><strong>Psychiatric ward</strong> (acute inpatient unit)</li>
+<li>1:1 nursing observation (constant obs) OR 15-minute observations (depending on risk)</li>
+<li>Secure environment (no ligature points, CCTV, locked ward)</li>
+<p>
+</ul>
+</p>
+
+<strong>4. Psychiatric Review</strong>:
+<ul>
+<li>Senior psychiatrist review within 24 hours</li>
+<li>Treatment: Medications (antidepressant, antipsychotic if psychotic, benzodiazepine if severely anxious/agitated)</li>
+<li>Psychotherapy: CBT, DBT (if borderline personality disorder)</li>
+<p>
+</ul>
+</p>
+
+<strong>5. Collateral</strong>:
+<ul>
+<li>Contact family/NOK: Inform of admission (unless patient has capacity and refuses), assess supports, discharge planning</li>
+<p>
+</ul>
+</p>
+
+<strong>6. Disposition</strong>:
+<ul>
+<li><strong>Admit</strong> if high risk</li>
+<li><strong>Transfer to tertiary center</strong> if very high risk (e.g., requires ECT, specialized unit)</li>
+<li><strong>DO NOT discharge</strong> if high risk (medicolegal nightmare if patient dies by suicide immediately after discharge)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Involuntary Admission (Mental Health Act NSW 2007)</h3>
+
+<strong>Criteria for Involuntary Admission</strong> (ALL must be met):
+<ol>
+<li><strong>Mental illness</strong> present</li>
+<li><strong>Immediate risk</strong> to health or safety of self or others (due to mental illness)</li>
+<li><strong>Treatment cannot be provided in less restrictive way</strong> (patient refuses voluntary admission)</li>
+<p>
+</ol>
+</p>
+
+<strong>Process</strong>:
+<ul>
+<li><strong>Form 1</strong> (Medical Practitioner): Can detain patient for up to 12 hours for psychiatric assessment</li>
+<li><strong>Schedule 1</strong> (Psychiatrist): Involuntary patient order (up to 3 months initially), reviewed by Mental Health Review Tribunal</li>
+<p>
+</ul>
+</p>
+
+<strong>Document</strong>: Clearly state criteria met, why involuntary admission necessary, risk if not admitted
+
+<hr>
+
+<h2>VIOLENCE RISK ASSESSMENT</h2>
+
+<strong>Violence and aggression in psychiatric settings</strong> is common:
+<ul>
+<li>~10% of psychiatric inpatients have assaultive behavior</li>
+<li>Higher risk: Psychosis (paranoid delusions, command hallucinations), mania, substance intoxication (alcohol, amphetamines), personality disorders (antisocial, borderline), intellectual disability, delirium</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Assessing Violence Risk</h3>
+
+<h4>Static Risk Factors (Historical, Unchangeable)</h4>
+
+<strong>Most Important: PREVIOUS VIOLENCE</strong> (strongest predictor)
+
+<strong>Questions</strong>:
+<ul>
+<li>"Have you ever hurt someone else?"</li>
+<li>"Have you ever been in physical fights?"</li>
+<li>"Have you ever been arrested or charged with assault?"</li>
+<p>
+</ul>
+</p>
+
+<strong>If YES</strong>:
+<ul>
+<li>"When was the most recent time?"</li>
+<li>"What happened?"</li>
+<li>"How badly was the person hurt?"</li>
+<li>"What triggered it?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Other Static Factors</strong>:
+<ul>
+<li><strong>Forensic history</strong>: Criminal record, imprisonment, charges for violence</li>
+<li><strong>Childhood history</strong>: Abuse, witnessing violence, conduct disorder</li>
+<li><strong>Male gender</strong></li>
+<li><strong>Young age</strong> (15-35 years)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Dynamic Risk Factors (Current, Modifiable)</h4>
+
+<strong>Current Mental State</strong>:
+<ul>
+<li><strong>Psychosis</strong>: Paranoid delusions ("people are out to get me" → defensive aggression), command hallucinations ("hurt them")</li>
+<li><strong>Mania</strong>: Irritability, disinhibition, grandiosity (narcissistic rage if challenged)</li>
+<li><strong>Intoxication</strong>: Alcohol, amphetamines, cocaine (disinhibition, aggression)</li>
+<p>
+</ul>
+</p>
+
+<strong>Current Ideation/Intent</strong>:
+<ul>
+<li>"Do you ever feel angry or aggressive?"</li>
+<li>"Do you have thoughts of harming anyone?"</li>
+<li><strong>If YES</strong>:</li>
+<p>
+</ul>
+  - "Who?" (Specific target = higher risk)
+  - "Why?" (Motive)
+  - "Do you have a plan?" (How would you do it?)
+  - "Do you intend to act on it?"
+  - "Do you have access to weapons?" (Firearms, knives)
+</p>
+
+<strong>Current Stressors</strong>:
+<ul>
+<li>Relationship conflict, custody dispute</li>
+<li>Perceived threats or provocations</li>
+<p>
+</ul>
+</p>
+
+<strong>Treatment</strong>:
+<ul>
+<li>Non-adherence to medication (psychosis worsening)</li>
+<li>Lack of insight (doesn't believe needs treatment)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Protective Factors</h4>
+
+<ul>
+<li>Good social support</li>
+<li>Adherence to treatment</li>
+<li>No access to weapons</li>
+<li>No substance use</li>
+<li>Engaged with mental health services</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>HCR-20 (Historical, Clinical, Risk Management)</h3>
+
+<strong>Structured professional judgment tool for violence risk assessment</strong> (widely used)
+
+<strong>Historical (H - Static)</strong>:
+<ol>
+<li>Previous violence</li>
+<li>Young age at first violent incident</li>
+<li>Relationship instability</li>
+<li>Employment problems</li>
+<li>Substance use problems</li>
+<li>Major mental illness</li>
+<li>Psychopathy</li>
+<li>Early maladjustment</li>
+<li>Personality disorder</li>
+<li>Prior supervision failure</li>
+<p>
+</ol>
+</p>
+
+<strong>Clinical (C - Dynamic)</strong>:
+<ol>
+<li>Lack of insight</li>
+<li>Negative attitudes</li>
+<li>Active symptoms of major mental illness</li>
+<li>Impulsivity</li>
+<li>Unresponsive to treatment</li>
+<p>
+</ol>
+</p>
+
+<strong>Risk Management (R - Future)</strong>:
+<ol>
+<li>Plans lack feasibility</li>
+<li>Exposure to destabilizers</li>
+<li>Lack of personal support</li>
+<li>Non-compliance with remediation attempts</li>
+<li>Stress</li>
+<p>
+</ol>
+</p>
+
+<strong>Scoring</strong>: Each item rated 0 (absent), 1 (possibly/partially present), 2 (definitely present)
+<ul>
+<li>Higher score = higher risk</li>
+<li>Used to guide management, NOT predict with certainty</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Managing Violence Risk</h3>
+
+<h4>LOW RISK</h4>
+
+<ul>
+<li>Outpatient treatment</li>
+<li>Address modifiable factors (treat psychosis, substance use)</li>
+<li>Monitoring</li>
+<p>
+</ul>
+</p>
+
+<h4>MODERATE RISK</h4>
+
+<ul>
+<li>More intensive outpatient support OR brief admission</li>
+<li>Treat underlying condition (antipsychotic for psychosis, mood stabilizer for mania)</li>
+<li>Substance use treatment</li>
+<li>Consider community treatment order (if non-adherent)</li>
+<p>
+</ul>
+</p>
+
+<h4>HIGH RISK</h4>
+
+<strong>Immediate Management</strong>:
+
+<strong>1. Ensure Safety</strong> (staff, other patients, self):
+<ul>
+<li>Call for help (security, additional staff)</li>
+<li>Maintain safe distance</li>
+<li>Know your exit route (don't let patient block door)</li>
+<li>Remove potential weapons from environment</li>
+<p>
+</ul>
+</p>
+
+<strong>2. De-escalation</strong> (First-line):
+<ul>
+<li><strong>Calm, non-threatening approach</strong>:</li>
+<p>
+</ul>
+  - Speak in calm, low voice
+  - Non-threatening body language (hands visible, palms open, don't point or cross arms)
+  - Maintain appropriate distance (arm's length, don't invade personal space)
+  - Sit if patient sitting (reduces threat perception)
+</p>
+<ul>
+<li><strong>Listen and empathize</strong>:</li>
+<p>
+</ul>
+  - "I can see you're upset. Tell me what's happening."
+  - Validate feelings (not behaviors): "I understand you're frustrated"
+</p>
+<ul>
+<li><strong>Offer choices</strong>:</li>
+<p>
+</ul>
+  - "Would you like to go to a quiet room to talk?" "Can I get you a drink of water?"
+</p>
+<ul>
+<li><strong>Set clear boundaries</strong>:</li>
+<p>
+</ul>
+  - "I want to help you, but I need you to lower your voice and step back"
+  - "If you continue to shout/threaten, I'll need to call security"
+</p>
+
+<strong>3. Medications</strong> (if de-escalation fails):
+<ul>
+<li><strong>Voluntary</strong>: Offer oral medication (olanzapine wafer, lorazepam)</li>
+<li><strong>Involuntary</strong>: IM antipsychotic (haloperidol 5-10 mg IM, olanzapine 10 mg IM) + benzodiazepine (midazolam 5-10 mg IM OR lorazepam 2 mg IM)</li>
+<li>Monitor: Vital signs (BP, HR, RR, O2 sats), level of sedation, respiratory depression</li>
+<p>
+</ul>
+</p>
+
+<strong>4. Seclusion/Restraint</strong> (LAST RESORT):
+<ul>
+<li>Only if immediate risk to self/others AND all other interventions failed</li>
+<li><strong>Seclusion</strong>: Patient alone in locked room, monitored by CCTV, regular checks (every 15 min)</li>
+<li><strong>Physical restraint</strong>: Hold patient to administer medication OR transfer to seclusion</li>
+<li><strong>Documentation</strong>: Reason for seclusion/restraint, duration, regular reviews (every 4 hours), when ended</li>
+<li><strong>Mental Health Act</strong>: Seclusion and restraint must follow legislation (medical authorization, regular reviews, patient rights)</li>
+<p>
+</ul>
+</p>
+
+<strong>5. Admission</strong>:
+<ul>
+<li>Psychiatric ward (acute inpatient unit)</li>
+<li>Treat underlying condition</li>
+<li>Frequent reviews</li>
+<p>
+</ul>
+</p>
+
+<strong>6. Duty to Warn</strong> (If Specific Identifiable Victim):
+<ul>
+<li><strong>Tarasoff duty</strong>: If patient makes credible threat to harm specific person, you have duty to:</li>
+<p>
+</ul>
+  1. Warn the intended victim
+  2. Notify police
+</p>
+<ul>
+<li>Breach of confidentiality is justified to prevent serious harm</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>SELF-NEGLECT AND VULNERABILITY</h2>
+
+<strong>Self-neglect</strong> = Inability or unwillingness to care for oneself, resulting in threats to health and safety
+
+<strong>Causes</strong>:
+<ul>
+<li>Severe mental illness (severe depression, psychosis, catatonia)</li>
+<li>Dementia</li>
+<li>Substance use disorder</li>
+<li>Eating disorders</li>
+<li>Intellectual disability</li>
+<li>Homelessness</li>
+<li>Elder abuse/neglect</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Assessing Self-Neglect</h3>
+
+<strong>Domains</strong>:
+
+<strong>1. Personal Hygiene</strong>:
+<ul>
+<li>Bathing, showering, grooming</li>
+<li>Clothing clean? Appropriate for weather?</li>
+<li>Body odor?</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Nutrition and Hydration</strong>:
+<ul>
+<li>Eating regularly?</li>
+<li>Adequate food intake?</li>
+<li>Weight loss? (malnutrition)</li>
+<li>Dehydration signs? (dry mucous membranes, sunken eyes, reduced skin turgor)</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Living Environment</strong>:
+<ul>
+<li>Safe housing?</li>
+<li>Heating, running water, electricity?</li>
+<li>Squalor? (garbage accumulation, infestation, hoarding)</li>
+<p>
+</ul>
+</p>
+
+<strong>4. Medical Care</strong>:
+<ul>
+<li>Taking prescribed medications?</li>
+<li>Attending medical appointments?</li>
+<li>Untreated medical conditions? (wounds, infections, chronic diseases)</li>
+<p>
+</ul>
+</p>
+
+<strong>5. Financial Management</strong>:
+<ul>
+<li>Paying bills?</li>
+<li>Adequate income/benefits?</li>
+<li>Financial exploitation? (vulnerable to scams, family members taking money)</li>
+<p>
+</ul>
+</p>
+
+<strong>6. Safety</strong>:
+<ul>
+<li>Risk of falls? (unsafe home environment, poor mobility)</li>
+<li>Risk of fire? (smoking in bed, leaving stove on)</li>
+<li>Risk of exploitation/abuse?</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Management of Self-Neglect</h3>
+
+<strong>1. Address Underlying Cause</strong>:
+<ul>
+<li>Treat mental illness (depression → antidepressant, psychosis → antipsychotic)</li>
+<li>Treat substance use disorder</li>
+<li>Dementia: Memory clinic referral, support services</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Social Work Referral</strong>:
+<ul>
+<li>Assessment of social needs</li>
+<li>Housing support (if homeless → link with homelessness services)</li>
+<li>Financial support (Centrelink benefits, financial counseling)</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Community Support Services</strong>:
+<ul>
+<li><strong>Community mental health team</strong>: Home visits, medication supervision, monitoring</li>
+<li><strong>Aged care services</strong> (if elderly): Meals on Wheels, personal care (showering, dressing), cleaning</li>
+<li><strong>Home Care Package</strong> (if elderly, Medicare-funded)</li>
+<li><strong>NDIS</strong> (if <65 years with disability)</li>
+<p>
+</ul>
+</p>
+
+<strong>4. Guardian/Administrator</strong> (if lacks capacity):
+<ul>
+<li>If patient lacks capacity to make decisions about accommodation, finances, medical treatment</li>
+<li><strong>Guardianship Tribunal</strong> can appoint:</li>
+<p>
+</ul>
+  - <strong>Guardian</strong> (makes decisions about accommodation, medical treatment, services)
+  - <strong>Financial administrator</strong> (manages finances)
+</p>
+
+<strong>5. Admission</strong> (if severe self-neglect with immediate risk):
+<ul>
+<li>Medical admission if physical health concerns (malnutrition, dehydration, infections, wounds)</li>
+<li>Psychiatric admission if mental health cause</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Common IMG Mistakes in Risk Assessment</h2>
+
+<h3>Mistake 1: Not Asking About Suicide Because "It Might Give Them the Idea"</h3>
+
+<strong>Problem</strong>: Afraid to ask about suicide, worry it will plant the idea or make things worse
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li><strong>Evidence shows asking about suicide DOES NOT increase risk</strong> - in fact, reduces distress by allowing patient to discuss feelings</li>
+<li>Suicide is common (1 in 6 Australians have suicidal thoughts in lifetime)</li>
+<li>NOT asking = Missing high-risk patient = Preventable death = Medicolegal disaster</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>ALWAYS screen for suicidal ideation</strong> in depression, anxiety, psychosis, substance use</li>
+<li>Use graduated approach (hopelessness → passive → active → plan → intent)</li>
+<li>Asking directly and empathetically: "I need to ask - have you had thoughts of harming yourself or ending your life?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 2: Accepting "No" Without Exploring Further</h3>
+
+<strong>Problem</strong>: "Do you want to kill yourself?" "No." → Document "No suicidal ideation" → Discharge
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Patients may minimize (stigma, shame, fear of admission)</li>
+<li>Single direct question misses many patients</li>
+<li>No assessment of risk factors, protective factors, previous attempts</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>Use <strong>graduated approach</strong> (levels 1-10)</li>
+<li>Even if patient denies suicidal ideation, assess:</li>
+<p>
+</ul>
+  - Hopelessness
+  - Previous attempts
+  - Risk factors (depression severity, substance use, social stressors)
+  - Protective factors
+</p>
+<ul>
+<li>Formulate risk based on COMPREHENSIVE assessment, not single answer</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 3: Saying "Zero Risk" or "No Risk"</h3>
+
+<strong>Problem</strong>: Documenting "Patient has zero risk of suicide"
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Suicide is inherently unpredictable - even low-risk patients can die by suicide</li>
+<li>"Zero risk" or "no risk" = Medicolegal nightmare if patient dies by suicide</li>
+<li>Implies absolute certainty (which doesn't exist)</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>Say "<strong>LOW risk</strong> based on current assessment"</li>
+<li>Document supporting evidence (no current ideation, no previous attempts, strong protective factors)</li>
+<li>ALWAYS safety-net (follow-up plan, crisis numbers, when to return)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 4: Not Assessing Protective Factors</h3>
+
+<strong>Problem</strong>: Only documenting risk factors, not protective factors
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Protective factors are CRITICAL in risk formulation</li>
+<li>Strong protective factors can significantly reduce risk</li>
+<li>Informs management (utilize protective factors in safety planning)</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>ALWAYS ask</strong>: "What keeps you going?" "What's stopped you from acting on these thoughts?"</li>
+<li>Document protective factors identified</li>
+<li>Use in safety planning ("When you have suicidal thoughts, think about your children and how much they need you")</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 5: Not Removing Means</h3>
+
+<strong>Problem</strong>: Patient has suicidal ideation with plan to overdose, you discharge without addressing access to medications
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Access to means is modifiable risk factor</li>
+<li>Suicide is often impulsive - removing means reduces risk</li>
+<li>Medicolegal risk if patient dies by suicide using means you knew about</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>ALWAYS ask about access to means</strong>: "Do you have access to [method]?" (medications, rope, firearms)</li>
+<li><strong>Remove or restrict access</strong>:</li>
+<p>
+</ul>
+  - Medications: Give to family member, dispose of excess, provide only small amounts (1 week supply)
+  - Sharps: Remove from home (or patient brings to hospital to dispose)
+  - Firearms: Removed by police (firearms license can be suspended)
+  - Ligature points: Inpatient setting - remove belts, cords, shoelaces
+</p>
+
+<hr>
+
+<h3>Mistake 6: Poor Documentation</h3>
+
+<strong>Problem</strong>: "Patient suicidal. Admits to psych." (No details of assessment, formulation, or management)
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Medicolegal risk: If patient dies by suicide and documentation inadequate → Negligence claim</li>
+<li>Continuity of care: Next clinician doesn't know what was assessed, what plan was</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Document thoroughly</strong>:</li>
+<p>
+</ul>
+  - Questions asked and patient's responses (use quotes for key statements)
+  - Risk factors identified
+  - Protective factors identified
+  - Previous attempts (details)
+  - Current ideation, plan, intent, timeline
+  - Formulation of risk level (LOW/MODERATE/HIGH) with supporting evidence
+  - Management plan (admission, medications, safety plan, follow-up)
+  - Follow-up (when, who, what triggers should prompt earlier return)
+</p>
+<ul>
+<li>"If it's not documented, it didn't happen"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 7: Discharging High-Risk Patient Because No Beds Available</h3>
+
+<strong>Problem</strong>: Patient has active suicidal ideation with plan and high intent, but psychiatric ward has no beds, so you discharge with "GP follow-up next week"
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Patient safety is paramount</li>
+<li>Medicolegal disaster if patient dies by suicide after discharge</li>
+<li>"No beds" is NOT an acceptable reason to discharge high-risk patient</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>NEVER discharge high-risk patient</strong> due to bed availability</li>
+<li>Options:</li>
+<p>
+</ul>
+  - Keep patient in ED with 1:1 observation until bed available
+  - Transfer to another hospital with bed
+  - Escalate to senior consultant, psychiatric consultant, hospital administration
+  - Document clearly: "Patient requires admission for high suicide risk, awaiting bed"
+</p>
+
+<hr>
+
+<h2>Australian Suicide Prevention Services</h2>
+
+<strong>Crisis Support (24/7)</strong>:
+<ul>
+<li><strong>Lifeline</strong>: 13 11 14 (crisis support, suicide prevention)</li>
+<li><strong>Suicide Call Back Service</strong>: 1300 659 467 (professional counseling for people affected by suicide)</li>
+<li><strong>Beyond Blue</strong>: 1300 22 4636 (depression, anxiety)</li>
+<li><strong>Kids Helpline</strong>: 1800 55 1800 (young people 5-25 years)</li>
+<li><strong>MensLine Australia</strong>: 1300 78 99 78 (men's mental health)</li>
+<li><strong>QLife</strong>: 1800 184 527 (LGBTIQ+ peer support)</li>
+<p>
+</ul>
+</p>
+
+<strong>Online Support</strong>:
+<ul>
+<li><strong>Lifeline Crisis Chat</strong>: www.lifeline.org.au/crisis-chat (online chat)</li>
+<li><strong>Beyond Blue Forums</strong>: www.beyondblue.org.au/forums</li>
+<p>
+</ul>
+</p>
+
+<strong>Aboriginal and Torres Strait Islander</strong>:
+<ul>
+<li><strong>13YARN</strong>: 13 92 76 (crisis support for Aboriginal and Torres Strait Islander peoples)</li>
+<p>
+</ul>
+</p>
+
+<strong>Multicultural</strong>:
+<ul>
+<li><strong>Translating and Interpreting Service</strong>: 131 450 (then ask for Lifeline or other service)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>OSCE Practice Stations</h2>
+
+<h3>Station 1: Suicide Risk Assessment - High Risk</h3>
+
+<strong>Scenario</strong>: You are working in the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department. A 35-year-old woman, Emma, has presented after taking 20 paracetamol tablets. Medically cleared. Perform a suicide risk assessment. (8 minutes)
+
+<strong>Key Information</strong>:
+<ul>
+<li><strong>Suicide attempt</strong>: Overdose 20 paracetamol 2 hours ago, medically cleared (paracetamol levels safe)</li>
+<li><strong>Current ideation</strong>: Yes, still wants to die ("I wish it had worked")</li>
+<li><strong>Plan</strong>: Has another 100 paracetamol tablets at home (saved over past month)</li>
+<li><strong>Intent</strong>: High ("I'm going to finish the job")</li>
+<li><strong>Previous attempt</strong>: 6 months ago (hanging, cut down by partner)</li>
+<li><strong>Risk factors</strong>: Major depression, recent separation from partner, unemployed, living alone, alcohol use</li>
+<li><strong>Protective factors</strong>: Minimal (has sister, but not close)</li>
+<p>
+</ul>
+</p>
+
+<strong>Model Performance</strong>:
+
+<strong>Minutes 0-1: Introduction + Empathy</strong>
+<ul>
+<li>"Hello Emma, I'm Dr [Name]. I understand you've had a really difficult day. I'd like to talk with you about what happened and how you're feeling now. Is that okay?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 1-2: Current Attempt</strong>
+<ul>
+<li>"Can you tell me what happened today?" [Emma: "I took tablets because I want to die"]</li>
+<li>"How many tablets?" [20 paracetamol]</li>
+<li>"When did you take them?" [2 hours ago]</li>
+<li>"What were you hoping would happen?" [That I would die]</li>
+<li>"How do you feel now that you've survived?" [Disappointed, I wish it had worked] → <strong>HIGH INTENT</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 2-4: Current Ideation, Plan, Intent</strong>
+<ul>
+<li>"Are you still having thoughts of ending your life?" [Yes]</li>
+<li>"Do you have a plan?" [Yes, I have 100 more paracetamol tablets at home]</li>
+<li>"Are you planning to act on this?" [Yes, I'm going to finish the job when I leave] → <strong>IMMINENT RISK</strong></li>
+<li>"When?" [As soon as I get home]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 4-5: Previous Attempts</strong>
+<ul>
+<li>"Have you tried to harm yourself before?" [Yes, 6 months ago I tried to hang myself. My partner cut me down]</li>
+<li>"How did you feel when he saved you?" [Angry that he stopped me]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 5-6: Risk Factors</strong>
+<ul>
+<li>"What's been happening in your life?" [My partner left me 2 months ago, I lost my job, I can't pay rent]</li>
+<li>"Do you use alcohol or drugs?" [I drink every day, a bottle of wine]</li>
+<li>"Do you have anyone to support you?" [My sister, but we're not close]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 6-7: Protective Factors</strong>
+<ul>
+<li>"What's stopped you from acting on these thoughts before now?" [Nothing really, I just hadn't saved enough tablets until now]</li>
+<li>"Is there anything worth living for?" [No, I have nothing] → <strong>MINIMAL PROTECTIVE FACTORS</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 7-8: Formulation + Management</strong>
+<ul>
+<li><strong>Formulation</strong>: "Emma, I'm very concerned about your safety. You've made a serious suicide attempt today, and you're telling me you plan to try again as soon as you leave. This is a medical <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span>."</li>
+<li><strong>Management</strong>: "I need to admit you to hospital to keep you safe. Ideally, I'd like you to agree to come into hospital voluntarily. However, if you won't agree, I'll need to admit you involuntarily under the Mental Health Act, because I'm concerned you're at immediate risk of serious harm."</li>
+<li>[Emma: "I don't want to be admitted"]</li>
+<li>"I understand you don't want to be here, but my priority is keeping you safe. I'm going to arrange involuntary admission. You'll see a psychiatrist who will review your treatment. Do you have any questions?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Risk Formulation</strong>:
+<p>
+"<strong>HIGH suicide risk</strong>:
+</p>
+<ul>
+<li>Recent high-lethality suicide attempt (overdose 20 paracetamol), regrets attempt failed</li>
+<li>Active suicidal ideation with specific plan (overdose on saved 100 paracetamol tablets), high intent ('going to finish the job'), imminent timeline (as soon as discharged)</li>
+<li>Previous high-lethality attempt (hanging) 6 months ago</li>
+<li>Risk factors: Major depression, recent relationship breakdown, unemployment, social isolation, alcohol use</li>
+<li>Minimal protective factors (distant relationship with sister, no children, no employment, no future plans)</li>
+<p>
+</ul>
+</p>
+<strong>MANAGEMENT</strong>: Involuntary admission (Mental Health Act Schedule 1), 1:1 nursing observation, remove means (all medications), psychiatry review, commence antidepressant, collateral from sister"
+
+<hr>
+
+<h3>Station 2: Violence Risk Assessment</h3>
+
+<strong>Scenario</strong>: You are a psychiatry registrar. A 28-year-old man, David, admitted to psychiatric ward with psychosis. Nursing staff concerned about aggressive behavior. Assess violence risk. (8 minutes)
+
+<strong>Key Information</strong>:
+<ul>
+<li><strong>Current ideation</strong>: Paranoid delusions ("staff are poisoning my food"), command hallucinations ("voices tell me to hurt the nurses")</li>
+<li><strong>Previous violence</strong>: Multiple assaults, 2 years imprisonment for assault causing GBH</li>
+<li><strong>Forensic history</strong>: Criminal record (assault, armed robbery)</li>
+<li><strong>Current state</strong>: Agitated, suspicious, non-adherent with oral medication</li>
+<li><strong>Substance use</strong>: Methamphetamine use</li>
+<p>
+</ul>
+</p>
+
+<strong>Model Performance</strong>:
+
+<strong>Minutes 0-1: Introduction + Rapport</strong>
+<ul>
+<li>"Hello David, I'm Dr [Name], one of the psychiatrists. The nurses mentioned you've been feeling upset. I'd like to talk with you about how you're doing. Is that okay?"</li>
+<li>[David: Guarded, suspicious]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 1-3: Current Mental State</strong>
+<ul>
+<li>"How are you feeling today?" [Not good. The staff here are trying to poison me]</li>
+<li>"Tell me more about that." [They're putting poison in my food. They want to kill me] → <strong>PARANOID DELUSIONS</strong></li>
+<li>"Do you hear voices?" [Yes, they tell me to hurt the nurses] → <strong>COMMAND HALLUCINATIONS</strong></li>
+<li>"Do you feel you have to obey the voices?" [Sometimes I can resist, but it's hard]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 3-4: Current Ideation/Intent</strong>
+<ul>
+<li>"Do you have any thoughts of hurting anyone?" [Yes, I think about hurting the nurses because they're poisoning me]</li>
+<li>"Do you have a plan?" [I could punch them or throw furniture]</li>
+<li>"Do you intend to act on this?" [I don't know, maybe if they poison me again]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 4-5: Previous Violence</strong>
+<ul>
+<li>"Have you hurt anyone before?" [Yes, I've been in lots of fights]</li>
+<li>"Tell me about the most recent time." [2 years ago I hit a guy with a bottle in a pub. I went to jail for it]</li>
+<li>"What triggered it?" [He looked at me the wrong way]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 5-6: Substance Use</strong>
+<ul>
+<li>"Do you use drugs or alcohol?" [I use ice (methamphetamine), haven't had any for 3 days since I've been here] → <strong>WITHDRAWAL</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 6-7: Collateral</strong>
+<ul>
+<li>"I'd like to speak with your family or friends to understand your situation better. Is there someone I can call?" [You can call my brother]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 7-8: Formulation + Management</strong>
+<ul>
+<li><strong>Formulation</strong>: "David, I'm concerned about your safety and the safety of others. You're having thoughts of harming staff, driven by paranoid beliefs and command hallucinations. This is serious."</li>
+<li><strong>Management</strong>: "I'd like to give you medication to help with the voices and the paranoid thoughts. Would you be willing to take oral medication?"</li>
+<li>[David: "No, I don't trust you"]</li>
+<li>"I understand you don't trust us right now. However, the medication will help reduce the voices and help you feel safer. If you're not willing to take oral medication, we may need to give you an injection. I'd prefer to avoid that if possible. Will you consider taking the oral medication?"</li>
+<li>[If refuses]: "I'm going to give you an injection of antipsychotic medication to help calm the voices and reduce the risk to yourself and staff. We'll monitor you closely."</li>
+<p>
+</ul>
+</p>
+
+<strong>Risk Formulation</strong>:
+<p>
+"<strong>HIGH violence risk</strong>:
+</p>
+<ul>
+<li>Current: Paranoid delusions (staff poisoning him), command hallucinations (telling him to hurt nurses), active ideation to harm staff</li>
+<li>Previous violence: Multiple assaults, imprisonment for assault causing GBH</li>
+<li>Risk factors: Psychosis, methamphetamine use (withdrawal), non-adherent with medication, male, young age, forensic history</li>
+<p>
+</ul>
+</p>
+<strong>MANAGEMENT</strong>: 1:1 nursing observation, IM antipsychotic (olanzapine 10 mg IM + midazolam 5 mg IM if needed), monitor vital signs, frequent reviews, de-escalation strategies, involve brother (collateral), consider seclusion if aggression escalates"
+
+<hr>
+
+<h2>Summary: Key Takeaways for Risk Assessment</h2>
+
+<h3>1. Graduated Approach to Suicide Assessment</h3>
+<ul>
+<li>Start gentle (hopelessness), become specific (active ideation → plan → intent → timeline)</li>
+<li>Asking about suicide does NOT increase risk</li>
+<p>
+</ul>
+</p>
+
+<h3>2. Assess Risk AND Protective Factors</h3>
+<ul>
+<li>Risk formulation = Balance of risk factors and protective factors</li>
+<li>Strong protective factors reduce risk</li>
+<p>
+</ul>
+</p>
+
+<h3>3. Never Say "Zero Risk" or "No Risk"</h3>
+<ul>
+<li>Say "LOW/MODERATE/HIGH risk based on current assessment"</li>
+<li>Suicide is inherently unpredictable</li>
+<p>
+</ul>
+</p>
+
+<h3>4. Previous Attempt = Strongest Predictor</h3>
+<ul>
+<li>Recent attempt (within 3-12 months) = Very high risk</li>
+<li>High-lethality attempt = Higher risk</li>
+<p>
+</ul>
+</p>
+
+<h3>5. Remove Means</h3>
+<ul>
+<li>Medications, sharps, firearms, ligatures</li>
+<li>Modifiable risk factor</li>
+<p>
+</ul>
+</p>
+
+<h3>6. Document Thoroughly</h3>
+<ul>
+<li>Questions asked, responses (quotes), risk factors, protective factors, formulation, management, follow-up</li>
+<li>Medicolegal protection</li>
+<p>
+</ul>
+</p>
+
+<h3>7. High Risk = Admission</h3>
+<ul>
+<li>Never discharge high-risk patient</li>
+<li>Involuntary admission if refuses</li>
+<p>
+</ul>
+</p>
+
+<h3>8. Violence Risk: Previous Violence = Strongest Predictor</h3>
+<ul>
+<li>HCR-20: Historical, Clinical, Risk Management</li>
+<li>De-escalation first-line</li>
+<li>Medications if de-escalation fails</li>
+<li>Seclusion/restraint last resort</li>
+<p>
+</ul>
+</p>
+
+<h3>9. Self-Neglect = Address Underlying Cause</h3>
+<ul>
+<li>Social work, community services, guardian if lacks capacity</li>
+<p>
+</ul>
+</p>
+
+<h3>10. Common IMG Mistakes to Avoid</h3>
+<ul>
+<li>❌ Not asking about suicide ("might give them idea")</li>
+<li>❌ Accepting "No" without exploring</li>
+<li>❌ Saying "zero risk"</li>
+<li>❌ Not assessing protective factors</li>
+<li>❌ Not removing means</li>
+<li>❌ Poor documentation</li>
+<li>❌ Discharging high-risk patient (bed shortage not acceptable reason)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>You've completed Risk Assessment! Next: Common Psychiatric Presentations and Capacity Assessment. Excellent work!</strong>
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

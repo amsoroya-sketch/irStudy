@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Medical Education System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+</div>
+        
+        <h1>AI-Powered Medical Education System</h1>
+<h2>ICRP + AMC MCQ + AMC Clinical Preparation</h2>
+
+<p>
+A comprehensive, AI-powered platform for medical exam preparation using local LLMs, RAG, and multi-agent systems.
+</p>
+
+<hr>
+
+<h2>🎯 Project Overview</h2>
+
+<p>
+This system provides:
+</p>
+<ul>
+<li><strong>ICRP (Young Hospital, NSW)</strong> preparation materials</li>
+<li><strong>AMC MCQ (CAT)</strong> comprehensive question bank and study materials</li>
+<li><strong>AMC Clinical (OSCE)</strong> scenario simulation and practice</li>
+<p>
+</ul>
+</p>
+
+<h3>Key Features:</h3>
+<ul>
+<li>✅ <strong>100% Self-Hosted</strong> - No cloud costs, no API fees</li>
+<li>✅ <strong>Local LLMs</strong> - Uses Ollama with medical-specific models</li>
+<li>✅ <strong>RAG System</strong> - Semantic search across 20+ medical textbooks</li>
+<li>✅ <strong>Multi-Agent AI</strong> - Specialized agents for each medical specialty</li>
+<li>✅ <strong>Unlimited Content</strong> - AI generates questions on-demand</li>
+<li>✅ <strong>Australian-Focused</strong> - Therapeutic Guidelines, NSW protocols, AMC format</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>📋 Prerequisites</h2>
+
+<h3>System Requirements:</h3>
+<ul>
+<li><strong>OS:</strong> Linux (Ubuntu 20.04+ recommended)</li>
+<li><strong>GPU:</strong> NVIDIA GPU with CUDA support (for local LLM inference)</li>
+<li><strong>RAM:</strong> 32GB+ recommended (16GB minimum)</li>
+<li><strong>Storage:</strong> 100GB+ free space</li>
+<li><strong>Python:</strong> 3.11+</li>
+<li><strong>Docker:</strong> Latest version</li>
+<p>
+</ul>
+</p>
+
+<h3>Software:</h3>
+<ul>
+<li>Ollama (for local LLMs)</li>
+<li>Docker & Docker Compose</li>
+<li>NVIDIA CUDA drivers</li>
+<li>Tesseract OCR (for scanned PDFs)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>🚀 Quick Start</h2>
+
+<h3>1. Clone Repository</h3>
+<pre><code>git clone <your-repo-url>
+<p>
+cd irStudy
+</code></pre>
+</p>
+
+<h3>2. Install Python Dependencies</h3>
+<pre><code><h1>Create virtual environment</h1>
+<p>
+python3 -m venv venv
+source venv/bin/activate
+</p>
+
+<h1>Install dependencies</h1>
+<p>
+pip install -r requirements.txt
+</p>
+
+<h1>Install Tesseract OCR</h1>
+<p>
+sudo apt-get install tesseract-ocr
+</code></pre>
+</p>
+
+<h3>3. Download Additional Ollama Models</h3>
+<pre><code><h1>Medical-specific models</h1>
+<p>
+ollama pull meditron:7b          # Medical expert
+ollama pull biomistral:7b        # Biomedical LLM
+ollama pull llama3.1:70b         # Best reasoning
+ollama pull mixtral:8x7b         # Question generation
+</p>
+
+<h1>Verify installation</h1>
+<p>
+ollama list
+</code></pre>
+</p>
+
+<h3>4. Start Infrastructure Services</h3>
+<pre><code><h1>Start Qdrant, Neo4j, PostgreSQL, Redis, Prometheus, Grafana</h1>
+<p>
+docker-compose up -d
+</p>
+
+<h1>Verify all services are running</h1>
+<p>
+docker-compose ps
+</code></pre>
+</p>
+
+<h3>5. Acquire Medical Textbooks (PDF)</h3>
+<p>
+Place your medical textbook PDFs in the following structure:
+</p>
+<pre><code>data/pdfs/
+<p>
+├── australian/
+│   ├── therapeutic<em>guidelines</em>etg.pdf
+│   ├── murtaghs<em>general</em>practice_8ed.pdf
+│   ├── talley<em>clinical</em>examination_9ed.pdf
+│   └── amh<em>australian</em>medicines_handbook.pdf
+├── core/
+│   ├── harrisons<em>internal</em>medicine_21ed.pdf
+│   ├── kumar<em>clark</em>clinical<em>medicine</em>10ed.pdf
+│   └── davidsons<em>medicine</em>24ed.pdf
+├── specialties/
+│   ├── nelson<em>pediatrics</em>21ed.pdf
+│   ├── williams<em>obstetrics</em>26ed.pdf
+│   ├── bailey<em>love</em>surgery_28ed.pdf
+│   └── kaplan<em>sadock</em>psychiatry_12ed.pdf
+└── free/
+    └── statpearls.pdf
+</code></pre>
+</p>
+
+<hr>
+
+<h2>📚 Processing Medical Textbooks</h2>
+
+<h3>Step 1: Extract Text from PDFs</h3>
+<pre><code><h1>Extract text from all PDFs (handles OCR for scanned pages)</h1>
+<p>
+python scripts/extract_pdfs.py \
+    --input data/pdfs \
+    --output data/processed
+</p>
+
+<h1>This will create JSON files in data/processed/</h1>
+<h1>Expected time: 1-3 hours for 20 books</h1>
+<p>
+</code></pre>
+</p>
+
+<h3>Step 2: Chunk Medical Texts</h3>
+<pre><code><h1>Intelligently chunk texts while preserving medical context</h1>
+<p>
+python scripts/chunk<em>medical</em>texts.py \
+    --input data/processed \
+    --output data/chunks.json \
+    --chunk-size 1000 \
+    --overlap 150
+</p>
+
+<h1>Expected output: 30,000-50,000 chunks</h1>
+<h1>Expected time: 10-30 minutes</h1>
+<p>
+</code></pre>
+</p>
+
+<h3>Step 3: Generate Embeddings</h3>
+<pre><code><h1>Generate PubMedBERT embeddings (using local GPU)</h1>
+<p>
+python scripts/generate_embeddings.py \
+    --input data/chunks.json \
+    --output data/embeddings/medical_embeddings.pkl \
+    --model pritamdeka/S-PubMedBert-MS-MARCO \
+    --batch-size 32
+</p>
+
+<h1>Expected time: 2-4 hours for 40,000 chunks on GPU</h1>
+<h1>File size: ~500MB</h1>
+<p>
+</code></pre>
+</p>
+
+<h3>Step 4: Index in Qdrant</h3>
+<pre><code><h1>Upload embeddings to Qdrant vector database</h1>
+<p>
+python scripts/index_qdrant.py \
+    --embeddings data/embeddings/medical_embeddings.pkl \
+    --collection medical_knowledge \
+    --qdrant-url http://localhost:6333 \
+    --batch-size 100
+</p>
+
+<h1>Verify indexing with test search</h1>
+<p>
+python scripts/index_qdrant.py --test
+</p>
+
+<h1>Expected time: 20-40 minutes</h1>
+<p>
+</code></pre>
+</p>
+
+<hr>
+
+<h2>🧪 Testing the System</h2>
+
+<h3>Test Local LLM Integration</h3>
+<pre><code>python src/models/ollama_client.py
+<p>
+</code></pre>
+</p>
+
+<h3>Test RAG Search</h3>
+<pre><code>from qdrant_client import QdrantClient
+<p>
+from sentence_transformers import SentenceTransformer
+</p>
+
+<h1>Connect to Qdrant</h1>
+<p>
+client = QdrantClient(url="http://localhost:6333")
+</p>
+
+<h1>Load embedding model</h1>
+<p>
+model = SentenceTransformer('pritamdeka/S-PubMedBert-MS-MARCO')
+</p>
+
+<h1>Search medical knowledge</h1>
+<p>
+query = "Management of acute coronary syndrome"
+query_embedding = model.encode(query).tolist()
+</p>
+
+<p>
+results = client.search(
+    collection<em>name="medical</em>knowledge",
+    query<em>vector=query</em>embedding,
+    limit=5
+)
+</p>
+
+<p>
+for result in results:
+    print(f"Score: {result.score:.4f}")
+    print(f"Source: {result.payload['source']}")
+    print(f"Text: {result.payload['text'][:200]}...\n")
+</code></pre>
+</p>
+
+<hr>
+
+<h2>📂 Project Structure</h2>
+
+<pre><code>irStudy/
+<p>
+├── data/
+│   ├── pdfs/                    # Medical textbook PDFs (you provide)
+│   │   ├── australian/
+│   │   ├── core/
+│   │   ├── specialties/
+│   │   └── free/
+│   ├── processed/               # Extracted text (JSON)
+│   ├── embeddings/              # Generated embeddings
+│   └── chunks.json              # All text chunks
+├── scripts/
+│   ├── extract_pdfs.py          # PDF text extraction
+│   ├── chunk<em>medical</em>texts.py   # Text chunking
+│   ├── generate_embeddings.py   # Embedding generation
+│   └── index_qdrant.py          # Qdrant indexing
+├── src/
+│   ├── agents/                  # Multi-agent system (TBD)
+│   ├── rag/                     # RAG system (TBD)
+│   ├── api/                     # FastAPI backend (TBD)
+│   └── models/
+│       └── ollama_client.py     # Local LLM integration
+├── docker/                      # Docker volumes
+├── docker-compose.yml           # Infrastructure services
+├── requirements.txt             # Python dependencies
+└── README.md                    # This file
+</code></pre>
+</p>
+
+<hr>
+
+<h2>🔧 Infrastructure Services</h2>
+
+<h3>Qdrant (Vector Database)</h3>
+<ul>
+<li><strong>URL:</strong> http://localhost:6333</li>
+<li><strong>Dashboard:</strong> http://localhost:6333/dashboard</li>
+<li><strong>Purpose:</strong> Semantic search across medical knowledge</li>
+<p>
+</ul>
+</p>
+
+<h3>Neo4j (Knowledge Graph)</h3>
+<ul>
+<li><strong>URL:</strong> http://localhost:7474</li>
+<li><strong>Username:</strong> neo4j</li>
+<li><strong>Password:</strong> medical<em>ai</em>password_2025</li>
+<li><strong>Purpose:</strong> Medical entity relationships (diseases, symptoms, treatments)</li>
+<p>
+</ul>
+</p>
+
+<h3>PostgreSQL (Relational Database)</h3>
+<ul>
+<li><strong>Host:</strong> localhost:5432</li>
+<li><strong>Database:</strong> medical_education</li>
+<li><strong>Username:</strong> medical_user</li>
+<li><strong>Password:</strong> medical<em>pass</em>2025</li>
+<li><strong>Purpose:</strong> User data, questions, progress tracking</li>
+<p>
+</ul>
+</p>
+
+<h3>Redis (Cache & Queue)</h3>
+<ul>
+<li><strong>URL:</strong> localhost:6379</li>
+<li><strong>Purpose:</strong> Caching, background jobs (Celery)</li>
+<p>
+</ul>
+</p>
+
+<h3>Prometheus (Metrics)</h3>
+<ul>
+<li><strong>URL:</strong> http://localhost:9090</li>
+<li><strong>Purpose:</strong> System metrics collection</li>
+<p>
+</ul>
+</p>
+
+<h3>Grafana (Dashboards)</h3>
+<ul>
+<li><strong>URL:</strong> http://localhost:3001</li>
+<li><strong>Username:</strong> admin</li>
+<li><strong>Password:</strong> medical<em>admin</em>2025</li>
+<li><strong>Purpose:</strong> Monitoring dashboards</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>💰 Cost Analysis</h2>
+
+<h3>Development Costs: <strong>$0</strong></h3>
+<ul>
+<li>✅ Local LLMs (Ollama)</li>
+<li>✅ Self-hosted infrastructure</li>
+<li>✅ Open-source software</li>
+<p>
+</ul>
+</p>
+
+<h3>Operational Costs: <strong>$0/month</strong></h3>
+<ul>
+<li>✅ No cloud fees</li>
+<li>✅ No API costs</li>
+<li>✅ Electricity only (~$50-100/month)</li>
+<p>
+</ul>
+</p>
+
+<h3>Only Real Cost:</h3>
+<ul>
+<li>Medical textbooks: <strong>$800-2,000</strong> (one-time)</li>
+<li>OR use free resources: <strong>$0</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>📖 Essential Medical Textbooks</h2>
+
+<h3>Must-Have (Top 5):</h3>
+<ol>
+<li><strong>Therapeutic Guidelines (eTG)</strong> - $385/year</li>
+<li><strong>Talley & O'Connor Clinical Examination</strong> - $130</li>
+<li><strong>AMC Handbook of MCQs</strong> - $180</li>
+<li><strong>Murtagh's General Practice</strong> - $180</li>
+<li><strong>Australian Medicines Handbook</strong> - $155</li>
+<p>
+</ol>
+</p>
+
+<h3>Comprehensive (20 books):</h3>
+<ul>
+<li>See full list in implementation plan</li>
+<li><strong>Total:</strong> ~$2,000-3,000 (one-time purchase)</li>
+<p>
+</ul>
+</p>
+
+<h3>Free Alternatives:</h3>
+<ul>
+<li>StatPearls (free comprehensive medical reference)</li>
+<li>NCBI Bookshelf (free medical books)</li>
+<li>PubMed Central (3+ million free articles)</li>
+<li>Australian government guidelines (all free)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>🎯 Next Steps</h2>
+
+<h3>Immediate (This Week):</h3>
+<ol>
+<li>✅ Install all dependencies</li>
+<li>✅ Start Docker services</li>
+<li>✅ Download Ollama models</li>
+<li>⏳ Acquire medical textbook PDFs</li>
+<li>⏳ Extract and process PDFs</li>
+<li>⏳ Generate embeddings and index in Qdrant</li>
+<p>
+</ol>
+</p>
+
+<h3>Short-term (Next 2 Weeks):</h3>
+<ul>
+<li>Build RAG query system</li>
+<li>Create first medical expert agent</li>
+<li>Generate test MCQ questions</li>
+<li>Validate with medical professional</li>
+<p>
+</ul>
+</p>
+
+<h3>Medium-term (1-2 Months):</h3>
+<ul>
+<li>Complete multi-agent system (28 agents)</li>
+<li>Generate 5,000+ MCQs</li>
+<li>Build FastAPI backend</li>
+<li>Create Next.js frontend</li>
+<p>
+</ul>
+</p>
+
+<h3>Long-term (3-6 Months):</h3>
+<ul>
+<li>18,000+ MCQs across all exams</li>
+<li>3,000+ clinical scenarios</li>
+<li>Full platform with adaptive learning</li>
+<li>Beta testing and launch</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>🤝 Contributing</h2>
+
+<p>
+This is a personal medical education project. If you're a medical professional interested in validating content or contributing, please reach out!
+</p>
+
+<hr>
+
+<h2>📄 License</h2>
+
+<p>
+Private project. All rights reserved.
+</p>
+
+<hr>
+
+<h2>🆘 Troubleshooting</h2>
+
+<h3>Ollama not responding</h3>
+<pre><code><h1>Check Ollama status</h1>
+<p>
+systemctl status ollama
+</p>
+
+<h1>Restart Ollama</h1>
+<p>
+systemctl restart ollama
+</code></pre>
+</p>
+
+<h3>GPU not detected</h3>
+<pre><code><h1>Check CUDA</h1>
+<p>
+nvidia-smi
+</p>
+
+<h1>Verify PyTorch CUDA</h1>
+<p>
+python -c "import torch; print(torch.cuda.is_available())"
+</code></pre>
+</p>
+
+<h3>Docker services not starting</h3>
+<pre><code><h1>Check logs</h1>
+<p>
+docker-compose logs <service-name>
+</p>
+
+<h1>Restart all services</h1>
+<p>
+docker-compose down
+docker-compose up -d
+</code></pre>
+</p>
+
+<h3>Out of memory during embedding generation</h3>
+<pre><code><h1>Reduce batch size</h1>
+<p>
+python scripts/generate_embeddings.py --batch-size 16
+</code></pre>
+</p>
+
+<hr>
+
+<h2>📞 Support</h2>
+
+<p>
+For issues or questions about this project, please create an issue in the repository.
+</p>
+
+<hr>
+
+<strong>Last Updated:</strong> December 14, 2025
+<strong>Version:</strong> 0.1.0-alpha
+<strong>Status:</strong> Active Development
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

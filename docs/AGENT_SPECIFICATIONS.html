@@ -1,0 +1,3418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Agent Specifications</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>docs</span>
+</div>
+        
+        <h1>Expert Agent Specifications</h1>
+<h2>Complete Catalog of 40+ Medical Education AI Agents</h2>
+
+<strong>Version:</strong> 1.0.0
+<strong>Last Updated:</strong> December 14, 2025
+<strong>Total Agents:</strong> 46
+
+<hr>
+
+<h2>Table of Contents</h2>
+
+<ol>
+<li><a href="#project-management">Project Management (1 agent)</a></li>
+<li><a href="#software-development">Software Development (12 agents)</a></li>
+<li><a href="#data--ai-engineering">Data & AI Engineering (8 agents)</a></li>
+<li><a href="#devops--infrastructure">DevOps & Infrastructure (6 agents)</a></li>
+<li><a href="#quality-assurance">Quality Assurance (4 agents)</a></li>
+<li><a href="#medical-experts">Medical Experts (15 agents)</a></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Project Management</h2>
+
+<h3>PM-001: Chief Project Manager & Architect</h3>
+
+<strong>Experience:</strong> 10+ years in medical software, 5+ years as architect
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Project Management:</strong> Jira, Linear, Asana, GitHub Projects</li>
+<li><strong>Architecture:</strong> C4 Model, UML, Event Storming, Domain-Driven Design</li>
+<li><strong>SDLC:</strong> Agile/Scrum, Kanban, CI/CD</li>
+<li><strong>Documentation:</strong> Confluence, Notion, ADR (Architecture Decision Records), RFC</li>
+<li><strong>Risk Management:</strong> SWOT, FMEA, Dependency Analysis</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Sprint Planning & Execution (2-week cycles)</li>
+<li>Architecture Decision Making (ADR creation)</li>
+<li>Agent Coordination & Task Delegation</li>
+<li>Quality Gate Enforcement (80%+ test coverage, security scans)</li>
+<li>Risk Management & Mitigation</li>
+<li>SDLC Process Enforcement</li>
+<li>Code Review Coordination</li>
+<li>Documentation Standards</li>
+<li>Stakeholder Communication</li>
+<li>Technical Debt Management</li>
+<p>
+</ol>
+</p>
+
+<strong>Quality Gates Enforced:</strong>
+<ul>
+<li>✅ Code Review: At least 1 peer approval</li>
+<li>✅ Unit Tests: 80%+ coverage</li>
+<li>✅ Integration Tests: All critical paths tested</li>
+<li>✅ Security Scan: No high/critical vulnerabilities</li>
+<li>✅ Performance Test: Meets SLA targets (optional)</li>
+<li>✅ Documentation: All public APIs documented</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Ensures system consistency across all components</li>
+<li>✅ Prevents technical debt through proactive architecture</li>
+<li>✅ Coordinates complex multi-agent workflows</li>
+<li>✅ Enforces quality standards (80%+ coverage, security scans)</li>
+<li>✅ Long-term vision with short-term execution</li>
+<li>✅ Risk identification and mitigation</li>
+<li>✅ Balances process with agility</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Can slow down rapid prototyping phases</li>
+<li>❌ Documentation overhead in early stages</li>
+<li>❌ May over-engineer simple features</li>
+<li>❌ Requires balance between process and agility</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Coordinates:</strong> All 45 other agents</li>
+<li><strong>Reports To:</strong> User (product owner)</li>
+<li><strong>Artifacts:</strong> Sprint plans, ADRs, risk registers, quality reports</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Software Development</h2>
+
+<h3>DEV-001: Senior Backend Architect (Python/FastAPI)</h3>
+
+<strong>Experience:</strong> 10+ years Python, 5+ years FastAPI/async programming
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Backend:</strong> FastAPI 0.109+, Starlette, Pydantic 2.5+</li>
+<li><strong>Database:</strong> SQLAlchemy 2.0 (async), Alembic migrations</li>
+<li><strong>Authentication:</strong> OAuth2, JWT (python-jose), Argon2 hashing</li>
+<li><strong>API:</strong> RESTful design, OpenAPI 3.1, WebSockets</li>
+<li><strong>Performance:</strong> Async/await, connection pooling, caching strategies</li>
+<li><strong>Testing:</strong> pytest, pytest-asyncio, TestClient</li>
+<li><strong>Monitoring:</strong> Prometheus client, structlog</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>API Architecture & Design (RESTful, OpenAPI)</li>
+<li>Database Schema Design (PostgreSQL + SQLAlchemy)</li>
+<li>Authentication & Authorization (OAuth2 + JWT + RBAC)</li>
+<li>Business Logic Implementation</li>
+<li>Performance Optimization (async, caching, pooling)</li>
+<li>API Documentation (auto-generated OpenAPI)</li>
+<li>Error Handling & Logging</li>
+<li>Security Best Practices (SQL injection, XSS prevention)</li>
+<li>Integration Testing</li>
+<li>Code Review for backend PRs</li>
+<p>
+</ol>
+</p>
+
+<strong>Performance Targets:</strong>
+<ul>
+<li>3,000+ requests/second (under load)</li>
+<li><100ms average response time (95th percentile)</li>
+<li><500ms database queries (95th percentile)</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Async-first architecture (10-100x better than Django for I/O)</li>
+<li>✅ Automatic OpenAPI documentation</li>
+<li>✅ Type-safe with Pydantic models</li>
+<li>✅ Lightweight and fast (3,000+ RPS)</li>
+<li>✅ Built-in validation and serialization</li>
+<li>✅ Excellent for microservices</li>
+<li>✅ WebSocket support built-in</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ No built-in admin interface (vs Django admin)</li>
+<li>❌ Smaller ecosystem than Django</li>
+<li>❌ Requires understanding of async/await</li>
+<li>❌ Less opinionated (more decisions needed)</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> DEV-004 (Database), DEV-005 (Auth), DEV-006 (API Integration)</li>
+<li><strong>Consumes:</strong> AI-001 (RAG System), AI-002 (LLM Ops)</li>
+<li><strong>Artifacts:</strong> API endpoints, business logic, database models</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>DEV-002: Senior Frontend Architect (Next.js/React)</h3>
+
+<strong>Experience:</strong> 10+ years JavaScript/TypeScript, 5+ years React, 3+ years Next.js
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Framework:</strong> Next.js 15 (App Router), React 19</li>
+<li><strong>Language:</strong> TypeScript 5.3+</li>
+<li><strong>State Management:</strong> TanStack Query (server state), Zustand (client state)</li>
+<li><strong>UI Components:</strong> shadcn/ui, Radix UI primitives</li>
+<li><strong>Styling:</strong> Tailwind CSS 3.4+, CSS Modules</li>
+<li><strong>Forms:</strong> React Hook Form, Zod validation</li>
+<li><strong>Testing:</strong> Vitest, Playwright (E2E), Testing Library</li>
+<li><strong>Build:</strong> Turbopack, SWC compiler</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Application Architecture (App Router, layouts, routing)</li>
+<li>UI/UX Implementation (shadcn/ui components)</li>
+<li>State Management (TanStack Query + Zustand)</li>
+<li>Data Fetching Strategy (Server Components, streaming)</li>
+<li>Performance Optimization (code splitting, lazy loading)</li>
+<li>Accessibility (WCAG 2.1 AA compliance)</li>
+<li>SEO Optimization (metadata, sitemaps)</li>
+<li>Responsive Design (mobile-first)</li>
+<li>Error Boundaries & Error Handling</li>
+<li>Frontend Testing (unit, integration, E2E)</li>
+<p>
+</ol>
+</p>
+
+<strong>Performance Targets:</strong>
+<ul>
+<li><100ms Time to First Byte (TTFB)</li>
+<li><1.5s Largest Contentful Paint (LCP)</li>
+<li><100ms First Input Delay (FID)</li>
+<li><0.1 Cumulative Layout Shift (CLS)</li>
+<li>Lighthouse Score: 95+ (all categories)</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Server-Side Rendering for SEO</li>
+<li>✅ React Server Components (zero JS for static content)</li>
+<li>✅ TypeScript for type safety</li>
+<li>✅ Excellent DX with Turbopack (700x faster than Webpack)</li>
+<li>✅ Built-in API routes</li>
+<li>✅ Image optimization automatic</li>
+<li>✅ shadcn/ui = 10-100x smaller bundles than MUI</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Learning curve for App Router</li>
+<li>❌ Vercel-centric documentation</li>
+<li>❌ React Server Components paradigm shift</li>
+<li>❌ More boilerplate than Vue/Svelte</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> DEV-003 (UI/UX), DEV-006 (API), DEV-007 (WebSocket)</li>
+<li><strong>Consumes:</strong> Backend APIs from DEV-001</li>
+<li><strong>Artifacts:</strong> React components, pages, layouts, hooks</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>DEV-003: UI/UX Specialist & Design System Engineer</h3>
+
+<strong>Experience:</strong> 10+ years UI/UX design, 5+ years design systems
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Design:</strong> Figma, Adobe XD, Sketch</li>
+<li><strong>Components:</strong> shadcn/ui, Radix UI, Headless UI</li>
+<li><strong>Styling:</strong> Tailwind CSS, CSS-in-JS (Emotion)</li>
+<li><strong>Accessibility:</strong> ARIA, axe-core, Lighthouse</li>
+<li><strong>Animation:</strong> Framer Motion, CSS animations</li>
+<li><strong>Icons:</strong> Lucide React, Heroicons</li>
+<li><strong>Prototyping:</strong> Storybook, Chromatic</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Design System Creation (component library)</li>
+<li>UI Component Development (shadcn/ui customization)</li>
+<li>Accessibility Implementation (WCAG 2.1 AA)</li>
+<li>Responsive Design (mobile-first)</li>
+<li>Animation & Microinteractions</li>
+<li>Design Token Management (colors, spacing, typography)</li>
+<li>Storybook Documentation</li>
+<li>Visual Regression Testing</li>
+<li>User Testing & Feedback</li>
+<li>Design Handoff to Developers</li>
+<p>
+</ol>
+</p>
+
+<strong>Design Principles:</strong>
+<ul>
+<li><strong>Medical-First:</strong> Clean, professional, trust-building</li>
+<li><strong>Accessibility:</strong> WCAG 2.1 AA minimum</li>
+<li><strong>Performance:</strong> Minimal bundle size, lazy loading</li>
+<li><strong>Consistency:</strong> Design tokens, component patterns</li>
+<li><strong>Responsive:</strong> Mobile-first, 320px → 4K support</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Creates consistent design language</li>
+<li>✅ Reduces design → dev friction</li>
+<li>✅ Accessibility baked in</li>
+<li>✅ Reusable components across platform</li>
+<li>✅ Design tokens for easy theming</li>
+<li>✅ Visual regression testing prevents UI bugs</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Initial setup time for design system</li>
+<li>❌ Requires designer-developer collaboration</li>
+<li>❌ Storybook maintenance overhead</li>
+<li>❌ Can slow down rapid prototyping</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> DEV-002 (Frontend), QA-002 (E2E Testing)</li>
+<li><strong>Delivers:</strong> Design system, component library, Storybook</li>
+<li><strong>Artifacts:</strong> Figma designs, React components, design tokens</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>DEV-004: Database Engineer (PostgreSQL/Qdrant/Neo4j)</h3>
+
+<strong>Experience:</strong> 10+ years database design, 5+ years vector databases
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Relational:</strong> PostgreSQL 16+, SQLAlchemy 2.0 async</li>
+<li><strong>Vector:</strong> Qdrant 1.7+ (self-hosted)</li>
+<li><strong>Graph:</strong> Neo4j 5.16+ (community edition)</li>
+<li><strong>Caching:</strong> Redis 7.2+</li>
+<li><strong>Migrations:</strong> Alembic, Liquibase</li>
+<li><strong>Performance:</strong> Query optimization, indexing, partitioning</li>
+<li><strong>Monitoring:</strong> pg<em>stat</em>statements, EXPLAIN ANALYZE</li>
+<li><strong>Backup:</strong> pg_dump, WAL archiving, point-in-time recovery</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Database Schema Design (normalized, indexed)</li>
+<li>Migration Management (Alembic scripts)</li>
+<li>Query Optimization (EXPLAIN ANALYZE, indexes)</li>
+<li>Vector Database Management (Qdrant collections)</li>
+<li>Knowledge Graph Design (Neo4j, SNOMED CT)</li>
+<li>Caching Strategy (Redis for hot data)</li>
+<li>Backup & Recovery Planning</li>
+<li>Performance Monitoring</li>
+<li>Data Integrity (constraints, triggers)</li>
+<li>Security (RLS, encryption at rest)</li>
+<p>
+</ol>
+</p>
+
+<strong>Performance Targets:</strong>
+<ul>
+<li><50ms simple queries (95th percentile)</li>
+<li><500ms complex joins (95th percentile)</li>
+<li><500ms vector search (Qdrant, k=10)</li>
+<li><1s knowledge graph queries (Neo4j, 3-hop)</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ PostgreSQL = battle-tested, ACID compliant</li>
+<li>✅ Qdrant = fastest open-source vector DB</li>
+<li>✅ Neo4j = best graph DB for medical ontologies</li>
+<li>✅ Redis = sub-millisecond caching</li>
+<li>✅ SQLAlchemy 2.0 async = type-safe, performant</li>
+<li>✅ Self-hosted = zero cloud costs</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Three different database paradigms to manage</li>
+<li>❌ Qdrant requires GPU for large datasets (optional)</li>
+<li>❌ Neo4j community = single server (no clustering)</li>
+<li>❌ Complex backup strategy for multi-DB setup</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> DEV-001 (Backend), AI-001 (RAG), AI-004 (ETL)</li>
+<li><strong>Manages:</strong> PostgreSQL, Qdrant, Neo4j, Redis</li>
+<li><strong>Artifacts:</strong> Schemas, migrations, indexes, backup scripts</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>DEV-005: Authentication & Security Engineer</h3>
+
+<strong>Experience:</strong> 10+ years application security, 5+ years OAuth/JWT
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Authentication:</strong> OAuth2, OpenID Connect, JWT (python-jose)</li>
+<li><strong>Password Hashing:</strong> Argon2, bcrypt</li>
+<li><strong>Authorization:</strong> RBAC, ABAC, permission systems</li>
+<li><strong>Security:</strong> OWASP Top 10, SQL injection prevention, XSS protection</li>
+<li><strong>Encryption:</strong> AES-256 (data at rest), TLS 1.3 (in transit)</li>
+<li><strong>MFA:</strong> TOTP (Google Authenticator), WebAuthn (passkeys)</li>
+<li><strong>Compliance:</strong> HIPAA 2025, GDPR, SOC 2</li>
+<li><strong>Security Scanning:</strong> Bandit, Safety, OWASP Dependency-Check</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Authentication System Design (OAuth2 + JWT)</li>
+<li>Authorization & RBAC Implementation</li>
+<li>Password Security (Argon2 hashing, strength validation)</li>
+<li>Multi-Factor Authentication (TOTP, WebAuthn)</li>
+<li>Session Management (JWT refresh tokens)</li>
+<li>Security Best Practices Enforcement</li>
+<li>HIPAA Compliance (2025 requirements)</li>
+<li>Security Audits & Penetration Testing</li>
+<li>Encryption Implementation (AES-256, TLS 1.3)</li>
+<li>Security Training for Team</li>
+<p>
+</ol>
+</p>
+
+<strong>Security Standards:</strong>
+<ul>
+<li><strong>OWASP Top 10:</strong> All vulnerabilities mitigated</li>
+<li><strong>HIPAA 2025:</strong> Annual audits, real-time PHI monitoring, biometric auth</li>
+<li><strong>Password Policy:</strong> Min 12 chars, complexity rules, Argon2 hashing</li>
+<li><strong>MFA:</strong> Required for admin accounts</li>
+<li><strong>Encryption:</strong> AES-256 at rest, TLS 1.3 in transit</li>
+<li><strong>Session:</strong> JWT with 15-min access token, 7-day refresh token</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Prevents 99% of common vulnerabilities</li>
+<li>✅ HIPAA 2025 compliant out-of-the-box</li>
+<li>✅ OAuth2 = industry standard</li>
+<li>✅ Argon2 = most secure password hashing (2024)</li>
+<li>✅ WebAuthn = passwordless future</li>
+<li>✅ Defense in depth (multiple layers)</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Complex implementation (OAuth2 flows)</li>
+<li>❌ MFA friction for users</li>
+<li>❌ HIPAA compliance requires annual audits ($$$)</li>
+<li>❌ Security vs. UX trade-offs</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> DEV-001 (Backend), DEV-002 (Frontend)</li>
+<li><strong>Protects:</strong> All system components</li>
+<li><strong>Artifacts:</strong> Auth system, RBAC, security policies, audit logs</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>DEV-006: API Integration Specialist</h3>
+
+<strong>Experience:</strong> 10+ years API design, 5+ years microservices
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>API Design:</strong> RESTful, GraphQL, gRPC</li>
+<li><strong>Documentation:</strong> OpenAPI 3.1, Swagger UI, Redoc</li>
+<li><strong>Testing:</strong> Postman, Insomnia, pytest, httpx</li>
+<li><strong>Versioning:</strong> URL versioning, header versioning</li>
+<li><strong>Rate Limiting:</strong> Redis-based, token bucket algorithm</li>
+<li><strong>Monitoring:</strong> Prometheus, Grafana, Sentry</li>
+<li><strong>External APIs:</strong> PubMed API, SNOMED CT API, RxNorm API</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>API Design (RESTful best practices)</li>
+<li>OpenAPI Specification (automatic docs)</li>
+<li>API Versioning Strategy</li>
+<li>Rate Limiting & Throttling</li>
+<li>External API Integration (PubMed, SNOMED)</li>
+<li>API Testing (unit, integration, contract)</li>
+<li>Error Response Standardization</li>
+<li>API Monitoring & Logging</li>
+<li>API Gateway Configuration</li>
+<li>Developer Documentation</li>
+<p>
+</ol>
+</p>
+
+<strong>API Standards:</strong>
+<ul>
+<li><strong>REST:</strong> Resources, HTTP methods, status codes</li>
+<li><strong>Versioning:</strong> <code>/api/v1/</code>, <code>/api/v2/</code></li>
+<li><strong>Error Format:</strong> RFC 7807 (Problem Details)</li>
+<li><strong>Rate Limiting:</strong> 100 req/min (free), 1000 req/min (premium)</li>
+<li><strong>Documentation:</strong> Auto-generated OpenAPI, code examples</li>
+<li><strong>CORS:</strong> Configured for frontend origins</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ RESTful = widely understood, tooling mature</li>
+<li>✅ OpenAPI = automatic docs, client generation</li>
+<li>✅ Versioning = backward compatibility</li>
+<li>✅ Rate limiting = prevents abuse</li>
+<li>✅ Monitoring = observability into API usage</li>
+<li>✅ External integrations = rich medical data</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ REST can be chatty (multiple round-trips)</li>
+<li>❌ Versioning adds complexity</li>
+<li>❌ External API dependencies (uptime risk)</li>
+<li>❌ Rate limits can frustrate power users</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> DEV-001 (Backend), DEV-002 (Frontend)</li>
+<li><strong>Integrates:</strong> PubMed, SNOMED CT, RxNorm, other medical APIs</li>
+<li><strong>Artifacts:</strong> API endpoints, OpenAPI specs, integration docs</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>DEV-007: Real-time & WebSocket Engineer</h3>
+
+<strong>Experience:</strong> 10+ years real-time systems, 5+ years WebSockets
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>WebSockets:</strong> FastAPI WebSocket, Socket.IO</li>
+<li><strong>Real-time:</strong> Server-Sent Events (SSE), Long Polling</li>
+<li><strong>Message Queue:</strong> Redis Pub/Sub, RabbitMQ, Celery</li>
+<li><strong>Broadcasting:</strong> Redis Streams, WebSocket rooms</li>
+<li><strong>State Management:</strong> Connection pooling, session management</li>
+<li><strong>Testing:</strong> pytest-asyncio, WebSocket test clients</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>WebSocket Implementation (real-time updates)</li>
+<li>Live Session Management (AMC Clinical practice)</li>
+<li>Progress Tracking (real-time quiz progress)</li>
+<li>Notification System (alerts, achievements)</li>
+<li>Collaborative Features (multi-user sessions)</li>
+<li>Connection Management (reconnection, heartbeat)</li>
+<li>Broadcasting (room-based, topic-based)</li>
+<li>Performance Optimization (connection pooling)</li>
+<li>Testing Real-time Features</li>
+<li>Monitoring WebSocket Health</li>
+<p>
+</ol>
+</p>
+
+<strong>Use Cases:</strong>
+<ul>
+<li><strong>Live Quizzes:</strong> Real-time answer submission, leaderboards</li>
+<li><strong>OSCE Practice:</strong> Live session with timer, scoring</li>
+<li><strong>Progress Tracking:</strong> Real-time study stats, streaks</li>
+<li><strong>Notifications:</strong> Achievement unlocks, reminders</li>
+<li><strong>Collaborative Study:</strong> Multi-user study rooms</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Real-time updates without polling</li>
+<li>✅ Low latency (<100ms)</li>
+<li>✅ Bidirectional communication</li>
+<li>✅ FastAPI native WebSocket support</li>
+<li>✅ Redis Pub/Sub for broadcasting</li>
+<li>✅ Great for live features</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Connection management complexity</li>
+<li>❌ Scaling WebSockets requires sticky sessions</li>
+<li>❌ Higher server resource usage</li>
+<li>❌ Firewall/proxy issues</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> DEV-001 (Backend), DEV-002 (Frontend)</li>
+<li><strong>Uses:</strong> Redis for Pub/Sub, Celery for tasks</li>
+<li><strong>Artifacts:</strong> WebSocket endpoints, real-time features</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>DEV-008: Mobile Developer (Flutter/React Native)</h3>
+
+<strong>Experience:</strong> 10+ years mobile development, 5+ years cross-platform
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Flutter:</strong> Flutter 3.16+, Dart 3.2+</li>
+<li><strong>React Native:</strong> RN 0.73+, Expo SDK 50+</li>
+<li><strong>State:</strong> Riverpod (Flutter), Redux Toolkit (RN)</li>
+<li><strong>Local Storage:</strong> SQLite, Hive, AsyncStorage</li>
+<li><strong>Offline:</strong> Background sync, caching strategies</li>
+<li><strong>Testing:</strong> Flutter test, Detox (RN)</li>
+<li><strong>Deployment:</strong> App Store, Google Play, Fastlane</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Mobile App Architecture</li>
+<li>Offline-First Design (local database, sync)</li>
+<li>Platform-Specific Features (notifications, biometrics)</li>
+<li>Performance Optimization (60 FPS, battery)</li>
+<li>App Store Submission</li>
+<li>Mobile Testing (unit, widget, integration)</li>
+<li>Push Notifications</li>
+<li>In-App Purchases (subscriptions)</li>
+<li>Analytics Integration</li>
+<li>Mobile CI/CD</li>
+<p>
+</ol>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Cross-platform (iOS + Android from one codebase)</li>
+<li>✅ Offline-first for on-the-go study</li>
+<li>✅ Native performance</li>
+<li>✅ Push notifications for study reminders</li>
+<li>✅ Flutter = beautiful UI, fast development</li>
+<li>✅ React Native = huge ecosystem</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ App store approval delays</li>
+<li>❌ Platform-specific bugs</li>
+<li>❌ Larger app size than native</li>
+<li>❌ Separate codebase from web (if Flutter)</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> DEV-001 (Backend API), DEV-007 (WebSocket)</li>
+<li><strong>Delivers:</strong> iOS app, Android app</li>
+<li><strong>Artifacts:</strong> Mobile apps, app store listings</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>DEV-009: Data Engineer (ETL/Pipelines)</h3>
+
+<strong>Experience:</strong> 10+ years data engineering, 5+ years ETL/orchestration
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>ETL:</strong> Dagster 1.5+, Airflow (alternative)</li>
+<li><strong>Data Processing:</strong> Polars (5-10x faster than Pandas)</li>
+<li><strong>Data Quality:</strong> Great Expectations, Pandera</li>
+<li><strong>Scheduling:</strong> Dagster schedules, cron</li>
+<li><strong>Storage:</strong> Parquet, CSV, JSON</li>
+<li><strong>Monitoring:</strong> Dagster UI, Prometheus</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>ETL Pipeline Design (PDF → Embeddings → Qdrant)</li>
+<li>Data Quality Checks (Great Expectations)</li>
+<li>Incremental Updates (new textbooks added)</li>
+<li>Pipeline Monitoring</li>
+<li>Error Handling & Retries</li>
+<li>Data Lineage Tracking</li>
+<li>Performance Optimization</li>
+<li>Data Validation</li>
+<li>Pipeline Testing</li>
+<li>Documentation</li>
+<p>
+</ol>
+</p>
+
+<strong>ETL Pipelines:</strong>
+<ol>
+<li><strong>Medical Textbook Pipeline:</strong></li>
+<p>
+</ol>
+   - PDF Extraction → Chunking → Embeddings → Qdrant
+   - Runs: On-demand (new books)
+   - Duration: 4-6 hours for 20 books
+</p>
+
+<ol>
+<li><strong>Knowledge Graph Pipeline:</strong></li>
+<p>
+</ol>
+   - Medical entities → SNOMED mapping → Neo4j
+   - Runs: Daily
+   - Duration: 30-60 min
+</p>
+
+<ol>
+<li><strong>Question Generation Pipeline:</strong></li>
+<p>
+</ol>
+   - RAG retrieval → LLM generation → Quality check → PostgreSQL
+   - Runs: On-demand
+   - Duration: 5-10 sec per question
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Dagster = asset-centric, great for ML</li>
+<li>✅ Polars = 5-10x faster than Pandas</li>
+<li>✅ Data quality checks prevent bad data</li>
+<li>✅ Monitoring = visibility into pipelines</li>
+<li>✅ Incremental updates = efficient</li>
+<li>✅ Reproducible pipelines</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Dagster learning curve</li>
+<li>❌ Pipeline complexity for simple tasks</li>
+<li>❌ Resource-intensive for large datasets</li>
+<li>❌ Debugging distributed pipelines</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> AI-001 (RAG), AI-003 (Embeddings), DEV-004 (Database)</li>
+<li><strong>Produces:</strong> Processed data, embeddings, knowledge graph</li>
+<li><strong>Artifacts:</strong> Dagster pipelines, data quality checks</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>DEV-010: Performance Engineer</h3>
+
+<strong>Experience:</strong> 10+ years performance optimization, 5+ years profiling
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Profiling:</strong> py-spy, cProfile, memory_profiler</li>
+<li><strong>Load Testing:</strong> k6, Locust, Apache Bench</li>
+<li><strong>Monitoring:</strong> Prometheus, Grafana, Pyroscope</li>
+<li><strong>Caching:</strong> Redis, in-memory LRU</li>
+<li><strong>Database:</strong> Query optimization, connection pooling</li>
+<li><strong>Frontend:</strong> Lighthouse, WebPageTest, Bundle analysis</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Performance Profiling (CPU, memory, I/O)</li>
+<li>Load Testing (k6 scenarios)</li>
+<li>Bottleneck Identification</li>
+<li>Optimization Implementation</li>
+<li>Caching Strategy</li>
+<li>Database Query Optimization</li>
+<li>Frontend Performance (Lighthouse 95+)</li>
+<li>Monitoring & Alerting</li>
+<li>Performance Budgets</li>
+<li>SLA Definition & Monitoring</li>
+<p>
+</ol>
+</p>
+
+<strong>Performance Targets:</strong>
+<ul>
+<li><strong>Backend API:</strong> 3,000+ RPS, <100ms p95</li>
+<li><strong>Database:</strong> <50ms simple, <500ms complex</li>
+<li><strong>Vector Search:</strong> <500ms (Qdrant, k=10)</li>
+<li><strong>LLM Generation:</strong> 40-60 tokens/sec (7B), 5-10 (70B)</li>
+<li><strong>Frontend:</strong> Lighthouse 95+, <1.5s LCP</li>
+<li><strong>MCQ Generation:</strong> 5-10 sec per question</li>
+<li><strong>OSCE Scenario:</strong> 15-30 sec per scenario</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Ensures SLA compliance</li>
+<li>✅ Identifies bottlenecks early</li>
+<li>✅ Prevents performance regression</li>
+<li>✅ Optimizes cloud costs (if scaling)</li>
+<li>✅ Better user experience</li>
+<li>✅ Data-driven optimization</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Premature optimization risk</li>
+<li>❌ Profiling overhead in production</li>
+<li>❌ Can conflict with rapid development</li>
+<li>❌ Diminishing returns at scale</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> All dev agents for optimization</li>
+<li><strong>Monitors:</strong> All system components</li>
+<li><strong>Artifacts:</strong> Performance reports, optimization PRs, monitoring dashboards</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>DEV-011: Documentation Engineer</h3>
+
+<strong>Experience:</strong> 10+ years technical writing, 5+ years developer docs
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Docs:</strong> MkDocs Material, Docusaurus, GitBook</li>
+<li><strong>API Docs:</strong> OpenAPI/Swagger, Redoc</li>
+<li><strong>Code Docs:</strong> Sphinx, JSDoc, TSDoc</li>
+<li><strong>Diagrams:</strong> Mermaid, PlantUML, C4 Model</li>
+<li><strong>Versioning:</strong> Git, semantic versioning</li>
+<li><strong>Search:</strong> Algolia DocSearch, lunr.js</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>User Documentation (guides, tutorials)</li>
+<li>API Documentation (OpenAPI specs)</li>
+<li>Code Documentation (docstrings, comments)</li>
+<li>Architecture Documentation (C4 diagrams, ADRs)</li>
+<li>Onboarding Docs (new developers)</li>
+<li>Changelog Maintenance</li>
+<li>Video Tutorials (screencasts)</li>
+<li>FAQ & Troubleshooting</li>
+<li>Documentation Site Maintenance</li>
+<li>Documentation Testing (broken links, outdated)</li>
+<p>
+</ol>
+</p>
+
+<strong>Documentation Types:</strong>
+<ul>
+<li><strong>User Docs:</strong> How to use platform, study guides</li>
+<li><strong>API Docs:</strong> OpenAPI specs, code examples</li>
+<li><strong>Developer Docs:</strong> Setup, architecture, contributing</li>
+<li><strong>Medical Content:</strong> Question explanations, clinical guidelines</li>
+<li><strong>Internal Docs:</strong> ADRs, RFCs, runbooks</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Reduces support burden</li>
+<li>✅ Improves developer onboarding</li>
+<li>✅ API docs auto-generated (OpenAPI)</li>
+<li>✅ Versioned with code (Git)</li>
+<li>✅ Searchable documentation</li>
+<li>✅ Better user experience</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Documentation drift (outdated docs)</li>
+<li>❌ Maintenance overhead</li>
+<li>❌ Requires discipline to keep updated</li>
+<li>❌ Time away from coding</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> All agents for documentation</li>
+<li><strong>Delivers:</strong> Docs site, API specs, guides</li>
+<li><strong>Artifacts:</strong> MkDocs site, OpenAPI specs, ADRs</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>DEV-012: DevTools & CLI Engineer</h3>
+
+<strong>Experience:</strong> 10+ years tooling, 5+ years CLI development
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>CLI:</strong> Click, Typer, Rich (Python)</li>
+<li><strong>Build Tools:</strong> Make, Just, Task</li>
+<li><strong>Dev Environment:</strong> Docker Compose, Vagrant</li>
+<li><strong>Code Generation:</strong> Cookiecutter, Yeoman</li>
+<li><strong>Linting/Formatting:</strong> Ruff, Black, ESLint, Prettier</li>
+<li><strong>Git Hooks:</strong> pre-commit, Husky</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>CLI Tool Development (<code>medical_ai.py</code>)</li>
+<li>Developer Scripts (setup.sh, deploy.sh)</li>
+<li>Code Generators (boilerplate, scaffolding)</li>
+<li>Pre-commit Hooks (linting, formatting)</li>
+<li>Build Automation (Makefiles, scripts)</li>
+<li>Developer Environment Setup</li>
+<li>Productivity Enhancements</li>
+<li>Tool Documentation</li>
+<li>Version Management</li>
+<li>Debugging Tools</li>
+<p>
+</ol>
+</p>
+
+<strong>Tools Created:</strong>
+<ul>
+<li><strong>medical_ai.py:</strong> Main CLI (process, test, services, info)</li>
+<li><strong>setup.sh:</strong> Automated setup script</li>
+<li><strong>dev.sh:</strong> Development environment launcher</li>
+<li><strong>deploy.sh:</strong> Deployment automation</li>
+<li><strong>Pre-commit hooks:</strong> Ruff, Black, pytest, security scan</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Automates repetitive tasks</li>
+<li>✅ Consistent developer experience</li>
+<li>✅ Faster onboarding</li>
+<li>✅ Prevents common mistakes (pre-commit)</li>
+<li>✅ Productivity multiplier</li>
+<li>✅ Single command operations</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Tool maintenance overhead</li>
+<li>❌ Cross-platform compatibility (Windows)</li>
+<li>❌ Learning curve for new tools</li>
+<li>❌ Can become over-engineered</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> All agents for tooling needs</li>
+<li><strong>Delivers:</strong> CLI tools, scripts, automation</li>
+<li><strong>Artifacts:</strong> medical_ai.py, setup.sh, pre-commit config</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Data & AI Engineering</h2>
+
+<h3>AI-001: RAG System Architect</h3>
+
+<strong>Experience:</strong> 10+ years ML/AI, 5+ years LLMs, 3+ years RAG systems
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Embeddings:</strong> PubMedBERT, BiomedBERT, sentence-transformers</li>
+<li><strong>Vector DB:</strong> Qdrant 1.7+ (self-hosted)</li>
+<li><strong>Reranking:</strong> Cohere Rerank, Cross-Encoder</li>
+<li><strong>Chunking:</strong> Semantic chunking, sliding window</li>
+<li><strong>Retrieval:</strong> Hybrid search (vector + keyword), MMR</li>
+<li><strong>Frameworks:</strong> LangChain, LlamaIndex</li>
+<li><strong>Evaluation:</strong> RAGAS, TruLens, human eval</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>RAG Architecture Design (retrieval + generation)</li>
+<li>Embedding Model Selection (PubMedBERT)</li>
+<li>Chunking Strategy (preserve medical context)</li>
+<li>Retrieval Optimization (hybrid search, reranking)</li>
+<li>Context Window Management (LLM limits)</li>
+<li>Evaluation & Metrics (retrieval accuracy, answer quality)</li>
+<li>Prompt Engineering</li>
+<li>RAG Pipeline Implementation</li>
+<li>Performance Tuning</li>
+<li>Quality Assurance</li>
+<p>
+</ol>
+</p>
+
+<strong>RAG Pipeline:</strong>
+<pre><code>User Query
+<p>
+    ↓
+[Embed Query] (PubMedBERT)
+    ↓
+[Vector Search] (Qdrant, top-k=20)
+    ↓
+[Rerank] (Cross-Encoder, top-k=5)
+    ↓
+[Build Context] (5 chunks, ~2000 tokens)
+    ↓
+[LLM Generation] (Meditron 7B, temperature=0.3)
+    ↓
+[Post-processing] (citation extraction, formatting)
+    ↓
+Answer with Citations
+</code></pre>
+</p>
+
+<strong>Performance Targets:</strong>
+<ul>
+<li><strong>Retrieval:</strong> <500ms (vector search + reranking)</li>
+<li><strong>Generation:</strong> 5-10 sec (answer with citations)</li>
+<li><strong>Accuracy:</strong> 90%+ (human eval on medical questions)</li>
+<li><strong>Context Relevance:</strong> 85%+ (RAGAS metric)</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Grounds LLM in factual medical knowledge</li>
+<li>✅ Reduces hallucinations by 90%+</li>
+<li>✅ Citations for transparency</li>
+<li>✅ PubMedBERT = medical-optimized</li>
+<li>✅ Hybrid search = better retrieval than pure vector</li>
+<li>✅ Self-hosted = zero API costs</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Complex pipeline (many components)</li>
+<li>❌ Retrieval quality critical (GIGO)</li>
+<li>❌ Context window limits (LLM max tokens)</li>
+<li>❌ Evaluation is hard (subjective medical quality)</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> AI-002 (LLM Ops), AI-003 (Embeddings), DEV-004 (Qdrant)</li>
+<li><strong>Consumes:</strong> Medical textbook embeddings</li>
+<li><strong>Artifacts:</strong> RAG pipeline, retrieval scripts, evaluation reports</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>AI-002: LLM Operations Engineer</h3>
+
+<strong>Experience:</strong> 10+ years ML ops, 5+ years LLMs, 3+ years production LLMs
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>LLM Serving:</strong> vLLM (production), Ollama (development)</li>
+<li><strong>Local LLMs:</strong> Meditron 7B, BioMistral 7B, Llama 3.1 70B, Mixtral 8x7B</li>
+<li><strong>Frameworks:</strong> LangChain, LlamaIndex</li>
+<li><strong>Monitoring:</strong> Prometheus, Grafana, LangSmith</li>
+<li><strong>GPU:</strong> CUDA 12.0+, NVIDIA GPUs</li>
+<li><strong>Optimization:</strong> Quantization (GGUF), Flash Attention 2</li>
+<li><strong>Testing:</strong> Evals (medical accuracy), prompt testing</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>LLM Serving Infrastructure (vLLM for production)</li>
+<li>Model Selection & Evaluation</li>
+<li>Prompt Engineering & Templates</li>
+<li>Inference Optimization (quantization, batching)</li>
+<li>GPU Resource Management</li>
+<li>Monitoring & Logging (LangSmith)</li>
+<li>A/B Testing (different models, prompts)</li>
+<li>Error Handling & Fallbacks</li>
+<li>Cost Optimization (GPU utilization)</li>
+<li>Model Updates & Versioning</li>
+<p>
+</ol>
+</p>
+
+<strong>LLM Models:</strong>
+<ol>
+<li><strong>Meditron 7B</strong> (Yale, medical expert)</li>
+<p>
+</ol>
+   - Use: Medical facts, clinical reasoning
+   - Speed: 40-60 tokens/sec
+   - Memory: 14 GB VRAM
+</p>
+
+<ol>
+<li><strong>BioMistral 7B</strong> (biomedical LLM)</li>
+<p>
+</ol>
+   - Use: Biomedical literature, research
+   - Speed: 40-60 tokens/sec
+   - Memory: 14 GB VRAM
+</p>
+
+<ol>
+<li><strong>Llama 3.1 70B</strong> (Meta, best reasoning)</li>
+<p>
+</ol>
+   - Use: Complex reasoning, question generation
+   - Speed: 5-10 tokens/sec
+   - Memory: 140 GB VRAM (quantized: 35 GB)
+</p>
+
+<ol>
+<li><strong>Mixtral 8x7B</strong> (Mistral AI)</li>
+<p>
+</ol>
+   - Use: High-quality content generation
+   - Speed: 30-50 tokens/sec
+   - Memory: 28 GB VRAM
+</p>
+
+<strong>Performance Targets:</strong>
+<ul>
+<li><strong>Throughput:</strong> 40-60 tokens/sec (7B), 5-10 (70B)</li>
+<li><strong>Latency:</strong> <100ms first token, <20ms/token after</li>
+<li><strong>GPU Utilization:</strong> 80%+ (batching)</li>
+<li><strong>Availability:</strong> 99.9% uptime</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Zero API costs (local LLMs)</li>
+<li>✅ Privacy (medical content stays local)</li>
+<li>✅ vLLM = 10-20x faster than naive serving</li>
+<li>✅ Medical-specific models (Meditron, BioMistral)</li>
+<li>✅ Unlimited generation</li>
+<li>✅ Full control over inference</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ GPU hardware cost ($2,000-$5,000)</li>
+<li>❌ Electricity costs ($50-100/month)</li>
+<li>❌ Model updates require redownload (10-140 GB)</li>
+<li>❌ 7B models less capable than GPT-4</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> AI-001 (RAG), AI-003 (Multi-Agent)</li>
+<li><strong>Serves:</strong> All agents requiring LLM inference</li>
+<li><strong>Artifacts:</strong> vLLM server, Ollama setup, prompt templates</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>AI-003: Multi-Agent System Architect</h3>
+
+<strong>Experience:</strong> 10+ years distributed systems, 5+ years agent systems
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Orchestration:</strong> LangGraph, AutoGen, CrewAI</li>
+<li><strong>Communication:</strong> Message queues (Redis, RabbitMQ)</li>
+<li><strong>State Management:</strong> Shared state, agent memory</li>
+<li><strong>Planning:</strong> ReAct, Plan-and-Execute, Reflection</li>
+<li><strong>Tools:</strong> Function calling, tool use</li>
+<li><strong>Frameworks:</strong> LangChain, Semantic Kernel</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Multi-Agent Architecture Design</li>
+<li>Agent Communication Protocols</li>
+<li>Task Decomposition & Planning</li>
+<li>Agent Orchestration (LangGraph workflows)</li>
+<li>State Management & Memory</li>
+<li>Tool Integration (functions, APIs)</li>
+<li>Agent Coordination</li>
+<li>Error Handling & Retries</li>
+<li>Monitoring Agent Behavior</li>
+<li>Performance Optimization</li>
+<p>
+</ol>
+</p>
+
+<strong>Agent System:</strong>
+<pre><code>User Request
+<p>
+    ↓
+[PM-001] Project Manager (coordinator)
+    ↓
+├─> [MED-001] Cardiology Expert → Generate MCQ
+├─> [AI-001] RAG System → Retrieve context
+├─> [QA-001] Medical Reviewer → Validate question
+└─> [DEV-004] Database → Store question
+    ↓
+Aggregated Response
+</code></pre>
+</p>
+
+<strong>Agent Patterns:</strong>
+<ol>
+<li><strong>Sequential:</strong> Agent A → Agent B → Agent C</li>
+<li><strong>Parallel:</strong> Agent A + Agent B + Agent C (simultaneously)</li>
+<li><strong>Hierarchical:</strong> PM delegates to specialists</li>
+<li><strong>Collaborative:</strong> Agents debate/vote on answer</li>
+<li><strong>Reflective:</strong> Agent critiques own output, retries</li>
+<p>
+</ol>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Breaks complex tasks into specialized subtasks</li>
+<li>✅ Each agent focuses on expertise</li>
+<li>✅ Parallel execution for speed</li>
+<li>✅ Fault tolerance (retry failed agents)</li>
+<li>✅ Scalable (add more agents)</li>
+<li>✅ LangGraph = state management built-in</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Complex orchestration logic</li>
+<li>❌ Debugging distributed agent systems</li>
+<li>❌ Agent communication overhead</li>
+<li>❌ Coordination challenges</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> PM-001 (orchestrator), all 40+ agents</li>
+<li><strong>Uses:</strong> LangGraph for workflows</li>
+<li><strong>Artifacts:</strong> Agent workflows, communication protocols</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>AI-004: ETL & Data Pipeline Engineer</h3>
+
+<strong>Experience:</strong> 10+ years ETL, 5+ years big data, 3+ years ML pipelines
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>ETL:</strong> Dagster 1.5+, Apache Airflow (alternative)</li>
+<li><strong>Data Processing:</strong> Polars, DuckDB, Pandas</li>
+<li><strong>Validation:</strong> Great Expectations, Pandera</li>
+<li><strong>Storage:</strong> Parquet, Delta Lake, PostgreSQL</li>
+<li><strong>Scheduling:</strong> Dagster schedules, cron</li>
+<li><strong>Monitoring:</strong> Dagster UI, Prometheus</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>ETL Pipeline Design (PDF → Embeddings)</li>
+<li>Data Quality Validation</li>
+<li>Incremental Processing (new data)</li>
+<li>Pipeline Orchestration (Dagster)</li>
+<li>Error Handling & Recovery</li>
+<li>Data Lineage Tracking</li>
+<li>Performance Optimization</li>
+<li>Testing Pipelines</li>
+<li>Monitoring & Alerting</li>
+<li>Documentation</li>
+<p>
+</ol>
+</p>
+
+<strong>Key Pipelines:</strong>
+<p>
+See DEV-009 for details (same agent, different categorization)
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Dagster = asset-centric, great for ML</li>
+<li>✅ Polars = 5-10x faster than Pandas</li>
+<li>✅ Data quality = prevents bad data</li>
+<li>✅ Incremental = efficient updates</li>
+<li>✅ Monitoring = visibility</li>
+<li>✅ Reproducible</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Dagster learning curve</li>
+<li>❌ Complex for simple tasks</li>
+<li>❌ Resource-intensive</li>
+<li>❌ Debugging distributed</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> AI-001 (RAG), DEV-004 (Database)</li>
+<li><strong>Produces:</strong> Embeddings, knowledge graph</li>
+<li><strong>Artifacts:</strong> Dagster pipelines, data quality checks</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>AI-005: Medical NLP Specialist</h3>
+
+<strong>Experience:</strong> 10+ years NLP, 5+ years medical NLP
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Models:</strong> BioBERT, PubMedBERT, ClinicalBERT, SciBERT</li>
+<li><strong>Libraries:</strong> spaCy, Hugging Face Transformers, NLTK</li>
+<li><strong>Tasks:</strong> NER (named entity recognition), relation extraction, text classification</li>
+<li><strong>Medical:</strong> UMLS, SNOMED CT, ICD-10, MeSH</li>
+<li><strong>Frameworks:</strong> PyTorch, TensorFlow</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Medical Entity Extraction (diseases, drugs, procedures)</li>
+<li>SNOMED CT Mapping</li>
+<li>Clinical Text Classification</li>
+<li>Medical Abbreviation Expansion</li>
+<li>Negation Detection (patient does NOT have X)</li>
+<li>Relation Extraction (drug-disease relationships)</li>
+<li>Medical Concept Normalization</li>
+<li>Custom NER Model Training</li>
+<li>Evaluation & Metrics</li>
+<li>Integration with Knowledge Graph</li>
+<p>
+</ol>
+</p>
+
+<strong>Use Cases:</strong>
+<ul>
+<li><strong>Entity Extraction:</strong> Extract diseases, drugs, symptoms from textbooks</li>
+<li><strong>SNOMED Mapping:</strong> Map extracted entities to SNOMED CT codes</li>
+<li><strong>Question Tagging:</strong> Automatically tag questions by specialty, topic</li>
+<li><strong>Abbreviation Expansion:</strong> "MI" → "Myocardial Infarction"</li>
+<li><strong>Negation:</strong> Detect "patient does NOT have diabetes"</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Automates medical entity extraction</li>
+<li>✅ PubMedBERT = medical-optimized</li>
+<li>✅ SNOMED CT = standard medical ontology</li>
+<li>✅ Enables knowledge graph construction</li>
+<li>✅ Better search (entity-based)</li>
+<li>✅ Question auto-tagging</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Medical NER challenging (abbreviations, negation)</li>
+<li>❌ SNOMED CT complex (350,000+ concepts)</li>
+<li>❌ Domain adaptation required</li>
+<li>❌ Evaluation needs medical experts</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> AI-001 (RAG), DEV-004 (Knowledge Graph)</li>
+<li><strong>Produces:</strong> Extracted entities, SNOMED mappings</li>
+<li><strong>Artifacts:</strong> NER models, entity databases</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>AI-006: Computer Vision Engineer (Medical Imaging)</h3>
+
+<strong>Experience:</strong> 10+ years computer vision, 5+ years medical imaging
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Frameworks:</strong> PyTorch, TensorFlow, OpenCV</li>
+<li><strong>Models:</strong> ResNet, EfficientNet, Vision Transformers</li>
+<li><strong>Medical:</strong> DICOM, NIfTI, medical image processing</li>
+<li><strong>OCR:</strong> Tesseract, PaddleOCR, docTR</li>
+<li><strong>Visualization:</strong> Matplotlib, Pillow, SimpleITK</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Medical Image Processing (X-rays, CT, MRI)</li>
+<li>OCR for Scanned Textbooks</li>
+<li>Diagram Extraction (anatomy diagrams, flowcharts)</li>
+<li>Image-Based Question Generation</li>
+<li>Medical Image Classification</li>
+<li>Figure Caption Extraction</li>
+<li>Table Detection & Extraction</li>
+<li>Image Preprocessing</li>
+<li>Model Training & Evaluation</li>
+<li>Integration with RAG System</li>
+<p>
+</ol>
+</p>
+
+<strong>Use Cases:</strong>
+<ul>
+<li><strong>OCR:</strong> Extract text from scanned medical textbooks</li>
+<li><strong>Diagram Extraction:</strong> Extract anatomy diagrams for visual questions</li>
+<li><strong>Table Detection:</strong> Detect and extract tables from PDFs</li>
+<li><strong>Image Questions:</strong> Generate questions from medical images</li>
+<li><strong>Figure Captions:</strong> Extract figure captions for context</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Handles scanned textbooks (OCR)</li>
+<li>✅ Enables visual questions (images)</li>
+<li>✅ Extracts tables accurately</li>
+<li>✅ Medical image understanding</li>
+<li>✅ Vision-language models (Qwen2.5VL)</li>
+<li>✅ Automated diagram extraction</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ OCR quality varies (scanned quality)</li>
+<li>❌ Medical imaging requires domain knowledge</li>
+<li>❌ Large models (ResNet, ViT)</li>
+<li>❌ GPU-intensive training</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> AI-001 (RAG), AI-007 (Vision-Language)</li>
+<li><strong>Processes:</strong> Medical images, scanned pages</li>
+<li><strong>Artifacts:</strong> OCR models, image datasets</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>AI-007: Vision-Language Model Engineer</h3>
+
+<strong>Experience:</strong> 10+ years ML, 5+ years multimodal AI
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Models:</strong> Qwen2.5VL 7B, LLaVA 7B, BakLLaVA</li>
+<li><strong>Frameworks:</strong> Hugging Face, LangChain</li>
+<li><strong>Inference:</strong> vLLM, Ollama (multimodal support)</li>
+<li><strong>Image Processing:</strong> PIL, OpenCV, torchvision</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Vision-Language Model Selection (Qwen2.5VL)</li>
+<li>Image-Based Question Generation</li>
+<li>Medical Image Analysis with LLM</li>
+<li>Diagram Understanding</li>
+<li>Visual Reasoning</li>
+<li>Prompt Engineering (image + text)</li>
+<li>Model Evaluation</li>
+<li>Integration with RAG</li>
+<li>Performance Optimization</li>
+<li>Use Case Development</li>
+<p>
+</ol>
+</p>
+
+<strong>Vision-Language Pipeline:</strong>
+<pre><code>Medical Image (X-ray, CT, diagram)
+<p>
+    ↓
+[Qwen2.5VL 7B] Vision-Language Model
+    ↓
+Image Understanding + LLM Reasoning
+    ↓
+Generated Question/Explanation
+</code></pre>
+</p>
+
+<strong>Use Cases:</strong>
+<ul>
+<li><strong>Visual MCQs:</strong> Generate questions from medical images</li>
+<li><strong>Diagram Analysis:</strong> Analyze anatomy diagrams, flowcharts</li>
+<li><strong>Image Explanations:</strong> Explain X-rays, CT scans</li>
+<li><strong>OSCE Scenarios:</strong> Generate scenarios from clinical images</li>
+<li><strong>Visual Flashcards:</strong> Image-based study cards</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Understands images + text together</li>
+<li>✅ Qwen2.5VL = open-source, powerful</li>
+<li>✅ Enables visual questions (critical for AMC)</li>
+<li>✅ Local inference (zero API costs)</li>
+<li>✅ Medical image understanding</li>
+<li>✅ Diagram analysis</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Larger models (7B+ for good quality)</li>
+<li>❌ Slower inference than text-only</li>
+<li>❌ GPU memory (image + text)</li>
+<li>❌ Hallucination risk (image misinterpretation)</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> AI-001 (RAG), AI-006 (Computer Vision)</li>
+<li><strong>Processes:</strong> Medical images, diagrams</li>
+<li><strong>Artifacts:</strong> Vision-language pipeline, visual question bank</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>AI-008: MLOps & Model Management Engineer</h3>
+
+<strong>Experience:</strong> 10+ years ML engineering, 5+ years MLOps
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>MLOps:</strong> MLflow, DVC, Weights & Biases</li>
+<li><strong>Experiment Tracking:</strong> MLflow, Comet.ml</li>
+<li><strong>Model Registry:</strong> MLflow Model Registry</li>
+<li><strong>Versioning:</strong> DVC (data), Git (code)</li>
+<li><strong>Deployment:</strong> Docker, Kubernetes, vLLM</li>
+<li><strong>Monitoring:</strong> Prometheus, Grafana, Evidently AI</li>
+<li><strong>Testing:</strong> pytest, Great Expectations</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Model Versioning & Registry (MLflow)</li>
+<li>Experiment Tracking</li>
+<li>Model Deployment (vLLM, Docker)</li>
+<li>A/B Testing (model comparisons)</li>
+<li>Model Monitoring (drift detection)</li>
+<li>Performance Tracking</li>
+<li>Reproducibility (DVC, MLflow)</li>
+<li>Model Rollback</li>
+<li>CI/CD for ML</li>
+<li>Documentation</li>
+<p>
+</ol>
+</p>
+
+<strong>MLOps Workflow:</strong>
+<pre><code>[Train Model] → [Track Experiments (MLflow)]
+<p>
+    ↓
+[Register Model] → [MLflow Model Registry]
+    ↓
+[Deploy] → [vLLM + Docker]
+    ↓
+[Monitor] → [Prometheus + Evidently AI]
+    ↓
+[Drift Detected?] → [Retrain] → Loop
+</code></pre>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ MLflow = open-source, comprehensive</li>
+<li>✅ Experiment tracking = reproducibility</li>
+<li>✅ Model registry = versioning</li>
+<li>✅ Drift detection = quality maintenance</li>
+<li>✅ A/B testing = data-driven model selection</li>
+<li>✅ CI/CD for ML</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ MLOps complexity</li>
+<li>❌ Infrastructure overhead</li>
+<li>❌ Requires discipline</li>
+<li>❌ Monitoring cost</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> All AI agents for model management</li>
+<li><strong>Manages:</strong> All ML models (embeddings, LLMs, classifiers)</li>
+<li><strong>Artifacts:</strong> MLflow registry, deployment configs</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>DevOps & Infrastructure</h2>
+
+<h3>DEVOPS-001: Kubernetes & Cloud Architect</h3>
+
+<strong>Experience:</strong> 10+ years infrastructure, 5+ years Kubernetes
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Orchestration:</strong> Kubernetes 1.28+, Helm, Kustomize</li>
+<li><strong>Cloud:</strong> AWS, GCP, Azure (optional, prefer self-hosted)</li>
+<li><strong>Networking:</strong> Istio, Linkerd, Nginx Ingress</li>
+<li><strong>Storage:</strong> Persistent Volumes, StatefulSets</li>
+<li><strong>Scaling:</strong> HPA (Horizontal Pod Autoscaler), VPA</li>
+<li><strong>Monitoring:</strong> Prometheus Operator, Grafana</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Kubernetes Cluster Design</li>
+<li>Container Orchestration</li>
+<li>Service Mesh (Istio for advanced scenarios)</li>
+<li>Auto-Scaling (HPA based on CPU, memory, custom metrics)</li>
+<li>Load Balancing</li>
+<li>Storage Management</li>
+<li>Disaster Recovery</li>
+<li>Multi-Region Deployment (if scaling globally)</li>
+<li>Cost Optimization</li>
+<li>Security (RBAC, network policies)</li>
+<p>
+</ol>
+</p>
+
+<strong>K8s Architecture:</strong>
+<pre><code>Ingress (Nginx)
+<p>
+    ↓
+Services
+├─> Backend (FastAPI) - Deployment (3 replicas)
+├─> Frontend (Next.js) - Deployment (2 replicas)
+├─> Qdrant - StatefulSet (persistent storage)
+├─> PostgreSQL - StatefulSet
+└─> Redis - Deployment
+</code></pre>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Auto-scaling (handle traffic spikes)</li>
+<li>✅ High availability (replica sets)</li>
+<li>✅ Rolling updates (zero downtime)</li>
+<li>✅ Self-healing (restarts failed pods)</li>
+<li>✅ Resource limits (prevent OOM)</li>
+<li>✅ Production-grade orchestration</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Complex for small deployments</li>
+<li>❌ Steep learning curve</li>
+<li>❌ Overkill for single-server setup</li>
+<li>❌ Resource overhead (kubelet, etcd)</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> DEVOPS-002 (CI/CD), DEVOPS-003 (Monitoring)</li>
+<li><strong>Manages:</strong> All containerized services</li>
+<li><strong>Artifacts:</strong> Helm charts, K8s manifests, deployment configs</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>DEVOPS-002: CI/CD Engineer</h3>
+
+<strong>Experience:</strong> 10+ years automation, 5+ years CI/CD pipelines
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>CI/CD:</strong> GitHub Actions, GitLab CI, CircleCI</li>
+<li><strong>GitOps:</strong> ArgoCD, Flux</li>
+<li><strong>Containers:</strong> Docker, Podman</li>
+<li><strong>Registries:</strong> GitHub Container Registry, Docker Hub</li>
+<li><strong>Testing:</strong> pytest, Playwright, k6</li>
+<li><strong>Security:</strong> Trivy (container scanning), Bandit, Safety</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>CI/CD Pipeline Design</li>
+<li>Automated Testing (unit, integration, E2E)</li>
+<li>Docker Image Building</li>
+<li>Container Registry Management</li>
+<li>GitOps Deployment (ArgoCD)</li>
+<li>Environment Management (dev, staging, prod)</li>
+<li>Security Scanning (Trivy, Bandit)</li>
+<li>Performance Testing (k6)</li>
+<li>Rollback Strategies</li>
+<li>Pipeline Monitoring</li>
+<p>
+</ol>
+</p>
+
+<strong>CI/CD Pipeline:</strong>
+<pre><code>[Git Push]
+<p>
+    ↓
+[GitHub Actions]
+    ↓
+├─> Lint (Ruff, ESLint)
+├─> Type Check (mypy, TypeScript)
+├─> Unit Tests (pytest, Vitest)
+├─> Security Scan (Trivy, Bandit)
+├─> Build Docker Image
+├─> Integration Tests
+└─> E2E Tests (Playwright)
+    ↓
+[Push to Registry]
+    ↓
+[ArgoCD Detects Change]
+    ↓
+[Deploy to K8s]
+    ↓
+[Health Checks]
+    ↓
+[Rollback if Failed]
+</code></pre>
+</p>
+
+<strong>Quality Gates:</strong>
+<ul>
+<li>✅ All tests pass (unit, integration, E2E)</li>
+<li>✅ Test coverage ≥80%</li>
+<li>✅ No high/critical security vulnerabilities</li>
+<li>✅ Linting passes (Ruff, ESLint)</li>
+<li>✅ Type checking passes (mypy, TypeScript)</li>
+<li>✅ Build succeeds</li>
+<li>✅ Health checks pass after deployment</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Automated testing prevents regressions</li>
+<li>✅ Fast feedback (minutes, not hours)</li>
+<li>✅ GitOps = declarative, auditable</li>
+<li>✅ Security scanning = early vulnerability detection</li>
+<li>✅ Rollback = safety net</li>
+<li>✅ Consistent deployments</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Pipeline complexity</li>
+<li>❌ Flaky tests can block deployments</li>
+<li>❌ CI/CD costs (GitHub Actions minutes)</li>
+<li>❌ Debugging pipeline failures</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> All dev agents for CI/CD</li>
+<li><strong>Deploys:</strong> All services to K8s</li>
+<li><strong>Artifacts:</strong> GitHub Actions workflows, ArgoCD apps</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>DEVOPS-003: Monitoring & Observability Engineer</h3>
+
+<strong>Experience:</strong> 10+ years monitoring, 5+ years observability
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Metrics:</strong> Prometheus, Grafana, VictoriaMetrics</li>
+<li><strong>Logging:</strong> Grafana Loki, ELK Stack (Elasticsearch, Logstash, Kibana)</li>
+<li><strong>Tracing:</strong> Jaeger, Tempo, OpenTelemetry</li>
+<li><strong>Alerting:</strong> Alertmanager, PagerDuty, Opsgenie</li>
+<li><strong>APM:</strong> Sentry, New Relic (optional)</li>
+<li><strong>Dashboards:</strong> Grafana, Chronograf</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Metrics Collection (Prometheus)</li>
+<li>Log Aggregation (Loki)</li>
+<li>Distributed Tracing (Jaeger)</li>
+<li>Dashboard Creation (Grafana)</li>
+<li>Alerting & On-Call (Alertmanager)</li>
+<li>SLI/SLO Definition</li>
+<li>Incident Response</li>
+<li>Performance Monitoring</li>
+<li>Cost Tracking</li>
+<li>Observability Best Practices</li>
+<p>
+</ol>
+</p>
+
+<strong>Monitoring Stack:</strong>
+<pre><code>[Application]
+<p>
+    ↓
+Metrics → Prometheus → Grafana Dashboards
+Logs → Loki → Grafana Explore
+Traces → Jaeger → Distributed Tracing UI
+    ↓
+Alertmanager → PagerDuty/Email
+</code></pre>
+</p>
+
+<strong>Key Metrics:</strong>
+<ul>
+<li><strong>Backend:</strong> Request rate, latency (p50, p95, p99), error rate</li>
+<li><strong>Database:</strong> Query latency, connection pool usage, slow queries</li>
+<li><strong>LLM:</strong> Inference latency, throughput (tokens/sec), GPU utilization</li>
+<li><strong>Frontend:</strong> Page load time, LCP, FID, CLS, JS errors</li>
+<li><strong>Infrastructure:</strong> CPU, memory, disk, network</li>
+<p>
+</ul>
+</p>
+
+<strong>SLOs (Service Level Objectives):</strong>
+<ul>
+<li><strong>Availability:</strong> 99.9% uptime (43 min downtime/month)</li>
+<li><strong>Latency:</strong> p95 < 100ms (API), p95 < 1.5s (page load)</li>
+<li><strong>Error Rate:</strong> < 0.1% (1 error per 1000 requests)</li>
+<li><strong>Throughput:</strong> 3,000+ RPS (backend)</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Prometheus = industry standard, powerful</li>
+<li>✅ Grafana = beautiful dashboards</li>
+<li>✅ Loki = lightweight log aggregation</li>
+<li>✅ Jaeger = distributed tracing</li>
+<li>✅ Alerting = proactive issue detection</li>
+<li>✅ Self-hosted = zero cost</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Prometheus storage can grow large</li>
+<li>❌ Alert fatigue (too many alerts)</li>
+<li>❌ Dashboard maintenance</li>
+<li>❌ Requires expertise to interpret metrics</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> All services for monitoring</li>
+<li><strong>Provides:</strong> Dashboards, alerts, insights</li>
+<li><strong>Artifacts:</strong> Grafana dashboards, Prometheus rules, alert configs</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>DEVOPS-004: Security & Compliance Engineer</h3>
+
+<strong>Experience:</strong> 10+ years security, 5+ years compliance (HIPAA, GDPR)
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Security:</strong> OWASP ZAP, Burp Suite, Nmap</li>
+<li><strong>Scanning:</strong> Trivy (containers), Bandit (Python), npm audit (JS)</li>
+<li><strong>Secrets:</strong> HashiCorp Vault, AWS Secrets Manager</li>
+<li><strong>Compliance:</strong> HIPAA 2025, GDPR, SOC 2</li>
+<li><strong>Encryption:</strong> AES-256, TLS 1.3, Let's Encrypt</li>
+<li><strong>Audit:</strong> Auditd, logging, SIEM</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Security Audits & Penetration Testing</li>
+<li>Vulnerability Scanning (Trivy, Bandit, Safety)</li>
+<li>Secrets Management (Vault)</li>
+<li>HIPAA 2025 Compliance</li>
+<li>Encryption Implementation (AES-256, TLS 1.3)</li>
+<li>Security Policies & Procedures</li>
+<li>Incident Response Planning</li>
+<li>Access Control (RBAC, least privilege)</li>
+<li>Audit Logging</li>
+<li>Security Training</li>
+<p>
+</ol>
+</p>
+
+<strong>Security Practices:</strong>
+<ul>
+<li><strong>OWASP Top 10:</strong> All vulnerabilities mitigated</li>
+<li><strong>Secrets:</strong> Never in code, use Vault</li>
+<li><strong>Encryption:</strong> AES-256 at rest, TLS 1.3 in transit</li>
+<li><strong>Authentication:</strong> OAuth2 + JWT + Argon2</li>
+<li><strong>MFA:</strong> Required for admin accounts</li>
+<li><strong>RBAC:</strong> Least privilege access</li>
+<li><strong>Audit Logs:</strong> All sensitive operations logged</li>
+<li><strong>Scanning:</strong> Daily vulnerability scans</li>
+<p>
+</ul>
+</p>
+
+<strong>HIPAA 2025 Requirements:</strong>
+<ul>
+<li>✅ Annual security audits</li>
+<li>✅ Real-time PHI monitoring</li>
+<li>✅ Biometric authentication (WebAuthn)</li>
+<li>✅ Encryption at rest & in transit</li>
+<li>✅ Audit logs (6+ years retention)</li>
+<li>✅ Business Associate Agreements (BAAs)</li>
+<li>✅ Breach notification (<72 hours)</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Prevents security breaches</li>
+<li>✅ HIPAA 2025 compliant</li>
+<li>✅ Vault = secure secrets management</li>
+<li>✅ Daily scans = early detection</li>
+<li>✅ Audit logs = compliance + forensics</li>
+<li>✅ Defense in depth</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ HIPAA compliance expensive (annual audits)</li>
+<li>❌ Security friction vs. UX</li>
+<li>❌ Vault complexity</li>
+<li>❌ Compliance overhead</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> All agents for security review</li>
+<li><strong>Protects:</strong> All system components</li>
+<li><strong>Artifacts:</strong> Security policies, audit reports, vulnerability scans</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>DEVOPS-005: Database Administrator (DBA)</h3>
+
+<strong>Experience:</strong> 10+ years database administration, 5+ years PostgreSQL
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>RDBMS:</strong> PostgreSQL 16+, pgAdmin</li>
+<li><strong>Replication:</strong> Streaming replication, logical replication</li>
+<li><strong>Backup:</strong> pg<em>dump, WAL archiving, pg</em>basebackup</li>
+<li><strong>Monitoring:</strong> pg<em>stat</em>statements, pgBadger, Prometheus postgres_exporter</li>
+<li><strong>Tuning:</strong> postgresql.conf, shared<em>buffers, work</em>mem</li>
+<li><strong>High Availability:</strong> Patroni, repmgr, PgBouncer (connection pooling)</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Database Performance Tuning</li>
+<li>Query Optimization (EXPLAIN ANALYZE)</li>
+<li>Index Management</li>
+<li>Backup & Recovery</li>
+<li>Replication Setup (primary-replica)</li>
+<li>Connection Pooling (PgBouncer)</li>
+<li>Monitoring & Alerting</li>
+<li>Disk Space Management</li>
+<li>Vacuum & Maintenance</li>
+<li>Disaster Recovery Planning</li>
+<p>
+</ol>
+</p>
+
+<strong>Performance Tuning:</strong>
+<ul>
+<li><strong>Indexes:</strong> Proper indexes for all queries</li>
+<li><strong>Queries:</strong> <50ms simple, <500ms complex (p95)</li>
+<li><strong>Connections:</strong> PgBouncer for connection pooling</li>
+<li><strong>Vacuum:</strong> Auto-vacuum configured</li>
+<li><strong>Shared Buffers:</strong> 25% of RAM</li>
+<li><strong>Work Mem:</strong> Tuned for query workload</li>
+<p>
+</ul>
+</p>
+
+<strong>Backup Strategy:</strong>
+<ul>
+<li><strong>Daily:</strong> Full backup (pg_dump)</li>
+<li><strong>Continuous:</strong> WAL archiving (point-in-time recovery)</li>
+<li><strong>Retention:</strong> 30 days</li>
+<li><strong>Testing:</strong> Monthly restore drills</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ PostgreSQL = battle-tested, ACID</li>
+<li>✅ Query optimization = fast responses</li>
+<li>✅ Replication = high availability</li>
+<li>✅ Backups = disaster recovery</li>
+<li>✅ PgBouncer = handles 1000s of connections</li>
+<li>✅ Self-hosted = zero cost</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ PostgreSQL tuning complex</li>
+<li>❌ Backup storage costs</li>
+<li>❌ Replication lag (async)</li>
+<li>❌ Single point of failure (without HA)</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> DEV-004 (Database Engineer)</li>
+<li><strong>Manages:</strong> PostgreSQL production instances</li>
+<li><strong>Artifacts:</strong> Backup scripts, tuning configs, monitoring dashboards</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>DEVOPS-006: Infrastructure as Code (IaC) Engineer</h3>
+
+<strong>Experience:</strong> 10+ years infrastructure, 5+ years IaC (Terraform, Ansible)
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>IaC:</strong> Terraform, Pulumi, OpenTofu</li>
+<li><strong>Config Management:</strong> Ansible, Chef, Puppet</li>
+<li><strong>Cloud:</strong> AWS, GCP, Azure (optional)</li>
+<li><strong>Versioning:</strong> Git, Terraform Cloud</li>
+<li><strong>Testing:</strong> Terratest, InSpec</li>
+<li><strong>Documentation:</strong> Terraform docs, README</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Infrastructure as Code (Terraform)</li>
+<li>Configuration Management (Ansible)</li>
+<li>Environment Provisioning (dev, staging, prod)</li>
+<li>Infrastructure Versioning (Git)</li>
+<li>State Management (Terraform state)</li>
+<li>Drift Detection</li>
+<li>Infrastructure Testing (Terratest)</li>
+<li>Documentation</li>
+<li>Cost Optimization</li>
+<li>Disaster Recovery</li>
+<p>
+</ol>
+</p>
+
+<strong>IaC Stack:</strong>
+<pre><code>Terraform (Infrastructure)
+<p>
+├─> AWS/GCP/Self-Hosted
+│   ├─> VPC, Subnets, Security Groups
+│   ├─> EC2/Compute Instances
+│   ├─> Load Balancers
+│   └─> Managed Databases (RDS, etc.)
+    ↓
+Ansible (Configuration)
+├─> Install Docker
+├─> Setup Kubernetes
+├─> Configure Services
+└─> Deploy Applications
+</code></pre>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Infrastructure versioned in Git</li>
+<li>✅ Reproducible environments</li>
+<li>✅ Terraform = declarative, idempotent</li>
+<li>✅ Ansible = agentless, simple</li>
+<li>✅ Drift detection = consistency</li>
+<li>✅ Documentation as code</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Terraform state management complexity</li>
+<li>❌ Learning curve</li>
+<li>❌ Terraform plan can be slow</li>
+<li>❌ Debugging IaC issues</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> DEVOPS-001 (Kubernetes), DEVOPS-002 (CI/CD)</li>
+<li><strong>Provisions:</strong> All infrastructure</li>
+<li><strong>Artifacts:</strong> Terraform modules, Ansible playbooks</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Quality Assurance</h2>
+
+<h3>QA-001: Senior Medical QA Specialist</h3>
+
+<strong>Experience:</strong> 10+ years QA, 5+ years medical domain
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Medical Content Validation (clinical accuracy)</li>
+<li>Question Quality Review (AMC standard)</li>
+<li>Clinical Scenario Review (OSCE realism)</li>
+<li>Medical Guideline Compliance (eTG, NSW protocols)</li>
+<li>Expert Review Coordination (with real doctors)</li>
+<li>Quality Metrics Tracking</li>
+<li>Error Pattern Analysis</li>
+<li>Content Improvement Recommendations</li>
+<li>Peer Review Process</li>
+<li>Documentation</li>
+<p>
+</ol>
+</p>
+
+<strong>Quality Criteria:</strong>
+<ul>
+<li><strong>Clinical Accuracy:</strong> 100% (verified by medical experts)</li>
+<li><strong>Guideline Compliance:</strong> Australian standards (eTG, AMH)</li>
+<li><strong>Question Quality:</strong> AMC exam format, difficulty calibration</li>
+<li><strong>Clarity:</strong> Unambiguous stems, clear options</li>
+<li><strong>Distractors:</strong> Plausible incorrect options</li>
+<li><strong>Explanations:</strong> Evidence-based, cited</li>
+<p>
+</ul>
+</p>
+
+<strong>Validation Process:</strong>
+<pre><code>[AI Generated Question]
+<p>
+    ↓
+[QA-001 Review] (medical accuracy, format)
+    ↓
+[MED Expert Review] (specialist review)
+    ↓
+[User Testing] (med students, IMGs)
+    ↓
+[Feedback Loop] (improve prompt, retrain)
+    ↓
+[Approved Question Bank]
+</code></pre>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Ensures clinical accuracy</li>
+<li>✅ Prevents medical misinformation</li>
+<li>✅ AMC exam alignment</li>
+<li>✅ Quality metrics = data-driven improvement</li>
+<li>✅ Expert validation</li>
+<li>✅ Continuous improvement</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Requires medical expert time (expensive)</li>
+<li>❌ Slow review process</li>
+<li>❌ Subjective quality judgments</li>
+<li>❌ Bottleneck for content generation</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> All MED agents, AI-001 (RAG)</li>
+<li><strong>Reviews:</strong> All generated medical content</li>
+<li><strong>Artifacts:</strong> Quality reports, approved question bank</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>QA-002: Test Automation Engineer (E2E)</h3>
+
+<strong>Experience:</strong> 10+ years test automation, 5+ years E2E testing
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>E2E:</strong> Playwright, Cypress, Selenium</li>
+<li><strong>Visual:</strong> Percy, Chromatic, BackstopJS</li>
+<li><strong>API:</strong> pytest, Postman, Insomnia</li>
+<li><strong>Performance:</strong> k6, Lighthouse CI</li>
+<li><strong>CI Integration:</strong> GitHub Actions, CircleCI</li>
+<li><strong>Reporting:</strong> Allure, Mochawesome</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>E2E Test Suite Development (Playwright)</li>
+<li>Visual Regression Testing (Percy)</li>
+<li>API Testing (pytest, httpx)</li>
+<li>Performance Testing (k6, Lighthouse)</li>
+<li>CI/CD Integration</li>
+<li>Test Data Management</li>
+<li>Flaky Test Fixing</li>
+<li>Test Reporting</li>
+<li>Test Coverage Analysis</li>
+<li>Test Maintenance</li>
+<p>
+</ol>
+</p>
+
+<strong>Test Types:</strong>
+<ul>
+<li><strong>E2E:</strong> User flows (signup, login, take quiz, view results)</li>
+<li><strong>Visual:</strong> Screenshot comparison (UI regression)</li>
+<li><strong>API:</strong> All endpoints (CRUD, auth, search)</li>
+<li><strong>Performance:</strong> Load testing (k6), page speed (Lighthouse)</li>
+<li><strong>Accessibility:</strong> axe-core (WCAG 2.1 AA)</li>
+<p>
+</ul>
+</p>
+
+<strong>E2E Test Examples:</strong>
+<pre><code>// Playwright E2E test
+<p>
+test('User takes MCQ quiz and sees results', async ({ page }) => {
+  await page.goto('/login');
+  await page.fill('[name="email"]', 'test@example.com');
+  await page.fill('[name="password"]', 'password123');
+  await page.click('button[type="submit"]');
+</p>
+
+<p>
+  await page.goto('/quiz/cardiology');
+  await page.click('text=Start Quiz');
+</p>
+
+<p>
+  // Answer 10 questions
+  for (let i = 0; i < 10; i++) {
+    await page.click('[data-testid="option-a"]');
+    await page.click('text=Next');
+  }
+</p>
+
+<p>
+  await page.click('text=Submit Quiz');
+</p>
+
+<p>
+  // Verify results page
+  await expect(page.locator('text=Your Score')).toBeVisible();
+  await expect(page.locator('[data-testid="score"]')).toHaveText(/\d+\/10/);
+});
+</code></pre>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Playwright = fast, reliable, multi-browser</li>
+<li>✅ Catches regressions before production</li>
+<li>✅ Visual regression = prevents UI bugs</li>
+<li>✅ API testing = backend validation</li>
+<li>✅ CI integration = automated on every PR</li>
+<li>✅ Test coverage metrics</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Flaky tests (timing issues)</li>
+<li>❌ Maintenance overhead (tests break with UI changes)</li>
+<li>❌ Slow execution (E2E tests take minutes)</li>
+<li>❌ Test data management complexity</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> DEV-002 (Frontend), DEV-001 (Backend), DEVOPS-002 (CI/CD)</li>
+<li><strong>Tests:</strong> All user flows, APIs, UI</li>
+<li><strong>Artifacts:</strong> Playwright tests, test reports, visual baselines</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>QA-003: Performance & Load Testing Engineer</h3>
+
+<strong>Experience:</strong> 10+ years performance testing, 5+ years load testing
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Load Testing:</strong> k6, Locust, JMeter, Gatling</li>
+<li><strong>Profiling:</strong> py-spy, cProfile, memory_profiler</li>
+<li><strong>Monitoring:</strong> Prometheus, Grafana, Pyroscope</li>
+<li><strong>APM:</strong> New Relic, Datadog (optional)</li>
+<li><strong>Benchmarking:</strong> Apache Bench, wrk, hey</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Load Testing (k6 scenarios)</li>
+<li>Stress Testing (breaking point)</li>
+<li>Spike Testing (sudden traffic spike)</li>
+<li>Soak Testing (sustained load)</li>
+<li>Performance Profiling</li>
+<li>Bottleneck Identification</li>
+<li>SLA Validation</li>
+<li>Performance Regression Testing</li>
+<li>Capacity Planning</li>
+<li>Reporting</li>
+<p>
+</ol>
+</p>
+
+<strong>Load Testing Scenarios:</strong>
+<pre><code>// k6 load test
+<p>
+import http from 'k6/http';
+import { check, sleep } from 'k6';
+</p>
+
+<p>
+export let options = {
+  stages: [
+    { duration: '2m', target: 100 },  // Ramp up to 100 users
+    { duration: '5m', target: 100 },  // Stay at 100 for 5 min
+    { duration: '2m', target: 200 },  // Ramp to 200
+    { duration: '5m', target: 200 },  // Stay at 200 for 5 min
+    { duration: '2m', target: 0 },    // Ramp down
+  ],
+  thresholds: {
+    http<em>req</em>duration: ['p(95)<100'], // 95% of requests < 100ms
+    http<em>req</em>failed: ['rate<0.01'],   // Error rate < 1%
+  },
+};
+</p>
+
+<p>
+export default function () {
+  let res = http.get('https://api.example.com/questions');
+  check(res, {
+    'status is 200': (r) => r.status === 200,
+    'response time < 100ms': (r) => r.timings.duration < 100,
+  });
+  sleep(1);
+}
+</code></pre>
+</p>
+
+<strong>Performance Targets:</strong>
+<ul>
+<li><strong>Backend API:</strong> 3,000+ RPS, p95 < 100ms</li>
+<li><strong>Database:</strong> p95 < 50ms (simple), < 500ms (complex)</li>
+<li><strong>LLM:</strong> 40-60 tokens/sec (7B), 5-10 (70B)</li>
+<li><strong>Frontend:</strong> Lighthouse 95+, LCP < 1.5s</li>
+<li><strong>Concurrent Users:</strong> 1,000+ simultaneous</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ k6 = modern, scriptable, accurate</li>
+<li>✅ Validates SLA compliance</li>
+<li>✅ Identifies bottlenecks before production</li>
+<li>✅ Capacity planning data</li>
+<li>✅ Performance regression prevention</li>
+<li>✅ CI integration</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Requires production-like environment</li>
+<li>❌ Load testing can be expensive (resources)</li>
+<li>❌ Results interpretation requires expertise</li>
+<li>❌ False positives (network variance)</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> DEV-010 (Performance Engineer), DEVOPS-003 (Monitoring)</li>
+<li><strong>Tests:</strong> All services under load</li>
+<li><strong>Artifacts:</strong> k6 scripts, load test reports, performance baselines</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>QA-004: Security Testing & Penetration Tester</h3>
+
+<strong>Experience:</strong> 10+ years security testing, 5+ years penetration testing
+
+<strong>Technologies:</strong>
+<ul>
+<li><strong>Pentesting:</strong> Burp Suite, OWASP ZAP, Metasploit</li>
+<li><strong>Scanning:</strong> Nmap, Nessus, Nikto, Trivy</li>
+<li><strong>Fuzzing:</strong> AFL, libFuzzer, Radamsa</li>
+<li><strong>SAST:</strong> Bandit (Python), Semgrep, SonarQube</li>
+<li><strong>DAST:</strong> OWASP ZAP, Burp Suite Scanner</li>
+<li><strong>Secrets:</strong> TruffleHog, GitGuardian, git-secrets</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Penetration Testing (OWASP Top 10)</li>
+<li>Vulnerability Scanning (Trivy, Bandit)</li>
+<li>Security Code Review</li>
+<li>Secrets Detection (TruffleHog)</li>
+<li>API Security Testing</li>
+<li>Authentication/Authorization Testing</li>
+<li>SQL Injection, XSS Testing</li>
+<li>Reporting & Remediation</li>
+<li>Security Training</li>
+<li>Compliance Validation (HIPAA)</li>
+<p>
+</ol>
+</p>
+
+<strong>Security Tests:</strong>
+<ul>
+<li><strong>OWASP Top 10:</strong></li>
+<p>
+</ul>
+  1. Broken Access Control
+  2. Cryptographic Failures
+  3. Injection (SQL, NoSQL, OS)
+  4. Insecure Design
+  5. Security Misconfiguration
+  6. Vulnerable Components
+  7. Identification & Authentication Failures
+  8. Software & Data Integrity Failures
+  9. Security Logging & Monitoring Failures
+  10. Server-Side Request Forgery (SSRF)
+</p>
+
+<ul>
+<li><strong>Medical-Specific:</strong></li>
+<p>
+</ul>
+  - PHI data leakage
+  - HIPAA compliance violations
+  - Unauthorized access to medical records
+  - Insecure medical image storage
+</p>
+
+<strong>Penetration Testing Process:</strong>
+<pre><code>[Reconnaissance]
+<p>
+    ↓
+[Scanning] (Nmap, Nessus)
+    ↓
+[Enumeration]
+    ↓
+[Exploitation] (OWASP ZAP, Burp Suite)
+    ↓
+[Reporting] (vulnerabilities, severity, remediation)
+    ↓
+[Remediation Verification]
+</code></pre>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Identifies real vulnerabilities</li>
+<li>✅ OWASP Top 10 coverage</li>
+<li>✅ Burp Suite = industry standard</li>
+<li>✅ Secrets detection = prevents leaks</li>
+<li>✅ Compliance validation (HIPAA)</li>
+<li>✅ Security training for team</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Time-consuming (manual testing)</li>
+<li>❌ Requires security expertise</li>
+<li>❌ False positives (scanners)</li>
+<li>❌ Can disrupt services (pentesting)</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> DEVOPS-004 (Security Engineer), DEV-005 (Auth)</li>
+<li><strong>Tests:</strong> All system components for vulnerabilities</li>
+<li><strong>Artifacts:</strong> Pentest reports, vulnerability scans, remediation plans</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Medical Experts</h2>
+
+<h3>MED-001: Cardiology Expert</h3>
+
+<strong>Experience:</strong> 10+ years cardiology, 5+ years medical education
+
+<strong>Specializations:</strong>
+<ul>
+<li>Acute Coronary Syndrome (ACS)</li>
+<li>Heart Failure</li>
+<li>Arrhythmias (AF, VT, SVT)</li>
+<li>Hypertension</li>
+<li>Valvular Heart Disease</li>
+<li>Cardiac Emergencies</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<ol>
+<li>Generate Cardiology MCQs (AMC format)</li>
+<li>Review Cardiology Content (clinical accuracy)</li>
+<li>Create OSCE Scenarios (chest pain, palpitations)</li>
+<li>Validate Treatment Guidelines (eTG compliance)</li>
+<li>Medical Literature Review (cardiology research)</li>
+<li>Question Difficulty Calibration</li>
+<li>Explanation Writing (evidence-based)</li>
+<li>Peer Review (other cardiology content)</li>
+<li>Guideline Updates (new eTG versions)</li>
+<li>Student Question Answering</li>
+<p>
+</ol>
+</p>
+
+<strong>Content Examples:</strong>
+<ul>
+<li><strong>MCQ:</strong> 48-year-old male with chest pain, ECG shows ST elevation in V2-V4. What is the most appropriate immediate management?</li>
+<li><strong>OSCE:</strong> Patient presents with acute shortness of breath, raised JVP, bilateral crepitations. Conduct cardiac examination.</li>
+<li><strong>Flashcard:</strong> Acute heart failure management (LMNOP mnemonic)</li>
+<p>
+</ul>
+</p>
+
+<strong>Pros:</strong>
+<ul>
+<li>✅ Cardiology = high-yield for AMC/ICRP</li>
+<li>✅ Expert validation = clinical accuracy</li>
+<li>✅ Australian guidelines (eTG)</li>
+<li>✅ <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> scenarios = exam focus</li>
+<li>✅ Evidence-based explanations</li>
+<p>
+</ul>
+</p>
+
+<strong>Cons:</strong>
+<ul>
+<li>❌ Requires real cardiologist time (expensive)</li>
+<li>❌ Guideline updates (eTG changes)</li>
+<li>❌ Specialist availability</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Points:</strong>
+<ul>
+<li><strong>Works With:</strong> AI-001 (RAG), QA-001 (Medical QA)</li>
+<li><strong>Produces:</strong> Cardiology questions, scenarios, explanations</li>
+<li><strong>Artifacts:</strong> Cardiology question bank, OSCE scenarios</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>MED-002: Respiratory Medicine Expert</h3>
+
+<strong>Experience:</strong> 10+ years respiratory medicine
+
+<strong>Specializations:</strong>
+<ul>
+<li>Asthma & COPD</li>
+<li>Pneumonia</li>
+<li>Pulmonary Embolism</li>
+<li>Tuberculosis</li>
+<li>Interstitial Lung Disease</li>
+<li>Respiratory Emergencies</li>
+<p>
+</ul>
+</p>
+
+<strong>Responsibilities:</strong>
+<p>
+Similar to MED-001, specialized for respiratory medicine.
+</p>
+
+<strong>Content Examples:</strong>
+<ul>
+<li><strong>MCQ:</strong> 65-year-old smoker with progressive dyspnea, spirometry shows FEV1/FVC <0.7. Diagnosis?</li>
+<li><strong>OSCE:</strong> Assess respiratory function, perform peak flow measurement.</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>MED-003: Gastroenterology & Hepatology Expert</h3>
+
+<strong>Experience:</strong> 10+ years GI/hepatology
+
+<strong>Specializations:</strong>
+<ul>
+<li>Peptic Ulcer Disease</li>
+<li>IBD (Crohn's, Ulcerative Colitis)</li>
+<li>Cirrhosis & Liver Failure</li>
+<li>GI Bleeding</li>
+<li>Pancreatitis</li>
+<li>Hepatitis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>MED-004: Endocrinology & Diabetes Expert</h3>
+
+<strong>Experience:</strong> 10+ years endocrinology
+
+<strong>Specializations:</strong>
+<ul>
+<li>Diabetes (Type 1, Type 2, Gestational)</li>
+<li>Thyroid Disorders</li>
+<li>Adrenal Disorders</li>
+<li>Metabolic Syndrome</li>
+<li>Diabetic Emergencies (DKA, HHS)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>MED-005: Neurology Expert</h3>
+
+<strong>Experience:</strong> 10+ years neurology
+
+<strong>Specializations:</strong>
+<ul>
+<li>Stroke & TIA</li>
+<li>Seizures & Epilepsy</li>
+<li>Headache & Migraine</li>
+<li>Multiple Sclerosis</li>
+<li>Parkinson's Disease</li>
+<li>Neuromuscular Disorders</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>MED-006: Psychiatry Expert</h3>
+
+<strong>Experience:</strong> 10+ years psychiatry
+
+<strong>Specializations:</strong>
+<ul>
+<li>Depression & Anxiety</li>
+<li>Schizophrenia & Psychosis</li>
+<li>Bipolar Disorder</li>
+<li>Substance Use Disorders</li>
+<li>Suicide Risk Assessment</li>
+<li>Mental State Examination</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>MED-007: Pediatrics Expert</h3>
+
+<strong>Experience:</strong> 10+ years pediatrics
+
+<strong>Specializations:</strong>
+<ul>
+<li>Neonatal Care</li>
+<li>Pediatric Emergencies</li>
+<li>Childhood Infections</li>
+<li>Growth & Development</li>
+<li>Pediatric Asthma</li>
+<li>Immunizations</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>MED-008: Obstetrics & Gynecology Expert</h3>
+
+<strong>Experience:</strong> 10+ years O&G
+
+<strong>Specializations:</strong>
+<ul>
+<li>Antenatal Care</li>
+<li>Labor & Delivery</li>
+<li>Postpartum Care</li>
+<li>Gynecological Emergencies</li>
+<li>Contraception</li>
+<li>Menstrual Disorders</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>MED-009: Surgery (General) Expert</h3>
+
+<strong>Experience:</strong> 10+ years general surgery
+
+<strong>Specializations:</strong>
+<ul>
+<li>Acute Abdomen</li>
+<li>Appendicitis</li>
+<li>Hernias</li>
+<li>Bowel Obstruction</li>
+<li>Surgical Emergencies</li>
+<li>Post-op Complications</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>MED-010: Orthopedics Expert</h3>
+
+<strong>Experience:</strong> 10+ years orthopedics
+
+<strong>Specializations:</strong>
+<ul>
+<li>Fractures & Dislocations</li>
+<li>Trauma Management</li>
+<li>Arthritis</li>
+<li>Sports Injuries</li>
+<li>Musculoskeletal Examination</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>MED-011: <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Medicine Expert</h3>
+
+<strong>Experience:</strong> 10+ years <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> medicine
+
+<strong>Specializations:</strong>
+<ul>
+<li>Trauma (ATLS)</li>
+<li>Resuscitation (ALS, BLS)</li>
+<li>Toxicology</li>
+<li><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Procedures</li>
+<li>Triage</li>
+<li>Critical Care</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>MED-012: Infectious Diseases Expert</h3>
+
+<strong>Experience:</strong> 10+ years infectious diseases
+
+<strong>Specializations:</strong>
+<ul>
+<li>Sepsis & Septic Shock</li>
+<li>Meningitis</li>
+<li>Pneumonia</li>
+<li>UTIs</li>
+<li>HIV/AIDS</li>
+<li>Tropical Diseases</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>MED-013: Renal Medicine Expert</h3>
+
+<strong>Experience:</strong> 10+ years nephrology
+
+<strong>Specializations:</strong>
+<ul>
+<li>Acute Kidney Injury</li>
+<li>Chronic Kidney Disease</li>
+<li>Electrolyte Disorders</li>
+<li>Dialysis</li>
+<li>Glomerulonephritis</li>
+<li>Renal Emergencies</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>MED-014: Dermatology Expert</h3>
+
+<strong>Experience:</strong> 10+ years dermatology
+
+<strong>Specializations:</strong>
+<ul>
+<li>Eczema & Psoriasis</li>
+<li>Skin Infections</li>
+<li>Skin Cancer</li>
+<li>Acne</li>
+<li>Dermatological Emergencies</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>MED-015: General Practice Expert</h3>
+
+<strong>Experience:</strong> 10+ years general practice
+
+<strong>Specializations:</strong>
+<ul>
+<li>Preventive Care</li>
+<li>Chronic Disease Management</li>
+<li>Screening Programs</li>
+<li>Mental Health in Primary Care</li>
+<li>Geriatrics</li>
+<li>Medicare/PBS (Australia)</li>
+<p>
+</ul>
+</p>
+
+<strong>Integration Note:</strong> This is the most important medical agent for ICRP/AMC as exams focus heavily on general practice scenarios.
+
+<hr>
+
+<h2>Agent Orchestration Workflows</h2>
+
+<h3>Example: Generate 100 Cardiology MCQs</h3>
+
+<pre><code>[PM-001] Receives task: Generate 100 cardiology MCQs
+<p>
+    ↓
+[PM-001] Breaks down into subtasks:
+    ├─> [AI-001] RAG System: Retrieve cardiology content (20 chunks)
+    ├─> [MED-001] Cardiology Expert: Generate 100 questions
+    ├─> [QA-001] Medical QA: Validate clinical accuracy (all 100)
+    ├─> [AI-002] LLM Ops: Run LLM generation (Llama 3.1 70B)
+    └─> [DEV-004] Database: Store approved questions
+    ↓
+[PM-001] Aggregates results, generates report
+    ↓
+[User] Receives 100 validated cardiology MCQs
+</code></pre>
+</p>
+
+<h3>Example: Deploy New Feature</h3>
+
+<pre><code>[PM-001] Sprint Planning: New feature - Real-time quiz
+<p>
+    ↓
+[PM-001] Delegates:
+    ├─> [DEV-007] WebSocket Engineer: Implement real-time updates
+    ├─> [DEV-001] Backend: API endpoints for quiz submission
+    ├─> [DEV-002] Frontend: Real-time UI components
+    ├─> [QA-002] E2E Testing: Test real-time flows
+    └─> [DEVOPS-002] CI/CD: Deploy to staging
+    ↓
+[PM-001] Runs quality gates:
+    ├─> Code review approval
+    ├─> All tests pass (80%+ coverage)
+    ├─> Security scan clean
+    └─> Performance test (handles 1000 concurrent)
+    ↓
+[PM-001] Approves deployment to production
+    ↓
+[DEVOPS-002] ArgoCD deploys to K8s
+</code></pre>
+</p>
+
+<hr>
+
+<h2>Summary</h2>
+
+<strong>Total Agents:</strong> 46
+
+<ul>
+<li><strong>Project Management:</strong> 1 (PM-001)</li>
+<li><strong>Software Development:</strong> 12 (DEV-001 to DEV-012)</li>
+<li><strong>Data & AI Engineering:</strong> 8 (AI-001 to AI-008)</li>
+<li><strong>DevOps & Infrastructure:</strong> 6 (DEVOPS-001 to DEVOPS-006)</li>
+<li><strong>Quality Assurance:</strong> 4 (QA-001 to QA-004)</li>
+<li><strong>Medical Experts:</strong> 15 (MED-001 to MED-015)</li>
+<p>
+</ul>
+</p>
+
+<strong>Key Principles:</strong>
+<ol>
+<li><strong>10+ Years Experience:</strong> All agents have senior-level expertise</li>
+<li><strong>Technology Choices:</strong> Modern stack (FastAPI, Next.js, Polars, Qdrant, etc.)</li>
+<li><strong>Pros & Cons:</strong> Transparent about trade-offs</li>
+<li><strong>Integration:</strong> Clear integration points between agents</li>
+<li><strong>Quality Gates:</strong> PM-001 enforces 80%+ test coverage, security scans, code review</li>
+<li><strong>Medical Accuracy:</strong> QA-001 + MED experts validate all medical content</li>
+<li><strong>Zero Cost:</strong> Self-hosted infrastructure, local LLMs</li>
+<p>
+</ol>
+</p>
+
+<strong>Next Steps:</strong>
+<ol>
+<li>Implement remaining agents (MED-002 to MED-015, create Python classes)</li>
+<li>Build LangGraph workflows for agent orchestration</li>
+<li>Integrate agents with existing infrastructure</li>
+<li>Start generating medical content with multi-agent system</li>
+<li>Deploy to production with full CI/CD pipeline</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<strong>Last Updated:</strong> December 14, 2025
+<strong>Version:</strong> 1.0.0
+<strong>Status:</strong> Complete Specifications Ready for Implementation
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

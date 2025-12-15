@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Agent System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>src</span>
+<span>→</span>
+<span>agents</span>
+</div>
+        
+        <h1>Expert Agent System</h1>
+<h2>Multi-Agent Architecture for Medical Education AI</h2>
+
+<strong>Version:</strong> 1.0.0
+<strong>Total Agents:</strong> 46
+<strong>Orchestration:</strong> LangGraph
+
+<hr>
+
+<h2>Overview</h2>
+
+<p>
+This system provides 46 expert agents organized into 6 categories, all coordinated by a central Project Manager agent (PM-001). Each agent has 10+ years equivalent experience in their domain and follows professional SDLC practices.
+</p>
+
+<h3>Agent Categories</h3>
+
+<ol>
+<li><strong>Project Management (1):</strong> PM-001 Chief Project Manager & Architect</li>
+<li><strong>Software Development (12):</strong> DEV-001 to DEV-012</li>
+<li><strong>Data & AI Engineering (8):</strong> AI-001 to AI-008</li>
+<li><strong>DevOps & Infrastructure (6):</strong> DEVOPS-001 to DEVOPS-006</li>
+<li><strong>Quality Assurance (4):</strong> QA-001 to QA-004</li>
+<li><strong>Medical Experts (15):</strong> MED-001 to MED-015</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Quick Start</h2>
+
+<h3>1. Initialize Project Manager</h3>
+
+<pre><code>from src.agents import ProjectManagerAgent
+
+<h1>Create PM-001 (Chief coordinator)</h1>
+<p>
+pm = ProjectManagerAgent()
+</p>
+
+<h1>Check PM status</h1>
+<p>
+status = pm.get<em>project</em>status()
+print(status)
+</code></pre>
+</p>
+
+<h3>2. Register Expert Agents</h3>
+
+<pre><code>from src.agents.base_agent import BaseAgent, AgentMetadata, AgentRole
+
+<h1>Example: Create a backend developer agent</h1>
+<p>
+class BackendAgent(BaseAgent):
+    def <strong>init</strong>(self):
+        metadata = AgentMetadata(
+            agent_id="DEV-001",
+            name="Senior Backend Architect",
+            role=AgentRole.BACKEND_DEV,
+            experience_years=10,
+            technologies=["FastAPI", "SQLAlchemy", "PostgreSQL"],
+            specializations=["API design", "Database architecture"],
+            pros=["Async-first", "High performance"],
+            cons=["No built-in admin"]
+        )
+        super().<strong>init</strong>(metadata)
+</p>
+
+<p>
+    def execute_task(self, task):
+        # Implementation
+        return {"status": "success", "output": {...}}
+</p>
+
+<p>
+    def validate_output(self, task, output):
+        # Validation logic
+        return True, []
+</p>
+
+<h1>Register with PM</h1>
+<p>
+backend_dev = BackendAgent()
+pm.register<em>agent(backend</em>dev)
+</code></pre>
+</p>
+
+<h3>3. Use Pre-built Workflows</h3>
+
+<pre><code>from src.agents.workflows import MCQGenerationWorkflow
+
+<h1>Initialize agents (simplified)</h1>
+<p>
+rag_agent = ...  # AI-001 RAG System
+medical_agents = {"cardiology": ...}  # MED-001 Cardiology Expert
+qa_agent = ...  # QA-001 Medical QA
+db_agent = ...  # DEV-004 Database
+</p>
+
+<h1>Create workflow</h1>
+<p>
+mcq_workflow = MCQGenerationWorkflow(
+    pm_agent=pm,
+    rag<em>agent=rag</em>agent,
+    medical<em>agents=medical</em>agents,
+    qa<em>agent=qa</em>agent,
+    db<em>agent=db</em>agent
+)
+</p>
+
+<h1>Run workflow</h1>
+<p>
+result = mcq_workflow.run(
+    task_description="Generate 10 cardiology MCQs about acute coronary syndrome",
+    specialty="cardiology",
+    topic="acute<em>coronary</em>syndrome"
+)
+</p>
+
+<p>
+print(result['final_output'])
+</p>
+<h1>{</h1>
+<h1>'question': {...},</h1>
+<h1>'validation': {...},</h1>
+<h1>'storage': {...}</h1>
+<h1>}</h1>
+<p>
+</code></pre>
+</p>
+
+<hr>
+
+<h2>Architecture</h2>
+
+<h3>Agent Hierarchy</h3>
+
+<pre><code>User
+<p>
+  ↓
+PM-001 (Project Manager) ← Central Coordinator
+  ├─> DEV-001 to DEV-012 (Software Development)
+  ├─> AI-001 to AI-008 (Data & AI)
+  ├─> DEVOPS-001 to DEVOPS-006 (DevOps)
+  ├─> QA-001 to QA-004 (Quality Assurance)
+  └─> MED-001 to MED-015 (Medical Experts)
+</code></pre>
+</p>
+
+<h3>Agent Communication</h3>
+
+<p>
+Agents communicate through:
+</p>
+<ol>
+<li><strong>Shared State:</strong> LangGraph <code>AgentState</code> (see <code>workflows/orchestration.py</code>)</li>
+<li><strong>Message Passing:</strong> Structured messages between agents</li>
+<li><strong>Task Queue:</strong> PM-001 manages task queue and delegation</li>
+<li><strong>Results Aggregation:</strong> PM-001 collects and aggregates results</li>
+<p>
+</ol>
+</p>
+
+<h3>Workflow Patterns</h3>
+
+<h4>1. Sequential Workflow</h4>
+<pre><code>Agent A → Agent B → Agent C → Result
+<p>
+</code></pre>
+Example: PDF Extract → Chunk → Embed → Index
+</p>
+
+<h4>2. Parallel Workflow</h4>
+<pre><code>      ├─> Agent A ─>┤
+<p>
+PM ─> ├─> Agent B ─>├─> Aggregate → Result
+      └─> Agent C ─>┘
+</code></pre>
+Example: Backend + Frontend + Database (parallel development)
+</p>
+
+<h4>3. Conditional Workflow</h4>
+<pre><code>Agent A → Decision → [Pass: Agent B] or [Fail: Agent C or Retry]
+<p>
+</code></pre>
+Example: QA Review → Pass: Store, Fail: Retry Generation
+</p>
+
+<h4>4. Hierarchical Workflow</h4>
+<pre><code>PM → Domain Expert → Specialist Agents → Aggregate → PM
+<p>
+</code></pre>
+Example: PM → Medical Expert → RAG + QA + Database → PM
+</p>
+
+<hr>
+
+<h2>Agent Base Class</h2>
+
+<p>
+All agents inherit from <code>BaseAgent</code>:
+</p>
+
+<pre><code>from src.agents import BaseAgent, AgentMetadata, AgentTask
+
+<p>
+class MyCustomAgent(BaseAgent):
+    def <strong>init</strong>(self):
+        metadata = AgentMetadata(
+            agent_id="CUSTOM-001",
+            name="My Custom Agent",
+            role=AgentRole.BACKEND_DEV,  # Choose appropriate role
+            experience_years=10,
+            technologies=["Tech1", "Tech2"],
+            specializations=["Spec1", "Spec2"],
+            pros=["Pro1", "Pro2"],
+            cons=["Con1", "Con2"],
+            max<em>concurrent</em>tasks=3,  # How many tasks this agent can handle
+            quality<em>gate</em>required=True  # Enforce validation
+        )
+        super().<strong>init</strong>(metadata)
+</p>
+
+<p>
+        # Register custom tools
+        self.register_tool(
+            name="my_tool",
+            func=self.my<em>tool</em>function,
+            description="What this tool does"
+        )
+</p>
+
+<p>
+    def execute_task(self, task: AgentTask) -> Dict[str, Any]:
+        """
+        Execute the assigned task.
+</p>
+
+<p>
+        Args:
+            task: AgentTask with description, metadata, etc.
+</p>
+
+<p>
+        Returns:
+            Dictionary with results:
+            {
+                'status': 'success',
+                'output': {...},
+                'artifacts': ['file1.py', 'file2.py'],
+                'validation_passed': True
+            }
+        """
+        # Your implementation here
+        result = {
+            'status': 'success',
+            'output': {'key': 'value'},
+            'artifacts': [],
+            'validation_passed': True
+        }
+        return result
+</p>
+
+<p>
+    def validate_output(self, task: AgentTask, output: Dict[str, Any]) -> tuple[bool, List[str]]:
+        """
+        Validate the output before returning.
+</p>
+
+<p>
+        Args:
+            task: The original task
+            output: The output from execute_task()
+</p>
+
+<p>
+        Returns:
+            (validation_passed: bool, errors: List[str])
+</p>
+
+<p>
+        Example:
+            if output['status'] != 'success':
+                return False, ['Task execution failed']
+</p>
+
+<p>
+            if 'output' not in output:
+                return False, ['Missing output key']
+</p>
+
+<p>
+            return True, []
+        """
+        errors = []
+</p>
+
+<p>
+        # Your validation logic here
+        if output.get('status') != 'success':
+            errors.append('Task failed')
+</p>
+
+<p>
+        return len(errors) == 0, errors
+</p>
+
+<p>
+    def my<em>tool</em>function(self, arg1: str, arg2: int) -> Dict[str, Any]:
+        """Custom tool implementation"""
+        return {'result': f'{arg1}-{arg2}'}
+</code></pre>
+</p>
+
+<hr>
+
+<h2>LangGraph Workflows</h2>
+
+<h3>Creating Custom Workflows</h3>
+
+<pre><code>from langgraph.graph import StateGraph, END
+<p>
+from src.agents.workflows import AgentState, WorkflowStatus
+</p>
+
+<p>
+class MyCustomWorkflow:
+    def <strong>init</strong>(self, pm<em>agent, agent</em>a, agent_b):
+        self.pm<em>agent = pm</em>agent
+        self.agent<em>a = agent</em>a
+        self.agent<em>b = agent</em>b
+</p>
+
+<p>
+        self.graph = self.<em>build</em>graph()
+</p>
+
+<p>
+    def <em>build</em>graph(self) -> StateGraph:
+        """Build LangGraph workflow"""
+        workflow = StateGraph(AgentState)
+</p>
+
+<p>
+        # Define nodes (steps in workflow)
+        workflow.add<em>node("step</em>1", self.step<em>1</em>function)
+        workflow.add<em>node("step</em>2", self.step<em>2</em>function)
+        workflow.add<em>node("step</em>3", self.step<em>3</em>function)
+</p>
+
+<p>
+        # Define edges (flow)
+        workflow.set<em>entry</em>point("step_1")
+        workflow.add<em>edge("step</em>1", "step_2")
+        workflow.add<em>edge("step</em>2", "step_3")
+        workflow.add<em>edge("step</em>3", END)
+</p>
+
+<p>
+        return workflow.compile()
+</p>
+
+<p>
+    def step<em>1</em>function(self, state: AgentState) -> AgentState:
+        """First step in workflow"""
+        print("Executing step 1...")
+</p>
+
+<p>
+        # Update state
+        state['results']['step_1'] = {'data': 'from step 1'}
+        state['current<em>agent'] = 'agent</em>a'
+</p>
+
+<p>
+        return state
+</p>
+
+<p>
+    def step<em>2</em>function(self, state: AgentState) -> AgentState:
+        """Second step in workflow"""
+        print("Executing step 2...")
+</p>
+
+<p>
+        # Use results from step 1
+        step<em>1</em>data = state['results']['step_1']
+</p>
+
+<p>
+        state['results']['step_2'] = {'data': 'from step 2'}
+</p>
+
+<p>
+        return state
+</p>
+
+<p>
+    def step<em>3</em>function(self, state: AgentState) -> AgentState:
+        """Final step in workflow"""
+        print("Executing step 3...")
+</p>
+
+<p>
+        state['status'] = WorkflowStatus.COMPLETED
+        state['final_output'] = {
+            'step<em>1': state['results']['step</em>1'],
+            'step<em>2': state['results']['step</em>2'],
+            'step_3': {'data': 'final result'}
+        }
+</p>
+
+<p>
+        return state
+</p>
+
+<p>
+    def run(self, task_description: str) -> Dict[str, Any]:
+        """Execute the workflow"""
+        initial_state: AgentState = {
+            'task_id': 'CUSTOM-001',
+            'task<em>description': task</em>description,
+            'task_type': 'custom',
+            'messages': [],
+            'status': WorkflowStatus.PENDING,
+            'current_agent': None,
+            'results': {},
+            'context': {},
+            'metadata': {},
+            'quality<em>checks</em>passed': [],
+            'quality<em>checks</em>failed': [],
+            'final_output': None
+        }
+</p>
+
+<p>
+        final<em>state = self.graph.invoke(initial</em>state)
+        return final_state
+</code></pre>
+</p>
+
+<h3>Conditional Edges</h3>
+
+<pre><code>from langgraph.graph import StateGraph, END
+
+<p>
+workflow = StateGraph(AgentState)
+</p>
+
+<p>
+workflow.add<em>node("step</em>1", step<em>1</em>func)
+workflow.add<em>node("step</em>2<em>success", step</em>2<em>success</em>func)
+workflow.add<em>node("step</em>2<em>failure", step</em>2<em>failure</em>func)
+</p>
+
+<p>
+workflow.set<em>entry</em>point("step_1")
+</p>
+
+<h1>Conditional edge: go to different nodes based on state</h1>
+<p>
+workflow.add<em>conditional</em>edges(
+    "step_1",
+    lambda state: "success" if state['results']['step_1']['passed'] else "failure",
+    {
+        "success": "step<em>2</em>success",
+        "failure": "step<em>2</em>failure"
+    }
+)
+</p>
+
+<p>
+workflow.add<em>edge("step</em>2_success", END)
+workflow.add<em>edge("step</em>2_failure", END)
+</code></pre>
+</p>
+
+<hr>
+
+<h2>Quality Gates</h2>
+
+<p>
+PM-001 enforces the following quality gates (configurable):
+</p>
+
+<pre><code>pm = ProjectManagerAgent()
+
+<h1>Default quality gates</h1>
+<p>
+pm.quality_gates = {
+    'code_review': True,          # At least 1 peer approval
+    'unit_tests': True,            # 80%+ coverage
+    'integration_tests': True,     # All critical paths tested
+    'security_scan': True,         # No high/critical vulnerabilities
+    'performance_test': False,     # Optional (set True for critical services)
+    'documentation': True          # All public APIs documented
+}
+</p>
+
+<h1>Run quality gates on deliverable</h1>
+<p>
+deliverable = {
+    'code<em>review</em>approved': True,
+    'test_coverage': 85,
+    'integration<em>tests</em>passed': True,
+    'security_vulnerabilities': [],
+    'documentation_complete': True
+}
+</p>
+
+<p>
+passed, failed<em>gates = pm.run</em>quality_gates(deliverable)
+</p>
+
+<p>
+if passed:
+    print("✓ All quality gates passed!")
+else:
+    print(f"✗ Failed gates: {failed_gates}")
+</code></pre>
+</p>
+
+<hr>
+
+<h2>Sprint Management</h2>
+
+<pre><code>from src.agents import ProjectManagerAgent
+
+<p>
+pm = ProjectManagerAgent()
+</p>
+
+<h1>Create a 2-week sprint</h1>
+<p>
+sprint = pm.create_sprint(
+    goal="Build real-time quiz feature",
+    duration_weeks=2,
+    tasks=[
+        {
+            'title': 'Implement WebSocket backend',
+            'description': 'Create WebSocket endpoints for real-time quiz'
+        },
+        {
+            'title': 'Build real-time frontend',
+            'description': 'React components with WebSocket client'
+        },
+        {
+            'title': 'E2E testing',
+            'description': 'Playwright tests for real-time features'
+        }
+    ]
+)
+</p>
+
+<p>
+print(f"Created: {sprint.sprint_id}")
+print(f"Goal: {sprint.goal}")
+print(f"Tasks: {len(sprint.tasks)}")
+</p>
+
+<h1>Assign tasks to agents</h1>
+<p>
+for task in sprint.tasks:
+    if 'backend' in task.title.lower():
+        pm.assign<em>task</em>to<em>agent(task, agent</em>id='DEV-001')
+    elif 'frontend' in task.title.lower():
+        pm.assign<em>task</em>to<em>agent(task, agent</em>id='DEV-002')
+    elif 'testing' in task.title.lower():
+        pm.assign<em>task</em>to<em>agent(task, agent</em>id='QA-002')
+</p>
+
+<h1>Generate sprint report</h1>
+<p>
+report = pm.generate<em>sprint</em>report(sprint)
+print(f"Completion: {report['completion_rate']:.1f}%")
+</code></pre>
+</p>
+
+<hr>
+
+<h2>Architecture Decision Records (ADR)</h2>
+
+<pre><code>from src.agents import ProjectManagerAgent
+
+<p>
+pm = ProjectManagerAgent()
+</p>
+
+<h1>Document architecture decision</h1>
+<p>
+adr = pm.create<em>architecture</em>decision(
+    title="Use FastAPI for Backend",
+    context="Need high-performance async API for medical platform with auto-generated OpenAPI documentation",
+    decision="Selected FastAPI over Django and Flask",
+    pros=[
+        "3,000+ RPS (vs Django 500 RPS)",
+        "Async-first architecture",
+        "Automatic OpenAPI documentation",
+        "Type-safe with Pydantic models",
+        "Lightweight and fast"
+    ],
+    cons=[
+        "No built-in admin interface (unlike Django)",
+        "Smaller ecosystem than Django",
+        "Requires understanding of async/await"
+    ],
+    alternatives=[
+        {
+            "name": "Django",
+            "reason": "Rejected due to slow performance (500 RPS) and synchronous architecture"
+        },
+        {
+            "name": "Flask",
+            "reason": "Rejected due to lack of async-first design and manual OpenAPI setup"
+        }
+    ]
+)
+</p>
+
+<p>
+print(f"Created: {adr.adr_id}")
+print(f"Title: {adr.title}")
+print(f"Decision: {adr.decision}")
+</p>
+
+<h1>Accept the ADR</h1>
+<p>
+adr.status = "accepted"
+</code></pre>
+</p>
+
+<hr>
+
+<h2>Agent Examples</h2>
+
+<h3>Example 1: Generate Medical MCQ</h3>
+
+<pre><code>from src.agents.workflows import MCQGenerationWorkflow
+
+<h1>Initialize agents</h1>
+<p>
+pm = ProjectManagerAgent()
+rag_agent = RAGSystemAgent()
+cardiology_expert = CardiologyExpertAgent()
+qa_agent = MedicalQAAgent()
+db_agent = DatabaseAgent()
+</p>
+
+<h1>Register agents with PM</h1>
+<p>
+pm.register<em>agent(rag</em>agent)
+pm.register<em>agent(cardiology</em>expert)
+pm.register<em>agent(qa</em>agent)
+pm.register<em>agent(db</em>agent)
+</p>
+
+<h1>Create workflow</h1>
+<p>
+workflow = MCQGenerationWorkflow(
+    pm_agent=pm,
+    rag<em>agent=rag</em>agent,
+    medical<em>agents={'cardiology': cardiology</em>expert},
+    qa<em>agent=qa</em>agent,
+    db<em>agent=db</em>agent
+)
+</p>
+
+<h1>Generate question</h1>
+<p>
+result = workflow.run(
+    task_description="Generate AMC-style MCQ about acute coronary syndrome management",
+    specialty="cardiology",
+    topic="acute<em>coronary</em>syndrome"
+)
+</p>
+
+<h1>Access result</h1>
+<p>
+question = result['final_output']['question']
+print(f"Question ID: {question['question_id']}")
+print(f"Stem: {question['stem']}")
+print(f"Correct Answer: {question['correct_answer']}")
+print(f"Validation Passed: {result['final<em>output']['validation']['overall</em>pass']}")
+</code></pre>
+</p>
+
+<h3>Example 2: Deploy New Feature</h3>
+
+<pre><code>from src.agents.workflows import DeploymentWorkflow
+
+<h1>Initialize agents</h1>
+<p>
+pm = ProjectManagerAgent()
+backend_dev = BackendArchitectAgent()
+frontend_dev = FrontendArchitectAgent()
+e2e_tester = E2ETestingAgent()
+devops = CICDEngineerAgent()
+</p>
+
+<h1>Create workflow</h1>
+<p>
+workflow = DeploymentWorkflow(
+    pm_agent=pm,
+    dev_agents={
+        'backend': backend_dev,
+        'frontend': frontend_dev
+    },
+    qa_agents={
+        'e2e': e2e_tester
+    },
+    devops_agent=devops
+)
+</p>
+
+<h1>Deploy</h1>
+<p>
+result = workflow.run(
+    feature_description="Real-time quiz feature with WebSocket support"
+)
+</p>
+
+<h1>Check deployment</h1>
+<p>
+deployment = result['final_output']['deployment']
+print(f"Status: {deployment['status']}")
+print(f"Environment: {deployment['environment']}")
+print(f"Health Check: {deployment['health_check']}")
+</code></pre>
+</p>
+
+<h3>Example 3: Process Medical Textbooks</h3>
+
+<pre><code>from src.agents.workflows import DataProcessingWorkflow
+
+<h1>Initialize agents</h1>
+<p>
+pm = ProjectManagerAgent()
+etl_agent = ETLEngineerAgent()
+rag_agent = RAGSystemAgent()
+db_agent = DatabaseAgent()
+monitoring = MonitoringAgent()
+</p>
+
+<h1>Create workflow</h1>
+<p>
+workflow = DataProcessingWorkflow(
+    pm_agent=pm,
+    etl<em>agent=etl</em>agent,
+    rag<em>agent=rag</em>agent,
+    db<em>agent=db</em>agent,
+    monitoring_agent=monitoring
+)
+</p>
+
+<h1>Process PDFs</h1>
+<p>
+result = workflow.run(
+    pdf_directory="data/pdfs/australian/"
+)
+</p>
+
+<h1>Check results</h1>
+<p>
+print(f"Pages Extracted: {result['final_output']['extracted']['pages']:,}")
+print(f"Chunks Created: {result['final_output']['chunks']:,}")
+print(f"Embeddings: {result['final_output']['embeddings']['chunks']:,}")
+print(f"Qdrant Points: {result['final_output']['qdrant']['points']:,}")
+print(f"Search Quality: {result['final<em>output']['validation']['search</em>quality']:.2%}")
+</code></pre>
+</p>
+
+<hr>
+
+<h2>Testing Agents</h2>
+
+<pre><code>import pytest
+<p>
+from src.agents import BaseAgent, AgentMetadata, AgentTask, AgentRole, TaskStatus
+</p>
+
+<p>
+def test<em>agent</em>task_execution():
+    """Test agent can execute and validate tasks"""
+</p>
+
+<p>
+    class TestAgent(BaseAgent):
+        def <strong>init</strong>(self):
+            metadata = AgentMetadata(
+                agent_id="TEST-001",
+                name="Test Agent",
+                role=AgentRole.BACKEND_DEV,
+                experience_years=10,
+                technologies=["Python"],
+                specializations=["Testing"],
+                pros=["Fast"],
+                cons=["Limited"]
+            )
+            super().<strong>init</strong>(metadata)
+</p>
+
+<p>
+        def execute_task(self, task):
+            return {'status': 'success', 'output': {'result': 42}}
+</p>
+
+<p>
+        def validate_output(self, task, output):
+            if output['status'] == 'success':
+                return True, []
+            return False, ['Task failed']
+</p>
+
+<p>
+    agent = TestAgent()
+</p>
+
+<p>
+    task = AgentTask(
+        title="Test Task",
+        description="A test task"
+    )
+</p>
+
+<p>
+    # Assign task
+    assert agent.assign_task(task) == True
+</p>
+
+<p>
+    # Run task
+    completed<em>task = agent.run</em>task(task)
+</p>
+
+<p>
+    # Verify
+    assert completed_task.status == TaskStatus.COMPLETED
+    assert completed_task.result['status'] == 'success'
+    assert completed_task.result['output']['result'] == 42
+</code></pre>
+</p>
+
+<hr>
+
+<h2>Monitoring & Logging</h2>
+
+<p>
+All agents log to their own logger:
+</p>
+
+<pre><code>from src.agents import BaseAgent
+
+<p>
+class MyAgent(BaseAgent):
+    def execute_task(self, task):
+        self.logger.info(f"Starting task: {task.title}")
+</p>
+
+<p>
+        try:
+            # Do work
+            result = {'status': 'success'}
+</p>
+
+<p>
+            self.logger.info("Task completed successfully")
+            return result
+</p>
+
+<p>
+        except Exception as e:
+            self.logger.error(f"Task failed: {e}", exc_info=True)
+            raise
+</code></pre>
+</p>
+
+<p>
+Logs format:
+</p>
+<pre><code>[AGENT-ID] 2025-12-14 10:30:00 - INFO - Starting task: Generate MCQ
+<p>
+[AGENT-ID] 2025-12-14 10:30:08 - INFO - Task completed successfully
+</code></pre>
+</p>
+
+<hr>
+
+<h2>Best Practices</h2>
+
+<h3>1. Agent Design</h3>
+<ul>
+<li>✅ <strong>Single Responsibility:</strong> Each agent should have one clear domain of expertise</li>
+<li>✅ <strong>10+ Years Experience:</strong> Agents should have senior-level knowledge</li>
+<li>✅ <strong>Validation Required:</strong> Always implement <code>validate_output()</code> for quality gates</li>
+<li>✅ <strong>Tool Registration:</strong> Register all tools the agent can use</li>
+<p>
+</ul>
+</p>
+
+<h3>2. Workflow Design</h3>
+<ul>
+<li>✅ <strong>Clear Steps:</strong> Each node in workflow should have clear responsibility</li>
+<li>✅ <strong>State Management:</strong> Use <code>AgentState</code> for passing data between agents</li>
+<li>✅ <strong>Error Handling:</strong> Handle failures gracefully (retry, fallback, fail fast)</li>
+<li>✅ <strong>Quality Gates:</strong> Enforce quality checks at critical points</li>
+<p>
+</ul>
+</p>
+
+<h3>3. PM Coordination</h3>
+<ul>
+<li>✅ <strong>Central Coordinator:</strong> PM-001 should orchestrate all workflows</li>
+<li>✅ <strong>Sprint Planning:</strong> Use sprints for organizing work (2-week cycles)</li>
+<li>✅ <strong>ADRs:</strong> Document architecture decisions</li>
+<li>✅ <strong>Quality Enforcement:</strong> PM runs quality gates before approval</li>
+<p>
+</ul>
+</p>
+
+<h3>4. Testing</h3>
+<ul>
+<li>✅ <strong>Unit Tests:</strong> Test each agent independently</li>
+<li>✅ <strong>Integration Tests:</strong> Test workflows end-to-end</li>
+<li>✅ <strong>Mock Agents:</strong> Use mock agents for testing workflows</li>
+<li>✅ <strong>Quality Metrics:</strong> Track quality gate pass rates</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Troubleshooting</h2>
+
+<h3>Agent Not Accepting Tasks</h3>
+
+<pre><code>agent = MyAgent()
+
+<p>
+if not agent.can<em>accept</em>task():
+    print(f"Agent at capacity: {len(agent.current<em>tasks)}/{agent.metadata.max</em>concurrent_tasks}")
+</p>
+
+<p>
+    # Option 1: Wait for tasks to complete
+    # Option 2: Increase max<em>concurrent</em>tasks
+    agent.metadata.max<em>concurrent</em>tasks = 5
+</p>
+
+<p>
+    # Option 3: Assign to different agent
+</code></pre>
+</p>
+
+<h3>Workflow Failing</h3>
+
+<pre><code><h1>Enable debug logging</h1>
+<p>
+import logging
+logging.basicConfig(level=logging.DEBUG)
+</p>
+
+<h1>Run workflow</h1>
+<p>
+result = workflow.run(...)
+</p>
+
+<h1>Check state</h1>
+<p>
+print(f"Status: {result['status']}")
+print(f"Failed Quality Gates: {result['quality<em>checks</em>failed']}")
+print(f"Messages: {result['messages']}")
+</code></pre>
+</p>
+
+<h3>Quality Gate Failures</h3>
+
+<pre><code>deliverable = {...}
+
+<p>
+passed, failed<em>gates = pm.run</em>quality_gates(deliverable)
+</p>
+
+<p>
+if not passed:
+    for gate in failed_gates:
+        print(f"Failed: {gate}")
+</p>
+
+<p>
+        # Fix specific issues
+        if gate == "Test coverage 75% < 80%":
+            # Write more tests
+            pass
+</p>
+
+<p>
+        if gate.startswith("Found"):
+            # Fix security vulnerabilities
+            pass
+</code></pre>
+</p>
+
+<hr>
+
+<h2>Contributing</h2>
+
+<p>
+To add new agents:
+</p>
+
+<ol>
+<li><strong>Create Agent Class:</strong> Inherit from <code>BaseAgent</code></li>
+<li><strong>Implement Methods:</strong> <code>execute<em>task()</code> and <code>validate</em>output()</code></li>
+<li><strong>Register Tools:</strong> Use <code>self.register_tool()</code></li>
+<li><strong>Document:</strong> Add to <code>docs/AGENT_SPECIFICATIONS.md</code></li>
+<li><strong>Test:</strong> Write unit and integration tests</li>
+<li><strong>Register with PM:</strong> <code>pm.register<em>agent(new</em>agent)</code></li>
+<p>
+</ol>
+</p>
+
+<p>
+See <code>base_agent.py</code> for complete interface definition.
+</p>
+
+<hr>
+
+<h2>References</h2>
+
+<ul>
+<li><strong>Agent Specifications:</strong> <code>docs/AGENT_SPECIFICATIONS.md</code> (complete 46-agent catalog)</li>
+<li><strong>Base Agent:</strong> <code>src/agents/base_agent.py</code></li>
+<li><strong>PM-001:</strong> <code>src/agents/pm<em>001</em>project_manager.py</code></li>
+<li><strong>Workflows:</strong> <code>src/agents/workflows/orchestration.py</code></li>
+<li><strong>LangGraph Docs:</strong> https://python.langchain.com/docs/langgraph</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Last Updated:</strong> December 14, 2025
+<strong>Version:</strong> 1.0.0
+<strong>Status:</strong> Ready for Implementation
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

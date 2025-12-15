@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Paediatric Presentations with Differential Diagnosis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Paediatrics</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Paediatrics Navigation</h3>
+<ul>
+<li><a href="01_Paediatric_History_Differentials.html">Paeds History</a></li>
+<li><a href="03_Paediatric_Physical_Examination.html">Paeds Exam</a></li>
+</ul>
+</div>
+        <h1>Common Paediatric Presentations with Differential Diagnosis</h1>
+
+<strong>Target Audience</strong>: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Program paediatric rotations
+
+<strong>Learning Objectives</strong>: By the end of this document, you will be able to:
+<ol>
+<li>Apply Dr. Amir Soufi's differential-driven approach to common paediatric presentations</li>
+<li>Recognize age-specific patterns for fever, respiratory distress, rashes, seizures, and failure to thrive</li>
+<li>Systematically assess severity and formulate management plans</li>
+<li>Identify <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s requiring <span style="color: #e74c3c; font-weight: bold;">URGENT</span> intervention or admission</li>
+<li>Understand Australian guidelines (APLS, RCH, eTG 2024) for common paediatric conditions</li>
+<li>Perform confident OSCE stations on paediatric emergencies and common presentations</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Dr. Amir Soufi's Principle Applied to Paediatric Presentations</h2>
+
+<blockquote><strong>"In paediatrics, the SAME presentation has DIFFERENT causes at DIFFERENT ages. A febrile neonate is septic until proven otherwise. A febrile toddler with wheeze is bronchiolitis. A febrile school-age child with wheeze is asthma exacerbation. AGE is the most powerful discriminator in your differential. Think: What can cause THIS presentation at THIS age?"</strong></blockquote>
+
+<h3>The Presentation-Driven Mindset</h3>
+
+<strong>Traditional Approach</strong>:
+<ul>
+<li>Child presents with fever</li>
+<li>Take history, examine, investigate</li>
+<li>At end, consider differential</li>
+<li><strong>Problem</strong>: Delayed recognition of life-threatening conditions, non-systematic approach</li>
+<p>
+</ul>
+</p>
+
+<strong>Dr. Amir's Differential-Driven Approach</strong>:
+<ol>
+<li><strong>Age + Presentation = Immediate Pattern Recognition</strong></li>
+<p>
+</ol>
+   - Example: "6-month-old + wheeze + winter" → IMMEDIATE thought: Bronchiolitis (RSV)
+   - Example: "3-year-old + barking cough + stridor" → IMMEDIATE thought: Croup
+   - Example: "Neonate + jaundice day 2" → IMMEDIATE thought: Physiological vs pathological?
+</p>
+
+<ol>
+<li><strong>Severity Assessment FIRST (ABC)</strong></li>
+<p>
+</ol>
+   - Before detailed history: Is this child critically unwell?
+   - Airway: Patent? Stridor? Drooling?
+   - Breathing: Respiratory rate? Recession? Saturations?
+   - Circulation: Capillary refill? Heart rate? Blood pressure?
+   - Disability: Alert? Responding? GCS?
+   - <strong>Critically unwell → Resuscitation + senior help NOW</strong>
+</p>
+
+<ol>
+<li><strong>Let Age + Severity Guide Management</strong></li>
+<p>
+</ol>
+   - Age <3 months + fever → Admission for IV antibiotics (low threshold)
+   - Age 6 months + bronchiolitis + saturations 94% → Observe, likely discharge
+   - Age 6 months + bronchiolitis + saturations 88% → Admission for oxygen
+</p>
+
+<hr>
+
+<h2>1. FEVER IN CHILDREN</h2>
+
+<h3>Age-Based Differential Diagnosis</h3>
+
+<p>
+| Age Group | Most Likely | Serious/Life-Threatening | Key Discriminators |
+|-----------|-------------|-------------------------|-------------------|
+| <strong>Neonate (<28 days)</strong> | <strong>Sepsis</strong> (GBS, E. coli, Listeria) | Meningitis, HSV infection, UTI | ANY fever in neonate = sepsis until proven otherwise |
+| <strong>Infant (1-12 months)</strong> | Viral URTI, bronchiolitis, otitis media | UTI, pneumonia, meningitis, Kawasaki disease | Localizing signs? Rash? Immunization status? |
+| <strong>Toddler (1-3 years)</strong> | Viral URTI, viral exanthems | Meningococcal septicaemia, Kawasaki disease | Non-blanching rash? Fever >5 days? |
+| <strong>School-age (4-12 years)</strong> | Viral URTI, tonsillitis | Appendicitis (if abdominal pain), pneumonia, meningitis | Sore throat? Abdominal pain? Headache? |
+| <strong>Adolescent (12-18 years)</strong> | Viral URTI, glandular fever (EBV) | Meningitis, pneumonia, septic arthritis | Severe sore throat? Joint pain? |
+</p>
+
+<hr>
+
+<h3>FEVER WITHOUT FOCUS (No Obvious Source)</h3>
+
+<strong>Definition</strong>: Fever ≥38°C with no localizing signs on history or examination
+
+<strong>Age-Specific Management</strong>:
+
+<h4>Neonate (<28 days) with Fever ≥38°C</h4>
+
+<strong>Dr. Amir's Principle</strong>: <strong>"EVERY febrile neonate is septic until proven otherwise. Do not wait. Admit immediately."</strong>
+
+<strong>Why?</strong>:
+<ul>
+<li>Immature immune system</li>
+<li>Non-specific presentation (can deteriorate rapidly)</li>
+<li>High risk of bacterial sepsis (GBS, E. coli, Listeria)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management (ALL neonates with fever)</strong>:
+<ol>
+<li><strong>Admit immediately</strong> to hospital</li>
+<li><strong>Full septic screen</strong>:</li>
+<p>
+</ol>
+   - Blood culture (before antibiotics)
+   - FBC, CRP
+   - Urine MCS (catheter or suprapubic aspiration - NOT bag specimen)
+   - Lumbar puncture (if stable) - CSF MCS, glucose, protein, cell count
+   - CXR if respiratory signs
+</p>
+<ol>
+<li><strong>IV antibiotics immediately</strong> (within 1 hour):</li>
+<p>
+</ol>
+   - Benzylpenicillin 60 mg/kg IV 12-hourly + Gentamicin 5 mg/kg IV daily
+   - If suspected HSV (maternal HSV, vesicles, seizures): Add acyclovir 20 mg/kg IV 8-hourly
+</p>
+<ol>
+<li><strong>Supportive care</strong>: IV fluids, oxygen, NICU/PICU admission</li>
+<li><strong>Review cultures at 48-72 hours</strong>: If negative and clinically well, consider stopping antibiotics</li>
+<p>
+</ol>
+</p>
+
+<strong>Lumbar Puncture in Neonates</strong>:
+<ul>
+<li><strong>Contraindications</strong>: Haemodynamically unstable, coagulopathy, thrombocytopenia, cardiorespiratory compromise</li>
+<li><strong>If contraindicated</strong>: Start antibiotics, defer LP until stable</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Young Infant (1-3 months) with Fever ≥38°C</h4>
+
+<strong>Management</strong> (based on NICE Feverish Child Guidelines):
+
+<strong>Low-risk criteria (Rochester criteria)</strong>:
+<ul>
+<li>Well-appearing, previously healthy, full-term</li>
+<li>No focal infection on examination</li>
+<li>WCC 5-15 × 10⁹/L, normal urinalysis</li>
+<p>
+</ul>
+</p>
+
+<strong>If low-risk</strong>:
+<ul>
+<li>Urine MCS (catheter specimen)</li>
+<li>Blood tests (FBC, CRP, blood culture)</li>
+<li>Consider discharge with <strong>24-hour review</strong> if:</li>
+<p>
+</ul>
+  - Parent reliable
+  - Access to healthcare
+  - No concerns
+</p>
+
+<strong>If high-risk OR any concerns</strong>:
+<ul>
+<li><strong>Admit for IV antibiotics</strong> (same as neonate)</li>
+<li>Full septic screen including LP</li>
+<p>
+</ul>
+</p>
+
+<strong>Common IMG Mistake</strong>: Discharging febrile infant <3 months without senior review. In Australia, <strong>low threshold for admission</strong> in this age group.
+
+<hr>
+
+<h4>Older Infant/Child (>3 months) with Fever ≥38°C</h4>
+
+<strong>NICE Traffic Light System for Feverish Children</strong>:
+
+<p>
+| Risk | Features | Management |
+|------|----------|------------|
+| <strong>GREEN (Low Risk)</strong> | Alert, responsive, smiling, normal feeding, normal hydration, normal colour | Manage at home with safety-net advice, paracetamol/ibuprofen, return if worsens |
+| <strong>AMBER (Intermediate)</strong> | Age 3-6 months with fever ≥39°C, reduced activity, dry mucous membranes, fever ≥5 days, nasal flaring | Clinical review within 2-4 hours, consider investigations (urine MCS, bloods), safety-net |
+| <strong>RED (High Risk)</strong> | Age <3 months with fever ≥38°C, non-blanching rash, cyanosis, severe respiratory distress, reduced consciousness, bile-stained vomiting, bulging fontanelle, neck stiffness, seizure | <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> hospital admission</strong>, investigations, IV antibiotics if sepsis suspected |
+</p>
+
+<strong>Investigations for Fever Without Focus</strong> (age >3 months):
+<ul>
+<li><strong>Urine MCS</strong> (catheter or clean catch): UTI is common occult source in infants/toddlers</li>
+<li><strong>Blood tests</strong> (if unwell or high-risk): FBC, CRP, blood culture</li>
+<li><strong>CXR</strong> (if respiratory signs): Pneumonia</li>
+<li><strong>Stool MCS</strong> (if diarrhea): Gastroenteritis</li>
+<p>
+</ul>
+</p>
+
+<strong>Empirical Antibiotics</strong> (if sepsis suspected):
+<ul>
+<li>Ceftriaxone 50 mg/kg IV (max 2 g) daily OR</li>
+<li>Cefotaxime 50 mg/kg IV 6-8 hourly</li>
+<li>If meningitis suspected: Add vancomycin (MRSA cover)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>KAWASAKI DISEASE</h3>
+
+<strong>Dr. Amir's Principle</strong>: <strong>"Fever >5 days in a child? ALWAYS think Kawasaki disease. It's a clinical diagnosis - don't wait for investigations. Early IVIG prevents coronary artery aneurysms."</strong>
+
+<strong>Diagnostic Criteria</strong> (requires ALL):
+<ul>
+<li><strong>Fever ≥5 days</strong> (essential)</li>
+<li><strong>PLUS 4 of 5</strong> following:</li>
+<p>
+</ul>
+  1. <strong>Bilateral non-purulent conjunctivitis</strong> (limbic sparing)
+  2. <strong>Mucositis</strong>: Strawberry tongue, cracked lips, pharyngeal injection
+  3. <strong>Cervical lymphadenopathy</strong> (≥1.5 cm, usually unilateral)
+  4. <strong>Polymorphous rash</strong> (maculopapular, erythematous, NO vesicles)
+  5. <strong>Extremity changes</strong>: Erythema/oedema of hands/feet (acute), desquamation of fingertips (convalescent, 2-3 weeks)
+</p>
+
+<strong>Investigations</strong>:
+<ul>
+<li><strong>Blood</strong>: FBC (↑ platelets after day 7, thrombocytosis 500-1000), ↑ CRP, ↑ ESR, ↓ albumin, ↑ WCC</li>
+<li><strong>Echocardiogram</strong>: Baseline (coronary artery assessment), repeat at 2 weeks and 6-8 weeks</li>
+<li><strong>Urine</strong>: Sterile pyuria (WBCs without bacteria)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ol>
+<li><strong>IVIG</strong> (intravenous immunoglobulin) 2 g/kg over 12 hours (within 10 days of fever onset to prevent coronary artery aneurysms)</li>
+<li><strong>High-dose aspirin</strong> 30-50 mg/kg/day (divided QID) until fever settles for 48 hours, THEN low-dose aspirin 3-5 mg/kg/day for 6-8 weeks (antiplatelet)</li>
+<li><strong>Cardiology follow-up</strong>: Echo at 2 weeks, 6-8 weeks</li>
+<li><strong>Admit</strong> to paediatric ward</li>
+<p>
+</ol>
+</p>
+
+<strong>Complications</strong> (if untreated):
+<ul>
+<li><strong>Coronary artery aneurysms</strong> (25% if untreated, <5% if treated with IVIG)</li>
+<li>Myocardial infarction, arrhythmias, myocarditis</li>
+<p>
+</ul>
+</p>
+
+<strong>Common IMG Mistake</strong>: Not considering Kawasaki disease in prolonged fever. Australian guideline: <strong>ANY child with fever >5 days should be screened for Kawasaki disease</strong>.
+
+<hr>
+
+<h2>2. RESPIRATORY DISTRESS IN CHILDREN</h2>
+
+<h3>Severity Assessment of Respiratory Distress (ALWAYS FIRST)</h3>
+
+<strong>Recognize the sick child</strong>: Use <strong>ABCDE approach</strong>
+
+<p>
+| Feature | Mild | Moderate | Severe | Life-Threatening |
+|---------|------|----------|--------|------------------|
+| <strong>Respiratory rate</strong> | ↑ for age | Moderate ↑ | Marked ↑ | Exhaustion, ↓ RR |
+| <strong>Recession</strong> | None/mild subcostal | Moderate subcostal + intercostal | Severe + suprasternal | Minimal (exhaustion) |
+| <strong>Oxygen saturations</strong> | ≥95% | 92-95% | <92% | <90% |
+| <strong>Wheeze/stridor</strong> | Mild | Moderate | Severe, audible without stethoscope | Silent chest (life-threatening) |
+| <strong>Consciousness</strong> | Alert | Agitated/restless | Drowsy/confused | Unconscious/floppy |
+| <strong>Feeding</strong> | Normal | Reduced | Unable to feed | Nil |
+</p>
+
+<strong>Normal Respiratory Rates by Age</strong>:
+<ul>
+<li><1 year: 30-40/min</li>
+<li>1-2 years: 25-35/min</li>
+<li>2-5 years: 25-30/min</li>
+<li>5-12 years: 20-25/min</li>
+<li>>12 years: 15-20/min</li>
+<p>
+</ul>
+</p>
+
+<strong>Recession</strong>: Subcostal (below ribs), intercostal (between ribs), suprasternal (above sternum), supraclavicular
+
+<strong>Silent chest</strong>: Severely reduced air entry → LIFE-THREATENING (imminent respiratory failure)
+
+<hr>
+
+<h3>BRONCHIOLITIS</h3>
+
+<strong>Dr. Amir's Principle</strong>: <strong>"Infant <12 months + wheeze + winter = Bronchiolitis until proven otherwise. It's a clinical diagnosis. No CXR needed unless atypical. Management is SUPPORTIVE - no antibiotics, no salbutamol, no steroids."</strong>
+
+<strong>Epidemiology</strong>:
+<ul>
+<li>Peak age: 3-6 months</li>
+<li>Peak season: Winter (May-September in Australia)</li>
+<li>Causative organism: <strong>RSV (Respiratory Syncytial Virus)</strong> in 80%</li>
+<p>
+</ul>
+</p>
+
+<strong>Clinical Features</strong>:
+<ul>
+<li><strong>Prodrome</strong>: Coryzal symptoms (runny nose, cough) for 1-2 days</li>
+<li><strong>Progressive</strong>: Wheeze, crackles, feeding difficulty, respiratory distress</li>
+<li><strong>Examination</strong>: Wheeze, fine crackles (bilateral), subcostal/intercostal recession, tachypnoea</li>
+<li><strong>Apnoea</strong>: Risk in very young infants (<6 weeks), ex-prems</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential Diagnosis</strong>:
+<ul>
+<li>Viral-induced wheeze / first episode wheeze</li>
+<li>Pneumonia (focal signs, high fever, unilateral crackles)</li>
+<li>Asthma (rare <12 months, consider if atopic history, response to salbutamol)</li>
+<li>Heart failure (structural heart disease, hepatomegaly, poor feeding from birth)</li>
+<li>Foreign body aspiration (sudden onset, unilateral wheeze, choking episode)</li>
+<p>
+</ul>
+</p>
+
+<strong>Investigations</strong>:
+<ul>
+<li><strong>NONE needed if typical presentation</strong></li>
+<li><strong>Consider CXR if</strong>: Atypical (focal signs, persistent high fever), severe distress, O₂ sats not improving</li>
+<li><strong>Nasopharyngeal aspirate (NPA)</strong>: RSV PCR (if needed for cohorting in hospital, NOT for diagnosis)</li>
+<li><strong>Blood tests</strong>: NOT routinely needed</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+
+<strong>Mild (Majority - 90%)</strong>:
+<ul>
+<li><strong>Supportive care at home</strong>:</li>
+<p>
+</ul>
+  - Ensure adequate hydration (smaller, more frequent feeds)
+  - Upright positioning
+  - Paracetamol for fever/discomfort
+  - Nasal saline drops (clear secretions)
+</p>
+<ul>
+<li><strong>Safety-net advice</strong>:</li>
+<p>
+</ul>
+  - Return if: Respiratory distress worsens, unable to feed, fewer wet nappies, drowsy, apnoea
+</p>
+
+<strong>Moderate-Severe (Admission Criteria)</strong>:
+<ul>
+<li>Age <3 months (high risk of apnoea)</li>
+<li>O₂ saturations <92% in air</li>
+<li>Severe respiratory distress (grunting, severe recession, RR >60-70)</li>
+<li>Feeding <50% of normal intake or clinical dehydration</li>
+<li>Apnoea (witnessed or reported)</li>
+<li>Pre-existing condition (chronic lung disease, congenital heart disease, immunodeficiency)</li>
+<li>Social concerns (parent unable to cope, distance from hospital)</li>
+<p>
+</ul>
+</p>
+
+<strong>Hospital Management</strong>:
+<ol>
+<li><strong>Oxygen</strong>: If sats <92%, aim for ≥92% (humidified, via nasal prongs or head box)</li>
+<li><strong>Fluids</strong>: NG feeds or IV fluids if unable to feed</li>
+<li><strong>Monitoring</strong>: Continuous pulse oximetry, apnoea monitoring if <6 weeks</li>
+<li><strong>Supportive</strong>: Nasal suction (if needed), upright positioning</li>
+<p>
+</ol>
+</p>
+
+<strong>What NOT to do</strong> (No evidence of benefit):
+<ul>
+<li>❌ Antibiotics (unless secondary bacterial pneumonia)</li>
+<li>❌ Salbutamol (ineffective in bronchiolitis)</li>
+<li>❌ Steroids (ineffective)</li>
+<li>❌ Adrenaline nebulizers (no benefit)</li>
+<li>❌ Hypertonic saline (controversial, not routine in Australia)</li>
+<p>
+</ul>
+</p>
+
+<strong>Natural History</strong>:
+<ul>
+<li>Peak severity: Day 3-5</li>
+<li>Total duration: 7-10 days (cough may persist 3-4 weeks)</li>
+<p>
+</ul>
+</p>
+
+<strong>Common IMG Mistake</strong>: Prescribing salbutamol or antibiotics for bronchiolitis. Australian guidelines: <strong>Supportive care ONLY</strong>. If child improves with salbutamol, diagnosis is viral-induced wheeze, NOT bronchiolitis.
+
+<hr>
+
+<h3>CROUP (Laryngotracheobronchitis)</h3>
+
+<strong>Dr. Amir's Principle</strong>: <strong>"Barking cough + inspiratory stridor + age 6 months to 3 years = Croup. Give dexamethasone (single dose) to ALL children - it reduces admission rates. If severe stridor at rest, give nebulized adrenaline and observe."</strong>
+
+<strong>Epidemiology</strong>:
+<ul>
+<li>Age: 6 months - 3 years (peak 2 years)</li>
+<li>Cause: Parainfluenza virus (most common), RSV, adenovirus</li>
+<li>Season: Autumn/winter</li>
+<p>
+</ul>
+</p>
+
+<strong>Clinical Features</strong>:
+<ul>
+<li><strong>Prodrome</strong>: URTI symptoms for 1-2 days</li>
+<li><strong>Classic triad</strong>:</li>
+<p>
+</ul>
+  1. <strong>Barking cough</strong> ("seal-like")
+  2. <strong>Inspiratory stridor</strong>
+  3. <strong>Hoarse voice</strong>
+</p>
+<ul>
+<li><strong>Worse at night</strong>: Symptoms often peak at night</li>
+<li><strong>Examination</strong>: Stridor (inspiratory), barking cough, NO drooling, child not toxic-appearing</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential Diagnosis</strong>:
+<ul>
+<li><strong>Epiglottitis</strong> (RARE post-Hib vaccine): Drooling, sitting forward, high fever, toxic appearance, <strong>DO NOT examine throat</strong></li>
+<li><strong>Bacterial tracheitis</strong> (RARE): High fever, toxic, purulent secretions, may need intubation</li>
+<li><strong>Foreign body</strong>: Sudden onset, unilateral wheeze, witnessed choking</li>
+<li><strong>Anaphylaxis</strong>: Sudden onset, urticaria, angioedema, exposure history</li>
+<p>
+</ul>
+</p>
+
+<strong>Severity Assessment</strong> (Westley Croup Score - simplified):
+
+<p>
+| Severity | Stridor | Recession | Air Entry | Consciousness |
+|----------|---------|-----------|-----------|---------------|
+| <strong>Mild</strong> | None at rest (only when agitated) | None/mild | Normal | Normal |
+| <strong>Moderate</strong> | At rest | Moderate | Reduced | Normal |
+| <strong>Severe</strong> | At rest, loud | Severe | Markedly reduced | Agitated/drowsy |
+</p>
+
+<strong>Investigations</strong>:
+<ul>
+<li><strong>NONE needed</strong> (clinical diagnosis)</li>
+<li><strong>Do NOT order</strong>: CXR (not helpful, "steeple sign" insensitive), lateral neck X-ray (delays treatment)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+
+<strong>ALL children with croup</strong>:
+<ul>
+<li><strong>Dexamethasone</strong> 0.15 mg/kg PO (max 8 mg) <strong>SINGLE DOSE</strong></li>
+<p>
+</ul>
+  - Reduces admission rates, symptom duration
+  - Given even for mild croup
+  - Alternatives: Prednisolone 1 mg/kg PO OR budesonide 2 mg nebulized (if vomiting)
+</p>
+
+<strong>Mild croup</strong> (no stridor at rest):
+<ul>
+<li>Dexamethasone 0.15 mg/kg PO</li>
+<li><strong>Discharge home</strong> with safety-net advice</li>
+<li>Return if: Stridor at rest, unable to drink, drowsy, increased work of breathing</li>
+<p>
+</ul>
+</p>
+
+<strong>Moderate-Severe croup</strong> (stridor at rest):
+<ul>
+<li>Dexamethasone 0.15 mg/kg PO</li>
+<li><strong>Nebulized adrenaline</strong> (1:1000) 5 mL nebulized with oxygen</li>
+<p>
+</ul>
+  - Rapid onset (within 10 minutes), lasts 2 hours
+  - <strong>Observe for 2-4 hours</strong> (rebound possible)
+</p>
+<ul>
+<li>If improves and stable after 2-4 hours → Discharge</li>
+<li>If worsens or no improvement → <strong>Admit</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Severe/Life-Threatening</strong> (exhaustion, cyanosis, drowsy):
+<ul>
+<li><strong>Senior help + anaesthetist</strong></li>
+<li>High-flow oxygen</li>
+<li>Nebulized adrenaline</li>
+<li>IV dexamethasone (if unable to take PO)</li>
+<li>Prepare for <strong>intubation</strong> (if imminent respiratory failure)</li>
+<li><strong>PICU admission</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Common IMG Mistake</strong>: Not giving dexamethasone to mild croup. Australian guideline: <strong>ALL children with croup should receive dexamethasone</strong> (reduces symptom duration and admission rates).
+
+<hr>
+
+<h3>ASTHMA EXACERBATION</h3>
+
+<strong>Dr. Amir's Principle</strong>: <strong>"School-age child + wheeze + triggers (viral URTI, exercise, allergen) = Asthma. Assess severity FIRST (mild, moderate, severe, life-threatening). Give salbutamol, ipratropium, steroids. If life-threatening, call for help and prepare for ICU."</strong>
+
+<strong>Asthma Triggers</strong>:
+<ul>
+<li>Viral URTI (most common)</li>
+<li>Allergens (pollen, dust mite, pets)</li>
+<li>Exercise</li>
+<li>Cold air</li>
+<li>Smoke exposure</li>
+<p>
+</ul>
+</p>
+
+<strong>Severity Assessment</strong> (APLS - Advanced Paediatric Life Support):
+
+<p>
+| Feature | Mild-Moderate | Severe | Life-Threatening |
+|---------|---------------|--------|------------------|
+| <strong>Ability to speak</strong> | Sentences | Words only | Unable to speak |
+| <strong>Respiratory rate</strong> | <30/min (>5 years) | >30/min (>5 years) | Fatigue, exhaustion |
+| <strong>Heart rate</strong> | <120 bpm (>5 years) | >120 bpm (>5 years) | Bradycardia |
+| <strong>O₂ saturations</strong> | ≥92% | <92% | <90% |
+| <strong>Wheeze</strong> | Moderate | Loud, throughout chest | Silent chest |
+| <strong>Peak flow</strong> | >50% predicted | 33-50% predicted | <33% predicted |
+| <strong>Consciousness</strong> | Alert | Agitated | Drowsy, confused, unconscious |
+</p>
+
+<strong>Silent chest</strong>: Severely reduced air entry due to poor air movement → <strong>LIFE-THREATENING</strong>
+
+<strong>Investigations</strong>:
+<ul>
+<li><strong>Peak expiratory flow rate (PEFR)</strong>: If child >5 years and cooperative (% of predicted)</li>
+<li><strong>O₂ saturations</strong>: Continuous monitoring</li>
+<li><strong>CXR</strong>: NOT routine (only if pneumothorax suspected, severe/atypical)</li>
+<li><strong>Blood gas</strong>: If life-threatening (normal/high CO₂ = respiratory failure)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong> (Australian Asthma Handbook 2024):
+
+<strong>Mild-Moderate Exacerbation</strong>:
+<ol>
+<li><strong>Salbutamol</strong> (β₂-agonist):</li>
+<p>
+</ol>
+   - <strong>MDI + spacer</strong> (preferred in ED): 6 puffs (600 mcg), repeat every 20 minutes PRN
+   - <strong>Nebulized</strong> (if severe): 2.5-5 mg nebulized with oxygen, repeat every 20 minutes
+</p>
+<ol>
+<li><strong>Ipratropium bromide</strong> (anticholinergic):</li>
+<p>
+</ol>
+   - Add if moderate-severe: 250 mcg nebulized with salbutamol (or 8 puffs via MDI + spacer)
+</p>
+<ol>
+<li><strong>Oral steroids</strong>:</li>
+<p>
+</ol>
+   - Prednisolone 1 mg/kg PO (max 50 mg) OR
+   - Dexamethasone 0.6 mg/kg PO (max 16 mg) - single dose, alternative if vomiting
+</p>
+<ol>
+<li><strong>Oxygen</strong>: If sats <92%, aim for ≥94%</li>
+<p>
+</ol>
+</p>
+
+<strong>If improves after 1 hour</strong>:
+<ul>
+<li><strong>Discharge home</strong> with:</li>
+<p>
+</ul>
+  - Salbutamol MDI + spacer (continue 4-6 hourly for 24-48 hours)
+  - Oral steroids (3-5 day course)
+  - Asthma action plan
+  - GP follow-up in 2-7 days
+</p>
+
+<strong>Severe Exacerbation</strong>:
+<ol>
+<li><strong>Call senior help</strong></li>
+<li><strong>High-flow oxygen</strong> (via face mask, aim sats ≥94%)</li>
+<li><strong>Continuous nebulized salbutamol</strong> (2.5-5 mg continuously or back-to-back)</li>
+<li><strong>Ipratropium bromide</strong> 250 mcg nebulized (with salbutamol)</li>
+<li><strong>IV hydrocortisone</strong> 4 mg/kg (max 100 mg) if unable to take PO, OR oral prednisolone 1 mg/kg</li>
+<li><strong>Magnesium sulfate</strong> 40 mg/kg IV over 20 minutes (max 2 g) - bronchodilator</li>
+<li><strong>Admit to hospital</strong> (high-dependency unit or PICU if life-threatening)</li>
+<p>
+</ol>
+</p>
+
+<strong>Life-Threatening Exacerbation</strong>:
+<ol>
+<li><strong>IMMEDIATE senior help + anaesthetist</strong></li>
+<li><strong>High-flow oxygen</strong> 100%</li>
+<li><strong>Continuous nebulized salbutamol + ipratropium</strong></li>
+<li><strong>IV hydrocortisone</strong> 4 mg/kg</li>
+<li><strong>IV magnesium sulfate</strong> 40 mg/kg over 20 minutes</li>
+<li><strong>IV salbutamol infusion</strong> (if not responding)</li>
+<li><strong>Consider</strong>: IV aminophylline (loading dose 5 mg/kg over 20 min, then infusion)</li>
+<li><strong>Prepare for intubation</strong> (if deteriorating, rising CO₂, exhaustion)</li>
+<li><strong>PICU admission</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Common IMG Mistake</strong>: Not giving steroids early in moderate-severe asthma exacerbation. Australian guideline: <strong>Oral steroids should be given within 1 hour</strong> for moderate-severe exacerbations (reduces admission, speeds recovery).
+
+<hr>
+
+<h2>3. GASTROENTERITIS AND DEHYDRATION</h2>
+
+<strong>Dr. Amir's Principle</strong>: <strong>"Gastroenteritis kills through dehydration, not infection. Assess hydration status FIRST. Oral rehydration is first-line. Only use IV if severe dehydration or unable to tolerate oral. Ondansetron helps oral rehydration."</strong>
+
+<strong>Definition</strong>: Vomiting and/or diarrhea, usually viral (rotavirus, norovirus, adenovirus)
+
+<strong>Causes by Age</strong>:
+<ul>
+<li>Infant: Rotavirus (less common post-vaccination), norovirus, bacterial (Salmonella, Campylobacter if bloody)</li>
+<li>Older child: Norovirus, bacterial (if foreign travel, bloody diarrhea)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>DEHYDRATION ASSESSMENT (CRITICAL)</h3>
+
+<strong>Clinical Assessment of Dehydration</strong> (WHO):
+
+<p>
+| Clinical Sign | No Dehydration | Some Dehydration (3-5%) | Severe Dehydration (≥5%) |
+|---------------|----------------|------------------------|-------------------------|
+| <strong>Appearance</strong> | Alert, well | Restless, irritable, <strong>sunken eyes</strong> | Lethargic, floppy, drowsy, <strong>very sunken eyes</strong> |
+| <strong>Thirst</strong> | Drinks normally | Eager to drink, <strong>thirsty</strong> | Unable to drink |
+| <strong>Skin turgor</strong> | Normal | <strong>Reduced</strong> (skin slowly returns) | <strong>Skin tenting</strong> (skin very slowly returns) |
+| <strong>Mucous membranes</strong> | Moist | Dry | Very dry |
+| <strong>Tears</strong> | Present | Reduced | Absent |
+| <strong>Urine output</strong> | Normal | Reduced | Minimal/none |
+| <strong>Capillary refill</strong> | <2 sec | 2-3 sec | >3 sec |
+| <strong>Heart rate</strong> | Normal | Tachycardia | Marked tachycardia |
+| <strong>Fontanelle</strong> (if infant) | Normal | Sunken | Very sunken |
+</p>
+
+<strong>CRITICAL ASSESSMENT</strong>:
+<ul>
+<li><strong>Sunken eyes</strong> = Moderate dehydration (3-5%)</li>
+<li><strong>Skin tenting</strong> = Severe dehydration (≥5%)</li>
+<li><strong>Reduced consciousness</strong> = Severe dehydration, shock</li>
+<p>
+</ul>
+</p>
+
+<strong>Common IMG Mistake</strong>: Assessing dehydration by urine output alone. Australian guideline: <strong>Use multiple clinical signs</strong> (eyes, skin turgor, mucous membranes, behaviour) to assess dehydration.
+
+<hr>
+
+<h3>MANAGEMENT OF GASTROENTERITIS</h3>
+
+<strong>Principles</strong>:
+<ol>
+<li><strong>Assess dehydration</strong> (no, some, severe)</li>
+<li><strong>Oral rehydration first-line</strong> (unless severe dehydration or shocked)</li>
+<li><strong>Ondansetron</strong> facilitates oral rehydration</li>
+<li><strong>No antibiotics</strong> (unless specific indication)</li>
+<li><strong>No anti-motility agents</strong> (loperamide contraindicated in children)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h4>NO DEHYDRATION</h4>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Continue normal diet</strong> (including milk - do NOT withhold)</li>
+<li><strong>Increase fluids</strong>: Encourage oral fluids (water, breastmilk, formula)</li>
+<li><strong>Oral rehydration solution (ORS)</strong>: Gastrolyte, Hydralyte (optional, not essential if tolerating normal fluids)</li>
+<li><strong>Antiemetics</strong>: Consider ondansetron if vomiting prevents oral intake (see below)</li>
+<li><strong>Safety-net advice</strong>:</li>
+<p>
+</ul>
+  - Return if: Increased vomiting, bloody diarrhea, reduced urine output, drowsy, sunken eyes, unable to keep fluids down
+</p>
+
+<strong>Discharge home</strong>
+
+<hr>
+
+<h4>SOME DEHYDRATION (3-5%)</h4>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Oral rehydration therapy (ORT)</strong>:</li>
+<p>
+</ul>
+  - <strong>Gastrolyte</strong> or <strong>Hydralyte</strong> (oral rehydration solution)
+  - Give <strong>50 mL/kg over 4 hours</strong> (in addition to usual fluids)
+  - Example: 10 kg child → 500 mL over 4 hours (125 mL/hour)
+  - <strong>Frequent small sips</strong> (5 mL every 5 minutes, gradually increase)
+</p>
+
+<ul>
+<li><strong>Ondansetron</strong> (if vomiting):</li>
+<p>
+</ul>
+  - <strong>Dose</strong>: Weight-based
+    - 8-15 kg: 2 mg PO (wafer or oral solution)
+    - 15-30 kg: 4 mg PO
+    - >30 kg: 8 mg PO
+  - <strong>Single dose</strong>, repeat once after 8 hours if needed
+  - <strong>Evidence</strong>: Reduces vomiting, increases success of oral rehydration, reduces IV fluid use and admission
+</p>
+
+<ul>
+<li><strong>Reassess after 4 hours</strong>:</li>
+<p>
+</ul>
+  - If improved (alert, drinking, passing urine) → Continue ORT at home, normal diet
+  - If not improving or worsening → Consider IV fluids, admission
+</p>
+
+<strong>Common IMG Mistake</strong>: Not using ondansetron in vomiting child. Australian guideline (RCH): <strong>Ondansetron is recommended</strong> for vomiting children to facilitate oral rehydration (reduces admission rates).
+
+<hr>
+
+<h4>SEVERE DEHYDRATION (≥5%) OR SHOCKED</h4>
+
+<strong>Management</strong>:
+<ul>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span></strong>: This is a medical <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></li>
+<li><strong>IV fluid resuscitation</strong>:</li>
+<p>
+</ul>
+  - <strong>0.9% saline</strong> 20 mL/kg bolus over 10-20 minutes
+  - Reassess, repeat if needed (up to 60 mL/kg total)
+  - Once stable, maintenance IV fluids + deficit replacement over 24-48 hours
+</p>
+<ul>
+<li><strong>Senior review</strong></li>
+<li><strong>Investigations</strong>:</li>
+<p>
+</ul>
+  - <strong>Blood</strong>: U&E (hypo/hypernatraemia?), glucose, VBG (if shocked)
+  - <strong>Urine</strong>: MCS (if fever, rule out UTI)
+  - <strong>Stool</strong>: MCS (if bloody diarrhea, if needed for public health notification)
+</p>
+<ul>
+<li><strong>Admit</strong> to hospital</li>
+<p>
+</ul>
+</p>
+
+<strong>Maintenance IV Fluids</strong> (4-2-1 rule):
+<ul>
+<li>4 mL/kg/hr for first 10 kg</li>
+<li>2 mL/kg/hr for next 10 kg</li>
+<li>1 mL/kg/hr for each kg over 20 kg</li>
+<li>Example: 15 kg child → (4×10) + (2×5) = 40 + 10 = <strong>50 mL/hr maintenance</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S in Gastroenteritis</h3>
+
+<strong>Admit if</strong>:
+<ul>
+<li>Severe dehydration or shock</li>
+<li>Unable to tolerate oral fluids despite ondansetron</li>
+<li><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> symptoms:</li>
+<p>
+</ul>
+  - <strong>Bile-stained (green) vomiting</strong> → Bowel obstruction/malrotation
+  - <strong>Bloody diarrhea + severe abdominal pain</strong> → Intussusception, HUS
+  - <strong>Abdominal distension + not passing stool</strong> → Obstruction
+  - <strong>Drowsy, reduced consciousness</strong> → Severe dehydration, shock
+  - <strong>Age <3 months</strong> → Low threshold for admission
+  - <strong>Immunocompromised</strong> → Risk of severe infection
+</p>
+
+<hr>
+
+<h2>4. RASHES IN CHILDREN</h2>
+
+<strong>Dr. Amir's Principle</strong>: <strong>"The FIRST question for ANY rash: Does it blanch? Non-blanching = meningococcal septicaemia until proven otherwise. Give IM/IV benzylpenicillin and blue-light to hospital IMMEDIATELY."</strong>
+
+<h3>GLASS TEST (Blanching vs Non-Blanching)</h3>
+
+<strong>How to perform</strong>:
+<ol>
+<li>Press a clear glass firmly against the rash</li>
+<li>Observe:</li>
+<p>
+</ol>
+   - <strong>Blanches</strong> (disappears with pressure) = Capillaries compressed, blood flow stopped temporarily → SAFE
+   - <strong>Non-blanching</strong> (stays visible with pressure) = Blood leaked into skin (purpura/petechiae) → <strong>DANGEROUS</strong>
+</p>
+
+<hr>
+
+<h3>NON-BLANCHING RASH = <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></h3>
+
+<strong>Meningococcal Septicaemia</strong>:
+<ul>
+<li>Causative organism: <em>Neisseria meningitidis</em></li>
+<li>Presentation: Fever, non-blanching petechial/purpuric rash, headache, neck stiffness, photophobia, vomiting, drowsiness, <strong>rapid deterioration</strong></li>
+<li><strong>Rash</strong>: Starts as blanching (erythematous, maculopapular), progresses to <strong>non-blanching</strong> petechiae, then purpura (larger >2 mm)</li>
+<li><strong>Distribution</strong>: Starts on peripheries (hands, feet), spreads centrally</li>
+<p>
+</ul>
+</p>
+
+<strong>IMMEDIATE MANAGEMENT</strong> (pre-hospital):
+<ol>
+<li><strong>IM/IV benzylpenicillin</strong> IMMEDIATELY (do NOT wait for hospital):</li>
+<p>
+</ol>
+   - <1 year: 300 mg
+   - 1-9 years: 600 mg
+   - ≥10 years: 1200 mg
+</p>
+<ol>
+<li><strong>Call ambulance</strong> (blue light to hospital)</li>
+<li><strong>Do NOT delay</strong> for LP or investigations</li>
+<p>
+</ol>
+</p>
+
+<strong>Hospital Management</strong>:
+<ol>
+<li><strong>Paediatric Sepsis 6</strong> (within 1 hour):</li>
+<p>
+</ol>
+   - High-flow oxygen
+   - IV/IO access, bloods (FBC, CRP, lactate, blood cultures, coagulation)
+   - IV antibiotics (ceftriaxone 50 mg/kg)
+   - IV fluid resuscitation (20 mL/kg bolus, repeat PRN)
+   - Senior clinician involvement
+   - Consider inotropes (if shock despite fluids)
+</p>
+<ol>
+<li><strong>PICU admission</strong></li>
+<li><strong>LP</strong> (if stable, often deferred if shocked/coagulopathy)</li>
+<li><strong>Public health notification</strong> (contact tracing, prophylaxis for close contacts)</li>
+<p>
+</ol>
+</p>
+
+<strong>Complications</strong>:
+<ul>
+<li>Death (10%)</li>
+<li>Limb loss (ischaemic necrosis from DIC)</li>
+<li>Multi-organ failure</li>
+<li>Hearing loss, neurological sequelae (if meningitis)</li>
+<p>
+</ul>
+</p>
+
+<strong>Prophylaxis for Close Contacts</strong>:
+<ul>
+<li>Ciprofloxacin (single dose) OR rifampicin (2 days)</li>
+<li>Household contacts, kissing contacts</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>BLANCHING RASHES (Viral Exanthems)</h3>
+
+<p>
+| Disease | Rash Description | Prodrome | Associated Features | Complications |
+|---------|------------------|----------|---------------------|--------------|
+| <strong>Measles</strong> | Maculopapular, starts face → spreads down, confluent, blanching | 3-5 days: <strong>3 Cs</strong> (Cough, Coryza, Conjunctivitis), high fever | <strong>Koplik spots</strong> (white spots on buccal mucosa, pathognomonic), lymphadenopathy | Pneumonia, encephalitis, SSPE, death (1 in 5000) |
+| <strong>Rubella</strong> | Pink maculopapular, starts face → spreads down, fine, blanching | Mild fever, malaise | Lymphadenopathy (post-auricular, suboccipital, cervical), arthralgia (older children/adults) | Congenital rubella (if pregnant contact), arthritis |
+| <strong>Roseola infantum</strong> (HHV-6) | Diffuse maculopapular, blanching, appears <strong>AFTER fever settles</strong> | High fever 3-5 days (39-40°C), irritability | <strong>Fever then rash</strong> (diagnostic), febrile convulsion common | Usually self-limiting |
+| <strong>Scarlet fever</strong> (Group A Strep) | Diffuse erythematous "sandpaper" rash, blanching, spares face (circumoral pallor), <strong>strawberry tongue</strong>, <strong>desquamation</strong> of hands/feet after 1-2 weeks | Sore throat, fever, headache | Tonsillitis/pharyngitis, <strong>strawberry tongue</strong> (white coating, then red with prominent papillae) | Rheumatic fever, post-strep glomerulonephritis |
+| <strong>Hand-foot-mouth disease</strong> (Coxsackie A16, Enterovirus 71) | <strong>Vesicular</strong> rash on <strong>palms, soles</strong>, buttocks; <strong>mouth ulcers</strong> | Mild fever, reduced oral intake | Painful mouth ulcers (tongue, buccal mucosa), irritability, drooling | Usually self-limiting, rarely encephalitis (Enterovirus 71) |
+| <strong>Chickenpox</strong> (Varicella) | <strong>Vesicular</strong> rash (starts as macules → papules → vesicles → crusts), <strong>crops</strong> (different stages), starts trunk → spreads peripherally, <strong>very itchy</strong> | 1-2 days: Fever, malaise | Lesions in different stages (diagnostic), oral ulcers | Secondary bacterial infection (impetigo), pneumonia, encephalitis |
+| <strong>Slapped cheek syndrome</strong> (Parvovirus B19, Fifth disease) | <strong>Phase 1</strong>: "Slapped cheek" (bright red cheeks), <strong>Phase 2</strong>: Lacy reticular rash on trunk/limbs, blanching | Mild fever, malaise | Rash may recur with heat/exercise, arthralgia (older children/adults) | Aplastic crisis (if chronic haemolytic anaemia), hydrops fetalis (if pregnant) |
+</p>
+
+<hr>
+
+<h3>MANAGEMENT OF VIRAL EXANTHEMS</h3>
+
+<strong>General Principles</strong>:
+<ul>
+<li><strong>Most are self-limiting</strong> (supportive care only)</li>
+<li><strong>Paracetamol/ibuprofen</strong> for fever/discomfort</li>
+<li><strong>Hydration</strong></li>
+<li><strong>Isolate</strong> (prevent spread to others)</li>
+<li><strong>Safety-net</strong>: Return if non-blanching rash, respiratory distress, drowsy, unable to drink</li>
+<p>
+</ul>
+</p>
+
+<strong>Measles</strong>:
+<ul>
+<li><strong>Notifiable disease</strong> (public health notification)</li>
+<li>Supportive care</li>
+<li>Vitamin A supplementation (if malnourished, immunocompromised)</li>
+<li>Isolate (highly contagious)</li>
+<li>Contact tracing</li>
+<p>
+</ul>
+</p>
+
+<strong>Scarlet fever</strong>:
+<ul>
+<li><strong>Antibiotic</strong>: Penicillin V 250-500 mg PO TDS for 10 days (or azithromycin if allergic)</li>
+<li><strong>Notifiable</strong> (in some states)</li>
+<li>Prevents rheumatic fever</li>
+<p>
+</ul>
+</p>
+
+<strong>Chickenpox</strong>:
+<ul>
+<li><strong>Supportive</strong>: Paracetamol (NOT ibuprofen - may increase necrotizing fasciitis risk), calamine lotion, cool baths</li>
+<li><strong>Antihistamines</strong>: Chlorphenamine (if very itchy)</li>
+<li><strong>Acyclovir</strong>: If immunocompromised, neonatal, severe</li>
+<li><strong>Isolate</strong>: Until all lesions crusted (5-7 days)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>5. SEIZURES IN CHILDREN</h2>
+
+<strong>Dr. Amir's Principle</strong>: <strong>"First seizure in a febrile child aged 6 months to 5 years = Febrile convulsion (most common). But ALWAYS rule out meningitis first. If afebrile seizure, think epilepsy, head injury, hypoglycaemia, or metabolic cause."</strong>
+
+<h3>FEBRILE CONVULSION</h3>
+
+<strong>Definition</strong>: Seizure occurring in child aged <strong>6 months to 5 years</strong> (peak 12-18 months) associated with <strong>fever</strong> (≥38°C), with <strong>NO CNS infection or other cause</strong>
+
+<strong>Epidemiology</strong>:
+<ul>
+<li>3-5% of children have at least one febrile convulsion</li>
+<li>Peak age: 12-18 months</li>
+<li>Family history common (genetic predisposition)</li>
+<p>
+</ul>
+</p>
+
+<strong>Types</strong>:
+
+<p>
+| Type | Features | Recurrence Risk | Risk of Epilepsy |
+|------|----------|----------------|------------------|
+| <strong>Simple febrile convulsion</strong> (80%) | Generalized tonic-clonic, <15 minutes, single episode in 24 hours, no focal features, rapid recovery | 30-40% | 1-2% (same as general population) |
+| <strong>Complex febrile convulsion</strong> (20%) | Focal features, >15 minutes, multiple episodes in 24 hours, or prolonged post-ictal phase | Higher | 4-12% |
+</p>
+
+<strong>Differential Diagnosis</strong> (ALWAYS consider):
+<ol>
+<li><strong>Meningitis/Encephalitis</strong>: Fever + seizure + neck stiffness/drowsiness/petechial rash</li>
+<li><strong>Epilepsy</strong>: Afebrile seizure, recurrent seizures</li>
+<li><strong>Hypoglycaemia</strong>: BGL <3 mmol/L (check immediately)</li>
+<li><strong>Electrolyte imbalance</strong>: Hypo/hypernatraemia (recent diarrhea/vomiting?)</li>
+<li><strong>Head injury</strong>: Recent trauma</li>
+<li><strong>Poisoning</strong>: Accidental ingestion</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>MANAGEMENT OF FEBRILE CONVULSION</h3>
+
+<strong>During Seizure</strong> (if witnessed):
+<ol>
+<li><strong>Protect child</strong>: Move from danger, cushion head, do NOT restrain</li>
+<li><strong>Airway</strong>: Place in recovery position (if possible), do NOT put anything in mouth</li>
+<li><strong>Time seizure</strong>: Note start time</li>
+<li><strong>Oxygen</strong>: If available</li>
+<li><strong>If seizure >5 minutes</strong>:</li>
+<p>
+</ol>
+   - Give <strong>buccal midazolam</strong> 0.5 mg/kg (or rectal diazepam 0.5 mg/kg)
+   - Call ambulance
+</p>
+
+<strong>Post-Seizure (in ED/GP)</strong>:
+
+<strong>History</strong>:
+<ul>
+<li>Seizure description (generalized vs focal, duration, single vs multiple, post-ictal recovery)</li>
+<li>Fever onset and source</li>
+<li>Recent illness, contacts</li>
+<li>Developmental history</li>
+<li>Family history of febrile convulsions or epilepsy</li>
+<p>
+</ul>
+</p>
+
+<strong>Examination</strong>:
+<ul>
+<li><strong>Rule out meningitis</strong>: Neck stiffness, Kernig's/Brudzinski's signs, bulging fontanelle, petechial rash, drowsiness</li>
+<li>Identify source of fever: ENT examination, chest, abdomen</li>
+<li>Neurological examination: Tone, reflexes, GCS (should be normal after recovery)</li>
+<p>
+</ul>
+</p>
+
+<strong>Investigations</strong> (NOT routine for simple febrile convulsion):
+<ul>
+<li><strong>NONE needed</strong> if:</li>
+<p>
+</ul>
+  - Simple febrile convulsion (generalized, <15 minutes, single)
+  - Identifies source of fever
+  - Child fully recovered
+  - No meningism signs
+</p>
+
+<ul>
+<li><strong>Consider investigations if</strong>:</li>
+<p>
+</ul>
+  - <strong>Age <18 months</strong>: LP (to rule out meningitis - clinical signs unreliable at this age)
+  - <strong>Meningism signs</strong>: LP, blood culture, FBC, CRP
+  - <strong>Complex features</strong>: EEG, neuroimaging (CT/MRI brain)
+  - <strong>Recurrent or prolonged</strong>: U&E, glucose, calcium, magnesium
+</p>
+
+<strong>Lumbar Puncture Indications</strong>:
+<ul>
+<li>Clinical signs of meningitis (neck stiffness, drowsy, petechiae)</li>
+<li>Age <18 months (meningitis signs unreliable)</li>
+<li>Prolonged post-ictal drowsiness</li>
+<li>Complex febrile convulsion</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Treat fever source</strong> (e.g., antibiotics for otitis media)</li>
+<li><strong>Antipyretics</strong>: Paracetamol 15 mg/kg, ibuprofen 10 mg/kg (for comfort, does NOT prevent recurrence)</li>
+<li><strong>Parental education</strong>:</li>
+<p>
+</ul>
+  - Febrile convulsions do NOT cause brain damage
+  - Recurrence risk 30-40% (higher if <18 months, family history, low-grade fever)
+  - What to do if seizure recurs (recovery position, time, call ambulance if >5 min)
+  - <strong>No evidence</strong> that antipyretics prevent recurrence
+</p>
+<ul>
+<li><strong>Discharge</strong> (if simple febrile convulsion, well, no meningism)</li>
+<p>
+</ul>
+</p>
+
+<strong>Common IMG Mistake</strong>: Performing LP on every child with febrile convulsion. Australian guideline: <strong>LP NOT routine for simple febrile convulsion</strong> (only if meningism or age <18 months).
+
+<hr>
+
+<h3>STATUS EPILEPTICUS</h3>
+
+<strong>Definition</strong>: Continuous seizure >5 minutes OR recurrent seizures without recovery between episodes
+
+<strong>Management</strong> (APLS Protocol):
+
+<strong>0-5 minutes</strong>:
+<ul>
+<li>Airway, breathing, circulation</li>
+<li>High-flow oxygen</li>
+<li>Protect from injury</li>
+<li>Time seizure</li>
+<p>
+</ul>
+</p>
+
+<strong>5-10 minutes</strong> (if seizure continues):
+<ul>
+<li><strong>Buccal midazolam</strong> 0.5 mg/kg (max 10 mg) OR</li>
+<li><strong>IV lorazepam</strong> 0.1 mg/kg (if IV access)</li>
+<p>
+</ul>
+</p>
+
+<strong>10-20 minutes</strong> (if seizure continues after first dose):
+<ul>
+<li>Repeat <strong>buccal midazolam</strong> 0.5 mg/kg OR <strong>IV lorazepam</strong> 0.1 mg/kg</li>
+<li>Call senior help</li>
+<li>Check <strong>BGL</strong> (give IV dextrose if hypoglycaemic)</li>
+<p>
+</ul>
+</p>
+
+<strong>20-40 minutes</strong> (if seizure continues after second dose):
+<ul>
+<li><strong>IV phenytoin</strong> 20 mg/kg over 20 minutes (cardiac monitoring) OR</li>
+<li><strong>IV levetiracetam</strong> 40 mg/kg over 5 minutes</li>
+<li>Prepare for <strong>PICU transfer</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>>40 minutes</strong> (refractory status):
+<ul>
+<li><strong>Intubation and ventilation</strong></li>
+<li><strong>Thiopentone</strong> or <strong>midazolam infusion</strong></li>
+<li><strong>PICU admission</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>6. FAILURE TO THRIVE (FTT)</h2>
+
+<strong>Dr. Amir's Principle</strong>: <strong>"Failure to thrive is NOT a diagnosis - it's a symptom. The differential is HUGE: inadequate intake (poverty, neglect, feeding difficulty), inadequate absorption (coeliac, CF), or increased losses (chronic diarrhea, diabetes). Plot on growth chart. If crossing centiles downward = organic cause more likely."</strong>
+
+<strong>Definition</strong>: Inadequate weight gain or weight loss in a child, resulting in weight <strong>crossing 2 or more centile lines downward</strong> on growth chart
+
+<strong>Classification</strong>:
+<ol>
+<li><strong>Organic</strong> (30%): Medical cause (GI, cardiac, renal, metabolic, chromosomal)</li>
+<li><strong>Non-organic</strong> (50%): Psychosocial (inadequate feeding, poverty, neglect, maternal depression)</li>
+<li><strong>Mixed</strong> (20%): Both organic and non-organic</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>DIFFERENTIAL DIAGNOSIS OF FAILURE TO THRIVE</h3>
+
+<p>
+| Category | Examples |
+|----------|----------|
+| <strong>Inadequate Intake</strong> | Poverty/food insecurity, neglect, incorrect formula preparation, breastfeeding difficulty, oral-motor dysfunction (cerebral palsy), cleft palate |
+| <strong>Inadequate Absorption</strong> | Coeliac disease, cystic fibrosis, cow's milk protein allergy, chronic diarrhea, short gut syndrome |
+| <strong>Increased Losses</strong> | Chronic diarrhea, vomiting (GORD, pyloric stenosis), diabetes (polyuria) |
+| <strong>Increased Metabolic Demand</strong> | Congenital heart disease (high energy expenditure), chronic lung disease, hyperthyroidism, malignancy |
+| <strong>Chromosomal/Genetic</strong> | Down syndrome, Turner syndrome, Noonan syndrome, Prader-Willi syndrome |
+| <strong>Chronic Infection</strong> | HIV, TB, recurrent UTIs |
+</p>
+
+<hr>
+
+<h3>ASSESSMENT OF FAILURE TO THRIVE</h3>
+
+<strong>History</strong>:
+<ul>
+<li><strong>Feeding history</strong> (DETAILED):</li>
+<p>
+</ul>
+  - Breastfed or formula? If formula: type, preparation (dilution?), volume, frequency
+  - Solids introduced? Types, frequency, acceptance
+  - <strong>24-hour dietary recall</strong>: "Tell me everything [child] ate and drank yesterday from wake-up to bedtime"
+  - Feeding difficulties: Choking, gagging, vomiting, refusing food
+</p>
+<ul>
+<li><strong>GI symptoms</strong>: Vomiting, diarrhea, constipation, abdominal pain</li>
+<li><strong>Respiratory</strong>: Chronic cough, wheeze, recurrent infections (CF?)</li>
+<li><strong>Urinary</strong>: Polyuria, polydipsia (diabetes?)</li>
+<li><strong>Development</strong>: Milestones (global delay suggests chromosomal/genetic)</li>
+<li><strong>Birth history</strong>: Prematurity, birth weight, NICU stay</li>
+<li><strong>Family history</strong>: Coeliac, CF, short stature (familial?)</li>
+<li><strong>Social history</strong>: Who feeds child? Financial difficulties? Maternal mental health? Safeguarding concerns?</li>
+<p>
+</ul>
+</p>
+
+<strong>Examination</strong>:
+<ul>
+<li><strong>Growth parameters</strong>:</li>
+<p>
+</ul>
+  - <strong>Plot on growth chart</strong>: Weight, height, head circumference (all 3!)
+  - <strong>Calculate weight-for-length</strong>: Low in acute malnutrition
+  - <strong>Mid-parental height</strong>: Expected adult height based on parents' heights
+</p>
+<ul>
+<li><strong>General</strong>: Wasted appearance, muscle bulk, subcutaneous fat, skin (dry, eczema)</li>
+<li><strong>Systemic</strong>: Cardiac (murmur?), respiratory (crackles?), abdominal (organomegaly, masses), dysmorphic features</li>
+<p>
+</ul>
+</p>
+
+<strong>Investigations</strong> (guided by history/examination):
+<ul>
+<li><strong>Initial screen</strong>:</li>
+<p>
+</ul>
+  - FBC (anaemia?), iron studies
+  - U&E, LFTs
+  - Coeliac serology (anti-tTG IgA + total IgA)
+  - Urine MCS (UTI?)
+  - Stool MCS (chronic diarrhea)
+</p>
+<ul>
+<li><strong>Second-line</strong> (if indicated):</li>
+<p>
+</ul>
+  - Sweat test (CF if recurrent chest infections, steatorrhoea)
+  - Thyroid function (hyperthyroidism, hypothyroidism)
+  - Chromosome analysis (if dysmorphic)
+  - HIV serology (if risk factors)
+</p>
+
+<hr>
+
+<h3>MANAGEMENT OF FAILURE TO THRIVE</h3>
+
+<strong>Non-Organic (Psychosocial)</strong>:
+<ul>
+<li><strong>Multidisciplinary approach</strong>: Paediatrician, dietitian, social worker, community nurse</li>
+<li><strong>Increase caloric intake</strong>:</li>
+<p>
+</ul>
+  - Frequent small meals, high-calorie foods
+  - Fortify feeds (add extra formula powder, butter, cream to foods)
+</p>
+<ul>
+<li><strong>Address social factors</strong>: Food insecurity, parental mental health, parenting support</li>
+<li><strong>Safeguarding</strong>: If neglect suspected, involve child protection</li>
+<li><strong>Regular follow-up</strong>: Weekly weight checks, growth monitoring</li>
+<p>
+</ul>
+</p>
+
+<strong>Organic</strong>:
+<ul>
+<li><strong>Treat underlying cause</strong>:</li>
+<p>
+</ul>
+  - Coeliac disease → Gluten-free diet
+  - CF → Pancreatic enzyme replacement, high-calorie diet
+  - Heart failure → Treat cardiac condition, fortified feeds
+</p>
+<ul>
+<li><strong>Nutritional support</strong>: High-calorie feeds, NG tube feeding (if severe)</li>
+<li><strong>Specialist referral</strong>: Gastroenterology, cardiology, endocrinology (as needed)</li>
+<p>
+</ul>
+</p>
+
+<strong>Admission Criteria</strong>:
+<ul>
+<li>Severe malnutrition (weight <3rd centile, wasted)</li>
+<li>Safeguarding concerns</li>
+<li>Failed outpatient management</li>
+<li>Need for NG tube feeding initiation</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>7. NEONATAL JAUNDICE</h2>
+
+<strong>Dr. Amir's Principle</strong>: <strong>"Jaundice in the first 24 hours is ALWAYS pathological (haemolysis, sepsis). Jaundice days 2-14 is usually physiological, but check bilirubin. Prolonged jaundice >14 days (term) or >21 days (preterm) needs investigation for biliary atresia (pale stools + dark urine = biliary obstruction)."</strong>
+
+<strong>Physiology</strong>: Neonatal jaundice due to:
+<ul>
+<li>Increased RBC breakdown (high haematocrit)</li>
+<li>Immature liver (reduced conjugation)</li>
+<li>Increased enterohepatic circulation</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>CLASSIFICATION BY TIMING</h3>
+
+<p>
+| Timing | Classification | Causes | Management |
+|--------|---------------|--------|------------|
+| <strong><24 hours</strong> | <strong>PATHOLOGICAL</strong> (ALWAYS) | <strong>Haemolysis</strong> (ABO/Rh incompatibility, G6PD deficiency), <strong>sepsis</strong>, congenital infection | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> investigation (bilirubin, FBC, blood group, Coombs test, septic screen), phototherapy, exchange transfusion if severe |
+| <strong>24 hours - 14 days</strong> | Physiological (most common) OR pathological | Physiological jaundice (peaks day 3-5), breastfeeding jaundice, sepsis, haemolysis | Check bilirubin level, plot on nomogram, phototherapy if indicated |
+| <strong>>14 days (term) or >21 days (preterm)</strong> | <strong>PROLONGED</strong> | Breast milk jaundice (benign), <strong>biliary atresia</strong> (surgical <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span>), hypothyroidism, UTI, haemolysis | Investigate: Split bilirubin (conjugated vs unconjugated), LFTs, TFTs, urine MCS, USS liver. <strong>If conjugated >20%: <span style="color: #e74c3c; font-weight: bold;">URGENT</span> surgical referral for biliary atresia</strong> |
+</p>
+
+<hr>
+
+<h3>CAUSES OF NEONATAL JAUNDICE</h3>
+
+<strong>Unconjugated Hyperbilirubinaemia</strong> (most common):
+<ul>
+<li>Physiological jaundice (peaks day 3-5, resolves by day 14)</li>
+<li>Breastfeeding jaundice (inadequate intake, dehydration)</li>
+<li>Breast milk jaundice (substances in breast milk inhibit conjugation, benign, can last weeks)</li>
+<li>Haemolysis (ABO/Rh incompatibility, G6PD deficiency, spherocytosis)</li>
+<li>Polycythaemia (twin-twin transfusion, maternal diabetes)</li>
+<li>Cephalhaematoma (blood reabsorption)</li>
+<li>Sepsis</li>
+<li>Hypothyroidism</li>
+<li>Crigler-Najjar syndrome (rare)</li>
+<p>
+</ul>
+</p>
+
+<strong>Conjugated Hyperbilirubinaemia</strong> (ALWAYS pathological):
+<ul>
+<li><strong>Biliary atresia</strong> (surgical <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> - Kasai procedure before 8 weeks for best outcome)</li>
+<li>Neonatal hepatitis</li>
+<li>Choledochal cyst</li>
+<li>Congenital infection (TORCH: Toxoplasmosis, Rubella, CMV, HSV)</li>
+<li>Alpha-1 antitrypsin deficiency</li>
+<li>Galactosaemia</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S in Neonatal Jaundice</h3>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> investigation/referral if</strong>:
+<ul>
+<li>Jaundice in <strong>first 24 hours</strong> (haemolysis, sepsis)</li>
+<li>Jaundice <strong>>14 days</strong> (term) or <strong>>21 days</strong> (preterm) - rule out biliary atresia</li>
+<li><strong>Pale stools + dark urine</strong> = Conjugated hyperbilirubinaemia (biliary obstruction) → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> surgical referral</li>
+<li>Unwell baby (poor feeding, lethargy, fever, vomiting)</li>
+<li>Bilirubin level in phototherapy or exchange transfusion range (use nomogram)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>INVESTIGATIONS</h3>
+
+<strong>Initial</strong>:
+<ul>
+<li><strong>Serum bilirubin</strong>: Total bilirubin (transcutaneous or serum)</li>
+<li><strong>Plot on nomogram</strong> (Bhutani chart): Age in hours vs bilirubin level → Determines need for phototherapy</li>
+<li><strong>FBC</strong>: Haemolysis (anaemia, reticulocytosis), sepsis (WCC)</li>
+<li><strong>Blood group + Coombs test</strong> (baby and mother): ABO/Rh incompatibility</li>
+<li><strong>G6PD level</strong>: If jaundice severe or ethnic background (Mediterranean, African, Asian)</li>
+<p>
+</ul>
+</p>
+
+<strong>If prolonged jaundice (>14 days)</strong>:
+<ul>
+<li><strong>Split bilirubin</strong>: Conjugated vs unconjugated</li>
+<p>
+</ul>
+  - <strong>If conjugated >20% of total</strong> → Conjugated hyperbilirubinaemia → <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> surgical referral</strong> (biliary atresia)
+</p>
+<ul>
+<li><strong>LFTs</strong>, <strong>TFTs</strong> (hypothyroidism), <strong>urine MCS</strong> (UTI)</li>
+<li><strong>USS liver</strong> (biliary tree, choledochal cyst)</li>
+<li><strong>Stool colour</strong> (use stool colour chart - pale = biliary obstruction)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>MANAGEMENT</h3>
+
+<strong>Phototherapy</strong>:
+<ul>
+<li><strong>Mechanism</strong>: Blue light (wavelength 420-470 nm) converts unconjugated bilirubin to water-soluble isomers (excreted in urine/stool without conjugation)</li>
+<li><strong>Indications</strong>: Based on <strong>Bhutani nomogram</strong> (age in hours + bilirubin level)</li>
+<li><strong>Method</strong>: Double phototherapy (lights above and below), eye protection, maximize skin exposure</li>
+<li><strong>Monitoring</strong>: Bilirubin every 4-6 hours (should fall), hydration, temperature</li>
+<li><strong>Stop when</strong>: Bilirubin falls below phototherapy threshold</li>
+<p>
+</ul>
+</p>
+
+<strong>Exchange Transfusion</strong>:
+<ul>
+<li><strong>Indications</strong>: Bilirubin in exchange transfusion range (nomogram), acute bilirubin encephalopathy, failed phototherapy</li>
+<li><strong>Mechanism</strong>: Removes bilirubin and maternal antibodies (if haemolysis)</li>
+<li><strong>Procedure</strong>: Performed in NICU</li>
+<p>
+</ul>
+</p>
+
+<strong>Supportive</strong>:
+<ul>
+<li><strong>Adequate hydration</strong>: Encourage breastfeeding, consider supplementation if dehydrated</li>
+<li><strong>Treat underlying cause</strong>: Antibiotics if sepsis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Common IMG Mistakes Across Paediatric Presentations</h2>
+
+<h3>Mistake 1: Not Assessing Severity FIRST</h3>
+
+<strong>Problem</strong>: Taking detailed history before recognizing critically unwell child
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Delays life-saving interventions</li>
+<li>Child can deteriorate rapidly in paediatrics</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>ABCDE assessment FIRST</strong> for any acutely unwell child</li>
+<li>Recognize sick child, call for help, stabilize BEFORE detailed history</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 2: Not Using Age-Appropriate Differentials</h3>
+
+<strong>Problem</strong>: Applying adult differential to paediatric presentations
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Misses common paediatric diagnoses (e.g., bronchiolitis in infant, febrile convulsion in toddler)</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Age-based differentials</strong> from the start</li>
+<li>Know age-specific common presentations</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 3: Over-investigating Simple Febrile Convulsion</h3>
+
+<strong>Problem</strong>: Ordering LP, EEG, neuroimaging for every febrile convulsion
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Causes unnecessary distress, cost</li>
+<li>Australian guideline: <strong>Simple febrile convulsion needs NO investigations</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Simple febrile convulsion (generalized, <15 min, single) = NO investigations</strong> (unless meningism or age <18 months)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 4: Prescribing Antibiotics/Salbutamol for Bronchiolitis</h3>
+
+<strong>Problem</strong>: "This infant has wheeze, I'll give salbutamol and antibiotics"
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>No evidence of benefit</li>
+<li>Australian guideline: <strong>Supportive care ONLY</strong> for bronchiolitis</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>Bronchiolitis = Viral → No antibiotics, no salbutamol, no steroids</li>
+<li>If improves with salbutamol → Diagnosis is viral-induced wheeze, NOT bronchiolitis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 5: Not Using Ondansetron for Gastroenteritis</h3>
+
+<strong>Problem</strong>: "Vomiting child, I'll just tell parents to give oral fluids"
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Ondansetron facilitates oral rehydration, reduces admission</li>
+<li>Australian guideline (RCH): <strong>Ondansetron recommended</strong> for vomiting</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>Vomiting preventing oral intake → Give ondansetron (weight-based dose)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Summary: Key Takeaways</h2>
+
+<h3>1. Severity Assessment FIRST (ABCDE)</h3>
+<ul>
+<li>Before detailed history: Is this child critically unwell?</li>
+<li>Recognize sick child → Call for help → Stabilize</li>
+<p>
+</ul>
+</p>
+
+<h3>2. Age-Based Differential Thinking</h3>
+<ul>
+<li>Same presentation = Different diagnoses at different ages</li>
+<li>Neonate with fever = Sepsis. Infant with wheeze = Bronchiolitis. School-age with wheeze = Asthma.</li>
+<p>
+</ul>
+</p>
+
+<h3>3. Fever Management</h3>
+<ul>
+<li>Neonate <28 days with fever ≥38°C → Admit for IV antibiotics (NO exceptions)</li>
+<li>Infant 1-3 months → Low threshold for admission</li>
+<li>Fever >5 days → Think Kawasaki disease</li>
+<p>
+</ul>
+</p>
+
+<h3>4. Respiratory Distress</h3>
+<ul>
+<li>Bronchiolitis = Supportive care ONLY (no antibiotics, no salbutamol)</li>
+<li>Croup = Dexamethasone to ALL (reduces admission)</li>
+<li>Asthma = Salbutamol + steroids early</li>
+<p>
+</ul>
+</p>
+
+<h3>5. Dehydration = CLINICAL assessment</h3>
+<ul>
+<li>Sunken eyes + reduced skin turgor = Moderate dehydration (3-5%)</li>
+<li>Oral rehydration first-line</li>
+<li>Ondansetron facilitates oral rehydration</li>
+<p>
+</ul>
+</p>
+
+<h3>6. Rashes</h3>
+<ul>
+<li>Non-blanching rash = Meningococcal septicaemia → IM benzylpenicillin + blue-light to hospital</li>
+<li>Blanching rash = Viral exanthem (usually self-limiting)</li>
+<p>
+</ul>
+</p>
+
+<h3>7. Seizures</h3>
+<ul>
+<li>Febrile convulsion (6 months - 5 years, fever, generalized, <15 min) = NO investigations (unless meningism)</li>
+<li>Status epilepticus >5 min → Buccal midazolam</li>
+<p>
+</ul>
+</p>
+
+<h3>8. Failure to Thrive</h3>
+<ul>
+<li>Plot on growth chart (crossing 2 centile lines downward)</li>
+<li>24-hour dietary recall</li>
+<li>Organic vs non-organic vs mixed</li>
+<p>
+</ul>
+</p>
+
+<h3>9. Neonatal Jaundice</h3>
+<ul>
+<li>Jaundice <24 hours = PATHOLOGICAL (investigate <span style="color: #e74c3c; font-weight: bold;">URGENT</span>ly)</li>
+<li>Prolonged jaundice >14 days (term) → Check split bilirubin (rule out biliary atresia)</li>
+<li>Pale stools + dark urine = Biliary obstruction → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> surgical referral</li>
+<p>
+</ul>
+</p>
+
+<h3>10. Common IMG Mistakes to Avoid</h3>
+<ul>
+<li>❌ Not assessing severity first</li>
+<li>❌ Not using age-appropriate differentials</li>
+<li>❌ Over-investigating simple febrile convulsion</li>
+<li>❌ Prescribing antibiotics/salbutamol for bronchiolitis</li>
+<li>❌ Not using ondansetron for vomiting</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Next Steps</strong>:
+<ul>
+<li>Practice ABCDE assessment for sick children</li>
+<li>Learn age-based differentials by heart</li>
+<li>Review Bhutani nomogram for neonatal jaundice</li>
+<li>Practice traffic light system for febrile children</li>
+<p>
+</ul>
+</p>
+
+<strong>You're doing great! Keep practicing these presentations and you'll be well-prepared for your ICRP paediatric rotation and OSCE!</strong>
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

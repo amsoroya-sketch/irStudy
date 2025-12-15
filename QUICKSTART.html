@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Start Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+</div>
+        
+        <h1>Quick Start Guide</h1>
+<h2>Get the Medical Education AI System Running in 1 Hour</h2>
+
+<hr>
+
+<h2>⚡ Super Quick Setup (If You Have PDFs Ready)</h2>
+
+<pre><code><h1>1. Run automated setup (10-15 minutes)</h1>
+<p>
+./setup.sh
+</p>
+
+<h1>2. Place PDFs in data/pdfs/ folder</h1>
+
+<h1>3. Process everything (2-4 hours total)</h1>
+<p>
+python scripts/extract_pdfs.py
+python scripts/chunk<em>medical</em>texts.py
+python scripts/generate_embeddings.py
+python scripts/index_qdrant.py
+</p>
+
+<h1>4. Test the system</h1>
+<p>
+python src/models/ollama_client.py
+</code></pre>
+</p>
+
+<strong>Done!</strong> Your medical knowledge base is now ready.
+
+<hr>
+
+<h2>📋 Detailed Step-by-Step</h2>
+
+<h3>Step 1: Run Setup Script (10-15 min)</h3>
+
+<pre><code>cd /home/dev/Development/irStudy
+<p>
+./setup.sh
+</code></pre>
+</p>
+
+<p>
+This will:
+</p>
+<ul>
+<li>✅ Check all prerequisites (Python, Docker, GPU, Ollama)</li>
+<li>✅ Create virtual environment</li>
+<li>✅ Install all Python packages</li>
+<li>✅ Install Tesseract OCR</li>
+<li>✅ Download Ollama models (meditron, biomistral, llama3.1, mixtral)</li>
+<li>✅ Start Docker services (Qdrant, Neo4j, PostgreSQL, Redis, etc.)</li>
+<p>
+</ul>
+</p>
+
+<h3>Step 2: Add Medical Textbooks (Manual)</h3>
+
+<p>
+Place your PDF files in the correct folders:
+</p>
+
+<pre><code>data/pdfs/
+<p>
+├── australian/
+│   ├── therapeutic<em>guidelines</em>etg.pdf
+│   ├── murtaghs<em>general</em>practice_8ed.pdf
+│   ├── talley<em>clinical</em>examination_9ed.pdf
+│   └── australian<em>medicines</em>handbook.pdf
+├── core/
+│   ├── harrisons<em>internal</em>medicine_21ed.pdf
+│   ├── kumar<em>clark</em>10ed.pdf
+│   └── davidsons_24ed.pdf
+└── specialties/
+    ├── nelson<em>pediatrics</em>21ed.pdf
+    ├── williams<em>obstetrics</em>26ed.pdf
+    ├── bailey<em>love</em>surgery_28ed.pdf
+    └── kaplan<em>sadock</em>psychiatry_12ed.pdf
+</code></pre>
+</p>
+
+<strong>Where to get PDFs:</strong>
+<ul>
+<li>📚 Purchase from Amazon, Book Depository</li>
+<li>🏛️ University/hospital library (free access)</li>
+<li>📖 Library Genesis, Z-Library (gray area)</li>
+<p>
+</ul>
+</p>
+
+<h3>Step 3: Extract Text from PDFs (30-60 min)</h3>
+
+<pre><code><h1>Activate virtual environment</h1>
+<p>
+source venv/bin/activate
+</p>
+
+<h1>Extract all PDFs</h1>
+<p>
+python scripts/extract_pdfs.py
+</p>
+
+<h1>Expected output:</h1>
+<h1>Found 20 PDF files to process</h1>
+<h1>Processing PDFs: 100%</h1>
+<h1>✓ Extracted 35,000+ pages, 12,000,000+ words</h1>
+<p>
+</code></pre>
+</p>
+
+<h3>Step 4: Chunk Medical Texts (10-20 min)</h3>
+
+<pre><code>python scripts/chunk<em>medical</em>texts.py
+
+<h1>Expected output:</h1>
+<h1>Found 20 books to chunk</h1>
+<h1>Chunking books: 100%</h1>
+<h1>✓ Chunking complete!</h1>
+<h1>Total chunks: 40,000</h1>
+<h1>Total words: 12,000,000</h1>
+<p>
+</code></pre>
+</p>
+
+<h3>Step 5: Generate Embeddings (2-4 hours)</h3>
+
+<pre><code><h1>This uses your NVIDIA GPU for fast processing</h1>
+<p>
+python scripts/generate_embeddings.py
+</p>
+
+<h1>Expected output:</h1>
+<h1>Using device: cuda</h1>
+<h1>Loading model: pritamdeka/S-PubMedBert-MS-MARCO</h1>
+<h1>Embedding dimension: 768</h1>
+<h1>Loaded 40,000 chunks</h1>
+<h1>Generating embeddings (batch_size=32): 100%</h1>
+<h1>✓ Embedding generation complete!</h1>
+<h1>File size: 485 MB</h1>
+<p>
+</code></pre>
+</p>
+
+<strong>💡 Tip:</strong> This runs on your GPU. You can do other work while it processes.
+
+<h3>Step 6: Index in Qdrant (20-40 min)</h3>
+
+<pre><code>python scripts/index_qdrant.py
+
+<h1>Expected output:</h1>
+<h1>Connected to Qdrant at http://localhost:6333</h1>
+<h1>✓ Created collection 'medical_knowledge'</h1>
+<h1>Uploading 40,000 points in batches of 100</h1>
+<h1>Uploading batches: 100%</h1>
+<h1>✓ Upload complete!</h1>
+<h1>Collection now has 40,000 points</h1>
+<p>
+</code></pre>
+</p>
+
+<h3>Step 7: Test the System! 🎉</h3>
+
+<pre><code><h1>Test local LLM</h1>
+<p>
+python src/models/ollama_client.py
+</p>
+
+<h1>Test search with a real query</h1>
+<p>
+python scripts/index_qdrant.py --test
+</code></pre>
+</p>
+
+<hr>
+
+<h2>✅ Verification Checklist</h2>
+
+<p>
+Run these commands to verify everything works:
+</p>
+
+<pre><code><h1>1. Check Ollama models</h1>
+<p>
+ollama list
+</p>
+<h1>Should show: meditron:7b, biomistral:7b, llama3.1:70b, mixtral:8x7b</h1>
+
+<h1>2. Check Docker services</h1>
+<p>
+docker-compose ps
+</p>
+<h1>All services should be "Up"</h1>
+
+<h1>3. Check Qdrant</h1>
+<p>
+curl http://localhost:6333/collections
+</p>
+<h1>Should show "medical_knowledge" collection</h1>
+
+<h1>4. Check GPU</h1>
+<p>
+nvidia-smi
+</p>
+<h1>Should show your GPU</h1>
+
+<h1>5. Test Python imports</h1>
+<p>
+python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}')"
+</p>
+<h1>Should print: CUDA available: True</h1>
+<p>
+</code></pre>
+</p>
+
+<hr>
+
+<h2>🌐 Access Your Services</h2>
+
+<p>
+After setup, you can access:
+</p>
+
+<p>
+| Service | URL | Credentials |
+|---------|-----|-------------|
+| <strong>Qdrant Dashboard</strong> | http://localhost:6333/dashboard | None |
+| <strong>Neo4j Browser</strong> | http://localhost:7474 | neo4j / medical<em>ai</em>password_2025 |
+| <strong>Grafana</strong> | http://localhost:3001 | admin / medical<em>admin</em>2025 |
+| <strong>Prometheus</strong> | http://localhost:9090 | None |
+</p>
+
+<hr>
+
+<h2>🧪 Quick Tests</h2>
+
+<h3>Test 1: Search Medical Knowledge</h3>
+
+<pre><code>from qdrant_client import QdrantClient
+<p>
+from sentence_transformers import SentenceTransformer
+</p>
+
+<h1>Connect</h1>
+<p>
+client = QdrantClient(url="http://localhost:6333")
+model = SentenceTransformer('pritamdeka/S-PubMedBert-MS-MARCO')
+</p>
+
+<h1>Search</h1>
+<p>
+query = "treatment of acute coronary syndrome"
+query_vec = model.encode(query).tolist()
+</p>
+
+<p>
+results = client.search(
+    collection<em>name="medical</em>knowledge",
+    query<em>vector=query</em>vec,
+    limit=3
+)
+</p>
+
+<p>
+for r in results:
+    print(f"Score: {r.score:.3f} | Source: {r.payload['source']}")
+    print(f"Text: {r.payload['text'][:200]}...\n")
+</code></pre>
+</p>
+
+<h3>Test 2: Generate with Local LLM</h3>
+
+<pre><code>from src.models.ollama_client import OllamaClient
+
+<p>
+client = OllamaClient()
+</p>
+
+<p>
+response = client.generate(
+    prompt="What are the key features of acute coronary syndrome?",
+    model_name="meditron:7b"
+)
+</p>
+
+<p>
+print(response)
+</code></pre>
+</p>
+
+<hr>
+
+<h2>🚨 Troubleshooting</h2>
+
+<h3>"Ollama not found"</h3>
+<pre><code>curl -fsSL https://ollama.com/install.sh | sh
+<p>
+systemctl start ollama
+</code></pre>
+</p>
+
+<h3>"CUDA not available"</h3>
+<pre><code><h1>Check NVIDIA drivers</h1>
+<p>
+nvidia-smi
+</p>
+
+<h1>If not working, install CUDA:</h1>
+<h1>https://developer.nvidia.com/cuda-downloads</h1>
+<p>
+</code></pre>
+</p>
+
+<h3>"Docker service failed to start"</h3>
+<pre><code><h1>Check logs</h1>
+<p>
+docker-compose logs qdrant
+</p>
+
+<h1>Restart</h1>
+<p>
+docker-compose down
+docker-compose up -d
+</code></pre>
+</p>
+
+<h3>"Out of memory during embeddings"</h3>
+<pre><code><h1>Reduce batch size</h1>
+<p>
+python scripts/generate_embeddings.py --batch-size 16
+</code></pre>
+</p>
+
+<h3>"Permission denied on setup.sh"</h3>
+<pre><code>chmod +x setup.sh
+<p>
+./setup.sh
+</code></pre>
+</p>
+
+<hr>
+
+<h2>⏱️ Time Estimates</h2>
+
+<p>
+| Task | Time | Can Skip? |
+|------|------|-----------|
+| Run setup.sh | 10-15 min | ❌ Required |
+| Acquire PDFs | Manual | ❌ Required |
+| Extract PDFs | 30-60 min | ❌ Required |
+| Chunk texts | 10-20 min | ❌ Required |
+| Generate embeddings | 2-4 hours | ❌ Required |
+| Index Qdrant | 20-40 min | ❌ Required |
+| <strong>TOTAL</strong> | <strong>4-6 hours</strong> | |
+</p>
+
+<strong>Most time is GPU processing</strong> - you can work on other things during embeddings!
+
+<hr>
+
+<h2>🎯 What You Get After Setup</h2>
+
+<ul>
+<li>✅ <strong>40,000+ medical knowledge chunks</strong> indexed and searchable</li>
+<li>✅ <strong>4 local medical LLMs</strong> ready to use (no API costs)</li>
+<li>✅ <strong>Semantic search</strong> across 20 medical textbooks</li>
+<li>✅ <strong>Infrastructure</strong> ready for building AI agents</li>
+<li>✅ <strong>Zero monthly costs</strong> (all self-hosted)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>📝 Next Steps</h2>
+
+<p>
+After completing this quick start:
+</p>
+
+<ol>
+<li><strong>Build RAG query system</strong> - Create intelligent medical Q&A</li>
+<li><strong>Create first AI agent</strong> - Medical expert agent using local LLM</li>
+<li><strong>Generate test questions</strong> - Auto-generate MCQs</li>
+<li><strong>Build multi-agent system</strong> - 28 specialized medical agents</li>
+<li><strong>Create web interface</strong> - FastAPI + Next.js platform</li>
+<p>
+</ol>
+</p>
+
+<p>
+See main README.md for detailed development roadmap.
+</p>
+
+<hr>
+
+<h2>💡 Pro Tips</h2>
+
+<ol>
+<li><strong>Start small:</strong> Process 5 textbooks first, verify quality, then do all 20</li>
+<li><strong>Monitor GPU:</strong> Watch <code>nvidia-smi</code> during embedding generation</li>
+<li><strong>Backup embeddings:</strong> Copy <code>data/embeddings/</code> - takes hours to regenerate</li>
+<li><strong>Use screen/tmux:</strong> For long-running processes</li>
+<li><strong>Check logs:</strong> <code>docker-compose logs -f</code> to watch all services</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<strong>Questions?</strong> Check the main README.md or create an issue.
+
+<strong>Ready to start!</strong> 🚀
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

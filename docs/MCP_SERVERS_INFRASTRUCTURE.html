@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Servers Infrastructure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>docs</span>
+</div>
+        
+        <h1>MCP Servers Infrastructure</h1>
+<h2>Model Context Protocol Servers for Medical AI System</h2>
+
+<strong>Last Updated:</strong> December 14, 2025
+<strong>Purpose:</strong> Standardized interfaces for medical knowledge access via MCP
+
+<strong>What is MCP?</strong> Model Context Protocol - A standard way for AI agents to access external tools and data sources.
+
+<hr>
+
+<h2>📋 Table of Contents</h2>
+
+<ol>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#1-medical-knowledge-server">MCP Server #1: Medical Knowledge Server</a></li>
+<li><a href="#2-pubmed-search-server">MCP Server #2: PubMed Search Server</a></li>
+<li><a href="#3-drug-database-server">MCP Server #3: Drug Database Server</a></li>
+<li><a href="#4-clinical-guidelines-server">MCP Server #4: Clinical Guidelines Server</a></li>
+<li><a href="#5-medical-terminology-server">MCP Server #5: Medical Terminology Server</a></li>
+<li><a href="#6-clinical-calculator-server">MCP Server #6: Clinical Calculator Server</a></li>
+<li><a href="#setup--configuration">Setup & Configuration</a></li>
+<li><a href="#integration-with-agents">Integration with Agents</a></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Overview</h2>
+
+<h3>What are MCP Servers?</h3>
+
+<p>
+MCP (Model Context Protocol) servers provide standardized interfaces for AI agents to access:
+</p>
+<ul>
+<li>Medical knowledge databases</li>
+<li>External APIs</li>
+<li>Clinical tools</li>
+<li>Real-time data sources</li>
+<p>
+</ul>
+</p>
+
+<h3>Benefits</h3>
+
+<p>
+✅ <strong>Standardized Interface:</strong> All agents access data the same way
+✅ <strong>Modularity:</strong> Add/remove servers independently
+✅ <strong>Testability:</strong> Mock servers for testing
+✅ <strong>Scalability:</strong> Servers can run on separate machines
+✅ <strong>Security:</strong> Centralized access control
+</p>
+
+<h3>Architecture</h3>
+
+<pre><code>AI Agents (46 agents)
+<p>
+    ↓
+MCP Protocol
+    ↓
+MCP Servers (6 servers)
+    ↓
+Data Sources (Qdrant, PostgreSQL, APIs, etc.)
+</code></pre>
+</p>
+
+<hr>
+
+<h2>1. Medical Knowledge Server</h2>
+
+<strong>Purpose:</strong> Interface to vector database (Qdrant) + knowledge graph (Neo4j)
+<strong>Port:</strong> 5001
+<strong>Protocol:</strong> HTTP + WebSocket
+
+<h3>Features</h3>
+
+<ul>
+<li>Semantic search across medical textbooks</li>
+<li>Knowledge graph traversal</li>
+<li>Multi-hop reasoning</li>
+<li>Citation retrieval</li>
+<li>Context aggregation</li>
+<p>
+</ul>
+</p>
+
+<h3>API Endpoints</h3>
+
+<pre><code><h1>Search medical knowledge</h1>
+<p>
+POST /api/search
+{
+  "query": "acute coronary syndrome management",
+  "limit": 10,
+  "filters": {
+    "specialty": "cardiology",
+    "source": "therapeutic_guidelines"
+  }
+}
+</p>
+
+<h1>Response</h1>
+<p>
+{
+  "results": [
+    {
+      "text": "Acute coronary syndrome management includes...",
+      "source": "Therapeutic Guidelines: Cardiovascular",
+      "page": 342,
+      "score": 0.94,
+      "citations": ["eTG 2025, Section 3.2"]
+    }
+  ],
+  "query<em>time</em>ms": 450
+}
+</p>
+
+<h1>Knowledge graph query</h1>
+<p>
+POST /api/graph/traverse
+{
+  "start_entity": "Acute Coronary Syndrome",
+  "relationship": "TREATED_WITH",
+  "hops": 2
+}
+</p>
+
+<h1>Response</h1>
+<p>
+{
+  "paths": [
+    ["Acute Coronary Syndrome", "TREATED_WITH", "Aspirin"],
+    ["Acute Coronary Syndrome", "TREATED_WITH", "Clopidogrel"],
+    ["Aspirin", "INTERACTS_WITH", "Warfarin"]
+  ]
+}
+</code></pre>
+</p>
+
+<h3>Implementation</h3>
+
+<code>src/mcp<em>servers/medical</em>knowledge_server.py</code>:
+
+<pre><code>#!/usr/bin/env python3
+<p>
+"""
+MCP Server: Medical Knowledge
+Provides access to Qdrant vector DB + Neo4j knowledge graph
+"""
+</p>
+
+<p>
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+from typing import List, Optional, Dict, Any
+from qdrant_client import QdrantClient
+from sentence_transformers import SentenceTransformer
+from neo4j import GraphDatabase
+import uvicorn
+</p>
+
+<p>
+app = FastAPI(title="Medical Knowledge MCP Server")
+</p>
+
+<h1>Initialize connections</h1>
+<p>
+qdrant_client = QdrantClient(url="http://localhost:6333")
+embedding_model = SentenceTransformer('pritamdeka/S-PubMedBert-MS-MARCO')
+neo4j<em>driver = GraphDatabase.driver("bolt://localhost:7687", auth=("neo4j", "medical</em>ai<em>password</em>2025"))
+</p>
+
+<p>
+class SearchRequest(BaseModel):
+    query: str
+    limit: int = 10
+    filters: Optional[Dict[str, Any]] = None
+</p>
+
+<p>
+class SearchResult(BaseModel):
+    text: str
+    source: str
+    page: int
+    score: float
+    citations: List[str]
+</p>
+
+<p>
+@app.post("/api/search", response_model=Dict[str, Any])
+async def search<em>medical</em>knowledge(request: SearchRequest):
+    """
+    Semantic search across medical knowledge base.
+</p>
+
+<p>
+    Example:
+        POST /api/search
+        {"query": "heart failure management", "limit": 5}
+    """
+    try:
+        # Generate query embedding
+        query<em>vector = embedding</em>model.encode(request.query).tolist()
+</p>
+
+<p>
+        # Search Qdrant
+        search<em>results = qdrant</em>client.search(
+            collection<em>name="medical</em>knowledge",
+            query<em>vector=query</em>vector,
+            limit=request.limit,
+            query_filter=request.filters
+        )
+</p>
+
+<p>
+        # Format results
+        results = []
+        for result in search_results:
+            results.append({
+                "text": result.payload['text'],
+                "source": result.payload['source'],
+                "page": result.payload['page'],
+                "score": result.score,
+                "citations": result.payload.get('citations', [])
+            })
+</p>
+
+<p>
+        return {
+            "results": results,
+            "query": request.query,
+            "total": len(results)
+        }
+</p>
+
+<p>
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+</p>
+
+<p>
+class GraphTraversalRequest(BaseModel):
+    start_entity: str
+    relationship: str
+    hops: int = 1
+</p>
+
+<p>
+@app.post("/api/graph/traverse")
+async def traverse<em>knowledge</em>graph(request: GraphTraversalRequest):
+    """
+    Traverse knowledge graph for medical entity relationships.
+</p>
+
+<p>
+    Example:
+        POST /api/graph/traverse
+        {
+          "start_entity": "Diabetes Mellitus",
+          "relationship": "TREATED_WITH",
+          "hops": 2
+        }
+    """
+    try:
+        with neo4j_driver.session() as session:
+            # Cypher query for traversal
+            query = f"""
+            MATCH path = (start:MedicalEntity {{name: $start_entity}})
+            -[:{request.relationship}*1..{request.hops}]-(related)
+            RETURN path
+            LIMIT 50
+            """
+</p>
+
+<p>
+            result = session.run(query, start<em>entity=request.start</em>entity)
+</p>
+
+<p>
+            paths = []
+            for record in result:
+                path = record["path"]
+                path_nodes = [node["name"] for node in path.nodes]
+                paths.append(path_nodes)
+</p>
+
+<p>
+            return {
+                "start<em>entity": request.start</em>entity,
+                "relationship": request.relationship,
+                "hops": request.hops,
+                "paths": paths
+            }
+</p>
+
+<p>
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+</p>
+
+<p>
+@app.get("/api/health")
+async def health_check():
+    """Health check endpoint"""
+    return {
+        "status": "healthy",
+        "qdrant": "connected",
+        "neo4j": "connected"
+    }
+</p>
+
+<p>
+if <strong>name</strong> == "<strong>main</strong>":
+    uvicorn.run(app, host="0.0.0.0", port=5001)
+</code></pre>
+</p>
+
+<hr>
+
+<h2>2. PubMed Search Server</h2>
+
+<strong>Purpose:</strong> Real-time medical literature search via PubMed API
+<strong>Port:</strong> 5002
+<strong>Protocol:</strong> HTTP
+
+<h3>Features</h3>
+
+<ul>
+<li>Search PubMed for latest research</li>
+<li>Retrieve article abstracts</li>
+<li>Download full-text from PMC</li>
+<li>Citation extraction</li>
+<li>Literature review automation</li>
+<p>
+</ul>
+</p>
+
+<h3>API Endpoints</h3>
+
+<pre><code><h1>Search PubMed</h1>
+<p>
+POST /api/pubmed/search
+{
+  "query": "acute coronary syndrome 2024",
+  "max_results": 20,
+  "article_type": "Review"
+}
+</p>
+
+<h1>Response</h1>
+<p>
+{
+  "articles": [
+    {
+      "pmid": "12345678",
+      "title": "Management of Acute Coronary Syndrome: 2024 Update",
+      "authors": ["Smith J", "Jones K"],
+      "journal": "JAMA",
+      "year": 2024,
+      "abstract": "...",
+      "doi": "10.1001/jama.2024.12345"
+    }
+  ]
+}
+</p>
+
+<h1>Get full text (if available in PMC)</h1>
+<p>
+GET /api/pubmed/fulltext/{pmid}
+</code></pre>
+</p>
+
+<h3>Implementation</h3>
+
+<code>src/mcp<em>servers/pubmed</em>server.py</code>:
+
+<pre><code>#!/usr/bin/env python3
+<p>
+"""MCP Server: PubMed Search"""
+</p>
+
+<p>
+from fastapi import FastAPI
+from pydantic import BaseModel
+from typing import List, Optional
+from Bio import Entrez
+import uvicorn
+</p>
+
+<p>
+app = FastAPI(title="PubMed MCP Server")
+</p>
+
+<h1>Configure Entrez</h1>
+<p>
+Entrez.email = "your_email@example.com"  # Required by NCBI
+</p>
+
+<p>
+class PubMedSearchRequest(BaseModel):
+    query: str
+    max_results: int = 20
+    article_type: Optional[str] = None  # "Review", "Clinical Trial", etc.
+</p>
+
+<p>
+@app.post("/api/pubmed/search")
+async def search_pubmed(request: PubMedSearchRequest):
+    """Search PubMed for medical literature"""
+</p>
+
+<p>
+    # Build search term
+    search_term = request.query
+    if request.article_type:
+        search<em>term += f" AND {request.article</em>type}[ptyp]"
+</p>
+
+<p>
+    # Search PubMed
+    handle = Entrez.esearch(
+        db="pubmed",
+        term=search_term,
+        retmax=request.max_results,
+        sort="relevance"
+    )
+    search_results = Entrez.read(handle)
+    handle.close()
+</p>
+
+<p>
+    pmids = search_results["IdList"]
+</p>
+
+<p>
+    # Fetch article details
+    if pmids:
+        handle = Entrez.efetch(db="pubmed", id=pmids, rettype="medline", retmode="xml")
+        articles_xml = Entrez.read(handle)
+        handle.close()
+</p>
+
+<p>
+        articles = []
+        for article in articles_xml['PubmedArticle']:
+            medline = article['MedlineCitation']
+            article_data = medline['Article']
+</p>
+
+<p>
+            articles.append({
+                "pmid": str(medline['PMID']),
+                "title": str(article_data['ArticleTitle']),
+                "authors": [f"{author.get('LastName', '')} {author.get('Initials', '')}"
+                           for author in article_data.get('AuthorList', [])],
+                "journal": str(article_data['Journal']['Title']),
+                "year": int(article_data['Journal']['JournalIssue']['PubDate'].get('Year', 0)),
+                "abstract": str(article_data.get('Abstract', {}).get('AbstractText', [''])[0])
+            })
+</p>
+
+<p>
+        return {"articles": articles, "total": len(articles)}
+</p>
+
+<p>
+    return {"articles": [], "total": 0}
+</p>
+
+<p>
+@app.get("/api/pubmed/fulltext/{pmid}")
+async def get_fulltext(pmid: str):
+    """Get full text from PubMed Central (if available)"""
+</p>
+
+<p>
+    # Convert PMID to PMCID
+    handle = Entrez.elink(dbfrom="pubmed", id=pmid, linkname="pubmed_pmc")
+    links = Entrez.read(handle)
+    handle.close()
+</p>
+
+<p>
+    if links[0]["LinkSetDb"]:
+        pmcid = links[0]["LinkSetDb"][0]["Link"][0]["Id"]
+</p>
+
+<p>
+        # Fetch full text from PMC
+        handle = Entrez.efetch(db="pmc", id=pmcid, rettype="full", retmode="xml")
+        fulltext_xml = handle.read()
+        handle.close()
+</p>
+
+<p>
+        return {"pmcid": pmcid, "fulltext<em>xml": fulltext</em>xml}
+</p>
+
+<p>
+    return {"error": "Full text not available in PMC"}
+</p>
+
+<p>
+if <strong>name</strong> == "<strong>main</strong>":
+    uvicorn.run(app, host="0.0.0.0", port=5002)
+</code></pre>
+</p>
+
+<hr>
+
+<h2>3. Drug Database Server</h2>
+
+<strong>Purpose:</strong> Medication information from RxNorm, DrugBank, Australian Medicines Handbook
+<strong>Port:</strong> 5003
+<strong>Protocol:</strong> HTTP
+
+<h3>Features</h3>
+
+<ul>
+<li>Drug name lookup</li>
+<li>Dosage information</li>
+<li>Drug interactions</li>
+<li>Contraindications</li>
+<li>PBS information (Australian)</li>
+<p>
+</ul>
+</p>
+
+<h3>API Endpoints</h3>
+
+<pre><code><h1>Drug lookup</h1>
+<p>
+GET /api/drug/search?name=aspirin
+</p>
+
+<h1>Response</h1>
+<p>
+{
+  "drug_name": "Aspirin",
+  "generic_name": "Acetylsalicylic Acid",
+  "class": "Antiplatelet",
+  "indications": ["Acute Coronary Syndrome", "Stroke prevention"],
+  "dosage": {
+    "adult": "100-300mg daily",
+    "pediatric": "Not recommended <16 years"
+  },
+  "contraindications": ["Active bleeding", "Hemophilia"],
+  "pbs_listed": true,
+  "pbs_code": "1234"
+}
+</p>
+
+<h1>Drug interactions</h1>
+<p>
+POST /api/drug/interactions
+{
+  "drugs": ["aspirin", "warfarin"]
+}
+</p>
+
+<h1>Response</h1>
+<p>
+{
+  "interactions": [
+    {
+      "severity": "major",
+      "description": "Increased bleeding risk",
+      "recommendation": "Avoid combination or monitor INR closely"
+    }
+  ]
+}
+</code></pre>
+</p>
+
+<h3>Implementation</h3>
+
+<pre><code>#!/usr/bin/env python3
+<p>
+"""MCP Server: Drug Database"""
+</p>
+
+<p>
+from fastapi import FastAPI
+from pydantic import BaseModel
+from typing import List
+import requests
+import uvicorn
+</p>
+
+<p>
+app = FastAPI(title="Drug Database MCP Server")
+</p>
+
+<h1>RxNorm API base URL</h1>
+<p>
+RXNORM_API = "https://rxnav.nlm.nih.gov/REST"
+</p>
+
+<p>
+@app.get("/api/drug/search")
+async def search_drug(name: str):
+    """Search for drug information"""
+</p>
+
+<p>
+    # Search RxNorm
+    response = requests.get(f"{RXNORM_API}/drugs.json?name={name}")
+    data = response.json()
+</p>
+
+<p>
+    if data.get('drugGroup'):
+        drug_info = data['drugGroup']['conceptGroup'][0]['conceptProperties'][0]
+</p>
+
+<p>
+        return {
+            "drug<em>name": drug</em>info['name'],
+            "rxcui": drug_info['rxcui'],
+            "synonym": drug_info.get('synonym', ''),
+            "tty": drug_info['tty']
+        }
+</p>
+
+<p>
+    return {"error": "Drug not found"}
+</p>
+
+<p>
+class DrugInteractionRequest(BaseModel):
+    drugs: List[str]
+</p>
+
+<p>
+@app.post("/api/drug/interactions")
+async def check_interactions(request: DrugInteractionRequest):
+    """Check drug-drug interactions"""
+</p>
+
+<p>
+    # Get RXCUIs for all drugs
+    rxcuis = []
+    for drug in request.drugs:
+        response = requests.get(f"{RXNORM_API}/rxcui.json?name={drug}")
+        data = response.json()
+        if data.get('idGroup'):
+            rxcui = data['idGroup']['rxnormId'][0]
+            rxcuis.append(rxcui)
+</p>
+
+<p>
+    # Check interactions
+    if len(rxcuis) >= 2:
+        rxcui_list = "+".join(rxcuis)
+        response = requests.get(f"{RXNORM<em>API}/interaction/list.json?rxcuis={rxcui</em>list}")
+        interactions = response.json()
+</p>
+
+<p>
+        return {"interactions": interactions}
+</p>
+
+<p>
+    return {"interactions": []}
+</p>
+
+<p>
+if <strong>name</strong> == "<strong>main</strong>":
+    uvicorn.run(app, host="0.0.0.0", port=5003)
+</code></pre>
+</p>
+
+<hr>
+
+<h2>4. Clinical Guidelines Server</h2>
+
+<strong>Purpose:</strong> Access to clinical guidelines (eTG, NSW Health, WHO)
+<strong>Port:</strong> 5004
+<strong>Protocol:</strong> HTTP
+
+<h3>Features</h3>
+
+<ul>
+<li>Search guidelines by condition</li>
+<li>Protocol lookup</li>
+<li>Flowchart retrieval</li>
+<li>Australian-specific protocols</li>
+<p>
+</ul>
+</p>
+
+<h3>Implementation</h3>
+
+<pre><code>#!/usr/bin/env python3
+<p>
+"""MCP Server: Clinical Guidelines"""
+</p>
+
+<p>
+from fastapi import FastAPI
+from pydantic import BaseModel
+from typing import List, Optional
+import uvicorn
+</p>
+
+<p>
+app = FastAPI(title="Clinical Guidelines MCP Server")
+</p>
+
+<h1>In-memory guideline database (in production, use PostgreSQL)</h1>
+<p>
+GUIDELINES = {
+    "acute<em>coronary</em>syndrome": {
+        "condition": "Acute Coronary Syndrome",
+        "source": "Therapeutic Guidelines: Cardiovascular",
+        "updated": "2025-01-01",
+        "protocol": """
+        1. Initial Assessment:
+           - ECG within 10 minutes
+           - Troponin
+           - Aspirin 300mg PO immediately
+</p>
+
+<p>
+        2. Risk Stratification:
+           - STEMI → Primary PCI within 90 min
+           - NSTEMI → Risk assess with GRACE score
+</p>
+
+<p>
+        3. Treatment:
+           - Dual antiplatelet (Aspirin + Clopidogrel/Ticagrelor)
+           - Anticoagulation
+           - Consider PCI vs medical management
+        """,
+        "medications": ["Aspirin", "Clopidogrel", "Heparin", "Morphine"],
+        "flowchart<em>url": "/static/flowcharts/acs</em>management.pdf"
+    }
+    # Add more guidelines...
+}
+</p>
+
+<p>
+@app.get("/api/guideline/search")
+async def search_guideline(condition: str):
+    """Search for clinical guideline"""
+</p>
+
+<p>
+    condition<em>key = condition.lower().replace(" ", "</em>")
+</p>
+
+<p>
+    if condition_key in GUIDELINES:
+        return GUIDELINES[condition_key]
+</p>
+
+<p>
+    return {"error": "Guideline not found"}
+</p>
+
+<p>
+@app.get("/api/guideline/list")
+async def list_guidelines():
+    """List all available guidelines"""
+    return {"guidelines": list(GUIDELINES.keys())}
+</p>
+
+<p>
+if <strong>name</strong> == "<strong>main</strong>":
+    uvicorn.run(app, host="0.0.0.0", port=5004)
+</code></pre>
+</p>
+
+<hr>
+
+<h2>5. Medical Terminology Server</h2>
+
+<strong>Purpose:</strong> SNOMED CT, ICD-10, LOINC terminology lookups
+<strong>Port:</strong> 5005
+<strong>Protocol:</strong> HTTP
+
+<h3>Features</h3>
+
+<ul>
+<li>Terminology code lookups</li>
+<li>Concept relationships</li>
+<li>Hierarchy traversal</li>
+<li>Code mapping (ICD-10 ↔ SNOMED CT)</li>
+<p>
+</ul>
+</p>
+
+<h3>Implementation</h3>
+
+<pre><code>#!/usr/bin/env python3
+<p>
+"""MCP Server: Medical Terminology"""
+</p>
+
+<p>
+from fastapi import FastAPI
+import uvicorn
+</p>
+
+<p>
+app = FastAPI(title="Medical Terminology MCP Server")
+</p>
+
+<h1>SNOMED CT codes (sample - full version requires SNOMED CT license)</h1>
+<p>
+SNOMED_CODES = {
+    "22298006": {
+        "code": "22298006",
+        "term": "Myocardial infarction",
+        "system": "SNOMED CT",
+        "parent": "414545008",  # Ischemic heart disease
+        "children": ["70422006", "304914007"]  # STEMI, NSTEMI
+    }
+}
+</p>
+
+<p>
+@app.get("/api/terminology/snomed/{code}")
+async def get<em>snomed</em>concept(code: str):
+    """Get SNOMED CT concept by code"""
+    if code in SNOMED_CODES:
+        return SNOMED_CODES[code]
+    return {"error": "Code not found"}
+</p>
+
+<p>
+@app.get("/api/terminology/icd10/{code}")
+async def get<em>icd10</em>code(code: str):
+    """Get ICD-10 code description"""
+    # Implement ICD-10 lookup
+    pass
+</p>
+
+<p>
+if <strong>name</strong> == "<strong>main</strong>":
+    uvicorn.run(app, host="0.0.0.0", port=5005)
+</code></pre>
+</p>
+
+<hr>
+
+<h2>6. Clinical Calculator Server</h2>
+
+<strong>Purpose:</strong> Medical calculators (CURB-65, CHA2DS2-VASc, eGFR, etc.)
+<strong>Port:</strong> 5006
+<strong>Protocol:</strong> HTTP
+
+<h3>Features</h3>
+
+<ul>
+<li>50+ clinical calculators</li>
+<li>Risk scores</li>
+<li>Dosage calculators</li>
+<li>Unit conversions</li>
+<p>
+</ul>
+</p>
+
+<h3>Implementation</h3>
+
+<pre><code>#!/usr/bin/env python3
+<p>
+"""MCP Server: Clinical Calculators"""
+</p>
+
+<p>
+from fastapi import FastAPI
+from pydantic import BaseModel
+import uvicorn
+</p>
+
+<p>
+app = FastAPI(title="Clinical Calculator MCP Server")
+</p>
+
+<p>
+class CURB65Request(BaseModel):
+    confusion: bool
+    urea<em>gt</em>7: bool
+    respiratory<em>rate</em>gte_30: bool
+    bp_low: bool  # SBP <90 or DBP <=60
+    age<em>gte</em>65: bool
+</p>
+
+<p>
+@app.post("/api/calculator/curb65")
+async def calculate_curb65(request: CURB65Request):
+    """
+    Calculate CURB-65 score for pneumonia severity.
+</p>
+
+<p>
+    Score:
+    0-1: Low risk (outpatient)
+    2: Moderate risk (consider admission)
+    3-5: High risk (hospital admission)
+    """
+    score = sum([
+        request.confusion,
+        request.urea<em>gt</em>7,
+        request.respiratory<em>rate</em>gte_30,
+        request.bp_low,
+        request.age<em>gte</em>65
+    ])
+</p>
+
+<p>
+    if score <= 1:
+        risk = "Low"
+        recommendation = "Consider outpatient treatment"
+    elif score == 2:
+        risk = "Moderate"
+        recommendation = "Consider hospital admission"
+    else:
+        risk = "High"
+        recommendation = "Hospital admission recommended"
+</p>
+
+<p>
+    return {
+        "score": score,
+        "risk": risk,
+        "recommendation": recommendation
+    }
+</p>
+
+<p>
+class eGFRRequest(BaseModel):
+    creatinine<em>umol</em>l: float
+    age: int
+    is_female: bool
+    is_black: bool
+</p>
+
+<p>
+@app.post("/api/calculator/egfr")
+async def calculate_egfr(request: eGFRRequest):
+    """Calculate eGFR using CKD-EPI equation"""
+</p>
+
+<p>
+    # Convert creatinine to mg/dL
+    creatinine<em>mg</em>dl = request.creatinine<em>umol</em>l / 88.4
+</p>
+
+<p>
+    # CKD-EPI equation
+    kappa = 0.7 if request.is_female else 0.9
+    alpha = -0.329 if request.is_female else -0.411
+</p>
+
+<p>
+    egfr = 141 <em> min(creatinine<em>mg</em>dl / kappa, 1) </em>* alpha
+    egfr <em>= max(creatinine<em>mg</em>dl / kappa, 1) </em>* -1.209
+    egfr <em>= 0.993 </em>* request.age
+</p>
+
+<p>
+    if request.is_female:
+        egfr *= 1.018
+</p>
+
+<p>
+    if request.is_black:
+        egfr *= 1.159
+</p>
+
+<p>
+    # Classify CKD stage
+    if egfr >= 90:
+        stage = "G1 (Normal)"
+    elif egfr >= 60:
+        stage = "G2 (Mildly decreased)"
+    elif egfr >= 45:
+        stage = "G3a (Mild-moderately decreased)"
+    elif egfr >= 30:
+        stage = "G3b (Moderate-severely decreased)"
+    elif egfr >= 15:
+        stage = "G4 (Severely decreased)"
+    else:
+        stage = "G5 (Kidney failure)"
+</p>
+
+<p>
+    return {
+        "egfr": round(egfr, 1),
+        "units": "mL/min/1.73m²",
+        "ckd_stage": stage
+    }
+</p>
+
+<p>
+if <strong>name</strong> == "<strong>main</strong>":
+    uvicorn.run(app, host="0.0.0.0", port=5006)
+</code></pre>
+</p>
+
+<hr>
+
+<h2>Setup & Configuration</h2>
+
+<h3>1. Install Dependencies</h3>
+
+<pre><code><h1>Create MCP servers directory</h1>
+<p>
+mkdir -p src/mcp_servers
+</p>
+
+<h1>Install requirements</h1>
+<p>
+pip install fastapi uvicorn python-multipart biopython requests
+</code></pre>
+</p>
+
+<h3>2. Start All MCP Servers</h3>
+
+<p>
+Create <code>scripts/start<em>mcp</em>servers.sh</code>:
+</p>
+
+<pre><code>#!/bin/bash
+<h1>Start all MCP servers</h1>
+
+<p>
+echo "🚀 Starting MCP Servers..."
+</p>
+
+<h1>Medical Knowledge Server (port 5001)</h1>
+<p>
+python src/mcp<em>servers/medical</em>knowledge_server.py &
+MCP1_PID=$!
+</p>
+
+<h1>PubMed Server (port 5002)</h1>
+<p>
+python src/mcp<em>servers/pubmed</em>server.py &
+MCP2_PID=$!
+</p>
+
+<h1>Drug Database Server (port 5003)</h1>
+<p>
+python src/mcp<em>servers/drug</em>server.py &
+MCP3_PID=$!
+</p>
+
+<h1>Clinical Guidelines Server (port 5004)</h1>
+<p>
+python src/mcp<em>servers/guidelines</em>server.py &
+MCP4_PID=$!
+</p>
+
+<h1>Medical Terminology Server (port 5005)</h1>
+<p>
+python src/mcp<em>servers/terminology</em>server.py &
+MCP5_PID=$!
+</p>
+
+<h1>Clinical Calculator Server (port 5006)</h1>
+<p>
+python src/mcp<em>servers/calculator</em>server.py &
+MCP6_PID=$!
+</p>
+
+<p>
+echo "✅ All MCP Servers Started"
+echo "  - Medical Knowledge: http://localhost:5001"
+echo "  - PubMed Search: http://localhost:5002"
+echo "  - Drug Database: http://localhost:5003"
+echo "  - Clinical Guidelines: http://localhost:5004"
+echo "  - Terminology: http://localhost:5005"
+echo "  - Calculators: http://localhost:5006"
+</p>
+
+<h1>Save PIDs for cleanup</h1>
+<p>
+echo "$MCP1<em>PID $MCP2</em>PID $MCP3<em>PID $MCP4</em>PID $MCP5<em>PID $MCP6</em>PID" > /tmp/mcp_servers.pid
+</code></pre>
+</p>
+
+<strong>Run:</strong>
+<pre><code>chmod +x scripts/start<em>mcp</em>servers.sh
+<p>
+./scripts/start<em>mcp</em>servers.sh
+</code></pre>
+</p>
+
+<h3>3. Stop All MCP Servers</h3>
+
+<p>
+Create <code>scripts/stop<em>mcp</em>servers.sh</code>:
+</p>
+
+<pre><code>#!/bin/bash
+<h1>Stop all MCP servers</h1>
+
+<p>
+if [ -f /tmp/mcp_servers.pid ]; then
+    echo "🛑 Stopping MCP Servers..."
+    kill $(cat /tmp/mcp_servers.pid)
+    rm /tmp/mcp_servers.pid
+    echo "✅ All MCP Servers Stopped"
+else
+    echo "⚠️  No running MCP servers found"
+fi
+</code></pre>
+</p>
+
+<hr>
+
+<h2>Integration with Agents</h2>
+
+<h3>Use MCP Servers in Agents</h3>
+
+<pre><code>from src.agents import BaseAgent
+<p>
+import requests
+</p>
+
+<p>
+class CardiologyAgent(BaseAgent):
+    def execute_task(self, task):
+        # Search medical knowledge via MCP server
+        response = requests.post(
+            "http://localhost:5001/api/search",
+            json={
+                "query": "acute coronary syndrome management",
+                "limit": 5,
+                "filters": {"specialty": "cardiology"}
+            }
+        )
+</p>
+
+<p>
+        results = response.json()['results']
+</p>
+
+<p>
+        # Use PubMed MCP for latest research
+        pubmed_response = requests.post(
+            "http://localhost:5002/api/pubmed/search",
+            json={
+                "query": "acute coronary syndrome 2024",
+                "max_results": 10,
+                "article_type": "Review"
+            }
+        )
+</p>
+
+<p>
+        # Combine knowledge
+        context = self.<em>combine</em>sources(results, pubmed_response.json())
+</p>
+
+<p>
+        return {"status": "success", "context": context}
+</code></pre>
+</p>
+
+<hr>
+
+<h2>📊 Summary</h2>
+
+<strong>6 MCP Servers Provide:</strong>
+<ul>
+<li>✅ Medical knowledge access (Qdrant + Neo4j)</li>
+<li>✅ Real-time literature search (PubMed)</li>
+<li>✅ Drug information (RxNorm, DrugBank)</li>
+<li>✅ Clinical guidelines (eTG, NSW Health)</li>
+<li>✅ Medical terminology (SNOMED CT, ICD-10)</li>
+<li>✅ Clinical calculators (CURB-65, eGFR, etc.)</li>
+<p>
+</ul>
+</p>
+
+<strong>All agents can now:</strong>
+<ul>
+<li>Access standardized medical knowledge</li>
+<li>Search latest research</li>
+<li>Look up drug interactions</li>
+<li>Retrieve clinical protocols</li>
+<li>Use medical calculators</li>
+<p>
+</ul>
+</p>
+
+<strong>Next:</strong> See <code>EXPERT<em>AGENTS</em>INFRASTRUCTURE.md</code> for agent system setup
+
+<hr>
+
+<strong>Last Updated:</strong> December 14, 2025
+<strong>Status:</strong> Ready to implement MCP servers 🚀
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

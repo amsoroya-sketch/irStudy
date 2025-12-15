@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMG Common Mistakes in Breaking Bad News</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Ethics Communication</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Ethics Communication Navigation</h3>
+<ul>
+<li><a href="01_Communication_Skills_Role_Play_Scripts.html">Communication Skills</a></li>
+</ul>
+</div>
+        <h1>IMG Common Mistakes in Breaking Bad News</h1>
+<h2>Detailed Guide with Fixes for AMC Clinical OSCE</h2>
+
+<strong>Purpose</strong>: Identify and fix common mistakes IMGs make when breaking bad news
+<strong>Target</strong>: AMC Clinical / ICRP NSW Young Hospital preparation
+<strong>Critical</strong>: These mistakes cause OSCE failures
+<strong>Created</strong>: December 14, 2025
+
+<hr>
+
+<h2>TABLE OF CONTENTS</h2>
+
+<ol>
+<li><a href="#introduction">Introduction - Why IMGs Struggle</a></li>
+<li><a href="#the-8-critical-mistakes">The 8 Critical Mistakes</a></li>
+<li><a href="#practice-tools">Practice Tools</a></li>
+<li><a href="#self-assessment-checklist">Self-Assessment Checklist</a></li>
+<li><a href="#video-recording-guide">Video Recording Guide</a></li>
+<li><a href="#peer-practice-framework">Peer Practice Framework</a></li>
+<li><a href="#common-feedback-from-examiners">Common Feedback from Examiners</a></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>INTRODUCTION</h2>
+
+<h3>Why IMGs Struggle with Breaking Bad News</h3>
+
+<strong>Cultural Differences</strong>:
+<ul>
+<li>Many cultures prioritize protecting patients from bad news (family-centered disclosure)</li>
+<li>Australian medical culture prioritizes patient autonomy and direct disclosure</li>
+<li>Different comfort levels with emotional expression</li>
+<li>Different views on what constitutes "appropriate" grief</li>
+<p>
+</ul>
+</p>
+
+<strong>Training Differences</strong>:
+<ul>
+<li>Some countries don't teach formal bad news frameworks</li>
+<li>Less emphasis on communication skills in medical school</li>
+<li>More paternalistic doctor-patient relationships in some cultures</li>
+<li>Less practice with simulated patients</li>
+<p>
+</ul>
+</p>
+
+<strong>Language/Cultural Barriers</strong>:
+<ul>
+<li>English may not be first language - harder to find right words</li>
+<li>Idioms and phrases don't translate</li>
+<li>Cultural discomfort with silence</li>
+<li>Different body language norms</li>
+<p>
+</ul>
+</p>
+
+<h3>The Good News</h3>
+
+<strong>These are LEARNED skills.</strong> With practice, awareness, and feedback, you can excel at breaking bad news.
+
+<hr>
+
+<h2>THE 8 CRITICAL MISTAKES</h2>
+
+<hr>
+
+<h2>MISTAKE 1: NOT ALLOWING SILENCE</h2>
+
+<h3>What It Looks Like</h3>
+
+<strong>Scenario</strong>: You've just told the patient they have cancer.
+
+<strong>Poor Candidate</strong>:
+<em>[Delivers news]</em> "You have cancer."
+<em>[Patient goes silent, looks shocked]</em>
+<em>[Immediately continues talking - 2 seconds later]</em>: "Now, cancer is treatable, there are many options, chemotherapy is very effective, we'll refer you to oncology, the five-year survival rate is..."
+<em>[Keeps talking for 90 seconds without pausing]</em>
+
+<strong>Why It Fails</strong>:
+<ul>
+<li>Patient hasn't processed the news yet</li>
+<li>Information overload when patient is in shock</li>
+<li>Shows discomfort with emotion</li>
+<li>Doesn't give patient space to react</li>
+<li>Looks like you're rushing</li>
+<p>
+</ul>
+</p>
+
+<h3>The Fix</h3>
+
+<strong>Good Candidate</strong>:
+<em>[Delivers news]</em> "You have cancer."
+<em>[Pauses - counts to 10 slowly in head - 10 seconds of silence]</em>
+<em>[Observes patient's reaction - patient tearing up]</em>
+<em>[Another 5 seconds of silence]</em>
+<em>[Softly]</em> "I know this is very difficult to hear."
+<em>[Another 10 seconds of silence - hands tissues if patient crying]</em>
+<em>[Waits for patient to speak first, OR after 30 seconds total silence, gently]</em>: "Take your time. There's no rush."
+
+<strong>Key Points</strong>:
+<ul>
+<li>✅ Silence after bad news: Minimum 10 seconds, ideally 20-30 seconds</li>
+<li>✅ Let PATIENT break the silence with questions/crying/speaking</li>
+<li>✅ If patient doesn't speak after 30 seconds, gentle prompt: "How are you feeling?"</li>
+<li>✅ Practice counting to 10 in your head - most candidates think they're pausing but it's only 2-3 seconds</li>
+<p>
+</ul>
+</p>
+
+<h3>Practice Exercise</h3>
+
+<strong>Record yourself</strong>:
+<ol>
+<li>Deliver bad news sentence</li>
+<li>Count to 20 in your head before speaking again</li>
+<li>Watch video - time actual silence</li>
+<li>Most people's "20 seconds" is actually 5-8 seconds</li>
+<li>Practice until you can genuinely pause 15-20 seconds</li>
+<p>
+</ol>
+</p>
+
+<strong>Cultural Note</strong>: In some cultures, silence is uncomfortable. If you come from a culture where conversation is continuous, this will feel VERY uncomfortable. That discomfort is normal - push through it. Silence is essential in Australian medical culture.
+
+<hr>
+
+<h2>MISTAKE 2: DELIVERING NEWS TOO QUICKLY / NOT USING WARNING SHOT</h2>
+
+<h3>What It Looks Like</h3>
+
+<strong>Poor Candidate</strong>:
+<em>[Immediately, fast]</em> "Hello Mr Smith, thanks for coming in, your test results show you have lung cancer, it's in your left lung, it's stage 3, we need to start chemotherapy..."
+<em>[All in one breath, no pauses]</em>
+
+<strong>Why It Fails</strong>:
+<ul>
+<li>Patient has no time to prepare emotionally</li>
+<li>No "warning shot" to brace for bad news</li>
+<li>Too much information too fast</li>
+<li>Seems insensitive / rushing</li>
+<p>
+</ul>
+</p>
+
+<h3>The Fix</h3>
+
+<strong>Good Candidate</strong>:
+<em>[Slow, gentle pace]</em>
+<p>
+"Hello Mr Smith. Thank you for coming in. Please, sit down."
+</p>
+<em>[Pause - both sit]</em>
+<p>
+"I've received your test results, and I need to discuss them with you."
+</p>
+<em>[Pause]</em>
+<p>
+"Is there anyone you'd like with you for this conversation?"
+</p>
+<em>[Patient says no]</em>
+<p>
+"Before I go through the results, can I ask what you've been thinking about?"
+</p>
+<em>[Patient shares concerns - LISTEN]</em>
+<p>
+"I'm afraid I have some difficult news to share with you."
+</p>
+<em>[WARNING SHOT - pause 2-3 seconds]</em>
+<p>
+"Your test results show that you have lung cancer."
+</p>
+<em>[STOP - silence - observe reaction]</em>
+
+<strong>Key Points</strong>:
+<ul>
+<li>✅ Slow down your speech - speak 20% slower than normal conversation</li>
+<li>✅ Warning shot: "I'm afraid I have difficult/bad/sad news"</li>
+<li>✅ Pause after warning shot (2-3 seconds) - this prepares patient</li>
+<li>✅ Deliver one piece of bad news, then STOP</li>
+<li>✅ Don't load multiple bad facts in one sentence</li>
+<p>
+</ul>
+</p>
+
+<h3>Practice Exercise</h3>
+
+<p>
+Read this aloud and time yourself:
+"I'm afraid the scan results show something concerning. <em>[Pause]</em> The scan shows that you have cancer in your pancreas. <em>[Pause]</em> Unfortunately, the scan also shows that the cancer has spread to your liver."
+</p>
+
+<strong>Target time</strong>: 25-30 seconds
+<strong>Most IMG candidates</strong>: 10-15 seconds (too fast)
+
+<p>
+Practice until each pause feels natural, not rushed.
+</p>
+
+<hr>
+
+<h2>MISTAKE 3: USING EUPHEMISMS FOR DEATH</h2>
+
+<h3>What It Looks Like</h3>
+
+<strong>Scenario</strong>: Patient has died. You're notifying spouse.
+
+<strong>Poor Candidate</strong>:
+<p>
+"Mrs Chen, I'm afraid your husband didn't make it."
+OR
+"He's passed."
+OR
+"We lost him."
+OR
+"He's no longer with us."
+</p>
+
+<strong>Why It Fails</strong>:
+<ul>
+<li>Ambiguous - spouse may not understand he's DEAD</li>
+<li>In acute grief, brain can't process euphemisms</li>
+<li>Australian medical culture expects direct, clear language</li>
+<li>Examiner will mark you down for not using "died/dead"</li>
+<p>
+</ul>
+</p>
+
+<h3>The Fix</h3>
+
+<strong>Good Candidate</strong>:
+<p>
+"Mrs Chen, I'm very sorry, but I have very sad news. <em>[Pause]</em> We did everything we could to save your husband's life, but I'm very sorry to tell you that he has died."
+</p>
+
+<p>
+OR
+</p>
+
+<p>
+"Despite all our efforts, your husband has died."
+</p>
+
+<strong>Use the word "DIED" or "DEAD".</strong>
+
+<strong>Key Points</strong>:
+<ul>
+<li>✅ Use "died" or "dead" - crystal clear</li>
+<li>❌ Never use: "didn't make it", "passed", "passed away", "lost", "gone"</li>
+<li>✅ You can add "I'm sorry" but must include "died/dead"</li>
+<li>✅ After saying "died", stop talking - let it land</li>
+<p>
+</ul>
+</p>
+
+<h3>Why This Is Hard for IMGs</h3>
+
+<p>
+Many cultures use euphemisms for death:
+</p>
+<ul>
+<li>Chinese: "去世了" (gone from the world) - indirect</li>
+<li>Indian: "expired" - euphemism</li>
+<li>Arabic: "left us" - indirect</li>
+<li>Southern European: "passed" - euphemism</li>
+<p>
+</ul>
+</p>
+
+<p>
+Australian medical English requires direct language: <strong>"died" or "dead"</strong>.
+</p>
+
+<h3>Practice Exercise</h3>
+
+<p>
+Say aloud 10 times:
+"Your [husband/wife/mother/father/child] has died."
+</p>
+
+<p>
+If this feels too blunt or harsh, that's your cultural background. Australian examiners expect this direct language. Practice until it feels less uncomfortable.
+</p>
+
+<hr>
+
+<h2>MISTAKE 4: MEDICALIZING / AVOIDING EMOTION</h2>
+
+<h3>What It Looks Like</h3>
+
+<strong>Poor Candidate</strong>:
+<em>[Patient has just been told about cancer and is crying]</em>
+<em>[Candidate continues with medical facts, ignoring crying]</em>:
+<p>
+"The tumor is 4 centimeters in diameter, located in the lower lobe of the left lung. The CT scan shows mediastinal lymphadenopathy. We'll need a PET scan to assess for distant metastases. The histology shows adenocarcinoma..."
+</p>
+<em>[Continues with medical detail while patient cries]</em>
+
+<strong>Why It Fails</strong>:
+<ul>
+<li>Ignores patient's emotional state</li>
+<li>Appears cold, robotic, uncaring</li>
+<li>Patient can't process medical information while crying</li>
+<li>Shows discomfort with emotion</li>
+<p>
+</ul>
+</p>
+
+<h3>The Fix</h3>
+
+<strong>Good Candidate</strong>:
+<em>[Patient crying after cancer diagnosis]</em>
+<em>[Candidate stops talking]</em>
+<em>[Hands tissues]</em>
+<em>[Sits quietly for 15-20 seconds]</em>
+<em>[Softly]</em> "I can see this is very difficult for you. I'm so sorry."
+<em>[More silence - lets patient cry]</em>
+<em>[After 30-45 seconds]</em> "Take your time. There's no rush."
+<em>[Waits for crying to subside before giving ANY medical information]</em>
+<em>[When patient ready - asks permission]</em> "Would it help if I explain what this means and what we can do?"
+<em>[If yes, gives information in small chunks with pauses]</em>
+
+<strong>Key Points</strong>:
+<ul>
+<li>✅ Emotion FIRST, information SECOND</li>
+<li>✅ When patient cries, STOP giving information</li>
+<li>✅ Sit with the emotion</li>
+<li>✅ Empathy statements: "I can see this is difficult", "I'm sorry"</li>
+<li>✅ Only resume information when patient indicates readiness</li>
+<p>
+</ul>
+</p>
+
+<h3>Why This Is Hard for IMGs</h3>
+
+<strong>Cultural factors</strong>:
+<ul>
+<li>Some cultures value stoicism - showing emotion is "weakness"</li>
+<li>Some cultures view doctor-patient relationship as purely professional - emotions are "unprofessional"</li>
+<li>Medical training focused on facts, not feelings</li>
+<li>Discomfort with tears (especially male doctors with female patients in some cultures)</li>
+<p>
+</ul>
+</p>
+
+<strong>Australian expectation</strong>: Doctors should be comfortable with emotion, witness it, acknowledge it, sit with it.
+
+<h3>Practice Exercise</h3>
+
+<strong>Role-play with partner</strong>:
+<ol>
+<li>Partner: Cry during consultation (real or fake crying)</li>
+<li>You: Stop talking, hand tissues, sit quietly for 30 seconds minimum</li>
+<li>Partner feedback: "Did I feel rushed? Did I feel heard?"</li>
+<li>Repeat until you're comfortable sitting with crying</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>MISTAKE 5: NOT ADDRESSING GUILT DIRECTLY</h2>
+
+<h3>What It Looks Like</h3>
+
+<strong>Scenario</strong>: Patient miscarriage. Patient says: "Did I cause this? I lifted something heavy."
+
+<strong>Poor Candidate</strong>:
+<em>[Soft, indirect]</em>: "Well, miscarriage can have many causes... it's usually chromosomal abnormalities... lifestyle factors can sometimes play a role..."
+<em>[Vague, doesn't directly answer]</em>
+
+<strong>Why It Fails</strong>:
+<ul>
+<li>Doesn't clearly absolve patient of guilt</li>
+<li>Leaves room for doubt</li>
+<li>Patient will continue blaming themselves</li>
+<li>Examiner expects DIRECT reassurance</li>
+<p>
+</ul>
+</p>
+
+<h3>The Fix</h3>
+
+<strong>Good Candidate</strong>:
+<em>[Patient asks: "Did I cause this?"]</em>
+<em>[Immediately, firmly, directly]</em>: "<strong>No. You absolutely did not cause this. Lifting something did not cause your miscarriage. This is not your fault.</strong>"
+<em>[Pause - let it land]</em>
+<p>
+"Nothing you did or didn't do caused this. Most miscarriages are due to random chromosomal abnormalities - something that was never compatible with life. This was going to happen regardless of what you did. You did nothing wrong."
+</p>
+
+<strong>Key Points</strong>:
+<ul>
+<li>✅ Direct, firm "NO"</li>
+<li>✅ Repeat: "This is not your fault"</li>
+<li>✅ Address specific guilt ("lifting did NOT cause this")</li>
+<li>✅ Explain actual cause</li>
+<li>✅ Don't leave room for ambiguity</li>
+<p>
+</ul>
+</p>
+
+<h3>Common Guilt Scenarios</h3>
+
+<strong>HIV</strong>: "I should have been more careful"
+<ul>
+<li>✅ "What matters now is your health and treatment, not looking back."</li>
+<p>
+</ul>
+</p>
+
+<strong>Lung cancer in smoker</strong>: "This is my fault for smoking"
+<ul>
+<li>✅ "Smoking is a risk factor, yes, but blaming yourself doesn't help now. What matters is moving forward with treatment."</li>
+<p>
+</ul>
+</p>
+
+<strong>Child's cancer</strong>: "Did I do something wrong during pregnancy?"
+<ul>
+<li>✅ "No. You did not cause this. Childhood cancer is due to random genetic changes, not anything you did."</li>
+<p>
+</ul>
+</p>
+
+<strong>Stroke</strong>: "I should have taken my blood pressure medication"
+<ul>
+<li>✅ "Let's focus on preventing another stroke and your recovery now."</li>
+<p>
+</ul>
+</p>
+
+<h3>Why This Is Hard for IMGs</h3>
+
+<strong>Cultural factors</strong>:
+<ul>
+<li>Some cultures are less direct - prefer to gently suggest rather than firmly state</li>
+<li>Some languages don't have as strong "NO" - more nuanced</li>
+<li>Indirect communication style ("it's possible that... but not likely...") feels more polite</li>
+<p>
+</ul>
+</p>
+
+<strong>Australian expectation</strong>: When addressing guilt, be DIRECT and FIRM. Patient needs unambiguous reassurance.
+
+<hr>
+
+<h2>MISTAKE 6: STANDING WHILE DELIVERING BAD NEWS</h2>
+
+<h3>What It Looks Like</h3>
+
+<strong>Poor Candidate</strong>:
+<em>[Stands at doorway or bedside while patient sits]</em>
+<p>
+"Mr Smith, I've got your test results back. They show cancer."
+</p>
+<em>[Remains standing throughout conversation]</em>
+
+<strong>Why It Fails</strong>:
+<ul>
+<li>Creates power imbalance</li>
+<li>Seems rushed ("I'm not staying long")</li>
+<li>Disrespectful</li>
+<li>Physically intimidating</li>
+<li>Examiner will specifically look for sitting</li>
+<p>
+</ul>
+</p>
+
+<h3>The Fix</h3>
+
+<strong>Good Candidate</strong>:
+<em>[Enters room]</em>
+<p>
+"Hello Mr Smith. Thank you for coming in. Please, sit down."
+</p>
+<em>[Waits for patient to sit]</em>
+<em>[Sits down at same level as patient - chair, not standing]</em>
+<em>[Then begins conversation]</em>
+
+<strong>Key Points</strong>:
+<ul>
+<li>✅ SIT DOWN before delivering bad news</li>
+<li>✅ Same level as patient (don't sit on high stool while patient in low chair)</li>
+<li>✅ 45-degree angle, not directly opposite (less confrontational)</li>
+<li>✅ No desk between you (removes barrier)</li>
+<li>✅ 3-4 feet distance</li>
+<p>
+</ul>
+</p>
+
+<h3>Special Scenarios</h3>
+
+<strong>Death notification</strong>:
+<ul>
+<li>✅ CRITICAL: Sit down BEFORE saying they've died</li>
+<li>✅ The act of sitting down signals bad news</li>
+<li>❌ NEVER give death notification standing - automatic fail</li>
+<p>
+</ul>
+</p>
+
+<strong>Patient in hospital bed</strong>:
+<ul>
+<li>✅ Sit on chair at bedside (same eye level as lying patient)</li>
+<li>❌ Don't stand at end of bed or over patient</li>
+<p>
+</ul>
+</p>
+
+<h3>Why This Is Hard for IMGs</h3>
+
+<strong>Cultural factors</strong>:
+<ul>
+<li>In some cultures, doctors are authority figures who stand above patients</li>
+<li>Standing shows respect/professionalism in some cultures</li>
+<li>Some training environments had limited time - standing saved time</li>
+<p>
+</ul>
+</p>
+
+<strong>Australian expectation</strong>: Sitting shows respect, equality, time, compassion.
+
+<hr>
+
+<h2>MISTAKE 7: NOT OFFERING INTERPRETER</h2>
+
+<h3>What It Looks Like</h3>
+
+<strong>Scenario</strong>: Patient's English is limited. They're nodding but clearly not understanding.
+
+<strong>Poor Candidate</strong>:
+<em>[Continues in English, speaking louder and slower]</em>
+<p>
+"DO... YOU... UNDERSTAND... THE... DIAGNOSIS?"
+</p>
+<em>[Patient nods, confused]</em>
+<em>[Candidate assumes understanding and continues]</em>
+
+<strong>Why It Fails</strong>:
+<ul>
+<li>Patient hasn't given informed consent if they don't understand</li>
+<li>Ethically and legally problematic</li>
+<li>Cultural safety failure</li>
+<li>Examiner specifically assesses interpreter offer</li>
+<p>
+</ul>
+</p>
+
+<h3>The Fix</h3>
+
+<strong>Good Candidate</strong>:
+<em>[Notices patient struggling with English]</em>
+<p>
+"I notice English may not be your first language. What language are you most comfortable speaking?"
+</p>
+<em>[Patient says Mandarin]</em>
+<p>
+"Would you like me to arrange an interpreter? We have professional Mandarin interpreters available. This is important information, and I want to make sure you fully understand."
+</p>
+<em>[If yes, arranges interpreter]</em>
+<em>[If patient says no, confirms]</em> "Are you sure you're comfortable in English? It's no trouble to get an interpreter."
+
+<strong>Key Points</strong>:
+<ul>
+<li>✅ ALWAYS offer if patient has limited English</li>
+<li>✅ Offer even if family speaks English (patient may not)</li>
+<li>✅ Professional interpreter for serious news (not family member)</li>
+<li>✅ "Would you like an interpreter?" - explicitly ask</li>
+<p>
+</ul>
+</p>
+
+<h3>Using Interpreter - Quick Reminder</h3>
+
+<strong>When interpreter present</strong>:
+<ol>
+<li><strong>Speak TO patient, not to interpreter</strong></li>
+<p>
+</ol>
+   - ❌ "Tell her she has cancer"
+   - ✅ "You have cancer" <em>[looking at patient]</em>
+</p>
+
+<ol>
+<li><strong>First person, not third person</strong></li>
+<p>
+</ol>
+   - ❌ "Tell him I'm going to examine him"
+   - ✅ "I'm going to examine you"
+</p>
+
+<ol>
+<li><strong>Short sentences, pause for interpretation</strong></li>
+<p>
+</ol>
+</p>
+
+<ol>
+<li><strong>Look at PATIENT while they speak</strong> (even though you don't understand)</li>
+<p>
+</ol>
+</p>
+
+<ol>
+<li><strong>Check understanding</strong>: "Can you tell me what you've understood?"</li>
+<p>
+</ol>
+</p>
+
+<h3>Why This Is Hard for IMGs</h3>
+
+<strong>Factors</strong>:
+<ul>
+<li>May assume everyone speaks English (especially in English-speaking countries)</li>
+<li>Uncomfortable using interpreter (slows down consultation)</li>
+<li>Used to family members interpreting</li>
+<li>Don't know how to use interpreter properly</li>
+<p>
+</ul>
+</p>
+
+<strong>Australian expectation</strong>: Interpreter must be offered for limited English. Cultural safety is explicitly examined.
+
+<hr>
+
+<h2>MISTAKE 8: GIVING FALSE HOPE OR BEING TOO PESSIMISTIC</h2>
+
+<h3>What It Looks Like</h3>
+
+<strong>TOO OPTIMISTIC</strong> (False hope):
+<strong>Poor Candidate</strong>: <em>[Metastatic cancer, poor prognosis]</em>
+<p>
+"Don't worry, you'll be fine! Modern medicine is amazing! I'm sure you'll beat this! Stay positive!"
+</p>
+
+<strong>TOO PESSIMISTIC</strong>:
+<strong>Poor Candidate</strong>: <em>[Early breast cancer, good prognosis]</em>
+<p>
+"You have cancer. This is very serious. You could die."
+</p>
+
+<strong>Why Both Fail</strong>:
+<ul>
+<li>False hope: Patient unprepared for reality, trust broken when things don't go well</li>
+<li>Too pessimistic: Removes all hope, may cause despair, doesn't acknowledge real treatment options</li>
+<p>
+</ul>
+</p>
+
+<h3>The Fix</h3>
+
+<strong>Good Candidate - Realistic Hope</strong>:
+<em>[Metastatic pancreatic cancer, poor prognosis]</em>
+<p>
+"This is a very serious diagnosis. Pancreatic cancer that has spread is difficult to treat, and I won't lie to you - the prognosis is not good. However, there are treatments that can control the cancer, improve symptoms, and give you quality time. Chemotherapy can slow progression. Palliative care can keep you comfortable. We'll do everything we can to give you the best quality of life possible."
+</p>
+
+<strong>Good Candidate - Balanced</strong>:
+<em>[Early breast cancer, good prognosis]</em>
+<p>
+"You have breast cancer, which is very serious. However, we've caught it early, and early breast cancer is very treatable. With surgery and possibly chemotherapy or hormone therapy, the five-year survival rate is about 90%. This is serious, but there's very good reason for hope."
+</p>
+
+<strong>Key Points</strong>:
+<ul>
+<li>✅ <strong>Hope within honesty</strong> - balance</li>
+<li>✅ Acknowledge severity ("this is serious") AND treatment options ("but there are things we can do")</li>
+<li>✅ Numbers when helpful (survival rates) but realistic</li>
+<li>✅ Never say "you'll be fine" when you don't know</li>
+<li>✅ Never remove all hope unless truly terminal and imminent</li>
+<p>
+</ul>
+</p>
+
+<h3>Specific Scenarios</h3>
+
+<strong>Childhood ALL</strong> (good prognosis):
+<ul>
+<li>❌ Too pessimistic: "Your child has cancer. This could be fatal."</li>
+<li>❌ Too optimistic: "Don't worry, childhood cancer is curable!"</li>
+<li>✅ Balanced: "Your child has leukaemia, which is very serious. However, childhood ALL is one of the success stories of paediatric medicine, with an 85-90% cure rate. There's real reason for hope."</li>
+<p>
+</ul>
+</p>
+
+<strong>Terminal cancer</strong>:
+<ul>
+<li>❌ False hope: "You never know, you might be the one who survives!"</li>
+<li>❌ Too harsh: "You're going to die within 6 months."</li>
+<li>✅ Balanced: "This is a terminal diagnosis, and I need to be honest with you about that. However, palliative care can keep you comfortable, and we'll focus on quality of life. Some people live longer than expected. We'll take this one day at a time."</li>
+<p>
+</ul>
+</p>
+
+<h3>Cultural Considerations</h3>
+
+<strong>Some cultures expect</strong>:
+<ul>
+<li>Doctor to be always reassuring (never admit poor prognosis)</li>
+<li>Family to protect patient from bad news</li>
+<li>"Fighting spirit" language ("you must fight this!")</li>
+<p>
+</ul>
+</p>
+
+<strong>Australian medical culture expects</strong>:
+<ul>
+<li>Honest disclosure</li>
+<li>Balance of hope and realism</li>
+<li>Patient autonomy to know truth</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>PRACTICE TOOLS</h2>
+
+<h3>Tool 1: The 30-Second Silence Exercise</h3>
+
+<strong>Goal</strong>: Build tolerance for silence
+
+<strong>Method</strong>:
+<ol>
+<li>Set timer for 30 seconds</li>
+<li>Sit in silence (don't speak, don't fidget)</li>
+<li>Just sit</li>
+<li>Notice discomfort</li>
+<li>Repeat daily</li>
+<p>
+</ol>
+</p>
+
+<strong>Why</strong>: If you can sit in 30 seconds of silence alone, you can sit with patient's silence.
+
+<hr>
+
+<h3>Tool 2: Video Recording</h3>
+
+<strong>Most Effective Practice Method</strong>
+
+<strong>Setup</strong>:
+<ol>
+<li>Use phone camera or laptop</li>
+<li>Record yourself delivering bad news (use scenarios from mock stations)</li>
+<li>Watch WITHOUT SOUND first</li>
+<p>
+</ol>
+   - Body language?
+   - Fidgeting?
+   - Eye contact?
+   - Do you look uncomfortable?
+</p>
+
+<ol>
+<li>Watch WITH SOUND</li>
+<p>
+</ol>
+   - How long are pauses? (Count them)
+   - Pace of speech?
+   - Empathy in voice?
+   - Did you use "died/dead" or euphemism?
+</p>
+
+<ol>
+<li>Grade yourself using OSCE checklist</li>
+<p>
+</ol>
+</p>
+
+<strong>Do this 10 times. Your score will improve dramatically.</strong>
+
+<hr>
+
+<h3>Tool 3: The Empathy Statement Bank</h3>
+
+<strong>Memorize These - Use in OSCE</strong>
+
+<strong>Acknowledging Difficulty</strong>:
+<ul>
+<li>"I know this is very difficult to hear."</li>
+<li>"This is heartbreaking news."</li>
+<li>"I can see this is overwhelming."</li>
+<p>
+</ul>
+</p>
+
+<strong>Apologizing</strong>:
+<ul>
+<li>"I'm very sorry."</li>
+<li>"I'm so sorry to have to tell you this."</li>
+<li>"I'm deeply sorry for your loss."</li>
+<p>
+</ul>
+</p>
+
+<strong>Validating Emotion</strong>:
+<ul>
+<li>"It's completely understandable to feel [emotion]."</li>
+<li>"Anyone would be [upset/angry/devastated] in your position."</li>
+<li>"There's no right or wrong way to feel."</li>
+<p>
+</ul>
+</p>
+
+<strong>Allowing Time</strong>:
+<ul>
+<li>"Take your time."</li>
+<li>"There's no rush."</li>
+<li>"Take all the time you need."</li>
+<p>
+</ul>
+</p>
+
+<strong>Offering Support</strong>:
+<ul>
+<li>"We're going to support you through this."</li>
+<li>"You're not alone in this."</li>
+<li>"We'll help you through this."</li>
+<p>
+</ul>
+</p>
+
+<strong>Practice</strong>: Say each one aloud 10 times. They should feel natural, not scripted.
+
+<hr>
+
+<h3>Tool 4: Cultural Self-Assessment</h3>
+
+<strong>Reflect on your cultural background</strong>:
+
+<ol>
+<li><strong>In my culture, bad news is delivered by</strong>:</li>
+<p>
+</ol>
+   - <input type="checkbox"> Doctor directly to patient
+   - <input type="checkbox"> Doctor to family, family to patient
+   - <input type="checkbox"> Indirect disclosure
+   - <input type="checkbox"> Other: <strong><em><em></em></strong></em>
+</p>
+
+<ol>
+<li><strong>In my culture, emotional expression is</strong>:</li>
+<p>
+</ol>
+   - <input type="checkbox"> Open and encouraged
+   - <input type="checkbox"> Private and contained
+   - <input type="checkbox"> Varies by gender
+   - <input type="checkbox"> Other: <strong><em><em></em></strong></em>
+</p>
+
+<ol>
+<li><strong>In my culture, silence in conversation is</strong>:</li>
+<p>
+</ol>
+   - <input type="checkbox"> Comfortable and normal
+   - <input type="checkbox"> Uncomfortable and awkward
+   - <input type="checkbox"> Shows respect
+   - <input type="checkbox"> Shows disinterest
+</p>
+
+<ol>
+<li><strong>In my culture, patient autonomy is</strong>:</li>
+<p>
+</ol>
+   - <input type="checkbox"> Paramount
+   - <input type="checkbox"> Shared with family
+   - <input type="checkbox"> Family decides
+   - <input type="checkbox"> Other: <strong><em><em></em></strong></em>
+</p>
+
+<strong>Now compare to Australian medical culture</strong>:
+<ul>
+<li>Patient autonomy: Paramount</li>
+<li>Emotional expression: Encouraged, witnessed</li>
+<li>Silence: Essential after bad news</li>
+<li>Disclosure: Direct to patient</li>
+<p>
+</ul>
+</p>
+
+<strong>Where are the gaps?</strong> These are your areas to focus practice.
+
+<hr>
+
+<h2>SELF-ASSESSMENT CHECKLIST</h2>
+
+<h3>After Each Practice Session</h3>
+
+<strong>Used this checklist immediately after practicing (video, peer practice, or self)</strong>:
+
+<h4>Setting & Opening</h4>
+<ul>
+<li><input type="checkbox"> Did I sit down before delivering news?</li>
+<li><input type="checkbox"> Did I ensure privacy?</li>
+<li><input type="checkbox"> Did I ask if patient wants anyone present?</li>
+<p>
+</ul>
+</p>
+
+<h4>Delivery</h4>
+<ul>
+<li><input type="checkbox"> Did I use a warning shot? ("I'm afraid I have difficult news")</li>
+<li><input type="checkbox"> Did I deliver one piece of bad news, then STOP?</li>
+<li><input type="checkbox"> Did I speak slowly (slower than normal conversation)?</li>
+<li><input type="checkbox"> If death notification, did I use "died/dead" (not euphemism)?</li>
+<p>
+</ul>
+</p>
+
+<h4>Silence</h4>
+<ul>
+<li><input type="checkbox"> Did I pause at least 10 seconds after delivering bad news?</li>
+<li><input type="checkbox"> Did I let the patient break the silence (or wait 30 seconds before speaking)?</li>
+<li><input type="checkbox"> Was I comfortable with silence, or did I rush to fill it?</li>
+<p>
+</ul>
+</p>
+
+<h4>Emotion</h4>
+<ul>
+<li><input type="checkbox"> When patient showed emotion, did I stop giving information?</li>
+<li><input type="checkbox"> Did I provide tissues?</li>
+<li><input type="checkbox"> Did I use empathy statements?</li>
+<li><input type="checkbox"> Did I allow patient to cry without interrupting?</li>
+<li><input type="checkbox"> Did I sit with emotion before moving to next steps?</li>
+<p>
+</ul>
+</p>
+
+<h4>Guilt</h4>
+<ul>
+<li><input type="checkbox"> If patient expressed guilt, did I address it directly and firmly?</li>
+<li><input type="checkbox"> Did I say clearly "This is not your fault"?</li>
+<p>
+</ul>
+</p>
+
+<h4>Cultural Safety</h4>
+<ul>
+<li><input type="checkbox"> If patient had limited English, did I offer interpreter?</li>
+<li><input type="checkbox"> Did I ask about cultural/religious needs?</li>
+<p>
+</ul>
+</p>
+
+<h4>Balance</h4>
+<ul>
+<li><input type="checkbox"> Did I balance honesty with hope?</li>
+<li><input type="checkbox"> Did I avoid both false hope and excessive pessimism?</li>
+<p>
+</ul>
+</p>
+
+<h4>Body Language</h4>
+<ul>
+<li><input type="checkbox"> Was I sitting at patient level throughout?</li>
+<li><input type="checkbox"> Was my posture open (not crossed arms)?</li>
+<li><input type="checkbox"> Did I lean forward (engagement)?</li>
+<li><input type="checkbox"> Did I maintain appropriate eye contact?</li>
+<p>
+</ul>
+</p>
+
+<strong>Score</strong>: <em>_</em> out of 19
+
+<strong>Target</strong>: 16+ (85%)
+
+<hr>
+
+<h2>VIDEO RECORDING GUIDE</h2>
+
+<h3>Detailed Instructions</h3>
+
+<strong>Equipment</strong>:
+<ul>
+<li>Phone camera or laptop webcam</li>
+<li>Tripod or stable surface</li>
+<li>Quiet room</li>
+<li>8-minute timer</li>
+<p>
+</ul>
+</p>
+
+<strong>Setup</strong>:
+<ol>
+<li>Position camera at eye level (not looking down or up at you)</li>
+<li>Frame: Upper body visible, can see face clearly</li>
+<li>Chair visible (to check you're sitting)</li>
+<p>
+</ol>
+</p>
+
+<strong>Recording</strong>:
+<ol>
+<li>Choose scenario (use mock station)</li>
+<li>Read candidate instructions (2 min)</li>
+<li>Set timer (8 min)</li>
+<li>Record yourself delivering news (speak to camera as if it's patient)</li>
+<li>Include pauses, silences, empathy statements</li>
+<p>
+</ol>
+</p>
+
+<strong>Watching</strong>:
+
+<strong>FIRST WATCH - No Sound</strong>:
+<ul>
+<li>Body language?</li>
+<li>Fidgeting?</li>
+<li>Did you sit still during "patient's" emotional reaction?</li>
+<li>How long were pauses? (count silently)</li>
+<li>Facial expression - compassionate?</li>
+<p>
+</ul>
+</p>
+
+<strong>SECOND WATCH - With Sound</strong>:
+<ul>
+<li>Time your pauses (stopwatch)</li>
+<li>Did you use "died/dead" or euphemism?</li>
+<li>Count filler words ("um", "uh", "like")</li>
+<li>Empathy statements - genuine or scripted?</li>
+<li>Pace - too fast?</li>
+<p>
+</ul>
+</p>
+
+<strong>THIRD WATCH - With Checklist</strong>:
+<ul>
+<li>Grade yourself using OSCE examiner checklist</li>
+<li>Be honest</li>
+<li>Note strengths and weaknesses</li>
+<p>
+</ul>
+</p>
+
+<strong>REPEAT</strong>:
+<ul>
+<li>Same scenario, re-record</li>
+<li>Compare video 1 vs video 2</li>
+<li>You should see improvement</li>
+<p>
+</ul>
+</p>
+
+<strong>Target</strong>: Do this 10 times across different scenarios. By video 10, you'll be significantly better.
+
+<hr>
+
+<h2>PEER PRACTICE FRAMEWORK</h2>
+
+<h3>How to Practice with Partners</h3>
+
+<strong>Roles</strong> (Rotate these):
+<ol>
+<li><strong>Candidate</strong> (doctor)</li>
+<li><strong>Simulated Patient</strong></li>
+<li><strong>Examiner</strong> (optional - if 3 people)</li>
+<p>
+</ol>
+</p>
+
+<h3>Structure</h3>
+
+<strong>Preparation</strong> (2 min):
+<ul>
+<li>Candidate reads candidate instructions only</li>
+<li>Simulated Patient reads patient script only</li>
+<li>Examiner reads both + checklist</li>
+<p>
+</ul>
+</p>
+
+<strong>Station</strong> (8 min):
+<ul>
+<li>Set timer</li>
+<li>Candidate enters, performs station</li>
+<li>Patient acts according to script</li>
+<li>Examiner observes, completes checklist silently</li>
+<p>
+</ul>
+</p>
+
+<strong>Feedback Session</strong> (5-10 min):
+
+<strong>ORDER OF FEEDBACK</strong> (important):
+
+<strong>1. Candidate Self-Reflection</strong> (2 min):
+<ul>
+<li>"I thought I did well on..."</li>
+<li>"I struggled with..."</li>
+<li>"I wish I had..."</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Patient Feedback</strong> (2 min):
+<ul>
+<li>"I felt..." (emotional response)</li>
+<li>"It would have helped if..."</li>
+<li>"I didn't feel heard when..."</li>
+<li>"I appreciated when you..."</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Examiner Feedback</strong> (3 min):
+<ul>
+<li>Checklist score</li>
+<li>Specific strengths: "You did well on X - I saw you do Y"</li>
+<li>Specific areas for improvement: "You could improve X by doing Y"</li>
+<li>One concrete thing to practice for next time</li>
+<p>
+</ul>
+</p>
+
+<strong>4. Group Discussion</strong> (2 min):
+<ul>
+<li>Questions</li>
+<li>Alternative approaches</li>
+<p>
+</ul>
+</p>
+
+<strong>THEN ROTATE ROLES and repeat</strong>
+
+<h3>Tips for Good Peer Practice</h3>
+
+<strong>As Simulated Patient</strong>:
+<ul>
+<li>✅ Commit to the role - really cry if script says cry</li>
+<li>✅ Give authentic feedback - how did you actually feel?</li>
+<li>✅ Be challenging - if script says angry, BE angry</li>
+<li>❌ Don't go easy on candidate</li>
+<p>
+</ul>
+</p>
+
+<strong>As Examiner</strong>:
+<ul>
+<li>✅ Use checklist objectively</li>
+<li>✅ Specific feedback, not general ("pause after delivering news" not "communicate better")</li>
+<li>✅ Balance positive and developmental</li>
+<li>❌ Don't be overly harsh or overly lenient</li>
+<p>
+</ul>
+</p>
+
+<strong>As Candidate</strong>:
+<ul>
+<li>✅ Take feedback non-defensively</li>
+<li>✅ Ask questions if feedback unclear</li>
+<li>✅ Focus on one improvement area per practice</li>
+<li>❌ Don't make excuses</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>COMMON FEEDBACK FROM EXAMINERS</h2>
+
+<h3>What Examiners Say About IMG Candidates</h3>
+
+<strong>Positive Feedback</strong> (when you do well):
+<ul>
+<li>"Excellent use of silence - allowed patient to process"</li>
+<li>"Demonstrated empathy - I believed you cared"</li>
+<li>"Cultural safety - offered interpreter, asked about religious needs"</li>
+<li>"Clear direct language - used 'died', not euphemism"</li>
+<li>"Sat with emotion - didn't rush to medical information"</li>
+<p>
+</ul>
+</p>
+
+<strong>Negative Feedback</strong> (common criticisms):
+<ul>
+<li>"Rushed through delivery - patient had no time to process"</li>
+<li>"Avoided emotion - became medical when patient cried"</li>
+<li>"Used euphemism for death - not clear"</li>
+<li>"Stood while delivering news - power imbalance"</li>
+<li>"Didn't address guilt directly - left patient blaming themselves"</li>
+<li>"Spoke too fast - unclear if English is first language"</li>
+<li>"Uncomfortable with silence - filled every gap"</li>
+<li>"Didn't offer interpreter despite patient's limited English"</li>
+<li>"Too pessimistic / gave false hope - poor balance"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>FINAL ADVICE</h2>
+
+<h3>The 3 Things That Matter Most</h3>
+
+<strong>1. SILENCE</strong>
+<p>
+Practice sitting in silence until it's comfortable. This alone will improve your score by 10-15 points.
+</p>
+
+<strong>2. EMPATHY</strong>
+<p>
+Mean it. If you don't feel compassion, patients and examiners can tell. Connect with why you became a doctor.
+</p>
+
+<strong>3. PRACTICE</strong>
+<p>
+You cannot learn this from reading. You must practice out loud, ideally recorded or with peers, minimum 10 times.
+</p>
+
+<h3>Cultural Bridge</h3>
+
+<p>
+You're bridging two cultures:
+</p>
+<ul>
+<li>Your medical training and cultural background</li>
+<li>Australian medical culture and expectations</li>
+<p>
+</ul>
+</p>
+
+<p>
+This is hard. But it's doable. Thousands of IMGs have successfully learned to break bad news in the Australian style. You can too.
+</p>
+
+<strong>Be patient with yourself. Practice consistently. Accept feedback. You will improve.</strong>
+
+<hr>
+
+<strong>Last Updated</strong>: December 14, 2025
+<strong>Version</strong>: 1.0
+<strong>Author</strong>: ICRP NSW Young Hospital Preparation Team
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

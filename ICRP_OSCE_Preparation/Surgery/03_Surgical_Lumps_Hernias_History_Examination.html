@@ -1,0 +1,2398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surgical Lumps & Hernias: History-Taking and Physical Examination</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Surgery</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Surgery Navigation</h3>
+<ul>
+<li><a href="01_Acute_Abdomen_History_Differentials.html">Acute Abdomen</a></li>
+<li><a href="02_Acute_Abdomen_Physical_Examination.html">Abdo Exam</a></li>
+</ul>
+</div>
+        <h1>Surgical Lumps & Hernias: History-Taking and Physical Examination</h1>
+<h2>ICRP OSCE Preparation - Surgery Module</h2>
+<h3>Following Dr. Amir Soufi's Differential-Driven Approach (IMG4IMGS Methodology)</h3>
+
+<hr>
+
+<h2>Target Audience</h2>
+<ul>
+<li>IMGs preparing for AMC Clinical OSCE</li>
+<li>ICRP participants at NSW Young Hospital Program</li>
+<li>Medical students/residents rotating through general surgery</li>
+<li>Focus: 8-minute OSCE stations with differential diagnosis emphasis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Learning Objectives</h2>
+
+<p>
+By the end of this module, you will be able to:
+</p>
+
+<ol>
+<li><strong>Take a focused history</strong> for a patient presenting with a lump or hernia using the differential-driven approach</li>
+<li><strong>Perform systematic physical examination</strong> of lumps (7 Ss framework) and hernias (inspection, palpation, reducibility)</li>
+<li><strong>Generate differential diagnosis</strong> from the first moment and narrow it with each finding</li>
+<li><strong>Identify <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong> requiring <span style="color: #e74c3c; font-weight: bold;">URGENT</span> surgical referral</li>
+<li><strong>Integrate history and examination</strong> to arrive at a working diagnosis</li>
+<li><strong>Apply Australian healthcare context</strong> (eTG 2024, Medicare, PBS, surgical referral pathways)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Dr. Amir Soufi's Core Principle Applied to Lumps & Hernias</h2>
+
+<h3>The Differential-Driven Mindset</h3>
+
+<strong>Traditional Approach (WRONG for OSCE)</strong>:
+<ol>
+<li>Patient: "I have a lump in my neck"</li>
+<li>You: Take full history methodically</li>
+<li>You: Examine the lump</li>
+<li>You: Think about diagnosis at the end</li>
+<p>
+</ol>
+</p>
+
+<strong>Dr. Amir's Approach (CORRECT for OSCE)</strong>:
+<ol>
+<li>Patient: "I have a lump in my neck"</li>
+<li><strong>You IMMEDIATELY think</strong>: "Differential for neck lump = Lymph node (infection vs malignancy), Thyroid nodule, Lipoma, Sebaceous cyst, Branchial cyst, Cystic hygroma, Carotid body tumor"</li>
+<li><strong>Your next questions are DRIVEN by differentials</strong>:</li>
+<p>
+</ol>
+   - "Any fever, night sweats, weight loss?" (lymphoma)
+   - "Any voice change, difficulty swallowing?" (thyroid)
+   - "Any recent infections?" (reactive lymph node)
+   - "How long has it been there?" (congenital vs acquired)
+</p>
+<ol>
+<li><strong>Each answer NARROWS your differential</strong></li>
+<li><strong>Examination confirms your working diagnosis</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>This is how consultants think. This is how you must think in OSCE.</strong>
+
+<hr>
+
+<h2>Part 1: History-Taking for Lumps</h2>
+
+<h3>Framework: "LUMP" + Differential Thinking</h3>
+
+<h4>L - <strong>LOCATION</strong> (Site and Radiation)</h4>
+
+<strong>Opening Question</strong>: "Where exactly is the lump? Can you point to it?"
+
+<strong>Differential Thinking by Location</strong>:
+
+<strong>Neck Lumps</strong>:
+<ul>
+<li><strong>Anterior midline</strong>: Thyroid nodule, thyroglossal cyst (moves with swallowing/tongue protrusion)</li>
+<li><strong>Anterior triangle</strong>: Lymph nodes, branchial cyst, submandibular gland pathology</li>
+<li><strong>Posterior triangle</strong>: Lymph nodes (supraclavicular = consider malignancy), cystic hygroma</li>
+<li><strong>Lateral</strong>: Lymph nodes, carotid body tumor (pulsatile)</li>
+<p>
+</ul>
+</p>
+
+<strong>Groin Lumps</strong>:
+<ul>
+<li><strong>Above and medial to pubic tubercle</strong>: Inguinal hernia</li>
+<li><strong>Below and lateral to pubic tubercle</strong>: Femoral hernia</li>
+<li><strong>Lateral to pubic tubercle</strong>: Lymph nodes, saphena varix (disappears on lying), femoral aneurysm (pulsatile)</li>
+<li><strong>Scrotal</strong>: Hydrocele, varicocele, testicular mass</li>
+<p>
+</ul>
+</p>
+
+<strong>Abdominal Wall Lumps</strong>:
+<ul>
+<li><strong>Epigastric</strong>: Epigastric hernia, lipoma</li>
+<li><strong>Umbilical</strong>: Umbilical hernia, Sister Mary Joseph nodule (metastatic malignancy)</li>
+<li><strong>Incisional</strong>: Incisional hernia (previous surgery)</li>
+<li><strong>Spigelian</strong>: Spigelian hernia (lateral edge of rectus)</li>
+<p>
+</ul>
+</p>
+
+<strong>Breast Lumps</strong>:
+<ul>
+<li>Upper outer quadrant (most common site for cancer)</li>
+<li>Subareolar (duct ectasia, papilloma)</li>
+<li>Axillary tail</li>
+<p>
+</ul>
+</p>
+
+<strong>Skin Lumps</strong>:
+<ul>
+<li><strong>Scalp/face/trunk</strong>: Sebaceous cyst, lipoma, dermatofibroma, BCC, SCC, melanoma</li>
+<li><strong>Extremities</strong>: Ganglion cyst (wrist), lipoma, neurofibroma</li>
+<p>
+</ul>
+</p>
+
+<strong>Your Follow-up Questions Based on Location</strong>:
+<ul>
+<li><strong>Neck</strong>: "Does it move when you swallow?" (thyroid), "Does it move when you stick your tongue out?" (thyroglossal cyst)</li>
+<li><strong>Groin</strong>: "Does it come down when you cough or strain?" (hernia), "Does it disappear when you lie down?" (hernia vs fixed mass)</li>
+<li><strong>Scrotal</strong>: "Can you get above it?" (hydrocele vs inguinoscrotal hernia)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>U - <strong>UNDERSTANDING the Timeline</strong> (Onset, Duration, Progression)</h4>
+
+<strong>Key Questions</strong>:
+<ol>
+<li>"When did you first notice the lump?"</li>
+<li>"Has it been there since birth, or did it appear later?"</li>
+<li>"How has it changed over time? Growing, staying same size, fluctuating?"</li>
+<li>"Did it appear suddenly or gradually?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Differential Thinking by Timeline</strong>:
+
+<p>
+| <strong>Timeline</strong> | <strong>Think Immediately</strong> | <strong>Next Questions</strong> |
+|--------------|----------------------|-------------------|
+| <strong>Since birth</strong> | Congenital: Dermoid cyst, haemangioma, branchial cyst, cystic hygroma | "Does it change size with crying?" (vascular lesions increase) |
+| <strong>Sudden onset (hours-days)</strong> | Abscess, haematoma, incarcerated hernia, reactive lymph node | "Any trauma?", "Any infection?", "Any pain/redness?" |
+| <strong>Rapidly growing (weeks)</strong> | Infection, abscess, aggressive malignancy (lymphoma, sarcoma) | "B symptoms?" (fever, night sweats, weight loss) |
+| <strong>Slowly growing (months-years)</strong> | Benign: Lipoma, sebaceous cyst, thyroid nodule<br>Malignancy: Breast cancer, thyroid cancer | "Any risk factors?" (family history, radiation exposure) |
+| <strong>Fluctuating size</strong> | Hernia (bigger on straining), vascular lesions, salivary gland swelling (parotid stone) | "What makes it bigger/smaller?" |
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> Timeline</strong>:
+<ul>
+<li>Doubling in size within <strong>6 weeks</strong> → Consider aggressive malignancy → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> referral</li>
+<li>Sudden painful enlargement of previously stable lump → Infection, bleeding into cyst, malignant transformation → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> assessment</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>M - <strong>MORPHOLOGY</strong> (Size, Shape, Number, Change)</h4>
+
+<strong>Key Questions</strong>:
+<ol>
+<li>"How big is it? Can you describe the size?"</li>
+<p>
+</ol>
+   - Use comparison (e.g., "grape-sized", "golf ball", "hen's egg")
+</p>
+<ol>
+<li>"Is it one lump or multiple lumps?"</li>
+<li>"What shape is it? Round, irregular, flat?"</li>
+<li>"Has the appearance changed? Any change in color, overlying skin?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Differential Thinking by Morphology</strong>:
+
+<p>
+| <strong>Finding</strong> | <strong>Differential</strong> | <strong>Next Questions</strong> |
+|-------------|-----------------|-------------------|
+| <strong>Multiple lumps</strong> | Lymphadenopathy (infection, malignancy), lipomatosis, neurofibromatosis, sebaceous cysts | "Any other lumps elsewhere?", "Family history of similar lumps?" |
+| <strong>Single lump</strong> | Depends on location (see above) | Focus on characteristics |
+| <strong>Very large (>10cm)</strong> | Lipoma, sarcoma, lymphangioma | "Any limitation of movement?", "Any pressure symptoms?" |
+| <strong>Small (<1cm)</strong> | Lymph node, sebaceous cyst, skin lesion | "Any recent infection nearby?" |
+| <strong>Irregular border</strong> | Malignancy (breast, skin) | "Any skin changes?", "Any nipple discharge?" (breast) |
+| <strong>Regular, smooth</strong> | Benign: Lipoma, cyst, fibroma | Reassuring feature |
+| <strong>Overlying skin changes</strong> | Infection (erythema), malignancy (peau d'orange in breast), sebaceous cyst (punctum) | "Any discharge?", "Any fever?" |
+</p>
+
+<hr>
+
+<h4>P - <strong>PAIN and Associated Symptoms</strong></h4>
+
+<strong>Key Questions</strong>:
+<ol>
+<li>"Is the lump painful?"</li>
+<li>"When is it painful? Constant or only when touched?"</li>
+<li>"Any other symptoms?" (fever, weight loss, night sweats, etc.)</li>
+<p>
+</ol>
+</p>
+
+<strong>Differential Thinking by Pain</strong>:
+
+<p>
+| <strong>Pain Characteristic</strong> | <strong>Think Immediately</strong> | <strong>Likely Diagnosis</strong> |
+|------------------------|----------------------|---------------------|
+| <strong>Painless</strong> | Lipoma, sebaceous cyst, thyroid nodule, chronic lymphadenopathy, <strong>malignancy</strong> | <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong>: Painless hard lump = cancer until proven otherwise |
+| <strong>Painful</strong> | Abscess, infected cyst, inflamed lymph node, incarcerated hernia | Infection or acute inflammation |
+| <strong>Tender only on palpation</strong> | Benign breast lump (fibroadenoma), lipoma, reactive lymph node | Usually benign |
+| <strong>Pain on straining/coughing</strong> | Hernia (inguinal, femoral) | Hernia highly likely |
+| <strong>Throbbing pain</strong> | Abscess, vascular lesion | Infection or vascular origin |
+</p>
+
+<strong>Associated Symptoms - <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong>:
+
+<p>
+| <strong>Symptom</strong> | <strong>Differential</strong> | <strong>Action</strong> |
+|-------------|-----------------|-----------|
+| <strong>B symptoms</strong> (fever, night sweats, weight loss >5kg in 6 months) | Lymphoma, tuberculosis, metastatic cancer | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> referral, FBC, CRP, LDH, CXR |
+| <strong>Voice hoarseness</strong> (with neck lump) | Thyroid malignancy with recurrent laryngeal nerve invasion | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> ENT/endocrine referral |
+| <strong>Dysphagia</strong> (with neck lump) | Large thyroid goitre, retrosternal extension, oesophageal compression | CT neck/chest, <span style="color: #e74c3c; font-weight: bold;">URGENT</span> referral |
+| <strong>Skin changes</strong> (peau d'orange, nipple inversion) | Breast cancer | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> referral (2-week wait equivalent) |
+| <strong>Bowel obstruction symptoms</strong> (with abdominal hernia) | Incarcerated/strangulated hernia | <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> surgical assessment |
+| <strong>Testicular mass + back pain</strong> | Testicular cancer with retroperitoneal LN mets | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> urology referral, tumour markers |
+</p>
+
+<hr>
+
+<h3>System-Specific History Questions</h3>
+
+<h4>For Neck Lumps:</h4>
+
+<strong>Thyroid-Specific Questions</strong>:
+<ul>
+<li>"Any change in voice? Hoarseness?"</li>
+<li>"Any difficulty swallowing or breathing?"</li>
+<li>"Any symptoms of overactive thyroid?" (palpitations, tremor, weight loss, heat intolerance)</li>
+<li>"Any symptoms of underactive thyroid?" (fatigue, weight gain, cold intolerance, constipation)</li>
+<li>"Any family history of thyroid disease?"</li>
+<li>"Any history of radiation exposure to neck?" (significant risk factor)</li>
+<p>
+</ul>
+</p>
+
+<strong>Lymph Node-Specific Questions</strong>:
+<ul>
+<li>"Any recent infections?" (viral URTI, dental infection, skin infection)</li>
+<li>"Any fever, night sweats, unexplained weight loss?"</li>
+<li>"Any persistent cough, difficulty breathing?" (lung cancer with supraclavicular nodes)</li>
+<li>"Any risk factors for HIV, hepatitis?" (if generalized lymphadenopathy)</li>
+<li>"Any recent travel to TB-endemic areas?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Salivary Gland Questions</strong> (if pre-auricular or submandibular):
+<ul>
+<li>"Does the lump swell when you eat?"</li>
+<li>"Any dry mouth?"</li>
+<li>"Any facial weakness?" (parotid malignancy affecting facial nerve)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>For Groin Lumps:</h4>
+
+<strong>Hernia-Specific Questions</strong>:
+<ul>
+<li>"Does it come down when you cough or strain?"</li>
+<li>"Does it disappear when you lie down? Can you push it back?"</li>
+<li>"Is it painful? Any pain on straining?"</li>
+<li>"Any nausea, vomiting, constipation?" (obstruction)</li>
+<li>"Have you had previous groin surgery or hernia repair?"</li>
+<p>
+</ul>
+</p>
+
+<strong>For Males - Scrotal Lump Questions</strong>:
+<ul>
+<li>"Is the lump in the scrotum or above it?"</li>
+<li>"Can you feel the testicle separately from the lump?"</li>
+<li>"Any pain? Any heaviness in scrotum?"</li>
+<li>"Any testicular trauma recently?"</li>
+<li>"Any fertility issues?" (varicocele)</li>
+<p>
+</ul>
+</p>
+
+<strong>Vascular Questions</strong> (if considering saphena varix, femoral aneurysm):
+<ul>
+<li>"Does it pulsate?"</li>
+<li>"Does it disappear completely when lying down with leg elevated?"</li>
+<li>"Any leg swelling, varicose veins?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>For Breast Lumps:</h4>
+
+<strong>CRITICAL</strong>: Always consider age and risk factors
+
+<strong>Key Questions</strong>:
+<ol>
+<li>"When did you first notice the lump?"</li>
+<li>"Does it change with your menstrual cycle?" (cyclical = likely benign fibrocystic change)</li>
+<li>"Any nipple discharge? What color?" (bloody = cancer/papilloma, green/brown = duct ectasia)</li>
+<li>"Any skin changes over the lump or nipple changes?"</li>
+<li>"Any breast pain?" (mastalgia usually benign but can be cancer)</li>
+<li>"Are you currently breastfeeding?" (consider mastitis, galactocele)</li>
+<p>
+</ol>
+</p>
+
+<strong>Risk Factors for Breast Cancer</strong> (MUST ask):
+<ul>
+<li>Age (>50 = higher risk)</li>
+<li>Family history (BRCA1/2, first-degree relative with breast/ovarian cancer)</li>
+<li>Personal history of breast cancer</li>
+<li>Age at menarche (<12) and menopause (>55) = longer oestrogen exposure</li>
+<li>Nulliparity or first child after 30</li>
+<li>HRT use</li>
+<li>Previous chest radiation</li>
+<li>BRCA1/2 gene mutation</li>
+<p>
+</ul>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s for Breast Cancer</strong>:
+<ul>
+<li>Hard, irregular, fixed lump</li>
+<li>Nipple inversion (new onset)</li>
+<li>Bloody nipple discharge</li>
+<li>Peau d'orange (skin dimpling)</li>
+<li>Axillary lymphadenopathy</li>
+<li>Unilateral symptoms (cancer rarely bilateral)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>For Skin Lumps:</h4>
+
+<strong>Malignancy Screening (Melanoma/BCC/SCC)</strong>:
+
+<p>
+Use <strong>ABCDE for Pigmented Lesions</strong>:
+</p>
+<ul>
+<li><strong>A</strong>: "Is it Asymmetrical?"</li>
+<li><strong>B</strong>: "Are the Borders irregular?"</li>
+<li><strong>C</strong>: "Are there multiple Colours (black, brown, red, blue)?"</li>
+<li><strong>D</strong>: "Is the Diameter >6mm?"</li>
+<li><strong>E</strong>: "Has it Evolved (changed)?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Questions</strong>:
+<ol>
+<li>"Has it changed in size, shape, or color?"</li>
+<li>"Does it bleed or ooze?"</li>
+<li>"Does it itch?"</li>
+<li>"Any sun exposure history? Sunburns as a child?"</li>
+<li>"Any family history of skin cancer or melanoma?"</li>
+<p>
+</ol>
+</p>
+
+<strong>For Sebaceous Cyst</strong>:
+<ul>
+<li>"Is there a central punctum (small hole)?"</li>
+<li>"Does it discharge anything? Smell?" (cheesy keratin)</li>
+<li>"Has it ever been inflamed or infected before?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Past Medical and Surgical History</h3>
+
+<strong>Critical to Ask</strong>:
+
+<ol>
+<li><strong>Previous cancers</strong>: Any history of malignancy increases risk of recurrence/mets</li>
+<li><strong>Previous surgeries</strong>:</li>
+<p>
+</ol>
+   - Abdominal surgery → incisional hernia risk
+   - Hernia repair → recurrent hernia
+   - Thyroidectomy → neck lump could be recurrence
+</p>
+<ol>
+<li><strong>Chronic cough</strong>: Increases intra-abdominal pressure → hernias</li>
+<li><strong>Constipation/straining</strong>: Same mechanism</li>
+<li><strong>Heavy lifting occupation</strong>: Hernia risk</li>
+<li><strong>Immunosuppression</strong>: Increased infection risk, lymphoma risk</li>
+<li><strong>Diabetes</strong>: Poor wound healing, increased infection risk</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>Medications and Allergies</h3>
+
+<strong>Why This Matters</strong>:
+<ul>
+<li><strong>Anticoagulants</strong> (warfarin, DOACs, aspirin): Haematoma risk, bleeding risk for surgery</li>
+<li><strong>Immunosuppressants</strong> (corticosteroids, biologics): Infection risk, impaired wound healing</li>
+<li><strong>HRT/OCP</strong>: Breast cancer risk</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Social History</h3>
+
+<strong>Smoking</strong>:
+<ul>
+<li>Risk factor for malignancy</li>
+<li>Impairs wound healing (if surgery needed)</li>
+<li>Chronic cough → hernia risk</li>
+<p>
+</ul>
+</p>
+
+<strong>Alcohol</strong>:
+<ul>
+<li>Heavy use → cirrhosis → umbilical hernia (caput medusae), ascites</li>
+<p>
+</ul>
+</p>
+
+<strong>Occupation</strong>:
+<ul>
+<li>Heavy lifting → hernia risk</li>
+<li>Sun exposure → skin cancer risk</li>
+<p>
+</ul>
+</p>
+
+<strong>Functional Impact</strong>:
+<ul>
+<li>"How is this lump affecting your daily life?"</li>
+<li>"Any difficulty with movement, work, or activities?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Family History</h3>
+
+<strong>CRITICAL for Malignancy Risk</strong>:
+<ul>
+<li>Breast cancer (especially BRCA1/2)</li>
+<li>Thyroid cancer (familial medullary thyroid cancer in MEN2)</li>
+<li>Colon cancer (associated with thyroid cancer in FAP)</li>
+<li>Melanoma</li>
+<li>Neurofibromatosis (multiple lumps)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 2: Physical Examination of Lumps</h2>
+
+<h3>The 7 Ss Framework + Differential Thinking</h3>
+
+<h4>Preparation: The 5 Ps</h4>
+
+<strong>P1: PREPARATION</strong>
+<ul>
+<li>Explain: "I'd like to examine the lump. Is that alright?"</li>
+<li>Consent obtained</li>
+<li>Chaperone for intimate examinations (breast, groin, scrotal)</li>
+<li>Wash hands (with patient watching)</li>
+<li>Adequate lighting</li>
+<p>
+</ul>
+</p>
+
+<strong>P2: POSITION</strong>
+<ul>
+<li><strong>Neck lump</strong>: Patient sitting upright, neck extended slightly</li>
+<li><strong>Breast lump</strong>: Patient sitting (first), then supine with arm above head</li>
+<li><strong>Groin lump</strong>: Patient standing (first for hernia), then supine</li>
+<li><strong>Abdominal wall lump</strong>: Patient supine, relaxed</li>
+<p>
+</ul>
+</p>
+
+<strong>P3: PERMISSION</strong>
+<ul>
+<li>"Is it painful to touch?"</li>
+<li>"Please let me know if anything I do causes discomfort"</li>
+<p>
+</ul>
+</p>
+
+<strong>P4 & P5</strong>: PERFORM and PRESENT (detailed below)
+
+<hr>
+
+<h3>The 7 Ss Examination Framework</h3>
+
+<h4>S1: <strong>SITE</strong> (Anatomical Location)</h4>
+
+<strong>What You Do</strong>:
+<ul>
+<li>Identify exact anatomical location</li>
+<li>Describe in relation to landmarks</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential Thinking</strong>:
+
+<strong>Neck</strong>:
+<ul>
+<li><strong>Moves with swallowing</strong> → Thyroid origin (thyroid nodule, goitre)</li>
+<li><strong>Moves with tongue protrusion</strong> → Thyroglossal cyst (pathognomonic)</li>
+<li><strong>Anterior triangle, level II-III</strong> → Lymph node</li>
+<li><strong>Posterior triangle, supraclavicular</strong> → Virchow's node (think gastric/lung cancer)</li>
+<p>
+</ul>
+</p>
+
+<strong>Groin</strong>:
+<ul>
+<li><strong>Above and medial to pubic tubercle</strong> → Inguinal hernia (indirect or direct)</li>
+<li><strong>Below and lateral to pubic tubercle</strong> → Femoral hernia (higher risk strangulation)</li>
+<li><strong>Lateral inguinal region</strong> → Lymph nodes (consider infection, STI, malignancy lower limb/pelvis)</li>
+<p>
+</ul>
+</p>
+
+<strong>Breast</strong>:
+<ul>
+<li><strong>Upper outer quadrant</strong> → Most common site for breast cancer</li>
+<li><strong>Subareolar</strong> → Duct pathology (papilloma, duct ectasia)</li>
+<p>
+</ul>
+</p>
+
+<strong>How to Present</strong>:
+<p>
+"There is a 3cm lump located in the right anterior triangle of the neck at level III, which moves with swallowing, consistent with a thyroid nodule."
+</p>
+
+<hr>
+
+<h4>S2: <strong>SIZE</strong> (Dimensions)</h4>
+
+<strong>What You Do</strong>:
+<ul>
+<li>Measure with ruler/tape measure if available</li>
+<li>Estimate in cm (not "golf ball" in formal presentation)</li>
+<li>Note: Length x Width x Depth</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential Thinking</strong>:
+
+<p>
+| <strong>Size</strong> | <strong>Differential Consideration</strong> |
+|----------|-------------------------------|
+| <strong><1cm</strong> | Likely lymph node (benign if soft, mobile) |
+| <strong>1-3cm</strong> | Lymph node, sebaceous cyst, lipoma, thyroid nodule |
+| <strong>3-5cm</strong> | Larger lipoma, thyroid nodule, breast mass (any breast mass >2cm warrants <span style="color: #e74c3c; font-weight: bold;">URGENT</span> referral) |
+| <strong>>5cm</strong> | Large lipoma, sarcoma, lymphangioma, large hernia |
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong>: Any breast lump >2cm = <span style="color: #e74c3c; font-weight: bold;">URGENT</span> referral (BreastScreen Australia guideline)
+
+<strong>How to Present</strong>:
+<p>
+"The lump measures approximately 3cm x 2cm x 2cm."
+</p>
+
+<hr>
+
+<h4>S3: <strong>SHAPE</strong> (Morphology and Margins)</h4>
+
+<strong>What You Do</strong>:
+<ul>
+<li>Describe shape: Round, oval, irregular, lobulated</li>
+<li>Assess margins: Well-defined vs ill-defined</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential Thinking</strong>:
+
+<p>
+| <strong>Shape/Margin</strong> | <strong>Likely Diagnosis</strong> | <strong>Clinical Significance</strong> |
+|------------------|---------------------|--------------------------|
+| <strong>Round/oval, well-defined</strong> | Lipoma, sebaceous cyst, fibroadenoma, benign lymph node | Benign features |
+| <strong>Irregular, ill-defined margins</strong> | Malignancy (breast cancer, sarcoma, lymphoma) | <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> for cancer</strong> |
+| <strong>Lobulated</strong> | Lipoma (multiple lobules), parotid tumor | Often benign but needs investigation |
+| <strong>Umbilicated (central depression)</strong> | Sebaceous cyst (central punctum), molluscum contagiosum | Diagnostic feature |
+| <strong>Fungating, ulcerated</strong> | Advanced skin cancer (BCC, SCC, melanoma), infected cyst | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> referral |
+</p>
+
+<strong>How to Present</strong>:
+<p>
+"The lump is oval-shaped with well-defined margins and a central punctum, consistent with a sebaceous cyst."
+</p>
+
+<hr>
+
+<h4>S4: <strong>SURFACE</strong> (Texture and Overlying Skin)</h4>
+
+<strong>What You Do</strong>:
+<ul>
+<li>Inspect overlying skin</li>
+<li>Palpate surface texture</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential Thinking</strong>:
+
+<p>
+| <strong>Surface Finding</strong> | <strong>Differential</strong> | <strong>Next Step</strong> |
+|---------------------|-----------------|--------------|
+| <strong>Smooth</strong> | Lipoma, cyst, lymph node | Benign feature |
+| <strong>Irregular, nodular</strong> | Malignancy (breast cancer with skin involvement), necrotic lymph node | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> investigation |
+| <strong>Erythematous (red)</strong> | Abscess, cellulitis, inflamed cyst, inflammatory breast cancer | Consider infection vs malignancy |
+| <strong>Peau d'orange</strong> (dimpling like orange skin) | Breast cancer with dermal lymphatic invasion | <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> referral</strong> |
+| <strong>Tethered to skin</strong> | Malignancy, chronic infection | Test skin mobility separately |
+| <strong>Central punctum</strong> | Sebaceous cyst (pathognomonic) | Diagnostic |
+| <strong>Ulcerated</strong> | Skin cancer, infected cyst, tuberculous lymph node | Biopsy needed |
+| <strong>Pigmented</strong> | Melanoma, seborrhoeic keratosis, BCC (pigmented variant) | Dermatology referral if ABCDE positive |
+</p>
+
+<strong>How to Present</strong>:
+<p>
+"The overlying skin is normal with no erythema, ulceration, or tethering. The surface is smooth."
+</p>
+
+<hr>
+
+<h4>S5: <strong>SURROUNDING STRUCTURES</strong> (Consistency, Mobility, Fixation)</h4>
+
+<strong>What You Do</strong>:
+<ol>
+<li><strong>Palpate consistency</strong>: Soft, firm, hard, rubbery</li>
+<li><strong>Test mobility</strong>:</li>
+<p>
+</ol>
+   - Move lump in two planes (horizontal and vertical)
+   - Test mobility over underlying structures (skin vs muscle vs bone)
+</p>
+<ol>
+<li><strong>Assess fixation</strong>: To skin, muscle, bone</li>
+<p>
+</ol>
+</p>
+
+<strong>How to Test Fixation</strong>:
+<ul>
+<li><strong>Skin</strong>: Try to pinch skin over lump. If can't pinch, tethered to skin.</li>
+<li><strong>Muscle</strong>: Ask patient to tense muscle (e.g., contract pectoralis for breast lump). If lump becomes less mobile, attached to muscle.</li>
+<li><strong>Bone</strong>: Try to move lump over bone. If completely immobile, consider bone involvement.</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential Thinking by Consistency</strong>:
+
+<p>
+| <strong>Consistency</strong> | <strong>Think Immediately</strong> | <strong>Likely Diagnosis</strong> |
+|-----------------|----------------------|---------------------|
+| <strong>Soft, compressible</strong> | Lipoma (soft, lobulated), lymphangioma | Benign fat/fluid |
+| <strong>Firm, rubbery</strong> | Fibroadenoma (breast), reactive lymph node | Benign |
+| <strong>Hard, rock-hard</strong> | Malignancy (breast/thyroid/skin cancer), calcified structure | <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> for cancer</strong> |
+| <strong>Fluctuant</strong> (fluid thrill) | Abscess, cyst (thyroglossal, branchial), bursa | Fluid-filled structure |
+| <strong>Doughy</strong> | Lipoma | Benign fat |
+</p>
+
+<strong>Differential Thinking by Mobility</strong>:
+
+<p>
+| <strong>Mobility</strong> | <strong>Think Immediately</strong> | <strong>Clinical Significance</strong> |
+|--------------|----------------------|--------------------------|
+| <strong>Mobile in all directions</strong> | Lipoma, sebaceous cyst, fibroadenoma, benign lymph node | Benign feature |
+| <strong>Fixed to skin</strong> | Sebaceous cyst (attached to skin but mobile over deeper structures), skin cancer | Skin origin |
+| <strong>Fixed to muscle</strong> | Malignancy invading muscle, desmoid tumor | Concerning for malignancy |
+| <strong>Fixed to bone</strong> | Bone involvement (osteosarcoma, metastasis), periosteal lipoma | Needs imaging (X-ray, CT) |
+| <strong>Tethered (reduced mobility)</strong> | Malignancy with local invasion | <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong> |
+</p>
+
+<strong>How to Present</strong>:
+<p>
+"The lump is soft and doughy in consistency, freely mobile in all directions, and not attached to skin or underlying structures, consistent with a lipoma."
+</p>
+
+<hr>
+
+<h4>S6: <strong>SPECIAL TESTS</strong> (Functional Tests)</h4>
+
+<strong>Perform Tests Based on Differential</strong>:
+
+<h5>For Suspected Hernia:</h5>
+
+<strong>1. Cough Impulse Test</strong>:
+<ul>
+<li>Ask patient to cough</li>
+<li>Feel for expansile impulse (lump expands outward with increased intra-abdominal pressure)</li>
+<li><strong>Positive</strong> = Hernia confirmed</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Reducibility Test</strong>:
+<ul>
+<li>Ask patient to lie down</li>
+<li>Gently try to reduce (push lump back into abdomen)</li>
+<li><strong>Reducible</strong> = Contents can return to abdomen (good prognostic sign)</li>
+<li><strong>Irreducible</strong> = Contents stuck (adhesions, narrow neck)</li>
+<li><strong>Tender + Irreducible</strong> = Incarcerated/strangulated → <strong>Surgical <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong></li>
+<p>
+</ul>
+</p>
+
+<strong>3. Distinguish Inguinal vs Femoral Hernia</strong>:
+<ul>
+<li>Palpate pubic tubercle (bony prominence on superior pubic ramus)</li>
+<li>Inguinal hernia: Lump <strong>above and medial</strong> to pubic tubercle</li>
+<li>Femoral hernia: Lump <strong>below and lateral</strong> to pubic tubercle</li>
+<p>
+</ul>
+</p>
+
+<strong>4. Distinguish Direct vs Indirect Inguinal Hernia</strong> (advanced):
+<ul>
+<li>Reduce hernia with patient supine</li>
+<li>Place fingers over deep inguinal ring (2cm above midpoint of inguinal ligament)</li>
+<li>Ask patient to stand and cough</li>
+<li>If hernia controlled by finger pressure = <strong>Indirect</strong> (comes through deep ring)</li>
+<li>If hernia not controlled = <strong>Direct</strong> (comes through Hesselbach's triangle, medial to deep ring)</li>
+<p>
+</ul>
+</p>
+
+<h5>For Thyroid Lump:</h5>
+
+<strong>1. Swallowing Test</strong>:
+<ul>
+<li>Give patient glass of water</li>
+<li>Ask to swallow</li>
+<li>Watch lump: <strong>Moves upward with swallowing</strong> = Thyroid origin (pathognomonic)</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Tongue Protrusion Test</strong>:
+<ul>
+<li>Ask patient to stick tongue out</li>
+<li><strong>Moves upward with tongue protrusion</strong> = Thyroglossal cyst (pathognomonic - attached to hyoid bone which is connected to tongue via geniohyoid muscle)</li>
+<p>
+</ul>
+</p>
+
+<h5>For Suspected Lymph Node:</h5>
+
+<strong>Examine Other Node Groups</strong>:
+<ul>
+<li>Cervical, supraclavicular, axillary, inguinal nodes</li>
+<li><strong>Generalized lymphadenopathy</strong> → Think systemic: Lymphoma, HIV, infectious mononucleosis, TB</li>
+<p>
+</ul>
+</p>
+
+<strong>Associated Findings</strong>:
+<ul>
+<li>Splenomegaly (lymphoma, infectious mono)</li>
+<li>Hepatomegaly (lymphoma, metastatic disease)</li>
+<p>
+</ul>
+</p>
+
+<h5>For Breast Lump:</h5>
+
+<strong>1. Skin Tethering Test</strong>:
+<ul>
+<li>Ask patient to raise arms above head</li>
+<li>Look for skin dimpling or tethering (indicates Cooper's ligament involvement by cancer)</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Pectoralis Fixation Test</strong>:
+<ul>
+<li>Ask patient to press hands on hips (contracts pectoralis major)</li>
+<li>Try to move lump: If less mobile = <strong>Attached to pectoralis</strong> = Advanced breast cancer with muscle invasion</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Nipple Examination</strong>:
+<ul>
+<li>Inspect for inversion (new onset = cancer), eczema (Paget's disease of nipple)</li>
+<li>Gently squeeze to assess for discharge</li>
+<p>
+</ul>
+</p>
+
+<strong>4. Axillary Lymph Node Examination</strong>:
+<ul>
+<li><strong>CRITICAL</strong>: Always examine axilla in any breast lump</li>
+<li>Palpable axillary nodes = possible metastatic spread</li>
+<p>
+</ul>
+</p>
+
+<h5>For Scrotal Lump:</h5>
+
+<strong>1. Transillumination Test</strong>:
+<ul>
+<li>Shine torch through lump in darkened room</li>
+<li><strong>Transilluminates (glows red)</strong> = Fluid-filled (hydrocele, spermatocele)</li>
+<li><strong>Does not transilluminate</strong> = Solid (testicular tumor, varicocele)</li>
+<p>
+</ul>
+</p>
+
+<strong>2. "Can You Get Above It?" Test</strong>:
+<ul>
+<li>Try to palpate superior border of lump</li>
+<li><strong>Can get above it</strong> = Scrotal lump (hydrocele, testicular mass)</li>
+<li><strong>Cannot get above it</strong> = Inguinoscrotal hernia (extends into inguinal canal)</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Varicocele Test</strong>:
+<ul>
+<li>Palpate with patient standing: Feels like "bag of worms"</li>
+<li>Ask patient to lie down: Varicocele <strong>empties/reduces</strong></li>
+<li>Perform Valsalva (increase intra-abdominal pressure): Varicocele <strong>increases</strong></li>
+<p>
+</ul>
+</p>
+
+<h5>For Lipoma:</h5>
+
+<strong>Slip Sign</strong>:
+<ul>
+<li>Try to pinch lump between fingers</li>
+<li>Lipoma has tendency to "slip away" from fingers (due to soft, lobulated nature)</li>
+<p>
+</ul>
+</p>
+
+<h5>For Vascular Lesions:</h5>
+
+<strong>1. Pulsatility Test</strong>:
+<ul>
+<li>Palpate lump for pulsation</li>
+<li><strong>Pulsatile + expansile</strong> = Aneurysm (femoral, popliteal) → <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> vascular referral</strong></li>
+<li><strong>Pulsatile but not expansile</strong> = Transmitted pulsation from adjacent artery (not aneurysm)</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Compression Test</strong> (for saphena varix):
+<ul>
+<li>Patient standing: Lump visible in groin</li>
+<li>Patient lies down with leg elevated: Lump <strong>disappears</strong></li>
+<li>Press over saphenofemoral junction: Lump <strong>does not refill</strong></li>
+<li>Release pressure and ask patient to cough: Lump <strong>refills</strong> (cough impulse)</li>
+<li><strong>Diagnosis</strong>: Saphena varix (dilatation of saphenous vein at junction with femoral vein)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>S7: <strong>SOUNDING</strong> (Auscultation)</h4>
+
+<strong>What You Do</strong>:
+<ul>
+<li>Use stethoscope to listen over lump</li>
+<p>
+</ul>
+</p>
+
+<strong>When and Why</strong>:
+
+<p>
+| <strong>Finding</strong> | <strong>Diagnosis</strong> | <strong>Significance</strong> |
+|-------------|--------------|------------------|
+| <strong>Bruit (whooshing sound)</strong> | Arteriovenous malformation, vascular tumor (carotid body tumor) | Vascular origin |
+| <strong>Bowel sounds</strong> | Inguinal hernia containing bowel | Contents of hernia identified |
+| <strong>No sounds</strong> | Most lumps (lipoma, cyst, lymph node) | Expected finding |
+</p>
+
+<strong>How to Present</strong>:
+<p>
+"On auscultation, there is no bruit heard over the lump."
+</p>
+
+<hr>
+
+<h3>Regional Examination: Lymph Nodes</h3>
+
+<strong>For ANY Lump, Examine Regional Lymph Nodes</strong>:
+
+<strong>Neck lump</strong> → Examine all cervical lymph node chains
+<strong>Breast lump</strong> → Examine axillary and supraclavicular nodes
+<strong>Skin lesion on arm</strong> → Examine axillary and epitrochlear nodes
+<strong>Groin lump</strong> → Examine inguinal nodes bilaterally
+<strong>Lower limb skin lesion</strong> → Examine inguinal nodes
+
+<strong>How to Examine Lymph Nodes</strong>:
+<ol>
+<li><strong>Inspection</strong>: Visible swelling, skin changes</li>
+<li><strong>Palpation</strong>: Size, consistency, tenderness, mobility, matting (stuck together)</li>
+<p>
+</ol>
+</p>
+
+<strong>Benign vs Malignant Lymph Node Features</strong>:
+
+<p>
+| <strong>Feature</strong> | <strong>Benign</strong> | <strong>Malignant</strong> |
+|-------------|-----------|--------------|
+| <strong>Size</strong> | <1cm | >2cm (>1cm supraclavicular) |
+| <strong>Consistency</strong> | Soft, rubbery | Hard, rock-hard |
+| <strong>Tenderness</strong> | Tender (acute infection) | Non-tender |
+| <strong>Mobility</strong> | Mobile | Fixed (matted to surrounding structures) |
+| <strong>Number</strong> | Single or few | Multiple, matted together |
+| <strong>Associated</strong> | Local infection, recent URTI | Weight loss, night sweats, splenomegaly |
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s for Malignant Lymphadenopathy</strong>:
+<ul>
+<li><strong>Supraclavicular node</strong> (Virchow's node on left = gastric cancer)</li>
+<li>Hard, non-tender, fixed</li>
+<li>>2cm and enlarging</li>
+<li>Associated B symptoms</li>
+<li>Splenomegaly</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 3: Physical Examination of Hernias</h2>
+
+<h3>Clinical Anatomy Reminder</h3>
+
+<strong>Inguinal Hernia</strong>:
+<ul>
+<li><strong>Indirect</strong>: Through deep inguinal ring → inguinal canal → may descend into scrotum</li>
+<p>
+</ul>
+  - Lateral to inferior epigastric vessels
+  - Covered by all 3 layers of spermatic cord
+  - More common in young males
+</p>
+<ul>
+<li><strong>Direct</strong>: Through Hesselbach's triangle (weakness in posterior wall)</li>
+<p>
+</ul>
+  - Medial to inferior epigastric vessels
+  - Not covered by all cord layers
+  - More common in older males, rarely enters scrotum
+</p>
+
+<strong>Femoral Hernia</strong>:
+<ul>
+<li>Through femoral canal (medial to femoral vein)</li>
+<li>Below and lateral to pubic tubercle</li>
+<li>More common in females</li>
+<li><strong>Higher risk of strangulation</strong> due to narrow, rigid femoral ring</li>
+<p>
+</ul>
+</p>
+
+<strong>Other Hernias</strong>:
+<ul>
+<li><strong>Umbilical</strong>: Through umbilical ring (children) or paraumbilical (adults)</li>
+<li><strong>Epigastric</strong>: Through linea alba above umbilicus</li>
+<li><strong>Incisional</strong>: Through previous surgical incision</li>
+<li><strong>Spigelian</strong>: Through linea semilunaris (lateral edge of rectus abdominis)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Systematic Hernia Examination</h3>
+
+<h4>Step 1: INSPECTION</h4>
+
+<strong>Patient STANDING First</strong> (hernias more obvious when standing):
+
+<strong>Look for</strong>:
+<ol>
+<li><strong>Visible bulge</strong> in groin, umbilicus, or previous surgical site</li>
+<li><strong>Skin changes</strong>: Erythema (inflammation/infection), bruising (strangulation)</li>
+<li><strong>Asymmetry</strong>: Compare both sides</li>
+<p>
+</ol>
+</p>
+
+<strong>Ask Patient</strong>:
+<ul>
+<li>"Can you cough for me?" (observe for impulse - bulge appears/enlarges with cough)</li>
+<li>"Can you point to where you feel the lump?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential Thinking During Inspection</strong>:
+
+<p>
+| <strong>Observation</strong> | <strong>Think</strong> |
+|-----------------|----------|
+| Bulge in groin, increases with cough | Inguinal or femoral hernia |
+| Bulge at umbilicus | Umbilical or paraumbilical hernia |
+| Bulge at old surgical scar | Incisional hernia |
+| Scrotal swelling | Inguinoscrotal hernia vs hydrocele |
+| Erythematous skin over hernia | Incarceration/strangulation - <strong>surgical <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong> |
+</p>
+
+<h4>Step 2: PALPATION (Patient STANDING)</h4>
+
+<strong>What You Do</strong>:
+<ol>
+<li><strong>Ask permission</strong>: "I'm going to examine the groin area. Is that okay?"</li>
+<li><strong>Palpate the lump</strong>:</li>
+<p>
+</ol>
+   - Size, consistency, tenderness
+   - <strong>Key question</strong>: "Is it tender?" (Non-tender = reducible, Tender = possible incarceration)
+</p>
+
+<ol>
+<li><strong>Locate pubic tubercle</strong> (bony prominence on superior pubic ramus):</li>
+<p>
+</ol>
+   - Inguinal hernia: <strong>Above and medial</strong> to pubic tubercle
+   - Femoral hernia: <strong>Below and lateral</strong> to pubic tubercle
+</p>
+
+<ol>
+<li><strong>Cough impulse test</strong>:</li>
+<p>
+</ol>
+   - Place fingers over hernia
+   - Ask patient to cough
+   - <strong>Positive</strong>: Feel expansile impulse (lump pushes outward)
+   - <strong>Confirms diagnosis of hernia</strong>
+</p>
+
+<h4>Step 3: REDUCIBILITY (Patient SUPINE)</h4>
+
+<strong>Ask patient to lie down</strong>:
+
+<strong>Attempt to reduce hernia</strong>:
+<ol>
+<li>Apply gentle, steady pressure to push contents back into abdomen</li>
+<li><strong>Reducible</strong>: Contents return to abdomen, bulge disappears</li>
+<p>
+</ol>
+   - <strong>Good sign</strong>: Hernia is not incarcerated
+</p>
+<ol>
+<li><strong>Irreducible</strong>: Contents do not return</li>
+<p>
+</ol>
+   - <strong>Differential</strong>: Incarcerated hernia, or chronic hernia with adhesions
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s - Surgical <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong>:
+<ul>
+<li><strong>Irreducible + Tender</strong> = <strong>Incarceration</strong> → Risk of strangulation</li>
+<li><strong>Irreducible + Tender + Skin changes (erythema/bruising)</strong> = <strong>Strangulation</strong> → <strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> surgery needed within hours</strong></li>
+<li><strong>Associated symptoms</strong>: Nausea, vomiting, obstruction → <strong>Bowel incarceration</strong></li>
+<p>
+</ul>
+</p>
+
+<h4>Step 4: DISTINGUISH INGUINAL vs FEMORAL</h4>
+
+<strong>Critical for Management</strong> (femoral hernias have higher strangulation risk, require <span style="color: #e74c3c; font-weight: bold;">URGENT</span> surgery):
+
+<strong>Method</strong>:
+<ol>
+<li>Palpate <strong>pubic tubercle</strong></li>
+<li>Determine hernia location <strong>relative to pubic tubercle</strong>:</li>
+<p>
+</ol>
+   - <strong>Inguinal</strong>: Above and medial to pubic tubercle
+   - <strong>Femoral</strong>: Below and lateral to pubic tubercle
+</p>
+
+<strong>If Still Unclear</strong>, use <strong>mid-inguinal point</strong> (midpoint between ASIS and pubic symphysis):
+<ul>
+<li><strong>Inguinal hernia</strong>: Bulge medial to mid-inguinal point</li>
+<li><strong>Femoral hernia</strong>: Bulge lateral to mid-inguinal point</li>
+<p>
+</ul>
+</p>
+
+<h4>Step 5: DIRECT vs INDIRECT (Advanced - Not Always Required in OSCE)</h4>
+
+<strong>Only if hernia is reducible</strong>:
+
+<ol>
+<li>Reduce hernia completely with patient supine</li>
+<li>Locate <strong>deep inguinal ring</strong>: 2cm above mid-inguinal point (or 1.5cm above femoral pulse)</li>
+<li>Place two fingers firmly over deep ring</li>
+<li>Ask patient to stand and cough</li>
+<li><strong>Interpretation</strong>:</li>
+<p>
+</ol>
+   - If hernia <strong>controlled</strong> by pressure over deep ring = <strong>Indirect</strong> (emerges through deep ring)
+   - If hernia <strong>not controlled</strong> and bulges medial to your fingers = <strong>Direct</strong> (emerges through Hesselbach's triangle)
+</p>
+
+<strong>Clinical Significance</strong>:
+<ul>
+<li><strong>Indirect</strong>: More likely to descend into scrotum, more common in younger patients</li>
+<li><strong>Direct</strong>: Rarely enters scrotum, more common in older patients, lower recurrence after repair</li>
+<p>
+</ul>
+</p>
+
+<h4>Step 6: EXAMINE CONTRALATERAL SIDE</h4>
+
+<strong>ALWAYS examine the other side</strong>:
+<ul>
+<li>10-15% of inguinal hernias are bilateral</li>
+<li>Document: "The contralateral side was examined and no hernia detected"</li>
+<p>
+</ul>
+</p>
+
+<h4>Step 7: SCROTAL EXAMINATION (If Inguinoscrotal Hernia Suspected)</h4>
+
+<strong>Key Test: "Can You Get Above It?"</strong>
+<ol>
+<li>Try to palpate the superior margin of scrotal swelling</li>
+<li><strong>Cannot get above it</strong> = <strong>Inguinoscrotal hernia</strong> (swelling extends up into inguinal canal)</li>
+<li><strong>Can get above it</strong> = Scrotal pathology (hydrocele, testicular mass, varicocele)</li>
+<p>
+</ol>
+</p>
+
+<strong>If Scrotal Pathology</strong>:
+<ul>
+<li>Perform full scrotal examination</li>
+<li>Transillumination test</li>
+<li>Palpate testis separately from lump</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Examination of Other Hernias</h3>
+
+<h4>Umbilical/Paraumbilical Hernia</h4>
+
+<strong>Inspection</strong>:
+<ul>
+<li>Bulge at umbilicus (children = true umbilical through umbilical ring)</li>
+<li>Bulge adjacent to umbilicus (adults = paraumbilical through linea alba)</li>
+<p>
+</ul>
+</p>
+
+<strong>Palpation</strong>:
+<ul>
+<li>Cough impulse positive</li>
+<li>Assess size of defect (palpate edges of fascial defect)</li>
+<p>
+</ul>
+</p>
+
+<strong>Reducibility</strong>:
+<ul>
+<li>Usually reducible in supine position</li>
+<li>Irreducible + tender = incarceration → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> surgical referral</li>
+<p>
+</ul>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong>:
+<ul>
+<li>Hard, irregular, non-reducible umbilical nodule in elderly = <strong>Sister Mary Joseph nodule</strong> (metastatic gastric/ovarian/pancreatic cancer) → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> CT abdomen/pelvis</li>
+<p>
+</ul>
+</p>
+
+<h4>Incisional Hernia</h4>
+
+<strong>Inspection</strong>:
+<ul>
+<li>Bulge at site of previous surgical incision</li>
+<li>May be very large (especially after midline laparotomy)</li>
+<p>
+</ul>
+</p>
+
+<strong>Palpation</strong>:
+<ul>
+<li>Cough impulse positive</li>
+<li>Assess size of defect (can be massive)</li>
+<li>Multiple defects possible ("Swiss cheese" hernia)</li>
+<p>
+</ul>
+</p>
+
+<strong>Reducibility</strong>:
+<ul>
+<li>Often reducible but may be chronic and irreducible (adhesions)</li>
+<p>
+</ul>
+</p>
+
+<strong>Risk Factors to Ask</strong>:
+<ul>
+<li>Obesity, smoking, diabetes (poor wound healing)</li>
+<li>Wound infection after original surgery</li>
+<li>Chronic cough, heavy lifting</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 4: Integrating History and Examination - Clinical Correlation</h2>
+
+<h3>Case Example 1: Right Groin Lump</h3>
+
+<strong>History</strong>:
+<ul>
+<li>55-year-old male carpenter</li>
+<li>6-month history of right groin lump</li>
+<li>Appears when standing/lifting, disappears when lying down</li>
+<li>Mild discomfort on straining</li>
+<li>No nausea/vomiting/obstruction symptoms</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential After History</strong>:
+<ol>
+<li><strong>Inguinal hernia</strong> (most likely - appears on straining, reducible, occupation with heavy lifting)</li>
+<li>Femoral hernia (less likely in male, but possible)</li>
+<li>Lymph node (less likely - would not disappear on lying)</li>
+<li>Saphena varix (less likely - no varicose veins mentioned)</li>
+<p>
+</ol>
+</p>
+
+<strong>Examination Findings</strong>:
+<ul>
+<li><strong>Inspection (standing)</strong>: 4cm bulge in right groin, increases with cough</li>
+<li><strong>Palpation</strong>: Soft, non-tender, location <strong>above and medial to pubic tubercle</strong></li>
+<li><strong>Cough impulse</strong>: Positive (expansile)</li>
+<li><strong>Reducibility (supine)</strong>: Fully reducible</li>
+<li><strong>Deep ring occlusion test</strong>: Hernia controlled when pressure applied over deep ring</li>
+<li><strong>Contralateral side</strong>: Normal</li>
+<p>
+</ul>
+</p>
+
+<strong>Working Diagnosis</strong>: <strong>Right indirect inguinal hernia</strong>
+
+<strong>Next Steps</strong> (in real clinical practice):
+<ul>
+<li>Refer to general surgery for elective repair</li>
+<li>Advise on lifestyle: Avoid heavy lifting, lose weight if obese, treat chronic cough/constipation</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Case Example 2: Left Neck Lump</h3>
+
+<strong>History</strong>:
+<ul>
+<li>45-year-old female</li>
+<li>3-month history of left neck lump</li>
+<li>Noticed while looking in mirror</li>
+<li>No pain, no fever, no night sweats, no weight loss</li>
+<li>No voice change, no difficulty swallowing</li>
+<li>Moves when she swallows</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential After History</strong>:
+<ol>
+<li><strong>Thyroid nodule</strong> (most likely - moves with swallowing)</li>
+<li>Thyroglossal cyst (less likely - usually midline, younger patients)</li>
+<li>Lymph node (less likely - moves with swallowing suggests thyroid)</li>
+<p>
+</ol>
+</p>
+
+<strong>Examination Findings</strong>:
+<ul>
+<li><strong>Inspection</strong>: 2cm lump in left lower anterior neck</li>
+<li><strong>Palpation</strong>: Firm, smooth, non-tender</li>
+<li><strong>Site</strong>: Moves upward with swallowing (pathognomonic for thyroid)</li>
+<li><strong>Does NOT move with tongue protrusion</strong> (rules out thyroglossal cyst)</li>
+<li><strong>Mobility</strong>: Mobile, not fixed</li>
+<li><strong>Cervical lymph nodes</strong>: No lymphadenopathy</li>
+<p>
+</ul>
+</p>
+
+<strong>Examination of Thyroid</strong>:
+<ul>
+<li><strong>Inspection</strong>: No goitre, no visible nodule</li>
+<li><strong>Palpation</strong>: Smooth thyroid gland with 2cm nodule in left lobe</li>
+<li><strong>No features of hyper/hypothyroidism</strong> on systemic examination</li>
+<p>
+</ul>
+</p>
+
+<strong>Working Diagnosis</strong>: <strong>Left thyroid nodule</strong>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s to Assess</strong>:
+<ul>
+<li>Hard consistency? (No - firm but not rock-hard)</li>
+<li>Fixed to surrounding structures? (No - mobile)</li>
+<li>Lymphadenopathy? (No)</li>
+<li>Voice change? (No)</li>
+<li>Rapid growth? (No - 3 months, slow)</li>
+<p>
+</ul>
+</p>
+
+<strong>Risk Stratification</strong>: <strong>Low risk</strong> (no <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s)
+
+<strong>Next Steps</strong> (in real clinical practice):
+<ul>
+<li>TFTs (check thyroid function)</li>
+<li>Ultrasound thyroid + FNA if suspicious features</li>
+<li>Endocrine surgery referral if FNA shows malignancy or large/symptomatic benign nodule</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Case Example 3: Right Breast Lump</h3>
+
+<strong>History</strong>:
+<ul>
+<li>32-year-old female, nulliparous</li>
+<li>2-week history of right breast lump</li>
+<li>Noticed during self-examination</li>
+<li>Non-tender</li>
+<li>No nipple discharge, no skin changes</li>
+<li>Lump does not change with menstrual cycle</li>
+<li>No family history of breast cancer</li>
+<li>No risk factors</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential After History</strong>:
+<ol>
+<li><strong>Fibroadenoma</strong> (most likely - young, mobile, non-tender)</li>
+<li>Breast cancer (less likely - young age, but must exclude)</li>
+<li>Cyst (possible)</li>
+<p>
+</ol>
+</p>
+
+<strong>Examination Findings</strong>:
+<ul>
+<li><strong>Inspection</strong>: No skin changes, no nipple changes, no asymmetry</li>
+<li><strong>Palpation</strong>: 2cm lump in upper outer quadrant of right breast</li>
+<p>
+</ul>
+  - Firm, rubbery consistency
+  - Smooth, well-defined margins
+  - Mobile in all directions
+  - Non-tender
+</p>
+<ul>
+<li><strong>Skin tethering test</strong>: Negative (no dimpling with arms raised)</li>
+<li><strong>Pectoralis fixation test</strong>: Negative (mobile when pectoralis contracted)</li>
+<li><strong>Nipple</strong>: Normal, no discharge</li>
+<li><strong>Axillary lymph nodes</strong>: No palpable lymphadenopathy</li>
+<li><strong>Contralateral breast</strong>: Normal</li>
+<p>
+</ul>
+</p>
+
+<strong>Working Diagnosis</strong>: <strong>Fibroadenoma</strong> (likely benign)
+
+<strong>But CRITICAL</strong>:
+<ul>
+<li><strong>ANY breast lump in a woman requires triple assessment</strong> (clinical exam + imaging + biopsy if indicated)</li>
+<li><strong>Even if clinically benign, must refer for ultrasound ± FNA</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Next Steps</strong> (in real clinical practice):
+<ul>
+<li>Refer to breast clinic (or GP orders ultrasound)</li>
+<li>Ultrasound ± FNA to confirm benign</li>
+<li>If confirmed fibroadenoma and <3cm, can observe</li>
+<li>If >3cm or patient wishes removal, surgical excision</li>
+<p>
+</ul>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s That Would Change Management to <span style="color: #e74c3c; font-weight: bold;">URGENT</span></strong>:
+<ul>
+<li>Hard consistency, irregular margins, fixed to skin/muscle</li>
+<li>Nipple inversion, bloody discharge, peau d'orange</li>
+<li>Axillary lymphadenopathy</li>
+<li>Age >40 (or >30 with family history)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 5: <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s and When to Refer <span style="color: #e74c3c; font-weight: bold;">URGENT</span>ly</h2>
+
+<h3><span style="color: #e74c3c; font-weight: bold;">URGENT</span> Surgical Referral (Same Day/<span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department)</h3>
+
+<p>
+| <strong>Clinical Scenario</strong> | <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong> | <strong>Suspected Diagnosis</strong> | <strong>Action</strong> |
+|----------------------|---------------|------------------------|-----------|
+| <strong>Incarcerated/Strangulated Hernia</strong> | Irreducible + tender hernia, skin erythema/bruising, nausea/vomiting | Bowel ischaemia | <strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> surgery</strong> |
+| <strong>Testicular Mass</strong> | Painless testicular lump, does not transilluminate | Testicular cancer | <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> urology referral</strong> (tumour markers, ultrasound) |
+| <strong>Inflammatory Breast Cancer</strong> | Erythematous breast, peau d'orange, rapid onset | Aggressive breast cancer | <strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> breast clinic</strong> |
+| <strong>Pulsatile Groin Mass</strong> | Expansile pulsation, femoral pulse abnormal | Femoral artery aneurysm | <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> vascular surgery</strong> (risk of rupture) |
+</p>
+
+<h3><span style="color: #e74c3c; font-weight: bold;">URGENT</span> Referral (Within 2 Weeks - Cancer Pathway)</h3>
+
+<p>
+| <strong>Clinical Scenario</strong> | <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong> | <strong>Action</strong> |
+|----------------------|---------------|-----------|
+| <strong>Breast Lump</strong> | Age >30, hard/irregular lump, nipple changes, bloody discharge, axillary nodes | <strong>2-week breast clinic referral</strong> |
+| <strong>Thyroid Nodule</strong> | Hard, fixed, lymphadenopathy, voice change, rapid growth | <strong>2-week endocrine/ENT referral</strong> |
+| <strong>Neck Lymphadenopathy</strong> | Supraclavicular node, hard/fixed nodes, B symptoms, >2cm and enlarging | <strong>2-week haematology/oncology referral</strong> |
+| <strong>Skin Lesion</strong> | ABCDE positive for melanoma, ulcerated BCC/SCC | <strong>2-week dermatology/plastics referral</strong> |
+</p>
+
+<h3>Routine Referral (Within 4-6 Weeks)</h3>
+
+<ul>
+<li>Inguinal/femoral hernia (symptomatic) → General surgery</li>
+<li>Lipoma (if large, symptomatic, or patient request) → General surgery</li>
+<li>Sebaceous cyst (if infected, recurrent, or cosmetic concern) → General surgery or GP excision</li>
+<li>Thyroid nodule (no <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s) → Endocrinology</li>
+<li>Fibroadenoma (confirmed on imaging) → Breast surgery (if excision desired)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 6: Australian Healthcare Context</h2>
+
+<h3>Investigations and Referral Pathways (NSW Health)</h3>
+
+<h4>For Groin Hernias:</h4>
+
+<strong>GP Management</strong>:
+<ul>
+<li>Clinical diagnosis (no imaging needed for straightforward inguinal hernia)</li>
+<li>Refer to general surgery (public: NSW Health surgical waitlist, private: surgeon of choice)</li>
+<li><strong>Medicare</strong>: Inguinal hernia repair is covered (public hospital free, private with gap)</li>
+<p>
+</ul>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> Referral Criteria</strong> (NSW Health):
+<ul>
+<li>Symptomatic femoral hernia (high strangulation risk)</li>
+<li>Incarcerated hernia</li>
+<li>Obstructive symptoms</li>
+<p>
+</ul>
+</p>
+
+<h4>For Breast Lumps:</h4>
+
+<strong>BreastScreen Australia</strong>:
+<ul>
+<li>Free mammogram for women 50-74 every 2 years</li>
+<li>Women 40-49 and 75+ can also access</li>
+<p>
+</ul>
+</p>
+
+<strong>GP Management</strong>:
+<ul>
+<li><strong>ANY breast lump requires triple assessment</strong>:</li>
+<p>
+</ul>
+  1. Clinical examination
+  2. Imaging (ultrasound <40 years, mammogram ≥40 years)
+  3. Biopsy (FNA or core biopsy) if imaging suspicious
+</p>
+<ul>
+<li><strong>Referral</strong>: Breast surgeon or breast clinic</li>
+<li><strong>Medicare</strong>: Ultrasound/mammogram bulk-billed if indicated</li>
+<p>
+</ul>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> Referral</strong> (2-week pathway equivalent):
+<ul>
+<li>Hard, irregular lump</li>
+<li>Skin/nipple changes</li>
+<li>Bloody nipple discharge</li>
+<li>Axillary lymphadenopathy</li>
+<p>
+</ul>
+</p>
+
+<h4>For Thyroid Nodules:</h4>
+
+<strong>GP Management</strong>:
+<ul>
+<li><strong>TFTs</strong> (TSH, free T4) - Medicare bulk-billed</li>
+<li><strong>Ultrasound thyroid</strong> - Medicare rebate</li>
+<li><strong>FNA</strong> if ultrasound shows suspicious features (Bethesda classification)</li>
+<li><strong>Referral</strong>: Endocrinology or endocrine surgery</li>
+<p>
+</ul>
+</p>
+
+<strong>eTG 2024 Guidelines</strong>:
+<ul>
+<li>Nodules >1cm with suspicious features (microcalcifications, hypoechoic, irregular) → FNA</li>
+<li>Nodules <1cm → Observe unless suspicious features</li>
+<p>
+</ul>
+</p>
+
+<h4>For Skin Lesions:</h4>
+
+<strong>GP Management</strong>:
+<ul>
+<li><strong>Dermoscopy</strong> (most GPs have dermatoscope)</li>
+<li><strong>Excision biopsy</strong> (GP can perform for low-risk lesions)</li>
+<li><strong>Referral</strong>: Dermatology or plastics for suspicious melanoma</li>
+<p>
+</ul>
+</p>
+
+<strong>Medicare</strong>:
+<ul>
+<li>Skin lesion excision covered (Medicare item 30071 for simple, 30075 for intermediate)</li>
+<li>Dermoscopy bulk-billed</li>
+<p>
+</ul>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> Referral</strong>:
+<ul>
+<li>Suspected melanoma (ABCDE positive, ulcerated, rapidly growing)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>PBS Medications Relevant to Lumps/Hernias</h3>
+
+<strong>Post-operative</strong>:
+<ul>
+<li>Paracetamol + Codeine (PBS for post-operative pain)</li>
+<li>Antibiotics if wound infection (Flucloxacillin, Cephalexin - PBS)</li>
+<p>
+</ul>
+</p>
+
+<strong>Thyroid Nodules</strong> (if hyperthyroid):
+<ul>
+<li>Carbimazole (PBS - S85: hyperthyroidism)</li>
+<li>Levothyroxine (PBS - S85: hypothyroidism post-thyroidectomy)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 7: OSCE Station Structure (8 Minutes)</h2>
+
+<h3>Typical OSCE Task for Lumps</h3>
+
+<strong>Candidate Instructions</strong>:
+<p>
+"A 45-year-old woman presents with a lump in her neck. Take a focused history and examine the lump. Present your findings and differential diagnosis to the examiner."
+</p>
+
+<strong>Time Allocation</strong>:
+<ul>
+<li><strong>History: 4 minutes</strong></li>
+<p>
+</ul>
+  - Opening + presenting complaint: 30 seconds
+  - LUMP framework: 2 minutes
+  - Systems review + PMHx/Meds/FHx/SHx: 1.5 minutes
+</p>
+<ul>
+<li><strong>Examination: 3 minutes</strong></li>
+<p>
+</ul>
+  - Preparation + consent: 15 seconds
+  - 7 Ss examination: 2 minutes
+  - Special tests (swallowing, tongue protrusion): 30 seconds
+  - Regional lymph nodes: 15 seconds
+</p>
+<ul>
+<li><strong>Presentation: 1 minute</strong></li>
+<p>
+</ul>
+  - Findings: 30 seconds
+  - Differential diagnosis (3 differentials with justification): 30 seconds
+</p>
+
+<hr>
+
+<h3>Typical OSCE Task for Hernia</h3>
+
+<strong>Candidate Instructions</strong>:
+<p>
+"A 60-year-old man presents with a lump in his right groin. Examine the lump. Present your findings and management plan to the examiner."
+</p>
+
+<strong>Time Allocation</strong>:
+<ul>
+<li><strong>Examination: 6 minutes</strong></li>
+<p>
+</ul>
+  - Introduction + consent + positioning: 30 seconds
+  - Inspection (standing): 1 minute
+  - Palpation + cough impulse (standing): 1.5 minutes
+  - Reducibility test (supine): 1 minute
+  - Distinguish inguinal vs femoral: 1 minute
+  - Deep ring occlusion (if time): 30 seconds
+  - Examine contralateral side: 30 seconds
+</p>
+<ul>
+<li><strong>Presentation: 2 minutes</strong></li>
+<p>
+</ul>
+  - Findings: 1 minute
+  - Diagnosis + Management plan: 1 minute
+</p>
+
+<hr>
+
+<h2>Part 8: Common IMG Mistakes and How to Avoid Them</h2>
+
+<h3>Mistake 1: Not Thinking Differentials from the Start</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Take history mechanically without thinking</li>
+<li>Wait until end to formulate differential</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>From the moment patient says "lump in neck"</strong>, think: "Thyroid? Lymph node? Cyst? Lipoma?"</li>
+<li>Let differential guide your next questions</li>
+<p>
+</ul>
+</p>
+
+<strong>Example</strong>:
+<ul>
+<li>Patient: "Lump in neck"</li>
+<li><strong>Think immediately</strong>: Thyroid vs lymph node vs other</li>
+<li><strong>Next question driven by differential</strong>: "Does it move when you swallow?" (thyroid), "Any fever or infections?" (lymph node)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 2: Not Examining Regional Lymph Nodes</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Examine only the lump, forget lymph nodes</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>ALWAYS examine regional lymph nodes</strong> for ANY lump</li>
+<li>Neck lump → cervical nodes</li>
+<li>Breast lump → axillary + supraclavicular nodes</li>
+<li>Skin lesion → draining lymph nodes</li>
+<p>
+</ul>
+</p>
+
+<strong>Why It Matters</strong>:
+<ul>
+<li>Lymphadenopathy suggests malignancy or infection</li>
+<li>Failure to examine nodes = <strong>fail OSCE</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 3: Not Assessing Reducibility of Hernia</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Examine hernia with patient standing only</li>
+<li>Forget to ask patient to lie down and test reducibility</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>ALWAYS test reducibility</strong> (ask patient to lie supine, try to reduce)</li>
+<li>Irreducible + tender = surgical <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></li>
+<p>
+</ul>
+</p>
+
+<strong>OSCE Examiner Expectation</strong>:
+<ul>
+<li>"The candidate did not assess reducibility" = <strong>automatic fail</strong> (missed surgical <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span>)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 4: Not Testing "Moves with Swallowing" for Neck Lump</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Forget to give patient water and test swallowing</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>For ANY anterior neck lump</strong>, MUST test:</li>
+<p>
+</ul>
+  1. Moves with swallowing? (thyroid)
+  2. Moves with tongue protrusion? (thyroglossal cyst)
+</p>
+
+<strong>Why It Matters</strong>:
+<ul>
+<li>Pathognomonic signs</li>
+<li>Failure to test = fail to diagnose</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 5: Not Examining Contralateral Side</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Examine only the affected side</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>ALWAYS examine both sides</strong> (hernias, lymph nodes, breast)</li>
+<li>Document: "Contralateral side examined and normal"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 6: Not Identifying <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Describe examination findings but don't recognize <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Actively look for and verbalize <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong>:</li>
+<p>
+</ul>
+  - Hard, irregular breast lump = cancer
+  - Supraclavicular node = malignancy
+  - Irreducible, tender hernia = surgical <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span>
+</p>
+
+<strong>OSCE Presentation</strong>:
+<ul>
+<li>"This is a 3cm hard, irregular lump in the right breast with axillary lymphadenopathy. <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s for breast cancer are present</strong>. This requires <span style="color: #e74c3c; font-weight: bold;">URGENT</span> referral to breast surgery."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 7: Not Performing Complete Breast Examination</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Palpate lump only, forget to:</li>
+<p>
+</ul>
+  - Examine both breasts
+  - Examine axillary lymph nodes
+  - Inspect nipple
+  - Test skin tethering
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Complete breast examination</strong>:</li>
+<p>
+</ul>
+  1. Inspect both breasts (arms by side, arms raised, hands on hips)
+  2. Palpate all 4 quadrants + subareolar area of both breasts
+  3. Palpate axillary nodes (both sides)
+  4. Examine supraclavicular nodes
+  5. Test skin tethering (arms raised)
+  6. Assess nipple (inversion, discharge)
+</p>
+
+<hr>
+
+<h2>Part 9: Quick Reference Tables</h2>
+
+<h3>Differential Diagnosis by Location</h3>
+
+<h4>Neck Lumps</h4>
+
+<p>
+| <strong>Location</strong> | <strong>Moves with Swallow</strong> | <strong>Moves with Tongue</strong> | <strong>Differential</strong> |
+|--------------|----------------------|---------------------|-----------------|
+| Anterior midline | Yes | No | Thyroid nodule, goitre |
+| Anterior midline | Yes | <strong>Yes</strong> | <strong>Thyroglossal cyst</strong> |
+| Anterior triangle | No | No | Lymph node, branchial cyst, submandibular gland |
+| Posterior triangle | No | No | Lymph node, cystic hygroma |
+| Supraclavicular | No | No | <strong>Virchow's node (malignancy)</strong> |
+| Lateral, pulsatile | No | No | Carotid body tumor, carotid aneurysm |
+</p>
+
+<h4>Groin Lumps</h4>
+
+<p>
+| <strong>Location</strong> | <strong>Cough Impulse</strong> | <strong>Reducible</strong> | <strong>Differential</strong> |
+|--------------|------------------|--------------|-----------------|
+| Above & medial to pubic tubercle | Yes | Yes | Inguinal hernia |
+| Below & lateral to pubic tubercle | Yes | Yes/No | <strong>Femoral hernia</strong> (high strangulation risk) |
+| Lateral groin | No | No | Lymph node |
+| Groin, disappears on lying | Yes (on cough) | Yes | Saphena varix |
+| Groin, pulsatile | No | No | Femoral artery aneurysm |
+</p>
+
+<h4>Scrotal Lumps</h4>
+
+<p>
+| <strong>Can Get Above It?</strong> | <strong>Transilluminate</strong> | <strong>Other Features</strong> | <strong>Differential</strong> |
+|-----------------------|--------------------|-------------------|-----------------|
+| No | Variable | Extends into inguinal canal | Inguinoscrotal hernia |
+| Yes | <strong>Yes</strong> | Smooth, non-tender | Hydrocele |
+| Yes | No | Cannot feel testis separately | <strong>Testicular tumor</strong> |
+| Yes | No | "Bag of worms", reduces on lying | Varicocele |
+| Yes | <strong>Yes</strong> | Separate from testis, epididymis | Spermatocele/epididymal cyst |
+</p>
+
+<hr>
+
+<h3><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s Summary</h3>
+
+<p>
+| <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong> | <strong>Suspected Diagnosis</strong> | <strong>Urgency</strong> |
+|--------------|------------------------|------------|
+| Irreducible + tender hernia | Incarcerated/strangulated hernia | <strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> surgery</strong> |
+| Hard, irregular breast lump | Breast cancer | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> 2-week referral |
+| Supraclavicular lymph node | Metastatic malignancy | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> 2-week referral |
+| Painless testicular lump | Testicular cancer | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> urology referral |
+| Pulsatile groin lump (expansile) | Femoral artery aneurysm | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> vascular referral |
+| Hoarse voice + thyroid lump | Thyroid cancer with RLN invasion | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> ENT/endocrine referral |
+| B symptoms + lymphadenopathy | Lymphoma, TB, HIV | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> haematology referral |
+| ABCDE positive skin lesion | Melanoma | <span style="color: #e74c3c; font-weight: bold;">URGENT</span> dermatology referral |
+</p>
+
+<hr>
+
+<h2>Part 10: Practice Cases for Self-Assessment</h2>
+
+<h3>Case 1: Groin Lump in a 65-Year-Old Woman</h3>
+
+<strong>Scenario</strong>: 65-year-old woman presents with a painful lump in her right groin that appeared yesterday. She has vomited twice this morning.
+
+<strong>Questions to Consider</strong>:
+<ol>
+<li>What is your immediate differential?</li>
+<li>What <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s are present?</li>
+<li>What examination findings would you look for?</li>
+<li>What is the likely diagnosis and management?</li>
+<p>
+</ol>
+</p>
+
+<strong>Answer</strong>:
+<ol>
+<li><strong>Differential</strong>: Femoral hernia (incarcerated/strangulated) vs inguinal hernia vs lymph node (less likely with vomiting)</li>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong>: Acute onset, pain, vomiting (suggests obstruction)</li>
+<li><strong>Examination</strong>: Location relative to pubic tubercle (femoral = below and lateral), tenderness, irreducibility, skin changes</li>
+<li><strong>Likely diagnosis</strong>: <strong>Incarcerated femoral hernia</strong> → <strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> surgical referral</strong> (femoral hernias have high strangulation risk)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>Case 2: Breast Lump in a 28-Year-Old Woman</h3>
+
+<strong>Scenario</strong>: 28-year-old woman, 1cm firm mobile lump in left breast upper outer quadrant, noticed 3 weeks ago, non-tender, no nipple discharge, no family history.
+
+<strong>Questions</strong>:
+<ol>
+<li>What is the most likely diagnosis?</li>
+<li>What examination findings would support this?</li>
+<li>Does she need <span style="color: #e74c3c; font-weight: bold;">URGENT</span> referral?</li>
+<li>What is the management plan?</li>
+<p>
+</ol>
+</p>
+
+<strong>Answer</strong>:
+<ol>
+<li><strong>Most likely</strong>: Fibroadenoma (young age, mobile, rubbery, well-defined)</li>
+<li><strong>Examination</strong>: Firm/rubbery, smooth margins, mobile, no skin tethering, no axillary nodes</li>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> referral?</strong> Not <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span>, but <strong>ANY breast lump needs triple assessment</strong> → Refer to breast clinic or GP orders ultrasound</li>
+<li><strong>Management</strong>: Ultrasound ± FNA → If fibroadenoma confirmed and <3cm, can observe vs excise</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>Case 3: Neck Lump in a 50-Year-Old Male Smoker</h3>
+
+<strong>Scenario</strong>: 50-year-old male, 40 pack-year smoker, presents with a hard 3cm left supraclavicular lymph node, non-tender, 6-week history, 5kg weight loss.
+
+<strong>Questions</strong>:
+<ol>
+<li>What is the most concerning diagnosis?</li>
+<li>What is "Virchow's node" and what does it suggest?</li>
+<li>What other examination findings would you look for?</li>
+<li>What is the management?</li>
+<p>
+</ol>
+</p>
+
+<strong>Answer</strong>:
+<ol>
+<li><strong>Most concerning</strong>: Metastatic malignancy (lung, gastric, pancreatic, renal)</li>
+<li><strong>Virchow's node</strong>: Left supraclavicular node, drains thoracic duct → Suggests gastric/pancreatic cancer (Troisier's sign)</li>
+<li><strong>Other findings</strong>: Examine chest (lung cancer signs), abdomen (hepatomegaly, masses), other lymph node groups (generalized lymphadenopathy)</li>
+<li><strong>Management</strong>: <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> 2-week referral</strong> to oncology/haematology, CXR, CT chest/abdomen/pelvis, FBC, LDH</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Summary: Key Takeaways</h2>
+
+<h3>For History-Taking:</h3>
+<ol>
+<li><strong>Start thinking differentials from the FIRST question</strong> (location gives you differential)</li>
+<li><strong>Use LUMP framework</strong> (Location, Understanding timeline, Morphology, Pain/symptoms)</li>
+<li><strong>Ask <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> questions</strong> (B symptoms, obstruction, malignancy risk factors)</li>
+<li><strong>Tailor questions to location</strong> (thyroid questions for neck, hernia questions for groin, breast cancer risk for breast)</li>
+<p>
+</ol>
+</p>
+
+<h3>For Examination:</h3>
+<ol>
+<li><strong>Use 7 Ss for lumps</strong> (Site, Size, Shape, Surface, Surrounding structures, Special tests, Sounding)</li>
+<li><strong>Perform special tests</strong> (swallowing for thyroid, cough impulse for hernia, transillumination for scrotal)</li>
+<li><strong>ALWAYS examine regional lymph nodes</strong></li>
+<li><strong>ALWAYS test reducibility for hernias</strong></li>
+<li><strong>ALWAYS examine contralateral side</strong></li>
+<p>
+</ol>
+</p>
+
+<h3>For OSCE Success:</h3>
+<ol>
+<li><strong>Verbalize your differential thinking</strong> ("This lump moves with swallowing, indicating thyroid origin")</li>
+<li><strong>Identify and state <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong> ("<span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s for breast cancer are present")</li>
+<li><strong>Systematic approach</strong> (don't skip steps)</li>
+<li><strong>Professionalism</strong> (consent, chaperone, patient comfort)</li>
+<li><strong>Time management</strong> (practice 8-minute stations)</li>
+<p>
+</ol>
+</p>
+
+<h3>For Australian Context:</h3>
+<ol>
+<li><strong>Know referral pathways</strong> (2-week cancer pathway, <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> vs routine)</li>
+<li><strong>Know Medicare coverage</strong> (ultrasound, mammogram, surgical procedures)</li>
+<li><strong>Use eTG 2024 guidelines</strong> (thyroid nodule management, skin lesion excision)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<strong>This module was created following Dr. Amir Soufi's differential-driven methodology from IMG4IMGS, emphasizing clinical reasoning and integration from the first question to final diagnosis.</strong>
+
+<strong>Next modules</strong>: Pre/Post-operative Assessment, Trauma Assessment (completing Surgery module)
+
+<hr>
+
+<strong>Word Count</strong>: ~16,000 words
+<strong>Last Updated</strong>: December 2025 for ICRP NSW Young Hospital Program (March 2026 intake)
+<strong>Author</strong>: ICRP OSCE Preparation Team
+<strong>Reference</strong>: Dr. Amir Soufi (IMG4IMGS) Methodology, eTG 2024, AMC Clinical OSCE Format
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

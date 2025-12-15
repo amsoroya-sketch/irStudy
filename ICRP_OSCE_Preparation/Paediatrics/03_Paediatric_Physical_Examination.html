@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paediatric Physical Examination</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Paediatrics</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Paediatrics Navigation</h3>
+<ul>
+<li><a href="01_Paediatric_History_Differentials.html">Paeds History</a></li>
+<li><a href="03_Paediatric_Physical_Examination.html">Paeds Exam</a></li>
+</ul>
+</div>
+        <h1>Paediatric Physical Examination</h1>
+
+<strong>Target Audience</strong>: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Program paediatric rotations
+
+<strong>Learning Objectives</strong>: By the end of this document, you will be able to:
+<ol>
+<li>Perform systematic paediatric examinations adapted to child's age and cooperation</li>
+<li>Integrate physical findings with differential diagnosis thinking</li>
+<li>Recognize <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s requiring <span style="color: #e74c3c; font-weight: bold;">URGENT</span> intervention</li>
+<li>Conduct newborn examination (baby check) confidently</li>
+<li>Perform age-appropriate cardiovascular, respiratory, abdominal, and neurological examinations</li>
+<li>Use distraction techniques and build rapport to examine uncooperative children</li>
+<li>Apply Australian OSCE expectations for paediatric examination stations</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Dr. Amir Soufi's Principle Applied to Paediatric Examination</h2>
+
+<blockquote><strong>"In paediatrics, examination findings CONFIRM your differential formed from history. Examination is FLEXIBLE - you adapt to the child, not the child to you. If child is crying, start with auscultation (heart/lungs) BEFORE undressing. If child is playful, observe first. The MOST important skill is building rapport - a calm, cooperative child gives you accurate findings."</strong></blockquote>
+
+<h3>The Paediatric Examination Mindset</h3>
+
+<strong>Traditional Approach</strong>:
+<ul>
+<li>Rigid, systematic examination from head to toe</li>
+<li>Child becomes distressed, uncooperative</li>
+<li><strong>Problem</strong>: Inaccurate findings (tachycardia from crying, cannot assess respiratory rate), poor exam technique</li>
+<p>
+</ul>
+</p>
+
+<strong>Dr. Amir's Adapted Approach</strong>:
+<ol>
+<li><strong>Observe First (Before Touching)</strong></li>
+<p>
+</ol>
+   - General appearance: Well, unwell, or critically unwell?
+   - Respiratory: Rate, recession, colour
+   - Behaviour: Alert, playful, irritable, drowsy
+   - <strong>This gives you 50% of the diagnosis without touching the child</strong>
+</p>
+
+<ol>
+<li><strong>Opportunistic Examination</strong> (Adapt to Child's State)</li>
+<p>
+</ol>
+   - If child is calm/asleep on parent's lap → Auscultate heart/lungs FIRST (before undressing)
+   - If child is playful → Engage with toys, examine peripheries first (hands, feet)
+   - If child is crying → Leave distressing parts to end (ENT, abdomen)
+</p>
+
+<ol>
+<li><strong>Integrate Findings with Differential</strong></li>
+<p>
+</ol>
+   - Every finding either supports or refutes your pre-examination differential
+   - Example: History suggests bronchiolitis → Examination confirms wheeze, bilateral crackles, mild recession
+</p>
+
+<hr>
+
+<h2>General Principles of Paediatric Examination</h2>
+
+<h3>The 5 Ps of Paediatric Examination</h3>
+
+<strong>P - Preparation</strong>
+<ul>
+<li>Wash hands</li>
+<li>Introduce yourself to parent AND child</li>
+<li>Warm hands, warm stethoscope (rub between palms)</li>
+<li>Comfortable environment (warm room, toys/distractions available)</li>
+<p>
+</ul>
+</p>
+
+<strong>P - Permission</strong>
+<ul>
+<li>Explain examination to parent: "I'd like to examine [child's name]. Is that okay?"</li>
+<li>Ask child (age-appropriate): "Can I have a look at you?" "Can I listen to your chest?"</li>
+<li>Inform parents they can stay with child throughout</li>
+<p>
+</ul>
+</p>
+
+<strong>P - Position</strong>
+<ul>
+<li><strong>Young children (<2 years)</strong>: On parent's lap (less distressing)</li>
+<li><strong>Older children (>2 years)</strong>: On examination couch (if cooperative) or parent's lap</li>
+<li><strong>Adolescents</strong>: On couch, offer chaperone</li>
+<p>
+</ul>
+</p>
+
+<strong>P - Play and Distraction</strong>
+<ul>
+<li>Use toys, bubbles, lights, phone videos (with parent's permission)</li>
+<li>Engage child: "Can you show me your tongue?" "Can you take a big breath like you're blowing out candles?"</li>
+<li>Make it fun: "I'm going to listen to your tummy. Can you hear the rumbles?"</li>
+<p>
+</ul>
+</p>
+
+<strong>P - Proceed Systematically (but Flexibly)</strong>
+<ul>
+<li>Start with least distressing (observation, hands)</li>
+<li>Leave most distressing to end (throat, ears, abdomen if tender)</li>
+<li>If child becomes distressed, pause and console</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Age-Specific Adaptations</h3>
+
+<p>
+| Age Group | Approach | Distraction Techniques | Position |
+|-----------|----------|----------------------|----------|
+| <strong>Neonate (<28 days)</strong> | Gentle handling, warm hands, minimal disturbance | Not needed (usually sleeping) | Flat on exam table or parent's arms |
+| <strong>Infant (1-12 months)</strong> | Stranger anxiety develops ~6 months | Toy, rattle, light torch, peek-a-boo | Parent's lap (preferred) |
+| <strong>Toddler (1-3 years)</strong> | Separation anxiety, tantrums common | Bubbles, teddy bear, phone videos | Parent's lap |
+| <strong>Preschool (3-5 years)</strong> | More cooperative, likes to help | Stickers, counting games, "Can you help me?" | Exam couch or parent's lap |
+| <strong>School-age (5-12 years)</strong> | Cooperative, understands explanations | Conversation (school, hobbies), involvement ("Can you take a big breath?") | Exam couch |
+| <strong>Adolescent (12-18 years)</strong> | Self-conscious, offer privacy | Respectful conversation, explain each step | Exam couch, chaperone offered |
+</p>
+
+<hr>
+
+<h2>1. GENERAL INSPECTION (Observation BEFORE Touching)</h2>
+
+<strong>Dr. Amir's Principle</strong>: <strong>"50% of paediatric diagnosis is OBSERVATION. Before you touch the child, observe: Are they well, unwell, or critically unwell? This determines urgency. Respiratory rate and work of breathing tell you if they need oxygen NOW."</strong>
+
+<h3>ABC Assessment (First Priority for Acutely Unwell Child)</h3>
+
+<strong>A - Airway</strong>:
+<ul>
+<li>Patent? Any stridor, drooling, inability to speak?</li>
+<li>Position: Tripod position (epiglottitis), head extension (respiratory distress)</li>
+<p>
+</ul>
+</p>
+
+<strong>B - Breathing</strong>:
+<ul>
+<li><strong>Respiratory rate</strong> (count for 30 seconds × 2, while child calm):</li>
+<p>
+</ul>
+  - <1 year: 30-40/min
+  - 1-2 years: 25-35/min
+  - 2-5 years: 25-30/min
+  - 5-12 years: 20-25/min
+  - >12 years: 15-20/min
+</p>
+<ul>
+<li><strong>Work of breathing</strong>:</li>
+<p>
+</ul>
+  - <strong>Recession</strong>: Subcostal, intercostal, suprasternal, supraclavicular
+  - <strong>Nasal flaring</strong>
+  - <strong>Grunting</strong> (forced expiration against closed glottis - severe respiratory distress)
+  - <strong>Head bobbing</strong> (infants - using accessory muscles)
+  - <strong>Tracheal tug</strong> (downward movement of trachea with inspiration)
+</p>
+<ul>
+<li><strong>Oxygen saturations</strong>: Attach pulse oximeter (normal ≥95% in air)</li>
+<li><strong>Colour</strong>: Pink (normal), pale (anaemia, shock), cyanosed (central vs peripheral), mottled (sepsis, shock)</li>
+<p>
+</ul>
+</p>
+
+<strong>C - Circulation</strong>:
+<ul>
+<li><strong>Heart rate</strong> (palpate brachial/femoral pulse while child calm):</li>
+<p>
+</ul>
+  - <1 year: 110-160 bpm
+  - 1-2 years: 100-150 bpm
+  - 2-5 years: 95-140 bpm
+  - 5-12 years: 80-120 bpm
+  - >12 years: 60-100 bpm
+</p>
+<ul>
+<li><strong>Capillary refill time (CRT)</strong>: Press sternum for 5 seconds, release, count seconds until colour returns</li>
+<p>
+</ul>
+  - Normal: <2 seconds
+  - Prolonged (>2 sec): Dehydration, shock, sepsis
+</p>
+<ul>
+<li><strong>Skin</strong>: Warm peripheries (normal), cool peripheries (shock, dehydration), mottled (sepsis)</li>
+<p>
+</ul>
+</p>
+
+<strong>D - Disability (Neurological)</strong>:
+<ul>
+<li><strong>AVPU score</strong>:</li>
+<p>
+</ul>
+  - A = Alert (normal)
+  - V = Responds to Voice
+  - P = Responds to Pain only
+  - U = Unresponsive
+</p>
+<ul>
+<li><strong>GCS</strong> (if older child): E + V + M (3-15)</li>
+<li><strong>Posture</strong>: Floppy/hypotonic (sepsis, meningitis), stiff/hypertonic, seizure activity</li>
+<li><strong>Pupils</strong>: Equal, reactive to light</li>
+<p>
+</ul>
+</p>
+
+<strong>E - Exposure</strong>:
+<ul>
+<li><strong>Temperature</strong>: Measure (normal 36.5-37.5°C)</li>
+<li><strong>Rash</strong>: Blanching vs non-blanching (glass test)</li>
+<li><strong>Bruising</strong>: Location, pattern (safeguarding concerns if unusual sites)</li>
+<p>
+</ul>
+</p>
+
+<strong>If Child is CRITICALLY UNWELL</strong> (abnormal ABCDE):
+<ul>
+<li><strong>Call for help immediately</strong></li>
+<li><strong>Oxygen</strong> (high-flow if needed)</li>
+<li><strong>IV/IO access</strong></li>
+<li><strong>Senior clinician + resuscitation team</strong></li>
+<li><strong>Do NOT delay</strong> for full examination</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>General Appearance (If Stable)</h3>
+
+<strong>Observe from doorway or while child on parent's lap</strong>:
+
+<strong>Well, Unwell, or Critically Unwell?</strong>
+<ul>
+<li><strong>Well</strong>: Alert, playful, interactive, smiling, normal colour, feeding normally</li>
+<li><strong>Unwell</strong>: Reduced activity, not playing, irritable, pale, reduced feeding</li>
+<li><strong>Critically unwell</strong>: Lethargic/floppy, drowsy, not responding to parents, mottled/cyanosed, grunting/severe respiratory distress</li>
+<p>
+</ul>
+</p>
+
+<strong>Growth and Nutrition</strong>:
+<ul>
+<li>Appropriate size for age? (Plot on growth chart if available)</li>
+<li>Wasted (muscle bulk reduced, ribs visible)?</li>
+<li>Obese?</li>
+<p>
+</ul>
+</p>
+
+<strong>Dysmorphic Features</strong>:
+<ul>
+<li>Facial appearance: Down syndrome (flat facial profile, upslanting palpebral fissures, Brushfield spots), Turner syndrome (webbed neck, low hairline)</li>
+<li>Hands: Single palmar crease (Down syndrome), short fingers</li>
+<p>
+</ul>
+</p>
+
+<strong>Hydration Status</strong> (if vomiting/diarrhea history):
+<ul>
+<li><strong>Sunken eyes</strong> (moderate dehydration)</li>
+<li><strong>Sunken fontanelle</strong> (infants, moderate-severe dehydration)</li>
+<li>Dry lips/mucous membranes</li>
+<p>
+</ul>
+</p>
+
+<strong>Behaviour and Responsiveness</strong>:
+<ul>
+<li>Alert and responsive to environment?</li>
+<li>Interacting with parents, toys?</li>
+<li>Smiling, making eye contact?</li>
+<p>
+</ul>
+</p>
+
+<strong>Respiratory Effort</strong> (observe chest):
+<ul>
+<li>Recession (as above)</li>
+<li>Use of accessory muscles</li>
+<li>Paradoxical breathing (abdomen moves opposite to chest - severe respiratory distress)</li>
+<p>
+</ul>
+</p>
+
+<strong>Skin</strong>:
+<ul>
+<li>Colour: Pink, pale, jaundiced, cyanosed (central tongue/lips vs peripheral fingers/toes)</li>
+<li>Rash: Distribution, blanching vs non-blanching</li>
+<li>Birthmarks: Strawberry naevus (capillary haemangioma), port-wine stain, Mongolian blue spot (normal variant, sacral area)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>2. NEWBORN EXAMINATION (Baby Check)</h2>
+
+<strong>Dr. Amir's Principle</strong>: <strong>"Newborn examination is SCREENING, not diagnostic. You're looking for congenital abnormalities: heart murmurs (congenital heart disease), hip clicks (DDH), undescended testes, cataracts, cleft palate. Do it systematically: Top to toe, front to back, never miss the hips, heart, and red reflex."</strong>
+
+<strong>Timing</strong>: Performed within 72 hours of birth (by midwife or doctor), repeated at 6-8 weeks (GP)
+
+<strong>Setting</strong>: Warm, quiet room, good lighting, baby undressed on flat surface
+
+<h3>Systematic Newborn Examination (Head to Toe)</h3>
+
+<strong>1. General Inspection</strong>:
+<ul>
+<li><strong>Colour</strong>: Pink (normal), jaundiced (check bilirubin if <24 hours or significant), cyanosed (congenital heart disease, respiratory distress)</li>
+<li><strong>Tone</strong>: Active movements, flexed posture (normal), floppy/hypotonic, stiff/hypertonic</li>
+<li><strong>Cry</strong>: Vigorous (normal), high-pitched (neurological), weak/absent</li>
+<li><strong>Appearance</strong>: Dysmorphic features, birth trauma (caput succedaneum, cephalhaematoma)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>2. Head and Face</strong>:
+
+<strong>Fontanelles</strong>:
+<ul>
+<li><strong>Anterior fontanelle</strong>: Diamond-shaped, 2-3 cm, closes by 18-24 months</li>
+<li><strong>Posterior fontanelle</strong>: Triangular, <1 cm, closes by 2-3 months</li>
+<li><strong>Palpate</strong>: Should be soft, flat (not sunken, not bulging)</li>
+<p>
+</ul>
+  - Sunken = Dehydration
+  - Bulging = Raised ICP (meningitis, hydrocephalus)
+</p>
+
+<strong>Head shape</strong>:
+<ul>
+<li>Moulding (overlapping skull bones - normal, resolves in days)</li>
+<li><strong>Caput succedaneum</strong>: Soft, oedematous swelling crossing suture lines (resolves in days)</li>
+<li><strong>Cephalhaematoma</strong>: Firm swelling limited by suture lines (subperiosteal bleed, resolves in weeks, risk of jaundice)</li>
+<p>
+</ul>
+</p>
+
+<strong>Eyes</strong>:
+<ul>
+<li><strong>Red reflex</strong> (MUST check BOTH eyes with ophthalmoscope):</li>
+<p>
+</ul>
+  - Technique: 30 cm away, look for red/orange glow through pupil
+  - Absent/white reflex = <strong>Congenital cataract, retinoblastoma</strong> → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> ophthalmology referral
+</p>
+<ul>
+<li><strong>Inspect</strong>: Size (microphthalmia?), conjunctivitis (sticky eye common, clean with saline), subconjunctival haemorrhage (normal, resolves)</li>
+<li><strong>Corneal light reflex</strong>: Shine light, check symmetrical reflection on both pupils (excludes squint)</li>
+<p>
+</ul>
+</p>
+
+<strong>Ears</strong>:
+<ul>
+<li><strong>Position</strong>: Low-set ears → Chromosomal abnormality (Down syndrome, Turner syndrome)</li>
+<li><strong>Shape</strong>: Pre-auricular skin tags or pits (common, usually benign)</li>
+<li><strong>Hearing</strong>: Newborn hearing screening (automated OAE or ABR) - should be done before discharge</li>
+<p>
+</ul>
+</p>
+
+<strong>Nose</strong>:
+<ul>
+<li>Patent nostrils (babies are obligate nose breathers)</li>
+<li>Check with wisp of cotton wool (moves with breathing)</li>
+<p>
+</ul>
+</p>
+
+<strong>Mouth</strong>:
+<ul>
+<li><strong>Cleft lip/palate</strong>: Inspect, palpate hard palate with finger (feel for posterior cleft)</li>
+<p>
+</ul>
+  - Cleft palate may be MISSED if not palpated
+</p>
+<ul>
+<li><strong>Tongue</strong>: Size (macroglossia in Down syndrome, Beckwith-Wiedemann), tongue-tie (ankyloglossia - frenulum attachment)</li>
+<li><strong>Teeth</strong>: Natal teeth (rare, usually lower incisors, may need removal if loose)</li>
+<p>
+</ul>
+</p>
+
+<strong>Face</strong>:
+<ul>
+<li>Symmetry: Facial palsy (birth trauma, forceps delivery) - asymmetry when crying</li>
+<li>Dysmorphic features: Flat facial profile (Down syndrome), micrognathia (Pierre Robin sequence)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>3. Neck</strong>:
+<ul>
+<li><strong>Palpate</strong>: Clavicles (clavicular fracture from birth trauma - crepitus, absent Moro on affected side)</li>
+<li><strong>Goitre</strong> (rare, maternal thyroid disease)</li>
+<li><strong>Cystic hygroma</strong> (soft, transilluminates, posterior triangle)</li>
+<li><strong>Sternomastoid tumour</strong> (firm lump in sternocleidomastoid muscle, torticollis)</li>
+<li><strong>Webbing</strong> (Turner syndrome)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>4. Chest and Cardiovascular</strong>:
+
+<strong>Inspection</strong>:
+<ul>
+<li>Shape: Symmetrical chest movement</li>
+<li>Respiratory rate: 30-60/min (normal in newborn), count for 60 seconds</li>
+<li>Recession: Subcostal, intercostal (respiratory distress)</li>
+<li>Breathing pattern: Periodic breathing (normal - pauses <10 sec), apnoea (pauses >20 sec - pathological)</li>
+<p>
+</ul>
+</p>
+
+<strong>Palpation</strong>:
+<ul>
+<li><strong>Apex beat</strong>: 4th intercostal space, midclavicular line (or just outside)</li>
+<li><strong>Brachial pulses</strong>: Bilateral (both arms), equal volume</li>
+<li><strong>Femoral pulses</strong>: Bilateral (both groins), equal volume and timing with brachial</li>
+<p>
+</ul>
+  - <strong>Absent or weak femoral pulses</strong> = <strong>Coarctation of aorta</strong> → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> cardiology referral
+  - <strong>Radio-femoral delay</strong> = Coarctation
+</p>
+
+<strong>Auscultation</strong> (Warm stethoscope, baby calm):
+<ul>
+<li><strong>Heart sounds</strong>: S1 (mitral/tricuspid closure), S2 (aortic/pulmonary closure)</li>
+<li><strong>Murmurs</strong>:</li>
+<p>
+</ul>
+  - <strong>Location</strong>: Listen in 4 areas (aortic, pulmonary, tricuspid, mitral) + axilla, back
+  - <strong>Timing</strong>: Systolic (S1 to S2) vs diastolic (S2 to S1)
+  - <strong>Loudness</strong>: Grade 1-6/6
+  - <strong>Character</strong>: Ejection systolic, pansystolic, machinery
+  - <strong>Radiation</strong>: To carotids, back, axilla
+</p>
+
+<strong>CRITICAL</strong>:
+<ul>
+<li><strong>ANY murmur in newborn</strong> = Potential congenital heart disease → Needs assessment</li>
+<li><strong>Innocent murmurs</strong> are RARE in first 48 hours</li>
+<li><strong>If murmur detected</strong>:</li>
+<p>
+</ul>
+  - Check for other signs: Cyanosis, tachypnoea, poor feeding, hepatomegaly
+  - Check oxygen saturations (pre-ductal right hand and post-ductal foot - >95%, difference <3%)
+  - <strong>Refer to paediatrics</strong> (echocardiogram within 24-72 hours)
+</p>
+
+<strong>Common Congenital Heart Disease</strong>:
+<ul>
+<li><strong>VSD</strong> (Ventricular Septal Defect): Pansystolic murmur, left lower sternal edge, commonest</li>
+<li><strong>PDA</strong> (Patent Ductus Arteriosus): Continuous "machinery" murmur, left upper sternal edge</li>
+<li><strong>Coarctation of aorta</strong>: Weak/absent femoral pulses, radio-femoral delay, ejection systolic murmur</li>
+<li><strong>Tetralogy of Fallot</strong>: Cyanosis, ejection systolic murmur (pulmonary stenosis)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>5. Abdomen</strong>:
+
+<strong>Inspection</strong>:
+<ul>
+<li>Shape: Scaphoid (diaphragmatic hernia), distended (obstruction, ascites)</li>
+<li>Umbilical cord: 2 arteries + 1 vein (single umbilical artery → VACTERL association, renal abnormalities)</li>
+<li>Umbilical stump: Clean, dry (should fall off 5-15 days), signs of infection (redness, discharge, foul smell → omphalitis)</li>
+<p>
+</ul>
+</p>
+
+<strong>Palpation</strong> (use warmed hands, baby relaxed):
+<ul>
+<li><strong>Liver</strong>: Normally palpable 1-2 cm below costal margin (RCM)</li>
+<p>
+</ul>
+  - Enlarged liver = Heart failure, infection, storage disorder
+</p>
+<ul>
+<li><strong>Spleen</strong>: Normally NOT palpable</li>
+<p>
+</ul>
+  - Palpable spleen = Haemolysis, infection, portal hypertension
+</p>
+<ul>
+<li><strong>Kidneys</strong>: Palpable by bimanual palpation (one hand on back, one on abdomen)</li>
+<p>
+</ul>
+  - Enlarged kidneys = Polycystic kidney disease, hydronephrosis, renal vein thrombosis
+</p>
+<ul>
+<li><strong>Bladder</strong>: May be palpable if full (normal)</li>
+<li><strong>Masses</strong>: Abdominal masses in newborn (common): Renal (70%), GI (15%), genital (15%)</li>
+<p>
+</ul>
+</p>
+
+<strong>Genitalia</strong> (MUST examine):
+
+<strong>Male</strong>:
+<ul>
+<li><strong>Inspect</strong>:</li>
+<p>
+</ul>
+  - Penis: Normal size, urethral meatus at tip (hypospadias = meatus on ventral surface, epispadias = dorsal surface)
+  - <strong>Hypospadias</strong> → Do NOT circumcise (foreskin needed for surgical repair)
+  - Scrotum: Rugose (normal), hydrocele (transilluminates, common, resolves by 1 year)
+</p>
+<ul>
+<li><strong>Palpate</strong>:</li>
+<p>
+</ul>
+  - <strong>Testes</strong>: Both descended into scrotum? (palpate along inguinal canal if not in scrotum)
+  - <strong>Undescended testis</strong> (cryptorchidism): Refer to paediatric surgery (orchidopexy by 12 months to preserve fertility)
+</p>
+
+<strong>Female</strong>:
+<ul>
+<li><strong>Inspect</strong>:</li>
+<p>
+</ul>
+  - Labia: Normal appearance
+  - Vaginal discharge/bleeding: Normal in first week (maternal oestrogen withdrawal)
+  - Imperforate hymen (rare)
+  - Ambiguous genitalia (virilization, congenital adrenal hyperplasia) → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> referral
+</p>
+
+<strong>Anus</strong>:
+<ul>
+<li><strong>Inspect</strong>: Present, patent (meconium should pass within 24-48 hours)</li>
+<p>
+</ul>
+  - <strong>Imperforate anus</strong> → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> surgical referral
+</p>
+
+<hr>
+
+<strong>6. Back and Spine</strong>:
+<ul>
+<li><strong>Inspect</strong>: Midline, straight</li>
+<li><strong>Sacral dimple</strong>: Common (>5 cm from anus = simple dimple, benign)</li>
+<p>
+</ul>
+  - Deep dimple, tuft of hair, naevus, discharging sinus → <strong>Spinal dysraphism</strong> (tethered cord, spina bifida occulta) → USS spine
+</p>
+<ul>
+<li><strong>Spina bifida</strong>: Meningocele (sac containing meninges), myelomeningocele (sac containing spinal cord) - usually detected antenatally</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>7. Limbs</strong>:
+
+<strong>Inspect</strong>:
+<ul>
+<li>Number of digits: Polydactyly (extra digits), syndactyly (fused digits)</li>
+<li>Talipes (club foot): Fixed vs positional (positional corrects with gentle manipulation, fixed does not)</li>
+<li>Single palmar crease (Simian crease): Down syndrome, normal variant</li>
+<p>
+</ul>
+</p>
+
+<strong>Tone and Movements</strong>:
+<ul>
+<li><strong>Observe spontaneous movements</strong>: Symmetrical, all limbs moving</li>
+<li><strong>Moro reflex</strong> (startle reflex): Sudden head drop (support head and neck, lower quickly) → Baby abducts and extends arms, then adducts (hugs)</li>
+<p>
+</ul>
+  - Absent or asymmetrical = Neurological problem, brachial plexus injury (Erb's palsy)
+</p>
+
+<hr>
+
+<strong>8. Hips (CRITICAL - Do NOT Miss)</strong>:
+
+<strong>Developmental Dysplasia of the Hip (DDH)</strong>: 1-2% incidence, if missed → Abnormal gait, early osteoarthritis
+
+<strong>Risk Factors</strong>:
+<ul>
+<li>Breech presentation</li>
+<li>Family history</li>
+<li>Female</li>
+<li>Firstborn</li>
+<li>Oligohydramnios</li>
+<p>
+</ul>
+</p>
+
+<strong>Examination</strong> (performed at END of examination, baby calm):
+
+<strong>Barlow Test</strong> (Tests for dislocatable hip):
+<ul>
+<li><strong>Technique</strong>:</li>
+<p>
+</ul>
+  - Hips flexed 90°, knees flexed 90°
+  - Thumb on inner thigh, fingers on greater trochanter
+  - <strong>Adduct hip</strong> (bring knee toward midline) while applying <strong>posterior pressure</strong> (push back)
+  - <strong>Positive</strong>: Clunk (hip dislocates posteriorly out of acetabulum)
+</p>
+
+<strong>Ortolani Test</strong> (Tests for dislocated hip that can be relocated):
+<ul>
+<li><strong>Technique</strong>:</li>
+<p>
+</ul>
+  - Same position as Barlow
+  - <strong>Abduct hip</strong> (bring knee outward) while applying <strong>anterior pressure</strong> (lift up)
+  - <strong>Positive</strong>: Clunk (hip relocates into acetabulum)
+</p>
+
+<strong>CRITICAL</strong>:
+<ul>
+<li><strong>CLUNK</strong> (felt by examiner) = Positive (hip dislocating/relocating) → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> orthopaedic referral</li>
+<li><strong>Click</strong> (heard) = Ligamentous (benign, common)</li>
+<li><strong>If positive Barlow/Ortolani</strong> → USS hips (within 2 weeks), orthopaedic review</li>
+<li><strong>If risk factors</strong> (breech, FH) → USS hips at 6 weeks even if examination normal</li>
+<p>
+</ul>
+</p>
+
+<strong>Galeazzi Sign</strong> (asymmetrical leg length):
+<ul>
+<li>Hips and knees flexed, feet flat on table</li>
+<li>Observe knee heights</li>
+<li>Unequal = Possible DDH (dislocated hip appears shorter)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>9. Neurological</strong>:
+
+<strong>Tone</strong>:
+<ul>
+<li><strong>Observe</strong>: Posture (flexed = normal, floppy/extended = abnormal)</li>
+<li><strong>Palpate</strong>: Resistance to passive movement</li>
+<li>Hypotonia (floppy baby): Down syndrome, Prader-Willi, SMA, congenital myopathy</li>
+<li>Hypertonia (stiff): Cerebral palsy, HIE (hypoxic-ischaemic encephalopathy)</li>
+<p>
+</ul>
+</p>
+
+<strong>Primitive Reflexes</strong> (present at birth, disappear by 3-6 months):
+<ul>
+<li><strong>Moro reflex</strong> (startle): See above</li>
+<li><strong>Rooting reflex</strong>: Stroke cheek → Baby turns toward stimulus, opens mouth</li>
+<li><strong>Sucking reflex</strong>: Put finger/nipple in mouth → Baby sucks</li>
+<li><strong>Palmar grasp</strong>: Put finger in palm → Baby grasps</li>
+<li><strong>Stepping reflex</strong>: Hold baby upright, feet touching surface → Baby makes stepping movements</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>10. Documentation</strong>:
+
+<strong>Write in notes</strong>:
+<ul>
+<li>"Newborn examination performed at [age] hours of life."</li>
+<li>"Top to toe examination completed."</li>
+<li><strong>Normal findings</strong>: "No dysmorphic features. Red reflexes present bilaterally. Heart sounds dual, no murmur. Femoral pulses palpable bilaterally. Abdomen soft, no organomegaly. Both testes descended (male). Hips stable, Barlow and Ortolani negative. Tone normal. Primitive reflexes present."</li>
+<li><strong>Abnormal findings</strong>: Document clearly, action plan (e.g., "Systolic murmur grade 2/6 heard left upper sternal edge. Pre- and post-ductal saturations >95%. Referred to paediatrics for echocardiogram.")</li>
+<li><strong>Newborn Hearing Screen</strong>: Passed/Referred</li>
+<li><strong>Newborn Bloodspot Screening</strong> (Guthrie test): Taken (day 2-5)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>3. CARDIOVASCULAR EXAMINATION (Older Child)</h2>
+
+<strong>Indications</strong>: Murmur, chest pain, syncope, cyanosis, poor feeding, failure to thrive
+
+<h3>Systematic Examination</h3>
+
+<strong>1. General Inspection</strong>:
+<ul>
+<li><strong>Well or unwell?</strong> Distressed, breathless, cyanosed?</li>
+<li><strong>Growth</strong>: Plot on growth chart (poor growth = congenital heart disease with heart failure)</li>
+<li><strong>Colour</strong>: Pink (normal), <strong>central cyanosis</strong> (tongue, lips blue = congenital heart disease), peripheral cyanosis (fingers/toes blue = normal in cold, or shock)</li>
+<li><strong>Respiratory effort</strong>: Tachypnoea, recession (heart failure)</li>
+<li><strong>Clubbing</strong> (fingers): Congenital cyanotic heart disease, chronic lung disease</li>
+<li><strong>Dysmorphic features</strong>: Down syndrome (40% have congenital heart disease, especially AVSD)</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Hands</strong>:
+<ul>
+<li><strong>Clubbing</strong>: Loss of nail bed angle, increased nail curvature, spongy nail bed</li>
+<p>
+</ul>
+  - Causes: Congenital cyanotic heart disease, cystic fibrosis, bronchiectasis, IBD
+</p>
+<ul>
+<li><strong>Capillary refill time</strong>: <2 seconds (normal), >2 seconds (shock, dehydration)</li>
+<li><strong>Splinter haemorrhages</strong> (rare in children): Infective endocarditis</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Pulses</strong>:
+
+<strong>Radial pulse</strong> (both sides):
+<ul>
+<li>Rate: Count for 30 seconds × 2 (normal ranges by age - see above)</li>
+<li>Rhythm: Regular, irregular</li>
+<li>Volume: Normal, weak (cardiac failure, shock), bounding (PDA, aortic regurgitation, fever, anaemia)</li>
+<li>Character: Collapsing pulse (PDA, aortic regurgitation) - rapid upstroke and fall</li>
+<p>
+</ul>
+</p>
+
+<strong>Brachial pulse</strong> (both sides):
+<ul>
+<li>Volume, character</li>
+<p>
+</ul>
+</p>
+
+<strong>Femoral pulse</strong> (both groins):
+<ul>
+<li><strong>MUST check</strong>: Weak or absent = <strong>Coarctation of aorta</strong></li>
+<li>Compare timing with brachial (radio-femoral delay = coarctation)</li>
+<p>
+</ul>
+</p>
+
+<strong>4. Blood Pressure</strong> (if indicated):
+<ul>
+<li>Use appropriate cuff size (covers 2/3 of upper arm)</li>
+<li>Normal BP varies by age:</li>
+<p>
+</ul>
+  - 1-5 years: 80-100/50-60 mmHg
+  - 6-12 years: 90-110/55-70 mmHg
+  - >12 years: 100-120/60-75 mmHg
+</p>
+<ul>
+<li><strong>Hypertension</strong>: BP >95th centile for age/height</li>
+<li><strong>Coarctation</strong>: BP higher in arms than legs (>10 mmHg difference)</li>
+<p>
+</ul>
+</p>
+
+<strong>5. Face and Neck</strong>:
+<ul>
+<li><strong>Inspect face</strong>: Malar flush (mitral stenosis - rare in children), cyanosis</li>
+<li><strong>JVP</strong> (rarely visible in children)</li>
+<p>
+</ul>
+</p>
+
+<strong>6. Chest</strong>:
+
+<strong>Inspection</strong>:
+<ul>
+<li><strong>Scars</strong>: Sternotomy scar (midline - cardiac surgery), thoracotomy scar (left lateral - PDA ligation, coarctation repair)</li>
+<li><strong>Shape</strong>: Pectus excavatum (funnel chest), pectus carinatum (pigeon chest)</li>
+<li><strong>Apex beat</strong>: Visible? (Should not be visible in normal child)</li>
+<li><strong>Respiratory effort</strong>: Tachypnoea, recession (heart failure)</li>
+<p>
+</ul>
+</p>
+
+<strong>Palpation</strong>:
+<ul>
+<li><strong>Apex beat</strong>: 4th intercostal space, midclavicular line (younger children may be higher/more lateral)</li>
+<p>
+</ul>
+  - Displaced laterally = Cardiomegaly
+  - Not palpable = Dextrocardia (listen for heart sounds on right side)
+</p>
+<ul>
+<li><strong>Heaves</strong>: Left parasternal heave (RV hypertrophy - pulmonary stenosis, pulmonary hypertension)</li>
+<li><strong>Thrills</strong>: Palpable murmur (significant valve lesion)</li>
+<p>
+</ul>
+</p>
+
+<strong>Auscultation</strong> (Warm stethoscope, child calm):
+
+<strong>Listen in 4 areas + axilla + back</strong>:
+<ol>
+<li><strong>Aortic area</strong>: 2nd intercostal space, right sternal edge</li>
+<li><strong>Pulmonary area</strong>: 2nd intercostal space, left sternal edge</li>
+<li><strong>Tricuspid area</strong>: 4th intercostal space, left sternal edge</li>
+<li><strong>Mitral area (apex)</strong>: 5th intercostal space, midclavicular line</li>
+<li><strong>Axilla</strong>: Radiation of mitral regurgitation</li>
+<li><strong>Back</strong>: Radiation of coarctation murmur</li>
+<p>
+</ol>
+</p>
+
+<strong>Heart sounds</strong>:
+<ul>
+<li><strong>S1</strong>: Mitral and tricuspid valve closure (start of systole)</li>
+<li><strong>S2</strong>: Aortic and pulmonary valve closure (end of systole)</li>
+<p>
+</ul>
+  - <strong>Splitting of S2</strong>: Normal in children on inspiration (physiological split)
+  - <strong>Fixed split S2</strong>: ASD (Atrial Septal Defect)
+</p>
+<ul>
+<li><strong>S3</strong>: Ventricular gallop (heart failure)</li>
+<li><strong>S4</strong>: Atrial gallop (rare, indicates stiff ventricle)</li>
+<p>
+</ul>
+</p>
+
+<strong>Murmurs</strong> (describe systematically):
+<ul>
+<li><strong>Timing</strong>: Systolic (between S1 and S2) vs diastolic (between S2 and S1)</li>
+<li><strong>Location</strong>: Where loudest?</li>
+<li><strong>Grade</strong> (loudness):</li>
+<p>
+</ul>
+  - 1/6: Very soft, only heard with expert
+  - 2/6: Soft, but easily heard
+  - 3/6: Loud, no thrill
+  - 4/6: Loud + thrill palpable
+  - 5/6: Very loud, heard with stethoscope barely on chest
+  - 6/6: Heard without stethoscope
+</p>
+<ul>
+<li><strong>Character</strong>: Ejection systolic, pansystolic, early diastolic, mid-diastolic</li>
+<li><strong>Radiation</strong>: To carotids (aortic stenosis), axilla (mitral regurgitation), back (coarctation)</li>
+<p>
+</ul>
+</p>
+
+<strong>Innocent (Flow) Murmurs</strong> (common in children, NO pathology):
+<ul>
+<li><strong>Features</strong>:</li>
+<p>
+</ul>
+  - <strong>Soft</strong> (grade ≤2/6)
+  - <strong>Systolic</strong> (never diastolic)
+  - <strong>Asymptomatic</strong> (no symptoms, normal growth, normal examination otherwise)
+  - <strong>Varies with position</strong> (louder supine, quieter sitting)
+</p>
+<ul>
+<li><strong>Types</strong>:</li>
+<p>
+</ul>
+  - <strong>Still's murmur</strong>: Vibratory, musical, mid-systolic, left lower sternal edge, age 3-7 years
+  - <strong>Pulmonary flow murmur</strong>: Ejection systolic, pulmonary area, normal S2 split
+  - <strong>Venous hum</strong>: Continuous, below clavicles, disappears when lying flat
+</p>
+<ul>
+<li><strong>Management</strong>: Reassure parents, no further investigation needed</li>
+<p>
+</ul>
+</p>
+
+<strong>Pathological Murmurs</strong> (Require investigation):
+<ul>
+<li><strong>Diastolic murmur</strong> (ALWAYS pathological)</li>
+<li><strong>Pansystolic murmur</strong> (VSD, mitral regurgitation, tricuspid regurgitation)</li>
+<li><strong>Loud</strong> (grade ≥3/6)</li>
+<li><strong>Symptomatic</strong> (breathless, poor feeding, poor growth, cyanosis)</li>
+<li><strong>Abnormal S2</strong> (single S2, fixed split S2)</li>
+<li><strong>Thrill</strong> palpable</li>
+<li><strong>Investigation</strong>: Echocardiogram, ECG, CXR</li>
+<p>
+</ul>
+</p>
+
+<strong>7. Abdomen</strong>:
+<ul>
+<li><strong>Palpate for hepatomegaly</strong>: Liver edge >2 cm below RCM (normal up to 2 cm in young children)</li>
+<p>
+</ul>
+  - Hepatomegaly = <strong>Heart failure</strong> (right heart failure causes venous congestion)
+</p>
+
+<strong>8. Legs</strong>:
+<ul>
+<li><strong>Oedema</strong>: Pitting oedema (heart failure, nephrotic syndrome)</li>
+<li><strong>Peripheral pulses</strong>: Dorsalis pedis, posterior tibial (weak in coarctation)</li>
+<p>
+</ul>
+</p>
+
+<strong>9. Completion</strong>:
+<ul>
+<li>"I would like to measure blood pressure in all 4 limbs (to rule out coarctation), check oxygen saturations, listen to lung bases (pulmonary oedema), request ECG, CXR, and echocardiogram."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>4. RESPIRATORY EXAMINATION (Older Child)</h2>
+
+<strong>Indications</strong>: Cough, wheeze, shortness of breath, respiratory distress
+
+<h3>Systematic Examination</h3>
+
+<strong>1. General Inspection</strong>:
+<ul>
+<li><strong>Respiratory distress?</strong> (see ABCDE section above)</li>
+<li><strong>Colour</strong>: Pink (normal), central cyanosis (tongue, lips blue)</li>
+<li><strong>Position</strong>: Sitting forward, unable to lie flat (severe respiratory distress)</li>
+<li><strong>Able to speak?</strong> Full sentences (mild), words only (moderate), unable to speak (severe)</li>
+<li><strong>Audible wheeze?</strong> (without stethoscope - severe)</li>
+<li><strong>Cough</strong>: Character (dry, productive, barking, paroxysmal)</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Hands</strong>:
+<ul>
+<li><strong>Clubbing</strong>: CF, bronchiectasis, chronic suppurative lung disease</li>
+<li><strong>Cyanosis</strong>: Peripheral (fingers blue - cold, shock), central (tongue blue - hypoxia)</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Face</strong>:
+<ul>
+<li><strong>Nasal flaring</strong>: Respiratory distress</li>
+<li><strong>Cyanosis</strong>: Central cyanosis (around mouth, tongue)</li>
+<p>
+</ul>
+</p>
+
+<strong>4. Chest</strong>:
+
+<strong>Inspection</strong>:
+<ul>
+<li><strong>Expose chest</strong> (ask permission, maintain dignity)</li>
+<li><strong>Respiratory rate</strong>: Count for 30 seconds × 2 (while child calm)</li>
+<li><strong>Recession</strong>: Subcostal, intercostal, suprasternal, supraclavicular</li>
+<li><strong>Symmetry</strong>: Both sides moving equally (asymmetric = pneumothorax, pleural effusion, consolidation)</li>
+<li><strong>Shape</strong>: Barrel chest (chronic asthma, CF), pectus excavatum, Harrison's sulci (chronic respiratory disease)</li>
+<li><strong>Scars</strong>: Thoracotomy (CF, previous surgery)</li>
+<p>
+</ul>
+</p>
+
+<strong>Palpation</strong>:
+<ul>
+<li><strong>Chest expansion</strong>: Place hands on chest, thumbs meet in midline, ask child to take deep breath, observe thumbs moving apart symmetrically</li>
+<p>
+</ul>
+  - Reduced expansion one side = Consolidation, pneumothorax, pleural effusion
+</p>
+<ul>
+<li><strong>Trachea</strong>: Central? (not always reliable in children)</li>
+<li><strong>Tactile vocal fremitus</strong>: Place hand on chest, ask child to say "ninety-nine"</li>
+<p>
+</ul>
+  - Increased = Consolidation
+  - Decreased = Pneumothorax, pleural effusion
+</p>
+
+<strong>Percussion</strong>:
+<ul>
+<li><strong>Technique</strong>: Percuss from apex to base, compare left and right sides</li>
+<p>
+</ul>
+  - Resonant (normal): Hollow sound
+  - <strong>Dull</strong> (consolidation, pleural effusion): Thud sound
+  - <strong>Hyperresonant</strong> (pneumothorax, asthma): Increased resonance
+</p>
+<ul>
+<li><strong>Young children</strong>: May not tolerate percussion (skip if distressed)</li>
+<p>
+</ul>
+</p>
+
+<strong>Auscultation</strong> (Warm stethoscope):
+<ul>
+<li><strong>Technique</strong>: Listen to apex, mid-zone, base (anterior and posterior), compare left and right</li>
+<li><strong>Ask child to take deep breaths</strong> (through mouth if old enough, otherwise normal breathing)</li>
+<p>
+</ul>
+</p>
+
+<strong>Breath sounds</strong>:
+<ul>
+<li><strong>Vesicular</strong> (normal): Soft, low-pitched, inspiration > expiration</li>
+<li><strong>Bronchial breathing</strong> (consolidation): Harsh, high-pitched, inspiration = expiration</li>
+<li><strong>Reduced air entry</strong>: Pneumothorax, pleural effusion, severe asthma (silent chest)</li>
+<p>
+</ul>
+</p>
+
+<strong>Added sounds</strong>:
+<ul>
+<li><strong>Wheeze</strong>: High-pitched, musical, expiratory (asthma, bronchiolitis, foreign body)</li>
+<p>
+</ul>
+  - <strong>Bilateral wheeze</strong>: Asthma, bronchiolitis, viral-induced wheeze
+  - <strong>Unilateral wheeze</strong>: Foreign body aspiration
+</p>
+<ul>
+<li><strong>Crackles</strong>:</li>
+<p>
+</ul>
+  - <strong>Fine crackles</strong> (bronchiolitis, pulmonary oedema, pneumonia): High-pitched, end-inspiratory
+  - <strong>Coarse crackles</strong> (pneumonia, bronchiectasis): Low-pitched, early-mid inspiration
+</p>
+<ul>
+<li><strong>Stridor</strong>: Inspiratory, harsh (croup, epiglottitis, foreign body in upper airway)</li>
+<p>
+</ul>
+</p>
+
+<strong>Vocal resonance</strong>:
+<ul>
+<li>Ask child to say "ninety-nine" while listening with stethoscope</li>
+<li>Increased (consolidation), decreased (pneumothorax, pleural effusion)</li>
+<p>
+</ul>
+</p>
+
+<strong>5. Completion</strong>:
+<ul>
+<li>"I would like to check oxygen saturations, measure peak expiratory flow rate (if child >5 years), and request a chest X-ray."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>5. ABDOMINAL EXAMINATION (Older Child)</h2>
+
+<strong>Indications</strong>: Abdominal pain, vomiting, diarrhea, constipation, abdominal distension
+
+<h3>Systematic Examination</h3>
+
+<strong>Position</strong>: Child lying flat, parent at head of bed (distraction)
+
+<strong>1. General Inspection</strong>:
+<ul>
+<li><strong>Comfortable or distressed?</strong></li>
+<li><strong>Colour</strong>: Pale (anaemia), jaundiced (liver disease)</li>
+<li><strong>Hydration</strong>: Sunken eyes, dry mucous membranes</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Hands</strong>:
+<ul>
+<li><strong>Clubbing</strong>: IBD (Crohn's disease), coeliac disease, chronic liver disease</li>
+<li><strong>Pallor</strong> (palmar creases pale): Anaemia (chronic GI blood loss, malabsorption)</li>
+<li><strong>Koilonychia</strong> (spoon-shaped nails): Iron deficiency anaemia</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Face</strong>:
+<ul>
+<li><strong>Jaundice</strong>: Scleral icterus (liver disease, haemolysis)</li>
+<li><strong>Oral cavity</strong>: Ulcers (Crohn's disease), angular stomatitis (iron deficiency)</li>
+<p>
+</ul>
+</p>
+
+<strong>4. Abdomen</strong>:
+
+<strong>Inspection</strong>:
+<ul>
+<li><strong>Expose abdomen</strong> (nipples to knees)</li>
+<li><strong>Shape</strong>:</li>
+<p>
+</ul>
+  - Flat (normal)
+  - <strong>Distended</strong>: Bowel obstruction, ascites, organomegaly, constipation, air swallowing (crying)
+  - <strong>Scaphoid</strong> (sunken): Malnutrition, dehydration, diaphragmatic hernia (newborns)
+</p>
+<ul>
+<li><strong>Umbilicus</strong>: Central, everted (ascites), hernia</li>
+<li><strong>Scars</strong>: Laparotomy (previous surgery), laparoscopic port sites</li>
+<li><strong>Visible peristalsis</strong>: Pyloric stenosis (rare), bowel obstruction</li>
+<li><strong>Veins</strong>: Distended veins (portal hypertension - rare)</li>
+<li><strong>Bruising</strong>: Safeguarding concern (if unusual sites)</li>
+<p>
+</ul>
+</p>
+
+<strong>Palpation</strong> (WARM hands, kneel to child's level, watch face for pain):
+
+<strong>ASK</strong>: "Does your tummy hurt anywhere?" "Point with one finger where it hurts"
+<ul>
+<li><strong>Start AWAY from painful area</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Superficial palpation</strong>:
+<ul>
+<li>All 9 regions, looking for tenderness, masses, guarding (involuntary muscle contraction - peritonitis)</li>
+<p>
+</ul>
+</p>
+
+<strong>Deep palpation</strong>:
+<ul>
+<li><strong>Liver</strong>: Start in RIF, ask child to take deep breath, palpate upward toward RCM</li>
+<p>
+</ul>
+  - Normal: Palpable up to 2 cm below RCM in young children
+  - <strong>Hepatomegaly</strong>: >2 cm below RCM (liver disease, heart failure, storage disorder, malignancy)
+  - <strong>Character</strong>: Smooth (normal, viral hepatitis), irregular/nodular (cirrhosis, malignancy)
+</p>
+
+<ul>
+<li><strong>Spleen</strong>: Start in RIF, palpate diagonally toward left hypochondrium</li>
+<p>
+</ul>
+  - Normal: NOT palpable
+  - <strong>Splenomegaly</strong>: Palpable (haemolysis, portal hypertension, infection, malignancy)
+  - <strong>Can't get above it</strong> (distinguishes from kidney - can get above kidney)
+</p>
+
+<ul>
+<li><strong>Kidneys</strong> (bimanual ballotment):</li>
+<p>
+</ul>
+  - One hand posteriorly (loin), one hand anteriorly (flank)
+  - Normal: Usually not palpable (except neonates)
+  - <strong>Palpable kidney</strong>: Hydronephrosis, polycystic kidney disease, Wilms tumour
+</p>
+
+<ul>
+<li><strong>Bladder</strong>: Suprapubic, palpable if full (normal in young children)</li>
+<p>
+</ul>
+</p>
+
+<ul>
+<li><strong>Masses</strong>: Note location, size, consistency, mobile or fixed, tender or non-tender</li>
+<p>
+</ul>
+</p>
+
+<strong>Percussion</strong>:
+<ul>
+<li><strong>Liver span</strong>: Upper border (resonant to dull at 5th-7th rib), lower border (dull to resonant at liver edge)</li>
+<li><strong>Spleen</strong>: Percuss from resonant (lateral) to dull (spleen edge)</li>
+<li><strong>Ascites</strong>: Shifting dullness (roll child on side, percuss - dullness shifts)</li>
+<li><strong>Bladder</strong>: Suprapubic dullness (if full)</li>
+<p>
+</ul>
+</p>
+
+<strong>Auscultation</strong>:
+<ul>
+<li><strong>Bowel sounds</strong>: Listen for 30 seconds</li>
+<p>
+</ul>
+  - Normal: Intermittent gurgling
+  - <strong>Absent</strong>: Ileus, post-operative
+  - <strong>Hyperactive/tinkling</strong>: Bowel obstruction, gastroenteritis
+</p>
+
+<strong>Special Tests</strong>:
+
+<strong>Appendicitis</strong>:
+<ul>
+<li><strong>McBurney's point tenderness</strong>: 1/3 distance from ASIS to umbilicus (RIF)</li>
+<li><strong>Rovsing's sign</strong>: Press LIF → Pain in RIF (positive = appendicitis)</li>
+<li><strong>Rebound tenderness</strong>: Press firmly, release suddenly → Pain on release (peritonitis)</li>
+<li><strong>Psoas sign</strong>: Extend right hip → Pain (retrocaecal appendix)</li>
+<p>
+</ul>
+</p>
+
+<strong>5. Genitalia</strong> (if indicated):
+<ul>
+<li><strong>Male</strong>: Testes (torsion?), hernias</li>
+<li><strong>Female</strong>: Offer chaperone, defer to senior if needed</li>
+<p>
+</ul>
+</p>
+
+<strong>6. Completion</strong>:
+<ul>
+<li>"I would like to examine hernial orifices, external genitalia, perform digital rectal examination (in consultation with senior), check urine dipstick, and consider imaging (USS abdomen, X-ray if obstruction)."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>6. NEUROLOGICAL EXAMINATION (Age-Appropriate)</h2>
+
+<strong>Indications</strong>: Headache, seizures, developmental delay, weakness, abnormal gait
+
+<h3>GAIT (Observe FIRST - if child walking)</h3>
+
+<strong>Ask child to walk</strong>: Observe from front, back, side
+<ul>
+<li><strong>Normal gait</strong>: Heel-toe, symmetrical, arms swing</li>
+<li><strong>Abnormal gaits</strong>:</li>
+<p>
+</ul>
+  - <strong>Hemiplegic</strong>: One-sided weakness, arm flexed, leg circumducts
+  - <strong>Ataxic</strong>: Broad-based, unsteady, falls to one side
+  - <strong>High-stepping</strong>: Foot drop (peripheral neuropathy)
+  - <strong>Toe-walking</strong>: Cerebral palsy, idiopathic (normal variant if flexible Achilles tendon)
+  - <strong>Waddling</strong>: Proximal muscle weakness (muscular dystrophy)
+  - <strong>Antalgic</strong>: Limping (painful - trauma, infection, inflammation)
+</p>
+
+<strong>Ask child to</strong>:
+<ul>
+<li>Walk on heels (tests ankle dorsiflexion - L4/L5)</li>
+<li>Walk on tiptoes (tests ankle plantarflexion - S1)</li>
+<li>Run (exaggerates subtle abnormalities)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>ARMS (Upper Limbs)</h3>
+
+<strong>Inspection</strong>:
+<ul>
+<li><strong>Posture</strong>: Flexed (hemiplegia), dystonic posturing</li>
+<li><strong>Muscle bulk</strong>: Symmetrical? Wasting (LMN lesion, disuse atrophy)</li>
+<li><strong>Fasciculations</strong>: Visible muscle twitching (LMN lesion - rare in children)</li>
+<p>
+</ul>
+</p>
+
+<strong>Tone</strong>:
+<ul>
+<li><strong>Technique</strong>: Passively move child's arm (flex/extend elbow, pronate/supinate forearm)</li>
+<li><strong>Normal</strong>: Slight resistance</li>
+<li><strong>Increased</strong> (hypertonia, spasticity): UMN lesion (cerebral palsy, stroke)</li>
+<p>
+</ul>
+  - <strong>Clasp-knife</strong> (cerebral palsy)
+</p>
+<ul>
+<li><strong>Decreased</strong> (hypotonia, flaccidity): LMN lesion, cerebellar lesion</li>
+<p>
+</ul>
+</p>
+
+<strong>Power</strong> (age-appropriate):
+<ul>
+<li><strong>Young children (<5 years)</strong>: Observe play (reaching, grasping, throwing ball)</li>
+<li><strong>Older children (>5 years)</strong>: Test myotomes (MRC 0-5 scale)</li>
+<p>
+</ul>
+  - Shoulder abduction (C5): "Put arms out like a bird, don't let me push them down"
+  - Elbow flexion (C5-C6): "Bend your elbow, pull toward you"
+  - Elbow extension (C7): "Straighten your elbow, push against me"
+  - Wrist extension (C6): "Cock your wrist up"
+  - Finger abduction (T1): "Spread fingers, don't let me squeeze them together"
+  - Thumb abduction (T1): "Point thumb to ceiling, don't let me push it down"
+</p>
+
+<strong>Reflexes</strong>:
+<ul>
+<li><strong>Biceps</strong> (C5-C6)</li>
+<li><strong>Triceps</strong> (C7)</li>
+<li><strong>Supinator</strong> (C6)</li>
+<li><strong>Grading</strong>:</li>
+<p>
+</ul>
+  - 0 = Absent
+  - 1+ = Diminished
+  - 2+ = Normal
+  - 3+ = Brisk
+  - 4+ = Brisk + clonus (UMN lesion)
+</p>
+
+<strong>Coordination</strong> (Cerebellar function):
+<ul>
+<li><strong>Finger-nose test</strong>: "Touch my finger, then touch your nose" (repeat, move finger to different positions)</li>
+<p>
+</ul>
+  - Intention tremor, past-pointing = Cerebellar lesion
+</p>
+<ul>
+<li><strong>Rapid alternating movements</strong>: "Pat your lap, then flip your hand and pat with back of hand, repeat quickly"</li>
+<p>
+</ul>
+  - Dysdiadochokinesia = Cerebellar lesion
+</p>
+
+<hr>
+
+<h3>LEGS (Lower Limbs)</h3>
+
+<strong>Inspection</strong>:
+<ul>
+<li><strong>Posture</strong>: Scissoring (cerebral palsy - adductor spasticity)</li>
+<li><strong>Muscle bulk</strong>: Wasting (calf pseudohypertrophy in Duchenne muscular dystrophy)</li>
+<p>
+</ul>
+</p>
+
+<strong>Tone</strong>:
+<ul>
+<li>Passively move leg (flex/extend knee, dorsiflex/plantarflex ankle)</li>
+<p>
+</ul>
+</p>
+
+<strong>Power</strong> (age-appropriate):
+<ul>
+<li><strong>Young children</strong>: Observe (climbing stairs, standing from sitting, kicking ball)</li>
+<li><strong>Gower's sign</strong> (Duchenne muscular dystrophy): Ask child to stand from lying → Child uses hands to "climb up" own legs (proximal weakness)</li>
+<li><strong>Older children</strong>: Test myotomes</li>
+<p>
+</ul>
+  - Hip flexion (L1-L2): "Lift leg up, don't let me push it down"
+  - Hip extension (L5-S1): "Push leg down against my hand"
+  - Knee extension (L3-L4): "Straighten your knee"
+  - Knee flexion (L5-S1): "Bend your knee"
+  - Ankle dorsiflexion (L4-L5): "Point toes toward nose"
+  - Ankle plantarflexion (S1-S2): "Push down like pressing car pedal"
+</p>
+
+<strong>Reflexes</strong>:
+<ul>
+<li><strong>Knee jerk</strong> (L3-L4)</li>
+<li><strong>Ankle jerk</strong> (S1-S2)</li>
+<li><strong>Plantar reflex</strong> (Babinski):</li>
+<p>
+</ul>
+  - Stroke lateral sole of foot from heel to little toe, across ball of foot
+  - <strong>Normal</strong>: Toes flex (plantar response)
+  - <strong>Abnormal (Babinski positive)</strong>: Big toe extends, other toes fan (UMN lesion)
+  - <strong>EXCEPTION</strong>: Babinski is NORMAL in infants <12-24 months
+</p>
+
+<strong>Coordination</strong>:
+<ul>
+<li><strong>Heel-shin test</strong>: "Lift your leg, touch my finger with your heel, then run your heel down your shin"</li>
+<p>
+</ul>
+</p>
+
+<strong>Sensation</strong> (if child cooperative):
+<ul>
+<li>Light touch, pinprick (dermatomes)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>CRANIAL NERVES (Age-Appropriate)</h3>
+
+<strong>CN I (Olfactory)</strong>: Rarely tested in children
+
+<strong>CN II (Optic)</strong>:
+<ul>
+<li><strong>Visual acuity</strong>: Snellen chart (>5 years), picture chart (3-5 years), observe fixation (infants)</li>
+<li><strong>Visual fields</strong>: Confrontation (>5 years), observe response to threat from periphery (infants)</li>
+<li><strong>Fundoscopy</strong> (Red reflex, papilloedema if raised ICP)</li>
+<p>
+</ul>
+</p>
+
+<strong>CN III, IV, VI (Oculomotor, Trochlear, Abducens)</strong>:
+<ul>
+<li><strong>Eye movements</strong>: "Follow my finger" (H-pattern), observe for squint, nystagmus</li>
+<li><strong>Pupils</strong>: Size, equal, reactive to light, accommodation</li>
+<p>
+</ul>
+</p>
+
+<strong>CN V (Trigeminal)</strong>:
+<ul>
+<li><strong>Sensory</strong>: Light touch on forehead, cheeks, chin (if child cooperative)</li>
+<li><strong>Motor</strong>: Clench teeth (palpate masseter muscle)</li>
+<p>
+</ul>
+</p>
+
+<strong>CN VII (Facial)</strong>:
+<ul>
+<li><strong>Motor</strong>: Observe facial symmetry, ask child to smile, close eyes tight, puff out cheeks</li>
+<p>
+</ul>
+  - <strong>UMN lesion</strong> (stroke): Forehead spared (can wrinkle forehead)
+  - <strong>LMN lesion</strong> (Bell's palsy): Forehead involved (cannot wrinkle forehead)
+</p>
+
+<strong>CN VIII (Vestibulocochlear)</strong>:
+<ul>
+<li><strong>Hearing</strong>: Whisper test, newborn hearing screening results</li>
+<p>
+</ul>
+</p>
+
+<strong>CN IX, X (Glossopharyngeal, Vagus)</strong>:
+<ul>
+<li><strong>Gag reflex</strong> (rarely tested)</li>
+<li><strong>Palate elevation</strong>: "Say 'ahh'", observe uvula (deviates away from lesion side)</li>
+<p>
+</ul>
+</p>
+
+<strong>CN XI (Accessory)</strong>:
+<ul>
+<li><strong>Shoulder shrug</strong>: "Shrug shoulders, don't let me push them down"</li>
+<li><strong>Head turn</strong>: "Turn head against my hand"</li>
+<p>
+</ul>
+</p>
+
+<strong>CN XII (Hypoglossal)</strong>:
+<ul>
+<li><strong>Tongue</strong>: Stick out tongue (deviates toward lesion side if weak)</li>
+<li><strong>Fasciculations</strong>: Observe tongue (LMN lesion)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>7. COMMON OSCE STATIONS</h2>
+
+<h3>Station 1: 6-Week Baby Check</h3>
+
+<strong>Task</strong>: Perform a routine 6-week newborn examination (8 minutes)
+
+<strong>Key Points</strong>:
+<ul>
+<li>Greet parent, wash hands</li>
+<li>Ask: "Any concerns about baby's health, feeding, growth?"</li>
+<li><strong>Systematic head-to-toe</strong>:</li>
+<p>
+</ul>
+  - <strong>Eyes</strong>: Red reflex (MUST check both)
+  - <strong>Mouth</strong>: Palpate palate (feel for posterior cleft)
+  - <strong>Heart</strong>: Auscultate 4 areas, check femoral pulses
+  - <strong>Hips</strong>: Barlow and Ortolani (do at end, baby calm)
+  - <strong>Testes</strong>: Both descended (male)
+</p>
+<ul>
+<li>"Baby is developing well. No concerns. Hearing screen passed. Next review at 6-8 weeks with GP."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Station 2: Respiratory Examination (Asthma)</h3>
+
+<strong>Task</strong>: Examine the respiratory system of this 7-year-old with chronic cough (8 minutes)
+
+<strong>Key Points</strong>:
+<ul>
+<li>General inspection: Well, able to speak full sentences</li>
+<li>Hands: Look for clubbing (CF, bronchiectasis - not expected in asthma)</li>
+<li>Chest: Observe for Harrison's sulci (chronic asthma), recession</li>
+<li>Auscultation: Bilateral expiratory wheeze</li>
+<li>"Findings consistent with asthma. Would like to check peak flow, trial salbutamol, consider spirometry."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Station 3: Cardiovascular Examination (Murmur)</h3>
+
+<strong>Task</strong>: Examine the cardiovascular system of this 5-year-old with a murmur (8 minutes)
+
+<strong>Key Points</strong>:
+<ul>
+<li>General inspection: Well, no cyanosis, no respiratory distress</li>
+<li>Hands: No clubbing</li>
+<li>Pulses: Check radial, brachial, femoral (MUST check femoral to exclude coarctation)</li>
+<li>Auscultation: Systematic (4 areas + back)</li>
+<li>Describe murmur: "Ejection systolic murmur, grade 2/6, loudest at pulmonary area, radiates to back, no thrill. Asymptomatic child. Features consistent with innocent pulmonary flow murmur, but would arrange echocardiogram to confirm."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Summary: Key Takeaways for Paediatric Examination</h2>
+
+<h3>1. Observe Before Touching</h3>
+<ul>
+<li>50% of diagnosis is observation</li>
+<li>Assess ABC, respiratory rate, work of breathing BEFORE detailed examination</li>
+<p>
+</ul>
+</p>
+
+<h3>2. Adapt to Child's Age and Cooperation</h3>
+<ul>
+<li>Young children: On parent's lap, start with least distressing</li>
+<li>Older children: Involve them, explain each step</li>
+<li>If child crying: Start with auscultation (before undressing)</li>
+<p>
+</ul>
+</p>
+
+<h3>3. Never Miss the Critical Examinations</h3>
+<ul>
+<li>Newborn: Red reflex (both eyes), heart (femoral pulses), hips (Barlow/Ortolani), testes</li>
+<li>Cardiovascular: Femoral pulses (coarctation), murmur character</li>
+<li>Respiratory: Respiratory rate, recession, oxygen saturations</li>
+<p>
+</ul>
+</p>
+
+<h3>4. Recognize <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</h3>
+<ul>
+<li>Absent red reflex = Cataract, retinoblastoma → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> referral</li>
+<li>Absent/weak femoral pulses = Coarctation → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> referral</li>
+<li>Positive Barlow/Ortolani = DDH → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> USS + orthopaedic review</li>
+<li>Murmur + symptoms = Pathological → Echocardiogram</li>
+<p>
+</ul>
+</p>
+
+<h3>5. Build Rapport</h3>
+<ul>
+<li>Greet child by name, get to eye level</li>
+<li>Use toys, bubbles, distraction</li>
+<li>Warm hands, warm stethoscope</li>
+<li>Make it fun ("Let's listen to your tummy rumbles!")</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>You're now equipped to perform comprehensive paediatric examinations! Practice these techniques and you'll excel in your ICRP paediatric rotation and OSCEs!</strong>
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

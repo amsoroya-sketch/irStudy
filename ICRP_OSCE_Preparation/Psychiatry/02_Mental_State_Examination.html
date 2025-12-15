@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental State Examination (MSE)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Psychiatry</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Psychiatry Navigation</h3>
+<ul>
+<li><a href="01_Psychiatric_History_Differentials.html">Psych History</a></li>
+<li><a href="02_Mental_State_Examination.html">MSE</a></li>
+</ul>
+</div>
+        <h1>Mental State Examination (MSE)</h1>
+
+<strong>Target Audience</strong>: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Program rotations in Psychiatry
+
+<strong>Learning Objectives</strong>: By the end of this document, you will be able to:
+<ol>
+<li>Perform a systematic Mental State Examination across all domains</li>
+<li>Integrate MSE findings with history to formulate differential diagnosis</li>
+<li>Recognize abnormal findings and their diagnostic significance</li>
+<li>Document MSE using standard psychiatric terminology</li>
+<li>Differentiate MSE (current state) from psychiatric history (longitudinal)</li>
+<li>Apply Dr. Amir Soufi's pattern recognition to MSE findings</li>
+<li>Avoid common IMG mistakes in MSE documentation</li>
+<li>Complete MSE OSCE stations confidently</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Dr. Amir Soufi's Principle Applied to Mental State Examination</h2>
+
+<blockquote><strong>"MSE is a SNAPSHOT of the patient's mental state RIGHT NOW - it's the psychiatric equivalent of physical examination. MSE findings CONFIRM your differential from history: If history suggests depression, MSE should show low mood, psychomotor retardation, poor eye contact. If history suggests psychosis, MSE should show hallucinations, delusions, thought disorder. MSE findings that DON'T match history = <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> (patient hiding symptoms, delirium, malingering, or you've misunderstood the history)."</strong></blockquote>
+
+<h3>The MSE Mindset</h3>
+
+<strong>Mental State Examination (MSE)</strong> = Assessment of patient's CURRENT mental state during interview
+
+<strong>vs</strong>
+
+<strong>Psychiatric History</strong> = Longitudinal account of patient's symptoms over time
+
+<strong>Example</strong>:
+<ul>
+<li><strong>History</strong>: "Patient reports hearing voices for the past 2 months, telling him he's worthless"</li>
+<li><strong>MSE</strong>: "Patient appeared to be responding to internal stimuli (pausing mid-sentence, looking to left, tilting head as if listening). When asked, confirmed currently hearing male voice saying 'You're useless'."</li>
+<p>
+</ul>
+</p>
+
+<strong>Dr. Amir's Pattern Recognition</strong>:
+
+<strong>Depression MSE pattern</strong>:
+<ul>
+<li>Appearance: Poor self-care, unkempt</li>
+<li>Behavior: Reduced eye contact, psychomotor retardation</li>
+<li>Speech: Slow, quiet, reduced quantity, increased latency</li>
+<li>Mood: "Low", "Terrible", "Empty"</li>
+<li>Affect: Congruent low mood, restricted range</li>
+<li>Thought: Themes of guilt, worthlessness, hopelessness; no psychosis</li>
+<li>Perception: Usually normal (unless severe depression with psychotic features)</li>
+<li>Cognition: Impaired concentration, may have pseudodementia</li>
+<li>Insight: Usually good (knows they're depressed)</li>
+<p>
+</ul>
+</p>
+
+<strong>Psychosis (Schizophrenia) MSE pattern</strong>:
+<ul>
+<li>Appearance: May be disheveled, bizarre clothing</li>
+<li>Behavior: Responding to internal stimuli, guarded, poor eye contact</li>
+<li>Speech: May have thought disorder (tangential, loosening of associations)</li>
+<li>Mood: May be blunted, incongruent</li>
+<li>Affect: Flat or incongruent (laughing when discussing sad topic)</li>
+<li>Thought: Delusions (persecutory, grandiose, referential), thought insertion/withdrawal/broadcasting</li>
+<li>Perception: Auditory hallucinations (running commentary, third-person, command), may have visual</li>
+<li>Cognition: May be impaired</li>
+<li>Insight: Poor (doesn't believe they're ill)</li>
+<p>
+</ul>
+</p>
+
+<strong>Mania MSE pattern</strong>:
+<ul>
+<li>Appearance: Brightly colored clothing, overly groomed or disheveled, makeup/jewelry excessive</li>
+<li>Behavior: Distractible, overactive, overfamiliar, intrusive</li>
+<li>Speech: Pressured (rapid, loud, difficult to interrupt), may have flight of ideas</li>
+<li>Mood: "Fantastic!", "Incredible!", "Never been better!"</li>
+<li>Affect: Elevated, euphoric, or irritable if challenged; labile (rapid changes)</li>
+<li>Thought: Grandiose delusions, racing thoughts</li>
+<li>Perception: May have mood-congruent hallucinations (God speaking to them)</li>
+<li>Cognition: Poor concentration (distractible)</li>
+<li>Insight: Poor (doesn't see problem)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>The MSE Framework: ABC STAMP</h2>
+
+<strong>A - Appearance and Behavior</strong>
+<strong>B - Behavior (Motor)</strong>
+<strong>C - Cognitive Function</strong>
+<strong>S - Speech</strong>
+<strong>T - Thought (Form and Content)</strong>
+<strong>A - Affect and Mood</strong>
+<strong>M - Perception</strong>
+<strong>P - Plus Insight and Judgment</strong>
+
+<em>Note: Different frameworks exist (some use "ASEPTIC"), but ABC STAMP is comprehensive and easy to remember</em>
+
+<hr>
+
+<h2>1. APPEARANCE</h2>
+
+<strong>What you observe</strong>: Physical appearance, grooming, hygiene, clothing, physical health indicators
+
+<h3>Systematic Assessment</h3>
+
+<strong>Apparent Age</strong>:
+<ul>
+<li>Does patient look their stated age?</li>
+<li>"45-year-old woman appearing stated age" vs "appearing older than stated age" (chronic illness, poor self-care, substance use)</li>
+<p>
+</ul>
+</p>
+
+<strong>Body Habitus</strong>:
+<ul>
+<li>Thin, average, overweight, obese, cachectic (severe weight loss/wasting)</li>
+<li>"Thin build" (eating disorder?), "Obese" (atypical depression, antipsychotic side effect)</li>
+<p>
+</ul>
+</p>
+
+<strong>Grooming and Hygiene</strong>:
+<ul>
+<li>Well-groomed vs unkempt, clean vs dirty</li>
+<li>Hair: Combed, styled, or disheveled, matted</li>
+<li>Nails: Clean, dirty, bitten (anxiety)</li>
+<li>Facial hair: Shaved (men) or unshaven</li>
+<li>Body odor: Present or absent</li>
+<li><strong>Examples</strong>:</li>
+<p>
+</ul>
+  - "Well-groomed, clean, no body odor" (normal, or high-functioning despite illness)
+  - "Poor hygiene, disheveled hair, body odor present, appearing not to have washed recently" (severe depression, psychosis, dementia, substance use, homelessness)
+</p>
+
+<strong>Clothing</strong>:
+<ul>
+<li>Appropriate for weather, season, setting?</li>
+<li>Clean, torn, mismatched, bizarre</li>
+<li><strong>Examples</strong>:</li>
+<p>
+</ul>
+  - "Casually dressed, clothing clean and appropriate for setting" (normal)
+  - "Wearing winter coat in summer, multiple layers" (homelessness, poverty, psychosis)
+  - "Brightly colored mismatched clothing, excessive jewelry" (mania)
+  - "Wearing sunglasses indoors, hood up" (paranoia, photophobia in migraine/mania)
+</p>
+
+<strong>Physical Health Indicators</strong>:
+<ul>
+<li>Scars (self-harm: linear scars on forearms, wrists)</li>
+<li>Tattoos, piercings</li>
+<li>Signs of substance use:</li>
+<p>
+</ul>
+  - Track marks (IV drug use)
+  - Nasal septum perforation (cocaine insufflation)
+  - Poor dentition (methamphetamine "meth mouth", bulimia - erosion of enamel from vomiting)
+  - Jaundice (alcohol-related liver disease)
+  - Spider naevi, palmar erythema (chronic liver disease)
+</p>
+<ul>
+<li>Tremor: Fine (anxiety, hyperthyroidism, alcohol withdrawal, lithium), coarse (Parkinson's, antipsychotic side effect)</li>
+<li>Abnormal movements: Tardive dyskinesia (involuntary movements of face/tongue - antipsychotic side effect), akathisia (restlessness - antipsychotic side effect)</li>
+<p>
+</ul>
+</p>
+
+<strong>Distinguishing Features</strong>:
+<ul>
+<li>Glasses, hearing aids, walking aids (cane, walker)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>2. BEHAVIOR (Motor Activity and Interaction)</h2>
+
+<strong>What you observe</strong>: How patient interacts with you and environment, motor activity level, eye contact, rapport
+
+<h3>Eye Contact</h3>
+
+<strong>Normal</strong>: Maintains appropriate eye contact, looks at you when speaking/listening
+
+<strong>Abnormal</strong>:
+<ul>
+<li><strong>Reduced/Avoidant</strong>: Depression, social anxiety, autism, cultural (in some cultures, direct eye contact is disrespectful)</li>
+<li><strong>Intense/Staring</strong>: Psychosis (paranoia), mania, autism</li>
+<li><strong>Darting/Suspicious</strong>: Paranoia, anxiety</li>
+<p>
+</ul>
+</p>
+
+<strong>Documentation</strong>:
+<ul>
+<li>"Maintained good eye contact throughout" (normal)</li>
+<li>"Minimal eye contact, gaze averted" (depression, anxiety, cultural)</li>
+<li>"Intense, unwavering eye contact" (mania, paranoia)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Rapport</h3>
+
+<strong>Normal</strong>: Cooperative, engaged, responsive to questions
+
+<strong>Abnormal</strong>:
+<ul>
+<li><strong>Guarded</strong>: Suspicious, reluctant to answer questions (paranoia, personality disorder)</li>
+<li><strong>Overfamiliar</strong>: Inappropriate familiarity, crosses boundaries (mania, frontal lobe disinhibition, intellectual disability)</li>
+<li><strong>Hostile</strong>: Angry, aggressive (mania - if challenged, paranoia, antisocial personality disorder, intoxication)</li>
+<li><strong>Withdrawn</strong>: Minimal interaction (severe depression, negative symptoms of schizophrenia, autism)</li>
+<p>
+</ul>
+</p>
+
+<strong>Documentation</strong>:
+<ul>
+<li>"Cooperative and engaged throughout interview" (normal)</li>
+<li>"Guarded, reluctant to answer questions, appeared suspicious of interviewer" (paranoia)</li>
+<li>"Overfamiliar, addressed interviewer by first name unsolicited, invaded personal space" (mania, disinhibition)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Motor Activity (Psychomotor)</h3>
+
+<strong>Normal</strong>: Appropriate movement, settled
+
+<strong>Abnormal</strong>:
+
+<strong>Psychomotor Retardation</strong> (slowed):
+<ul>
+<li>Slow movements, reduced spontaneous movement</li>
+<li>Long pauses before responding</li>
+<li>Reduced facial expression</li>
+<li><strong>Severe</strong>: Stupor (motionless, mute, but conscious)</li>
+<li><strong>Seen in</strong>: Depression, Parkinson's disease, antipsychotic side effects, hypothyroidism</li>
+<p>
+</ul>
+</p>
+
+<strong>Psychomotor Agitation</strong> (increased):
+<ul>
+<li>Restlessness, fidgeting, unable to sit still</li>
+<li>Pacing, hand-wringing, picking at skin/clothing</li>
+<li><strong>Akathisia</strong> (antipsychotic-induced restlessness - patient feels compelled to move)</li>
+<li><strong>Seen in</strong>: Anxiety, agitated depression, mania, delirium, akathisia, alcohol/benzodiazepine withdrawal</li>
+<p>
+</ul>
+</p>
+
+<strong>Abnormal Movements</strong>:
+<ul>
+<li><strong>Tremor</strong>: Fine (anxiety, withdrawal, thyrotoxicosis, lithium) vs coarse (Parkinson's, essential tremor)</li>
+<li><strong>Tardive dyskinesia</strong>: Involuntary repetitive movements (lip smacking, chewing, tongue protrusion, grimacing) - late complication of antipsychotics</li>
+<li><strong>Dystonia</strong>: Sustained muscle contractions (torticollis, oculogyric crisis) - acute antipsychotic side effect</li>
+<li><strong>Tics</strong>: Sudden, rapid, recurrent movements or vocalizations (Tourette syndrome, stimulant use)</li>
+<li><strong>Catatonia</strong>: Motor immobility (stupor), excessive motor activity (excitement), posturing, waxy flexibility, echolalia, echopraxia - seen in schizophrenia, mood disorders, medical conditions</li>
+<p>
+</ul>
+</p>
+
+<strong>Responding to Internal Stimuli</strong>:
+<ul>
+<li>Pausing mid-sentence, appearing to listen</li>
+<li>Looking to side, tilting head as if hearing something</li>
+<li>Talking to self, laughing inappropriately</li>
+<li><strong>Suggests</strong>: Auditory hallucinations</li>
+<p>
+</ul>
+</p>
+
+<strong>Documentation</strong>:
+<ul>
+<li>"Normal psychomotor activity" (normal)</li>
+<li>"Psychomotor retardation noted - slow movements, long latency before responses, reduced spontaneous movement" (depression)</li>
+<li>"Psychomotor agitation - restless, fidgeting, pacing around room" (anxiety, mania)</li>
+<li>"Appeared to be responding to internal stimuli - paused mid-sentence, looked to left, tilted head as if listening" (auditory hallucinations)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>3. SPEECH</h2>
+
+<strong>What you observe</strong>: Rate, volume, quantity, tone, spontaneity
+
+<strong>Speech is the WINDOW into thought</strong> - speech abnormalities often reflect thought disorder
+
+<h3>Rate</h3>
+
+<strong>Normal</strong>: Conversational pace
+
+<strong>Abnormal</strong>:
+<ul>
+<li><strong>Slow</strong>: Depression, hypothyroidism, sedation (medications, substances)</li>
+<li><strong>Rapid</strong>: Mania, anxiety, hyperthyroidism, stimulant use</li>
+<li><strong>Pressured</strong> (extreme rapid): Mania - rapid, loud, difficult to interrupt, feels driven to speak</li>
+<p>
+</ul>
+</p>
+
+<h3>Volume</h3>
+
+<strong>Normal</strong>: Conversational volume
+
+<strong>Abnormal</strong>:
+<ul>
+<li><strong>Quiet/Soft</strong>: Depression, anxiety, paranoia (doesn't want to be overheard)</li>
+<li><strong>Loud</strong>: Mania, deafness, psychosis</li>
+<p>
+</ul>
+</p>
+
+<h3>Quantity (Amount)</h3>
+
+<strong>Normal</strong>: Appropriate responses, not overly verbose or monosyllabic
+
+<strong>Abnormal</strong>:
+<ul>
+<li><strong>Reduced</strong> (poverty of speech): Depression, negative symptoms of schizophrenia, selective mutism</li>
+<li><strong>Increased</strong> (logorrhoea): Mania, anxiety, some personality disorders</li>
+<p>
+</ul>
+</p>
+
+<h3>Tone</h3>
+
+<strong>Normal</strong>: Varied intonation (prosody)
+
+<strong>Abnormal</strong>:
+<ul>
+<li><strong>Monotone</strong>: Depression, Parkinson's disease, negative symptoms of schizophrenia, autism</li>
+<li><strong>Overly animated</strong>: Mania</li>
+<p>
+</ul>
+</p>
+
+<h3>Fluency</h3>
+
+<strong>Normal</strong>: Fluent, no difficulty finding words
+
+<strong>Abnormal</strong>:
+<ul>
+<li><strong>Dysarthria</strong>: Difficulty articulating (slurred speech) - neurological cause (stroke, alcohol intoxication, sedative medication)</li>
+<li><strong>Dysphasia</strong>: Difficulty with language (expressive: can't find words; receptive: can't understand) - neurological cause (stroke, dementia)</li>
+<li><strong>Stutter</strong>: Repetition of sounds or syllables - developmental or onset with anxiety</li>
+<p>
+</ul>
+</p>
+
+<h3>Spontaneity</h3>
+
+<strong>Normal</strong>: Spontaneous responses, initiates conversation
+
+<strong>Abnormal</strong>:
+<ul>
+<li><strong>Reduced spontaneity</strong>: Answers only when asked, doesn't elaborate, doesn't initiate - depression, autism, intellectual disability</li>
+<li><strong>Excessive spontaneity</strong>: Interrupts, speaks before being asked - mania, ADHD</li>
+<p>
+</ul>
+</p>
+
+<h3>Latency (Delay Before Response)</h3>
+
+<strong>Normal</strong>: Answers promptly
+
+<strong>Abnormal</strong>:
+<ul>
+<li><strong>Increased latency</strong>: Long pause before answering - depression, thought blocking (schizophrenia), cognitive impairment</li>
+<li><strong>Reduced latency</strong>: Answers before question finished - mania, ADHD</li>
+<p>
+</ul>
+</p>
+
+<h3>Documentation Examples</h3>
+
+<ul>
+<li>"Speech: Normal rate, volume, and quantity. Spontaneous and fluent." (Normal)</li>
+<li>"Speech: Slow rate, reduced volume and quantity. Increased latency before responses. Monotone." (Depression)</li>
+<li>"Speech: Pressured (rapid, loud, difficult to interrupt). Increased quantity, spontaneous." (Mania)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>4. MOOD and AFFECT</h2>
+
+<strong>Critical distinction</strong>:
+<ul>
+<li><strong>Mood</strong> = Patient's SUBJECTIVE description of emotional state (how patient FEELS)</li>
+<li><strong>Affect</strong> = Examiner's OBJECTIVE observation of emotional expression (how patient APPEARS)</li>
+<p>
+</ul>
+</p>
+
+<h3>MOOD (Subjective)</h3>
+
+<strong>How to assess</strong>:
+<ul>
+<li>Ask directly: "How would you describe your mood?" "How are you feeling?"</li>
+<li>Use patient's OWN WORDS in documentation</li>
+<p>
+</ul>
+</p>
+
+<strong>Examples</strong>:
+<ul>
+<li>Depression: "Low", "Sad", "Empty", "Numb", "Terrible", "Black"</li>
+<li>Anxiety: "Anxious", "Worried", "On edge", "Scared"</li>
+<li>Mania: "Fantastic", "Amazing", "On top of the world", "Never been better"</li>
+<li>Euthymic (normal): "Good", "Okay", "Alright", "Not too bad"</li>
+<li>Irritable: "Angry", "Frustrated", "Irritable"</li>
+<p>
+</ul>
+</p>
+
+<strong>Document as</strong>: Mood: "Low" (patient's words in quotes)
+
+<strong>If patient can't describe mood</strong>:
+<ul>
+<li>Rate on scale: "On a scale of 0-10, where 0 is the worst you've ever felt and 10 is the best, where would you put yourself now?" (Mood: 3/10)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>AFFECT (Objective)</h3>
+
+<strong>Affect</strong> = Observable expression of emotion through facial expression, body language, tone of voice
+
+<p>
+Describe affect using 4 parameters:
+</p>
+
+<h4>1. Type/Quality</h4>
+
+<strong>Normal</strong>:
+<ul>
+<li><strong>Euthymic</strong>: Normal mood</li>
+<p>
+</ul>
+</p>
+
+<strong>Abnormal</strong>:
+<ul>
+<li><strong>Depressed/Low</strong>: Sad facial expression, tearful, downturned mouth</li>
+<li><strong>Elevated/Euphoric</strong>: Excessively happy, smiling, laughing</li>
+<li><strong>Anxious</strong>: Worried facial expression, tense</li>
+<li><strong>Irritable</strong>: Annoyed, frustrated expression</li>
+<li><strong>Angry</strong>: Hostile expression</li>
+<li><strong>Flat</strong>: No emotional expression, blank face (negative symptom of schizophrenia, severe depression)</li>
+<li><strong>Blunted</strong>: Reduced but not absent emotional expression (less severe than flat)</li>
+<p>
+</ul>
+</p>
+
+<h4>2. Range</h4>
+
+<strong>Normal</strong>:
+<ul>
+<li><strong>Full range</strong>: Expresses variety of emotions during interview (can be happy, sad, worried appropriately)</li>
+<p>
+</ul>
+</p>
+
+<strong>Abnormal</strong>:
+<ul>
+<li><strong>Restricted/Limited range</strong>: Few emotional expressions (depression, negative symptoms of schizophrenia)</li>
+<li><strong>Blunted</strong>: Markedly reduced range</li>
+<li><strong>Flat</strong>: No range, no emotional expression</li>
+<p>
+</ul>
+</p>
+
+<h4>3. Congruence (Does affect match mood and content of thought?)</h4>
+
+<strong>Congruent</strong>:
+<ul>
+<li>Affect matches mood (patient says "I'm sad" and looks sad)</li>
+<li>Affect matches thought content (patient discusses sad topic and looks sad)</li>
+<p>
+</ul>
+</p>
+
+<strong>Incongruent</strong>:
+<ul>
+<li>Affect doesn't match mood (patient says "I'm sad" but is smiling)</li>
+<li>Affect doesn't match thought content (patient discusses death of parent while laughing)</li>
+<li><strong>Seen in</strong>: Schizophrenia, frontal lobe pathology, some personality disorders</li>
+<p>
+</ul>
+</p>
+
+<h4>4. Reactivity/Mobility (Does affect change during interview?)</h4>
+
+<strong>Reactive</strong>:
+<ul>
+<li>Affect changes appropriately in response to topics discussed</li>
+<p>
+</ul>
+</p>
+
+<strong>Non-reactive/Fixed</strong>:
+<ul>
+<li>Affect doesn't change regardless of topic</li>
+<li><strong>Seen in</strong>: Severe depression, negative symptoms of schizophrenia</li>
+<p>
+</ul>
+</p>
+
+<h3>Documentation Examples</h3>
+
+<ul>
+<li>"Affect: Euthymic, full range, congruent with mood and thought content, reactive." (Normal)</li>
+<li>"Affect: Low mood, restricted range, congruent with mood and thought content." (Depression)</li>
+<li>"Affect: Elevated, full range, congruent with mood." (Mania)</li>
+<li>"Affect: Flat (no emotional expression observed), incongruent (smiled when discussing death of mother)." (Schizophrenia)</li>
+<li>"Affect: Anxious, full range, reactive, congruent." (Anxiety)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>5. THOUGHT</h2>
+
+<p>
+Assess <strong>two</strong> aspects:
+</p>
+<ol>
+<li><strong>Form</strong> (How patient thinks - structure of thought)</li>
+<li><strong>Content</strong> (What patient thinks - topics, delusions, obsessions, suicidal ideation)</li>
+<p>
+</ol>
+</p>
+
+<h3>THOUGHT FORM (How Patient Thinks)</h3>
+
+<strong>Assessed through SPEECH</strong> - abnormalities in speech reflect thought disorder
+
+<strong>Normal</strong>:
+<ul>
+<li><strong>Linear/Logical</strong>: Thoughts follow logical sequence, goal-directed</li>
+<p>
+</ul>
+</p>
+
+<strong>Abnormal</strong>:
+
+<strong>Circumstantial</strong>:
+<ul>
+<li>Provides excessive unnecessary detail before eventually reaching point</li>
+<li>"Roundabout" - gets there in the end</li>
+<li><strong>Example</strong>: Asked "How did you get here today?" Patient: "Well, I woke up this morning and had breakfast, which was cereal, corn flakes actually, with milk, and then I brushed my teeth, and then I got dressed and put on my blue shirt, and then I walked to the bus stop and waited for the bus, which was 5 minutes late, and then I caught the bus here."</li>
+<li><strong>Seen in</strong>: Obsessive traits, anxiety, intellectual disability, dementia</li>
+<p>
+</ul>
+</p>
+
+<strong>Tangential</strong>:
+<ul>
+<li>Goes off-topic, never returns to original point</li>
+<li><strong>Example</strong>: Asked "How did you get here?" Patient: "I came by bus. Buses are very unreliable these days. The government should invest more in public transport. I used to work for the government, you know..."</li>
+<li><strong>Seen in</strong>: Mania, schizophrenia, ADHD</li>
+<p>
+</ul>
+</p>
+
+<strong>Flight of Ideas</strong>:
+<ul>
+<li>Rapid jumping between topics, with DISCERNIBLE connections (rhyming, punning, clang associations)</li>
+<li><strong>Example</strong>: "I came by bus, the driver was very gruff, I've had enough, I need some snuff, it's very tough, living rough..." (rhyming - clang association)</li>
+<li><strong>Seen in</strong>: Mania</li>
+<p>
+</ul>
+</p>
+
+<strong>Loosening of Associations</strong> (Derailment):
+<ul>
+<li>Jumping between topics with NO discernible connection ("knight's move thinking")</li>
+<li><strong>Example</strong>: "I came by bus. My mother had blue eyes. Trains are made of metal."</li>
+<li><strong>Seen in</strong>: Schizophrenia</li>
+<p>
+</ul>
+</p>
+
+<strong>Word Salad</strong>:
+<ul>
+<li>Completely incoherent speech, words strung together with no meaning</li>
+<li><strong>Example</strong>: "Bus the walking mother sky today elephant purple question."</li>
+<li><strong>Seen in</strong>: Severe schizophrenia</li>
+<p>
+</ul>
+</p>
+
+<strong>Thought Blocking</strong>:
+<ul>
+<li>Sudden interruption in train of thought, mid-sentence</li>
+<li>Patient stops speaking, appears to lose train of thought, can't continue</li>
+<li><strong>Seen in</strong>: Schizophrenia</li>
+<p>
+</ul>
+</p>
+
+<strong>Perseveration</strong>:
+<ul>
+<li>Repeating same word or phrase over and over</li>
+<li><strong>Example</strong>: Asked "How are you today?" "I'm fine." "What brings you here?" "I'm fine." "What's your name?" "I'm fine."</li>
+<li><strong>Seen in</strong>: Schizophrenia, dementia, brain injury</li>
+<p>
+</ul>
+</p>
+
+<strong>Neologisms</strong>:
+<ul>
+<li>Made-up words with no meaning</li>
+<li><strong>Example</strong>: "I came here on the blargship" (blargship = made-up word)</li>
+<li><strong>Seen in</strong>: Schizophrenia</li>
+<p>
+</ul>
+</p>
+
+<strong>Clang Associations</strong>:
+<ul>
+<li>Words chosen based on sound (rhyming) rather than meaning</li>
+<li><strong>Example</strong>: "I'm feeling fine, drinking wine, it's time to dine, reading a sign..."</li>
+<li><strong>Seen in</strong>: Mania, schizophrenia</li>
+<p>
+</ul>
+</p>
+
+<h3>Documentation Examples</h3>
+
+<ul>
+<li>"Thought form: Linear and goal-directed." (Normal)</li>
+<li>"Thought form: Circumstantial - provides excessive detail but eventually reaches point." (Anxiety, obsessive traits)</li>
+<li>"Thought form: Tangential - goes off-topic, doesn't return to original point." (Mania)</li>
+<li>"Thought form: Loosening of associations noted - jumps between unrelated topics. Evidence of thought blocking mid-sentence." (Schizophrenia)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>THOUGHT CONTENT (What Patient Thinks)</h3>
+
+<strong>Normal</strong>:
+<ul>
+<li>Age-appropriate concerns (work, family, health, finances)</li>
+<li>No pathological preoccupations</li>
+<p>
+</ul>
+</p>
+
+<strong>Abnormal</strong>:
+
+<h4>Delusions</h4>
+
+<strong>Delusion</strong> = Fixed, false belief, not shared by patient's culture/religion, held with strong conviction despite evidence to contrary
+
+<strong>Types</strong>:
+
+<strong>Persecutory</strong> (most common):
+<ul>
+<li>Belief that others are trying to harm, follow, poison, plot against patient</li>
+<li><strong>Example</strong>: "The CIA is following me", "My neighbors are poisoning my water"</li>
+<p>
+</ul>
+</p>
+
+<strong>Grandiose</strong>:
+<ul>
+<li>Inflated sense of worth, power, knowledge, identity</li>
+<li><strong>Example</strong>: "I am God's messenger", "I have special powers", "I'm a billionaire" (when not true)</li>
+<p>
+</ul>
+</p>
+
+<strong>Referential</strong> (Ideas of Reference):
+<ul>
+<li>Belief that neutral events have special personal significance</li>
+<li><strong>Example</strong>: "The TV news is about me", "People on the street are talking about me", "Songs on the radio contain messages for me"</li>
+<p>
+</ul>
+</p>
+
+<strong>Erotomanic</strong>:
+<ul>
+<li>False belief that someone (usually higher status) is in love with patient</li>
+<li><strong>Example</strong>: "Brad Pitt is in love with me and sends me secret messages"</li>
+<p>
+</ul>
+</p>
+
+<strong>Jealous</strong> (Othello syndrome):
+<ul>
+<li>Unfounded belief that partner is unfaithful</li>
+<p>
+</ul>
+</p>
+
+<strong>Somatic</strong>:
+<ul>
+<li>False belief about bodily functions or sensations</li>
+<li><strong>Example</strong>: "I have cancer" (when medical tests show no cancer), "Worms are eating my brain"</li>
+<p>
+</ul>
+</p>
+
+<strong>Nihilistic</strong>:
+<ul>
+<li>Belief that self, others, or world doesn't exist or is about to end</li>
+<li><strong>Example</strong>: "I'm dead", "The world has ended"</li>
+<p>
+</ul>
+</p>
+
+<strong>Bizarre</strong> (First-Rank Symptoms of Schizophrenia):
+<ul>
+<li><strong>Thought insertion</strong>: Belief that thoughts are being put into one's mind by external force</li>
+<li><strong>Thought withdrawal</strong>: Belief that thoughts are being removed from one's mind</li>
+<li><strong>Thought broadcasting</strong>: Belief that one's thoughts are being broadcast so others can hear them</li>
+<li><strong>Passivity phenomena</strong>: Belief that one's actions, feelings, impulses are controlled by external force</li>
+<li><strong>Example</strong>: "The government is inserting thoughts into my brain via satellite"</li>
+<p>
+</ul>
+</p>
+
+<strong>Assessing Delusions</strong>:
+<ul>
+<li>Don't challenge directly (damages rapport)</li>
+<li>Ask exploratory questions: "Tell me more about that", "How do you know?", "What evidence do you have?"</li>
+<li>Assess conviction: "How certain are you about this?" (0-100%)</li>
+<li>Assess impact: "How does this affect your life?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Obsessions</h4>
+
+<strong>Obsession</strong> = Recurrent, intrusive, unwanted thoughts, images, or urges that cause anxiety
+
+<strong>Common themes</strong>: Contamination, harm, symmetry, sexual/religious
+
+<strong>Example</strong>: "I have constant thoughts that I've left the stove on and the house will burn down. I know it's irrational, but I can't stop thinking it."
+
+<strong>Differentiate from delusions</strong>: Patient with obsessions has INSIGHT (knows thoughts are irrational), patient with delusions has NO insight (believes delusion is real)
+
+<hr>
+
+<h4>Suicidal Ideation</h4>
+
+<strong>See Risk Assessment section</strong> - always assess in depression, psychosis, substance use
+
+<strong>Document</strong>:
+<ul>
+<li>"Denies suicidal ideation" (if absent)</li>
+<li>"Passive suicidal ideation present ('wishes could go to sleep and not wake up'), no active suicidal ideation, no plan, no intent" (if passive)</li>
+<li>"Active suicidal ideation with plan (overdose on saved medications), high intent, minimal protective factors identified" (if active - requires <span style="color: #e74c3c; font-weight: bold;">URGENT</span> action)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Homicidal/Violent Ideation</h4>
+
+<strong>Assess if</strong>: History of violence, anger/irritability, paranoid delusions, command hallucinations
+
+<strong>Document</strong>:
+<ul>
+<li>"Denies homicidal ideation" (if absent)</li>
+<li>"Expresses anger toward ex-partner but denies homicidal ideation or intent" (angry but not violent ideation)</li>
+<li>"Expresses intent to harm ex-partner ('I'm going to kill him'), has plan (knife), has access to victim. High risk of violence." (requires <span style="color: #e74c3c; font-weight: bold;">URGENT</span> action)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Documentation Examples - Thought Content</h3>
+
+<ul>
+<li>"Thought content: No delusions, obsessions, or suicidal/homicidal ideation elicited. Preoccupied with work stress." (Normal)</li>
+<li>"Thought content: Persecutory delusions ('neighbors are poisoning my food'), grandiose delusions ('I have special powers from God'). Denies suicidal ideation." (Schizophrenia with psychosis)</li>
+<li>"Thought content: Themes of guilt and worthlessness. Passive suicidal ideation present, no active ideation or plan." (Depression)</li>
+<li>"Thought content: Obsessive thoughts about contamination, causing significant distress. Insight preserved (recognizes thoughts are excessive)." (OCD)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>6. PERCEPTION</h2>
+
+<strong>Perception</strong> = How patient experiences the world through senses
+
+<strong>Abnormalities</strong>:
+<ol>
+<li>Hallucinations</li>
+<li>Illusions</li>
+<li>Depersonalization</li>
+<li>Derealization</li>
+<p>
+</ol>
+</p>
+
+<h3>Hallucinations</h3>
+
+<strong>Hallucination</strong> = Perception in absence of external stimulus (perceiving something that isn't there)
+
+<h4>Auditory Hallucinations (Most Common in Schizophrenia)</h4>
+
+<strong>Types</strong>:
+
+<strong>Second-Person</strong> (voices speaking TO patient):
+<ul>
+<li>"You're useless", "Kill yourself", "Everyone hates you"</li>
+<li>Command hallucinations → RISK ASSESSMENT needed</li>
+<p>
+</ul>
+</p>
+
+<strong>Third-Person</strong> (voices speaking ABOUT patient):
+<ul>
+<li>"She's stupid", "He's going to hurt himself"</li>
+<li><strong>First-rank symptom of schizophrenia</strong> if voices argue about patient or provide running commentary</li>
+<p>
+</ul>
+</p>
+
+<strong>Running Commentary</strong>:
+<ul>
+<li>Voices narrating patient's actions: "He's walking now", "She's opening the door"</li>
+<p>
+</ul>
+</p>
+
+<strong>Thought Echo</strong>:
+<ul>
+<li>Hearing one's own thoughts spoken aloud</li>
+<p>
+</ul>
+</p>
+
+<strong>Assessing Auditory Hallucinations</strong>:
+<ul>
+<li>"Do you hear voices when no one is around?"</li>
+<li><strong>If yes</strong>:</li>
+<p>
+</ul>
+  - "How many voices?" (One, several)
+  - "Male or female?"
+  - "Do you recognize the voices?" (God, devil, deceased relative, stranger)
+  - "What do they say?" (Content)
+  - "Do they talk to you or about you?" (Second-person vs third-person)
+  - "Do they tell you to do things?" (Command hallucinations)
+  - "Do you feel you have to obey them?" (Compulsion to obey = higher risk)
+</p>
+
+<hr>
+
+<h4>Visual Hallucinations</h4>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong>: Visual hallucinations are MORE common in ORGANIC psychosis than functional psychosis
+
+<strong>Causes</strong>:
+<ul>
+<li><strong>Organic</strong>: Delirium, dementia (Lewy body dementia), Charles Bonnet syndrome (visual loss), seizures (occipital lobe), migraine aura, hypnagogic/hypnopompic (falling asleep/waking - normal)</li>
+<li><strong>Substances</strong>: LSD, psilocybin (magic mushrooms), alcohol withdrawal (delirium tremens)</li>
+<li><strong>Psychiatric</strong>: Schizophrenia (less common than auditory), severe depression with psychotic features</li>
+<p>
+</ul>
+</p>
+
+<strong>Examples</strong>:
+<ul>
+<li>"Seeing spiders crawling on walls" (delirium tremens, stimulant use)</li>
+<li>"Seeing deceased relatives" (grief hallucinations - common in bereavement, not pathological if limited to first few weeks)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Other Hallucinations</h4>
+
+<strong>Olfactory</strong> (smell):
+<ul>
+<li><strong>Causes</strong>: Temporal lobe epilepsy, brain tumor, schizophrenia</li>
+<li><strong>Example</strong>: "Smelling burning when nothing is burning"</li>
+<p>
+</ul>
+</p>
+
+<strong>Gustatory</strong> (taste):
+<ul>
+<li><strong>Causes</strong>: Temporal lobe epilepsy</li>
+<li><strong>Example</strong>: "Metallic taste in mouth"</li>
+<p>
+</ul>
+</p>
+
+<strong>Tactile</strong> (touch):
+<ul>
+<li><strong>Causes</strong>: Delirium tremens, stimulant use (formication - sensation of bugs crawling on skin), schizophrenia</li>
+<li><strong>Example</strong>: "Feeling bugs crawling under skin" (cocaine, methamphetamine use)</li>
+<p>
+</ul>
+</p>
+
+<strong>Somatic</strong> (bodily sensations):
+<ul>
+<li><strong>Example</strong>: "Feeling internal organs moving", "Feeling electricity flowing through body"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Illusions</h3>
+
+<strong>Illusion</strong> = Misperception of REAL external stimulus (perceiving something that IS there, but incorrectly)
+
+<strong>Example</strong>: Seeing coat hanging on door and perceiving it as a person
+
+<strong>Causes</strong>: Normal (in poor lighting, when tired), delirium, anxiety
+
+<strong>Differentiate from hallucination</strong>: Illusion has REAL stimulus (coat), hallucination has NO stimulus
+
+<hr>
+
+<h3>Depersonalization</h3>
+
+<strong>Depersonalization</strong> = Feeling detached from oneself, observing oneself from outside
+
+<strong>Example</strong>: "I feel like I'm watching myself from above", "I don't feel real", "I feel like a robot"
+
+<strong>Causes</strong>: Anxiety, panic attacks, depression, dissociative disorders, PTSD, substances (cannabis, ketamine)
+
+<hr>
+
+<h3>Derealization</h3>
+
+<strong>Derealization</strong> = Feeling that world is unreal, dreamlike, distant
+
+<strong>Example</strong>: "Everything feels like a dream", "The world doesn't feel real"
+
+<strong>Causes</strong>: Similar to depersonalization
+
+<hr>
+
+<h3>Documentation Examples - Perception</h3>
+
+<ul>
+<li>"Perception: No hallucinations, illusions, depersonalization, or derealization elicited." (Normal)</li>
+<li>"Perception: Auditory hallucinations present - hears male voice saying 'You're useless, you should die' (second-person, command hallucinations). Denies visual hallucinations." (Depression with psychotic features, schizophrenia)</li>
+<li>"Perception: Visual hallucinations - seeing spiders crawling on walls. Denies auditory hallucinations." (Delirium, substance withdrawal)</li>
+<li>"Perception: Depersonalization - 'I feel detached from myself, like I'm watching myself from outside'. No hallucinations." (Anxiety, dissociative disorder)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>7. COGNITION</h2>
+
+<strong>Cognitive function</strong> = Memory, attention, orientation, concentration
+
+<strong>Screening tools</strong>:
+<ul>
+<li><strong>MMSE</strong> (Mini-Mental State Examination) - 30 points, <24 suggests cognitive impairment</li>
+<li><strong>MoCA</strong> (Montreal Cognitive Assessment) - 30 points, more sensitive for mild cognitive impairment, <26 abnormal</li>
+<li><strong>AMT</strong> (Abbreviated Mental Test) - 10 points, quick screen</li>
+<p>
+</ul>
+</p>
+
+<strong>When to assess formally</strong>: Suspected dementia, delirium, cognitive impairment
+
+<h3>Orientation</h3>
+
+<strong>Assess orientation to</strong>:
+<ol>
+<li><strong>Time</strong>: "What's the date today?" (day, month, year)</li>
+<li><strong>Place</strong>: "Where are you now?" (building, suburb, city)</li>
+<li><strong>Person</strong>: "What's your name?" (own name - rarely impaired unless severe dementia, delirium)</li>
+<p>
+</ol>
+</p>
+
+<strong>Scoring</strong>:
+<ul>
+<li>Fully oriented to time, place, and person (normal)</li>
+<li>Disoriented to time (mild - common in hospital admission)</li>
+<li>Disoriented to place (moderate - delirium, dementia)</li>
+<li>Disoriented to person (severe - severe dementia, delirium)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Attention and Concentration</h3>
+
+<strong>Tests</strong>:
+
+<strong>Serial 7s</strong>:
+<ul>
+<li>"Starting from 100, subtract 7, and keep subtracting 7."</li>
+<li>100, 93, 86, 79, 72, 65 (correct sequence)</li>
+<li><strong>Impaired</strong>: Multiple errors, can't complete task</li>
+<li><strong>Confounders</strong>: Poor education, dyscalculia, anxiety</li>
+<p>
+</ul>
+</p>
+
+<strong>Spell WORLD backwards</strong>:
+<ul>
+<li>D-L-R-O-W (correct)</li>
+<li>Less dependent on education than serial 7s</li>
+<p>
+</ul>
+</p>
+
+<strong>Months backwards</strong>:
+<ul>
+<li>December, November, October, September, August... (correct)</li>
+<p>
+</ul>
+</p>
+
+<strong>Digit Span</strong>:
+<ul>
+<li>Repeat increasing sequences of numbers (forward: 2-4-7, backward: 9-5-1)</li>
+<li>Normal: ≥5 digits forward, ≥3 digits backward</li>
+<p>
+</ul>
+</p>
+
+<strong>Impaired in</strong>: Delirium, dementia, depression (pseudodementia - impaired concentration, not memory), ADHD, anxiety (poor concentration when anxious)
+
+<hr>
+
+<h3>Memory</h3>
+
+<strong>Types</strong>:
+
+<strong>Immediate Recall</strong> (registration):
+<ul>
+<li>"I'm going to say 3 words. Please repeat them: Apple, Table, Penny"</li>
+<li>Patient repeats immediately</li>
+<li><strong>Impaired</strong>: Severe dementia, delirium, inattention</li>
+<p>
+</ul>
+</p>
+
+<strong>Short-Term Memory</strong> (recent):
+<ul>
+<li>After 5 minutes: "Can you recall those 3 words I asked you to remember?"</li>
+<li>Normal: Recalls 3/3</li>
+<li><strong>Impaired</strong>: Dementia (especially Alzheimer's - hallmark is short-term memory loss), delirium, depression (pseudodementia)</li>
+<p>
+</ul>
+</p>
+
+<strong>Long-Term Memory</strong> (remote):
+<ul>
+<li>"Where were you born? What was your first job? What significant historical events do you remember?"</li>
+<li><strong>Impaired</strong>: Severe dementia (remote memory usually preserved until late), Korsakoff syndrome (alcohol-related brain damage)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Executive Function</h3>
+
+<strong>Executive function</strong> = Planning, abstract thinking, problem-solving
+
+<strong>Tests</strong>:
+
+<strong>Similarities</strong> (abstract thinking):
+<ul>
+<li>"How are an apple and orange alike?" (Both fruits - correct, abstract)</li>
+<li>Concrete answer: "Both round, both edible" (concrete thinking - seen in dementia, schizophrenia, intellectual disability)</li>
+<p>
+</ul>
+</p>
+
+<strong>Proverb Interpretation</strong>:
+<ul>
+<li>"What does 'people in glass houses shouldn't throw stones' mean?"</li>
+<li>Abstract: "Don't criticize others if you have faults yourself"</li>
+<li>Concrete: "Glass would break"</li>
+<li><strong>Impaired</strong>: Schizophrenia, dementia, intellectual disability</li>
+<p>
+</ul>
+</p>
+
+<strong>Judgment</strong>:
+<ul>
+<li>"If you found a stamped addressed envelope on the street, what would you do?"</li>
+<li>Good judgment: "Post it" or "Hand it to post office"</li>
+<li>Poor judgment: "Keep it", "Throw it away"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Documentation Examples - Cognition</h3>
+
+<ul>
+<li>"Cognition: Fully oriented to time, place, and person. Attention and concentration intact (serial 7s correct). Memory grossly intact (recalls 3/3 objects after 5 minutes). Formal cognitive testing not performed." (Normal - screening suggests no impairment)</li>
+<li>"Cognition: Disoriented to time and place (thought he was in a hotel, couldn't state date). Attention impaired (unable to complete serial 7s). Short-term memory impaired (recalled 0/3 objects after 5 minutes). Suggests delirium/dementia - formal testing with MMSE indicated." (Delirium, dementia)</li>
+<li>"Cognition: Oriented. Concentration impaired (serial 7s multiple errors) in context of low mood. Memory intact. Consistent with pseudodementia." (Depression)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>8. INSIGHT and JUDGMENT</h2>
+
+<h3>Insight</h3>
+
+<strong>Insight</strong> = Patient's awareness of having mental illness and need for treatment
+
+<strong>Levels</strong>:
+
+<strong>Full Insight</strong>:
+<ul>
+<li>Recognizes having mental illness</li>
+<li>Understands symptoms are due to illness</li>
+<li>Agrees treatment is needed</li>
+<li><strong>Example</strong>: "I know I'm depressed and need medication and therapy to get better"</li>
+<p>
+</ul>
+</p>
+
+<strong>Partial Insight</strong>:
+<ul>
+<li>Acknowledges something is wrong, but doesn't fully accept mental illness OR doesn't agree with need for treatment</li>
+<li><strong>Example</strong>: "I'm having a hard time, but I don't think I have depression. I think it's just stress and I'll be fine without medication."</li>
+<p>
+</ul>
+</p>
+
+<strong>No Insight</strong>:
+<ul>
+<li>Doesn't believe anything is wrong</li>
+<li><strong>Example</strong>: "There's nothing wrong with me. The voices are real. I don't need help."</li>
+<li><strong>Common in</strong>: Psychosis, mania, some personality disorders</li>
+<p>
+</ul>
+</p>
+
+<strong>Assessing Insight</strong>:
+<ul>
+<li>"What do you think is causing how you're feeling?"</li>
+<li>"Do you think you have a mental health condition?"</li>
+<li>"Do you think you need treatment?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Judgment</h3>
+
+<strong>Judgment</strong> = Ability to make sound decisions
+
+<strong>Assess through</strong>:
+<ul>
+<li>History: Recent decisions patient has made (risky sexual behavior, spending sprees, illegal activity)</li>
+<li>Hypothetical scenarios: "If you found a stamped addressed envelope, what would you do?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Impaired in</strong>: Mania (poor judgment → risky behavior), dementia, substance use, psychosis, frontal lobe pathology, intellectual disability
+
+<hr>
+
+<h3>Documentation Examples</h3>
+
+<ul>
+<li>"Insight: Full - patient recognizes having depression and agrees with need for treatment. Judgment: Intact." (Good insight, likely to engage with treatment)</li>
+<li>"Insight: Partial - patient acknowledges low mood but doesn't believe needs medication. Judgment: Intact." (May be reluctant to take medication)</li>
+<li>"Insight: Poor - patient doesn't believe he is unwell, states voices are real and doesn't need treatment. Judgment: Impaired (recent risky behavior including aggressive confrontation with police)." (Psychosis - may need involuntary treatment)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Putting It All Together: MSE Documentation Examples</h2>
+
+<h3>Example 1: Major Depressive Disorder</h3>
+
+<strong>MSE</strong>:
+<ul>
+<li><strong>Appearance</strong>: 45-year-old woman appearing stated age, casually dressed, poor grooming (hair unkempt), no eye contact.</li>
+<li><strong>Behavior</strong>: Minimal eye contact, psychomotor retardation noted (slow movements, long pauses). Cooperative but withdrawn. No abnormal movements observed.</li>
+<li><strong>Speech</strong>: Reduced rate, volume, and quantity. Increased latency before responses. Monotone.</li>
+<li><strong>Mood</strong>: "Terrible" (patient's words).</li>
+<li><strong>Affect</strong>: Low mood, restricted range, congruent with mood and thought content.</li>
+<li><strong>Thought Form</strong>: Linear and goal-directed, no formal thought disorder.</li>
+<li><strong>Thought Content</strong>: Themes of guilt and worthlessness. Passive suicidal ideation present ("wish I could go to sleep and not wake up"), no active plan or intent. No delusions or obsessions.</li>
+<li><strong>Perception</strong>: No hallucinations, illusions, depersonalization, or derealization elicited.</li>
+<li><strong>Cognition</strong>: Oriented. Concentration impaired (serial 7s multiple errors). Memory grossly intact. Consistent with depression-related pseudodementia.</li>
+<li><strong>Insight</strong>: Full - recognizes depression, agrees with need for treatment.</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Example 2: Schizophrenia (Psychosis)</h3>
+
+<strong>MSE</strong>:
+<ul>
+<li><strong>Appearance</strong>: 28-year-old male appearing older than stated age, disheveled, poor hygiene (body odor present, appeared not to have washed recently), wearing sunglasses indoors.</li>
+<li><strong>Behavior</strong>: Minimal eye contact, guarded and suspicious. Appeared to be responding to internal stimuli (paused mid-sentence, looked to side, tilted head as if listening). Poor rapport.</li>
+<li><strong>Speech</strong>: Normal rate and volume. Reduced quantity, guarded responses.</li>
+<li><strong>Mood</strong>: "Fine" (incongruent with presentation).</li>
+<li><strong>Affect</strong>: Flat (minimal emotional expression), incongruent (smiled when discussing distressing topic).</li>
+<li><strong>Thought Form</strong>: Loosening of associations (jumps between unrelated topics). Evidence of thought blocking mid-sentence.</li>
+<li><strong>Thought Content</strong>: Persecutory delusions ("police are following me, listening to my thoughts"). Thought broadcasting ("everyone can hear my thoughts on the radio"). Denies suicidal ideation.</li>
+<li><strong>Perception</strong>: Auditory hallucinations - reports hearing two male voices providing running commentary on his actions ("he's walking now"). Denies visual hallucinations.</li>
+<li><strong>Cognition</strong>: Oriented. Attention impaired (could not complete serial 7s). Memory grossly intact.</li>
+<li><strong>Insight</strong>: Poor - doesn't believe he is unwell, states voices and delusions are real.</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Example 3: Mania (Bipolar Disorder Type I)</h3>
+
+<strong>MSE</strong>:
+<ul>
+<li><strong>Appearance</strong>: 35-year-old male appearing stated age, wearing brightly colored mismatched clothing, excessive jewelry. Well-groomed but flamboyant presentation.</li>
+<li><strong>Behavior</strong>: Overfamiliar (addressed examiner by first name, invaded personal space). Distractible (attention drawn to objects in room). Overactive, restless, pacing.</li>
+<li><strong>Speech</strong>: Pressured (rapid, loud, difficult to interrupt). Increased quantity.</li>
+<li><strong>Mood</strong>: "Fantastic! Never been better! I feel amazing!" (patient's words).</li>
+<li><strong>Affect</strong>: Elevated and euphoric. Full range but predominantly elevated. Labile (rapidly shifted to irritability when challenged). Congruent with mood.</li>
+<li><strong>Thought Form</strong>: Flight of ideas (rapid jumping between topics with discernible connections - rhyming, punning).</li>
+<li><strong>Thought Content</strong>: Grandiose delusions ("I have special powers, I can communicate with God"). Denies suicidal ideation (but mixed episodes can have suicidal ideation - assess carefully).</li>
+<li><strong>Perception</strong>: Mood-congruent auditory hallucinations (hears God speaking to him). No visual hallucinations.</li>
+<li><strong>Cognition</strong>: Oriented. Concentration impaired due to distractibility. Memory intact.</li>
+<li><strong>Insight</strong>: Poor - doesn't believe he is unwell, states he feels "better than ever" and doesn't need treatment.</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Common IMG Mistakes in MSE</h2>
+
+<h3>Mistake 1: Confusing Mood and Affect</h3>
+
+<strong>Problem</strong>: Documenting "Mood: Appears low" (incorrect - this is affect, not mood)
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li><strong>Mood</strong> = Subjective (patient's words)</li>
+<li><strong>Affect</strong> = Objective (your observation)</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Mood</strong>: "Low" (patient's words in quotes) OR "3/10" (if rated on scale)</li>
+<li><strong>Affect</strong>: Low mood, restricted range, congruent</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 2: Not Documenting Absence of Findings</h3>
+
+<strong>Problem</strong>: Only documenting positive findings, not stating what was absent
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Medicolegal risk - did you assess for hallucinations, suicidal ideation, or just didn't document?</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>Document negative findings: "No hallucinations, delusions, or suicidal ideation elicited"</li>
+<li>Especially important: Suicidal ideation, homicidal ideation, hallucinations, delusions</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 3: Not Integrating MSE with History</h3>
+
+<strong>Problem</strong>: MSE findings don't match history (history suggests depression, but MSE shows normal mood)
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Inconsistent findings = <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> (patient hiding symptoms, malingering, or history incorrect)</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>MSE should SUPPORT history</li>
+<li>If inconsistent, explore: "You mentioned feeling depressed for weeks, but today you seem in good spirits. Can you tell me more?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 4: Using Vague Descriptions</h3>
+
+<strong>Problem</strong>: "Patient appears sad" (too vague)
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Not descriptive enough for another clinician to understand presentation</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>Be specific: "Affect: Low mood, reduced eye contact, tearful at times, restricted range, psychomotor retardation noted"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 5: Not Assessing Cognition When Indicated</h3>
+
+<strong>Problem</strong>: Patient disoriented, confused, but no formal cognitive assessment documented
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Cognitive impairment (delirium, dementia) needs formal assessment</li>
+<li>Medicolegal risk</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>If ANY cognitive concern (disorientation, memory complaint, older adult with new psychiatric symptoms) → Formal cognitive testing (MMSE, MoCA, AMT)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 6: Challenging Delusions</h3>
+
+<strong>Problem</strong>: "That's not true, the CIA isn't following you"
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Damages rapport</li>
+<li>Patient becomes defensive, guarded, won't disclose further</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Don't challenge, don't collude</strong></li>
+<li>Explore: "Tell me more about that", "How do you know the CIA is following you?"</li>
+<li>Empathize with distress: "That sounds very frightening"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>OSCE Practice Stations</h2>
+
+<h3>Station 1: Perform MSE on Patient with Depression</h3>
+
+<strong>Scenario</strong>: You are in the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department. Perform a Mental State Examination on this patient who has presented with low mood. (8 minutes)
+
+<strong>Actor Instructions</strong>: You are 45-year-old woman, depressed. Appear: Unkempt, poor eye contact, speak slowly and quietly, long pauses before answering. Mood: "Terrible". Content: Themes of guilt ("I'm a burden"), passive suicidal ideation ("I wish I could go to sleep and not wake up"). No hallucinations.
+
+<strong>Model Performance</strong>:
+
+<strong>Minutes 0-1: Introduction + Consent</strong>
+<ul>
+<li>"Hello, I'm Dr [Name]. I'd like to assess your current mental state, which involves asking you some questions and observing how you're doing. Is that okay?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 1-2: Appearance, Behavior, Speech (Observe)</strong>
+<ul>
+<li><strong>Observe</strong>: Unkempt, poor eye contact, slow movements</li>
+<li><strong>Engage</strong>: "How are you feeling today?" (assess speech: slow, quiet, long latency)</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 2-3: Mood and Affect</strong>
+<ul>
+<li>"How would you describe your mood?" [Patient: "Terrible"]</li>
+<li>Observe affect: Low, restricted range, congruent</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 3-5: Thought Form and Content</strong>
+<ul>
+<li>"What's been on your mind recently?" [Patient: "I feel like a burden to everyone, I've let everyone down"]</li>
+<li>"Do you ever feel life isn't worth living?" [Patient: "Yes, I wish I could go to sleep and not wake up"]</li>
+<li>"Do you have thoughts of harming yourself or ending your life?" [Patient: "I think about it, but I wouldn't do it"]</li>
+<li>"Have you ever tried to harm yourself?" [No]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 5-6: Perception</strong>
+<ul>
+<li>"Do you ever hear things others don't hear, like voices?" [No]</li>
+<li>"Do you ever see things others don't see?" [No]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 6-7: Cognition</strong>
+<ul>
+<li>"Do you know what day it is today?" [Yes, correct]</li>
+<li>"Do you know where you are?" [Yes, hospital]</li>
+<li>"I'm going to say 3 words - apple, table, penny. Please repeat them." [Repeats correctly]</li>
+<li>"Can you subtract 7 from 100, and keep subtracting?" [Attempts, makes errors - poor concentration]</li>
+<li>[After 5 minutes]: "Can you recall those 3 words?" [Recalls 3/3 - memory intact]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 7-8: Insight</strong>
+<ul>
+<li>"What do you think is causing how you're feeling?" [Patient: "I think I'm depressed"]</li>
+<li>"Do you think you need help?" [Yes]</li>
+<p>
+</ul>
+</p>
+
+<strong>Document MSE</strong> (as shown in Example 1 above)
+
+<hr>
+
+<h2>Summary: Key Takeaways for MSE</h2>
+
+<h3>1. MSE = Snapshot of Current Mental State</h3>
+<ul>
+<li>Objective assessment during interview</li>
+<li>Different from history (longitudinal account)</li>
+<p>
+</ul>
+</p>
+
+<h3>2. Systematic Framework: ABC STAMP</h3>
+<ul>
+<li>Appearance, Behavior, Cognition, Speech, Thought, Affect/Mood, Perception, Plus Insight</li>
+<p>
+</ul>
+</p>
+
+<h3>3. Mood vs Affect</h3>
+<ul>
+<li>Mood = Subjective (patient's words)</li>
+<li>Affect = Objective (your observation: type, range, congruence, reactivity)</li>
+<p>
+</ul>
+</p>
+
+<h3>4. Thought: Form and Content</h3>
+<ul>
+<li>Form = HOW patient thinks (linear, tangential, flight of ideas, loosening of associations)</li>
+<li>Content = WHAT patient thinks (delusions, obsessions, suicidal ideation)</li>
+<p>
+</ul>
+</p>
+
+<h3>5. Visual Hallucinations = Organic Until Proven Otherwise</h3>
+<ul>
+<li>Delirium, dementia, substances more likely than schizophrenia</li>
+<p>
+</ul>
+</p>
+
+<h3>6. Assess Cognition Formally if Any Concern</h3>
+<ul>
+<li>Orientation, attention, memory</li>
+<li>MMSE, MoCA, AMT</li>
+<p>
+</ul>
+</p>
+
+<h3>7. MSE Should Match History</h3>
+<ul>
+<li>If depression history → Expect low mood, psychomotor retardation, poor concentration</li>
+<li>If psychosis history → Expect hallucinations, delusions, flat affect</li>
+<li>Inconsistency = <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></li>
+<p>
+</ul>
+</p>
+
+<h3>8. Always Document Negative Findings</h3>
+<ul>
+<li>"No hallucinations, delusions, or suicidal ideation" (medicolegal protection)</li>
+<p>
+</ul>
+</p>
+
+<h3>9. Don't Challenge Delusions</h3>
+<ul>
+<li>Explore, empathize with distress, don't collude or confront</li>
+<p>
+</ul>
+</p>
+
+<h3>10. Common IMG Mistakes to Avoid</h3>
+<ul>
+<li>❌ Confusing mood and affect</li>
+<li>❌ Not documenting negative findings</li>
+<li>❌ MSE not matching history</li>
+<li>❌ Vague descriptions</li>
+<li>❌ Not assessing cognition when indicated</li>
+<li>❌ Challenging delusions</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>You've completed the Mental State Examination document! Next: Detailed Risk Assessment, then Common Psychiatric Presentations and Capacity Assessment. Excellent progress!</strong>
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

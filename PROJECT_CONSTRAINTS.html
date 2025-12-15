@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT CONSTRAINTS - ICRP Study Preparation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+</div>
+        
+        <h1>PROJECT CONSTRAINTS - ICRP Study Preparation</h1>
+
+<h2>Project Overview</h2>
+<p>
+This is an <strong>ICRP (International Clinical Rotation Program) NSW preparation project</strong> for Young District Hospital.
+</p>
+
+<strong>Program Details:</strong>
+<ul>
+<li>Start Date: March 2, 2026</li>
+<li>End Date: May 22, 2026</li>
+<li>Duration: 12 weeks</li>
+<li>Location: Young District Hospital, NSW, Australia</li>
+<li>Preparation Period: December 2025 - February 2026 (3 months)</li>
+<p>
+</ul>
+</p>
+
+<h2>Target Weaknesses to Address</h2>
+<ol>
+<li><strong>History Taking</strong> - Target: 400+ practice histories</li>
+<li><strong>Physical Examination</strong> - Target: 100+ practice examinations</li>
+<li><strong>Typing Speed</strong> - Target: 40+ WPM (from 15-25 WPM)</li>
+<li><strong>Clinical Documentation</strong> - Target: 10-15 min per note (from 30+ min)</li>
+<p>
+</ol>
+</p>
+
+<h2>Document Standards</h2>
+
+<h3>File Format Guidelines</h3>
+<ul>
+<li><strong>Guides/Educational Content</strong>: Use Markdown (.md) for easy editing and version control</li>
+<li><strong>Templates/Forms</strong>: Use HTML for interactive elements and better formatting</li>
+<li><strong>Navigation/Index Files</strong>: Use HTML with clear styling</li>
+<li><strong>Progress Trackers</strong>: Use HTML with tables and checkboxes</li>
+<li><strong>Quick Reference</strong>: Use Markdown for portability</li>
+<p>
+</ul>
+</p>
+
+<h3>Naming Conventions</h3>
+<pre><code>[Number]<em>[Category]</em>[Descriptive_Name].[extension]
+
+<p>
+Examples:
+</p>
+<ul>
+<li>01<em>History</em>Taking<em>Mastery</em>Guide.md</li>
+<li>02<em>Physical</em>Examination<em>Skills</em>Guide.md</li>
+<li>Template<em>Daily</em>Practice_Log.html</li>
+<li>Template<em>SOAP</em>Note.md</li>
+<li>Tracker<em>Typing</em>Progress.html</li>
+<p>
+</ul>
+</code></pre>
+</p>
+
+<h3>Content Requirements</h3>
+<p>
+All documents MUST include:
+</p>
+<ol>
+<li><strong>Clear Title</strong> - What this document is for</li>
+<li><strong>Purpose Statement</strong> - Why this document exists</li>
+<li><strong>How to Use</strong> - Step-by-step usage instructions</li>
+<li><strong>Success Metrics</strong> - What good looks like</li>
+<li><strong>Time Estimates</strong> - How long activities should take</li>
+<li><strong>Created Date</strong> - For version tracking</li>
+<p>
+</ol>
+</p>
+
+<h3>Template Requirements</h3>
+<p>
+All templates MUST include:
+</p>
+<ol>
+<li><strong>Instructions Section</strong> - How to fill out the template</li>
+<li><strong>Example/Sample</strong> - Completed example for reference</li>
+<li><strong>Blank Form</strong> - Ready to use</li>
+<li><strong>Success Criteria</strong> - What a good completion looks like</li>
+<p>
+</ol>
+</p>
+
+<h2>Medical Documentation Standards</h2>
+
+<h3>SOAP Note Format (Australian Clinical Context)</h3>
+<pre><code>S - Subjective (Patient's complaint in their words)
+<p>
+O - Objective (Examination findings, vitals, investigations)
+A - Assessment (Diagnosis/differential diagnosis)
+P - Plan (Management plan, follow-up)
+</code></pre>
+</p>
+
+<h3>History Taking Structure (9-Step System)</h3>
+<ol>
+<li>Presenting Complaint</li>
+<li>History of Presenting Complaint (SOCRATES for pain)</li>
+<li>Past Medical History</li>
+<li>Medications</li>
+<li>Allergies</li>
+<li>Family History</li>
+<li>Social History</li>
+<li>Review of Systems</li>
+<li>Summary</li>
+<p>
+</ol>
+</p>
+
+<h3>Physical Examination Framework (5 Ps)</h3>
+<ol>
+<li>Preparation</li>
+<li>Position</li>
+<li>Permission</li>
+<li>Perform</li>
+<li>Present</li>
+<p>
+</ol>
+</p>
+
+<h2>Typing and Computer Skills Standards</h2>
+
+<h3>Typing Speed Milestones</h3>
+<ul>
+<li><strong>Month 1 (December)</strong>: 25-30 WPM</li>
+<li><strong>Month 2 (January)</strong>: 35-40 WPM</li>
+<li><strong>Month 3 (February)</strong>: 40+ WPM</li>
+<li><strong>Accuracy Target</strong>: 95%+ at all times</li>
+<p>
+</ul>
+</p>
+
+<h3>Documentation Speed Goals</h3>
+<ul>
+<li><strong>Current</strong>: 30+ minutes per clinical note</li>
+<li><strong>Month 1</strong>: 20-25 minutes</li>
+<li><strong>Month 2</strong>: 15-20 minutes</li>
+<li><strong>Month 3</strong>: 10-15 minutes</li>
+<p>
+</ul>
+</p>
+
+<h2>Practice Standards</h2>
+
+<h3>Daily Practice Minimums</h3>
+<ul>
+<li><strong>History Taking</strong>: 2-3 practice histories daily (15-20 min each)</li>
+<li><strong>Physical Examination</strong>: 1 complete examination daily (15-20 min)</li>
+<li><strong>Typing</strong>: 30-60 minutes daily (touch typing drills + medical content)</li>
+<li><strong>Documentation</strong>: 1-2 SOAP notes daily (real or simulated cases)</li>
+<p>
+</ul>
+</p>
+
+<h3>Weekly Targets</h3>
+<ul>
+<li><strong>History Taking</strong>: 15-20 histories per week</li>
+<li><strong>Physical Examination</strong>: 7-10 examinations per week</li>
+<li><strong>Typing Practice</strong>: 3.5-7 hours per week</li>
+<li><strong>Total Study Time</strong>: 15-20 hours per week</li>
+<p>
+</ul>
+</p>
+
+<h3>Assessment Frequency</h3>
+<ul>
+<li><strong>Daily</strong>: Log practice sessions</li>
+<li><strong>Weekly</strong>: Review progress against targets</li>
+<li><strong>Monthly</strong>: Comprehensive self-assessment</li>
+<li><strong>Pre-ICRP</strong>: Final readiness evaluation (last week of February 2026)</li>
+<p>
+</ul>
+</p>
+
+<h2>Resources Standards</h2>
+
+<h3>Free Resources Only (Budget Constraint)</h3>
+<p>
+All recommended resources must be FREE or already owned:
+</p>
+<ul>
+<li>TypingClub.com (FREE)</li>
+<li>Keybr.com (FREE)</li>
+<li>TypingTest.com (FREE)</li>
+<li>YouTube medical education channels (FREE)</li>
+<li>OpenStax medical texts (FREE)</li>
+<li>Practice with family/friends (FREE)</li>
+<p>
+</ul>
+</p>
+
+<h3>Paid Resources (Optional, Budget Permitting)</h3>
+<p>
+If budget allows:
+</p>
+<ul>
+<li>Medical typing course ($20-50)</li>
+<li>EMR simulation software ($30-100)</li>
+<li>Online clinical skills course ($50-200)</li>
+<p>
+</ul>
+</p>
+
+<h2>Success Metrics</h2>
+
+<h3>By March 2, 2026 (ICRP Start Date)</h3>
+<ul>
+<li><input type="checkbox"> 400+ history taking practice scenarios completed</li>
+<li><input type="checkbox"> 100+ physical examinations performed</li>
+<li><input type="checkbox"> 40+ WPM typing speed with 95%+ accuracy</li>
+<li><input type="checkbox"> Clinical notes completed in 10-15 minutes</li>
+<li><input type="checkbox"> SOAP note format mastered</li>
+<li><input type="checkbox"> Familiar with EMR system concepts</li>
+<li><input type="checkbox"> All logistics arranged (accommodation, travel)</li>
+<p>
+</ul>
+</p>
+
+<h3>During ICRP (March 2 - May 22, 2026)</h3>
+<ul>
+<li><input type="checkbox"> Pass all weekly assessments</li>
+<li><input type="checkbox"> Complete required patient encounters</li>
+<li><input type="checkbox"> Achieve competency in all clinical skills</li>
+<li><input type="checkbox"> Positive supervisor evaluations</li>
+<li><input type="checkbox"> Complete all documentation on time</li>
+<p>
+</ul>
+</p>
+
+<h3>Post-ICRP (Goal)</h3>
+<ul>
+<li><input type="checkbox"> Secure PGY1/residency position</li>
+<li><input type="checkbox"> Register with AHPRA (Australian Health Practitioner Regulation Agency)</li>
+<li><input type="checkbox"> Employment in Australian hospital</li>
+<p>
+</ul>
+</p>
+
+<h2>Quality Standards</h2>
+
+<h3>Document Review Checklist</h3>
+<p>
+Before finalizing any document:
+</p>
+<ul>
+<li><input type="checkbox"> Spell check completed</li>
+<li><input type="checkbox"> Grammar check completed</li>
+<li><input type="checkbox"> Medical terminology verified</li>
+<li><input type="checkbox"> Australian spelling used (colour, paediatric, etc.)</li>
+<li><input type="checkbox"> Time estimates realistic</li>
+<li><input type="checkbox"> Examples provided</li>
+<li><input type="checkbox"> Success criteria clear</li>
+<li><input type="checkbox"> Navigation/links working (for HTML)</li>
+<p>
+</ul>
+</p>
+
+<h3>Template Validation</h3>
+<p>
+Before marking template as complete:
+</p>
+<ul>
+<li><input type="checkbox"> Instructions clear and complete</li>
+<li><input type="checkbox"> Example/sample provided</li>
+<li><input type="checkbox"> Blank version ready to use</li>
+<li><input type="checkbox"> Printable (if needed)</li>
+<li><input type="checkbox"> Mobile-friendly (for HTML)</li>
+<li><input type="checkbox"> Accessible (clear fonts, good contrast)</li>
+<p>
+</ul>
+</p>
+
+<h2>Anti-Patterns to Avoid</h2>
+
+<h3>Content Creation</h3>
+<ul>
+<li>❌ DON'T create overly complex tracking systems</li>
+<li>❌ DON'T recommend paid resources without free alternatives</li>
+<li>❌ DON'T use US medical terminology without Australian context</li>
+<li>❌ DON'T create unrealistic practice schedules</li>
+<li>❌ DON'T skip examples in templates</li>
+<p>
+</ul>
+</p>
+
+<h3>Documentation</h3>
+<ul>
+<li>❌ DON'T use medical jargon without explanation</li>
+<li>❌ DON'T create documents without clear purpose</li>
+<li>❌ DON'T forget to include time estimates</li>
+<li>❌ DON'T make templates that require special software</li>
+<li>❌ DON'T create duplicate content across files</li>
+<p>
+</ul>
+</p>
+
+<h2>Version Control</h2>
+
+<h3>Document Versioning</h3>
+<ul>
+<li>Include "Last Updated" date in all documents</li>
+<li>Note version number for major revisions</li>
+<li>Keep changelog for significant updates</li>
+<p>
+</ul>
+</p>
+
+<h3>Current Version</h3>
+<ul>
+<li><strong>Project Started</strong>: December 13, 2025</li>
+<li><strong>Last Updated</strong>: December 13, 2025</li>
+<li><strong>Version</strong>: 1.0</li>
+<p>
+</ul>
+</p>
+
+<h2>Contact and Support</h2>
+
+<h3>Resources for Questions</h3>
+<ul>
+<li>Young District Hospital: Contact via ICRP coordinator</li>
+<li>AHPRA: www.ahpra.gov.au</li>
+<li>NSW Health: www.health.nsw.gov.au</li>
+<p>
+</ul>
+</p>
+
+<h2>AMC Clinical / OSCE Standards</h2>
+
+<h3>OSCE Structure Requirements</h3>
+<p>
+All OSCE materials MUST follow this structure:
+</p>
+<ol>
+<li><strong>Opening Statement</strong> - Examiner-friendly introduction (30 seconds)</li>
+<li><strong>Focused History</strong> - Systematic approach with key questions</li>
+<li><strong>Examination Steps</strong> - Clear, sequential physical examination</li>
+<li><strong>Differentials</strong> - Top 3 differential diagnoses (ranked by likelihood)</li>
+<li><strong>Investigations</strong> - Appropriate for Australian context (Medicare, PBS)</li>
+<li><strong>Management</strong> - According to Australian guidelines (eTG, AMH)</li>
+<li><strong>Counselling & Safety-netting</strong> - Patient communication + <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</li>
+<p>
+</ol>
+</p>
+
+<h3>Clinical Systems Coverage</h3>
+<p>
+OSCE materials MUST cover all systems:
+</p>
+<ul>
+<li><strong>Medicine</strong>: Cardiovascular, Respiratory, Gastroenterology, Neurology, Endocrine</li>
+<li><strong>Surgery</strong>: Acute abdomen, Trauma, Surgical emergencies</li>
+<li><strong>Paediatrics</strong>: Common childhood illnesses, developmental assessment, immunization</li>
+<li><strong>O&G</strong>: Pregnancy care, gynecological complaints, contraception counseling</li>
+<li><strong>Psychiatry</strong>: Mental state exam, risk assessment, common psychiatric presentations</li>
+<li><strong>Ethics</strong>: Consent, confidentiality, breaking bad news, cultural safety</li>
+<p>
+</ul>
+</p>
+
+<h3>High-Yield OSCE Templates (Mandatory)</h3>
+<p>
+Must include course-style frameworks for:
+</p>
+<ul>
+<li>Chest pain (cardiac vs non-cardiac)</li>
+<li>Shortness of breath (acute vs chronic)</li>
+<li>Abdominal pain (surgical vs medical)</li>
+<li>Headache (primary vs secondary, <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s)</li>
+<li><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s & emergencies (sepsis, PE, MI, stroke, ectopic pregnancy)</li>
+<li>Communication stations (breaking bad news, informed consent, angry patient, interpreter use)</li>
+<p>
+</ul>
+</p>
+
+<h3>Role-Play Requirements</h3>
+<p>
+All communication stations MUST include:
+</p>
+<ul>
+<li><strong>Exact Phrases</strong> - Word-for-word scripts that examiners expect</li>
+<li><strong>Australian Communication Style</strong> - Culturally appropriate, patient-centered</li>
+<li><strong>Common Scenarios</strong>:</li>
+<p>
+</ul>
+  - Breaking bad news (cancer diagnosis, stillbirth)
+  - Informed consent (surgery, procedure)
+  - Difficult conversations (DNR, withdrawal of care)
+  - Cultural safety (Indigenous health, interpreter use)
+  - Angry/demanding patient
+  - Domestic violence disclosure
+</p>
+
+<h3>Mock OSCE Standards</h3>
+<p>
+All mock stations MUST include:
+</p>
+<ul>
+<li><strong>Examiner Checklist</strong> - Observable criteria (like real AMC Clinical)</li>
+<li><strong>Pass / Borderline / Fail Criteria</strong> - Clear thresholds</li>
+<li><strong>Time Allocation</strong> - 8 minutes (like AMC Clinical exam)</li>
+<li><strong>Common Mistakes</strong> - Specific errors IMGs commonly make</li>
+<li><strong>Scoring Rubric</strong> - Points allocation for each section</li>
+<p>
+</ul>
+</p>
+
+<h3>Australian Medical Context (CRITICAL)</h3>
+<p>
+All content MUST use Australian standards:
+</p>
+<ul>
+<li><strong>Spelling</strong>: colour, paediatric, oestrogen, anaemia (NOT color, pediatric, estrogen, anemia)</li>
+<li><strong>Guidelines</strong>: eTG (Therapeutic Guidelines), AMH (Australian Medicines Handbook)</li>
+<li><strong>Referrals</strong>: GP, <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department, Specialist (NOT PCP, ER, Attending)</li>
+<li><strong>Investigations</strong>: Medicare-funded (list bulk-billed vs out-of-pocket)</li>
+<li><strong>Medications</strong>: PBS-listed (note restrictions), brand names common in Australia</li>
+<li><strong>Units</strong>: SI units (mmol/L for glucose, NOT mg/dL)</li>
+<p>
+</ul>
+</p>
+
+<h3>Validation Checklist for OSCE Materials</h3>
+<p>
+Before marking OSCE content as complete, verify:
+</p>
+<ul>
+<li><input type="checkbox"> Opening statement is <30 seconds and examiner-friendly</li>
+<li><input type="checkbox"> History follows SOCRATES for pain / systematic approach for other complaints</li>
+<li><input type="checkbox"> Physical examination uses "Preparation, Position, Permission, Perform, Present"</li>
+<li><input type="checkbox"> Top 3 differentials are evidence-based and ranked</li>
+<li><input type="checkbox"> Investigations are appropriate for Australian primary care setting</li>
+<li><input type="checkbox"> Management follows current Australian guidelines (cite eTG/AMH edition)</li>
+<li><input type="checkbox"> Safety-netting includes specific <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s to return for</li>
+<li><input type="checkbox"> Australian spelling and terminology used throughout</li>
+<li><input type="checkbox"> Time estimates realistic (8 min for stations, 15 min for practice)</li>
+<li><input type="checkbox"> Common IMG mistakes documented with corrections</li>
+<p>
+</ul>
+</p>
+
+<h3>Anti-Patterns for OSCE Materials</h3>
+<ul>
+<li>❌ DON'T use US guidelines (UpToDate without Australian context)</li>
+<li>❌ DON'T use US drug names (acetaminophen → paracetamol)</li>
+<li>❌ DON'T skip communication skills (Australian examiners heavily weight this)</li>
+<li>❌ DON'T create generic stations (must be specific, realistic scenarios)</li>
+<li>❌ DON'T ignore cultural safety (Indigenous health, CALD patients)</li>
+<li>❌ DON'T forget time pressure (real exam is 8 min/station)</li>
+<li>❌ DON'T use medical jargon with patients (explain in lay terms)</li>
+<li>❌ DON'T skip consent/confidentiality in every relevant station</li>
+<p>
+</ul>
+</p>
+
+<h3>Expert Agent Delegation Requirements</h3>
+<p>
+When delegating OSCE content creation:
+</p>
+
+<strong>TO history-taking-expert:</strong>
+<ul>
+<li>MUST read PROJECT_CONSTRAINTS.md sections: "History Taking Structure", "AMC Clinical / OSCE Standards"</li>
+<li>MUST search existing files: <code>01<em>History</em>Taking<em>Mastery</em>Guide.md</code></li>
+<li>MUST validate: 0 US terminology, all questions appropriate for 8-min station</li>
+<li>MUST include: Opening statement, SOCRATES/systematic approach, summary with top 3 differentials</li>
+<p>
+</ul>
+</p>
+
+<strong>TO physical-examination-expert:</strong>
+<ul>
+<li>MUST read PROJECT_CONSTRAINTS.md sections: "Physical Examination Framework", "AMC Clinical / OSCE Standards"</li>
+<li>MUST search existing files: <code>02<em>Physical</em>Examination<em>Skills</em>Guide.md</code></li>
+<li>MUST validate: 5 Ps followed, examination completable in 8 minutes, appropriate draping/consent</li>
+<li>MUST include: Preparation, Position, Permission, Perform, Present (with examiner phrases)</li>
+<p>
+</ul>
+</p>
+
+<strong>TO clinical-documentation-expert:</strong>
+<ul>
+<li>MUST read PROJECT_CONSTRAINTS.md sections: "SOAP Note Format", "Medical Documentation Standards", "AMC Clinical / OSCE Standards"</li>
+<li>MUST search existing files: <code>SOAP<em>Note</em>Template.md</code>, <code>EMR<em>Documentation</em>Guide.md</code></li>
+<li>MUST validate: Australian spelling, eTG/AMH guidelines cited, Medicare/PBS context</li>
+<li>MUST include: Complete SOAP note template, common documentation pitfalls, time-saving strategies</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Note</strong>: This document should be read by anyone creating content for this ICRP preparation project to ensure consistency and quality.
+
+<strong>Last Updated</strong>: December 14, 2025
+<strong>Version</strong>: 1.1 (Added AMC Clinical / OSCE Standards)
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

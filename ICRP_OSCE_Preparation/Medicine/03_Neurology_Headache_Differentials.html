@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Headache: Differential Diagnosis and Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Medicine</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Medicine Navigation</h3>
+<ul>
+<li><a href="MASTER_INDEX.html">Master Index</a></li>
+<li><a href="01_Cardiovascular_Respiratory_History.html">CV/Resp History</a></li>
+<li><a href="02_Physical_Examination_Cardiovascular_Respiratory.html">CV/Resp Exam</a></li>
+<li><a href="03_Physical_Examination_Abdominal_Neurological.html">Abdo/Neuro Exam</a></li>
+</ul>
+</div>
+        <h1>Headache: Differential Diagnosis and Management</h1>
+<h2>ICRP OSCE Preparation - Medicine Module (Neurology)</h2>
+
+<hr>
+
+<h2>Target Audience</h2>
+
+<p>
+This guide is for <strong>International Medical Graduates (IMGs)</strong> preparing for the <strong>AMC Clinical OOSE</strong>, specifically:
+</p>
+
+<ul>
+<li>IMGs requiring systematic differential-driven approach to headache presentations</li>
+<li>Candidates needing recognition of life-threatening headache causes</li>
+<li>Doctors preparing for ICRP placement in Australian <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Departments</li>
+<li>Medical professionals needing frameworks for primary vs secondary headache differentiation</li>
+<li>Clinicians requiring Australian investigation and management protocols (eTG 2024)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Learning Objectives</h2>
+
+<p>
+By the end of this module, you will be able to:
+</p>
+
+<ol>
+<li><strong>Differentiate</strong> primary headaches (tension, migraine, cluster) from secondary headaches (life-threatening causes)</li>
+<li><strong>Recognize</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s requiring <span style="color: #e74c3c; font-weight: bold;">URGENT</span> investigation (SAH, meningitis, temporal arteritis, raised ICP)</li>
+<li><strong>Generate</strong> differential diagnoses based on headache characteristics and associated features</li>
+<li><strong>Investigate</strong> headache appropriately (when to image, LP timing, <span style="color: #e74c3c; font-weight: bold;">URGENT</span> bloods)</li>
+<li><strong>Manage</strong> primary headaches according to Australian guidelines (eTG 2024, PBS)</li>
+<li><strong>Identify</strong> emergencies requiring immediate intervention</li>
+<li><strong>Avoid</strong> common IMG mistakes in headache assessment</li>
+<li><strong>Perform</strong> confidently in 8-minute OSCE stations for headache presentations</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Dr. Amir Soufi's Approach Applied to Headache</h2>
+
+<h3>Core Principle: <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S FIRST → Primary vs Secondary → CHARACTER-DRIVEN DIFFERENTIAL</h3>
+
+<strong>Traditional Approach (Less Effective)</strong>:
+<ul>
+<li>Complete generic headache history</li>
+<li>Consider all causes equally</li>
+<li>Delayed recognition of emergencies</li>
+<p>
+</ul>
+</p>
+
+<strong>Dr. Amir Soufi's Differential-Driven Approach</strong>:
+
+<ol>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S IMMEDIATELY</strong> (Life-Threatening Causes - Rule Out FIRST):</li>
+<p>
+</ol>
+   - <strong>"WORST HEADACHE OF LIFE"</strong> (thunderclap) → SAH until proven otherwise
+   - <strong>Sudden onset</strong> (<1 minute to peak) → SAH, vascular (dissection, reversible vasoconstriction syndrome)
+   - <strong>Fever + headache + neck stiffness</strong> → Meningitis/encephalitis
+   - <strong>Age >50 + new headache + jaw claudication</strong> → Temporal arteritis (GCA)
+   - <strong>Papilledema, confusion, focal neurology</strong> → Raised ICP (tumor, abscess, venous sinus thrombosis)
+   - <strong>Headache worsening over weeks</strong> → Space-occupying lesion, chronic subdural
+</p>
+
+<ol>
+<li><strong>PRIMARY vs SECONDARY HEADACHE</strong>:</li>
+<p>
+</ol>
+   - <strong>Primary</strong>: Migraine, tension-type, cluster (no underlying pathology)
+   - <strong>Secondary</strong>: Underlying cause (infection, vascular, trauma, tumor, medication)
+   - <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s → Always think SECONDARY first</strong>
+</p>
+
+<ol>
+<li><strong>CHARACTER-DRIVEN DIFFERENTIAL</strong> (if no <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s):</li>
+<p>
+</ol>
+   - <strong>Unilateral, pulsating, 4-72 hours, photophobia/phonophobia, aura</strong> → Migraine
+   - <strong>Bilateral, pressing/tightening, 30min-7 days, mild-moderate</strong> → Tension-type headache
+   - <strong>Unilateral orbital/supraorbital, 15-180 min, autonomic features</strong> → Cluster headache
+</p>
+
+<ol>
+<li><strong>ASSOCIATED FEATURES REFINE</strong>:</li>
+<p>
+</ol>
+   - <strong>Visual aura</strong> → Migraine with aura
+   - <strong>Lacrimation, rhinorrhea</strong> → Cluster, trigeminal autonomic cephalalgias
+   - <strong>Fever</strong> → Meningitis, encephalitis, sinusitis
+   - <strong>Focal neurology</strong> → Stroke, tumor, SAH
+</p>
+
+<ol>
+<li><strong>TEMPORAL PATTERN</strong>:</li>
+<p>
+</ol>
+   - <strong>Sudden onset</strong> (<1 min) → Vascular (SAH, dissection)
+   - <strong>Subacute worsening</strong> (days-weeks) → Tumor, abscess, chronic subdural, temporal arteritis
+   - <strong>Recurrent episodic</strong> (years) → Migraine, cluster
+   - <strong>Chronic daily</strong> → Medication overuse headache, chronic tension-type
+</p>
+
+<ol>
+<li><strong>TARGETED INVESTIGATION</strong>:</li>
+<p>
+</ol>
+   - <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s → CT brain <span style="color: #e74c3c; font-weight: bold;">URGENT</span>LY</strong> (SAH, mass, bleed)
+   - <strong>Suspected SAH with normal CT → LP</strong> (xanthochromia)
+   - <strong>Suspected temporal arteritis → ESR/CRP + temporal artery biopsy</strong>
+   - <strong>Fever + meningism → Blood cultures + LP</strong> (after CT if concern for raised ICP)
+</p>
+
+<strong>Example</strong>:
+<ul>
+<li><strong>Presentation</strong>: 68-year-old woman, new-onset headache for 3 weeks (gradual worsening), jaw pain when chewing, scalp tenderness, visual disturbance</li>
+<li><strong>Immediate thought</strong>: <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong> - Age >50, new headache, jaw claudication, visual symptoms → <strong>TEMPORAL ARTERITIS (GCA)</strong> until proven otherwise</li>
+<li><strong>Immediate actions</strong>: <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> ESR + CRP</strong> (markedly elevated), <strong>ophthalmology review</strong> (risk of irreversible blindness), <strong>start high-dose steroids IMMEDIATELY</strong> (prednisolone 60mg), arrange temporal artery biopsy (within 1-2 weeks, can do after starting steroids)</li>
+<li><strong>Not migraine/tension</strong> - <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s present</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>1. <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S IN HEADACHE ("SNOOP4" Mnemonic)</h2>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s indicate SECONDARY headache (underlying pathology) - require <span style="color: #e74c3c; font-weight: bold;">URGENT</span> investigation</strong>
+
+<h3>SNOOP4 Mnemonic</h3>
+
+<strong>S - Systemic symptoms/signs</strong>:
+<ul>
+<li><strong>Fever</strong> → Meningitis, encephalitis, abscess, sinusitis</li>
+<li><strong>Weight loss</strong> → Malignancy, temporal arteritis</li>
+<li><strong>Cancer history</strong> → Brain metastases</li>
+<li><strong>HIV/immunosuppression</strong> → Opportunistic infections (toxoplasmosis, cryptococcal meningitis)</li>
+<p>
+</ul>
+</p>
+
+<strong>N - Neurological symptoms/signs</strong>:
+<ul>
+<li><strong>Focal neurology</strong>: Weakness, numbness, visual field defect, diplopia, ataxia → Stroke, tumor, SAH</li>
+<li><strong>Confusion, altered consciousness</strong> → Encephalitis, meningitis, raised ICP</li>
+<li><strong>Seizures</strong> → Tumor, encephalitis, SAH</li>
+<li><strong>Papilledema</strong> (swollen optic disc) → Raised ICP</li>
+<p>
+</ul>
+</p>
+
+<strong>O - Onset sudden</strong> (Thunderclap headache):
+<ul>
+<li><strong><1 minute to peak intensity</strong> → SAH, vascular (dissection, RCVS, pituitary apoplexy)</li>
+<li><strong>"Worst headache of my life"</strong> → SAH until proven otherwise</li>
+<p>
+</ul>
+</p>
+
+<strong>O - Onset after age 50</strong>:
+<ul>
+<li><strong>New headache in patient >50 years</strong> → Higher risk of secondary causes (temporal arteritis, tumor, subdural)</li>
+<p>
+</ul>
+</p>
+
+<strong>P - Pattern change</strong>:
+<ul>
+<li><strong>Progressive worsening over days-weeks</strong> → Tumor, abscess, chronic subdural, temporal arteritis</li>
+<li><strong>Change in established headache pattern</strong> → Investigate</li>
+<p>
+</ul>
+</p>
+
+<strong>P - Positional</strong>:
+<ul>
+<li><strong>Worse lying flat, better upright</strong> → Raised ICP (tumor, idiopathic intracranial hypertension)</li>
+<li><strong>Worse upright, better lying flat</strong> → Low CSF pressure (post-LP headache, CSF leak)</li>
+<p>
+</ul>
+</p>
+
+<strong>P - Precipitated by Valsalva</strong> (cough, sneeze, strain):
+<ul>
+<li><strong>Cough headache</strong> → Posterior fossa lesion, Chiari malformation</li>
+<p>
+</ul>
+</p>
+
+<strong>P - Papilledema, Pulsatile tinnitus</strong>:
+<ul>
+<li><strong>Papilledema</strong> → Raised ICP</li>
+<li><strong>Pulsatile tinnitus</strong> → Idiopathic intracranial hypertension (young obese women), venous sinus thrombosis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Specific <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> Patterns (Recognize IMMEDIATELY)</h3>
+
+<h4>1. Thunderclap Headache (Sudden Onset <1 Minute to Peak)</h4>
+
+<strong>"WORST HEADACHE OF LIFE" → SAH UNTIL PROVEN OTHERWISE</strong>
+
+<strong>Causes</strong>:
+<ol>
+<li><strong>Subarachnoid Hemorrhage (SAH)</strong> (25% of thunderclap headaches):</li>
+<p>
+</ol>
+   - <strong>Classic</strong>: Sudden severe occipital headache ("explosion in head", "hit by bat"), neck stiffness, photophobia, nausea/vomiting, LOC (50%)
+   - <strong>Investigations</strong>: <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> non-contrast CT brain</strong> (sens 95% if done <6 hours, decreases with time) → If CT negative: <strong>LP</strong> 12 hours after onset (xanthochromia - yellow CSF from bilirubin breakdown)
+   - <strong>Management</strong>: Neurosurgery <span style="color: #e74c3c; font-weight: bold;">URGENT</span> (clipping or coiling of aneurysm), nimodipine (prevent vasospasm), BP control
+</p>
+
+<ol>
+<li><strong>Arterial Dissection</strong> (carotid, vertebral):</li>
+<p>
+</ol>
+   - Headache/neck pain + Horner's syndrome (carotid) or posterior circulation stroke (vertebral)
+   - <strong>Investigations</strong>: CT/MR angiography
+   - <strong>Management</strong>: Anticoagulation, neurology
+</p>
+
+<ol>
+<li><strong>Reversible Cerebral Vasoconstriction Syndrome (RCVS)</strong>:</li>
+<p>
+</ol>
+   - Thunderclap headache (recurrent), triggers (exertion, Valsalva, sexual activity), associated with postpartum, drugs (SSRIs, triptans, cannabis)
+   - <strong>Investigations</strong>: CT angiography (multifocal stenosis - "string of beads"), normal LP
+   - <strong>Management</strong>: Nimodipine, avoid triggers
+</p>
+
+<ol>
+<li><strong>Pituitary Apoplexy</strong>:</li>
+<p>
+</ol>
+   - Thunderclap headache + visual field defect (bitemporal hemianopia) + ophthalmoplegia + hypopituitarism
+   - <strong>Investigations</strong>: CT/MRI brain (hemorrhage into pituitary)
+   - <strong>Management</strong>: Endocrinology, neurosurgery, steroids
+</p>
+
+<ol>
+<li><strong>Cerebral Venous Sinus Thrombosis</strong>:</li>
+<p>
+</ol>
+   - Thunderclap or progressive headache, seizures, focal neurology, risk factors (OCP, pregnancy, thrombophilia)
+   - <strong>Investigations</strong>: CT/MR venography
+   - <strong>Management</strong>: Anticoagulation (even if hemorrhagic infarction)
+</p>
+
+<hr>
+
+<h4>2. Headache + Fever + Neck Stiffness</h4>
+
+<strong>MENINGITIS/ENCEPHALITIS UNTIL PROVEN OTHERWISE</strong>
+
+<strong>Bacterial Meningitis</strong>:
+<ul>
+<li><strong>Classic triad</strong> (only 44% have all three): Fever, headache, neck stiffness</li>
+<li><strong>Additional</strong>: Photophobia, altered consciousness, seizures, petechial rash (meningococcal)</li>
+<li><strong>Investigations</strong>:</li>
+<p>
+</ul>
+  - <strong>Blood cultures</strong> (before antibiotics)
+  - <strong>CT brain</strong> (if concern for raised ICP: papilledema, focal neurology, GCS <12, immunosuppressed) BEFORE LP
+  - <strong>LP</strong>: Opening pressure, CSF analysis (WCC, protein, glucose, Gram stain, culture)
+  - <strong>Bacterial</strong>: Elevated WCC (neutrophils >1000), elevated protein, low glucose (<50% of serum)
+</p>
+<ul>
+<li><strong>Management</strong>:</li>
+<p>
+</ul>
+  - <strong>Do NOT delay antibiotics</strong> waiting for LP or CT
+  - <strong>Empirical antibiotics</strong>: Ceftriaxone 2g IV 12-hourly (eTG 2024) + dexamethasone 10mg IV QID (before/with first antibiotic dose - improves outcomes in pneumococcal)
+  - If >50 years or immunosuppressed: Add <strong>ampicillin</strong> (for Listeria coverage)
+</p>
+
+<strong>Viral Meningitis</strong>:
+<ul>
+<li>Less severe, no altered consciousness typically</li>
+<li><strong>CSF</strong>: Elevated WCC (lymphocytes <1000), normal glucose, mildly elevated protein</li>
+<li><strong>Management</strong>: Supportive (usually self-limiting)</li>
+<p>
+</ul>
+</p>
+
+<strong>Encephalitis</strong>:
+<ul>
+<li>Headache, fever, <strong>altered consciousness</strong>, seizures, focal neurology</li>
+<li><strong>HSV encephalitis</strong>: Temporal lobe involvement, personality change</li>
+<li><strong>Investigations</strong>: LP (lymphocytic pleocytosis, elevated protein, RBCs if HSV), MRI (temporal lobe changes), EEG</li>
+<li><strong>Management</strong>: <strong>Aciclovir 10mg/kg IV TDS</strong> (empirical if suspected - do NOT delay)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>3. Age >50 + New Headache + Jaw Claudication</h4>
+
+<strong>TEMPORAL ARTERITIS (GIANT CELL ARTERITIS - GCA) UNTIL PROVEN OTHERWISE</strong>
+
+<strong>Presentation</strong>:
+<ul>
+<li>Age >50 (typically 70s)</li>
+<li><strong>New-onset headache</strong> (temporal, throbbing)</li>
+<li><strong>Jaw claudication</strong> (pain when chewing - highly specific)</li>
+<li><strong>Scalp tenderness</strong> (combing hair painful)</li>
+<li><strong>Visual symptoms</strong> (transient monocular visual loss - amaurosis fugax, diplopia) - <strong>WARNING sign of impending blindness</strong></li>
+<li><strong>Polymyalgia rheumatica</strong> (shoulder/hip girdle pain and stiffness) - associated 50%</li>
+<li><strong>Temporal artery</strong>: Tender, thickened, reduced pulsation</li>
+<p>
+</ul>
+</p>
+
+<strong>Investigations</strong>:
+<ul>
+<li><strong>ESR + CRP</strong>: Markedly elevated (ESR typically >50, often >100)</li>
+<li><strong>FBC</strong>: Anemia of chronic disease, elevated platelets</li>
+<li><strong>Temporal artery biopsy</strong>: <strong>GOLD STANDARD</strong> (skip lesions - need >1cm segment), can do up to 2 weeks after starting steroids</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> ophthalmology review</strong> (assess visual acuity, fundoscopy, formal visual fields)</li>
+<li><strong>START STEROIDS IMMEDIATELY</strong> (do NOT delay for biopsy - risk of irreversible blindness):</li>
+<p>
+</ul>
+  - <strong>If visual symptoms present</strong>: Methylprednisolone 500mg-1g IV daily x 3 days, then prednisolone 60mg PO daily
+  - <strong>If no visual symptoms</strong>: Prednisolone 40-60mg PO daily
+</p>
+<ul>
+<li><strong>Temporal artery biopsy</strong> within 1-2 weeks (arrange <span style="color: #e74c3c; font-weight: bold;">URGENT</span>ly)</li>
+<li><strong>Long-term</strong>: Slow taper steroids over 12-24 months, monitor ESR/CRP, bone protection (calcium, vitamin D, bisphosphonate)</li>
+<p>
+</ul>
+</p>
+
+<strong>CRITICAL</strong>: <strong>IRREVERSIBLE BLINDNESS</strong> if treatment delayed - treat on clinical suspicion, don't wait for biopsy
+
+<hr>
+
+<h4>4. Headache + Papilledema / Focal Neurology / Confusion</h4>
+
+<strong>RAISED INTRACRANIAL PRESSURE → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> CT BRAIN</strong>
+
+<strong>Causes</strong>:
+<ol>
+<li><strong>Brain tumor</strong> (primary or metastases)</li>
+<li><strong>Brain abscess</strong></li>
+<li><strong>Chronic subdural hematoma</strong> (elderly, trauma weeks-months prior, anticoagulation)</li>
+<li><strong>Idiopathic intracranial hypertension</strong> (young obese women, papilledema, pulsatile tinnitus, visual obscurations)</li>
+<li><strong>Cerebral venous sinus thrombosis</strong></li>
+<li><strong>Hydrocephalus</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Presentation</strong>:
+<ul>
+<li><strong>Headache</strong>: Progressive (worse over days-weeks), worse in morning/lying flat, worse with Valsalva</li>
+<li><strong>Papilledema</strong>: Swollen optic disc (fundoscopy)</li>
+<li><strong>Focal neurology</strong>: Weakness, sensory loss, visual field defect</li>
+<li><strong>Confusion, altered consciousness, seizures</strong></li>
+<li><strong>"Cushing's triad"</strong> (if severe raised ICP): Hypertension, bradycardia, irregular breathing</li>
+<p>
+</ul>
+</p>
+
+<strong>Investigation</strong>: <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> CT brain</strong> (non-contrast initially)
+
+<strong>Management</strong>: Depends on cause (neurosurgery, oncology, antibiotics for abscess)
+
+<hr>
+
+<h2>2. PRIMARY HEADACHES</h2>
+
+<strong>Primary headaches</strong>: No underlying structural/systemic cause (benign but can be disabling)
+
+<strong>Three main types</strong>:
+<ol>
+<li>Tension-type headache (most common)</li>
+<li>Migraine (second most common)</li>
+<li>Cluster headache (less common, most severe)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>Tension-Type Headache (TTH)</h3>
+
+<strong>Most common primary headache</strong> (>70% of population at some point)
+
+<h4>Diagnostic Criteria (IHS - International Headache Society)</h4>
+
+<strong>At least 10 episodes</strong> with:
+
+<strong>A. Headache duration</strong>: 30 minutes to 7 days
+
+<strong>B. At least 2 of</strong>:
+<ol>
+<li><strong>Bilateral</strong> location</li>
+<li><strong>Pressing/tightening</strong> quality (non-pulsating) - "band around head"</li>
+<li><strong>Mild-moderate</strong> intensity (doesn't prohibit activities)</li>
+<li><strong>NOT aggravated</strong> by routine physical activity (walking, climbing stairs)</li>
+<p>
+</ol>
+</p>
+
+<strong>C. Both of</strong>:
+<ol>
+<li><strong>NO nausea or vomiting</strong> (may have anorexia)</li>
+<li><strong>NO more than one</strong> of photophobia or phonophobia</li>
+<p>
+</ol>
+</p>
+
+<p>
+**D. Not better accounted for by another diagnosis
+</p>
+
+<hr>
+
+<h4>Subtypes</h4>
+
+<ul>
+<li><strong>Episodic TTH</strong>: <15 days/month</li>
+<li><strong>Chronic TTH</strong>: ≥15 days/month for >3 months</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Management (eTG 2024)</h4>
+
+<strong>Acute treatment</strong> (episodic):
+<ul>
+<li><strong>Simple analgesia</strong>:</li>
+<p>
+</ul>
+  - <strong>Paracetamol</strong> 1g PO (can repeat 4-6 hourly, max 4g/day)
+  - <strong>NSAIDs</strong>: Ibuprofen 400mg PO, aspirin 900mg
+</p>
+<ul>
+<li><strong>Avoid combination analgesics</strong> (codeine, caffeine) - risk of medication overuse headache</li>
+<li><strong>Limit to <15 days per month</strong> (risk of transformation to chronic TTH)</li>
+<p>
+</ul>
+</p>
+
+<strong>Preventive treatment</strong> (if frequent, disabling):
+<ul>
+<li><strong>Indications</strong>: >2 headaches per week, significantly affecting quality of life</li>
+<li><strong>First-line</strong>: <strong>Amitriptyline</strong> 10-25mg nocte, titrate to 50-75mg (tricyclic antidepressant)</li>
+<li><strong>Alternatives</strong>: Mirtazapine, venlafaxine</li>
+<li><strong>Non-pharmacological</strong>: Relaxation, stress management, CBT, physiotherapy (neck muscle tension), acupuncture</li>
+<p>
+</ul>
+</p>
+
+<strong>Chronic TTH</strong>:
+<ul>
+<li>Preventive medication as above</li>
+<li>Address medication overuse if present (stop all analgesia - withdrawal headache for 2-4 weeks, then improve)</li>
+<li>Multidisciplinary approach (psychology, physiotherapy)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Migraine</h3>
+
+<strong>Second most common primary headache</strong>, affects 15% of population (F:M = 3:1)
+
+<h4>Diagnostic Criteria (IHS)</h4>
+
+<strong>Migraine WITHOUT Aura</strong> (75%):
+
+<strong>At least 5 attacks</strong> with:
+
+<strong>A. Headache duration</strong>: 4-72 hours (untreated)
+
+<strong>B. At least 2 of</strong>:
+<ol>
+<li><strong>Unilateral</strong> location (can be bilateral, especially children)</li>
+<li><strong>Pulsating</strong> quality (throbbing)</li>
+<li><strong>Moderate-severe</strong> intensity (prohibits/inhibits activities)</li>
+<li><strong>Aggravated by routine physical activity</strong> (or causes avoidance)</li>
+<p>
+</ol>
+</p>
+
+<strong>C. During headache, at least 1 of</strong>:
+<ol>
+<li><strong>Nausea and/or vomiting</strong></li>
+<li><strong>Photophobia AND phonophobia</strong> (both required)</li>
+<p>
+</ol>
+</p>
+
+<p>
+**D. Not better accounted for by another diagnosis
+</p>
+
+<hr>
+
+<strong>Migraine WITH Aura</strong> (25%):
+
+<strong>At least 2 attacks</strong> with <strong>reversible aura symptoms</strong>:
+<ul>
+<li><strong>Visual aura</strong> (most common): Scintillating scotoma (zigzag lines, fortification spectra), blind spots, flashing lights</li>
+<p>
+</ul>
+  - Develops over ≥5 minutes, lasts 5-60 minutes
+</p>
+<ul>
+<li><strong>Sensory aura</strong>: Unilateral tingling/numbness (marching from hand up arm to face)</li>
+<li><strong>Speech/language aura</strong>: Dysphasia</li>
+<li><strong>Motor aura</strong> (rare - "hemiplegic migraine"): Unilateral weakness</li>
+<p>
+</ul>
+</p>
+
+<strong>Aura characteristics</strong>:
+<ul>
+<li>At least one aura symptom spreads gradually over ≥5 minutes</li>
+<li>Each symptom lasts 5-60 minutes</li>
+<li><strong>Fully reversible</strong></li>
+<li>Headache follows aura within 60 minutes (can overlap or occur without headache)</li>
+<p>
+</ul>
+</p>
+
+<strong>CRITICAL</strong>: <strong>First presentation of aura >40 years</strong> or <strong>aura with motor weakness</strong> → Investigate (CT/MRI) to exclude stroke/TIA
+
+<hr>
+
+<h4>Migraine Triggers (Common)</h4>
+
+<ul>
+<li><strong>Hormonal</strong>: Menstruation (decline in estrogen), OCP, pregnancy (often improve), menopause</li>
+<li><strong>Dietary</strong>: Alcohol (red wine), aged cheese, chocolate, caffeine withdrawal, MSG</li>
+<li><strong>Environmental</strong>: Bright lights, strong smells, weather changes</li>
+<li><strong>Lifestyle</strong>: Stress, sleep disturbance (too little or too much), missed meals, dehydration</li>
+<li><strong>Medications</strong>: Nitrates, phosphodiesterase inhibitors</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Management (eTG 2024, PBS)</h4>
+
+<strong>Acute Treatment</strong> (Abortive):
+
+<strong>Mild-moderate migraine</strong>:
+<ul>
+<li><strong>Simple analgesia + antiemetic</strong>:</li>
+<p>
+</ul>
+  - <strong>Aspirin 900mg</strong> or <strong>Ibuprofen 400-600mg</strong> or <strong>Naproxen 500-1000mg</strong>
+  - <strong>+ Metoclopramide 10mg PO</strong> (prokinetic - improves gastric emptying and analgesic absorption, antiemetic)
+</p>
+<ul>
+<li>Take <strong>early in attack</strong> (within 1 hour of onset - more effective)</li>
+<p>
+</ul>
+</p>
+
+<strong>Moderate-severe migraine</strong>:
+<ul>
+<li><strong>Triptans</strong> (5-HT1B/1D agonists - vasoconstriction, block pain pathways):</li>
+<p>
+</ul>
+  - <strong>First-line</strong>: <strong>Sumatriptan</strong> 50-100mg PO (PBS listed) - can repeat once after 2 hours if partial response
+  - <strong>Alternatives</strong>: Rizatriptan 10mg, eletriptan 40mg, zolmitriptan 2.5mg
+  - <strong>Nasal</strong>: Sumatriptan nasal spray 20mg (if vomiting)
+  - <strong>Subcutaneous</strong>: Sumatriptan 6mg SC (fastest onset - 10-15 min, for severe/refractory)
+</p>
+<ul>
+<li><strong>Contraindications to triptans</strong>: Ischemic heart disease, stroke, uncontrolled hypertension, hemiplegic migraine, basilar migraine, pregnancy</li>
+<li><strong>Side effects</strong>: Chest tightness (usually benign), flushing, tingling, dizziness</li>
+<li><strong>Can combine</strong> triptan + NSAID (additive effect)</li>
+<p>
+</ul>
+</p>
+
+<strong>Status migrainosus</strong> (migraine >72 hours):
+<ul>
+<li><strong>IV fluids</strong>, antiemetics (metoclopramide 10mg IV, ondansetron 8mg IV)</li>
+<li><strong>IV aspirin</strong> 1g or <strong>IV prochlorperazine</strong> 10mg</li>
+<li>Consider <strong>IV magnesium sulfate</strong> 1-2g over 15 min (some evidence)</li>
+<p>
+</ul>
+</p>
+
+<strong>Medication overuse headache</strong> (MOH):
+<ul>
+<li>Using acute migraine medications >10 days/month (triptans) or >15 days/month (simple analgesics)</li>
+<li><strong>Results in chronic daily headache</strong></li>
+<li><strong>Management</strong>: <strong>Withdraw all acute medications</strong> for 2 months (withdrawal headache for 2-4 weeks, then improve), start preventive</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Preventive Treatment</strong>:
+
+<strong>Indications</strong>:
+<ul>
+<li>≥4 migraine days per month affecting quality of life</li>
+<li>Failure/contraindication to acute treatment</li>
+<li>Medication overuse headache</li>
+<li>Patient preference</li>
+<p>
+</ul>
+</p>
+
+<strong>Principles</strong>:
+<ul>
+<li>Trial medication for <strong>2-3 months</strong> at therapeutic dose before declaring failure</li>
+<li><strong>Goal</strong>: Reduce frequency by 50%</li>
+<p>
+</ul>
+</p>
+
+<strong>First-line options</strong> (PBS listed for migraine prophylaxis):
+
+<ol>
+<li><strong>Propranolol</strong> 40-160mg daily (beta-blocker):</li>
+<p>
+</ol>
+   - <strong>Most evidence</strong>, effective
+   - <strong>Contraindications</strong>: Asthma, heart block, hypotension, depression
+   - <strong>Side effects</strong>: Fatigue, hypotension, bradycardia, nightmares, sexual dysfunction
+</p>
+
+<ol>
+<li><strong>Topiramate</strong> 50-100mg daily (anticonvulsant):</li>
+<p>
+</ol>
+   - Effective, especially if comorbid epilepsy or obesity (weight loss side effect)
+   - <strong>Contraindications</strong>: <strong>Pregnancy</strong> (teratogenic)
+   - <strong>Side effects</strong>: Cognitive impairment ("dopamax"), paresthesias, kidney stones, glaucoma, weight loss
+</p>
+
+<ol>
+<li><strong>Amitriptyline</strong> 25-75mg nocte (tricyclic antidepressant):</li>
+<p>
+</ol>
+   - Effective, especially if comorbid tension headache, insomnia, depression
+   - <strong>Side effects</strong>: Dry mouth, constipation, drowsiness, weight gain
+</p>
+
+<ol>
+<li><strong>Candesartan</strong> 16mg daily (ARB - angiotensin receptor blocker):</li>
+<p>
+</ol>
+   - Effective, well-tolerated
+   - <strong>Contraindications</strong>: Pregnancy, renal artery stenosis
+   - <strong>Side effects</strong>: Dizziness, hypotension
+</p>
+
+<strong>Second-line</strong>:
+<ul>
+<li><strong>Pizotifen</strong> 0.5-3mg daily (serotonin antagonist) - older agent, weight gain</li>
+<li><strong>Verapamil</strong> 240-480mg daily (calcium channel blocker)</li>
+<p>
+</ul>
+</p>
+
+<strong>New agents</strong> (expensive, specialist-initiated):
+<ul>
+<li><strong>CGRP monoclonal antibodies</strong>: Erenumab, fremanezumab, galcanezumab (SC injection monthly) - very effective, expensive, PBS-restricted to specialist neurologists</li>
+<li><strong>Botulinum toxin A</strong> (Botox): For chronic migraine (≥15 headache days/month), injections every 12 weeks</li>
+<p>
+</ul>
+</p>
+
+<strong>Non-pharmacological</strong>:
+<ul>
+<li>Trigger avoidance (diary to identify triggers)</li>
+<li>Regular sleep, meals, hydration</li>
+<li>Stress management, relaxation techniques, CBT</li>
+<li>Acupuncture (some evidence)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Migraine in Specific Populations</h4>
+
+<strong>Women of childbearing age</strong>:
+<ul>
+<li><strong>OCP</strong>: Can worsen migraine, <strong>contraindicated if migraine with aura</strong> (increased stroke risk)</li>
+<li><strong>Pregnancy</strong>: Migraine often improves (especially 2nd/3rd trimester)</li>
+<p>
+</ul>
+  - Acute treatment: Paracetamol (safe), metoclopramide (safe)
+  - <strong>Avoid triptans</strong> (limited data, Category B3)
+  - <strong>Avoid NSAIDs</strong> in 3rd trimester (premature closure of ductus arteriosus)
+  - Preventive: Propranolol (safe), <strong>avoid topiramate</strong> (teratogenic)
+</p>
+
+<strong>Menstrual migraine</strong>:
+<ul>
+<li>Migraine predictably 2 days before to 3 days after menstruation</li>
+<li><strong>Treatment</strong>: NSAIDs continuously peri-menstrually, short-term triptan prophylaxis (frovatriptan 2.5mg BD for 6 days peri-menstrually)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Cluster Headache</h3>
+
+<strong>Rare</strong> (0.1% population), <strong>most severe primary headache</strong> ("suicide headache"), M:F = 3:1, age 20-40s
+
+<h4>Diagnostic Criteria (IHS)</h4>
+
+<strong>At least 5 attacks</strong> with:
+
+<strong>A. Severe/very severe unilateral orbital, supraorbital, and/or temporal pain</strong>
+
+<strong>B. Headache duration</strong>: <strong>15-180 minutes</strong> (untreated)
+
+<strong>C. At least ONE of following ipsilateral (same side as headache) autonomic features</strong>:
+<ol>
+<li><strong>Conjunctival injection</strong> (red eye) and/or <strong>lacrimation</strong> (tearing)</li>
+<li><strong>Nasal congestion</strong> and/or <strong>rhinorrhea</strong> (runny nose)</li>
+<li><strong>Eyelid edema</strong></li>
+<li><strong>Forehead/facial sweating</strong></li>
+<li><strong>Miosis</strong> (constricted pupil) and/or <strong>ptosis</strong> (drooping eyelid) - partial Horner's syndrome</li>
+<li><strong>Restlessness or agitation</strong> (patient paces, cannot lie still - unlike migraine)</li>
+<p>
+</ol>
+</p>
+
+<strong>D. Frequency</strong>: 1 attack every other day to 8 attacks per day (during cluster period)
+
+<p>
+**E. Not better accounted for by another diagnosis
+</p>
+
+<hr>
+
+<h4>Subtypes</h4>
+
+<strong>Episodic cluster headache</strong> (80%):
+<ul>
+<li><strong>Cluster periods</strong> (bouts): Last weeks-months, then remission for months-years</li>
+<li>Attacks occur same time each day (often night - "alarm clock headache")</li>
+<li>Seasonal pattern common (spring, autumn)</li>
+<p>
+</ul>
+</p>
+
+<strong>Chronic cluster headache</strong> (20%):
+<ul>
+<li>No remission, or remission <3 months, for >1 year</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Clinical Pearls</h4>
+
+<ul>
+<li><strong>Excruciating unilateral pain</strong> (orbital/temple)</li>
+<li><strong>Short duration</strong> (15-180 min, average 45-90 min)</li>
+<li><strong>Frequent attacks</strong> (1-8 per day during cluster)</li>
+<li><strong>Same time daily</strong> (circadian rhythm - often 1-2am)</li>
+<li><strong>Autonomic features</strong> (red, teary eye, runny nose on affected side)</li>
+<li><strong>Restlessness</strong> (patient paces, rocks, agitated - CANNOT lie still)</li>
+<li><strong>Male predominance</strong>, smokers</li>
+<li><strong>Alcohol triggers</strong> attacks during cluster period (avoid alcohol during bout)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Management (eTG 2024)</h4>
+
+<strong>Acute Treatment</strong> (Abortive):
+
+<ol>
+<li><strong>Subcutaneous sumatriptan 6mg</strong> - <strong>MOST EFFECTIVE</strong> (works in 10-15 min)</li>
+<p>
+</ol>
+   - PBS listed for cluster headache
+   - Can repeat once after 1 hour if needed (max 2 doses/24 hours)
+</p>
+
+<ol>
+<li><strong>High-flow 100% oxygen</strong> 12-15 L/min via non-rebreather mask x 15-20 minutes</li>
+<p>
+</ol>
+   - <strong>Very effective</strong>, no contraindications, no side effects
+   - First-line (especially if triptan contraindicated)
+</p>
+
+<ol>
+<li><strong>Intranasal zolmitriptan</strong> 5-10mg (faster than oral triptan)</li>
+<p>
+</ol>
+</p>
+
+<strong>Preventive Treatment</strong> (Prophylaxis during cluster period):
+
+<strong>First-line</strong>: <strong>Verapamil</strong> 240-960mg daily (calcium channel blocker)
+<ul>
+<li><strong>Most effective preventive</strong>, drug of choice</li>
+<li>Start 240mg daily, titrate up by 80mg every 2 weeks (typical dose 360-480mg)</li>
+<li><strong>ECG monitoring</strong> (risk of heart block at high doses - check ECG before starting, after each dose increase)</li>
+<li><strong>Side effects</strong>: Constipation, ankle edema, bradycardia, heart block</li>
+<p>
+</ul>
+</p>
+
+<strong>Alternative/Additional</strong>:
+<ul>
+<li><strong>Short-term corticosteroids</strong> (bridge until verapamil takes effect):</li>
+<p>
+</ul>
+  - <strong>Prednisolone 60-80mg daily x 5 days</strong>, then rapid taper over 10 days
+  - Effective quickly, use as bridge therapy
+</p>
+<ul>
+<li><strong>Lithium</strong> 400-800mg daily (effective but requires monitoring - renal, TSH, lithium levels)</li>
+<li><strong>Topiramate</strong> 100-200mg daily</li>
+<p>
+</ul>
+</p>
+
+<strong>Transitional therapy</strong> (prevent attacks while starting verapamil):
+<ul>
+<li>Greater occipital nerve block (local anesthetic + steroid injection)</li>
+<li>Prednisolone as above</li>
+<p>
+</ul>
+</p>
+
+<strong>Refractory chronic cluster</strong>:
+<ul>
+<li>Neurology referral</li>
+<li>Consider deep brain stimulation, nerve stimulation</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>3. SECONDARY HEADACHES (Dangerous Causes)</h2>
+
+<h3>Subarachnoid Hemorrhage (SAH)</h3>
+
+<strong>Covered in <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s section above</strong>
+
+<strong>Key Points</strong>:
+<ul>
+<li><strong>Thunderclap headache</strong> ("worst headache of life", <1 min to peak)</li>
+<li><strong>Investigations</strong>: CT brain (95% sensitive <6 hours) → LP if CT negative (xanthochromia)</li>
+<li><strong>Management</strong>: Neurosurgery (clip/coil aneurysm), nimodipine, BP control</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Meningitis / Encephalitis</h3>
+
+<strong>Covered in <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s section above</strong>
+
+<strong>Key Points</strong>:
+<ul>
+<li><strong>Fever + headache + neck stiffness</strong> (triad)</li>
+<li><strong>Do NOT delay antibiotics</strong> (ceftriaxone + dexamethasone)</li>
+<li><strong>CT before LP</strong> if raised ICP concern</li>
+<li><strong>Aciclovir empirically</strong> if encephalitis suspected</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Temporal Arteritis (Giant Cell Arteritis)</h3>
+
+<strong>Covered in <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s section above</strong>
+
+<strong>Key Points</strong>:
+<ul>
+<li><strong>Age >50, jaw claudication, visual symptoms</strong> → GCA</li>
+<li><strong>START STEROIDS IMMEDIATELY</strong> (don't wait for biopsy - risk blindness)</li>
+<li><strong>ESR/CRP elevated</strong>, temporal artery biopsy</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Idiopathic Intracranial Hypertension (IIH)</h3>
+
+<strong>AKA Pseudotumor Cerebri</strong>
+
+<strong>Epidemiology</strong>: Young obese women (90%)
+
+<strong>Presentation</strong>:
+<ul>
+<li><strong>Headache</strong>: Worse morning/lying flat, worse with Valsalva</li>
+<li><strong>Visual symptoms</strong>: Transient visual obscurations (seconds, precipitated by postural change), diplopia (6th nerve palsy), visual field defect (enlarged blind spot, peripheral constriction)</li>
+<li><strong>Pulsatile tinnitus</strong> (whooshing sound in ear)</li>
+<li><strong>Papilledema</strong> (bilateral) - hallmark</li>
+<p>
+</ul>
+</p>
+
+<strong>Investigations</strong>:
+<ul>
+<li><strong>CT/MRI brain</strong>: Normal parenchyma (excludes tumor), may show "empty sella", slit-like ventricles</li>
+<li><strong>MR venography</strong>: Exclude venous sinus thrombosis</li>
+<li><strong>LP</strong>: <strong>Elevated opening pressure</strong> (>25 cm H2O), normal CSF composition</li>
+<li><strong>Ophthalmology</strong>: Formal visual fields, optical coherence tomography (papilledema assessment)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Weight loss</strong> (most important - even 5-10% can improve)</li>
+<li><strong>Acetazolamide</strong> 500mg-2g daily (carbonic anhydrase inhibitor - reduces CSF production)</li>
+<li><strong>Repeated LPs</strong> (therapeutic CSF drainage)</li>
+<li><strong>Neurology/ophthalmology referral</strong></li>
+<li><strong>Surgery</strong> if refractory and vision threatened: Optic nerve sheath fenestration, VP shunt, venous sinus stenting</li>
+<p>
+</ul>
+</p>
+
+<strong>Complications</strong>: <strong>Permanent visual loss</strong> if untreated (optic atrophy from chronic papilledema)
+
+<hr>
+
+<h3>Brain Tumor</h3>
+
+<strong>Presentation</strong>:
+<ul>
+<li><strong>Headache</strong>: Progressive over weeks-months, worse morning/lying flat/Valsalva</li>
+<li><strong>Focal neurology</strong>: Weakness, sensory loss, visual field defect (depends on location)</li>
+<li><strong>Seizures</strong> (new-onset, especially focal)</li>
+<li><strong>Cognitive/personality change</strong></li>
+<li><strong>Papilledema</strong> (if raised ICP)</li>
+<p>
+</ul>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong>: New headache >50 years, progressive headache, focal neurology, seizures, papilledema
+
+<strong>Investigations</strong>: <strong>CT/MRI brain</strong> (contrast)
+
+<strong>Management</strong>: Neurosurgery, oncology (surgery, radiotherapy, chemotherapy depending on type)
+
+<hr>
+
+<h3>Medication Overuse Headache (MOH)</h3>
+
+<strong>AKA Rebound Headache, Analgesic Overuse Headache</strong>
+
+<strong>Definition</strong>: Chronic headache (≥15 days/month) caused by regular overuse of acute headache medications
+
+<strong>Criteria</strong>:
+<ul>
+<li>Headache ≥15 days/month in patient with pre-existing primary headache</li>
+<li>Regular overuse of acute headache medication for >3 months:</li>
+<p>
+</ul>
+  - <strong>Triptans/opioids/combination analgesics</strong>: ≥10 days/month
+  - <strong>Simple analgesics</strong> (paracetamol, NSAIDs, aspirin): ≥15 days/month
+</p>
+<ul>
+<li>Headache worsened during medication overuse</li>
+<p>
+</ul>
+</p>
+
+<strong>Medications causing MOH</strong>:
+<ul>
+<li>Triptans (most common)</li>
+<li>Combination analgesics (paracetamol + codeine, aspirin + caffeine)</li>
+<li>Opioids</li>
+<li>Simple analgesics (if ≥15 days/month)</li>
+<p>
+</ul>
+</p>
+
+<strong>Vicious cycle</strong>: Headache → take medication → headache returns → take more medication → chronic daily headache
+
+<strong>Management</strong>:
+<ol>
+<li><strong>Withdraw all acute headache medications</strong> (abrupt cessation):</li>
+<p>
+</ol>
+   - Warn patient: <strong>Withdrawal headache for 2-4 weeks</strong> (severe, can have nausea, anxiety, sleep disturbance)
+   - Supportive: Fluids, antiemetics, short-term NSAIDs for withdrawal symptoms (if not overused medication)
+   - <strong>Improvement typically after 2-4 weeks</strong> of withdrawal
+</p>
+<ol>
+<li><strong>Start preventive medication</strong> (e.g., amitriptyline, topiramate, propranolol)</li>
+<li><strong>Limit acute medication use</strong> after recovery (<10 days/month triptans, <15 days/month simple analgesics)</li>
+<li><strong>Education</strong>: Avoid overuse in future</li>
+<p>
+</ol>
+</p>
+
+<strong>Prognosis</strong>: 60-70% improve with withdrawal
+
+<hr>
+
+<h2>4. INVESTIGATIONS IN HEADACHE</h2>
+
+<h3>When to Image (CT or MRI Brain)</h3>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> CT brain</strong> (non-contrast):
+<ul>
+<li><strong>Thunderclap headache</strong> (SAH)</li>
+<li><strong>New focal neurology</strong> (stroke, bleed, mass)</li>
+<li><strong>Altered consciousness, confusion</strong> (encephalitis, meningitis with raised ICP, mass)</li>
+<li><strong>Papilledema</strong> (raised ICP)</li>
+<li><strong>Head trauma</strong> + headache + LOC/amnesia/vomiting (intracranial bleed)</li>
+<li><strong>Headache + fever + focal neurology/papilledema/GCS <12</strong> (before LP - risk of herniation)</li>
+<p>
+</ul>
+</p>
+
+<strong>MRI brain</strong> (elective, better for detailed anatomy):
+<ul>
+<li><strong>New headache >50 years</strong> (tumor, subdural)</li>
+<li><strong>Progressive headache</strong> (worsening over weeks)</li>
+<li><strong>Change in headache pattern</strong></li>
+<li><strong>First presentation of aura >40 years</strong> (exclude stroke/TIA)</li>
+<li><strong>Hemiplegic migraine</strong> (motor aura - exclude stroke)</li>
+<li><strong>Headache not responding to treatment</strong></li>
+<li><strong>Atypical features</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Do NOT need imaging</strong> (if no <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s):
+<ul>
+<li>Typical migraine, tension-type, cluster headache with no <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</li>
+<li>Long-standing stable headache pattern</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Lumbar Puncture (LP)</h3>
+
+<strong>Indications</strong>:
+<ul>
+<li><strong>Suspected SAH with normal CT</strong> (xanthochromia)</li>
+<li><strong>Suspected meningitis/encephalitis</strong> (CSF analysis, culture)</li>
+<li><strong>Suspected IIH</strong> (opening pressure)</li>
+<p>
+</ul>
+</p>
+
+<strong>Timing</strong>:
+<ul>
+<li><strong>SAH</strong>: At least 12 hours after headache onset (time for bilirubin formation - xanthochromia)</li>
+<li><strong>Meningitis</strong>: <span style="color: #e74c3c; font-weight: bold;">URGENT</span> (after CT if raised ICP concern)</li>
+<p>
+</ul>
+</p>
+
+<strong>CT before LP</strong> if concern for raised ICP (risk of herniation):
+<ul>
+<li>Papilledema</li>
+<li>Focal neurology</li>
+<li>GCS <12</li>
+<li>Immunosuppressed</li>
+<li>History of CNS mass/lesion</li>
+<p>
+</ul>
+</p>
+
+<strong>LP technique</strong>:
+<ul>
+<li>Lateral decubitus position</li>
+<li>L3-L4 or L4-L5 interspace</li>
+<li><strong>Measure opening pressure</strong> (normal 10-25 cm H2O)</li>
+<li><strong>Send CSF</strong>:</li>
+<p>
+</ul>
+  - <strong>Tube 1</strong>: Glucose, protein
+  - <strong>Tube 2</strong>: Gram stain, culture
+  - <strong>Tube 3</strong>: Cell count (WCC, RBC)
+  - <strong>Tube 4</strong>: Xanthochromia (if SAH suspected), PCR (HSV, enteroviruses)
+</p>
+
+<strong>CSF Interpretation</strong>:
+
+<p>
+| Condition | WCC (cells/μL) | Glucose | Protein | Other |
+|-----------|----------------|---------|---------|-------|
+| <strong>Normal</strong> | <5 | 50-80% of serum | 0.15-0.45 g/L | Clear, colorless |
+| <strong>Bacterial meningitis</strong> | >1000 (neutrophils) | <strong>Low</strong> (<50% serum) | <strong>High</strong> (>1 g/L) | Gram stain positive, culture positive |
+| <strong>Viral meningitis</strong> | 10-1000 (lymphocytes) | Normal | Mildly elevated | PCR for viruses |
+| <strong>Tuberculous meningitis</strong> | 10-500 (lymphocytes) | <strong>Low</strong> | <strong>Very high</strong> | AFB stain/culture, PCR |
+| <strong>Fungal meningitis</strong> | 10-500 (lymphocytes) | <strong>Low</strong> | High | India ink (Cryptococcus), culture |
+| <strong>SAH</strong> | RBCs (thousands), may have WCC | Normal | Elevated | <strong>Xanthochromia</strong> (yellow CSF) |
+</p>
+
+<strong>Xanthochromia</strong>: Yellow discoloration of CSF from bilirubin (breakdown product of RBCs)
+<ul>
+<li>Appears 12 hours after SAH, persists 2 weeks</li>
+<li><strong>Centrifuge CSF</strong> - if supernatant yellow → xanthochromia (SAH)</li>
+<li>Distinguishes SAH from traumatic LP (traumatic LP: RBCs decrease in successive tubes, no xanthochromia)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Blood Tests</h3>
+
+<strong>Temporal arteritis</strong>:
+<ul>
+<li><strong>ESR</strong>: Markedly elevated (typically >50, often >100) - <strong>screening test</strong></li>
+<li><strong>CRP</strong>: Elevated</li>
+<li><strong>FBC</strong>: Anemia (normocytic), elevated platelets</li>
+<p>
+</ul>
+</p>
+
+<strong>Meningitis/encephalitis</strong>:
+<ul>
+<li><strong>Blood cultures</strong> (before antibiotics)</li>
+<li><strong>FBC</strong>: Elevated WCC (bacterial)</li>
+<li><strong>CRP/procalcitonin</strong>: Elevated (bacterial)</li>
+<li><strong>Serum glucose</strong>: Compare with CSF glucose</li>
+<p>
+</ul>
+</p>
+
+<strong>Other</strong>:
+<ul>
+<li><strong>Pregnancy test</strong> (βhCG) - if woman of childbearing age with new headache (exclude pre-eclampsia, cerebral venous thrombosis)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>5. COMMON IMG MISTAKES</h2>
+
+<ol>
+<li><strong>Not recognizing thunderclap headache as SAH</strong>:</li>
+<p>
+</ol>
+   - <strong>"Worst headache of life"</strong> = SAH until proven otherwise
+   - <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> CT</strong>, then LP if CT negative
+</p>
+
+<ol>
+<li><strong>Delaying antibiotics in suspected meningitis</strong>:</li>
+<p>
+</ol>
+   - <strong>Do NOT delay antibiotics</strong> for LP or CT
+   - Give <strong>ceftriaxone + dexamethasone</strong> immediately if meningitis suspected
+   - Can do LP after (antibiotics don't sterilize CSF for 4-6 hours, culture still useful)
+</p>
+
+<ol>
+<li><strong>Not treating temporal arteritis <span style="color: #e74c3c; font-weight: bold;">URGENT</span>ly</strong>:</li>
+<p>
+</ol>
+   - <strong>START STEROIDS IMMEDIATELY</strong> on clinical suspicion (don't wait for biopsy)
+   - Risk of <strong>irreversible blindness</strong> if delayed
+</p>
+
+<ol>
+<li><strong>Missing medication overuse headache</strong>:</li>
+<p>
+</ol>
+   - Ask about <strong>frequency of acute medication use</strong>
+   - If ≥10 days/month (triptans) or ≥15 days/month (simple analgesics) → MOH
+   - Management: <strong>Withdraw all acute medications</strong> (withdrawal headache, then improve)
+</p>
+
+<ol>
+<li><strong>Over-investigating primary headaches</strong>:</li>
+<p>
+</ol>
+   - <strong>Typical migraine/tension/cluster with no <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong> = do NOT need CT/MRI
+   - Imaging low yield, reassure patient
+</p>
+
+<ol>
+<li><strong>Not asking about aura in migraine</strong>:</li>
+<p>
+</ol>
+   - <strong>Migraine with aura + OCP</strong> = increased stroke risk → <strong>contraindicated</strong>
+   - <strong>First aura >40 years</strong> → image (exclude stroke/TIA)
+</p>
+
+<ol>
+<li><strong>Treating cluster headache like migraine</strong>:</li>
+<p>
+</ol>
+   - <strong>Cluster = short duration (15-180 min)</strong> - oral meds too slow
+   - Need <strong>subcutaneous sumatriptan</strong> or <strong>high-flow oxygen</strong>
+   - Preventive: <strong>Verapamil</strong> (not propranolol/amitriptyline)
+</p>
+
+<ol>
+<li><strong>Not checking fundoscopy in new headache</strong>:</li>
+<p>
+</ol>
+   - <strong>Papilledema</strong> = raised ICP → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> investigation
+   - <strong>Always do fundoscopy</strong> in new headache, especially if <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s
+</p>
+
+<ol>
+<li><strong>CT brain without LP in suspected SAH</strong>:</li>
+<p>
+</ol>
+   - <strong>CT negative does NOT exclude SAH</strong> (sensitivity decreases with time)
+   - If CT negative and high suspicion → <strong>LP</strong> (xanthochromia)
+</p>
+
+<ol>
+<li><strong>Using opioids for primary headaches</strong>:</li>
+<p>
+</ol>
+    - <strong>Avoid opioids</strong> (codeine, morphine, oxycodone) for migraine/tension/cluster
+    - High risk of medication overuse headache, dependence
+    - Not effective, not evidence-based
+</p>
+
+<hr>
+
+<h2>OSCE PRACTICE STATION</h2>
+
+<h3>OSCE Station: Migraine with Aura</h3>
+
+<strong>Scenario</strong>:
+<p>
+You are the medical officer in the GP clinic. A 32-year-old woman, Sarah, presents with recurrent headaches. She has had them for several years but they have become more frequent recently. Take a focused history to establish a diagnosis and management plan.
+</p>
+
+<strong>Task (8 minutes)</strong>:
+<ul>
+<li>Take focused headache history</li>
+<li>Assess for <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</li>
+<li>Establish diagnosis (migraine with aura)</li>
+<li>Explain management plan</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Model Performance</strong>:
+
+<strong>Opening (30 sec)</strong>:
+<p>
+"Hello Sarah, I'm Dr. [Name]. I understand you've been having headaches. I'd like to ask some questions to understand what's happening. Is that okay?"
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s First (1 min)</strong>:
+
+<p>
+"Have you ever had a sudden severe headache - worst headache of your life?"
+</p>
+<ul>
+<li>Patient: "No."</li>
+<p>
+</ul>
+</p>
+
+<p>
+"Any fever, neck stiffness, confusion?"
+</p>
+<ul>
+<li>Patient: "No."</li>
+<p>
+</ul>
+</p>
+
+<p>
+"Any weakness, numbness, or visual problems that don't go away?"
+</p>
+<ul>
+<li>Patient: "Well, I do get visual disturbances, but they go away after about 20-30 minutes."</li>
+<li><strong>✓ Aura</strong> (need to explore further)</li>
+<p>
+</ul>
+</p>
+
+<p>
+"How old are you?"
+</p>
+<ul>
+<li>Patient: "32."</li>
+<li><strong>✓ <50 years</strong> (new headache >50 would be <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>)</li>
+<p>
+</ul>
+</p>
+
+<p>
+"Has the headache pattern changed recently or gotten progressively worse over weeks?"
+</p>
+<ul>
+<li>Patient: "It's been similar for years, but more frequent in the last few months."</li>
+<p>
+</ul>
+</p>
+
+<strong>✓ No immediate <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong> (no thunderclap, no meningism, no progressive worsening, age <50)
+
+<hr>
+
+<strong>Characterize Headache (3 min)</strong>:
+
+<strong>Location</strong>:
+<p>
+"Where is the headache - one side or both?"
+</p>
+<ul>
+<li>Patient: "Usually on the right side of my head, around my temple and eye."</li>
+<li><strong>✓ Unilateral</strong> (migraine feature)</li>
+<p>
+</ul>
+</p>
+
+<strong>Quality</strong>:
+<p>
+"What does it feel like - throbbing, pressing, sharp?"
+</p>
+<ul>
+<li>Patient: "Throbbing, pulsating."</li>
+<li><strong>✓ Pulsating</strong> (migraine feature)</li>
+<p>
+</ul>
+</p>
+
+<strong>Duration</strong>:
+<p>
+"How long does each headache last?"
+</p>
+<ul>
+<li>Patient: "Usually 6-12 hours, sometimes up to a day if I don't take anything."</li>
+<li><strong>✓ 4-72 hours</strong> (migraine duration)</li>
+<p>
+</ul>
+</p>
+
+<strong>Severity</strong>:
+<p>
+"How severe is it? Does it stop you from doing activities?"
+</p>
+<ul>
+<li>Patient: "It's pretty bad - usually 7-8 out of 10. I have to lie down in a dark room. I can't work when I have one."</li>
+<li><strong>✓ Moderate-severe, prohibits activities</strong> (migraine feature)</li>
+<p>
+</ul>
+</p>
+
+<strong>Aggravating factors</strong>:
+<p>
+"Does physical activity make it worse - like walking, climbing stairs?"
+</p>
+<ul>
+<li>Patient: "Yes, movement makes it much worse. I try to stay still."</li>
+<li><strong>✓ Aggravated by activity</strong> (migraine feature)</li>
+<p>
+</ul>
+</p>
+
+<strong>Associated symptoms</strong>:
+<p>
+"Any nausea or vomiting?"
+</p>
+<ul>
+<li>Patient: "Yes, I feel nauseous and sometimes vomit."</li>
+<li><strong>✓ Nausea/vomiting</strong> (migraine feature)</li>
+<p>
+</ul>
+</p>
+
+<p>
+"Any sensitivity to light or sound?"
+</p>
+<ul>
+<li>Patient: "Yes, both. I need to be in a dark, quiet room."</li>
+<li><strong>✓ Photophobia AND phonophobia</strong> (migraine diagnostic criterion)</li>
+<p>
+</ul>
+</p>
+
+<strong>Aura</strong> (explore visual disturbances):
+<p>
+"You mentioned visual disturbances. Can you describe them?"
+</p>
+<ul>
+<li>Patient: "Before the headache starts, I see zigzag lines - like shimmering bright lights in my vision. They start small and spread out."</li>
+<li><strong>✓ Visual aura</strong> (scintillating scotoma)</li>
+<p>
+</ul>
+</p>
+
+<p>
+"How long do these visual symptoms last?"
+</p>
+<ul>
+<li>Patient: "About 20-30 minutes, then they go away and the headache starts."</li>
+<li><strong>✓ Aura lasts 5-60 minutes, then headache follows</strong> (classic migraine with aura)</li>
+<p>
+</ul>
+</p>
+
+<p>
+"Do you get any weakness or numbness?"
+</p>
+<ul>
+<li>Patient: "No weakness. Sometimes I get tingling in my hand that spreads up my arm."</li>
+<li><strong>✓ Sensory aura</strong> (also common in migraine with aura)</li>
+<p>
+</ul>
+</p>
+
+<p>
+"Do the visual symptoms and tingling completely go away?"
+</p>
+<ul>
+<li>Patient: "Yes, completely."</li>
+<li><strong>✓ Fully reversible</strong> (aura characteristic - important to distinguish from stroke)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Frequency and Triggers (1 min)</strong>:
+
+<p>
+"How often do you get these headaches?"
+</p>
+<ul>
+<li>Patient: "Used to be once a month, now it's 3-4 times a month."</li>
+<li><strong>✓ Frequent - needs preventive therapy</strong></li>
+<p>
+</ul>
+</p>
+
+<p>
+"Have you noticed any triggers?"
+</p>
+<ul>
+<li>Patient: "Sometimes stress, missing meals, my period. Also, I think chocolate and red wine trigger them."</li>
+<li><strong>✓ Classic migraine triggers</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Medication History (30 sec)</strong>:
+
+<p>
+"What do you take when you have a headache?"
+</p>
+<ul>
+<li>Patient: "Paracetamol and ibuprofen, sometimes together. I'm taking them a lot recently."</li>
+<p>
+</ul>
+</p>
+
+<p>
+"How many days per month are you taking painkillers?"
+</p>
+<ul>
+<li>Patient: "Probably 10-12 days."</li>
+<li><strong>✓ Approaching medication overuse</strong> (needs education)</li>
+<p>
+</ul>
+</p>
+
+<p>
+"Are you on any regular medications?"
+</p>
+<ul>
+<li>Patient: "The oral contraceptive pill."</li>
+<li><strong>⚠ OCP + migraine with aura = STROKE RISK</strong> (need to address)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Past Medical/Family History (30 sec)</strong>:
+
+<p>
+"Any other medical conditions?"
+</p>
+<ul>
+<li>Patient: "No."</li>
+<p>
+</ul>
+</p>
+
+<p>
+"Any family history of migraines?"
+</p>
+<ul>
+<li>Patient: "Yes, my mother gets migraines too."</li>
+<li><strong>✓ Positive family history</strong> (common in migraine)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Diagnosis and Explanation (1.5 min)</strong>:
+
+<p>
+"Based on what you've told me, you have <strong>migraine with aura</strong>. Let me explain:
+</p>
+
+<strong>Migraine</strong> is a neurological condition that causes severe, throbbing headaches, usually on one side of your head. It's often associated with nausea, sensitivity to light and sound, and being made worse by movement - all of which you experience.
+
+<strong>Aura</strong> refers to the visual symptoms you get before the headache - the zigzag lights and tingling. These are caused by a wave of electrical activity spreading across your brain. The aura is temporary and completely reversible, which is reassuring.
+
+<p>
+Migraine is very common - affects about 15% of people - and there's a genetic component, which explains why your mother also gets them.
+</p>
+
+<p>
+The good news is that migraine is very treatable. We can't cure it, but we can significantly reduce the frequency and severity of attacks with the right management."
+</p>
+
+<hr>
+
+<strong>Management Plan (2 min)</strong>:
+
+<p>
+"There are two approaches to treating migraine:
+</p>
+
+<strong>1. Acute treatment</strong> (to stop the attack when it happens):
+
+<p>
+For your moderate-severe migraines, I'd recommend <strong>triptans</strong> - a class of medication specifically designed for migraine. The one I'd suggest is called <strong>sumatriptan</strong>. You take it as soon as the headache starts (or even during the aura), and it works to reverse the changes in your brain that cause migraine. It's very effective - works in about 70% of people within 2 hours.
+</p>
+
+<strong>Important</strong>: Take it <strong>early in the attack</strong> - don't wait for the headache to get severe. You can combine it with ibuprofen for even better effect.
+
+<p>
+You can also continue using ibuprofen or naproxen (a stronger anti-inflammatory), plus an anti-nausea medication like metoclopramide.
+</p>
+
+<strong>However</strong>, I'm concerned you're taking painkillers 10-12 days per month. If you use acute migraine medications <strong>more than 10 days per month</strong>, you can develop <strong>medication overuse headache</strong> - a vicious cycle where the medications actually cause more frequent headaches. We need to limit acute medication use and start you on preventive therapy.
+
+<hr>
+
+<strong>2. Preventive treatment</strong> (to reduce frequency):
+
+<p>
+Since you're having 3-4 migraines per month and they're significantly affecting your life, I'd recommend <strong>preventive medication</strong>. You take this every day (even when you don't have a headache) to reduce the frequency of attacks.
+</p>
+
+<p>
+Options include:
+</p>
+<ul>
+<li><strong>Propranolol</strong> (a beta-blocker) - very effective, taken daily</li>
+<li><strong>Topiramate</strong> (an anticonvulsant) - also effective, but we need to avoid this if there's any chance of pregnancy as it can harm the baby</li>
+<li><strong>Amitriptyline</strong> (an antidepressant in low dose) - especially if you have any tension headaches as well</li>
+<p>
+</ul>
+</p>
+
+<p>
+We'd trial one of these for 2-3 months to see if it reduces your migraine frequency by at least 50%.
+</p>
+
+<hr>
+
+<strong>3. Contraceptive pill</strong>:
+
+<strong>This is important</strong>: You're currently on the oral contraceptive pill. <strong>Migraine with aura + OCP increases your risk of stroke</strong>. The absolute risk is still low, but it's significant enough that we recommend <strong>stopping the OCP</strong> and using an alternative contraception method.
+
+<p>
+Safe alternatives include:
+</p>
+<ul>
+<li><strong>Progesterone-only pill</strong> (mini-pill) - safe with migraine</li>
+<li><strong>Mirena (hormonal IUD)</strong> - very effective, safe</li>
+<li><strong>Implanon</strong> - safe</li>
+<li><strong>Barrier methods</strong> (condoms)</li>
+<li><strong>Copper IUD</strong> (non-hormonal)</li>
+<p>
+</ul>
+</p>
+
+<p>
+I can refer you to family planning or gynecology to discuss options.
+</p>
+
+<hr>
+
+<strong>4. Lifestyle and triggers</strong>:
+
+<ul>
+<li>Keep a <strong>headache diary</strong> to identify your triggers (you've already noticed stress, missed meals, period, chocolate, wine)</li>
+<li><strong>Avoid triggers</strong> where possible:</li>
+<p>
+</ul>
+  - Regular meals (don't skip)
+  - Regular sleep schedule
+  - Stress management (relaxation, exercise, mindfulness)
+  - Limit alcohol, especially red wine
+  - Avoid excessive chocolate
+</p>
+<ul>
+<li><strong>Hydration</strong> - drink plenty of water</li>
+<li><strong>Regular exercise</strong> (between migraines - can be protective)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Follow-up</strong>:
+
+<p>
+I'd like to see you back in <strong>4-6 weeks</strong> to review:
+</p>
+<ul>
+<li>How the sumatriptan is working</li>
+<li>Start preventive medication</li>
+<li>Discuss contraception change</li>
+<p>
+</ul>
+</p>
+
+<p>
+If you have a sudden severe headache unlike your usual migraines, or if you get an aura with weakness (not just tingling), or an aura lasting more than an hour, please seek <span style="color: #e74c3c; font-weight: bold;">URGENT</span> medical attention.
+</p>
+
+<p>
+Do you have any questions?"
+</p>
+
+<hr>
+
+<strong>Summary to Examiner</strong>:
+
+<p>
+"32-year-old woman with <strong>migraine with aura</strong>:
+</p>
+
+<strong>Diagnostic criteria met</strong> (Migraine with aura):
+<ul>
+<li>✓ At least 2 attacks with reversible aura</li>
+<li>✓ <strong>Visual aura</strong> (scintillating scotoma - zigzag lights, 20-30 minutes, fully reversible)</li>
+<li>✓ <strong>Sensory aura</strong> (tingling hand → arm)</li>
+<li>✓ Headache follows aura within 60 minutes</li>
+<li>✓ <strong>Unilateral</strong> headache (right temple/eye)</li>
+<li>✓ <strong>Pulsating</strong> quality</li>
+<li>✓ <strong>4-72 hours</strong> duration (6-12 hours)</li>
+<li>✓ <strong>Moderate-severe</strong> intensity (7-8/10, prohibits activities)</li>
+<li>✓ <strong>Aggravated by physical activity</strong></li>
+<li>✓ <strong>Nausea/vomiting</strong></li>
+<li>✓ <strong>Photophobia AND phonophobia</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Frequency</strong>: 3-4 per month (increased from 1 per month)
+
+<strong>Triggers</strong>: Stress, missed meals, menstruation, chocolate, red wine
+
+<strong>Medications</strong>: Paracetamol, ibuprofen (10-12 days/month - approaching medication overuse)
+
+<strong>⚠ Important</strong>: On <strong>OCP</strong> (combined oral contraceptive pill) - <strong>contraindicated with migraine with aura</strong> (stroke risk)
+
+<strong>Family history</strong>: Mother with migraines
+
+<strong>No <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong>: No thunderclap, no meningism, no progressive headache, age <50, aura fully reversible, no motor weakness
+
+<strong>Management</strong>:
+
+<ol>
+<li><strong>Acute treatment</strong>:</li>
+<p>
+</ol>
+   - <strong>Sumatriptan 50-100mg</strong> PO at onset (can repeat once after 2 hours if needed) - PBS listed
+   - <strong>Naproxen 500mg</strong> or ibuprofen 400-600mg
+   - <strong>Metoclopramide 10mg</strong> (antiemetic + prokinetic)
+   - Education: Take <strong>early</strong> in attack, limit to <10 days/month (avoid medication overuse headache)
+</p>
+
+<ol>
+<li><strong>Preventive therapy</strong> (indications: ≥4 migraines/month, affecting QoL):</li>
+<p>
+</ol>
+   - <strong>First-line</strong>: Propranolol 40-80mg daily (titrate up to 160mg if needed), OR
+   - Amitriptyline 25-75mg nocte (if comorbid tension headache)
+   - <strong>Avoid topiramate</strong> unless confirmed not pregnant/using reliable contraception (teratogenic)
+   - Trial for 2-3 months before declaring failure
+   - Goal: 50% reduction in frequency
+</p>
+
+<ol>
+<li><strong>STOP Combined Oral Contraceptive Pill</strong>:</li>
+<p>
+</ol>
+   - <strong>Migraine with aura + OCP = increased stroke risk</strong> (contraindicated)
+   - Discuss alternative contraception:
+     - Progesterone-only pill (safe)
+     - Mirena IUD (safe)
+     - Implanon (safe)
+     - Copper IUD (safe)
+     - Barrier methods
+   - Refer family planning/gynecology
+</p>
+
+<ol>
+<li><strong>Lifestyle modifications</strong>:</li>
+<p>
+</ol>
+   - Headache diary (identify triggers)
+   - Avoid triggers: Regular meals, regular sleep, stress management, limit alcohol/chocolate
+   - Hydration, regular exercise
+</p>
+
+<ol>
+<li><strong>Follow-up</strong>: 4-6 weeks (review acute treatment, start preventive, contraception change)</li>
+<p>
+</ol>
+</p>
+
+<ol>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s to seek <span style="color: #e74c3c; font-weight: bold;">URGENT</span> care</strong>:</li>
+<p>
+</ol>
+   - Sudden severe headache unlike usual
+   - Aura with motor weakness (hemiplegic migraine - needs investigation)
+   - Aura lasting >1 hour
+</p>
+
+<strong>No imaging required</strong> (typical migraine with aura, no <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s, age <40, established pattern for years)
+
+<strong>Prognosis</strong>: Good with appropriate management. Expect 50% reduction in frequency with preventive therapy. Migraine often improves after age 50 and with menopause."
+
+<hr>
+
+<h2>SUMMARY: KEY TAKEAWAYS FOR ICRP</h2>
+
+<h3><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s - "SNOOP4"</h3>
+
+<strong>S</strong> - Systemic symptoms (fever, weight loss, cancer, HIV)
+<strong>N</strong> - Neurological signs (focal neurology, confusion, seizures, papilledema)
+<strong>O</strong> - Onset sudden (thunderclap <1 min → SAH)
+<strong>O</strong> - Onset after age 50 (new headache → temporal arteritis, tumor, subdural)
+<strong>P</strong> - Pattern change (progressive worsening → tumor, abscess, temporal arteritis)
+<strong>P</strong> - Positional (worse lying flat → raised ICP, worse upright → CSF leak)
+<strong>P</strong> - Precipitated by Valsalva (cough headache → posterior fossa lesion)
+<strong>P</strong> - Papilledema, Pulsatile tinnitus (raised ICP)
+
+<h3><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Headaches (Recognize IMMEDIATELY)</h3>
+
+<ol>
+<li><strong>Thunderclap ("worst headache of life")</strong> → SAH (CT → LP if negative)</li>
+<li><strong>Fever + headache + neck stiffness</strong> → Meningitis (ceftriaxone + dexamethasone, don't delay)</li>
+<li><strong>Age >50 + jaw claudication + visual symptoms</strong> → Temporal arteritis (steroids immediately, ESR/CRP, biopsy)</li>
+<li><strong>Papilledema / focal neurology / confusion</strong> → Raised ICP (<span style="color: #e74c3c; font-weight: bold;">URGENT</span> CT)</li>
+<p>
+</ol>
+</p>
+
+<h3>Primary Headaches Comparison</h3>
+
+<p>
+| Feature | Tension-Type | Migraine | Cluster |
+|---------|-------------|----------|---------|
+| <strong>Location</strong> | Bilateral | Unilateral (can be bilateral) | Unilateral (orbital/temple) |
+| <strong>Quality</strong> | Pressing/tightening | Pulsating | Severe/excruciating |
+| <strong>Duration</strong> | 30 min - 7 days | 4-72 hours | <strong>15-180 minutes</strong> |
+| <strong>Severity</strong> | Mild-moderate | Moderate-severe | Very severe |
+| <strong>Activity</strong> | NOT aggravated | Aggravated | Restless, paces |
+| <strong>Nausea</strong> | No | Yes | No |
+| <strong>Photo/phonophobia</strong> | No (or one only) | Yes (both) | No |
+| <strong>Autonomic</strong> | No | No | <strong>Yes</strong> (tearing, rhinorrhea, red eye) |
+| <strong>Acute Rx</strong> | Paracetamol, NSAIDs | Triptans, NSAIDs | <strong>SC sumatriptan, O2</strong> |
+| <strong>Preventive</strong> | Amitriptyline | Propranolol, topiramate, amitriptyline | <strong>Verapamil</strong> |
+</p>
+
+<h3>Migraine Management</h3>
+
+<strong>Acute</strong>: Triptans (sumatriptan 50-100mg) + NSAIDs, take early
+<strong>Preventive</strong> (if ≥4/month): Propranolol, topiramate, amitriptyline
+<strong>OCP + migraine with aura</strong> = CONTRAINDICATED (stroke risk)
+<strong>Medication overuse</strong>: >10 days/month triptans OR >15 days/month simple analgesics → withdraw all
+
+<h3>Common IMG Mistakes to AVOID</h3>
+
+<ol>
+<li><strong>"Worst headache of life"</strong> not recognized as SAH</li>
+<li><strong>Delaying antibiotics</strong> in suspected meningitis (give immediately)</li>
+<li><strong>Not starting steroids immediately</strong> in temporal arteritis (risk blindness)</li>
+<li><strong>Missing medication overuse headache</strong> (ask frequency of painkiller use)</li>
+<li><strong>Over-investigating typical primary headaches</strong> (no <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s = no imaging)</li>
+<li><strong>OCP + migraine with aura</strong> (contraindicated - stroke risk)</li>
+<li><strong>Treating cluster with oral medications</strong> (too slow - need SC sumatriptan or O2)</li>
+<li><strong>Not checking fundoscopy</strong> (miss papilledema)</li>
+<li><strong>CT negative = excludes SAH</strong> (need LP for xanthochromia)</li>
+<li><strong>Using opioids</strong> for primary headaches (medication overuse headache)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<strong>Document Complete: ~18,000 words</strong>
+
+<p>
+This completes the third Medicine module document: <strong>Neurology - Headache with Differentials</strong>, covering <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s (SNOOP4), primary headaches (tension-type, migraine, cluster) with diagnostic criteria, secondary headaches (SAH, meningitis, temporal arteritis, IIH), investigation protocols (when to image, LP technique and interpretation), Australian management guidelines (eTG 2024, PBS), and comprehensive OSCE practice station following Dr. Amir Soufi's differential-driven approach.
+</p>
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

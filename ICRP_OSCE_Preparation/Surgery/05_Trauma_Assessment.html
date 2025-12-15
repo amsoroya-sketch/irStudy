@@ -1,0 +1,2567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trauma Assessment: Primary and Secondary Survey</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Surgery</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Surgery Navigation</h3>
+<ul>
+<li><a href="01_Acute_Abdomen_History_Differentials.html">Acute Abdomen</a></li>
+<li><a href="02_Acute_Abdomen_Physical_Examination.html">Abdo Exam</a></li>
+</ul>
+</div>
+        <h1>Trauma Assessment: Primary and Secondary Survey</h1>
+<h2>ICRP OSCE Preparation - Surgery Module</h2>
+<h3>Following Dr. Amir Soufi's Differential-Driven Approach (IMG4IMGS Methodology)</h3>
+
+<hr>
+
+<h2>Target Audience</h2>
+<ul>
+<li>IMGs preparing for AMC Clinical OSCE</li>
+<li>ICRP participants at NSW Young Hospital Program</li>
+<li>Medical students/residents rotating through <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span>/trauma surgery</li>
+<li>Focus: 8-minute OSCE stations with systematic trauma assessment</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Learning Objectives</h2>
+
+<p>
+By the end of this module, you will be able to:
+</p>
+
+<ol>
+<li><strong>Perform systematic primary survey</strong> (ABCDE approach) for trauma patients</li>
+<li><strong>Identify and manage life-threatening injuries</strong> in the correct sequence</li>
+<li><strong>Conduct comprehensive secondary survey</strong> (head-to-toe examination)</li>
+<li><strong>Apply differential-driven thinking</strong> to trauma presentations</li>
+<li><strong>Use trauma scoring systems</strong> (GCS, ISS, trauma response criteria)</li>
+<li><strong>Integrate Australian trauma protocols</strong> (NSW Trauma Service, retrieval pathways)</li>
+<li><strong>Recognize patterns of injury</strong> and predict associated injuries</li>
+<li><strong>Communicate effectively</strong> in trauma scenarios with handover and documentation</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Dr. Amir Soufi's Core Principle Applied to Trauma</h2>
+
+<h3>The Pattern Recognition and Association Mindset</h3>
+
+<strong>Traditional Approach (WRONG for OSCE)</strong>:
+<ol>
+<li>Trauma patient arrives</li>
+<li>Do primary survey mechanically</li>
+<li>Treat each injury in isolation</li>
+<p>
+</ol>
+</p>
+
+<strong>Dr. Amir's Approach (CORRECT for OSCE)</strong>:
+<ol>
+<li><strong>Mechanism of injury immediately triggers pattern thinking</strong>:</li>
+<p>
+</ol>
+   - "High-speed MVC (motor vehicle collision)" → Think: Aortic injury, liver/spleen laceration, pelvic fracture, C-spine injury
+   - "Fall from height" → Think: Calcaneal fracture → Look for lumbar spine fracture (Don Juan fracture pattern)
+   - "Steering wheel impact" → Think: Myocardial contusion, sternal fracture, flail chest
+</p>
+<ol>
+<li><strong>One injury predicts others</strong>:</li>
+<p>
+</ol>
+   - "Fractured left ribs 1-2" → Think: Brachial plexus injury, subclavian vessel injury (high-energy mechanism)
+   - "Pelvic fracture" → Think: Bladder injury, urethral injury, retroperitoneal haemorrhage
+</p>
+<ol>
+<li><strong>Your examination is TARGETED based on mechanism and pattern</strong></li>
+<li><strong>Systematic but intelligent - not robotic</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>This pattern recognition separates good from excellent trauma assessment in OSCE.</strong>
+
+<hr>
+
+<h2>Part 1: Trauma Overview and Trimodal Death Distribution</h2>
+
+<h3>The Golden Hour Concept</h3>
+
+<strong>Trauma deaths occur in 3 peaks</strong>:
+
+<p>
+| <strong>Peak</strong> | <strong>Timing</strong> | <strong>Cause of Death</strong> | <strong>Intervention</strong> |
+|----------|-----------|-------------------|------------------|
+| <strong>First Peak</strong> | Seconds to minutes | Massive brain injury, aortic rupture, cardiac rupture | <strong>Prevention</strong> (seatbelts, helmets, speed limits) |
+| <strong>Second Peak</strong> | Minutes to hours (<strong>"Golden Hour"</strong>) | Haemorrhage (liver/spleen laceration, pelvic fracture), tension pneumothorax, cardiac tamponade | <strong>Rapid assessment and resuscitation</strong> (ABCDE approach) |
+| <strong>Third Peak</strong> | Days to weeks | Multi-organ failure, sepsis, ARDS | <strong>ICU care, damage control surgery</strong> |
+</p>
+
+<strong>The Golden Hour</strong>: First 60 minutes after injury when rapid intervention can prevent death
+<ul>
+<li>Not a literal 60 minutes, but emphasizes <strong>time-critical nature of trauma care</strong></li>
+<li><strong>Primary survey identifies and treats immediately life-threatening injuries</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 2: Primary Survey - The ABCDE Approach</h2>
+
+<h3>Fundamental Principles</h3>
+
+<strong>"Treat as you go"</strong>: Do NOT move to next step until current step is stabilized
+
+<strong>Sequence is CRITICAL</strong>:
+<ul>
+<li><strong>A</strong> before <strong>B</strong> before <strong>C</strong> before <strong>D</strong> before <strong>E</strong></li>
+<li>Reason: Airway obstruction kills in minutes, breathing problems in minutes, haemorrhage in minutes-hours, head injury in hours</li>
+<p>
+</ul>
+</p>
+
+<strong>"Horizontal before Vertical"</strong>: Resuscitation (horizontal patient) before investigation (vertical patient going to CT)
+
+<hr>
+
+<h3>A - AIRWAY (with C-spine Protection)</h3>
+
+<h4>Objectives:</h4>
+<ol>
+<li><strong>Assess airway patency</strong></li>
+<li><strong>Identify airway obstruction</strong></li>
+<li><strong>Secure airway if needed</strong></li>
+<li><strong>Protect cervical spine</strong> (assume C-spine injury until proven otherwise)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h4>Step 1: ASSESS Airway Patency</h4>
+
+<strong>"Look, Listen, Feel"</strong>:
+
+<strong>Look</strong>:
+<ul>
+<li><strong>Patient talking in full sentences?</strong> → Airway patent</li>
+<li><strong>Agitated, confused?</strong> → Hypoxia (airway/breathing problem)</li>
+<li><strong>Obtunded, unconscious?</strong> → Airway at risk</li>
+<li><strong>Visible obstruction</strong>: Blood, vomit, foreign body, broken teeth</li>
+<li><strong>Facial trauma, burns</strong>: Singed nasal hairs, carbonaceous sputum → Inhalational injury → Airway oedema imminent</li>
+<p>
+</ul>
+</p>
+
+<strong>Listen</strong>:
+<ul>
+<li><strong>Stridor</strong> (high-pitched inspiratory sound) → Partial upper airway obstruction → <strong>Airway <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong></li>
+<li><strong>Gurgling</strong> → Fluid (blood/vomit) in airway → Need suctioning</li>
+<li><strong>Snoring</strong> → Tongue obstructing airway (unconscious patient)</li>
+<li><strong>Hoarse voice</strong> → Laryngeal injury, inhalational injury</li>
+<p>
+</ul>
+</p>
+
+<strong>Feel</strong>:
+<ul>
+<li>Air movement from mouth/nose</li>
+<li>Subcutaneous emphysema (crepitus in neck) → Laryngeal fracture, pneumothorax</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Step 2: IDENTIFY Airway Compromise</h4>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s for Airway Obstruction</strong>:
+
+<p>
+| <strong>Sign</strong> | <strong>Indicates</strong> | <strong>Urgency</strong> |
+|----------|--------------|------------|
+| <strong>Stridor</strong> | Partial upper airway obstruction | <strong>IMMEDIATE</strong> - may progress to complete obstruction |
+| <strong>Unable to speak</strong> | Severe obstruction or injury | <strong>IMMEDIATE</strong> |
+| <strong>GCS ≤8</strong> | Unable to protect airway (aspiration risk) | <strong>Intubate</strong> |
+| <strong>Maxillofacial trauma</strong> | Airway distortion, bleeding | <strong>High risk</strong>, prepare for difficult airway |
+| <strong>Neck haematoma</strong> (expanding) | Vascular injury, airway compression | <strong>IMMEDIATE</strong> - may need <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> surgical airway |
+| <strong>Burns to face/neck, singed hairs</strong> | Inhalational injury, airway oedema developing | <strong>Intubate early</strong> (before oedema makes it impossible) |
+</p>
+
+<hr>
+
+<h4>Step 3: SECURE Airway (if compromised)</h4>
+
+<strong>Airway Maneuvers</strong> (simple to complex):
+
+<ol>
+<li><strong>Chin lift / Jaw thrust</strong> (with C-spine protection):</li>
+<p>
+</ol>
+   - <strong>Jaw thrust</strong> (preferred in trauma - no neck extension): Place fingers behind angle of mandible, push forward
+   - Opens airway by pulling tongue forward
+</p>
+
+<ol>
+<li><strong>Suction</strong>: Remove blood, vomit, secretions</li>
+<p>
+</ol>
+</p>
+
+<ol>
+<li><strong>Oropharyngeal (Guedel) airway</strong>:</li>
+<p>
+</ol>
+   - <strong>Only in unconscious patients</strong> (GCS ≤8)
+   - If patient gags → Too conscious → Use nasopharyngeal airway instead
+</p>
+
+<ol>
+<li><strong>Nasopharyngeal airway</strong>:</li>
+<p>
+</ol>
+   - Better tolerated in semi-conscious patients
+   - <strong>CONTRAINDICATED if base of skull fracture suspected</strong> (may penetrate cribriform plate into brain)
+</p>
+
+<ol>
+<li><strong>Definitive airway</strong> (endotracheal intubation):</li>
+<p>
+</ol>
+</p>
+
+<strong>Indications for Intubation in Trauma</strong>:
+<ul>
+<li><strong>GCS ≤8</strong> (unable to protect airway)</li>
+<li><strong>Airway obstruction</strong> (stridor, unable to maintain airway with maneuvers)</li>
+<li><strong>Severe maxillofacial trauma</strong></li>
+<li><strong>Risk of airway deterioration</strong>: Inhalational injury, expanding neck haematoma</li>
+<li><strong>Need for hyperventilation</strong> (traumatic brain injury with signs of herniation)</li>
+<li><strong>Inadequate oxygenation/ventilation</strong> despite supplemental O2</li>
+<p>
+</ul>
+</p>
+
+<strong>Methods</strong>:
+<ul>
+<li><strong>Rapid Sequence Intubation (RSI)</strong>: Drug-assisted intubation (induction agent + muscle relaxant)</li>
+<p>
+</ul>
+  - <strong>Drugs</strong>: Ketamine (induction - preserves BP, good for trauma) + Rocuronium (muscle relaxant)
+  - <strong>C-spine protection</strong>: Manual in-line stabilization (MILS) during intubation - do NOT remove collar
+</p>
+<ul>
+<li><strong>Surgical airway</strong> (if intubation fails or contraindicated):</li>
+<p>
+</ul>
+  - <strong>Cricothyroidotomy</strong>: <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> surgical airway through cricothyroid membrane
+  - <strong>Indications</strong>: Failed intubation (can't intubate, can't oxygenate), severe maxillofacial trauma
+</p>
+
+<hr>
+
+<h4>Step 4: C-SPINE Protection</h4>
+
+<strong>CRITICAL</strong>: <strong>Assume cervical spine injury in all trauma patients until cleared</strong>
+
+<strong>Immobilization</strong>:
+<ul>
+<li><strong>Manual in-line stabilization</strong> (MILS): Assistant holds head in neutral position</li>
+<li><strong>Semi-rigid collar</strong> (e.g., Philadelphia collar)</li>
+<li><strong>Blocks and tape</strong> on spine board (if pre-hospital)</li>
+<p>
+</ul>
+</p>
+
+<strong>Who is at risk of C-spine injury?</strong>
+<ul>
+<li>High-energy mechanism (MVC, fall >1m, axial load)</li>
+<li>Midline neck pain or tenderness</li>
+<li>Focal neurological deficit</li>
+<li>Altered consciousness (can't assess clinically)</li>
+<p>
+</ul>
+</p>
+
+<strong>Clinical Clearance of C-spine</strong> (NEXUS Criteria - all 5 must be met):
+<ol>
+<li><strong>No midline cervical tenderness</strong></li>
+<li><strong>No focal neurological deficit</strong></li>
+<li><strong>Normal level of consciousness</strong> (GCS 15)</li>
+<li><strong>No intoxication</strong> (drugs/alcohol)</li>
+<li><strong>No painful distracting injury</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>If ALL 5 criteria met</strong> → C-spine can be cleared clinically (no imaging needed)
+<strong>If ANY criteria NOT met</strong> → <strong>Keep C-spine immobilized</strong>, perform imaging (CT C-spine)
+
+<hr>
+
+<h3>B - BREATHING and Ventilation</h3>
+
+<h4>Objectives:</h4>
+<ol>
+<li><strong>Assess breathing adequacy</strong></li>
+<li><strong>Identify immediately life-threatening chest injuries</strong></li>
+<li><strong>Provide oxygen and treat life-threats</strong></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h4>Step 1: ASSESS Breathing</h4>
+
+<strong>"Look, Listen, Feel"</strong>:
+
+<strong>Look</strong>:
+<ul>
+<li><strong>Respiratory rate</strong>: Tachypnoea (RR >20) suggests respiratory distress</li>
+<li><strong>Respiratory effort</strong>: Use of accessory muscles, intercostal recession</li>
+<li><strong>Chest movement</strong>:</li>
+<p>
+</ul>
+  - <strong>Symmetrical?</strong> (asymmetric → pneumothorax, haemothorax)
+  - <strong>Paradoxical movement</strong> (flail chest - segment moves inward on inspiration)
+</p>
+<ul>
+<li><strong>Chest wall</strong>: Bruising, penetrating wounds, sucking chest wound (open pneumothorax)</li>
+<li><strong>Trachea</strong>: Deviated? (tension pneumothorax - trachea deviated AWAY from affected side)</li>
+<li><strong>JVP</strong>: Raised? (tension pneumothorax, cardiac tamponade)</li>
+<li><strong>Cyanosis</strong>: Severe hypoxia</li>
+<p>
+</ul>
+</p>
+
+<strong>Listen</strong>:
+<ul>
+<li><strong>Breath sounds</strong>: Reduced or absent on one side (pneumothorax, haemothorax)</li>
+<li><strong>Added sounds</strong>: Wheeze (bronchospasm), crackles (pulmonary contusion, aspiration)</li>
+<p>
+</ul>
+</p>
+
+<strong>Percuss</strong>:
+<ul>
+<li><strong>Hyperresonant</strong>: Pneumothorax</li>
+<li><strong>Dull</strong>: Haemothorax, pulmonary contusion</li>
+<p>
+</ul>
+</p>
+
+<strong>Palpate</strong>:
+<ul>
+<li><strong>Chest wall tenderness</strong>: Rib fractures</li>
+<li><strong>Crepitus</strong> (surgical emphysema): Pneumothorax, tracheal/bronchial injury</li>
+<li><strong>Flail segment</strong>: Palpable movement of free-floating rib segment</li>
+<p>
+</ul>
+</p>
+
+<strong>Measure</strong>:
+<ul>
+<li><strong>Pulse oximetry</strong>: SpO2 <95% suggests hypoxia</li>
+<li><strong>ABG</strong>: If severe respiratory distress (shows pO2, pCO2, pH)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Step 2: IDENTIFY Life-Threatening Chest Injuries</h4>
+
+<strong>"The Deadly Dozen" Chest Injuries</strong> (6 immediately life-threatening, 6 potentially life-threatening):
+
+<strong>Immediately Life-Threatening</strong> (identified and treated in PRIMARY survey):
+
+<ol>
+<li><strong>Airway obstruction</strong> (covered in A)</li>
+<li><strong>Tension pneumothorax</strong></li>
+<li><strong>Open pneumothorax</strong> (sucking chest wound)</li>
+<li><strong>Massive haemothorax</strong></li>
+<li><strong>Flail chest with pulmonary contusion</strong></li>
+<li><strong>Cardiac tamponade</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Potentially Life-Threatening</strong> (identified in SECONDARY survey or imaging):
+
+<ol>
+<li><strong>Simple pneumothorax</strong></li>
+<li><strong>Simple haemothorax</strong></li>
+<li><strong>Pulmonary contusion</strong></li>
+<li><strong>Tracheobronchial injury</strong></li>
+<li><strong>Blunt cardiac injury</strong> (myocardial contusion)</li>
+<li><strong>Aortic disruption</strong> (traumatic aortic rupture)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h4>Life-Threatening Chest Injuries: Recognition and Management</h4>
+
+<h5>1. Tension Pneumothorax</h5>
+
+<strong>Pathophysiology</strong>: Air enters pleural space but cannot escape (one-way valve) → Accumulating air → Lung collapse → Mediastinal shift → Compression of contralateral lung and great veins → Obstructive shock
+
+<strong>Clinical Features</strong> (all or some may be present):
+<ul>
+<li><strong>Respiratory distress</strong>: Dyspnoea, tachypnoea</li>
+<li><strong>Hypoxia</strong>: SpO2 low, cyanosis</li>
+<li><strong>Decreased breath sounds</strong> on affected side</li>
+<li><strong>Hyperresonance</strong> to percussion on affected side</li>
+<li><strong>Tracheal deviation</strong> AWAY from affected side (late sign)</li>
+<li><strong>JVP raised</strong> (venous return obstructed)</li>
+<li><strong>Hypotension, tachycardia</strong> (obstructive shock)</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential Diagnosis</strong>:
+<ul>
+<li>Tension pneumothorax vs simple pneumothorax (tension has haemodynamic compromise)</li>
+<li>Tension pneumothorax vs massive haemothorax (haemothorax has dull percussion, not hyperresonant)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>IMMEDIATE needle decompression</strong> (do NOT wait for CXR if clinically diagnosed)</li>
+<p>
+</ul>
+  - <strong>Site</strong>: 2nd intercostal space, mid-clavicular line (or 5th ICS anterior axillary line)
+  - <strong>Technique</strong>: Large-bore cannula (14G or 16G), insert above rib (avoid neurovascular bundle below rib)
+  - <strong>Confirmation</strong>: Gush of air, clinical improvement
+</p>
+<ul>
+<li><strong>Definitive treatment</strong>: Chest drain (intercostal catheter) insertion</li>
+<p>
+</ul>
+  - <strong>Site</strong>: 5th ICS (nipple level), anterior axillary line, "safe triangle"
+  - Insert above rib, connect to underwater seal
+</p>
+
+<strong>OSCE Key Point</strong>: Tension pneumothorax is a <strong>CLINICAL diagnosis</strong>. Do NOT wait for imaging. If classic features present → Needle decompression immediately.
+
+<hr>
+
+<h5>2. Open Pneumothorax (Sucking Chest Wound)</h5>
+
+<strong>Pathophysiology</strong>: Penetrating chest wound → Air enters pleural space through chest wall defect with each breath → Lung collapse
+
+<strong>Clinical Features</strong>:
+<ul>
+<li><strong>Visible chest wound</strong> with air movement ("sucking" sound)</li>
+<li><strong>Decreased breath sounds</strong> on affected side</li>
+<li><strong>Hypoxia</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Immediate</strong>: Cover wound with <strong>3-sided occlusive dressing</strong> (tape on 3 sides, leave 1 side open)</li>
+<p>
+</ul>
+  - Allows air to escape (prevents tension) but not enter
+</p>
+<ul>
+<li><strong>Definitive</strong>: Chest drain insertion (away from wound), then surgical closure of wound</li>
+<p>
+</ul>
+</p>
+
+<strong>OSCE Key Point</strong>: Never use a <strong>4-sided occlusive dressing</strong> → May create tension pneumothorax. Always leave one side open.
+
+<hr>
+
+<h5>3. Massive Haemothorax</h5>
+
+<strong>Definition</strong>: >1500mL blood in pleural space (or >200mL/hr ongoing drainage)
+
+<strong>Causes</strong>: Intercostal vessel injury, internal mammary artery injury, lung laceration, great vessel injury
+
+<strong>Clinical Features</strong>:
+<ul>
+<li><strong>Respiratory distress</strong>: Dyspnoea, tachypnoea</li>
+<li><strong>Hypoxia</strong></li>
+<li><strong>Decreased breath sounds</strong> on affected side</li>
+<li><strong>Dull to percussion</strong> on affected side (fluid)</li>
+<li><strong>Hypovolaemic shock</strong>: Hypotension, tachycardia, cool peripheries</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Simultaneous resuscitation and drainage</strong>:</li>
+<p>
+</ul>
+  - <strong>Large-bore IV access</strong> (two 14G or 16G cannulas)
+  - <strong>Fluid resuscitation</strong>: 1-2L crystalloid (Hartmann's or Normal Saline) rapid bolus
+  - <strong>Blood transfusion</strong>: Activate massive transfusion protocol if haemodynamically unstable
+</p>
+<ul>
+<li><strong>Chest drain insertion</strong> (large-bore, 32-36Fr)</li>
+<p>
+</ul>
+  - Measure initial output (if >1500mL → Likely needs surgery)
+  - Monitor ongoing drainage (if >200mL/hr for 2-4 hours → Surgery)
+</p>
+<ul>
+<li><strong>Thoracotomy indications</strong>:</li>
+<p>
+</ul>
+  - Initial drainage >1500mL
+  - Ongoing drainage >200mL/hr for 2-4 hours
+  - Haemodynamic instability despite resuscitation
+</p>
+
+<hr>
+
+<h5>4. Flail Chest with Pulmonary Contusion</h5>
+
+<strong>Definition</strong>:
+<ul>
+<li><strong>Flail chest</strong>: ≥3 adjacent ribs fractured in ≥2 places → Free-floating segment</li>
+<li><strong>Pulmonary contusion</strong>: Bruising of lung parenchyma (usually underlying flail segment)</li>
+<p>
+</ul>
+</p>
+
+<strong>Mechanism</strong>: High-energy blunt trauma (MVC with steering wheel impact, direct blow)
+
+<strong>Clinical Features</strong>:
+<ul>
+<li><strong>Paradoxical chest movement</strong>: Flail segment moves <strong>inward</strong> on inspiration (opposite to rest of chest)</li>
+<li><strong>Visible bruising</strong> over affected area</li>
+<li><strong>Severe pain</strong> on breathing (multiple rib fractures)</li>
+<li><strong>Respiratory distress</strong>: Due to pain (splinting) and underlying pulmonary contusion</li>
+<li><strong>Hypoxia</strong>: Often progressive over 24-48 hours as contusion develops</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Oxygen</strong>: High-flow, titrate to SpO2 >95%</li>
+<li><strong>Analgesia</strong> (CRITICAL - allows patient to breathe deeply):</li>
+<p>
+</ul>
+  - <strong>Epidural</strong> analgesia (gold standard for multiple rib fractures)
+  - <strong>PCA</strong> (patient-controlled analgesia) with opioids
+  - <strong>Regional nerve blocks</strong> (intercostal blocks, paravertebral blocks)
+</p>
+<ul>
+<li><strong>Chest physiotherapy</strong>: Incentive spirometry, deep breathing exercises</li>
+<li><strong>Fluid management</strong>: Judicious (avoid overload - worsens pulmonary contusion)</li>
+<li><strong>Mechanical ventilation</strong>: If severe hypoxia despite above measures</li>
+<p>
+</ul>
+</p>
+
+<strong>OSCE Key Point</strong>: <strong>Pain control is key</strong> to preventing respiratory failure in flail chest. Always mention multimodal analgesia.
+
+<hr>
+
+<h5>5. Cardiac Tamponade</h5>
+
+<strong>Pathophysiology</strong>: Blood accumulates in pericardial sac → Restricts cardiac filling → Reduced cardiac output → Cardiogenic shock
+
+<strong>Causes</strong>: Penetrating chest trauma (stab, gunshot), blunt cardiac injury (rare)
+
+<strong>Clinical Features</strong> - <strong>Beck's Triad</strong> (classic but only 30% have all 3):
+<ol>
+<li><strong>Hypotension</strong> (reduced cardiac output)</li>
+<li><strong>Muffled heart sounds</strong> (fluid in pericardium)</li>
+<li><strong>Raised JVP</strong> (impaired venous return)</li>
+<p>
+</ol>
+</p>
+
+<strong>Additional Signs</strong>:
+<ul>
+<li><strong>Pulsus paradoxus</strong>: Systolic BP drops >10mmHg on inspiration</li>
+<li><strong>Tachycardia</strong>: Compensatory response</li>
+<li><strong>Kussmaul's sign</strong>: JVP rises on inspiration (paradoxical)</li>
+<p>
+</ul>
+</p>
+
+<strong>Diagnosis</strong>:
+<ul>
+<li><strong>FAST scan</strong> (Focused Assessment with Sonography in Trauma): Shows pericardial fluid (black stripe around heart)</li>
+<li><strong>ECG</strong>: Low-voltage QRS, electrical alternans (beat-to-beat variation in QRS amplitude)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Immediate resuscitation</strong>:</li>
+<p>
+</ul>
+  - <strong>IV fluids</strong>: Increase preload (temporizing measure)
+  - <strong>Avoid positive pressure ventilation</strong> (worsens tamponade by reducing venous return)
+</p>
+<ul>
+<li><strong>Definitive treatment</strong>: <strong>Pericardiocentesis</strong> or <strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> thoracotomy</strong></li>
+<p>
+</ul>
+  - <strong>Pericardiocentesis</strong>:
+    - <strong>Technique</strong>: Subxiphoid approach, 16G needle at 45° angle toward left shoulder, aspirate blood
+    - <strong>Temporary measure</strong> (may re-accumulate)
+  - <strong>Thoracotomy</strong>: Definitive, open pericardium, evacuate blood, repair cardiac injury
+</p>
+
+<strong>OSCE Key Point</strong>: High index of suspicion for penetrating chest wounds medial to nipple line → May have cardiac injury.
+
+<hr>
+
+<h4>Step 3: TREAT Life-Threats</h4>
+
+<strong>Management Principles</strong>:
+<ul>
+<li><strong>High-flow oxygen</strong> to all trauma patients (15L via non-rebreather mask, target SpO2 >95%)</li>
+<li><strong>Treat identified life-threats</strong> as described above</li>
+<li><strong>Monitor</strong>: Continuous pulse oximetry, cardiac monitoring</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>C - CIRCULATION (with Haemorrhage Control)</h3>
+
+<h4>Objectives:</h4>
+<ol>
+<li><strong>Assess circulatory status</strong> (perfusion)</li>
+<li><strong>Identify source of haemorrhage</strong></li>
+<li><strong>Control haemorrhage</strong></li>
+<li><strong>Resuscitate with fluids ± blood</strong></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h4>Step 1: ASSESS Circulation</h4>
+
+<strong>"Is the patient in shock?"</strong>
+
+<strong>Shock Definition</strong>: Inadequate tissue perfusion and oxygenation
+
+<strong>Clinical Signs of Shock</strong>:
+
+<strong>Examine</strong>:
+<ul>
+<li><strong>Heart rate</strong>: Tachycardia (>100) suggests shock (compensatory response)</li>
+<p>
+</ul>
+  - <strong>Exception</strong>: Bradycardia in neurogenic shock (spinal cord injury), severe hypoxia
+</p>
+<ul>
+<li><strong>Blood pressure</strong>:</li>
+<p>
+</ul>
+  - <strong>Hypotension</strong> (SBP <90mmHg) = decompensated shock (late sign - body compensates until ~30% blood loss)
+  - <strong>Normal BP does NOT exclude shock</strong> (may be compensated)
+</p>
+<ul>
+<li><strong>Pulse pressure</strong> (difference between systolic and diastolic):</li>
+<p>
+</ul>
+  - <strong>Narrow pulse pressure</strong> (<25mmHg) suggests shock
+</p>
+<ul>
+<li><strong>Peripheral perfusion</strong>:</li>
+<p>
+</ul>
+  - <strong>Capillary refill time</strong> (CRT): Press nail bed, release, count seconds until pink returns. <strong>>2 seconds = poor perfusion</strong>
+  - <strong>Skin</strong>: Pale, cool, clammy = shock
+</p>
+<ul>
+<li><strong>Mental status</strong>: Confusion, agitation, drowsiness = poor cerebral perfusion</li>
+<li><strong>Urine output</strong>: <0.5mL/kg/hr = inadequate renal perfusion (insert catheter to monitor)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Classification of Haemorrhagic Shock</strong> (ATLS):
+
+<p>
+| <strong>Class</strong> | <strong>Blood Loss</strong> | <strong>HR</strong> | <strong>BP</strong> | <strong>RR</strong> | <strong>Urine Output</strong> | <strong>Mental Status</strong> |
+|-----------|---------------|--------|--------|--------|------------------|-------------------|
+| <strong>Class I</strong> | <15% (<750mL) | <100 | Normal | 14-20 | >30mL/hr | Slightly anxious |
+| <strong>Class II</strong> | 15-30% (750-1500mL) | 100-120 | Normal | 20-30 | 20-30mL/hr | Mildly anxious, restless |
+| <strong>Class III</strong> | 30-40% (1500-2000mL) | 120-140 | <strong>Decreased</strong> | 30-40 | 5-15mL/hr | Anxious, confused |
+| <strong>Class IV</strong> | >40% (>2000mL) | >140 | <strong>Markedly decreased</strong> | >35 | <strong>Negligible</strong> | Confused, lethargic |
+</p>
+
+<strong>Key Points</strong>:
+<ul>
+<li><strong>Hypotension is a LATE sign</strong> (appears at Class III, i.e., >30% blood loss)</li>
+<li><strong>Tachycardia and narrow pulse pressure</strong> appear earlier</li>
+<li><strong>Pediatric and young adults compensate well</strong> → May maintain normal BP until sudden decompensation</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Step 2: IDENTIFY Source of Haemorrhage</h4>
+
+<strong>"Where is the patient bleeding?"</strong>
+
+<strong>The 5 Places You Can Hide Enough Blood to Die</strong>:
+
+<ol>
+<li><strong>Chest</strong> (haemothorax):</li>
+<p>
+</ol>
+   - Each hemithorax can hold 2-3L blood
+   - <strong>Clues</strong>: Decreased breath sounds, dull percussion, signs of shock
+   - <strong>Diagnosis</strong>: CXR (blunts costophrenic angle), FAST, chest drain
+</p>
+
+<ol>
+<li><strong>Abdomen</strong> (intra-abdominal haemorrhage):</li>
+<p>
+</ol>
+   - Liver/spleen laceration, mesenteric injury
+   - <strong>Clues</strong>: Abdominal distension, tenderness, peritonism, signs of shock
+   - <strong>Diagnosis</strong>: <strong>FAST scan</strong> (gold standard in unstable patient), CT abdomen (if stable)
+</p>
+
+<ol>
+<li><strong>Pelvis</strong> (pelvic fracture with retroperitoneal bleed):</li>
+<p>
+</ol>
+   - Can lose >3L into retroperitoneum
+   - <strong>Clues</strong>: Pelvic tenderness, leg length discrepancy, haemodynamic instability
+   - <strong>Diagnosis</strong>: Pelvic X-ray (AP pelvis), CT
+   - <strong>Immediate management</strong>: Pelvic binder (external compression to tamponade bleeding)
+</p>
+
+<ol>
+<li><strong>Long bones</strong> (femur fracture):</li>
+<p>
+</ol>
+   - Each femur fracture can lose 1-1.5L
+   - <strong>Clues</strong>: Deformity, swelling, shortening
+   - <strong>Management</strong>: Splint/traction (reduces blood loss)
+</p>
+
+<ol>
+<li><strong>External</strong> (scalp laceration, open fracture, penetrating wounds):</li>
+<p>
+</ol>
+   - <strong>Management</strong>: Direct pressure, haemostatic dressings, tourniquet (if limb bleeding uncontrollable)
+</p>
+
+<strong>OSCE Key Point</strong>: If patient in shock and source not obvious → <strong>FAST scan</strong> to rule out intra-abdominal/pericardial haemorrhage.
+
+<hr>
+
+<h4>Step 3: CONTROL Haemorrhage</h4>
+
+<strong>External Haemorrhage</strong>:
+<ol>
+<li><strong>Direct pressure</strong> (first-line)</li>
+<li><strong>Haemostatic dressing</strong> (e.g., QuikClot)</li>
+<li><strong>Tourniquet</strong> (if limb bleeding uncontrollable with direct pressure):</li>
+<p>
+</ol>
+   - <strong>Site</strong>: Proximal to wound (as proximal as possible on limb)
+   - <strong>Time</strong>: Document time applied (safe for ~2 hours)
+   - <strong>Reassess</strong>: Can attempt removal once definitive haemorrhage control achieved
+</p>
+
+<strong>Internal Haemorrhage</strong>:
+<ul>
+<li><strong>Pelvic fracture</strong>: Pelvic binder (reduces pelvic volume, tamponades bleeding)</li>
+<li><strong>Chest</strong>: Chest drain</li>
+<li><strong>Abdomen</strong>: <strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> laparotomy</strong> if unstable, or <strong>Interventional radiology embolization</strong> if stable</li>
+<li><strong>Long bone fractures</strong>: Splint/traction</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Step 4: RESUSCITATE</h4>
+
+<strong>IV Access</strong>:
+<ul>
+<li><strong>Two large-bore IV cannulas</strong> (14G or 16G) in antecubital fossae</li>
+<li><strong>Alternative</strong>: Intraosseous (IO) access if IV difficult (especially children)</li>
+<p>
+</ul>
+</p>
+
+<strong>Fluid Resuscitation</strong>:
+
+<strong>Initial Bolus</strong>:
+<ul>
+<li><strong>1L crystalloid</strong> (Hartmann's solution or 0.9% Normal Saline) rapid bolus in adults</li>
+<li><strong>20mL/kg bolus</strong> in children</li>
+<p>
+</ul>
+</p>
+
+<strong>Assess Response</strong>:
+<ul>
+<li><strong>Rapid responders</strong> (BP normalizes and stays normal): Likely Class I-II haemorrhage, no ongoing bleeding</li>
+<li><strong>Transient responders</strong> (BP improves but drops again): Likely Class II-III haemorrhage, ongoing bleeding → Need blood transfusion</li>
+<li><strong>Non-responders</strong> (BP does not improve): Likely Class III-IV haemorrhage, massive ongoing bleeding → <strong>Activate massive transfusion protocol, <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> surgery</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Blood Transfusion</strong>:
+
+<strong>Massive Transfusion Protocol</strong> (activate if: SBP <90 despite 2L crystalloid, or obvious massive haemorrhage):
+<ul>
+<li><strong>Ratio 1:1:1</strong>: Packed red cells : Fresh frozen plasma : Platelets</li>
+<li><strong>Goal</strong>: Replace blood volume, maintain coagulation factors and platelets</li>
+<li><strong>Tranexamic acid</strong> (TXA): 1g IV over 10 minutes, then 1g over 8 hours</li>
+<p>
+</ul>
+  - <strong>Antifibrinolytic</strong> - reduces mortality in trauma if given <strong>within 3 hours</strong> of injury
+  - <strong>CRASH-2 trial</strong>: 1.5% absolute mortality reduction
+</p>
+
+<strong>Permissive Hypotension</strong> (Damage Control Resuscitation):
+<ul>
+<li><strong>Concept</strong>: In penetrating torso trauma, aggressive fluid resuscitation before haemorrhage control may worsen bleeding (disrupts clot, dilutes clotting factors, increases BP → more bleeding)</li>
+<li><strong>Target</strong>: SBP 80-90mmHg (enough to perfuse vital organs, but not so high as to disrupt clot)</li>
+<li><strong>Exception</strong>: Traumatic brain injury (need MAP >80 to perfuse brain → Target SBP >100)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>D - DISABILITY (Neurological Status)</h3>
+
+<h4>Objectives:</h4>
+<ol>
+<li><strong>Assess level of consciousness</strong></li>
+<li><strong>Assess pupillary response</strong></li>
+<li><strong>Identify traumatic brain injury</strong></li>
+<li><strong>Prevent secondary brain injury</strong></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h4>Step 1: ASSESS Level of Consciousness</h4>
+
+<strong>Glasgow Coma Scale (GCS)</strong> - MUST KNOW for OSCE:
+
+<strong>3 Components</strong>: Eye opening (E), Verbal response (V), Motor response (M)
+<strong>Total Score</strong>: 3 (minimum) to 15 (maximum)
+
+<strong>Eye Opening (E)</strong> - Score 1 to 4:
+<ul>
+<li><strong>4</strong>: Spontaneous (eyes open without stimulus)</li>
+<li><strong>3</strong>: To speech (open eyes when spoken to)</li>
+<li><strong>2</strong>: To pain (open eyes to painful stimulus)</li>
+<li><strong>1</strong>: No response</li>
+<p>
+</ul>
+</p>
+
+<strong>Verbal Response (V)</strong> - Score 1 to 5:
+<ul>
+<li><strong>5</strong>: Oriented (knows name, place, date)</li>
+<li><strong>4</strong>: Confused conversation (responds but disoriented)</li>
+<li><strong>3</strong>: Inappropriate words (random words, no sentences)</li>
+<li><strong>2</strong>: Incomprehensible sounds (moans, groans)</li>
+<li><strong>1</strong>: No response</li>
+<p>
+</ul>
+</p>
+
+<strong>Motor Response (M)</strong> - Score 1 to 6:
+<ul>
+<li><strong>6</strong>: Obeys commands ("squeeze my hand", "wiggle toes")</li>
+<li><strong>5</strong>: Localizes to pain (reaches toward painful stimulus and tries to remove it)</li>
+<li><strong>4</strong>: Withdraws from pain (pulls limb away from pain)</li>
+<li><strong>3</strong>: Flexion to pain (decorticate posturing - arms flex, legs extend)</li>
+<li><strong>2</strong>: Extension to pain (decerebrate posturing - arms and legs extend)</li>
+<li><strong>1</strong>: No response</li>
+<p>
+</ul>
+</p>
+
+<strong>Interpretation</strong>:
+<ul>
+<li><strong>GCS 13-15</strong>: Mild traumatic brain injury (TBI)</li>
+<li><strong>GCS 9-12</strong>: Moderate TBI</li>
+<li><strong>GCS 3-8</strong>: Severe TBI → <strong>Intubate</strong> (unable to protect airway)</li>
+<p>
+</ul>
+</p>
+
+<strong>OSCE Tip</strong>:
+<ul>
+<li>Calculate GCS quickly: "Eyes 4, Verbal 5, Motor 6 = GCS 15" or "E2 V3 M4 = GCS 9"</li>
+<li><strong>Document all 3 components</strong> (not just total) - allows tracking of change</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Step 2: ASSESS Pupils</h4>
+
+<strong>PERRL</strong>: Pupils Equal, Round, Reactive to Light
+
+<strong>Examine</strong>:
+<ul>
+<li><strong>Size</strong>: Normal 2-4mm</li>
+<li><strong>Symmetry</strong>: Equal size bilaterally</li>
+<li><strong>Reactivity</strong>: Constrict briskly when light shone</li>
+<p>
+</ul>
+</p>
+
+<strong>Abnormal Findings</strong>:
+
+<p>
+| <strong>Finding</strong> | <strong>Indicates</strong> | <strong>Urgency</strong> |
+|-------------|--------------|------------|
+| <strong>Unilateral dilated, non-reactive pupil</strong> | <strong>Uncal herniation</strong> (expanding haematoma causing brain herniation → CN III compression) | <strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong> - Need <span style="color: #e74c3c; font-weight: bold;">URGENT</span> CT, neurosurgery |
+| <strong>Bilateral dilated, non-reactive pupils</strong> | Severe brain injury, brain death, drugs (atropine), severe hypoxia | Critical |
+| <strong>Bilateral pinpoint pupils</strong> | Opiate overdose, pontine haemorrhage | Assess for overdose vs structural lesion |
+</p>
+
+<strong>OSCE Key Point</strong>: <strong>Unilateral blown pupil</strong> (dilated and non-reactive) in trauma = uncal herniation → <strong>Medical <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong> → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> CT head, neurosurgical consult, consider mannitol/hypertonic saline to reduce ICP.
+
+<hr>
+
+<h4>Step 3: IDENTIFY Traumatic Brain Injury (TBI)</h4>
+
+<strong>Clinical Features of TBI</strong>:
+<ul>
+<li><strong>Reduced GCS</strong> (from baseline of 15)</li>
+<li><strong>Loss of consciousness</strong> (ask witnesses)</li>
+<li><strong>Amnesia</strong>: Retrograde (before injury) or anterograde (after injury)</li>
+<li><strong>Confusion, agitation</strong></li>
+<li><strong>Vomiting</strong> (>2 episodes concerning for raised ICP)</li>
+<li><strong>Headache</strong></li>
+<li><strong>Focal neurology</strong>: Weakness, sensory loss, speech difficulty</li>
+<p>
+</ul>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s for Significant TBI</strong> (require CT head):
+<ul>
+<li><strong>GCS <15</strong> at 2 hours post-injury</li>
+<li><strong>Suspected skull fracture</strong>: Palpable step, CSF leak (rhinorrhoea/otorrhoea), Battle's sign (bruising behind ear), raccoon eyes (periorbital bruising)</li>
+<li><strong>Focal neurological deficit</strong></li>
+<li><strong>>1 episode vomiting</strong></li>
+<li><strong>Post-traumatic seizure</strong></li>
+<li><strong>High-risk mechanism</strong>: Fall from height, high-speed MVC, pedestrian struck</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Step 4: PREVENT Secondary Brain Injury</h4>
+
+<strong>Primary brain injury</strong>: Occurs at moment of impact (cannot be changed)
+<strong>Secondary brain injury</strong>: Occurs after initial injury due to:
+<ul>
+<li><strong>Hypoxia</strong> (inadequate oxygenation)</li>
+<li><strong>Hypotension</strong> (inadequate cerebral perfusion)</li>
+<li><strong>Raised intracranial pressure</strong> (ICP)</li>
+<p>
+</ul>
+</p>
+
+<strong>Prevention of Secondary Brain Injury</strong> (CRITICAL in OSCE):
+
+<ol>
+<li><strong>Maintain oxygenation</strong>: Target SpO2 >95%</li>
+<p>
+</ol>
+   - Intubate if GCS ≤8
+</p>
+
+<ol>
+<li><strong>Maintain blood pressure</strong>: Target SBP >100mmHg (TBI patients need higher BP than other trauma)</li>
+<p>
+</ol>
+   - <strong>Cerebral perfusion pressure (CPP) = MAP - ICP</strong>
+   - Need adequate MAP to overcome raised ICP
+</p>
+
+<ol>
+<li><strong>Prevent raised ICP</strong>:</li>
+<p>
+</ol>
+   - <strong>Head elevation</strong>: 30° head-up (improves venous drainage)
+   - <strong>Avoid hypercapnia</strong>: Maintain normocapnia (pCO2 35-40mmHg) - hypercapnia causes cerebral vasodilation → increased ICP
+   - <strong>Avoid hyperthermia</strong>: Treat fever (increases metabolic demand)
+   - <strong>Osmotic therapy</strong>: If signs of herniation (blown pupil, posturing):
+     - <strong>Mannitol</strong> 0.25-1 g/kg IV, or
+     - <strong>Hypertonic saline</strong> (3% NaCl) - draws fluid from brain → reduces ICP
+   - <strong>Seizure prophylaxis</strong>: Levetiracetam or phenytoin (seizures increase ICP)
+</p>
+
+<ol>
+<li><strong>Avoid secondary insults</strong>:</li>
+<p>
+</ol>
+   - <strong>Normoglycaemia</strong>: Hypo- and hyperglycaemia worsen TBI outcomes
+   - <strong>Correct coagulopathy</strong>: Especially if on anticoagulants (reverse warfarin with PCC, stop DOACs)
+</p>
+
+<strong>OSCE Presentation</strong>: "This patient has severe TBI with GCS 7. To prevent secondary brain injury, I would ensure adequate oxygenation and blood pressure, elevate the head to 30 degrees, maintain normocapnia, and arrange <span style="color: #e74c3c; font-weight: bold;">URGENT</span> CT head and neurosurgical consultation."
+
+<hr>
+
+<h3>E - EXPOSURE and ENVIRONMENTAL CONTROL</h3>
+
+<h4>Objectives:</h4>
+<ol>
+<li><strong>Fully expose patient</strong> to identify all injuries</li>
+<li><strong>Prevent hypothermia</strong></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h4>EXPOSE Patient</h4>
+
+<strong>"Completely undress the patient"</strong>:
+<ul>
+<li>Cut off all clothing (do not move patient excessively if spinal injury suspected)</li>
+<li><strong>Log-roll</strong> to examine back (requires 4 people: 1 to control head/C-spine, 3 to roll body as one unit)</li>
+<li>Look for:</li>
+<p>
+</ul>
+  - <strong>Penetrating wounds</strong> (entry and exit wounds)
+  - <strong>Bruising</strong> (may indicate underlying organ injury)
+  - <strong>Deformities</strong> (fractures)
+  - <strong>Burns</strong>
+</p>
+
+<strong>OSCE Key Point</strong>: "I would fully expose the patient, maintaining dignity with blankets where possible, and log-roll to examine the back."
+
+<hr>
+
+<h4>ENVIRONMENTAL Control (Prevent Hypothermia)</h4>
+
+<strong>Why Hypothermia Matters</strong>:
+<ul>
+<li><strong>Trauma triad of death</strong>: Hypothermia, acidosis, coagulopathy</li>
+<li>Hypothermia (<35°C) → Impaired clotting → Worsens haemorrhage</li>
+<p>
+</ul>
+</p>
+
+<strong>Prevention</strong>:
+<ul>
+<li><strong>Warm fluids</strong>: Warm IV fluids and blood products to 37°C</li>
+<li><strong>Warm blankets</strong>: Cover patient (except when examining)</li>
+<li><strong>Increase room temperature</strong>: Resuscitation room should be warm</li>
+<li><strong>Minimize exposure time</strong>: Examine quickly, then cover</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 3: Secondary Survey - Head-to-Toe Examination</h2>
+
+<h3>When to Perform Secondary Survey</h3>
+
+<strong>ONLY after primary survey complete and patient stabilized</strong>
+
+<strong>Secondary survey objectives</strong>:
+<ol>
+<li><strong>Identify ALL injuries</strong> (including non-life-threatening)</li>
+<li><strong>Systematic head-to-toe examination</strong></li>
+<li><strong>Obtain AMPLE history</strong></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>AMPLE History</h3>
+
+<strong>Mnemonic for focused trauma history</strong>:
+
+<ul>
+<li><strong>A</strong>: <strong>Allergies</strong> (medications, latex)</li>
+<li><strong>M</strong>: <strong>Medications</strong> (especially anticoagulants, insulin, antihypertensives)</li>
+<li><strong>P</strong>: <strong>Past medical history</strong> and <strong>Pregnancy</strong> (if female of childbearing age)</li>
+<li><strong>L</strong>: <strong>Last meal</strong> (important if surgery needed - aspiration risk)</li>
+<li><strong>E</strong>: <strong>Events</strong> / <strong>Environment</strong> related to injury (mechanism of injury, time of injury)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Head-to-Toe Examination</h3>
+
+<h4>HEAD</h4>
+
+<strong>Inspect</strong>:
+<ul>
+<li><strong>Scalp</strong>: Lacerations (can bleed profusely), haematomas</li>
+<li><strong>Face</strong>: Symmetry, bruising, deformity</li>
+<li><strong>Eyes</strong>:</li>
+<p>
+</ul>
+  - Periorbital ecchymosis ("raccoon eyes") → Anterior skull base fracture
+  - Subconjunctival haemorrhage (if no posterior border visible → Consider globe rupture)
+  - Pupil size and reactivity (PERRL)
+</p>
+<ul>
+<li><strong>Ears</strong>:</li>
+<p>
+</ul>
+  - Mastoid ecchymosis ("Battle's sign") → Basilar skull fracture
+  - CSF otorrhoea (clear fluid from ear) → Basilar skull fracture
+</p>
+<ul>
+<li><strong>Nose</strong>:</li>
+<p>
+</ul>
+  - CSF rhinorrhoea (clear fluid from nose) → Anterior skull base fracture
+  - Septal haematoma (needs drainage <span style="color: #e74c3c; font-weight: bold;">URGENT</span>ly to prevent cartilage necrosis)
+</p>
+<ul>
+<li><strong>Mouth</strong>:</li>
+<p>
+</ul>
+  - Dental injuries, tongue laceration, loose teeth (aspiration risk)
+</p>
+
+<strong>Palpate</strong>:
+<ul>
+<li><strong>Skull</strong>: Step deformity, tenderness (fracture)</li>
+<li><strong>Facial bones</strong>: Tenderness, instability</li>
+<p>
+</ul>
+  - <strong>Zygomatic arch</strong>: Press and ask about pain
+  - <strong>Maxilla</strong>: Hold upper teeth, attempt to move forward (if mobile → Le Fort fracture)
+  - <strong>Mandible</strong>: Palpate along jaw, ask patient to open/close mouth (malocclusion if fractured)
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong>:
+<ul>
+<li><strong>Base of skull fracture signs</strong>: Raccoon eyes, Battle's sign, CSF leak, haemotympanum</li>
+<li><strong>Le Fort fractures</strong> (maxillary fractures): May compromise airway</li>
+<li><strong>Bilateral mandibular fractures</strong>: Loss of tongue support → Airway risk</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>NECK</h4>
+
+<strong>Inspect</strong>:
+<ul>
+<li><strong>Penetrating wounds</strong>, bruising, swelling</li>
+<li><strong>Distended neck veins</strong> (JVP raised)</li>
+<li><strong>Tracheal deviation</strong></li>
+<li><strong>Laryngeal deformity</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Palpate</strong>:
+<ul>
+<li><strong>Midline cervical tenderness</strong> (C-spine injury)</li>
+<li><strong>Subcutaneous emphysema</strong> (crepitus) → Pneumothorax, tracheal injury</li>
+<li><strong>Carotid pulses</strong> (present and symmetrical)</li>
+<li><strong>Expanding haematoma</strong> → Vascular injury → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> vascular surgery</li>
+<p>
+</ul>
+</p>
+
+<strong>CRITICAL</strong>: <strong>Maintain C-spine immobilization</strong> throughout
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong>:
+<ul>
+<li><strong>Hard signs of vascular injury</strong>: Absent pulse, expanding haematoma, bruit/thrill, massive external bleeding</li>
+<li><strong>Hard signs of aerodigestive injury</strong>: Stridor, hoarseness, subcutaneous emphysema, haematemesis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>CHEST</h4>
+
+<strong>Inspect</strong>:
+<ul>
+<li><strong>Bruising</strong> (seat belt sign → Think aortic injury, sternal fracture)</li>
+<li><strong>Penetrating wounds</strong> (count entry and exit wounds)</li>
+<li><strong>Respiratory pattern</strong>: Paradoxical movement (flail chest)</li>
+<p>
+</ul>
+</p>
+
+<strong>Palpate</strong>:
+<ul>
+<li><strong>Chest wall tenderness</strong>: Rib fractures, sternal fracture</li>
+<li><strong>Subcutaneous emphysema</strong>: Pneumothorax</li>
+<li><strong>Flail segment</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Percuss</strong>:
+<ul>
+<li>Hyperresonant (pneumothorax) vs dull (haemothorax)</li>
+<p>
+</ul>
+</p>
+
+<strong>Auscultate</strong>:
+<ul>
+<li>Reduced or absent breath sounds</li>
+<li>Cardiac sounds (muffled in tamponade)</li>
+<p>
+</ul>
+</p>
+
+<strong>Additional</strong>:
+<ul>
+<li><strong>ECG</strong>:</li>
+<p>
+</ul>
+  - Arrhythmias (myocardial contusion)
+  - ST changes (myocardial infarction - may be cause of MVC, or result of blunt cardiac injury)
+</p>
+<ul>
+<li><strong>CXR</strong>:</li>
+<p>
+</ul>
+  - Pneumothorax, haemothorax, rib fractures
+  - <strong>Widened mediastinum</strong> (>8cm) → Traumatic aortic rupture → <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> CT angiography</strong>
+</p>
+
+<hr>
+
+<h4>ABDOMEN</h4>
+
+<strong>Inspect</strong>:
+<ul>
+<li><strong>Bruising</strong>:</li>
+<p>
+</ul>
+  - Seat belt sign (diagonal bruising) → Think bowel injury, lumbar spine fracture
+  - Cullen's sign (periumbilical bruising) → Retroperitoneal haemorrhage (takes hours to develop)
+  - Grey-Turner's sign (flank bruising) → Retroperitoneal haemorrhage
+</p>
+<ul>
+<li><strong>Distension</strong>: Intra-abdominal haemorrhage, ileus</li>
+<li><strong>Penetrating wounds</strong>: (count and mark each)</li>
+<p>
+</ul>
+</p>
+
+<strong>Auscultate</strong> (BEFORE palpation):
+<ul>
+<li><strong>Bowel sounds</strong>: Absent (ileus, perforation)</li>
+<p>
+</ul>
+</p>
+
+<strong>Palpate</strong>:
+<ul>
+<li><strong>Tenderness</strong>: Generalized (peritonitis) vs localized</li>
+<li><strong>Guarding, rigidity</strong>: Peritonitis (perforated viscus, blood, bile)</li>
+<li><strong>Rebound tenderness</strong>: Peritoneal irritation</li>
+<p>
+</ul>
+</p>
+
+<strong>Percuss</strong>:
+<ul>
+<li><strong>Shifting dullness</strong>: Free fluid (blood, ascites)</li>
+<p>
+</ul>
+</p>
+
+<strong>Special</strong>:
+<ul>
+<li><strong>FAST scan</strong> (Focused Assessment with Sonography in Trauma):</li>
+<p>
+</ul>
+  - <strong>4 views</strong>: Perihepatic, perisplenic, pelvic, pericardial
+  - <strong>Looking for</strong>: Free fluid (appears black/anechoic)
+  - <strong>Sensitivity</strong>: ~85% for intra-abdominal haemorrhage
+  - <strong>Advantages</strong>: Quick, bedside, non-invasive
+  - <strong>Limitations</strong>: Cannot identify source of bleeding (just presence of fluid), user-dependent
+</p>
+
+<strong>Indications for Laparotomy</strong>:
+<ul>
+<li><strong>Haemodynamically unstable</strong> with positive FAST (free fluid in abdomen) → <strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> laparotomy</strong></li>
+<li><strong>Peritonitis</strong> (guarding, rigidity)</li>
+<li><strong>Evisceration</strong> (bowel protruding from wound)</li>
+<li><strong>Gunshot wound to abdomen</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>If haemodynamically STABLE</strong> with blunt abdominal trauma → <strong>CT abdomen/pelvis with IV contrast</strong> (identifies specific organ injuries, grading)
+
+<hr>
+
+<h4>PELVIS</h4>
+
+<strong>Inspect</strong>:
+<ul>
+<li><strong>Bruising</strong>, swelling</li>
+<li><strong>Leg length discrepancy</strong> (pelvis fracture may cause leg shortening/rotation)</li>
+<li><strong>Blood at urethral meatus</strong> → Urethral injury (do NOT catheterize until urethra assessed)</li>
+<p>
+</ul>
+</p>
+
+<strong>Palpate</strong>:
+<ul>
+<li><strong>Iliac crests</strong>: Press downward and inward (if painful or unstable → Pelvic fracture)</li>
+<li><strong>Pubic symphysis</strong>: Tenderness, widening</li>
+<p>
+</ul>
+</p>
+
+<strong>CRITICAL</strong>: <strong>Only palpate pelvis ONCE</strong> (repeated examination may disrupt clot → Worsens bleeding)
+
+<strong>If Pelvic Fracture Suspected</strong>:
+<ol>
+<li><strong>Apply pelvic binder</strong> immediately (external compression, reduces pelvic volume, tamponades bleeding)</li>
+<li><strong>Do NOT log-roll</strong> until pelvis stabilized (may worsen bleeding)</li>
+<li><strong>Pelvic X-ray</strong> (AP pelvis)</li>
+<li><strong>If haemodynamically unstable</strong> → <strong>Interventional radiology angiography and embolization</strong> or <strong>External fixation</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Associated Injuries with Pelvic Fracture</strong>:
+<ul>
+<li><strong>Bladder injury</strong> (haematuria)</li>
+<li><strong>Urethral injury</strong> (blood at meatus, unable to void, high-riding prostate on PR)</li>
+<li><strong>Rectal injury</strong> (if open pelvic fracture - do PR exam)</li>
+<li><strong>Vaginal injury</strong> (if open pelvic fracture - do speculum exam)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>GENITOURINARY</h4>
+
+<strong>Inspect</strong>:
+<ul>
+<li><strong>Blood at urethral meatus</strong> → Urethral injury</li>
+<li><strong>Scrotal/labial haematoma</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Palpate</strong> (males):
+<ul>
+<li><strong>Testes</strong>: Present, tender (if tender + swelling → Testicular rupture)</li>
+<li><strong>Per rectal (PR) exam</strong>:</li>
+<p>
+</ul>
+  - <strong>Sphincter tone</strong> (absent → Spinal cord injury)
+  - <strong>High-riding prostate</strong> → Urethral injury (prostate displaced upward by haematoma)
+  - <strong>Blood on glove</strong> → Rectal injury
+</p>
+
+<strong>If blood at meatus or suspected urethral injury</strong>:
+<ul>
+<li><strong>DO NOT catheterize</strong> (may convert partial injury to complete)</li>
+<li><strong>Retrograde urethrogram</strong> first to assess urethral integrity</li>
+<p>
+</ul>
+</p>
+
+<strong>Urinalysis</strong>:
+<ul>
+<li><strong>Haematuria</strong> → Kidney, bladder, or urethral injury → Needs CT with delayed phase (urogram)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>SPINE</h4>
+
+<strong>Palpate</strong> (during log-roll):
+<ul>
+<li><strong>Spinous processes</strong>: Tenderness, step-off (fracture/dislocation)</li>
+<li><strong>Paraspinal muscles</strong>: Spasm, tenderness</li>
+<p>
+</ul>
+</p>
+
+<strong>Neurological</strong>:
+<ul>
+<li><strong>Motor</strong>: Power in all limbs (0-5 scale)</li>
+<li><strong>Sensory</strong>: Pinprick/light touch in dermatomes</li>
+<li><strong>Reflexes</strong>: Absent reflexes with hypotonia → Spinal shock (acute spinal cord injury)</li>
+<li><strong>Priapism</strong> (sustained erection) → Spinal cord injury</li>
+<p>
+</ul>
+</p>
+
+<strong>Spinal Cord Injury Syndromes</strong>:
+
+<p>
+| <strong>Syndrome</strong> | <strong>Mechanism</strong> | <strong>Findings</strong> | <strong>Prognosis</strong> |
+|--------------|--------------|-------------|--------------|
+| <strong>Complete cord transection</strong> | High-energy trauma | Loss of ALL motor and sensory function below level | Poor (usually permanent) |
+| <strong>Central cord syndrome</strong> | Hyperextension (elderly) | Upper limbs > lower limbs weakness, sacral sparing | Good (often improve) |
+| <strong>Anterior cord syndrome</strong> | Flexion injury, anterior spinal artery occlusion | Loss of motor, pain and temp; Preserved proprioception and vibration | Poor |
+| <strong>Brown-Séquard syndrome</strong> | Penetrating (hemisection) | Ipsilateral motor + proprioception loss, contralateral pain + temp loss | Good (best prognosis) |
+| <strong>Cauda equina</strong> | Lumbar fracture below L1 | Lower limb weakness, saddle anaesthesia, bowel/bladder dysfunction | Variable |
+</p>
+
+<hr>
+
+<h4>LIMBS</h4>
+
+<strong>For Each Limb, Assess "6 Ps"</strong>:
+
+<strong>Inspect</strong>:
+<ul>
+<li><strong>Deformity</strong> (fracture, dislocation)</li>
+<li><strong>Swelling</strong>, bruising</li>
+<li><strong>Open wounds</strong> (open fracture → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> antibiotics, tetanus, debridement)</li>
+<p>
+</ul>
+</p>
+
+<strong>Palpate</strong>:
+<ul>
+<li><strong>Bony tenderness</strong> (fracture)</li>
+<li><strong>Compartment tension</strong> (compartment syndrome - firm, tense muscle compartments)</li>
+<p>
+</ul>
+</p>
+
+<strong>The 6 Ps</strong> (for vascular compromise / compartment syndrome):
+
+<ol>
+<li><strong>Pain</strong>: Severe, out of proportion to injury, worse with passive stretch</li>
+<li><strong>Pressure</strong>: Tense, swollen compartments</li>
+<li><strong>Pallor</strong>: Pale limb</li>
+<li><strong>Pulselessness</strong>: Absent distal pulses (late sign)</li>
+<li><strong>Paraesthesia</strong>: Numbness, tingling (nerve ischaemia)</li>
+<li><strong>Paralysis</strong>: Inability to move (late sign)</li>
+<p>
+</ol>
+</p>
+
+<strong>Compartment Syndrome</strong>:
+<ul>
+<li><strong>Pathophysiology</strong>: Increased pressure within muscle compartment → Compresses vessels and nerves → Ischaemia → Muscle necrosis</li>
+<li><strong>Causes</strong>: Fracture (especially tibia, forearm), crush injury, tight casts/bandages</li>
+<li><strong>Diagnosis</strong>: <strong>Clinical</strong> (6 Ps), compartment pressure measurement (if >30mmHg or within 30mmHg of diastolic BP → Fasciotomy needed)</li>
+<li><strong>Management</strong>: <strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> fasciotomy</strong> (surgical incision of fascia to decompress compartment)</li>
+<p>
+</ul>
+</p>
+
+<strong>Special Tests</strong>:
+<ul>
+<li><strong>Distal pulses</strong>: Radial, dorsalis pedis, posterior tibial (document present/absent)</li>
+<li><strong>Capillary refill</strong>: <2 seconds normal</li>
+<li><strong>Neurological</strong>: Motor and sensory in distribution of major nerves</li>
+<p>
+</ul>
+  - Upper limb: Median, ulnar, radial nerves
+  - Lower limb: Femoral, sciatic (tibial and common peroneal branches)
+</p>
+
+<strong>Open Fractures</strong> (Gustilo-Anderson Classification):
+
+<p>
+| <strong>Type</strong> | <strong>Description</strong> | <strong>Management</strong> |
+|----------|----------------|----------------|
+| <strong>Type I</strong> | Wound <1cm, minimal soft tissue damage | Antibiotics (cefazolin), debridement, tetanus |
+| <strong>Type II</strong> | Wound >1cm, moderate soft tissue damage | As above + more extensive debridement |
+| <strong>Type III</strong> | Extensive soft tissue damage, vascular injury | As above + broader antibiotics (add gentamicin ± penicillin if farm/contaminated), vascular repair, possible amputation |
+</p>
+
+<strong>Initial Management of Fractures</strong>:
+<ul>
+<li><strong>Analgesia</strong> (IV opioids, regional blocks)</li>
+<li><strong>Splint/immobilize</strong> (reduces pain, blood loss, prevents neurovascular injury)</li>
+<li><strong>Neurovascular assessment</strong> before and after reduction/splinting</li>
+<li><strong>Open fractures</strong>: Antibiotics (IV cefazolin 2g), tetanus prophylaxis, photograph wound, cover with saline-soaked gauze (do not repeatedly unwrap to examine), <span style="color: #e74c3c; font-weight: bold;">URGENT</span> orthopaedic consult for debridement</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 4: Specific Injury Patterns and Associated Injuries</h2>
+
+<h3>Mechanism-Driven Assessment</h3>
+
+<strong>Dr. Amir's Principle</strong>: <strong>Mechanism of injury predicts pattern of injuries</strong>
+
+<hr>
+
+<h4>High-Speed MVC (Motor Vehicle Collision)</h4>
+
+<strong>Energy Transfer</strong>: High kinetic energy → Multiple organ systems affected
+
+<strong>Predicted Injuries</strong>:
+<ul>
+<li><strong>Head</strong>: TBI, skull fracture, cervical spine injury</li>
+<li><strong>Chest</strong>: Rib fractures, flail chest, pulmonary contusion, pneumothorax, myocardial contusion, <strong>aortic rupture</strong> (deceleration injury)</li>
+<li><strong>Abdomen</strong>: Liver/spleen laceration, bowel injury, mesenteric injury, lumbar spine fracture (seat belt sign)</li>
+<li><strong>Pelvis</strong>: Pelvic fracture</li>
+<li><strong>Extremities</strong>: Long bone fractures</li>
+<p>
+</ul>
+</p>
+
+<strong>Specific Patterns</strong>:
+<ul>
+<li><strong>Frontal impact</strong> (head-on): Steering wheel injury → Chest trauma (sternal fracture, cardiac contusion, aortic rupture), facial trauma</li>
+<li><strong>Side impact</strong> (T-bone): Ipsilateral rib fractures, liver (right side) or spleen (left side) laceration</li>
+<li><strong>Rear-end collision</strong>: Cervical spine hyperextension injury (whiplash)</li>
+<li><strong>Rollover</strong>: Risk of ejection → Higher mortality, multiple injuries</li>
+<li><strong>Pedestrian struck</strong>: Waddell's triad (children): Head injury + torso injury + lower limb fracture</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Fall from Height</h4>
+
+<strong>Injuries depend on</strong>:
+<ol>
+<li><strong>Height</strong>: >6m (2 stories) = high-risk</li>
+<li><strong>Landing surface</strong>: Concrete worse than grass</li>
+<li><strong>Landing position</strong>: Feet-first vs head-first</li>
+<p>
+</ol>
+</p>
+
+<strong>Predicted Injuries</strong>:
+
+<strong>Landing Feet-First</strong> → <strong>"Don Juan" Fracture Pattern</strong>:
+<ul>
+<li><strong>Calcaneal (heel) fractures</strong> (bilateral often)</li>
+<li><strong>Lumbar spine fracture</strong> (axial load transmitted up through skeleton)</li>
+<li><strong>Look for</strong>: Tenderness over heels, lumbar spine</li>
+<li><strong>Always check</strong>: If calcaneal fracture found → X-ray lumbar spine</li>
+<p>
+</ul>
+</p>
+
+<strong>Landing Head-First</strong>:
+<ul>
+<li><strong>Cervical spine fracture</strong></li>
+<li><strong>TBI</strong></li>
+<li><strong>Upper limb fractures</strong> (if tried to break fall)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Penetrating Trauma (Stab vs Gunshot)</h4>
+
+<strong>Stab Wound</strong>:
+<ul>
+<li><strong>Lower energy</strong> than gunshot</li>
+<li><strong>Injury path predictable</strong> (straight line from entry point)</li>
+<li><strong>Thoracoabdominal wounds</strong> (between nipples and costal margin): May have injured both chest and abdomen → Need assessment of both</li>
+<p>
+</ul>
+</p>
+
+<strong>Gunshot Wound</strong>:
+<ul>
+<li><strong>High energy</strong>, especially high-velocity rifles</li>
+<li><strong>Injury path unpredictable</strong> (bullet may tumble, fragment)</li>
+<li><strong>Cavitation</strong>: Temporary cavity much larger than bullet → Destroys tissue along path</li>
+<li><strong>Must find entry AND exit</strong> (if through-and-through)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>All gunshot wounds to torso</strong> → Surgery (laparotomy or thoracotomy) to explore</li>
+<li><strong>Stab wounds</strong>: If haemodynamically stable and no peritonitis → May manage conservatively with serial exams and CT</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 5: Trauma Scoring and Triage</h2>
+
+<h3>Glasgow Coma Scale (GCS) - Covered in Primary Survey</h3>
+
+<h3>Revised Trauma Score (RTS)</h3>
+
+<strong>Used for triage and predicting survival</strong>
+
+<strong>3 Components</strong>:
+<ol>
+<li><strong>GCS</strong></li>
+<li><strong>Systolic BP</strong></li>
+<li><strong>Respiratory Rate</strong></li>
+<p>
+</ol>
+</p>
+
+<p>
+(Each scored 0-4, total 0-12, higher = better)
+</p>
+
+<strong>Not commonly used in OSCE, but be aware</strong>
+
+<hr>
+
+<h3>Injury Severity Score (ISS)</h3>
+
+<strong>Anatomical scoring of injury severity</strong>
+
+<strong>Method</strong>:
+<ul>
+<li>Body divided into 6 regions (head/neck, face, chest, abdomen, extremities, external)</li>
+<li>Each injury given Abbreviated Injury Scale (AIS) score 1-6</li>
+<li>Take highest AIS in 3 most severely injured regions, square each, add together</li>
+<li><strong>ISS = sum of squares of 3 highest AIS scores</strong></li>
+<li><strong>Range</strong>: 1-75 (75 = unsurvivable)</li>
+<p>
+</ul>
+</p>
+
+<strong>Interpretation</strong>:
+<ul>
+<li><strong>ISS ≥16</strong> = Major trauma (needs trauma center)</li>
+<li><strong>ISS ≥25</strong> = Severe trauma (high mortality)</li>
+<p>
+</ul>
+</p>
+
+<strong>Not usually calculated in acute setting</strong>, but used for research and trauma registry
+
+<hr>
+
+<h2>Part 6: Australian Trauma Systems and Protocols</h2>
+
+<h3>NSW Trauma Service</h3>
+
+<strong>Trauma Centers</strong> (tiered system):
+
+<ul>
+<li><strong>Level 1</strong> (Major Trauma Center): Metropolitan tertiary hospitals (e.g., Royal Prince Alfred, St George, Liverpool, Westmead)</li>
+<p>
+</ul>
+  - 24/7 trauma team, neurosurgery, cardiothoracic surgery, interventional radiology
+</p>
+<ul>
+<li><strong>Level 2</strong>: Regional trauma centers</li>
+<li><strong>Level 3</strong>: District hospitals with <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> departments</li>
+<li><strong>Level 4</strong>: Rural/remote hospitals</li>
+<p>
+</ul>
+</p>
+
+<strong>Trauma Team Activation Criteria</strong> (for Level 1 center):
+
+<strong>Physiological</strong>:
+<ul>
+<li>GCS ≤13</li>
+<li>SBP <90mmHg</li>
+<li>RR <10 or >29</li>
+<p>
+</ul>
+</p>
+
+<strong>Anatomical</strong>:
+<ul>
+<li>Penetrating injury to head, neck, torso, or proximal limbs</li>
+<li>Flail chest</li>
+<li>Two or more proximal long bone fractures</li>
+<li>Crushed/degloved/mangled/pulseless extremity</li>
+<li>Amputation proximal to wrist/ankle</li>
+<li>Pelvic fracture</li>
+<li>Open or depressed skull fracture</li>
+<li>Paralysis</li>
+<p>
+</ul>
+</p>
+
+<strong>Mechanism</strong>:
+<ul>
+<li>Fall >6m (adults) or >3m (children)</li>
+<li>High-speed MVC (>60km/h)</li>
+<li>Pedestrian/cyclist struck by vehicle</li>
+<li>Death of another occupant in same vehicle</li>
+<li>Ejection from vehicle</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Retrieval Services</h3>
+
+<strong>For patients in regional/rural areas needing transfer to trauma center</strong>:
+
+<ul>
+<li><strong>NSW Ambulance Aeromedical Operations</strong> (helicopter)</li>
+<li><strong>Royal Flying Doctor Service</strong></li>
+<li><strong>CareFlight</strong>, <strong>Westpac Rescue Helicopter</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Retrieval team</strong>: Includes doctor and paramedic, brings ICU-level care to patient before transfer
+
+<hr>
+
+<h2>Part 7: OSCE Scenarios and Practice Stations</h2>
+
+<h3>OSCE Station 1: Primary Survey - Multi-Trauma Patient</h3>
+
+<strong>Candidate Instructions</strong>:
+<p>
+"A 25-year-old male has been brought to the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> department following a high-speed motor vehicle collision. He is conscious but distressed. Perform a primary survey and describe your management priorities. You have 8 minutes. A mannequin will be used."
+</p>
+
+<strong>Approach</strong>:
+
+<strong>Introduction</strong>:
+<p>
+"Hello, I'm Dr. [Name]. I'm here to help you. Can you tell me your name?" (Assesses airway patency and conscious level)
+</p>
+
+<strong>A - Airway with C-spine Protection</strong>:
+<ul>
+<li>"I would assess the airway. The patient is talking in full sentences, indicating the airway is currently patent."</li>
+<li>"I would apply manual in-line stabilization and ensure a semi-rigid cervical collar is in place, as this is a high-energy mechanism with risk of C-spine injury."</li>
+<li>"I would inspect the mouth and suction if needed to remove any blood or debris."</li>
+<p>
+</ul>
+</p>
+
+<strong>B - Breathing</strong>:
+<ul>
+<li>"I would expose the chest and assess breathing."</li>
+<li>[On mannequin: Inspect, palpate, percuss, auscultate]</li>
+<li>"I note respiratory rate is 28, with reduced air entry on the left side and hyperresonance to percussion. This is concerning for left pneumothorax."</li>
+<li>"I would apply high-flow oxygen via non-rebreather mask at 15L/min."</li>
+<li>"Given the reduced air entry and respiratory distress, I would perform needle decompression of the left chest in the 2nd intercostal space, mid-clavicular line, followed by insertion of an intercostal catheter."</li>
+<p>
+</ul>
+</p>
+
+<strong>C - Circulation</strong>:
+<ul>
+<li>"I would assess circulation."</li>
+<li>[Palpate radial pulse] "Pulse is 120 and thready. Blood pressure is 95/60. Capillary refill time is 3 seconds. These findings indicate Class II-III haemorrhagic shock."</li>
+<li>"I would establish two large-bore IV cannulas and send bloods including FBC, group and save, and coagulation studies."</li>
+<li>"I would commence fluid resuscitation with 1L Hartmann's solution rapid bolus."</li>
+<li>"I would perform a FAST scan to assess for intra-abdominal haemorrhage."</li>
+<li>[Told FAST is positive with free fluid in hepatorenal space]</li>
+<li>"Given haemodynamic instability and positive FAST, this patient requires <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> laparotomy. I would activate the massive transfusion protocol and involve the surgical team <span style="color: #e74c3c; font-weight: bold;">URGENT</span>ly."</li>
+<p>
+</ul>
+</p>
+
+<strong>D - Disability</strong>:
+<ul>
+<li>"I would assess neurological status using the Glasgow Coma Scale."</li>
+<li>[On mannequin: Eyes open spontaneously (4), confused conversation (4), obeys commands (6)] "GCS is 14 (E4 V4 M6)."</li>
+<li>"Pupils are equal and reactive to light bilaterally."</li>
+<p>
+</ul>
+</p>
+
+<strong>E - Exposure</strong>:
+<ul>
+<li>"I would fully expose the patient, cutting away all clothing, and log-roll to examine the back."</li>
+<li>"I would cover the patient with warm blankets to prevent hypothermia."</li>
+<p>
+</ul>
+</p>
+
+<strong>Summary</strong>:
+<p>
+"This is a 25-year-old male involved in a high-speed MVC with left pneumothorax and intra-abdominal haemorrhage causing Class III shock. I have secured the airway, decompressed the pneumothorax, commenced fluid resuscitation, and identified the need for <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> laparotomy. My priorities are ongoing resuscitation, blood transfusion, and <span style="color: #e74c3c; font-weight: bold;">URGENT</span> surgical intervention."
+</p>
+
+<hr>
+
+<h3>OSCE Station 2: Secondary Survey - Fall from Height</h3>
+
+<strong>Candidate Instructions</strong>:
+<p>
+"A 45-year-old builder has fallen 4 meters from scaffolding, landing on his feet. Primary survey has been completed and he is stable. Perform a secondary survey. You have 8 minutes."
+</p>
+
+<strong>Approach</strong>:
+
+<strong>AMPLE History</strong> (quick, 1 minute):
+<ul>
+<li>A: "Do you have any allergies?" → None</li>
+<li>M: "Are you on any medications?" → None</li>
+<li>P: "Any medical conditions?" → Nil</li>
+<li>L: "When did you last eat?" → Breakfast at 7am (4 hours ago)</li>
+<li>E: "What happened? How did you fall?" → Lost balance on scaffolding, fell ~4m onto concrete feet-first</li>
+<p>
+</ul>
+</p>
+
+<strong>Head-to-Toe Examination</strong>:
+
+<p>
+"I would now perform a systematic head-to-toe examination."
+</p>
+
+<strong>Head</strong>:
+<ul>
+<li>[Inspect and palpate] "No scalp lacerations, skull deformity, or battle signs. Pupils equal and reactive. GCS 15."</li>
+<p>
+</ul>
+</p>
+
+<strong>Neck</strong>:
+<ul>
+<li>"C-spine collar in situ. No visible wounds or swelling. I would not palpate given mechanism of injury and collar in place."</li>
+<p>
+</ul>
+</p>
+
+<strong>Chest</strong>:
+<ul>
+<li>[Inspect, palpate, auscultate] "Chest wall is symmetrical, no bruising or deformity. Breath sounds equal bilaterally. No rib tenderness."</li>
+<p>
+</ul>
+</p>
+
+<strong>Abdomen</strong>:
+<ul>
+<li>[Inspect, auscultate, palpate] "Abdomen is soft, non-tender, no bruising or distension. Bowel sounds present."</li>
+<p>
+</ul>
+</p>
+
+<strong>Pelvis</strong>:
+<ul>
+<li>[Palpate iliac crests once] "Pelvis is stable with no tenderness."</li>
+<p>
+</ul>
+</p>
+
+<strong>Back</strong> (log-roll):
+<ul>
+<li>"I would log-roll the patient with appropriate assistance to examine the back."</li>
+<li>[Palpate spine] "<strong>Tenderness over lumbar spine at L1-L2 level</strong>. No step-off palpable."</li>
+<p>
+</ul>
+</p>
+
+<strong>Lower Limbs</strong>:
+<ul>
+<li>[Inspect] "<strong>Bilateral heel swelling and bruising</strong>."</li>
+<li>[Palpate] "<strong>Exquisite tenderness over both calcanei</strong>."</li>
+<li>[Test range of motion] "Unable to weight bear, refuses ankle dorsiflexion due to pain."</li>
+<li>[Neurovascular] "Dorsalis pedis and posterior tibial pulses palpable bilaterally. Sensation intact. Able to wiggle toes."</li>
+<p>
+</ul>
+</p>
+
+<strong>Upper Limbs</strong>:
+<ul>
+<li>[Quick assessment] "No deformity, swelling, or tenderness. Full range of motion. Radial pulses present."</li>
+<p>
+</ul>
+</p>
+
+<strong>Summary and Management</strong>:
+<p>
+"This patient has fallen 4 meters landing feet-first. Secondary survey reveals <strong>bilateral calcaneal fractures</strong> and <strong>lumbar spine tenderness</strong>, consistent with the <strong>'Don Juan' fracture pattern</strong>. He requires:
+</p>
+<ol>
+<li><strong>Imaging</strong>: X-rays of both calcanei (AP and lateral), lumbar spine (AP and lateral), and likely CT lumbar spine to assess for fracture</li>
+<li><strong>Analgesia</strong>: IV opioids for pain control</li>
+<li><strong>Immobilization</strong>: Splint both feet, maintain spine precautions until imaging clears</li>
+<li><strong>Orthopaedic consultation</strong> for fracture management</li>
+<li>I would also ensure tetanus prophylaxis is up to date."</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>OSCE Station 3: Consent for <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Surgery - Trauma Laparotomy</h3>
+
+<strong>Candidate Instructions</strong>:
+<p>
+"A 30-year-old woman has been stabbed in the abdomen and requires <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> laparotomy. She is conscious and has capacity. Obtain consent for the procedure. You have 8 minutes."
+</p>
+
+<strong>Approach</strong>:
+
+<strong>Introduction</strong>:
+<p>
+"Hello Ms. Smith, I'm Dr. [Name], one of the surgical doctors. I understand you've been injured. How are you feeling right now?"
+</p>
+
+<strong>Assess Capacity</strong> (brief):
+<ul>
+<li>"Do you understand that you've been stabbed and that you're in hospital?" → Yes</li>
+<li>[Patient has capacity]</li>
+<p>
+</ul>
+</p>
+
+<strong>Explain Situation</strong>:
+<p>
+"The scan shows that the knife has injured organs inside your tummy, and you're bleeding internally. This is a serious situation that needs <span style="color: #e74c3c; font-weight: bold;">URGENT</span> surgery to stop the bleeding and repair any damage."
+</p>
+
+<strong>Explain Procedure</strong>:
+<p>
+"The operation is called a laparotomy. We'll make a cut down the middle of your tummy to look inside, find where the bleeding is coming from, and fix it. This might involve repairing your bowel, liver, spleen, or other organs, depending on what we find. In some cases, we might need to remove a damaged organ like the spleen."
+</p>
+
+<strong>Benefits</strong>:
+<p>
+"The surgery will stop the bleeding and repair the damage, which is life-saving in this situation."
+</p>
+
+<strong>Risks</strong> (material risks):
+<p>
+"Like all operations, there are some risks I need to tell you about:
+</p>
+<ul>
+<li><strong>Bleeding</strong>: You're already bleeding, and we'll need to give you blood transfusions</li>
+<li><strong>Infection</strong>: There's a risk of wound infection or infection inside your tummy</li>
+<li><strong>Damage to other organs</strong>: While we're operating, there's a small risk of inadvertently injuring nearby structures</li>
+<li><strong>Blood clots</strong>: In your legs or lungs after surgery</li>
+<li><strong>Bowel injury</strong>: If your bowel is damaged, we might need to create a temporary stoma - a bag on your tummy - though we'd try to avoid this if possible</li>
+<li><strong>Further surgery</strong>: You might need more operations if complications develop</li>
+<li><strong>Anaesthetic risks</strong>: Include allergic reactions, dental damage, and awareness, though these are rare"</li>
+<p>
+</ul>
+</p>
+
+<strong>Alternatives</strong>:
+<p>
+"In your case, because you're bleeding internally and it's life-threatening, surgery is the only option. Without surgery, the bleeding would continue and could be fatal."
+</p>
+
+<strong>Check Understanding</strong>:
+<p>
+"Do you understand what I've explained? Do you have any questions?"
+</p>
+
+<strong>[Patient asks]: "Will I definitely need a bag?"</strong>
+
+<p>
+"That's a good question. We won't know until we see the damage during surgery. If your bowel is badly injured, we might need to create a temporary stoma to let it heal, but this would be reversed later with another operation. We'll only do this if absolutely necessary. Our goal is to avoid it if we can."
+</p>
+
+<strong>Confirm Consent</strong>:
+<p>
+"Are you happy to proceed with the surgery?"
+[Patient agrees]
+</p>
+
+<p>
+"Thank you. I'll have you sign the consent form, and we'll take you to theatre shortly. Is there anyone you'd like us to contact for you?"
+</p>
+
+<strong>Document</strong>:
+<p>
+"I would document the discussion in the notes and complete the surgical consent form, ensuring the patient signs and I witness it."
+</p>
+
+<hr>
+
+<h2>Part 8: Common IMG Mistakes in Trauma Assessment</h2>
+
+<h3>Mistake 1: Not Following ABCDE Sequence</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Jump to secondary survey before completing primary survey</li>
+<li>Examine obvious injuries (e.g., deformed limb) before checking airway/breathing</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Always ABCDE in order</strong></li>
+<li><strong>Treat as you go</strong> - stabilize A before moving to B</li>
+<li>"Treat first what kills first"</li>
+<p>
+</ul>
+</p>
+
+<strong>Why It Matters</strong>:
+<ul>
+<li>Airway obstruction kills in minutes, haemorrhage in minutes-hours, but a fractured femur (though painful) won't kill immediately</li>
+<li>OSCE examiners are strict about sequence</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 2: Not Assuming C-Spine Injury</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Move patient's head/neck during examination</li>
+<li>Remove C-spine collar to examine neck</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Assume C-spine injury until cleared</strong> clinically or radiologically</li>
+<li>Always mention "manual in-line stabilization" and "C-spine collar in place"</li>
+<li>Do NOT remove collar in OSCE</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 3: Waiting for Imaging Before Treating Life-Threats</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>"I would do a chest X-ray to confirm tension pneumothorax"</li>
+<li>"I would do a CT before treating"</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Tension pneumothorax is a CLINICAL diagnosis</strong> → Needle decompression immediately</li>
+<li><strong>Unstable patient with positive FAST</strong> → Laparotomy (do NOT CT)</li>
+<li><strong>Horizontal before vertical</strong> (resuscitation before imaging)</li>
+<p>
+</ul>
+</p>
+
+<strong>Why It Matters</strong>:
+<ul>
+<li>Delayed treatment → Patient dies</li>
+<li>OSCE fail if you delay life-saving intervention for imaging</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 4: Not Performing FAST in Shocked Trauma Patient</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Miss intra-abdominal haemorrhage as cause of shock</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>FAST scan is part of primary survey</strong> for shocked trauma patients</li>
+<li>Identifies free fluid in abdomen/pericardium within 2-3 minutes</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 5: Not Recognizing Injury Patterns</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Find calcaneal fracture, don't check lumbar spine</li>
+<li>Miss associated injuries</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Think patterns</strong>: Calcaneal fracture → Check L-spine, Pelvic fracture → Check bladder/urethra, First rib fracture → Check great vessels</li>
+<li>Mechanism predicts injuries</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 6: Catheterizing Patient with Blood at Meatus</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>See blood at urethral meatus → Insert catheter anyway</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Blood at meatus = urethral injury until proven otherwise</strong></li>
+<li><strong>Do NOT catheterize</strong> → May convert partial to complete tear</li>
+<li><strong>Retrograde urethrogram first</strong> to assess integrity</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 7: Not Preventing Secondary Brain Injury</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Identify TBI but don't mention preventing hypoxia/hypotension</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>Always mention: "To prevent secondary brain injury, I would ensure adequate oxygenation (SpO2 >95%), maintain blood pressure (SBP >100), elevate head to 30°, and avoid hypercapnia"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Summary: Key Takeaways</h2>
+
+<h3>Primary Survey (ABCDE):</h3>
+<ol>
+<li><strong>A - Airway with C-spine protection</strong>: Talking = patent. Intubate if GCS ≤8. Always protect C-spine.</li>
+<li><strong>B - Breathing</strong>: Look for tension pneumothorax, open pneumothorax, massive haemothorax, flail chest. Needle decompress tension PTX immediately (don't wait for CXR).</li>
+<li><strong>C - Circulation</strong>: Identify shock (tachycardia, narrow pulse pressure, poor perfusion). Find source (FAST scan). Control haemorrhage. Resuscitate with fluids ± blood. Activate massive transfusion protocol if Class III-IV shock.</li>
+<li><strong>D - Disability</strong>: Calculate GCS (E + V + M). Check pupils (blown pupil = herniation). Prevent secondary brain injury (oxygenation, BP, head elevation).</li>
+<li><strong>E - Exposure</strong>: Fully expose, log-roll, prevent hypothermia.</li>
+<p>
+</ol>
+</p>
+
+<h3>Secondary Survey:</h3>
+<ol>
+<li><strong>Only after primary survey complete and patient stable</strong></li>
+<li><strong>AMPLE history</strong> then <strong>head-to-toe examination</strong></li>
+<li><strong>Recognize injury patterns</strong>: Mechanism predicts injuries</li>
+<li><strong>Don't forget to examine back</strong> (log-roll)</li>
+<p>
+</ol>
+</p>
+
+<h3>Life-Threatening Injuries to Recognize:</h3>
+<ul>
+<li><strong>Tension pneumothorax</strong>: Respiratory distress, hyperresonance, tracheal deviation, hypotension → Needle decompression</li>
+<li><strong>Massive haemothorax</strong>: Respiratory distress, dullness, shock → Chest drain + resuscitation</li>
+<li><strong>Cardiac tamponade</strong>: Beck's triad (hypotension, muffled sounds, raised JVP) → Pericardiocentesis</li>
+<li><strong>Intra-abdominal haemorrhage</strong>: Shock + positive FAST → Laparotomy if unstable</li>
+<li><strong>Pelvic fracture</strong>: Shock + pelvic instability → Pelvic binder, angiography</li>
+<p>
+</ul>
+</p>
+
+<h3>Injury Patterns:</h3>
+<ul>
+<li><strong>High-speed MVC</strong>: TBI, C-spine, chest (aortic rupture), abdomen, pelvis</li>
+<li><strong>Fall from height (feet-first)</strong>: Calcaneal fracture + lumbar spine fracture</li>
+<li><strong>Steering wheel impact</strong>: Sternal fracture, cardiac contusion, aortic rupture</li>
+<li><strong>Pelvic fracture</strong>: Bladder, urethra, retroperitoneal haemorrhage</li>
+<p>
+</ul>
+</p>
+
+<h3>Australian Context:</h3>
+<ul>
+<li><strong>Trauma team activation criteria</strong>: GCS ≤13, SBP <90, penetrating torso trauma, major mechanism</li>
+<li><strong>NSW Trauma Service</strong>: Level 1-4 centers, retrieval services for regional patients</li>
+<li><strong>Massive transfusion protocol</strong>: 1:1:1 ratio (PRBC:FFP:platelets)</li>
+<li><strong>Tranexamic acid</strong>: Give within 3 hours of injury (reduces mortality)</li>
+<p>
+</ul>
+</p>
+
+<h3>OSCE Success Tips:</h3>
+<ol>
+<li><strong>Verbalize systematic approach</strong>: "I would assess airway using look, listen, feel..."</li>
+<li><strong>Treat as you go</strong>: "I would decompress the tension pneumothorax before moving to circulation"</li>
+<li><strong>State priorities</strong>: "This patient needs <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> laparotomy"</li>
+<li><strong>Mention prevention</strong>: "To prevent secondary brain injury..." / "To prevent hypothermia..."</li>
+<li><strong>Use correct terminology</strong>: "Needle decompression", "massive transfusion protocol", "log-roll"</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<strong>This completes the Surgery module (5/5 documents completed)!</strong>
+
+<strong>Surgery Module Documents</strong>:
+<ol>
+<li>✅ Acute Abdomen History with Differentials</li>
+<li>✅ Acute Abdomen Physical Examination</li>
+<li>✅ Surgical Lumps & Hernias</li>
+<li>✅ Pre/Post-operative Assessment</li>
+<li>✅ Trauma Assessment</li>
+<p>
+</ol>
+</p>
+
+<strong>Word Count</strong>: ~18,000 words
+<strong>Last Updated</strong>: December 2025 for ICRP NSW Young Hospital Program (March 2026 intake)
+<strong>Author</strong>: ICRP OSCE Preparation Team
+<strong>Reference</strong>: Dr. Amir Soufi (IMG4IMGS), ATLS 10th Edition, NSW Trauma Service Protocols, eTG 2024, AMC Clinical OSCE Format
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

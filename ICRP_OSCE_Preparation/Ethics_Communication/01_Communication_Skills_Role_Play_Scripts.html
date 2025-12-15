@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethics & Communication OSCE - Role-Play Scripts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Ethics Communication</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Ethics Communication Navigation</h3>
+<ul>
+<li><a href="01_Communication_Skills_Role_Play_Scripts.html">Communication Skills</a></li>
+</ul>
+</div>
+        <h1>Ethics & Communication OSCE - Role-Play Scripts</h1>
+<h2>AMC Clinical / ICRP NSW Young Hospital Preparation</h2>
+
+<strong>Purpose</strong>: Australian-style communication skills with exact phrases for AMC Clinical
+<strong>Target Time</strong>: 8 minutes per station
+<strong>Format</strong>: Word-for-word scripts that examiners expect to hear
+<strong>Created</strong>: December 14, 2025
+
+<hr>
+
+<h2>AUSTRALIAN COMMUNICATION PRINCIPLES</h2>
+
+<h3>The SPIKES Framework (Breaking Bad News)</h3>
+<ol>
+<li><strong>S</strong>etting - Private room, sit down, tissues available</li>
+<li><strong>P</strong>erception - "What have you been told so far?"</li>
+<li><strong>I</strong>nvitation - "Would you like me to explain the results?"</li>
+<li><strong>K</strong>nowledge - Give information in chunks, pause, check understanding</li>
+<li><strong>E</strong>motions - Acknowledge feelings, empathy</li>
+<li><strong>S</strong>trategy & Summary - Make a plan, safety-net</li>
+<p>
+</ol>
+</p>
+
+<h3>Australian Cultural Safety</h3>
+<ul>
+<li><strong>Acknowledge Country</strong> (for Indigenous patients): "I'd like to acknowledge the traditional owners of the land we're on today."</li>
+<li><strong>Interpreter use</strong>: ALWAYS offer interpreter for non-English speakers</li>
+<li><strong>Family involvement</strong>: In many cultures, family decision-making is important - ask patient's preference</li>
+<li><strong>Privacy</strong>: Australian standard is patient privacy, but respect cultural differences</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>STATION 1: BREAKING BAD NEWS - CANCER DIAGNOSIS</h2>
+
+<h3>Scenario</h3>
+<p>
+You are a junior doctor in a general practice. Mrs Sarah Thompson, 58, came in last week for investigation of weight loss and abdominal pain. Her CT scan shows metastatic pancreatic cancer. You need to break the news to her.
+</p>
+
+<h3>Opening (60 seconds)</h3>
+
+<strong>SETTING</strong>:
+<ul>
+<li><em>Knock and enter</em></li>
+<li>"Hello Mrs Thompson, I'm Dr [Name], one of the doctors here. Thank you for coming in today."</li>
+<li><em>Gesture to chair</em> "Please, have a seat."</li>
+<li><em>Sit down yourself - NEVER stand while patient sits</em></li>
+<li>"I've asked you to come in to discuss the results of your CT scan."</li>
+<p>
+</ul>
+</p>
+
+<strong>Check privacy</strong>:
+<ul>
+<li>"Is it alright if we talk in here? We have privacy."</li>
+<li>"Is there anyone you'd like to have with you for this conversation? Your husband or a family member?"</li>
+<li><em>If patient says yes, offer to call them</em>: "Would you like me to wait while you call them, or would you like to proceed?"</li>
+<p>
+</ul>
+</p>
+
+<h3>PERCEPTION (60 seconds)</h3>
+
+<strong>Find out what patient knows</strong>:
+<ul>
+<li>"Before I go through the results, can I ask what you've been told so far about the tests?"</li>
+<li>"What do you understand about why we did the CT scan?"</li>
+<p>
+</ul>
+</p>
+
+<em>Listen carefully - this tells you where to start</em>
+
+<strong>Assess expectations</strong>:
+<ul>
+<li>"What were you expecting the scan might show?"</li>
+<li>OR "Have you been worried about anything in particular?"</li>
+<p>
+</ul>
+</p>
+
+<h3>INVITATION (30 seconds)</h3>
+
+<strong>Ask permission to share results</strong>:
+<ul>
+<li>"Is it alright if I go through the scan results with you today?"</li>
+<li>OR "Would you like me to explain what we found?"</li>
+<p>
+</ul>
+</p>
+
+<em>Most patients will say yes. If no, respect their wishes and offer follow-up.</em>
+
+<h3>KNOWLEDGE - Delivering Bad News (90 seconds)</h3>
+
+<strong>Warning shot</strong> (prepare patient):
+<ul>
+<li>"I'm afraid the scan has shown something concerning."</li>
+<li><em>Pause - let this land</em></li>
+<p>
+</ul>
+</p>
+
+<strong>Give diagnosis in clear, simple language</strong>:
+<ul>
+<li>"The scan shows that you have a cancer in your pancreas - that's the organ behind your stomach."</li>
+<li><em>Pause - observe reaction</em></li>
+<p>
+</ul>
+</p>
+
+<em>Patient may cry, go silent, or ask questions. Give them time.</em>
+
+<strong>EMPATHY</strong> (respond to emotion):
+<ul>
+<li>"I can see this is very difficult news to hear."</li>
+<li>"I'm sorry to have to tell you this."</li>
+<li>"It's completely understandable to feel shocked/upset/angry."</li>
+<p>
+</ul>
+</p>
+
+<strong>Silence is okay</strong> - don't rush to fill it. Hand tissues if crying.
+
+<strong>Check understanding</strong>:
+<ul>
+<li>"I know this is a lot to take in. Can I explain what this means?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Explain in chunks</strong> (short sentences, pause between):
+<ul>
+<li>"The pancreas is an organ that helps with digestion."</li>
+<li><em>Pause</em></li>
+<li>"Unfortunately, the scan also shows that the cancer has spread to your liver."</li>
+<li><em>Pause</em></li>
+<li>"When cancer spreads like this, we call it metastatic or advanced cancer."</li>
+<li><em>Pause</em></li>
+<p>
+</ul>
+</p>
+
+<strong>Avoid medical jargon</strong>:
+<ul>
+<li>❌ "You have a pancreatic adenocarcinoma with hepatic metastases."</li>
+<li>✅ "You have pancreatic cancer that has spread to your liver."</li>
+<p>
+</ul>
+</p>
+
+<strong>Check understanding frequently</strong>:
+<ul>
+<li>"Does that make sense so far?"</li>
+<li>"Do you have any questions about what I've said?"</li>
+<p>
+</ul>
+</p>
+
+<h3>EMOTIONS - Responding to Feelings (90 seconds)</h3>
+
+<strong>Common reactions and responses</strong>:
+
+<strong>If patient cries</strong>:
+<ul>
+<li>Hand tissues</li>
+<li>"Take your time. There's no rush."</li>
+<li>Sit quietly, don't interrupt</li>
+<li>"This must be incredibly difficult for you."</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient asks "Am I going to die?"</strong>:
+<ul>
+<li>❌ "We're all going to die someday." (NEVER say this)</li>
+<li>✅ "This is a very serious illness. Without treatment, pancreatic cancer can be life-limiting."</li>
+<li>"However, there are treatments that can help control the cancer and improve how you feel."</li>
+<li>"I know the oncologist will want to discuss treatment options with you."</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient asks "How long do I have?"</strong>:
+<ul>
+<li>❌ Give specific timeframe ("6 months")</li>
+<li>✅ "That's a very important question, and I understand why you're asking."</li>
+<li>"Unfortunately, it's very difficult to predict exactly. Every person is different."</li>
+<li>"The oncology team will be able to give you more information about prognosis once they've assessed you."</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient is angry</strong>:
+<ul>
+<li>"I can see you're feeling angry. That's a completely understandable reaction."</li>
+<li>Don't take it personally</li>
+<li>Don't get defensive</li>
+<li>"Is there anything I can do right now to help?"</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient is in denial</strong> ("There must be a mistake"):
+<ul>
+<li>"I understand this is very hard to believe."</li>
+<li>"Unfortunately, the scan does show cancer. I wish I had different news to give you."</li>
+<li>Don't argue or insist repeatedly</li>
+<p>
+</ul>
+</p>
+
+<h3>STRATEGY & SUMMARY - Making a Plan (90 seconds)</h3>
+
+<strong>Offer hope within honesty</strong>:
+<ul>
+<li>"While this is very serious, there are things we can do to help."</li>
+<li>"Our oncology team is excellent and will work with you to find the best treatment plan."</li>
+<p>
+</ul>
+</p>
+
+<strong>Explain next steps clearly</strong>:
+<ul>
+<li>"Here's what's going to happen next:</li>
+<p>
+</ul>
+  1. I'm going to arrange an <span style="color: #e74c3c; font-weight: bold;">URGENT</span> referral to an oncologist - a cancer specialist
+  2. They'll usually see you within 1-2 weeks
+  3. They'll explain treatment options, which might include chemotherapy to slow the cancer down and help with symptoms
+  4. We'll also refer you to a palliative care team - and I want to explain that 'palliative care' doesn't mean giving up. It means managing symptoms and supporting you through treatment."
+</p>
+
+<strong>Practical support</strong>:
+<ul>
+<li>"Do you have family or friends who can support you?"</li>
+<li>"Would you like me to call anyone for you today?"</li>
+<li>"I can arrange for you to speak with a counsellor or social worker if that would help."</li>
+<p>
+</ul>
+</p>
+
+<strong>Information</strong>:
+<ul>
+<li>"I'm going to give you some written information to take home."</li>
+<li>"I know it's hard to take everything in right now - that's completely normal."</li>
+<li>"You can call the practice anytime if you have questions."</li>
+<p>
+</ul>
+</p>
+
+<strong>Safety-netting</strong>:
+<ul>
+<li>"If you develop any severe pain, vomiting that won't stop, or jaundice - yellow skin or eyes - please go to the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department or call 000."</li>
+<p>
+</ul>
+</p>
+
+<strong>Follow-up</strong>:
+<ul>
+<li>"I'd like to see you again in a few days to see how you're doing and answer any questions that come up."</li>
+<li>"Is there anything else you'd like to ask me today?"</li>
+<p>
+</ul>
+</p>
+
+<h3>Closing (30 seconds)</h3>
+
+<strong>Summarize</strong>:
+<ul>
+<li>"Just to recap: the scan shows pancreatic cancer that has spread to your liver. We're going to refer you <span style="color: #e74c3c; font-weight: bold;">URGENT</span>ly to an oncologist who'll discuss treatment options. I'll see you again in a few days, and please call if you need anything before then."</li>
+<p>
+</ul>
+</p>
+
+<strong>Final check</strong>:
+<ul>
+<li>"How are you feeling right now? Are you okay to drive home, or should we call someone for you?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Empathy</strong>:
+<ul>
+<li>"I'm very sorry to have given you this difficult news today. We're going to support you through this."</li>
+<p>
+</ul>
+</p>
+
+<em>Stand, shake hands or offer supportive gesture (culturally appropriate)</em>
+
+<hr>
+
+<h2>STATION 2: INFORMED CONSENT - COLONOSCOPY</h2>
+
+<h3>Scenario</h3>
+<p>
+You are a junior doctor in gastroenterology clinic. Mr John Davies, 62, needs a colonoscopy for investigation of PR bleeding. You need to obtain informed consent.
+</p>
+
+<h3>Opening (30 seconds)</h3>
+
+<p>
+"Hello Mr Davies, I'm Dr [Name]. I understand Dr Smith has recommended you have a colonoscopy. Is that right?"
+</p>
+
+<em>Sit down</em>
+
+<p>
+"I'm here to explain the procedure, what to expect, and answer any questions you might have. We'll then go through the consent form together. Does that sound okay?"
+</p>
+
+<h3>CHECK UNDERSTANDING (30 seconds)</h3>
+
+<p>
+"Before I explain the procedure, can I ask what you've been told so far?"
+</p>
+
+<p>
+"What's your understanding of why Dr Smith has recommended this test?"
+</p>
+
+<em>Listen to patient's understanding - correct any misconceptions</em>
+
+<h3>EXPLAIN THE PROCEDURE (90 seconds)</h3>
+
+<strong>What it is</strong>:
+<ul>
+<li>"A colonoscopy is a test where we use a thin, flexible camera called a colonoscope to look inside your large bowel - your colon."</li>
+<li>"We do this to investigate your rectal bleeding and make sure there's nothing concerning going on."</li>
+<p>
+</ul>
+</p>
+
+<strong>Use simple language + check understanding</strong>:
+<ul>
+<li>"Does that make sense so far?"</li>
+<p>
+</ul>
+</p>
+
+<strong>How it's done</strong>:
+<ul>
+<li>"On the day of the procedure, you'll come to the day surgery unit."</li>
+<li>"We'll give you sedation - medication through a drip in your arm that makes you drowsy and relaxed, so you won't feel discomfort."</li>
+<li>"Once you're comfortable, we'll gently pass the camera through your back passage and into your colon."</li>
+<li>"As we go, we look at the lining of your bowel on a screen."</li>
+<li>"If we see anything like polyps - small growths - we can remove them during the same procedure."</li>
+<li>"The whole procedure takes about 20-30 minutes."</li>
+<p>
+</ul>
+</p>
+
+<strong>Preparation</strong> (very important):
+<ul>
+<li>"The day before, you'll need to prepare your bowel by drinking a special solution that clears it out."</li>
+<li><em>Hand information sheet</em> "This sheet explains the preparation in detail - it's very important to follow it carefully."</li>
+<li>"You'll need to stay home that day as you'll be going to the toilet frequently."</li>
+<p>
+</ul>
+</p>
+
+<strong>After the procedure</strong>:
+<ul>
+<li>"You'll rest in the recovery area for about an hour until the sedation wears off."</li>
+<li>"You must have someone to drive you home - you can't drive for 24 hours after sedation."</li>
+<li>"You can eat and drink normally after you get home."</li>
+<li>"We'll give you the results before you leave, or send them to your GP."</li>
+<p>
+</ul>
+</p>
+
+<strong>Check understanding</strong>:
+<ul>
+<li>"Is there anything I've said so far that you'd like me to explain again?"</li>
+<p>
+</ul>
+</p>
+
+<h3>RISKS & COMPLICATIONS (90 seconds)</h3>
+
+<p>
+"Like any medical procedure, there are some risks I need to tell you about. Most people have no problems, but it's important you know what could happen."
+</p>
+
+<strong>Common side effects</strong> (not serious):
+<ul>
+<li>"After the procedure, you might feel bloated or have cramping - this is from the air we use to inflate the bowel. It settles within a few hours."</li>
+<li>"You might have a small amount of bleeding if we remove polyps - this is normal and stops on its own."</li>
+<p>
+</ul>
+</p>
+
+<strong>Rare but serious complications</strong>:
+
+<p>
+"Now, there are some rare but serious risks. These are uncommon, but I need to mention them."
+</p>
+
+<strong>1. Perforation (hole in bowel)</strong> - Most important risk:
+<ul>
+<li>"In about 1 in 1000 to 1 in 2000 procedures, the colonoscope can make a small tear or hole in the bowel wall."</li>
+<li>"If this happens, you would need <span style="color: #e74c3c; font-weight: bold;">URGENT</span> surgery to repair it."</li>
+<li>"Signs would be severe abdominal pain, fever, or vomiting."</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Bleeding</strong>:
+<ul>
+<li>"Significant bleeding after polyp removal happens in about 1 in 100 to 1 in 200 cases."</li>
+<li>"If this happens, we might need to repeat the colonoscopy to stop the bleeding, or rarely, you might need a blood transfusion."</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Sedation risks</strong>:
+<ul>
+<li>"Very rarely, sedation can affect your breathing or heart rate, but we monitor you very carefully throughout."</li>
+<p>
+</ul>
+</p>
+
+<strong>Check reaction</strong>:
+<ul>
+<li>"I know that's a lot of information. Do you have any questions about the risks?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Put in perspective</strong>:
+<ul>
+<li>"I want to emphasize that serious complications are rare. We do hundreds of these procedures safely."</li>
+<li>"The benefits of finding and treating any problems in your bowel outweigh the small risks of the procedure."</li>
+<p>
+</ul>
+</p>
+
+<h3>ALTERNATIVES (30 seconds)</h3>
+
+<p>
+"You do have other options:
+</p>
+
+<ol>
+<li><strong>CT colonography</strong> - A CT scan of your bowel. Less invasive, but not as accurate and can't remove polyps.</li>
+<li><strong>Flexible sigmoidoscopy</strong> - Similar but only looks at the lower part of the bowel, not the whole colon.</li>
+<li><strong>No investigation</strong> - But then we wouldn't know what's causing your bleeding, and we could miss something serious like cancer."</li>
+<p>
+</ol>
+</p>
+
+<p>
+"Given your symptoms, colonoscopy is the best test because it's the most thorough and we can treat any polyps we find."
+</p>
+
+<p>
+"Do any of those alternatives appeal to you, or are you happy to proceed with the colonoscopy?"
+</p>
+
+<h3>ANSWER QUESTIONS (Variable timing)</h3>
+
+<strong>Common questions</strong>:
+
+<strong>"Will it hurt?"</strong>:
+<ul>
+<li>"Most people don't feel pain because of the sedation. You might feel some pressure or cramping, but it shouldn't be painful. If you do feel uncomfortable, you can let us know and we can give you more sedation."</li>
+<p>
+</ul>
+</p>
+
+<strong>"Will I be asleep?"</strong>:
+<ul>
+<li>"You'll be sedated, which means you'll be drowsy and relaxed, but not fully asleep like a general anaesthetic. Some people remember parts of the procedure, others don't remember anything - both are normal."</li>
+<p>
+</ul>
+</p>
+
+<strong>"What if you find cancer?"</strong>:
+<ul>
+<li>"If we see anything concerning, we'll take biopsies - small samples of tissue - and send them to the lab for analysis. We'll then discuss the results with you and make a plan for any further treatment needed. But let's not jump ahead - we're doing the test to find out what's going on."</li>
+<p>
+</ul>
+</p>
+
+<h3>CONSENT FORM (60 seconds)</h3>
+
+<p>
+"Now, if you're happy to go ahead, I'll go through the consent form with you."
+</p>
+
+<em>Read through consent form together</em>
+
+<strong>Key points to cover</strong>:
+<ul>
+<li>"This confirms that I've explained the procedure, risks, and alternatives to you."</li>
+<li>"It confirms you've had the chance to ask questions."</li>
+<li>"You're agreeing to the colonoscopy."</li>
+<p>
+</ul>
+</p>
+
+<strong>IMPORTANT</strong>: "You can change your mind at any time, even on the day of the procedure. Signing this form doesn't lock you in - you can always withdraw consent."
+
+<strong>If patient hesitant</strong>:
+<ul>
+<li>"Is there anything stopping you from going ahead today?"</li>
+<li>"Would you like more time to think about it?"</li>
+<li>"Would you like to discuss it with family first?"</li>
+<li>Don't pressure - informed consent must be voluntary</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient agrees</strong>:
+<ul>
+<li>"Can you sign here please?"</li>
+<li><em>You sign as well</em></li>
+<li><em>Give patient a copy</em></li>
+<p>
+</ul>
+</p>
+
+<h3>CLOSING (30 seconds)</h3>
+
+<strong>Summarize</strong>:
+<ul>
+<li>"Just to recap: You'll come in for a colonoscopy to investigate your bleeding. The day before, you'll do the bowel preparation. On the day, we'll give you sedation, do the test, and you'll need someone to drive you home."</li>
+<p>
+</ul>
+</p>
+
+<strong>Next steps</strong>:
+<ul>
+<li>"You'll receive an appointment letter in the post with the date and instructions."</li>
+<li>"If you have any questions before the procedure, you can call the endoscopy unit - the number is on this sheet."</li>
+<p>
+</ul>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong>:
+<ul>
+<li>"If you develop severe abdominal pain, heavy bleeding from your back passage, or feel very unwell before the procedure, please go to the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department."</li>
+<p>
+</ul>
+</p>
+
+<p>
+"Do you have any final questions for me today?"
+</p>
+
+<hr>
+
+<h2>STATION 3: ANGRY PATIENT</h2>
+
+<h3>Scenario</h3>
+<p>
+You are a junior doctor in ED. Mr Robert Lee, 45, has been waiting 3 hours to be seen for ankle pain after a sporting injury. He is angry and demanding to be seen immediately. The department is very busy with multiple <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> cases.
+</p>
+
+<h3>Opening (30 seconds)</h3>
+
+<em>Knock and enter - patient may be standing, pacing, or sitting with arms crossed</em>
+
+<p>
+"Hello Mr Lee, I'm Dr [Name], one of the doctors in the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department today."
+</p>
+
+<em>Remain calm, don't mirror anger</em>
+
+<strong>Don't be defensive</strong>:
+<ul>
+<li>❌ "It's not my fault you've been waiting."</li>
+<li>✅ "I understand you've been waiting quite a while. I'm sorry about that."</li>
+<p>
+</ul>
+</p>
+
+<h3>LISTEN & ACKNOWLEDGE (60-90 seconds)</h3>
+
+<strong>Let patient vent</strong> - This is critical:
+<ul>
+<li>"I can see you're frustrated. Can you tell me what's happened?"</li>
+<p>
+</ul>
+</p>
+
+<em>Patient may say</em>: "I've been waiting 3 hours! My ankle is killing me! I could have died while sitting out there! This is ridiculous!"
+
+<strong>Don't interrupt</strong> - let them finish
+
+<strong>Acknowledge feelings</strong>:
+<ul>
+<li>"I can see you're very frustrated, and I completely understand why."</li>
+<li>"Waiting 3 hours with a painful ankle must have been very uncomfortable."</li>
+<li>"I'm sorry you've had this experience."</li>
+<p>
+</ul>
+</p>
+
+<strong>NEVER say</strong>:
+<ul>
+<li>❌ "You need to calm down." (Will make them angrier)</li>
+<li>❌ "Other people are sicker than you." (Dismissive)</li>
+<li>❌ "It's just an ankle." (Minimizing their pain)</li>
+<li>❌ "If you're rude, I won't treat you." (Threatening)</li>
+<p>
+</ul>
+</p>
+
+<h3>EXPLAIN (without being defensive) (60 seconds)</h3>
+
+<p>
+"I want to explain how the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department works, which might help you understand the wait."
+</p>
+
+<strong>Triage system</strong>:
+<ul>
+<li>"When you arrived, you were assessed by our triage nurse. We use a system that prioritizes patients based on how <span style="color: #e74c3c; font-weight: bold;">URGENT</span> their condition is."</li>
+<li>"Category 1 is life-threatening - like someone having a heart attack or stroke. They're seen immediately."</li>
+<li>"Your ankle injury was triaged as category 4, which means it's <span style="color: #e74c3c; font-weight: bold;">URGENT</span> but not immediately life-threatening."</li>
+<li>"Unfortunately, we've had several Category 1 and 2 patients arrive since you came in - people who would die or be permanently harmed if we didn't see them immediately."</li>
+<li>"That's why your wait has been longer than we'd like."</li>
+<p>
+</ul>
+</p>
+
+<strong>Take responsibility</strong> (for the wait, not for being at fault):
+<ul>
+<li>"I'm sorry we haven't been able to see you sooner."</li>
+<li>"I know that doesn't make your ankle hurt any less or make the wait any easier."</li>
+<p>
+</ul>
+</p>
+
+<strong>Don't blame</strong>:
+<ul>
+<li>❌ "The waiting room is full." (Patient doesn't care about other people)</li>
+<li>❌ "We're short-staffed." (Not patient's problem)</li>
+<li>✅ Focus on what you CAN do now</li>
+<p>
+</ul>
+</p>
+
+<h3>VALIDATE & EMPATHIZE (30 seconds)</h3>
+
+<strong>Separate the behavior from the feeling</strong>:
+<ul>
+<li>"I can see you're in pain and you've been very patient waiting this long."</li>
+<li>"Anyone would be frustrated in your situation."</li>
+<p>
+</ul>
+</p>
+
+<strong>Show you care</strong>:
+<ul>
+<li>"I want to help you. That's why I'm here now."</li>
+<p>
+</ul>
+</p>
+
+<h3>OFFER SOLUTION (60 seconds)</h3>
+
+<strong>Be specific about what you'll do NOW</strong>:
+<ul>
+<li>"Here's what I'm going to do right now:</li>
+<p>
+</ul>
+  1. First, I'm going to give you some pain relief so you're more comfortable
+  2. Then I'm going to examine your ankle
+  3. We'll get an X-ray to check if anything is broken
+  4. Once we have the results, we'll decide on treatment - that might be a plaster cast, a support boot, or just pain relief and rest"
+</p>
+
+<strong>Give realistic timeframe</strong>:
+<ul>
+<li>"The X-ray will take about 30-45 minutes. Once I have the results, I'll come back to discuss them with you."</li>
+<p>
+</ul>
+</p>
+
+<strong>Set expectations</strong>:
+<ul>
+<li>"Is that plan okay with you?"</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient still angry</strong>:
+<ul>
+<li>"I understand you're still frustrated. Is there anything else I can do for you right now?"</li>
+<p>
+</ul>
+</p>
+
+<h3>BOUNDARIES (if patient becomes abusive)</h3>
+
+<strong>If patient swears or raises voice</strong>:
+<ul>
+<li>"Mr Lee, I understand you're upset, but I need you to please not raise your voice / swear at me."</li>
+<li>"I want to help you, but I need us to communicate respectfully."</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient threatens or becomes aggressive</strong>:
+<ul>
+<li>"Mr Lee, I don't feel safe continuing this conversation while you're [shouting/threatening/swearing]."</li>
+<li>"I'm going to step outside for a moment. When you feel ready to talk calmly, please let the nurse know and I'll come back."</li>
+<li><em>Leave, inform senior, consider security</em></li>
+<p>
+</ul>
+</p>
+
+<strong>NEVER</strong>:
+<ul>
+<li>❌ Shout back</li>
+<li>❌ Make threats ("I'll discharge you")</li>
+<li>❌ Refuse to treat (unless genuine safety concern)</li>
+<p>
+</ul>
+</p>
+
+<h3>CLOSING (30 seconds)</h3>
+
+<strong>Summarize</strong>:
+<ul>
+<li>"So, I'm going to get you some pain relief now, examine your ankle, and order an X-ray. I'll be back with the results in about 30-45 minutes."</li>
+<p>
+</ul>
+</p>
+
+<strong>Apologize again</strong>:
+<ul>
+<li>"Again, I'm sorry about the long wait. I know it's been frustrating."</li>
+<p>
+</ul>
+</p>
+
+<strong>Final check</strong>:
+<ul>
+<li>"Is there anything else you need from me right now?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>STATION 4: INTERPRETER USE (Patient with Limited English)</h2>
+
+<h3>Scenario</h3>
+<p>
+You are a GP. Mrs Lin Chen, 68, speaks limited English. Her daughter has brought her in for abdominal pain. An interpreter is present (in person or via phone).
+</p>
+
+<h3>Opening - CRITICAL TECHNIQUE (60 seconds)</h3>
+
+<strong>Arrange seating</strong>:
+<ul>
+<li>Triangle formation: You, patient, interpreter (all facing each other)</li>
+<li>❌ Don't sit with interpreter between you and patient</li>
+<li>✅ Maintain eye contact with PATIENT, not interpreter</li>
+<p>
+</ul>
+</p>
+
+<strong>Greet interpreter</strong>:
+<ul>
+<li>"Thank you for coming."</li>
+<li>"Are you ready to begin?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Check with patient (through interpreter)</strong>:
+<ul>
+<li><em>Look at patient, speak to patient</em> "Hello Mrs Chen, I'm Dr [Name]."</li>
+<li><em>WAIT for interpreter to translate - don't keep talking</em></li>
+<li>"I'm going to ask you some questions about your tummy pain. Is that alright?"</li>
+<p>
+</ul>
+</p>
+
+<h3>GOLDEN RULES for interpreter sessions:</h3>
+
+<ol>
+<li><strong>Speak TO the patient, not ABOUT the patient</strong>:</li>
+<p>
+</ol>
+   - ✅ "Mrs Chen, where is your pain?" (<em>looking at Mrs Chen</em>)
+   - ❌ "Ask her where the pain is." (<em>looking at interpreter</em>)
+</p>
+
+<ol>
+<li><strong>Use first person</strong>:</li>
+<p>
+</ol>
+   - ✅ "I'm going to examine you."
+   - ❌ "Tell her I'm going to examine her."
+</p>
+
+<ol>
+<li><strong>Speak in short sentences</strong>:</li>
+<p>
+</ol>
+   - Pause after each sentence for interpretation
+   - Don't ramble
+</p>
+
+<ol>
+<li><strong>Avoid idioms/colloquialisms</strong>:</li>
+<p>
+</ol>
+   - ❌ "How long have you been under the weather?"
+   - ✅ "How long have you felt unwell?"
+</p>
+
+<ol>
+<li><strong>Look at and listen to the PATIENT, not the interpreter</strong>:</li>
+<p>
+</ol>
+   - Observe patient's body language
+   - Watch their face for pain, distress, understanding
+</p>
+
+<h3>Taking History (3-4 minutes)</h3>
+
+<strong>Slow, clear speech</strong>:
+<ul>
+<li>"Mrs Chen, can you tell me about your tummy pain?"</li>
+<li><em>PAUSE - wait for interpreter</em></li>
+<li><em>LISTEN to patient's response in their language</em></li>
+<li><em>LOOK at patient while they're speaking (even though you don't understand)</em></li>
+<li><em>Wait for interpretation</em></li>
+<p>
+</ul>
+</p>
+
+<strong>Check understanding</strong>:
+<ul>
+<li>After complex information: "Can you tell me what you've understood so far?"</li>
+<li>Interpreter may say "She's confused about <input type="checkbox" checked>" - clarify</li>
+<p>
+</ul>
+</p>
+
+<strong>Physical examination</strong>:
+<ul>
+<li>"Mrs Chen, I need to examine your tummy. Is that alright?"</li>
+<li>"Can you lie down on the bed please?"</li>
+<li>"I'm going to feel your tummy now. Please tell me if it hurts."</li>
+<li><em>Through interpreter</em> "Does this hurt?" (while palpating)</li>
+<p>
+</ul>
+</p>
+
+<h3>Explaining Diagnosis/Plan (2-3 minutes)</h3>
+
+<strong>Simple language</strong>:
+<ul>
+<li>"Mrs Chen, I think you have inflammation in your gallbladder."</li>
+<li><em>PAUSE</em></li>
+<li>"The gallbladder is a small organ under your liver."</li>
+<li><em>PAUSE</em></li>
+<li>"It stores bile, which helps digest food."</li>
+<li><em>PAUSE</em></li>
+<p>
+</ul>
+</p>
+
+<strong>Check understanding frequently</strong>:
+<ul>
+<li>"Does that make sense?"</li>
+<li>"Do you understand what I mean by gallbladder?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Ask interpreter for help with cultural concepts</strong>:
+<ul>
+<li>If unsure: <em>To interpreter</em> "Is there a good way to explain this concept in Mandarin?"</li>
+<p>
+</ul>
+</p>
+
+<h3>Closing (60 seconds)</h3>
+
+<strong>Summarize</strong> (to patient):
+<ul>
+<li>"Mrs Chen, to summarize: You have gallbladder inflammation. I'm going to arrange an ultrasound scan. You should avoid fatty foods. If the pain gets worse, go to <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department."</li>
+<p>
+</ul>
+</p>
+
+<strong>Final questions</strong>:
+<ul>
+<li>"Do you have any questions for me?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Thank everyone</strong>:
+<ul>
+<li><em>To patient</em>: "Thank you Mrs Chen."</li>
+<li><em>To interpreter</em>: "Thank you very much for your help today."</li>
+<p>
+</ul>
+</p>
+
+<h3>Common IMG Mistakes ❌ (CRITICAL for Australian OSCE)</h3>
+
+<ol>
+<li>❌ <strong>Talking to interpreter instead of patient</strong></li>
+<li>❌ <strong>Not maintaining eye contact with patient</strong></li>
+<li>❌ <strong>Speaking too fast without pauses</strong></li>
+<li>❌ <strong>Using complex medical jargon</strong></li>
+<li>❌ <strong>Saying "Tell her..." instead of "You..."</strong></li>
+<li>❌ <strong>Not checking patient's understanding</strong></li>
+<li>❌ <strong>Interrupting interpreter</strong></li>
+<li>❌ <strong>Not thanking interpreter</strong></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Quick Reference: Communication Phrases for Australian OSCEs</h2>
+
+<h3>Empathy & Acknowledgment</h3>
+<ul>
+<li>"I can see this is very difficult for you."</li>
+<li>"That must be incredibly frustrating."</li>
+<li>"I'm sorry you're going through this."</li>
+<li>"It's completely understandable to feel [emotion]."</li>
+<li>"Take your time. There's no rush."</li>
+<p>
+</ul>
+</p>
+
+<h3>Checking Understanding</h3>
+<ul>
+<li>"Does that make sense?"</li>
+<li>"Can you tell me what you've understood so far?"</li>
+<li>"Do you have any questions about what I've said?"</li>
+<li>"Is there anything you'd like me to explain again?"</li>
+<p>
+</ul>
+</p>
+
+<h3>Safety-Netting</h3>
+<ul>
+<li>"If you develop [specific <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s], please call 000 or go to the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department immediately."</li>
+<li>"If you're worried about anything, please call the practice."</li>
+<li>"You can always come back if things change."</li>
+<p>
+</ul>
+</p>
+
+<h3>Respecting Autonomy</h3>
+<ul>
+<li>"It's completely your decision."</li>
+<li>"You can change your mind at any time."</li>
+<li>"Would you like time to think about it?"</li>
+<li>"Is there anyone you'd like to discuss this with?"</li>
+<p>
+</ul>
+</p>
+
+<h3>Privacy & Dignity</h3>
+<ul>
+<li>"Would you like anyone with you for this conversation?"</li>
+<li>"Is it alright if we talk in here?"</li>
+<li>"I'll make sure you're covered."</li>
+<li>"Let me know if you feel uncomfortable."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Last Updated</strong>: December 14, 2025
+<strong>Version</strong>: 1.0
+<strong>Author</strong>: ICRP NSW Young Hospital Preparation Team
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

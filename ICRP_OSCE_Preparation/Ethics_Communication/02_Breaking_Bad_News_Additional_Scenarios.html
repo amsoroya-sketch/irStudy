@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking Bad News - Additional Scenarios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Ethics Communication</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Ethics Communication Navigation</h3>
+<ul>
+<li><a href="01_Communication_Skills_Role_Play_Scripts.html">Communication Skills</a></li>
+</ul>
+</div>
+        <h1>Breaking Bad News - Additional Scenarios</h1>
+<h2>AMC Clinical / ICRP NSW Young Hospital Preparation</h2>
+
+<strong>Purpose</strong>: Extended breaking bad news scenarios covering diverse clinical situations
+<strong>Target Time</strong>: 8 minutes per station
+<strong>Format</strong>: SPIKES framework with word-for-word scripts and Australian context
+<strong>Created</strong>: December 14, 2025
+
+<hr>
+
+<h2>TABLE OF CONTENTS</h2>
+
+<ol>
+<li><a href="#scenario-1-positive-hiv-test-result">Scenario 1: Positive HIV Test Result</a></li>
+<li><a href="#scenario-2-miscarriage">Scenario 2: Miscarriage</a></li>
+<li><a href="#scenario-3-stroke-with-permanent-disability">Scenario 3: Stroke with Permanent Disability</a></li>
+<li><a href="#scenario-4-death-notification-to-family">Scenario 4: Death Notification to Family</a></li>
+<li><a href="#scenario-5-serious-illness-in-child-to-parents">Scenario 5: Serious Illness in Child (to Parents)</a></li>
+<li><a href="#scenario-6-dementia-diagnosis">Scenario 6: Dementia Diagnosis</a></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>SCENARIO 1: POSITIVE HIV TEST RESULT</h2>
+
+<h3>Clinical Context</h3>
+
+<strong>Differential Diagnosis Journey</strong>:
+<ul>
+<li>Patient presented with: Persistent fever, night sweats, weight loss, oral thrush</li>
+<li>Initial differential: TB, lymphoma, HIV, chronic infection</li>
+<li>Investigations: HIV serology (ELISA + Western blot confirmation), CD4 count, viral load</li>
+<li>Diagnosis confirmed: HIV positive, CD4 450 (normal >500), viral load 45,000 copies/mL</li>
+<p>
+</ul>
+</p>
+
+<h3>Scenario</h3>
+
+<p>
+You are a GP. Mr James Mitchell, 32, came in 2 weeks ago with recurrent oral thrush and unexplained weight loss. You performed HIV serology which has returned positive. His CD4 count is 450 and viral load is 45,000. You need to break this news to him.
+</p>
+
+<h3>Opening (60 seconds)</h3>
+
+<strong>SETTING - Privacy is CRITICAL</strong>:
+<ul>
+<li>Ensure door is closed, no interruptions</li>
+<li><em>Knock and enter</em> "Hello James, I'm Dr [Name]. Thank you for coming in today."</li>
+<li><em>Sit down</em> "I've asked you to come in to discuss your test results."</li>
+<p>
+</ul>
+</p>
+
+<strong>Check privacy</strong>:
+<ul>
+<li>"Is it alright if we talk here? We have complete privacy."</li>
+<li>"Is there anyone you'd like with you for this conversation - a partner or friend?"</li>
+<li><em>If patient wants someone</em>, offer time to call them</li>
+<p>
+</ul>
+</p>
+
+<strong>Set the tone - Serious but supportive</strong>:
+<ul>
+<li>"I wanted to see you in person to go through the results carefully."</li>
+<p>
+</ul>
+</p>
+
+<h3>PERCEPTION (60 seconds)</h3>
+
+<strong>Assess what patient knows</strong>:
+<ul>
+<li>"Before we discuss the results, can I ask what you've been thinking about since the tests?"</li>
+<li>"What do you understand about why we did the HIV test?"</li>
+<p>
+</ul>
+</p>
+
+<em>Listen carefully - patient may already suspect</em>
+
+<strong>Assess expectations</strong>:
+<ul>
+<li>"Were you expecting a particular result?"</li>
+<li>OR "Have you been worried about anything specific?"</li>
+<p>
+</ul>
+</p>
+
+<em>Many patients who agree to HIV testing have suspicions - gauge their readiness</em>
+
+<h3>INVITATION (30 seconds)</h3>
+
+<strong>Ask permission</strong>:
+<ul>
+<li>"Is it alright if I go through the test results with you now?"</li>
+<li>"Would you like me to explain what we found?"</li>
+<p>
+</ul>
+</p>
+
+<em>If patient hesitates</em>: "We can take this at your pace. Would you like a moment first?"
+
+<h3>KNOWLEDGE - Delivering the News (90-120 seconds)</h3>
+
+<strong>Warning shot</strong>:
+<ul>
+<li>"I'm afraid I have some difficult news to share with you."</li>
+<li><em>Pause - 3-5 seconds</em></li>
+<p>
+</ul>
+</p>
+
+<strong>Give diagnosis clearly</strong>:
+<ul>
+<li>"Your HIV test has come back positive."</li>
+<li><em>Pause - Let this land. Watch patient's reaction</em></li>
+<p>
+</ul>
+</p>
+
+<strong>COMMON REACTIONS</strong>:
+
+<strong>If patient goes silent</strong>:
+<ul>
+<li>Allow the silence (10-20 seconds)</li>
+<li>Hand tissue if needed</li>
+<li>"I know this is very difficult news to hear."</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient says "Are you sure? Can it be wrong?"</strong>:
+<ul>
+<li>"I understand you want to be absolutely certain."</li>
+<li>"We did two different tests to confirm - an initial screening test and a confirmatory test. Both are positive."</li>
+<li>"Unfortunately, there's no doubt about the result."</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient cries</strong>:
+<ul>
+<li>Hand tissues</li>
+<li>"Take your time. There's no rush."</li>
+<li>Sit quietly</li>
+<li>"This must be overwhelming."</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient asks "Am I going to die?"</strong>:
+<ul>
+<li>❌ NEVER say: "We all die eventually" or "Yes, eventually"</li>
+<li>✅ "This is serious, but I want you to know something very important: HIV is now a manageable chronic condition."</li>
+<li>"With modern treatment, people with HIV live normal lifespans."</li>
+<li>"You're not going to die from this if you engage with treatment."</li>
+<p>
+</ul>
+</p>
+
+<h3>Explaining What HIV Means (90 seconds)</h3>
+
+<strong>Use simple language</strong>:
+<ul>
+<li>"HIV stands for Human Immunodeficiency Virus."</li>
+<li><em>Pause</em></li>
+<li>"It's a virus that affects your immune system - the part of your body that fights off infections."</li>
+<li><em>Pause</em></li>
+<li>"That's why you've been having the oral thrush - your immune system has been weakened."</li>
+<p>
+</ul>
+</p>
+
+<strong>Check understanding</strong>:
+<ul>
+<li>"Does that make sense so far?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Explain AIDS vs HIV</strong>:
+<ul>
+<li>"HIV and AIDS are not the same thing - this is important."</li>
+<li>"HIV is the virus. AIDS is the advanced stage that happens if HIV isn't treated."</li>
+<li>"With treatment, you will never develop AIDS."</li>
+<li><em>Pause</em></li>
+<li>"Do you understand the difference?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Address stigma directly</strong>:
+<ul>
+<li>"I know HIV carries a lot of stigma and fear. Much of that comes from the 1980s and 90s when we didn't have effective treatment."</li>
+<li>"Things are completely different now."</li>
+<p>
+</ul>
+</p>
+
+<h3>Treatment Discussion (90 seconds)</h3>
+
+<strong>Emphasize treatability</strong>:
+<ul>
+<li>"The good news - and there is good news - is that we have excellent treatments for HIV."</li>
+<p>
+</ul>
+</p>
+
+<strong>Explain antiretroviral therapy (ART)</strong>:
+<ul>
+<li>"Treatment is called antiretroviral therapy, or ART."</li>
+<li>"It's usually one pill once a day."</li>
+<li>"This medication stops the virus from multiplying in your body."</li>
+<p>
+</ul>
+</p>
+
+<strong>Explain treatment goals</strong>:
+<ul>
+<li>"The goal is to get your virus level - what we call 'viral load' - down to undetectable."</li>
+<li>"When your viral load is undetectable, you can't pass HIV to others, even through sex."</li>
+<li>"This is called U=U: Undetectable equals Untransmittable."</li>
+<p>
+</ul>
+</p>
+
+<strong>Australian PBS</strong>:
+<ul>
+<li>"All HIV medications are fully covered by the Pharmaceutical Benefits Scheme in Australia."</li>
+<li>"If you have a healthcare card, they're $7.70 per script. Otherwise, $31.60."</li>
+<li>"So treatment is very affordable in Australia."</li>
+<p>
+</ul>
+</p>
+
+<strong>Check understanding</strong>:
+<ul>
+<li>"What questions do you have about treatment?"</li>
+<p>
+</ul>
+</p>
+
+<h3>EMOTIONS - Addressing Concerns (120 seconds)</h3>
+
+<strong>Common concerns and responses</strong>:
+
+<strong>If patient asks "How did I get this?"</strong>:
+<ul>
+<li>"HIV is transmitted through blood, sexual contact, or from mother to baby during pregnancy."</li>
+<li>"The most common way is through unprotected sex."</li>
+<li>"It's not about blame - it's about moving forward with treatment."</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient asks "Who gave this to me?"</strong>:
+<ul>
+<li>"Unfortunately, we can't know for certain without testing your contacts."</li>
+<li>"What's most important now is your health and treatment."</li>
+<li>"We'll also discuss partner notification - that's a conversation we'll have when you're ready."</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient asks "Do I have to tell people?"</strong>:
+<ul>
+<li>"You don't have to tell everyone - this is your private medical information."</li>
+<li>"However, you do have a legal and ethical obligation to tell any sexual partners."</li>
+<li>"We have a partner notification service that can help with this - they can notify partners anonymously if you prefer."</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient worried about confidentiality</strong>:
+<ul>
+<li>"Your HIV status is completely confidential."</li>
+<li>"I won't tell anyone without your permission, except in very specific circumstances - like if you're having unprotected sex with someone and won't disclose to them."</li>
+<li>"But we always try to support you to disclose rather than breaking confidentiality."</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient worried about discrimination</strong>:
+<ul>
+<li>"Unfortunately, HIV stigma still exists."</li>
+<li>"But Australian law protects you from discrimination."</li>
+<li>"You don't have to disclose your HIV status to employers or most other people."</li>
+<li>"There are support organizations that can advise you on your rights."</li>
+<p>
+</ul>
+</p>
+
+<h3>STRATEGY & SUMMARY - Making a Plan (120 seconds)</h3>
+
+<strong>Explain next steps</strong>:
+<ul>
+<li>"Here's what happens next:</li>
+<p>
+</ul>
+  1. I'm going to refer you to an HIV specialist - an infectious diseases physician
+  2. They'll usually see you within 1-2 weeks
+  3. They'll do some additional tests to check your immune system in detail
+  4. They'll start you on antiretroviral treatment
+  5. Within 3-6 months, your viral load should be undetectable"
+</p>
+
+<strong>Monitoring</strong>:
+<ul>
+<li>"Once you're on treatment, you'll have regular blood tests - usually every 3-6 months - to make sure the treatment is working."</li>
+<li>"You'll need to take the medication every day. Missing doses can cause the virus to become resistant."</li>
+<p>
+</ul>
+</p>
+
+<strong>Practical support</strong>:
+<ul>
+<li>"Are you in a relationship? Do you have a partner we need to consider?"</li>
+<li><em>If yes</em>: "They'll need to be tested and we'll discuss how to have that conversation."</li>
+<p>
+</ul>
+</p>
+
+<strong>Support services - CRITICAL in Australian context</strong>:
+<ul>
+<li>"There are excellent support services for people with HIV in Australia:</li>
+<p>
+</ul>
+  - <strong>ACON</strong> (if in NSW): Free counselling, support groups, peer support
+  - <strong>Positive Life NSW</strong>: Support, advocacy, information
+  - <strong>Sexual Health Clinics</strong>: Free testing and treatment for partners
+  - <strong>Counselling</strong>: I can refer you to a counsellor who specializes in HIV"
+</p>
+
+<strong>Give resources</strong>:
+<ul>
+<li>"I'm going to give you some written information to take home."</li>
+<li>"I know it's hard to take everything in right now."</li>
+<li>"You can call me anytime if questions come up."</li>
+<p>
+</ul>
+</p>
+
+<strong>Address sexual health</strong>:
+<ul>
+<li>"We need to talk about safe sex."</li>
+<li>"Until your viral load is undetectable, you can transmit HIV."</li>
+<li>"Condoms are essential."</li>
+<li>"Once you're undetectable on treatment, you can't transmit HIV sexually - but condoms still protect against other STIs."</li>
+<p>
+</ul>
+</p>
+
+<strong>Safety-netting</strong>:
+<ul>
+<li>"If you develop high fever, severe infection symptoms, or feel very unwell, please go to ED or call 000."</li>
+<li>"If you're feeling overwhelmed or having thoughts of harming yourself, please call Lifeline on 13 11 14 or go to ED."</li>
+<p>
+</ul>
+</p>
+
+<strong>Follow-up</strong>:
+<ul>
+<li>"I'd like to see you again in a few days to check how you're doing and answer any questions."</li>
+<li>"In the meantime, here's my number if you need to talk."</li>
+<p>
+</ul>
+</p>
+
+<h3>Closing (30 seconds)</h3>
+
+<strong>Summarize</strong>:
+<ul>
+<li>"Just to recap: Your HIV test is positive. This is serious but very treatable. We're going to refer you to a specialist who'll start treatment. With treatment, you'll live a normal life and won't be able to transmit the virus to others."</li>
+<p>
+</ul>
+</p>
+
+<strong>Hope within honesty</strong>:
+<ul>
+<li>"I know this is overwhelming right now, but I want to emphasize: people with HIV who take their treatment live normal, healthy lives."</li>
+<li>"This is not a death sentence. It's a manageable condition."</li>
+<p>
+</ul>
+</p>
+
+<strong>Final empathy</strong>:
+<ul>
+<li>"I'm sorry to have given you this difficult news. We're going to support you through this."</li>
+<li>"Do you have any final questions for me today?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Safety check</strong>:
+<ul>
+<li>"How are you feeling right now? Are you safe to drive home, or should I call someone for you?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>SCENARIO 2: MISCARRIAGE</h2>
+
+<h3>Clinical Context</h3>
+
+<strong>Differential Diagnosis Journey</strong>:
+<ul>
+<li>Patient presented with: Vaginal bleeding at 10 weeks pregnancy, cramping abdominal pain</li>
+<li>Initial differential: Threatened miscarriage, inevitable miscarriage, ectopic pregnancy, molar pregnancy</li>
+<li>Investigations: βHCG levels (falling), transvaginal ultrasound showing empty gestational sac</li>
+<li>Diagnosis confirmed: Complete miscarriage (missed abortion)</li>
+<p>
+</ul>
+</p>
+
+<h3>Scenario</h3>
+
+<p>
+You are a GP. Mrs Emma Wilson, 28, presented to ED yesterday with vaginal bleeding at 10 weeks pregnancy. Ultrasound showed an empty gestational sac and her βHCG levels have fallen from 8,000 to 2,500. She has miscarried. You need to break this news to her at a follow-up appointment today.
+</p>
+
+<h3>Opening (60 seconds)</h3>
+
+<strong>SETTING - Gentle and empathetic</strong>:
+<ul>
+<li>Private room, tissues readily available</li>
+<li><em>Knock and enter</em> "Hello Emma, I'm Dr [Name]. Thank you for coming in."</li>
+<li><em>Sit down</em> "I know you went to the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department yesterday. I've got the results of your ultrasound and blood tests."</li>
+<p>
+</ul>
+</p>
+
+<strong>Partner presence</strong>:
+<ul>
+<li>"Is your partner or anyone else with you today?"</li>
+<li><em>If alone</em>: "Would you like me to wait while you call someone, or are you okay to talk now?"</li>
+<p>
+</ul>
+</p>
+
+<h3>PERCEPTION (60 seconds)</h3>
+
+<strong>Assess understanding</strong>:
+<ul>
+<li>"Can you tell me what the doctors at the ED told you yesterday?"</li>
+<li><em>Patient may say</em>: "They said they couldn't see a heartbeat but wanted to repeat tests."</li>
+<p>
+</ul>
+</p>
+
+<strong>Assess expectations</strong>:
+<ul>
+<li>"What were you hoping the tests would show?"</li>
+<li>OR "Have you been worried about the pregnancy?"</li>
+<p>
+</ul>
+</p>
+
+<em>Listen carefully - many women already fear the worst</em>
+
+<h3>INVITATION (30 seconds)</h3>
+
+<strong>Ask permission</strong>:
+<ul>
+<li>"Is it alright if I go through the results with you now?"</li>
+<p>
+</ul>
+</p>
+
+<h3>KNOWLEDGE - Delivering the News (90 seconds)</h3>
+
+<strong>Warning shot</strong>:
+<ul>
+<li>"I'm very sorry, but I have sad news."</li>
+<li><em>Pause 3-5 seconds</em></li>
+<p>
+</ul>
+</p>
+
+<strong>Give diagnosis gently but clearly</strong>:
+<ul>
+<li>"The ultrasound and blood tests confirm that you've had a miscarriage."</li>
+<li>"The pregnancy is no longer developing."</li>
+<li><em>Pause - Observe reaction</em></li>
+<p>
+</ul>
+</p>
+
+<strong>COMMON REACTIONS</strong>:
+
+<strong>If patient cries</strong> (Most common):
+<ul>
+<li>Hand tissues immediately</li>
+<li>"I'm so sorry. Take all the time you need."</li>
+<li>Sit quietly - don't rush</li>
+<li>"This is heartbreaking news."</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient is silent/shocked</strong>:
+<ul>
+<li>Allow silence (10-20 seconds)</li>
+<li>"I know this is not the news you wanted to hear."</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient asks "Are you absolutely sure?"</strong>:
+<ul>
+<li>"I'm certain. I wish I had different news."</li>
+<li>"The ultrasound showed an empty gestational sac, and your pregnancy hormone levels have fallen significantly."</li>
+<li>"These findings definitely confirm miscarriage."</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient asks "Is the baby dead?"</strong> (Direct language - use theirs):
+<ul>
+<li>"Yes, the pregnancy has ended."</li>
+<li><em>Use patient's language - if they say "baby," you can say "baby"; if they say "pregnancy," use "pregnancy"</em></li>
+<p>
+</ul>
+</p>
+
+<h3>Explaining What Happened (90 seconds)</h3>
+
+<strong>Explain medical facts gently</strong>:
+<ul>
+<li>"A miscarriage means the pregnancy stopped developing and has ended."</li>
+<li><em>Pause</em></li>
+<li>"In your case, this happened at around 8-9 weeks, based on the ultrasound."</li>
+<p>
+</ul>
+</p>
+
+<strong>Address the "Why" question before asked</strong>:
+<ul>
+<li>"I know you're probably wondering why this happened."</li>
+<li><em>Pause</em></li>
+<li>"Unfortunately, miscarriage is very common - about 1 in 4 to 1 in 5 pregnancies end in miscarriage."</li>
+<li>"In most cases - probably 60-70% - it's due to a random chromosomal abnormality in the embryo. Something that was never compatible with life."</li>
+<p>
+</ul>
+</p>
+
+<h3>EMOTIONS - Addressing Guilt (Critical - 120 seconds)</h3>
+
+<strong>Proactively address guilt</strong>:
+<ul>
+<li>"Emma, I want to tell you something very important: <strong>This is not your fault.</strong>"</li>
+<li>"You didn't cause this."</li>
+<p>
+</ul>
+</p>
+
+<strong>Common guilt questions and responses</strong>:
+
+<strong>Patient asks "Did I do something wrong?"</strong>:
+<ul>
+<li>"No. Nothing you did caused this."</li>
+<li>"You didn't cause it by working, exercising, lifting things, having sex, or anything else you did or didn't do."</li>
+<p>
+</ul>
+</p>
+
+<strong>Patient asks "Was it because I had a glass of wine before I knew I was pregnant?"</strong>:
+<ul>
+<li>"No, that didn't cause this."</li>
+<li>"The amount of alcohol in one or two drinks before you knew you were pregnant doesn't cause miscarriage."</li>
+<p>
+</ul>
+</p>
+
+<strong>Patient asks "Was it stress?"</strong>:
+<ul>
+<li>"No. Normal life stress doesn't cause miscarriage."</li>
+<li>"If stress caused miscarriage, no one would ever have babies."</li>
+<p>
+</ul>
+</p>
+
+<strong>Patient asks "Should I have gone to the doctor earlier?"</strong>:
+<ul>
+<li>"No, earlier medical care wouldn't have prevented this."</li>
+<li>"There's nothing we can do to stop a miscarriage once it's started."</li>
+<p>
+</ul>
+</p>
+
+<strong>Validate grief</strong>:
+<ul>
+<li>"This is a real loss, and it's okay to grieve."</li>
+<li>"Some people feel intense sadness, others feel numb. Whatever you're feeling is valid."</li>
+<li>"There's no 'right' way to feel."</li>
+<p>
+</ul>
+</p>
+
+<h3>Management Options (90 seconds)</h3>
+
+<strong>Explain what happens next physically</strong>:
+<ul>
+<li>"The ultrasound shows you've had a complete miscarriage."</li>
+<li>"This means the pregnancy tissue has already passed."</li>
+<li>"Your bleeding should settle down over the next week or so."</li>
+<p>
+</ul>
+</p>
+
+<strong>If incomplete miscarriage</strong> (adjust if applicable):
+<ul>
+<li>"In some cases, not all the tissue has passed yet."</li>
+<li>"You have three options:</li>
+<p>
+</ul>
+  1. <strong>Wait and see</strong>: Let your body complete the process naturally over the next 1-2 weeks
+  2. <strong>Medication</strong> (misoprostol): Tablets that help your body pass the tissue. Done at home. Causes cramping and bleeding.
+  3. <strong>Surgical</strong> (D&C - dilation and curettage): A minor procedure under sedation where we remove the tissue. Done in hospital."
+</p>
+<ul>
+<li>"Each has pros and cons. Which would you like to know more about?"</li>
+<p>
+</ul>
+</p>
+
+<strong>For complete miscarriage</strong>:
+<ul>
+<li>"Because everything has already passed, you don't need medication or surgery."</li>
+<li>"Your pregnancy hormone levels will gradually drop to zero over the next few weeks."</li>
+<p>
+</ul>
+</p>
+
+<strong>Physical recovery</strong>:
+<ul>
+<li>"Physically, you should recover within a few weeks."</li>
+<li>"Your next period will probably come in 4-6 weeks."</li>
+<p>
+</ul>
+</p>
+
+<strong>When to seek help</strong> (Safety-netting):
+<ul>
+<li>"Please go to the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department if you have:</li>
+<p>
+</ul>
+  - Heavy bleeding (soaking through 2 pads per hour for 2 hours)
+  - Severe abdominal pain not controlled by paracetamol/ibuprofen
+  - Fever or chills (could indicate infection)
+  - Feeling faint or dizzy"
+</p>
+
+<h3>Future Pregnancy Discussion (60 seconds)</h3>
+
+<strong>Timing - reassure</strong>:
+<ul>
+<li>"When you're ready - and only when you're ready - you can try to conceive again."</li>
+<li>"Medically, we usually recommend waiting until after you've had one normal period."</li>
+<li>"This is mainly so we can date the next pregnancy accurately."</li>
+<li>"But some couples want to try sooner, and that's okay too."</li>
+<p>
+</ul>
+</p>
+
+<strong>Prognosis</strong>:
+<ul>
+<li>"Having one miscarriage doesn't mean you'll have another."</li>
+<li>"Most women who have one miscarriage go on to have successful pregnancies."</li>
+<li>"About 85% of women who've had one miscarriage will have a successful next pregnancy."</li>
+<p>
+</ul>
+</p>
+
+<strong>When to investigate</strong>:
+<ul>
+<li>"We usually don't do investigations unless you've had three miscarriages in a row."</li>
+<li>"After one miscarriage, the chance of it being a one-off is very high."</li>
+<p>
+</ul>
+</p>
+
+<h3>STRATEGY & SUMMARY - Support (90 seconds)</h3>
+
+<strong>Emotional support</strong>:
+<ul>
+<li>"How are you coping emotionally?"</li>
+<li>"Do you have support at home - family or friends?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Professional support</strong>:
+<ul>
+<li>"I can refer you to a counsellor who specializes in pregnancy loss if that would help."</li>
+<li>"Many women find talking to someone really helpful."</li>
+<p>
+</ul>
+</p>
+
+<strong>Support organizations</strong>:
+<ul>
+<li>"There's an organization called <strong>SANDS</strong> (Stillbirth and Neonatal Death Support)."</li>
+<li>"They support parents after miscarriage, stillbirth, or newborn death."</li>
+<li>"Their number is 1300 072 637."</li>
+<li>"They have online forums and support groups."</li>
+<p>
+</ul>
+</p>
+
+<strong>Partner grief</strong>:
+<ul>
+<li>"Partners grieve too, often differently."</li>
+<li>"Some partners want to 'be strong' for you, but they're also grieving."</li>
+<li>"It's okay to talk about it together or for your partner to seek support too."</li>
+<p>
+</ul>
+</p>
+
+<strong>Work considerations</strong>:
+<ul>
+<li>"You may need a few days off work."</li>
+<li>"I can write you a medical certificate."</li>
+<li>"You don't have to tell your employer the reason - I can just say 'medical reasons'."</li>
+<p>
+</ul>
+</p>
+
+<strong>Follow-up</strong>:
+<ul>
+<li>"I'd like to see you again in 2 weeks to check that:</li>
+<p>
+</ul>
+  - Your bleeding has settled
+  - Your pregnancy hormone level has dropped to zero
+  - You're coping emotionally"
+</p>
+
+<strong>Written information</strong>:
+<ul>
+<li>"I'm giving you an information sheet about miscarriage and what to expect."</li>
+<li>"It also has contact details for support services."</li>
+<p>
+</ul>
+</p>
+
+<h3>Closing (30 seconds)</h3>
+
+<strong>Summarize with compassion</strong>:
+<ul>
+<li>"I'm very sorry that you've lost this pregnancy. This wasn't your fault, and you didn't do anything wrong. Physically, you should recover over the next few weeks. Emotionally, take all the time you need. When you're ready in the future, you can try again."</li>
+<p>
+</ul>
+</p>
+
+<strong>Final support</strong>:
+<ul>
+<li>"Is there anything else I can answer for you today?"</li>
+<li>"Please call the practice anytime if you have questions or concerns."</li>
+<li>"I'm here to support you through this."</li>
+<p>
+</ul>
+</p>
+
+<strong>Practical check</strong>:
+<ul>
+<li>"How are you feeling right now? Do you need a moment before you leave?"</li>
+<li>"Are you safe to drive, or should I call someone for you?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>SCENARIO 3: STROKE WITH PERMANENT DISABILITY</h2>
+
+<h3>Clinical Context</h3>
+
+<strong>Differential Diagnosis Journey</strong>:
+<ul>
+<li>Patient presented with: Sudden onset right-sided weakness, facial droop, slurred speech</li>
+<li>Initial differential: Ischaemic stroke, haemorrhagic stroke, TIA, Todd's paresis, hypoglycaemia, hemiplegic migraine</li>
+<li>Investigations: CT brain (ischaemic stroke left MCA territory), MRI (confirmed large infarct), swallow assessment (unsafe swallow)</li>
+<li>Diagnosis: Left MCA ischaemic stroke with right hemiplegia, aphasia, dysphagia</li>
+<li>Day 5 post-stroke, patient medically stable but significant disability</li>
+<p>
+</ul>
+</p>
+
+<h3>Scenario</h3>
+
+<p>
+You are a junior doctor on the stroke unit. Mr George Pappas, 68, had a large left MCA stroke 5 days ago. He has right-sided weakness (can't walk, limited arm function), expressive aphasia (difficulty speaking), and dysphagia (can't swallow safely - needs PEG feeding tube). His wife is present. You need to discuss his likely prognosis and the fact that he will need ongoing rehabilitation and may not fully recover.
+</p>
+
+<h3>Opening (60 seconds)</h3>
+
+<strong>SETTING - Family conference</strong>:
+<ul>
+<li>Private family meeting room</li>
+<li>Sit down with patient AND wife (patient should be present even if he has aphasia)</li>
+<li>"Hello Mr Pappas, Mrs Pappas. I'm Dr [Name], one of the doctors looking after George on the stroke unit."</li>
+<p>
+</ul>
+</p>
+
+<strong>Set the agenda</strong>:
+<ul>
+<li>"I wanted to meet with you both to talk about George's stroke, how he's recovering, and what to expect going forward."</li>
+<li>"Is now a good time, or would you like to wait for any other family members?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Include patient even with aphasia</strong>:
+<ul>
+<li><em>Look at and speak to PATIENT, not just wife</em></li>
+<li>"George, I know speaking is difficult for you right now, but I want to include you in this conversation. Please let me know if you want me to slow down or repeat anything."</li>
+<p>
+</ul>
+</p>
+
+<h3>PERCEPTION (60 seconds)</h3>
+
+<strong>Assess understanding</strong>:
+<ul>
+<li>"First, can I ask what you understand about what's happened?"</li>
+<li><em>Often family will answer, but give patient chance first</em></li>
+<p>
+</ul>
+</p>
+
+<strong>Assess expectations</strong>:
+<ul>
+<li>"What have the other doctors told you about George's recovery?"</li>
+<li>"What are you hoping for in terms of recovery?"</li>
+<p>
+</ul>
+</p>
+
+<em>Listen carefully - many families expect full recovery or don't understand the severity</em>
+
+<h3>INVITATION (30 seconds)</h3>
+
+<strong>Ask permission to discuss prognosis</strong>:
+<ul>
+<li>"Is it alright if I talk honestly with you both about George's condition and what we expect for his recovery?"</li>
+<p>
+</ul>
+</p>
+
+<h3>KNOWLEDGE - Explaining Stroke & Damage (120 seconds)</h3>
+
+<strong>Recap what happened</strong> (for patient and family):
+<ul>
+<li>"George, you had a stroke five days ago."</li>
+<li>"A stroke happens when blood flow to part of the brain is blocked."</li>
+<li>"Without blood flow, brain cells die."</li>
+<p>
+</ul>
+</p>
+
+<strong>Use visual if helpful</strong>:
+<ul>
+<li><em>Point to left side of own head</em> "The stroke was on the left side of your brain."</li>
+<li>"The left side of the brain controls the right side of the body."</li>
+<li>"That's why your right arm and leg are weak."</li>
+<li>"The left side also controls speech for most people."</li>
+<li>"That's why you're having difficulty speaking."</li>
+<p>
+</ul>
+</p>
+
+<strong>Explain current deficits clearly</strong>:
+<ul>
+<li>"Right now, George has three main problems from the stroke:</li>
+<p>
+</ul>
+  1. <strong>Right-sided weakness</strong>: You can't walk yet, and your right arm has limited movement
+  2. <strong>Speech difficulty</strong> (expressive aphasia): You know what you want to say, but the words don't come out right
+  3. <strong>Swallowing difficulty</strong> (dysphagia): You're not able to swallow safely, which is why you have the feeding tube"
+</p>
+
+<strong>Check understanding</strong>:
+<ul>
+<li>"Does that make sense so far?"</li>
+<p>
+</ul>
+</p>
+
+<h3>PROGNOSIS - Realistic but Hopeful (120 seconds)</h3>
+
+<strong>This is the difficult part - be honest</strong>:
+<ul>
+<li>"Now I need to talk about recovery, and I want to be honest with you."</li>
+<li><em>Pause</em></li>
+<p>
+</ul>
+</p>
+
+<strong>Prepare for difficult news</strong>:
+<ul>
+<li>"Recovery from stroke is possible, but it takes time - months to years, not days or weeks."</li>
+<li>"The brain has already been damaged. That damage is permanent."</li>
+<li>"However, the brain can sometimes learn to work around the damage through rehabilitation."</li>
+<p>
+</ul>
+</p>
+
+<strong>Be realistic about prognosis</strong>:
+<ul>
+<li>"Based on the size and location of George's stroke, we expect some recovery, but probably not complete recovery."</li>
+<li><em>Pause - let this sink in</em></li>
+<p>
+</ul>
+</p>
+
+<strong>Specific predictions</strong> (if family asks "Will he walk again?"):
+<ul>
+<li>"It's very difficult to predict exactly how much someone will recover."</li>
+<li>"Some people with strokes like George's do learn to walk again with aids like a walker or cane."</li>
+<li>"Some people need a wheelchair."</li>
+<li>"We won't know George's final outcome for many months - probably 6-12 months."</li>
+<li>"But I want to be honest: it's unlikely he'll get back to exactly how he was before the stroke."</li>
+<p>
+</ul>
+</p>
+
+<strong>If family asks "Will he talk again?"</strong>:
+<ul>
+<li>"Speech therapy can help with aphasia."</li>
+<li>"Some people recover a lot of their speech, others recover some, and some find it remains very limited."</li>
+<li>"But even if words are difficult, George can learn other ways to communicate - gestures, writing, communication boards."</li>
+<p>
+</ul>
+</p>
+
+<strong>If family asks "Will he be able to live at home?"</strong>:
+<ul>
+<li>"That's our goal, but it depends on how much recovery he makes and what support you have at home."</li>
+<li>"Many stroke survivors do go home, but they often need modifications - like ramps, grab rails, shower chairs."</li>
+<li>"Some people need ongoing care from family or carers."</li>
+<p>
+</ul>
+</p>
+
+<h3>EMOTIONS - Acknowledging Grief and Fear (90 seconds)</h3>
+
+<strong>Acknowledge life-changing nature</strong>:
+<ul>
+<li><em>To wife</em>: "This is a huge shock. Your life has changed suddenly and dramatically."</li>
+<li><em>To patient</em>: "George, I know this is incredibly frustrating for you."</li>
+<p>
+</ul>
+</p>
+
+<strong>Address likely emotions</strong>:
+
+<strong>If wife cries</strong>:
+<ul>
+<li>Hand tissues</li>
+<li>"This is overwhelming. Take your time."</li>
+<li>"You're grieving for the life you had before the stroke. That's completely understandable."</li>
+<p>
+</ul>
+</p>
+
+<strong>If patient shows frustration/anger</strong>:
+<ul>
+<li>"I can see you're frustrated, George. Anyone would be."</li>
+<li>"It's incredibly hard to lose abilities you've always had."</li>
+<p>
+</ul>
+</p>
+
+<strong>If wife asks "Why did this happen?"</strong>:
+<ul>
+<li>"Strokes happen when a blood clot blocks an artery in the brain."</li>
+<li>"Risk factors include high blood pressure, high cholesterol, smoking, diabetes."</li>
+<li>"Sometimes it's a combination. Sometimes we can't identify a clear cause."</li>
+<li>"What's important now is preventing another stroke and maximizing recovery."</li>
+<p>
+</ul>
+</p>
+
+<h3>STRATEGY & SUMMARY - The Rehabilitation Plan (180 seconds)</h3>
+
+<strong>Explain rehabilitation pathway</strong>:
+<ul>
+<li>"Here's what happens next. George will need intensive rehabilitation."</li>
+<p>
+</ul>
+</p>
+
+<strong>Hospital phase</strong>:
+<ul>
+<li>"You'll stay here on the stroke unit for probably another 1-2 weeks while we stabilize you medically."</li>
+<li>"Then you'll transfer to a rehabilitation hospital or unit."</li>
+<p>
+</ul>
+</p>
+
+<strong>Rehabilitation hospital</strong>:
+<ul>
+<li>"At rehab, you'll work with a team of specialists:</li>
+<p>
+</ul>
+  - <strong>Physiotherapists</strong>: To work on strength, balance, and walking
+  - <strong>Occupational therapists</strong>: To help with daily activities like dressing, eating, washing
+  - <strong>Speech therapists</strong>: For your speech and swallowing
+  - <strong>Dietitians</strong>: To make sure you're getting good nutrition through the feeding tube
+  - <strong>Social workers</strong>: To organize support services
+  - <strong>Rehabilitation doctors</strong>: To coordinate your care"
+</p>
+
+<strong>Realistic timeline</strong>:
+<ul>
+<li>"Rehabilitation usually takes 4-8 weeks in hospital, sometimes longer."</li>
+<li>"After that, you'll continue therapy as an outpatient - probably several times per week for months."</li>
+<p>
+</ul>
+</p>
+
+<strong>Goal setting</strong>:
+<ul>
+<li>"The rehab team will work with you to set goals."</li>
+<li>"Goals might be things like: walking with a frame, dressing yourself, speaking in short sentences, safe swallowing."</li>
+<li>"We take it step by step."</li>
+<p>
+</ul>
+</p>
+
+<strong>Feeding tube discussion</strong>:
+<ul>
+<li>"The PEG feeding tube will stay in place until swallowing is safe."</li>
+<li>"Speech therapy will work on swallowing exercises."</li>
+<li>"Some people regain safe swallow, some don't."</li>
+<li>"If you don't regain safe swallow, the tube can stay long-term - many people live well with PEG tubes."</li>
+<p>
+</ul>
+</p>
+
+<strong>Home modifications</strong> (if going home is likely):
+<ul>
+<li>"Before discharge home, an occupational therapist will visit your house."</li>
+<li>"They'll recommend modifications:</li>
+<p>
+</ul>
+  - Ramps if there are steps
+  - Grab rails in bathroom
+  - Shower chair or walk-in shower
+  - Bedroom downstairs if you have stairs"
+</p>
+
+<strong>Australian support services - CRITICAL</strong>:
+<ul>
+<li>"There are several support services available:</li>
+<p>
+</ul>
+  - <strong>My Aged Care</strong>: Assessment for home care packages (cleaning, personal care, meals)
+  - <strong>NDIS</strong> (National Disability Insurance Scheme): If George is under 65, he may qualify for disability support
+  - <strong>DVA</strong> (if veteran): Department of Veterans' Affairs has additional supports
+  - <strong>Carer support</strong>: Support for you, Mrs Pappas, as George's carer
+  - <strong>Stroke Foundation</strong>: Information, support groups, resources"
+</p>
+
+<strong>Financial considerations</strong>:
+<ul>
+<li>"Some equipment and modifications are funded by My Aged Care or NDIS."</li>
+<li>"Some you may need to pay for privately."</li>
+<li>"Occupational therapy can be bulk-billed in some cases."</li>
+<li>"The social worker can help navigate funding."</li>
+<p>
+</ul>
+</p>
+
+<strong>Driving</strong>:
+<ul>
+<li><em>To patient</em>: "George, I need to tell you that you can't drive right now."</li>
+<li>"After a stroke, you're legally required to notify VicRoads/Service NSW (depending on state)."</li>
+<li>"You'll need medical clearance before driving again."</li>
+<li>"This usually requires an occupational therapy driving assessment."</li>
+<li>"Some people do return to driving after stroke, but it depends on your recovery."</li>
+<p>
+</ul>
+</p>
+
+<strong>Work</strong>:
+<ul>
+<li>"What did you do for work, George?"</li>
+<li><em>If relevant</em>: "Returning to work may or may not be possible, depending on recovery and job requirements."</li>
+<li>"If you have income protection insurance, now is the time to make a claim."</li>
+<li>"If you can't return to work, you may qualify for Disability Support Pension through Centrelink."</li>
+<p>
+</ul>
+</p>
+
+<h3>Addressing Carer Burden (60 seconds)</h3>
+
+<em>To wife</em>:
+<ul>
+<li>"Mrs Pappas, this is going to be very hard on you too."</li>
+<li>"Being a carer is physically and emotionally exhausting."</li>
+<li>"Please don't try to do everything yourself."</li>
+<li>"Accept help from family and friends."</li>
+<li>"Use the support services - home care, respite care."</li>
+<p>
+</ul>
+</p>
+
+<strong>Carer support</strong>:
+<ul>
+<li>"There are carer support groups and counseling available."</li>
+<li>"Carers Australia can provide information: 1800 242 636."</li>
+<li>"Your own health matters too. Make sure you see your doctor for your own care."</li>
+<p>
+</ul>
+</p>
+
+<h3>Follow-up and Hope (60 seconds)</h3>
+
+<strong>Realistic hope</strong>:
+<ul>
+<li>"I know this is overwhelming, and recovery seems impossible right now."</li>
+<li>"But people do improve with rehabilitation. The brain has remarkable capacity to adapt."</li>
+<li>"It will be hard work, George, but the rehab team will support you every step."</li>
+<p>
+</ul>
+</p>
+
+<strong>Emphasize incremental progress</strong>:
+<ul>
+<li>"Recovery isn't a straight line. Some days will be better than others."</li>
+<li>"Celebrate small victories - moving a finger, saying a word, taking a step."</li>
+<li>"Every small improvement matters."</li>
+<p>
+</ul>
+</p>
+
+<strong>Follow-up</strong>:
+<ul>
+<li>"We'll have regular family meetings during your rehab stay to update you on progress."</li>
+<li>"You can ask questions anytime."</li>
+<li>"The rehab team will be your main point of contact going forward."</li>
+<p>
+</ul>
+</p>
+
+<h3>Closing (30 seconds)</h3>
+
+<strong>Summarize compassionately</strong>:
+<ul>
+<li>"George, you've had a significant stroke that's affected your movement, speech, and swallowing. Recovery will take many months of hard work in rehabilitation. We can't promise you'll get back to exactly how you were, but we'll work to help you recover as much function as possible."</li>
+<p>
+</ul>
+</p>
+
+<strong>Final support</strong>:
+<ul>
+<li>"I know this is a lot to take in. Do you have questions right now?"</li>
+<li>"It's okay if you need time to process this. We can talk again."</li>
+<p>
+</ul>
+</p>
+
+<strong>To patient directly</strong>:
+<ul>
+<li><em>Look at George, speak to him</em>: "You've been through something very difficult, and there's a hard road ahead. But you're not alone. We're going to support you through this."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<em>[Continued in next part with Scenarios 4-6: Death Notification, Child Serious Illness, and Dementia Diagnosis...]</em>
+
+<hr>
+
+<strong>Last Updated</strong>: December 14, 2025
+<strong>Version</strong>: 1.0 (Part 1 of 2)
+<strong>Author</strong>: ICRP NSW Young Hospital Preparation Team
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

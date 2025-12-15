@@ -1,0 +1,1987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developmental Assessment in Children</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Paediatrics</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Paediatrics Navigation</h3>
+<ul>
+<li><a href="01_Paediatric_History_Differentials.html">Paeds History</a></li>
+<li><a href="03_Paediatric_Physical_Examination.html">Paeds Exam</a></li>
+</ul>
+</div>
+        <h1>Developmental Assessment in Children</h1>
+
+<strong>Target Audience</strong>: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Program paediatric rotations
+
+<strong>Learning Objectives</strong>: By the end of this document, you will be able to:
+<ol>
+<li>Know age-appropriate developmental milestones across 4 domains (gross motor, fine motor, speech/language, social/emotional)</li>
+<li>Perform systematic developmental screening and assessment</li>
+<li>Recognize <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s indicating developmental delay or regression</li>
+<li>Differentiate global developmental delay from isolated domain delays</li>
+<li>Screen for autism spectrum disorder (ASD) using validated tools</li>
+<li>Understand Australian early intervention pathways (NDIS, therapy services)</li>
+<li>Apply Dr. Amir Soufi's differential-driven approach to developmental concerns</li>
+<li>Complete developmental assessment OSCE stations confidently</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Dr. Amir Soufi's Principle Applied to Developmental Assessment</h2>
+
+<blockquote><strong>"Developmental assessment is NOT just ticking boxes on milestones. From the FIRST question, think: Is this delay ISOLATED (one domain) or GLOBAL (all domains)? Is it DELAY (slow but progressing) or REGRESSION (loss of skills)? Isolated delay → Think specific cause (hearing loss for speech delay, cerebral palsy for motor delay). Global delay → Think chromosomal, metabolic, or syndromic. REGRESSION is a <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> → Think neurodegenerative disease, autism, or acquired brain injury."</strong></blockquote>
+
+<h3>The Developmental Assessment Mindset</h3>
+
+<strong>Traditional Approach</strong>:
+<ul>
+<li>Ask about milestones in checklist fashion</li>
+<li>Document if achieved or not achieved</li>
+<li>At end, decide if normal or delayed</li>
+<li><strong>Problem</strong>: Misses pattern recognition, doesn't guide investigations, delays early intervention referral</li>
+<p>
+</ul>
+</p>
+
+<strong>Dr. Amir's Differential-Driven Approach</strong>:
+<ol>
+<li><strong>From First Question: What Domain is Affected?</strong></li>
+<p>
+</ol>
+   - <strong>Isolated gross motor delay</strong> → Think: Cerebral palsy, muscular dystrophy, spina bifida
+   - <strong>Isolated speech delay</strong> → Think: Hearing loss, autism, bilingualism, social deprivation
+   - <strong>Isolated fine motor delay</strong> → Think: Visual impairment, dyspraxia
+   - <strong>Global delay (all domains)</strong> → Think: Chromosomal (Down syndrome), metabolic, severe social deprivation, cerebral palsy
+</p>
+
+<ol>
+<li><strong>Delay vs Regression</strong></li>
+<p>
+</ol>
+   - <strong>Delay</strong>: Child is progressing but slower than expected (e.g., walking at 18 months instead of 12 months)
+   - <strong>Regression</strong>: Child LOSES previously acquired skills (e.g., was saying words, now non-verbal)
+   - <strong>Regression = <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong> → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> investigation (autism, Rett syndrome, neurodegenerative disease, acquired brain injury)
+</p>
+
+<ol>
+<li><strong>Risk Factor Assessment</strong></li>
+<p>
+</ol>
+   - Prematurity (adjusted age for milestones up to 2 years)
+   - Birth complications (HIE, kernicterus)
+   - Family history (autism, learning difficulties, genetic conditions)
+   - Social factors (neglect, social deprivation, lack of stimulation)
+</p>
+
+<ol>
+<li><strong>Early Intervention is KEY</strong></li>
+<p>
+</ol>
+   - Don't "wait and see" if genuine concern
+   - Early intervention (speech therapy, physiotherapy, occupational therapy) improves outcomes
+   - Refer EARLY, even if "just" to rule out delay
+</p>
+
+<hr>
+
+<h2>The 4 Domains of Development</h2>
+
+<p>
+Development is assessed across <strong>4 key domains</strong>:
+</p>
+
+<p>
+| Domain | What it Assesses | Examples of Milestones |
+|--------|------------------|----------------------|
+| <strong>Gross Motor</strong> | Large muscle movements, balance, coordination | Rolling, sitting, crawling, walking, running, jumping |
+| <strong>Fine Motor</strong> | Hand-eye coordination, manipulation of small objects | Reaching, grasping, pincer grip, drawing, writing |
+| <strong>Speech and Language</strong> | Receptive (understanding) and expressive (speaking) language | Babbling, first words, sentences, following commands |
+| <strong>Social and Emotional</strong> | Interaction with others, self-care, play | Smiling, stranger anxiety, pretend play, toilet training |
+</p>
+
+<strong>CRITICAL</strong>: Assess ALL 4 domains. Isolated delay in ONE domain has different differential to global delay in ALL domains.
+
+<hr>
+
+<h2>Developmental Milestones by Age</h2>
+
+<h3>Important Concepts</h3>
+
+<strong>Corrected Age for Prematurity</strong>:
+<ul>
+<li>For babies born preterm (before 37 weeks), use <strong>corrected age</strong> up to 2 years</li>
+<li><strong>Corrected age</strong> = Chronological age - (weeks premature)</li>
+<li>Example: 12-month-old baby born 8 weeks early → Corrected age = 12 months - 2 months = 10 months</li>
+<li>Expect milestones for 10-month-old, NOT 12-month-old</li>
+<p>
+</ul>
+</p>
+
+<strong>Range of Normal</strong>:
+<ul>
+<li>Milestones have a RANGE (e.g., walking 9-18 months)</li>
+<li>Individual variation is normal</li>
+<li>Concern if: Milestone NOT achieved by UPPER limit, or pattern of delay across multiple domains</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>NEWBORN (0-6 weeks)</h3>
+
+<p>
+| Domain | Milestones | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s |
+|--------|-----------|-----------|
+| <strong>Gross Motor</strong> | Primitive reflexes present (Moro, grasp, rooting), flexed posture, head lag when pulled to sit | Persistent fisting beyond 3 months, absent primitive reflexes, marked hypotonia or hypertonia |
+| <strong>Fine Motor</strong> | Hands mostly fisted, brief tracking of faces/objects | Not fixing on faces |
+| <strong>Speech/Language</strong> | Startles to loud sounds, quietens to familiar voice | No response to sound (hearing loss) |
+| <strong>Social/Emotional</strong> | Alert periods, regards faces | No eye contact, not settling with feeds/comfort |
+</p>
+
+<strong>Primitive Reflexes</strong> (present at birth, disappear by 3-6 months):
+<ul>
+<li><strong>Moro reflex</strong> (startle): Disappears by 4-6 months</li>
+<li><strong>Palmar grasp</strong>: Disappears by 5-6 months</li>
+<li><strong>Rooting reflex</strong>: Disappears by 4 months</li>
+<li><strong>Stepping reflex</strong>: Disappears by 2 months</li>
+<p>
+</ul>
+</p>
+
+<strong>Persistence of primitive reflexes beyond 6 months</strong> → Neurological abnormality (cerebral palsy)
+
+<hr>
+
+<h3>6-8 WEEKS</h3>
+
+<p>
+| Domain | Milestones | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s |
+|--------|-----------|-----------|
+| <strong>Gross Motor</strong> | Head lag reducing (when pulled to sit), lifts head briefly when prone | Persistent complete head lag, marked asymmetry, not lifting head at all when prone |
+| <strong>Fine Motor</strong> | Follows objects past midline (90°), hands open more frequently | Not following objects, persistent fisting |
+| <strong>Speech/Language</strong> | Coos, makes vowel sounds ("aah", "ooh") | No vocalizations, not responding to voices |
+| <strong>Social/Emotional</strong> | <strong>SOCIAL SMILE</strong> (smiles in response to adult, NOT just random smile), regards faces | <strong>NO social smile by 8 weeks</strong> (<span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> - vision, hearing, autism, global delay) |
+</p>
+
+<strong>CRITICAL MILESTONE</strong>: <strong>Social smile by 6-8 weeks</strong>
+<ul>
+<li>Absence = <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong> → Check: Vision (cataracts?), hearing, global delay, autism</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>3-4 MONTHS</h3>
+
+<p>
+| Domain | Milestones | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s |
+|--------|-----------|-----------|
+| <strong>Gross Motor</strong> | Good head control, no head lag when pulled to sit, lifts head and chest when prone (weight on forearms) | Persistent head lag, marked hypotonia, not bearing weight on forearms when prone |
+| <strong>Fine Motor</strong> | Reaches for objects, hands come together at midline, watches hands (hand regard) | Not reaching, persistent fisting, not bringing hands to midline |
+| <strong>Speech/Language</strong> | Laughs, squeals, babbles | Quiet baby (no vocalizations) |
+| <strong>Social/Emotional</strong> | Smiles readily, enjoys interaction, may start stranger awareness | Not engaging with caregivers, no smiling |
+</p>
+
+<hr>
+
+<h3>6 MONTHS</h3>
+
+<p>
+| Domain | Milestones | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s |
+|--------|-----------|-----------|
+| <strong>Gross Motor</strong> | <strong>Sits with support</strong> (sits with hands forward for balance), rolls front to back and back to front, bears weight on legs when held | <strong>Not sitting even with support by 9 months</strong>, not rolling, floppy, marked stiffness, persistent primitive reflexes |
+| <strong>Fine Motor</strong> | <strong>Reaches and grasps</strong> (palmar grasp - whole hand), transfers objects hand to hand, raking grasp (uses fingers to rake objects toward palm) | Not reaching for objects, not transferring hand to hand, hand preference <12 months (suggests hemiplegia) |
+| <strong>Speech/Language</strong> | Babbles (single syllables - "ba", "da", "ma"), turns to sounds/voices | <strong>No babbling</strong>, not turning to sounds (hearing loss) |
+| <strong>Social/Emotional</strong> | Stranger anxiety begins, enjoys peek-a-boo, puts objects in mouth (oral exploration) | No stranger anxiety (may indicate social delay), not engaging in play |
+</p>
+
+<strong>CRITICAL</strong>: <strong>Sitting with support by 6-9 months</strong>
+<ul>
+<li>If NOT sitting by 9 months → <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> (cerebral palsy, global delay, neuromuscular disorder)</li>
+<p>
+</ul>
+</p>
+
+<strong>Hand Preference Before 12 Months</strong> = <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong>
+<ul>
+<li>Normal: No clear hand preference until 12-18 months</li>
+<li>Early hand preference (<12 months) → Suggests weakness of other hand (hemiplegia, cerebral palsy)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>9 MONTHS</h3>
+
+<p>
+| Domain | Milestones | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s |
+|--------|-----------|-----------|
+| <strong>Gross Motor</strong> | <strong>Sits unsupported</strong>, crawls or bottom-shuffles (commando crawl, may not be on hands and knees yet), pulls to stand | Not sitting unsupported, not attempting mobility (crawling/shuffling), persistent head lag |
+| <strong>Fine Motor</strong> | <strong>Pincer grip developing</strong> (thumb and index finger to pick up small objects - may be immature pincer), pokes with index finger, bangs objects together | Not using pincer grip by 12 months, not picking up objects, not using index finger to poke |
+| <strong>Speech/Language</strong> | <strong>Babbles with tuneful sounds</strong> (babbling strings - "bababa", "dadada"), understands "no", turns immediately to name | No babbling, not responding to name (hearing loss, autism) |
+| <strong>Social/Emotional</strong> | Waves bye-bye, plays peek-a-boo, stranger anxiety (cries with strangers), separation anxiety from main carer | No social gestures (waving, clapping), no stranger anxiety |
+</p>
+
+<strong>CRITICAL</strong>: <strong>Sitting unsupported by 9 months</strong>
+<ul>
+<li>If NOT sitting unsupported by 9 months → <strong>Refer to paediatrics</strong> (motor delay)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>12 MONTHS</h3>
+
+<p>
+| Domain | Milestones | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s |
+|--------|-----------|-----------|
+| <strong>Gross Motor</strong> | <strong>Stands independently</strong> (briefly), cruises around furniture, may take first steps (walking 9-18 months is normal range) | Not standing even with support, not cruising, persistent toe-walking (cerebral palsy), asymmetry |
+| <strong>Fine Motor</strong> | <strong>Mature pincer grip</strong> (neat pincer with thumb and index fingertip), bangs toys together, points with index finger, releases objects deliberately | Not using pincer grip, not pointing (autism <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>), mouthing objects excessively |
+| <strong>Speech/Language</strong> | <strong>First words</strong> (1-2 words with meaning - "mama", "dada"), understands simple commands ("come here", "give me"), babbles with intonation (jargon) | <strong>No words by 18 months</strong> (<span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> - refer), not responding to name consistently (autism, hearing loss) |
+| <strong>Social/Emotional</strong> | <strong>Waves bye-bye, plays pat-a-cake</strong>, drinks from cup with help, helps with dressing (holds out arm for sleeve) | No social gestures (waving, clapping, pointing), no joint attention (not showing objects to others) |
+</p>
+
+<strong>CRITICAL MILESTONE</strong>: <strong>First words by 12-18 months</strong>
+<ul>
+<li>If NO words by 18 months → <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong> → Hearing test + speech therapy referral</li>
+<p>
+</ul>
+</p>
+
+<strong>Pointing by 12 months</strong>:
+<ul>
+<li><strong>Protodeclarative pointing</strong> (pointing to SHARE interest - "Look at that bird!") by 12-16 months</li>
+<li>Absence of pointing by 18 months = <strong>Autism <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>18 MONTHS</h3>
+
+<p>
+| Domain | Milestones | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s |
+|--------|-----------|-----------|
+| <strong>Gross Motor</strong> | <strong>Walks independently</strong>, runs (stiffly), climbs stairs with hand held, throws ball | <strong>Not walking by 18 months</strong> (<span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> - refer to paediatrics), persistent toe-walking, abnormal gait |
+| <strong>Fine Motor</strong> | <strong>Builds tower of 3 cubes</strong>, scribbles spontaneously (circular scribble), turns pages (several at once), uses spoon (messy) | Not attempting to build tower, not scribbling, not using utensils |
+| <strong>Speech/Language</strong> | <strong>6-20 words</strong> (wide range normal), understands simple two-step commands ("Get your shoes and bring them here"), identifies body parts when asked ("Where's your nose?") | <strong><6 words by 18 months</strong> (refer for hearing test and speech therapy), not understanding simple commands, no response to name |
+| <strong>Social/Emotional</strong> | <strong>Pretend play begins</strong> (feeds doll, pretends to drink from cup), helps with simple tasks (tidying toys), imitates adults (sweeping, cooking) | No pretend play by 24 months (autism <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>), no interest in other children |
+</p>
+
+<strong>CRITICAL</strong>: <strong>Walking by 18 months</strong>
+<ul>
+<li>If NOT walking by 18 months → <strong>Refer to paediatrics <span style="color: #e74c3c; font-weight: bold;">URGENT</span>ly</strong> (cerebral palsy, muscular dystrophy, global delay)</li>
+<p>
+</ul>
+</p>
+
+<strong>Speech at 18 months</strong>:
+<ul>
+<li>Minimum 6 words (some children have 50+ words - wide variation)</li>
+<li>If <6 words → Hearing test + speech therapy referral</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>2 YEARS (24 MONTHS)</h3>
+
+<p>
+| Domain | Milestones | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s |
+|--------|-----------|-----------|
+| <strong>Gross Motor</strong> | <strong>Runs, kicks ball</strong>, climbs on furniture, walks up and down stairs (holding rail, two feet per step) | Clumsy, frequent falls, not running, abnormal gait |
+| <strong>Fine Motor</strong> | <strong>Builds tower of 6-7 cubes</strong>, circular scribble, turns pages one at a time, uses spoon well | Not building tower of 3+ cubes, not attempting to draw |
+| <strong>Speech/Language</strong> | <strong>Joins 2 words together</strong> ("more milk", "daddy gone"), 50+ words, follows two-step commands, uses "I", "me", "you" | <strong>No two-word phrases by 2 years</strong> (<span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> - refer), <20 words, not understanding simple commands, echolalia (repeating instead of answering) |
+| <strong>Social/Emotional</strong> | <strong>Parallel play</strong> (plays alongside other children, not with them), imitates household tasks, beginning to recognize emotions in others | No interest in other children, no pretend play, no eye contact, repetitive behaviors (autism <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s) |
+</p>
+
+<strong>CRITICAL MILESTONE</strong>: <strong>Two-word phrases by 2 years</strong>
+<ul>
+<li>Example: "More juice", "Daddy car", "Want teddy"</li>
+<li>If NOT joining words by 2 years → <strong>Refer for speech therapy</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>3 YEARS (36 MONTHS)</h3>
+
+<p>
+| Domain | Milestones | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s |
+|--------|-----------|-----------|
+| <strong>Gross Motor</strong> | <strong>Walks upstairs alternating feet</strong> (one foot per step), pedals tricycle, stands on one foot briefly (1-2 seconds), jumps off step | Not walking upstairs, very clumsy, frequent falls |
+| <strong>Fine Motor</strong> | <strong>Builds tower of 9+ cubes</strong>, copies circle (draws circle after demonstration), uses scissors (may not cut along line), holds pencil in preferred hand | Not able to build tower, no interest in drawing, not using utensils |
+| <strong>Speech/Language</strong> | <strong>Speaks in sentences</strong> (3-4 words), intelligible to strangers (75% of speech understood), asks "what", "where", "who" questions, knows full name and gender | Not speaking in sentences, <50 words, speech unintelligible, echolalia, not answering questions |
+| <strong>Social/Emotional</strong> | <strong>Cooperative play</strong> (plays with other children, shares toys), toilet trained (daytime, may have occasional accidents), dresses/undresses with help | No cooperative play, no toilet training progress, very rigid routines, lack of pretend play (autism <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s) |
+</p>
+
+<strong>CRITICAL</strong>: <strong>3-word sentences by 3 years</strong>
+<ul>
+<li>If NOT speaking in short sentences by 3 years → Speech therapy referral</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>4 YEARS</h3>
+
+<p>
+| Domain | Milestones | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s |
+|--------|-----------|-----------|
+| <strong>Gross Motor</strong> | <strong>Hops on one foot</strong>, walks downstairs alternating feet, catches large ball | Cannot hop, very poor coordination |
+| <strong>Fine Motor</strong> | <strong>Copies cross (+)</strong>, draws person with head and usually 2 other body parts, uses scissors to cut along line, beginning to write some letters | Not drawing recognizable shapes, not interested in writing/drawing |
+| <strong>Speech/Language</strong> | <strong>Fluent speech</strong>, asks "why", "when", "how" questions, tells stories, counts to 10, knows colors | Speech unintelligible to strangers, stuttering (may be developmental, refer if persistent >6 months), not asking questions |
+| <strong>Social/Emotional</strong> | <strong>Imaginative play</strong>, understands turn-taking, comforts upset friends, toilet trained (day and night, may have occasional night accidents) | Extremely rigid, no imaginative play, difficulty with peer relationships, aggressive behaviors |
+</p>
+
+<hr>
+
+<h3>5 YEARS</h3>
+
+<p>
+| Domain | Milestones | <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s |
+|--------|-----------|-----------|
+| <strong>Gross Motor</strong> | <strong>Skips</strong>, walks on tiptoes, stands on one foot for 5+ seconds, rides bicycle with training wheels | Poor gross motor skills affecting school PE |
+| <strong>Fine Motor</strong> | <strong>Copies triangle</strong>, writes own name, draws person with body, head, arms, legs, some facial features, uses knife and fork | Cannot write name, very poor pencil grip, cannot draw person |
+| <strong>Speech/Language</strong> | <strong>Grammatically correct speech</strong>, can retell story in sequence, understands opposites (big/small, hot/cold) | Persistent articulation errors, difficulty being understood, grammar errors, not following multi-step instructions |
+| <strong>Social/Emotional</strong> | <strong>Plays with rules</strong> (board games, group games), understands rules and fairness, fully toilet trained | Difficulty making friends, doesn't understand social rules, extreme rigidity, poor emotional regulation |
+</p>
+
+<hr>
+
+<h2><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s for Developmental Delay (By Age)</h2>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s are absolute indicators for IMMEDIATE referral</strong> - do NOT "wait and see"
+
+<h3>At ANY Age</h3>
+
+<p>
+| <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> | Action |
+|----------|--------|
+| <strong>Regression</strong> (loss of ANY previously acquired skill - speech, motor, social) | <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> paediatric referral</strong> (autism, Rett syndrome, neurodegenerative disease, seizures) |
+| <strong>Parental concern</strong> (parent feels "something is not right") | Take seriously, assess formally, refer if concern validated (parents often correct) |
+| <strong>Asymmetry</strong> (one side of body weaker/different than other) | Refer to paediatrics (hemiplegia, cerebral palsy) |
+| <strong>No eye contact by 6 months</strong>, no social smile by 8 weeks | Refer (vision problem, autism, global delay) |
+| <strong>Not responding to name by 12 months</strong> | Hearing test, consider autism assessment |
+</p>
+
+<hr>
+
+<h3>By 6-8 Weeks</h3>
+<ul>
+<li>No social smile</li>
+<li>Not fixing on faces</li>
+<li>Persistent fisting</li>
+<li>Marked hypotonia or hypertonia</li>
+<p>
+</ul>
+</p>
+
+<strong>Action</strong>: Developmental assessment, vision and hearing check
+
+<hr>
+
+<h3>By 6-9 Months</h3>
+<ul>
+<li>Not sitting even with support</li>
+<li>Not reaching for objects</li>
+<li>Not babbling</li>
+<li>Not turning to sounds</li>
+<p>
+</ul>
+</p>
+
+<strong>Action</strong>: Hearing test, paediatric assessment
+
+<hr>
+
+<h3>By 12 Months</h3>
+<ul>
+<li>Not bearing weight on legs</li>
+<li>Not using hands in pincer grip</li>
+<li>No babbling or pre-speech vocalizations</li>
+<li><strong>No pointing, waving, or social gestures</strong> (autism <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>)</li>
+<p>
+</ul>
+</p>
+
+<strong>Action</strong>: Hearing test, autism screening (M-CHAT), paediatric referral
+
+<hr>
+
+<h3>By 18 Months</h3>
+<ul>
+<li><strong>Not walking independently</strong> (<span style="color: #e74c3c; font-weight: bold;">URGENT</span> referral)</li>
+<li>No words (minimum 6 words expected)</li>
+<li>Not understanding simple commands</li>
+<li><strong>Loss of language or social skills</strong> (<span style="color: #e74c3c; font-weight: bold;">URGENT</span> - regression)</li>
+<p>
+</ul>
+</p>
+
+<strong>Action</strong>: <span style="color: #e74c3c; font-weight: bold;">URGENT</span> paediatric referral, hearing test, consider MRI brain if regression
+
+<hr>
+
+<h3>By 2 Years</h3>
+<ul>
+<li>Not running</li>
+<li>Not joining 2 words together</li>
+<li>No pretend play</li>
+<li>No interest in other children</li>
+<p>
+</ul>
+</p>
+
+<strong>Action</strong>: Speech therapy, autism assessment (M-CHAT-R/F)
+
+<hr>
+
+<h3>By 3 Years</h3>
+<ul>
+<li>Not speaking in sentences</li>
+<li>Speech unintelligible to strangers</li>
+<li>Not toilet training (day)</li>
+<li>No cooperative play with peers</li>
+<p>
+</ul>
+</p>
+
+<strong>Action</strong>: Speech therapy, developmental pediatric review
+
+<hr>
+
+<h2>Global Developmental Delay vs Isolated Delay</h2>
+
+<strong>Dr. Amir's Principle</strong>: <strong>"Ask yourself: Is ONE domain delayed (isolated) or ALL domains delayed (global)? This completely changes your differential and investigations."</strong>
+
+<h3>Global Developmental Delay (GDD)</h3>
+
+<strong>Definition</strong>: Delay in <strong>2 or more</strong> developmental domains
+
+<strong>Differential Diagnosis</strong>:
+<ol>
+<li><strong>Chromosomal abnormalities</strong>:</li>
+<p>
+</ol>
+   - <strong>Down syndrome</strong> (Trisomy 21): Flat facial profile, single palmar crease, hypotonia, congenital heart disease
+   - <strong>Fragile X syndrome</strong>: Large ears, long face, macro-orchidism, autism features, intellectual disability
+   - Edwards syndrome (Trisomy 18), Patau syndrome (Trisomy 13) - severe, often fatal
+</p>
+
+<ol>
+<li><strong>Metabolic disorders</strong>:</li>
+<p>
+</ol>
+   - Hypothyroidism (newborn screening should detect)
+   - Inborn errors of metabolism (phenylketonuria, maple syrup urine disease)
+</p>
+
+<ol>
+<li><strong>Brain injury/insult</strong>:</li>
+<p>
+</ol>
+   - <strong>Hypoxic-ischaemic encephalopathy (HIE)</strong>: Birth asphyxia
+   - <strong>Kernicterus</strong>: Severe neonatal jaundice (bilirubin encephalopathy)
+   - Intrauterine infection (TORCH: Toxoplasmosis, Rubella, CMV, HSV)
+   - Meningitis/encephalitis
+</p>
+
+<ol>
+<li><strong>Cerebral palsy</strong>:</li>
+<p>
+</ol>
+   - Motor delay PLUS other domain delays
+   - Often associated with prematurity, HIE
+</p>
+
+<ol>
+<li><strong>Environmental/Social</strong>:</li>
+<p>
+</ol>
+   - <strong>Severe social deprivation</strong>, neglect, lack of stimulation
+   - Malnutrition
+</p>
+
+<ol>
+<li><strong>Genetic syndromes</strong>:</li>
+<p>
+</ol>
+   - Prader-Willi, Angelman, Rett syndrome (females, regression)
+</p>
+
+<strong>Investigations for GDD</strong>:
+<ul>
+<li><strong>Chromosomal microarray</strong> (first-line genetic test)</li>
+<li><strong>Thyroid function</strong> (TSH, free T4)</li>
+<li><strong>Metabolic screen</strong> (if suggestive features)</li>
+<li><strong>MRI brain</strong> (if structural abnormality suspected)</li>
+<li><strong>Hearing and vision assessment</strong></li>
+<li>Consider: Fragile X testing, MECP2 gene (Rett syndrome if female with regression)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Isolated Delay (Single Domain)</h3>
+
+<strong>Isolated Gross Motor Delay</strong>:
+<ul>
+<li><strong>Cerebral palsy</strong> (most common): Abnormal tone, primitive reflexes persist, may have associated seizures</li>
+<li><strong>Muscular dystrophy</strong> (Duchenne): Males, calf pseudohypertrophy, Gower's sign, raised CK</li>
+<li><strong>Spinal muscular atrophy (SMA)</strong>: Hypotonia, tongue fasciculations, "frog-leg" posture</li>
+<li><strong>Spina bifida</strong>: Lower limb weakness/paralysis, associated with hydrocephalus</li>
+<li><strong>Benign variants</strong>: Bottom-shufflers (walk later, family history), hypermobile joints</li>
+<p>
+</ul>
+</p>
+
+<strong>Investigations</strong>: CK (muscular dystrophy), MRI spine (spinal pathology), genetic testing
+
+<hr>
+
+<strong>Isolated Fine Motor Delay</strong>:
+<ul>
+<li><strong>Visual impairment</strong>: Cannot see objects to reach for (congenital cataracts, cortical visual impairment)</li>
+<li><strong>Dyspraxia</strong> (developmental coordination disorder): Difficulty with coordination, may affect dressing, writing</li>
+<li><strong>Hemiplegia</strong> (cerebral palsy): One-sided weakness, hand preference <12 months</li>
+<p>
+</ul>
+</p>
+
+<strong>Investigations</strong>: Vision assessment, occupational therapy assessment
+
+<hr>
+
+<strong>Isolated Speech and Language Delay</strong>:
+<ul>
+<li><strong>Hearing loss</strong> (MOST COMMON CAUSE - must exclude first):</li>
+<p>
+</ul>
+  - Conductive: Glue ear (otitis media with effusion), chronic ear infections
+  - Sensorineural: Congenital (CMV, meningitis, genetic), acquired
+</p>
+<ul>
+<li><strong>Autism spectrum disorder</strong>: Speech delay PLUS social communication difficulties, repetitive behaviors</li>
+<li><strong>Bilingualism</strong>: Common in multicultural Australia, not pathological (children may mix languages initially)</li>
+<li><strong>Social deprivation</strong>: Lack of verbal interaction, neglect</li>
+<li><strong>Specific language impairment</strong>: Understanding and/or expression affected, normal hearing</li>
+<li><strong>Oral-motor dysfunction</strong>: Difficulty coordinating muscles for speech (dysarthria)</li>
+<li><strong>Selective mutism</strong>: Speaks in some settings (home) but not others (school) - anxiety-based</li>
+<p>
+</ul>
+</p>
+
+<strong>Investigations</strong>: <strong>Hearing test (FIRST-LINE)</strong>, speech therapy assessment, autism screening if social concerns
+
+<hr>
+
+<strong>Isolated Social/Emotional Delay</strong>:
+<ul>
+<li><strong>Autism spectrum disorder</strong> (most common):</li>
+<p>
+</ul>
+  - Difficulty with social communication (eye contact, joint attention, understanding social cues)
+  - Repetitive behaviors, restricted interests
+  - Sensory sensitivities
+</p>
+<ul>
+<li><strong>Attachment disorders</strong>: Neglect, multiple carers, institutionalization</li>
+<li><strong>Intellectual disability</strong>: May present as social delay</li>
+<p>
+</ul>
+</p>
+
+<strong>Investigations</strong>: Autism assessment (ADOS-2, ADI-R), developmental paediatric review
+
+<hr>
+
+<h2>Autism Spectrum Disorder (ASD)</h2>
+
+<strong>Dr. Amir's Principle</strong>: <strong>"Think autism if: Speech delay PLUS social difficulties PLUS repetitive behaviors. The classic triad. Don't wait until 3-4 years to refer - early signs at 12-18 months (not responding to name, no pointing, no joint attention). Early intervention changes outcomes - refer early."</strong>
+
+<h3>Prevalence</h3>
+<ul>
+<li>1 in 100 children (increased recognition, not true increase)</li>
+<li>Males > Females (4:1)</li>
+<p>
+</ul>
+</p>
+
+<h3>Core Features (DSM-5 Diagnostic Criteria)</h3>
+
+<strong>A. Persistent deficits in social communication and social interaction</strong>:
+<ol>
+<li><strong>Social-emotional reciprocity</strong>: Difficulty with back-and-forth conversation, reduced sharing of interests/emotions, failure to initiate or respond to social interactions</li>
+<li><strong>Nonverbal communication</strong>: Poor eye contact, lack of gestures, difficulty understanding and using facial expressions and body language</li>
+<li><strong>Developing and maintaining relationships</strong>: Difficulty making friends, lack of interest in peers, difficulty adjusting behavior to different social contexts</li>
+<p>
+</ol>
+</p>
+
+<strong>B. Restricted, repetitive patterns of behavior, interests, or activities</strong> (at least 2):
+<ol>
+<li><strong>Stereotyped or repetitive movements</strong>: Hand flapping, spinning, lining up toys, echolalia (repeating words/phrases)</li>
+<li><strong>Insistence on sameness</strong>: Rigid routines, extreme distress at small changes, ritualized patterns</li>
+<li><strong>Highly restricted, fixated interests</strong>: Intense focus on specific topics (trains, numbers, letters), abnormal in intensity or focus</li>
+<li><strong>Hyper/hypo-reactivity to sensory input</strong>: Adverse response to sounds/textures/lights, excessive touching/smelling of objects, fascination with lights or spinning objects</li>
+<p>
+</ol>
+</p>
+
+<strong>C. Symptoms present in early developmental period</strong> (but may not be fully manifest until social demands exceed capacity)
+
+<strong>D. Symptoms cause clinically significant impairment</strong>
+
+<strong>E. Not better explained by intellectual disability</strong> (though autism and intellectual disability often co-occur)
+
+<hr>
+
+<h3>Early <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s for Autism (12-24 months)</h3>
+
+<strong>Social Communication</strong>:
+<ul>
+<li><strong>Not responding to name by 12 months</strong> (most sensitive early sign)</li>
+<li><strong>No pointing by 15-18 months</strong> (especially protodeclarative pointing - pointing to SHARE interest)</li>
+<li><strong>No joint attention</strong> (not looking where parent points, not bringing objects to show parent)</li>
+<li><strong>Poor eye contact</strong> (avoids eye contact or fleeting eye contact)</li>
+<li><strong>No social smile or engagement</strong></li>
+<li><strong>No pretend play by 24 months</strong> (not pretending to feed doll, talk on phone, etc.)</li>
+<p>
+</ul>
+</p>
+
+<strong>Repetitive Behaviors</strong>:
+<ul>
+<li><strong>Hand flapping, spinning, toe-walking</strong></li>
+<li><strong>Lining up toys</strong> (rather than playing with them functionally)</li>
+<li><strong>Spinning wheels</strong> on toys rather than pushing car</li>
+<li><strong>Echolalia</strong> (repeating words/phrases instead of answering questions)</li>
+<li><strong>Extreme distress at change</strong> in routine</li>
+<p>
+</ul>
+</p>
+
+<strong>Sensory</strong>:
+<ul>
+<li><strong>Over-sensitivity</strong>: Covers ears at normal sounds, distressed by certain textures/clothing</li>
+<li><strong>Under-sensitivity</strong>: Doesn't respond to pain, seeks intense sensory input (spinning, crashing)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Autism Screening Tools</h3>
+
+<strong>M-CHAT-R/F</strong> (Modified Checklist for Autism in Toddlers, Revised with Follow-Up):
+<ul>
+<li><strong>Age</strong>: 16-30 months</li>
+<li><strong>20-item parent questionnaire</strong></li>
+<li><strong>Used in Australia</strong> for primary care screening</li>
+<li><strong>Positive screen</strong> → Refer to paediatrician for diagnostic assessment</li>
+<p>
+</ul>
+</p>
+
+<strong>Key M-CHAT Questions</strong> (<span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s if answer is "No"):
+<ul>
+<li>Does your child respond when you call their name?</li>
+<li>Does your child point to show you something interesting?</li>
+<li>Does your child bring objects to show you?</li>
+<li>Does your child imitate you? (e.g., if you make a face, does your child imitate it?)</li>
+<li>Does your child look at you when you point and say "Look at the [object]"?</li>
+<li>If you point at a toy across the room, does your child look at it?</li>
+<p>
+</ul>
+</p>
+
+<strong>Diagnostic Assessment</strong> (by specialist - developmental paediatrician, child psychiatrist):
+<ul>
+<li><strong>ADOS-2</strong> (Autism Diagnostic Observation Schedule): Standardized play-based assessment</li>
+<li><strong>ADI-R</strong> (Autism Diagnostic Interview-Revised): Structured parent interview</li>
+<li><strong>Multidisciplinary assessment</strong>: Speech pathology, occupational therapy, psychology</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Management of ASD</h3>
+
+<strong>Early Intervention</strong> (MOST IMPORTANT):
+<ul>
+<li><strong>Applied Behavior Analysis (ABA)</strong>: Intensive behavioral therapy</li>
+<li><strong>Speech therapy</strong>: Communication skills (verbal and non-verbal)</li>
+<li><strong>Occupational therapy</strong>: Sensory integration, daily living skills</li>
+<li><strong>Social skills groups</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Support in Australia</strong>:
+<ul>
+<li><strong>NDIS</strong> (National Disability Insurance Scheme): Funding for therapy, support, equipment</li>
+<p>
+</ul>
+  - Children with autism diagnosis eligible for NDIS funding (Early Childhood Early Intervention approach)
+</p>
+<ul>
+<li><strong>Pediatrician/developmental paediatrician</strong>: Diagnosis, management, coordination of care</li>
+<li><strong>Autism-specific schools or support classes</strong> (if mainstream education difficult)</li>
+<p>
+</ul>
+</p>
+
+<strong>Prognosis</strong>:
+<ul>
+<li>Wide spectrum (hence "autism spectrum disorder")</li>
+<li>With early intervention, many children improve significantly in communication and social skills</li>
+<li>Some children become independent adults, others require lifelong support</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Developmental Screening Tools Used in Australia</h2>
+
+<h3>Ages and Stages Questionnaire (ASQ-3)</h3>
+<ul>
+<li><strong>Age range</strong>: 1 month - 5.5 years</li>
+<li><strong>Parent-completed questionnaire</strong></li>
+<li><strong>5 domains</strong>: Communication, gross motor, fine motor, problem-solving, personal-social</li>
+<li><strong>Used by</strong>: Maternal and child health nurses, GPs, early childhood services</li>
+<li><strong>Positive screen</strong> → Refer for further assessment</li>
+<p>
+</ul>
+</p>
+
+<h3>Parents' Evaluation of Developmental Status (PEDS)</h3>
+<ul>
+<li><strong>Age range</strong>: 0-8 years</li>
+<li><strong>Parent-completed</strong></li>
+<li><strong>Screens for developmental and behavioral problems</strong></li>
+<p>
+</ul>
+</p>
+
+<h3>Maternal and Child Health (MCH) Reviews (Victoria)</h3>
+<ul>
+<li><strong>Universal screening</strong> at 2, 4, 8 weeks, 4, 8, 12, 18 months, 2 years, 3.5 years</li>
+<li>Performed by maternal and child health nurses</li>
+<li><strong>Includes</strong>: Growth, development, parental wellbeing, immunizations</li>
+<p>
+</ul>
+</p>
+
+<h3>School Readiness Assessment (Prep/Kindergarten)</h3>
+<ul>
+<li>Age 4-5 years</li>
+<li>Identifies children needing additional support before school</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Cerebral Palsy (CP)</h2>
+
+<strong>Dr. Amir's Principle</strong>: <strong>"Cerebral palsy is a clinical diagnosis based on abnormal TONE and POSTURE with MOTOR delay, plus PERSISTENT primitive reflexes. The differential depends on PATTERN: Spastic (UMN damage - most common), ataxic (cerebellum), or dyskinetic (basal ganglia). ALWAYS ask about birth history - prematurity and HIE are the biggest risk factors."</strong>
+
+<h3>Definition</h3>
+<ul>
+<li><strong>Permanent disorder</strong> of movement and posture due to <strong>non-progressive</strong> brain injury in the <strong>developing brain</strong> (antenatal, perinatal, or early postnatal up to 2-3 years)</li>
+<p>
+</ul>
+</p>
+
+<h3>Risk Factors</h3>
+<ul>
+<li><strong>Prematurity</strong> (<32 weeks, <1500 g) - BIGGEST RISK FACTOR (periventricular leukomalacia)</li>
+<li><strong>Hypoxic-ischaemic encephalopathy (HIE)</strong>: Birth asphyxia</li>
+<li>Intrauterine infection (TORCH)</li>
+<li>Kernicterus (severe jaundice)</li>
+<li>Meningitis/encephalitis</li>
+<li>Stroke</li>
+<li>Head trauma</li>
+<p>
+</ul>
+</p>
+
+<h3>Types of Cerebral Palsy</h3>
+
+<p>
+| Type | Proportion | Features | Neuroanatomy |
+|------|------------|----------|--------------|
+| <strong>Spastic CP</strong> | 70-80% | <strong>Increased tone</strong> (velocity-dependent - worse with fast movement), brisk reflexes, clonus, upgoing plantars (Babinski), scissoring gait, toe-walking | <strong>UMN lesion</strong> (motor cortex, internal capsule, pyramidal tracts) |
+| <strong>Dyskinetic CP</strong> | 10-15% | <strong>Abnormal movements</strong> (athetosis - slow writhing, chorea - rapid jerky, dystonia - sustained muscle contractions), normal or reduced tone, may have speech difficulties | <strong>Basal ganglia</strong> (kernicterus, HIE) |
+| <strong>Ataxic CP</strong> | 5-10% | <strong>Incoordination, tremor, poor balance</strong>, wide-based gait, intention tremor, past-pointing | <strong>Cerebellum</strong> |
+| <strong>Mixed</strong> | Variable | Features of >1 type | Multiple areas affected |
+</p>
+
+<strong>Spastic CP Subtypes</strong>:
+<ul>
+<li><strong>Hemiplegia</strong> (30%): One side affected (arm usually > leg)</li>
+<p>
+</ul>
+  - <strong>Hand preference <12 months</strong> = Early sign
+  - Asymmetric crawling, affected hand fisted
+</p>
+<ul>
+<li><strong>Diplegia</strong> (30%): Legs > arms (often premature babies with periventricular leukomalacia)</li>
+<p>
+</ul>
+  - Scissoring gait, toe-walking
+</p>
+<ul>
+<li><strong>Quadriplegia</strong> (40%): All 4 limbs affected (most severe)</li>
+<p>
+</ul>
+  - Often associated with intellectual disability, epilepsy, feeding difficulties
+</p>
+
+<h3>Clinical Features</h3>
+
+<strong>Motor</strong>:
+<ul>
+<li><strong>Delayed motor milestones</strong> (not sitting, not walking)</li>
+<li><strong>Abnormal tone</strong>: Spasticity (increased), hypotonia (reduced - may precede spasticity in infants)</li>
+<li><strong>Persistent primitive reflexes</strong> beyond 6 months (Moro, ATNR)</li>
+<li><strong>Abnormal posture</strong>: Fisting, scissoring, toe-walking</li>
+<p>
+</ul>
+</p>
+
+<strong>Associated Problems</strong> (common):
+<ul>
+<li><strong>Intellectual disability</strong> (30-50%, especially quadriplegia)</li>
+<li><strong>Epilepsy</strong> (30-40%)</li>
+<li><strong>Visual impairment</strong> (strabismus, cortical visual impairment)</li>
+<li><strong>Hearing loss</strong></li>
+<li><strong>Speech and language difficulties</strong> (dysarthria, language delay)</li>
+<li><strong>Feeding difficulties</strong> (oromotor dysfunction, aspiration risk, GORD)</li>
+<li><strong>Hip subluxation/dislocation</strong> (due to muscle imbalance)</li>
+<li><strong>Scoliosis</strong></li>
+<p>
+</ul>
+</p>
+
+<h3>Diagnosis</h3>
+<ul>
+<li><strong>Clinical diagnosis</strong>: Based on history (risk factors), examination (tone, posture, reflexes, milestones)</li>
+<li><strong>MRI brain</strong>: Identifies brain injury pattern (periventricular leukomalacia, HIE changes, stroke), performed once diagnosis suspected</li>
+<p>
+</ul>
+</p>
+
+<h3>Management (Multidisciplinary)</h3>
+<ul>
+<li><strong>Physiotherapy</strong>: Stretching, strengthening, gait training, mobility aids (walkers, wheelchairs)</li>
+<li><strong>Occupational therapy</strong>: Fine motor skills, daily living activities, adaptive equipment</li>
+<li><strong>Speech therapy</strong>: Oromotor skills, communication (may need augmentative communication - picture boards, speech devices)</li>
+<li><strong>Medications</strong>:</li>
+<p>
+</ul>
+  - <strong>Baclofen</strong> (oral or intrathecal pump): Reduces spasticity
+  - <strong>Botulinum toxin (Botox)</strong> injections: Targeted spasticity reduction (e.g., calf muscles for toe-walking)
+  - <strong>Anticonvulsants</strong> (if epilepsy)
+</p>
+<ul>
+<li><strong>Orthopaedic surgery</strong>: Tendon lengthening, hip surgery</li>
+<li><strong>NDIS funding</strong>: Therapy, equipment, respite care</li>
+<li><strong>Educational support</strong>: Special education, integration aide</li>
+<p>
+</ul>
+</p>
+
+<h3>Prognosis</h3>
+<ul>
+<li><strong>Non-progressive</strong> (brain injury doesn't worsen, but effects may change with growth)</li>
+<li><strong>Prognosis variable</strong>: Depends on severity, associated problems</li>
+<p>
+</ul>
+  - <strong>Hemiplegia</strong>: Usually walk, attend mainstream school
+  - <strong>Diplegia</strong>: Most walk (may need aids), variable intellectual ability
+  - <strong>Quadriplegia</strong>: Often non-ambulatory, need wheelchair, high rate of intellectual disability
+</p>
+
+<hr>
+
+<h2>Assessment Framework for Developmental Concerns</h2>
+
+<h3>DEVELOPMENTAL ASSESSMENT Framework</h3>
+
+<strong>D - Domains affected</strong>
+<ul>
+<li>Isolated (one domain) or global (2+ domains)?</li>
+<li>Which specific domain(s): Gross motor, fine motor, speech, social?</li>
+<p>
+</ul>
+</p>
+
+<strong>E - Early history</strong>
+<ul>
+<li><strong>Antenatal</strong>: Maternal illness, infections, medications, ultrasound abnormalities</li>
+<li><strong>Birth</strong>: Gestational age, birth weight, delivery complications, Apgar scores, resuscitation needed, NICU admission</li>
+<li><strong>Neonatal</strong>: Jaundice (phototherapy? exchange transfusion?), seizures, feeding difficulties, infections</li>
+<p>
+</ul>
+</p>
+
+<strong>V - Vision and hearing</strong>
+<ul>
+<li>Newborn hearing screening passed?</li>
+<li>Vision concerns? (tracking objects, fixing on faces, red reflex normal)</li>
+<li>Formal hearing test (audiology) if speech delay</li>
+<p>
+</ul>
+</p>
+
+<strong>E - Environmental factors</strong>
+<ul>
+<li><strong>Home environment</strong>: Stimulation, books, toys, interaction</li>
+<li><strong>Childcare/playgroup</strong>: Attendance, peer interaction</li>
+<li><strong>Languages spoken</strong>: Bilingualism (normal to mix languages initially)</li>
+<li><strong>Safeguarding</strong>: Neglect, domestic violence, parental mental health</li>
+<p>
+</ul>
+</p>
+
+<strong>L - Loss of skills (REGRESSION)</strong>
+<ul>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong>: Has child LOST any skill previously acquired?</li>
+<li>Autism (speech regression 18-24 months), Rett syndrome (girls, regression 6-18 months), neurodegenerative disease</li>
+<p>
+</ul>
+</p>
+
+<strong>O - Observations during consultation</strong>
+<ul>
+<li>How does child interact with you, parent, environment?</li>
+<li>Play: Functional play (uses toy appropriately), pretend play, symbolic play</li>
+<li>Eye contact, social engagement</li>
+<li>Speech: Words, sentences, clarity</li>
+<li>Motor: Gait, coordination, manipulation of objects</li>
+<p>
+</ul>
+</p>
+
+<strong>P - Prematurity</strong>
+<ul>
+<li>If born preterm, use corrected age up to 2 years</li>
+<li>Corrected age = Chronological age - weeks premature</li>
+<p>
+</ul>
+</p>
+
+<strong>M - Medical history</strong>
+<ul>
+<li>Chronic conditions (congenital heart disease, epilepsy)</li>
+<li>Medications</li>
+<li>Hospitalizations</li>
+<li>Genetic conditions in family</li>
+<p>
+</ul>
+</p>
+
+<strong>E - Examination findings</strong>
+<ul>
+<li><strong>Growth</strong>: Plot on chart (microcephaly, macrocephaly, FTT)</li>
+<li><strong>Dysmorphic features</strong>: Down syndrome, Fragile X, fetal alcohol syndrome</li>
+<li><strong>Neurological</strong>: Tone, reflexes, primitive reflexes (should disappear by 6 months)</li>
+<li><strong>Vision and hearing</strong>: Red reflex, response to sounds</li>
+<p>
+</ul>
+</p>
+
+<strong>N - Next steps</strong>
+<ul>
+<li>Investigations (if indicated): Chromosomal microarray, MRI brain, metabolic screen, hearing test</li>
+<li>Referrals: Paediatrics, speech therapy, physiotherapy, occupational therapy, early intervention services</li>
+<li>Follow-up plan</li>
+<p>
+</ul>
+</p>
+
+<strong>T - Tell parents</strong>
+<ul>
+<li>Explain concerns clearly, empathetically</li>
+<li>Reassure (if appropriate): "Many children catch up with support"</li>
+<li>Explain referral process, what to expect</li>
+<li>Provide written information, support resources</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Early Intervention Pathways in Australia</h2>
+
+<h3>National Disability Insurance Scheme (NDIS)</h3>
+
+<strong>Early Childhood Early Intervention (ECEI) Approach</strong>:
+<ul>
+<li>Children aged 0-6 years with developmental delay or disability</li>
+<li><strong>Eligibility</strong>: Diagnosed condition (autism, cerebral palsy, Down syndrome, hearing loss) OR developmental delay requiring early intervention</li>
+<li><strong>Funding</strong>: Therapy (speech, OT, physio), support coordination, equipment (wheelchairs, communication devices), respite care</li>
+<p>
+</ul>
+</p>
+
+<strong>How to Access</strong>:
+<ol>
+<li>Diagnosis from paediatrician or evidence of developmental delay (therapist reports)</li>
+<li>NDIS Access Request Form (parent completes, needs supporting evidence)</li>
+<li>Planning meeting with NDIS planner (creates individualized plan, budget allocation)</li>
+<li>Parent chooses providers (therapists, support workers) - NDIS pays providers</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>Therapy Services</h3>
+
+<strong>Speech Pathology</strong>:
+<ul>
+<li><strong>Indications</strong>: Speech delay, language delay, stuttering, autism, feeding difficulties (dysphagia)</li>
+<li><strong>Provided</strong>: Public (hospital speech therapy, community health - long wait lists), private (self-funded or NDIS)</li>
+<p>
+</ul>
+</p>
+
+<strong>Physiotherapy</strong>:
+<ul>
+<li><strong>Indications</strong>: Gross motor delay, cerebral palsy, muscular dystrophy, coordination difficulties</li>
+<li><strong>Focus</strong>: Strengthening, stretching, gait training, mobility aids</li>
+<p>
+</ul>
+</p>
+
+<strong>Occupational Therapy</strong>:
+<ul>
+<li><strong>Indications</strong>: Fine motor delay, sensory processing difficulties, autism, dyspraxia, cerebral palsy</li>
+<li><strong>Focus</strong>: Fine motor skills, daily living activities (dressing, feeding), sensory integration, school readiness</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Maternal and Child Health (MCH) Nurses</h3>
+<ul>
+<li><strong>Free service</strong> in Victoria (similar services in other states)</li>
+<li>Universal screening at key ages (2, 4, 8 weeks, 4, 8, 12, 18 months, 2, 3.5 years)</li>
+<li>Can refer to early intervention, paediatrics, allied health</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Specialist Paediatric Services</h3>
+
+<strong>Developmental Paediatrician</strong>:
+<ul>
+<li>Specialist paediatrician focused on developmental and behavioral conditions</li>
+<li>Diagnoses: Autism, ADHD, cerebral palsy, global developmental delay, learning difficulties</li>
+<li><strong>Referral</strong>: GP, paediatrician, MCH nurse</li>
+<p>
+</ul>
+</p>
+
+<strong>Child Development Services</strong>:
+<ul>
+<li>Multidisciplinary team (paediatrician, speech pathologist, OT, psychologist, social worker)</li>
+<li>Comprehensive assessment and intervention planning</li>
+<li>Often public hospital-based (long wait lists)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Common IMG Mistakes in Developmental Assessment</h2>
+
+<h3>Mistake 1: Not Using Corrected Age for Premature Babies</h3>
+
+<strong>Problem</strong>: Assessing 12-month-old born 8 weeks early using 12-month milestones
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Premature babies need "catch-up" time</li>
+<li>Corrected age = 10 months in this example</li>
+<li>Using chronological age → Inappropriate referral or parental anxiety</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>ALWAYS ask gestational age at birth</strong></li>
+<li>Use corrected age up to 2 years</li>
+<li>Document: "Chronological age 12 months, corrected age 10 months (born 32 weeks gestation)"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 2: "Wait and See" Approach to Genuine Concerns</h3>
+
+<strong>Problem</strong>: "Let's wait 6 months and review" when parent concerned or <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s present
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li><strong>Early intervention is KEY</strong> - outcomes better if started early</li>
+<li>Delay in referral = missed opportunity for intervention</li>
+<li>Parents often correct when concerned</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>Take parental concerns seriously</li>
+<li>If <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> present (e.g., not walking by 18 months, no words by 18 months) → Refer immediately</li>
+<li>If uncertain → Formal developmental screen (ASQ-3), refer if positive</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 3: Not Checking Hearing in Speech Delay</h3>
+
+<strong>Problem</strong>: Referring for speech therapy without hearing test first
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li><strong>Hearing loss is most common cause of isolated speech delay</strong></li>
+<li>Child cannot learn to speak if cannot hear</li>
+<li>Treating speech delay without excluding hearing loss → Wasted time, delayed diagnosis</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>EVERY child with speech delay</strong> → Hearing test FIRST (audiology)</li>
+<li>Document: "Speech delay. Hearing test arranged. Speech therapy referral to follow once hearing confirmed normal."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 4: Missing Autism <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</h3>
+
+<strong>Problem</strong>: Dismissing autism concerns because child has some eye contact or some words
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Autism is a spectrum (some children have partial eye contact, some words)</li>
+<li>Classic autism features may not be present at 18 months (become more obvious at 2-3 years)</li>
+<li>Delayed diagnosis → Delayed early intervention</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>Screen with M-CHAT at 18 months (routine)</li>
+<li>If ANY concern (parent or clinician): Not responding to name, no pointing, no pretend play → Refer for autism assessment</li>
+<li>Don't wait for "obvious" features - early subtle signs matter</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 5: Not Recognizing Regression as <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></h3>
+
+<strong>Problem</strong>: Parent reports "child used to say 10 words, now only says 2" → Reassure "some children develop at different rates"
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li><strong>Regression = loss of skills = <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong></li>
+<li>Differential: Autism (especially in girls, Rett syndrome), neurodegenerative disease, seizures (Landau-Kleffner syndrome)</li>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> investigation needed</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>ANY regression → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> paediatric referral</strong></li>
+<li>Investigations: MRI brain, EEG, genetic testing</li>
+<li>Document: "Reported regression in speech from 10 words to 2 words. <span style="color: #e74c3c; font-weight: bold;">URGENT</span> paediatric referral arranged."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 6: Not Assessing All 4 Domains</h3>
+
+<strong>Problem</strong>: Only asking about walking, not speech/social/fine motor
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li>Global delay (2+ domains) has different differential to isolated delay</li>
+<li>Isolated speech delay with normal other domains → Likely hearing loss or specific language impairment</li>
+<li>Speech delay + social difficulties → Consider autism</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>ALWAYS assess ALL 4 domains</strong>: Gross motor, fine motor, speech, social</li>
+<li>Document each domain separately</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 7: Not Considering Social Factors</h3>
+
+<strong>Problem</strong>: Focusing only on medical causes, not asking about home environment
+
+<strong>Why It's Wrong</strong>:
+<ul>
+<li><strong>Social deprivation, neglect, lack of stimulation</strong> can cause global developmental delay</li>
+<li>Bilingualism can cause apparent speech delay (not pathological)</li>
+<li>Safeguarding concerns may be present</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li>Ask: "What languages are spoken at home?" (bilingualism)</li>
+<li>"Does [child] go to playgroup/childcare?" (peer interaction)</li>
+<li>"What toys/books does [child] have at home?" (stimulation)</li>
+<li>If concerns → Social work referral</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>OSCE Practice Stations</h2>
+
+<h3>Station 1: 18-Month Developmental Check</h3>
+
+<strong>Scenario</strong>: You are a GP. An 18-month-old, Ethan, is brought in by his mother for a routine check. Perform a developmental assessment. (8 minutes)
+
+<strong>Key Information to Elicit</strong>:
+<ul>
+<li><strong>Gross motor</strong>: Walking independently for 2 months</li>
+<li><strong>Fine motor</strong>: Pincer grip, builds tower of 3 cubes, scribbles</li>
+<li><strong>Speech</strong>: 8 words ("mama", "dada", "car", "ball", "more", "no", "yes", "dog"), understands simple commands ("come here", "give me")</li>
+<li><strong>Social</strong>: Waves bye-bye, drinks from cup, helps with dressing</li>
+<li><strong>No concerns</strong>: Normal vision and hearing, social smile, eye contact, no regression</li>
+<p>
+</ul>
+</p>
+
+<strong>Model Performance</strong>:
+
+<strong>Minutes 0-1: Introduction + Rapport</strong>
+<ul>
+<li>"Good morning! I'm Dr [Name]. You must be Ethan! Hello Ethan!" [Smile, get to eye level]</li>
+<li>[To mother]: "And you're Ethan's mum? What should I call you?" [Sarah]</li>
+<li>"Sarah, I'd like to do a developmental check for Ethan today. This helps us make sure he's developing well for his age. Is that okay?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 1-3: Gross and Fine Motor</strong>
+<ul>
+<li>"First, can I check - how is Ethan's movement? Can he walk?" [Yes, walking for 2 months]</li>
+<li>"Can he run?" [Yes, runs but a bit wobbly]</li>
+<li>"Can he climb stairs?" [Not yet]</li>
+<li>"What about his hands - can he pick up small objects like raisins?" [Yes, uses thumb and finger]</li>
+<li>"Can he build a tower with blocks?" [Yes, about 3 blocks]</li>
+<li>"Does he scribble with crayons?" [Yes, loves scribbling]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 3-5: Speech and Language</strong>
+<ul>
+<li>"How many words can Ethan say?" [About 8 words] "What are some of them?" [Mama, dada, car, ball, more, no, yes, dog]</li>
+<li>"Does he understand simple instructions like 'come here' or 'give me the ball'?" [Yes]</li>
+<li>"Does he respond when you call his name?" [Yes, always]</li>
+<li>"Can he point to things he wants?" [Yes]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 5-6: Social and Emotional</strong>
+<ul>
+<li>"How does Ethan play with other children?" [Plays alongside them at playgroup]</li>
+<li>"Does he do pretend play, like feeding a doll or talking on a toy phone?" [Yes, feeds his teddy]</li>
+<li>"Does he wave bye-bye?" [Yes]</li>
+<li>"Can he drink from a cup?" [Yes]</li>
+<li>"Does he help when you dress him, like holding out his arm for a sleeve?" [Yes]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 6-7: Vision, Hearing, and <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong>
+<ul>
+<li>"Any concerns about his vision or hearing?" [No, seems fine]</li>
+<li>"Did he pass his newborn hearing screening?" [Yes]</li>
+<li>"Has he lost any skills he used to have?" [No] → <strong>Excluding regression</strong></li>
+<li>"Were there any problems during pregnancy or at birth?" [No, full-term, normal delivery]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 7-8: Observation + Feedback</strong>
+<ul>
+<li><strong>Observe Ethan during consultation</strong>: Playing with toys, eye contact when name called, showing toy to mum (joint attention)</li>
+<li>"Sarah, I'm really pleased with how Ethan is developing. His movement, hand skills, speech, and social skills are all appropriate for 18 months."</li>
+<li><strong>Anticipatory guidance</strong>: "Over the next few months, you'll notice him starting to join two words together, like 'more milk' or 'daddy gone'. He'll also start to play more with other children."</li>
+<li>"Is there anything you're worried about?" [No]</li>
+<li>"Great. Keep bringing him to playgroup for social interaction, read books together, and continue talking to him. Next developmental check at 2 years."</li>
+<p>
+</ul>
+</p>
+
+<strong>Examiner's Expected Assessment</strong>:
+<ul>
+<li>"Ethan is an 18-month-old with age-appropriate development across all 4 domains. No concerns."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Station 2: Developmental Delay - 2.5-Year-Old Not Speaking</h3>
+
+<strong>Scenario</strong>: You are a GP. A 2.5-year-old, Lily, is brought in by her parents concerned that she is not speaking. Take a focused history and discuss management. (8 minutes)
+
+<strong>Key Information to Elicit</strong>:
+<ul>
+<li><strong>Gross motor</strong>: Walking, running, climbing (normal)</li>
+<li><strong>Fine motor</strong>: Building tower of 6 cubes, scribbling (normal)</li>
+<li><strong>Speech</strong>: No words at all, babbles occasionally, does not respond to name consistently</li>
+<li><strong>Social</strong>: No eye contact, no pointing, no pretend play, plays alone, lines up toys</li>
+<li><strong>Hearing</strong>: Newborn hearing screen passed, but parents unsure if hears well now</li>
+<li><strong>No regression</strong>: Never had words</li>
+<li><strong>Birth history</strong>: Full-term, normal delivery, no complications</li>
+<p>
+</ul>
+</p>
+
+<strong>Model Performance</strong>:
+
+<strong>Minutes 0-2: History of Speech Development</strong>
+<ul>
+<li>"Thank you for bringing Lily in. I understand you're concerned about her speech. Can you tell me more?" [She doesn't speak at all]</li>
+<li>"Does she make any sounds, like babbling?" [A little babbling, but not much]</li>
+<li>"Has she ever said any words?" [No, never] → <strong>No regression</strong></li>
+<li>"Does she understand when you speak to her?" [Not sure, she doesn't follow instructions]</li>
+<li>"Does she respond when you call her name?" [Sometimes, but often ignores us] → <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>: Not responding to name</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 2-4: Other Developmental Domains</strong>
+<ul>
+<li><strong>Gross motor</strong>: "Can Lily walk and run?" [Yes, walks and runs well]</li>
+<li><strong>Fine motor</strong>: "Can she pick up small objects? Build a tower with blocks?" [Yes, builds towers, loves stacking]</li>
+<li><strong>Social</strong>:</li>
+<p>
+</ul>
+  - "Does Lily make eye contact with you?" [Not really, she looks away] → <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>: Poor eye contact</strong>
+  - "Does she point to things she wants or to show you something interesting?" [No] → <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>: No pointing</strong>
+  - "Does she play pretend, like feeding a doll?" [No, she just lines up her toys] → <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s: No pretend play, repetitive behavior (lining up)</strong>
+  - "How does she play with other children?" [Doesn't play with them, plays alone] → <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>: No peer interaction</strong>
+</p>
+
+<strong>Minutes 4-5: Hearing and Vision</strong>
+<ul>
+<li>"Did Lily pass her newborn hearing screening?" [Yes]</li>
+<li>"Do you think she can hear well now?" [We're not sure, sometimes she doesn't respond] → <strong>MUST check hearing</strong></li>
+<li>"Any concerns about her vision?" [No]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 5-6: Birth and Medical History</strong>
+<ul>
+<li>"Any problems during pregnancy or delivery?" [No, full-term, normal]</li>
+<li>"Any family history of speech delay or autism?" [No]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 6-8: Formulate Differential + Discuss Management</strong>
+<ul>
+<li><strong>Summarize</strong>: "Thank you. So Lily is 2.5 years old, not speaking any words, with some concerns about eye contact, pointing, pretend play, and social interaction. Her movement and hand skills are developing normally."</li>
+<li><strong>Differential</strong> (explain to parents):</li>
+<p>
+</ul>
+  - "There are a few possible reasons for Lily's speech delay:"
+    1. "<strong>Hearing loss</strong> - we need to check her hearing first, as children can't learn to speak if they can't hear well."
+    2. "<strong>Autism spectrum disorder</strong> - some of the features you've described, like difficulty with eye contact, not pointing, and preferring to play alone, can be early signs of autism."
+    3. "Specific language delay - difficulty with speech development despite normal hearing."
+</p>
+
+<ul>
+<li><strong>Management</strong>:</li>
+<p>
+</ul>
+  - "Today, I'd like to arrange:
+    1. <strong>Hearing test</strong> (audiology referral) - <strong>FIRST-LINE</strong>
+    2. <strong>Autism assessment</strong> (paediatrician referral, M-CHAT screening questionnaire)
+    3. <strong>Speech therapy referral</strong> (can start before other assessments complete - early intervention is important)
+    4. Consider <strong>early intervention services</strong> and <strong>NDIS</strong> eligibility once we have diagnosis"
+</p>
+
+<ul>
+<li><strong>Reassure</strong>: "I know this is concerning, but the important thing is we're identifying this now so Lily can get help early. Many children improve significantly with therapy and support."</li>
+<p>
+</ul>
+</p>
+
+<strong>Examiner's Expected Answer</strong>:
+<ul>
+<li>"2.5-year-old with speech delay and social communication difficulties (not responding to name, no pointing, no pretend play, poor eye contact, plays alone, lines up toys). Differential: Autism spectrum disorder (most likely), hearing loss (must exclude), specific language impairment. Plan: Hearing test, autism assessment (M-CHAT, paediatrician referral), speech therapy referral, consider early intervention services."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Station 3: Developmental Regression</h3>
+
+<strong>Scenario</strong>: You are a GP. A 20-month-old, Emma, is brought in by her mother who is concerned that Emma has stopped talking. Take a focused history. (8 minutes)
+
+<strong>Key Information</strong>:
+<ul>
+<li><strong>Speech</strong>: Used to say 15 words at 18 months, now only says 2-3 words</li>
+<li><strong>Social</strong>: Used to wave and clap, now doesn't do these gestures</li>
+<li><strong>Other domains</strong>: Gross and fine motor NORMAL (walking, building tower)</li>
+<li><strong>Timing</strong>: Regression over past 2 months</li>
+<li><strong>No illness</strong>: No fever, vomiting, or seizures</li>
+<p>
+</ul>
+</p>
+
+<strong>Model Performance</strong>:
+
+<strong>Minutes 0-2: Establish Regression</strong>
+<ul>
+<li>"I understand you're concerned about Emma's speech. Can you tell me more?" [She used to talk, but now she's stopped]</li>
+<li>"How many words did Emma used to say?" [About 15 words at 18 months]</li>
+<li>"What words did she say?" [Mama, dada, milk, more, dog, cat, ball, car, etc.]</li>
+<li>"How many words does she say now?" [Only 2-3 - mama and milk sometimes]</li>
+<li>"When did you first notice this change?" [About 2 months ago, gradually got worse] → <strong>REGRESSION confirmed</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 2-3: Other Lost Skills</strong>
+<ul>
+<li>"Has she lost any other skills?" [She used to wave bye-bye and clap, but doesn't do that anymore] → <strong>Social regression too</strong></li>
+<li>"Does she still make eye contact?" [Less than before]</li>
+<li>"Does she respond to her name?" [Not as much as she used to]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 3-4: Current Abilities</strong>
+<ul>
+<li>"Can Emma walk and run?" [Yes, walking and running normally]</li>
+<li>"Can she build a tower with blocks?" [Yes, still does that]</li>
+<li><strong>Interpretation</strong>: Motor skills PRESERVED, speech and social skills LOST → Suggests <strong>autism with regression</strong> or <strong>neurological condition</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 4-5: <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> Screen</strong>
+<ul>
+<li>"Has Emma had any seizures or fits?" [No] → <strong>Excluding Landau-Kleffner syndrome, epileptic encephalopathy</strong></li>
+<li>"Any recent illnesses, fevers, or head injuries?" [No]</li>
+<li>"Any changes at home or stressful events?" [No]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 5-6: Birth and Family History</strong>
+<ul>
+<li>"Were there any problems during pregnancy or birth?" [No]</li>
+<li>"Any family history of developmental problems or autism?" [No]</li>
+<p>
+</ul>
+</p>
+
+<strong>Minutes 6-8: Discuss Urgency + Management</strong>
+<ul>
+<li><strong>Serious tone</strong>: "Thank you for bringing Emma in. I'm concerned about what you've described - Emma losing skills she previously had. This is called 'regression', and it's something we take very seriously."</li>
+<li><strong>Differential</strong> (may not fully explain to parent at this stage - avoid alarming):</li>
+<p>
+</ul>
+  - Autism with regression (most common - peak 18-24 months)
+  - Rett syndrome (if female, genetic)
+  - Neurodegenerative disease (rare)
+  - Landau-Kleffner syndrome (epileptic disorder causing language regression - often have seizures)
+</p>
+
+<ul>
+<li><strong>Management</strong>: "I'd like to refer Emma <span style="color: #e74c3c; font-weight: bold;">URGENT</span>ly to a paediatrician. We'll likely need some tests:"</li>
+<p>
+</ul>
+  - <strong>MRI brain</strong> (structural abnormality, neurodegenerative disease)
+  - <strong>EEG</strong> (epilepsy - Landau-Kleffner syndrome)
+  - <strong>Hearing test</strong> (rule out hearing loss)
+  - <strong>Genetic testing</strong> (Rett syndrome - MECP2 gene if female, chromosomal microarray)
+  - <strong>Autism assessment</strong>
+</p>
+
+<ul>
+<li><strong>Reassure</strong>: "I know this is very worrying. The good news is Emma's movement is still developing normally. We'll get her seen quickly by the specialist to work out what's causing this."</li>
+<p>
+</ul>
+</p>
+
+<strong>Examiner's Expected Answer</strong>:
+<ul>
+<li>"20-month-old with speech and social regression over 2 months (lost words and gestures), with preserved motor skills. <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> - regression requires <span style="color: #e74c3c; font-weight: bold;">URGENT</span> investigation. Differential: Autism with regression (most likely), Rett syndrome (if female), Landau-Kleffner syndrome, neurodegenerative disease. Plan: <span style="color: #e74c3c; font-weight: bold;">URGENT</span> paediatric referral, investigations (MRI brain, EEG, hearing test, genetic testing), autism assessment."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Summary: Key Takeaways for Developmental Assessment</h2>
+
+<h3>1. Know Milestones by Heart</h3>
+<ul>
+<li><strong>6-8 weeks</strong>: Social smile</li>
+<li><strong>6-9 months</strong>: Sits with support</li>
+<li><strong>9 months</strong>: Sits unsupported</li>
+<li><strong>12 months</strong>: First words, pincer grip, pointing</li>
+<li><strong>18 months</strong>: Walking, 6+ words</li>
+<li><strong>2 years</strong>: Two-word phrases, pretend play</li>
+<p>
+</ul>
+</p>
+
+<h3>2. Assess All 4 Domains</h3>
+<ul>
+<li>Gross motor, fine motor, speech/language, social/emotional</li>
+<li>Isolated delay vs global delay → Different differentials</li>
+<p>
+</ul>
+</p>
+
+<h3>3. <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s = Immediate Action</h3>
+<ul>
+<li>No social smile by 8 weeks</li>
+<li>Not sitting unsupported by 9 months</li>
+<li>Not walking by 18 months</li>
+<li>No words by 18 months</li>
+<li>No two-word phrases by 2 years</li>
+<li><strong>REGRESSION (loss of any skill) = <span style="color: #e74c3c; font-weight: bold;">URGENT</span> referral</strong></li>
+<p>
+</ul>
+</p>
+
+<h3>4. Hearing Test FIRST-LINE for Speech Delay</h3>
+<ul>
+<li>Hearing loss is most common cause of isolated speech delay</li>
+<li>Cannot treat speech delay without knowing hearing status</li>
+<p>
+</ul>
+</p>
+
+<h3>5. Autism <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s (12-24 months)</h3>
+<ul>
+<li>Not responding to name</li>
+<li>No pointing (especially to share interest)</li>
+<li>No joint attention</li>
+<li>Poor eye contact</li>
+<li>No pretend play by 24 months</li>
+<li>Repetitive behaviors (lining up toys, hand flapping)</li>
+<p>
+</ul>
+</p>
+
+<h3>6. Early Intervention is KEY</h3>
+<ul>
+<li>Don't "wait and see" if genuine concern or <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></li>
+<li>Refer early - outcomes better with early therapy</li>
+<li>NDIS funding available for diagnosed conditions or developmental delay</li>
+<p>
+</ul>
+</p>
+
+<h3>7. Use Corrected Age for Prematurity</h3>
+<ul>
+<li>Corrected age = Chronological age - weeks premature</li>
+<li>Use up to 2 years</li>
+<p>
+</ul>
+</p>
+
+<h3>8. Regression = <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></h3>
+<ul>
+<li>Loss of ANY previously acquired skill</li>
+<li><span style="color: #e74c3c; font-weight: bold;">URGENT</span> investigation needed (MRI brain, EEG, genetics)</li>
+<li>Differential: Autism, Rett syndrome, neurodegenerative disease, Landau-Kleffner syndrome</li>
+<p>
+</ul>
+</p>
+
+<h3>9. Consider Social Factors</h3>
+<ul>
+<li>Bilingualism (not pathological)</li>
+<li>Social deprivation, neglect, lack of stimulation</li>
+<li>Safeguarding concerns</li>
+<p>
+</ul>
+</p>
+
+<h3>10. Common IMG Mistakes to Avoid</h3>
+<ul>
+<li>❌ Not using corrected age for prematurity</li>
+<li>❌ "Wait and see" for genuine concerns</li>
+<li>❌ Not checking hearing in speech delay</li>
+<li>❌ Missing autism <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</li>
+<li>❌ Not recognizing regression as <span style="color: #e74c3c; font-weight: bold;">URGENT</span></li>
+<li>❌ Not assessing all 4 domains</li>
+<li>❌ Not considering social factors</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>You're now equipped to perform comprehensive developmental assessments! Practice these skills and you'll confidently identify developmental concerns and support families in accessing early intervention. Good luck with your ICRP preparation!</strong>
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronic Medical Records (EMR) Documentation Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP Program Resources</span>
+<span>→</span>
+<span>Reference Materials</span>
+</div>
+        
+        <h1>Electronic Medical Records (EMR) Documentation Guide</h1>
+
+<h2>Purpose</h2>
+<p>
+This guide prepares you for documenting in Electronic Medical Record (EMR) systems used in Australian hospitals, including Young District Hospital.
+</p>
+
+<hr>
+
+<h2>What is an EMR?</h2>
+
+<strong>Electronic Medical Record (EMR)</strong> = Digital version of patient medical records
+
+<h3>Common EMR Systems in NSW:</h3>
+<ul>
+<li><strong>eMR (Electronic Medical Record)</strong> - NSW Health's system</li>
+<li><strong>Clinical Portal</strong> - Statewide system</li>
+<li><strong>PowerChart</strong> (Cerner) - Used in some hospitals</li>
+<li><strong>Others</strong> - Each hospital may have variations</li>
+<p>
+</ul>
+</p>
+
+<strong>Note:</strong> You'll receive specific training on the local EMR system when you arrive at Young District Hospital.
+
+<hr>
+
+<h2>Key Differences: Paper vs EMR</h2>
+
+<p>
+| Paper Notes | EMR |
+|-------------|-----|
+| Handwritten | Typed |
+| Physically attached to patient | Accessible from anywhere |
+| Can be lost | Backed up digitally |
+| Slower to find information | Quick search function |
+| Privacy by physical access | Privacy by password/login |
+| Linear notes | Structured templates |
+</p>
+
+<hr>
+
+<h2>EMR Documentation Basics</h2>
+
+<h3>1. Login & Access</h3>
+<ul>
+<li><strong>Unique login:</strong> Never share your password</li>
+<li><strong>Log out:</strong> Always log out when finished</li>
+<li><strong>Privacy:</strong> Only access records you need for patient care</li>
+<li><strong>Audit trail:</strong> Everything you do is tracked</li>
+<p>
+</ul>
+</p>
+
+<h3>2. Patient Safety</h3>
+<ul>
+<li><strong>Right patient:</strong> Always verify patient details before documenting</li>
+<li><strong>Check MRN:</strong> Medical Record Number must match</li>
+<li><strong>Check DOB:</strong> Date of birth must match</li>
+<li><strong>Two patient identifiers:</strong> Use at least two (name + DOB, or name + MRN)</li>
+<p>
+</ul>
+</p>
+
+<h3>3. Documentation Principles</h3>
+<ul>
+<li><strong>Same as paper:</strong> Same professional standards apply</li>
+<li><strong>Timely:</strong> Document as soon as possible after seeing patient</li>
+<li><strong>Accurate:</strong> Factual, objective, complete</li>
+<li><strong>Clear:</strong> Use appropriate medical terminology</li>
+<li><strong>Permanent:</strong> Can't truly delete - amendments are tracked</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>EMR Structure (Typical)</h2>
+
+<h3>Patient Summary Screen</h3>
+<p>
+Usually shows:
+</p>
+<ul>
+<li><strong>Demographics:</strong> Name, age, DOB, MRN</li>
+<li><strong>Allergies:</strong> Prominently displayed (often in red)</li>
+<li><strong>Active problems:</strong> Current diagnoses</li>
+<li><strong>Current medications:</strong> What patient is on</li>
+<li><strong>Recent vitals:</strong> Latest observations</li>
+<li><strong>Alerts:</strong> Important warnings</li>
+<p>
+</ul>
+</p>
+
+<h3>Common Sections/Tabs:</h3>
+<ol>
+<li><strong>Notes:</strong> Progress notes, admission notes, discharge summaries</li>
+<li><strong>Orders:</strong> Medication orders, investigation orders</li>
+<li><strong>Results:</strong> Bloods, imaging, other investigations</li>
+<li><strong>Medications:</strong> Current and past medications</li>
+<li><strong>Allergies:</strong> Drug and other allergies</li>
+<li><strong>Vital Signs:</strong> Obs charts, fluid balance</li>
+<li><strong>History:</strong> Past medical history, surgical history</li>
+<li><strong>Documents:</strong> Scanned external documents</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Documentation Templates in EMR</h2>
+
+<h3>Progress Note Template (Daily Notes)</h3>
+<p>
+Most EMR systems have templates. Common format:
+</p>
+
+<pre><code>Date/Time: [Auto-filled]
+<p>
+Author: [Your name - auto-filled]
+Service: [e.g., General Medicine]
+</p>
+
+<p>
+SUBJECTIVE:
+[How patient is today, complaints, overnight events]
+</p>
+
+<p>
+OBJECTIVE:
+Vitals: BP <strong><em> HR </em></strong> RR <strong><em> Temp </em></strong> SpO2 <em>_</em>
+Examination: [Relevant findings]
+Results: [New investigation results]
+</p>
+
+<p>
+ASSESSMENT:
+[Current diagnosis/working diagnosis]
+[Patient progress - improving/stable/deteriorating]
+</p>
+
+<p>
+PLAN:
+</p>
+<ol>
+<li>[Specific action]</li>
+<li>[Specific action]</li>
+<li>[Review timing]</li>
+<p>
+</ol>
+</p>
+
+<p>
+[Your name]
+[Your position: e.g., ICRP participant]
+[Date/Time]
+</code></pre>
+</p>
+
+<h3>Admission Note Template</h3>
+<pre><code>ADMISSION NOTE
+
+<p>
+Presenting Complaint:
+HPC:
+PMH:
+Medications:
+Allergies:
+FH:
+SH:
+</p>
+
+<p>
+O/E:
+Vitals:
+General:
+Systems examination:
+</p>
+
+<p>
+Investigations:
+[Results of initial tests]
+</p>
+
+<p>
+Impression:
+[Diagnosis/differential]
+</p>
+
+<p>
+Plan:
+</p>
+<ol>
+<li>Admit to [ward]</li>
+<li>Investigations: [ordered]</li>
+<li>Treatment: [medications/interventions]</li>
+<li>Monitoring: [what to monitor]</li>
+<li>Review: [when]</li>
+<p>
+</ol>
+</p>
+
+<p>
+[Signature block]
+</code></pre>
+</p>
+
+<hr>
+
+<h2>Typing in EMR: Special Considerations</h2>
+
+<h3>Speed Matters More in EMR</h3>
+<ul>
+<li><strong>Real-time documentation:</strong> Often documenting while with patient or immediately after</li>
+<li><strong>Templates help:</strong> But you still need to type patient-specific information</li>
+<li><strong>Auto-correct issues:</strong> Medical terms may not be in dictionary</li>
+<li><strong>Target speed:</strong> 40+ WPM makes EMR documentation much faster</li>
+<p>
+</ul>
+</p>
+
+<h3>Common EMR Typing Challenges</h3>
+
+<strong>Challenge 1: Medical terms not recognized</strong>
+<ul>
+<li>Solution: Add medical terms to personal dictionary</li>
+<li>Solution: Know correct spelling so you can override autocorrect</li>
+<p>
+</ul>
+</p>
+
+<strong>Challenge 2: Structured fields</strong>
+<ul>
+<li>Templates have specific fields to complete</li>
+<li>Tab key moves between fields</li>
+<li>Practice tabbing efficiently</li>
+<p>
+</ul>
+</p>
+
+<strong>Challenge 3: Dropdown menus vs free text</strong>
+<ul>
+<li>Some fields are dropdown (select from list)</li>
+<li>Some are free text (type what you want)</li>
+<li>Know when to use which</li>
+<p>
+</ul>
+</p>
+
+<strong>Challenge 4: Copy-paste temptation</strong>
+<ul>
+<li>DON'T copy-paste without reviewing</li>
+<li>DON'T carry forward incorrect information</li>
+<li>DO update daily with actual current information</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>EMR Best Practices</h2>
+
+<h3>DO:</h3>
+<p>
+✅ Verify correct patient before documenting
+✅ Document in real-time or as soon as possible
+✅ Use clear, professional language
+✅ Include all relevant information
+✅ Document patient education and consent
+✅ Document safety netting advice
+✅ Sign/authenticate your notes
+✅ Log out when done
+</p>
+
+<h3>DON'T:</h3>
+<p>
+❌ Share your login
+❌ Leave computer unlocked
+❌ Access records you don't need
+❌ Copy-paste without verifying
+❌ Use inappropriate abbreviations
+❌ Document opinions as facts
+❌ Delay documentation
+❌ Alter notes without proper amendment process
+</p>
+
+<hr>
+
+<h2>Common EMR Tasks You'll Perform</h2>
+
+<h3>1. Writing Progress Notes</h3>
+<ul>
+<li>Daily notes on ward round</li>
+<li>Review notes after seeing patient</li>
+<li>Handover notes</li>
+<p>
+</ul>
+</p>
+
+<h3>2. Ordering Investigations</h3>
+<ul>
+<li>Blood tests</li>
+<li>Imaging (X-ray, CT, ultrasound)</li>
+<li>Other tests (ECG, urine, etc.)</li>
+<p>
+</ul>
+</p>
+
+<h3>3. Prescribing Medications (under supervision)</h3>
+<ul>
+<li><strong>VERY IMPORTANT:</strong> Medication orders are high-risk</li>
+<li>Double-check: Right patient, right drug, right dose, right route, right time</li>
+<li>Check allergies first</li>
+<li>Check drug interactions</li>
+<li>Get senior to verify</li>
+<p>
+</ul>
+</p>
+
+<h3>4. Viewing Results</h3>
+<ul>
+<li>Check blood results</li>
+<li>Review imaging reports</li>
+<li>Check microbiology results</li>
+<p>
+</ul>
+</p>
+
+<h3>5. Communication</h3>
+<ul>
+<li>Referrals to other teams</li>
+<li>Discharge summaries</li>
+<li>Letters to GP</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Documentation Speed Goals</h2>
+
+<h3>By End of ICRP Preparation:</h3>
+<ul>
+<li><strong>Progress note:</strong> 5-10 minutes</li>
+<li><strong>Admission note:</strong> 15-20 minutes</li>
+<li><strong>Discharge summary:</strong> 20-30 minutes</li>
+<p>
+</ul>
+</p>
+
+<h3>During ICRP:</h3>
+<ul>
+<li>Speed will improve with:</li>
+<p>
+</ul>
+  - Familiarity with local EMR system
+  - Practice with templates
+  - Improved clinical knowledge
+  - Better typing speed
+</p>
+
+<hr>
+
+<h2>Practice EMR Skills Now</h2>
+
+<h3>1. Improve Typing Speed</h3>
+<ul>
+<li><strong>Goal: 40+ WPM</strong> - This makes huge difference in EMR</li>
+<li>Practice typing SOAP notes</li>
+<li>Practice typing medical terminology</li>
+<p>
+</ul>
+</p>
+
+<h3>2. Practice Documentation</h3>
+<ul>
+<li>Write practice notes using SOAP format</li>
+<li>Time yourself - aim for 10-15 min</li>
+<li>Use appropriate medical terminology</li>
+<li>Be concise but complete</li>
+<p>
+</ul>
+</p>
+
+<h3>3. Learn Keyboard Shortcuts</h3>
+<p>
+Common shortcuts that work in most EMR systems:
+</p>
+<ul>
+<li><strong>Ctrl + C:</strong> Copy</li>
+<li><strong>Ctrl + V:</strong> Paste (use carefully!)</li>
+<li><strong>Ctrl + Z:</strong> Undo</li>
+<li><strong>Tab:</strong> Move to next field</li>
+<li><strong>Shift + Tab:</strong> Move to previous field</li>
+<li><strong>Ctrl + S:</strong> Save (if applicable)</li>
+<p>
+</ul>
+</p>
+
+<h3>4. Understand Structured Documentation</h3>
+<ul>
+<li>Practice filling out forms with specific fields</li>
+<li>Don't skip required fields</li>
+<li>Understand difference between free text and dropdown</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>EMR Training at ICRP</h2>
+
+<h3>What to Expect:</h3>
+<ul>
+<li><strong>Day 1-2:</strong> EMR system training</li>
+<li><strong>Orientation:</strong> Specific to Young District Hospital's system</li>
+<li><strong>Supervised practice:</strong> Initial entries supervised</li>
+<li><strong>Support:</strong> IT support available</li>
+<li><strong>Gradual independence:</strong> As you demonstrate competence</li>
+<p>
+</ul>
+</p>
+
+<h3>Questions to Ask During EMR Training:</h3>
+<ol>
+<li>How do I access the EMR?</li>
+<li>How do I find my patients?</li>
+<li>How do I write a progress note?</li>
+<li>How do I order investigations?</li>
+<li>How do I view results?</li>
+<li>How do I prescribe medications?</li>
+<li>How do I amend an error?</li>
+<li>Who do I contact if I have technical issues?</li>
+<li>What are the local documentation expectations?</li>
+<li>How do I print or send information?</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Legal & Ethical Considerations</h2>
+
+<h3>Documentation is a Legal Document</h3>
+<ul>
+<li>Can be used in court</li>
+<li>Can be subpoenaed</li>
+<li>Permanent record</li>
+<li>Professional responsibility</li>
+<p>
+</ul>
+</p>
+
+<h3>Privacy & Confidentiality</h3>
+<ul>
+<li><strong>ONLY</strong> access records you need for patient care</li>
+<li>Don't access:</li>
+<p>
+</ul>
+  - Your own record
+  - Family members (unless you're their treating doctor)
+  - Friends
+  - Celebrities
+  - Anyone you're not actively treating
+</p>
+<ul>
+<li>Breach = serious consequences (dismissal, legal action)</li>
+<p>
+</ul>
+</p>
+
+<h3>Audit Trails</h3>
+<ul>
+<li>Every access is logged</li>
+<li>Every change is tracked</li>
+<li>Timestamp on everything</li>
+<li>Can't hide what you've accessed</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Common EMR Mistakes to Avoid</h2>
+
+<ol>
+<li><strong>Wrong patient:</strong> Always verify before documenting</li>
+<li><strong>Copy-paste errors:</strong> Don't copy outdated information</li>
+<li><strong>Incomplete notes:</strong> Missing key information</li>
+<li><strong>Delayed documentation:</strong> Document promptly</li>
+<li><strong>Privacy breaches:</strong> Only access when needed</li>
+<li><strong>Sharing passwords:</strong> Never share login</li>
+<li><strong>Leaving computer unlocked:</strong> Always lock screen</li>
+<li><strong>Informal language:</strong> Maintain professionalism</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Preparation Checklist</h2>
+
+<p>
+Before ICRP starts, ensure you:
+</p>
+<ul>
+<li><input type="checkbox"> Can type 40+ WPM</li>
+<li><input type="checkbox"> Understand SOAP note format</li>
+<li><input type="checkbox"> Can document clinical encounters efficiently</li>
+<li><input type="checkbox"> Know medical terminology and abbreviations</li>
+<li><input type="checkbox"> Understand patient privacy principles</li>
+<li><input type="checkbox"> Comfortable with basic computer skills</li>
+<li><input type="checkbox"> Know keyboard shortcuts</li>
+<li><input type="checkbox"> Have practiced timed documentation</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Resources</h2>
+
+<h3>During ICRP:</h3>
+<ul>
+<li><strong>Local IT support:</strong> For technical issues</li>
+<li><strong>Supervisor:</strong> For documentation standards</li>
+<li><strong>Colleagues:</strong> For tips and tricks</li>
+<li><strong>Training materials:</strong> Usually provided</li>
+<p>
+</ul>
+</p>
+
+<h3>General:</h3>
+<ul>
+<li><strong>eMR User Guide:</strong> Will be provided during orientation</li>
+<li><strong>NSW Health EMR Resources:</strong> Available online</li>
+<li><strong>Hospital-specific guides:</strong> Provided at start</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Summary</h2>
+
+<strong>EMR documentation is essentially the same as paper documentation, but:</strong>
+<ul>
+<li>Faster if you can type well (40+ WPM very helpful)</li>
+<li>More structured (templates and fields)</li>
+<li>Requires more attention to privacy</li>
+<li>Provides better access to patient information</li>
+<li>Has safety features (allergy alerts, drug interactions)</li>
+<p>
+</ul>
+</p>
+
+<strong>Your typing practice and SOAP note practice will directly translate to better EMR documentation efficiency.</strong>
+
+<hr>
+
+<strong>Last Updated:</strong> December 2025
+<strong>For:</strong> ICRP NSW Preparation
+<strong>Note:</strong> Specific EMR training will be provided at Young District Hospital
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

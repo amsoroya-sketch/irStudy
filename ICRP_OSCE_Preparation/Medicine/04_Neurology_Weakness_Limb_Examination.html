@@ -1,0 +1,2518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weakness and Neurological Limb Examination</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Medicine</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Medicine Navigation</h3>
+<ul>
+<li><a href="MASTER_INDEX.html">Master Index</a></li>
+<li><a href="01_Cardiovascular_Respiratory_History.html">CV/Resp History</a></li>
+<li><a href="02_Physical_Examination_Cardiovascular_Respiratory.html">CV/Resp Exam</a></li>
+<li><a href="03_Physical_Examination_Abdominal_Neurological.html">Abdo/Neuro Exam</a></li>
+</ul>
+</div>
+        <h1>Weakness and Neurological Limb Examination</h1>
+<h2>ICRP OSCE Preparation - Medicine Module (Neurology)</h2>
+
+<hr>
+
+<h2>Target Audience</h2>
+
+<p>
+This guide is for <strong>International Medical Graduates (IMGs)</strong> preparing for the <strong>AMC Clinical OSCE</strong>, specifically:
+</p>
+
+<ul>
+<li>IMGs requiring systematic approach to weakness assessment and neurological examination</li>
+<li>Candidates needing pattern recognition (UMN vs LMN, distribution patterns)</li>
+<li>Doctors preparing for ICRP placement in Australian hospitals</li>
+<li>Medical professionals needing stroke protocols and <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> neurology management</li>
+<li>Clinicians requiring competency in neurological limb examination for OSCE</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Learning Objectives</h2>
+
+<p>
+By the end of this module, you will be able to:
+</p>
+
+<ol>
+<li><strong>Differentiate</strong> upper motor neuron (UMN) from lower motor neuron (LMN) weakness</li>
+<li><strong>Recognize</strong> patterns of weakness (hemiplegia, paraplegia, quadriplegia, proximal, distal, monoplegia)</li>
+<li><strong>Identify</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s requiring <span style="color: #e74c3c; font-weight: bold;">URGENT</span> intervention (stroke, spinal cord compression, cauda equina, GBS)</li>
+<li><strong>Perform</strong> systematic neurological examination of upper and lower limbs</li>
+<li><strong>Apply</strong> MRC power grading scale accurately</li>
+<li><strong>Manage</strong> acute stroke according to Australian protocols (thrombolysis, thrombectomy)</li>
+<li><strong>Generate</strong> differential diagnoses based on examination findings</li>
+<li><strong>Perform</strong> confidently in OSCE stations for neurological examination</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Dr. Amir Soufi's Approach Applied to Weakness</h2>
+
+<h3>Core Principle: PATTERN RECOGNITION → UMN vs LMN → ANATOMICAL LOCALIZATION</h3>
+
+<strong>Traditional Approach (Less Effective)</strong>:
+<ul>
+<li>Generic neurological examination</li>
+<li>Consider all causes equally</li>
+<li>Delayed pattern recognition</li>
+<p>
+</ul>
+</p>
+
+<strong>Dr. Amir Soufi's Differential-Driven Approach</strong>:
+
+<ol>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S FIRST</strong> (Life-Threatening Causes):</li>
+<p>
+</ol>
+   - <strong>Sudden onset unilateral weakness</strong> → <strong>STROKE</strong> until proven otherwise (thrombolysis window 4.5 hours)
+   - <strong>Progressive ascending weakness + areflexia</strong> → <strong>Guillain-Barré Syndrome</strong> (respiratory monitoring, may need ICU)
+   - <strong>Bilateral leg weakness + saddle anesthesia + urinary retention</strong> → <strong>Cauda equina syndrome</strong> (<span style="color: #e74c3c; font-weight: bold;">URGENT</span> MRI, surgery within 48 hours)
+   - <strong>Bilateral leg weakness + sensory level + bowel/bladder</strong> → <strong>Spinal cord compression</strong> (<span style="color: #e74c3c; font-weight: bold;">URGENT</span> MRI, high-dose steroids, surgery/radiotherapy)
+</p>
+
+<ol>
+<li><strong>PATTERN OF WEAKNESS</strong> (Immediate Differential):</li>
+<p>
+</ol>
+   - <strong>Hemiplegia</strong> (one side of body) → <strong>Stroke</strong>, brain lesion
+   - <strong>Paraplegia</strong> (both legs) → <strong>Spinal cord</strong> lesion (thoracic/lumbar)
+   - <strong>Quadriplegia</strong> (all four limbs) → <strong>Spinal cord</strong> (cervical), brainstem
+   - <strong>Monoplegia</strong> (one limb) → Peripheral nerve, plexus, cortical lesion
+   - <strong>Proximal weakness</strong> (shoulders, hips) → <strong>Muscle disease</strong> (myopathy, myositis)
+   - <strong>Distal weakness</strong> (hands, feet) → <strong>Peripheral neuropathy</strong>
+</p>
+
+<ol>
+<li><strong>UMN vs LMN SIGNS</strong> (Localizes Level):</li>
+<p>
+</ol>
+</p>
+
+   <strong>UMN</strong> (brain, spinal cord):
+<p>
+   - <strong>Increased tone</strong> (spasticity, velocity-dependent)
+   - <strong>Brisk reflexes</strong> (hyperreflexia), <strong>clonus</strong>
+   - <strong>Extensor plantar</strong> (Babinski positive)
+   - <strong>NO muscle wasting</strong> (early), <strong>NO fasciculations</strong>
+   - Weakness in <strong>pyramidal pattern</strong>: Extensors > flexors (upper limb), Flexors > extensors (lower limb)
+</p>
+
+   <strong>LMN</strong> (anterior horn cell, nerve root, peripheral nerve, NMJ, muscle):
+<p>
+   - <strong>Decreased tone</strong> (flaccid, hypotonia)
+   - <strong>Reduced/absent reflexes</strong> (hyporeflexia, areflexia)
+   - <strong>Flexor plantar</strong> (normal)
+   - <strong>Muscle wasting</strong> (atrophy), <strong>fasciculations</strong> (visible muscle twitches)
+</p>
+
+<ol>
+<li><strong>ANATOMICAL LOCALIZATION</strong>:</li>
+<p>
+</ol>
+   - <strong>Cortex/internal capsule</strong> → Hemiplegia (face + arm + leg, contralateral), UMN signs
+   - <strong>Brainstem</strong> → Cranial nerve signs + contralateral weakness
+   - <strong>Spinal cord</strong> → Bilateral weakness below level, sensory level, bowel/bladder, UMN signs
+   - <strong>Anterior horn cell</strong> (motor neuron disease) → Fasciculations, wasting, mixed UMN + LMN
+   - <strong>Nerve root</strong> (radiculopathy) → Dermatomal sensory loss, myotomal weakness, reduced reflex
+   - <strong>Peripheral nerve</strong> → Specific nerve distribution (e.g., radial nerve → wrist drop)
+   - <strong>Neuromuscular junction</strong> (myasthenia gravis) → Fatigable weakness, ptosis, diplopia
+   - <strong>Muscle</strong> (myopathy) → Proximal weakness, normal sensation, normal reflexes (until late)
+</p>
+
+<ol>
+<li><strong>TIMING</strong> (Onset and Progression):</li>
+<p>
+</ol>
+   - <strong>Sudden onset</strong> (seconds-minutes) → <strong>Stroke</strong>, vascular
+   - <strong>Rapid progression</strong> (hours-days) → GBS, transverse myelitis, spinal cord compression
+   - <strong>Subacute</strong> (weeks) → Myasthenia gravis, inflammatory myopathy
+   - <strong>Chronic progressive</strong> (months-years) → Motor neuron disease, peripheral neuropathy, myopathy
+</p>
+
+<strong>Example</strong>:
+<ul>
+<li><strong>Presentation</strong>: 72-year-old man, sudden onset right arm and leg weakness 2 hours ago, facial droop, slurred speech</li>
+<li><strong>Immediate thought</strong>: <strong>STROKE</strong> (hemiplegia, sudden onset, vascular risk factors age >70)</li>
+<li><strong>Pattern</strong>: Right hemiplegia → <strong>Left hemisphere</strong> stroke (motor cortex/internal capsule)</li>
+<li><strong>Immediate actions</strong>: <strong>ROSIER score</strong> (stroke vs mimic), <strong>CT brain <span style="color: #e74c3c; font-weight: bold;">URGENT</span></strong> (rule out hemorrhage), <strong>check time of onset</strong> (thrombolysis window <4.5 hours), <strong>FAST</strong> stroke team activation</li>
+<li><strong>Examination findings expected</strong>: Right UMN facial palsy (forehead spared), right arm and leg weakness (UMN - increased tone, brisk reflexes, extensor plantar), dysarthria</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>1. <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S IN WEAKNESS</h2>
+
+<h3>Acute Stroke</h3>
+
+<strong>"TIME IS BRAIN" - Thrombolysis Window 4.5 Hours</strong>
+
+<strong>Presentation</strong>:
+<ul>
+<li><strong>Sudden onset</strong> (<seconds to minutes) focal neurological deficit</li>
+<li><strong>Hemiplegia</strong>: Weakness of face, arm, leg (one side)</li>
+<li><strong>Dysarthria</strong> (slurred speech) or <strong>dysphasia</strong> (language impairment)</li>
+<li><strong>Facial droop</strong> (UMN facial palsy - forehead spared)</li>
+<li><strong>Hemianopia</strong> (visual field loss)</li>
+<li><strong>Ataxia, vertigo, diplopia</strong> (posterior circulation stroke)</li>
+<li><strong>Headache</strong> (hemorrhagic stroke more common)</li>
+<p>
+</ul>
+</p>
+
+<strong>FAST Assessment</strong> (Public recognition tool):
+<ul>
+<li><strong>F</strong> - Face drooping</li>
+<li><strong>A</strong> - Arm weakness</li>
+<li><strong>S</strong> - Speech difficulty</li>
+<li><strong>T</strong> - Time to call ambulance</li>
+<p>
+</ul>
+</p>
+
+<strong>ROSIER Score</strong> (Recognition of Stroke in <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Room - Differentiates Stroke from Mimics):
+
+<p>
+| Feature | Score |
+|---------|-------|
+| <strong>Loss of consciousness or syncope</strong> | -1 |
+| <strong>Seizure activity</strong> | -1 |
+| <strong>Acute onset of:</strong> | |
+| - Asymmetric facial weakness | +1 |
+| - Asymmetric arm weakness | +1 |
+| - Asymmetric leg weakness | +1 |
+| - Speech disturbance | +1 |
+| - Visual field defect | +1 |
+</p>
+
+<strong>Score >0 = Stroke likely</strong> (sens 92%, spec 86%)
+<strong>Score ≤0 = Stroke unlikely</strong> (consider mimic - seizure, hypoglycemia, syncope, migraine)
+
+<hr>
+
+<strong>Investigations</strong>:
+<ul>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> non-contrast CT brain</strong> (rule out hemorrhage - contraindication to thrombolysis)</li>
+<p>
+</ul>
+  - <strong>Ischemic stroke</strong>: CT often normal acutely (<6 hours), later shows hypodensity
+  - <strong>Hemorrhagic stroke</strong>: Hyperdense (white) area
+</p>
+<ul>
+<li><strong>Bloods</strong>: Glucose (hypoglycemia mimic), FBC, UEC, coagulation (INR - if elevated, contraindication to thrombolysis), troponin (cardiac source)</li>
+<li><strong>ECG</strong>: Atrial fibrillation (cardioembolic stroke)</li>
+<li><strong>CT angiography</strong> (if considering thrombectomy - large vessel occlusion)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Management</strong> (Australian Stroke Guidelines):
+
+<strong>Hyperacute (<4.5 hours from onset)</strong>:
+
+<ol>
+<li><strong>Thrombolysis</strong> (if eligible):</li>
+<p>
+</ol>
+   - <strong>Alteplase</strong> (tPA - tissue plasminogen activator) 0.9mg/kg IV (10% bolus, 90% infusion over 1 hour)
+</p>
+
+   <strong>Inclusion criteria</strong>:
+<p>
+   - Ischemic stroke with measurable deficit
+   - Onset <4.5 hours (last seen well time)
+   - CT brain shows NO hemorrhage
+</p>
+
+   <strong>Exclusion criteria</strong> (major):
+<p>
+   - <strong>Hemorrhagic stroke</strong> on CT
+   - <strong>Time >4.5 hours</strong> from onset (or unknown onset time)
+   - <strong>Recent surgery</strong> (<14 days major, <7 days minor)
+   - <strong>Recent stroke</strong> or head trauma (<3 months)
+   - <strong>Previous ICH</strong>
+   - <strong>Bleeding disorder</strong>, anticoagulation (INR >1.7, on DOAC within 48 hours, platelets <100)
+   - <strong>Uncontrolled hypertension</strong> (SBP >185 or DBP >110 despite treatment)
+   - <strong>Glucose <2.7 or >22.2 mmol/L</strong>
+   - Pregnancy
+   - <strong>Seizure at onset</strong> with residual deficits (Todd's paralysis)
+</p>
+
+   <strong>Benefits</strong>: 13% absolute increase in good outcome (mRS 0-1) if given <3 hours, 10% if 3-4.5 hours
+
+   <strong>Complications</strong>: <strong>Symptomatic ICH 6%</strong>, major bleeding
+
+<ol>
+<li><strong>Thrombectomy</strong> (Endovascular Clot Retrieval):</li>
+<p>
+</ol>
+   - <strong>Indications</strong>: Large vessel occlusion (ICA, M1 MCA, basilar), large penumbra on imaging, <24 hours (selected patients)
+   - <strong>CT/MR angiography + perfusion</strong> to select patients
+   - <strong>Can combine</strong> with thrombolysis
+   - <strong>Transfer to thrombectomy-capable center</strong> if not available locally
+</p>
+
+<hr>
+
+<strong>Acute Stroke Unit Care</strong> (All stroke patients):
+<ul>
+<li><strong>Admit to stroke unit</strong> (specialized nursing, monitoring - reduces mortality 18%)</li>
+<li><strong>Nil by mouth</strong> until swallow screen passed (aspiration risk)</li>
+<li><strong>IV fluids</strong> if NBM, dehydrated</li>
+<li><strong>BP management</strong>: Permissive hypertension initially (allow BP 185/110 if NOT thrombolysing - brain autoregulation impaired, needs higher BP to perfuse penumbra). Lower if <strong>>220/120</strong> or if thrombolysing</li>
+<li><strong>Glucose control</strong>: Avoid hypoglycemia and hyperglycemia (target 6-10 mmol/L)</li>
+<li><strong>Temperature</strong>: Treat fever (paracetamol)</li>
+<li><strong>DVT prophylaxis</strong>: Compression stockings, early mobilization (avoid heparin first 24-48 hours)</li>
+<li><strong>Swallow assessment</strong> (speech pathology) before oral intake</li>
+<li><strong>Early mobilization</strong> (within 24-48 hours if stable)</li>
+<p>
+</ul>
+</p>
+
+<strong>Secondary Prevention</strong> (after acute phase):
+<ul>
+<li><strong>Antiplatelet</strong>: Aspirin 100-300mg daily (start 24 hours after thrombolysis, or immediately if no thrombolysis) + <strong>clopidogrel 75mg daily x 21 days</strong> (dual antiplatelet), then aspirin alone long-term</li>
+<li><strong>Anticoagulation</strong>: If AF - warfarin or DOAC (start 2-14 days after stroke depending on size)</li>
+<li><strong>Statin</strong>: Atorvastatin 80mg daily (all ischemic strokes)</li>
+<li><strong>BP control</strong>: Target <130/80 (start few days post-stroke)</li>
+<li><strong>Diabetes management</strong>: HbA1c <7%</li>
+<li><strong>Lifestyle</strong>: Smoking cessation, exercise, Mediterranean diet, alcohol moderation</li>
+<p>
+</ul>
+</p>
+
+<strong>Rehabilitation</strong>: Physiotherapy, occupational therapy, speech therapy (early intensive therapy improves outcomes)
+
+<hr>
+
+<h3>Spinal Cord Compression</h3>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> MRI + HIGH-DOSE STEROIDS + SURGERY/RADIOTHERAPY WITHIN 24-48 HOURS</strong>
+
+<strong>Presentation</strong>:
+<ul>
+<li><strong>Bilateral leg weakness</strong> (progressive over hours-weeks)</li>
+<li><strong>Sensory level</strong> (band of altered sensation at level of compression)</li>
+<li><strong>Bowel/bladder dysfunction</strong> (retention → late incontinence)</li>
+<li><strong>Back pain</strong> (localized, worse lying flat, nocturnal)</li>
+<li><strong>UMN signs</strong> below level (increased tone, brisk reflexes, extensor plantars)</li>
+<p>
+</ul>
+</p>
+
+<strong>Causes</strong>:
+<ol>
+<li><strong>Metastatic cancer</strong> (most common - lung, breast, prostate, kidney, myeloma):</li>
+<p>
+</ol>
+   - History of malignancy, weight loss, back pain
+</p>
+<ol>
+<li><strong>Epidural abscess</strong>:</li>
+<p>
+</ol>
+   - Fever, back pain, sepsis, IVDU, immunosuppressed
+</p>
+<ol>
+<li><strong>Trauma</strong>:</li>
+<p>
+</ol>
+   - Vertebral fracture, hematoma
+</p>
+<ol>
+<li><strong>Primary spinal tumor</strong>:</li>
+<p>
+</ol>
+   - Meningioma, neurofibroma
+</p>
+<ol>
+<li><strong>Disc prolapse</strong> (central):</li>
+<p>
+</ol>
+   - Acute onset, younger patients
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong>: <strong>Urinary retention</strong> = <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span></strong> (irreversible bladder dysfunction if >48 hours)
+
+<strong>Investigations</strong>:
+<ul>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> MRI whole spine</strong> (T2 shows cord compression, edema; T1 + gadolinium shows lesion)</li>
+<li><strong>Bloods</strong>: FBC, CRP (infection), PSA (prostate cancer in men)</li>
+<li><strong>CXR</strong>: Lung cancer</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ol>
+<li><strong>High-dose dexamethasone</strong>: 16mg IV/PO immediately (reduce cord edema)</li>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> neurosurgery / oncology</strong> consult</li>
+<li><strong>Decompressive surgery</strong> (laminectomy) within 24-48 hours if:</li>
+<p>
+</ol>
+   - Single level compression
+   - Neurologically intact or incomplete deficit
+   - Good performance status
+</p>
+<ol>
+<li><strong>Radiotherapy</strong>: If not surgical candidate, multiple levels, radiosensitive tumor</li>
+<li><strong>Analgesia</strong>: Opioids for severe back pain</li>
+<li><strong>Bladder catheter</strong>: If retention</li>
+<p>
+</ol>
+</p>
+
+<strong>Prognosis</strong>: <strong>Ambulatory at presentation = 80% remain ambulatory</strong> if treated within 24-48 hours. <strong>Paraplegic at presentation = <10% regain ambulation</strong>.
+
+<hr>
+
+<h3>Cauda Equina Syndrome</h3>
+
+<strong>SURGICAL <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> - DECOMPRESSION WITHIN 48 HOURS</strong>
+
+<strong>Anatomy</strong>: Cauda equina = nerve roots L2-S5 (below conus medullaris at L1/L2) - <strong>LMN</strong>, not spinal cord
+
+<strong>Presentation</strong>:
+<ul>
+<li><strong>Bilateral leg weakness</strong> (asymmetric, flaccid)</li>
+<li><strong>Saddle anesthesia</strong> (perineum, buttocks - S2-S5 dermatomes)</li>
+<li><strong>Bladder/bowel dysfunction</strong>:</li>
+<p>
+</ul>
+  - <strong>Urinary retention</strong> (painless, overflow incontinence)
+  - <strong>Fecal incontinence</strong>, loss of anal tone
+</p>
+<ul>
+<li><strong>Sexual dysfunction</strong> (erectile dysfunction, loss of sensation)</li>
+<li><strong>Severe low back pain</strong>, sciatica (bilateral)</li>
+<li><strong>LMN signs</strong>: Reduced tone, reduced/absent reflexes (ankle jerks), weakness</li>
+<p>
+</ul>
+</p>
+
+<strong>Cause</strong>: <strong>Central lumbar disc prolapse</strong> (L4/L5 or L5/S1 most common), tumor, trauma, abscess
+
+<strong>Examination</strong>:
+<ul>
+<li><strong>Reduced anal tone</strong> (PR exam - critical finding)</li>
+<li><strong>Loss of perianal sensation</strong></li>
+<li>Bilateral leg weakness (LMN)</li>
+<li>Absent ankle reflexes</li>
+<p>
+</ul>
+</p>
+
+<strong>Investigations</strong>:
+<ul>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> MRI lumbosacral spine</strong> (shows disc prolapse compressing cauda equina)</li>
+<li><strong>Post-void residual bladder scan</strong> (retention >200ml abnormal)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> neurosurgery</strong> consult</li>
+<li><strong>Decompressive laminectomy + discectomy within 48 hours</strong> (ideally <24 hours)</li>
+<li><strong>Bladder catheter</strong> (retention)</li>
+<li><strong>Analgesia</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Prognosis</strong>: Early surgery (<48 hours) gives best chance of bladder/bowel/sexual function recovery. Delay >48 hours = permanent dysfunction common.
+
+<hr>
+
+<h3>Guillain-Barré Syndrome (GBS)</h3>
+
+<strong>RAPIDLY PROGRESSIVE ASCENDING PARALYSIS - ICU MONITORING (RESPIRATORY FAILURE)</strong>
+
+<strong>Presentation</strong>:
+<ul>
+<li><strong>Ascending weakness</strong> (starts in legs, ascends to arms, can involve face, respiratory muscles)</li>
+<li><strong>Progressive over days-weeks</strong> (nadir at 2-4 weeks)</li>
+<li><strong>Areflexia</strong> (absent reflexes - hallmark)</li>
+<li><strong>Distal paresthesias</strong> (hands, feet - "glove and stocking")</li>
+<li><strong>Minimal sensory signs</strong> (predominantly motor)</li>
+<li><strong>Autonomic dysfunction</strong> (tachycardia, labile BP, arrhythmias, ileus)</li>
+<li><strong>Respiratory compromise</strong> (25% need ventilation)</li>
+<li><strong>Preceding illness</strong> (2/3 of patients - GI infection Campylobacter, respiratory infection, Zika, COVID)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtypes</strong>:
+<ul>
+<li><strong>AIDP</strong> (Acute Inflammatory Demyelinating Polyneuropathy - most common 85%)</li>
+<li><strong>AMAN</strong> (Acute Motor Axonal Neuropathy)</li>
+<li><strong>Miller-Fisher syndrome</strong>: Triad = Ataxia, Areflexia, Ophthalmoplegia (cranial nerve variant)</li>
+<p>
+</ul>
+</p>
+
+<strong>Investigations</strong>:
+<ul>
+<li><strong>LP</strong>: <strong>Albuminocytologic dissociation</strong> (elevated protein >0.55 g/L, normal WCC) - classic, but may be normal in first week</li>
+<li><strong>Nerve conduction studies</strong>: Demyelination (slowed conduction velocities, prolonged latencies, conduction block)</li>
+<li><strong>Spirometry</strong> (FVC - forced vital capacity): Monitor respiratory function (if FVC <15-20 ml/kg → intubation)</li>
+<li><strong>Bloods</strong>: Rule out differential (HIV, Lyme, porphyria)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ol>
+<li><strong>ICU admission</strong> (monitoring for respiratory failure, autonomic instability):</li>
+<p>
+</ol>
+   - <strong>Serial FVC</strong> (every 4-6 hours initially)
+   - <strong>Intubate if</strong>: FVC <15-20 ml/kg, or <1L, or rapid decline, or bulbar weakness
+   - <strong>Cardiac monitoring</strong> (arrhythmias from autonomic dysfunction)
+</p>
+<ol>
+<li><strong>Immunotherapy</strong> (start within 2 weeks of symptom onset):</li>
+<p>
+</ol>
+   - <strong>IV Immunoglobulin (IVIG)</strong> 0.4g/kg/day x 5 days (first-line - easier than plasma exchange)
+   - <strong>Plasma exchange</strong> (alternative - 5 exchanges over 2 weeks)
+   - <strong>Equivalent efficacy</strong>, IVIG preferred (easier, fewer complications)
+   - <strong>NOT corticosteroids</strong> (ineffective in GBS)
+</p>
+<ol>
+<li><strong>Supportive care</strong>:</li>
+<p>
+</ol>
+   - <strong>DVT prophylaxis</strong>: Heparin (high risk - paralyzed, immobile)
+   - <strong>Physiotherapy</strong>: Prevent contractures, early mobilization when recovering
+   - <strong>Analgesia</strong>: Neuropathic pain common (gabapentin, pregabalin)
+   - <strong>Bladder catheter</strong> if retention
+   - <strong>NGT feeding</strong> if bulbar weakness (aspiration risk)
+</p>
+<ol>
+<li><strong>Monitor for complications</strong>: Aspiration pneumonia, DVT/PE, pressure ulcers, ileus</li>
+<p>
+</ol>
+</p>
+
+<strong>Prognosis</strong>: 80% full recovery, but takes months. 5% mortality (respiratory failure, autonomic complications). 20% residual deficit.
+
+<hr>
+
+<h2>2. UPPER MOTOR NEURON vs LOWER MOTOR NEURON SIGNS</h2>
+
+<strong>Critical for anatomical localization</strong>
+
+<p>
+| Feature | UMN (Brain, Spinal Cord) | LMN (Anterior Horn, Nerve Root, Peripheral Nerve, NMJ, Muscle) |
+|---------|--------------------------|----------------------------------------------------------------|
+| <strong>Tone</strong> | <strong>Increased</strong> (spasticity - velocity-dependent, clasp-knife) | <strong>Decreased</strong> (flaccid, hypotonia) |
+| <strong>Power</strong> | Decreased (pyramidal pattern) | Decreased (specific nerve/myotome distribution) |
+| <strong>Reflexes</strong> | <strong>Brisk</strong> (hyperreflexia), <strong>clonus</strong> | <strong>Reduced or absent</strong> (hyporeflexia, areflexia) |
+| <strong>Plantar response</strong> | <strong>Extensor</strong> (Babinski positive - upgoing toe) | <strong>Flexor</strong> (normal - downgoing toe) |
+| <strong>Muscle wasting</strong> | <strong>Absent</strong> early, mild late (disuse atrophy) | <strong>Present</strong> (prominent, early) |
+| <strong>Fasciculations</strong> | <strong>Absent</strong> | <strong>Present</strong> (visible muscle twitches) |
+| <strong>Distribution</strong> | Pyramidal pattern, hemiplegic, paraplegic | Specific nerve/root distribution |
+| <strong>Sensation</strong> | May be affected (if sensory cortex/cord involved) | May be affected (nerve root/peripheral nerve) or normal (NMJ, muscle) |
+</p>
+
+<strong>Pyramidal Pattern of Weakness</strong> (UMN):
+<ul>
+<li><strong>Upper limb</strong>: Extensors weaker than flexors (arm drifts down and pronates)</li>
+<li><strong>Lower limb</strong>: Flexors weaker than extensors (leg circumducts when walking)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>3. PATTERNS OF WEAKNESS (Anatomical Localization)</h2>
+
+<h3>Hemiplegia (One Side of Body)</h3>
+
+<strong>Lesion</strong>: <strong>Contralateral</strong> brain (cortex, internal capsule, brainstem)
+
+<strong>Presentation</strong>:
+<ul>
+<li>Face + Arm + Leg weakness (one side)</li>
+<li><strong>UMN signs</strong> (increased tone, brisk reflexes, extensor plantar)</li>
+<li><strong>Cortical signs</strong> (if cortical lesion): Dysphasia (dominant hemisphere - left), neglect (non-dominant - right)</li>
+<li><strong>Homonymous hemianopia</strong> (visual field loss)</li>
+<p>
+</ul>
+</p>
+
+<strong>Causes</strong>:
+<ol>
+<li><strong>Stroke</strong> (ischemic or hemorrhagic) - most common</li>
+<li><strong>Brain tumor</strong></li>
+<li><strong>Head trauma</strong> (subdural, extradural hematoma)</li>
+<li><strong>Demyelination</strong> (MS)</li>
+<li><strong>Brain abscess</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Localization</strong>:
+<ul>
+<li><strong>Cortex</strong> (MCA territory): Face + Arm > Leg</li>
+<li><strong>Internal capsule</strong> (lacunar stroke): Face + Arm + Leg equally</li>
+<li><strong>ACA territory</strong>: Leg > Arm</li>
+<li><strong>Brainstem</strong>: Cranial nerve signs ipsilateral + hemiplegia contralateral (crossed signs)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Paraplegia (Both Legs)</h3>
+
+<strong>Lesion</strong>: <strong>Spinal cord</strong> (thoracic or lumbar)
+
+<strong>Presentation</strong>:
+<ul>
+<li>Bilateral leg weakness</li>
+<li><strong>Sensory level</strong> (at level of lesion)</li>
+<li><strong>Bowel/bladder dysfunction</strong></li>
+<li><strong>UMN signs</strong> (if cord) or <strong>LMN signs</strong> (if cauda equina)</li>
+<p>
+</ul>
+</p>
+
+<strong>Causes</strong>:
+<ol>
+<li><strong>Spinal cord compression</strong> (metastases, epidural abscess, disc)</li>
+<li><strong>Transverse myelitis</strong> (inflammation of cord - post-infectious, MS, idiopathic)</li>
+<li><strong>Spinal cord infarction</strong> (anterior spinal artery)</li>
+<li><strong>Trauma</strong> (vertebral fracture)</li>
+<li><strong>Cauda equina syndrome</strong> (LMN paraplegia)</li>
+<p>
+</ol>
+</p>
+
+<strong>Lesion level</strong>:
+<ul>
+<li><strong>Thoracic cord</strong>: Paraplegia, sensory level at thoracic dermatome</li>
+<li><strong>Lumbar cord/conus medullaris</strong> (L1-L2): Paraplegia, saddle anesthesia</li>
+<li><strong>Cauda equina</strong> (below L2): LMN paraplegia (flaccid, areflexia)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Quadriplegia (All Four Limbs)</h3>
+
+<strong>Lesion</strong>: <strong>Cervical spinal cord</strong> or <strong>brainstem</strong>
+
+<strong>Presentation</strong>:
+<ul>
+<li>Weakness all four limbs + trunk</li>
+<li>Respiratory muscles may be affected (C3-C5 - phrenic nerve)</li>
+<li>Sensory level (if cord)</li>
+<li>Bowel/bladder dysfunction</li>
+<p>
+</ul>
+</p>
+
+<strong>Causes</strong>:
+<ol>
+<li><strong>Cervical spinal cord compression</strong></li>
+<li><strong>Cervical spine trauma</strong> (fracture, dislocation)</li>
+<li><strong>Transverse myelitis</strong> (cervical)</li>
+<li><strong>Brainstem stroke</strong></li>
+<li><strong>High cervical cord lesion</strong> (C1-C4)</li>
+<p>
+</ol>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong>: High cervical lesions (above C4) → <strong>respiratory failure</strong> (phrenic nerve C3-C5)
+
+<hr>
+
+<h3>Proximal Weakness (Shoulders, Hips)</h3>
+
+<strong>Lesion</strong>: <strong>Muscle</strong> (myopathy) or <strong>Neuromuscular junction</strong>
+
+<strong>Presentation</strong>:
+<ul>
+<li>Difficulty rising from chair, climbing stairs, lifting arms above head, combing hair</li>
+<li><strong>Shoulder/hip girdle</strong> weakness</li>
+<li><strong>Normal reflexes</strong> (until late), <strong>normal sensation</strong></li>
+<li><strong>No UMN/LMN signs</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Causes</strong>:
+
+<strong>Myopathy</strong>:
+<ol>
+<li><strong>Inflammatory myopathy</strong>:</li>
+<p>
+</ol>
+   - <strong>Polymyositis</strong>: Proximal weakness, elevated CK, muscle pain
+   - <strong>Dermatomyositis</strong>: Polymyositis + rash (heliotrope rash, Gottron's papules, shawl sign)
+   - <strong>Inclusion body myositis</strong>: Proximal + distal weakness (finger flexors), older adults
+</p>
+<ol>
+<li><strong>Endocrine myopathy</strong>:</li>
+<p>
+</ol>
+   - <strong>Hypothyroid myopathy</strong>: Proximal weakness, elevated CK, hypothyroid symptoms
+   - <strong>Steroid myopathy</strong>: Chronic steroid use, proximal weakness, <strong>normal CK</strong>
+   - <strong>Cushing's syndrome</strong>
+</p>
+<ol>
+<li><strong>Drug-induced myopathy</strong>:</li>
+<p>
+</ol>
+   - <strong>Statins</strong> (HMG-CoA reductase inhibitors): Myalgia, elevated CK, rarely rhabdomyolysis
+   - Corticosteroids
+   - Alcohol
+</p>
+<ol>
+<li><strong>Muscular dystrophies</strong>:</li>
+<p>
+</ol>
+   - <strong>Duchenne</strong> (boys, early onset, calf pseudohypertrophy, elevated CK)
+   - <strong>Becker</strong> (milder, later onset)
+   - <strong>Limb-girdle</strong> (proximal weakness, adolescent/adult onset)
+</p>
+
+<strong>Investigations</strong>: CK (elevated in inflammatory myopathy, muscular dystrophy), TSH, EMG, muscle biopsy
+
+<strong>Neuromuscular Junction</strong>:
+<ul>
+<li><strong>Myasthenia gravis</strong>: Fatigable weakness (worse with repetition), ptosis, diplopia, normal CK</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Distal Weakness (Hands, Feet)</h3>
+
+<strong>Lesion</strong>: <strong>Peripheral neuropathy</strong>
+
+<strong>Presentation</strong>:
+<ul>
+<li>Weakness hands and feet ("foot drop", difficulty with buttons/writing)</li>
+<li><strong>Glove-and-stocking</strong> sensory loss</li>
+<li><strong>Reduced/absent reflexes</strong> (LMN)</li>
+<li><strong>Distal wasting</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Causes</strong>:
+
+<strong>Peripheral Neuropathy</strong>:
+<ol>
+<li><strong>Diabetes</strong> (most common - diabetic neuropathy)</li>
+<li><strong>Alcohol</strong></li>
+<li><strong>Vitamin B12 deficiency</strong></li>
+<li><strong>Chronic inflammatory demyelinating polyneuropathy (CIDP)</strong>: GBS-like but chronic (>8 weeks), responds to IVIG</li>
+<li><strong>Hereditary</strong>: Charcot-Marie-Tooth disease (pes cavus, distal wasting, sensory loss, family history)</li>
+<li><strong>Toxins</strong>: Heavy metals (lead, arsenic), medications (vincristine, isoniazid, metronidazole)</li>
+<li><strong>Vasculitis</strong>: Mononeuritis multiplex (multiple individual nerves affected)</li>
+<p>
+</ol>
+</p>
+
+<strong>Motor Neuron Disease</strong> (if no sensory loss):
+<ul>
+<li><strong>Amyotrophic Lateral Sclerosis (ALS)</strong>: Mixed UMN + LMN signs, <strong>no sensory loss</strong>, fasciculations, progressive</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>4. NEUROLOGICAL EXAMINATION OF LIMBS</h2>
+
+<strong>Systematic approach: "I-P-T-P-R-S-C"</strong>
+
+<ol>
+<li><strong>I</strong> - Inspection</li>
+<li><strong>P</strong> - Tone (Passive movement)</li>
+<li><strong>P</strong> - Power (MRC grading)</li>
+<li><strong>R</strong> - Reflexes</li>
+<li><strong>S</strong> - Sensation</li>
+<li><strong>C</strong> - Coordination</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>UPPER LIMB NEUROLOGICAL EXAMINATION</h3>
+
+<strong>Opening</strong> (OSCE):
+<p>
+"Hello, I'm Dr. [Name]. I've been asked to examine the movement and sensation in your arms. Is that okay? Could you remove your shirt/roll up your sleeves please?"
+</p>
+
+<strong>Position patient</strong>: Sitting on edge of bed or chair, arms exposed
+
+<hr>
+
+<h4>1. INSPECTION</h4>
+
+<strong>Look for</strong>:
+<ul>
+<li><strong>Muscle wasting</strong> (LMN sign):</li>
+<p>
+</ul>
+  - Small muscles of hand (thenar, hypothenar, interossei)
+  - Forearm muscles
+  - Deltoid, biceps, triceps
+</p>
+<ul>
+<li><strong>Fasciculations</strong> (LMN sign): Watch for 30 seconds - visible muscle twitches</li>
+<li><strong>Deformity</strong>: Claw hand, wrist drop, contractures</li>
+<li><strong>Scars</strong>: Surgery</li>
+<li><strong>Tremor</strong>: At rest (Parkinson's), intention (cerebellar), postural (essential tremor)</li>
+<li><strong>Posture</strong>: Flexed posture (UMN - spastic hemiplegia)</li>
+<p>
+</ul>
+</p>
+
+<strong>While inspecting, assess for pronator drift</strong>:
+<ul>
+<li>"Close your eyes, hold your arms out in front, palms up like holding a tray"</li>
+<li><strong>UMN weakness</strong>: Arm drifts down and <strong>pronates</strong> (palm turns down) - sensitive sign</li>
+<li>Observe for 10-20 seconds</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>2. TONE</h4>
+
+<strong>Test passive movement of joints</strong>:
+
+<p>
+"I'm going to move your arm. Try to stay relaxed and let me do all the work."
+</p>
+
+<strong>Elbow</strong>:
+<ul>
+<li>Support patient's elbow, grasp wrist</li>
+<li>Flex and extend elbow through full range</li>
+<li><strong>Roll elbow</strong> (rapid pronation/supination of forearm)</li>
+<p>
+</ul>
+</p>
+
+<strong>Wrist</strong>:
+<ul>
+<li>Grasp patient's hand, flex/extend wrist, ulnar/radial deviation</li>
+<p>
+</ul>
+</p>
+
+<strong>Findings</strong>:
+<ul>
+<li><strong>Normal</strong>: Smooth, no resistance</li>
+<li><strong>Increased tone</strong> (UMN):</li>
+<p>
+</ul>
+  - <strong>Spasticity</strong>: Velocity-dependent resistance (clasp-knife - initial resistance then sudden give)
+  - <strong>Rigidity</strong>: Constant resistance throughout range (lead-pipe), cogwheel (if tremor superimposed - Parkinson's)
+</p>
+<ul>
+<li><strong>Decreased tone</strong> (LMN): Arm flops, increased range of movement</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>3. POWER (MRC Grading Scale)</h4>
+
+<strong>MRC Scale</strong> (0-5):
+
+<p>
+| Grade | Description | Functional |
+|-------|-------------|------------|
+| <strong>0</strong> | No contraction | Paralyzed |
+| <strong>1</strong> | Flicker of contraction | No movement |
+| <strong>2</strong> | Movement with gravity eliminated | Cannot lift against gravity |
+| <strong>3</strong> | Movement against gravity | Can lift, but not against resistance |
+| <strong>4</strong> | Movement against resistance | Weak |
+| <strong>5</strong> | Normal power | Normal |
+</p>
+
+<strong>4 can be subdivided</strong>: 4-, 4, 4+ (mild, moderate, nearly normal weakness)
+
+<hr>
+
+<strong>Test major muscle groups</strong> (myotomes C5-T1):
+
+<strong>Shoulder abduction</strong> (C5 - axillary nerve):
+<ul>
+<li>"Lift your arms out to the sides like a bird. Don't let me push them down."</li>
+<li>Deltoid muscle</li>
+<p>
+</ul>
+</p>
+
+<strong>Elbow flexion</strong> (C5-C6 - musculocutaneous nerve):
+<ul>
+<li>"Bend your elbow and pull towards you. Don't let me straighten it."</li>
+<li>Biceps muscle</li>
+<p>
+</ul>
+</p>
+
+<strong>Elbow extension</strong> (C7 - radial nerve):
+<ul>
+<li>"Straighten your elbow. Push against my hand. Don't let me bend it."</li>
+<li>Triceps muscle</li>
+<p>
+</ul>
+</p>
+
+<strong>Wrist extension</strong> (C6 - radial nerve):
+<ul>
+<li>"Cock your wrist back like this. Don't let me push it down."</li>
+<li>Wrist extensors</li>
+<li><strong>Radial nerve palsy</strong> → wrist drop (cannot extend wrist)</li>
+<p>
+</ul>
+</p>
+
+<strong>Finger extension</strong> (C7 - radial nerve):
+<ul>
+<li>"Straighten your fingers. Don't let me bend them."</li>
+<p>
+</ul>
+</p>
+
+<strong>Finger flexion</strong> (C8 - median/ulnar nerves):
+<ul>
+<li>"Squeeze my fingers as hard as you can."</li>
+<li>Compare both sides</li>
+<p>
+</ul>
+</p>
+
+<strong>Finger abduction</strong> (T1 - ulnar nerve):
+<ul>
+<li>"Spread your fingers apart. Don't let me squeeze them together."</li>
+<li>Interossei muscles</li>
+<li><strong>Ulnar nerve palsy</strong> → weakness finger abduction</li>
+<p>
+</ul>
+</p>
+
+<strong>Thumb abduction</strong> (C8-T1 - median nerve):
+<ul>
+<li>"Point your thumb to the ceiling. Don't let me push it down."</li>
+<li>Abductor pollicis brevis (thenar eminence)</li>
+<li><strong>Median nerve palsy</strong> (carpal tunnel) → weakness, wasting thenar eminence</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Document findings</strong>: "Power 5/5 throughout right upper limb. Power 4/5 elbow flexion/extension, 3/5 wrist extension left upper limb."
+
+<hr>
+
+<h4>4. REFLEXES</h4>
+
+<strong>Test deep tendon reflexes</strong> with tendon hammer:
+
+<strong>Positioning</strong>: Patient relaxed, muscle slightly stretched
+
+<strong>Technique</strong>:
+<ul>
+<li>Hold hammer loosely at end (let weight do work)</li>
+<li>Strike tendon briskly with wrist flick</li>
+<li>Compare left and right</li>
+<p>
+</ul>
+</p>
+
+<strong>Upper limb reflexes</strong>:
+
+<ol>
+<li><strong>Biceps reflex</strong> (C5-C6):</li>
+<p>
+</ol>
+   - Place thumb on biceps tendon in antecubital fossa
+   - Strike your thumb with hammer
+   - Observe biceps contraction, elbow flexion
+</p>
+
+<ol>
+<li><strong>Triceps reflex</strong> (C7):</li>
+<p>
+</ol>
+   - Support patient's arm (elbow flexed 90°, arm across body)
+   - Strike triceps tendon just above olecranon
+   - Observe triceps contraction, elbow extension
+</p>
+
+<ol>
+<li><strong>Supinator reflex</strong> (C6) - often omitted:</li>
+<p>
+</ol>
+   - Strike brachioradialis tendon (lateral forearm, 10cm above wrist)
+   - Observe forearm supination, elbow flexion
+</p>
+
+<strong>If reflexes absent</strong>: <strong>Reinforcement</strong> (Jendrassik maneuver)
+<ul>
+<li>"Clench your teeth" or "Hook your fingers together and pull"</li>
+<li>Increases tone throughout body, may elicit absent reflexes</li>
+<p>
+</ul>
+</p>
+
+<strong>Grading</strong>:
+<ul>
+<li><strong>0</strong>: Absent</li>
+<li><strong>+</strong>: Hyporeflexia (reduced)</li>
+<li><strong>++</strong>: Normal</li>
+<li><strong>+++</strong>: Brisk (hyperreflexia)</li>
+<li><strong>++++</strong>: Very brisk, with clonus</li>
+<p>
+</ul>
+</p>
+
+<strong>Clonus</strong> (sustained rhythmic contractions - UMN sign):
+<ul>
+<li>Not usually tested in upper limb (more sensitive in lower limb)</li>
+<p>
+</ul>
+</p>
+
+<strong>Document</strong>: "Reflexes ++ throughout. Brisk (+++) left biceps/triceps."
+
+<hr>
+
+<h4>5. SENSATION</h4>
+
+<strong>Test sensory modalities</strong>:
+
+<strong>Light touch</strong>:
+<ul>
+<li>Cotton wool</li>
+<li>"Close your eyes. Say 'yes' when you feel me touch you."</li>
+<li>Compare both arms, dermatomes</li>
+<p>
+</ul>
+</p>
+
+<strong>Dermatomes - Upper Limb</strong>:
+<ul>
+<li><strong>C5</strong>: Lateral upper arm (over deltoid)</li>
+<li><strong>C6</strong>: Thumb, lateral forearm</li>
+<li><strong>C7</strong>: Middle finger</li>
+<li><strong>C8</strong>: Little finger, medial forearm</li>
+<li><strong>T1</strong>: Medial upper arm</li>
+<p>
+</ul>
+</p>
+
+<strong>Pinprick</strong> (if indicated - peripheral neuropathy, spinal cord lesion):
+<ul>
+<li>Neurotip (disposable)</li>
+<li>"Is this sharp or dull? Does it feel the same on both sides?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Proprioception</strong> (joint position sense):
+<ul>
+<li>"Close your eyes. I'm going to move your finger up or down. Tell me which way."</li>
+<li>Hold sides of distal phalanx of index finger, move up/down small movements</li>
+<li>Test both sides</li>
+<li><strong>Impaired</strong>: Posterior column lesion (B12 deficiency, spinal cord), peripheral neuropathy</li>
+<p>
+</ul>
+</p>
+
+<strong>Vibration sense</strong>:
+<ul>
+<li>128 Hz tuning fork</li>
+<li>Strike fork, place on bony prominence (wrist, elbow)</li>
+<li>"Tell me when the buzzing stops"</li>
+<li>Stop fork with your hand - patient should notice immediately</li>
+<li><strong>Impaired</strong>: Peripheral neuropathy, posterior column lesion (same as proprioception)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>6. COORDINATION</h4>
+
+<strong>Test cerebellar function</strong>:
+
+<strong>Finger-nose test</strong>:
+<ul>
+<li>"Touch your nose, then touch my finger. Keep going back and forth as fast as you can."</li>
+<li>Move your finger to different positions</li>
+<li><strong>Observe for</strong>:</li>
+<p>
+</ul>
+  - <strong>Intention tremor</strong> (tremor worse as approaching target - cerebellar)
+  - <strong>Past-pointing</strong> (overshoots target)
+  - <strong>Dysmetria</strong> (inaccurate movements)
+</p>
+
+<strong>Dysdiadochokinesia</strong> (rapid alternating movements):
+<ul>
+<li>"Tap the back of your hand with your other hand, then turn over and tap with palm. Keep going as fast as you can like this."</li>
+<li><strong>Impaired</strong>: Slow, clumsy, irregular (cerebellar)</li>
+<p>
+</ul>
+</p>
+
+<strong>Rebound test</strong> (optional):
+<ul>
+<li>"Flex your elbow against my resistance. I'm going to let go suddenly."</li>
+<li>Normally: Arm stops before hitting face (cerebellar brake)</li>
+<li><strong>Abnormal</strong>: Arm flies back uncontrolled (cerebellar lesion)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Closing</strong>:
+<p>
+"Thank you. You can put your shirt back on. I'd like to examine the rest of your nervous system, including your legs and walking."
+</p>
+
+<p>
+"To complete my examination, I would like to examine the lower limbs, cranial nerves, gait, and perform fundoscopy."
+</p>
+
+<hr>
+
+<h3>LOWER LIMB NEUROLOGICAL EXAMINATION</h3>
+
+<strong>Opening</strong> (OSCE):
+<p>
+"Hello, I'm Dr. [Name]. I've been asked to examine the movement and sensation in your legs. Is that okay? Could you lie on the bed and expose your legs please?"
+</p>
+
+<strong>Position patient</strong>: Lying flat on bed, legs exposed
+
+<hr>
+
+<h4>1. INSPECTION</h4>
+
+<strong>Look for</strong>:
+<ul>
+<li><strong>Muscle wasting</strong> (LMN):</li>
+<p>
+</ul>
+  - Quadriceps, hamstrings
+  - Calf muscles (gastrocnemius)
+  - Foot muscles (intrinsic)
+</p>
+<ul>
+<li><strong>Fasciculations</strong>: Watch for 30 seconds</li>
+<li><strong>Deformity</strong>: Pes cavus (high arch - Charcot-Marie-Tooth), foot drop, contractures</li>
+<li><strong>Scars</strong>: Surgery</li>
+<li><strong>Posture</strong>: Leg position (UMN - leg extended/internally rotated)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>2. TONE</h4>
+
+<p>
+"I'm going to move your leg. Stay relaxed and let me do all the work."
+</p>
+
+<strong>Hip</strong>:
+<ul>
+<li>Place hand under knee, lift leg and let drop</li>
+<li><strong>Increased tone</strong>: Knee doesn't drop, leg stiff</li>
+<p>
+</ul>
+</p>
+
+<strong>Knee</strong>:
+<ul>
+<li>Support knee (slightly flexed), grasp ankle, flex/extend knee</li>
+<li>Can also do <strong>roll test</strong>: Roll thigh side to side (observe foot - normally lags behind, with spasticity moves with thigh)</li>
+<p>
+</ul>
+</p>
+
+<strong>Ankle</strong>:
+<ul>
+<li>Support calf, grasp forefoot, dorsiflex/plantarflex ankle quickly</li>
+<p>
+</ul>
+</p>
+
+<strong>Ankle clonus</strong> (test if increased tone suspected):
+<ul>
+<li>Support knee (slightly flexed), grasp forefoot</li>
+<li><strong>Briskly dorsiflex ankle</strong> and maintain pressure</li>
+<li><strong>Clonus</strong>: Rhythmic oscillations (plantarflexion/dorsiflexion) - <strong>UMN sign</strong></li>
+<li><strong>Sustained clonus</strong>: >5 beats = <strong>abnormal</strong> (UMN)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>3. POWER (MRC Grading 0-5)</h4>
+
+<strong>Hip flexion</strong> (L1-L2 - iliopsoas):
+<ul>
+<li>"Lift your leg up off the bed. Don't let me push it down."</li>
+<li>Place hand on thigh, push down</li>
+<p>
+</ul>
+</p>
+
+<strong>Hip extension</strong> (L4-L5, S1 - gluteus maximus):
+<ul>
+<li>"Push your leg down into the bed."</li>
+<li>Place hand under thigh, patient pushes down</li>
+<p>
+</ul>
+</p>
+
+<strong>Knee extension</strong> (L3-L4 - quadriceps):
+<ul>
+<li>"Straighten your knee. Don't let me bend it."</li>
+<li>Quadriceps muscle</li>
+<li><strong>L3/L4 root lesion</strong> → weakness, reduced knee jerk</li>
+<p>
+</ul>
+</p>
+
+<strong>Knee flexion</strong> (L5, S1 - hamstrings):
+<ul>
+<li>"Bend your knee. Don't let me straighten it."</li>
+<p>
+</ul>
+</p>
+
+<strong>Ankle dorsiflexion</strong> (L4-L5 - tibialis anterior):
+<ul>
+<li>"Pull your foot up towards you. Don't let me push it down."</li>
+<li><strong>L5 root lesion</strong> or <strong>common peroneal nerve palsy</strong> → <strong>foot drop</strong> (cannot dorsiflex)</li>
+<p>
+</ul>
+</p>
+
+<strong>Ankle plantarflexion</strong> (S1-S2 - gastrocnemius):
+<ul>
+<li>"Push your foot down like pressing a pedal. Don't let me pull it up."</li>
+<li>Very strong muscle - test by asking patient to stand on tiptoes (if able)</li>
+<p>
+</ul>
+</p>
+
+<strong>Great toe extension</strong> (L5 - extensor hallucis longus):
+<ul>
+<li>"Point your big toe to the ceiling. Don't let me push it down."</li>
+<li><strong>L5 radiculopathy</strong> → weakness great toe extension (sensitive sign)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>4. REFLEXES</h4>
+
+<strong>Lower limb reflexes</strong>:
+
+<ol>
+<li><strong>Knee jerk</strong> (L3-L4 - patellar reflex):</li>
+<p>
+</ol>
+   - Patient lying or sitting (knee flexed, relaxed)
+   - Strike patellar tendon just below patella
+   - Observe quadriceps contraction, leg extension
+   - <strong>Reinforcement</strong> (if absent): Patient interlocks fingers and pulls
+</p>
+
+<ol>
+<li><strong>Ankle jerk</strong> (S1-S2 - Achilles reflex):</li>
+<p>
+</ol>
+   - <strong>Method 1</strong> (patient lying): Flex hip and knee, externally rotate leg (leg in figure-4 position), dorsiflex ankle slightly, strike Achilles tendon
+   - <strong>Method 2</strong> (patient kneeling): Patient kneels on chair, feet hanging off edge, strike Achilles tendon
+   - Observe plantarflexion
+   - <strong>Absent</strong>: S1 radiculopathy, peripheral neuropathy (diabetes, alcohol)
+</p>
+
+<ol>
+<li><strong>Plantar reflex</strong> (Babinski test):</li>
+<p>
+</ol>
+   - <strong>Stroke lateral sole of foot</strong> with sharp object (orange stick end of tendon hammer)
+   - Start at heel, go along lateral border, curve medially at ball of foot
+   - Observe <strong>great toe</strong>:
+     - <strong>Flexor</strong> (downgoing) = <strong>Normal</strong>
+     - <strong>Extensor</strong> (upgoing) with fanning of other toes = <strong>Babinski positive</strong> = <strong>UMN lesion</strong>
+   - <strong>Note</strong>: Newborns have extensor plantar (normal until 12-18 months)
+   - Withdraw response (patient pulls foot away) ≠ Babinski
+</p>
+
+<strong>Document</strong>: "Knee jerks ++, ankle jerks +, plantar reflexes flexor bilaterally." "Brisk knee jerks (+++), ankle clonus, extensor plantar left leg (Babinski positive)."
+
+<hr>
+
+<h4>5. SENSATION</h4>
+
+<strong>Light touch</strong> (dermatomes):
+<ul>
+<li><strong>L1</strong>: Inguinal region</li>
+<li><strong>L2</strong>: Anterior thigh</li>
+<li><strong>L3</strong>: Medial knee</li>
+<li><strong>L4</strong>: Medial malleolus</li>
+<li><strong>L5</strong>: Dorsum of foot, between 1st and 2nd toe</li>
+<li><strong>S1</strong>: Lateral foot, sole</li>
+<li><strong>S2-S4</strong>: Perineum (saddle area - cauda equina)</li>
+<p>
+</ul>
+</p>
+
+<strong>Proprioception</strong>:
+<ul>
+<li>Hold sides of great toe, move up/down</li>
+<p>
+</ul>
+</p>
+
+<strong>Vibration</strong>:
+<ul>
+<li>Tuning fork on medial malleolus, then tibial tuberosity if impaired</li>
+<p>
+</ul>
+</p>
+
+<strong>Pinprick</strong> (if indicated)
+
+<hr>
+
+<h4>6. COORDINATION</h4>
+
+<strong>Heel-shin test</strong>:
+<ul>
+<li>"Lift your leg up, touch my finger with your heel, then run your heel down your shin from knee to ankle. Repeat."</li>
+<li><strong>Observe for</strong>: Intention tremor, past-pointing, irregular jerky movements (cerebellar)</li>
+<p>
+</ul>
+</p>
+
+<strong>Alternatively</strong> (less commonly tested in lower limb):
+<ul>
+<li>Rapid foot tapping (equivalent to dysdiadochokinesia)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Closing</strong>:
+<p>
+"Thank you. To complete my examination, I would like to assess your gait, examine the upper limbs and cranial nerves, and perform fundoscopy."
+</p>
+
+<hr>
+
+<h2>5. GAIT EXAMINATION</h2>
+
+<strong>Essential part of neurological examination</strong> (often high-yield in OSCE)
+
+<strong>Opening</strong>: "I'd like to watch you walk. Walk to the end of the room, turn around, and walk back."
+
+<strong>Observe</strong>:
+
+<h3>Normal Gait</h3>
+
+<ul>
+<li>Heel strike → midstance → toe-off → swing</li>
+<li>Arm swing (symmetrical)</li>
+<li>Stride length equal</li>
+<li>Base (width between feet) normal (10-15cm)</li>
+<p>
+</ul>
+</p>
+
+<h3>Abnormal Gaits</h3>
+
+<strong>1. Hemiplegic Gait</strong> (UMN - stroke):
+<ul>
+<li><strong>Affected leg</strong>: Extended, circumducts (swings out in arc)</li>
+<li><strong>Affected arm</strong>: Flexed, adducted, no arm swing</li>
+<li>Drags toes</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Parkinsonian Gait</strong>:
+<ul>
+<li><strong>Shuffling</strong> (short steps)</li>
+<li><strong>Reduced arm swing</strong></li>
+<li><strong>Stooped posture</strong></li>
+<li><strong>Festinating</strong> (accelerating, difficulty stopping)</li>
+<li><strong>Freezing</strong> (difficulty initiating steps)</li>
+<li><strong>Reduced turning</strong> (en bloc - body turns as unit)</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Ataxic Gait</strong> (Cerebellar):
+<ul>
+<li><strong>Broad-based</strong> (wide)</li>
+<li><strong>Unsteady, lurching</strong></li>
+<li>Veers to side of lesion</li>
+<li>Difficulty tandem walking (heel-to-toe)</li>
+<p>
+</ul>
+</p>
+
+<strong>4. High-stepping Gait</strong> (Foot drop - L5 radiculopathy, common peroneal nerve palsy):
+<ul>
+<li>Lifts knee high to prevent toes dragging</li>
+<li>Foot slaps down</li>
+<li><strong>Bilateral</strong>: Peripheral neuropathy</li>
+<p>
+</ul>
+</p>
+
+<strong>5. Waddling Gait</strong> (Proximal muscle weakness - myopathy):
+<ul>
+<li><strong>Trendelenburg</strong> (pelvis drops on opposite side with each step)</li>
+<li>Waddles side-to-side</li>
+<li>Difficulty rising from chair</li>
+<p>
+</ul>
+</p>
+
+<strong>6. Scissoring Gait</strong> (Spastic paraplegia):
+<ul>
+<li>Legs stiff, adducted (cross over)</li>
+<li>Toes drag</li>
+<p>
+</ul>
+</p>
+
+<strong>7. Stamping Gait</strong> (Sensory ataxia - posterior column loss):
+<ul>
+<li>Watches feet when walking (visual compensation for lost proprioception)</li>
+<li>High steps, stamps feet</li>
+<li><strong>Romberg positive</strong> (see below)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Special tests</strong>:
+
+<strong>Tandem gait</strong> (heel-to-toe):
+<ul>
+<li>"Walk in a straight line, placing your heel directly in front of your toes each step."</li>
+<li><strong>Impaired</strong>: Cerebellar ataxia, posterior column loss, alcohol intoxication</li>
+<p>
+</ul>
+</p>
+
+<strong>Romberg test</strong> (posterior column function):
+<ul>
+<li>"Stand with your feet together and arms by your side. Now close your eyes."</li>
+<li>Stand close to catch patient if falls</li>
+<li><strong>Positive</strong> (sways/falls with eyes closed): <strong>Sensory ataxia</strong> (posterior column loss - B12 deficiency, tabes dorsalis, peripheral neuropathy)</li>
+<p>
+</ul>
+  - Relies on vision to compensate for lost proprioception
+</p>
+<ul>
+<li><strong>Negative</strong> (stable with eyes closed): Vestibular ataxia (sways with eyes open and closed)</li>
+<li><strong>Cerebellar ataxia</strong>: Sways with eyes open, worse with eyes closed (but not diagnostic)</li>
+<p>
+</ul>
+</p>
+
+<strong>Tip-toe walking</strong>: Tests S1 (plantarflexion)
+
+<strong>Heel walking</strong>: Tests L4-L5 (dorsiflexion)
+
+<hr>
+
+<h2>6. COMMON CAUSES OF WEAKNESS (Differential by Pattern)</h2>
+
+<h3>Acute Hemiplegia (Sudden Onset)</h3>
+
+<strong>1. Stroke</strong> (ischemic or hemorrhagic):
+<ul>
+<li>Most common</li>
+<li>Vascular risk factors</li>
+<li><strong>Management</strong>: See Acute Stroke section above</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Todd's paralysis</strong> (post-ictal):
+<ul>
+<li>Transient hemiparesis after focal seizure</li>
+<li>Resolves within 24-48 hours</li>
+<li>Diagnosis of exclusion (image to rule out stroke)</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Hemiplegic migraine</strong>:
+<ul>
+<li>Rare migraine variant</li>
+<li>Hemiparesis during aura (reversible)</li>
+<li>Family history often present</li>
+<li>Diagnosis of exclusion (image to rule out stroke)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Acute Ascending Weakness</h3>
+
+<strong>Guillain-Barré Syndrome</strong>: See <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s section above
+
+<hr>
+
+<h3>Fluctuating Weakness (Fatigable)</h3>
+
+<strong>Myasthenia Gravis</strong>:
+
+<strong>Presentation</strong>:
+<ul>
+<li><strong>Fatigable weakness</strong> (worse with repetition, improves with rest)</li>
+<li><strong>Ptosis</strong> (drooping eyelid, worse as day progresses)</li>
+<li><strong>Diplopia</strong> (double vision)</li>
+<li><strong>Bulbar symptoms</strong>: Dysarthria, dysphagia</li>
+<li><strong>Proximal limb weakness</strong> (difficulty rising from chair)</li>
+<li><strong>Respiratory muscles</strong> (can cause crisis - ICU, intubation)</li>
+<li><strong>No sensory symptoms</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Investigations</strong>:
+<ul>
+<li><strong>Acetylcholine receptor antibodies</strong> (80% positive)</li>
+<li><strong>Anti-MuSK antibodies</strong> (if AChR negative)</li>
+<li><strong>CT chest</strong>: Thymoma (15% - thymus hyperplasia common)</li>
+<li><strong>Tensilon test</strong> (edrophonium): Improvement in ptosis/weakness after IV edrophonium (rarely done now)</li>
+<li><strong>Electromyography</strong>: Decremental response to repetitive nerve stimulation</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Acetylcholinesterase inhibitors</strong>: Pyridostigmine 60mg TDS-QID (symptomatic relief)</li>
+<li><strong>Immunosuppression</strong>: Prednisolone, azathioprine</li>
+<li><strong>Thymectomy</strong> if thymoma present (improves outcomes even without thymoma)</li>
+<li><strong>Myasthenic crisis</strong> (respiratory failure): ICU, intubation, plasmapheresis or IVIG</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Progressive Weakness (Chronic)</h3>
+
+<strong>Motor Neuron Disease (MND) / Amyotrophic Lateral Sclerosis (ALS)</strong>:
+
+<strong>Presentation</strong>:
+<ul>
+<li><strong>Mixed UMN + LMN signs</strong> (pathognomonic)</li>
+<li><strong>Progressive weakness</strong> (months-years)</li>
+<li><strong>Fasciculations</strong> (widespread)</li>
+<li><strong>Muscle wasting</strong></li>
+<li><strong>NO sensory loss</strong> (pure motor)</li>
+<li><strong>Bulbar involvement</strong>: Dysarthria, dysphagia (50%)</li>
+<li><strong>Respiratory involvement</strong> (eventually - leading cause of death)</li>
+<p>
+</ul>
+</p>
+
+<strong>Investigations</strong>:
+<ul>
+<li><strong>EMG</strong>: Widespread denervation, fasciculations</li>
+<li><strong>Exclude mimics</strong>: MRI spine (cord compression), B12, thyroid, HIV</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Riluzole</strong>: Slows progression (3-6 months survival benefit)</li>
+<li><strong>Multidisciplinary</strong>: Neurology, respiratory, dietitian, speech therapy, palliative care</li>
+<li><strong>NIV</strong> (non-invasive ventilation): Improves quality of life, survival</li>
+<li><strong>PEG feeding</strong>: If dysphagia, weight loss</li>
+<li><strong>Prognosis</strong>: Median survival 3-5 years from diagnosis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>7. COMMON IMG MISTAKES</h2>
+
+<ol>
+<li><strong>Not recognizing acute stroke time window</strong>:</li>
+<p>
+</ol>
+   - <strong>Thrombolysis window 4.5 hours</strong> - "TIME IS BRAIN"
+   - Check <strong>last seen well time</strong>, not when patient noticed symptoms
+</p>
+
+<ol>
+<li><strong>Not using ROSIER score</strong>:</li>
+<p>
+</ol>
+   - Differentiates stroke from mimics (seizure, hypoglycemia)
+   - Prevents unnecessary thrombolysis
+</p>
+
+<ol>
+<li><strong>Delaying imaging in suspected spinal cord compression</strong>:</li>
+<p>
+</ol>
+   - <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> MRI + high-dose steroids</strong> (dexamethasone 16mg)
+   - Prognosis depends on speed of treatment (<24-48 hours)
+</p>
+
+<ol>
+<li><strong>Missing cauda equina syndrome</strong>:</li>
+<p>
+</ol>
+   - <strong>Bilateral leg weakness + saddle anesthesia + urinary retention</strong> = cauda equina
+   - <strong>Always do PR exam</strong> (reduced anal tone - critical finding)
+   - <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> surgical decompression</strong> (<48 hours)
+</p>
+
+<ol>
+<li><strong>Not monitoring respiratory function in GBS</strong>:</li>
+<p>
+</ol>
+   - <strong>Serial FVC</strong> (forced vital capacity) every 4-6 hours
+   - <strong>Intubate if FVC <15-20 ml/kg</strong> or rapid decline
+   - 25% need ventilation
+</p>
+
+<ol>
+<li><strong>Confusing UMN and LMN signs</strong>:</li>
+<p>
+</ol>
+   - <strong>UMN</strong>: Increased tone, brisk reflexes, extensor plantar, NO wasting
+   - <strong>LMN</strong>: Decreased tone, reduced reflexes, wasting, fasciculations
+</p>
+
+<ol>
+<li><strong>Not testing for pronator drift</strong>:</li>
+<p>
+</ol>
+   - <strong>Sensitive sign</strong> of UMN weakness (more sensitive than power testing)
+   - Arm drifts down and pronates
+</p>
+
+<ol>
+<li><strong>Incorrect MRC grading</strong>:</li>
+<p>
+</ol>
+   - <strong>Grade 4</strong>: Movement against resistance (NOT just against gravity)
+   - <strong>Grade 3</strong>: Movement against gravity only
+</p>
+
+<ol>
+<li><strong>Not checking plantar reflex correctly</strong>:</li>
+<p>
+</ol>
+   - Stroke <strong>lateral sole</strong> (not medial - causes withdraw response)
+   - Observe <strong>great toe</strong> (upgoing = Babinski positive = UMN)
+</p>
+
+<ol>
+<li><strong>Missing myasthenia gravis</strong>:</li>
+<p>
+</ol>
+    - <strong>Fatigable weakness</strong> is key (ask about variation during day)
+    - Ptosis worse as day progresses
+    - Acetylcholine receptor antibodies, thymoma
+</p>
+
+<hr>
+
+<h2>OSCE PRACTICE STATIONS</h2>
+
+<h3>OSCE Station 1: Upper Limb Neurological Examination</h3>
+
+<strong>Scenario</strong>:
+<p>
+You are the medical officer in the neurology clinic. A 58-year-old man has been experiencing weakness in his right arm for the past 6 months. Please perform a neurological examination of the upper limbs.
+</p>
+
+<strong>Findings</strong> (for examiner):
+<ul>
+<li>Right upper limb: Wasting of small hand muscles, fasciculations, reduced tone, weakness finger abduction 4/5, reduced reflexes (biceps/triceps +), normal sensation</li>
+<li>Left upper limb: Normal tone, brisk reflexes (biceps/triceps +++), power 5/5, extensor plantar</li>
+<li><strong>Diagnosis</strong>: Motor neuron disease (ALS) - mixed UMN (left arm brisk reflexes) + LMN (right arm wasting, fasciculations, reduced reflexes)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Model Performance</strong> (8 minutes):
+
+<strong>Opening</strong> (30 sec):
+<p>
+"Hello, I'm Dr. [Name]. I've been asked to examine the movement and sensation in your arms. Is that okay? Could you roll up your sleeves and sit comfortably please?"
+</p>
+
+<strong>Inspection</strong> (1 min):
+<ul>
+<li>Stand back, observe both arms</li>
+<li>Note: "I can see some wasting of the small muscles of the right hand, particularly the interossei. I can also see some fasciculations - small muscle twitches - in the right forearm."</li>
+<li>"Could you hold your arms out in front of you, palms up, and close your eyes?" (Pronator drift test)</li>
+<li>Observe for 20 seconds - note any drift</li>
+<p>
+</ul>
+</p>
+
+<strong>Tone</strong> (1 min):
+<p>
+"I'm going to move your arms. Try to stay relaxed and let me do all the work."
+</p>
+<ul>
+<li>Test elbows (flex/extend, roll), wrists bilaterally</li>
+<li>Note: "Tone is reduced in the right arm. Tone is normal in the left arm."</li>
+<p>
+</ul>
+</p>
+
+<strong>Power</strong> (3 min):
+<p>
+"I'm going to test the strength in your arms."
+</p>
+<ul>
+<li>Test systematically: Shoulder abduction (C5), elbow flexion (C5-6), elbow extension (C7), wrist extension (C6), finger extension (C7), grip strength (C8), finger abduction (T1), thumb abduction (C8-T1)</li>
+<li>Compare both sides</li>
+<li>Note: "Right arm: Shoulder abduction 5/5, elbow flexion 5/5, elbow extension 5/5, wrist extension 5/5, grip 5/5, but finger abduction is reduced at 4/5 bilaterally. Left arm: Power 5/5 throughout."</li>
+<p>
+</ul>
+</p>
+
+<strong>Reflexes</strong> (1.5 min):
+<ul>
+<li>Test biceps, triceps, supinator bilaterally</li>
+<li>Note: "Reflexes are reduced on the right - biceps and triceps both +. On the left, reflexes are brisk - biceps and triceps +++."</li>
+<p>
+</ul>
+</p>
+
+<strong>Sensation</strong> (1 min):
+<p>
+"I'm going to test the feeling in your arms. Close your eyes and say 'yes' when you feel me touch you."
+</p>
+<ul>
+<li>Test light touch in dermatomes (C5-T1) bilaterally</li>
+<li>Test proprioception (index finger up/down)</li>
+<li>Note: "Sensation to light touch and proprioception is intact bilaterally."</li>
+<p>
+</ul>
+</p>
+
+<strong>Coordination</strong> (30 sec):
+<p>
+"Touch your nose, then touch my finger. Keep going back and forth."
+</p>
+<ul>
+<li>Finger-nose test bilaterally</li>
+<li>Note: "Coordination is intact bilaterally."</li>
+<p>
+</ul>
+</p>
+
+<strong>Closing</strong> (30 sec):
+<p>
+"Thank you. To complete my examination, I would like to examine the lower limbs, cranial nerves, and assess your gait."
+</p>
+
+<hr>
+
+<strong>Summary to Examiner</strong> (1 min):
+
+<p>
+"This is a neurological examination of the upper limbs in a 58-year-old man with right arm weakness.
+</p>
+
+<strong>Inspection</strong>: Wasting of small hand muscles (interossei) on the right, fasciculations visible in right forearm. No pronator drift.
+
+<strong>Tone</strong>: Reduced tone right arm, normal left arm.
+
+<strong>Power</strong>: Right arm power 5/5 shoulder/elbow/wrist, but reduced finger abduction 4/5. Left arm power 5/5 throughout.
+
+<strong>Reflexes</strong>: Reduced on right (biceps/triceps +), brisk on left (biceps/triceps +++).
+
+<strong>Sensation</strong>: Intact to light touch and proprioception bilaterally.
+
+<strong>Coordination</strong>: Intact bilaterally.
+
+<strong>Interpretation</strong>:
+<p>
+These findings demonstrate <strong>mixed UMN and LMN signs</strong>:
+</p>
+<ul>
+<li><strong>LMN signs right arm</strong>: Wasting, fasciculations, reduced tone, reduced reflexes</li>
+<li><strong>UMN signs left arm</strong>: Brisk reflexes</li>
+<p>
+</ul>
+</p>
+
+<p>
+This pattern, combined with progressive weakness, is highly suggestive of <strong>Motor Neuron Disease (Amyotrophic Lateral Sclerosis)</strong>.
+</p>
+
+<p>
+Key features of MND:
+</p>
+<ul>
+<li>Mixed UMN + LMN signs (pathognomonic)</li>
+<li>Fasciculations</li>
+<li>Progressive weakness</li>
+<li>No sensory loss</li>
+<p>
+</ul>
+</p>
+
+<strong>Investigations I would request</strong>:
+<ul>
+<li>EMG and nerve conduction studies (widespread denervation, fasciculations)</li>
+<li>MRI brain and spine (exclude structural lesions - cord compression)</li>
+<li>Bloods: FBC, UEC, LFTs, TSH, B12 (exclude mimics)</li>
+<li>Respiratory function tests (FVC - baseline for monitoring)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li>Neurology referral for confirmation</li>
+<li>Multidisciplinary team (neurology, respiratory, dietitian, speech therapy, palliative care)</li>
+<li>Riluzole (slows progression)</li>
+<li>NIV if respiratory involvement</li>
+<li>PEG if dysphagia</li>
+<li>Prognosis discussion (median survival 3-5 years)</li>
+<p>
+</ul>
+</p>
+
+<p>
+To complete examination: Lower limbs (may have similar mixed signs), cranial nerves (bulbar involvement?), gait."
+</p>
+
+<hr>
+
+<h3>OSCE Station 2: Acute Stroke Assessment and Management</h3>
+
+<strong>Scenario</strong>:
+<p>
+You are the medical officer in the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department. A 68-year-old woman was brought in by ambulance with sudden onset right-sided weakness and slurred speech. Onset was 2 hours ago. Take a focused history and explain your assessment and management plan.
+</p>
+
+<strong>Task</strong> (8 minutes):
+<ul>
+<li>Focused stroke history</li>
+<li>ROSIER score assessment</li>
+<li>Explain thrombolysis eligibility and management</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Model Performance</strong>:
+
+<strong>Opening</strong> (30 sec):
+<p>
+"Hello, I'm Dr. [Name]. I understand you've had sudden weakness on your right side. I'd like to ask some questions to help work out what's happened. Is that okay?"
+</p>
+
+<strong>Note to examiner</strong>: "Patient has expressive dysphasia (difficulty speaking) - I will ask simple yes/no questions."
+
+<strong>Time of Onset</strong> (1 min - CRITICAL):
+<p>
+"What time did this start? When were you last completely normal?"
+</p>
+<ul>
+<li>Family: "She was fine at breakfast at 8am. At 10am I found her on the floor, unable to speak properly, right arm and leg weak."</li>
+<li><strong>Last seen well: 8am. Found 10am. Now 12 noon. Time from onset: 2-4 hours</strong> (assuming onset 8am-10am)</li>
+<li><strong>✓ Within thrombolysis window (4.5 hours)</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Symptoms</strong> (1.5 min):
+<p>
+"Can you tell me what symptoms you have?"
+</p>
+<ul>
+<li>Patient: Tries to speak, slurred, frustrated</li>
+<li>Family: "She can't speak properly. Her right arm and leg are weak. The right side of her face is drooping."</li>
+<p>
+</ul>
+</p>
+
+<strong>ROSIER Score Assessment</strong> (1 min):
+
+<strong>Loss of consciousness</strong>: "Did you pass out or black out?"
+<ul>
+<li>Family: "No, she was awake when I found her." (0 points)</li>
+<p>
+</ul>
+</p>
+
+<strong>Seizure</strong>: "Any shaking or jerking movements?"
+<ul>
+<li>Family: "No." (0 points)</li>
+<p>
+</ul>
+</p>
+
+<strong>Asymmetric face weakness</strong>: Observe - right facial droop visible (+1 point)
+
+<strong>Asymmetric arm weakness</strong>: "Can you lift both arms up?"
+<ul>
+<li>Right arm drifts down (+1 point)</li>
+<p>
+</ul>
+</p>
+
+<strong>Asymmetric leg weakness</strong>: "Can you lift your legs off the bed?"
+<ul>
+<li>Right leg weaker (+1 point)</li>
+<p>
+</ul>
+</p>
+
+<strong>Speech disturbance</strong>: Dysarthria/dysphasia evident (+1 point)
+
+<strong>Visual field defect</strong>: "Can you see my fingers on both sides?"
+<ul>
+<li>Unable to assess reliably due to dysphasia, assume not present (0 points)</li>
+<p>
+</ul>
+</p>
+
+<strong>ROSIER Score: +4</strong> (Loss of consciousness -1 NO, Seizure -1 NO, Face +1, Arm +1, Leg +1, Speech +1) = <strong>Stroke highly likely</strong>
+
+<strong>Risk Factors</strong> (1 min):
+<p>
+"Do you have any medical conditions?"
+</p>
+<ul>
+<li>Family: "High blood pressure, high cholesterol, atrial fibrillation. Takes warfarin."</li>
+<li><strong>⚠ Warfarin = potential contraindication to thrombolysis</strong> (need to check INR)</li>
+<p>
+</ul>
+</p>
+
+<strong>Medications</strong>:
+<ul>
+<li>"Warfarin, amlodipine, atorvastatin."</li>
+<p>
+</ul>
+</p>
+
+<strong>Brief Review of Contraindications</strong> (1 min):
+<p>
+"Any recent surgery, trauma, bleeding?"
+</p>
+<ul>
+<li>Family: "No."</li>
+<p>
+</ul>
+"Any previous stroke or brain hemorrhage?"
+</p>
+<ul>
+<li>Family: "No."</li>
+<p>
+</ul>
+"Any cancer or bleeding problems?"
+</p>
+<ul>
+<li>Family: "No."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Explanation to Patient/Family</strong> (2.5 min):
+
+<p>
+"Based on what you've told me and what I can see, I believe you've had a <strong>stroke</strong>. A stroke happens when the blood supply to part of the brain is blocked, causing brain cells to be damaged. This is causing the weakness on your right side and difficulty speaking.
+</p>
+
+<p>
+The good news is that you've arrived within the time window where we can offer <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> treatment.
+</p>
+
+<strong>What we'll do now</strong>:
+
+<strong>1. <span style="color: #e74c3c; font-weight: bold;">URGENT</span> CT scan of your brain</strong>:
+<p>
+We need to do this immediately to make sure there's no bleeding in the brain. This takes about 10 minutes.
+</p>
+
+<strong>2. Blood tests</strong>:
+<p>
+We need to check your blood count, kidney function, and importantly, your blood clotting (because you take warfarin).
+</p>
+
+<strong>3. Potential clot-busting medication (thrombolysis)</strong>:
+<p>
+If the CT scan shows no bleeding, and your blood clotting is not too high, we can give you a medication through a drip that dissolves the blood clot blocking the blood vessel in your brain. This is called <strong>thrombolysis</strong> or <strong>tPA</strong>.
+</p>
+
+<strong>Important points about this treatment</strong>:
+<ul>
+<li>It needs to be given within 4.5 hours of the stroke starting - you're within this window</li>
+<li>It significantly improves the chance of recovery</li>
+<li><strong>Risk</strong>: There is a 6% risk of bleeding in the brain from this treatment</li>
+<li>However, <strong>without treatment, you're likely to have permanent weakness and speech difficulty</strong></li>
+<li>We need to give it as soon as possible - "time is brain" - every minute counts</li>
+<p>
+</ul>
+</p>
+
+<strong>Your warfarin is a concern</strong> - we need to check your INR (blood clotting level). If it's too high (>1.7), we cannot give the clot-busting medication as it would be too dangerous. We may be able to reverse the warfarin first.
+
+<strong>4. Stroke unit admission</strong>:
+<p>
+You'll be admitted to our specialized stroke unit where you'll be closely monitored.
+</p>
+
+<strong>5. Other treatments</strong>:
+<p>
+Depending on the CT scan, you may also be eligible for a procedure called <strong>thrombectomy</strong> - where we physically remove the clot using a catheter. This can be done up to 24 hours after the stroke in selected patients.
+</p>
+
+<p>
+Do you have any questions?"
+</p>
+
+<hr>
+
+<strong>Summary to Examiner</strong> (1 min):
+
+<p>
+"68-year-old woman with <strong>acute ischemic stroke</strong>:
+</p>
+
+<strong>Presentation</strong>:
+<ul>
+<li>Sudden onset right hemiplegia (face, arm, leg), expressive dysphasia</li>
+<li><strong>Time from onset: 2-4 hours</strong> (last seen well 8am, found symptomatic 10am, now 12 noon)</li>
+<li>✓ Within thrombolysis window (4.5 hours)</li>
+<p>
+</ul>
+</p>
+
+<strong>ROSIER Score: +4</strong> (Face +1, Arm +1, Leg +1, Speech +1, no LOC, no seizure) = <strong>Stroke likely</strong>
+
+<strong>Risk factors</strong>: Hypertension, hyperlipidemia, atrial fibrillation, on warfarin
+
+<strong>⚠ Potential contraindication</strong>: On warfarin (need INR - if >1.7, contraindication to thrombolysis)
+
+<strong>Immediate Management</strong>:
+
+<ol>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> non-contrast CT brain</strong> (rule out hemorrhage)</li>
+<p>
+</ol>
+</p>
+
+<ol>
+<li><strong>Bloods</strong>:</li>
+<p>
+</ol>
+   - FBC, UEC, LFTs
+   - <strong>Coagulation (INR)</strong> - CRITICAL (if >1.7, cannot thrombolyse)
+   - Glucose (exclude hypoglycemia)
+   - Group and hold
+   - Troponin (cardiac source)
+</p>
+
+<ol>
+<li><strong>ECG</strong> (confirm AF)</li>
+<p>
+</ol>
+</p>
+
+<ol>
+<li><strong>If eligible for thrombolysis</strong>:</li>
+<p>
+</ol>
+   - CT shows NO hemorrhage
+   - INR ≤1.7
+   - No other contraindications
+   - <strong>Alteplase 0.9mg/kg IV</strong> (10% bolus, 90% over 1 hour)
+   - <strong>If INR >1.7</strong>: May consider reversal with Prothrombinex first (discuss with neurology), but delays treatment
+</p>
+
+<ol>
+<li><strong>Consider thrombectomy</strong> (if large vessel occlusion):</li>
+<p>
+</ol>
+   - CT angiography to identify occlusion
+   - Transfer to thrombectomy-capable center if needed
+</p>
+
+<ol>
+<li><strong>Stroke unit admission</strong>:</li>
+<p>
+</ol>
+   - Specialized nursing, monitoring
+   - Swallow screen before oral intake
+   - Permissive hypertension (allow BP <220/120)
+   - DVT prophylaxis (compression stockings)
+   - Early mobilization
+</p>
+
+<ol>
+<li><strong>Secondary prevention</strong> (after acute phase):</li>
+<p>
+</ol>
+   - Antiplatelet: Aspirin + clopidogrel x 21 days, then aspirin alone (if NOT continuing anticoagulation)
+   - <strong>Anticoagulation for AF</strong>: Resume warfarin or switch to DOAC (2-14 days post-stroke)
+   - Statin: Atorvastatin 80mg
+   - BP control
+   - Rehabilitation
+</p>
+
+<strong>Prognosis</strong>: Depends on size of stroke, treatment received. Thrombolysis improves outcomes significantly if given early. Will need intensive rehabilitation (physio, OT, speech therapy)."
+
+<hr>
+
+<h2>SUMMARY: KEY TAKEAWAYS FOR ICRP</h2>
+
+<h3><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s - <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Weakness</h3>
+
+<ol>
+<li><strong>Sudden onset hemiplegia</strong> → <strong>STROKE</strong> (thrombolysis <4.5 hours)</li>
+<li><strong>Ascending weakness + areflexia</strong> → <strong>GBS</strong> (respiratory monitoring, ICU)</li>
+<li><strong>Bilateral leg weakness + sensory level + bowel/bladder</strong> → <strong>Spinal cord compression</strong> (<span style="color: #e74c3c; font-weight: bold;">URGENT</span> MRI, steroids, surgery)</li>
+<li><strong>Bilateral leg weakness + saddle anesthesia + urinary retention</strong> → <strong>Cauda equina</strong> (PR exam, <span style="color: #e74c3c; font-weight: bold;">URGENT</span> MRI, surgery <48 hours)</li>
+<p>
+</ol>
+</p>
+
+<h3>UMN vs LMN Signs</h3>
+
+<p>
+| Sign | UMN | LMN |
+|------|-----|-----|
+| Tone | ↑ Spastic | ↓ Flaccid |
+| Reflexes | ↑ Brisk, clonus | ↓ Reduced/absent |
+| Plantar | Extensor (Babinski +) | Flexor |
+| Wasting | Absent | Present |
+| Fasciculations | Absent | Present |
+</p>
+
+<h3>Patterns of Weakness</h3>
+
+<ul>
+<li><strong>Hemiplegia</strong> → Brain (stroke)</li>
+<li><strong>Paraplegia</strong> → Spinal cord</li>
+<li><strong>Quadriplegia</strong> → Cervical cord/brainstem</li>
+<li><strong>Proximal</strong> → Muscle (myopathy), NMJ (myasthenia)</li>
+<li><strong>Distal</strong> → Peripheral neuropathy</li>
+<li><strong>Mixed UMN + LMN</strong> → Motor neuron disease</li>
+<p>
+</ul>
+</p>
+
+<h3>MRC Power Grading</h3>
+
+<p>
+0 = No contraction
+1 = Flicker
+2 = Movement (gravity eliminated)
+3 = Movement against gravity
+4 = Movement against resistance
+5 = Normal
+</p>
+
+<h3>Stroke Management</h3>
+
+<strong>Time is brain</strong> - Thrombolysis window <strong>4.5 hours</strong>
+<ul>
+<li><strong>ROSIER score</strong> (differentiate stroke from mimic)</li>
+<li><strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> CT</strong> (rule out hemorrhage)</li>
+<li><strong>Alteplase 0.9mg/kg</strong> if eligible</li>
+<li><strong>Contraindications</strong>: Hemorrhage, time >4.5 hours, INR >1.7, recent surgery</li>
+<li><strong>Thrombectomy</strong> if large vessel occlusion (<24 hours)</li>
+<p>
+</ul>
+</p>
+
+<h3>Common IMG Mistakes to AVOID</h3>
+
+<ol>
+<li><strong>Missing thrombolysis window</strong> (ask last seen well time)</li>
+<li><strong>Not checking INR</strong> before thrombolysis</li>
+<li><strong>Delaying spinal cord compression imaging/treatment</strong> (irreversible if >48 hours)</li>
+<li><strong>Missing cauda equina</strong> (not doing PR exam, missing saddle anesthesia)</li>
+<li><strong>Not monitoring FVC in GBS</strong> (respiratory failure in 25%)</li>
+<li><strong>Confusing UMN and LMN signs</strong></li>
+<li><strong>Not testing pronator drift</strong> (sensitive for UMN weakness)</li>
+<li><strong>Incorrect MRC grading</strong> (grade 4 = against resistance)</li>
+<li><strong>Incorrect plantar reflex technique</strong> (stroke lateral sole)</li>
+<li><strong>Missing myasthenia</strong> (fatigable weakness, ptosis)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<strong>Document Complete: ~18,500 words</strong>
+
+<p>
+This completes the fourth Medicine module document: <strong>Neurology - Weakness and Limb Examination</strong>, covering pattern recognition (UMN vs LMN), <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s (stroke, spinal cord compression, cauda equina, GBS), systematic neurological examination with detailed technique, MRC power grading, gait assessment, common causes of weakness, acute stroke protocols (thrombolysis, thrombectomy), and comprehensive OSCE practice stations following Dr. Amir Soufi's differential-driven approach.
+</p>
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

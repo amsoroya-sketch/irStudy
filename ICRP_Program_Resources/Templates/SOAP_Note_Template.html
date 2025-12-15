@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOAP Note Template</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP Program Resources</span>
+<span>→</span>
+<span>Templates</span>
+</div>
+        
+        <h1>SOAP Note Template</h1>
+
+<h2>What is a SOAP Note?</h2>
+
+<strong>SOAP</strong> is a structured format for clinical documentation widely used in healthcare:
+
+<ul>
+<li><strong>S</strong> - Subjective (Patient's complaint in their own words)</li>
+<li><strong>O</strong> - Objective (Examination findings, vitals, investigations)</li>
+<li><strong>A</strong> - Assessment (Diagnosis or differential diagnosis)</li>
+<li><strong>P</strong> - Plan (Management plan and follow-up)</li>
+<p>
+</ul>
+</p>
+
+<h2>Why Use SOAP Format?</h2>
+
+<ul>
+<li><strong>Systematic</strong>: Ensures nothing is missed</li>
+<li><strong>Clear</strong>: Easy for other healthcare providers to read</li>
+<li><strong>Efficient</strong>: Structured format saves time</li>
+<li><strong>Standard</strong>: Used across Australia and internationally</li>
+<li><strong>Legal</strong>: Proper documentation for medical-legal purposes</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>SOAP Note Template</h2>
+
+<h3>Patient Information Header</h3>
+<pre><code>Patient Name: <strong><em><em></em></strong><strong><em></em></em></strong><em>_</em>_
+<p>
+Date of Birth: <strong><em><em></em></strong><strong><em></em></em></strong><strong><em> Age: </em></strong>__
+MRN/ID: <strong><em><em></em></strong><strong><em></em></em></strong><strong><em><em></em></strong></em>_
+Date/Time: <strong><em><em></em></strong><strong><em></em></em></strong><strong><em></strong></em>
+Location: <strong><em><em></em></strong><strong><em></em></em></strong><strong><em>_</em></strong>
+Provider: <strong><em><em></em></strong><strong><em></em></em></strong><strong><em>_</em></strong>
+</code></pre>
+</p>
+
+<hr>
+
+<h3>S - SUBJECTIVE</h3>
+
+<strong>Chief Complaint (CC):</strong>
+<p>
+[Patient's main complaint in their own words, e.g., "I have chest pain"]
+</p>
+
+<strong>History of Presenting Complaint (HPC):</strong>
+<p>
+[Detailed history using SOCRATES for pain, or chronological narrative]
+</p>
+
+<p>
+For PAIN, use SOCRATES:
+</p>
+<ul>
+<li><strong>S</strong>ite: Where is the pain?</li>
+<li><strong>O</strong>nset: When did it start? Sudden or gradual?</li>
+<li><strong>C</strong>haracter: What does it feel like? (Sharp, dull, burning, crushing, etc.)</li>
+<li><strong>R</strong>adiation: Does it spread anywhere?</li>
+<li><strong>A</strong>ssociations: Any other symptoms? (Nausea, sweating, shortness of breath, etc.)</li>
+<li><strong>T</strong>ime course: Constant or intermittent? Getting better or worse?</li>
+<li><strong>E</strong>xacerbating/Relieving factors: What makes it better or worse?</li>
+<li><strong>S</strong>everity: On scale of 1-10, how severe?</li>
+<p>
+</ul>
+</p>
+
+<p>
+For NON-PAIN complaints:
+</p>
+<ul>
+<li>Onset and duration</li>
+<li>Progression</li>
+<li>Associated symptoms</li>
+<li>Relieving/exacerbating factors</li>
+<li>Previous similar episodes</li>
+<li>Impact on daily activities</li>
+<p>
+</ul>
+</p>
+
+<strong>Past Medical History (PMH):</strong>
+<ul>
+<li>Previous illnesses</li>
+<li>Previous surgeries</li>
+<li>Previous hospitalizations</li>
+<li>Chronic conditions</li>
+<p>
+</ul>
+</p>
+
+<strong>Medications:</strong>
+<ul>
+<li>Current medications (name, dose, frequency)</li>
+<li>Compliance</li>
+<li>Recent changes</li>
+<p>
+</ul>
+</p>
+
+<strong>Allergies:</strong>
+<ul>
+<li>Drug allergies (and reaction)</li>
+<li>Food allergies</li>
+<li>Other allergies</li>
+<p>
+</ul>
+</p>
+
+<strong>Family History (FH):</strong>
+<ul>
+<li>Relevant family medical history</li>
+<li>Focus on hereditary conditions</li>
+<p>
+</ul>
+</p>
+
+<strong>Social History (SH):</strong>
+<ul>
+<li><strong>Smoking:</strong> Never/Ex-smoker/Current (pack-years if applicable)</li>
+<li><strong>Alcohol:</strong> Units per week, CAGE score if relevant</li>
+<li><strong>Recreational drugs:</strong> Type and frequency</li>
+<li><strong>Occupation:</strong> Current work, any relevant exposures</li>
+<li><strong>Living situation:</strong> Who lives with, housing type, support system</li>
+<li><strong>Functional status:</strong> Activities of daily living</li>
+<p>
+</ul>
+</p>
+
+<strong>Review of Systems (ROS):</strong>
+<p>
+[Brief screening - only positive/relevant findings]
+</p>
+<ul>
+<li>General: Fever, fatigue, weight changes</li>
+<li>Cardiovascular: Chest pain, palpitations, orthopnea, PND, leg swelling</li>
+<li>Respiratory: SOB, cough, sputum, wheeze, haemoptysis</li>
+<li>Gastrointestinal: Nausea, vomiting, diarrhea, constipation, abdominal pain</li>
+<li>Genitourinary: Dysuria, frequency, haematuria</li>
+<li>Neurological: Headache, dizziness, weakness, numbness, seizures</li>
+<li>Musculoskeletal: Joint pain, swelling, stiffness</li>
+<li>Skin: Rashes, lesions, changes</li>
+<li>Psychiatric: Mood, anxiety, sleep</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>O - OBJECTIVE</h3>
+
+<strong>Vital Signs:</strong>
+<ul>
+<li>Temperature: <strong>_</strong> °C</li>
+<li>Heart Rate: <strong>_</strong> bpm (regular/irregular)</li>
+<li>Blood Pressure: <strong><em><strong>/</em></strong></strong> mmHg</li>
+<li>Respiratory Rate: <strong>_</strong> breaths/min</li>
+<li>Oxygen Saturation: <strong>_</strong>% (on room air/supplemental O₂)</li>
+<li>Pain Score: <strong>_</strong>/10</li>
+<p>
+</ul>
+</p>
+
+<strong>General Appearance:</strong>
+<p>
+[e.g., Alert, comfortable at rest, no acute distress; OR Appears unwell, in pain, etc.]
+</p>
+
+<strong>Physical Examination:</strong>
+
+<strong>System-specific examination findings:</strong>
+
+<p>
+[Example for cardiovascular complaint:]
+</p>
+<ul>
+<li><strong>CVS:</strong> JVP not elevated. Heart sounds normal S1+S2, no murmurs. Peripheral pulses present and equal. No peripheral oedema.</li>
+<li><strong>Respiratory:</strong> Equal chest expansion. Breath sounds vesicular, no added sounds.</li>
+<li><strong>Abdominal:</strong> Soft, non-tender, no organomegaly, bowel sounds present.</li>
+<p>
+</ul>
+</p>
+
+<p>
+[Include all relevant systems examined; note normal findings too]
+</p>
+
+<strong>Investigations:</strong>
+<p>
+[List any tests done and results]
+</p>
+<ul>
+<li><strong>ECG:</strong> [findings]</li>
+<li><strong>Bloods:</strong> [results - FBC, U&E, CRP, troponin, etc.]</li>
+<li><strong>Imaging:</strong> [X-ray, CT, ultrasound findings]</li>
+<li><strong>Other:</strong> [Urine dip, peak flow, etc.]</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>A - ASSESSMENT</h3>
+
+<strong>Primary Diagnosis/Working Diagnosis:</strong>
+<p>
+[Most likely diagnosis based on history and examination]
+</p>
+
+<strong>Differential Diagnoses:</strong>
+<ol>
+<li>[Most likely alternative]</li>
+<li>[Second alternative]</li>
+<li>[Third alternative if relevant]</li>
+<p>
+</ol>
+</p>
+
+<strong>Clinical Reasoning:</strong>
+<p>
+[Brief explanation supporting your assessment]
+[Include <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s if any]
+[Include risk factors if relevant]
+</p>
+
+<strong>Severity/Risk Stratification:</strong>
+<p>
+[e.g., Low risk based on HEART score; Moderate severity; High risk - requires <span style="color: #e74c3c; font-weight: bold;">URGENT</span> intervention]
+</p>
+
+<hr>
+
+<h3>P - PLAN</h3>
+
+<strong>Immediate Management:</strong>
+<ol>
+<li>[First action, e.g., Give analgesia, Start oxygen, etc.]</li>
+<li>[Second action]</li>
+<li>[Third action]</li>
+<p>
+</ol>
+</p>
+
+<strong>Investigations Ordered:</strong>
+<ol>
+<li>[Test to order, e.g., ECG, Bloods, Imaging]</li>
+<li>[Reason for each test]</li>
+<p>
+</ol>
+</p>
+
+<strong>Treatment Plan:</strong>
+<ul>
+<li><strong>Medications:</strong> [Drug name, dose, route, frequency, duration]</li>
+<li><strong>Non-pharmacological:</strong> [e.g., Rest, ice, elevation, physiotherapy referral]</li>
+<li><strong>Monitoring:</strong> [What to monitor and how often]</li>
+<p>
+</ul>
+</p>
+
+<strong>Referrals/Consultations:</strong>
+<ul>
+<li>[If needed: Specialist review, Allied health, etc.]</li>
+<p>
+</ul>
+</p>
+
+<strong>Patient Education:</strong>
+<ul>
+<li>[What you explained to patient about their condition]</li>
+<li>[Warning signs to watch for]</li>
+<li>[When to seek help]</li>
+<p>
+</ul>
+</p>
+
+<strong>Follow-up:</strong>
+<ul>
+<li>[When to review: hours/days/weeks]</li>
+<li>[Where: ED, GP, clinic]</li>
+<li>[What to monitor]</li>
+<p>
+</ul>
+</p>
+
+<strong>Disposition:</strong>
+<ul>
+<li>[Discharge home / Admit to ward / Observe / Transfer]</li>
+<p>
+</ul>
+</p>
+
+<strong>Safety Netting:</strong>
+<p>
+[Specific instructions for when patient should return or seek <span style="color: #e74c3c; font-weight: bold;">URGENT</span> care]
+</p>
+
+<hr>
+
+<strong>Provider Signature:</strong> <strong><em><em></em></strong><strong><em></em></em></strong><em>_</em>
+<strong>Date/Time:</strong> <strong><em><em></em></strong><strong><em></em></em></strong><em>_</em>
+
+<hr>
+
+<h2>Tips for Writing Good SOAP Notes</h2>
+
+<ol>
+<li><strong>Be concise but complete</strong> - Include all relevant information, exclude irrelevant details</li>
+<li><strong>Use medical terminology appropriately</strong> - Be professional but clear</li>
+<li><strong>Quote the patient</strong> - Use quotation marks for subjective complaints</li>
+<li><strong>Document negatives</strong> - "No chest pain" is important information</li>
+<li><strong>Be objective</strong> - Facts, not interpretations in O section</li>
+<li><strong>Support your assessment</strong> - Link your diagnosis to your findings</li>
+<li><strong>Be specific in plan</strong> - Exact doses, exact timing, exact follow-up</li>
+<li><strong>Think defensively</strong> - Document safety netting and patient education</li>
+<li><strong>Write legibly</strong> - If handwritten, must be readable</li>
+<li><strong>Time your documentation</strong> - Aim for 10-15 minutes per note</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Common Australian Medical Abbreviations</h2>
+
+<strong>Useful abbreviations (use appropriately):</strong>
+<ul>
+<li><strong>Hx</strong> - History</li>
+<li><strong>Dx</strong> - Diagnosis</li>
+<li><strong>Tx</strong> - Treatment</li>
+<li><strong>c/o</strong> - Complaining of</li>
+<li><strong>SOB</strong> - Shortness of breath</li>
+<li><strong>PND</strong> - Paroxysmal nocturnal dyspnoea</li>
+<li><strong>N/V</strong> - Nausea/vomiting</li>
+<li><strong>D&V</strong> - Diarrhoea and vomiting</li>
+<li><strong>NAD</strong> - No abnormality detected</li>
+<li><strong>WNL</strong> - Within normal limits</li>
+<li><strong>PMH</strong> - Past medical history</li>
+<li><strong>FH</strong> - Family history</li>
+<li><strong>SH</strong> - Social history</li>
+<li><strong>O/E</strong> - On examination</li>
+<li><strong>PR</strong> - Per rectum</li>
+<li><strong>PV</strong> - Per vagina</li>
+<li><strong>IM</strong> - Intramuscular</li>
+<li><strong>IV</strong> - Intravenous</li>
+<li><strong>PO</strong> - Per oral (by mouth)</li>
+<li><strong>PRN</strong> - As needed</li>
+<li><strong>BD</strong> - Twice daily</li>
+<li><strong>TDS</strong> - Three times daily</li>
+<li><strong>QID</strong> - Four times daily</li>
+<p>
+</ul>
+</p>
+
+<strong>AVOID dangerous abbreviations:</strong>
+<ul>
+<li>Don't use "U" for units (write "units")</li>
+<li>Don't use "IU" for international units</li>
+<li>Don't use trailing zeros (5.0 mg → write 5 mg)</li>
+<li>Don't use unclear abbreviations</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Practice Exercise</h2>
+
+<p>
+Use this template to document:
+</p>
+<ol>
+<li><strong>Real cases</strong> - With permission, document friends'/family's health concerns</li>
+<li><strong>Simulation cases</strong> - Use case scenarios from practice materials</li>
+<li><strong>Past cases</strong> - Recall and document past patient encounters</li>
+<li><strong>Video cases</strong> - Document from YouTube clinical case videos</li>
+<p>
+</ol>
+</p>
+
+<strong>Goal: Complete 30+ SOAP notes before ICRP starts</strong>
+
+<hr>
+
+<strong>Last Updated:</strong> December 2025
+<strong>For:</strong> ICRP NSW Preparation
+<strong>Target:</strong> 10-15 minute documentation time
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

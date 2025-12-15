@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Terminology Practice Lists</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP Program Resources</span>
+<span>→</span>
+<span>Reference Materials</span>
+</div>
+        
+        <h1>Medical Terminology Practice Lists</h1>
+
+<h2>Purpose</h2>
+<p>
+Use these lists to practice:
+</p>
+<ul>
+<li><strong>Typing:</strong> Type these terms to improve medical vocabulary typing speed</li>
+<li><strong>Spelling:</strong> Learn correct spelling of common medical terms</li>
+<li><strong>Recognition:</strong> Become familiar with terms you'll encounter in ICRP</li>
+<li><strong>Pronunciation:</strong> Practice saying these terms correctly</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>How to Practice</h2>
+
+<h3>Daily Typing Practice (15-20 minutes):</h3>
+<ol>
+<li>Select one category</li>
+<li>Type each term 3 times</li>
+<li>Focus on accuracy over speed</li>
+<li>Progress to typing definitions</li>
+<li>Time yourself - aim to improve speed weekly</li>
+<p>
+</ol>
+</p>
+
+<h3>Flashcard Practice:</h3>
+<ol>
+<li>Write term on one side, definition on other</li>
+<li>Test yourself daily</li>
+<li>Focus on terms you struggle with</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Category 1: Common Symptoms & Complaints</h2>
+
+<p>
+| Term | Pronunciation | Definition |
+|------|---------------|------------|
+| Dyspnoea | dis-NEE-ah | Difficulty breathing, shortness of breath |
+| Haemoptysis | hee-MOP-tih-sis | Coughing up blood |
+| Haematemesis | hee-mah-TEM-eh-sis | Vomiting blood |
+| Melaena | meh-LEE-nah | Black, tarry stools (digested blood) |
+| Haematochezia | hee-mah-toh-KEE-zee-ah | Bright red blood in stool |
+| Dysuria | dis-YOOR-ee-ah | Painful urination |
+| Haematuria | hee-mah-TYOOR-ee-ah | Blood in urine |
+| Syncope | SIN-koh-pee | Fainting, loss of consciousness |
+| Paraesthesia | par-es-THEE-zee-ah | Pins and needles sensation |
+| Arthralgia | ar-THRAL-jee-ah | Joint pain |
+| Myalgia | my-AL-jee-ah | Muscle pain |
+| Pyrexia | py-REX-ee-ah | Fever |
+| Pruritus | proo-RYE-tus | Itching |
+| Nausea | NAW-zee-ah | Feeling sick, urge to vomit |
+| Anorexia | an-oh-REX-ee-ah | Loss of appetite |
+| Malaise | mah-LAYZ | General feeling of being unwell |
+| Oedema | eh-DEE-mah | Swelling due to fluid |
+| Cyanosis | sy-ah-NOH-sis | Blue discolouration (low oxygen) |
+| Jaundice | JAWN-dis | Yellow discolouration (liver/bile) |
+| Pallor | PAL-or | Paleness |
+</p>
+
+<strong>Practice Sentence:</strong> "The patient presented with dyspnoea, pyrexia, and productive cough."
+
+<hr>
+
+<h2>Category 2: Anatomical Terms</h2>
+
+<p>
+| Term | Pronunciation | Definition |
+|------|---------------|------------|
+| Anterior | an-TEER-ee-or | Front |
+| Posterior | pos-TEER-ee-or | Back |
+| Superior | soo-PEER-ee-or | Above |
+| Inferior | in-FEER-ee-or | Below |
+| Medial | MEE-dee-al | Toward midline |
+| Lateral | LAT-er-al | Away from midline |
+| Proximal | PROK-sim-al | Closer to point of attachment |
+| Distal | DIS-tal | Further from point of attachment |
+| Supine | soo-PINE | Lying on back |
+| Prone | PRONE | Lying face down |
+| Bilateral | by-LAT-er-al | Both sides |
+| Unilateral | yoo-nih-LAT-er-al | One side |
+| Ipsilateral | ip-sih-LAT-er-al | Same side |
+| Contralateral | kon-trah-LAT-er-al | Opposite side |
+| Proximal | PROK-sih-mal | Near the trunk |
+| Peripheral | peh-RIF-er-al | Away from center |
+</p>
+
+<strong>Practice Sentence:</strong> "There is bilateral peripheral oedema with no medial tenderness."
+
+<hr>
+
+<h2>Category 3: Cardiovascular System</h2>
+
+<p>
+| Term | Definition |
+|------|------------|
+| Myocardial infarction (MI) | Heart attack |
+| Angina pectoris | Chest pain due to reduced heart blood flow |
+| Arrhythmia | Irregular heartbeat |
+| Bradycardia | Slow heart rate (<60 bpm) |
+| Tachycardia | Fast heart rate (>100 bpm) |
+| Hypertension | High blood pressure |
+| Hypotension | Low blood pressure |
+| Atherosclerosis | Hardening of arteries |
+| Thrombosis | Blood clot formation |
+| Embolism | Travelling blood clot |
+| Cardiomegaly | Enlarged heart |
+| Pericarditis | Inflammation of heart lining |
+| Endocarditis | Infection of heart valves |
+| Murmur | Abnormal heart sound |
+| Auscultation | Listening with stethoscope |
+| Jugular venous pressure (JVP) | Neck vein elevation |
+| Peripheral vascular disease (PVD) | Poor circulation to limbs |
+</p>
+
+<strong>Common Abbreviations:</strong>
+<ul>
+<li><strong>MI</strong> - Myocardial infarction</li>
+<li><strong>CCF</strong> - Congestive cardiac failure</li>
+<li><strong>AF</strong> - Atrial fibrillation</li>
+<li><strong>ACS</strong> - Acute coronary syndrome</li>
+<li><strong>BP</strong> - Blood pressure</li>
+<li><strong>HR</strong> - Heart rate</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Category 4: Respiratory System</h2>
+
+<p>
+| Term | Definition |
+|------|------------|
+| Pneumonia | Lung infection |
+| Bronchitis | Inflammation of airways |
+| Asthma | Reversible airway narrowing |
+| COPD | Chronic obstructive pulmonary disease |
+| Emphysema | Lung damage (part of COPD) |
+| Pleurisy | Inflammation of lung lining |
+| Pleural effusion | Fluid around lung |
+| Pneumothorax | Collapsed lung (air in pleural space) |
+| Haemothorax | Blood in pleural space |
+| Pulmonary embolism (PE) | Blood clot in lung |
+| Tuberculosis (TB) | Infectious lung disease |
+| Crepitations | Crackling lung sounds |
+| Wheeze | Whistling lung sounds |
+| Stridor | High-pitched breathing sound |
+| Consolidation | Solidified lung (on X-ray) |
+| Tachypnoea | Fast breathing |
+| Apnoea | Stopped breathing |
+| Hypoxia | Low oxygen |
+| Cyanosis | Blue discolouration (low oxygen) |
+</p>
+
+<strong>Common Abbreviations:</strong>
+<ul>
+<li><strong>SOB</strong> - Shortness of breath</li>
+<li><strong>SOBOE</strong> - SOB on exertion</li>
+<li><strong>PND</strong> - Paroxysmal nocturnal dyspnoea</li>
+<li><strong>COPD</strong> - Chronic obstructive pulmonary disease</li>
+<li><strong>PE</strong> - Pulmonary embolism</li>
+<li><strong>SpO₂</strong> - Oxygen saturation</li>
+<li><strong>ABG</strong> - Arterial blood gas</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Category 5: Gastrointestinal System</h2>
+
+<p>
+| Term | Definition |
+|------|------------|
+| Gastroenteritis | Stomach and intestinal inflammation |
+| Appendicitis | Inflamed appendix |
+| Cholecystitis | Inflamed gallbladder |
+| Pancreatitis | Inflamed pancreas |
+| Hepatitis | Liver inflammation |
+| Cirrhosis | Liver scarring |
+| Gastritis | Stomach lining inflammation |
+| Peptic ulcer | Stomach or duodenal ulcer |
+| Inflammatory bowel disease (IBD) | Crohn's or ulcerative colitis |
+| Diverticulitis | Inflamed bowel pouches |
+| Constipation | Difficult bowel movements |
+| Diarrhoea | Loose, frequent stools |
+| Dysphagia | Difficulty swallowing |
+| Ascites | Fluid in abdomen |
+| Hepatomegaly | Enlarged liver |
+| Splenomegaly | Enlarged spleen |
+| Jaundice | Yellow discolouration |
+| Melaena | Black tarry stools |
+</p>
+
+<strong>Common Abbreviations:</strong>
+<ul>
+<li><strong>N/V</strong> - Nausea and vomiting</li>
+<li><strong>D&V</strong> - Diarrhoea and vomiting</li>
+<li><strong>RUQ</strong> - Right upper quadrant</li>
+<li><strong>LUQ</strong> - Left upper quadrant</li>
+<li><strong>RLQ</strong> - Right lower quadrant</li>
+<li><strong>LLQ</strong> - Left lower quadrant</li>
+<li><strong>PR</strong> - Per rectum</li>
+<li><strong>PV</strong> - Per vagina</li>
+<li><strong>NG</strong> - Nasogastric</li>
+<li><strong>PEG</strong> - Percutaneous endoscopic gastrostomy</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Category 6: Neurological System</h2>
+
+<p>
+| Term | Definition |
+|------|------------|
+| Stroke / CVA | Cerebrovascular accident |
+| TIA | Transient ischaemic attack ("mini-stroke") |
+| Seizure | Abnormal electrical brain activity |
+| Epilepsy | Recurrent seizures |
+| Meningitis | Inflammation of brain/spinal cord lining |
+| Encephalitis | Brain inflammation |
+| Migraine | Severe headache with aura |
+| Neuropathy | Nerve damage |
+| Paraesthesia | Pins and needles |
+| Hemiplegia | Paralysis one side of body |
+| Hemiparesis | Weakness one side of body |
+| Ataxia | Lack of coordination |
+| Aphasia | Language difficulty |
+| Dysarthria | Speech difficulty |
+| Vertigo | Spinning sensation |
+| Syncope | Fainting |
+| Tremor | Shaking |
+| Glasgow Coma Scale (GCS) | Consciousness assessment |
+</p>
+
+<strong>Common Abbreviations:</strong>
+<ul>
+<li><strong>CVA</strong> - Cerebrovascular accident</li>
+<li><strong>TIA</strong> - Transient ischaemic attack</li>
+<li><strong>SAH</strong> - Subarachnoid haemorrhage</li>
+<li><strong>ICH</strong> - Intracranial haemorrhage</li>
+<li><strong>GCS</strong> - Glasgow Coma Scale</li>
+<li><strong>LOC</strong> - Loss of consciousness</li>
+<li><strong>CN</strong> - Cranial nerve</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Category 7: Common Investigations</h2>
+
+<p>
+| Term | Definition |
+|------|------------|
+| ECG | Electrocardiogram (heart tracing) |
+| CXR | Chest X-ray |
+| CT | Computed tomography scan |
+| MRI | Magnetic resonance imaging |
+| Ultrasound | Sound wave imaging |
+| Echocardiogram | Ultrasound of heart |
+| Endoscopy | Camera into GI tract |
+| Colonoscopy | Camera into large bowel |
+| Bronchoscopy | Camera into lungs |
+| Lumbar puncture | Spinal fluid sampling |
+| FBC | Full blood count |
+| U&E | Urea and electrolytes |
+| LFT | Liver function tests |
+| Troponin | Cardiac enzyme |
+| D-dimer | Clot marker |
+| CRP | C-reactive protein (inflammation) |
+| ESR | Erythrocyte sedimentation rate |
+| HbA1c | Diabetes marker |
+</p>
+
+<hr>
+
+<h2>Category 8: Common Medications (Generic Names - Australian)</h2>
+
+<p>
+| Medication | Class | Common Use |
+|------------|-------|------------|
+| Paracetamol | Analgesic | Pain, fever |
+| Ibuprofen | NSAID | Pain, inflammation |
+| Aspirin | Antiplatelet | Heart attack prevention |
+| Metformin | Biguanide | Type 2 diabetes |
+| Insulin | Hormone | Diabetes |
+| Salbutamol | Beta-agonist | Asthma |
+| Prednisolone | Steroid | Inflammation |
+| Amoxicillin | Antibiotic | Infections |
+| Cephalexin | Antibiotic | Infections |
+| Metronidazole | Antibiotic | Anaerobic infections |
+| Omeprazole | PPI | Acid reflux |
+| Amlodipine | Calcium channel blocker | High blood pressure |
+| Ramipril | ACE inhibitor | High blood pressure |
+| Atorvastatin | Statin | High cholesterol |
+| Warfarin | Anticoagulant | Blood clot prevention |
+| Frusemide | Diuretic | Fluid removal |
+</p>
+
+<strong>Note:</strong> Australia uses generic names (e.g., paracetamol not acetaminophen, adrenaline not epinephrine)
+
+<hr>
+
+<h2>Category 9: Medical Abbreviations - Essential</h2>
+
+<h3>Timing & Frequency:</h3>
+<ul>
+<li><strong>OD</strong> / <strong>Daily</strong> - Once daily</li>
+<li><strong>BD</strong> / <strong>BID</strong> - Twice daily</li>
+<li><strong>TDS</strong> / <strong>TID</strong> - Three times daily</li>
+<li><strong>QID</strong> - Four times daily</li>
+<li><strong>PRN</strong> - As needed</li>
+<li><strong>Stat</strong> - Immediately</li>
+<li><strong>Nocte</strong> - At night</li>
+<li><strong>Mane</strong> - In the morning</li>
+<p>
+</ul>
+</p>
+
+<h3>Routes:</h3>
+<ul>
+<li><strong>PO</strong> - Per oral (by mouth)</li>
+<li><strong>IM</strong> - Intramuscular</li>
+<li><strong>IV</strong> - Intravenous</li>
+<li><strong>SC</strong> / <strong>SubQ</strong> - Subcutaneous</li>
+<li><strong>PR</strong> - Per rectum</li>
+<li><strong>PV</strong> - Per vagina</li>
+<li><strong>SL</strong> - Sublingual (under tongue)</li>
+<li><strong>Top</strong> - Topical</li>
+<p>
+</ul>
+</p>
+
+<h3>General:</h3>
+<ul>
+<li><strong>Hx</strong> - History</li>
+<li><strong>Dx</strong> - Diagnosis</li>
+<li><strong>Tx</strong> - Treatment</li>
+<li><strong>Rx</strong> - Prescription</li>
+<li><strong>Sx</strong> - Symptoms</li>
+<li><strong>PMH</strong> - Past medical history</li>
+<li><strong>FH</strong> - Family history</li>
+<li><strong>SH</strong> - Social history</li>
+<li><strong>NAD</strong> - No abnormality detected</li>
+<li><strong>WNL</strong> - Within normal limits</li>
+<li><strong>c/o</strong> - Complaining of</li>
+<li><strong>?</strong> - Query / possible</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Practice Exercises</h2>
+
+<h3>Exercise 1: Speed Typing</h3>
+<p>
+Type each category's terms 3 times. Time yourself. Aim to improve speed each week.
+</p>
+
+<strong>Week 1 Baseline:</strong> <strong>_</strong> WPM
+<strong>Week 2:</strong> <strong>_</strong> WPM
+<strong>Week 3:</strong> <strong>_</strong> WPM
+<strong>Week 4:</strong> <strong>_</strong> WPM
+
+<h3>Exercise 2: Sentence Construction</h3>
+<p>
+Write 10 clinical sentences using terms from these lists.
+</p>
+
+<p>
+Example: "The patient presented with dyspnoea and haemoptysis, suggesting possible pulmonary embolism."
+</p>
+
+<h3>Exercise 3: Flashcards</h3>
+<p>
+Create flashcards for terms you struggle with. Test daily.
+</p>
+
+<h3>Exercise 4: SOAP Note Practice</h3>
+<p>
+Write SOAP notes using these medical terms appropriately.
+</p>
+
+<hr>
+
+<h2>Additional Resources</h2>
+
+<h3>Free Online Resources:</h3>
+<ul>
+<li><strong>Medical Dictionary:</strong> www.medilexicon.com</li>
+<li><strong>Pronunciation:</strong> YouTube "Medical Terminology Pronunciation"</li>
+<li><strong>Practice:</strong> Quizlet medical terminology sets</li>
+<p>
+</ul>
+</p>
+
+<h3>Goals:</h3>
+<ul>
+<li><input type="checkbox"> Type all categories at 30+ WPM with 95%+ accuracy</li>
+<li><input type="checkbox"> Spell all terms correctly without reference</li>
+<li><input type="checkbox"> Use terms appropriately in SOAP notes</li>
+<li><input type="checkbox"> Pronounce terms correctly</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Practice Target:</strong> 15-20 minutes daily medical terminology practice
+
+<strong>Last Updated:</strong> December 2025
+<strong>For:</strong> ICRP NSW Preparation
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obstetric History-Taking with Differential Diagnosis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>ObGyn</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 ObGyn Navigation</h3>
+<ul>
+<li><a href="01_Obstetric_History_Differentials.html">Obstetric History</a></li>
+<li><a href="02_Gynaecological_History_Differentials.html">Gynae History</a></li>
+</ul>
+</div>
+        <h1>Obstetric History-Taking with Differential Diagnosis</h1>
+<h2>ICRP OSCE Preparation - Obstetrics & Gynaecology Module</h2>
+<h3>Following Dr. Amir Soufi's Differential-Driven Approach (IMG4IMGS Methodology)</h3>
+
+<hr>
+
+<h2>Target Audience</h2>
+<ul>
+<li>IMGs preparing for AMC Clinical OSCE</li>
+<li>ICRP participants at NSW Young Hospital Program</li>
+<li>Medical students/residents rotating through obstetrics</li>
+<li>Focus: 8-minute OSCE stations with differential diagnosis emphasis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Learning Objectives</h2>
+
+<p>
+By the end of this module, you will be able to:
+</p>
+
+<ol>
+<li><strong>Take systematic obstetric history</strong> using differential-driven approach</li>
+<li><strong>Calculate gestational age</strong> and expected date of delivery (EDD)</li>
+<li><strong>Identify high-risk pregnancies</strong> and <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s requiring <span style="color: #e74c3c; font-weight: bold;">URGENT</span> assessment</li>
+<li><strong>Generate differential diagnosis</strong> for common obstetric presentations (bleeding, pain, reduced movements)</li>
+<li><strong>Conduct antenatal booking history</strong> comprehensively</li>
+<li><strong>Apply Australian antenatal care guidelines</strong> (RANZCOG, eTG 2024, Medicare antenatal schedule)</li>
+<li><strong>Recognize obstetric emergencies</strong> and initiate appropriate management</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Dr. Amir Soufi's Core Principle Applied to Obstetric History</h2>
+
+<h3>The Differential-Driven Mindset for Pregnancy Presentations</h3>
+
+<strong>Traditional Approach (WRONG for OSCE)</strong>:
+<ol>
+<li>Pregnant patient presents with complaint</li>
+<li>Take full obstetric history mechanically</li>
+<li>Think about diagnosis at the end</li>
+<p>
+</ol>
+</p>
+
+<strong>Dr. Amir's Approach (CORRECT for OSCE)</strong>:
+<ol>
+<li><strong>Immediately think based on gestational age + symptom</strong>:</li>
+<p>
+</ol>
+   - "20 weeks pregnant with bleeding" → Think: Miscarriage (if <20w), Placenta praevia, Placental abruption, Cervical causes
+   - "32 weeks with abdominal pain" → Think: Labour (preterm), Placental abruption, Uterine rupture (if previous C-section), Non-obstetric (appendicitis, cholecystitis)
+   - "36 weeks with reduced movements" → Think: Placental insufficiency, Fetal distress, Cord accident
+</p>
+<ol>
+<li><strong>Gestational age determines differential</strong> - this is CRITICAL</li>
+<li><strong>Your questions are DRIVEN by differential and urgency</strong></li>
+<li><strong>Risk stratification from the first question</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Example</strong>:
+<ul>
+<li>Patient: "I'm 12 weeks pregnant and bleeding"</li>
+<li><strong>Think immediately</strong>: "Miscarriage (most common <12w), Ectopic (though should have presented earlier), Molar pregnancy, Cervical causes"</li>
+<li><strong>Your next questions</strong>: "How much bleeding? Any pain? Any tissue passed? Previous ultrasound confirming intrauterine pregnancy?"</li>
+<li><strong>Urgency assessment</strong>: "Any dizziness, shoulder tip pain?" (ruptured ectopic)</li>
+<p>
+</ul>
+</p>
+
+<strong>This gestational age-based differential thinking is essential for obstetric OSCE success.</strong>
+
+<hr>
+
+<h2>Part 1: Essential Obstetric Calculations and Terminology</h2>
+
+<h3>Calculating Gestational Age and EDD</h3>
+
+<strong>Last Menstrual Period (LMP)</strong>:
+<ul>
+<li><strong>First day</strong> of last normal menstrual period</li>
+<li>Used to calculate gestational age and EDD</li>
+<p>
+</ul>
+</p>
+
+<strong>Naegele's Rule</strong> (calculating EDD):
+<ul>
+<li><strong>EDD = LMP + 1 year - 3 months + 7 days</strong></li>
+<li>Example: LMP = 1st March 2024 → EDD = 8th December 2024</li>
+<p>
+</ul>
+</p>
+
+<strong>Alternative</strong>: Use pregnancy wheel or ultrasound dating
+
+<strong>Gestational Age</strong>:
+<ul>
+<li>Expressed in <strong>weeks + days</strong> (e.g., 28+4 means 28 weeks and 4 days)</li>
+<li><strong>Dating ultrasound</strong> (most accurate):</li>
+<p>
+</ul>
+  - <strong>First trimester</strong> (before 14 weeks): Crown-rump length (CRL) - accurate to ±5 days
+  - <strong>Second trimester</strong> (14-20 weeks): Biparietal diameter, femur length - accurate to ±7-10 days
+  - If discrepancy >7 days between LMP and ultrasound → Use <strong>ultrasound dating</strong>
+</p>
+
+<strong>Trimesters</strong>:
+<ul>
+<li><strong>First trimester</strong>: 0-13+6 weeks</li>
+<li><strong>Second trimester</strong>: 14-27+6 weeks</li>
+<li><strong>Third trimester</strong>: 28 weeks to delivery</li>
+<p>
+</ul>
+</p>
+
+<strong>Viability</strong>: ~24 weeks (survival possible with intensive care, but outcomes improve significantly after 28 weeks)
+
+<strong>Term pregnancy</strong>:
+<ul>
+<li><strong>Early term</strong>: 37-38+6 weeks</li>
+<li><strong>Full term</strong>: 39-40+6 weeks</li>
+<li><strong>Late term</strong>: 41-41+6 weeks</li>
+<li><strong>Post-term</strong>: ≥42 weeks</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Obstetric Terminology (GTPAL System)</h3>
+
+<strong>Gravida (G)</strong>: Total number of pregnancies (including current)
+<strong>Para (P)</strong>: Described using TPAL:
+<ul>
+<li><strong>T</strong>: Term deliveries (≥37 weeks)</li>
+<li><strong>P</strong>: Preterm deliveries (20-36+6 weeks)</li>
+<li><strong>A</strong>: Abortions/miscarriages (<20 weeks) including ectopic and molar</li>
+<li><strong>L</strong>: Living children</li>
+<p>
+</ul>
+</p>
+
+<strong>Examples</strong>:
+<ul>
+<li><strong>G1 P0</strong>: First pregnancy, no previous deliveries (primigravida)</li>
+<li><strong>G3 P1+0+1+1</strong>: 3rd pregnancy, 1 term delivery, 0 preterm, 1 miscarriage, 1 living child</li>
+<li><strong>G4 P2+1+0+3</strong>: 4th pregnancy, 2 term, 1 preterm, 0 miscarriages, 3 living children</li>
+<p>
+</ul>
+</p>
+
+<strong>Alternative Australian notation</strong>: G3 P2 (gravida 3, para 2 - simpler, just counts deliveries)
+
+<strong>Other Terms</strong>:
+<ul>
+<li><strong>Primigravida</strong>: First pregnancy</li>
+<li><strong>Multigravida</strong>: ≥2 pregnancies</li>
+<li><strong>Nullipara</strong>: Never delivered beyond 20 weeks</li>
+<li><strong>Primipara</strong>: Delivered once beyond 20 weeks</li>
+<li><strong>Multipara</strong>: Delivered ≥2 times beyond 20 weeks</li>
+<li><strong>Grand multipara</strong>: ≥5 deliveries (higher risk complications)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 2: Antenatal Booking History (First Visit)</h2>
+
+<h3>Framework: "PREGNANT" + Differential Risk Stratification</h3>
+
+<p>
+This is typically a <strong>longer OSCE station</strong> (often 10-12 minutes for booking history).
+</p>
+
+<hr>
+
+<h4>P - <strong>PRESENTING PREGNANCY</strong> (Current Pregnancy Details)</h4>
+
+<strong>Opening</strong>:
+<p>
+"Congratulations on your pregnancy. I'd like to take a detailed history today to ensure we provide you with the best care throughout your pregnancy. Is that alright?"
+</p>
+
+<strong>Key Questions</strong>:
+
+<ol>
+<li><strong>"When was the first day of your last menstrual period?"</strong></li>
+<p>
+</ol>
+   - Calculate gestational age and EDD (use Naegele's rule or wheel)
+   - "Based on that, you're currently <input type="checkbox" checked> weeks pregnant, with an expected delivery date of [date]. Does that sound right?"
+</p>
+
+<ol>
+<li><strong>"Were you trying to conceive, or was this pregnancy a surprise?"</strong></li>
+<p>
+</ol>
+   - Planned pregnancy (may have been taking folate already)
+   - Unplanned (need to assess feelings, support)
+</p>
+
+<ol>
+<li><strong>"Have you had an ultrasound scan yet?"</strong></li>
+<p>
+</ol>
+   - Dating ultrasound (confirming dates, intrauterine pregnancy, viability)
+   - If not yet done: "We'll arrange a dating scan at 7-10 weeks to confirm dates and check baby is developing normally"
+</p>
+
+<ol>
+<li><strong>"Have you had any bleeding or pain?"</strong></li>
+<p>
+</ol>
+   - <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> screening</strong> from the start
+   - Any bleeding <24 weeks = threatened miscarriage until proven otherwise
+</p>
+
+<ol>
+<li><strong>"How have you been feeling? Any nausea, vomiting, tiredness?"</strong></li>
+<p>
+</ol>
+   - Normal early pregnancy symptoms (nausea/vomiting in 70-80%, usually resolves by 16-20 weeks)
+   - <strong>Hyperemesis gravidarum</strong>: Severe vomiting, unable to keep fluids down, weight loss, ketones
+</p>
+
+<ol>
+<li><strong>"Are you taking any pregnancy vitamins?"</strong></li>
+<p>
+</ol>
+   - <strong>Folate/folic acid</strong>: 400-500 mcg daily (ideally pre-conception and first 12 weeks, reduces neural tube defects)
+   - <strong>Iodine</strong>: 150 mcg daily (Australian recommendation - reduces cretinism)
+   - If not taking: Prescribe pregnancy multivitamin (e.g., Elevit) - PBS approved
+</p>
+
+<hr>
+
+<h4>R - <strong>REPRODUCTIVE HISTORY</strong> (Obstetric History)</h4>
+
+<strong>Gravida and Para</strong>: "Is this your first pregnancy, or have you been pregnant before?"
+
+<strong>For Each Previous Pregnancy</strong> (if multigravida):
+
+<strong>Systematic Questions</strong>:
+<ol>
+<li><strong>Year of delivery</strong>: "When was this?"</li>
+<li><strong>Gestation at delivery</strong>: "How many weeks pregnant were you?"</li>
+<li><strong>Mode of delivery</strong>: "Was it a normal vaginal delivery, assisted (forceps/vacuum), or caesarean section?"</li>
+<p>
+</ol>
+   - <strong>If caesarean</strong>: "What was the reason for the caesarean?"
+   - <strong>Classical vs lower segment</strong>: "Do you know what type of incision was made?" (Classical = vertical = high rupture risk, Lower segment = horizontal = standard)
+</p>
+<ol>
+<li><strong>Labour details</strong>: "How long was your labour? Any complications?"</li>
+<li><strong>Baby's weight</strong>: "How much did the baby weigh?"</li>
+<p>
+</ol>
+   - <strong>Macrosomia</strong> (>4kg) = risk factor for gestational diabetes, shoulder dystocia
+   - <strong>Low birth weight</strong> (<2.5kg) = may indicate placental insufficiency, IUGR
+</p>
+<ol>
+<li><strong>Baby's sex and name</strong> (personalizes, shows you care)</li>
+<li><strong>Baby's health</strong>: "Was the baby healthy at birth? Any admission to special care?"</li>
+<li><strong>Current health</strong>: "How is [name] doing now?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Complications to Specifically Ask About</strong>:
+<ul>
+<li><strong>Gestational diabetes</strong>: "Did you develop diabetes during pregnancy?" → Risk recurrence 30-50%</li>
+<li><strong>Pre-eclampsia</strong>: "Did you have high blood pressure or protein in urine?" → Risk recurrence 15-20%</li>
+<li><strong>Postpartum haemorrhage (PPH)</strong>: "Did you have heavy bleeding after delivery?" → Risk recurrence</li>
+<li><strong>Preterm labour</strong>: "Did you go into labour early?" → Risk recurrence</li>
+<li><strong>Instrumental delivery</strong>: "Did they use forceps or vacuum?"</li>
+<li><strong>Perineal trauma</strong>: "Did you have tearing? Were stitches needed?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Miscarriages/Terminations</strong>:
+<ul>
+<li>"Have you had any miscarriages or terminations?"</li>
+<li><strong>How many, at what gestation, any investigations or treatment?</strong></li>
+<li><strong>Recurrent miscarriage</strong> (≥3 consecutive) = needs thrombophilia, autoimmune, chromosomal workup</li>
+<p>
+</ul>
+</p>
+
+<strong>Ectopic Pregnancy</strong>:
+<ul>
+<li>"Have you ever had a pregnancy in the fallopian tube (ectopic pregnancy)?"</li>
+<li>Risk recurrence 10-15%</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>E - <strong>EXISTING MEDICAL CONDITIONS</strong> (Medical History)</h4>
+
+<strong>CRITICAL for Risk Stratification</strong>
+
+<strong>Systematic Review</strong>:
+
+<strong>Cardiovascular</strong>:
+<ul>
+<li><strong>"Any heart problems, high blood pressure, blood clots?"</strong></li>
+<li><strong>Hypertension</strong>: Pre-existing HTN = high risk (pre-eclampsia risk, need aspirin from 12 weeks)</li>
+<li><strong>Cardiac disease</strong>: Refer cardiology + obstetric medicine (some conditions contraindicate pregnancy)</li>
+<li><strong>Previous DVT/PE</strong>: Need thromboprophylaxis (LMWH) during pregnancy</li>
+<p>
+</ul>
+</p>
+
+<strong>Diabetes</strong>:
+<ul>
+<li><strong>"Do you have diabetes?"</strong></li>
+<li><strong>Pre-existing diabetes</strong> (Type 1 or 2): High risk pregnancy</li>
+<p>
+</ul>
+  - Needs tight glucose control (target HbA1c <6.5% pre-conception, <6% during pregnancy)
+  - Higher risk: Congenital anomalies (cardiac, neural tube), miscarriage, stillbirth, macrosomia, pre-eclampsia
+  - <strong>Medications</strong>: Stop oral hypoglycaemics (except metformin) → Switch to insulin
+</p>
+<ul>
+<li><strong>Gestational diabetes</strong> (previous pregnancy): 50-70% risk recurrence → Early OGTT at booking, repeat 24-28 weeks</li>
+<p>
+</ul>
+</p>
+
+<strong>Renal</strong>:
+<ul>
+<li><strong>"Any kidney problems?"</strong></li>
+<li><strong>Chronic kidney disease</strong>: Higher risk pre-eclampsia, IUGR, preterm delivery</li>
+<p>
+</ul>
+</p>
+
+<strong>Autoimmune</strong>:
+<ul>
+<li><strong>"Any autoimmune conditions like lupus, thyroid problems?"</strong></li>
+<li><strong>SLE</strong>: Higher risk flare, pre-eclampsia, miscarriage, IUGR, stillbirth (needs close monitoring)</li>
+<li><strong>Antiphospholipid syndrome</strong>: Recurrent miscarriage, thrombosis → Needs aspirin + LMWH</li>
+<p>
+</ul>
+</p>
+
+<strong>Thyroid</strong>:
+<ul>
+<li><strong>Hypothyroidism</strong>: Need adequate thyroxine replacement (TSH <2.5 in pregnancy)</li>
+<li><strong>Hyperthyroidism</strong>: Needs specialist management (risk of thyroid storm, neonatal thyrotoxicosis)</li>
+<p>
+</ul>
+</p>
+
+<strong>Epilepsy</strong>:
+<ul>
+<li><strong>"Do you have epilepsy?"</strong></li>
+<li><strong>Anti-epileptic drugs (AEDs)</strong>: Teratogenic (especially valproate - 10% major malformations, neural tube defects)</li>
+<li><strong>Folate</strong>: Higher dose (5mg daily) if on AEDs</li>
+<li><strong>Neurology referral</strong>: Optimize medication (prefer lamotrigine or levetiracetam monotherapy if possible)</li>
+<p>
+</ul>
+</p>
+
+<strong>Mental Health</strong>:
+<ul>
+<li><strong>"Any history of depression, anxiety, or other mental health conditions?"</strong></li>
+<li><strong>Previous postnatal depression</strong>: 50% recurrence risk</li>
+<li><strong>Psychiatric medications</strong>: Some unsafe in pregnancy (need review)</li>
+<li><strong>Safeguarding</strong>: Assess current mental state, support systems</li>
+<p>
+</ul>
+</p>
+
+<strong>Infections</strong>:
+<ul>
+<li><strong>"Any chronic infections like hepatitis, HIV?"</strong></li>
+<li><strong>HIV</strong>: Can achieve <1% transmission with antiretrovirals + elective caesarean if viral load not suppressed</li>
+<li><strong>Hepatitis B</strong>: Baby needs immunoglobulin + vaccine at birth if mother HBsAg positive</li>
+<li><strong>Hepatitis C</strong>: Avoid invasive procedures (amniocentesis, FSE), no specific interventions, ~5% vertical transmission</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>G - <strong>GYNAECOLOGICAL HISTORY</strong></h4>
+
+<strong>Menstrual History</strong>:
+<ul>
+<li><strong>"Before you got pregnant, were your periods regular?"</strong></li>
+<li>Irregular periods → May affect dating (unreliable LMP)</li>
+<p>
+</ul>
+</p>
+
+<strong>Cervical Screening</strong>:
+<ul>
+<li><strong>"When was your last Pap smear? Was it normal?"</strong></li>
+<li>Cervical screening in pregnancy: Can perform if due, but defer if not <span style="color: #e74c3c; font-weight: bold;">URGENT</span> (pregnancy changes cervix)</li>
+<p>
+</ul>
+</p>
+
+<strong>Previous Gynaecological Surgery</strong>:
+<ul>
+<li><strong>"Any operations on your womb, ovaries, or cervix?"</strong></li>
+<li><strong>LLETZ/cone biopsy</strong> (cervical treatment): Risk of cervical incompetence → May need cervical length monitoring</li>
+<li><strong>Myomectomy</strong> (fibroid removal): Risk of uterine rupture in labour (may need elective caesarean)</li>
+<li><strong>Ovarian cystectomy</strong>: Document (may see scar on ultrasound)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subfertility/Assisted Conception</strong>:
+<ul>
+<li><strong>"Did you need help to conceive this pregnancy? IVF, fertility treatment?"</strong></li>
+<li><strong>IVF/ICSI</strong>: Higher risk multiple pregnancy (though mostly single embryo transfer now), ectopic (even with IVF), obstetric complications</li>
+<li><strong>Document treatment</strong>: May affect dating (know exact conception date if IVF)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>N - <strong>NUTRITIONAL and LIFESTYLE FACTORS</strong></h4>
+
+<strong>Diet and Supplements</strong>:
+<ul>
+<li><strong>"Tell me about your diet. Are you vegetarian or have any dietary restrictions?"</strong></li>
+<li><strong>Folate/iodine supplementation</strong>: Check compliance</li>
+<li><strong>Iron</strong>: "Do you eat red meat?" (vegetarians at higher risk anaemia)</li>
+<p>
+</ul>
+</p>
+
+<strong>Foods to Avoid</strong> (Listeriosis and Toxoplasmosis risk):
+<ul>
+<li><strong>"Are you aware of foods to avoid in pregnancy?"</strong></li>
+<li>Educate if not:</li>
+<p>
+</ul>
+  - <strong>Listeria risk</strong>: Soft cheeses (brie, camembert), deli meats, pâté, pre-prepared salads, smoked salmon
+  - <strong>Toxoplasma risk</strong>: Undercooked meat, unwashed vegetables, cat litter (wear gloves)
+  - <strong>High mercury</strong>: Limit tuna (1 small can or 1 fresh steak weekly), avoid shark/marlin/swordfish
+  - <strong>Vitamin A</strong>: Avoid liver, liver pâté (teratogenic in high doses)
+</p>
+<ul>
+<li><strong>Alcohol</strong>: "Do you drink alcohol?" → Advise <strong>complete avoidance</strong> (no safe level, risk fetal alcohol syndrome)</li>
+<p>
+</ul>
+</p>
+
+<strong>Smoking</strong>:
+<ul>
+<li><strong>"Do you smoke cigarettes?"</strong></li>
+<li><strong>If yes</strong>: "How many per day?"</li>
+<li><strong>Risks</strong>: IUGR, placental abruption, preterm delivery, SIDS, stillbirth</li>
+<li><strong>Cessation</strong>: "I'd strongly advise stopping. Can I refer you to Quitline for support?" (Quitline 13 7848 - free in Australia)</li>
+<li><strong>NRT</strong>: Safe in pregnancy if helps cessation (preferable to smoking)</li>
+<p>
+</ul>
+</p>
+
+<strong>Recreational Drugs</strong>:
+<ul>
+<li><strong>"Do you use any recreational drugs like marijuana, amphetamines, cocaine?"</strong></li>
+<li><strong>Risks</strong>: Neonatal withdrawal, IUGR, abruption (cocaine), congenital anomalies</li>
+<li><strong>Support</strong>: Offer drug and alcohol service referral, non-judgmental approach</li>
+<p>
+</ul>
+</p>
+
+<strong>Domestic Violence Screening</strong> (MANDATORY in antenatal booking):
+<ul>
+<li><strong>"I ask all pregnant women this: Do you feel safe at home?"</strong></li>
+<li><strong>Or</strong>: "Has anyone at home ever hurt you or made you feel afraid?"</li>
+<li><strong>If yes</strong>: Private conversation (ask partner to leave), safety plan, social work referral, document carefully</li>
+<li><strong>Resources</strong>: 1800RESPECT (1800 737 732), local domestic violence services</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>A - <strong>ALLERGIES</strong></h4>
+
+<strong>"Do you have any allergies to medications, latex, or anything else?"</strong>
+<ul>
+<li>Document clearly</li>
+<li><strong>Penicillin allergy</strong>: Very common, often not true allergy (ask details: rash vs anaphylaxis)</li>
+<li><strong>Latex allergy</strong>: Important for delivery (use non-latex gloves)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>N - <strong>NATAL PLANNING</strong> (Plans for Pregnancy and Birth)</h4>
+
+<strong>Antenatal Care Plans</strong>:
+<ul>
+<li><strong>"Where would you like to have your antenatal care and delivery?"</strong></li>
+<li><strong>Public vs private</strong>: Explain options</li>
+<p>
+</ul>
+  - <strong>Public</strong> (free under Medicare): Shared care (GP + hospital) or hospital-only midwifery care
+  - <strong>Private</strong>: Obstetrician-led care, choice of hospital, private room (out-of-pocket costs)
+</p>
+
+<strong>Birth Preferences</strong>:
+<ul>
+<li><strong>"Have you thought about how you'd like to give birth?"</strong></li>
+<li>Explore preferences: Natural/vaginal vs planned caesarean, epidural vs natural pain relief, water birth, etc.</li>
+<li><strong>If previous caesarean</strong>: "For this pregnancy, would you like to try for a vaginal birth (VBAC) or have another caesarean?"</li>
+<p>
+</ul>
+  - <strong>VBAC success rate</strong>: 60-80% if previous CS for non-recurrent reason (e.g., breech)
+  - <strong>Risks</strong>: Uterine rupture 0.5-1% (if labour), but lower risk overall than repeat CS
+</p>
+
+<strong>Antenatal Classes</strong>:
+<ul>
+<li><strong>"Have you heard about antenatal classes?"</strong></li>
+<li>Recommend (free at public hospitals, or private options like Calmbirth)</li>
+<p>
+</ul>
+</p>
+
+<strong>Infant Feeding</strong>:
+<ul>
+<li><strong>"Have you thought about how you'd like to feed your baby?"</strong></li>
+<li><strong>Breastfeeding</strong>: Recommended (WHO: exclusive breastfeeding for 6 months)</li>
+<li><strong>Formula</strong>: Non-judgmental support if chosen</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>T - <strong>TESTS and SCREENING</strong> (Antenatal Investigations)</h4>
+
+<strong>First Trimester Screening</strong>:
+
+<strong>Dating Ultrasound</strong> (7-10 weeks):
+<ul>
+<li>Confirm intrauterine pregnancy, viability, gestational age</li>
+<li><strong>Medicare rebate</strong>: Item 16500 (one per pregnancy)</li>
+<p>
+</ul>
+</p>
+
+<strong>Combined First Trimester Screening</strong> (11-13+6 weeks):
+<ul>
+<li><strong>Purpose</strong>: Screen for trisomy 21 (Down syndrome), 18, 13</li>
+<li><strong>Components</strong>:</li>
+<p>
+</ul>
+  1. <strong>Maternal age</strong> (risk increases with age)
+  2. <strong>Nuchal translucency</strong> (NT) on ultrasound (fluid at back of baby's neck - thick NT = higher risk)
+  3. <strong>Maternal serum</strong>: βhCG and PAPP-A (pregnancy-associated plasma protein A)
+</p>
+<ul>
+<li><strong>Result</strong>: Risk score (e.g., 1 in 500)</li>
+<p>
+</ul>
+  - <strong>High risk</strong>: >1 in 300 → Offer NIPT or diagnostic testing
+  - <strong>Low risk</strong>: <1 in 300 → Reassuring, but not diagnostic
+</p>
+
+<strong>Non-Invasive Prenatal Testing (NIPT)</strong> - Cell-free fetal DNA:
+<ul>
+<li><strong>When</strong>: From 10 weeks</li>
+<li><strong>Detects</strong>: Trisomy 21, 18, 13, sex chromosome abnormalities</li>
+<li><strong>Accuracy</strong>: 99% sensitivity for T21</li>
+<li><strong>Limitation</strong>: Screening test, NOT diagnostic (false positives possible)</li>
+<li><strong>Cost</strong>: ~$400-600 (not Medicare-funded unless high risk)</li>
+<p>
+</ul>
+</p>
+
+<strong>Diagnostic Testing</strong> (if high-risk screen):
+<ul>
+<li><strong>Chorionic Villus Sampling (CVS)</strong>: 11-14 weeks, miscarriage risk ~0.5-1%</li>
+<li><strong>Amniocentesis</strong>: From 15 weeks, miscarriage risk ~0.5%</li>
+<li><strong>Result</strong>: Karyotype (definitive diagnosis)</li>
+<p>
+</ul>
+</p>
+
+<strong>Maternal Bloods</strong> (booking visit):
+<ul>
+<li><strong>FBC</strong>: Anaemia (common in pregnancy - dilutional, increased demand)</li>
+<li><strong>Blood group and antibodies</strong>: Rh status, antibody screen</li>
+<p>
+</ul>
+  - <strong>If Rh negative</strong>: Need Anti-D immunoglobulin at 28 and 34 weeks (prevent alloimmunization)
+</p>
+<ul>
+<li><strong>Infectious diseases</strong>:</li>
+<p>
+</ul>
+  - <strong>Rubella serology</strong>: If non-immune → Vaccinate postpartum (live vaccine, can't give in pregnancy)
+  - <strong>Syphilis</strong> (TPPA): Screen all (treat with penicillin if positive - prevents congenital syphilis)
+  - <strong>Hepatitis B</strong> (HBsAg): If positive → Baby needs immunoglobulin + vaccine at birth
+  - <strong>HIV</strong>: Offer to all (treatment reduces transmission to <1%)
+  - <strong>Hepatitis C</strong>: Now routinely offered in many states
+</p>
+<ul>
+<li><strong>Urinalysis + culture</strong>: Detect asymptomatic bacteriuria (treat to prevent pyelonephritis)</li>
+<li><strong>TSH</strong>: If high-risk (history thyroid disease, Type 1 diabetes, family history)</li>
+<p>
+</ul>
+</p>
+
+<strong>Second Trimester</strong>:
+
+<strong>Morphology Ultrasound</strong> (18-20 weeks):
+<ul>
+<li><strong>Purpose</strong>: Detailed anatomy scan, detect structural abnormalities</li>
+<li><strong>Checks</strong>: Brain, heart (4 chambers), spine, kidneys, limbs, face, umbilical cord, placental location</li>
+<li><strong>Sex</strong>: Can be determined if parents wish to know</li>
+<li><strong>Placenta praevia</strong>: If low-lying at 20 weeks → Repeat scan at 32 weeks (often migrates up)</li>
+<p>
+</ul>
+</p>
+
+<strong>Gestational Diabetes Screening</strong> (24-28 weeks):
+<ul>
+<li><strong>OGTT</strong> (Oral Glucose Tolerance Test): 75g glucose load</li>
+<li><strong>Diagnostic criteria</strong> (ADIPS):</li>
+<p>
+</ul>
+  - Fasting ≥5.1 mmol/L, OR
+  - 1 hour ≥10.0 mmol/L, OR
+  - 2 hour ≥8.5 mmol/L
+</p>
+<ul>
+<li><strong>If positive</strong>: Referral to diabetes educator, endocrinologist, dietary modification, possible insulin</li>
+<p>
+</ul>
+</p>
+
+<strong>Third Trimester</strong>:
+
+<strong>FBC</strong> (28 weeks):
+<ul>
+<li>Recheck haemoglobin (anaemia common)</li>
+<li>If Hb <100 g/L → Iron supplementation (oral ferrous sulfate or IV iron if severe/not tolerating oral)</li>
+<p>
+</ul>
+</p>
+
+<strong>Anti-D</strong> (if Rh negative):
+<ul>
+<li>28 weeks and 34 weeks (or single dose at 28 weeks with some preparations)</li>
+<p>
+</ul>
+</p>
+
+<strong>Group B Streptococcus (GBS) Screening</strong> (35-37 weeks):
+<ul>
+<li><strong>Vaginal/rectal swab</strong></li>
+<li><strong>If positive</strong>: Intrapartum IV antibiotics (penicillin) during labour (prevent neonatal sepsis)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 3: Symptom-Based Obstetric History (Acute Presentations)</h2>
+
+<h3>Framework: Gestational Age + Symptom = Differential</h3>
+
+<hr>
+
+<h3>VAGINAL BLEEDING in Pregnancy</h3>
+
+<strong>Differential by Gestational Age</strong>:
+
+<h4>First Trimester Bleeding (<14 weeks)</h4>
+
+<p>
+| <strong>Diagnosis</strong> | <strong>Key Features</strong> | <strong>Examination</strong> | <strong>Investigations</strong> | <strong>Management</strong> |
+|--------------|-----------------|-----------------|-------------------|---------------|
+| <strong>Threatened miscarriage</strong> | Bleeding, closed cervix, viable pregnancy | Cervix closed, uterus appropriate size | Ultrasound (fetal heartbeat present) | Reassurance, avoid intercourse, repeat USS 1-2 weeks |
+| <strong>Inevitable miscarriage</strong> | Bleeding + pain, open cervix, products visible | Cervix open, products of conception visible | Ultrasound (if uncertain) | Surgical (D&C), medical (misoprostol), or expectant management |
+| <strong>Incomplete miscarriage</strong> | Bleeding + pain, some tissue passed, open cervix | Cervix open, retained products | Ultrasound (retained products) | Surgical (D&C) or medical (misoprostol) |
+| <strong>Complete miscarriage</strong> | Bleeding stopped, all tissue passed, closed cervix | Cervix closed, uterus small | Ultrasound (empty uterus) | Reassurance, follow-up βhCG if needed |
+| <strong>Missed miscarriage</strong> | Minimal/no bleeding, no symptoms, non-viable pregnancy found on scan | Cervix closed, uterus smaller than expected | Ultrasound (fetal pole with no heartbeat, or empty sac >25mm) | Expectant, medical, or surgical |
+| <strong>Ectopic pregnancy</strong> | Bleeding + pain, often unilateral, may have shoulder tip pain (haemoperitoneum) | Cervix closed, adnexal tenderness, cervical excitation | βhCG + ultrasound (no intrauterine pregnancy, possible adnexal mass, free fluid) | Medical (methotrexate) if stable and early, surgical (laparoscopy) if ruptured or unstable |
+| <strong>Molar pregnancy</strong> | Bleeding, exaggerated pregnancy symptoms (hyperemesis), uterus large for dates | Uterus larger than expected, no fetal heart | Ultrasound ("snowstorm" appearance), very high βhCG | Suction curettage, follow-up βhCG (monitor for choriocarcinoma) |
+| <strong>Cervical causes</strong> | Bleeding post-coital, no pain | Cervix friable/polyp/ectropion | Speculum exam (visualize source) | Usually benign, reassure, treat if recurrent |
+</p>
+
+<hr>
+
+<h4>Second/Third Trimester Bleeding (>14 weeks)</h4>
+
+<p>
+| <strong>Diagnosis</strong> | <strong>Gestation</strong> | <strong>Key Features</strong> | <strong>Management</strong> |
+|--------------|-------------|-----------------|---------------|
+| <strong>Placenta praevia</strong> | Usually >20 weeks | <strong>Painless vaginal bleeding</strong>, often recurrent, placenta covering cervical os | <strong>DO NOT perform vaginal examination</strong> (may provoke massive haemorrhage). Ultrasound confirms. Admit if bleeding, corticosteroids if preterm, elective CS at 37-38 weeks |
+| <strong>Placental abruption</strong> | >20 weeks | <strong>Painful bleeding</strong> (constant pain), uterine tenderness, woody hard uterus, fetal distress | Resuscitation (IV access, blood products), CTG monitoring, <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> delivery (CS if fetal distress, vaginal if stable and progressing) |
+| <strong>Vasa praevia</strong> | At rupture of membranes | <strong>Painless vaginal bleeding</strong> at ROM, fetal distress (fetal blood loss) | <strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong> - immediate CS (fetal mortality high if not diagnosed antenatally) |
+| <strong>Cervical causes</strong> | Any | Post-coital, cervical polyp/ectropion, speculum shows source | Usually benign, reassure |
+| <strong>"Show"</strong> (labour) | >37 weeks | Mucus plug with blood-staining, associated with contractions | Normal part of labour onset |
+</p>
+
+<hr>
+
+<h3>History-Taking for Vaginal Bleeding</h3>
+
+<strong>Opening</strong>: "I understand you've been experiencing some bleeding. I'd like to ask you some questions to work out what might be causing this. Is that alright?"
+
+<strong>Key Questions</strong> (Differential-Driven):
+
+<strong>Quantify Bleeding</strong>:
+<ol>
+<li><strong>"How much bleeding have you had?"</strong></li>
+<p>
+</ol>
+   - <strong>Spotting</strong>: Small amount, on wiping only
+   - <strong>Light</strong>: Less than a period
+   - <strong>Moderate</strong>: Like a period
+   - <strong>Heavy</strong>: Soaking pads, passing clots
+   - <strong>Massive</strong>: Soaking through clothes, lightheaded (haemodynamic compromise)
+</p>
+
+<ol>
+<li><strong>"How many pads have you soaked?"</strong></li>
+<p>
+</ol>
+   - Quantify objectively
+</p>
+
+<ol>
+<li><strong>"Have you passed any clots or tissue?"</strong></li>
+<p>
+</ol>
+   - <strong>Clots</strong>: Size (small vs golf ball-sized)
+   - <strong>Tissue</strong>: Products of conception (miscarriage)
+</p>
+
+<strong>Associated Symptoms</strong>:
+
+<ol>
+<li><strong>"Do you have any pain?"</strong></li>
+<p>
+</ol>
+   - <strong>Painful bleeding</strong> → Think: Miscarriage (cramping), ectopic (sharp, unilateral), abruption (constant, severe)
+   - <strong>Painless bleeding</strong> → Think: Placenta praevia, cervical causes
+</p>
+
+<ol>
+<li><strong>"If you have pain, where is it?"</strong></li>
+<p>
+</ol>
+   - <strong>Cramping, central</strong> → Miscarriage, labour
+   - <strong>Unilateral, sharp</strong> → Ectopic
+   - <strong>Constant, severe, across abdomen</strong> → Abruption
+</p>
+
+<ol>
+<li><strong>"Any shoulder tip pain?"</strong></li>
+<p>
+</ol>
+   - <strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span> for ruptured ectopic</strong> (blood irritating diaphragm)
+</p>
+
+<ol>
+<li><strong>"Any dizziness, feeling faint?"</strong></li>
+<p>
+</ol>
+   - <strong>Hypovolaemia</strong> → Significant blood loss
+</p>
+
+<strong>Obstetric Context</strong>:
+
+<ol>
+<li><strong>"How many weeks pregnant are you?"</strong></li>
+<p>
+</ol>
+   - <strong><12 weeks</strong>: Likely miscarriage or ectopic
+   - <strong>>20 weeks</strong>: Placenta praevia or abruption
+</p>
+
+<ol>
+<li><strong>"Have you had an ultrasound confirming the pregnancy is in your womb?"</strong></li>
+<p>
+</ol>
+   - If no ultrasound yet → Cannot exclude ectopic
+</p>
+
+<ol>
+<li><strong>"Do you know where your placenta is located?"</strong></li>
+<p>
+</ol>
+    - If low-lying placenta on previous scan → Placenta praevia more likely
+</p>
+
+<strong>Precipitating Factors</strong>:
+
+<ol>
+<li><strong>"Did anything trigger the bleeding? Intercourse, exercise, trauma?"</strong></li>
+<p>
+</ol>
+    - <strong>Post-coital</strong>: Cervical causes (ectropion, polyp)
+    - <strong>Trauma</strong>: Abruption
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s to Screen</strong>:
+
+<ol>
+<li><strong>"Any fever, smelly discharge?"</strong></li>
+<p>
+</ol>
+    - <strong>Septic miscarriage</strong> (infected retained products) - needs <span style="color: #e74c3c; font-weight: bold;">URGENT</span> antibiotics + evacuation
+</p>
+
+<ol>
+<li><strong>"Any gush of fluid?"</strong></li>
+<p>
+</ol>
+    - <strong>Ruptured membranes</strong> + bleeding → High risk (vasa praevia, cord prolapse, abruption)
+</p>
+
+<hr>
+
+<h3>ABDOMINAL PAIN in Pregnancy</h3>
+
+<strong>Differential by Gestational Age and Pain Characteristics</strong>:
+
+<h4>First Trimester Pain</h4>
+
+<p>
+| <strong>Diagnosis</strong> | <strong>Pain Characteristics</strong> | <strong>Associated Features</strong> | <strong>Key Points</strong> |
+|--------------|------------------------|------------------------|---------------|
+| <strong>Ectopic pregnancy</strong> | Unilateral, sharp, may be shoulder tip pain | Bleeding, amenorrhoea, risk factors (PID, previous ectopic, IUD) | <strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong> if ruptured |
+| <strong>Miscarriage</strong> | Cramping, central suprapubic | Bleeding, tissue passage | Confirm with ultrasound |
+| <strong>Corpus luteum cyst</strong> | Unilateral, may be sharp if ruptured/torsion | No bleeding usually | Benign, resolves by 12-14 weeks |
+| <strong>Ovarian torsion</strong> | Sudden, severe, unilateral | Nausea, vomiting, adnexal mass | <strong>Surgical <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong> |
+| <strong>UTI/pyelonephritis</strong> | Suprapubic (cystitis) or loin pain (pyelonephritis) | Dysuria, frequency, fever | Treat with pregnancy-safe antibiotics |
+</p>
+
+<hr>
+
+<h4>Second/Third Trimester Pain</h4>
+
+<p>
+| <strong>Diagnosis</strong> | <strong>Gestation</strong> | <strong>Pain Characteristics</strong> | <strong>Associated Features</strong> |
+|--------------|-------------|------------------------|------------------------|
+| <strong>Placental abruption</strong> | >20 weeks | Sudden, severe, constant | Bleeding (may be concealed), woody hard uterus, fetal distress |
+| <strong>Labour (term or preterm)</strong> | >20 weeks | Regular, rhythmic contractions (every 3-5 min) | Cervical dilation, show, ruptured membranes |
+| <strong>Uterine rupture</strong> | Labour, previous CS | Sudden, severe, "tearing" sensation | Abnormal CTG, palpable fetal parts, haemodynamic instability |
+| <strong>Round ligament pain</strong> | 2nd trimester | Sharp, bilateral lower quadrants, on movement | Benign, no other symptoms |
+| <strong>Braxton Hicks contractions</strong> | >20 weeks (common 3rd trimester) | Irregular, painless or mildly uncomfortable tightenings | No cervical change, resolve with rest |
+| <strong>Pre-eclampsia</strong> | >20 weeks | Epigastric/RUQ pain (liver capsule stretch) | Hypertension, proteinuria, headache, visual disturbance |
+| <strong>HELLP syndrome</strong> | >20 weeks | RUQ pain | Hypertension, Haemolysis, Elevated Liver enzymes, Low Platelets |
+| <strong>Appendicitis</strong> | Any | RLQ pain (but appendix displaced upward by gravid uterus → may be higher) | Fever, nausea, vomiting, rebound tenderness |
+| <strong>Cholecystitis</strong> | Any | RUQ pain | Fever, nausea, vomiting, more common in pregnancy |
+</p>
+
+<hr>
+
+<h3>History-Taking for Abdominal Pain</h3>
+
+<strong>Key Questions</strong>:
+
+<strong>Pain Characteristics</strong> (SOCRATES - adapted):
+
+<ol>
+<li><strong>Site</strong>: "Where is the pain?"</li>
+<li><strong>Onset</strong>: "When did it start? Sudden or gradual?"</li>
+<li><strong>Character</strong>: "What does it feel like? Cramping, sharp, dull, constant?"</li>
+<li><strong>Radiation</strong>: "Does it go anywhere else? Shoulder, back?"</li>
+<li><strong>Associated symptoms</strong>:</li>
+<p>
+</ol>
+   - <strong>Bleeding?</strong> (abruption, miscarriage, ectopic)
+   - <strong>Contractions?</strong> (labour)
+   - <strong>Fever?</strong> (infection)
+   - <strong>Headache, visual disturbance?</strong> (pre-eclampsia)
+   - <strong>Nausea, vomiting?</strong> (many causes)
+</p>
+<ol>
+<li><strong>Timing</strong>: "Is it constant or does it come and go?"</li>
+<p>
+</ol>
+   - <strong>Constant</strong> → Abruption, ectopic, appendicitis
+   - <strong>Intermittent, regular</strong> → Labour
+   - <strong>Intermittent, irregular</strong> → Braxton Hicks
+</p>
+<ol>
+<li><strong>Exacerbating/Relieving</strong>: "What makes it better or worse?"</li>
+<li><strong>Severity</strong>: "On a scale of 0-10, how bad is the pain?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Obstetric Context</strong>:
+<ul>
+<li>Gestational age</li>
+<li>Previous ultrasounds (placental location)</li>
+<li>Fetal movements (reduced = fetal distress)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>REDUCED FETAL MOVEMENTS</h3>
+
+<strong>"Baby not moving as much"</strong>
+
+<strong>When Movements Expected</strong>:
+<ul>
+<li><strong>Primigravida</strong>: Usually feels movements from 18-20 weeks</li>
+<li><strong>Multigravida</strong>: May feel from 16-18 weeks (recognizes sensation earlier)</li>
+<li><strong>Pattern</strong>: Movements increase until ~32 weeks, then plateau (NOT decrease - common myth)</li>
+<p>
+</ul>
+</p>
+
+<strong>Normal Movements</strong>:
+<ul>
+<li>No set number, but most women feel ≥10 movements per day</li>
+<li><strong>Pattern more important than number</strong>: Each baby has own pattern (active vs quiet)</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential Diagnosis for Reduced Movements</strong>:
+
+<p>
+| <strong>Diagnosis</strong> | <strong>Key Features</strong> | <strong>Urgency</strong> |
+|--------------|-----------------|------------|
+| <strong>Normal variation</strong> | Mother busy, not noticing, baby sleeping | Reassurance, but <strong>must assess</strong> |
+| <strong>Placental insufficiency</strong> | Chronic reduction, IUGR on growth scans | Monitor with CTG, Dopplers, may need early delivery |
+| <strong>Fetal distress</strong> | Acute reduction, abnormal CTG | <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span></strong> - may need immediate delivery |
+| <strong>Cord accident</strong> (cord around neck, cord prolapse) | Sudden reduction/cessation | <strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong> |
+| <strong>Fetal death</strong> | No movements, no heartbeat | Devastating, supportive care, induction of labour |
+| <strong>Oligohydramnios</strong> (low fluid) | Reduced movements, small for dates | Monitor, may indicate placental insufficiency |
+| <strong>Maternal factors</strong> | Anterior placenta (cushions movements), obesity, busy day | Less concerning, but still assess |
+</p>
+
+<hr>
+
+<h3>History-Taking for Reduced Fetal Movements</h3>
+
+<strong>Key Questions</strong>:
+
+<ol>
+<li><strong>"When did you last feel baby move?"</strong></li>
+<p>
+</ol>
+   - <strong>If >24 hours</strong>: <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span> assessment</strong> needed
+</p>
+
+<ol>
+<li><strong>"Is this the first time you've noticed reduced movements, or has it happened before?"</strong></li>
+<p>
+</ol>
+   - <strong>Recurrent reduced movements</strong>: Higher risk of adverse outcome
+</p>
+
+<ol>
+<li><strong>"What have you tried to get baby to move?"</strong></li>
+<p>
+</ol>
+   - <strong>Lying on left side, drinking cold drink, eating sugary food</strong>: Often stimulates movements
+   - If tried and still not moving → More concerning
+</p>
+
+<ol>
+<li><strong>"Have you noticed any bleeding, pain, or fluid leaking?"</strong></li>
+<p>
+</ol>
+   - <strong>Bleeding + reduced movements</strong>: Abruption
+   - <strong>Fluid + reduced movements</strong>: Ruptured membranes
+</p>
+
+<ol>
+<li><strong>"Any recent trauma or fall?"</strong></li>
+<p>
+</ol>
+   - Abruption risk
+</p>
+
+<strong>Management</strong> (explain to patient in OSCE):
+<p>
+"Reduced fetal movements can be a sign that baby is not getting enough oxygen, so we take this seriously. I'd like to:
+</p>
+<ol>
+<li><strong>Listen to baby's heartbeat</strong> with a Doppler or CTG (cardiotocograph)</li>
+<li><strong>Perform CTG monitoring</strong> for 20-40 minutes to assess baby's heart rate pattern</li>
+<li><strong>Ultrasound</strong> to check amniotic fluid, baby's size, and placental blood flow if needed</li>
+<li>If everything looks reassuring, we'll advise you to monitor movements closely and come back immediately if you notice reduced movements again."</li>
+<p>
+</ol>
+</p>
+
+<strong>CRITICAL</strong>: <strong>Never dismiss reduced fetal movements</strong>. Up to 50% of stillbirths are preceded by maternal perception of reduced movements.
+
+<hr>
+
+<h3>HEADACHE in Pregnancy</h3>
+
+<strong>Differential Diagnosis</strong>:
+
+<p>
+| <strong>Diagnosis</strong> | <strong>Features</strong> | <strong>Management</strong> |
+|--------------|-------------|---------------|
+| <strong>Pre-eclampsia</strong> | <strong>Severe, frontal headache</strong>, visual disturbance (flashing lights, blurred vision), RUQ pain, hypertension, proteinuria | <strong>Check BP, urine dipstick</strong>. If pre-eclampsia → Admit, antihypertensives, magnesium sulfate (if severe), delivery (only cure) |
+| <strong>Migraine</strong> | Throbbing, unilateral, photophobia, nausea, aura, history of migraines | Paracetamol safe, avoid NSAIDs, triptans (some safe in pregnancy - sumatriptan), rest, dark room |
+| <strong>Tension headache</strong> | Bilateral, "band-like", stress-related | Paracetamol, reassurance, relaxation |
+| <strong>Intracranial haemorrhage</strong> | Sudden, "thunderclap" headache, worst ever, neurological signs | <strong><span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span></strong> - CT head, neurosurgery |
+| <strong>Cerebral venous thrombosis</strong> | Headache, seizure, neurological deficit, pregnancy/postpartum | <strong><span style="color: #e74c3c; font-weight: bold;">URGENT</span></strong> - CT/MRI, anticoagulation |
+</p>
+
+<strong>Key Questions</strong>:
+<ol>
+<li><strong>"Is this the worst headache of your life?"</strong> (Subarachnoid haemorrhage)</li>
+<li><strong>"Do you have any visual changes, like flashing lights or blurred vision?"</strong> (Pre-eclampsia)</li>
+<li><strong>"Any pain in your upper tummy?"</strong> (Pre-eclampsia - RUQ pain)</li>
+<li><strong>"Do you have a history of migraines?"</strong> (Migraine more likely)</li>
+<li><strong>"Have you checked your blood pressure recently?"</strong> (Pre-eclampsia)</li>
+<p>
+</ol>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</strong> (require <span style="color: #e74c3c; font-weight: bold;">URGENT</span> assessment):
+<ul>
+<li><strong>Severe headache + hypertension</strong> (BP >140/90) → Pre-eclampsia</li>
+<li><strong>Sudden, thunderclap headache</strong> → Intracranial bleed</li>
+<li><strong>Headache + neurological signs</strong> (weakness, visual loss, seizure) → Stroke, CVT</li>
+<li><strong>Headache + fever + neck stiffness</strong> → Meningitis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 4: High-Risk Pregnancy Factors</h2>
+
+<h3>Recognizing High-Risk Pregnancies (For Shared Care vs Obstetric-Led Care)</h3>
+
+<strong>High-risk factors requiring </strong>specialist obstetric care<strong> (not suitable for midwifery-only or GP shared care alone)</strong>:
+
+<strong>Medical</strong>:
+<ul>
+<li><strong>Cardiac disease</strong> (especially structural heart disease, pulmonary hypertension)</li>
+<li><strong>Chronic kidney disease</strong> (especially if eGFR <60)</li>
+<li><strong>Diabetes</strong> (pre-existing Type 1 or 2)</li>
+<li><strong>Epilepsy</strong> (on anti-epileptics)</li>
+<li><strong>Autoimmune disease</strong> (SLE, antiphospholipid syndrome)</li>
+<li><strong>HIV</strong>, active hepatitis C</li>
+<li><strong>Previous VTE</strong> (need thromboprophylaxis planning)</li>
+<p>
+</ul>
+</p>
+
+<strong>Obstetric</strong>:
+<ul>
+<li><strong>Previous stillbirth or neonatal death</strong></li>
+<li><strong>Previous preterm birth</strong> (<34 weeks)</li>
+<li><strong>Previous severe pre-eclampsia</strong> (especially if delivered <34 weeks)</li>
+<li><strong>Recurrent miscarriage</strong> (≥3)</li>
+<li><strong>Previous classical caesarean</strong> or myomectomy (uterine rupture risk)</li>
+<li><strong>Multiple pregnancy</strong> (twins, triplets)</li>
+<li><strong>Placenta praevia</strong></li>
+<li><strong>Fetal anomaly</strong> detected on scan</li>
+<li><strong>Polyhydramnios or oligohydramnios</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Social</strong>:
+<ul>
+<li><strong>Domestic violence</strong></li>
+<li><strong>Significant mental health issues</strong> (active psychosis, severe depression, previous puerperal psychosis)</li>
+<li><strong>Substance use</strong> (ongoing drug/alcohol use)</li>
+<li><strong>Safeguarding concerns</strong> (child protection involvement)</li>
+<li><strong>Homelessness, lack of support</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 5: Australian Antenatal Care Schedule</h2>
+
+<h3>Medicare Antenatal Care Plan (Shared Care)</h3>
+
+<strong>GP Visits</strong> (typical schedule for low-risk pregnancy):
+
+<ul>
+<li><strong>Booking visit</strong>: 6-10 weeks (confirm pregnancy, bloods, dating scan referral, antenatal care plan)</li>
+<li><strong>Monthly visits</strong>: 10-28 weeks</li>
+<li><strong>Fortnightly</strong>: 28-36 weeks</li>
+<li><strong>Weekly</strong>: 36 weeks to delivery</li>
+<p>
+</ul>
+</p>
+
+<strong>Hospital Midwife/Obstetrician Visits</strong>:
+<ul>
+<li>Varies by model of care (shared care: hospital visits at booking, 28-32w, 36w, 38w, 40w)</li>
+<p>
+</ul>
+</p>
+
+<strong>Medicare Item Numbers</strong>:
+<ul>
+<li><strong>Item 16400</strong>: Antenatal care - GP shared care (first visit - includes care plan)</li>
+<li><strong>Item 16401-16407</strong>: Subsequent antenatal visits</li>
+<li>Up to 10 GP antenatal visits are Medicare-rebated</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Key Routine Assessments at Each Visit</h3>
+
+<strong>Every Visit</strong>:
+<ol>
+<li><strong>Blood pressure</strong>: Detect hypertension/pre-eclampsia (normal <140/90)</li>
+<li><strong>Urinalysis</strong>: Protein (pre-eclampsia), glucose (diabetes), leucocytes/nitrites (UTI)</li>
+<li><strong>Fundal height</strong> (from 20-24 weeks):</li>
+<p>
+</ol>
+   - Measure symphysis-fundal height (SFH) in cm with tape measure
+   - Should correlate with gestational age ± 2cm (e.g., 28 weeks = ~28cm)
+   - <strong>If >2cm discrepancy</strong>: Ultrasound to assess (large = macrosomia, polyhydramnios; small = IUGR, oligohydramnios)
+</p>
+<ol>
+<li><strong>Fetal heart rate</strong>: From 12 weeks (Doppler), normal 110-160 bpm</li>
+<li><strong>Fetal movements</strong>: Ask about (from 20 weeks)</li>
+<li><strong>Weight</strong>: Monitor (excessive gain = GDM risk, inadequate = IUGR risk)</li>
+<li><strong>Ask</strong>: Any bleeding, pain, fluid loss, headache, visual disturbance</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Part 6: Common IMG Mistakes in Obstetric History</h2>
+
+<h3>Mistake 1: Not Calculating Gestational Age Immediately</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Take full history before establishing dates</li>
+<li>Don't know how to calculate EDD</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>First question after name/age</strong>: "When was the first day of your last period?"</li>
+<li><strong>Calculate immediately</strong>: Use Naegele's rule or wheel</li>
+<li><strong>State gestational age</strong>: "So you're currently 28 weeks and 3 days pregnant"</li>
+<p>
+</ul>
+</p>
+
+<strong>Why It Matters</strong>:
+<ul>
+<li>Gestational age determines differential diagnosis and urgency</li>
+<li>Shows competence to examiner</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 2: Not Risk-Stratifying Based on Gestational Age + Symptom</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>"Bleeding in pregnancy" → Treat all the same</li>
+<li>Don't think differently about 8 weeks vs 28 weeks</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>8 weeks + bleeding</strong> → Think miscarriage/ectopic → Check haemodynamic stability, ultrasound</li>
+<li><strong>28 weeks + bleeding</strong> → Think placenta praevia/abruption → <strong>DO NOT do vaginal exam</strong>, ultrasound, CTG</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 3: Performing Vaginal Examination in Antepartum Haemorrhage</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Patient with bleeding at 30 weeks → Do speculum/digital vaginal exam</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>NEVER perform vaginal examination in antepartum haemorrhage (>20 weeks) until placenta praevia excluded by ultrasound</strong></li>
+<li>Digital exam with placenta praevia → Catastrophic haemorrhage</li>
+<p>
+</ul>
+</p>
+
+<strong>OSCE Statement</strong>: "I would <strong>not</strong> perform a vaginal examination until I've confirmed the placental location with ultrasound, as this patient may have placenta praevia and digital examination could provoke massive haemorrhage."
+
+<hr>
+
+<h3>Mistake 4: Dismissing Reduced Fetal Movements</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>"Baby is probably just sleeping"</li>
+<li>"It's normal for movements to reduce near term" (MYTH)</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Always take reduced movements seriously</strong></li>
+<li><strong>EVERY patient reporting reduced movements needs assessment</strong> (CTG, ultrasound if indicated)</li>
+<li><strong>Never assume it's normal without checking</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 5: Not Screening for Domestic Violence</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Forget to ask about safety at home</li>
+<li>Ask in front of partner</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Mandatory in antenatal booking</strong></li>
+<li>Ask when partner <strong>NOT present</strong> (ask partner to step out)</li>
+<li>"I ask all pregnant women this: Do you feel safe at home?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Mistake 6: Not Offering Screening Tests</h3>
+
+<strong>What IMGs Do Wrong</strong>:
+<ul>
+<li>Don't explain first trimester screening, NIPT, morphology scan</li>
+<p>
+</ul>
+</p>
+
+<strong>Correct Approach</strong>:
+<ul>
+<li><strong>Offer and explain</strong> all screening (first trimester, NIPT, morphology, GDM, GBS)</li>
+<li>Allow patient to make informed choice</li>
+<li>Document consent or decline</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Part 7: OSCE Practice Stations</h2>
+
+<h3>OSCE Station 1: Antenatal Booking History</h3>
+
+<strong>Candidate Instructions</strong>:
+<p>
+"Mrs. Lee is a 32-year-old woman attending for her first antenatal visit. She is 8 weeks pregnant. Take a comprehensive booking history. You have 10 minutes."
+</p>
+
+<strong>Key Points to Cover</strong>:
+<ol>
+<li><strong>Current pregnancy</strong>: LMP, calculate EDD, confirm intrauterine pregnancy with scan, symptoms, folate/iodine</li>
+<li><strong>Obstetric history</strong>: Gravida/para, previous pregnancies (mode of delivery, complications - GDM, pre-eclampsia, PPH)</li>
+<li><strong>Medical history</strong>: Diabetes, hypertension, cardiac, renal, thyroid, epilepsy, mental health</li>
+<li><strong>Gynae history</strong>: Cervical screening, previous surgery</li>
+<li><strong>Medications and allergies</strong></li>
+<li><strong>Lifestyle</strong>: Smoking, alcohol, drugs, diet</li>
+<li><strong>Domestic violence screening</strong>: "Do you feel safe at home?"</li>
+<li><strong>Plans</strong>: Where deliver, birth preferences</li>
+<li><strong>Screening tests</strong>: Explain first trimester screening, offer bloods (FBC, blood group, infections)</li>
+<li><strong>Next steps</strong>: Dating scan, follow-up plan</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>OSCE Station 2: Antepartum Haemorrhage</h3>
+
+<strong>Candidate Instructions</strong>:
+<p>
+"Mrs. Patel is 28 weeks pregnant and presents with vaginal bleeding. Take a focused history and explain your initial management plan. You have 8 minutes."
+</p>
+
+<strong>Approach</strong>:
+
+<strong>History</strong> (4 minutes):
+<ol>
+<li><strong>Quantify bleeding</strong>: "How much bleeding? Heavy, light, spotting? Soaking pads?"</li>
+<li><strong>Pain</strong>: "Any abdominal pain?" (Painful = abruption, Painless = praevia)</li>
+<li><strong>Triggers</strong>: "Any trauma, intercourse?"</li>
+<li><strong>Associated symptoms</strong>: "Any contractions, fluid loss, reduced baby movements?"</li>
+<li><strong>Obstetric context</strong>: "How many weeks pregnant? Do you know where your placenta is?"</li>
+<li><strong>Risk factors</strong>: "Previous bleeding this pregnancy? Smoking? Previous caesarean?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Examination and Investigations</strong> (2 minutes):
+<p>
+"I would:
+</p>
+<ol>
+<li><strong>Assess haemodynamic stability</strong>: BP, HR, check for signs of shock (pallor, tachycardia, hypotension)</li>
+<li><strong>Abdominal examination</strong>: Fundal height, uterine tenderness (abruption = woody hard uterus), fetal lie, fetal heart rate</li>
+<li><strong>Speculum examination ONLY if placenta praevia excluded</strong></li>
+<li><strong>CTG monitoring</strong>: To assess fetal wellbeing</li>
+<li><strong>Ultrasound</strong>: Confirm placental location</li>
+<li><strong>Bloods</strong>: FBC, group and save (or cross-match if heavy bleeding), coagulation screen if abruption suspected</li>
+<p>
+</ol>
+</p>
+
+<strong>Management</strong> (2 minutes):
+<p>
+"Given she's bleeding at 28 weeks, my differential includes placenta praevia and placental abruption. Initial management would be:
+</p>
+<ol>
+<li><strong>Admit to hospital</strong> for observation</li>
+<li><strong>IV access</strong> and fluid resuscitation if needed</li>
+<li><strong>Anti-D</strong> if she's Rh negative (sensitization risk from fetomaternal haemorrhage)</li>
+<li><strong>Corticosteroids</strong> (betamethasone) if risk of preterm delivery (to mature fetal lungs)</li>
+<li><strong>Continuous CTG monitoring</strong> if heavy bleeding or signs of abruption</li>
+<li><strong>If massive haemorrhage or fetal distress</strong>: <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> caesarean section</li>
+<li><strong>If stable and bleeding settles</strong>: May be able to discharge with clear instructions to return if further bleeding"</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>OSCE Station 3: Reduced Fetal Movements</h3>
+
+<strong>Candidate Instructions</strong>:
+<p>
+"Mrs. Chen is 34 weeks pregnant and concerned that her baby is not moving as much as usual. Take a focused history and explain your assessment plan. You have 8 minutes."
+</p>
+
+<strong>History</strong> (4 minutes):
+<ol>
+<li><strong>"When did you last feel baby move?"</strong></li>
+<li><strong>"Is this the first time, or has it happened before?"</strong></li>
+<li><strong>"What have you tried to stimulate movement?"</strong> (Cold drink, lying on left side, eating)</li>
+<li><strong>"Any bleeding, pain, or fluid leakage?"</strong></li>
+<li><strong>"Any recent trauma?"</strong></li>
+<li><strong>"Have you noticed any pattern - is baby usually active at certain times?"</strong></li>
+<p>
+</ol>
+</p>
+
+<strong>Assessment Plan</strong> (4 minutes):
+<p>
+"Reduced fetal movements can indicate that baby is not getting enough oxygen, so we take this seriously. I'd like to:
+</p>
+
+<ol>
+<li><strong>Immediate assessment</strong>:</li>
+<p>
+</ol>
+   - <strong>Listen to baby's heartbeat</strong> with a handheld Doppler to ensure baby is alive
+   - <strong>CTG monitoring</strong> for 20-40 minutes to assess heart rate pattern
+     - Looking for: Baseline 110-160bpm, variability >5bpm, accelerations (reassuring), decelerations (concerning)
+</p>
+
+<ol>
+<li><strong>If CTG reassuring</strong>:</li>
+<p>
+</ol>
+   - <strong>Ultrasound scan</strong> to check:
+     - Amniotic fluid volume (oligohydramnios = placental insufficiency)
+     - Fetal biometry (growth assessment - is baby growing appropriately?)
+     - Umbilical artery Doppler (placental blood flow)
+</p>
+
+<ol>
+<li><strong>Advice</strong>:</li>
+<p>
+</ol>
+   - Monitor movements closely
+   - <strong>Return immediately</strong> if reduced movements again (never dismiss recurrent reduced movements)
+   - Increased surveillance (may need repeat CTG/scans)
+</p>
+
+<ol>
+<li><strong>If CTG abnormal or other concerns</strong>:</li>
+<p>
+</ol>
+   - May need delivery (induction or caesarean depending on urgency)
+</p>
+
+<strong>Reassurance</strong>: 'Most of the time, everything is fine and baby is just having a quiet day. However, we check carefully because reduced movements can sometimes be a warning sign, and we want to make sure baby is getting enough oxygen and nutrients through the placenta.'"
+
+<hr>
+
+<h2>Summary: Key Takeaways</h2>
+
+<h3>For Antenatal Booking History:</h3>
+<ol>
+<li><strong>Calculate dates immediately</strong>: LMP → Gestational age and EDD</li>
+<li><strong>Systematic PREGNANT framework</strong>: Presenting pregnancy, Reproductive history, Existing medical conditions, Gynaecological history, Nutritional/lifestyle, Allergies, Natal planning, Tests/screening</li>
+<li><strong>Risk stratification</strong>: Identify high-risk factors (medical, obstetric, social) → Determine appropriate level of care</li>
+<li><strong>Domestic violence screening</strong>: Mandatory, ask when partner not present</li>
+<li><strong>Offer all screening tests</strong>: First trimester, NIPT, morphology, GDM, GBS</li>
+<p>
+</ol>
+</p>
+
+<h3>For Acute Obstetric Presentations:</h3>
+<ol>
+<li><strong>Gestational age + symptom = differential</strong>: Always establish dates first</li>
+<li><strong>Bleeding</strong>:</li>
+<p>
+</ol>
+   - <14 weeks → Miscarriage or ectopic
+   - >20 weeks → Praevia (painless) vs abruption (painful)
+   - <strong>NEVER vaginal exam until praevia excluded</strong>
+</p>
+<ol>
+<li><strong>Pain</strong>:</li>
+<p>
+</ol>
+   - Unilateral + early pregnancy → Ectopic
+   - Constant + bleeding → Abruption
+   - RUQ + late pregnancy → Pre-eclampsia/HELLP
+</p>
+<ol>
+<li><strong>Reduced movements</strong>: ALWAYS assess (CTG + ultrasound if needed), never dismiss</li>
+<p>
+</ol>
+</p>
+
+<h3>For Australian Context:</h3>
+<ol>
+<li><strong>Medicare antenatal schedule</strong>: Up to 10 GP visits rebated, shared care model common</li>
+<li><strong>Screening</strong>: First trimester (NT, bloods), morphology (18-20w), GDM (24-28w), GBS (35-37w)</li>
+<li><strong>Anti-D</strong>: Rh negative women need at 28 and 34 weeks</li>
+<li><strong>High-risk pregnancies</strong>: Specialist obstetric care for medical comorbidities, previous complications, social issues</li>
+<p>
+</ol>
+</p>
+
+<h3>For OSCE Success:</h3>
+<ol>
+<li><strong>Calculate dates out loud</strong>: Shows competence</li>
+<li><strong>Verbalize differential thinking</strong>: "Given she's 28 weeks with painless bleeding, I'm thinking placenta praevia"</li>
+<li><strong>State what you would NOT do</strong>: "I would NOT perform vaginal examination until placenta praevia excluded"</li>
+<li><strong>Always assess reduced movements seriously</strong>: "Reduced movements can indicate fetal compromise, so we need to assess with CTG"</li>
+<li><strong>Mention Australian-specific care</strong>: "I'd arrange shared care with GP and hospital," "Medicare rebates antenatal visits"</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<strong>This completes the first ObGyn document! Next: Gynaecological History-Taking with Differential Diagnosis</strong>
+
+<strong>Word Count</strong>: ~18,000 words
+<strong>Last Updated</strong>: December 2025 for ICRP NSW Young Hospital Program (March 2026 intake)
+<strong>Author</strong>: ICRP OSCE Preparation Team
+<strong>Reference</strong>: Dr. Amir Soufi (IMG4IMGS), RANZCOG Guidelines, eTG 2024, Medicare Australia, AMC Clinical OSCE Format
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

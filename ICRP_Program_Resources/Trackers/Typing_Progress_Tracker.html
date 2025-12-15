@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Progress Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 25px;
+        }
+        .month-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .metric-card {
+            background: #f8f9fa;
+            border: 2px solid #667eea;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .metric-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #667eea;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .progress-bar {
+            background: #e9ecef;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        .alert {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .milestone {
+            background: #e7f3ff;
+            border-left: 5px solid #007bff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        @media print {
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⌨️ Typing Speed Progress Tracker</h1>
+
+        <div class="alert no-print">
+            <h3>📋 How to Use This Tracker</h3>
+            <ul>
+                <li><strong>Take weekly tests</strong> - Test yourself every week on TypingTest.com</li>
+                <li><strong>Record all practice</strong> - Log daily practice time and exercises</li>
+                <li><strong>Track progress</strong> - Watch your WPM and accuracy improve over time</li>
+                <li><strong>Focus on accuracy first</strong> - Speed comes with correct technique</li>
+                <li><strong>Review monthly</strong> - Assess if you're meeting monthly targets</li>
+            </ul>
+        </div>
+
+        <div class="month-header">
+            <h2 style="color: white; margin: 0;">Current Month: <input type="text" style="width: 200px; display: inline;" placeholder="e.g., December 2025"></h2>
+            <p style="margin: 5px 0 0 0;">Preparation Month:
+                <select style="width: 100px; display: inline;">
+                    <option value="1">Month 1</option>
+                    <option value="2">Month 2</option>
+                    <option value="3">Month 3</option>
+                </select>
+            </p>
+        </div>
+
+        <h2>🎯 Monthly Targets</h2>
+        <div class="metrics">
+            <div class="milestone">
+                <h3 style="margin-top: 0; color: #007bff;">Month 1 (December)</h3>
+                <ul style="margin: 10px 0;">
+                    <li><strong>Target WPM:</strong> 25-30</li>
+                    <li><strong>Accuracy:</strong> 90%+</li>
+                    <li><strong>Focus:</strong> Touch typing foundation</li>
+                    <li><strong>Time:</strong> 30-45 min daily</li>
+                </ul>
+            </div>
+            <div class="milestone">
+                <h3 style="margin-top: 0; color: #007bff;">Month 2 (January)</h3>
+                <ul style="margin: 10px 0;">
+                    <li><strong>Target WPM:</strong> 35-40</li>
+                    <li><strong>Accuracy:</strong> 93%+</li>
+                    <li><strong>Focus:</strong> Speed + medical typing</li>
+                    <li><strong>Time:</strong> 45-60 min daily</li>
+                </ul>
+            </div>
+            <div class="milestone">
+                <h3 style="margin-top: 0; color: #007bff;">Month 3 (February)</h3>
+                <ul style="margin: 10px 0;">
+                    <li><strong>Target WPM:</strong> 40+</li>
+                    <li><strong>Accuracy:</strong> 95%+</li>
+                    <li><strong>Focus:</strong> Mastery + EMR prep</li>
+                    <li><strong>Time:</strong> 60 min daily</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>📊 Current Stats</h2>
+        <div class="metrics">
+            <div class="metric-card">
+                <div class="metric-value"><input type="number" min="0" style="width: 80px; text-align: center; border: none; font-size: 2em; font-weight: bold; color: #667eea;" placeholder="0"></div>
+                <div class="metric-label">Current WPM</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value"><input type="number" min="0" max="100" style="width: 80px; text-align: center; border: none; font-size: 2em; font-weight: bold; color: #667eea;" placeholder="0">%</div>
+                <div class="metric-label">Current Accuracy</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value"><input type="number" min="0" style="width: 80px; text-align: center; border: none; font-size: 2em; font-weight: bold; color: #667eea;" placeholder="0"></div>
+                <div class="metric-label">Total Practice Hours</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value"><input type="number" min="0" style="width: 80px; text-align: center; border: none; font-size: 2em; font-weight: bold; color: #667eea;" placeholder="0"></div>
+                <div class="metric-label">Days Practiced</div>
+            </div>
+        </div>
+
+        <h2>📈 Weekly Test Results</h2>
+        <p><em>Take a 1-minute or 3-minute typing test each week and record your results:</em></p>
+        <table>
+            <tr>
+                <th>Week #</th>
+                <th>Date</th>
+                <th>WPM</th>
+                <th>Accuracy %</th>
+                <th>Test Duration</th>
+                <th>Platform</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td><input type="text" placeholder="e.g., Dec 8"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0" max="100"></td>
+                <td><select><option>1 min</option><option>3 min</option><option>5 min</option></select></td>
+                <td><input type="text" placeholder="e.g., TypingTest.com"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><input type="text" placeholder="e.g., Dec 15"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0" max="100"></td>
+                <td><select><option>1 min</option><option>3 min</option><option>5 min</option></select></td>
+                <td><input type="text" placeholder="e.g., TypingTest.com"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><input type="text" placeholder="e.g., Dec 22"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0" max="100"></td>
+                <td><select><option>1 min</option><option>3 min</option><option>5 min</option></select></td>
+                <td><input type="text" placeholder="e.g., TypingTest.com"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><input type="text" placeholder="e.g., Dec 29"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0" max="100"></td>
+                <td><select><option>1 min</option><option>3 min</option><option>5 min</option></select></td>
+                <td><input type="text" placeholder="e.g., TypingTest.com"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+        </table>
+
+        <h2>📅 Daily Practice Log (This Week)</h2>
+        <table>
+            <tr>
+                <th>Day</th>
+                <th>Minutes Practiced</th>
+                <th>Platform/Exercise</th>
+                <th>Focus Area</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td><strong>Monday</strong></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="text" placeholder="e.g., TypingClub Lesson 12"></td>
+                <td><input type="text" placeholder="e.g., Top row keys"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+            <tr>
+                <td><strong>Tuesday</strong></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="text" placeholder="e.g., Keybr.com"></td>
+                <td><input type="text" placeholder="e.g., Speed building"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+            <tr>
+                <td><strong>Wednesday</strong></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="text" placeholder="e.g., Medical terms"></td>
+                <td><input type="text" placeholder="e.g., Medical vocabulary"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+            <tr>
+                <td><strong>Thursday</strong></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="text" placeholder="e.g., TypingClub"></td>
+                <td><input type="text" placeholder="e.g., Bottom row"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+            <tr>
+                <td><strong>Friday</strong></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="text" placeholder="e.g., SOAP notes typing"></td>
+                <td><input type="text" placeholder="e.g., Clinical documentation"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+            <tr>
+                <td><strong>Saturday</strong></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="text" placeholder="e.g., Mixed practice"></td>
+                <td><input type="text" placeholder="e.g., All keys review"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+            <tr>
+                <td><strong>Sunday</strong></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="text" placeholder="e.g., Typing test + drills"></td>
+                <td><input type="text" placeholder="e.g., Assessment"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+            <tr style="background: #d4edda; font-weight: bold;">
+                <td>TOTAL</td>
+                <td><input type="number" min="0"> min</td>
+                <td colspan="3">Target: 210-420 min/week (30-60 min/day)</td>
+            </tr>
+        </table>
+
+        <h2>🔍 Skill Breakdown</h2>
+        <p><em>Rate your confidence in each skill area (1 = Need lots of practice, 5 = Confident):</em></p>
+        <table>
+            <tr>
+                <th>Skill</th>
+                <th>Rating (1-5)</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td>Home row keys (ASDF JKL;)</td>
+                <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                <td><input type="text" placeholder="Areas to improve"></td>
+            </tr>
+            <tr>
+                <td>Top row keys (QWERTY UIOP)</td>
+                <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                <td><input type="text" placeholder="Areas to improve"></td>
+            </tr>
+            <tr>
+                <td>Bottom row keys (ZXCVBNM)</td>
+                <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                <td><input type="text" placeholder="Areas to improve"></td>
+            </tr>
+            <tr>
+                <td>Numbers row (1234567890)</td>
+                <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                <td><input type="text" placeholder="Areas to improve"></td>
+            </tr>
+            <tr>
+                <td>Punctuation & symbols</td>
+                <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                <td><input type="text" placeholder="Areas to improve"></td>
+            </tr>
+            <tr>
+                <td>Medical terminology</td>
+                <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                <td><input type="text" placeholder="Areas to improve"></td>
+            </tr>
+            <tr>
+                <td>Clinical abbreviations</td>
+                <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                <td><input type="text" placeholder="Areas to improve"></td>
+            </tr>
+            <tr>
+                <td>Long-form clinical notes</td>
+                <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                <td><input type="text" placeholder="Areas to improve"></td>
+            </tr>
+        </table>
+
+        <h2>📋 Progress Toward Goals</h2>
+
+        <h3>WPM Progress</h3>
+        <p><strong>Starting WPM:</strong> <input type="number" min="0" style="width: 80px;"> WPM (Baseline)</p>
+        <p><strong>Current WPM:</strong> <input type="number" min="0" style="width: 80px;"> WPM</p>
+        <p><strong>Target for this month:</strong> <input type="number" min="0" style="width: 80px;"> WPM</p>
+        <p><strong>Improvement:</strong> <input type="text" style="width: 150px;" placeholder="e.g., +12 WPM"> since baseline</p>
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%;">0%</div>
+        </div>
+        <p><em>Calculate: (Current WPM ÷ Target WPM) × 100 = Progress %</em></p>
+
+        <h3>Accuracy Progress</h3>
+        <p><strong>Starting Accuracy:</strong> <input type="number" min="0" max="100" style="width: 80px;">%</p>
+        <p><strong>Current Accuracy:</strong> <input type="number" min="0" max="100" style="width: 80px;">%</p>
+        <p><strong>Target:</strong> 95%+</p>
+
+        <h2>🎯 Weekly Reflection</h2>
+
+        <h3>What improved this week?</h3>
+        <textarea placeholder="e.g., Much better accuracy on bottom row keys, WPM increased by 3 points, more comfortable with medical terms"></textarea>
+
+        <h3>What challenges did I face?</h3>
+        <textarea placeholder="e.g., Still looking at keyboard for numbers, accuracy drops when tired, struggle with certain letter combinations"></textarea>
+
+        <h3>Focus areas for next week:</h3>
+        <textarea placeholder="e.g., Practice numbers without looking, work on 'th' and 'tion' combinations, increase medical term vocabulary"></textarea>
+
+        <div class="success">
+            <h3>✅ Milestones Achieved</h3>
+            <p>Check off milestones as you achieve them:</p>
+            <ul style="font-size: 1.1em; line-height: 2;">
+                <li>☐ Completed touch typing basics (all keys without looking)</li>
+                <li>☐ Reached 25 WPM with 90%+ accuracy</li>
+                <li>☐ Reached 30 WPM with 90%+ accuracy</li>
+                <li>☐ Reached 35 WPM with 93%+ accuracy</li>
+                <li>☐ Reached 40 WPM with 95%+ accuracy</li>
+                <li>☐ Can type 50 medical terms accurately without looking</li>
+                <li>☐ Can type common clinical abbreviations fluently</li>
+                <li>☐ Practiced every day for 7 consecutive days</li>
+                <li>☐ Practiced every day for 30 consecutive days</li>
+                <li>☐ Completed 20+ hours total practice time</li>
+                <li>☐ Completed 50+ hours total practice time</li>
+                <li>☐ Can complete SOAP note in under 15 minutes</li>
+            </ul>
+        </div>
+
+        <div style="margin-top: 30px; text-align: center;">
+            <button onclick="window.print()" style="background: #667eea; color: white; padding: 12px 30px; border: none; border-radius: 5px; font-size: 1.1em; cursor: pointer;">
+                🖨️ Print/Save Progress Report
+            </button>
+        </div>
+
+        <div style="margin-top: 30px; padding: 15px; border-top: 2px solid #ddd; text-align: center; color: #666;">
+            <p><strong>ICRP Preparation Program</strong> | Typing Progress Tracker</p>
+            <p>Consistent practice = Consistent improvement!</p>
+        </div>
+    </div>
+</body>
+</html>

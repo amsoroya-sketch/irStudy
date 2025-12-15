@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking Bad News - Mock OSCE Stations (Part 2)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Mock Stations</span>
+</div>
+        
+        <h1>Breaking Bad News - Mock OSCE Stations (Part 2)</h1>
+<h2>AMC Clinical / ICRP NSW Young Hospital Preparation</h2>
+
+<strong>Purpose</strong>: Complete mock OSCE stations 3-6 for breaking bad news with examiner checklists
+<strong>Format</strong>: 4 complete 8-minute stations
+<strong>Created</strong>: December 14, 2025
+
+<hr>
+
+<h2>TABLE OF CONTENTS</h2>
+
+<ol>
+<li><a href="#station-3-stroke-with-permanent-disability">Station 3: Stroke with Permanent Disability - Family Meeting</a></li>
+<li><a href="#station-4-death-notification-to-spouse">Station 4: Death Notification to Spouse</a></li>
+<li><a href="#station-5-childhood-leukemia">Station 5: Childhood Leukemia - Breaking News to Parents</a></li>
+<li><a href="#station-6-dementia-diagnosis">Station 6: Dementia Diagnosis</a></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>STATION 3: STROKE WITH PERMANENT DISABILITY</h2>
+
+<h3>CANDIDATE INSTRUCTIONS</h3>
+
+<strong>STATION 3: COMMUNICATION SKILLS - FAMILY MEETING (8 minutes)</strong>
+
+<p>
+You are a junior doctor on the stroke unit. Mr George Pappas, 68, had a large left middle cerebral artery (MCA) ischaemic stroke 5 days ago.
+</p>
+
+<strong>Current Status:</strong>
+<ul>
+<li>Right hemiplegia (can't walk, limited arm function)</li>
+<li>Expressive aphasia (difficulty speaking)</li>
+<li>Dysphagia (unsafe swallow - PEG feeding tube inserted)</li>
+<li>Medically stable</li>
+<p>
+</ul>
+</p>
+
+<strong>Prognosis:</strong>
+<ul>
+<li>Unlikely to fully recover</li>
+<li>Will need intensive rehabilitation</li>
+<li>May regain some function but probably not pre-stroke level</li>
+<li>Rehabilitation hospital transfer planned</li>
+<p>
+</ul>
+</p>
+
+<p>
+His wife is present. Mr Pappas is also present but has limited ability to communicate verbally.
+</p>
+
+<strong>Tasks:</strong>
+<ol>
+<li>Explain the stroke and resulting disabilities in lay terms</li>
+<li>Discuss realistic prognosis</li>
+<li>Explain rehabilitation pathway</li>
+<li>Address family concerns</li>
+<li>Include patient in conversation despite aphasia</li>
+<p>
+</ol>
+</p>
+
+<p>
+You have 8 minutes for this family meeting.
+</p>
+
+<hr>
+
+<h3>SIMULATED PATIENT SCRIPTS</h3>
+
+<strong>PATIENT: Mr George Pappas</strong>
+<strong>Age</strong>: 68
+<strong>Background</strong>: Retired electrician, married to Maria for 42 years, two adult children
+
+<strong>Presentation:</strong>
+<ul>
+<li>Sitting in chair, right arm in sling</li>
+<li>Can understand everything said</li>
+<li>Can say a few words but sentences are very difficult</li>
+<li>Frustrated by inability to communicate</li>
+<li>Nod/shake head for yes/no questions</li>
+<li>Emotional - may tear up when discussing disability</li>
+<li>If doctor ignores you and speaks only to wife: look hurt, withdraw</li>
+<p>
+</ul>
+</p>
+
+<strong>Key Behaviors:</strong>
+<ul>
+<li>When doctor looks at you and speaks to you: engage, nod, try to speak</li>
+<li>When doctor asks yes/no questions: respond clearly with nod/shake</li>
+<li>When discussing you in third person: look frustrated</li>
+<li>If prognosis explained compassionately: sad but accepting</li>
+<li>Try to say "thank you" at end (may come out as "tha...tha...you")</li>
+<p>
+</ul>
+</p>
+
+<strong>WIFE: Mrs Maria Pappas</strong>
+<strong>Age</strong>: 66
+<strong>Background</strong>: Homemaker, very close to husband, anxious, wants him to return to normal
+
+<strong>Opening Demeanor</strong>: Anxious, hopeful
+
+<strong>Emotional Trajectory:</strong>
+
+<strong>Initial hope:</strong>
+<ul>
+<li>"He's going to get better, right? Back to normal?"</li>
+<li>Expecting full recovery</li>
+<p>
+</ul>
+</p>
+
+<strong>When reality explained:</strong>
+<ul>
+<li>Tears</li>
+<li>"What do you mean he won't fully recover?"</li>
+<li>Distressed</li>
+<p>
+</ul>
+</p>
+
+<strong>Key Questions/Concerns:</strong>
+<ol>
+<li><strong>"Will he walk again?"</strong> (Main concern)</li>
+<p>
+</ol>
+   - Wants definitive answer
+   - May not accept "we don't know"
+</p>
+
+<ol>
+<li><strong>"Will he talk again?"</strong></li>
+<p>
+</ol>
+   - Speech is important to her
+   - Worries about communication
+</p>
+
+<ol>
+<li><strong>"Can he come home?"</strong></li>
+<p>
+</ol>
+   - Practical concern
+   - Their house has stairs
+</p>
+
+<ol>
+<li><strong>"What about me?"</strong> (Later in conversation)</li>
+<p>
+</ol>
+   - Worried about coping as carer
+   - "I'm 66, I can't lift him"
+</p>
+
+<strong>If candidate does well:</strong>
+<ul>
+<li>Gradual acceptance</li>
+<li>Asks practical questions about modifications, support</li>
+<p>
+</ul>
+</p>
+
+<strong>If candidate does poorly</strong> (gives false hope or too pessimistic):
+<ul>
+<li>Either becomes falsely reassured or devastated</li>
+<li>May become angry</li>
+<p>
+</ul>
+</p>
+
+<strong>Cues to Give:</strong>
+<ul>
+<li>[Opening] <em>Hopeful</em>: "The other doctors said he's stable now. So he'll get better, yes?"</li>
+<li>[When prognosis given] <em>Tears</em>: "But he was fine a week ago. How can this be permanent?"</li>
+<li>[Practical] <em>Worried</em>: "Our bedroom is upstairs. He can't climb stairs. How will we manage?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>EXAMINER MARKING CHECKLIST</h3>
+
+<strong>STATION 3: Family Meeting - Stroke with Disability</strong>
+<strong>Total: 100 points</strong>
+
+<h4><strong>1. SETTING & OPENING (10 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Introduces self to BOTH patient and wife</strong> (addresses patient by name) (3 pts)</li>
+<li><input type="checkbox"> <strong>Sits down</strong> (1 pt)</li>
+<li><input type="checkbox"> <strong>Explains purpose of meeting</strong> ("discuss George's stroke and recovery") (2 pts)</li>
+<li><input type="checkbox"> <strong>Includes PATIENT in conversation</strong> throughout (speaks TO patient, not just about him) (4 pts) <strong>CRITICAL</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /10</strong>
+
+<h4><strong>2. EXPLAINING THE STROKE (15 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Explains what a stroke is</strong> in lay terms (blood flow blocked, brain cells die) (4 pts)</li>
+<li><input type="checkbox"> <strong>Uses simple language</strong> (avoids jargon like "MCA territory") (3 pts)</li>
+<li><input type="checkbox"> <strong>Explains left brain → right body connection</strong> (why right side affected) (3 pts)</li>
+<li><input type="checkbox"> <strong>Explains three deficits clearly</strong>: hemiplegia, aphasia, dysphagia (3 pts)</li>
+<li><input type="checkbox"> <strong>Checks understanding</strong> (2 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /15</strong>
+
+<h4><strong>3. PROGNOSIS - REALISTIC BUT COMPASSIONATE (25 points) [CRITICAL]</strong></h4>
+
+<strong>Honesty:</strong>
+<ul>
+<li><input type="checkbox"> <strong>States recovery will be incomplete</strong> ("unlikely to get back to exactly how he was") (5 pts)</li>
+<li><input type="checkbox"> <strong>Avoids false hope</strong> (doesn't promise full recovery) (4 pts)</li>
+<li><input type="checkbox"> <strong>Acknowledges uncertainty</strong> ("difficult to predict exactly how much recovery") (3 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Balance:</strong>
+<ul>
+<li><input type="checkbox"> <strong>Provides realistic hope</strong> ("some people learn to walk with aids", "speech therapy can help") (5 pts)</li>
+<li><input type="checkbox"> <strong>Timeline realistic</strong> ("recovery takes months to years, not days or weeks") (3 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Compassion:</strong>
+<ul>
+<li><input type="checkbox"> <strong>Empathy for life-changing nature</strong> ("I know this is devastating") (3 pts)</li>
+<li><input type="checkbox"> <strong>Acknowledges grief</strong> (for person he was) (2 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /25</strong>
+
+<h4><strong>4. EMOTIONS - RESPONDING TO DISTRESS (15 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Acknowledges wife's tears/distress</strong> (3 pts)</li>
+<li><input type="checkbox"> <strong>Empathy statements</strong> ("This is overwhelming", "Life has changed suddenly") (4 pts)</li>
+<li><input type="checkbox"> <strong>Allows silence/emotional expression</strong> (2 pts)</li>
+<li><input type="checkbox"> <strong>Addresses patient's emotions too</strong> (notices if patient tears up, acknowledges his frustration) (4 pts)</li>
+<li><input type="checkbox"> <strong>Validates feelings</strong> (2 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /15</strong>
+
+<h4><strong>5. REHABILITATION PATHWAY (20 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Explains transfer to rehab hospital</strong> (1-2 weeks) (3 pts)</li>
+<li><input type="checkbox"> <strong>Describes rehab team</strong> (physio, OT, speech therapy, rehab doctors) (5 pts)</li>
+<li><input type="checkbox"> <strong>Realistic timeline</strong> (4-8 weeks inpatient rehab, then outpatient for months) (3 pts)</li>
+<li><input type="checkbox"> <strong>Goal-setting approach</strong> (step by step, may walk with frame, dress self, etc.) (3 pts)</li>
+<li><input type="checkbox"> <strong>Addresses feeding tube</strong> (speech therapy for swallowing, tube may be long-term) (3 pts)</li>
+<li><input type="checkbox"> <strong>Home modifications</strong> (OT home visit, ramps, grab rails, possible downstairs bedroom) (3 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /20</strong>
+
+<h4><strong>6. SUPPORT SERVICES - AUSTRALIAN CONTEXT (10 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>My Aged Care</strong> (assessment for home care packages) (2 pts)</li>
+<li><input type="checkbox"> <strong>NDIS</strong> (if under 65 - George is 68, so not eligible, but shows knowledge) (1 pt)</li>
+<li><input type="checkbox"> <strong>Carer support</strong> (acknowledges burden on wife, carer support services) (3 pts)</li>
+<li><input type="checkbox"> <strong>Stroke Foundation</strong> (information, support groups) (2 pts)</li>
+<li><input type="checkbox"> <strong>Social work referral</strong> (practical support, funding) (2 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /10</strong>
+
+<h4><strong>7. COMMUNICATION SKILLS (5 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Eye contact with BOTH patient and wife</strong> (not just wife) (2 pts) <strong>CRITICAL</strong></li>
+<li><input type="checkbox"> <strong>Body language</strong> (open, compassionate) (1 pt)</li>
+<li><input type="checkbox"> <strong>Tone</strong> (serious but supportive) (1 pt)</li>
+<li><input type="checkbox"> <strong>Pace</strong> (allows time for processing) (1 pt)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /5</strong>
+
+<h4><strong>CRITICAL ERRORS</strong> (Automatic Fail)</h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Ignores patient / speaks only to wife</strong> (treating patient as not present)</li>
+<li><input type="checkbox"> <strong>Gives false hope</strong> ("He'll be fine", "Full recovery expected")</li>
+<li><input type="checkbox"> <strong>Excessively pessimistic</strong> ("He'll never walk/talk again" without qualification)</li>
+<li><input type="checkbox"> <strong>Doesn't acknowledge this is life-changing / minimizes impact</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Critical Error? YES / NO</strong>
+
+<strong>Total Score: <em>_</em> /100</strong>
+
+<strong>Global Rating</strong>: Clear Pass / Borderline Pass / Borderline Fail / Clear Fail
+
+<hr>
+
+<h3>MODEL ANSWER</h3>
+
+<strong>[Opening - 30 sec]</strong>
+<p>
+"Hello Mr Pappas, Mrs Pappas. I'm Dr [Name], one of the doctors looking after George on the stroke unit. <em>[Sit down]</em> I wanted to meet with you both to talk about George's stroke, how he's recovering, and what to expect going forward. <em>[To patient]</em> George, I know speaking is difficult for you right now, but I want to include you in this conversation. Please let me know if you want me to slow down or repeat anything."
+</p>
+
+<strong>[Explaining Stroke - 90 sec]</strong>
+<p>
+"First, let me explain what happened. <em>[Look at George]</em> George, you had a stroke five days ago. A stroke happens when blood flow to part of the brain is blocked. Without blood flow, brain cells die.
+</p>
+
+<em>[Point to left side of own head]</em> The stroke was on the left side of your brain. The left side of the brain controls the right side of the body - that's why your right arm and leg are weak. The left side also controls speech for most people - that's why you're having difficulty speaking.
+
+<p>
+Right now, George has three main problems from the stroke:
+</p>
+<ol>
+<li>Right-sided weakness - you can't walk yet, and your right arm has limited movement</li>
+<li>Speech difficulty - you know what you want to say, but the words don't come out right. This is called aphasia.</li>
+<li>Swallowing difficulty - you're not able to swallow safely, which is why you have the feeding tube.</li>
+<p>
+</ol>
+</p>
+
+<p>
+Does that make sense so far?"
+</p>
+
+<strong>[Prognosis - CRITICAL - 120 sec]</strong>
+<em>[Wife asks: "He's going to get better, right? Back to normal?"]</em>
+
+<p>
+"I need to talk honestly with you about recovery, and I know this is difficult to hear. <em>[Pause]</em>
+</p>
+
+<p>
+Recovery from stroke is possible, but it takes time - months to years, not days or weeks. The brain has been damaged. That damage is permanent. However, the brain can sometimes learn to work around the damage through rehabilitation.
+</p>
+
+<p>
+Based on the size and location of George's stroke, we expect some recovery, but probably not complete recovery. <em>[Pause - let this sink in]</em>
+</p>
+
+<p>
+It's very difficult to predict exactly how much someone will recover. Some people with strokes like George's do learn to walk again, but usually with aids like a walker or cane. Some people need a wheelchair. We won't know George's final outcome for many months - probably 6 to 12 months.
+</p>
+
+<em>[To wife, gently]</em> I want to be honest: it's unlikely he'll get back to exactly how he was before the stroke.
+
+<em>[To George]</em> I know this is incredibly frustrating for you, and I'm sorry this has happened."
+
+<strong>[Addressing Emotions - 60 sec]</strong>
+<em>[Wife crying]</em>
+<p>
+"<em>[Hand tissues]</em> This is overwhelming. Your life has changed suddenly and dramatically. <em>[To wife]</em> You're grieving for the life you had before the stroke. That's completely understandable.
+</p>
+
+<em>[To George]</em> And George, I can see you're frustrated. Anyone would be. It's incredibly hard to lose abilities you've always had.
+
+<p>
+This is a huge adjustment for both of you."
+</p>
+
+<strong>[Rehabilitation - 120 sec]</strong>
+<p>
+"Let me talk about what happens next. George will need intensive rehabilitation.
+</p>
+
+<p>
+You'll stay here on the stroke unit for probably another 1-2 weeks while we make sure you're medically stable. Then you'll transfer to a rehabilitation hospital.
+</p>
+
+<p>
+At rehab, you'll work with a team of specialists:
+</p>
+<ul>
+<li>Physiotherapists will work on strength, balance, and walking</li>
+<li>Occupational therapists will help with daily activities like dressing and eating</li>
+<li>Speech therapists will work on your speech and swallowing</li>
+<li>Rehabilitation doctors will coordinate your care</li>
+<p>
+</ul>
+</p>
+
+<p>
+Rehabilitation usually takes 4-8 weeks in hospital, sometimes longer. After that, you'll continue therapy as an outpatient - probably several times per week for months.
+</p>
+
+<p>
+The rehab team will work with you to set goals. Goals might be things like: walking with a frame, dressing yourself, speaking in short sentences, safe swallowing. We take it step by step."
+</p>
+
+<strong>[Feeding Tube - 30 sec]</strong>
+<p>
+"The feeding tube will stay in place until swallowing is safe. Speech therapy will work on swallowing exercises. Some people regain safe swallow, some don't. If you don't regain safe swallow, the tube can stay long-term - many people live well with feeding tubes."
+</p>
+
+<strong>[Home - 60 sec]</strong>
+<em>[Wife asks: "Can he come home? Our bedroom is upstairs."]</em>
+
+<p>
+"That's our goal - to get George home - but it depends on how much recovery he makes and what support you have. Before discharge, an occupational therapist will visit your house and recommend modifications - like ramps if there are steps, grab rails in the bathroom, maybe a bedroom downstairs if you have stairs.
+</p>
+
+<p>
+Many stroke survivors do go home, but they often need ongoing support - either from family or paid carers. That's something we'll plan carefully."
+</p>
+
+<strong>[Support for Wife - 60 sec]</strong>
+<em>[To wife]</em> "Mrs Pappas, this is going to be very hard on you too. Being a carer is physically and emotionally exhausting. You mentioned you're 66 - lifting and moving George will be difficult.
+
+<p>
+Please don't try to do everything yourself. There are support services available:
+</p>
+<ul>
+<li>My Aged Care can organize a home care package - this can include help with cleaning, meals, personal care</li>
+<li>There are carer support groups - Carers Australia can provide information</li>
+<li>Your own health matters too. Please see your doctor for your own care.</li>
+<p>
+</ul>
+</p>
+
+<p>
+And the Stroke Foundation has resources and support groups - I'll give you their information."
+</p>
+
+<strong>[Closing - 30 sec]</strong>
+<p>
+"<em>[To both]</em> I know this is overwhelming. George, you've had a significant stroke that's affected your movement, speech, and swallowing. Recovery will take many months of hard work. We can't promise you'll get back to exactly how you were, but we'll work to help you recover as much function as possible.
+</p>
+
+<p>
+Do you have questions right now? <em>[Pause for questions]</em>
+</p>
+
+<p>
+We'll have regular meetings during your rehab to update you on progress."
+</p>
+
+<hr>
+
+<h2>STATION 4: DEATH NOTIFICATION TO SPOUSE</h2>
+
+<h3>CANDIDATE INSTRUCTIONS</h3>
+
+<strong>STATION 4: COMMUNICATION SKILLS - DEATH NOTIFICATION (8 minutes)</strong>
+
+<p>
+You are an <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department doctor. Mr Thomas Chen, 45, was brought to ED by ambulance 1 hour ago after a witnessed collapse at home.
+</p>
+
+<strong>Events:</strong>
+<ul>
+<li>Wife performed CPR immediately</li>
+<li>Paramedics arrived and continued CPR</li>
+<li>Patient in VF (ventricular fibrillation) cardiac arrest</li>
+<li>Shocked x3, brief ROSC (return of spontaneous circulation) achieved</li>
+<li>45 minutes of advanced life support in ED</li>
+<li>Unable to sustain cardiac output</li>
+<li>Declared dead at 14:35</li>
+<p>
+</ul>
+</p>
+
+<strong>Likely cause:</strong> Massive myocardial infarction (pending post-mortem)
+
+<strong>Patient's wife</strong>, Mrs Linda Chen, is waiting in the relatives' room. She has been told "the team is doing everything possible." She does not know he has died.
+
+<strong>Tasks:</strong>
+<ol>
+<li>Inform Mrs Chen of her husband's death</li>
+<li>Respond to her grief appropriately</li>
+<li>Answer her questions</li>
+<li>Explain next steps (Coroner, viewing body)</li>
+<li>Provide support</li>
+<p>
+</ol>
+</p>
+
+<strong>You have 8 minutes.</strong>
+
+<strong>Note</strong>: A nurse will accompany you (examiner will role-play if needed).
+
+<hr>
+
+<h3>SIMULATED PATIENT SCRIPT</h3>
+
+<strong>Name</strong>: Mrs Linda Chen
+<strong>Age</strong>: 42
+<strong>Background</strong>:
+<ul>
+<li>Married to Thomas for 15 years</li>
+<li>Two children (ages 10 and 8)</li>
+<li>Thomas collapsed while they were having lunch</li>
+<li>She started CPR - first time she'd ever done it</li>
+<li>Paramedics arrived, took him away</li>
+<li>She's been waiting for an hour</li>
+<li>Terrified but hoping he's alive</li>
+<p>
+</ul>
+</p>
+
+<strong>Opening Position</strong>: Standing, pacing, or sitting on edge of chair, extremely anxious
+
+<strong>Emotional Trajectory:</strong>
+
+<strong>Before news:</strong>
+<ul>
+<li>Jumps up when doctor enters: "Is he okay? Can I see him?"</li>
+<li>Desperate for information</li>
+<p>
+</ul>
+</p>
+
+<strong>When told he's died:</strong>
+<ul>
+<li><strong>WAILING / SCREAMING</strong>: "No! No! No! He can't be dead!"</li>
+<li>Loud crying</li>
+<li>May collapse / fall into chair</li>
+<li>Intense grief expression for 60-90 seconds</li>
+<li>This is NORMAL, not pathological - allow it</li>
+<p>
+</ul>
+</p>
+
+<strong>After initial intense grief</strong> (90 seconds - 2 minutes in):
+<ul>
+<li>Quieter crying</li>
+<li>Rocking back and forth</li>
+<li>Saying "no" quietly, shaking head</li>
+<p>
+</ul>
+</p>
+
+<strong>First question</strong> (through tears):
+<ul>
+<li>"Are you sure? Can I see him?"</li>
+<li><strong>NEED</strong>: Confirmation, and to see body</li>
+<p>
+</ul>
+</p>
+
+<strong>Second question</strong> (2-3 minutes in):
+<ul>
+<li>"What happened? He was fine this morning!"</li>
+<li><strong>NEED</strong>: Explanation</li>
+<p>
+</ul>
+</p>
+
+<strong>Third question</strong> (if asked sensitively after explanation):
+<ul>
+<li>"Did he suffer?"</li>
+<li><strong>NEED</strong>: Reassurance he didn't feel pain</li>
+<p>
+</ul>
+</p>
+
+<strong>Guilt question</strong> (3-4 minutes in):
+<ul>
+<li>"Did I do something wrong? Should I have done CPR differently?"</li>
+<li><strong>NEED</strong>: Reassurance she did everything right</li>
+<p>
+</ul>
+</p>
+
+<strong>Practical questions</strong> (4-5 minutes in, after processing):
+<ul>
+<li>"What do I tell the kids? They're at school."</li>
+<li>"What happens now?"</li>
+<p>
+</ul>
+</p>
+
+<strong>If candidate does well:</strong>
+<ul>
+<li>Gradual calming (still crying but able to talk)</li>
+<li>Asks to see body</li>
+<li>Thanks doctor</li>
+<p>
+</ul>
+</p>
+
+<strong>If candidate does poorly</strong> (rushes, shows discomfort with emotion, doesn't allow grief):
+<ul>
+<li>Inconsolable</li>
+<li>Can't engage</li>
+<li>May become angry</li>
+<p>
+</ul>
+</p>
+
+<strong>Cues to Give:</strong>
+<ul>
+<li>[Doctor enters] <em>Jumps up</em>: "Doctor! Is he okay? Tell me he's okay!"</li>
+<li>[After news] <em>LOUD WAILING</em>: "NOOOOO! NO! NO! NO! HE CAN'T BE DEAD!"</li>
+<li>[Later, crying] <em>Desperate</em>: "But we were just having lunch. How can he be gone?"</li>
+<li>[Guilt] <em>Through tears</em>: "Did I do the CPR wrong?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>EXAMINER MARKING CHECKLIST</h3>
+
+<strong>STATION 4: Death Notification</strong>
+<strong>Total: 100 points</strong>
+
+<h4><strong>1. PREPARATION & SETTING (10 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Enters with nurse</strong> (or acknowledges nurse presence) (2 pts)</li>
+<li><input type="checkbox"> <strong>Introduces self and nurse</strong> (2 pts)</li>
+<li><input type="checkbox"> <strong>Invites patient to sit down</strong> (2 pts)</li>
+<li><input type="checkbox"> <strong>SITS DOWN immediately</strong> (before delivering news) (4 pts) <strong>CRITICAL - Never give death notification standing</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /10</strong>
+
+<h4><strong>2. DELIVERING THE NEWS (25 points) [CRITICAL SECTION]</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Warning shot</strong> ("I'm very sorry, but I have very sad news") (4 pts)</li>
+<li><input type="checkbox"> <strong>States death clearly</strong> using word "DIED" or "DEAD" (not euphemisms) (8 pts) <strong>CRITICAL</strong></li>
+<li><input type="checkbox"> <strong>States time of death</strong> (2 pts)</li>
+<li><input type="checkbox"> <strong>IMMEDIATE SILENCE</strong> after delivering news (5-10 seconds minimum) (5 pts)</li>
+<li><input type="checkbox"> <strong>Does NOT repeat diagnosis or give details during acute grief</strong> (waits) (3 pts)</li>
+<li><input type="checkbox"> <strong>Simple explanation initially</strong> ("We did everything we could") (3 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /25</strong>
+
+<h4><strong>3. RESPONDING TO ACUTE GRIEF (30 points) [CRITICAL SECTION]</strong></h4>
+
+<strong>Allowing Grief:</strong>
+<ul>
+<li><input type="checkbox"> <strong>Allows wailing/loud crying without trying to quiet patient</strong> (8 pts) <strong>CRITICAL</strong></li>
+<li><input type="checkbox"> <strong>Provides tissues</strong> (2 pts)</li>
+<li><input type="checkbox"> <strong>Sits quietly during intense grief</strong> (doesn't interrupt, doesn't leave) (6 pts)</li>
+<li><input type="checkbox"> <strong>Comfortable with loud emotion</strong> (doesn't look uncomfortable/embarrassed) (4 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Empathy:</strong>
+<ul>
+<li><input type="checkbox"> <strong>Empathy statements</strong> ("I'm so, so sorry") (4 pts)</li>
+<li><input type="checkbox"> <strong>Acknowledges shock</strong> ("I know this is devastating") (3 pts)</li>
+<li><input type="checkbox"> <strong>Patient, calm presence</strong> (doesn't rush patient) (3 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /30</strong>
+
+<h4><strong>4. EXPLANATION (15 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Explains what happened</strong> when patient ready (collapse, CPR, heart attack likely) (5 pts)</li>
+<li><input type="checkbox"> <strong>Answers "Did he suffer?" appropriately</strong> ("No, when heart stops, lose consciousness immediately") (5 pts)</li>
+<li><input type="checkbox"> <strong>Addresses guilt</strong> ("You did everything right, you gave him the best chance") (5 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /15</strong>
+
+<h4><strong>5. PRACTICAL MATTERS (15 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Offers to view body</strong> ("Would you like to see him?") (4 pts) <strong>CRITICAL</strong></li>
+<li><input type="checkbox"> <strong>Prepares for viewing</strong> ("There will be medical equipment around") (2 pts)</li>
+<li><input type="checkbox"> <strong>Explains Coroner involvement</strong> (sudden death, requires Coroner, may need post-mortem) (3 pts)</li>
+<li><input type="checkbox"> <strong>Mentions belongings</strong> (will collect for her) (2 pts)</li>
+<li><input type="checkbox"> <strong>Asks about support</strong> ("Is there anyone we can call for you?") (2 pts)</li>
+<li><input type="checkbox"> <strong>Ensures she won't be alone</strong> ("Who can stay with you tonight?") (2 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /15</strong>
+
+<h4><strong>6. COMMUNICATION (5 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Tone</strong> (gentle, compassionate) (2 pts)</li>
+<li><input type="checkbox"> <strong>Body language</strong> (calm, present, forward lean) (2 pts)</li>
+<li><input type="checkbox"> <strong>Appropriate silence</strong> (allows silence without filling it) (1 pt)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /5</strong>
+
+<h4><strong>CRITICAL ERRORS</strong> (Automatic Fail)</h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Uses euphemism instead of "died/dead"</strong> (e.g., "didn't make it", "passed", "gone")</li>
+<li><input type="checkbox"> <strong>Delivers news while STANDING</strong> (must sit down)</li>
+<li><input type="checkbox"> <strong>Tries to stop or quiet patient's wailing</strong> ("Please calm down", "Shhhh")</li>
+<li><input type="checkbox"> <strong>Leaves room during acute grief</strong></li>
+<li><input type="checkbox"> <strong>Doesn't offer to view body</strong></li>
+<li><input type="checkbox"> <strong>Shows visible discomfort or impatience with grief</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Critical Error? YES / NO</strong>
+
+<strong>Total Score: <em>_</em> /100</strong>
+
+<strong>Global Rating</strong>: Clear Pass / Borderline Pass / Borderline Fail / Clear Fail
+
+<hr>
+
+<h3>MODEL ANSWER</h3>
+
+<strong>[Preparation - before entering room]</strong>
+<ul>
+<li>Ensure nurse accompanies</li>
+<li>Take deep breath</li>
+<li>Remove pager/phone</li>
+<p>
+</ul>
+</p>
+
+<strong>[Entering - 20 sec]</strong>
+<em>[Enter with nurse]</em>
+<em>[Wife jumps up: "Doctor! Is he okay?!"]</em>
+<p>
+"Mrs Chen, I'm Dr [Name], I'm one of the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> doctors who's been looking after Thomas. This is Sarah, one of our nurses. <em>[Gesture to chair]</em> Please, sit down. <em>[Sit down immediately yourself]</em>"
+</p>
+
+<strong>[Delivering News - 30 sec]</strong>
+<p>
+"Mrs Chen, I'm very sorry, but I have very sad news. <em>[Pause 2 seconds]</em>
+</p>
+
+<p>
+We did everything we could to save Thomas's life, but I'm very sorry to tell you that he has died.
+</p>
+
+<p>
+He died at 2:35 this afternoon.
+</p>
+
+<em>[SILENCE - 10-15 seconds - observe reaction]</em>"
+
+<strong>[Acute Grief Response - 60-90 sec]</strong>
+<em>[Wife wails: "NOOOOO! NO! NO! HE CAN'T BE DEAD!" - loud crying, may collapse]</em>
+<em>[Hand tissues]</em>
+<em>[Sit quietly - forward lean - present - DON'T SPEAK]</em>
+<em>[Allow 60 seconds of intense wailing/crying without interrupting]</em>
+
+<em>[After 60-90 seconds, when crying quiets slightly - softly]:</em>
+<p>
+"I'm so, so sorry."
+</p>
+
+<em>[More silence - 15-30 seconds - let patient cry]</em>
+
+<strong>[Confirmation - 30 sec]</strong>
+<em>[Patient asks through tears: "Are you sure? Can I see him?"]</em>
+<p>
+"Yes, I'm certain. I'm so sorry.
+</p>
+
+<p>
+Yes, of course you can see him. I'll take you to him very soon. There's no rush - take all the time you need."
+</p>
+
+<strong>[Explanation - When Patient Ready - 60 sec]</strong>
+<em>[Patient asks: "What happened? He was fine this morning!"]</em>
+<p>
+"From what the paramedics told us, Thomas collapsed suddenly at home while you were having lunch. You started CPR immediately - that was absolutely the right thing to do.
+</p>
+
+<p>
+Paramedics continued CPR and brought him here. When he arrived, his heart was in a dangerous rhythm. We tried multiple shocks to restart his heart, medications, CPR - everything we could.
+</p>
+
+<p>
+For a brief moment, we got his heart beating again, but we couldn't sustain it. After 45 minutes, it became clear we couldn't save him.
+</p>
+
+<p>
+We believe he had a massive heart attack. This type of heart attack can happen very suddenly, without warning."
+</p>
+
+<strong>[Addressing "Did He Suffer?" - 30 sec]</strong>
+<em>[If patient asks: "Did he suffer?"]</em>
+<p>
+"No. When the heart stops, you lose consciousness immediately within seconds. He wouldn't have felt pain. He wouldn't have known what was happening."
+</p>
+
+<strong>[Addressing Guilt - 45 sec]</strong>
+<em>[Patient says: "Did I do the CPR wrong? Should I have done something different?"]</em>
+<p>
+"No, this was absolutely not your fault. You did everything right. You called 000 immediately and started CPR. You gave him the best possible chance.
+</p>
+
+<p>
+Even when everything is done right - CPR immediately, paramedics quickly, everything we have in hospital - sometimes we can't save someone. This was not your fault."
+</p>
+
+<strong>[Viewing Body - 60 sec]</strong>
+<p>
+"Would you like to see Thomas now?"
+</p>
+
+<em>[Patient says yes]</em>
+
+<p>
+"I'll take you to him in just a moment. I want to prepare you: he'll be in the resuscitation bay. There will be some medical equipment around. We've covered him with a sheet. You can touch him, hold his hand, talk to him. You can spend as much time as you need with him.
+</p>
+
+<p>
+Would you like to call anyone first - family or friends?"
+</p>
+
+<strong>[Practical - 60 sec]</strong>
+<p>
+"Because Thomas's death was sudden and unexpected, the Coroner needs to be involved. This is standard procedure. The Coroner may want to do a post-mortem to determine the exact cause. This may delay the funeral slightly - usually a few days to a week.
+</p>
+
+<p>
+We'll collect Thomas's personal belongings for you - you don't need to worry about that right now.
+</p>
+
+<p>
+Is there anyone we can call for you? You shouldn't be alone tonight. Is there someone who can stay with you?"
+</p>
+
+<strong>[Before Taking to Body - 20 sec]</strong>
+<p>
+"I'm going to take you to Thomas now. There's no rush. Take all the time you need with him. Sarah will stay with you.
+</p>
+
+<p>
+Mrs Chen, I'm deeply sorry for your loss."
+</p>
+
+<hr>
+
+<h2>STATION 5: CHILDHOOD LEUKEMIA</h2>
+
+<h3>CANDIDATE INSTRUCTIONS</h3>
+
+<strong>STATION 5: COMMUNICATION SKILLS - BREAKING BAD NEWS (8 minutes)</strong>
+
+<p>
+You are a paediatric registrar. Lily Thompson, 4 years old, has been investigated for pallor, easy bruising, and recurrent infections.
+</p>
+
+<strong>Results:</strong>
+<ul>
+<li>FBC: WCC 45 (normal 4-11), Hb 65 (normal 110-140), Platelets 28 (normal 150-400)</li>
+<li>Blood film: >90% blast cells</li>
+<li>Bone marrow biopsy: Acute lymphoblastic leukaemia (ALL), pre-B cell type</li>
+<p>
+</ul>
+</p>
+
+<strong>Prognostic factors:</strong>
+<ul>
+<li>Age 4 years (good)</li>
+<li>WCC <50 (good)</li>
+<li>Pre-B cell type (good)</li>
+<li>Overall: Good prognosis, ~85-90% cure rate</li>
+<p>
+</ul>
+</p>
+
+<p>
+Lily is in the playroom. Parents Sarah and David Thompson (both 35) are here. You need to break the news to parents FIRST (not in front of Lily).
+</p>
+
+<strong>Tasks:</strong>
+<ol>
+<li>Break news of leukaemia diagnosis to parents</li>
+<li>Explain what leukaemia is in lay terms</li>
+<li>Address their immediate fears (especially "Will she die?")</li>
+<li>Provide realistic hope (cure rates)</li>
+<li>Briefly outline treatment</li>
+<li>Provide support</li>
+<p>
+</ol>
+</p>
+
+<strong>You have 8 minutes.</strong>
+
+<hr>
+
+<h3>SIMULATED PATIENT SCRIPTS</h3>
+
+<strong>FATHER: David Thompson</strong>
+<strong>MOTHER: Sarah Thompson</strong>
+<strong>Both Age</strong>: 35
+<strong>Background</strong>:
+<ul>
+<li>Lily is their only child</li>
+<li>Have been terrified waiting for results</li>
+<li>Both suspect it's serious (Google search: leukaemia)</li>
+<li>But desperately hoping it's something else</li>
+<p>
+</ul>
+</p>
+
+<strong>Opening Demeanor</strong>: Both anxious, holding hands
+
+<strong>Emotional Trajectory:</strong>
+
+<strong>When "leukaemia" said:</strong>
+<ul>
+<li><strong>Mother</strong>: Immediate tears, hand to mouth, gasps</li>
+<li><strong>Father</strong>: Goes pale, silent for 5 seconds, then tears up</li>
+<p>
+</ul>
+</p>
+
+<strong>FIRST QUESTION - within 10 seconds</strong> (Father, desperate):
+<ul>
+<li>"Is she going to die?"</li>
+<li>This is THE question - need immediate, reassuring answer</li>
+<p>
+</ul>
+</p>
+
+<strong>After initial answer</strong> (30-60 sec in):
+<ul>
+<li><strong>Mother crying</strong>: "But she's only 4 years old. This can't be happening."</li>
+<li>Needs empathy</li>
+<p>
+</ul>
+</p>
+
+<strong>SECOND QUESTION</strong> (Mother, 60-90 sec in):
+<ul>
+<li>"Did we cause this? Is it genetic?"</li>
+<li><strong>Guilt</strong> - needs firm reassurance it's not their fault</li>
+<p>
+</ul>
+</p>
+
+<strong>THIRD QUESTION</strong> (Father, 2 minutes in):
+<ul>
+<li>"What's the treatment? Chemotherapy?"</li>
+<li>Starting to process, want information</li>
+<p>
+</ul>
+</p>
+
+<strong>Later concerns</strong> (3-4 minutes in):
+<ul>
+<li><strong>Mother</strong>: "Will she lose her hair?" (Worried about daughter's experience)</li>
+<li><strong>Father</strong>: "How long is treatment?" (Practical)</li>
+<li><strong>Mother</strong>: "Can we stay with her in hospital?" (Separation anxiety)</li>
+<p>
+</ul>
+</p>
+
+<strong>If candidate gives good prognosis (85-90% cure rate):</strong>
+<ul>
+<li>Visible relief</li>
+<li>Father: "So most children survive?"</li>
+<li>Some hope emerging</li>
+<p>
+</ul>
+</p>
+
+<strong>If candidate does well overall:</strong>
+<ul>
+<li>Gradual calming</li>
+<li>Ask practical questions</li>
+<li>Thank doctor</li>
+<p>
+</ul>
+</p>
+
+<strong>If candidate does poorly</strong> (doesn't address death fear, too pessimistic, lacks empathy):
+<ul>
+<li>Inconsolable</li>
+<li>Can't engage with information</li>
+<li>May become angry</li>
+<p>
+</ul>
+</p>
+
+<strong>Cues to Give:</strong>
+<ul>
+<li>[Opening] Both look terrified, waiting</li>
+<li>[After diagnosis] Mother: <em>Gasps, hand to mouth, crying</em></li>
+<li>[Immediately] Father: <em>Desperate</em>: "Is she going to die? Please tell us she's not going to die."</li>
+<li>[Later] Mother: <em>Crying</em>: "She's our baby. She's only 4."</li>
+<li>[Guilt] Mother: "Did we do something wrong?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>EXAMINER MARKING CHECKLIST</h3>
+
+<strong>STATION 5: Breaking News of Childhood Leukaemia to Parents</strong>
+<strong>Total: 100 points</strong>
+
+<h4><strong>1. SETTING (8 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Introduces self</strong> (1 pt)</li>
+<li><input type="checkbox"> <strong>Ensures privacy</strong> (child NOT present - breaking news to parents first) (3 pts) <strong>CRITICAL</strong></li>
+<li><input type="checkbox"> <strong>Sits down</strong> (1 pt)</li>
+<li><input type="checkbox"> <strong>Empathetic opening</strong> (acknowledges anxiety of waiting) (3 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /8</strong>
+
+<h4><strong>2. PERCEPTION (7 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Asks what parents have been thinking/worried about</strong> (3 pts)</li>
+<li><input type="checkbox"> <strong>Acknowledges they may have fears</strong> (2 pts)</li>
+<li><input type="checkbox"> <strong>Listens actively</strong> (2 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /7</strong>
+
+<h4><strong>3. DELIVERING DIAGNOSIS (20 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Warning shot</strong> ("I'm afraid the results show something serious") (3 pts)</li>
+<li><input type="checkbox"> <strong>States diagnosis clearly</strong> ("Lily has leukaemia") (5 pts)</li>
+<li><input type="checkbox"> <strong>Pauses after delivering news</strong> (allows initial shock) (4 pts)</li>
+<li><input type="checkbox"> <strong>Explains what leukaemia is</strong> in lay terms (cancer of blood/bone marrow) (5 pts)</li>
+<li><input type="checkbox"> <strong>Specifies type</strong> (Acute Lymphoblastic Leukaemia, ALL) (3 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /20</strong>
+
+<h4><strong>4. ADDRESSING "WILL SHE DIE?" (25 points) [CRITICAL SECTION]</strong></h4>
+
+<strong>This is the MOST important part of this station</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Addresses death fear IMMEDIATELY</strong> (within 15 seconds of question) (5 pts) <strong>CRITICAL</strong></li>
+<li><input type="checkbox"> <strong>Direct, reassuring answer</strong> ("Childhood ALL is very treatable. Most children are cured.") (8 pts) <strong>CRITICAL</strong></li>
+<li><input type="checkbox"> <strong>Gives cure rate</strong> (85-90% for Lily's type) (5 pts) <strong>CRITICAL</strong></li>
+<li><input type="checkbox"> <strong>Frames positively</strong> ("This is serious but there's real reason for hope") (4 pts)</li>
+<li><input type="checkbox"> <strong>Doesn't equivocate</strong> (clear, confident answer, not "maybe" or "we'll see") (3 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /25</strong>
+
+<h4><strong>5. ADDRESSING GUILT (10 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Proactively addresses guilt</strong> OR responds when asked (3 pts)</li>
+<li><input type="checkbox"> <strong>Firm reassurance</strong> ("You did NOT cause this") (4 pts)</li>
+<li><input type="checkbox"> <strong>Explains cause</strong> (random genetic changes, not hereditary, not environmental) (3 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /10</strong>
+
+<h4><strong>6. TREATMENT OVERVIEW (15 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Mentions chemotherapy</strong> (3 pts)</li>
+<li><input type="checkbox"> <strong>Explains duration</strong> (2-2.5 years total) (3 pts)</li>
+<li><input type="checkbox"> <strong>Three phases</strong> (induction, consolidation, maintenance) (3 pts)</li>
+<li><input type="checkbox"> <strong>Some hospital, some home</strong> (3 pts)</li>
+<li><input type="checkbox"> <strong>Acknowledges difficulty</strong> ("Next 2-3 years will be hard") (3 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /15</strong>
+
+<h4><strong>7. SUPPORT & NEXT STEPS (10 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Oncologist referral</strong> (specialist will provide detailed info) (2 pts)</li>
+<li><input type="checkbox"> <strong>Support services</strong> (Redkite, social work, psychologist) (3 pts)</li>
+<li><input type="checkbox"> <strong>Can stay with child in hospital</strong> (parent beds available) (2 pts)</li>
+<li><input type="checkbox"> <strong>Medicare covers treatment</strong> (no cost) (1 pt)</li>
+<li><input type="checkbox"> <strong>Written information</strong> (1 pt)</li>
+<li><input type="checkbox"> <strong>Immediate plan</strong> (admission today, central line, chemo starts tomorrow) (1 pt)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /10</strong>
+
+<h4><strong>8. COMMUNICATION (5 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Empathy throughout</strong> (2 pts)</li>
+<li><input type="checkbox"> <strong>Body language</strong> (1 pt)</li>
+<li><input type="checkbox"> <strong>Tone</strong> (serious but hopeful) (1 pt)</li>
+<li><input type="checkbox"> <strong>Pace</strong> (1 pt)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /5</strong>
+
+<h4><strong>CRITICAL ERRORS</strong> (Automatic Fail)</h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Doesn't adequately address death fear</strong> (gives vague answer, avoids question, too pessimistic)</li>
+<li><input type="checkbox"> <strong>Doesn't provide cure rate / prognosis</strong></li>
+<li><input type="checkbox"> <strong>Breaks news with child present</strong> (should be parents first)</li>
+<li><input type="checkbox"> <strong>Excessive pessimism</strong> (focuses on 10-15% who don't survive rather than 85-90% who do)</li>
+<p>
+</ul>
+</p>
+
+<strong>Critical Error? YES / NO</strong>
+
+<strong>Total Score: <em>_</em> /100</strong>
+
+<strong>Global Rating</strong>: Clear Pass / Borderline Pass / Borderline Fail / Clear Fail
+
+<hr>
+
+<h3>MODEL ANSWER</h3>
+
+<strong>[Opening - 30 sec]</strong>
+<p>
+"Hello Mr and Mrs Thompson. I'm Dr [Name], one of the paediatric doctors. Thank you for coming in. <em>[Sit]</em> I know waiting for results has been very stressful. Before we talk, I want to check - is there anyone else you'd like with you, or is it just the two of you?"
+</p>
+
+<strong>[Perception - 45 sec]</strong>
+<p>
+"I can see you're both very anxious. Before I go through Lily's results, can I ask what you've been thinking about? [Listen] What have you been worried the tests might show?"
+</p>
+
+<strong>[Delivering News - 45 sec]</strong>
+<p>
+"I'm afraid the results show something serious. <em>[Pause 2 seconds]</em>
+</p>
+
+<p>
+Lily's bone marrow test shows that she has leukaemia. <em>[Pause - observe reaction]</em>"
+</p>
+
+<strong>[CRITICAL - Addressing Death Fear - 90 sec]</strong>
+<em>[Within 10 seconds, Father asks desperately: "Is she going to die? Please tell us she's not going to die."]</em>
+
+<p>
+"<strong>I understand that's your first fear, and I want to answer that directly: Childhood ALL is very treatable. Most children - about 85 to 90% - are CURED. This is serious, but there's real reason for hope.</strong>
+</p>
+
+<p>
+Let me say that again because it's important: 85 to 90 out of 100 children with exactly Lily's type of leukaemia never have the leukaemia come back. They're cured.
+</p>
+
+<p>
+This is one of the success stories of paediatric medicine. 30 years ago, most children with leukaemia died. Now, most children are cured.
+</p>
+
+<p>
+So yes, this is very serious. But no, we're expecting Lily to survive and be cured."
+</p>
+
+<strong>[Empathy - 30 sec]</strong>
+<em>[Mother crying: "She's only 4 years old. This can't be happening."]</em>
+<p>
+"I know. This is every parent's worst nightmare. I'm so sorry this is happening to Lily and to your family. <em>[Pause, tissues]</em>"
+</p>
+
+<strong>[Explaining Leukaemia - 60 sec]</strong>
+<p>
+"Let me explain what leukaemia is. Leukaemia is a type of cancer of the blood and bone marrow. Bone marrow is the spongy tissue inside bones that makes blood cells.
+</p>
+
+<p>
+In leukaemia, the bone marrow makes abnormal blood cells that don't work properly. These abnormal cells crowd out the normal cells. That's why Lily's been tired - she doesn't have enough red blood cells. And why she's been bruising - she doesn't have enough platelets.
+</p>
+
+<p>
+The specific type Lily has is called Acute Lymphoblastic Leukaemia - A-L-L for short. ALL is the most common type of leukaemia in children, and it's the most treatable."
+</p>
+
+<strong>[Guilt - 45 sec]</strong>
+<em>[Mother: "Did we cause this? Is it genetic?"]</em>
+<p>
+"No. You absolutely did not cause this. There's nothing you did or didn't do that caused Lily's leukaemia.
+</p>
+
+<p>
+Childhood leukaemia happens due to random genetic changes in blood cells. It's not hereditary - it's not passed down in families. It's not caused by anything in the environment or diet. It's not anything you did during pregnancy.
+</p>
+
+<p>
+This is not your fault."
+</p>
+
+<strong>[Treatment - 90 sec]</strong>
+<em>[Father: "What's the treatment?"]</em>
+<p>
+"Treatment is chemotherapy. I'll give you an overview, and then the oncologist - the cancer specialist - will go into detail.
+</p>
+
+<p>
+Treatment happens in three phases:
+</p>
+<ol>
+<li>Induction - intensive chemo for 1-2 months to get the leukaemia into remission</li>
+<li>Consolidation - more chemo for 6-9 months</li>
+<li>Maintenance - lower-dose chemo for 2-3 years</li>
+<p>
+</ol>
+</p>
+
+<p>
+Total treatment is about 2 to 2.5 years.
+</p>
+
+<p>
+Lily will need to be in hospital a lot, especially the first few months. Some treatment can be done as an outpatient. You can stay with her - we have parent beds in the rooms.
+</p>
+
+<p>
+Chemotherapy has side effects - hair loss, nausea, increased infection risk. But we have good medications to manage these."
+</p>
+
+<strong>[Next Steps - 60 sec]</strong>
+<p>
+"Here's what happens immediately. Lily will be admitted to the paediatric oncology ward today. Tomorrow, she'll have a central line inserted - a special IV line - under anaesthetic. Then we'll start chemotherapy.
+</p>
+
+<p>
+You'll meet the oncology team - they'll be Lily's main doctors. They'll explain everything in detail.
+</p>
+
+<p>
+There are support services available: Redkite is an Australian charity that supports children with cancer - financial help, counselling. Social work can help with practical things. A psychologist can help Lily and you cope.
+</p>
+
+<p>
+The good news is that all of Lily's treatment is fully covered by Medicare in Australia. You won't pay for chemotherapy or hospital stays."
+</p>
+
+<strong>[Closing - 30 sec]</strong>
+<p>
+"I know this is overwhelming and terrifying. Lily has leukaemia, which is serious. But childhood ALL is very treatable, with an 85-90% cure rate. Treatment is hard - the next 2-3 years will be challenging - but most children come through it and are cured.
+</p>
+
+<p>
+Do you have any questions right now?"
+</p>
+
+<hr>
+
+<h2>STATION 6: DEMENTIA DIAGNOSIS</h2>
+
+<h3>CANDIDATE INSTRUCTIONS</h3>
+
+<strong>STATION 6: COMMUNICATION SKILLS - BREAKING BAD NEWS (8 minutes)</strong>
+
+<p>
+You are a GP. Mrs Margaret Foster, 72, has had progressive memory problems for 18 months.
+</p>
+
+<strong>Results:</strong>
+<ul>
+<li>MMSE: 18/30 (moderate impairment)</li>
+<li>MoCA: 15/30 (moderate impairment)</li>
+<li>MRI brain: Cortical atrophy, no stroke</li>
+<li>Blood tests: TSH, B12, folate all normal</li>
+<p>
+</ul>
+</p>
+
+<strong>Diagnosis:</strong> Alzheimer's disease (most likely), moderate stage
+
+<p>
+Mrs Foster is present with her husband (Mr Foster, 74). You need to discuss the diagnosis. Mrs Foster has some insight into memory problems but may not fully comprehend diagnosis.
+</p>
+
+<strong>Tasks:</strong>
+<ol>
+<li>Break diagnosis to BOTH patient and spouse</li>
+<li>Include patient in conversation (despite cognitive impairment)</li>
+<li>Explain what dementia/Alzheimer's is</li>
+<li>Discuss prognosis realistically</li>
+<li>Discuss driving (must address this)</li>
+<li>Outline support services</li>
+<li>Address carer burden</li>
+<p>
+</ol>
+</p>
+
+<strong>You have 8 minutes.</strong>
+
+<hr>
+
+<h3>SIMULATED PATIENT SCRIPTS</h3>
+
+<strong>PATIENT: Mrs Margaret Foster</strong>
+<strong>Age</strong>: 72
+<strong>Presentation</strong>: Pleasant, appears slightly confused, aware something is wrong with memory but limited insight
+
+<strong>Key Behaviors:</strong>
+<ul>
+<li>When asked what you've noticed: "I forget things sometimes. Everyone does at my age."</li>
+<li>When diagnosis delivered: May look confused, "What does that mean?"</li>
+<li>Limited emotional reaction (doesn't fully comprehend severity)</li>
+<li>May forget parts of conversation</li>
+<li>If doctor speaks only to husband and ignores you: look hurt</li>
+<li>When driving mentioned: "But I've been driving for 50 years! I'm a good driver!"</li>
+<p>
+</ul>
+</p>
+
+<strong>Cues to Give:</strong>
+<ul>
+<li>[Opening] <em>Pleasant</em>: "The doctor wanted to see me about my memory."</li>
+<li>[After diagnosis] <em>Confused</em>: "Dementia? What is that exactly?"</li>
+<li>[Driving] <em>Defensive</em>: "I don't want to stop driving. I'm careful."</li>
+<p>
+</ul>
+</p>
+
+<strong>SPOUSE: Mr Foster</strong>
+<strong>Age</strong>: 74
+<strong>Background</strong>: Married 45 years, very worried, exhausted from being unofficial carer
+
+<strong>Opening Demeanor</strong>: Tired, worried, relieved to finally have answers
+
+<strong>Emotional Trajectory:</strong>
+
+<strong>When diagnosis given:</strong>
+<ul>
+<li>Tears up but tries to stay strong</li>
+<li>"I knew it, but I was hoping I was wrong."</li>
+<p>
+</ul>
+</p>
+
+<strong>Key Concerns:</strong>
+
+<ol>
+<li><strong>"Will she forget who I am?"</strong> (2-3 minutes in)</li>
+<p>
+</ol>
+   - Biggest fear
+   - Needs honest but gentle answer
+</p>
+
+<ol>
+<li><strong>"How long does she have?"</strong></li>
+<p>
+</ol>
+   - Wants timeframe
+   - Difficult question
+</p>
+
+<ol>
+<li><strong>"What about me? I can't do this alone."</strong> (4-5 minutes in)</li>
+<p>
+</ol>
+   - Carer burden
+   - Needs support resources
+</p>
+
+<ol>
+<li><strong>Driving</strong> (when mentioned):</li>
+<p>
+</ol>
+   - Agrees it's necessary but worried about her reaction
+   - "She'll be devastated. Driving is her independence."
+</p>
+
+<strong>If candidate does well:</strong>
+<ul>
+<li>Engages with practical questions</li>
+<li>Asks about support services</li>
+<li>Thanks doctor</li>
+<p>
+</ul>
+</p>
+
+<strong>If candidate does poorly</strong> (ignores patient, only talks to spouse, doesn't provide support info):
+<ul>
+<li>Becomes overwhelmed</li>
+<li>"I can't do this alone"</li>
+<li>Distressed</li>
+<p>
+</ul>
+</p>
+
+<strong>Cues:</strong>
+<ul>
+<li>[Opening] <em>Tired</em>: "I'm glad we're finally getting some answers. It's been so hard."</li>
+<li>[After diagnosis] <em>Tears up</em>: "I knew it. But I hoped I was wrong."</li>
+<li>[Later] <em>Exhausted</em>: "I love her, but I'm 74. I can't lift her, I can't do everything."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>EXAMINER MARKING CHECKLIST</h3>
+
+<strong>STATION 6: Breaking News of Dementia</strong>
+<strong>Total: 100 points</strong>
+
+<h4><strong>1. SETTING (10 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Greets BOTH patient and spouse</strong> (addresses patient by name first) (3 pts) <strong>IMPORTANT</strong></li>
+<li><input type="checkbox"> <strong>Sits down</strong> (1 pt)</li>
+<li><input type="checkbox"> <strong>Explains purpose</strong> ("discuss memory test results") (2 pts)</li>
+<li><input type="checkbox"> <strong>Includes patient throughout</strong> (speaks TO patient, not just about her) (4 pts) <strong>CRITICAL</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /10</strong>
+
+<h4><strong>2. PERCEPTION (8 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Asks PATIENT what she's noticed</strong> (asks her first, not spouse) (3 pts)</li>
+<li><input type="checkbox"> <strong>Asks spouse what he's noticed</strong> (3 pts)</li>
+<li><input type="checkbox"> <strong>Listens to both</strong> (2 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /8</strong>
+
+<h4><strong>3. DELIVERING DIAGNOSIS (18 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Addresses PATIENT first</strong> ("Margaret, the tests show...") (4 pts)</li>
+<li><input type="checkbox"> <strong>Clear diagnosis</strong> ("You have dementia" / "Alzheimer's disease") (5 pts)</li>
+<li><input type="checkbox"> <strong>Explains what dementia is</strong> in simple terms (brain condition affecting memory and thinking) (4 pts)</li>
+<li><input type="checkbox"> <strong>Specifies Alzheimer's</strong> (most common type) (2 pts)</li>
+<li><input type="checkbox"> <strong>Pauses for understanding</strong> (3 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /18</strong>
+
+<h4><strong>4. PROGNOSIS (15 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Honest about progression</strong> ("gets worse over time") (4 pts)</li>
+<li><input type="checkbox"> <strong>Timeline general</strong> ("progresses slowly, over years") (3 pts)</li>
+<li><input type="checkbox"> <strong>Three stages mentioned</strong> (early, moderate, advanced) (3 pts)</li>
+<li><input type="checkbox"> <strong>Realistic but not brutal</strong> (balances honesty with compassion) (3 pts)</li>
+<li><input type="checkbox"> <strong>Addresses "Will she forget me?"</strong> appropriately ("can happen in advanced stages, but not for long time") (2 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /15</strong>
+
+<h4><strong>5. DRIVING - CRITICAL SAFETY ISSUE (15 points) [MUST ADDRESS]</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Addresses driving</strong> (must bring this up, not wait for patient to ask) (4 pts) <strong>CRITICAL - automatic fail if not addressed</strong></li>
+<li><input type="checkbox"> <strong>Legal requirement to notify licensing authority</strong> (3 pts)</li>
+<li><input type="checkbox"> <strong>Doctor must notify</strong> (in some states) (2 pts)</li>
+<li><input type="checkbox"> <strong>Driving assessment required</strong> (OT assessment) (3 pts)</li>
+<li><input type="checkbox"> <strong>Compassionate but firm</strong> (acknowledges difficulty but clear on safety) (3 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /15</strong>
+
+<h4><strong>6. TREATMENT & MANAGEMENT (10 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Mentions medication</strong> (cholinesterase inhibitors - donepezil) (3 pts)</li>
+<li><input type="checkbox"> <strong>Realistic expectations</strong> ("can slow progression 6-12 months, doesn't cure") (3 pts)</li>
+<li><input type="checkbox"> <strong>Non-medication management</strong> (mental stimulation, exercise, social engagement) (2 pts)</li>
+<li><input type="checkbox"> <strong>PBS coverage</strong> (affordable) (2 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /10</strong>
+
+<h4><strong>7. SUPPORT SERVICES (12 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>My Aged Care</strong> (1800 200 422 - assessment for care package) (3 pts) <strong>CRITICAL</strong></li>
+<li><input type="checkbox"> <strong>Dementia Australia</strong> (1800 100 500 - information, support groups) (3 pts)</li>
+<li><input type="checkbox"> <strong>Carer support</strong> (acknowledges burden on spouse, Carer Gateway) (3 pts)</li>
+<li><input type="checkbox"> <strong>Future planning</strong> (Power of Attorney, Advanced Care Directive while patient has capacity) (3 pts)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /12</strong>
+
+<h4><strong>8. ADDRESSING CARER BURDEN (8 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Acknowledges spouse's exhaustion</strong> ("This is one of the hardest jobs") (3 pts)</li>
+<li><input type="checkbox"> <strong>Validates feelings</strong> (grief, frustration, isolation are normal) (2 pts)</li>
+<li><input type="checkbox"> <strong>Emphasizes respite</strong> ("You must take breaks") (2 pts)</li>
+<li><input type="checkbox"> <strong>Spouse's own health</strong> ("See your own GP for your health") (1 pt)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /8</strong>
+
+<h4><strong>9. COMMUNICATION (4 points)</strong></h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Eye contact with BOTH patient and spouse</strong> (2 pts)</li>
+<li><input type="checkbox"> <strong>Simple language</strong> (for patient) (1 pt)</li>
+<li><input type="checkbox"> <strong>Compassionate tone</strong> (1 pt)</li>
+<p>
+</ul>
+</p>
+
+<strong>Subtotal: <em>_</em> /4</strong>
+
+<h4><strong>CRITICAL ERRORS</strong> (Automatic Fail)</h4>
+
+<ul>
+<li><input type="checkbox"> <strong>Ignores patient / speaks only to spouse</strong> (treating patient as not present)</li>
+<li><input type="checkbox"> <strong>Doesn't address driving</strong> (major safety issue)</li>
+<li><input type="checkbox"> <strong>No support services mentioned</strong> (patient and carer left without resources)</li>
+<li><input type="checkbox"> <strong>Brutal prognosis</strong> ("She'll forget everything and need full-time care soon") without balance</li>
+<p>
+</ul>
+</p>
+
+<strong>Critical Error? YES / NO</strong>
+
+<strong>Total Score: <em>_</em> /100</strong>
+
+<strong>Global Rating</strong>: Clear Pass / Borderline Pass / Borderline Fail / Clear Fail
+
+<hr>
+
+<h3>MODEL ANSWER</h3>
+
+<strong>[Opening - 30 sec]</strong>
+<p>
+"Good afternoon Mrs Foster, Mr Foster. Thank you both for coming in. <em>[Sit]</em> Margaret, I have the results of your memory tests and brain scan. I wanted to discuss them with you and your husband together."
+</p>
+
+<strong>[Perception - 60 sec]</strong>
+<p>
+"<em>[To patient first]</em> Margaret, before we go through the results, can you tell me what you've noticed about your memory? [Listen]
+</p>
+
+<em>[To spouse]</em> And Mr Foster, what have you noticed? [Listen]"
+
+<strong>[Delivering Diagnosis - 60 sec]</strong>
+<p>
+"<em>[To patient]</em> Margaret, the memory tests and brain scan show that you have dementia. <em>[Pause]</em>
+</p>
+
+<p>
+Dementia is a medical condition where problems with memory and thinking affect your ability to do everyday activities. It's caused by changes in the brain. It's not normal ageing - it's a medical condition.
+</p>
+
+<p>
+Based on the pattern of your symptoms and the brain scan, this is most likely Alzheimer's disease. Alzheimer's is the most common type of dementia.
+</p>
+
+<em>[To spouse]</em> Mr Foster, I know you've suspected this. <em>[He tears up]</em> I know this is difficult news, even when you've been expecting it."
+
+<strong>[Prognosis - 90 sec]</strong>
+<p>
+"I need to be honest with you both about what to expect. Dementia is a progressive condition - that means it gets worse over time. Alzheimer's usually progresses slowly - over years, not months.
+</p>
+
+<p>
+There are three stages: early, moderate, and advanced. Margaret, we think you're in the moderate stage now. Memory will get worse over time, and you'll need increasing help with daily activities.
+</p>
+
+<em>[To spouse, when he asks: "Will she forget who I am?"]</em>
+<p>
+That can happen in very advanced Alzheimer's, but usually not for a long time - many years. Right now, Margaret knows you well. We're going to focus on slowing progression and maintaining quality of life."
+</p>
+
+<strong>[Treatment - 60 sec]</strong>
+<p>
+"We can't cure Alzheimer's, but we have treatments that can slow it down. I'd recommend trying a medication called donepezil. It can slow progression for 6-12 months. It doesn't work for everyone, but it's worth trying. On the PBS, it's $31 per script, or $7 with a healthcare card.
+</p>
+
+<p>
+Just as important: mental stimulation, physical exercise, staying social. Keep doing puzzles, reading, walking, seeing friends. Don't withdraw."
+</p>
+
+<strong>[Driving - CRITICAL - 90 sec]</strong>
+<p>
+"Margaret, we need to talk about driving. <em>[Pause]</em>
+</p>
+
+<p>
+In Australia, when someone's diagnosed with dementia, there's a legal requirement to notify the licensing authority - Service NSW in our state. I'm required to notify them as well.
+</p>
+
+<p>
+You'll need a driving assessment with an occupational therapist. This tests whether it's safe for you to drive. Some people with early dementia pass and can continue driving with regular checks. Others don't pass and need to stop.
+</p>
+
+<em>[Patient protests: "But I've been driving for 50 years!"]</em>
+<p>
+I understand driving is important to you. This isn't about how good a driver you've been - it's about safety now. Dementia affects reaction time and judgement. The assessment will determine if it's safe.
+</p>
+
+<em>[To spouse]</em> In the meantime, I'd recommend you do the driving when possible."
+
+<strong>[Support - 90 sec]</strong>
+<p>
+"There are important support services available. I'm going to refer you to <strong>My Aged Care</strong> - their number is 1800 200 422. They'll do an assessment and organize a care package. This can include home help, personal care, meals, respite care.
+</p>
+
+<strong>Dementia Australia</strong> - 1800 100 500 - provides information, support groups, counselling.
+
+<p>
+Margaret, while you still have capacity - and you do now - it's important to complete legal documents: Power of Attorney so someone can manage your finances if needed, and an Advanced Care Directive about medical treatment wishes. See a solicitor soon about this."
+</p>
+
+<strong>[Carer Burden - 60 sec]</strong>
+<p>
+"<em>[To spouse]</em> Mr Foster, I want to talk to you specifically. You're going to be Margaret's main carer. This is one of the hardest jobs in the world.
+</p>
+
+<p>
+You may feel grief, frustration, isolation, exhaustion. All of this is normal. <strong>You must take breaks.</strong> Use respite care. See your own GP for your own health. There's Carer Gateway - 1800 422 737 - for carer support.
+</p>
+
+<p>
+You can't care for Margaret if you burn out."
+</p>
+
+<strong>[Closing - 30 sec]</strong>
+<p>
+"<em>[To both]</em> Margaret, you have Alzheimer's disease. This will progress over time, but we have treatments to slow it and support to help you both cope. Mr Foster, this will be hard on you too - please use the support services.
+</p>
+
+<p>
+Do you have questions right now?"
+</p>
+
+<hr>
+
+<strong>Last Updated</strong>: December 14, 2025
+<strong>Version</strong>: 1.0 (Part 2 of 2)
+<strong>Author</strong>: ICRP NSW Young Hospital Preparation Team
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

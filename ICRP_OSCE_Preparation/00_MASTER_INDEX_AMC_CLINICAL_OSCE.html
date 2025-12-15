@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMC Clinical OSCE Master Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+</div>
+        
+        <h1>AMC Clinical OSCE Master Index</h1>
+<h2>ICRP NSW Young Hospital Preparation - Complete OSCE Package</h2>
+
+<strong>Purpose</strong>: Complete AMC Clinical-style OSCE preparation materials
+<strong>Target</strong>: International Medical Graduates preparing for ICRP NSW
+<strong>Format</strong>: Australian teaching hospital standards (AHPRA/NSW Health compliant)
+<strong>Created</strong>: December 14, 2025
+<strong>Version</strong>: 1.0
+
+<hr>
+
+<h2>📋 TABLE OF CONTENTS</h2>
+
+<ol>
+<li><a href="#overview">Overview & How to Use This Package</a></li>
+<li><a href="#whats-included">What's Included</a></li>
+<li><a href="#study-schedule">Study Schedule Recommendations</a></li>
+<li><a href="#quick-reference">Quick Reference Cards</a></li>
+<li><a href="#file-navigation">File Navigation</a></li>
+<li><a href="#common-mistakes">Common IMG Mistakes (Avoid These!)</a></li>
+<li><a href="#assessment-criteria">Assessment Criteria</a></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2><a name="overview"></a>OVERVIEW & HOW TO USE THIS PACKAGE</h2>
+
+<h3>What is the AMC Clinical Examination?</h3>
+
+<p>
+The <strong>AMC Clinical Examination</strong> is an OSCE (Objective Structured Clinical Examination) required for international medical graduates seeking registration in Australia. It consists of <strong>16 stations</strong> (8 minutes each):
+</p>
+
+<ul>
+<li><strong>History-taking</strong> (6-7 stations)</li>
+<li><strong>Physical examination</strong> (4-5 stations)</li>
+<li><strong>Communication/Ethics</strong> (2-3 stations)</li>
+<li><strong>Procedural skills</strong> (1-2 stations)</li>
+<p>
+</ul>
+</p>
+
+<h3>How These Materials Help You</h3>
+
+<p>
+This package provides <strong>AMC Clinical-style notes</strong> following the exact format and standards used in courses like Dr Aamir Saeed's preparation course, with:
+</p>
+
+<p>
+✅ <strong>Australian medical context</strong> (eTG, AMH, Medicare, PBS)
+✅ <strong>Exact phrases</strong> examiners expect to hear
+✅ <strong>Common IMG mistakes</strong> to avoid
+✅ <strong>8-minute station format</strong> with realistic timing
+✅ <strong>Role-play scripts</strong> word-for-word
+✅ <strong>Examiner marking criteria</strong>
+</p>
+
+<h3>How to Use These Materials</h3>
+
+<strong>Step 1: Read the Foundation Documents</strong>
+<ul>
+<li>Start with <code>/PROJECT_CONSTRAINTS.md</code> (project standards)</li>
+<li>Read this Master Index completely</li>
+<p>
+</ul>
+</p>
+
+<strong>Step 2: Learn the Frameworks</strong>
+<ul>
+<li><strong>History-taking</strong>: SOCRATES for pain, systematic approach for other complaints</li>
+<li><strong>Physical examination</strong>: 5 Ps (Preparation, Position, Permission, Perform, Present)</li>
+<li><strong>Communication</strong>: SPIKES for breaking bad news</li>
+<p>
+</ul>
+</p>
+
+<strong>Step 3: Practice Each System</strong>
+<ul>
+<li>Work through history-taking notes for each system</li>
+<li>Practice physical examinations using the step-by-step guides</li>
+<li>Rehearse communication scripts OUT LOUD</li>
+<p>
+</ul>
+</p>
+
+<strong>Step 4: Self-Assessment</strong>
+<ul>
+<li>Use mock OSCE stations (when available)</li>
+<li>Record yourself and watch back</li>
+<li>Time yourself strictly (8 minutes)</li>
+<p>
+</ul>
+</p>
+
+<strong>Step 5: Daily Practice</strong>
+<ul>
+<li><strong>Target</strong>: 2-3 history-taking scenarios daily</li>
+<li><strong>Target</strong>: 1 physical examination daily</li>
+<li><strong>Target</strong>: 1 communication scenario weekly</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2><a name="whats-included"></a>WHAT'S INCLUDED IN THIS PACKAGE</h2>
+
+<h3>✅ COMPLETED MATERIALS (Available Now)</h3>
+
+<h4>1. Medicine - History-Taking</h4>
+<p>
+📄 <strong>File</strong>: <code>Medicine/01<em>Cardiovascular</em>Respiratory_History.md</code>
+</p>
+
+<strong>Covers</strong>:
+<ul>
+<li>✅ <strong>Chest Pain</strong> (ACS, PE, GORD) - Complete with SOCRATES, differentials, Australian management</li>
+<li>✅ <strong>Shortness of Breath</strong> (PE, Asthma/COPD, Heart Failure) - Systematic approach, orthopnoea/PND</li>
+<li>✅ <strong>Palpitations</strong> (SVT, AF, Anxiety) - Character, triggers, CHA₂DS₂-VASc</li>
+<p>
+</ul>
+</p>
+
+<strong>Features</strong>:
+<ul>
+<li>Opening statements <30 seconds</li>
+<li>SOCRATES framework for pain</li>
+<li>Top 3 differentials (ranked by urgency)</li>
+<li>Investigations (Medicare bulk-billed status noted)</li>
+<li>Management per eTG 2024</li>
+<li>Safety-netting with specific <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</li>
+<li>Common IMG mistakes for each presentation</li>
+<p>
+</ul>
+</p>
+
+<h4>2. Medicine - Physical Examination</h4>
+<p>
+📄 <strong>File</strong>: <code>Medicine/02<em>Physical</em>Examination<em>Cardiovascular</em>Respiratory.md</code>
+</p>
+
+<strong>Covers</strong>:
+<ul>
+<li>✅ <strong>Cardiovascular Examination</strong> - Complete HIPJAP approach</li>
+<p>
+</ul>
+  - Hands → Inspection → Pulses → JVP → Apex → Praecordium
+  - Heart sound auscultation (4 areas + dynamic manoeuvres)
+  - Murmur description (7 S's)
+  - Common findings table (AS, AR, MR, MS, TR)
+</p>
+
+<ul>
+<li>✅ <strong>Respiratory Examination</strong> - Complete IPTAP approach</li>
+<p>
+</ul>
+  - Inspection → Palpation (expansion) → Percussion → Auscultation
+  - Anterior and posterior chest
+  - Clinical findings table (pneumonia, effusion, pneumothorax, COPD, asthma, fibrosis)
+</p>
+
+<strong>Features</strong>:
+<ul>
+<li>5 Ps framework throughout</li>
+<li>Exact examiner phrases to say out loud</li>
+<li>Time allocation for each step</li>
+<li>Presentation structure (to examiner)</li>
+<p>
+</ul>
+</p>
+
+<h4>3. Abdominal & Neurological Examination</h4>
+<p>
+📄 <strong>File</strong>: <code>Medicine/03<em>Physical</em>Examination<em>Abdominal</em>Neurological.md</code>
+</p>
+
+<strong>Covers</strong>:
+<ul>
+<li>✅ <strong>Abdominal Examination</strong></li>
+<p>
+</ul>
+  - Hands (clubbing, palmar erythema, asterixis)
+  - 9-region systematic palpation
+  - Organ-specific examination (liver, spleen, kidneys, aorta)
+  - Special signs (Murphy's, Rovsing's, rebound)
+  - Ascites (shifting dullness technique)
+  - Hernial orifices
+</p>
+
+<ul>
+<li>✅ <strong>Cranial Nerve Examination (CN I-XII)</strong></li>
+<p>
+</ul>
+  - Complete systematic approach
+  - Visual acuity, visual fields, fundoscopy
+  - Pupillary reflexes (direct, consensual, RAPD, accommodation)
+  - Eye movements (H-shape pattern, nystagmus)
+  - Facial sensation (3 divisions of CN V)
+  - Facial movements (UMN vs LMN palsy)
+  - Hearing (whisper test, Weber, Rinne)
+  - Palate, tongue, SCM, trapezius
+</p>
+
+<strong>Features</strong>:
+<ul>
+<li>Step-by-step instructions with exact wording</li>
+<li>What to say to patient vs what to say to examiner</li>
+<li>UMN vs LMN clinical findings</li>
+<li>Mnemonic aids (HIPJAP, IPTAP)</li>
+<p>
+</ul>
+</p>
+
+<h4>4. Ethics & Communication</h4>
+<p>
+📄 <strong>File</strong>: <code>Ethics<em>Communication/01</em>Communication<em>Skills</em>Role<em>Play</em>Scripts.md</code>
+</p>
+
+<strong>Covers</strong>:
+<ul>
+<li>✅ <strong>Breaking Bad News</strong> (Cancer Diagnosis)</li>
+<p>
+</ul>
+  - Complete SPIKES framework
+  - Setting → Perception → Invitation → Knowledge → Emotions → Strategy
+  - Exact phrases for each stage
+  - How to respond to crying, anger, denial
+  - Handling "How long do I have?" and "Am I going to die?"
+</p>
+
+<ul>
+<li>✅ <strong>Informed Consent</strong> (Colonoscopy)</li>
+<p>
+</ul>
+  - Explaining procedure in lay terms
+  - Risks (common vs rare)
+  - Alternatives
+  - Consent form discussion
+  - Handling hesitancy
+</p>
+
+<ul>
+<li>✅ <strong>Angry Patient</strong></li>
+<p>
+</ul>
+  - De-escalation techniques
+  - Acknowledge → Explain → Validate → Offer solution
+  - Setting boundaries if abusive
+  - What NEVER to say
+</p>
+
+<ul>
+<li>✅ <strong>Interpreter Use</strong></li>
+<p>
+</ul>
+  - Golden rules (speak TO patient, not ABOUT patient)
+  - Seating arrangement
+  - Maintaining eye contact
+  - Cultural sensitivity
+</p>
+
+<strong>Features</strong>:
+<ul>
+<li>Word-for-word scripts</li>
+<li>Australian communication style</li>
+<li>Common IMG mistakes highlighted</li>
+<li>Quick reference phrases</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>🔄 IN PROGRESS / COMING SOON</h3>
+
+<h4>5. Medicine - Additional History-Taking</h4>
+<strong>Planned content</strong>:
+<ul>
+<li>Gastroenterology (abdominal pain, dysphagia, change in bowel habit, jaundice)</li>
+<li>Neurology (headache, dizziness, weakness, seizure)</li>
+<li>Endocrine (polyuria/polydipsia, weight changes, thyroid symptoms)</li>
+<p>
+</ul>
+</p>
+
+<h4>6. Surgery OSCE Notes</h4>
+<strong>Planned content</strong>:
+<ul>
+<li>Acute abdomen (appendicitis, cholecystitis, bowel obstruction, peritonitis)</li>
+<li>Trauma (ATLS primary/secondary survey)</li>
+<li>Surgical emergencies (AAA, ischaemic limb)</li>
+<li>Lumps and bumps examination</li>
+<p>
+</ul>
+</p>
+
+<h4>7. Paediatrics OSCE Notes</h4>
+<strong>Planned content</strong>:
+<ul>
+<li>Paediatric history-taking (ALWAYS ask about: birth history, developmental milestones, immunizations, growth)</li>
+<li>Common presentations (fever, cough, diarrhoea, rash)</li>
+<li>Developmental assessment (age-appropriate milestones)</li>
+<li>Communication with parents</li>
+<p>
+</ul>
+</p>
+
+<h4>8. Obstetrics & Gynaecology</h4>
+<strong>Planned content</strong>:
+<ul>
+<li>Antenatal care (booking visit, pregnancy complications)</li>
+<li>Gynae history (menstrual history, vaginal bleeding, pelvic pain)</li>
+<li>Contraception counselling</li>
+<li>Pregnancy counselling (antenatal screening, lifestyle advice)</li>
+<p>
+</ul>
+</p>
+
+<h4>9. Psychiatry OSCE Notes</h4>
+<strong>Planned content</strong>:
+<ul>
+<li>Mental State Examination (complete MSE structure)</li>
+<li>Risk assessment (suicide, harm to others, self-neglect)</li>
+<li>Common presentations (depression, anxiety, psychosis, mania)</li>
+<li>Capacity assessment</li>
+<p>
+</ul>
+</p>
+
+<h4>10. Mock OSCE Stations with Marking Criteria</h4>
+<strong>Planned content</strong>:
+<ul>
+<li>Complete 16-station mock exam</li>
+<li>Examiner checklists (observable criteria)</li>
+<li>Pass/Borderline/Fail thresholds</li>
+<li>Time-pressured practice scenarios</li>
+<li>Self-assessment scoring</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2><a name="study-schedule"></a>STUDY SCHEDULE RECOMMENDATIONS</h2>
+
+<h3>3-Month Preparation Timeline (December 2025 - February 2026)</h3>
+
+<h4><strong>Month 1 (December): Foundation Building</strong></h4>
+
+<strong>Week 1-2: Medicine - Cardiovascular & Respiratory</strong>
+<ul>
+<li><strong>Mon/Wed/Fri</strong>: Practice 2 history-taking scenarios (chest pain, SOB, palpitations)</li>
+<li><strong>Tue/Thu</strong>: Practice CVS or Resp examination (alternating)</li>
+<li><strong>Sat</strong>: Communication skills - breaking bad news</li>
+<li><strong>Sun</strong>: Review week, self-assess</li>
+<p>
+</ul>
+</p>
+
+<strong>Week 3-4: Abdominal & Neurology</strong>
+<ul>
+<li><strong>Mon/Wed/Fri</strong>: Abdominal history scenarios</li>
+<li><strong>Tue/Thu</strong>: Abdominal exam or Cranial nerve exam (alternating)</li>
+<li><strong>Sat</strong>: Communication skills - consent</li>
+<li><strong>Sun</strong>: Review</li>
+<p>
+</ul>
+</p>
+
+<strong>Targets for Month 1</strong>:
+<ul>
+<li>✅ 50 history-taking practices</li>
+<li>✅ 15 physical examinations</li>
+<li>✅ All CVS, Resp, Abdo, CN I-XII frameworks memorized</li>
+<p>
+</ul>
+</p>
+
+<h4><strong>Month 2 (January): Expansion & Integration</strong></h4>
+
+<strong>Week 1-2: Add Surgery, Paeds, O&G</strong>
+<ul>
+<li>Continue medicine practice</li>
+<li>Add new systems (when materials available)</li>
+<li><strong>Daily</strong>: 3 histories (mix of systems)</li>
+<li><strong>Daily</strong>: 1 examination</li>
+<li><strong>Weekly</strong>: 2 communication stations</li>
+<p>
+</ul>
+</p>
+
+<strong>Week 3-4: Mock OSCE Practice</strong>
+<ul>
+<li>Start timed 8-minute stations</li>
+<li>Record yourself (video)</li>
+<li>Watch back and critique</li>
+<li>Identify weak areas</li>
+<p>
+</ul>
+</p>
+
+<strong>Targets for Month 2</strong>:
+<ul>
+<li>✅ 80 additional history-taking practices (Total: 130)</li>
+<li>✅ 30 examinations (Total: 45)</li>
+<li>✅ Comfortable with all common presentations</li>
+<p>
+</ul>
+</p>
+
+<h4><strong>Month 3 (February): Refinement & Exam Conditions</strong></h4>
+
+<strong>Week 1-2: Intensive Mock Exams</strong>
+<ul>
+<li><strong>Daily</strong>: Full 16-station mock OSCE (when materials available)</li>
+<li>Focus on:</li>
+<p>
+</ul>
+  - Time management (8 min strict)
+  - Fluency (no hesitation)
+  - Professionalism
+</p>
+
+<strong>Week 3: Weak Area Correction</strong>
+<ul>
+<li>Identify 3 weakest areas from mock exams</li>
+<li>Intensive practice on those areas</li>
+<li>Peer practice (if available)</li>
+<p>
+</ul>
+</p>
+
+<strong>Week 4: Final Polishing</strong>
+<ul>
+<li>Light practice (avoid burnout)</li>
+<li>Review common IMG mistakes</li>
+<li>Relax, sleep well</li>
+<li><strong>Ready for ICRP March 2, 2026</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Targets for Month 3</strong>:
+<ul>
+<li>✅ 120 additional histories (Total: 250+ by end Feb)</li>
+<li>✅ 40 examinations (Total: 85+)</li>
+<li>✅ Confident, fluent, professional</li>
+<li>✅ Know exact phrases by heart</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2><a name="quick-reference"></a>QUICK REFERENCE CARDS</h2>
+
+<h3>History-Taking Template (ANY Presentation)</h3>
+
+<strong>Opening</strong> (30 sec):
+<ul>
+<li>"Hello, I'm Dr [Name]. I understand you've come in today with [complaint]. I'd like to ask some questions to understand what's happening. Is that alright?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Focused History</strong> (4 min):
+<ul>
+<li><strong>Pain</strong>: SOCRATES (Site, Onset, Character, Radiation, Associations, Time, Exacerbating/Relieving, Severity)</li>
+<li><strong>Other</strong>: Onset, Duration, Severity, Progression, Timing, Triggers, Associated symptoms</li>
+<p>
+</ul>
+</p>
+
+<strong>Systematic Questions</strong> (2 min):
+<ul>
+<li>Past medical history, Medications, Allergies, Family history, Social history</li>
+<p>
+</ul>
+</p>
+
+<strong>Closure</strong> (1 min):
+<ul>
+<li>"Is there anything else you think I should know?"</li>
+<li>"Thank you. I'm going to examine you now / discuss this with my consultant."</li>
+<p>
+</ul>
+</p>
+
+<strong>To Examiner</strong> (1 min):
+<ul>
+<li>Summarize history</li>
+<li>"My top 3 differentials are: [1], [2], [3]."</li>
+<li>"I would like to examine [system], check [investigations], and manage according to [guideline]."</li>
+<p>
+</ul>
+</p>
+
+<h3>Physical Examination Template (ANY System)</h3>
+
+<strong>5 Ps Framework</strong>:
+
+<ol>
+<li><strong>Preparation</strong> (60 sec):</li>
+<p>
+</ol>
+   - Wash hands
+   - Introduction: "Hello, I'm Dr [Name]. I've been asked to examine your [system]. This will involve [explain]. Is that alright?"
+   - Offer chaperone
+   - Check for pain
+</p>
+
+<ol>
+<li><strong>Position</strong> (15 sec):</li>
+<p>
+</ol>
+   - Appropriate for system (45° for CVS, sitting for Resp, lying for abdo)
+   - Good lighting, adequate exposure
+</p>
+
+<ol>
+<li><strong>Permission</strong> (15 sec):</li>
+<p>
+</ol>
+   - "I'm going to examine [areas]. Is that okay?"
+</p>
+
+<ol>
+<li><strong>Perform</strong> (5 min):</li>
+<p>
+</ol>
+   - <strong>Inspection</strong> (end of bed, general, specific)
+   - <strong>Palpation</strong>
+   - <strong>Percussion</strong> (if applicable)
+   - <strong>Auscultation</strong>
+   - <strong>Special tests</strong>
+</p>
+
+<ol>
+<li><strong>Present</strong> (60 sec):</li>
+<p>
+</ol>
+   - "On examination of [system]:"
+   - Structured findings (General → Specific)
+   - Summary
+   - "To complete examination, I would [DRE, fundoscopy, etc.]"
+</p>
+
+<h3>Communication Station Template</h3>
+
+<strong>SPIKES for Breaking Bad News</strong>:
+<ul>
+<li><strong>S</strong>etting: Private, sit down, tissues</li>
+<li><strong>P</strong>erception: "What have you been told?"</li>
+<li><strong>I</strong>nvitation: "Would you like me to explain?"</li>
+<li><strong>K</strong>nowledge: Give info in chunks, pause</li>
+<li><strong>E</strong>motions: Acknowledge, empathize</li>
+<li><strong>S</strong>trategy: Make plan, safety-net, follow-up</li>
+<p>
+</ul>
+</p>
+
+<strong>Key Phrases</strong>:
+<ul>
+<li>"I can see this is very difficult."</li>
+<li>"I'm sorry to have to tell you this."</li>
+<li>"It's completely understandable to feel [emotion]."</li>
+<li>"Take your time."</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2><a name="file-navigation"></a>FILE NAVIGATION</h2>
+
+<pre><code>ICRP<em>Program</em>Resources/
+<p>
+└── OSCE_Materials/
+    ├── 00<em>MASTER</em>INDEX<em>AMC</em>CLINICAL_OSCE.md ← YOU ARE HERE
+    │
+    ├── Medicine/
+    │   ├── 01<em>Cardiovascular</em>Respiratory_History.md ✅
+    │   ├── 02<em>Physical</em>Examination<em>Cardiovascular</em>Respiratory.md ✅
+    │   ├── 03<em>Physical</em>Examination<em>Abdominal</em>Neurological.md ✅
+    │   ├── 04<em>Gastroenterology</em>Neurology<em>Endocrine</em>History.md 🔄 (Coming)
+    │   └── 05<em>Upper</em>Lower<em>Limb</em>Neurological_Exam.md 🔄 (Coming)
+    │
+    ├── Surgery/
+    │   ├── 01<em>Acute</em>Abdomen_History.md 🔄 (Coming)
+    │   ├── 02<em>Trauma</em>Primary<em>Secondary</em>Survey.md 🔄 (Coming)
+    │   └── 03<em>Lumps</em>Bumps_Examination.md 🔄 (Coming)
+    │
+    ├── Paediatrics/
+    │   ├── 01<em>Paediatric</em>History_Taking.md 🔄 (Coming)
+    │   └── 02<em>Developmental</em>Assessment.md 🔄 (Coming)
+    │
+    ├── ObGyn/
+    │   ├── 01<em>Antenatal</em>Gynaecology_History.md 🔄 (Coming)
+    │   └── 02<em>Contraception</em>Counselling.md 🔄 (Coming)
+    │
+    ├── Psychiatry/
+    │   ├── 01<em>Mental</em>State_Examination.md 🔄 (Coming)
+    │   └── 02<em>Risk</em>Assessment.md 🔄 (Coming)
+    │
+    ├── Ethics_Communication/
+    │   └── 01<em>Communication</em>Skills<em>Role</em>Play_Scripts.md ✅
+    │
+    └── Mock_Stations/
+        ├── 01<em>Full</em>16<em>Station</em>Mock_Exam.md 🔄 (Coming)
+        └── 02<em>Examiner</em>Marking_Checklists.md 🔄 (Coming)
+</code></pre>
+</p>
+
+<strong>Legend</strong>:
+<ul>
+<li>✅ = Complete and available now</li>
+<li>🔄 = In progress / coming soon</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2><a name="common-mistakes"></a>COMMON IMG MISTAKES (Avoid These!)</h2>
+
+<h3>❌ TOP 10 MISTAKES IN AMC CLINICAL</h3>
+
+<ol>
+<li><strong>❌ Not introducing yourself or washing hands</strong></li>
+<p>
+</ol>
+   - ALWAYS start every station: "Hello, I'm Dr [Name]." + Hand hygiene
+</p>
+
+<ol>
+<li><strong>❌ Using US terminology</strong></li>
+<p>
+</ol>
+   - Say: paracetamol, GP, <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department, salbutamol
+   - NOT: acetaminophen, PCP, ER, albuterol
+</p>
+
+<ol>
+<li><strong>❌ Forgetting Australian spelling</strong></li>
+<p>
+</ol>
+   - paediatric, anaemia, oestrogen, colour (NOT pediatric, anemia, estrogen, color)
+</p>
+
+<ol>
+<li><strong>❌ Not checking understanding</strong></li>
+<p>
+</ol>
+   - ALWAYS say: "Does that make sense?" "Do you have any questions?"
+</p>
+
+<ol>
+<li><strong>❌ No safety-netting</strong></li>
+<p>
+</ol>
+   - ALWAYS give specific <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s: "If you develop [X, Y, Z], call 000 or go to ED."
+</p>
+
+<ol>
+<li><strong>❌ Poor time management</strong></li>
+<p>
+</ol>
+   - Stations are 8 minutes STRICT - practice with timer
+   - Have a watch visible during exam
+</p>
+
+<ol>
+<li><strong>❌ Not offering chaperone</strong></li>
+<p>
+</ol>
+   - For any intimate examination, ALWAYS offer chaperone
+</p>
+
+<ol>
+<li><strong>❌ Inadequate exposure for examination</strong></li>
+<p>
+</ol>
+   - Can't examine through clothing
+   - MUST expose adequately (while maintaining dignity)
+</p>
+
+<ol>
+<li><strong>❌ Talking to interpreter instead of patient</strong></li>
+<p>
+</ol>
+   - ALWAYS look at patient, speak TO patient (not ABOUT patient to interpreter)
+</p>
+
+<ol>
+<li><strong>❌ No empathy in communication stations</strong></li>
+<p>
+</ol>
+    - MUST show empathy: "I can see this is difficult." "I'm sorry you're going through this."
+</p>
+
+<h3>Additional Mistakes by System</h3>
+
+<strong>History-Taking</strong>:
+<ul>
+<li>❌ Not using SOCRATES for pain</li>
+<li>❌ Forgetting to ask about <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</li>
+<li>❌ Not ranking differentials (must give top 3 in order)</li>
+<li>❌ No mention of Australian guidelines (eTG, AMH)</li>
+<p>
+</ul>
+</p>
+
+<strong>Physical Examination</strong>:
+<ul>
+<li>❌ Not following 5 Ps structure</li>
+<li>❌ Not saying findings out loud</li>
+<li>❌ Forgetting to compare left vs right</li>
+<li>❌ Not presenting systematically to examiner</li>
+<p>
+</ul>
+</p>
+
+<strong>Communication</strong>:
+<ul>
+<li>❌ Using medical jargon with patients</li>
+<li>❌ Not responding to patient emotions</li>
+<li>❌ Giving too much information at once (chunk information)</li>
+<li>❌ Not summarizing at end</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2><a name="assessment-criteria"></a>ASSESSMENT CRITERIA</h2>
+
+<h3>What AMC Clinical Examiners Look For</h3>
+
+<strong>Every station is marked on</strong>:
+
+<ol>
+<li><strong>Communication Skills</strong> (25%)</li>
+<p>
+</ol>
+   - Introduction, consent, rapport
+   - Clear explanations
+   - Empathy, active listening
+   - Checking understanding
+</p>
+
+<ol>
+<li><strong>Clinical Knowledge</strong> (35%)</li>
+<p>
+</ol>
+   - Appropriate questions/examination
+   - Accurate differentials
+   - Safe management plan
+   - Australian guidelines
+</p>
+
+<ol>
+<li><strong>Clinical Reasoning</strong> (25%)</li>
+<p>
+</ol>
+   - Systematic approach
+   - Prioritization (e.g., <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s first)
+   - Integration of information
+   - Risk assessment
+</p>
+
+<ol>
+<li><strong>Professionalism</strong> (15%)</li>
+<p>
+</ol>
+   - Respectful manner
+   - Privacy/dignity
+   - Time management
+   - Appropriate boundaries
+</p>
+
+<h3>Passing Score</h3>
+
+<ul>
+<li><strong>Pass</strong>: Competent performance in all 4 domains</li>
+<li><strong>Borderline</strong>: Minor deficiencies, but safe practice</li>
+<li><strong>Fail</strong>: Major deficiencies, unsafe practice, or failed >4 stations</li>
+<p>
+</ul>
+</p>
+
+<strong>You must pass OVERALL (not necessarily every station)</strong>
+
+<h3>Automatic Fail Criteria</h3>
+
+<p>
+These will fail you immediately in a station:
+</p>
+<ul>
+<li>❌ Major safety issue (e.g., prescribing dangerous medication, missing life-threatening diagnosis)</li>
+<li>❌ Serious breach of ethics (e.g., breaking confidentiality, coercion)</li>
+<li>❌ Aggressive or inappropriate behavior</li>
+<li>❌ Not obtaining consent for intimate examination</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>🎯 YOUR NEXT STEPS</h2>
+
+<h3>If You're Just Starting:</h3>
+
+<ol>
+<li><strong>Today</strong>: Read all completed materials once through</li>
+<li><strong>This Week</strong>: Memorize SOCRATES, 5 Ps, SPIKES frameworks</li>
+<li><strong>This Month</strong>: Practice 50 history-taking scenarios out loud</li>
+<li><strong>Goal</strong>: By March 2, 2026 - Ready for ICRP NSW Young Hospital</li>
+<p>
+</ol>
+</p>
+
+<h3>If You're Mid-Preparation:</h3>
+
+<ol>
+<li><strong>Identify weak areas</strong> using self-assessment</li>
+<li><strong>Focus practice</strong> on those areas</li>
+<li><strong>Record yourself</strong> and watch back critically</li>
+<li><strong>Time yourself</strong> - be strict with 8-minute limit</li>
+<p>
+</ol>
+</p>
+
+<h3>If You're Nearly Ready:</h3>
+
+<ol>
+<li><strong>Full mock exams</strong> under exam conditions</li>
+<li><strong>Peer practice</strong> if available</li>
+<li><strong>Review common IMG mistakes</strong> daily</li>
+<li><strong>Rest well</strong> before ICRP/AMC Clinical</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>📞 SUPPORT & RESOURCES</h2>
+
+<h3>For ICRP NSW Young Hospital:</h3>
+<ul>
+<li><strong>ICRP Coordinator</strong>: Contact via Young District Hospital</li>
+<li><strong>Accommodation</strong>: Arrange before March 2, 2026</li>
+<li><strong>Travel</strong>: Plan route to Young, NSW</li>
+<p>
+</ul>
+</p>
+
+<h3>For AMC Clinical Exam:</h3>
+<ul>
+<li><strong>AMC Website</strong>: www.amc.org.au</li>
+<li><strong>Exam Booking</strong>: Via AMC portal</li>
+<li><strong>Preparation Courses</strong>: Numerous options Australia-wide</li>
+<p>
+</ul>
+</p>
+
+<h3>For Australian Medical Practice:</h3>
+<ul>
+<li><strong>AHPRA</strong>: www.ahpra.gov.au (registration)</li>
+<li><strong>Therapeutic Guidelines (eTG)</strong>: www.tg.org.au</li>
+<li><strong>Australian Medicines Handbook (AMH)</strong>: www.amh.net.au</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>📝 FEEDBACK & UPDATES</h2>
+
+<p>
+This is a <strong>living document</strong> and will be updated as new materials are created.
+</p>
+
+<strong>Current Version</strong>: 1.0 (December 14, 2025)
+
+<strong>Planned Updates</strong>:
+<ul>
+<li>Additional clinical systems (Surgery, Paeds, O&G, Psych)</li>
+<li>Mock OSCE stations with examiner checklists</li>
+<li>Video demonstrations (if resources available)</li>
+<li>More communication scenarios</li>
+<p>
+</ul>
+</p>
+
+<strong>Contribution</strong>: If you identify errors or have suggestions for improvement, please document them for review.
+
+<hr>
+
+<h2>✅ MATERIALS QUALITY ASSURANCE</h2>
+
+<p>
+All materials in this package have been created following:
+</p>
+
+<ul>
+<li>✅ <strong>PROJECT_CONSTRAINTS.md</strong> - ICRP NSW project standards</li>
+<li>✅ <strong>Australian Medical Context</strong> - eTG 2024, AMH, Medicare, PBS</li>
+<li>✅ <strong>AHPRA Standards</strong> - Australian clinical competency requirements</li>
+<li>✅ <strong>AMC Clinical Format</strong> - 8-minute stations, observable criteria</li>
+<li>✅ <strong>Course-Style Structure</strong> - Following Dr Aamir Saeed's course format</li>
+<li>✅ <strong>IMG-Focused</strong> - Common mistakes documented and corrected</li>
+<p>
+</ul>
+</p>
+
+<strong>Validated for</strong>:
+<ul>
+<li>Australian spelling ✅</li>
+<li>Australian drug names ✅</li>
+<li>Australian clinical guidelines ✅</li>
+<li>Australian communication style ✅</li>
+<li>Cultural safety (Indigenous health, interpreter use) ✅</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>🎓 Good luck with your preparation!</strong>
+
+<strong>Remember</strong>:
+<ul>
+<li>Practice OUT LOUD (not just reading)</li>
+<li>Time yourself (8 minutes strict)</li>
+<li>Record and review yourself</li>
+<li>Focus on weaknesses</li>
+<li>Be systematic, professional, empathetic</li>
+<p>
+</ul>
+</p>
+
+<strong>You've got this! 💪</strong>
+
+<hr>
+
+<strong>Last Updated</strong>: December 14, 2025
+<strong>Version</strong>: 1.0
+<strong>Next Update</strong>: When additional clinical materials completed
+<strong>Author</strong>: ICRP NSW Young Hospital Preparation Team
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

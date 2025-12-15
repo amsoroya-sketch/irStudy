@@ -1,0 +1,2986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Psychiatric Presentations: Differential Diagnosis and Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Psychiatry</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Psychiatry Navigation</h3>
+<ul>
+<li><a href="01_Psychiatric_History_Differentials.html">Psych History</a></li>
+<li><a href="02_Mental_State_Examination.html">MSE</a></li>
+</ul>
+</div>
+        <h1>Common Psychiatric Presentations: Differential Diagnosis and Management</h1>
+<h2>ICRP OSCE Preparation - Psychiatry Module</h2>
+
+<hr>
+
+<h2>Target Audience</h2>
+
+<p>
+This guide is for <strong>International Medical Graduates (IMGs)</strong> preparing for the <strong>AMC Clinical OSCE</strong>, specifically:
+</p>
+
+<ul>
+<li>IMGs with psychiatry training from different healthcare systems needing Australian context</li>
+<li>Candidates requiring differential-driven approach to psychiatric presentations</li>
+<li>Doctors preparing for ICRP placement in Australian hospitals</li>
+<li>Medical professionals needing systematic frameworks for common psychiatric conditions</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Learning Objectives</h2>
+
+<p>
+By the end of this module, you will be able to:
+</p>
+
+<ol>
+<li><strong>Recognize</strong> pattern-based presentations of common psychiatric disorders</li>
+<li><strong>Generate</strong> differential diagnoses from initial presentation (Dr. Soufi's approach)</li>
+<li><strong>Apply</strong> DSM-5 diagnostic criteria for major psychiatric disorders</li>
+<li><strong>Manage</strong> psychiatric presentations according to Australian guidelines (eTG 2024, PBS)</li>
+<li><strong>Assess</strong> risk throughout psychiatric presentations (suicide, violence, vulnerability)</li>
+<li><strong>Navigate</strong> Australian mental health system (Medicare Mental Health Plan, involuntary treatment)</li>
+<li><strong>Avoid</strong> common IMG mistakes in psychiatric diagnosis and management</li>
+<li><strong>Perform</strong> confidently in 8-minute OSCE stations for psychiatric presentations</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Dr. Amir Soufi's Approach Applied to Psychiatric Presentations</h2>
+
+<h3>Core Principle: PATTERN RECOGNITION from FIRST QUESTION</h3>
+
+<strong>Traditional Approach (Less Effective)</strong>:
+<ul>
+<li>Take full generic psychiatric history</li>
+<li>Complete full MSE</li>
+<li>Consider diagnosis at end</li>
+<li>Treat all presentations identically</li>
+<p>
+</ul>
+</p>
+
+<strong>Dr. Soufi's Differential-Driven Approach</strong>:
+<ol>
+<li><strong>PATTERN RECOGNITION</strong>: Identify syndrome from presenting complaint (depressive, manic, psychotic, anxiety)</li>
+<li><strong>DIFFERENTIAL FROM START</strong>: Generate differential diagnosis immediately</li>
+<li><strong>TARGETED HISTORY</strong>: Let differential guide specific questions (SIG E CAPS for depression, DIG FAST for mania, first-rank symptoms for psychosis)</li>
+<li><strong>RULE OUT ORGANIC</strong>: Always exclude medical causes FIRST (thyroid, drugs, neurological)</li>
+<li><strong>INTEGRATED RISK</strong>: Assess suicide/violence risk THROUGHOUT (not separate section at end)</li>
+<li><strong>SYSTEMATIC MANAGEMENT</strong>: Evidence-based treatment following Australian guidelines</li>
+<p>
+</ol>
+</p>
+
+<strong>Example</strong>:
+<ul>
+<li><strong>Presenting complaint</strong>: "I've been feeling really low for 3 months"</li>
+<li><strong>Immediate differential</strong>: MDD, bipolar depression, adjustment disorder, hypothyroidism, medication-induced</li>
+<li><strong>Targeted questions</strong>: SIG E CAPS (depression criteria), previous manic episodes (bipolar), recent stressors (adjustment), medications (drug-induced), symptoms of hypothyroidism</li>
+<li><strong>Integrated risk</strong>: Hopelessness → passive ideation → active ideation throughout history</li>
+<li><strong>Management</strong>: eTG 2024 guidelines, Medicare Mental Health Plan</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>1. MAJOR DEPRESSIVE DISORDER (MDD)</h2>
+
+<h3>Clinical Presentation Pattern</h3>
+
+<strong>Typical Presentation</strong>:
+<ul>
+<li>Low mood, anhedonia (loss of interest/pleasure)</li>
+<li>Sleep disturbance (insomnia or hypersomnia)</li>
+<li>Appetite/weight changes</li>
+<li>Fatigue, low energy</li>
+<li>Poor concentration</li>
+<li>Psychomotor changes (agitation or retardation)</li>
+<li>Guilt, worthlessness</li>
+<li>Hopelessness</li>
+<li>Suicidal thoughts</li>
+<p>
+</ul>
+</p>
+
+<strong>Key Pattern</strong>: At least <strong>5 symptoms</strong> for at least <strong>2 weeks</strong>, including <strong>low mood OR anhedonia</strong> (DSM-5)
+
+<hr>
+
+<h3>Differential Diagnosis (Generated IMMEDIATELY)</h3>
+
+<strong>When Patient Says</strong>: "I've been feeling really down/low/depressed"
+
+<strong>Immediate Differential</strong>:
+
+<ol>
+<li><strong>Major Depressive Disorder</strong> (MDD) - single episode or recurrent</li>
+<li><strong>Bipolar Disorder</strong> - depressive episode (MUST ask about previous mania/hypomania)</li>
+<li><strong>Persistent Depressive Disorder</strong> (Dysthymia) - chronic low mood >2 years</li>
+<li><strong>Adjustment Disorder</strong> - response to identifiable stressor within 3 months</li>
+<li><strong>Grief/Bereavement</strong> - normal response to loss</li>
+<li><strong>Substance-Induced Mood Disorder</strong>: Alcohol, cannabis, stimulant withdrawal</li>
+<li><strong>Medication-Induced Depression</strong>:</li>
+<p>
+</ol>
+   - Beta-blockers (propranolol, atenolol)
+   - Corticosteroids
+   - Isotretinoin (Accutane)
+   - Interferon
+   - Oral contraceptives
+</p>
+<ol>
+<li><strong>Medical/Organic Causes</strong> (RULE OUT FIRST):</li>
+<p>
+</ol>
+   - <strong>Hypothyroidism</strong> (ALWAYS check TSH)
+   - Vitamin B12/folate deficiency
+   - Anaemia
+   - Chronic diseases: cancer, heart failure, COPD, chronic pain
+   - Neurological: stroke, Parkinson's disease, dementia, MS
+   - Cushing's syndrome
+   - Addison's disease
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong>: <strong>Visual hallucinations</strong> = organic until proven otherwise (NOT typical of MDD)
+
+<hr>
+
+<h3>DSM-5 Diagnostic Criteria for MDD</h3>
+
+<strong>Use SIG E CAPS Mnemonic</strong> (plus depressed mood or anhedonia):
+
+<p>
+At least <strong>5 of 9 symptoms</strong> present during <strong>same 2-week period</strong>, representing change from previous functioning. Must include <strong>#1 or #2</strong>:
+</p>
+
+<ol>
+<li><strong>S</strong> - <strong>Sleep disturbance</strong> (insomnia or hypersomnia nearly every day)</li>
+<li><strong>I</strong> - <strong>Interest/pleasure reduced</strong> (anhedonia) - in all or almost all activities</li>
+<li><strong>G</strong> - <strong>Guilt</strong> or worthlessness (excessive or inappropriate)</li>
+<li><strong>E</strong> - <strong>Energy loss</strong> or fatigue nearly every day</li>
+<li><strong>C</strong> - <strong>Concentration</strong> diminished or indecisiveness</li>
+<li><strong>A</strong> - <strong>Appetite/weight change</strong> (significant weight loss/gain or appetite change)</li>
+<li><strong>P</strong> - <strong>Psychomotor</strong> agitation or retardation (observable by others)</li>
+<li><strong>S</strong> - <strong>Suicidal ideation</strong> or thoughts of death</li>
+<p>
+</ol>
+</p>
+
+<strong>PLUS</strong>:
+<ol>
+<li><strong>Depressed mood</strong> most of the day, nearly every day</li>
+<p>
+</ol>
+</p>
+
+<strong>Functional Impairment</strong>: Symptoms cause clinically significant distress or impairment in social, occupational, or other important areas
+
+<strong>Not attributable to</strong>: Substances or another medical condition
+
+<hr>
+
+<h3>Severity Specifiers (Important for Management)</h3>
+
+<ul>
+<li><strong>Mild</strong>: Few symptoms beyond the 5 required, minor functional impairment</li>
+<li><strong>Moderate</strong>: Symptoms/functional impairment between mild and severe</li>
+<li><strong>Severe</strong>: Most symptoms present, marked functional impairment</li>
+<li><strong>With psychotic features</strong>: Delusions or hallucinations (usually mood-congruent)</li>
+<p>
+</ul>
+  - Mood-congruent: Themes of guilt, punishment, nihilism ("I'm dead inside", "I have no organs")
+  - Requires antipsychotic + antidepressant
+</p>
+
+<hr>
+
+<h3>Targeted History Questions for MDD</h3>
+
+<strong>Using SIG E CAPS Framework</strong>:
+
+<ol>
+<li><strong>Sleep</strong>: "How's your sleep? Trouble falling asleep, staying asleep, or waking early? Sleeping more than usual?"</li>
+<li><strong>Interest</strong>: "Have you lost interest in things you used to enjoy? What about hobbies, seeing friends, activities?"</li>
+<li><strong>Guilt</strong>: "Do you feel guilty about things? Feel like you're worthless or a burden?"</li>
+<li><strong>Energy</strong>: "How's your energy? Feeling tired all the time?"</li>
+<li><strong>Concentration</strong>: "Any trouble concentrating? Reading, watching TV, making decisions?"</li>
+<li><strong>Appetite</strong>: "How's your appetite? Any weight change recently?"</li>
+<li><strong>Psychomotor</strong>: "Do you feel restless or slowed down? Do others notice?" (Observe during interview)</li>
+<li><strong>Suicidal thoughts</strong>: "Do you have thoughts of harming yourself or ending your life?" (Graduated assessment - see Risk Assessment module)</li>
+<li><strong>Mood</strong>: "How would you describe your mood? Low/down most of the day, nearly every day?"</li>
+<p>
+</ol>
+</p>
+
+<strong>CRITICAL</strong>: Ask about <strong>previous MANIC or HYPOMANIC episodes</strong> to rule out bipolar disorder
+<ul>
+<li>"Have you ever had periods where you felt the opposite - really high, energetic, needed less sleep, felt on top of the world?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Rule out ORGANIC causes</strong>:
+<ul>
+<li>"Any medical problems? Thyroid issues? Taking any medications?"</li>
+<li>"How's your alcohol/drug use?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Management of MDD (Australian Guidelines - eTG 2024)</h3>
+
+<h4>Mild Depression</h4>
+
+<strong>First-line</strong>:
+<ul>
+<li><strong>Watchful waiting</strong> (2 weeks) if recent onset, mild symptoms</li>
+<li><strong>Psychoeducation</strong> about depression</li>
+<li><strong>Sleep hygiene</strong>, exercise, social connection</li>
+<li><strong>Psychological therapy</strong>:</li>
+<p>
+</ul>
+  - <strong>Cognitive Behavioural Therapy (CBT)</strong> - first-line
+  - Interpersonal Therapy (IPT)
+  - <strong>Medicare Mental Health Plan</strong>: GP can refer for up to <strong>10 subsidized psychology sessions per year</strong> (6 initially, then 4 more after review)
+</p>
+
+<strong>Consider antidepressant</strong> if:
+<ul>
+<li>Patient preference</li>
+<li>Previous good response to medication</li>
+<li>Persistent symptoms after 2 weeks</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Moderate to Severe Depression</h4>
+
+<strong>First-line Treatment</strong>:
+<ul>
+<li><strong>Antidepressant medication</strong> + <strong>psychological therapy</strong> (combination superior to either alone)</li>
+<p>
+</ul>
+</p>
+
+<strong>First-line Antidepressants (eTG 2024)</strong>:
+
+<strong>SSRIs</strong> (Selective Serotonin Reuptake Inhibitors) - <strong>FIRST CHOICE</strong>:
+<ul>
+<li><strong>Sertraline</strong> 50mg daily (increase to 100-200mg) - PBS listed</li>
+<li><strong>Escitalopram</strong> 10mg daily (increase to 20mg) - PBS listed</li>
+<li><strong>Fluoxetine</strong> 20mg daily (increase to 40mg) - PBS listed</li>
+<li>Citalopram 20mg daily (max 40mg; <strong>caution: QTc prolongation</strong>)</li>
+<p>
+</ul>
+</p>
+
+<strong>Why SSRIs first-line</strong>:
+<ul>
+<li>Effective</li>
+<li>Well-tolerated</li>
+<li>Safe in overdose (important given suicide risk)</li>
+<li>Fewer drug interactions than older antidepressants</li>
+<p>
+</ul>
+</p>
+
+<strong>Counsel Patient</strong>:
+<ul>
+<li>Takes <strong>2-4 weeks</strong> to notice improvement (some may take 6-8 weeks)</li>
+<li>Common initial side effects: nausea, headache, jitteriness (usually resolve in 1-2 weeks)</li>
+<li>Sexual dysfunction (reduced libido, delayed orgasm) - persistent side effect</li>
+<li><strong>DO NOT stop abruptly</strong> - risk of discontinuation syndrome</li>
+<li><strong>Continue for at least 6-12 months after remission</strong> to prevent relapse</li>
+<p>
+</ul>
+</p>
+
+<strong>Second-line Antidepressants</strong>:
+<ul>
+<li><strong>Venlafaxine</strong> (SNRI) - 75mg daily, increase to 150-225mg</li>
+<li><strong>Mirtazapine</strong> - 15-30mg nocte (sedating, weight gain, good if insomnia/poor appetite)</li>
+<li><strong>Duloxetine</strong> (SNRI) - 60mg daily (also useful for chronic pain, neuropathy)</li>
+<p>
+</ul>
+</p>
+
+<strong>Older Antidepressants</strong> (less commonly used due to side effects, toxicity in overdose):
+<ul>
+<li><strong>TCAs</strong> (Tricyclic Antidepressants): amitriptyline, nortriptyline</li>
+<p>
+</ul>
+  - Useful for chronic pain, neuropathy
+  - Side effects: dry mouth, constipation, urinary retention, sedation, weight gain
+  - <strong>LETHAL in overdose</strong> (cardiotoxic)
+</p>
+<ul>
+<li><strong>MAOIs</strong> (Monoamine Oxidase Inhibitors): rarely used, dietary restrictions</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Treatment-Resistant Depression</h4>
+
+<strong>Definition</strong>: Inadequate response to <strong>2+ adequate trials</strong> of antidepressants (adequate dose, adequate duration 6-8 weeks)
+
+<strong>Strategies</strong>:
+<ol>
+<li><strong>Optimize current antidepressant</strong> (ensure adequate dose, duration)</li>
+<li><strong>Switch to different class</strong> (e.g., SSRI → SNRI)</li>
+<li><strong>Augmentation</strong>:</li>
+<p>
+</ol>
+   - Add <strong>atypical antipsychotic</strong>: quetiapine, aripiprazole (PBS listed for treatment-resistant depression)
+   - Add <strong>lithium</strong> (requires monitoring: renal function, TSH, lithium levels)
+   - Add <strong>thyroid hormone</strong> (T3)
+</p>
+<ol>
+<li><strong>Combination therapy</strong>: SSRI + mirtazapine, SSRI + bupropion</li>
+<li><strong>Refer to psychiatrist</strong> for consideration of:</li>
+<p>
+</ol>
+   - ECT (Electroconvulsive Therapy) - highly effective for severe, treatment-resistant depression, psychotic depression
+   - rTMS (Repetitive Transcranial Magnetic Stimulation)
+</p>
+
+<hr>
+
+<h4>Depression with Psychotic Features</h4>
+
+<strong>Presentation</strong>: Depression + delusions/hallucinations
+<ul>
+<li>Mood-congruent delusions: guilt ("I'm being punished"), nihilism ("I'm dead", "I have no insides"), poverty</li>
+<li>Hallucinations: usually auditory, critical voices</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Antidepressant + antipsychotic</strong> (combination essential)</li>
+<li><strong>ECT</strong> - highly effective, often first-line for severe psychotic depression</li>
+<li><strong>Admission</strong> often required (high suicide risk)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s in Depression (Immediate Action Required)</h3>
+
+<ul>
+<li><strong>HIGH suicide risk</strong>: Active ideation with plan/intent, previous attempts, access to means → Admit, 1:1 observation, psychiatry referral</li>
+<li><strong>Psychotic features</strong>: Delusions, hallucinations → Antidepressant + antipsychotic, consider ECT, psychiatry referral</li>
+<li><strong>Severe functional impairment</strong>: Not eating, not drinking, severe psychomotor retardation → Admission, medical assessment</li>
+<li><strong>Bipolar depression misdiagnosed as MDD</strong>: Giving antidepressant alone can trigger mania → ALWAYS ask about previous manic/hypomanic episodes</li>
+<li><strong>Organic cause missed</strong>: Hypothyroidism, medications, neurological → Check TSH, B12, FBC, medication review</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Common IMG Mistakes - MDD</h3>
+
+<ol>
+<li><strong>Not asking about previous mania/hypomania</strong> → Miss bipolar disorder, trigger mania with antidepressant</li>
+<li><strong>Not checking thyroid function</strong> → Miss hypothyroidism (common, treatable cause)</li>
+<li><strong>Inadequate trial of antidepressant</strong> → Switching too early (before 6-8 weeks at therapeutic dose)</li>
+<li><strong>Not assessing suicide risk</strong> → Medicolegal issue, patient safety</li>
+<li><strong>Stopping antidepressant too early</strong> → Relapse (should continue 6-12 months after remission)</li>
+<li><strong>Using TCAs first-line</strong> → Outdated practice, higher side effects, dangerous in overdose</li>
+<li><strong>Not offering psychological therapy</strong> → Combination therapy superior to medication alone</li>
+<li><strong>Not informing about Medicare Mental Health Plan</strong> → Patient misses out on subsidized psychology sessions</li>
+<li><strong>Saying "think positive" or "snap out of it"</strong> → Invalidating, not therapeutic</li>
+<li><strong>Not addressing psychotic features</strong> → Requires antipsychotic + antidepressant, not antidepressant alone</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>2. BIPOLAR DISORDER</h2>
+
+<h3>Clinical Presentation Pattern</h3>
+
+<strong>Key Pattern</strong>: Episodes of <strong>mania or hypomania</strong> alternating with <strong>depression</strong>
+
+<strong>Bipolar I</strong>: At least one <strong>MANIC</strong> episode (may or may not have depressive episodes)
+<strong>Bipolar II</strong>: At least one <strong>HYPOMANIC</strong> episode + at least one <strong>MAJOR DEPRESSIVE</strong> episode (NO full manic episodes)
+
+<strong>CRITICAL</strong>: Patients with bipolar disorder often present during <strong>DEPRESSIVE episodes</strong> (not manic episodes). If you don't ask about previous mania/hypomania, you'll miss the diagnosis and treat as MDD → <strong>antidepressant alone can trigger mania</strong>.
+
+<hr>
+
+<h3>Differential Diagnosis</h3>
+
+<strong>When Patient Presents with Elevated Mood/Increased Energy</strong>:
+
+<ol>
+<li><strong>Bipolar I Disorder</strong> - manic episode</li>
+<li><strong>Bipolar II Disorder</strong> - hypomanic episode</li>
+<li><strong>Substance-Induced Mood Disorder</strong>:</li>
+<p>
+</ol>
+   - <strong>Stimulants</strong>: amphetamines, cocaine, MDMA
+   - Cannabis (can trigger mania in vulnerable individuals)
+   - Corticosteroids
+</p>
+<ol>
+<li><strong>Medication-Induced Mania</strong>:</li>
+<p>
+</ol>
+   - Antidepressants (especially if undiagnosed bipolar)
+   - Corticosteroids
+   - Levodopa
+</p>
+<ol>
+<li><strong>Medical/Organic Causes</strong>:</li>
+<p>
+</ol>
+   - <strong>Hyperthyroidism</strong> (check TSH)
+   - Brain lesions: tumor, stroke, MS
+   - Temporal lobe epilepsy
+   - HIV encephalopathy
+   - Cushing's syndrome
+</p>
+<ol>
+<li><strong>Personality Disorder</strong> - impulsivity, emotional instability (but NOT episodic)</li>
+<li><strong>ADHD</strong> - chronic from childhood, NOT episodic</li>
+<li><strong>Schizophrenia</strong> - if psychotic features prominent</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>DSM-5 Criteria for Manic Episode</h3>
+
+<strong>Use DIG FAST Mnemonic</strong>:
+
+<strong>A. Distinct period of abnormally and persistently elevated, expansive, or irritable mood</strong> AND <strong>increased goal-directed activity or energy</strong>, lasting at least <strong>1 week</strong> (or any duration if hospitalization required)
+
+<strong>B. During mood disturbance, 3+ of following</strong> (4 if mood only irritable):
+
+<ol>
+<li><strong>D</strong> - <strong>Distractibility</strong> (attention easily drawn to irrelevant stimuli)</li>
+<li><strong>I</strong> - <strong>Irresponsibility</strong> / reckless behavior (sexual indiscretions, foolish business investments, spending sprees)</li>
+<li><strong>G</strong> - <strong>Grandiosity</strong> / inflated self-esteem (believes they have special powers, abilities)</li>
+<li><strong>F</strong> - <strong>Flight of ideas</strong> / racing thoughts</li>
+<li><strong>A</strong> - <strong>Activity increase</strong> / goal-directed activity (social, work, sexual) or psychomotor agitation</li>
+<li><strong>S</strong> - <strong>Sleep decreased</strong> (need for sleep decreased - feels rested after 3 hours)</li>
+<li><strong>T</strong> - <strong>Talkativeness</strong> / pressured speech (more talkative than usual, pressure to keep talking)</li>
+<p>
+</ol>
+</p>
+
+<strong>C. Marked impairment in functioning</strong> OR necessitates hospitalization OR psychotic features present
+
+<strong>D. Not attributable to</strong> substances or medical condition
+
+<hr>
+
+<h3>Hypomania vs Mania (Critical Distinction)</h3>
+
+<p>
+| Feature | Hypomania (Bipolar II) | Mania (Bipolar I) |
+|---------|------------------------|-------------------|
+| <strong>Duration</strong> | At least <strong>4 days</strong> | At least <strong>7 days</strong> (or any duration if hospitalization) |
+| <strong>Functional impairment</strong> | <strong>NO marked impairment</strong> | <strong>YES - marked impairment</strong> in functioning |
+| <strong>Psychotic features</strong> | <strong>NO</strong> | May be present |
+| <strong>Hospitalization</strong> | <strong>NO</strong> | May require hospitalization |
+| <strong>Observable by others</strong> | YES - change noticeable | YES - change noticeable |
+| <strong>Symptoms</strong> | Same symptoms (DIG FAST) | Same symptoms (DIG FAST) |
+</p>
+
+<strong>CLINICAL SIGNIFICANCE</strong>:
+<ul>
+<li>Bipolar I (with mania): Higher risk, more severe, often requires hospitalization, antipsychotics needed</li>
+<li>Bipolar II (with hypomania): Milder elevated episodes, but <strong>depressive episodes often severe</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Targeted History Questions for Mania/Hypomania</h3>
+
+<strong>Ask about DIG FAST</strong>:
+
+<ol>
+<li><strong>Distractibility</strong>: "Are you easily distracted? Does your mind jump from one thing to another?"</li>
+<li><strong>Irresponsibility</strong>: "Have you done things that are out of character? Spending money you don't have? Risky sexual behavior? Business ventures?"</li>
+<li><strong>Grandiosity</strong>: "How do you feel about yourself? Do you feel you have special abilities or powers?"</li>
+<li><strong>Flight of ideas</strong>: "Are your thoughts racing? Do you have lots of ideas coming to you quickly?"</li>
+<li><strong>Activity</strong>: "Are you more active than usual? Starting lots of projects? More social? Increased sex drive?"</li>
+<li><strong>Sleep</strong>: "How much sleep are you getting? Do you feel you need less sleep than usual?"</li>
+<li><strong>Talkativeness</strong>: "Are you more talkative than usual? Do people have trouble interrupting you?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Duration</strong>: "How long has this been going on?"
+
+<strong>Impairment</strong>: "How is this affecting your work? Relationships? Have you been hospitalized?"
+
+<strong>Previous episodes</strong>: "Has this happened before? How many times? When was the first time?"
+
+<strong>Depressive episodes</strong>: "Have you had periods of the opposite - really low mood, no energy?" (Bipolar often presents with depression)
+
+<strong>Family history</strong>: "Does anyone in your family have bipolar disorder or other mental health conditions?" (Strong genetic component)
+
+<strong>Substance use</strong>: "Any alcohol, drugs, stimulants?" (Can trigger or mimic mania)
+
+<hr>
+
+<h3>Management of Bipolar Disorder (eTG 2024)</h3>
+
+<h4>Acute Mania</h4>
+
+<strong>Hospitalization</strong> often required (functional impairment, risk to self/others, poor insight)
+
+<strong>First-line Pharmacological Treatment</strong>:
+
+<ol>
+<li><strong>Antipsychotics</strong> (FIRST-LINE for acute mania):</li>
+<p>
+</ol>
+   - <strong>Olanzapine</strong> 10-20mg daily (PBS listed for mania)
+   - <strong>Quetiapine</strong> 400-800mg daily in divided doses (PBS listed)
+   - <strong>Risperidone</strong> 2-6mg daily (PBS listed)
+   - <strong>Aripiprazole</strong> 15-30mg daily
+   - <strong>Haloperidol</strong> 5-15mg daily (older agent, more extrapyramidal side effects)
+</p>
+
+<ol>
+<li><strong>Mood Stabilizers</strong>:</li>
+<p>
+</ol>
+   - <strong>Lithium</strong> 400-1200mg daily (aim serum level 0.8-1.2 mmol/L for acute mania)
+     - Requires monitoring: serum lithium levels, renal function, TSH, calcium
+     - Narrow therapeutic window (toxic >1.5 mmol/L)
+     - Side effects: tremor, polyuria, polydipsia, weight gain, hypothyroidism, renal impairment
+   - <strong>Valproate</strong> 500-2000mg daily (PBS listed for mania)
+     - <strong>CONTRAINDICATED in pregnancy</strong> (teratogenic)
+     - Side effects: weight gain, tremor, hair loss, hepatotoxicity
+     - Requires monitoring: LFTs, FBC
+</p>
+
+<strong>Combination therapy</strong>: Often antipsychotic + mood stabilizer for severe mania
+
+<strong>Benzodiazepines</strong>: Short-term for agitation, insomnia (lorazepam, diazepam)
+
+<strong>ECT</strong>: Effective for severe mania, particularly if treatment-resistant or catatonic features
+
+<strong>STOP antidepressants</strong> if patient is on one (can worsen mania)
+
+<hr>
+
+<h4>Acute Bipolar Depression</h4>
+
+<strong>CAUTION</strong>: Antidepressant <strong>monotherapy</strong> can trigger mania → <strong>NEVER give antidepressant alone</strong>
+
+<strong>First-line</strong>:
+<ul>
+<li><strong>Quetiapine</strong> 300mg nocte (PBS listed for bipolar depression, evidence-based)</li>
+<li><strong>Lurasidone</strong> (atypical antipsychotic)</li>
+<li><strong>Lamotrigine</strong> (anticonvulsant) - effective for bipolar depression, less effective for mania</li>
+<p>
+</ul>
+  - Start 25mg daily, slow titration (risk of Stevens-Johnson syndrome)
+</p>
+
+<strong>If inadequate response</strong>:
+<ul>
+<li>Add <strong>SSRI</strong> (e.g., fluoxetine, sertraline) <strong>BUT only if patient on mood stabilizer/antipsychotic</strong></li>
+<li>Monitor closely for switch to mania</li>
+<p>
+</ul>
+</p>
+
+<strong>Psychological therapy</strong>: CBT, psychoeducation, family therapy
+
+<hr>
+
+<h4>Maintenance Treatment (Prevent Relapse)</h4>
+
+<strong>Goal</strong>: Prevent both manic and depressive episodes
+
+<strong>First-line</strong>:
+<ul>
+<li><strong>Lithium</strong> (most evidence for relapse prevention, reduces suicide risk)</li>
+<li><strong>Valproate</strong></li>
+<li><strong>Quetiapine</strong></li>
+<li><strong>Lamotrigine</strong> (particularly effective for preventing depressive episodes)</li>
+<p>
+</ul>
+</p>
+
+<strong>Continue indefinitely</strong> (bipolar disorder is chronic, relapsing condition)
+
+<strong>Psychoeducation</strong>:
+<ul>
+<li>Recognize early warning signs of relapse (sleep disturbance, mood changes)</li>
+<li>Medication adherence critical</li>
+<li>Avoid triggers: alcohol, drugs, sleep deprivation, stress</li>
+<li>Regular sleep-wake schedule</li>
+<p>
+</ul>
+</p>
+
+<strong>Monitoring</strong>:
+<ul>
+<li>Regular psychiatry follow-up</li>
+<li>Mood charting</li>
+<li>Lithium levels (if on lithium): 3-monthly</li>
+<li>Renal function, TSH (if on lithium): 6-12 monthly</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s in Bipolar Disorder</h3>
+
+<ul>
+<li><strong>Manic patient refusing treatment, lack of insight</strong> → Consider involuntary admission (Mental Health Act)</li>
+<li><strong>Mixed features</strong> (depression + mania symptoms simultaneously) → High suicide risk, complex management</li>
+<li><strong>Rapid cycling</strong> (4+ episodes per year) → Treatment-resistant, poor prognosis, refer psychiatry</li>
+<li><strong>Psychotic features</strong> → Requires antipsychotic, higher dose, hospitalization</li>
+<li><strong>Suicide risk</strong> → Higher during depressive episodes and mixed episodes</li>
+<li><strong>Antidepressant monotherapy</strong> → Can trigger mania, avoid</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Common IMG Mistakes - Bipolar Disorder</h3>
+
+<ol>
+<li><strong>Not asking about previous manic/hypomanic episodes</strong> when patient presents with depression → Miss bipolar disorder, give antidepressant alone, trigger mania</li>
+<li><strong>Treating bipolar depression with antidepressant alone</strong> → Can trigger mania (MUST give with mood stabilizer)</li>
+<li><strong>Confusing hypomania with "patient doing well"</strong> → Miss Bipolar II diagnosis</li>
+<li><strong>Not monitoring lithium levels</strong> → Toxicity (narrow therapeutic window)</li>
+<li><strong>Stopping mood stabilizer when "feeling better"</strong> → Relapse (bipolar is chronic)</li>
+<li><strong>Not checking for substance use</strong> → Stimulants, alcohol can trigger/mimic mania</li>
+<li><strong>Discharging manic patient without adequate stabilization</strong> → Risk to self/others, poor insight</li>
+<li><strong>Not involving family/collateral</strong> → Patients may lack insight, collateral history critical</li>
+<li><strong>Missing mixed features</strong> → High suicide risk, requires different management</li>
+<li><strong>Valproate in women of childbearing age without contraception counseling</strong> → Teratogenic</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>3. ANXIETY DISORDERS</h2>
+
+<h3>Clinical Presentation Patterns</h3>
+
+<p>
+Anxiety disorders include:
+</p>
+<ol>
+<li><strong>Generalized Anxiety Disorder (GAD)</strong> - excessive worry about multiple domains</li>
+<li><strong>Panic Disorder</strong> - recurrent unexpected panic attacks</li>
+<li><strong>Social Anxiety Disorder</strong> - fear of social/performance situations</li>
+<li><strong>Specific Phobia</strong> - fear of specific object/situation</li>
+<li><strong>Agoraphobia</strong> - fear of situations where escape difficult</li>
+<li><strong>Post-Traumatic Stress Disorder (PTSD)</strong> - following trauma exposure</li>
+<li><strong>Obsessive-Compulsive Disorder (OCD)</strong> - obsessions + compulsions (now separate category in DSM-5)</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h3>Generalized Anxiety Disorder (GAD)</h3>
+
+<h4>DSM-5 Criteria</h4>
+
+<strong>A. Excessive anxiety and worry</strong> about multiple events/activities, occurring <strong>more days than not for at least 6 months</strong>
+
+<strong>B. Difficult to control</strong> the worry
+
+<strong>C. Associated with 3+ of following</strong> (only 1 in children):
+<ol>
+<li>Restlessness / feeling on edge</li>
+<li>Easily fatigued</li>
+<li>Difficulty concentrating / mind going blank</li>
+<li>Irritability</li>
+<li>Muscle tension</li>
+<li>Sleep disturbance</li>
+<p>
+</ol>
+</p>
+
+<strong>D. Causes significant distress</strong> or functional impairment
+
+<strong>E. Not attributable to</strong> substances or medical condition
+
+<strong>F. Not better explained by</strong> another mental disorder
+
+<hr>
+
+<h4>Differential Diagnosis for Anxiety Symptoms</h4>
+
+<strong>When Patient Says</strong>: "I feel anxious all the time" / "I can't stop worrying"
+
+<strong>Immediate Differential</strong>:
+
+<ol>
+<li><strong>Generalized Anxiety Disorder</strong> (chronic excessive worry, 6+ months)</li>
+<li><strong>Panic Disorder</strong> (recurrent panic attacks)</li>
+<li><strong>Social Anxiety Disorder</strong> (specific to social situations)</li>
+<li><strong>PTSD</strong> (following trauma)</li>
+<li><strong>OCD</strong> (anxiety related to obsessions, relieved by compulsions)</li>
+<li><strong>Depression</strong> (anxiety very common in depression)</li>
+<li><strong>Adjustment Disorder</strong> (anxiety in response to stressor)</li>
+<li><strong>Substance-Induced Anxiety</strong>:</li>
+<p>
+</ol>
+   - <strong>Caffeine</strong> (excess intake, caffeine intoxication)
+   - <strong>Stimulants</strong>: amphetamines, cocaine
+   - <strong>Cannabis</strong> (particularly high-THC strains)
+   - <strong>Alcohol withdrawal</strong>
+   - <strong>Benzodiazepine withdrawal</strong>
+</p>
+<ol>
+<li><strong>Medication-Induced</strong>:</li>
+<p>
+</ol>
+   - Bronchodilators (salbutamol, theophylline)
+   - Corticosteroids
+   - Thyroid hormones (excess)
+</p>
+<ol>
+<li><strong>Medical/Organic Causes</strong> (RULE OUT FIRST):</li>
+<p>
+</ol>
+    - <strong>Hyperthyroidism</strong> (check TSH, T4) - tremor, weight loss, heat intolerance, palpitations
+    - <strong>Cardiac</strong>: arrhythmias, angina, heart failure
+    - <strong>Respiratory</strong>: asthma, COPD, pulmonary embolism
+    - <strong>Hypoglycemia</strong> (diabetes, insulinoma)
+    - <strong>Pheochromocytoma</strong> (rare: episodic hypertension, sweating, headache)
+    - <strong>Anemia</strong>
+    - <strong>Vestibular disorders</strong>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong>: <strong>New-onset anxiety in older adult</strong> (>50 years) → More likely organic cause, investigate thoroughly
+
+<hr>
+
+<h4>Management of GAD (eTG 2024)</h4>
+
+<strong>Mild GAD</strong>:
+<ul>
+<li><strong>Psychoeducation</strong> about anxiety, worry</li>
+<li><strong>Sleep hygiene</strong>, reduce caffeine/alcohol</li>
+<li><strong>Exercise</strong> (evidence for anxiety reduction)</li>
+<li><strong>Psychological therapy</strong>:</li>
+<p>
+</ul>
+  - <strong>Cognitive Behavioural Therapy (CBT)</strong> - FIRST-LINE (exposure, cognitive restructuring)
+  - Mindfulness-based therapies
+  - <strong>Medicare Mental Health Plan</strong>: 10 subsidized psychology sessions
+</p>
+
+<strong>Moderate to Severe GAD</strong>:
+
+<strong>First-line Pharmacological</strong>:
+<ul>
+<li><strong>SSRIs</strong> (FIRST CHOICE):</li>
+<p>
+</ul>
+  - <strong>Sertraline</strong> 50mg daily (increase to 100-200mg)
+  - <strong>Escitalopram</strong> 10mg daily (increase to 20mg)
+  - Takes <strong>2-4 weeks</strong> to work for anxiety
+</p>
+<ul>
+<li><strong>SNRIs</strong>:</li>
+<p>
+</ul>
+  - <strong>Venlafaxine XR</strong> 75mg daily (increase to 150-225mg)
+  - <strong>Duloxetine</strong> 60mg daily
+</p>
+
+<strong>AVOID Benzodiazepines for chronic use</strong>:
+<ul>
+<li>Risk of dependence, tolerance, withdrawal, cognitive impairment</li>
+<li>Short-term only (2-4 weeks maximum) during crisis or while waiting for SSRI to work</li>
+<li>If used: <strong>Diazepam</strong> 2-5mg TDS or <strong>Alprazolam</strong> 0.25-0.5mg TDS</li>
+<p>
+</ul>
+</p>
+
+<strong>Alternative</strong>:
+<ul>
+<li><strong>Pregabalin</strong> 150-600mg daily in divided doses (evidence for GAD)</li>
+<li><strong>Buspirone</strong> 15-30mg daily (less commonly used)</li>
+<p>
+</ul>
+</p>
+
+<strong>Psychological therapy + medication</strong> superior to either alone
+
+<hr>
+
+<h3>Panic Disorder</h3>
+
+<h4>Presentation</h4>
+
+<strong>Panic Attack</strong>: Abrupt surge of intense fear/discomfort, peaks within minutes, with 4+ of:
+<ul>
+<li>Palpitations, pounding heart, tachycardia</li>
+<li>Sweating</li>
+<li>Trembling/shaking</li>
+<li>Shortness of breath, feeling smothering</li>
+<li>Feeling of choking</li>
+<li>Chest pain/discomfort</li>
+<li>Nausea/abdominal distress</li>
+<li>Dizziness, lightheadedness, faint</li>
+<li>Chills or heat sensations</li>
+<li>Paresthesias (numbness/tingling)</li>
+<li>Derealization (feelings of unreality) or depersonalization (detached from oneself)</li>
+<li>Fear of losing control or "going crazy"</li>
+<li>Fear of dying</li>
+<p>
+</ul>
+</p>
+
+<strong>Panic Disorder</strong>: Recurrent <strong>unexpected</strong> panic attacks + <strong>1 month of</strong>:
+<ul>
+<li>Persistent worry about additional attacks or consequences</li>
+<li>Significant maladaptive behavioral change (avoidance)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Differential for Panic Attacks</h4>
+
+<strong>Medical causes to RULE OUT</strong> (panic attacks can be indistinguishable from medical emergencies):
+<ol>
+<li><strong>Cardiac</strong>: MI, arrhythmias, angina → <strong>ECG essential</strong></li>
+<li><strong>Respiratory</strong>: asthma, PE, pneumothorax</li>
+<li><strong>Endocrine</strong>: hyperthyroidism, hypoglycemia, pheochromocytoma</li>
+<li><strong>Neurological</strong>: seizures (temporal lobe epilepsy)</li>
+<li><strong>Substance-induced</strong>: caffeine, stimulants, cannabis, alcohol/benzodiazepine withdrawal</li>
+<p>
+</ol>
+</p>
+
+<strong>Psychiatric</strong>:
+<ol>
+<li><strong>Panic Disorder</strong></li>
+<li><strong>GAD</strong> (panic attacks can occur, but not unexpected)</li>
+<li><strong>Social Anxiety</strong> (panic attacks in social situations)</li>
+<li><strong>PTSD</strong> (panic attacks triggered by reminders of trauma)</li>
+<li><strong>Specific Phobia</strong> (panic attacks triggered by phobic stimulus)</li>
+<p>
+</ol>
+</p>
+
+<strong>First presentation of panic attack → Rule out medical causes (ECG, blood tests)</strong>
+
+<hr>
+
+<h4>Management of Panic Disorder</h4>
+
+<strong>Psychological therapy</strong> - <strong>FIRST-LINE</strong>:
+<ul>
+<li><strong>CBT</strong> with exposure (most effective)</li>
+<li>Interoceptive exposure (exposure to physical sensations)</li>
+<li>Breathing retraining</li>
+<p>
+</ul>
+</p>
+
+<strong>Pharmacological</strong>:
+<ul>
+<li><strong>SSRIs</strong> (FIRST-LINE):</li>
+<p>
+</ul>
+  - <strong>Sertraline</strong> 50-200mg daily
+  - <strong>Paroxetine</strong> 20-40mg daily
+  - Takes 2-4 weeks to reduce panic frequency
+</p>
+<ul>
+<li><strong>SNRIs</strong>: Venlafaxine XR</li>
+<p>
+</ul>
+</p>
+
+<strong>Benzodiazepines</strong>:
+<ul>
+<li>Effective for acute panic attacks</li>
+<li><strong>Short-term only</strong> (risk of dependence)</li>
+<li>If needed: <strong>Alprazolam</strong> 0.25-0.5mg PRN or <strong>Diazepam</strong> 5mg PRN</li>
+<p>
+</ul>
+</p>
+
+<strong>Psychoeducation</strong>:
+<ul>
+<li>Panic attacks are not dangerous (won't cause heart attack, death)</li>
+<li>Avoidance maintains anxiety (exposure important)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Social Anxiety Disorder (Social Phobia)</h3>
+
+<h4>Presentation</h4>
+
+<strong>Fear of social/performance situations</strong> where person may be scrutinized by others:
+<ul>
+<li>Public speaking</li>
+<li>Meeting new people</li>
+<li>Eating/drinking in public</li>
+<li>Using public restrooms</li>
+<li>Writing in front of others</li>
+<p>
+</ul>
+</p>
+
+<strong>Fear</strong>: Being negatively evaluated, embarrassed, humiliated, rejected
+
+<strong>Duration</strong>: 6+ months
+
+<strong>Avoidance</strong> or endured with intense fear → functional impairment
+
+<hr>
+
+<h4>Management</h4>
+
+<strong>Psychological therapy</strong> - <strong>FIRST-LINE</strong>:
+<ul>
+<li><strong>CBT</strong> with exposure (social situations)</li>
+<li>Social skills training</li>
+<p>
+</ul>
+</p>
+
+<strong>Pharmacological</strong>:
+<ul>
+<li><strong>SSRIs</strong>: Sertraline, escitalopram, paroxetine</li>
+<li><strong>SNRIs</strong>: Venlafaxine XR</li>
+<p>
+</ul>
+</p>
+
+<strong>For performance anxiety</strong> (e.g., public speaking):
+<ul>
+<li><strong>Propranolol</strong> 10-40mg, 1 hour before event (reduces physical symptoms: tremor, palpitations)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Post-Traumatic Stress Disorder (PTSD)</h3>
+
+<h4>Presentation</h4>
+
+<strong>Following exposure to actual/threatened death, serious injury, or sexual violence</strong> via:
+<ul>
+<li>Direct experience</li>
+<li>Witnessing event</li>
+<li>Learning event happened to close family/friend</li>
+<li>Repeated/extreme exposure to details (e.g., first responders, police)</li>
+<p>
+</ul>
+</p>
+
+<strong>Symptom clusters</strong> (DSM-5):
+
+<ol>
+<li><strong>Intrusion symptoms</strong> (1+ required):</li>
+<p>
+</ol>
+   - Recurrent, involuntary, intrusive distressing memories
+   - Traumatic nightmares
+   - Dissociative reactions (flashbacks)
+   - Psychological/physiological distress to trauma reminders
+</p>
+
+<ol>
+<li><strong>Avoidance</strong> (1+ required):</li>
+<p>
+</ol>
+   - Avoids trauma-related thoughts/feelings
+   - Avoids trauma-related external reminders (people, places, conversations, activities)
+</p>
+
+<ol>
+<li><strong>Negative alterations in cognition/mood</strong> (2+ required):</li>
+<p>
+</ol>
+   - Inability to remember key aspects of trauma
+   - Persistent negative beliefs ("I'm bad", "world is dangerous")
+   - Persistent negative emotional state (fear, guilt, shame)
+   - Diminished interest in activities
+   - Detachment from others
+   - Inability to experience positive emotions
+</p>
+
+<ol>
+<li><strong>Alterations in arousal/reactivity</strong> (2+ required):</li>
+<p>
+</ol>
+   - Irritability, angry outbursts
+   - Reckless/self-destructive behavior
+   - Hypervigilance
+   - Exaggerated startle response
+   - Concentration difficulties
+   - Sleep disturbance
+</p>
+
+<strong>Duration</strong>: >1 month
+
+<hr>
+
+<h4>Management of PTSD</h4>
+
+<strong>Psychological therapy</strong> - <strong>FIRST-LINE</strong>:
+<ul>
+<li><strong>Trauma-focused CBT</strong> (most evidence)</li>
+<li><strong>Eye Movement Desensitization and Reprocessing (EMDR)</strong></li>
+<li>Prolonged exposure therapy</li>
+<p>
+</ul>
+</p>
+
+<strong>Pharmacological</strong>:
+<ul>
+<li><strong>SSRIs</strong>: Sertraline, paroxetine (PBS listed for PTSD)</li>
+<li>Takes 8-12 weeks for full effect in PTSD</li>
+<p>
+</ul>
+</p>
+
+<strong>Complex PTSD</strong> (chronic, interpersonal trauma): Requires specialist trauma therapy
+
+<strong>Avoid benzodiazepines</strong> (limited evidence, risk of dependence, may worsen outcomes)
+
+<hr>
+
+<h3>Obsessive-Compulsive Disorder (OCD)</h3>
+
+<h4>Presentation</h4>
+
+<strong>Obsessions</strong>: Recurrent, persistent, intrusive thoughts/urges/images that cause anxiety
+<ul>
+<li>Common themes: contamination, harm, symmetry, forbidden thoughts (sexual, religious, violent)</li>
+<p>
+</ul>
+</p>
+
+<strong>Compulsions</strong>: Repetitive behaviors/mental acts performed to reduce anxiety from obsessions
+<ul>
+<li>Common compulsions: washing, checking, counting, ordering, mental rituals</li>
+<p>
+</ul>
+</p>
+
+<strong>Time-consuming</strong>: >1 hour/day
+
+<strong>Functional impairment</strong>
+
+<strong>Insight</strong>: Variable (good to absent)
+
+<hr>
+
+<h4>Management of OCD</h4>
+
+<strong>Psychological therapy</strong> - <strong>FIRST-LINE</strong>:
+<ul>
+<li><strong>CBT with Exposure and Response Prevention (ERP)</strong> - GOLD STANDARD</li>
+<p>
+</ul>
+  - Gradual exposure to obsessional triggers
+  - Prevention of compulsive rituals
+</p>
+
+<strong>Pharmacological</strong>:
+<ul>
+<li><strong>SSRIs</strong> - <strong>HIGHER doses</strong> needed for OCD than depression:</li>
+<p>
+</ul>
+  - <strong>Fluoxetine</strong> 40-80mg daily
+  - <strong>Sertraline</strong> 150-200mg daily
+  - <strong>Paroxetine</strong> 40-60mg daily
+  - Takes <strong>8-12 weeks</strong> at therapeutic dose for response
+</p>
+<ul>
+<li><strong>Clomipramine</strong> (TCA) - effective for OCD, but more side effects</li>
+<p>
+</ul>
+</p>
+
+<strong>Severe, treatment-resistant OCD</strong>:
+<ul>
+<li><strong>Augmentation</strong>: Add antipsychotic (aripiprazole, risperidone)</li>
+<li><strong>Refer psychiatry</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Common IMG Mistakes - Anxiety Disorders</h3>
+
+<ol>
+<li><strong>Not ruling out organic causes</strong> → Miss hyperthyroidism, cardiac disease (especially first panic attack)</li>
+<li><strong>Not doing ECG for first panic attack</strong> → Miss arrhythmia, MI</li>
+<li><strong>Prescribing benzodiazepines for chronic anxiety</strong> → Dependence, tolerance (should be short-term only)</li>
+<li><strong>Not offering psychological therapy</strong> → CBT is first-line, most effective</li>
+<li><strong>Inadequate dose of SSRI for OCD</strong> → OCD requires higher doses than depression</li>
+<li><strong>Expecting rapid response</strong> → SSRIs take 2-4 weeks for anxiety (8-12 weeks for OCD)</li>
+<li><strong>Not asking about trauma</strong> → Miss PTSD</li>
+<li><strong>Benzos for PTSD</strong> → Limited evidence, may worsen outcomes</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>4. PSYCHOTIC DISORDERS</h2>
+
+<h3>Clinical Presentation Pattern</h3>
+
+<strong>Psychosis</strong>: Loss of contact with reality, characterized by:
+<ul>
+<li><strong>Delusions</strong> (fixed, false beliefs)</li>
+<li><strong>Hallucinations</strong> (perceptions without external stimulus)</li>
+<li><strong>Disorganized thinking</strong> (formal thought disorder)</li>
+<li><strong>Disorganized/abnormal behavior</strong> (catatonia, agitation)</li>
+<li><strong>Negative symptoms</strong> (flat affect, avolition, alogia)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Differential Diagnosis for Psychosis</h3>
+
+<strong>When Patient Presents with Hallucinations/Delusions/Disorganized Thinking</strong>:
+
+<strong>CRITICAL</strong>: <strong>ALWAYS rule out organic/substance causes FIRST</strong> (30-50% of first-episode psychosis has organic cause)
+
+<strong>Immediate Differential</strong>:
+
+<ol>
+<li><strong>Substance-Induced Psychotic Disorder</strong> (MOST COMMON in young adults):</li>
+<p>
+</ol>
+   - <strong>Methamphetamine</strong> (ice) - paranoid delusions, visual hallucinations, agitation
+   - <strong>Cannabis</strong> (particularly high-THC strains) - paranoia, delusions
+   - <strong>Cocaine</strong>
+   - <strong>LSD, MDMA</strong> (during intoxication)
+   - <strong>Alcohol</strong> (withdrawal - delirium tremens)
+   - <strong>Synthetic cannabinoids</strong> (legal highs)
+</p>
+
+<ol>
+<li><strong>Medical/Organic Causes</strong>:</li>
+<p>
+</ol>
+   - <strong>Delirium</strong> (acute confusional state) - fluctuating consciousness, inattention
+   - <strong>Dementia</strong> (especially Lewy body dementia - visual hallucinations)
+   - <strong>Brain tumor, stroke, TBI</strong>
+   - <strong>Encephalitis</strong> (viral, autoimmune) - fever, headache, seizures, confusion
+   - <strong>Temporal lobe epilepsy</strong>
+   - <strong>HIV encephalopathy</strong>
+   - <strong>Neurosyphilis</strong>
+   - <strong>Autoimmune encephalitis</strong> (anti-NMDA receptor encephalitis - young women, psychiatric symptoms, seizures, movement disorder)
+   - <strong>Hyperthyroidism, hypothyroidism</strong>
+   - <strong>Cushing's syndrome</strong>
+   - <strong>Vitamin B12 deficiency</strong>
+   - <strong>Hypercalcemia, hyponatremia</strong>
+   - <strong>Wilson's disease</strong> (young adults, movement disorder, liver disease)
+</p>
+
+<ol>
+<li><strong>Medication-Induced</strong>:</li>
+<p>
+</ol>
+   - <strong>Corticosteroids</strong>
+   - <strong>Levodopa</strong> (Parkinson's disease)
+   - <strong>Anticholinergics</strong>
+   - <strong>Antidepressants</strong> (rarely)
+</p>
+
+<ol>
+<li><strong>Primary Psychotic Disorders</strong>:</li>
+<p>
+</ol>
+   - <strong>Schizophrenia</strong>
+   - <strong>Schizoaffective Disorder</strong>
+   - <strong>Schizophreniform Disorder</strong> (schizophrenia symptoms <6 months)
+   - <strong>Brief Psychotic Disorder</strong> (<1 month)
+   - <strong>Delusional Disorder</strong> (non-bizarre delusions only, no hallucinations)
+</p>
+
+<ol>
+<li><strong>Affective Psychosis</strong>:</li>
+<p>
+</ol>
+   - <strong>Major Depression with Psychotic Features</strong> (mood-congruent delusions of guilt, nihilism)
+   - <strong>Bipolar Disorder - Manic Episode with Psychotic Features</strong> (mood-congruent delusions of grandiosity)
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong>: <strong>Visual hallucinations</strong> = <strong>ORGANIC until proven otherwise</strong> (not typical of schizophrenia)
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span></strong>: <strong>Acute onset psychosis in patient >40 years</strong> = <strong>ORGANIC until proven otherwise</strong>
+
+<hr>
+
+<h3>Schizophrenia</h3>
+
+<h4>DSM-5 Criteria</h4>
+
+<strong>A. 2+ of following, present for significant portion of 1 month</strong> (less if treated), <strong>at least one must be 1, 2, or 3</strong>:
+
+<ol>
+<li><strong>Delusions</strong></li>
+<li><strong>Hallucinations</strong></li>
+<li><strong>Disorganized speech</strong> (formal thought disorder)</li>
+<li><strong>Grossly disorganized or catatonic behavior</strong></li>
+<li><strong>Negative symptoms</strong> (diminished emotional expression, avolition)</li>
+<p>
+</ol>
+</p>
+
+<strong>B. Significant functional impairment</strong> (work, relationships, self-care)
+
+<strong>C. Continuous signs of disturbance for at least 6 months</strong> (including prodrome, residual)
+
+<strong>D. Schizoaffective disorder, mood disorder with psychotic features ruled out</strong>
+
+<strong>E. Not attributable to</strong> substances or medical condition
+
+<hr>
+
+<h4>First-Rank Symptoms (Schneider) - Highly Suggestive of Schizophrenia</h4>
+
+<p>
+Not required for diagnosis, but if present, highly suggestive:
+</p>
+
+<ol>
+<li><strong>Auditory hallucinations</strong>:</li>
+<p>
+</ol>
+   - <strong>Third-person</strong> ("They're talking about him")
+   - <strong>Running commentary</strong> on patient's actions
+   - <strong>Thought echo</strong> (hearing own thoughts spoken aloud)
+</p>
+
+<ol>
+<li><strong>Thought disorders</strong>:</li>
+<p>
+</ol>
+   - <strong>Thought insertion</strong> ("Thoughts put into my head")
+   - <strong>Thought withdrawal</strong> ("Thoughts taken out of my head")
+   - <strong>Thought broadcasting</strong> ("Everyone can hear my thoughts")
+</p>
+
+<ol>
+<li><strong>Passivity phenomena</strong> (delusions of control):</li>
+<p>
+</ol>
+   - <strong>Made actions</strong> ("Someone made me do it")
+   - <strong>Made feelings</strong> ("They make me feel sad")
+   - <strong>Made impulses</strong>
+   - <strong>Somatic passivity</strong> ("They control my body")
+</p>
+
+<ol>
+<li><strong>Delusional perception</strong>: Normal perception followed by delusional interpretation ("I saw the traffic light turn red, which means I'm the chosen one")</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h4>Positive vs Negative Symptoms</h4>
+
+<strong>Positive symptoms</strong> (presence of abnormal behaviors):
+<ul>
+<li>Delusions</li>
+<li>Hallucinations</li>
+<li>Disorganized speech/thinking</li>
+<li>Disorganized/catatonic behavior</li>
+<p>
+</ul>
+</p>
+
+<strong>Negative symptoms</strong> (absence of normal behaviors):
+<ul>
+<li><strong>Flat affect</strong> (reduced emotional expression)</li>
+<li><strong>Alogia</strong> (poverty of speech)</li>
+<li><strong>Avolition</strong> (lack of motivation, goal-directed activity)</li>
+<li><strong>Anhedonia</strong> (inability to experience pleasure)</li>
+<li><strong>Social withdrawal</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>CLINICAL SIGNIFICANCE</strong>:
+<ul>
+<li>Positive symptoms respond well to antipsychotics</li>
+<li><strong>Negative symptoms</strong> respond poorly to antipsychotics, more disabling long-term</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Targeted History for Psychosis</h3>
+
+<strong>Hallucinations</strong>:
+<ul>
+<li>"Do you see or hear things others don't?"</li>
+<li>"Do you hear voices when no one is around?"</li>
+<li><strong>If YES</strong>: "What do the voices say? One voice or multiple? Male or female? Do they talk to you (2nd person) or about you (3rd person)? Do they comment on what you're doing?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Delusions</strong>:
+<ul>
+<li>"Do you have any beliefs that others find unusual?"</li>
+<li><strong>Persecution</strong>: "Do you feel people are trying to harm you? Following you?"</li>
+<li><strong>Reference</strong>: "Do you feel the TV/radio has special messages for you?"</li>
+<li><strong>Control</strong>: "Do you feel someone/something is controlling your thoughts or actions?"</li>
+<li><strong>Grandiosity</strong>: "Do you have special powers or abilities?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Thought disorder</strong>:
+<ul>
+<li>"Do you feel your thoughts are controlled by someone else?"</li>
+<li>"Can others hear your thoughts?"</li>
+<li>Observe during interview: loosening of associations, tangentiality, word salad</li>
+<p>
+</ul>
+</p>
+
+<strong>Negative symptoms</strong>:
+<ul>
+<li>"How's your motivation? Are you doing the things you used to do?"</li>
+<li>"How's your mood? Do you enjoy things?"</li>
+<li>Observe: flat affect, poverty of speech</li>
+<p>
+</ul>
+</p>
+
+<strong>Functional impairment</strong>:
+<ul>
+<li>"How is this affecting your work? Relationships? Self-care?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Rule out ORGANIC</strong>:
+<ul>
+<li>"Any recent illness, head injury, fever?"</li>
+<li>"Any medical conditions?"</li>
+<li>"What medications do you take?"</li>
+<p>
+</ul>
+</p>
+
+<strong>Substance use</strong> (CRITICAL):
+<ul>
+<li>"Do you use any drugs? Methamphetamine (ice), cannabis, cocaine?"</li>
+<li>Urine drug screen essential</li>
+<p>
+</ul>
+</p>
+
+<strong>Timeline</strong>:
+<ul>
+<li>"When did this start? How long has it been going on?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Investigations for First-Episode Psychosis</h3>
+
+<strong>MANDATORY investigations to rule out organic causes</strong>:
+
+<strong>Bloods</strong>:
+<ul>
+<li>FBC (infection, anemia)</li>
+<li>UEC (renal failure, electrolyte disturbance)</li>
+<li>LFTs</li>
+<li>Glucose (hypoglycemia)</li>
+<li>Calcium (hypercalcemia)</li>
+<li>TSH (thyroid)</li>
+<li>Vitamin B12, folate</li>
+<li>HIV serology</li>
+<li>Syphilis serology (RPR, TPPA)</li>
+<p>
+</ul>
+</p>
+
+<strong>Urine</strong>:
+<ul>
+<li><strong>Urine drug screen</strong> (amphetamines, cannabis, cocaine)</li>
+<p>
+</ul>
+</p>
+
+<strong>Imaging</strong>:
+<ul>
+<li><strong>CT or MRI brain</strong> (tumor, stroke, structural lesion)</li>
+<p>
+</ul>
+</p>
+
+<strong>Other</strong>:
+<ul>
+<li><strong>EEG</strong> if concern for seizures, encephalitis</li>
+<li><strong>Lumbar puncture</strong> if concern for encephalitis, meningitis</li>
+<li><strong>Autoimmune screen</strong> if atypical features (anti-NMDA receptor antibodies)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Management of Schizophrenia (eTG 2024)</h3>
+
+<h4>First-Episode Psychosis</h4>
+
+<strong>Hospitalization</strong> often required (risk assessment, functional impairment, lack of insight)
+
+<strong>Antipsychotic medication</strong> - <strong>FIRST-LINE</strong>:
+
+<strong>Second-generation (atypical) antipsychotics</strong> - <strong>PREFERRED</strong> (fewer extrapyramidal side effects):
+<ol>
+<li><strong>Risperidone</strong> 2-6mg daily (PBS listed)</li>
+<li><strong>Olanzapine</strong> 10-20mg daily (PBS listed)</li>
+<li><strong>Quetiapine</strong> 400-800mg daily in divided doses</li>
+<li><strong>Aripiprazole</strong> 10-30mg daily</li>
+<li><strong>Paliperidone</strong> 6-12mg daily</li>
+<p>
+</ol>
+</p>
+
+<strong>First-generation (typical) antipsychotics</strong> - more extrapyramidal side effects:
+<ul>
+<li><strong>Haloperidol</strong> 5-20mg daily</li>
+<p>
+</ul>
+</p>
+
+<strong>Start LOW, go SLOW</strong> (especially first episode - more sensitive to side effects)
+
+<strong>Counsel patient</strong>:
+<ul>
+<li>May take <strong>2-4 weeks</strong> for full effect</li>
+<li>Continue for <strong>at least 1-2 years</strong> after first episode (prevent relapse)</li>
+<li>Side effects: weight gain, sedation, metabolic (monitor)</li>
+<p>
+</ul>
+</p>
+
+<strong>Monitoring</strong>:
+<ul>
+<li><strong>Baseline</strong>: Weight, BMI, waist circumference, blood pressure, fasting glucose, lipids</li>
+<li><strong>Follow-up</strong>: Weight monthly, glucose/lipids at 3 months, then 6-12 monthly</li>
+<li><strong>Prolactin</strong> if symptoms (galactorrhea, amenorrhea, sexual dysfunction) - risperidone, haloperidol increase prolactin</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Acute Agitation/Aggression</h4>
+
+<strong>Verbal de-escalation FIRST</strong> (see Risk Assessment module)
+
+<strong>If pharmacological intervention needed</strong>:
+<ol>
+<li><strong>Oral</strong> (preferred if patient accepts):</li>
+<p>
+</ol>
+   - <strong>Olanzapine wafer</strong> 10mg (dissolves, cannot spit out)
+   - <strong>Risperidone</strong> 2mg
+   - <strong>Lorazepam</strong> 1-2mg
+</p>
+<ol>
+<li><strong>Intramuscular</strong> (if oral refused):</li>
+<p>
+</ol>
+   - <strong>Olanzapine IM</strong> 10mg (do NOT combine with benzodiazepine IM - respiratory depression)
+   - <strong>Haloperidol IM</strong> 5mg + <strong>Lorazepam IM</strong> 2mg (can combine)
+   - <strong>Midazolam IM</strong> 5-10mg
+</p>
+
+<strong>Avoid excessive sedation</strong> (risk of respiratory depression, falls)
+
+<hr>
+
+<h4>Treatment-Resistant Schizophrenia</h4>
+
+<strong>Definition</strong>: Inadequate response to <strong>2+ different antipsychotics</strong> (adequate dose, adequate duration 6-8 weeks)
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Clozapine</strong> - GOLD STANDARD for treatment-resistant schizophrenia</li>
+<p>
+</ul>
+  - <strong>Most effective antipsychotic</strong>, also reduces suicide risk
+  - <strong>Requires specialist initiation</strong> (psychiatrist)
+  - <strong>Mandatory monitoring</strong>: FBC weekly for 18 weeks, then fortnightly (risk of <strong>agranulocytosis</strong> - life-threatening)
+  - Side effects: hypersalivation, sedation, weight gain, constipation, myocarditis, seizures
+</p>
+
+<hr>
+
+<h4>Long-term Management</h4>
+
+<strong>Medication</strong>:
+<ul>
+<li>Continue antipsychotic indefinitely (schizophrenia is chronic)</li>
+<li><strong>Long-acting injectable (LAI)</strong> antipsychotics if adherence issues:</li>
+<p>
+</ul>
+  - Paliperidone palmitate monthly
+  - Risperidone LAI fortnightly
+  - Aripiprazole monthly
+</p>
+
+<strong>Psychosocial interventions</strong>:
+<ul>
+<li><strong>Cognitive Behavioural Therapy for Psychosis (CBTp)</strong></li>
+<li><strong>Family therapy</strong> (reduce expressed emotion, improve outcomes)</li>
+<li><strong>Vocational rehabilitation</strong>, supported employment</li>
+<li><strong>Social skills training</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Community support</strong>:
+<ul>
+<li>Community mental health team</li>
+<li>Case management</li>
+<li>NDIS (National Disability Insurance Scheme) for eligible patients</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Antipsychotic Side Effects (Important to Know)</h3>
+
+<p>
+| Side Effect Category | Examples | Management |
+|---------------------|----------|------------|
+| <strong>Metabolic syndrome</strong> | Weight gain, diabetes, dyslipidemia | Monitor weight, glucose, lipids. Diet, exercise. Switch if severe (olanzapine, quetiapine highest risk) |
+| <strong>Extrapyramidal</strong> | Parkinsonism (tremor, rigidity, bradykinesia), akathisia (restlessness), dystonia (muscle spasms) | Reduce dose, switch to atypical. Anticholinergic (benztropine) for acute dystonia. Propranolol for akathisia |
+| <strong>Tardive dyskinesia</strong> | Involuntary movements (tongue, face, limbs) - may be <strong>irreversible</strong> | Stop antipsychotic if possible, switch to clozapine. Prevention: lowest effective dose |
+| <strong>Hyperprolactinemia</strong> | Galactorrhea, amenorrhea, sexual dysfunction, osteoporosis | Switch to prolactin-sparing antipsychotic (aripiprazole, quetiapine) |
+| <strong>Sedation</strong> | Daytime drowsiness | Dose at night, reduce dose, switch |
+| <strong>QTc prolongation</strong> | Risk of arrhythmias | ECG monitoring if risk factors. Avoid in QTc >500ms |
+| <strong>Neuroleptic Malignant Syndrome (NMS)</strong> | <strong>LIFE-THREATENING</strong>: fever, rigidity, confusion, elevated CK, autonomic instability | <strong>STOP antipsychotic immediately</strong>. ICU admission, cooling, hydration, bromocriptine/dantrolene |
+</p>
+
+<hr>
+
+<h3><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s in Psychosis</h3>
+
+<ul>
+<li><strong>First-episode psychosis >40 years</strong> → Organic cause highly likely, investigate thoroughly</li>
+<li><strong>Visual hallucinations</strong> → Organic cause until proven otherwise (delirium, dementia, drugs)</li>
+<li><strong>Rapid onset, fluctuating consciousness</strong> → Delirium (medical <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span>)</li>
+<li><strong>Fever, headache, confusion</strong> → Encephalitis (LP, MRI, aciclovir)</li>
+<li><strong>Neuroleptic Malignant Syndrome</strong> → STOP antipsychotic, ICU admission</li>
+<li><strong>High suicide risk</strong> → 10% of patients with schizophrenia die by suicide (highest risk early in illness)</li>
+<li><strong>Violence risk</strong> → Command hallucinations ("Kill them"), paranoid delusions, comorbid substance use</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Common IMG Mistakes - Psychotic Disorders</h3>
+
+<ol>
+<li><strong>Not ruling out organic causes</strong> → Miss encephalitis, brain tumor, drug-induced psychosis</li>
+<li><strong>Not doing urine drug screen</strong> → Miss methamphetamine psychosis (common in Australia)</li>
+<li><strong>Assuming visual hallucinations = schizophrenia</strong> → Visual hallucinations suggest organic cause (delirium, Lewy body dementia, drugs)</li>
+<li><strong>Not monitoring metabolic side effects</strong> → Miss diabetes, dyslipidemia (weight, glucose, lipids essential)</li>
+<li><strong>Using excessive doses of antipsychotics</strong> → Increased side effects, no additional benefit (start low, go slow)</li>
+<li><strong>Combining olanzapine IM with benzodiazepine IM</strong> → Respiratory depression (NEVER combine)</li>
+<li><strong>Discharging first-episode psychosis without follow-up</strong> → High risk of relapse, non-adherence (needs early psychosis service)</li>
+<li><strong>Not involving family</strong> → Family support improves outcomes</li>
+<li><strong>Stopping antipsychotic after symptom resolution</strong> → Relapse (need 1-2 years minimum after first episode)</li>
+<li><strong>Missing command hallucinations</strong> → High violence risk ("The voices told me to kill")</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>5. EATING DISORDERS</h2>
+
+<h3>Anorexia Nervosa</h3>
+
+<h4>DSM-5 Criteria</h4>
+
+<strong>A. Restriction of energy intake</strong> → significantly low body weight (less than minimally normal for age, sex, development)
+
+<strong>B. Intense fear of gaining weight</strong> or becoming fat, or <strong>persistent behavior that interferes with weight gain</strong>
+
+<strong>C. Disturbance in body image</strong> - undue influence of weight/shape on self-evaluation, or denial of seriousness of low body weight
+
+<strong>Subtypes</strong>:
+<ul>
+<li><strong>Restricting type</strong>: No binge eating or purging</li>
+<li><strong>Binge-eating/purging type</strong>: Binge eating and/or purging (vomiting, laxatives)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Medical Complications (Life-Threatening)</h4>
+
+<strong>Cardiovascular</strong>:
+<ul>
+<li><strong>Bradycardia</strong>, hypotension, arrhythmias, <strong>sudden cardiac death</strong></li>
+<li>ECG: QTc prolongation</li>
+<p>
+</ul>
+</p>
+
+<strong>Metabolic</strong>:
+<ul>
+<li>Electrolyte disturbances (hypokalemia, hyponatremia, hypophosphatemia)</li>
+<li><strong>Refeeding syndrome</strong> (hypophosphatemia when nutrition resumed → cardiac arrest, respiratory failure, seizures)</li>
+<li>Hypoglycemia</li>
+<p>
+</ul>
+</p>
+
+<strong>Endocrine</strong>:
+<ul>
+<li>Amenorrhea, osteoporosis</li>
+<p>
+</ul>
+</p>
+
+<strong>Gastrointestinal</strong>:
+<ul>
+<li>Delayed gastric emptying, constipation</li>
+<p>
+</ul>
+</p>
+
+<strong>Hematological</strong>:
+<ul>
+<li>Anemia, leukopenia, thrombocytopenia</li>
+<p>
+</ul>
+</p>
+
+<strong><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>S for medical instability</strong> (require hospitalization):
+<ul>
+<li>HR <40 bpm, BP <90/60 mmHg, postural drop</li>
+<li>Temperature <35.5°C</li>
+<li>Electrolyte disturbance (K+ <3.0)</li>
+<li>Hypoglycemia</li>
+<li>Dehydration, syncope</li>
+<li>Acute food refusal</li>
+<li>Rapid weight loss</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Management</h4>
+
+<strong>Hospitalization</strong> if medically unstable (above <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s)
+
+<strong>Multidisciplinary approach</strong>:
+<ul>
+<li>Medical stabilization</li>
+<li><strong>Nutritional rehabilitation</strong> (dietitian) - <strong>CAREFUL refeeding</strong> (monitor for refeeding syndrome - check phosphate, potassium, magnesium daily initially)</li>
+<li><strong>Psychological therapy</strong>:</li>
+<p>
+</ul>
+  - <strong>Family-Based Treatment (FBT)</strong> - FIRST-LINE for adolescents
+  - <strong>CBT-E</strong> (Enhanced CBT for Eating Disorders)
+  - Motivational interviewing
+</p>
+<ul>
+<li>Psychiatry (comorbid depression, anxiety common)</li>
+<p>
+</ul>
+</p>
+
+<strong>Pharmacological</strong>:
+<ul>
+<li><strong>No medication specifically effective for anorexia nervosa</strong></li>
+<li>Treat comorbid depression, anxiety if present (SSRIs)</li>
+<li><strong>Avoid antipsychotics for weight gain</strong> (not evidence-based, side effects)</li>
+<p>
+</ul>
+</p>
+
+<strong>Monitoring</strong>:
+<ul>
+<li>Weight, vital signs, ECG, electrolytes</li>
+<li>Bone density (DEXA scan) if prolonged amenorrhea</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Bulimia Nervosa</h3>
+
+<h4>DSM-5 Criteria</h4>
+
+<strong>A. Recurrent binge eating</strong>: Eating large amount of food in discrete period, with sense of lack of control
+
+<strong>B. Recurrent compensatory behaviors</strong> to prevent weight gain:
+<ul>
+<li>Vomiting</li>
+<li>Laxatives, diuretics, enemas</li>
+<li>Fasting</li>
+<li>Excessive exercise</li>
+<p>
+</ul>
+</p>
+
+<strong>C. Frequency</strong>: Binge eating and compensatory behaviors occur <strong>at least once weekly for 3 months</strong>
+
+<strong>D. Self-evaluation unduly influenced</strong> by body shape and weight
+
+<strong>E. Does not occur exclusively during</strong> anorexia nervosa episodes
+
+<hr>
+
+<h4>Medical Complications</h4>
+
+<strong>From vomiting</strong>:
+<ul>
+<li>Dental erosion (acidic gastric contents)</li>
+<li>Parotid gland enlargement</li>
+<li>Russell's sign (calluses on knuckles from inducing vomiting)</li>
+<li>Esophagitis, Mallory-Weiss tears, esophageal rupture (rare)</li>
+<p>
+</ul>
+</p>
+
+<strong>Electrolyte disturbances</strong>:
+<ul>
+<li><strong>Hypokalemia</strong> (from vomiting, laxatives) → cardiac arrhythmias</li>
+<li>Hypochloremia, metabolic alkalosis (from vomiting)</li>
+<li>Hyponatremia</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Management</h4>
+
+<strong>Psychological therapy</strong> - <strong>FIRST-LINE</strong>:
+<ul>
+<li><strong>CBT-E</strong> (Enhanced CBT for Eating Disorders) - most effective</li>
+<li>Interpersonal Psychotherapy (IPT)</li>
+<p>
+</ul>
+</p>
+
+<strong>Pharmacological</strong>:
+<ul>
+<li><strong>Fluoxetine 60mg daily</strong> (higher dose than for depression) - reduces binge/purge frequency</li>
+<li>Other SSRIs less evidence</li>
+<p>
+</ul>
+</p>
+
+<strong>Hospitalization</strong> if:
+<ul>
+<li>Severe electrolyte disturbance</li>
+<li>Suicidal</li>
+<li>Severe comorbid mental illness</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Common IMG Mistakes - Eating Disorders</h3>
+
+<ol>
+<li><strong>Not recognizing medical instability</strong> → Miss life-threatening complications (bradycardia, electrolyte disturbances)</li>
+<li><strong>Not checking ECG</strong> → Miss QTc prolongation (risk of sudden cardiac death)</li>
+<li><strong>Rapid refeeding</strong> → Refeeding syndrome (hypophosphatemia → cardiac arrest)</li>
+<li><strong>Using antipsychotics for weight gain in anorexia</strong> → Not evidence-based, side effects</li>
+<li><strong>Not assessing for suicidality</strong> → Eating disorders have high suicide risk</li>
+<li><strong>Focusing only on weight</strong> → Psychological aspects, body image disturbance equally important</li>
+<li><strong>Not involving family</strong> (especially adolescents) → Family-Based Treatment most effective for adolescents</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>6. PERSONALITY DISORDERS</h2>
+
+<h3>Overview</h3>
+
+<strong>Personality Disorder</strong>: Enduring pattern of inner experience and behavior that:
+<ul>
+<li>Deviates markedly from cultural expectations</li>
+<li>Is pervasive and inflexible</li>
+<li>Onset in adolescence/early adulthood</li>
+<li>Stable over time</li>
+<li>Leads to distress or impairment</li>
+<p>
+</ul>
+</p>
+
+<strong>CRITICAL</strong>: Personality disorders are <strong>NOT diagnosed in acute crisis</strong> - need longitudinal pattern
+
+<hr>
+
+<h3>Borderline Personality Disorder (BPD)</h3>
+
+<p>
+Most commonly encountered in hospital settings (frequent presentations to ED, self-harm)
+</p>
+
+<h4>DSM-5 Criteria</h4>
+
+<strong>Pervasive pattern of instability</strong> in relationships, self-image, affects, and marked impulsivity, beginning by early adulthood. <strong>5+ of</strong>:
+
+<ol>
+<li><strong>Frantic efforts to avoid abandonment</strong> (real or imagined)</li>
+<li><strong>Unstable, intense relationships</strong> (alternating idealization and devaluation - "splitting")</li>
+<li><strong>Identity disturbance</strong> (unstable self-image)</li>
+<li><strong>Impulsivity</strong> in 2+ areas (spending, sex, substance abuse, reckless driving, binge eating)</li>
+<li><strong>Recurrent suicidal behavior, gestures, or self-harm</strong></li>
+<li><strong>Affective instability</strong> (mood swings - hours to days)</li>
+<li><strong>Chronic feelings of emptiness</strong></li>
+<li><strong>Inappropriate, intense anger</strong> or difficulty controlling anger</li>
+<li><strong>Transient, stress-related paranoid ideation or dissociation</strong></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h4>Clinical Presentation in Hospital</h4>
+
+<strong>Common presentations</strong>:
+<ul>
+<li><strong>Recurrent self-harm</strong> (cutting, overdose) - usually in response to interpersonal stress</li>
+<li>Suicide attempts (usually impulsive, low lethality, but risk of accidental death)</li>
+<li>Emotional dysregulation (intense anger, distress)</li>
+<li>Chaotic relationships with staff ("splitting" - some staff "all good", others "all bad")</li>
+<p>
+</ul>
+</p>
+
+<strong>CRITICAL</strong>:
+<ul>
+<li><strong>NOT all self-harm = BPD</strong> (depression, psychosis, adjustment disorder can also present with self-harm)</li>
+<li><strong>Suicide risk is REAL</strong> - 10% of patients with BPD die by suicide (similar to schizophrenia)</li>
+<li>Patients with BPD often experienced trauma (childhood abuse, neglect)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>Management</h4>
+
+<strong>Acute setting</strong> (ED, hospital):
+<ul>
+<li><strong>Medical treatment</strong> of self-harm/overdose</li>
+<li><strong>Risk assessment</strong> (suicide, self-harm, vulnerability)</li>
+<li><strong>DO NOT diagnose personality disorder in acute crisis</strong></li>
+<li><strong>Crisis plan</strong>: Safety plan, contact numbers (Lifeline, mental health crisis team), follow-up</li>
+<li><strong>Avoid admission unless necessary</strong> (hospitalization reinforces maladaptive coping)</li>
+<li><strong>Discharge with follow-up</strong>: GP, community mental health team</li>
+<p>
+</ul>
+</p>
+
+<strong>Long-term management</strong> (outpatient):
+<ul>
+<li><strong>Dialectical Behavior Therapy (DBT)</strong> - GOLD STANDARD for BPD</li>
+<p>
+</ul>
+  - Skills training: mindfulness, distress tolerance, emotion regulation, interpersonal effectiveness
+  - Reduces self-harm, suicidal behavior
+</p>
+<ul>
+<li><strong>Mentalization-Based Therapy (MBT)</strong></li>
+<li><strong>Schema Therapy</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Pharmacological</strong>:
+<ul>
+<li><strong>NO medication specifically for BPD</strong></li>
+<li><strong>Avoid benzodiazepines</strong> (risk of dependence, disinhibition)</li>
+<li>Treat comorbid conditions: depression (SSRI), impulsivity/aggression (low-dose antipsychotic - quetiapine 25-100mg)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Antisocial Personality Disorder (ASPD)</h3>
+
+<h4>DSM-5 Criteria</h4>
+
+<strong>Pervasive pattern of disregard for and violation of rights of others</strong>, since age 15. <strong>3+ of</strong>:
+
+<ol>
+<li>Failure to conform to social norms (repeated illegal acts)</li>
+<li>Deceitfulness (lying, conning)</li>
+<li>Impulsivity, failure to plan ahead</li>
+<li>Irritability, aggressiveness (fights, assaults)</li>
+<li>Reckless disregard for safety of self/others</li>
+<li>Consistent irresponsibility (work, financial)</li>
+<li>Lack of remorse</li>
+<p>
+</ol>
+</p>
+
+<strong>Individual is at least 18 years old</strong>
+
+<strong>Evidence of Conduct Disorder before age 15</strong>
+
+<hr>
+
+<h4>Clinical Presentation</h4>
+
+<strong>Common presentations</strong>:
+<ul>
+<li>Forensic settings (prison, court-mandated assessment)</li>
+<li>Substance use disorders (high comorbidity)</li>
+<li>Violence, aggression</li>
+<p>
+</ul>
+</p>
+
+<strong>CRITICAL</strong>:
+<ul>
+<li><strong>Manage behavior, not personality</strong></li>
+<li><strong>Set clear boundaries</strong></li>
+<li><strong>Safety first</strong> (staff safety, other patients)</li>
+<p>
+</ul>
+</p>
+
+<strong>Management</strong>:
+<ul>
+<li><strong>Psychological therapy</strong>: Limited evidence, low engagement</li>
+<li><strong>Treat comorbid conditions</strong>: Substance use, depression, ADHD</li>
+<li><strong>Address criminogenic needs</strong>: Housing, employment, substance use</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Common IMG Mistakes - Personality Disorders</h3>
+
+<ol>
+<li><strong>Diagnosing BPD in acute crisis</strong> → Personality disorders require longitudinal pattern, NOT diagnosed in single presentation</li>
+<li><strong>Dismissing suicide risk in BPD</strong> → 10% die by suicide (risk is real)</li>
+<li><strong>Using "borderline" pejoratively</strong> → Stigmatizing, affects quality of care</li>
+<li><strong>Over-prescribing medication for BPD</strong> → No medication specifically for BPD, DBT is first-line</li>
+<li><strong>Admitting patient with BPD for every self-harm episode</strong> → Reinforces maladaptive coping, avoid unless medically necessary</li>
+<li><strong>Not setting boundaries</strong> → Clear, consistent boundaries essential</li>
+<li><strong>Staff splitting</strong> → Communicate with team, unified approach</li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>OSCE PRACTICE STATIONS</h2>
+
+<h3>OSCE Station 1: Major Depressive Disorder - Diagnosis and Management</h3>
+
+<strong>Scenario</strong>:
+<p>
+You are the medical officer in the GP clinic. A 42-year-old woman, Sarah, presents with low mood for 3 months. Take a focused psychiatric history to establish a diagnosis and develop a management plan.
+</p>
+
+<strong>Task (8 minutes)</strong>:
+<ul>
+<li>Take focused history using differential-driven approach</li>
+<li>Establish diagnosis</li>
+<li>Assess suicide risk</li>
+<li>Explain diagnosis and management plan</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Model Performance</strong>:
+
+<strong>Opening (30 sec)</strong>:
+<p>
+"Hello Sarah, I'm Dr. [Name]. I understand you've been feeling low. I'd like to ask some questions to understand what's been happening. Is that okay?"
+</p>
+
+<strong>Presenting complaint (30 sec)</strong>:
+<p>
+"Can you tell me about your mood? How long have you been feeling this way?"
+</p>
+<ul>
+<li>Patient: "About 3 months. I just feel really down, no energy."</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential-driven questions - SIG E CAPS (3 min)</strong>:
+
+<strong>Sleep</strong>: "How's your sleep?"
+<ul>
+<li>"Terrible. I wake up at 4am and can't get back to sleep." ✓ Early morning waking</li>
+<p>
+</ul>
+</p>
+
+<strong>Interest</strong>: "Are you still enjoying things you used to enjoy - hobbies, seeing friends?"
+<ul>
+<li>"No, I've stopped everything. Can't be bothered." ✓ Anhedonia</li>
+<p>
+</ul>
+</p>
+
+<strong>Guilt</strong>: "Do you feel guilty or worthless?"
+<ul>
+<li>"I feel like a burden to my family. Useless." ✓ Worthlessness</li>
+<p>
+</ul>
+</p>
+
+<strong>Energy</strong>: "How's your energy?"
+<ul>
+<li>"Exhausted all the time, even after sleep." ✓ Fatigue</li>
+<p>
+</ul>
+</p>
+
+<strong>Concentration</strong>: "Any trouble concentrating?"
+<ul>
+<li>"Can't focus on anything. Even reading is hard." ✓ Poor concentration</li>
+<p>
+</ul>
+</p>
+
+<strong>Appetite</strong>: "How's your appetite? Any weight change?"
+<ul>
+<li>"No appetite. Lost 5kg in 2 months." ✓ Appetite/weight loss</li>
+<p>
+</ul>
+</p>
+
+<strong>Psychomotor</strong>: "Do you feel slowed down?" (Observe)
+<ul>
+<li>"Everything feels like an effort." Observe: psychomotor retardation ✓</li>
+<p>
+</ul>
+</p>
+
+<strong>Suicidal thoughts</strong>: "Do you have thoughts of harming yourself?"
+<ul>
+<li>"Sometimes I wish I could go to sleep and not wake up."</li>
+<li><strong>GRADUATED ASSESSMENT</strong>: "Do you have thoughts of actually ending your life?"</li>
+<li>"I've thought about it, but I wouldn't do it because of my kids."</li>
+<li><strong>Explore further</strong>: Plan? Intent? Previous attempts? → LOW current risk (passive ideation, no plan/intent, protective factor = children)</li>
+<p>
+</ul>
+</p>
+
+<strong>Mood</strong>: "How would you describe your mood most days?"
+<ul>
+<li>"Just really low, flat. Every day." ✓ Low mood</li>
+<p>
+</ul>
+</p>
+
+<strong>Rule out BIPOLAR</strong> (1 min):
+<p>
+"Have you ever had periods of the opposite - really high energy, not needing sleep, feeling on top of the world?"
+</p>
+<ul>
+<li>"No, never." ✓ No mania/hypomania</li>
+<p>
+</ul>
+</p>
+
+<strong>Rule out ORGANIC</strong> (1 min):
+<p>
+"Any medical problems? Thyroid issues?"
+</p>
+<ul>
+<li>"No medical problems."</li>
+<p>
+</ul>
+"What medications are you taking?"
+</p>
+<ul>
+<li>"Just the contraceptive pill."</li>
+<p>
+</ul>
+"How's your alcohol use?"
+</p>
+<ul>
+<li>"Glass of wine on weekends, that's it."</li>
+<p>
+</ul>
+</p>
+
+<strong>Functional impairment</strong> (30 sec):
+<p>
+"How is this affecting your work? Family?"
+</p>
+<ul>
+<li>"Called in sick a lot. Feel like a bad mother."</li>
+<p>
+</ul>
+</p>
+
+<strong>Diagnosis and Explanation (1 min)</strong>:
+<p>
+"Based on what you've told me, it sounds like you have <strong>major depression</strong>. This is a medical condition where the chemicals in your brain are out of balance, causing low mood, loss of interest, sleep and appetite changes, and the other symptoms you've described. It's <strong>very treatable</strong>, and you're not alone - it affects 1 in 5 Australians."
+</p>
+
+<strong>Management Plan (1.5 min)</strong>:
+
+<p>
+"There are two main treatments that work well, and <strong>combination is best</strong>:
+</p>
+
+<ol>
+<li><strong>Psychological therapy</strong>: I can refer you to a psychologist through a <strong>Mental Health Plan</strong> - this gives you <strong>10 subsidized sessions</strong>. Cognitive Behavioral Therapy is very effective for depression.</li>
+<p>
+</ol>
+</p>
+
+<ol>
+<li><strong>Antidepressant medication</strong>: I'd recommend starting an SSRI called sertraline. It takes <strong>2-4 weeks</strong> to start working, so please be patient. Common side effects are nausea and headaches initially, but they usually settle in 1-2 weeks. We'll start with a low dose and review in 2 weeks.</li>
+<p>
+</ol>
+</p>
+
+<ol>
+<li><strong>Lifestyle</strong>: Try to maintain routine, gentle exercise like walking, connect with supportive people.</li>
+<p>
+</ol>
+</p>
+
+<ol>
+<li><strong>Safety</strong>: You mentioned thoughts of not waking up. If you have thoughts of harming yourself, please call <strong>Lifeline 13 11 14</strong> anytime, or go to <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span>. I'd like to see you back in <strong>2 weeks</strong> to review how you're going. Is that okay?"</li>
+<p>
+</ol>
+</p>
+
+<strong>Close</strong> (30 sec):
+<p>
+"Do you have any questions? ... I'll write that Mental Health Plan today and organize the psychology referral. Let's book you in for 2 weeks."
+</p>
+
+<strong>Summary to Examiner</strong>:
+<p>
+"42-year-old woman with <strong>Major Depressive Disorder</strong>, moderate severity. Meets 8/9 SIG E CAPS criteria, duration 3 months, significant functional impairment. <strong>LOW current suicide risk</strong> - passive ideation, no plan/intent, protective factor (children). No history of mania, no medical causes identified. Plan: SSRI (sertraline), Mental Health Plan for psychology (CBT), lifestyle advice, 2-week review, safety planning."
+</p>
+
+<hr>
+
+<h3>OSCE Station 2: First-Episode Psychosis - Assessment and Management</h3>
+
+<strong>Scenario</strong>:
+<p>
+You are the medical officer in the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department. A 22-year-old man, James, has been brought in by police under Mental Health Act (Form 1) due to bizarre behavior and concerns for safety. He was found in the street preaching about being sent by God to save the world. Take a focused history and mental state examination to assess for psychosis and develop a management plan.
+</p>
+
+<strong>Task (8 minutes)</strong>:
+<ul>
+<li>Take focused history for psychosis</li>
+<li>Mental state examination</li>
+<li>Generate differential diagnosis (including organic causes)</li>
+<li>Outline immediate management</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Model Performance</strong>:
+
+<strong>Opening (30 sec)</strong>:
+<p>
+"Hello James, I'm Dr. [Name]. I'm one of the doctors here in <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span>. I understand the police brought you in because they were concerned about you. I'd like to understand what's been happening. Is that okay?"
+</p>
+
+<strong>Presenting complaint (1 min)</strong>:
+<p>
+"Can you tell me what's been going on?"
+</p>
+<ul>
+<li>Patient: "I have a mission from God to save humanity. People don't understand."</li>
+<p>
+</ul>
+</p>
+
+<p>
+"When did this start?"
+</p>
+<ul>
+<li>"About 2 months ago, I started receiving messages."</li>
+<p>
+</ul>
+</p>
+
+<strong>Hallucinations - Auditory (1 min)</strong>:
+<p>
+"Do you hear voices when no one is around?"
+</p>
+<ul>
+<li>"Yes, I hear God speaking to me."</li>
+<p>
+</ul>
+</p>
+
+<p>
+"What does the voice say?"
+</p>
+<ul>
+<li>"He tells me I'm the chosen one, that I need to prepare for the end times."</li>
+<p>
+</ul>
+</p>
+
+<p>
+"Is it one voice or multiple?"
+</p>
+<ul>
+<li>"Just God's voice. Male voice."</li>
+<p>
+</ul>
+</p>
+
+<p>
+"Does it talk to you or about you?"
+</p>
+<ul>
+<li>"To me. Directly to me." (2nd person hallucinations)</li>
+<p>
+</ul>
+</p>
+
+<strong>Hallucinations - Visual</strong> (30 sec):
+<p>
+"Do you see things others don't see?"
+</p>
+<ul>
+<li>"No." ✓ (No visual hallucinations - good, less likely organic)</li>
+<p>
+</ul>
+</p>
+
+<strong>Delusions</strong> (1 min):
+<p>
+"You mentioned you have a mission from God. Can you tell me more?"
+</p>
+<ul>
+<li>"I am the second coming of Christ. I have divine powers." ✓ Grandiose delusion</li>
+<p>
+</ul>
+</p>
+
+<p>
+"Do you feel anyone is trying to harm you?"
+</p>
+<ul>
+<li>"Yes, the government is monitoring me. They have cameras in my house." ✓ Persecutory delusion</li>
+<p>
+</ul>
+</p>
+
+<p>
+"Do you feel the TV or radio has special messages for you?"
+</p>
+<ul>
+<li>"Sometimes news reports have coded messages for me." ✓ Delusion of reference</li>
+<p>
+</ul>
+</p>
+
+<strong>Thought disorder</strong> (30 sec):
+<p>
+"Do you feel your thoughts are controlled by someone else?"
+</p>
+<ul>
+<li>"No."</li>
+<p>
+</ul>
+</p>
+
+<p>
+"Can other people hear your thoughts?"
+</p>
+<ul>
+<li>"No."</li>
+<p>
+</ul>
+</p>
+
+<p>
+(Observe during interview: speech coherent, no obvious formal thought disorder)
+</p>
+
+<strong>Negative symptoms</strong> (30 sec):
+<p>
+"How's your motivation? Are you looking after yourself - showering, eating?"
+</p>
+<ul>
+<li>"I'm preparing for my mission, I don't have time for trivial things." (Poor self-care)</li>
+<p>
+</ul>
+</p>
+
+<strong>Functional impairment</strong> (30 sec):
+<p>
+"Are you working? Studying?"
+</p>
+<ul>
+<li>"I dropped out of university 3 months ago."</li>
+<p>
+</ul>
+</p>
+
+<strong>Insight</strong> (30 sec):
+<p>
+"Do you think you might be unwell? Do you think you need help?"
+</p>
+<ul>
+<li>"I'm not sick. I'm enlightened. You don't understand." ✓ NO insight</li>
+<p>
+</ul>
+</p>
+
+<strong>Rule out ORGANIC/SUBSTANCE</strong> (1.5 min) - <strong>CRITICAL</strong>:
+
+<p>
+"Have you been unwell recently? Any fever, headache?"
+</p>
+<ul>
+<li>"No."</li>
+<p>
+</ul>
+</p>
+
+<p>
+"Any head injury?"
+</p>
+<ul>
+<li>"No."</li>
+<p>
+</ul>
+</p>
+
+<p>
+"Do you have any medical conditions?"
+</p>
+<ul>
+<li>"No."</li>
+<p>
+</ul>
+</p>
+
+<p>
+"Do you take any medications?"
+</p>
+<ul>
+<li>"No."</li>
+<p>
+</ul>
+</p>
+
+<p>
+"<strong>Do you use any drugs?</strong> Ice (methamphetamine), cannabis, cocaine?"
+</p>
+<ul>
+<li>"I smoke weed sometimes."</li>
+<p>
+</ul>
+</p>
+
+<p>
+"How much? When did you last use?"
+</p>
+<ul>
+<li>"A few times a week. Last smoked yesterday."</li>
+<p>
+</ul>
+</p>
+
+<p>
+✓ Cannabis use - <strong>differential includes cannabis-induced psychosis vs schizophrenia</strong>
+</p>
+
+<strong>Family history</strong> (30 sec):
+<p>
+"Does anyone in your family have mental health issues?"
+</p>
+<ul>
+<li>"My uncle has schizophrenia."</li>
+<p>
+</ul>
+</p>
+
+<strong>Timeline</strong> (30 sec):
+<p>
+"When did you first notice changes?"
+</p>
+<ul>
+<li>"About 2 months ago."</li>
+<p>
+</ul>
+</p>
+
+<strong>Collateral</strong> (if time - in real scenario, essential):
+<p>
+Would ask: "Can I speak with your family to get more information?"
+</p>
+
+<strong>Mental State Examination Summary</strong> (30 sec to examiner):
+<ul>
+<li><strong>Appearance</strong>: 22-year-old man, disheveled, poor hygiene, eye contact poor</li>
+<li><strong>Behavior</strong>: Agitated, pacing, gesturing</li>
+<li><strong>Speech</strong>: Normal rate, volume, coherent</li>
+<li><strong>Mood</strong>: "Elevated" (subjective)</li>
+<li><strong>Affect</strong>: Elevated, expansive, incongruent</li>
+<li><strong>Thought Form</strong>: No formal thought disorder</li>
+<li><strong>Thought Content</strong>: Grandiose delusions (divine mission, second coming of Christ), persecutory delusions (government monitoring), delusions of reference (TV messages). No suicidal/homicidal ideation elicited.</li>
+<li><strong>Perception</strong>: Auditory hallucinations (2nd person, command - God's voice), NO visual hallucinations</li>
+<li><strong>Cognition</strong>: Oriented to time, place, person. Concentration not formally assessed.</li>
+<li><strong>Insight</strong>: NO insight, does not believe he is unwell</li>
+<p>
+</ul>
+</p>
+
+<strong>Differential Diagnosis</strong> (1 min):
+
+<p>
+"The differential diagnosis includes:
+</p>
+
+<ol>
+<li><strong>Substance-induced psychotic disorder</strong> - cannabis (patient uses cannabis regularly, can cause psychosis, especially high-THC strains)</li>
+<li><strong>Schizophreniform disorder / early schizophrenia</strong> (symptoms 2 months, auditory hallucinations, delusions, functional impairment, positive family history)</li>
+<li><strong>Mania with psychotic features</strong> (elevated mood, grandiosity, but no other manic symptoms reported - sleep, activity, talkativeness)</li>
+<li><strong>Organic psychosis</strong> - less likely (no medical history, no neurological symptoms, NO visual hallucinations), but must rule out:</li>
+<p>
+</ol>
+   - <strong>Urine drug screen</strong> for amphetamines, cannabis, cocaine
+   - Bloods: FBC, UEC, LFTs, glucose, calcium, TSH, B12
+   - Consider <strong>CT brain</strong> to rule out structural lesion
+</p>
+
+<p>
+My working diagnosis is <strong>first-episode psychosis</strong>, likely cannabis-related vs early schizophrenia. Need investigations to rule out organic causes."
+</p>
+
+<strong>Immediate Management</strong> (1.5 min):
+
+<p>
+"James will need <strong>admission to the psychiatric unit</strong> for further assessment and treatment. He was brought in under Form 1 (Mental Health Act), which allows us to detain him for up to 12 hours for assessment. Given his psychotic symptoms, lack of insight, and functional impairment, he will likely require <strong>involuntary admission</strong> under Schedule 1 (psychiatrist's order for up to 3 months).
+</p>
+
+<strong>Immediate actions</strong>:
+<ol>
+<li><strong>Safety</strong>: 1:1 nursing observation (risk of absconding, potential risk to others given paranoid delusions)</li>
+<li><strong>Investigations</strong>:</li>
+<p>
+</ol>
+   - <strong>Urine drug screen</strong> (cannabis, amphetamines)
+   - Bloods: FBC, UEC, LFTs, glucose, calcium, TSH, B12, HIV, syphilis serology
+   - <strong>CT brain</strong> to rule out structural lesion
+</p>
+<ol>
+<li><strong>Psychiatry consult</strong> for admission under Mental Health Act</li>
+<li><strong>Pharmacological</strong>:</li>
+<p>
+</ol>
+   - Start <strong>antipsychotic</strong>: Risperidone 2mg BD or Olanzapine 10mg nocte (atypical antipsychotic, start low)
+   - PRN medication available for agitation: Olanzapine wafer 10mg or Lorazepam 1-2mg PO
+</p>
+<ol>
+<li><strong>Collateral history</strong> from family (permission may be needed)</li>
+<li><strong>Psychoeducation</strong> (when patient more settled): Explain treatment, prognosis</li>
+<li><strong>Early psychosis service referral</strong> for ongoing management post-discharge</li>
+<p>
+</ol>
+</p>
+
+<strong>Prognosis</strong>: First-episode psychosis has good prognosis with early treatment. If cannabis-induced, symptoms may resolve with abstinence. If schizophrenia, will need long-term antipsychotic (1-2 years minimum) and psychosocial support."
+
+<hr>
+
+<h2>SUMMARY: KEY TAKEAWAYS FOR ICRP</h2>
+
+<h3>Differential-Driven Approach for Psychiatric Presentations</h3>
+
+<ol>
+<li><strong>Depression</strong> → Think: MDD, bipolar depression, adjustment disorder, <strong>hypothyroidism</strong>, medication-induced → Use <strong>SIG E CAPS</strong>, ask about <strong>mania</strong>, check <strong>TSH</strong></li>
+<p>
+</ol>
+</p>
+
+<ol>
+<li><strong>Mania</strong> → Think: Bipolar I, substance-induced (stimulants, steroids), <strong>hyperthyroidism</strong>, organic → Use <strong>DIG FAST</strong>, check <strong>TSH</strong>, urine drug screen</li>
+<p>
+</ol>
+</p>
+
+<ol>
+<li><strong>Anxiety</strong> → Think: GAD, panic disorder, PTSD, <strong>hyperthyroidism</strong>, <strong>cardiac</strong>, caffeine → Rule out medical (ECG, TSH), assess trauma history</li>
+<p>
+</ol>
+</p>
+
+<ol>
+<li><strong>Psychosis</strong> → Think: <strong>Substance-induced</strong> (methamphetamine, cannabis), schizophrenia, affective psychosis, <strong>organic</strong> (encephalitis, tumor) → <strong>ALWAYS urine drug screen, bloods, CT brain for first episode</strong></li>
+<p>
+</ol>
+</p>
+
+<ol>
+<li><strong>Self-harm</strong> → Think: Depression, BPD, psychosis, adjustment disorder, substance use → <strong>Assess suicide risk thoroughly</strong>, don't assume BPD</li>
+<p>
+</ol>
+</p>
+
+<h3>Australian Mental Health System</h3>
+
+<ul>
+<li><strong>Mental Health Plan</strong>: GP referral for <strong>10 subsidized psychology sessions</strong> per year</li>
+<li><strong>Mental Health Act NSW 2007</strong>:</li>
+<p>
+</ul>
+  - <strong>Form 1</strong> (medical officer: detain up to 12 hours)
+  - <strong>Schedule 1</strong> (psychiatrist: involuntary admission up to 3 months)
+</p>
+<ul>
+<li><strong>Crisis services</strong>: Lifeline 13 11 14, Beyond Blue 1300 22 4636, Suicide Call Back Service 1300 659 467</li>
+<li><strong>PBS</strong>: Most antidepressants, antipsychotics, mood stabilizers listed</li>
+<li><strong>eTG 2024</strong>: Australian prescribing guidelines</li>
+<p>
+</ul>
+</p>
+
+<h3>Medication Principles</h3>
+
+<ul>
+<li><strong>Depression</strong>: SSRIs first-line (sertraline, escitalopram), 2-4 weeks to work, continue 6-12 months after remission</li>
+<li><strong>Bipolar mania</strong>: Antipsychotics first-line (olanzapine, quetiapine), mood stabilizers (lithium, valproate)</li>
+<li><strong>Bipolar depression</strong>: Quetiapine (NOT antidepressant alone)</li>
+<li><strong>Anxiety</strong>: SSRIs first-line, CBT equally important, <strong>avoid chronic benzodiazepines</strong></li>
+<li><strong>Psychosis</strong>: Atypical antipsychotics (risperidone, olanzapine), start low/go slow, monitor metabolic side effects</li>
+<li><strong>OCD</strong>: Higher SSRI doses, CBT with ERP essential</li>
+<p>
+</ul>
+</p>
+
+<h3>Risk Assessment Integration</h3>
+
+<ul>
+<li><strong>ALWAYS assess suicide risk</strong> in depression, bipolar, psychosis, eating disorders</li>
+<li>Use <strong>graduated approach</strong>: hopelessness → passive → active → plan → intent</li>
+<li><strong>Never say "zero risk"</strong> - always "LOW/MODERATE/HIGH risk based on current assessment"</li>
+<li><strong>Previous attempt</strong> = strongest predictor</li>
+<li><strong>Remove means</strong>, safety plan, crisis numbers (Lifeline 13 11 14)</li>
+<p>
+</ul>
+</p>
+
+<h3><span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s</h3>
+
+<ul>
+<li><strong>Visual hallucinations</strong> = organic until proven otherwise</li>
+<li><strong>First-episode psychosis >40 years</strong> = organic until proven otherwise</li>
+<li><strong>Antidepressant alone in bipolar depression</strong> = can trigger mania</li>
+<li><strong>Rapid refeeding in anorexia</strong> = refeeding syndrome (hypophosphatemia → cardiac arrest)</li>
+<li><strong>Neuroleptic Malignant Syndrome</strong> = STOP antipsychotic, ICU admission</li>
+<p>
+</ul>
+</p>
+
+<h3>Common IMG Mistakes to AVOID</h3>
+
+<ol>
+<li>Not asking about <strong>previous mania</strong> when treating depression</li>
+<li>Not checking <strong>TSH</strong> in depression/anxiety</li>
+<li>Not doing <strong>urine drug screen</strong> in psychosis</li>
+<li><strong>Chronic benzodiazepines</strong> for anxiety</li>
+<li>Diagnosing <strong>BPD in acute crisis</strong></li>
+<li>Dismissing <strong>suicide risk in BPD</strong></li>
+<li>Not offering <strong>psychological therapy</strong> (CBT first-line for many conditions)</li>
+<li>Inadequate <strong>antidepressant trial</strong> (<6 weeks)</li>
+<li>Not monitoring <strong>metabolic side effects</strong> of antipsychotics</li>
+<li>Not informing about <strong>Medicare Mental Health Plan</strong></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<strong>Document Complete: ~18,500 words</strong>
+
+<p>
+This completes the fourth document of the Psychiatry module, covering common psychiatric presentations with differential-driven approach, DSM-5 criteria, Australian management guidelines (eTG 2024, PBS), integrated risk assessment, and OSCE practice stations. Two OSCE stations provided with detailed model performances for Major Depressive Disorder and First-Episode Psychosis.
+</p>
+
+<strong>Next document</strong>: Capacity Assessment and Legal Framework (Mental Health Act, consent, involuntary treatment)
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

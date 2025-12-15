@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acute Abdomen - Physical Examination</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Surgery</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Surgery Navigation</h3>
+<ul>
+<li><a href="01_Acute_Abdomen_History_Differentials.html">Acute Abdomen</a></li>
+<li><a href="02_Acute_Abdomen_Physical_Examination.html">Abdo Exam</a></li>
+</ul>
+</div>
+        <h1>Acute Abdomen - Physical Examination</h1>
+<h2>AMC Clinical / ICRP NSW Young Hospital Preparation</h2>
+
+<strong>Purpose</strong>: Systematic abdominal examination with differential diagnosis correlation
+<strong>Target</strong>: 8-minute OSCE physical examination station
+<strong>Dr. Amir Soufi Methodology</strong>: PE driven by differentials - examination findings narrow diagnosis
+<strong>Created</strong>: December 14, 2025
+
+<hr>
+
+<h2>TABLE OF CONTENTS</h2>
+
+<ol>
+<li><a href="#introduction">Introduction - Examination Driven by Differential</a></li>
+<li><a href="#the-5-ps-framework">The 5 Ps Framework for Abdominal Examination</a></li>
+<li><a href="#inspection">Inspection - What You See Before You Touch</a></li>
+<li><a href="#palpation">Palpation - Light Then Deep</a></li>
+<li><a href="#percussion">Percussion</a></li>
+<li><a href="#auscultation">Auscultation</a></li>
+<li><a href="#special-tests">Special Tests for Specific Differentials</a></li>
+<li><a href="#clinical-findings-tables">Clinical Findings Tables - Differential Correlation</a></li>
+<li><a href="#acute-abdomen-critical-findings">Acute Abdomen - Critical Findings</a></li>
+<li><a href="#integration">Integration: How Examination Findings Narrow Your Differential</a></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>INTRODUCTION</h2>
+
+<h3>Examination Driven by Differential (Dr. Amir's Approach)</h3>
+
+<strong>Traditional approach</strong>: Do complete examination → Think about findings
+
+<strong>Dr. Amir's approach</strong>: Know your differential from history → Examination CONFIRMS or EXCLUDES each differential → Findings narrow diagnosis
+
+<strong>Example</strong>:
+<ul>
+<li>History suggests appendicitis</li>
+<li><strong>Examination purpose</strong>: Confirm localized RLQ tenderness, rule out peritonitis, rule out other causes</li>
+<li><strong>You're looking for</strong>: McBurney's point tenderness, Rovsing's sign, rebound (local vs generalized), psoas sign, obturator sign</li>
+<p>
+</ul>
+</p>
+
+<h3>The 5 Ps Framework</h3>
+
+<strong>P</strong>reparation
+<strong>P</strong>osition
+<strong>P</strong>ermission
+<strong>P</strong>erform (Inspection → Palpation → Percussion → Auscultation)
+<strong>P</strong>resent
+
+<hr>
+
+<h2>THE 5 Ps FRAMEWORK</h2>
+
+<h3><strong>P1: PREPARATION</strong> (15 seconds)</h3>
+
+<strong>What to Say</strong>:
+<p>
+"I'm going to examine your abdomen. This will involve me looking at and feeling your tummy. Is that okay?"
+</p>
+
+<strong>Actions</strong>:
+<ul>
+<li>Wash hands / hand sanitizer (ALWAYS - examiner watching)</li>
+<li>Ensure privacy (draw curtain, close door)</li>
+<li>Chaperone offered (especially male doctor, female patient)</li>
+<li>Adequate lighting</li>
+<li>Equipment ready: Stethoscope</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3><strong>P2: POSITION</strong> (15 seconds)</h3>
+
+<strong>What to Say</strong>:
+<p>
+"Can you lie flat on the bed for me, with your arms by your sides? I'll need to examine from here <em>[indicate chest]</em> to here <em>[indicate pelvis]</em>."
+</p>
+
+<strong>Patient Position</strong>:
+<ul>
+<li><strong>Lying flat (supine)</strong></li>
+<li>One pillow under head (comfortable, but not too propped up)</li>
+<li>Arms by sides (NOT folded across chest - tenses abdomen)</li>
+<li>Exposure: <strong>Nipples to knees</strong> (need to see full abdomen, groins, and potentially examine hernial orifices)</li>
+<p>
+</ul>
+</p>
+
+<strong>Examiner Position</strong>:
+<ul>
+<li>Stand on patient's RIGHT side</li>
+<li>At level of patient's abdomen (not at head or feet)</li>
+<p>
+</ul>
+</p>
+
+<strong>Examiner Note</strong>: In OSCE, patient usually already positioned. Just check positioning is correct.
+
+<hr>
+
+<h3><strong>P3: PERMISSION</strong> (10 seconds)</h3>
+
+<strong>What to Say</strong>:
+<p>
+"Before I start, are you in any pain right now?"
+</p>
+
+<em>[Patient points to area]</em>
+
+<p>
+"Okay, I'll examine that area last so I don't cause you unnecessary discomfort."
+</p>
+
+<strong>Why This Matters</strong>:
+<ul>
+<li>Shows compassion</li>
+<li><strong>Tactical</strong>: If you palpate painful area first, patient will guard throughout rest of examination (muscle tension)</li>
+<li><strong>Correct approach</strong>: Palpate painful area LAST</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3><strong>P4: PERFORM - INSPECTION</strong> (30-45 seconds)</h3>
+
+<strong>What to Say</strong>:
+<p>
+"I'm going to start by looking at your abdomen."
+</p>
+
+<strong>Stand at foot of bed</strong> (better view of symmetry, contours)
+
+<hr>
+
+<h4><strong>4A: GENERAL INSPECTION</strong></h4>
+
+<strong>Look at Patient as Whole</strong>:
+<ul>
+<li>Does patient look unwell? (Septic, shocked, in pain)</li>
+<li><strong>Position</strong>: Lying still (peritonitis) vs writhing (renal colic)</li>
+<li>Colour: Pale (anaemia, shock), jaundiced (biliary pathology)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4><strong>4B: INSPECTION OF ABDOMEN</strong></h4>
+
+<strong>Systematic Approach - Walk Around Bed if Needed</strong>:
+
+<strong>1. SHAPE & CONTOUR</strong>:
+<ul>
+<li><strong>Flat</strong> (normal)</li>
+<li><strong>Scaphoid</strong> (concave - malnutrition, elderly)</li>
+<li><strong>Distended</strong> (generalized or localized)</li>
+<p>
+</ul>
+  - <strong>Generalized distension</strong>: 5 Fs
+    - <strong>F</strong>latus (bowel obstruction)
+    - <strong>F</strong>luid (ascites)
+    - <strong>F</strong>etus (pregnancy)
+    - <strong>F</strong>at (obesity)
+    - <strong>F</strong>eces (severe constipation)
+  - <strong>Localized distension</strong>: Mass, organomegaly, hernia
+</p>
+
+<strong>2. SCARS</strong>:
+<ul>
+<li>Indicates previous surgery → Adhesions (cause of bowel obstruction)</li>
+<li><strong>Common scars</strong>:</li>
+<p>
+</ul>
+  - Midline (laparotomy)
+  - Right subcostal (cholecystectomy - open)
+  - Paramedian
+  - Pfannenstiel (C-section, gynae surgery)
+  - Laparoscopic port sites (small, often in umbilicus + RUQ/LUQ)
+  - Appendicectomy (RLQ - McBurney's point or laparoscopic)
+</p>
+
+<strong>What to Say</strong>: "I can see you've had previous surgery <em>[indicate scar]</em>. What operation was that?"
+
+<strong>3. SKIN CHANGES</strong>:
+<ul>
+<li><strong>Striae</strong> (stretch marks - pregnancy, Cushing's, rapid weight change)</li>
+<li><strong>Dilated veins</strong> (caput medusae - portal hypertension)</li>
+<li><strong>Erythema</strong> (cellulitis, herpes zoster)</li>
+<li><strong>Bruising</strong>:</li>
+<p>
+</ul>
+  - <strong>Grey Turner's sign</strong> (flank bruising) - Haemorrhagic pancreatitis, retroperitoneal bleed
+  - <strong>Cullen's sign</strong> (periumbilical bruising) - Haemorrhagic pancreatitis, ruptured ectopic
+</p>
+
+<strong>4. HERNIAS</strong> (Look before you palpate):
+<ul>
+<li><strong>Umbilical hernia</strong>: Protrusion at umbilicus</li>
+<li><strong>Incisional hernia</strong>: At scar site</li>
+<li><strong>Inguinal hernia</strong>: Groin swelling</li>
+<li><strong>Femoral hernia</strong>: Below inguinal ligament</li>
+<p>
+</ul>
+</p>
+
+<strong>What to Say</strong>: "Can you cough for me please?" <em>[Watch for hernia appearing/enlarging on cough impulse]</em>
+
+<strong>5. VISIBLE MASSES</strong>:
+<ul>
+<li>Large masses may be visible (AAA pulsation, large tumor)</li>
+<p>
+</ul>
+</p>
+
+<strong>6. MOVEMENT WITH RESPIRATION</strong>:
+<ul>
+<li>Abdomen should rise and fall with breathing</li>
+<li><strong>Absent movement</strong> → Peritonitis (patient breathing with chest only, abdomen rigid)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3><strong>P4: PERFORM - PALPATION</strong> (3-4 minutes)</h3>
+
+<strong>This is the MOST important part of abdominal examination</strong>
+
+<hr>
+
+<h4><strong>4C: LIGHT PALPATION</strong></h4>
+
+<strong>Purpose</strong>: Assess for tenderness, guarding, masses
+
+<strong>Technique</strong>:
+<ul>
+<li><strong>Kneel or bend</strong> so your hand is horizontal to patient's abdomen (not pressing down from height)</li>
+<li><strong>Watch patient's face</strong> (while palpating - see pain reaction)</li>
+<li><strong>Use flat of hand</strong> (not fingertips - less uncomfortable)</li>
+<li><strong>Gentle pressure</strong> (2-3 cm depth)</li>
+<p>
+</ul>
+</p>
+
+<strong>What to Say</strong>:
+<p>
+"I'm going to feel your tummy gently. Let me know if any area is tender."
+</p>
+
+<strong>Systematic Approach - 9 Regions</strong> (or 4 quadrants):
+<p>
+Start in region FURTHEST from pain, work towards painful area
+</p>
+
+<strong>9 Regions</strong>:
+<ol>
+<li>Right hypochondrium</li>
+<li>Epigastrium</li>
+<li>Left hypochondrium</li>
+<li>Right lumbar</li>
+<li>Umbilical</li>
+<li>Left lumbar</li>
+<li>Right iliac fossa</li>
+<li>Suprapubic</li>
+<li>Left iliac fossa</li>
+<p>
+</ol>
+</p>
+
+<strong>What You're Feeling For</strong>:
+<ul>
+<li><strong>Tenderness</strong>: Patient winces, says "ow"</li>
+<li><strong>Guarding</strong>: Involuntary muscle contraction (abdomen tenses when you palpate)</li>
+<p>
+</ul>
+  - <strong>Voluntary guarding</strong>: Patient tenses (anticipating pain) - throughout abdomen
+  - <strong>Involuntary guarding</strong>: Reflex muscle contraction - localized to area of inflammation
+</p>
+<ul>
+<li><strong>Rigidity</strong>: Board-like hardness - indicates peritonitis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4><strong>4D: DEEP PALPATION</strong></h4>
+
+<strong>Purpose</strong>: Feel for masses, organomegaly
+
+<strong>Technique</strong>:
+<ul>
+<li>Use one hand on top of other (for more pressure)</li>
+<li>Deeper pressure (5-6 cm)</li>
+<li>Same 9-region systematic approach</li>
+<p>
+</ul>
+</p>
+
+<strong>What to Say</strong>:
+<p>
+"Now I'm going to feel a bit deeper. Again, let me know if anything hurts."
+</p>
+
+<strong>What You're Feeling For</strong>:
+<ul>
+<li><strong>Masses</strong>: Describe by 7 Ss (see below)</li>
+<li><strong>Organomegaly</strong>: Liver, spleen, kidneys (see below)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4><strong>4E: PALPATION OF ORGANS</strong></h4>
+
+<strong>LIVER</strong> (Right Hypochondrium):
+
+<strong>Technique</strong>:
+<ul>
+<li>Start in RLF (right iliac fossa)</li>
+<li>Hand parallel to right costal margin</li>
+<li>Ask patient to "take a deep breath in"</li>
+<li>Feel for liver edge descending onto your fingers</li>
+<li>Move hand up 2cm, repeat, until reach costal margin</li>
+<p>
+</ul>
+</p>
+
+<strong>What to Say</strong>: "I'm going to feel for your liver. Take a deep breath in for me."
+
+<strong>Normal</strong>: Liver edge not palpable (OR just palpable at costal margin in thin patients / on deep inspiration)
+
+<strong>Abnormal - Hepatomegaly</strong>:
+<ul>
+<li>Palpable >2 cm below costal margin</li>
+<li><strong>Causes in acute abdomen</strong>: Hepatitis, liver abscess, hepatic congestion (CCF), metastases</li>
+<p>
+</ul>
+</p>
+
+<strong>If liver enlarged - describe</strong>:
+<ul>
+<li>Size (cm below costal margin)</li>
+<li>Edge (smooth or nodular)</li>
+<li>Consistency (soft, firm, hard)</li>
+<li>Tenderness (tender in hepatitis, abscess)</li>
+<li>Pulsatile (TR - tricuspid regurgitation)</li>
+<p>
+</ul>
+</p>
+
+<strong>SPLEEN</strong> (Left Hypochondrium):
+
+<strong>Technique</strong>:
+<ul>
+<li>Start in RIF (right iliac fossa) - yes, right (spleen enlarges diagonally towards RIF)</li>
+<li>Hand parallel to left costal margin</li>
+<li>Ask patient to deep breath in</li>
+<li>Feel for spleen edge</li>
+<li>If not felt: Ask patient to roll onto right side (brings spleen forward) - repeat</li>
+<p>
+</ul>
+</p>
+
+<strong>What to Say</strong>: "Now I'm checking for your spleen. Deep breath in."
+
+<strong>Normal</strong>: Spleen not palpable
+
+<strong>Abnormal - Splenomegaly</strong>:
+<ul>
+<li>Palpable below left costal margin</li>
+<li><strong>Causes in acute abdomen</strong>: Splenic rupture (trauma), splenic infarct, infectious mononucleosis (rare)</li>
+<p>
+</ul>
+</p>
+
+<strong>KIDNEYS</strong> (Lumbar regions):
+
+<strong>Technique - Bimanual Ballottement</strong>:
+<ul>
+<li>Place one hand in renal angle (posteriorly in flank)</li>
+<li>Place other hand anteriorly in lumbar region</li>
+<li><strong>Ballot</strong> kidney between two hands (push from back, catch anteriorly)</li>
+<li>Do for both kidneys</li>
+<p>
+</ul>
+</p>
+
+<strong>What to Say</strong>: "I'm checking your kidneys now."
+
+<strong>Normal</strong>: Kidneys usually not palpable (except thin patients, right kidney sometimes)
+
+<strong>Abnormal</strong>:
+<ul>
+<li>Palpable enlarged kidney - Hydronephrosis (obstructed), polycystic kidney disease, tumor</li>
+<li><strong>Tender</strong> - Pyelonephritis, renal stone</li>
+<p>
+</ul>
+</p>
+
+<strong>BLADDER</strong> (Suprapubic):
+
+<strong>Palpate suprapubic region</strong>
+
+<strong>Normal</strong>: Not palpable (unless full)
+
+<strong>Abnormal - Palpable bladder</strong>:
+<ul>
+<li>Urinary retention (palpable, dull to percussion)</li>
+<p>
+</ul>
+</p>
+
+<strong>ABDOMINAL AORTA</strong> (Midline, epigastric):
+
+<strong>Technique</strong>:
+<ul>
+<li>Palpate deeply in epigastric region, just left of midline</li>
+<li>Feel for pulsation</li>
+<li><strong>Assess width</strong> (place fingers on either side of aorta, measure width)</li>
+<p>
+</ul>
+</p>
+
+<strong>What to Say</strong>: "I'm checking the main blood vessel in your abdomen."
+
+<strong>Normal</strong>: Pulsation felt, width <3 cm
+
+<strong>Abnormal - AAA</strong>:
+<ul>
+<li><strong>Expansile pulsation</strong> (pushes fingers apart, not just up and down)</li>
+<li>Width >3 cm (AAA definition)</li>
+<li><strong>CRITICAL</strong>: If palpable AAA + abdominal pain → Think ruptured AAA</li>
+<p>
+</ul>
+</p>
+
+<strong>IMPORTANT</strong>: In thin patients, normal aortic pulsation is easily felt - don't panic. AAA is EXPANSILE (sideways) and WIDE.
+
+<hr>
+
+<h4><strong>4F: PALPATION OF REBOUND TENDERNESS</strong></h4>
+
+<strong>This tests for peritonitis</strong>
+
+<strong>Technique</strong>:
+<ul>
+<li>Press down gently (2-3 cm) over area of tenderness</li>
+<li><strong>Hold for 2-3 seconds</strong></li>
+<li><strong>Quickly release</strong></li>
+<li><strong>Positive</strong> = Pain is WORSE on release than on pressing down (rebound tenderness)</li>
+<p>
+</ul>
+</p>
+
+<strong>What to Say</strong>: "I'm going to press down here and then let go quickly. Tell me which hurts more - when I press down, or when I let go."
+
+<strong>Interpretation</strong>:
+<ul>
+<li><strong>Positive rebound</strong> = Peritoneal inflammation (peritonitis)</li>
+<li><strong>Localized rebound</strong> (RLQ only) = Localized peritonitis (appendicitis, diverticulitis)</li>
+<li><strong>Generalized rebound</strong> (all quadrants) = Generalized peritonitis (perforated viscus)</li>
+<p>
+</ul>
+</p>
+
+<strong>GENTLER ALTERNATIVE</strong> (if patient clearly in pain):
+<ul>
+<li><strong>Percussion tenderness</strong> (see below) - less painful way to assess peritoneal inflammation</li>
+<li><strong>Cough test</strong>: "Does it hurt when you cough?" (peritoneal inflammation)</li>
+<li><strong>Shaking bed</strong>: Gently shake bed - if patient winces, indicates peritonitis</li>
+<p>
+</ul>
+</p>
+
+<strong>NOTE</strong>: Some examiners dislike rebound testing (too painful). Know it, but use gentler methods in OSCE unless specifically instructed.
+
+<hr>
+
+<h3><strong>P4: PERFORM - PERCUSSION</strong> (1-2 minutes)</h3>
+
+<strong>Purpose</strong>:
+<ul>
+<li>Assess for fluid (ascites)</li>
+<li>Assess for air (obstruction, perforation)</li>
+<li>Assess organomegaly</li>
+<li>Gentler way to assess peritoneal inflammation</li>
+<p>
+</ul>
+</p>
+
+<strong>Technique</strong>:
+<ul>
+<li>Place middle finger of left hand flat on abdomen (pleximeter)</li>
+<li>Tap with middle finger of right hand (plexor)</li>
+<li>Listen to sound</li>
+<p>
+</ul>
+  - <strong>Resonant</strong> (normal - air-filled bowel)
+  - <strong>Dull</strong> (solid organ, fluid, mass)
+  - <strong>Tympanic</strong> (gas-filled - obstruction)
+</p>
+
+<strong>What to Say</strong>: "I'm going to tap on your abdomen to check for fluid."
+
+<hr>
+
+<h4><strong>4G: PERCUSSION - 9 REGIONS</strong></h4>
+
+<strong>Percuss same 9 regions</strong>:
+<ul>
+<li><strong>Liver</strong>: Dull in right hypochondrium (normal)</li>
+<li><strong>Spleen</strong>: Dull in left hypochondrium if enlarged</li>
+<li><strong>Hollow viscera</strong>: Resonant (stomach, bowel)</li>
+<li><strong>Bladder</strong>: Dull suprapubically if full</li>
+<p>
+</ul>
+</p>
+
+<strong>SPECIFIC FINDING</strong>:
+<ul>
+<li><strong>Loss of liver dullness</strong> (resonant where should be dull)</li>
+<p>
+</ul>
+  - <strong>Indicates</strong>: Pneumoperitoneum (perforated viscus - free air displaces liver)
+</p>
+
+<hr>
+
+<h4><strong>4H: PERCUSSION FOR ASCITES</strong></h4>
+
+<strong>Shifting Dullness</strong> (Most reliable clinical test for ascites):
+
+<strong>Technique</strong>:
+<ol>
+<li>Percuss from <strong>midline (umbilicus) towards flank</strong></li>
+<li>Sounds changes from <strong>resonant (midline) → dull (flank)</strong></li>
+<li>Mark transition point</li>
+<li>Ask patient to <strong>roll onto side</strong> (towards you)</li>
+<li><strong>Wait 30 seconds</strong> (for fluid to shift)</li>
+<li>Percuss again at same point</li>
+<li><strong>Positive test</strong>: Area that was dull is now resonant (fluid has shifted away)</li>
+<p>
+</ol>
+</p>
+
+<strong>Interpretation</strong>:
+<ul>
+<li><strong>Shifting dullness present</strong> = Ascites (at least 1-2 litres)</li>
+<li><strong>Causes in acute abdomen</strong>: Perforation (free fluid), pancreatitis (fluid), liver disease, malignancy</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3><strong>P4: PERFORM - AUSCULTATION</strong> (30 seconds)</h3>
+
+<strong>Purpose</strong>: Assess bowel sounds
+
+<strong>Technique</strong>:
+<ul>
+<li>Place stethoscope <strong>in RLQ</strong> (ileocaecal area - most active)</li>
+<li>Listen for <strong>5-10 seconds minimum</strong> (don't rush)</li>
+<p>
+</ul>
+</p>
+
+<strong>What to Say</strong>: "I'm going to listen to your bowel sounds."
+
+<strong>Normal</strong>:
+<ul>
+<li>Bowel sounds present (gurgling every 5-10 seconds)</li>
+<p>
+</ul>
+</p>
+
+<strong>Abnormal</strong>:
+
+<strong>Absent / Very Reduced</strong>:
+<ul>
+<li><strong>Ileus</strong> (bowel not moving)</li>
+<li><strong>Peritonitis</strong> (bowel shuts down)</li>
+<li><strong>Advanced obstruction</strong></li>
+<li><strong>Need to listen for 2 minutes</strong> to declare truly absent (but in OSCE, 30 seconds is acceptable)</li>
+<p>
+</ul>
+</p>
+
+<strong>High-Pitched / Tinkling</strong>:
+<ul>
+<li><strong>Bowel obstruction</strong> (bowel trying to push against obstruction)</li>
+<p>
+</ul>
+</p>
+
+<strong>Increased / Hyperactive</strong>:
+<ul>
+<li><strong>Gastroenteritis</strong> (increased motility)</li>
+<li><strong>Early obstruction</strong> (increased peristalsis trying to overcome)</li>
+<p>
+</ul>
+</p>
+
+<strong>Vascular Bruits</strong>:
+<ul>
+<li>Listen over <strong>aorta</strong> (midline, epigastric)</li>
+<li>Listen over <strong>renal arteries</strong> (left and right of umbilicus)</li>
+<li><strong>Bruit</strong> = Stenosis or aneurysm</li>
+<li>In acute abdomen: AAA may have bruit</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>SPECIAL TESTS FOR SPECIFIC DIFFERENTIALS</h2>
+
+<h3>For APPENDICITIS</h3>
+
+<strong>1. McBurney's Point Tenderness</strong>:
+<ul>
+<li>Point: <strong>2/3 from umbilicus to ASIS</strong> (anterior superior iliac spine)</li>
+<li><strong>Maximum tenderness</strong> at this point = Appendicitis</li>
+<p>
+</ul>
+</p>
+
+<strong>2. Rovsing's Sign</strong>:
+<ul>
+<li>Palpate deeply in <strong>LLQ</strong></li>
+<li><strong>Positive</strong>: Pain in <strong>RLQ</strong> (referred pain due to peritoneal inflammation)</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Psoas Sign</strong>:
+<ul>
+<li>Patient lies on <strong>left side</strong></li>
+<li><strong>Extend right hip</strong> (pull right leg back)</li>
+<li><strong>Positive</strong>: Pain in RLQ</li>
+<li><strong>Indicates</strong>: Retrocaecal appendix (inflamed appendix lying on psoas muscle)</li>
+<p>
+</ul>
+</p>
+
+<strong>4. Obturator Sign</strong>:
+<ul>
+<li>Patient <strong>supine</strong></li>
+<li>Flex right hip and knee to <strong>90 degrees</strong></li>
+<li><strong>Internally rotate</strong> hip</li>
+<li><strong>Positive</strong>: Hypogastric/RLQ pain</li>
+<li><strong>Indicates</strong>: Pelvic appendix (inflamed appendix near obturator internus)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>For CHOLECYSTITIS</h3>
+
+<strong>Murphy's Sign</strong>:
+<ul>
+<li>Place hand <strong>below right costal margin</strong></li>
+<li>Ask patient to <strong>take deep breath in</strong></li>
+<li>Liver descends, pushing inflamed gallbladder onto your hand</li>
+<li><strong>Positive</strong>: Patient <strong>stops breathing in</strong> due to pain (arrest of inspiration)</li>
+<li><strong>Indicates</strong>: Cholecystitis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>For PERITONITIS</h3>
+
+<strong>1. Percussion Tenderness</strong>:
+<ul>
+<li>Gently percuss over area</li>
+<li><strong>Positive</strong>: Pain on percussion (peritoneal inflammation)</li>
+<li><strong>Gentler than rebound test</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>2. Guarding</strong>:
+<ul>
+<li>Involuntary muscle contraction on palpation</li>
+<li><strong>Localized</strong> (appendicitis) vs <strong>generalized</strong> (perforated viscus)</li>
+<p>
+</ul>
+</p>
+
+<strong>3. Rigidity</strong>:
+<ul>
+<li><strong>Board-like hardness</strong> of abdomen</li>
+<li><strong>Involuntary</strong> (can't be relaxed even if patient tries)</li>
+<li><strong>Indicates</strong>: Severe peritonitis (perforated viscus, severe pancreatitis)</li>
+<p>
+</ul>
+</p>
+
+<strong>4. Absent Bowel Sounds</strong>:
+<ul>
+<li>Ileus from peritonitis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>For BOWEL OBSTRUCTION</h3>
+
+<strong>Visible Peristalsis</strong>:
+<ul>
+<li>Watch abdomen</li>
+<li>May see <strong>waves of peristalsis</strong> moving across abdomen (bowel trying to overcome obstruction)</li>
+<li>More common in thin patients</li>
+<p>
+</ul>
+</p>
+
+<strong>Tinkling Bowel Sounds</strong>:
+<ul>
+<li>High-pitched, frequent</li>
+<p>
+</ul>
+</p>
+
+<strong>Distension</strong>:
+<ul>
+<li>Generalized abdominal distension</li>
+<p>
+</ul>
+</p>
+
+<strong>Hernial Orifices</strong>:
+<ul>
+<li><strong>MUST EXAMINE</strong> for incarcerated hernia (cause of obstruction)</li>
+<li>Palpate inguinal and femoral regions</li>
+<li>Ask patient to cough (cough impulse)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>For AAA</h3>
+
+<strong>Palpable Pulsatile Mass</strong>:
+<ul>
+<li>Epigastric, midline</li>
+<li><strong>Expansile</strong> pulsation (pushes fingers apart laterally, not just up/down)</li>
+<li>Width >3 cm</li>
+<p>
+</ul>
+</p>
+
+<strong>Bruit</strong>:
+<ul>
+<li>Auscultate over AAA</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>COMPLETE EXAMINATION</h3>
+
+<strong>At end of abdomen examination, say to examiner</strong>:
+
+<p>
+"To complete my examination, I would like to:
+</p>
+<ul>
+<li><strong>Examine hernial orifices</strong> (inguinal, femoral, umbilical - if not already done)</li>
+<li><strong>Perform digital rectal examination</strong> (if indicated - e.g., suspected GI bleeding, pelvic mass)</li>
+<li><strong>Examine external genitalia</strong> (if indicated)</li>
+<li>Assess <strong>peripheral pulses</strong> (if concerned about vascular pathology)</li>
+<li>Check <strong>observations</strong> (HR, BP, temperature, RR, O2 sats)</li>
+<li>Perform <strong>urinalysis</strong> (blood, protein, nitrites, leukocytes)"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>CLINICAL FINDINGS TABLES - DIFFERENTIAL CORRELATION</h2>
+
+<h3>How Examination Findings Narrow Your Differential</h3>
+
+<hr>
+
+<h3>APPENDICITIS</h3>
+
+<p>
+| Examination Finding | Interpretation |
+|---------------------|----------------|
+| RLQ tenderness at McBurney's point | Classic appendicitis |
+| Localized guarding in RLQ | Inflamed appendix |
+| Rovsing's sign positive | Peritoneal inflammation from appendix |
+| Psoas sign positive | Retrocaecal appendix |
+| Obturator sign positive | Pelvic appendix |
+| Localized rebound in RLQ | Local peritonitis |
+| <strong>Generalized peritonitis</strong> | <strong>Perforated appendix</strong> |
+</p>
+
+<hr>
+
+<h3>CHOLECYSTITIS</h3>
+
+<p>
+| Examination Finding | Interpretation |
+|---------------------|----------------|
+| RUQ tenderness | Inflamed gallbladder |
+| Murphy's sign positive | Cholecystitis (NOT just gallstones) |
+| Fever | Infection |
+| <strong>Jaundice</strong> | <strong>Choledocholithiasis</strong> (stone in CBD) or <strong>Ascending cholangitis</strong> |
+| <strong>Hypotension, rigors</strong> | <strong>Sepsis</strong> (ascending cholangitis) |
+</p>
+
+<hr>
+
+<h3>PERITONITIS (Perforated Viscus)</h3>
+
+<p>
+| Examination Finding | Interpretation |
+|---------------------|----------------|
+| <strong>Board-like rigidity</strong> | <strong>Severe peritonitis</strong> |
+| Generalized guarding | Generalized peritoneal inflammation |
+| Generalized rebound tenderness | Peritonitis |
+| <strong>Absent bowel sounds</strong> | Ileus from peritonitis |
+| <strong>Loss of liver dullness</strong> | Pneumoperitoneum (perforated viscus) |
+| Patient lies completely still | Movement exacerbates peritoneal pain |
+</p>
+
+<hr>
+
+<h3>BOWEL OBSTRUCTION</h3>
+
+<p>
+| Examination Finding | Interpretation |
+|---------------------|----------------|
+| Distension | Dilated bowel loops |
+| Tinkling bowel sounds | Bowel obstruction |
+| Visible peristalsis | Bowel trying to overcome obstruction |
+| Previous surgical scar | Adhesions (cause of obstruction) |
+| Tender mass in groin | Incarcerated inguinal hernia |
+| <strong>Peritonitis</strong> | <strong>Strangulated bowel</strong> (ischaemia, perforation) |
+</p>
+
+<hr>
+
+<h3>AAA (Intact or Ruptured)</h3>
+
+<p>
+| Examination Finding | Interpretation |
+|---------------------|----------------|
+| Palpable pulsatile mass (epigastric) | AAA |
+| Expansile pulsation | AAA (not just aortic pulsation) |
+| Bruit over AAA | Turbulent flow |
+| <strong>Hypotension</strong> | <strong>Ruptured AAA</strong> |
+| <strong>Tachycardia</strong> | Shock from rupture |
+| <strong>Grey Turner's sign</strong> (flank bruising) | Retroperitoneal haemorrhage |
+| <strong>Cullen's sign</strong> (periumbilical bruising) | Intraperitoneal haemorrhage |
+</p>
+
+<hr>
+
+<h3>PANCREATITIS</h3>
+
+<p>
+| Examination Finding | Interpretation |
+|---------------------|----------------|
+| Epigastric tenderness | Inflamed pancreas |
+| Guarding | Peritoneal inflammation |
+| <strong>Grey Turner's sign</strong> | Haemorrhagic pancreatitis |
+| <strong>Cullen's sign</strong> | Haemorrhagic pancreatitis |
+| Jaundice | Gallstone pancreatitis or pancreatic head inflammation compressing CBD |
+</p>
+
+<hr>
+
+<h2>ACUTE ABDOMEN - CRITICAL FINDINGS</h2>
+
+<h3>Recognize These Immediately</h3>
+
+<strong>PERITONITIS</strong>:
+<ul>
+<li>Board-like rigidity</li>
+<li>Generalized guarding and rebound</li>
+<li>Absent bowel sounds</li>
+<li>Patient lies still</li>
+<li><strong>→ Perforated viscus → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> SURGERY</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>SHOCK</strong> (Ruptured AAA, Ruptured Ectopic, Severe Pancreatitis):
+<ul>
+<li>Hypotension</li>
+<li>Tachycardia</li>
+<li>Cold peripheries</li>
+<li>Delayed capillary refill</li>
+<li><strong>→ RESUSCITATE + <span style="color: #e74c3c; font-weight: bold;">URGENT</span> INTERVENTION</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>BOWEL OBSTRUCTION</strong>:
+<ul>
+<li>Distension</li>
+<li>Tinkling bowel sounds</li>
+<li>Tender mass in hernial orifice (incarcerated hernia)</li>
+<li><strong>If peritonitis</strong> → Strangulated bowel → <span style="color: #e74c3c; font-weight: bold;">URGENT</span> SURGERY</li>
+<p>
+</ul>
+</p>
+
+<strong>AAA</strong>:
+<ul>
+<li>Palpable expansile pulsatile mass</li>
+<li><strong>If + hypotension</strong> → Ruptured AAA → ACTIVATE MASSIVE TRANSFUSION + OR</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>INTEGRATION: HOW EXAMINATION FINDINGS NARROW YOUR DIFFERENTIAL</h2>
+
+<h3>Case Example</h3>
+
+<strong>History</strong>: 35F, RLQ pain for 12 hours, started centrally then migrated, anorexia, vomiting after pain started, low-grade fever
+
+<strong>Differential from History</strong>:
+<ol>
+<li>Appendicitis</li>
+<li>Ectopic pregnancy (must exclude)</li>
+<li>Ovarian pathology</li>
+<li>IBD</li>
+<li>Renal stone</li>
+<p>
+</ol>
+</p>
+
+<strong>Examination Findings</strong>:
+<ul>
+<li>Lying still</li>
+<li>RLQ tenderness maximal at McBurney's point</li>
+<li>Localized guarding RLQ</li>
+<li>Rovsing's sign POSITIVE</li>
+<li>Rebound tenderness localized to RLQ</li>
+<li>Normal bowel sounds</li>
+<li>No masses palpable</li>
+<li>Temperature 38.1°C</li>
+<p>
+</ul>
+</p>
+
+<strong>How Examination Narrows Differential</strong>:
+
+<p>
+✅ <strong>Appendicitis</strong> - Most likely (localized RLQ tenderness, McBurney's point, Rovsing's +ve, fever, appropriate history)
+</p>
+
+<p>
+❌ <strong>Ectopic pregnancy</strong> - Less likely (would need βHCG to exclude, but exam doesn't suggest ruptured ectopic - no shock, no generalized peritonitis from haemoperitoneum)
+</p>
+
+<p>
+❌ <strong>Ovarian pathology</strong> - Less likely (tenderness at McBurney's point is too medial for ovary, positive Rovsing's more consistent with appendicitis)
+</p>
+
+<p>
+❌ <strong>IBD</strong> - Less likely (acute presentation, no chronic history, exam findings localized to appendix)
+</p>
+
+<p>
+❌ <strong>Renal stone</strong> - Excluded (patient lying still [stone patients writhe], no loin tenderness, tenderness at McBurney's not loin-to-groin)
+</p>
+
+<strong>Your Final Differential After Examination</strong>:
+<ol>
+<li><strong>Acute appendicitis</strong> (most likely)</li>
+<li>Ectopic pregnancy (must still exclude with βHCG)</li>
+<p>
+</ol>
+</p>
+
+<strong>Your Management</strong>:
+<ul>
+<li>Bloods: FBC, CRP, βHCG (to exclude ectopic)</li>
+<li>Imaging: CT abdomen if diagnosis unclear (but this is classic appendicitis clinically)</li>
+<li><strong>Surgical consult for appendicectomy</strong></li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Last Updated</strong>: December 14, 2025
+<strong>Version</strong>: 1.0
+<strong>Author</strong>: ICRP NSW Young Hospital Preparation Team
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

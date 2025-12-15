@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physical Examination Skills Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP Program Resources</span>
+<span>→</span>
+<span>Weakness Improvement</span>
+</div>
+        
+        <h1>Physical Examination Skills Guide</h1>
+<h2>Systematic Approach to Mastery for ICRP Success</h2>
+
+<strong>Target:</strong> Perform confident, thorough, systematic physical examinations
+<strong>Current Status:</strong> Weak - needs structured improvement
+<strong>Timeline:</strong> December 2025 - February 2026 (3 months intensive)
+<strong>Goal:</strong> 100+ complete examinations practiced before ICRP
+
+<hr>
+
+<h2>Table of Contents</h2>
+<ol>
+<li><a href="#why-it-matters">Why Physical Examination Matters</a></li>
+<li><a href="#common-problems">Common Problems & Solutions</a></li>
+<li><a href="#universal-principles">Universal Examination Principles</a></li>
+<li><a href="#cardiovascular-examination">Cardiovascular Examination</a></li>
+<li><a href="#respiratory-examination">Respiratory Examination</a></li>
+<li><a href="#abdominal-examination">Abdominal Examination</a></li>
+<li><a href="#neurological-examination">Neurological Examination</a></li>
+<li><a href="#musculoskeletal-examination">Musculoskeletal Examination</a></li>
+<li><a href="#practice-plan">3-Month Practice Plan</a></li>
+<li><a href="#daily-routine">Daily Practice Routine</a></li>
+<li><a href="#self-assessment">Self-Assessment Tools</a></li>
+<li><a href="#during-icrp">During ICRP Strategies</a></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Why Physical Examination Matters</h2>
+
+<h3>Critical for ICRP Success</h3>
+<ul>
+<li><strong>Daily Requirement:</strong> You'll examine 5-15 patients daily</li>
+<li><strong>Supervisor Observation:</strong> Direct assessment of your examination technique</li>
+<li><strong>Clinical Competence:</strong> Physical exam findings guide diagnosis and management</li>
+<li><strong>Professional Image:</strong> Smooth, systematic exam = competent doctor</li>
+<li><strong>Patient Confidence:</strong> Thorough exam builds trust</li>
+<p>
+</ul>
+</p>
+
+<h3>Common Consequences of Weak Examination Skills</h3>
+<ul>
+<li>❌ Missed clinical findings</li>
+<li>❌ Supervisor concern about competence</li>
+<li>❌ Takes too long (15-20 min when should be 5-10 min)</li>
+<li>❌ Looks disorganized and unprofessional</li>
+<li>❌ Patient discomfort from rough/uncertain technique</li>
+<li>❌ Lack of confidence shows</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Common Problems & Solutions</h2>
+
+<h3>Problem #1: No Systematic Approach</h3>
+<strong>Symptoms:</strong>
+<ul>
+<li>Jumping around randomly</li>
+<li>Forgetting steps</li>
+<li>Having to re-examine</li>
+<p>
+</ul>
+</p>
+
+<strong>Solution:</strong>
+<ul>
+<li><strong>Learn ONE systematic sequence for each examination</strong></li>
+<li><strong>Practice the SAME sequence EVERY time</strong></li>
+<li><strong>Never vary the order</strong> - muscle memory is key</li>
+<p>
+</ul>
+</p>
+
+<strong>Practice Method:</strong>
+<ul>
+<li>Write out the sequence</li>
+<li>Perform examination while reading sequence</li>
+<li>Perform examination while reciting sequence</li>
+<li>Perform examination from memory</li>
+<li>After 20 practices: Automatic</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Problem #2: Rough/Uncomfortable Technique</h3>
+<strong>Symptoms:</strong>
+<ul>
+<li>Patient winces or pulls away</li>
+<li>Heavy-handed palpation</li>
+<li>Not warming hands/stethoscope</li>
+<li>Abrupt movements</li>
+<p>
+</ul>
+</p>
+
+<strong>Solution:</strong>
+<strong>The 3 W's:</strong>
+<ul>
+<li><strong>Warm:</strong> Warm your hands and stethoscope</li>
+<li><strong>Watch:</strong> Watch patient's face for pain/discomfort</li>
+<li><strong>Warn:</strong> "I'm going to press on your tummy now"</li>
+<p>
+</ul>
+</p>
+
+<strong>Practice Method:</strong>
+<ul>
+<li>Practice on yourself first</li>
+<li>Practice on family members - ask for feedback</li>
+<li>Start gentle, gradually increase pressure</li>
+<li>Always ask: "Does this hurt?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Problem #3: Too Slow</h3>
+<strong>Symptoms:</strong>
+<ul>
+<li>Taking 15-20 minutes per examination</li>
+<li>Repeating steps</li>
+<li>Uncertain about what to do next</li>
+<p>
+</ul>
+</p>
+
+<strong>Solution:</strong>
+<ul>
+<li><strong>Timed practice</strong> - use stopwatch</li>
+<li><strong>Focused examination</strong> - examine relevant systems</li>
+<li><strong>Efficiency</strong> - smooth transitions between steps</li>
+<li><strong>Practice</strong> - speed comes with repetition</li>
+<p>
+</ul>
+</p>
+
+<strong>Time Targets:</strong>
+<ul>
+<li>Cardiovascular: 8-10 minutes</li>
+<li>Respiratory: 6-8 minutes</li>
+<li>Abdominal: 8-10 minutes</li>
+<li>Neurological: 15-20 minutes (acceptable)</li>
+<li>Focused MSK: 5-10 minutes per joint</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h3>Problem #4: Missing Findings</h3>
+<strong>Symptoms:</strong>
+<ul>
+<li>Supervisor finds things you missed</li>
+<li>Not examining thoroughly</li>
+<li>Rushing through steps</li>
+<p>
+</ul>
+</p>
+
+<strong>Solution:</strong>
+<ul>
+<li><strong>Systematic approach prevents misses</strong></li>
+<li><strong>Never skip steps</strong> - even if they seem normal</li>
+<li><strong>Look, Listen, Feel</strong> - use all senses</li>
+<li><strong>Compare sides</strong> - always compare left and right</li>
+<li><strong>Specific technique</strong> - learn proper palpation, percussion, auscultation</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Universal Examination Principles</h2>
+
+<h3>The 5 Ps of Every Examination</h3>
+
+<h4>1. PREPARATION</h4>
+<pre><code>☐ Wash hands (or use sanitizer)
+<p>
+☐ Introduce yourself
+☐ Confirm patient identity
+☐ Explain what you'll do
+☐ Get consent
+☐ Ensure privacy (curtains/door)
+☐ Ensure adequate lighting
+☐ Position patient correctly
+☐ Expose area adequately (with dignity)
+☐ Warm hands and equipment
+</code></pre>
+</p>
+
+<strong>Script:</strong>
+<pre><code>"Hello, I'm [Name], Medical Support Officer. I'd like to examine your [system].
+<p>
+This will involve me looking, listening with my stethoscope, and gently pressing
+on your [area]. It will take about 10 minutes. Is that okay?
+</p>
+
+<p>
+Please could you [position instructions]?
+I'll give you privacy to [adjust clothing].
+Let me know if you feel any discomfort."
+</code></pre>
+</p>
+
+<hr>
+
+<h4>2. POSITION</h4>
+<strong>Correct positioning is crucial!</strong>
+
+<p>
+| Examination | Patient Position | Bed Angle |
+|-------------|-----------------|-----------|
+| Cardiovascular | Semi-recumbent | 45 degrees |
+| Respiratory | Sitting up/45 degrees | 45-90 degrees |
+| Abdominal | Flat, arms by side | 0 degrees (flat) |
+| Neurological | Varies by test | Usually sitting |
+| Thyroid | Sitting up | 90 degrees |
+</p>
+
+<strong>Common Mistakes:</strong>
+<ul>
+<li>❌ Examining cardiovascular with patient flat (miss JVP)</li>
+<li>❌ Examining abdomen with patient sitting (tense abdomen)</li>
+<li>❌ Wrong bed height (examiner uncomfortable)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>3. PERMISSION</h4>
+<strong>Before EVERY step:</strong>
+<pre><code>"I'm going to listen to your heart now, is that okay?"
+<p>
+"I'm going to press on your tummy, please tell me if it hurts"
+"I'm going to check your pulses, this okay?"
+</code></pre>
+</p>
+
+<strong>Australian Communication Style:</strong>
+<ul>
+<li>Friendly but professional</li>
+<li>Explain as you go</li>
+<li>Check comfort regularly</li>
+<li>"Is this okay?" not "Okay?"</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>4. PERFORM</h4>
+<strong>The 4-Step Examination Sequence:</strong>
+
+<strong>1. INSPECTION (Look)</strong>
+<ul>
+<li>General appearance</li>
+<li>Specific signs</li>
+<li>Asymmetry</li>
+<li>Color changes</li>
+<p>
+</ul>
+</p>
+
+<strong>2. PALPATION (Feel)</strong>
+<ul>
+<li>Temperature</li>
+<li>Texture</li>
+<li>Lumps/masses</li>
+<li>Tenderness</li>
+<li>Pulses</li>
+<p>
+</ul>
+</p>
+
+<strong>3. PERCUSSION (Tap)</strong>
+<ul>
+<li>Resonance (lungs)</li>
+<li>Dullness (fluid, solid organs)</li>
+<li>Compare sides</li>
+<p>
+</ul>
+</p>
+
+<strong>4. AUSCULTATION (Listen)</strong>
+<ul>
+<li>Heart sounds</li>
+<li>Breath sounds</li>
+<li>Bowel sounds</li>
+<li>Always use stethoscope properly</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>5. PRESENT</h4>
+<strong>After examination:</strong>
+<pre><code>"Thank you [Name]. You can get dressed now/adjust your clothing.
+<p>
+I'll discuss the findings with [Supervisor]."
+</code></pre>
+</p>
+
+<strong>Then present findings to supervisor:</strong>
+<ul>
+<li>Systematic presentation</li>
+<li>Positive findings</li>
+<li>Relevant negative findings</li>
+<li>Your interpretation (if confident)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>CARDIOVASCULAR EXAMINATION</h2>
+
+<h3>Complete Systematic Approach</h3>
+
+<h4>PART 1: Introduction & Exposure (1 minute)</h4>
+<pre><code>"Hello, I'm [Name]. I'd like to examine your heart and circulation.
+<p>
+This involves looking, feeling for your pulse, and listening with my
+stethoscope. Is that alright?
+</p>
+
+<p>
+Please could you remove your shirt/top and lie back at about 45 degrees?
+I'll give you privacy."
+</code></pre>
+</p>
+
+<strong>Positioning:</strong>
+<ul>
+<li>45-degree angle</li>
+<li>Chest exposed (men: fully; women: preserve dignity with draping)</li>
+<li>Arms by side, relaxed</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>PART 2: General Inspection (30 seconds)</h4>
+
+<strong>From End of Bed:</strong>
+<p>
+☐ <strong>General appearance:</strong> Comfortable at rest? Breathless? Distressed?
+☐ <strong>Obvious devices:</strong> Oxygen, monitors, IV lines
+☐ <strong>Breathing:</strong> Rate and effort
+</p>
+
+<strong>Around Patient:</strong>
+<p>
+☐ <strong>Cyanosis:</strong> Central (tongue, lips) or peripheral (fingers, toes)
+☐ <strong>Pallor:</strong> Anemia
+☐ <strong>Malar flush:</strong> Mitral stenosis (rare)
+</p>
+
+<hr>
+
+<h4>PART 3: Hands & Arms (2 minutes)</h4>
+
+<strong>HANDS:</strong>
+<pre><code>"May I look at your hands?"
+<p>
+</code></pre>
+</p>
+
+<p>
+☐ <strong>Temperature:</strong> Feel temperature of hands (cold peripheries = poor perfusion)
+☐ <strong>Color:</strong> Pallor (anemia), cyanosis
+☐ <strong>Clubbing:</strong> Check nail bed angle
+  - Normal: >160 degrees
+  - Clubbing: <180 degrees (loss of angle)
+  - Causes: Congenital heart disease, endocarditis
+☐ <strong>Splinter hemorrhages:</strong> Look under nails (endocarditis)
+☐ <strong>Osler's nodes:</strong> Painful nodules on finger pads (endocarditis)
+☐ <strong>Janeway lesions:</strong> Painless palmar/plantar macules (endocarditis)
+</p>
+
+<strong>PULSE - Radial:</strong>
+<pre><code>"I'm going to check your pulse"
+<p>
+</code></pre>
+</p>
+
+<p>
+☐ <strong>Location:</strong> Radial artery at wrist
+☐ <strong>Technique:</strong> Use 2 fingers (index + middle), not thumb
+☐ <strong>Assess:</strong>
+  - <strong>Rate:</strong> Count for 30 sec x 2 (or 15 sec x 4 if regular)
+  - <strong>Rhythm:</strong> Regular or irregular?
+  - <strong>Character:</strong> Volume/strength
+☐ <strong>Radio-radial delay:</strong> Check both wrists simultaneously
+☐ <strong>Radio-femoral delay:</strong> Check radial vs femoral (aortic coarctation)
+</p>
+
+<strong>Normal Values:</strong>
+<ul>
+<li>Rate: 60-100 bpm</li>
+<li>Rhythm: Regular</li>
+<li>Volume: Normal/strong</li>
+<p>
+</ul>
+</p>
+
+<strong>BLOOD PRESSURE:</strong>
+<pre><code>"I'm going to check your blood pressure"
+<p>
+</code></pre>
+</p>
+
+<p>
+☐ Appropriate cuff size
+☐ Arm supported at heart level
+☐ Inflate 20-30 mmHg above palpated systolic
+☐ Deflate slowly (2-3 mmHg/second)
+☐ Record systolic (first sound) and diastolic (disappearance of sound)
+</p>
+
+<hr>
+
+<h4>PART 4: Face & Neck (2 minutes)</h4>
+
+<strong>FACE:</strong>
+<p>
+☐ <strong>Eyes:</strong>
+  - Pallor (pull down lower lid - anemia)
+  - Xanthelasma (cholesterol deposits)
+  - Arcus senilis (white ring around cornea)
+☐ <strong>Mouth:</strong>
+  - Central cyanosis (tongue, lips)
+  - Dental hygiene (endocarditis risk)
+  - High arched palate (Marfan syndrome)
+</p>
+
+<strong>NECK:</strong>
+
+<strong>Jugular Venous Pressure (JVP):</strong>
+<pre><code>"I'm going to look at the veins in your neck"
+<p>
+</code></pre>
+</p>
+
+<p>
+☐ <strong>Position:</strong> Patient at 45 degrees
+☐ <strong>Technique:</strong>
+  - Look for internal jugular vein pulsation
+  - Between sternocleidomastoid muscle and clavicle
+  - NOT visible normally (if visible >45° = raised JVP)
+☐ <strong>Measure:</strong> Vertical height above sternal angle
+  - Normal: <3 cm above sternal angle
+  - Raised: CCF, fluid overload, PE
+☐ <strong>Waveform:</strong> a wave (atrial contraction), v wave (venous filling)
+</p>
+
+<strong>Common Mistakes:</strong>
+<ul>
+<li>❌ Confusing JVP with carotid pulse</li>
+<li>❌ Patient not at correct angle</li>
+<li>❌ Measuring from wrong landmark</li>
+<p>
+</ul>
+</p>
+
+<strong>How to Distinguish JVP from Carotid:</strong>
+<p>
+| JVP | Carotid |
+|-----|---------|
+| Not palpable | Palpable |
+| Two-part waveform | Single pulse |
+| Varies with position | Doesn't vary |
+| Varies with breathing | Doesn't vary |
+| Hepatojugular reflux | No change |
+</p>
+
+<strong>Carotid Pulse:</strong>
+<pre><code>"I'm going to feel the pulse in your neck"
+<p>
+</code></pre>
+</p>
+
+<p>
+☐ <strong>Technique:</strong> Palpate gently, one side at a time (NEVER both simultaneously!)
+☐ <strong>Assess:</strong>
+  - <strong>Rate & rhythm:</strong> Should match radial
+  - <strong>Character:</strong>
+    - Slow rising: Aortic stenosis
+    - Bounding: Aortic regurgitation
+    - Normal: Single, smooth upstroke
+</p>
+
+<hr>
+
+<h4>PART 5: Praecordium (Chest) - 3 minutes</h4>
+
+<strong>INSPECTION:</strong>
+<p>
+☐ <strong>Scars:</strong> Sternotomy, thoracotomy, pacemaker
+☐ <strong>Deformity:</strong> Pectus excavatum (sunken), pectus carinatum (pigeon chest)
+☐ <strong>Apex beat:</strong> Visible? (normally 5th intercostal space, mid-clavicular line)
+☐ <strong>Abnormal pulsations</strong>
+</p>
+
+<strong>PALPATION:</strong>
+
+<pre><code>"I'm going to feel your chest now"
+<p>
+</code></pre>
+</p>
+
+<p>
+☐ <strong>Apex Beat:</strong>
+  - <strong>Location:</strong> Normally 5th ICS, mid-clavicular line
+  - <strong>Technique:</strong> Feel with fingertips
+  - <strong>Character:</strong>
+    - Normal: Gentle tap
+    - Hyperdynamic: Strong/thrusting
+    - Heaving: Sustained (LV hypertrophy)
+  - <strong>Displacement:</strong> Laterally = cardiomegaly
+</p>
+
+<p>
+☐ <strong>Heaves & Thrills:</strong>
+  - <strong>Heave:</strong> Palm over left sternal edge (RV hypertrophy)
+  - <strong>Thrill:</strong> Palpable murmur (like cat purr)
+    - Aortic: 2nd right ICS
+    - Pulmonary: 2nd left ICS
+    - Mitral: At apex
+</p>
+
+<hr>
+
+<strong>AUSCULTATION:</strong>
+
+<pre><code>"I'm going to listen to your heart now with my stethoscope"
+<p>
+</code></pre>
+</p>
+
+<strong>Warm stethoscope first!</strong>
+
+<p>
+☐ <strong>Technique:</strong>
+  - Use diaphragm (high-pitched sounds) and bell (low-pitched)
+  - Quiet environment
+  - Patient breathes normally
+  - Listen in 4 areas + extras
+</p>
+
+<strong>The 4 Main Areas:</strong>
+
+<ol>
+<li><strong>Aortic:</strong> 2nd intercostal space, right sternal edge</li>
+<li><strong>Pulmonary:</strong> 2nd intercostal space, left sternal edge</li>
+<li><strong>Tricuspid:</strong> 4th intercostal space, left sternal edge</li>
+<li><strong>Mitral:</strong> 5th intercostal space, mid-clavicular line (apex)</li>
+<p>
+</ol>
+</p>
+
+<strong>Mnemonic: "All Physicians Take Money"</strong>
+<ul>
+<li>Aortic</li>
+<li>Pulmonary</li>
+<li>Tricuspid</li>
+<li>Mitral</li>
+<p>
+</ul>
+</p>
+
+<strong>At Each Area:</strong>
+<p>
+☐ Identify S1 (lub) and S2 (dub)
+☐ Listen for extra sounds (S3, S4, clicks)
+☐ Listen for murmurs
+  - Timing: Systolic (between S1-S2) or Diastolic (between S2-S1)
+  - Loudness: Grade 1-6
+  - Character: Blowing, harsh, rumbling
+  - Radiation: To carotids, axilla
+</p>
+
+<strong>Additional Auscultation:</strong>
+<p>
+☐ <strong>Left axilla:</strong> Mitral regurgitation radiation
+☐ <strong>Carotids:</strong> Aortic stenosis radiation
+☐ <strong>Lung bases:</strong> Pulmonary edema (crackles)
+</p>
+
+<strong>Special Maneuvers:</strong>
+<p>
+☐ <strong>Left lateral position:</strong> Listen at apex with bell for mitral stenosis (diastolic murmur)
+☐ <strong>Sitting forward, exhale:</strong> Listen at left sternal edge for aortic regurgitation
+</p>
+
+<hr>
+
+<h4>PART 6: Peripheral & Completion (2 minutes)</h4>
+
+<strong>PERIPHERAL PULSES:</strong>
+<pre><code>"I'm going to check the pulses in your legs"
+<p>
+</code></pre>
+</p>
+
+<p>
+☐ <strong>Femoral:</strong> Midpoint of inguinal ligament
+☐ <strong>Popliteal:</strong> Behind knee (flex knee slightly)
+☐ <strong>Posterior tibial:</strong> Behind medial malleolus
+☐ <strong>Dorsalis pedis:</strong> Top of foot
+</p>
+
+<strong>Rate:</strong> Present/Absent, compare both sides
+
+<strong>PERIPHERAL EDEMA:</strong>
+<pre><code>"I'm going to check for swelling in your ankles"
+<p>
+</code></pre>
+</p>
+
+<p>
+☐ <strong>Technique:</strong> Press firmly on anterior tibia for 5 seconds
+☐ <strong>Assessment:</strong>
+  - Pitting edema: Depression remains
+  - Non-pitting: Returns immediately
+  - Grade: +1 to +4
+☐ <strong>Distribution:</strong> Ankles, shins, sacrum (if bed-bound)
+</p>
+
+<strong>COMPLETE EXAMINATION:</strong>
+<pre><code>"To complete my examination, I would like to:
+<ul>
+<li>Measure the blood pressure</li>
+<li>Perform fundoscopy (retinal examination)</li>
+<li>Examine for hepatomegaly</li>
+<li>Perform urinalysis</li>
+<li>Request an ECG"</li>
+<p>
+</ul>
+</code></pre>
+</p>
+
+<hr>
+
+<h3>Cardiovascular Examination Summary Checklist</h3>
+
+<strong>☐ INTRODUCTION & CONSENT</strong>
+
+<strong>☐ GENERAL INSPECTION</strong>
+<ul>
+<li>Comfortable? Breathless? Cyanosed?</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ HANDS</strong>
+<ul>
+<li>Temperature, clubbing, splinters</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ PULSE</strong>
+<ul>
+<li>Rate, rhythm, character</li>
+<li>Radio-radial delay, radio-femoral delay</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ FACE</strong>
+<ul>
+<li>Eyes: pallor, xanthelasma</li>
+<li>Mouth: cyanosis</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ NECK</strong>
+<ul>
+<li>JVP height and waveform</li>
+<li>Carotid pulse character</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ PRAECORDIUM - INSPECT</strong>
+<ul>
+<li>Scars, deformity, visible apex beat</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ PRAECORDIUM - PALPATE</strong>
+<ul>
+<li>Apex beat location and character</li>
+<li>Heaves and thrills</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ PRAECORDIUM - AUSCULTATE</strong>
+<ul>
+<li>4 areas (Aortic, Pulmonary, Tricuspid, Mitral)</li>
+<li>S1, S2, extra sounds, murmurs</li>
+<li>Special maneuvers if indicated</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ PERIPHERAL PULSES</strong>
+<ul>
+<li>Femoral, popliteal, posterior tibial, dorsalis pedis</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ PERIPHERAL EDEMA</strong>
+<ul>
+<li>Ankles, shins, sacrum</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ COMPLETE</strong>
+<ul>
+<li>Thank patient, cover, state what else you'd do</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>RESPIRATORY EXAMINATION</h2>
+
+<h3>Complete Systematic Approach</h3>
+
+<h4>PART 1: Introduction (1 minute)</h4>
+
+<pre><code>"Hello, I'm [Name]. I'd like to examine your chest and breathing.
+<p>
+This involves looking, feeling, tapping, and listening with my stethoscope.
+Is that alright?
+</p>
+
+<p>
+Please could you sit up and remove your top? I'll give you privacy."
+</code></pre>
+</p>
+
+<strong>Positioning:</strong>
+<ul>
+<li>Sitting at 45-90 degrees</li>
+<li>Chest fully exposed (preserve dignity for women)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>PART 2: General Inspection (30 seconds)</h4>
+
+<strong>FROM END OF BED:</strong>
+<p>
+☐ <strong>Respiratory distress?</strong>
+  - Use of accessory muscles
+  - Intercostal recession
+  - Tracheal tug
+☐ <strong>Breathing pattern:</strong>
+  - Rate (normal: 12-20/min)
+  - Depth
+  - Rhythm
+☐ <strong>Cyanosis:</strong> Central or peripheral
+☐ <strong>Cough:</strong> Productive or dry?
+☐ <strong>Sputum pot:</strong> Color and amount
+</p>
+
+<strong>AROUND PATIENT:</strong>
+<p>
+☐ <strong>Oxygen:</strong> Type and flow rate
+☐ <strong>Inhalers:</strong> At bedside
+☐ <strong>Cachexia:</strong> Severe COPD, TB, cancer
+</p>
+
+<hr>
+
+<h4>PART 3: Hands (1 minute)</h4>
+
+<pre><code>"May I look at your hands?"
+<p>
+</code></pre>
+</p>
+
+<p>
+☐ <strong>Clubbing:</strong> (lung cancer, fibrosis, bronchiectasis)
+☐ <strong>Nicotine staining:</strong> Yellow fingers (smoker)
+☐ <strong>Peripheral cyanosis:</strong> Blue fingertips
+☐ <strong>CO2 retention flap:</strong> Hold arms outstretched, hands dorsiflexed
+  - Flapping tremor = CO2 retention
+☐ <strong>Pulse:</strong> Rate and rhythm
+</p>
+
+<hr>
+
+<h4>PART 4: Face & Neck (1 minute)</h4>
+
+<strong>FACE:</strong>
+<p>
+☐ <strong>Central cyanosis:</strong> Tongue, lips (hypoxia)
+☐ <strong>Plethora:</strong> Red face (polycythemia)
+☐ <strong>Pursed lip breathing:</strong> COPD
+☐ <strong>Horner's syndrome:</strong> Ptosis, miosis, anhidrosis (Pancoast tumor)
+</p>
+
+<strong>NECK:</strong>
+<p>
+☐ <strong>Trachea:</strong>
+</p>
+<pre><code>"I'm going to feel your trachea, this may be slightly uncomfortable"
+<p>
+</code></pre>
+  - <strong>Technique:</strong> Two fingers either side of trachea at sternal notch
+  - <strong>Assess:</strong> Midline or deviated?
+  - <strong>Deviation:</strong> Away from tension pneumothorax, toward collapse/fibrosis
+</p>
+
+<p>
+☐ <strong>Lymph nodes:</strong>
+  - Cervical, supraclavicular
+  - Lymphoma, TB, metastases
+</p>
+
+<p>
+☐ <strong>JVP:</strong> Raised in cor pulmonale
+</p>
+
+<hr>
+
+<h4>PART 5: Chest Examination - ANTERIOR (3 minutes)</h4>
+
+<strong>INSPECTION:</strong>
+<p>
+☐ <strong>Shape:</strong>
+  - Barrel chest (COPD - increased AP diameter)
+  - Pectus excavatum/carinatum
+☐ <strong>Scars:</strong> Surgery
+☐ <strong>Chest wall movement:</strong> Symmetrical? Reduced on one side?
+</p>
+
+<strong>PALPATION:</strong>
+
+<pre><code>"I'm going to feel your chest"
+<p>
+</code></pre>
+</p>
+
+<p>
+☐ <strong>Chest expansion:</strong>
+  - <strong>Technique:</strong> Hands on lower chest, thumbs meet at midline
+  - <strong>Instruction:</strong> "Take a big breath in"
+  - <strong>Assess:</strong> Symmetry and degree of expansion
+  - <strong>Normal:</strong> 5-7 cm
+  - <strong>Reduced:</strong> Fibrosis, effusion, pneumonia, pneumothorax
+</p>
+
+<p>
+☐ <strong>Tactile vocal fremitus:</strong>
+  - <strong>Technique:</strong> Palm of hand on chest
+  - <strong>Instruction:</strong> "Say ninety-nine"
+  - <strong>Compare:</strong> Side to side
+  - <strong>Increased:</strong> Consolidation
+  - <strong>Decreased:</strong> Effusion, pneumothorax, obesity
+</p>
+
+<hr>
+
+<strong>PERCUSSION:</strong>
+
+<pre><code>"I'm going to tap on your chest"
+<p>
+</code></pre>
+</p>
+
+<p>
+☐ <strong>Technique:</strong>
+  - Place middle finger of non-dominant hand flat on chest (pleximeter)
+  - Strike with middle finger of dominant hand (plexor)
+  - Strike at DIP joint with finger tip
+  - Quick wrist movement, bounce off
+  - Compare side to side
+</p>
+
+<p>
+☐ <strong>Areas:</strong> Apex, upper, mid, lower zones bilaterally
+</p>
+
+<p>
+☐ <strong>Sounds:</strong>
+  - <strong>Resonant:</strong> Normal air-filled lung
+  - <strong>Hyperresonant:</strong> Pneumothorax, emphysema
+  - <strong>Dull:</strong> Consolidation, collapse
+  - <strong>Stony dull:</strong> Pleural effusion
+</p>
+
+<hr>
+
+<strong>AUSCULTATION:</strong>
+
+<pre><code>"I'm going to listen to your chest with my stethoscope"
+<p>
+</code></pre>
+</p>
+
+<strong>Warm stethoscope first!</strong>
+
+<p>
+☐ <strong>Technique:</strong>
+  - Use diaphragm
+  - Patient breathes through mouth (deeper)
+  - "Take deep breaths in and out through your mouth"
+  - Listen to full inspiration and expiration
+  - Compare side to side
+  - Top to bottom
+</p>
+
+<p>
+☐ <strong>Areas:</strong> Apex, upper, mid, lower zones bilaterally (at least 6 areas per side)
+</p>
+
+<p>
+☐ <strong>Breath Sounds:</strong>
+  - <strong>Normal (vesicular):</strong> Soft, whooshing
+  - <strong>Bronchial:</strong> Harsh, louder, gap between inspiration and expiration
+    - Normal over trachea
+    - Abnormal over lung = consolidation
+  - <strong>Reduced/Absent:</strong> Effusion, pneumothorax, collapse
+</p>
+
+<p>
+☐ <strong>Added Sounds:</strong>
+  - <strong>Wheeze:</strong> High-pitched, musical (asthma, COPD)
+    - Expiratory = obstructive
+  - <strong>Crackles (crepitations):</strong>
+    - Fine: Late inspiratory (fibrosis, pulmonary edema)
+    - Coarse: Early inspiratory (bronchiectasis, pneumonia)
+  - <strong>Pleural rub:</strong> Creaking, leather-like (pleurisy)
+</p>
+
+<p>
+☐ <strong>Vocal resonance:</strong>
+  - <strong>Instruction:</strong> "Say ninety-nine"
+  - <strong>Normal:</strong> Muffled
+  - <strong>Increased:</strong> Consolidation
+  - <strong>Decreased:</strong> Effusion, pneumothorax
+</p>
+
+<hr>
+
+<h4>PART 6: Chest Examination - POSTERIOR (2 minutes)</h4>
+
+<pre><code>"Please lean forward so I can examine your back"
+<p>
+</code></pre>
+</p>
+
+<strong>Repeat all steps from anterior examination:</strong>
+<p>
+☐ <strong>Inspection:</strong> Scars, symmetry
+☐ <strong>Palpation:</strong> Expansion, tactile fremitus
+☐ <strong>Percussion:</strong> Compare sides, all zones
+☐ <strong>Auscultation:</strong> Breath sounds, added sounds, vocal resonance
+</p>
+
+<strong>Important:</strong> Lower lobes are mostly posterior!
+
+<hr>
+
+<h4>PART 7: Completion</h4>
+
+<pre><code>"To complete my examination, I would like to:
+<ul>
+<li>Measure oxygen saturation</li>
+<li>Perform peak flow or spirometry</li>
+<li>Request a chest X-ray</li>
+<li>Examine the sputum</li>
+<li>Check temperature"</li>
+<p>
+</ul>
+</code></pre>
+</p>
+
+<hr>
+
+<h3>Respiratory Examination Summary Checklist</h3>
+
+<strong>☐ INTRODUCTION & CONSENT</strong>
+
+<strong>☐ GENERAL INSPECTION</strong>
+<ul>
+<li>Respiratory rate, distress, oxygen</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ HANDS</strong>
+<ul>
+<li>Clubbing, nicotine, CO2 flap</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ FACE</strong>
+<ul>
+<li>Central cyanosis</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ NECK</strong>
+<ul>
+<li>Trachea position</li>
+<li>Lymph nodes</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ CHEST - ANTERIOR</strong>
+<ul>
+<li><strong>Inspect:</strong> Shape, scars, movement</li>
+<li><strong>Palpate:</strong> Expansion, fremitus</li>
+<li><strong>Percuss:</strong> All zones, compare sides</li>
+<li><strong>Auscultate:</strong> Breath sounds, added sounds</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ CHEST - POSTERIOR</strong>
+<ul>
+<li><strong>Inspect:</strong> Scars, symmetry</li>
+<li><strong>Palpate:</strong> Expansion, fremitus</li>
+<li><strong>Percuss:</strong> All zones</li>
+<li><strong>Auscultate:</strong> Breath sounds, added sounds</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ COMPLETE</strong>
+<ul>
+<li>Sats, peak flow, CXR</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>ABDOMINAL EXAMINATION</h2>
+
+<h3>Complete Systematic Approach</h3>
+
+<h4>PART 1: Introduction (1 minute)</h4>
+
+<pre><code>"Hello, I'm [Name]. I'd like to examine your tummy. This involves looking,
+<p>
+gently pressing, and listening. Is that okay?
+</p>
+
+<p>
+Please could you lie flat and expose your abdomen from chest to groin?
+I'll give you privacy."
+</code></pre>
+</p>
+
+<strong>Positioning:</strong>
+<ul>
+<li><strong>Flat (0 degrees)</strong> - crucial!</li>
+<li>Head on single pillow</li>
+<li>Arms by side (relaxes abdominal muscles)</li>
+<li>Expose nipples to pubis</li>
+<li>Preserve dignity with towel/sheet</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h4>PART 2: General Inspection (30 seconds)</h4>
+
+<strong>FROM END OF BED:</strong>
+<p>
+☐ <strong>Comfort level:</strong> Pain? Distress?
+☐ <strong>Cachexia:</strong> Cancer, malabsorption
+☐ <strong>Jaundice:</strong> Yellow discoloration
+</p>
+
+<hr>
+
+<h4>PART 3: Hands (1 minute)</h4>
+
+<pre><code>"May I look at your hands?"
+<p>
+</code></pre>
+</p>
+
+<p>
+☐ <strong>Clubbing:</strong> Inflammatory bowel disease, liver disease
+☐ <strong>Palmar erythema:</strong> Red palms (chronic liver disease)
+☐ <strong>Dupuytren's contracture:</strong> Thickened palmar fascia (alcohol)
+☐ <strong>Koilonychia:</strong> Spoon-shaped nails (iron deficiency)
+☐ <strong>Leukonychia:</strong> White nails (hypoalbuminemia/liver disease)
+☐ <strong>Palmar pallor:</strong> Anemia
+</p>
+
+<hr>
+
+<h4>PART 4: Arms & Face (1 minute)</h4>
+
+<strong>ARMS:</strong>
+<p>
+☐ <strong>Asterixis (liver flap):</strong>
+</p>
+<pre><code>"Hold your arms out with wrists cocked back"
+<p>
+</code></pre>
+  - Flapping tremor = hepatic encephalopathy
+</p>
+
+<p>
+☐ <strong>Bruising:</strong> Clotting disorder (liver disease)
+</p>
+
+<strong>FACE:</strong>
+<p>
+☐ <strong>Eyes:</strong>
+  - Jaundice (scleral icterus) - look in natural light
+  - Pallor (conjunctival - pull down lower lid)
+  - Kayser-Fleischer rings (Wilson's disease - rare)
+</p>
+
+<p>
+☐ <strong>Mouth:</strong>
+</p>
+<pre><code>"Open your mouth and stick out your tongue"
+<p>
+</code></pre>
+  - Glossitis (smooth, red tongue - B12/folate deficiency)
+  - Angular stomatitis (corners of mouth - iron/B12 deficiency)
+  - Candidiasis (immunocompromised)
+  - Ulcers (inflammatory bowel disease)
+  - Fetor hepaticus (sweet smell - liver failure)
+</p>
+
+<hr>
+
+<h4>PART 5: Neck & Chest (30 seconds)</h4>
+
+<p>
+☐ <strong>Lymph nodes:</strong> Virchow's node (left supraclavicular - gastric cancer)
+☐ <strong>Spider naevi:</strong> Small red lesions with central arteriole, radiating vessels
+  - >5 = chronic liver disease
+  - Normal: 0-2 (pregnancy)
+☐ <strong>Gynaecomastia:</strong> (chronic liver disease)
+</p>
+
+<hr>
+
+<h4>PART 6: Abdominal Inspection (1 minute)</h4>
+
+<pre><code>"I'm going to look at your tummy"
+<p>
+</code></pre>
+</p>
+
+<strong>POSITION:</strong> Squat to patient level, look tangentially across abdomen
+
+<p>
+☐ <strong>Size & Shape:</strong>
+  - Scaphoid (malnutrition)
+  - Distended (5 F's: Fat, Fluid, Fetus, Flatus, Feces)
+  - Asymmetry
+</p>
+
+<p>
+☐ <strong>Movement:</strong>
+  - Respiratory movement
+  - Peristalsis (visible waves - obstruction)
+  - Pulsations (AAA)
+</p>
+
+<p>
+☐ <strong>Scars:</strong>
+  - Midline laparotomy
+  - Right upper quadrant (cholecystectomy)
+  - Right lower quadrant (appendectomy)
+  - Pfannenstiel (C-section)
+  - Laparoscopic (small scars)
+</p>
+
+<p>
+☐ <strong>Striae:</strong> Purple (Cushing's), silver (pregnancy/weight loss)
+☐ <strong>Caput medusae:</strong> Dilated veins radiating from umbilicus (portal hypertension)
+☐ <strong>Hernias:</strong> Umbilical, incisional
+☐ <strong>Stomas:</strong> Ileostomy, colostomy
+☐ <strong>Masses:</strong> Visible lumps
+</p>
+
+<hr>
+
+<h4>PART 7: Palpation (3 minutes)</h4>
+
+<strong>CRITICAL RULES:</strong>
+<ol>
+<li><strong>Always ask:</strong> "Do you have any pain? Where?"</li>
+<li><strong>Examine painful area LAST</strong></li>
+<li><strong>Watch patient's face</strong> for pain/discomfort</li>
+<li><strong>Warm your hands!</strong></li>
+<li><strong>Start gently,</strong> increase pressure gradually</li>
+<p>
+</ol>
+</p>
+
+<pre><code>"I'm going to feel your tummy now. Please tell me if anything hurts"
+<p>
+</code></pre>
+</p>
+
+<strong>SUPERFICIAL PALPATION:</strong>
+
+<p>
+☐ <strong>Technique:</strong>
+  - Patient supine, relaxed
+  - Examiner on right side
+  - Use palmar surface of right hand
+  - Fingers together, flat
+  - Gentle, light pressure (indent 1-2 cm)
+  - Systematic: all 9 regions
+</p>
+
+<strong>The 9 Regions:</strong>
+<ol>
+<li>Right hypochondrium</li>
+<li>Epigastrium</li>
+<li>Left hypochondrium</li>
+<li>Right lumbar (flank)</li>
+<li>Umbilical</li>
+<li>Left lumbar (flank)</li>
+<li>Right iliac fossa</li>
+<li>Suprapubic</li>
+<li>Left iliac fossa</li>
+<p>
+</ol>
+</p>
+
+<p>
+☐ <strong>Assess:</strong>
+  - Tenderness
+  - Guarding (involuntary muscle contraction)
+  - Masses
+  - Hernias
+</p>
+
+<hr>
+
+<strong>DEEP PALPATION:</strong>
+
+<p>
+☐ <strong>Technique:</strong>
+  - Use two hands (bimanual)
+  - Deeper pressure (indent 4-5 cm)
+  - Same 9 regions
+</p>
+
+<p>
+☐ <strong>Assess:</strong>
+  - Masses: Location, size, shape, consistency, mobility, tender?
+  - Organomegaly (see below)
+</p>
+
+<hr>
+
+<strong>LIVER:</strong>
+
+<pre><code>"I'm going to feel for your liver"
+<p>
+</code></pre>
+</p>
+
+<p>
+☐ <strong>Technique:</strong>
+  - Start in right iliac fossa (below where liver should be)
+  - Hand parallel to right costal margin
+  - <strong>Instruction:</strong> "Take deep breaths in and out"
+  - Feel for liver edge descending on inspiration
+  - Move hand up 2 cm each breath
+  - Palpate up to costal margin
+</p>
+
+<p>
+☐ <strong>Normal:</strong> Not palpable, or <2 cm below costal margin
+</p>
+
+<p>
+☐ <strong>If enlarged:</strong>
+  - Measure: cm below costal margin
+  - Assess: Smooth or nodular? Tender? Pulsatile?
+</p>
+
+<hr>
+
+<strong>SPLEEN:</strong>
+
+<pre><code>"I'm going to feel for your spleen"
+<p>
+</code></pre>
+</p>
+
+<p>
+☐ <strong>Technique:</strong>
+  - Start in right iliac fossa (spleen enlarges toward RIF)
+  - Hand parallel to left costal margin
+  - "Take deep breaths"
+  - Feel for splenic edge on inspiration
+  - Move hand up 2 cm each breath
+</p>
+
+<p>
+☐ <strong>Normal:</strong> Not palpable
+</p>
+
+<p>
+☐ <strong>If can't feel:</strong> Roll patient onto right side, repeat
+</p>
+
+<p>
+☐ <strong>If enlarged:</strong>
+  - Can't get above it (vs kidney)
+  - Moves with respiration
+  - Notch palpable
+  - Dull to percussion
+</p>
+
+<hr>
+
+<strong>KIDNEYS:</strong>
+
+<pre><code>"I'm going to feel for your kidneys - I'll need to lift your back slightly"
+<p>
+</code></pre>
+</p>
+
+<p>
+☐ <strong>Technique (Ballot):</strong>
+  - Bimanual palpation
+  - One hand posteriorly in renal angle
+  - Other hand anteriorly below costal margin
+  - "Take deep breaths"
+  - Push kidney anteriorly with posterior hand
+  - Palpate with anterior hand (ballottable)
+</p>
+
+<p>
+☐ <strong>Normal:</strong> Not palpable
+</p>
+
+<hr>
+
+<strong>BLADDER:</strong>
+
+<p>
+☐ <strong>Palpate:</strong> Suprapubic region
+☐ <strong>Normal:</strong> Not palpable
+☐ <strong>Enlarged:</strong> Dull to percussion, arises from pelvis, can't get below it
+</p>
+
+<hr>
+
+<strong>SPECIAL TESTS:</strong>
+
+<p>
+☐ <strong>Rebound tenderness (peritonism):</strong>
+  - Press slowly and deeply
+  - Release quickly
+  - Pain on release = peritonitis
+  - <strong>BE GENTLE</strong>
+</p>
+
+<p>
+☐ <strong>Murphy's sign (cholecystitis):</strong>
+  - Palpate right upper quadrant
+  - "Take deep breath in"
+  - Arrest of inspiration = positive (gallbladder pain)
+</p>
+
+<p>
+☐ <strong>Rovsing's sign (appendicitis):</strong>
+  - Palpate left lower quadrant
+  - Pain in right lower quadrant = positive
+</p>
+
+<hr>
+
+<h4>PART 8: Percussion (1 minute)</h4>
+
+<pre><code>"I'm going to tap on your tummy"
+<p>
+</code></pre>
+</p>
+
+<p>
+☐ <strong>Technique:</strong> Same as chest percussion
+</p>
+
+<p>
+☐ <strong>All 9 regions:</strong>
+  - Resonant = gas-filled bowel (normal)
+  - Dull = solid organ or mass
+</p>
+
+<p>
+☐ <strong>Liver:</strong>
+  - Percuss from resonant (lung) to dull (liver)
+  - Measure liver span (normally 12-15 cm)
+</p>
+
+<p>
+☐ <strong>Spleen:</strong>
+  - Percuss in left upper quadrant
+  - Traube's space (normally resonant)
+  - Dull = splenomegaly
+</p>
+
+<p>
+☐ <strong>Bladder:</strong>
+  - Suprapubic dullness = full bladder
+</p>
+
+<strong>ASCITES (Shifting Dullness):</strong>
+
+<p>
+If abdomen distended:
+☐ Percuss from midline (resonant) toward flank
+☐ Note where becomes dull
+☐ Keep finger on that spot
+☐ Roll patient toward you
+☐ Re-percuss same spot
+☐ If now resonant = shifting dullness (ascites)
+</p>
+
+<hr>
+
+<h4>PART 9: Auscultation (30 seconds)</h4>
+
+<pre><code>"I'm going to listen to your tummy"
+<p>
+</code></pre>
+</p>
+
+<p>
+☐ <strong>Technique:</strong>
+  - Diaphragm of stethoscope
+  - Listen in at least 2 areas
+  - Listen for 30 seconds minimum
+</p>
+
+<p>
+☐ <strong>Bowel sounds:</strong>
+  - <strong>Normal:</strong> Gurgling, 2-5/minute
+  - <strong>Hyperactive:</strong> Tinkling, frequent (obstruction, diarrhea)
+  - <strong>Absent:</strong> No sounds for 2 minutes (ileus, peritonitis)
+</p>
+
+<p>
+☐ <strong>Vascular bruits:</strong>
+  - Renal arteries (renal artery stenosis)
+  - Aorta (aneurysm)
+</p>
+
+<hr>
+
+<h4>PART 10: Completion</h4>
+
+<pre><code>"To complete my examination, I would like to:
+<ul>
+<li>Examine external genitalia and perform digital rectal examination</li>
+<li>Examine hernial orifices</li>
+<li>Perform urinalysis</li>
+<li>Check observations (temperature, BP)"</li>
+<p>
+</ul>
+</code></pre>
+</p>
+
+<p>
+☐ <strong>Hernias:</strong> If indicated, examine with patient standing
+☐ <strong>Groin examination:</strong> Lymph nodes, femoral pulses
+☐ <strong>Ankles:</strong> Peripheral edema
+</p>
+
+<hr>
+
+<h3>Abdominal Examination Summary Checklist</h3>
+
+<strong>☐ INTRODUCTION & CONSENT</strong>
+<strong>☐ POSITION:</strong> Flat, arms by side, expose nipples to pubis
+
+<strong>☐ GENERAL INSPECTION</strong>
+
+<strong>☐ HANDS</strong>
+<ul>
+<li>Clubbing, palmar erythema, Dupuytren's, koilonychia, leukonychia</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ ARMS</strong>
+<ul>
+<li>Asterixis (liver flap)</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ FACE</strong>
+<ul>
+<li>Eyes: jaundice, pallor</li>
+<li>Mouth: glossitis, ulcers</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ CHEST/NECK</strong>
+<ul>
+<li>Spider naevi, gynaecomastia, lymph nodes</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ ABDOMEN - INSPECT</strong>
+<ul>
+<li>Size, shape, scars, movement, masses</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ ABDOMEN - PALPATE</strong>
+<ul>
+<li>Superficial (9 regions)</li>
+<li>Deep (masses)</li>
+<li>Liver</li>
+<li>Spleen</li>
+<li>Kidneys</li>
+<li>Bladder</li>
+<li>Special signs (rebound, Murphy's, Rovsing's)</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ ABDOMEN - PERCUSS</strong>
+<ul>
+<li>All regions</li>
+<li>Liver span</li>
+<li>Spleen</li>
+<li>Ascites (shifting dullness)</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ ABDOMEN - AUSCULTATE</strong>
+<ul>
+<li>Bowel sounds</li>
+<li>Bruits</li>
+<p>
+</ul>
+</p>
+
+<strong>☐ COMPLETE</strong>
+<ul>
+<li>DRE, hernias, urinalysis</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>3-Month Practice Plan</h2>
+
+<h3>December: Foundation</h3>
+<ul>
+<li><strong>Week 1-2:</strong> Watch video demonstrations, practice on self</li>
+<li><strong>Week 3-4:</strong> Practice on family members (10+ exams each system)</li>
+<p>
+</ul>
+</p>
+
+<h3>January: Build Proficiency</h3>
+<ul>
+<li><strong>Week 1:</strong> Cardiovascular focus (20 complete exams)</li>
+<li><strong>Week 2:</strong> Respiratory focus (20 complete exams)</li>
+<li><strong>Week 3:</strong> Abdominal focus (20 complete exams)</li>
+<li><strong>Week 4:</strong> Mixed practice (15 exams)</li>
+<p>
+</ul>
+</p>
+
+<h3>February: Mastery</h3>
+<ul>
+<li><strong>Week 1-2:</strong> Speed practice - timed examinations</li>
+<li><strong>Week 3:</strong> Refinement - video self-review</li>
+<li><strong>Week 4:</strong> Maintain - light practice before ICRP</li>
+<p>
+</ul>
+</p>
+
+<strong>TOTAL GOAL: 100+ complete examinations</strong>
+
+<hr>
+
+<h2>Daily Practice Routine</h2>
+
+<strong>30-60 Minutes Daily:</strong>
+
+<ol>
+<li><strong>Warm-up (5 min):</strong></li>
+<p>
+</ol>
+   - Recite examination sequence from memory
+   - Review one common finding
+</p>
+
+<ol>
+<li><strong>Practice (40 min):</strong></li>
+<p>
+</ol>
+   - 1 complete cardiovascular exam (10 min)
+   - 1 complete respiratory exam (8 min)
+   - 1 complete abdominal exam (10 min)
+   - Record findings (10 min)
+</p>
+
+<ol>
+<li><strong>Review (10 min):</strong></li>
+<p>
+</ol>
+   - What did I do well?
+   - What needs improvement?
+   - Watch one video demonstration
+</p>
+
+<hr>
+
+<h2>During ICRP: Application</h2>
+
+<h3>Every Patient is Practice</h3>
+<ul>
+<li>Perform complete, systematic examinations</li>
+<li>Talk through what you're doing</li>
+<li>Explain findings to supervisor</li>
+<li>Ask for feedback daily</li>
+<li>Evening: Reflect on 3 most interesting examinations</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>YOU CAN MASTER PHYSICAL EXAMINATION!</strong>
+<strong>Start practicing today. Consistency is key.</strong>
+
+<em>Next Document: Computer Skills & Typing Improvement Plan</em>
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

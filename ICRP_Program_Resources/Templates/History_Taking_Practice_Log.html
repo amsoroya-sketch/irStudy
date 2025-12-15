@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Taking Practice Log</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        h2, h3 {
+            color: #764ba2;
+        }
+        .practice-header {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+        .checklist {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .checklist-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #667eea;
+            color: white;
+        }
+        .section-complete {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #667eea;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .alert {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        input[type="text"], input[type="number"], textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            min-height: 60px;
+            resize: vertical;
+        }
+        .time-box {
+            display: inline-block;
+            width: 120px;
+        }
+        .rating {
+            display: flex;
+            gap: 5px;
+            margin: 10px 0;
+        }
+        .rating span {
+            cursor: pointer;
+            font-size: 1.5em;
+        }
+        @media print {
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 History Taking Practice Log</h1>
+
+        <div class="alert no-print">
+            <h3>How to Use This Log</h3>
+            <ul>
+                <li><strong>One log per practice session</strong> - Fill out immediately after each history</li>
+                <li><strong>Check off completed sections</strong> - Use this to track your systematic approach</li>
+                <li><strong>Time yourself</strong> - Aim for 8-12 minutes for complete history</li>
+                <li><strong>Self-assess honestly</strong> - Identify what needs improvement</li>
+                <li><strong>Review patterns</strong> - Look back weekly to see progress</li>
+            </ul>
+        </div>
+
+        <div class="practice-header">
+            <h2 style="margin-top: 0;">Practice Session Details</h2>
+            <p><strong>Date:</strong> <input type="text" placeholder="e.g., Monday, December 16, 2025" style="width: 300px;"></p>
+            <p><strong>Practice #:</strong> <input type="number" min="1" max="400" style="width: 100px;"> <em>(Track toward 400 total)</em></p>
+            <p><strong>Week:</strong> <input type="number" min="1" max="13" style="width: 80px;"> of 13 prep weeks</p>
+        </div>
+
+        <h2>🎯 Case Details</h2>
+        <table>
+            <tr>
+                <th>Detail</th>
+                <th>Information</th>
+            </tr>
+            <tr>
+                <td><strong>Practice Method</strong></td>
+                <td>
+                    <select>
+                        <option value="">Select method...</option>
+                        <option value="real-person">Real person (family/friend)</option>
+                        <option value="video">Video simulation</option>
+                        <option value="written-case">Written case scenario</option>
+                        <option value="role-play">Role-play with partner</option>
+                        <option value="online">Online practice platform</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Partner/Patient Name</strong></td>
+                <td><input type="text" placeholder="e.g., Sister, Friend, Video case #5"></td>
+            </tr>
+            <tr>
+                <td><strong>Chief Complaint</strong></td>
+                <td><input type="text" placeholder="e.g., Chest pain, Headache, Abdominal pain"></td>
+            </tr>
+            <tr>
+                <td><strong>System Focus</strong></td>
+                <td>
+                    <select>
+                        <option value="">Select system...</option>
+                        <option value="cardiovascular">Cardiovascular</option>
+                        <option value="respiratory">Respiratory</option>
+                        <option value="gastrointestinal">Gastrointestinal</option>
+                        <option value="neurological">Neurological</option>
+                        <option value="musculoskeletal">Musculoskeletal</option>
+                        <option value="genitourinary">Genitourinary</option>
+                        <option value="endocrine">Endocrine</option>
+                        <option value="general">General/Multiple systems</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Total Time</strong></td>
+                <td><input type="text" class="time-box" placeholder="e.g., 12 min"> <em>Target: 8-12 minutes</em></td>
+            </tr>
+        </table>
+
+        <h2>✅ 9-Step History Checklist</h2>
+        <p><em>Check each section as you complete it. Aim to complete all 9 systematically.</em></p>
+
+        <div class="checklist">
+            <div class="checklist-item">
+                <span class="section-complete">☐</span>
+                <strong>1. Presenting Complaint (PC)</strong>
+                <p style="margin: 5px 0 5px 30px;">
+                    <em>Patient's main issue in their own words</em><br>
+                    Quality (1-5): <input type="number" min="1" max="5" style="width: 60px;"><br>
+                    Notes: <input type="text" placeholder="What went well / needs improvement">
+                </p>
+            </div>
+
+            <div class="checklist-item">
+                <span class="section-complete">☐</span>
+                <strong>2. History of Presenting Complaint (HPC)</strong>
+                <p style="margin: 5px 0 5px 30px;">
+                    <em>SOCRATES for pain / detailed chronology</em><br>
+                    <input type="checkbox"> Site | <input type="checkbox"> Onset | <input type="checkbox"> Character |
+                    <input type="checkbox"> Radiation | <input type="checkbox"> Associations<br>
+                    <input type="checkbox"> Time course | <input type="checkbox"> Exacerbating/Relieving | <input type="checkbox"> Severity<br>
+                    Quality (1-5): <input type="number" min="1" max="5" style="width: 60px;"><br>
+                    Notes: <input type="text" placeholder="What went well / needs improvement">
+                </p>
+            </div>
+
+            <div class="checklist-item">
+                <span class="section-complete">☐</span>
+                <strong>3. Past Medical History (PMH)</strong>
+                <p style="margin: 5px 0 5px 30px;">
+                    <em>Previous illnesses, surgeries, hospitalizations</em><br>
+                    Quality (1-5): <input type="number" min="1" max="5" style="width: 60px;"><br>
+                    Notes: <input type="text" placeholder="What went well / needs improvement">
+                </p>
+            </div>
+
+            <div class="checklist-item">
+                <span class="section-complete">☐</span>
+                <strong>4. Medications</strong>
+                <p style="margin: 5px 0 5px 30px;">
+                    <em>Current medications, doses, compliance</em><br>
+                    Quality (1-5): <input type="number" min="1" max="5" style="width: 60px;"><br>
+                    Notes: <input type="text" placeholder="What went well / needs improvement">
+                </p>
+            </div>
+
+            <div class="checklist-item">
+                <span class="section-complete">☐</span>
+                <strong>5. Allergies</strong>
+                <p style="margin: 5px 0 5px 30px;">
+                    <em>Drug allergies, food allergies, reactions</em><br>
+                    Quality (1-5): <input type="number" min="1" max="5" style="width: 60px;"><br>
+                    Notes: <input type="text" placeholder="What went well / needs improvement">
+                </p>
+            </div>
+
+            <div class="checklist-item">
+                <span class="section-complete">☐</span>
+                <strong>6. Family History (FH)</strong>
+                <p style="margin: 5px 0 5px 30px;">
+                    <em>Relevant family medical history</em><br>
+                    Quality (1-5): <input type="number" min="1" max="5" style="width: 60px;"><br>
+                    Notes: <input type="text" placeholder="What went well / needs improvement">
+                </p>
+            </div>
+
+            <div class="checklist-item">
+                <span class="section-complete">☐</span>
+                <strong>7. Social History (SH)</strong>
+                <p style="margin: 5px 0 5px 30px;">
+                    <em>Smoking, alcohol, occupation, living situation</em><br>
+                    <input type="checkbox"> Smoking | <input type="checkbox"> Alcohol | <input type="checkbox"> Drugs |
+                    <input type="checkbox"> Occupation | <input type="checkbox"> Living situation<br>
+                    Quality (1-5): <input type="number" min="1" max="5" style="width: 60px;"><br>
+                    Notes: <input type="text" placeholder="What went well / needs improvement">
+                </p>
+            </div>
+
+            <div class="checklist-item">
+                <span class="section-complete">☐</span>
+                <strong>8. Review of Systems (ROS)</strong>
+                <p style="margin: 5px 0 5px 30px;">
+                    <em>Systematic screening of all body systems</em><br>
+                    <input type="checkbox"> General | <input type="checkbox"> Cardiovascular | <input type="checkbox"> Respiratory |
+                    <input type="checkbox"> GI | <input type="checkbox"> GU<br>
+                    <input type="checkbox"> Neurological | <input type="checkbox"> Musculoskeletal | <input type="checkbox"> Skin |
+                    <input type="checkbox"> Psych<br>
+                    Quality (1-5): <input type="number" min="1" max="5" style="width: 60px;"><br>
+                    Notes: <input type="text" placeholder="What went well / needs improvement">
+                </p>
+            </div>
+
+            <div class="checklist-item">
+                <span class="section-complete">☐</span>
+                <strong>9. Summary & ICE</strong>
+                <p style="margin: 5px 0 5px 30px;">
+                    <em>Summarize and explore Ideas, Concerns, Expectations</em><br>
+                    <input type="checkbox"> Accurate summary | <input type="checkbox"> Patient's ideas |
+                    <input type="checkbox"> Concerns | <input type="checkbox"> Expectations<br>
+                    Quality (1-5): <input type="number" min="1" max="5" style="width: 60px;"><br>
+                    Notes: <input type="text" placeholder="What went well / needs improvement">
+                </p>
+            </div>
+        </div>
+
+        <h2>🎭 Communication & Professionalism</h2>
+        <p><em>Rate yourself on these key skills (1 = Poor, 5 = Excellent):</em></p>
+        <table>
+            <tr>
+                <th>Skill</th>
+                <th>Rating (1-5)</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td>Rapport building & introduction</td>
+                <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                <td><input type="text" placeholder="What went well / needs work"></td>
+            </tr>
+            <tr>
+                <td>Open-ended questions</td>
+                <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                <td><input type="text" placeholder="What went well / needs work"></td>
+            </tr>
+            <tr>
+                <td>Active listening</td>
+                <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                <td><input type="text" placeholder="What went well / needs work"></td>
+            </tr>
+            <tr>
+                <td>Clarity of questions</td>
+                <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                <td><input type="text" placeholder="What went well / needs work"></td>
+            </tr>
+            <tr>
+                <td>Empathy & sensitivity</td>
+                <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                <td><input type="text" placeholder="What went well / needs work"></td>
+            </tr>
+            <tr>
+                <td>Time management</td>
+                <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                <td><input type="text" placeholder="What went well / needs work"></td>
+            </tr>
+            <tr>
+                <td>Professionalism & language</td>
+                <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                <td><input type="text" placeholder="What went well / needs work"></td>
+            </tr>
+        </table>
+
+        <h2>🔍 Self-Assessment</h2>
+
+        <h3>Overall Performance</h3>
+        <p><strong>Overall Quality (1-10):</strong> <input type="number" min="1" max="10" style="width: 80px;"></p>
+        <p><strong>Completeness:</strong> <input type="number" min="0" max="9" style="width: 80px;"> / 9 sections completed</p>
+
+        <h3>Strengths</h3>
+        <textarea placeholder="What did I do particularly well in this history? e.g., Good SOCRATES pain assessment, thorough social history"></textarea>
+
+        <h3>Areas for Improvement</h3>
+        <textarea placeholder="What specific skills need more practice? e.g., Need to ask more open-ended questions, rushed through family history, forgot to check allergies"></textarea>
+
+        <h3>Red Flags Identified</h3>
+        <p>Did you identify any red flags or serious findings?</p>
+        <textarea placeholder="e.g., Possible cardiac chest pain - risk factors present; Neurological symptoms requiring urgent assessment"></textarea>
+
+        <h3>Feedback Received (if applicable)</h3>
+        <p>If practicing with someone who can give feedback:</p>
+        <textarea placeholder="e.g., Partner said I seemed rushed, suggested better eye contact. Instructor noted good rapport but missed asking about radiation of pain."></textarea>
+
+        <h2>📈 Progress Notes</h2>
+
+        <h3>Compared to Last Practice:</h3>
+        <p>
+            <input type="radio" name="progress" value="better"> Better<br>
+            <input type="radio" name="progress" value="same"> About the same<br>
+            <input type="radio" name="progress" value="worse"> Needs more work
+        </p>
+
+        <h3>Specific Improvements Made:</h3>
+        <textarea placeholder="e.g., Successfully used SOCRATES this time, remembered to ask about ICE, completed in target time"></textarea>
+
+        <h3>Next Practice Focus:</h3>
+        <textarea placeholder="What will I specifically work on next time? e.g., Focus on cardiovascular review of systems, practice summarizing more concisely"></textarea>
+
+        <div class="success">
+            <h3>✅ Practice Session Complete!</h3>
+            <p><strong>Key Takeaways:</strong></p>
+            <ol>
+                <li>What was the most valuable learning from this practice? <input type="text"></li>
+                <li>One thing to remember for next time: <input type="text"></li>
+                <li>Confidence level (1-10): <input type="number" min="1" max="10" style="width: 80px;"></li>
+            </ol>
+        </div>
+
+        <div style="margin-top: 30px; text-align: center;">
+            <button onclick="window.print()" style="background: #667eea; color: white; padding: 12px 30px; border: none; border-radius: 5px; font-size: 1em; cursor: pointer;">
+                🖨️ Print/Save This Practice Log
+            </button>
+        </div>
+
+        <div style="margin-top: 30px; padding: 15px; border-top: 2px solid #ddd; text-align: center; color: #666;">
+            <p><strong>ICRP Preparation</strong> | History Taking Practice Log</p>
+            <p>Track every practice to reach your goal of 400+ histories!</p>
+        </div>
+    </div>
+</body>
+</html>

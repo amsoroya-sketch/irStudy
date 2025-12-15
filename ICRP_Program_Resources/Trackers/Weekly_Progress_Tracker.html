@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICRP Weekly Progress Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 25px;
+        }
+        .week-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #667eea;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .target {
+            background: #fff3cd;
+            font-weight: bold;
+        }
+        .actual {
+            background: #d4edda;
+        }
+        .progress-bar {
+            background: #e9ecef;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: width 0.3s ease;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .metric-card {
+            background: #f8f9fa;
+            border: 2px solid #667eea;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .metric-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        .target-vs-actual {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+        .alert {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .danger {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            min-height: 60px;
+        }
+        .day-row {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📈 ICRP Weekly Progress Tracker</h1>
+
+        <div class="week-header">
+            <h2 style="color: white; margin: 0;">Week <input type="number" min="1" max="13" style="width: 80px; display: inline;" placeholder="1-13"> of 13</h2>
+            <p style="margin: 5px 0 0 0;">Dates: <input type="text" style="width: 300px; display: inline;" placeholder="e.g., December 2-8, 2025"></p>
+        </div>
+
+        <div class="alert no-print">
+            <h3>📋 How to Use This Weekly Tracker</h3>
+            <ul>
+                <li><strong>Review daily</strong> - Update your daily totals each evening</li>
+                <li><strong>Complete fully</strong> - Fill in all sections at week's end</li>
+                <li><strong>Compare</strong> - Check actual vs. target to adjust next week</li>
+                <li><strong>Reflect</strong> - Honest assessment helps improve practice strategy</li>
+                <li><strong>Archive</strong> - Print or save PDF for your records</li>
+            </ul>
+        </div>
+
+        <h2>📊 Weekly Metrics Summary</h2>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value"><input type="number" min="0" style="width: 100px; text-align: center; border: none; font-size: 2em; font-weight: bold; color: #667eea;" placeholder="0"></div>
+                <div class="metric-label">Histories Completed</div>
+                <div class="target-vs-actual">Target: 15-20</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value"><input type="number" min="0" style="width: 100px; text-align: center; border: none; font-size: 2em; font-weight: bold; color: #667eea;" placeholder="0"></div>
+                <div class="metric-label">Exams Completed</div>
+                <div class="target-vs-actual">Target: 7-10</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value"><input type="number" min="0" style="width: 100px; text-align: center; border: none; font-size: 2em; font-weight: bold; color: #667eea;" placeholder="0"></div>
+                <div class="metric-label">Current WPM</div>
+                <div class="target-vs-actual">See monthly targets</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value"><input type="number" min="0" step="0.5" style="width: 100px; text-align: center; border: none; font-size: 2em; font-weight: bold; color: #667eea;" placeholder="0"></div>
+                <div class="metric-label">Total Practice Hours</div>
+                <div class="target-vs-actual">Target: 15-20 hours</div>
+            </div>
+        </div>
+
+        <h2>📅 Daily Breakdown</h2>
+        <table>
+            <tr>
+                <th>Day</th>
+                <th>Histories</th>
+                <th>Exams</th>
+                <th>Typing (min)</th>
+                <th>SOAP Notes</th>
+                <th>Total Hours</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td><strong>Monday</strong></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="text" placeholder="e.g., 2.5"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+            <tr>
+                <td><strong>Tuesday</strong></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="text" placeholder="e.g., 3.0"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+            <tr>
+                <td><strong>Wednesday</strong></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="text" placeholder="e.g., 2.0"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+            <tr>
+                <td><strong>Thursday</strong></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="text" placeholder="e.g., 2.5"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+            <tr>
+                <td><strong>Friday</strong></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="text" placeholder="e.g., 3.0"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+            <tr>
+                <td><strong>Saturday</strong></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="text" placeholder="e.g., 3.5"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+            <tr>
+                <td><strong>Sunday</strong></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="text" placeholder="e.g., 2.5"></td>
+                <td><input type="text" placeholder="Brief note"></td>
+            </tr>
+            <tr class="target">
+                <td><strong>WEEKLY TOTAL</strong></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="text" placeholder="Total"></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <h2>🎯 Progress Toward Overall Goals</h2>
+
+        <h3>History Taking Progress</h3>
+        <p><strong>Cumulative Total:</strong> <input type="number" min="0" style="width: 100px;"> / 400 histories</p>
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%;" id="history-progress">0%</div>
+        </div>
+        <p><em>Calculate: (Cumulative Total ÷ 400) × 100 = Progress %</em></p>
+
+        <h3>Physical Examination Progress</h3>
+        <p><strong>Cumulative Total:</strong> <input type="number" min="0" style="width: 100px;"> / 100 examinations</p>
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%;" id="exam-progress">0%</div>
+        </div>
+        <p><em>Calculate: (Cumulative Total ÷ 100) × 100 = Progress %</em></p>
+
+        <h3>Typing Speed Progress</h3>
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>Start of Week</th>
+                <th>End of Week</th>
+                <th>Change</th>
+                <th>Monthly Target</th>
+            </tr>
+            <tr>
+                <td><strong>WPM</strong></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="number" min="0"></td>
+                <td><input type="text" placeholder="e.g., +3"></td>
+                <td><input type="text" placeholder="See guide"></td>
+            </tr>
+            <tr>
+                <td><strong>Accuracy %</strong></td>
+                <td><input type="number" min="0" max="100"></td>
+                <td><input type="number" min="0" max="100"></td>
+                <td><input type="text" placeholder="e.g., +2%"></td>
+                <td>95%+</td>
+            </tr>
+        </table>
+
+        <h3>Documentation Speed Progress</h3>
+        <p><strong>Average Time per SOAP Note:</strong></p>
+        <ul>
+            <li>Start of Week: <input type="text" style="width: 150px;" placeholder="e.g., 22 min"> minutes</li>
+            <li>End of Week: <input type="text" style="width: 150px;" placeholder="e.g., 18 min"> minutes</li>
+            <li>Improvement: <input type="text" style="width: 150px;" placeholder="e.g., -4 min"> minutes</li>
+        </ul>
+
+        <h2>🔍 Weekly Reflection</h2>
+
+        <div class="day-row">
+            <h4>What were my biggest wins this week?</h4>
+            <textarea placeholder="e.g., Consistently practiced daily, improved WPM by 5 points, mastered cardiovascular examination sequence"></textarea>
+        </div>
+
+        <div class="day-row">
+            <h4>What challenges did I face?</h4>
+            <textarea placeholder="e.g., Struggled to find practice partners midweek, typing accuracy dropped when tired, need more SOCRATES practice"></textarea>
+        </div>
+
+        <div class="day-row">
+            <h4>What patterns did I notice?</h4>
+            <textarea placeholder="e.g., Better focus in morning sessions, practice quality drops after 2 hours, Weekend practice more productive"></textarea>
+        </div>
+
+        <div class="day-row">
+            <h4>What will I change or improve next week?</h4>
+            <textarea placeholder="e.g., Schedule practice partners in advance, take 10-min breaks between sessions, focus more on respiratory examination"></textarea>
+        </div>
+
+        <div class="day-row">
+            <h4>Specific skills to focus on next week:</h4>
+            <textarea placeholder="e.g.,
+1. History Taking: Red flag identification, faster SOCRATES assessment
+2. Physical Exam: Respiratory examination confidence, better presentation
+3. Typing: Bottom row accuracy, medical abbreviations
+4. Documentation: More concise assessments, better differential diagnoses"></textarea>
+        </div>
+
+        <h2>✅ Weekly Goal Assessment</h2>
+
+        <div class="success">
+            <h3>Did I meet my weekly targets?</h3>
+            <table>
+                <tr>
+                    <th>Goal</th>
+                    <th>Target</th>
+                    <th>Actual</th>
+                    <th>Met? (✓/✗)</th>
+                </tr>
+                <tr>
+                    <td>History Taking</td>
+                    <td>15-20 histories</td>
+                    <td><input type="number" min="0" style="width: 80px;"></td>
+                    <td><input type="text" style="width: 60px;" placeholder="✓ or ✗"></td>
+                </tr>
+                <tr>
+                    <td>Physical Examination</td>
+                    <td>7-10 exams</td>
+                    <td><input type="number" min="0" style="width: 80px;"></td>
+                    <td><input type="text" style="width: 60px;" placeholder="✓ or ✗"></td>
+                </tr>
+                <tr>
+                    <td>Typing Practice</td>
+                    <td>3.5-7 hours (210-420 min)</td>
+                    <td><input type="number" min="0" style="width: 80px;"> min</td>
+                    <td><input type="text" style="width: 60px;" placeholder="✓ or ✗"></td>
+                </tr>
+                <tr>
+                    <td>Total Practice Time</td>
+                    <td>15-20 hours</td>
+                    <td><input type="number" min="0" step="0.5" style="width: 80px;"> hours</td>
+                    <td><input type="text" style="width: 60px;" placeholder="✓ or ✗"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="alert">
+            <h3>⚠️ Areas Needing Attention</h3>
+            <p>Identify specific weaknesses or gaps that need focus:</p>
+            <textarea placeholder="e.g., Only completed 12 histories (below target), need to improve scheduling. Typing accuracy inconsistent - focus on technique over speed."></textarea>
+        </div>
+
+        <h2>📋 Action Items for Next Week</h2>
+        <ol>
+            <li><input type="text" placeholder="Specific action item 1"></li>
+            <li><input type="text" placeholder="Specific action item 2"></li>
+            <li><input type="text" placeholder="Specific action item 3"></li>
+            <li><input type="text" placeholder="Specific action item 4"></li>
+            <li><input type="text" placeholder="Specific action item 5"></li>
+        </ol>
+
+        <div style="margin-top: 30px; text-align: center;">
+            <button onclick="window.print()" style="background: #667eea; color: white; padding: 12px 30px; border: none; border-radius: 5px; font-size: 1.1em; cursor: pointer;">
+                🖨️ Print/Save Weekly Report
+            </button>
+        </div>
+
+        <div style="margin-top: 30px; padding: 15px; border-top: 2px solid #ddd; text-align: center; color: #666;">
+            <p><strong>ICRP Preparation Program</strong> | Weekly Progress Tracker</p>
+            <p>Consistent tracking leads to consistent improvement!</p>
+        </div>
+    </div>
+</body>
+</html>

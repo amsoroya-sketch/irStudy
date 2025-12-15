@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Steps - What To Do Now</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+</div>
+        
+        <h1>Next Steps - What To Do Now</h1>
+
+<h2>✅ Infrastructure Complete!</h2>
+
+<p>
+All the core system infrastructure has been built and is ready to use. Here's what you need to do next:
+</p>
+
+<hr>
+
+<h2>📚 IMMEDIATE: Acquire Medical Textbooks</h2>
+
+<h3>Priority 1: Essential Books (Top 5)</h3>
+<p>
+These 5 books will give you a strong foundation:
+</p>
+
+<ol>
+<li><strong>Therapeutic Guidelines (eTG)</strong> - $385/year</li>
+<p>
+</ol>
+   - Subscribe: https://tgldcdp.tg.org.au/
+   - OR get institutional access (hospital/university)
+</p>
+
+<ol>
+<li><strong>Talley & O'Connor Clinical Examination</strong> (9th Edition) - $130</li>
+<p>
+</ol>
+   - Essential for AMC Clinical exam
+   - Physical examination techniques
+</p>
+
+<ol>
+<li><strong>AMC Handbook of Multiple Choice Questions</strong> - $180</li>
+<p>
+</ol>
+   - Official AMC question format
+   - Must-have for understanding exam style
+</p>
+
+<ol>
+<li><strong>Murtagh's General Practice</strong> (8th Edition) - $180</li>
+<p>
+</ol>
+   - Australian primary care
+   - ICRP and AMC heavily test this
+</p>
+
+<ol>
+<li><strong>Australian Medicines Handbook (AMH)</strong> - $155</li>
+<p>
+</ol>
+   - Drug information, PBS details
+   - Essential for prescribing questions
+</p>
+
+<strong>Total: ~$1,030 (or $645 if you have eTG institutional access)</strong>
+
+<h3>Priority 2: Core Medicine (3 books)</h3>
+<ol>
+<li>Harrison's Principles of Internal Medicine (21st Edition) - $200</li>
+<li>Kumar & Clark Clinical Medicine (10th Edition) - $140</li>
+<li>Davidson's Principles of Medicine (24th Edition) - $110</li>
+<p>
+</ol>
+</p>
+
+<h3>Priority 3: Specialties (As budget allows)</h3>
+<ol>
+<li>Nelson Textbook of Pediatrics - $200</li>
+<li>Williams Obstetrics - $180</li>
+<li>Bailey & Love's Surgery - $150</li>
+<li>Kaplan & Sadock's Psychiatry - $180</li>
+<p>
+</ol>
+</p>
+
+<h3>FREE Alternatives</h3>
+<p>
+If budget is limited, start with:
+</p>
+<ul>
+<li>✅ StatPearls (completely free, comprehensive)</li>
+<li>✅ NCBI Bookshelf (free medical books)</li>
+<li>✅ PubMed Central (3+ million free articles)</li>
+<li>✅ Australian government guidelines (all free)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>🚀 Once You Have PDFs</h2>
+
+<h3>Step 1: Place PDFs in Folders (5 minutes)</h3>
+<pre><code>cd /home/dev/Development/irStudy
+
+<h1>Place PDFs in organized folders:</h1>
+<p>
+data/pdfs/australian/
+  ├── therapeutic<em>guidelines</em>etg.pdf
+  ├── murtaghs<em>general</em>practice_8ed.pdf
+  ├── talley<em>clinical</em>examination_9ed.pdf
+  └── australian<em>medicines</em>handbook.pdf
+</p>
+
+<p>
+data/pdfs/core/
+  ├── harrisons<em>internal</em>medicine_21ed.pdf
+  ├── kumar<em>clark</em>10ed.pdf
+  └── davidsons_24ed.pdf
+</p>
+
+<p>
+data/pdfs/specialties/
+  ├── nelson<em>pediatrics</em>21ed.pdf
+  ├── williams<em>obstetrics</em>26ed.pdf
+  └── bailey<em>love</em>surgery_28ed.pdf
+</code></pre>
+</p>
+
+<h3>Step 2: Run Processing Pipeline (4-6 hours)</h3>
+<pre><code><h1>Activate virtual environment</h1>
+<p>
+source venv/bin/activate
+</p>
+
+<h1>Option A: Run all steps automatically</h1>
+<p>
+./medical_ai.py process all
+</p>
+
+<h1>Option B: Run steps individually (for monitoring)</h1>
+<p>
+./medical_ai.py process pdfs      # Extract text (30-60 min)
+./medical_ai.py process chunk     # Chunk texts (10-20 min)
+./medical_ai.py process embed     # Generate embeddings (2-4 hours)
+./medical_ai.py process index     # Index in Qdrant (20-40 min)
+</code></pre>
+</p>
+
+<h3>Step 3: Test the System (5 minutes)</h3>
+<pre><code><h1>Test semantic search</h1>
+<p>
+./medical_ai.py test search "acute coronary syndrome management"
+</p>
+
+<h1>Test local LLM</h1>
+<p>
+./medical_ai.py test llm --model meditron:7b
+</p>
+
+<h1>Check system status</h1>
+<p>
+./medical_ai.py info
+</code></pre>
+</p>
+
+<h3>Step 4: Verify Everything Works</h3>
+<pre><code><h1>Access Qdrant dashboard</h1>
+<p>
+firefox http://localhost:6333/dashboard
+</p>
+
+<h1>You should see "medical_knowledge" collection with ~40,000 points</h1>
+<p>
+</code></pre>
+</p>
+
+<hr>
+
+<h2>🎯 After Processing is Complete</h2>
+
+<h3>Build RAG Query System</h3>
+<p>
+Create intelligent medical Q&A that searches your knowledge base:
+</p>
+
+<pre><code><h1>Example: src/rag/medical_qa.py</h1>
+<p>
+from qdrant_client import QdrantClient
+from sentence_transformers import SentenceTransformer
+from src.models.ollama_client import OllamaClient
+</p>
+
+<p>
+def ask<em>medical</em>question(question: str) -> str:
+    # 1. Search knowledge base
+    client = QdrantClient(url="http://localhost:6333")
+    model = SentenceTransformer('pritamdeka/S-PubMedBert-MS-MARCO')
+</p>
+    
+<p>
+    query_vec = model.encode(question).tolist()
+    results = client.search(
+        collection<em>name="medical</em>knowledge",
+        query<em>vector=query</em>vec,
+        limit=5
+    )
+</p>
+    
+<p>
+    # 2. Build context from search results
+    context = "\n\n".join([r.payload['text'] for r in results])
+</p>
+    
+<p>
+    # 3. Generate answer with LLM
+    llm = OllamaClient()
+    prompt = f"""Based on the following medical knowledge:
+</p>
+
+<p>
+{context}
+</p>
+
+<p>
+Question: {question}
+</p>
+
+<p>
+Provide a comprehensive, evidence-based answer with citations."""
+</p>
+    
+<p>
+    answer = llm.generate(prompt, model_name="meditron:7b")
+    return answer
+</p>
+
+<h1>Test it</h1>
+<p>
+print(ask<em>medical</em>question("What is the management of acute heart failure?"))
+</code></pre>
+</p>
+
+<h3>Create First AI Agent</h3>
+<p>
+Build a cardiology expert agent:
+</p>
+
+<pre><code><h1>Example: src/agents/cardiology_agent.py</h1>
+<p>
+from langchain.prompts import ChatPromptTemplate
+from src.models.ollama<em>client import get</em>medical_expert
+</p>
+
+<p>
+cardiology<em>prompt = ChatPromptTemplate.from</em>template("""
+You are a cardiology expert preparing AMC exam questions.
+</p>
+
+<p>
+Context from medical knowledge:
+{context}
+</p>
+
+<p>
+Task: {task}
+</p>
+
+<p>
+Provide accurate, Australian guideline-compliant responses.
+""")
+</p>
+
+<p>
+def create<em>cardiology</em>mcq(topic: str):
+    # Use RAG to get relevant context
+    # Generate question using LLM
+    # Validate with another LLM
+    pass
+</code></pre>
+</p>
+
+<hr>
+
+<h2>📅 Recommended Timeline</h2>
+
+<h3>Week 1: Setup & Acquisition</h3>
+<ul>
+<li><input type="checkbox"> Run <code>./setup.sh</code></li>
+<li><input type="checkbox"> Acquire top 5 essential textbooks</li>
+<li><input type="checkbox"> Place PDFs in folders</li>
+<li><input type="checkbox"> Run processing pipeline</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 2: Testing & Validation</h3>
+<ul>
+<li><input type="checkbox"> Test semantic search</li>
+<li><input type="checkbox"> Test LLM integration</li>
+<li><input type="checkbox"> Build basic RAG query system</li>
+<li><input type="checkbox"> Generate 10 test MCQ questions</li>
+<li><input type="checkbox"> Validate quality</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 3-4: Agent Development</h3>
+<ul>
+<li><input type="checkbox"> Create medical specialty agents</li>
+<li><input type="checkbox"> Implement LangGraph workflows</li>
+<li><input type="checkbox"> Generate 100 MCQs across specialties</li>
+<li><input type="checkbox"> Build quality assurance system</li>
+<p>
+</ul>
+</p>
+
+<h3>Month 2: Scale Up</h3>
+<ul>
+<li><input type="checkbox"> Generate 1,000+ MCQs</li>
+<li><input type="checkbox"> Create 100+ clinical scenarios</li>
+<li><input type="checkbox"> Build FastAPI backend</li>
+<li><input type="checkbox"> Create basic web interface</li>
+<p>
+</ul>
+</p>
+
+<h3>Month 3: Polish & Launch</h3>
+<ul>
+<li><input type="checkbox"> Generate 5,000+ MCQs</li>
+<li><input type="checkbox"> Create 500+ scenarios</li>
+<li><input type="checkbox"> Build Next.js frontend</li>
+<li><input type="checkbox"> Beta testing with students</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>💰 Budget Planning</h2>
+
+<h3>Minimum Budget ($645):</h3>
+<ul>
+<li>Therapeutic Guidelines (institutional access): $0</li>
+<li>Top 5 essential books: $645</li>
+<li><strong>Total: $645</strong></li>
+<p>
+</ul>
+</p>
+
+<h3>Recommended Budget ($1,800):</h3>
+<ul>
+<li>Therapeutic Guidelines: $385</li>
+<li>Top 5 essential books: $645</li>
+<li>3 core medicine books: $450</li>
+<li>3 specialty books: $530</li>
+<li><strong>Total: $2,010</strong></li>
+<p>
+</ul>
+</p>
+
+<h3>Comprehensive Budget ($3,500):</h3>
+<ul>
+<li>All 20 medical textbooks</li>
+<li>Subscriptions and updates</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>🆘 Help & Support</h2>
+
+<h3>If You Get Stuck:</h3>
+
+<ol>
+<li><strong>Check Documentation:</strong></li>
+<p>
+</ol>
+   - <code>README.md</code> - Complete system guide
+   - <code>QUICKSTART.md</code> - Fast setup guide
+   - <code>SYSTEM_OVERVIEW.md</code> - What's been built
+</p>
+
+<ol>
+<li><strong>Common Issues:</strong></li>
+<p>
+</ol>
+   - Ollama not responding → <code>systemctl restart ollama</code>
+   - GPU not detected → Check <code>nvidia-smi</code>
+   - Docker services down → <code>./medical_ai.py services start</code>
+   - Out of memory → Reduce batch size
+</p>
+
+<ol>
+<li><strong>Test Components:</strong></li>
+<p>
+</ol>
+</p>
+   <pre><code>   ./medical_ai.py info          # System status
+<p>
+   ./medical_ai.py services status   # Docker services
+   ./medical_ai.py test llm      # Test LLM
+   ./medical_ai.py test search "test query"  # Test search
+   </code></pre>
+</p>
+
+<hr>
+
+<h2>✅ Quick Checklist</h2>
+
+<p>
+Before starting PDF processing:
+</p>
+<ul>
+<li><input type="checkbox"> Ran <code>./setup.sh</code> successfully</li>
+<li><input type="checkbox"> All Docker services are running (<code>docker-compose ps</code>)</li>
+<li><input type="checkbox"> Ollama has models (<code>ollama list</code> shows meditron, mixtral, llama3.1)</li>
+<li><input type="checkbox"> GPU is detected (<code>nvidia-smi</code> works)</li>
+<li><input type="checkbox"> Have at least 5 essential PDFs ready</li>
+<li><input type="checkbox"> Folder structure exists (<code>data/pdfs/</code> has subdirectories)</li>
+<p>
+</ul>
+</p>
+
+<p>
+Once processing is done:
+</p>
+<ul>
+<li><input type="checkbox"> Qdrant shows ~40,000 points</li>
+<li><input type="checkbox"> Can search medical knowledge</li>
+<li><input type="checkbox"> LLM generates medical text</li>
+<li><input type="checkbox"> All tests pass</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>🎉 What You'll Have</h2>
+
+<p>
+After completing these steps:
+</p>
+<ul>
+<li>✅ <strong>40,000+ searchable medical knowledge chunks</strong></li>
+<li>✅ <strong>Semantic search</strong> across all your textbooks</li>
+<li>✅ <strong>Local AI medical expert</strong> (Meditron 7B)</li>
+<li>✅ <strong>RAG system</strong> for intelligent Q&A</li>
+<li>✅ <strong>Foundation</strong> for unlimited question generation</li>
+<li>✅ <strong>Zero monthly costs</strong> (everything local)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>📞 Ready?</h2>
+
+<strong>Your next action:</strong> Acquire those medical textbook PDFs! 📚
+
+<p>
+Everything else is ready and waiting for you.
+</p>
+
+<p>
+Good luck building the world's best AI-powered medical education system! 🚀
+</p>
+
+<hr>
+
+<strong>Questions?</strong> Re-read the documentation or reach out for help.
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

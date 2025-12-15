@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Education AI System - Project Roadmap</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>docs</span>
+</div>
+        
+        <h1>Medical Education AI System - Project Roadmap</h1>
+<h2>Complete Development Timeline from Foundation to Production</h2>
+
+<strong>Last Updated:</strong> December 14, 2025
+<strong>Project Duration:</strong> 24-30 weeks (6-8 months)
+<strong>Status:</strong> Infrastructure Complete (30%) → Production Launch
+
+<hr>
+
+<h2>📋 Table of Contents</h2>
+
+<ol>
+<li><a href="#executive-summary">Executive Summary</a></li>
+<li><a href="#phase-1-foundation-week-1-2">Phase 1: Foundation (Week 1-2)</a></li>
+<li><a href="#phase-2-backend-core-week-3-6">Phase 2: Backend Core (Week 3-6)</a></li>
+<li><a href="#phase-3-rag--question-generation-week-7-10">Phase 3: RAG & Question Generation (Week 7-10)</a></li>
+<li><a href="#phase-4-frontend-mvp-week-11-14">Phase 4: Frontend MVP (Week 11-14)</a></li>
+<li><a href="#phase-5-agent-system-expansion-week-15-18">Phase 5: Agent System Expansion (Week 15-18)</a></li>
+<li><a href="#phase-6-testing--polish-week-19-22">Phase 6: Testing & Polish (Week 19-22)</a></li>
+<li><a href="#phase-7-production-deployment-week-23-24">Phase 7: Production Deployment (Week 23-24)</a></li>
+<li><a href="#success-metrics">Success Metrics</a></li>
+<li><a href="#risk-management">Risk Management</a></li>
+<p>
+</ol>
+</p>
+
+<hr>
+
+<h2>Executive Summary</h2>
+
+<h3>Current Status: 30% Complete</h3>
+
+<strong>✅ What's Built:</strong>
+<ul>
+<li>Docker infrastructure (Qdrant, Neo4j, PostgreSQL, Redis, Prometheus, Grafana)</li>
+<li>PDF processing pipeline (extract, chunk, embed, index)</li>
+<li>LLM integration (Ollama with 8 medical models)</li>
+<li>Agent base classes (BaseAgent, PM-001)</li>
+<li>LangGraph workflows (3 example workflows)</li>
+<li>Complete documentation (7 comprehensive guides)</li>
+<p>
+</ul>
+</p>
+
+<strong>⏳ What Remains (70%):</strong>
+<ul>
+<li>Backend API (0%)</li>
+<li>Frontend (0%)</li>
+<li>RAG system implementation (0%)</li>
+<li>45 expert agents (0%)</li>
+<li>Testing infrastructure (0%)</li>
+<li>Production deployment (0%)</li>
+<p>
+</ul>
+</p>
+
+<h3>Timeline Overview</h3>
+
+<pre><code>Week 1-2   ███████░░░░░░░░░░░░░░░░░  Phase 1: Foundation
+<p>
+Week 3-6   ░░░░░░░███████░░░░░░░░░░  Phase 2: Backend Core
+Week 7-10  ░░░░░░░░░░░░░░███████░░░  Phase 3: RAG & Questions
+Week 11-14 ░░░░░░░░░░░░░░░░░░░░████  Phase 4: Frontend MVP
+Week 15-18 ░░░░░░░░░░░░░░░░░░░░░░░░  Phase 5: Agents
+Week 19-22 ░░░░░░░░░░░░░░░░░░░░░░░░  Phase 6: Testing
+Week 23-24 ░░░░░░░░░░░░░░░░░░░░░░░░  Phase 7: Launch
+</code></pre>
+</p>
+
+<hr>
+
+<h2>Phase 1: Foundation (Week 1-2)</h2>
+
+<strong>Goal:</strong> Acquire content, validate pipeline, test end-to-end
+
+<strong>Status:</strong> Ready to start ✅
+
+<strong>Blockers:</strong> None - can start immediately
+
+<h3>Week 1: Content Acquisition</h3>
+
+<strong>Monday-Tuesday: Download Free Resources</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Download StatPearls</strong> (10,000+ articles)</li>
+<p>
+</ul>
+  - Run script: <code>python scripts/download_statpearls.py</code>
+  - Expected time: 2-4 hours
+  - Storage: ~5 GB
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Download NCBI Bookshelf</strong> (100 books)</li>
+<p>
+</ul>
+  - Run script: <code>python scripts/download<em>ncbi</em>bookshelf.py</code>
+  - Expected time: 1-2 hours
+  - Storage: ~2 GB
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Collect Australian Government Guidelines</strong></li>
+<p>
+</ul>
+  - NSW Health Guidelines
+  - Australian Immunisation Handbook
+  - Expected time: 1 hour
+  - Storage: ~200 MB
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ 1,000+ PDF files downloaded</li>
+<li>✅ ~7-10 GB of medical content</li>
+<li>✅ All free resources catalogued</li>
+<p>
+</ul>
+</p>
+
+<strong>Wednesday-Thursday: Process Content</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Run PDF Processing Pipeline</strong></li>
+<p>
+</ul>
+</p>
+  <pre><code>  ./medical_ai.py process pdfs --input data/pdfs/free/statpearls
+<p>
+  ./medical_ai.py process chunk
+  ./medical_ai.py process embed --batch-size 32
+  ./medical_ai.py process index
+  </code></pre>
+  - Expected time: 4-6 hours total
+  - GPU required for embeddings
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Verify Qdrant Indexing</strong></li>
+<p>
+</ul>
+  - Check collection: ~40,000 points expected
+  - Test search quality
+  - Validate metadata
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ 40,000+ chunks in Qdrant</li>
+<li>✅ Semantic search working</li>
+<li>✅ Average search time <500ms</li>
+<p>
+</ul>
+</p>
+
+<strong>Friday: End-to-End Testing</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Test Complete RAG Pipeline</strong></li>
+<p>
+</ul>
+</p>
+  <pre><code>  ./medical_ai.py test search "acute coronary syndrome management"
+<p>
+  ./medical_ai.py test llm --model meditron:7b
+  </code></pre>
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Generate First Test Question</strong></li>
+<p>
+</ul>
+  - Use LLM to generate 1 MCQ
+  - Manual validation
+  - Document quality
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ Search returns relevant results</li>
+<li>✅ LLM generates coherent question</li>
+<li>✅ End-to-end pipeline validated</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 2: Infrastructure Setup</h3>
+
+<strong>Monday-Tuesday: MCP Servers</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Implement Medical Knowledge Server</strong></li>
+<p>
+</ul>
+  - Create <code>src/mcp<em>servers/medical</em>knowledge_server.py</code>
+  - Connect to Qdrant + Neo4j
+  - Test search API
+  - Deploy on port 5001
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Implement PubMed Server</strong></li>
+<p>
+</ul>
+  - Create <code>src/mcp<em>servers/pubmed</em>server.py</code>
+  - Integrate Biopython
+  - Test article search
+  - Deploy on port 5002
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ 2 MCP servers running</li>
+<li>✅ API endpoints responding</li>
+<li>✅ Integration tests passing</li>
+<p>
+</ul>
+</p>
+
+<strong>Wednesday-Thursday: Agent Infrastructure</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Deploy Agent Registry</strong></li>
+<p>
+</ul>
+  - Database schema creation
+  - Registry service (port 5100)
+  - Agent heartbeat system
+  - Load balancing logic
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Setup Message Queue</strong></li>
+<p>
+</ul>
+  - Redis Pub/Sub configuration
+  - Message format standardization
+  - Test inter-agent messaging
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ Agent registry operational</li>
+<li>✅ Message queue tested</li>
+<li>✅ State management working</li>
+<p>
+</ul>
+</p>
+
+<strong>Friday: Documentation & Review</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Document Infrastructure</strong></li>
+<p>
+</ul>
+  - Update README with new components
+  - Create API documentation
+  - Write troubleshooting guide
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Phase 1 Review</strong></li>
+<p>
+</ul>
+  - Validate all success criteria met
+  - Identify any gaps
+  - Plan Phase 2
+</p>
+
+<strong>Phase 1 Deliverables:</strong>
+<ul>
+<li>✅ 10,000+ medical documents processed</li>
+<li>✅ Qdrant vector database populated</li>
+<li>✅ 2 MCP servers deployed</li>
+<li>✅ Agent infrastructure ready</li>
+<li>✅ End-to-end pipeline validated</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Phase 2: Backend Core (Week 3-6)</h2>
+
+<strong>Goal:</strong> Build FastAPI backend with authentication, database, and core endpoints
+
+<strong>Dependencies:</strong> Phase 1 complete
+
+<h3>Week 3: Database Models & API Structure</h3>
+
+<strong>Monday-Wednesday: Database Layer</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Create SQLAlchemy Models</strong></li>
+<p>
+</ul>
+</p>
+  <pre><code>  # src/api/models/user.py
+<p>
+  class User(Base):
+      id = Column(UUID, primary_key=True)
+      email = Column(String, unique=True)
+      hashed_password = Column(String)
+      role = Column(Enum(UserRole))
+</p>
+
+<p>
+  # src/api/models/question.py
+  class Question(Base):
+      id = Column(UUID, primary_key=True)
+      question_text = Column(Text)
+      specialty = Column(String)
+      difficulty = Column(Enum(Difficulty))
+      options = Column(JSONB)
+      correct_answer = Column(String)
+      explanation = Column(Text)
+</p>
+
+<p>
+  # src/api/models/quiz.py
+  # src/api/models/progress.py
+  # ... more models
+  </code></pre>
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Create Alembic Migrations</strong></li>
+<p>
+</ul>
+</p>
+  <pre><code>  alembic init migrations
+<p>
+  alembic revision --autogenerate -m "Initial schema"
+  alembic upgrade head
+  </code></pre>
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ 10+ database models created</li>
+<li>✅ Migrations working</li>
+<li>✅ Database schema deployed</li>
+<p>
+</ul>
+</p>
+
+<strong>Thursday-Friday: API Structure</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Setup FastAPI Application</strong></li>
+<p>
+</ul>
+</p>
+  <pre><code>  # src/api/main.py
+<p>
+  from fastapi import FastAPI
+  from src.api.routes import auth, users, questions, quizzes
+</p>
+
+<p>
+  app = FastAPI(title="Medical Education API")
+</p>
+
+<p>
+  app.include_router(auth.router, prefix="/api/auth")
+  app.include_router(users.router, prefix="/api/users")
+  app.include_router(questions.router, prefix="/api/questions")
+  app.include_router(quizzes.router, prefix="/api/quizzes")
+  </code></pre>
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Create Route Stubs</strong></li>
+<p>
+</ul>
+  - Authentication routes
+  - User management routes
+  - Question routes
+  - Quiz routes
+  - Progress routes
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ FastAPI app running on port 8000</li>
+<li>✅ OpenAPI docs at /docs</li>
+<li>✅ All route stubs created</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 4: Authentication System</h3>
+
+<strong>Monday-Wednesday: Auth Implementation</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Implement OAuth2 + JWT</strong></li>
+<p>
+</ul>
+</p>
+  <pre><code>  # src/api/auth/oauth2.py
+<p>
+  from passlib.context import CryptContext
+  from jose import jwt
+</p>
+
+<p>
+  pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
+</p>
+
+<p>
+  def create<em>access</em>token(data: dict):
+      to_encode = data.copy()
+      expire = datetime.utcnow() + timedelta(minutes=15)
+      to_encode.update({"exp": expire})
+      return jwt.encode(to<em>encode, SECRET</em>KEY, algorithm="HS256")
+  </code></pre>
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>User Registration/Login</strong></li>
+<p>
+</ul>
+  - POST /api/auth/register
+  - POST /api/auth/login
+  - POST /api/auth/refresh
+  - POST /api/auth/logout
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Role-Based Access Control</strong></li>
+<p>
+</ul>
+  - Student role
+  - Admin role
+  - Moderator role
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ Users can register</li>
+<li>✅ Users can login (receive JWT)</li>
+<li>✅ Protected endpoints work</li>
+<li>✅ RBAC enforced</li>
+<p>
+</ul>
+</p>
+
+<strong>Thursday-Friday: Security Hardening</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Implement Security Best Practices</strong></li>
+<p>
+</ul>
+  - Argon2 password hashing
+  - JWT token expiry (15 min access, 7 day refresh)
+  - Rate limiting
+  - CORS configuration
+  - SQL injection prevention
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Security Testing</strong></li>
+<p>
+</ul>
+  - Test common vulnerabilities
+  - Penetration testing
+  - OWASP Top 10 validation
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ Security scan passes</li>
+<li>✅ No high/critical vulnerabilities</li>
+<li>✅ Auth system hardened</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 5-6: Core API Endpoints</h3>
+
+<strong>Week 5: Question & Quiz APIs</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Question Management</strong></li>
+<p>
+</ul>
+  - GET /api/questions (list, filter, search)
+  - GET /api/questions/{id}
+  - POST /api/questions (admin only)
+  - PUT /api/questions/{id}
+  - DELETE /api/questions/{id}
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Quiz APIs</strong></li>
+<p>
+</ul>
+  - POST /api/quizzes/create (create custom quiz)
+  - GET /api/quizzes/{id}
+  - POST /api/quizzes/{id}/submit (submit answers)
+  - GET /api/quizzes/{id}/results
+</p>
+
+<strong>Week 6: Progress & Analytics</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>User Progress</strong></li>
+<p>
+</ul>
+  - GET /api/users/me/progress
+  - GET /api/users/me/stats
+  - POST /api/users/me/bookmarks
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Analytics</strong></li>
+<p>
+</ul>
+  - Performance by specialty
+  - Weak areas identification
+  - Study time tracking
+</p>
+
+<strong>Phase 2 Deliverables:</strong>
+<ul>
+<li>✅ FastAPI backend fully functional</li>
+<li>✅ Authentication system complete</li>
+<li>✅ 20+ API endpoints implemented</li>
+<li>✅ Database models and migrations</li>
+<li>✅ OpenAPI documentation</li>
+<li>✅ Security hardened</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Phase 3: RAG & Question Generation (Week 7-10)</h2>
+
+<strong>Goal:</strong> Implement RAG system and automated question generation
+
+<strong>Dependencies:</strong> Phase 1 & 2 complete
+
+<h3>Week 7: RAG System Implementation</h3>
+
+<strong>Monday-Wednesday: RAG Pipeline</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Create RAG Query System</strong></li>
+<p>
+</ul>
+</p>
+  <pre><code>  # src/rag/query_engine.py
+<p>
+  class MedicalRAGSystem:
+      def <strong>init</strong>(self):
+          self.qdrant_client = QdrantClient(url="http://localhost:6333")
+          self.embedding_model = SentenceTransformer('pritamdeka/S-PubMedBert-MS-MARCO')
+          self.llm = OllamaClient()
+</p>
+
+<p>
+      def query(self, question: str, specialty: str = None) -> dict:
+          # 1. Embed query
+          query<em>vector = self.embedding</em>model.encode(question).tolist()
+</p>
+
+<p>
+          # 2. Search Qdrant
+          results = self.qdrant_client.search(
+              collection<em>name="medical</em>knowledge",
+              query<em>vector=query</em>vector,
+              limit=10,
+              query_filter={"specialty": specialty} if specialty else None
+          )
+</p>
+
+<p>
+          # 3. Rerank (optional)
+          reranked = self.rerank(results, question)
+</p>
+
+<p>
+          # 4. Build context
+          context = self.build_context(reranked[:5])
+</p>
+
+<p>
+          # 5. Generate answer with LLM
+          answer = self.llm.generate(
+              prompt=self.build_prompt(question, context),
+              model_name="meditron:7b"
+          )
+</p>
+
+<p>
+          return {
+              "answer": answer,
+              "sources": [r.payload for r in reranked[:5]],
+              "citations": self.extract_citations(reranked)
+          }
+  </code></pre>
+</p>
+
+<strong>Thursday-Friday: Context Optimization</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Implement Reranking</strong></li>
+<p>
+</ul>
+  - Cross-encoder for result reranking
+  - Relevance scoring
+  - Diversity optimization
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Context Window Management</strong></li>
+<p>
+</ul>
+  - Chunk selection strategy
+  - Token limit handling (4096 for Meditron)
+  - Context compression
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ RAG system returns relevant answers</li>
+<li>✅ Citations included</li>
+<li>✅ Response time <5 seconds</li>
+<li>✅ 90%+ answer quality (manual eval)</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 8-9: Question Generation Pipeline</h3>
+
+<strong>Week 8: MCQ Generation</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Implement MCQ Generator</strong></li>
+<p>
+</ul>
+</p>
+  <pre><code>  # src/generation/mcq_generator.py
+<p>
+  class MCQGenerator:
+      def generate_question(self, topic: str, specialty: str, difficulty: str) -> dict:
+          # 1. Retrieve context via RAG
+          context = self.rag.query(topic, specialty)
+</p>
+
+<p>
+          # 2. Build generation prompt
+          prompt = f"""
+          Based on the following medical knowledge:
+</p>
+
+<p>
+          {context['answer']}
+</p>
+
+<p>
+          Generate a {difficulty} difficulty MCQ question about {topic} for the AMC exam.
+</p>
+
+<p>
+          Format:
+          Question: [question stem]
+          A) [option]
+          B) [option]
+          C) [option]
+          D) [option]
+          E) [option]
+          Correct Answer: [letter]
+          Explanation: [detailed explanation with citations]
+          """
+</p>
+
+<p>
+          # 3. Generate with LLM
+          response = self.llm.generate(prompt, model_name="llama3.1:70b")
+</p>
+
+<p>
+          # 4. Parse response
+          question = self.parse_mcq(response)
+</p>
+
+<p>
+          # 5. Validate
+          if self.validate_question(question):
+              return question
+          else:
+              return self.generate_question(topic, specialty, difficulty)  # Retry
+  </code></pre>
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Implement Distractor Generation</strong></li>
+<p>
+</ul>
+  - Plausible wrong answers
+  - Common misconceptions
+  - Varying difficulty levels
+</p>
+
+<strong>Week 9: OSCE Scenario Generation</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Clinical Scenario Generator</strong></li>
+<p>
+</ul>
+  - Patient history
+  - Examination findings
+  - Investigation results
+  - Management plan
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Difficulty Calibration</strong></li>
+<p>
+</ul>
+  - Easy: Common presentations
+  - Medium: Typical cases with complications
+  - Hard: Rare conditions, complex management
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ Generate 100 MCQs automatically</li>
+<li>✅ 90%+ pass medical QA review</li>
+<li>✅ 10 OSCE scenarios generated</li>
+<li>✅ Difficulty properly calibrated</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 10: Quality Assurance</h3>
+
+<strong>Monday-Wednesday: QA-001 Implementation</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Create Medical QA Agent</strong></li>
+<p>
+</ul>
+  - Clinical accuracy checks
+  - Guideline compliance validation
+  - Citation verification
+  - Question clarity scoring
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Automated Quality Checks</strong></li>
+<p>
+</ul>
+  - Stem clarity
+  - Distractor plausibility
+  - Explanation completeness
+  - Citation accuracy
+</p>
+
+<strong>Thursday-Friday: Content Validation</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Generate First 500 Questions</strong></li>
+<p>
+</ul>
+  - Cardiology: 100
+  - Respiratory: 100
+  - GI: 100
+  - Endocrine: 100
+  - Neurology: 100
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Manual Review</strong></li>
+<p>
+</ul>
+  - Expert validation (if available)
+  - Student feedback
+  - Quality scoring
+</p>
+
+<strong>Phase 3 Deliverables:</strong>
+<ul>
+<li>✅ RAG system fully operational</li>
+<li>✅ MCQ generation pipeline</li>
+<li>✅ OSCE scenario generation</li>
+<li>✅ QA-001 agent implemented</li>
+<li>✅ 500 validated questions</li>
+<li>✅ Quality metrics established</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Phase 4: Frontend MVP (Week 11-14)</h2>
+
+<strong>Goal:</strong> Build Next.js frontend with core features
+
+<strong>Dependencies:</strong> Phase 2 & 3 complete
+
+<h3>Week 11: Next.js Setup & Auth</h3>
+
+<strong>Monday-Tuesday: Project Setup</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Initialize Next.js 15 App</strong></li>
+<p>
+</ul>
+</p>
+  <pre><code>  npx create-next-app@latest medical-education-frontend --typescript --tailwind --app
+<p>
+  cd medical-education-frontend
+  npm install @tanstack/react-query zustand axios zod react-hook-form
+  </code></pre>
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Setup Project Structure</strong></li>
+<p>
+</ul>
+</p>
+  <pre><code>  src/
+<p>
+  ├── app/              # Next.js 15 App Router
+  ├── components/       # React components
+  ├── lib/             # Utilities
+  ├── hooks/           # Custom hooks
+  ├── stores/          # Zustand stores
+  └── types/           # TypeScript types
+  </code></pre>
+</p>
+
+<strong>Wednesday-Friday: Authentication UI</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Auth Pages</strong></li>
+<p>
+</ul>
+  - /login
+  - /register
+  - /reset-password
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Auth State Management</strong></li>
+<p>
+</ul>
+</p>
+  <pre><code>  // src/stores/authStore.ts
+<p>
+  import create from 'zustand'
+</p>
+
+<p>
+  interface AuthStore {
+    user: User | null
+    token: string | null
+    login: (email: string, password: string) => Promise<void>
+    logout: () => void
+  }
+</p>
+
+<p>
+  export const useAuthStore = create<AuthStore>((set) => ({
+    user: null,
+    token: null,
+    login: async (email, password) => {
+      const response = await axios.post('/api/auth/login', { email, password })
+      set({ user: response.data.user, token: response.data.token })
+    },
+    logout: () => set({ user: null, token: null })
+  }))
+  </code></pre>
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ Next.js app running</li>
+<li>✅ Login/register working</li>
+<li>✅ JWT stored securely</li>
+<li>✅ Protected routes implemented</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 12: Dashboard & Navigation</h3>
+
+<strong>Monday-Wednesday: Main Dashboard</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Dashboard Layout</strong></li>
+<p>
+</ul>
+  - Sidebar navigation
+  - Header with user menu
+  - Main content area
+  - Footer
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Dashboard Components</strong></li>
+<p>
+</ul>
+  - Study progress widget
+  - Recent activity
+  - Upcoming quizzes
+  - Performance chart
+</p>
+
+<strong>Thursday-Friday: Navigation</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Main Navigation</strong></li>
+<p>
+</ul>
+  - /dashboard
+  - /questions
+  - /quizzes
+  - /practice
+  - /progress
+  - /settings
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Breadcrumbs & Search</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ Dashboard fully functional</li>
+<li>✅ Navigation working</li>
+<li>✅ Responsive design (mobile-first)</li>
+<li>✅ Lighthouse score 90+</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 13: Quiz Interface</h3>
+
+<strong>Monday-Wednesday: Quiz Taking</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Quiz Component</strong></li>
+<p>
+</ul>
+</p>
+  <pre><code>  // src/components/Quiz/QuizView.tsx
+<p>
+  export function QuizView({ quizId }: { quizId: string }) {
+    const [currentQuestion, setCurrentQuestion] = useState(0)
+    const [answers, setAnswers] = useState<Record<number, string>>({})
+</p>
+
+<p>
+    const { data: quiz } = useQuery({
+      queryKey: ['quiz', quizId],
+      queryFn: () => fetchQuiz(quizId)
+    })
+</p>
+
+<p>
+    const submitMutation = useMutation({
+      mutationFn: (answers) => submitQuiz(quizId, answers),
+      onSuccess: () => router.push(<code>/quizzes/${quizId}/results</code>)
+    })
+</p>
+
+<p>
+    return (
+</p>
+      <div className="quiz-container">
+<p>
+        <QuizProgress current={currentQuestion + 1} total={quiz.questions.length} />
+        <QuestionDisplay question={quiz.questions[currentQuestion]} />
+        <OptionsGrid
+          options={quiz.questions[currentQuestion].options}
+          selected={answers[currentQuestion]}
+          onSelect={(option) => setAnswers({...answers, [currentQuestion]: option})}
+        />
+        <QuizNavigation
+          onNext={() => setCurrentQuestion(currentQuestion + 1)}
+          onPrevious={() => setCurrentQuestion(currentQuestion - 1)}
+          onSubmit={() => submitMutation.mutate(answers)}
+        />
+      </div>
+    )
+  }
+  </code></pre>
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Timer Component</strong></li>
+<li><input type="checkbox"> <strong>Progress Tracking</strong></li>
+<li><input type="checkbox"> <strong>Answer Selection</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Thursday-Friday: Results Page</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Results Display</strong></li>
+<p>
+</ul>
+  - Score summary
+  - Question-by-question review
+  - Explanations with citations
+  - Performance analytics
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ Quiz taking works smoothly</li>
+<li>✅ Timer functional</li>
+<li>✅ Results page complete</li>
+<li>✅ Explanations displayed</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 14: Progress & Settings</h3>
+
+<strong>Monday-Wednesday: Progress Tracking</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Progress Dashboard</strong></li>
+<p>
+</ul>
+  - Overall statistics
+  - Performance by specialty
+  - Weak areas identification
+  - Study streak
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Charts & Visualizations</strong></li>
+<p>
+</ul>
+  - Performance over time (Line chart)
+  - Specialty breakdown (Pie chart)
+  - Daily activity (Heat map)
+</p>
+
+<strong>Thursday-Friday: Settings & Profile</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>User Settings</strong></li>
+<p>
+</ul>
+  - Profile information
+  - Password change
+  - Notification preferences
+  - Study goals
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Theme Support</strong></li>
+<p>
+</ul>
+  - Light/dark mode
+  - Color scheme customization
+</p>
+
+<strong>Phase 4 Deliverables:</strong>
+<ul>
+<li>✅ Next.js frontend deployed</li>
+<li>✅ Authentication working</li>
+<li>✅ Quiz interface complete</li>
+<li>✅ Progress tracking functional</li>
+<li>✅ Responsive design</li>
+<li>✅ Lighthouse score 95+</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Phase 5: Agent System Expansion (Week 15-18)</h2>
+
+<strong>Goal:</strong> Implement remaining expert agents and workflows
+
+<strong>Dependencies:</strong> Phase 3 & 4 complete
+
+<h3>Week 15-16: First 10 Additional Agents</h3>
+
+<strong>Priority Agents:</strong>
+<ol>
+<li><strong>AI-001:</strong> RAG System Architect (already partially done)</li>
+<li><strong>DEV-001:</strong> Backend Architect</li>
+<li><strong>DEV-002:</strong> Frontend Architect</li>
+<li><strong>MED-002:</strong> Respiratory Medicine Expert</li>
+<li><strong>MED-003:</strong> Gastroenterology Expert</li>
+<li><strong>MED-004:</strong> Endocrinology Expert</li>
+<li><strong>QA-002:</strong> E2E Testing Engineer</li>
+<li><strong>DEVOPS-002:</strong> CI/CD Engineer</li>
+<li><strong>AI-002:</strong> LLM Operations Engineer</li>
+<li><strong>DEV-004:</strong> Database Engineer</li>
+<p>
+</ol>
+</p>
+
+<strong>Per Agent Checklist:</strong>
+<ul>
+<li><input type="checkbox"> Create agent class file</li>
+<li><input type="checkbox"> Implement execute_task()</li>
+<li><input type="checkbox"> Implement validate_output()</li>
+<li><input type="checkbox"> Write unit tests</li>
+<li><input type="checkbox"> Register with agent registry</li>
+<li><input type="checkbox"> Deploy as container</li>
+<li><input type="checkbox"> Integration testing</li>
+<p>
+</ul>
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ 10 agents fully implemented</li>
+<li>✅ All agents registered</li>
+<li>✅ Integration tests passing</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 17-18: Next 10 Agents + Workflows</h3>
+
+<strong>Agents:</strong>
+<p>
+11-20 (Mix of DEV, AI, DEVOPS, MED agents)
+</p>
+
+<strong>Workflows:</strong>
+<ul>
+<li><input type="checkbox"> <strong>Content Generation Workflow</strong></li>
+<p>
+</ul>
+  - PM-001 → MED-XXX → QA-001 → Database
+  - Generate 100 questions at a time
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Quality Assurance Workflow</strong></li>
+<p>
+</ul>
+  - QA-001 → MED Expert Review → QA-002 E2E Test
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Deployment Workflow</strong></li>
+<p>
+</ul>
+  - DEV → QA → DEVOPS-002 CI/CD → Production
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ 20 agents total implemented</li>
+<li>✅ 3 major workflows operational</li>
+<li>✅ Can generate 1,000 questions/day</li>
+<p>
+</ul>
+</p>
+
+<strong>Phase 5 Deliverables:</strong>
+<ul>
+<li>✅ 20+ expert agents operational</li>
+<li>✅ Multi-agent workflows working</li>
+<li>✅ 2,000+ questions generated</li>
+<li>✅ Agent monitoring dashboards</li>
+<li>✅ Automated content generation</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Phase 6: Testing & Polish (Week 19-22)</h2>
+
+<strong>Goal:</strong> Comprehensive testing, performance optimization, security hardening
+
+<strong>Dependencies:</strong> Phase 5 complete
+
+<h3>Week 19: Testing Infrastructure</h3>
+
+<ul>
+<li><input type="checkbox"> <strong>Backend Testing</strong></li>
+<p>
+</ul>
+  - Unit tests (pytest)
+  - Integration tests
+  - API tests
+  - 80%+ coverage
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Frontend Testing</strong></li>
+<p>
+</ul>
+  - Component tests (Vitest)
+  - E2E tests (Playwright)
+  - Visual regression tests
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Load Testing</strong></li>
+<p>
+</ul>
+  - k6 load tests
+  - 1,000 concurrent users
+  - Performance baselines
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ 80%+ test coverage</li>
+<li>✅ All tests passing</li>
+<li>✅ Load tests meet SLAs</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 20: Performance Optimization</h3>
+
+<ul>
+<li><input type="checkbox"> <strong>Backend Optimization</strong></li>
+<p>
+</ul>
+  - Database query optimization
+  - Caching implementation
+  - Connection pooling
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Frontend Optimization</strong></li>
+<p>
+</ul>
+  - Code splitting
+  - Lazy loading
+  - Image optimization
+  - Bundle size reduction
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>LLM Optimization</strong></li>
+<p>
+</ul>
+  - Prompt caching
+  - Batch processing
+  - vLLM deployment
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ Backend: 3,000+ RPS</li>
+<li>✅ Frontend: Lighthouse 95+</li>
+<li>✅ LCP < 1.5s, FID < 100ms</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 21: Security Hardening</h3>
+
+<ul>
+<li><input type="checkbox"> <strong>Security Audit</strong></li>
+<p>
+</ul>
+  - OWASP Top 10 validation
+  - Penetration testing
+  - Dependency scanning
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>HIPAA Compliance</strong> (if needed)</li>
+<p>
+</ul>
+  - Encryption at rest
+  - Audit logging
+  - Access controls
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ 0 high/critical vulnerabilities</li>
+<li>✅ Security scan passes</li>
+<li>✅ HIPAA ready (if required)</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 22: Polish & UX</h3>
+
+<ul>
+<li><input type="checkbox"> <strong>UI/UX Improvements</strong></li>
+<p>
+</ul>
+  - User feedback integration
+  - Accessibility (WCAG 2.1 AA)
+  - Loading states
+  - Error handling
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Content Quality</strong></li>
+<p>
+</ul>
+  - Review 500 questions
+  - Fix any issues
+  - Add more specialties
+</p>
+
+<strong>Phase 6 Deliverables:</strong>
+<ul>
+<li>✅ Comprehensive test suite</li>
+<li>✅ Performance optimized</li>
+<li>✅ Security hardened</li>
+<li>✅ UX polished</li>
+<li>✅ 5,000+ quality questions</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Phase 7: Production Deployment (Week 23-24)</h2>
+
+<strong>Goal:</strong> Deploy to production, beta testing, launch
+
+<strong>Dependencies:</strong> All previous phases complete
+
+<h3>Week 23: Deployment</h3>
+
+<strong>Monday-Wednesday: Production Setup</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Infrastructure</strong></li>
+<p>
+</ul>
+  - Kubernetes cluster
+  - CI/CD pipeline (GitHub Actions + ArgoCD)
+  - Monitoring (Prometheus + Grafana)
+  - Logging (Loki)
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Environment Configuration</strong></li>
+<p>
+</ul>
+  - Production database
+  - Redis cluster
+  - Qdrant production instance
+  - SSL/TLS certificates
+</p>
+
+<strong>Thursday-Friday: Deployment</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Deploy Backend</strong></li>
+<p>
+</ul>
+  - Docker images
+  - Kubernetes manifests
+  - Health checks
+  - Smoke tests
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Deploy Frontend</strong></li>
+<p>
+</ul>
+  - Next.js build
+  - CDN configuration
+  - Domain setup
+</p>
+
+<strong>Success Criteria:</strong>
+<ul>
+<li>✅ Production environment running</li>
+<li>✅ All services healthy</li>
+<li>✅ Monitoring active</li>
+<li>✅ Backups configured</li>
+<p>
+</ul>
+</p>
+
+<h3>Week 24: Beta Testing & Launch</h3>
+
+<strong>Monday-Wednesday: Beta Testing</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Recruit Beta Testers</strong></li>
+<p>
+</ul>
+  - 20-50 medical students/IMGs
+  - Diverse backgrounds
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Feedback Collection</strong></li>
+<p>
+</ul>
+  - Bug reports
+  - Feature requests
+  - User experience feedback
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Rapid Fixes</strong></li>
+<p>
+</ul>
+  - Critical bugs
+  - UX issues
+  - Performance problems
+</p>
+
+<strong>Thursday-Friday: Launch</strong>
+
+<ul>
+<li><input type="checkbox"> <strong>Final Checks</strong></li>
+<p>
+</ul>
+  - All tests passing
+  - Performance validated
+  - Security confirmed
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Go Live</strong></li>
+<p>
+</ul>
+  - DNS cutover
+  - Announcement
+  - Support ready
+</p>
+
+<ul>
+<li><input type="checkbox"> <strong>Post-Launch Monitoring</strong></li>
+<p>
+</ul>
+  - Watch metrics
+  - Quick response to issues
+  - User support
+</p>
+
+<strong>Phase 7 Deliverables:</strong>
+<ul>
+<li>✅ Production deployment live</li>
+<li>✅ Beta testing complete</li>
+<li>✅ Platform launched</li>
+<li>✅ Monitoring dashboards active</li>
+<li>✅ Support infrastructure ready</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Success Metrics</h2>
+
+<h3>Technical Metrics</h3>
+
+<strong>Performance:</strong>
+<ul>
+<li>Backend API: >3,000 RPS, p95 <100ms ✅</li>
+<li>Frontend: Lighthouse >95, LCP <1.5s ✅</li>
+<li>Database: Queries p95 <50ms ✅</li>
+<li>Vector Search: p95 <500ms ✅</li>
+<li>LLM Generation: 40-60 tokens/sec (7B models) ✅</li>
+<p>
+</ul>
+</p>
+
+<strong>Quality:</strong>
+<ul>
+<li>Test Coverage: >80% ✅</li>
+<li>Security: 0 high/critical vulnerabilities ✅</li>
+<li>Uptime: >99.9% ✅</li>
+<p>
+</ul>
+</p>
+
+<strong>Content:</strong>
+<ul>
+<li>Questions Generated: 5,000+ ✅</li>
+<li>Clinical Accuracy: 100% (validated) ✅</li>
+<li>Guideline Compliance: 100% (Australian) ✅</li>
+<p>
+</ul>
+</p>
+
+<h3>Business Metrics</h3>
+
+<strong>User Engagement:</strong>
+<ul>
+<li>Weekly Active Users: 100+ (Month 1)</li>
+<li>Question Completion Rate: >70%</li>
+<li>Average Session Duration: >15 minutes</li>
+<li>Return Rate: >60% (weekly)</li>
+<p>
+</ul>
+</p>
+
+<strong>Content Quality:</strong>
+<ul>
+<li>Question Rating: >4.5/5</li>
+<li>Explanation Usefulness: >85%</li>
+<li>Difficulty Calibration: Accurate ±10%</li>
+<p>
+</ul>
+</p>
+
+<strong>Platform Growth:</strong>
+<ul>
+<li>User Registrations: 500+ (Month 1)</li>
+<li>Questions Attempted: 10,000+ (Month 1)</li>
+<li>Study Hours: 1,000+ (Month 1)</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Risk Management</h2>
+
+<h3>High-Risk Items</h3>
+
+<strong>1. Medical Content Accuracy (HIGH)</strong>
+<ul>
+<li><strong>Risk:</strong> AI-generated questions may contain errors</li>
+<li><strong>Mitigation:</strong></li>
+<p>
+</ul>
+  - QA-001 validation on all questions
+  - Medical expert review for sample set
+  - User feedback and error reporting
+  - Continuous monitoring and updates
+</p>
+
+<strong>2. LLM Performance (MEDIUM)</strong>
+<ul>
+<li><strong>Risk:</strong> Local LLMs may not match GPT-4 quality</li>
+<li><strong>Mitigation:</strong></li>
+<p>
+</ul>
+  - Use best open-source models (Llama 3.1 70B)
+  - Fine-tune on medical content
+  - Hybrid approach: RAG + large context
+  - Fallback to API if needed
+</p>
+
+<strong>3. Scalability (MEDIUM)</strong>
+<ul>
+<li><strong>Risk:</strong> System may not handle growth</li>
+<li><strong>Mitigation:</strong></li>
+<p>
+</ul>
+  - Kubernetes for auto-scaling
+  - Caching strategy (Redis)
+  - Database optimization
+  - Load testing before launch
+</p>
+
+<strong>4. Content Acquisition Cost (LOW)</strong>
+<ul>
+<li><strong>Risk:</strong> Medical textbooks expensive</li>
+<li><strong>Mitigation:</strong></li>
+<p>
+</ul>
+  - Start with free resources (StatPearls)
+  - Validate system before investing
+  - Gradual acquisition of paid books
+</p>
+
+<h3>Contingency Plans</h3>
+
+<strong>If LLM quality insufficient:</strong>
+<ul>
+<li>Switch to API-based models (OpenAI, Anthropic)</li>
+<li>Budget for API costs (~$50-100/month)</li>
+<p>
+</ul>
+</p>
+
+<strong>If agent system too complex:</strong>
+<ul>
+<li>Simplify to 10-15 core agents</li>
+<li>Manual workflows as fallback</li>
+<p>
+</ul>
+</p>
+
+<strong>If timeline slips:</strong>
+<ul>
+<li>Launch MVP with basic features first</li>
+<li>Iterate with weekly releases</li>
+<li>Focus on core value proposition</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<h2>Summary</h2>
+
+<strong>Total Duration:</strong> 24 weeks (6 months)
+
+<strong>Effort Estimation:</strong>
+<ul>
+<li>Solo developer: 30 weeks</li>
+<li>2 developers: 18 weeks</li>
+<li>3 developers: 14 weeks</li>
+<p>
+</ul>
+</p>
+
+<strong>Cost Estimate:</strong>
+<ul>
+<li>Infrastructure: $50-100/month (electricity, domains)</li>
+<li>Medical textbooks: $0-2,000 (one-time)</li>
+<li>Optional API costs: $50-100/month (if using paid LLMs)</li>
+<li><strong>Total: ~$2,000 initial + $100/month operational</strong></li>
+<p>
+</ul>
+</p>
+
+<strong>Key Milestones:</strong>
+<ul>
+<li>Week 2: Content acquired, pipeline validated ✅</li>
+<li>Week 6: Backend API complete ✅</li>
+<li>Week 10: 500 questions generated ✅</li>
+<li>Week 14: Frontend MVP deployed ✅</li>
+<li>Week 18: 20 agents operational ✅</li>
+<li>Week 22: Ready for production ✅</li>
+<li>Week 24: Platform launched 🎉</li>
+<p>
+</ul>
+</p>
+
+<hr>
+
+<strong>Last Updated:</strong> December 14, 2025
+<strong>Status:</strong> Ready to execute Phase 1 immediately! 🚀
+
+        
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 15, 2025 at 11:00</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICRP Study Project - Master Navigation Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            border-radius: 12px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            color: #7f8c8d;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .stat-box .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-box .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .quick-links {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border-left: 5px solid #667eea;
+        }
+
+        .quick-links h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .quick-link-btn {
+            display: block;
+            padding: 15px 20px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 2px solid #667eea;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .quick-link-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h3 {
+            color: #34495e;
+            font-size: 1.4em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 4px solid #3498db;
+        }
+
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .file-card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 15px;
+            transition: all 0.3s;
+        }
+
+        .file-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .file-card a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+        }
+
+        .file-card a:hover {
+            color: #667eea;
+        }
+
+        .file-card .file-icon {
+            font-size: 1.5em;
+            margin-right: 8px;
+        }
+
+        .file-card .file-desc {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+        }
+
+        .search-box {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .search-box input {
+            width: 100%;
+            max-width: 600px;
+            padding: 15px 20px;
+            font-size: 16px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            .file-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 ICRP Study Project</h1>
+            <div class="subtitle">NSW Young Hospital Preparation - Complete Learning Resources</div>
+            <div class="stats">
+                <div class="stat-box">
+                    <span class="number">61</span>
+                    <span class="label">HTML Modules</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number">37</span>
+                    <span class="label">OSCE Guides</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number">11</span>
+                    <span class="label">Practice Tools</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number">100%</span>
+                    <span class="label">Converted</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-links">
+            <h2>🚀 Quick Start</h2>
+            <div class="quick-links-grid">
+                <a href="START_HERE.html" class="quick-link-btn">📖 Start Here Guide</a>
+                <a href="ICRP_OSCE_Preparation/00_MASTER_INDEX_AMC_CLINICAL_OSCE.html" class="quick-link-btn">📚 OSCE Master Index</a>
+                <a href="MASTER_INDEX.html" class="quick-link-btn">📋 Practice Tools</a>
+                <a href="QUICKSTART.html" class="quick-link-btn">⚡ Quick Start</a>
+                <a href="PROJECT_CONSTRAINTS.html" class="quick-link-btn">📜 Project Standards</a>
+                <a href="ICRP_Program_Resources/Trackers/Daily_Practice_Log.html" class="quick-link-btn">✅ Daily Log</a>
+            </div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Search all resources..." onkeyup="filterContent()">
+        </div>
+
+        <!-- OSCE Preparation -->
+        <div class="section" id="osce-section">
+            <h2>📖 OSCE Preparation Materials</h2>
+
+            <h3>🫀 Medicine</h3>
+            <div class="file-grid">
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Medicine/01_Cardiovascular_Respiratory_History.html">
+                        <span class="file-icon">📋</span>Cardiovascular & Respiratory History
+                    </a>
+                    <div class="file-desc">Chest pain, SOB, palpitations with differentials</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Medicine/02_Physical_Examination_Cardiovascular_Respiratory.html">
+                        <span class="file-icon">🩺</span>CV & Respiratory Examination
+                    </a>
+                    <div class="file-desc">Complete HIPJAP and IPTAP approach</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Medicine/03_Physical_Examination_Abdominal_Neurological.html">
+                        <span class="file-icon">🩺</span>Abdominal & Neurological Exam
+                    </a>
+                    <div class="file-desc">9-region palpation, cranial nerves I-XII</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Medicine/01_GI_Abdominal_Pain_Differentials.html">
+                        <span class="file-icon">📋</span>GI - Abdominal Pain
+                    </a>
+                    <div class="file-desc">Acute abdomen differentials and management</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Medicine/02_GI_Bleeding_Differentials.html">
+                        <span class="file-icon">📋</span>GI - Bleeding Differentials
+                    </a>
+                    <div class="file-desc">Upper and lower GI bleeding assessment</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Medicine/03_Neurology_Headache_Differentials.html">
+                        <span class="file-icon">🧠</span>Neurology - Headache
+                    </a>
+                    <div class="file-desc">Red flags, migraine, tension, cluster headaches</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Medicine/04_Neurology_Weakness_Limb_Examination.html">
+                        <span class="file-icon">🧠</span>Neurology - Weakness & Limb Exam
+                    </a>
+                    <div class="file-desc">UMN vs LMN, MRC grading, stroke protocols</div>
+                </div>
+            </div>
+
+            <h3>🔪 Surgery</h3>
+            <div class="file-grid">
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Surgery/01_Acute_Abdomen_History_Differentials.html">
+                        <span class="file-icon">📋</span>Acute Abdomen History
+                    </a>
+                    <div class="file-desc">Appendicitis, cholecystitis, obstruction</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Surgery/02_Acute_Abdomen_Physical_Examination.html">
+                        <span class="file-icon">🩺</span>Acute Abdomen Examination
+                    </a>
+                    <div class="file-desc">Special signs: Murphy's, Rovsing's, rebound</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Surgery/03_Surgical_Lumps_Hernias_History_Examination.html">
+                        <span class="file-icon">🔍</span>Lumps & Hernias
+                    </a>
+                    <div class="file-desc">7 S's of lump examination, hernia assessment</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Surgery/04_Pre_Post_Operative_Assessment.html">
+                        <span class="file-icon">📋</span>Pre/Post-Operative Assessment
+                    </a>
+                    <div class="file-desc">Surgical risk, informed consent</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Surgery/05_Trauma_Assessment.html">
+                        <span class="file-icon">🚑</span>Trauma Assessment
+                    </a>
+                    <div class="file-desc">ATLS primary and secondary survey</div>
+                </div>
+            </div>
+
+            <h3>👶 Paediatrics</h3>
+            <div class="file-grid">
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Paediatrics/01_Paediatric_History_Differentials.html">
+                        <span class="file-icon">📋</span>Paediatric History
+                    </a>
+                    <div class="file-desc">Birth history, milestones, immunizations</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Paediatrics/02_Common_Paediatric_Presentations.html">
+                        <span class="file-icon">🤒</span>Common Presentations
+                    </a>
+                    <div class="file-desc">Fever, cough, diarrhea, rash in children</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Paediatrics/03_Paediatric_Physical_Examination.html">
+                        <span class="file-icon">🩺</span>Paediatric Examination
+                    </a>
+                    <div class="file-desc">Age-appropriate examination techniques</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Paediatrics/04_Developmental_Assessment.html">
+                        <span class="file-icon">📊</span>Developmental Assessment
+                    </a>
+                    <div class="file-desc">Milestones by age, red flags</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Paediatrics/05_Parent_Communication_Strategies.html">
+                        <span class="file-icon">💬</span>Parent Communication
+                    </a>
+                    <div class="file-desc">Strategies for communicating with parents</div>
+                </div>
+            </div>
+
+            <h3>🤰 Obstetrics & Gynaecology</h3>
+            <div class="file-grid">
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/ObGyn/01_Obstetric_History_Differentials.html">
+                        <span class="file-icon">📋</span>Obstetric History
+                    </a>
+                    <div class="file-desc">Antenatal care, pregnancy complications</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/ObGyn/02_Gynaecological_History_Differentials.html">
+                        <span class="file-icon">📋</span>Gynaecological History
+                    </a>
+                    <div class="file-desc">Menstrual history, bleeding, pelvic pain</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/ObGyn/03_Contraception_Counselling.html">
+                        <span class="file-icon">💊</span>Contraception Counselling
+                    </a>
+                    <div class="file-desc">All methods, risks, benefits, eligibility</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/ObGyn/04_Obstetric_Examination.html">
+                        <span class="file-icon">🩺</span>Obstetric Examination
+                    </a>
+                    <div class="file-desc">Fundal height, fetal lie, CTG interpretation</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/ObGyn/05_Gynaecological_Examination.html">
+                        <span class="file-icon">🩺</span>Gynaecological Examination
+                    </a>
+                    <div class="file-desc">Pelvic examination, speculum, bimanual</div>
+                </div>
+            </div>
+
+            <h3>🧠 Psychiatry</h3>
+            <div class="file-grid">
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Psychiatry/01_Psychiatric_History_Differentials.html">
+                        <span class="file-icon">📋</span>Psychiatric History
+                    </a>
+                    <div class="file-desc">Depression, anxiety, psychosis assessment</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Psychiatry/02_Mental_State_Examination.html">
+                        <span class="file-icon">🧠</span>Mental State Examination
+                    </a>
+                    <div class="file-desc">Complete MSE structure and interpretation</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Psychiatry/03_Risk_Assessment_Suicide_Violence_Selfneglect.html">
+                        <span class="file-icon">⚠️</span>Risk Assessment
+                    </a>
+                    <div class="file-desc">Suicide, violence, self-neglect evaluation</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Psychiatry/04_Common_Psychiatric_Presentations.html">
+                        <span class="file-icon">📋</span>Common Presentations
+                    </a>
+                    <div class="file-desc">Depression, mania, schizophrenia, anxiety</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Psychiatry/05_Capacity_Assessment_Legal_Framework.html">
+                        <span class="file-icon">⚖️</span>Capacity Assessment
+                    </a>
+                    <div class="file-desc">NSW Mental Health Act, capacity evaluation</div>
+                </div>
+            </div>
+
+            <h3>💬 Ethics & Communication</h3>
+            <div class="file-grid">
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Ethics_Communication/01_Communication_Skills_Role_Play_Scripts.html">
+                        <span class="file-icon">🎭</span>Communication Skills Scripts
+                    </a>
+                    <div class="file-desc">Breaking bad news, consent, angry patient</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Ethics_Communication/02_Breaking_Bad_News_Additional_Scenarios.html">
+                        <span class="file-icon">💔</span>Breaking Bad News - Part 1
+                    </a>
+                    <div class="file-desc">Additional practice scenarios</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Ethics_Communication/03_Breaking_Bad_News_Additional_Scenarios_Part2.html">
+                        <span class="file-icon">💔</span>Breaking Bad News - Part 2
+                    </a>
+                    <div class="file-desc">More complex scenarios</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Ethics_Communication/04_Comprehensive_Emotional_Reactions_Handbook.html">
+                        <span class="file-icon">😢</span>Emotional Reactions Handbook
+                    </a>
+                    <div class="file-desc">Handling crying, anger, denial, shock</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Ethics_Communication/05_Cultural_Variations_Breaking_Bad_News_Australia.html">
+                        <span class="file-icon">🌏</span>Cultural Variations
+                    </a>
+                    <div class="file-desc">Australian context, Indigenous health</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Ethics_Communication/06_IMG_Common_Mistakes_Breaking_Bad_News.html">
+                        <span class="file-icon">⚠️</span>IMG Common Mistakes
+                    </a>
+                    <div class="file-desc">What to avoid in communication stations</div>
+                </div>
+            </div>
+
+            <h3>🎯 Mock OSCE Stations</h3>
+            <div class="file-grid">
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Mock_Stations/01_Sample_Mock_OSCE_Chest_Pain.html">
+                        <span class="file-icon">📝</span>Mock Station: Chest Pain
+                    </a>
+                    <div class="file-desc">Complete 8-minute timed station</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Mock_Stations/02_Breaking_Bad_News_Mock_Stations.html">
+                        <span class="file-icon">📝</span>Mock: Breaking Bad News 1
+                    </a>
+                    <div class="file-desc">Practice communication stations</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_OSCE_Preparation/Mock_Stations/03_Breaking_Bad_News_Mock_Stations_Part2.html">
+                        <span class="file-icon">📝</span>Mock: Breaking Bad News 2
+                    </a>
+                    <div class="file-desc">Additional communication practice</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Practice Resources -->
+        <div class="section" id="practice-section">
+            <h2>📚 Practice Resources</h2>
+
+            <h3>📊 Trackers & Logs</h3>
+            <div class="file-grid">
+                <div class="file-card">
+                    <a href="ICRP_Program_Resources/Trackers/Daily_Practice_Log.html">
+                        <span class="file-icon">✅</span>Daily Practice Log
+                    </a>
+                    <div class="file-desc">Track daily study sessions</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_Program_Resources/Trackers/Weekly_Progress_Tracker.html">
+                        <span class="file-icon">📈</span>Weekly Progress Tracker
+                    </a>
+                    <div class="file-desc">Monitor weekly achievements</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_Program_Resources/Trackers/Typing_Progress_Tracker.html">
+                        <span class="file-icon">⌨️</span>Typing Progress Tracker
+                    </a>
+                    <div class="file-desc">Improve EMR documentation speed</div>
+                </div>
+            </div>
+
+            <h3>📋 Templates</h3>
+            <div class="file-grid">
+                <div class="file-card">
+                    <a href="ICRP_Program_Resources/Templates/History_Taking_Practice_Log.html">
+                        <span class="file-icon">📝</span>History Taking Log
+                    </a>
+                    <div class="file-desc">Record history practice sessions</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_Program_Resources/Templates/Physical_Examination_Practice_Log.html">
+                        <span class="file-icon">🩺</span>Examination Practice Log
+                    </a>
+                    <div class="file-desc">Track examination practice</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_Program_Resources/Templates/Weekly_Study_Schedule.html">
+                        <span class="file-icon">📅</span>Weekly Study Schedule
+                    </a>
+                    <div class="file-desc">Plan your study week</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_Program_Resources/Templates/SOAP_Note_Template.html">
+                        <span class="file-icon">📄</span>SOAP Note Template
+                    </a>
+                    <div class="file-desc">Australian clinical documentation format</div>
+                </div>
+            </div>
+
+            <h3>📖 Study Guides</h3>
+            <div class="file-grid">
+                <div class="file-card">
+                    <a href="ICRP_Program_Resources/Weakness_Improvement/01_History_Taking_Mastery_Guide.html">
+                        <span class="file-icon">📚</span>History Taking Mastery
+                    </a>
+                    <div class="file-desc">Complete guide to history taking</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_Program_Resources/Weakness_Improvement/02_Physical_Examination_Skills_Guide.html">
+                        <span class="file-icon">📚</span>Physical Exam Skills
+                    </a>
+                    <div class="file-desc">Systematic examination techniques</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_Program_Resources/Weakness_Improvement/03_Computer_Skills_Typing_Improvement_Plan.html">
+                        <span class="file-icon">💻</span>Computer Skills Plan
+                    </a>
+                    <div class="file-desc">Improve typing and EMR efficiency</div>
+                </div>
+            </div>
+
+            <h3>📚 Reference Materials</h3>
+            <div class="file-grid">
+                <div class="file-card">
+                    <a href="ICRP_Program_Resources/Reference_Materials/EMR_Documentation_Guide.html">
+                        <span class="file-icon">💻</span>EMR Documentation Guide
+                    </a>
+                    <div class="file-desc">NSW Health EMR system overview</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_Program_Resources/Reference_Materials/Medical_Terminology_Practice_Lists.html">
+                        <span class="file-icon">📖</span>Medical Terminology Lists
+                    </a>
+                    <div class="file-desc">Australian vs US terminology</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_Program_Resources/Case_Scenarios/Sample_Cases_For_Practice.html">
+                        <span class="file-icon">📋</span>Sample Cases
+                    </a>
+                    <div class="file-desc">Practice case scenarios with answers</div>
+                </div>
+                <div class="file-card">
+                    <a href="ICRP_Program_Resources/Self_Assessment_Checklist.html">
+                        <span class="file-icon">✓</span>Self-Assessment Checklist
+                    </a>
+                    <div class="file-desc">Evaluate your readiness</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Documentation -->
+        <div class="section" id="docs-section">
+            <h2>📄 Project Documentation</h2>
+
+            <div class="file-grid">
+                <div class="file-card">
+                    <a href="README.html">
+                        <span class="file-icon">📘</span>README
+                    </a>
+                    <div class="file-desc">Project overview and introduction</div>
+                </div>
+                <div class="file-card">
+                    <a href="00_PROJECT_OVERVIEW.html">
+                        <span class="file-icon">📋</span>Project Overview
+                    </a>
+                    <div class="file-desc">Comprehensive project details</div>
+                </div>
+                <div class="file-card">
+                    <a href="QUICKSTART.html">
+                        <span class="file-icon">⚡</span>Quick Start Guide
+                    </a>
+                    <div class="file-desc">Get started in 5 minutes</div>
+                </div>
+                <div class="file-card">
+                    <a href="PROJECT_CONSTRAINTS.html">
+                        <span class="file-icon">📜</span>Project Constraints
+                    </a>
+                    <div class="file-desc">Standards and requirements</div>
+                </div>
+                <div class="file-card">
+                    <a href="SYSTEM_OVERVIEW.html">
+                        <span class="file-icon">🔧</span>System Overview
+                    </a>
+                    <div class="file-desc">Technical architecture</div>
+                </div>
+                <div class="file-card">
+                    <a href="NEXT_STEPS.html">
+                        <span class="file-icon">➡️</span>Next Steps
+                    </a>
+                    <div class="file-desc">What to do next</div>
+                </div>
+                <div class="file-card">
+                    <a href="CREATION_SUMMARY.html">
+                        <span class="file-icon">📊</span>Creation Summary
+                    </a>
+                    <div class="file-desc">Project creation timeline</div>
+                </div>
+            </div>
+
+            <h3>📚 Advanced Documentation</h3>
+            <div class="file-grid">
+                <div class="file-card">
+                    <a href="docs/AGENT_SPECIFICATIONS.html">
+                        <span class="file-icon">🤖</span>Agent Specifications
+                    </a>
+                    <div class="file-desc">Expert agent system design</div>
+                </div>
+                <div class="file-card">
+                    <a href="docs/AGENT_SYSTEM_IMPLEMENTATION.html">
+                        <span class="file-icon">⚙️</span>Agent Implementation
+                    </a>
+                    <div class="file-desc">How agents work in this project</div>
+                </div>
+                <div class="file-card">
+                    <a href="docs/EXPERT_AGENTS_INFRASTRUCTURE.html">
+                        <span class="file-icon">🏗️</span>Agent Infrastructure
+                    </a>
+                    <div class="file-desc">Infrastructure setup for agents</div>
+                </div>
+                <div class="file-card">
+                    <a href="docs/MCP_SERVERS_INFRASTRUCTURE.html">
+                        <span class="file-icon">🖥️</span>MCP Servers
+                    </a>
+                    <div class="file-desc">Model Context Protocol setup</div>
+                </div>
+                <div class="file-card">
+                    <a href="docs/PROJECT_ROADMAP.html">
+                        <span class="file-icon">🗺️</span>Project Roadmap
+                    </a>
+                    <div class="file-desc">Future development plans</div>
+                </div>
+                <div class="file-card">
+                    <a href="docs/REQUIRED_BOOKS.html">
+                        <span class="file-icon">📚</span>Required Books
+                    </a>
+                    <div class="file-desc">Essential textbooks for ICRP</div>
+                </div>
+                <div class="file-card">
+                    <a href="docs/FREE_RESOURCES_SETUP.html">
+                        <span class="file-icon">🆓</span>Free Resources
+                    </a>
+                    <div class="file-desc">No-cost study materials</div>
+                </div>
+                <div class="file-card">
+                    <a href="docs/ADDITIONAL_RESOURCES.html">
+                        <span class="file-icon">➕</span>Additional Resources
+                    </a>
+                    <div class="file-desc">Supplementary materials</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>🎓 ICRP Study Project</h3>
+            <p><strong>NSW Young Hospital Preparation</strong></p>
+            <p>Complete preparation materials for International Medical Graduates</p>
+            <p style="margin-top: 20px;">Generated: December 15, 2025</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">
+                All content follows AHPRA standards and NSW Health protocols
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function filterContent() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const allCards = document.querySelectorAll('.file-card');
+
+            allCards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Show/hide sections based on whether they have visible cards
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const visibleCards = section.querySelectorAll('.file-card[style="display: block;"], .file-card:not([style*="display: none"])');
+                if (searchTerm === '' || visibleCards.length > 0) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
