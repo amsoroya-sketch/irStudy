@@ -3,26 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICRP Preparation - START HERE</title>
+    <title>ICRP Study Project - Complete Sitemap</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
         .container {
+            max-width: 1400px;
+            margin: 0 auto;
             background: white;
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
-        h1 {
-            color: #667eea;
-            font-size: 2.5em;
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            margin: -40px -40px 40px -40px;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3em;
             margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+        }
+
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
         .alert {
             background: #fff3cd;
             border-left: 5px solid #ffc107;
@@ -30,6 +84,7 @@
             margin: 20px 0;
             border-radius: 5px;
         }
+
         .success {
             background: #d4edda;
             border-left: 5px solid #28a745;
@@ -37,218 +92,964 @@
             margin: 20px 0;
             border-radius: 5px;
         }
-        .file-box {
+
+        .info {
+            background: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            font-size: 2em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        h4 {
+            color: #667eea;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .section {
             background: #f8f9fa;
-            border: 2px solid #667eea;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+        }
+
+        .subsection {
+            background: white;
             padding: 20px;
             margin: 15px 0;
             border-radius: 8px;
+            border-left: 4px solid #667eea;
         }
-        .file-box h3 {
-            color: #667eea;
-            margin-top: 0;
+
+        .doc-list {
+            list-style: none;
+            margin: 15px 0;
         }
-        a {
+
+        .doc-list li {
+            padding: 12px 15px;
+            margin: 8px 0;
+            background: white;
+            border-radius: 6px;
+            border-left: 3px solid #28a745;
+            transition: all 0.3s ease;
+        }
+
+        .doc-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .doc-list a {
             color: #667eea;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
+            font-weight: 600;
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        a:hover {
+
+        .doc-list a:hover {
+            color: #764ba2;
             text-decoration: underline;
         }
-        .step {
+
+        .doc-list .icon {
+            font-size: 1.3em;
+        }
+
+        .toc {
+            background: #e9ecef;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border: 2px solid #dee2e6;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+            color: #667eea;
+        }
+
+        .toc ul {
+            list-style: none;
+            column-count: 2;
+            column-gap: 30px;
+        }
+
+        .toc li {
+            margin: 8px 0;
+            break-inside: avoid;
+        }
+
+        .toc a {
+            color: #2c3e50;
+            text-decoration: none;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .toc a:hover {
+            background: #fff;
+            color: #667eea;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+
+        .badge-complete {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-important {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .badge-new {
+            background: #cce5ff;
+            color: #004085;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e9ecef;
+            text-align: center;
+            color: #6c757d;
+        }
+
+        .cta-box {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 15px 20px;
-            margin: 10px 0;
-            border-radius: 5px;
-            font-size: 1.2em;
-            font-weight: bold;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 30px 0;
         }
-        ul {
-            line-height: 1.8;
+
+        .cta-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header {
+                padding: 20px;
+                margin: -20px -20px 20px -20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .toc ul {
+                column-count: 1;
+            }
+
+            .quick-stats {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🎯 ICRP Preparation - START HERE</h1>
-        <p style="font-size: 1.2em; color: #666;">Your complete guide to ICRP success at Young District Hospital</p>
+        <div class="header">
+            <h1>🎯 ICRP Study Project</h1>
+            <p>Complete Sitemap & Navigation Guide</p>
+            <p style="font-size: 0.9em; margin-top: 10px; opacity: 0.9;">ICRP NSW Young District Hospital Preparation</p>
+        </div>
+
+        <div class="quick-stats">
+            <div class="stat-box">
+                <div class="stat-number">75+</div>
+                <div class="stat-label">Total Documents</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">55+</div>
+                <div class="stat-label">Clinical OSCE Materials</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Practice Resources</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">ICRP Ready</div>
+            </div>
+        </div>
+
+        <div class="cta-box">
+            <h3>🚀 First Time Here? Start With These:</h3>
+            <p style="font-size: 1.1em; margin: 15px 0;">
+                1. <a href="QUICKSTART.html" style="color: white; text-decoration: underline;">QUICKSTART.html</a> - 5-minute overview<br>
+                2. <a href="ICRP_NSW_Comprehensive_Preparation_Guide.html" style="color: white; text-decoration: underline;">ICRP Comprehensive Guide</a> - Main preparation document<br>
+                3. <a href="ICRP_OSCE_Preparation/00_MASTER_INDEX_AMC_CLINICAL_OSCE.html" style="color: white; text-decoration: underline;">OSCE Master Index</a> - Clinical exam materials
+            </p>
+        </div>
+
+        <div class="toc">
+            <h3>📑 Table of Contents</h3>
+            <ul>
+                <li><a href="#getting-started">🏁 Getting Started</a></li>
+                <li><a href="#icrp-program">📚 ICRP Program Resources</a></li>
+                <li><a href="#osce-preparation">🩺 OSCE Preparation Materials</a></li>
+                <li><a href="#weakness-improvement">💪 Weakness Improvement Guides</a></li>
+                <li><a href="#templates-trackers">📋 Templates & Trackers</a></li>
+                <li><a href="#reference-materials">📖 Reference Materials</a></li>
+                <li><a href="#project-docs">🔧 Project Documentation</a></li>
+                <li><a href="#technical-docs">⚙️ Technical Documentation</a></li>
+            </ul>
+        </div>
+
+        <!-- GETTING STARTED -->
+        <h2 id="getting-started">🏁 Getting Started</h2>
 
         <div class="success">
-            <h2 style="margin-top: 0;">✅ What You Have</h2>
-            <p><strong>5 comprehensive documents</strong> covering everything needed to prepare for and succeed in the ICRP program:</p>
-            <ul>
-                <li><strong>235 KB</strong> of detailed content</li>
-                <li><strong>Focused on your 4 weak areas:</strong> History taking, Physical examination, Typing/Computer skills, Documentation</li>
-                <li><strong>3-month preparation plans</strong> (December 2025 - February 2026)</li>
-                <li><strong>All actionable</strong> with daily practice routines and tracking tools</li>
-            </ul>
+            <h4>✨ New to this project? Read these first!</h4>
+            <p>These documents will get you oriented and ready to start your ICRP preparation journey.</p>
         </div>
 
-        <h2>📚 Your Documents (Read in This Order)</h2>
-
-        <div class="step">STEP 1: Read the Main Report (2-3 hours)</div>
-        <div class="file-box">
-            <h3>📄 ICRP NSW Comprehensive Preparation Guide</h3>
-            <p><a href="ICRP_NSW_Comprehensive_Preparation_Guide.html">▶ OPEN: ICRP_NSW_Comprehensive_Preparation_Guide.html</a></p>
-            <p><strong>Size:</strong> 110 KB | <strong>Reading Time:</strong> 2-3 hours</p>
-            <p><strong>What's Inside:</strong></p>
-            <ul>
-                <li>Complete ICRP program overview (structure, requirements, outcomes)</li>
-                <li>Young District Hospital profile and services</li>
-                <li>3-month pre-ICRP preparation timeline</li>
-                <li>12-week ICRP program strategy</li>
-                <li>Post-ICRP employment pathway</li>
-                <li>Financial planning ($20-30K budget)</li>
-                <li>Week-by-week action plan through September 2026</li>
-            </ul>
-            <p style="color: #dc3545; font-weight: bold;">⭐ START WITH THIS DOCUMENT!</p>
-        </div>
-
-        <div class="step">STEP 2: Understand What You Need to Improve</div>
-        <div class="file-box">
-            <h3>📄 Index & Navigation</h3>
-            <p><a href="ICRP_Program_Resources/00_README.html">▶ OPEN: 00_README.html</a></p>
-            <p><strong>Size:</strong> 12 KB | <strong>Reading Time:</strong> 10 minutes</p>
-            <p><strong>What's Inside:</strong></p>
-            <ul>
-                <li>Complete document index</li>
-                <li>How to use these materials</li>
-                <li>Timeline summary</li>
-                <li>Success metrics checklist</li>
-            </ul>
-        </div>
-
-        <div class="step">STEP 3: Focus on Your Weaknesses (Choose Based on Priority)</div>
-
-        <div class="file-box">
-            <h3>📄 Weakness #1: History Taking Mastery Guide</h3>
-            <p><a href="ICRP_Program_Resources/Weakness_Improvement/01_History_Taking_Mastery_Guide.md">▶ OPEN: 01_History_Taking_Mastery_Guide.md</a></p>
-            <p><strong>Size:</strong> 31 KB | <strong>Reading Time:</strong> 1 hour</p>
-            <p><strong>What's Inside:</strong></p>
-            <ul>
-                <li><strong>9-step systematic history structure</strong> (memorize this!)</li>
-                <li>SOCRATES pain assessment framework</li>
-                <li>8-minute history template</li>
-                <li>3-month practice plan (400+ histories target)</li>
-                <li>Daily practice routines</li>
-                <li>System-specific question guides</li>
-                <li>Red flag checklists</li>
-                <li>Australian communication style</li>
-            </ul>
-            <p><strong>Goal:</strong> Complete 400+ practice histories before ICRP starts</p>
-        </div>
-
-        <div class="file-box">
-            <h3>📄 Weakness #2: Physical Examination Skills Guide</h3>
-            <p><a href="ICRP_Program_Resources/Weakness_Improvement/02_Physical_Examination_Skills_Guide.md">▶ OPEN: 02_Physical_Examination_Skills_Guide.md</a></p>
-            <p><strong>Size:</strong> 29 KB | <strong>Reading Time:</strong> 1 hour</p>
-            <p><strong>What's Inside:</strong></p>
-            <ul>
-                <li>Complete systematic examination protocols:
-                    <ul>
-                        <li>Cardiovascular (10 min)</li>
-                        <li>Respiratory (8 min)</li>
-                        <li>Abdominal (10 min)</li>
-                    </ul>
+        <div class="section">
+            <ul class="doc-list">
+                <li>
+                    <a href="QUICKSTART.html">
+                        <span class="icon">⚡</span>
+                        <span>QUICKSTART.html</span>
+                        <span class="badge badge-important">START HERE</span>
+                    </a>
                 </li>
-                <li>The 5 Ps framework (Preparation, Position, Permission, Perform, Present)</li>
-                <li>Step-by-step checklists for each system</li>
-                <li>Common mistakes and solutions</li>
-                <li>3-month practice plan (100+ examinations)</li>
+                <li>
+                    <a href="README.html">
+                        <span class="icon">📖</span>
+                        <span>README.html - Project Overview</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="00_PROJECT_OVERVIEW.html">
+                        <span class="icon">🎯</span>
+                        <span>00_PROJECT_OVERVIEW.html</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="SYSTEM_OVERVIEW.html">
+                        <span class="icon">🗺️</span>
+                        <span>SYSTEM_OVERVIEW.html</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="NEXT_STEPS.html">
+                        <span class="icon">➡️</span>
+                        <span>NEXT_STEPS.html - What to do next</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="MASTER_INDEX.html">
+                        <span class="icon">🗂️</span>
+                        <span>MASTER_INDEX.html - Complete navigation</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="INDEX.html">
+                        <span class="icon">📇</span>
+                        <span>INDEX.html - Quick index</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="BOOKS_INTEGRATION_PLAN.html">
+                        <span class="icon">📚</span>
+                        <span>BOOKS_INTEGRATION_PLAN.html - 12-week textbook extraction plan</span>
+                        <span class="badge badge-new">NEW</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="DR_AAMIR_METHODOLOGY_GUIDE.html">
+                        <span class="icon">🎓</span>
+                        <span>DR_AAMIR_METHODOLOGY_GUIDE.html - Complete OSCE creation methodology</span>
+                        <span class="badge badge-new">NEW</span>
+                    </a>
+                </li>
             </ul>
-            <p><strong>Goal:</strong> Practice 100+ complete examinations before ICRP</p>
         </div>
 
-        <div class="file-box">
-            <h3>📄 Weakness #3 & #4: Computer Skills & Typing Improvement Plan</h3>
-            <p><a href="ICRP_Program_Resources/Weakness_Improvement/03_Computer_Skills_Typing_Improvement_Plan.html">▶ OPEN: 03_Computer_Skills_Typing_Improvement_Plan.html</a></p>
-            <p><strong>Size:</strong> 51 KB | <strong>Reading Time:</strong> 1 hour</p>
-            <p><strong>What's Inside:</strong></p>
-            <ul>
-                <li><strong>Month 1 (December):</strong> Touch typing foundation → 25-30 WPM</li>
-                <li><strong>Month 2 (January):</strong> Speed & medical typing → 35-40 WPM</li>
-                <li><strong>Month 3 (February):</strong> Mastery & EMR preparation → 40+ WPM</li>
-                <li>Daily practice routines (30-60 minutes)</li>
-                <li>Medical terminology typing practice</li>
-                <li>SOAP note format training</li>
-                <li>Documentation speed improvement (30 min → 10-15 min per note)</li>
-                <li>EMR system familiarization</li>
-                <li>All FREE resources (TypingClub, Keybr, etc.)</li>
-            </ul>
-            <p><strong>Goals:</strong></p>
-            <ul>
-                <li>40+ WPM typing speed (from current 15-25 WPM)</li>
-                <li>95%+ accuracy</li>
-                <li>Clinical notes in 10-15 minutes (from 30+ minutes)</li>
+        <!-- ICRP PROGRAM RESOURCES -->
+        <h2 id="icrp-program">📚 ICRP Program Resources</h2>
+
+        <div class="section">
+            <h3>Main ICRP Preparation Guide</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="ICRP_NSW_Comprehensive_Preparation_Guide.html">
+                        <span class="icon">📘</span>
+                        <span>ICRP NSW Comprehensive Preparation Guide</span>
+                        <span class="badge badge-important">ESSENTIAL</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ICRP_Program_Resources/00_README.html">
+                        <span class="icon">📑</span>
+                        <span>ICRP Resources Index</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ICRP_Program_Resources/Self_Assessment_Checklist.html">
+                        <span class="icon">✅</span>
+                        <span>Self-Assessment Checklist</span>
+                    </a>
+                </li>
             </ul>
         </div>
+
+        <!-- OSCE PREPARATION -->
+        <h2 id="osce-preparation">🩺 OSCE Preparation Materials</h2>
 
         <div class="alert">
-            <h2 style="margin-top: 0;">⚠️ CRITICAL: Start Immediately!</h2>
-            <p>You have <strong>3 months</strong> (December 2025 - February 2026) to prepare before ICRP starts on March 2, 2026.</p>
-            <p><strong>Time is of the essence. These weaknesses won't fix themselves.</strong></p>
+            <h4>📋 Complete AMC Clinical OSCE Preparation Package</h4>
+            <p>55+ documents covering all clinical systems, communication skills, and mock stations for OSCE success.</p>
         </div>
 
-        <h2>🎯 Your First Week Action Plan</h2>
+        <div class="section">
+            <h3>OSCE Master Index</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="ICRP_OSCE_Preparation/00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">
+                        <span class="icon">🎯</span>
+                        <span>OSCE Master Index - START HERE for Clinical Exams</span>
+                        <span class="badge badge-important">MASTER INDEX</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ICRP_OSCE_Preparation/START_HERE.html">
+                        <span class="icon">🏁</span>
+                        <span>OSCE Quick Start Guide</span>
+                    </a>
+                </li>
+            </ul>
 
-        <div class="file-box" style="background: #d4edda; border-color: #28a745;">
-            <h3 style="color: #28a745;">DO THIS WEEK (Start TODAY)</h3>
-            <ol style="font-size: 1.1em; line-height: 2;">
-                <li><strong>TODAY:</strong> Read main report (2-3 hours)</li>
-                <li><strong>TODAY:</strong> Memorize 9-step history structure (1 hour)</li>
-                <li><strong>TODAY:</strong> Take baseline typing test at TypingTest.com - record WPM</li>
-                <li><strong>TODAY:</strong> Sign up for TypingClub.com (FREE) and do Lesson 1</li>
-                <li><strong>Tomorrow:</strong> Do first practice history with family member</li>
-                <li><strong>This Week:</strong> Practice typing 30 min daily (Lessons 1-7)</li>
-                <li><strong>This Week:</strong> Practice 5 histories</li>
-                <li><strong>This Week:</strong> Research accommodation in Young, NSW</li>
-            </ol>
+            <div class="subsection">
+                <h4>🫀 Medicine - History Taking</h4>
+                <ul class="doc-list">
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Medicine/01_Cardiovascular_Respiratory_History.html">
+                            <span class="icon">📝</span>
+                            <span>Cardiovascular & Respiratory History</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Medicine/01_GI_Abdominal_Pain_Differentials.html">
+                            <span class="icon">📝</span>
+                            <span>GI - Abdominal Pain Differentials</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Medicine/02_GI_Bleeding_Differentials.html">
+                            <span class="icon">📝</span>
+                            <span>GI - Bleeding Differentials</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Medicine/03_Neurology_Headache_Differentials.html">
+                            <span class="icon">📝</span>
+                            <span>Neurology - Headache Differentials</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h4>🔬 Medicine - Physical Examination</h4>
+                <ul class="doc-list">
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Medicine/02_Physical_Examination_Cardiovascular_Respiratory.html">
+                            <span class="icon">🔍</span>
+                            <span>CVS & Respiratory Examination</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Medicine/03_Physical_Examination_Abdominal_Neurological.html">
+                            <span class="icon">🔍</span>
+                            <span>Abdominal & Neurological Examination</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Medicine/04_Neurology_Weakness_Limb_Examination.html">
+                            <span class="icon">🔍</span>
+                            <span>Neurology - Weakness & Limb Examination</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h4>🗣️ Ethics & Communication Skills</h4>
+                <ul class="doc-list">
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Ethics_Communication/01_Communication_Skills_Role_Play_Scripts.html">
+                            <span class="icon">💬</span>
+                            <span>Communication Skills Role-Play Scripts</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Ethics_Communication/02_Breaking_Bad_News_Additional_Scenarios.html">
+                            <span class="icon">💬</span>
+                            <span>Breaking Bad News - Additional Scenarios</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Ethics_Communication/03_Breaking_Bad_News_Additional_Scenarios_Part2.html">
+                            <span class="icon">💬</span>
+                            <span>Breaking Bad News - Part 2</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Ethics_Communication/04_Comprehensive_Emotional_Reactions_Handbook.html">
+                            <span class="icon">💬</span>
+                            <span>Comprehensive Emotional Reactions Handbook</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Ethics_Communication/05_Cultural_Variations_Breaking_Bad_News_Australia.html">
+                            <span class="icon">💬</span>
+                            <span>Cultural Variations - Breaking Bad News (Australia)</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Ethics_Communication/06_IMG_Common_Mistakes_Breaking_Bad_News.html">
+                            <span class="icon">💬</span>
+                            <span>IMG Common Mistakes - Breaking Bad News</span>
+                            <span class="badge badge-important">Important</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h4>🔪 Surgery</h4>
+                <ul class="doc-list">
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Surgery/01_Acute_Abdomen_History_Differentials.html">
+                            <span class="icon">📝</span>
+                            <span>Acute Abdomen - History & Differentials</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Surgery/02_Acute_Abdomen_Physical_Examination.html">
+                            <span class="icon">🔍</span>
+                            <span>Acute Abdomen - Physical Examination</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Surgery/03_Surgical_Lumps_Hernias_History_Examination.html">
+                            <span class="icon">📝</span>
+                            <span>Surgical Lumps & Hernias - History & Examination</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Surgery/04_Pre_Post_Operative_Assessment.html">
+                            <span class="icon">📝</span>
+                            <span>Pre/Post-Operative Assessment</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Surgery/05_Trauma_Assessment.html">
+                            <span class="icon">🚑</span>
+                            <span>Trauma Assessment (ATLS)</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h4>👶 Paediatrics</h4>
+                <ul class="doc-list">
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Paediatrics/01_Paediatric_History_Differentials.html">
+                            <span class="icon">📝</span>
+                            <span>Paediatric History & Differentials</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Paediatrics/02_Common_Paediatric_Presentations.html">
+                            <span class="icon">📝</span>
+                            <span>Common Paediatric Presentations</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Paediatrics/03_Paediatric_Physical_Examination.html">
+                            <span class="icon">🔍</span>
+                            <span>Paediatric Physical Examination</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Paediatrics/04_Developmental_Assessment.html">
+                            <span class="icon">📊</span>
+                            <span>Developmental Assessment</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Paediatrics/05_Parent_Communication_Strategies.html">
+                            <span class="icon">💬</span>
+                            <span>Parent Communication Strategies</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h4>🤰 Obstetrics & Gynaecology</h4>
+                <ul class="doc-list">
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/ObGyn/01_Obstetric_History_Differentials.html">
+                            <span class="icon">📝</span>
+                            <span>Obstetric History & Differentials</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/ObGyn/02_Gynaecological_History_Differentials.html">
+                            <span class="icon">📝</span>
+                            <span>Gynaecological History & Differentials</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/ObGyn/03_Contraception_Counselling.html">
+                            <span class="icon">💊</span>
+                            <span>Contraception Counselling</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/ObGyn/04_Obstetric_Examination.html">
+                            <span class="icon">🔍</span>
+                            <span>Obstetric Examination</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/ObGyn/05_Gynaecological_Examination.html">
+                            <span class="icon">🔍</span>
+                            <span>Gynaecological Examination</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h4>🧠 Psychiatry</h4>
+                <ul class="doc-list">
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Psychiatry/01_Psychiatric_History_Differentials.html">
+                            <span class="icon">📝</span>
+                            <span>Psychiatric History & Differentials</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Psychiatry/02_Mental_State_Examination.html">
+                            <span class="icon">🔍</span>
+                            <span>Mental State Examination (MSE)</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Psychiatry/03_Risk_Assessment_Suicide_Violence_Selfneglect.html">
+                            <span class="icon">⚠️</span>
+                            <span>Risk Assessment - Suicide, Violence, Self-neglect</span>
+                            <span class="badge badge-important">Critical</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Psychiatry/04_Common_Psychiatric_Presentations.html">
+                            <span class="icon">📝</span>
+                            <span>Common Psychiatric Presentations</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Psychiatry/05_Capacity_Assessment_Legal_Framework.html">
+                            <span class="icon">⚖️</span>
+                            <span>Capacity Assessment & Legal Framework</span>
+                            <span class="badge badge-complete">✓ Complete</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h4>🎭 Mock OSCE Stations</h4>
+                <ul class="doc-list">
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Mock_Stations/01_Sample_Mock_OSCE_Chest_Pain.html">
+                            <span class="icon">📋</span>
+                            <span>Sample Mock OSCE - Chest Pain</span>
+                            <span class="badge badge-new">Practice</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Mock_Stations/02_Breaking_Bad_News_Mock_Stations.html">
+                            <span class="icon">📋</span>
+                            <span>Breaking Bad News - Mock Stations</span>
+                            <span class="badge badge-new">Practice</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ICRP_OSCE_Preparation/Mock_Stations/03_Breaking_Bad_News_Mock_Stations_Part2.html">
+                            <span class="icon">📋</span>
+                            <span>Breaking Bad News - Mock Stations Part 2</span>
+                            <span class="badge badge-new">Practice</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <h2>📊 Success Metrics</h2>
+        <!-- WEAKNESS IMPROVEMENT -->
+        <h2 id="weakness-improvement">💪 Weakness Improvement Guides</h2>
 
-        <div class="file-box">
-            <h3>By March 2, 2026 (ICRP start), you should have:</h3>
-            <ul style="font-size: 1.1em; line-height: 2;">
-                <li>☐ Completed <strong>400+ history taking practice scenarios</strong></li>
-                <li>☐ Performed <strong>100+ physical examinations</strong></li>
-                <li>☐ Achieved <strong>40+ WPM typing speed with 95%+ accuracy</strong></li>
-                <li>☐ Can document clinical notes in <strong>10-15 minutes</strong></li>
-                <li>☐ Mastered SOAP note format</li>
-                <li>☐ Familiar with EMR system concepts</li>
-                <li>☐ All logistics arranged (accommodation in Young)</li>
+        <div class="info">
+            <h4>🎯 Targeted Training for Your Identified Weaknesses</h4>
+            <p>Comprehensive guides to improve history taking, physical examination, and computer/typing skills.</p>
+        </div>
+
+        <div class="section">
+            <ul class="doc-list">
+                <li>
+                    <a href="ICRP_Program_Resources/Weakness_Improvement/01_History_Taking_Mastery_Guide.html">
+                        <span class="icon">📝</span>
+                        <span>History Taking Mastery Guide (400+ practices)</span>
+                        <span class="badge badge-important">Essential</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ICRP_Program_Resources/Weakness_Improvement/02_Physical_Examination_Skills_Guide.html">
+                        <span class="icon">🔍</span>
+                        <span>Physical Examination Skills Guide (100+ practices)</span>
+                        <span class="badge badge-important">Essential</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ICRP_Program_Resources/Weakness_Improvement/03_Computer_Skills_Typing_Improvement_Plan.html">
+                        <span class="icon">⌨️</span>
+                        <span>Computer Skills & Typing Improvement Plan (15→40+ WPM)</span>
+                        <span class="badge badge-important">Essential</span>
+                    </a>
+                </li>
             </ul>
         </div>
 
-        <div class="success">
-            <h2 style="margin-top: 0;">✨ You Have Everything You Need</h2>
-            <p style="font-size: 1.1em;">These documents provide:</p>
-            <ul>
-                <li>✅ Specific practice targets</li>
-                <li>✅ Week-by-week plans for 3 months</li>
-                <li>✅ Daily practice routines</li>
-                <li>✅ Self-assessment tools</li>
-                <li>✅ All resources needed to transform from weak to confident</li>
+        <!-- TEMPLATES & TRACKERS -->
+        <h2 id="templates-trackers">📋 Templates & Trackers</h2>
+
+        <div class="section">
+            <h3>Practice Templates</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="ICRP_Program_Resources/Templates/SOAP_Note_Template.html">
+                        <span class="icon">📄</span>
+                        <span>SOAP Note Template</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ICRP_Program_Resources/Templates/History_Taking_Practice_Log.html">
+                        <span class="icon">📝</span>
+                        <span>History Taking Practice Log</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ICRP_Program_Resources/Templates/Physical_Examination_Practice_Log.html">
+                        <span class="icon">🔍</span>
+                        <span>Physical Examination Practice Log</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ICRP_Program_Resources/Templates/Weekly_Study_Schedule.html">
+                        <span class="icon">📅</span>
+                        <span>Weekly Study Schedule</span>
+                    </a>
+                </li>
+            </ul>
+
+            <h3>Progress Trackers</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="ICRP_Program_Resources/Trackers/Daily_Practice_Log.html">
+                        <span class="icon">📊</span>
+                        <span>Daily Practice Log</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ICRP_Program_Resources/Trackers/Weekly_Progress_Tracker.html">
+                        <span class="icon">📈</span>
+                        <span>Weekly Progress Tracker</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ICRP_Program_Resources/Trackers/Typing_Progress_Tracker.html">
+                        <span class="icon">⌨️</span>
+                        <span>Typing Progress Tracker</span>
+                    </a>
+                </li>
             </ul>
         </div>
 
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 8px; text-align: center; margin-top: 30px;">
-            <h2 style="color: white; margin-top: 0;">The Path to ICRP Success is Clear</h2>
-            <p style="font-size: 1.3em; margin: 20px 0;">Start with the main report.</p>
-            <p style="font-size: 1.3em; margin: 20px 0;">Practice daily.</p>
-            <p style="font-size: 1.3em; margin: 20px 0;">Track your progress.</p>
-            <p style="font-size: 1.3em; margin: 20px 0;">Stay consistent.</p>
-            <p style="font-size: 1.8em; font-weight: bold; margin-top: 30px;">You've got this! 💪🎯</p>
+        <!-- REFERENCE MATERIALS -->
+        <h2 id="reference-materials">📖 Reference Materials</h2>
+
+        <div class="section">
+            <ul class="doc-list">
+                <li>
+                    <a href="ICRP_Program_Resources/Reference_Materials/EMR_Documentation_Guide.html">
+                        <span class="icon">💻</span>
+                        <span>EMR Documentation Guide</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ICRP_Program_Resources/Reference_Materials/Medical_Terminology_Practice_Lists.html">
+                        <span class="icon">📚</span>
+                        <span>Medical Terminology Practice Lists</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ICRP_Program_Resources/Case_Scenarios/Sample_Cases_For_Practice.html">
+                        <span class="icon">📋</span>
+                        <span>Sample Cases For Practice</span>
+                    </a>
+                </li>
+            </ul>
         </div>
 
-        <div style="margin-top: 30px; padding: 20px; border-top: 2px solid #ddd; text-align: center; color: #666;">
-            <p><strong>Created:</strong> December 2025</p>
-            <p><strong>For:</strong> Iram - ICRP NSW Young District Hospital</p>
-            <p><strong>Program Dates:</strong> March 2 - May 22, 2026</p>
+        <!-- PROJECT DOCUMENTATION -->
+        <h2 id="project-docs">🔧 Project Documentation</h2>
+
+        <div class="section">
+            <ul class="doc-list">
+                <li>
+                    <a href="PROJECT_CONSTRAINTS.html">
+                        <span class="icon">📏</span>
+                        <span>PROJECT_CONSTRAINTS.html - Project standards & requirements</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="CREATION_SUMMARY.html">
+                        <span class="icon">📝</span>
+                        <span>CREATION_SUMMARY.html - How this project was created</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="HTML_CONVERSION_SUMMARY.html">
+                        <span class="icon">🔄</span>
+                        <span>HTML_CONVERSION_SUMMARY.html - Markdown to HTML conversion details</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="GITHUB_ISSUES_SUMMARY.html">
+                        <span class="icon">🐛</span>
+                        <span>GITHUB_ISSUES_SUMMARY.html - Future development tasks</span>
+                    </a>
+                </li>
+            </ul>
         </div>
+
+        <!-- TECHNICAL DOCUMENTATION -->
+        <h2 id="technical-docs">⚙️ Technical Documentation</h2>
+
+        <div class="section">
+            <h3>Main Technical Docs</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="docs/AGENT_SYSTEM_IMPLEMENTATION.html">
+                        <span class="icon">🤖</span>
+                        <span>Agent System Implementation</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="docs/AGENT_SPECIFICATIONS.html">
+                        <span class="icon">📋</span>
+                        <span>Agent Specifications</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="docs/EXPERT_AGENTS_INFRASTRUCTURE.html">
+                        <span class="icon">🏗️</span>
+                        <span>Expert Agents Infrastructure</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="docs/MCP_SERVERS_INFRASTRUCTURE.html">
+                        <span class="icon">🌐</span>
+                        <span>MCP Servers Infrastructure</span>
+                    </a>
+                </li>
+            </ul>
+
+            <h3>Resources & Setup</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="docs/FREE_RESOURCES_SETUP.html">
+                        <span class="icon">💰</span>
+                        <span>Free Resources Setup Guide</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="docs/REQUIRED_BOOKS.html">
+                        <span class="icon">📚</span>
+                        <span>Required Books & References</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="docs/ADDITIONAL_RESOURCES.html">
+                        <span class="icon">➕</span>
+                        <span>Additional Resources</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="docs/PROJECT_ROADMAP.html">
+                        <span class="icon">🗺️</span>
+                        <span>Project Roadmap</span>
+                    </a>
+                </li>
+            </ul>
+
+            <h3>Source Code</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="src/agents/README.html">
+                        <span class="icon">💻</span>
+                        <span>Agent Source Code Documentation</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- CTA SECTION -->
+        <div class="cta-box" style="margin-top: 50px;">
+            <h3>🎯 Ready to Begin Your ICRP Journey?</h3>
+            <p style="font-size: 1.2em; margin: 20px 0;">
+                <strong>Step 1:</strong> Read the <a href="QUICKSTART.html" style="color: white; text-decoration: underline;">QUICKSTART</a> (5 minutes)<br>
+                <strong>Step 2:</strong> Study the <a href="ICRP_NSW_Comprehensive_Preparation_Guide.html" style="color: white; text-decoration: underline;">Comprehensive Guide</a> (2-3 hours)<br>
+                <strong>Step 3:</strong> Start practicing with <a href="ICRP_Program_Resources/Weakness_Improvement/01_History_Taking_Mastery_Guide.html" style="color: white; text-decoration: underline;">History Taking</a> TODAY<br>
+                <strong>Step 4:</strong> Begin typing practice at <a href="https://www.typingclub.com" style="color: white; text-decoration: underline;" target="_blank">TypingClub.com</a> (FREE)
+            </p>
+            <p style="font-size: 1.1em; margin-top: 25px; font-weight: bold;">
+                You have 75+ days until ICRP starts (March 2, 2026)<br>
+                Every day counts. Start today! 💪
+            </p>
+        </div>
+
+        <!-- STATISTICS -->
+        <div class="section" style="margin-top: 40px;">
+            <h3>📊 Project Statistics</h3>
+            <div class="quick-stats">
+                <div class="stat-box">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Clinical Systems Covered</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Clinical Presentations</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Physical Examinations</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Mock OSCE Stations</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Templates & Trackers</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Weeks of ICRP</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <h3>📝 Document Information</h3>
+            <p><strong>Project Name:</strong> ICRP Study Project</p>
+            <p><strong>Target:</strong> ICRP NSW Young District Hospital</p>
+            <p><strong>Program Dates:</strong> March 2 - May 22, 2026 (12 weeks)</p>
+            <p><strong>Total Documents:</strong> 75+ HTML files</p>
+            <p><strong>Last Updated:</strong> December 15, 2025</p>
+            <p><strong>Version:</strong> 2.0 - Complete Sitemap</p>
+
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #dee2e6;">
+                <p><strong>Quick Links:</strong></p>
+                <p>
+                    <a href="QUICKSTART.html">Quick Start</a> |
+                    <a href="MASTER_INDEX.html">Master Index</a> |
+                    <a href="ICRP_OSCE_Preparation/00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">OSCE Index</a> |
+                    <a href="PROJECT_CONSTRAINTS.html">Project Constraints</a>
+                </p>
+            </div>
+
+            <div style="margin-top: 30px; font-size: 1.2em; color: #667eea;">
+                <strong>🌟 You have everything you need to succeed in ICRP!</strong>
+            </div>
+        </div>
+
     </div>
 </body>
 </html>

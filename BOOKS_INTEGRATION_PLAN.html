@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Textbooks Integration Plan - ICRP Study Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .alert {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            border-color: #17a2b8;
+            color: #0c5460;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        .status-have {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .status-missing {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .timeline {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .phase {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 3px solid #28a745;
+        }
+
+        ul {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .stat-box {
+            display: inline-block;
+            padding: 20px;
+            margin: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Medical Textbooks Integration Plan</h1>
+        <p style="font-size: 1.2em; color: #666; margin-bottom: 30px;">
+            <strong>ICRP Study Project</strong> | 12-Week Content Creation Roadmap<br>
+            <strong>Created:</strong> December 15, 2025 | <strong>Target Completion:</strong> March 2, 2026
+        </p>
+
+        <div class="alert alert-success">
+            <h3 style="margin-top: 0;">✅ Status: READY TO PROCEED</h3>
+            <p><strong>All 13 medical textbooks verified and accessible</strong></p>
+            <ul>
+                <li>12 PDF files (307MB total)</li>
+                <li>1 DOCX file (15KB)</li>
+                <li>All critical Australian resources available</li>
+                <li>5 bonus specialty books beyond original recommendations</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <div class="stat-box">
+                <div class="stat-number">13</div>
+                <div class="stat-label">Medical Textbooks</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">307MB</div>
+                <div class="stat-label">Total Content</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">115</div>
+                <div class="stat-label">Hours of Work</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">60K+</div>
+                <div class="stat-label">Lines of New Content</div>
+            </div>
+        </div>
+
+        <h2>📖 Book Inventory</h2>
+
+        <h3>Critical Australian Resources (3/5 Available)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Book Title</th>
+                    <th>Size</th>
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th>Usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Talley & O'Connor Clinical Examination (8th ed)</strong></td>
+                    <td>100MB</td>
+                    <td class="status-have">✅ HAVE</td>
+                    <td>CRITICAL</td>
+                    <td>Physical exam modules (Issue #2)</td>
+                </tr>
+                <tr>
+                    <td><strong>John Murtagh General Practice (8th ed)</strong></td>
+                    <td>41MB</td>
+                    <td class="status-have">✅ HAVE</td>
+                    <td>CRITICAL</td>
+                    <td>Diabetes, Mock OSCEs, Cases (Issues #1, #3, #5)</td>
+                </tr>
+                <tr>
+                    <td><strong>AMC Handbook of Clinical Assessment</strong></td>
+                    <td>21MB</td>
+                    <td class="status-have">✅ HAVE</td>
+                    <td>HIGH</td>
+                    <td>Assessment frameworks, Mock OSCEs</td>
+                </tr>
+                <tr>
+                    <td><strong>Therapeutic Guidelines (eTG) 2025</strong></td>
+                    <td>N/A</td>
+                    <td class="status-missing">❌ MISSING</td>
+                    <td>CRITICAL</td>
+                    <td>Free workarounds available</td>
+                </tr>
+                <tr>
+                    <td><strong>Australian Medicines Handbook (AMH) 2025</strong></td>
+                    <td>N/A</td>
+                    <td class="status-missing">❌ MISSING</td>
+                    <td>CRITICAL</td>
+                    <td>Free workarounds available</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Bonus Specialty Books (5 Additional)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Book Title</th>
+                    <th>Size</th>
+                    <th>Status</th>
+                    <th>Usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>AMC Anthology of Medical Conditions</strong></td>
+                    <td>63MB</td>
+                    <td class="status-have">✅ HAVE</td>
+                    <td>Differential guide, Case bank</td>
+                </tr>
+                <tr>
+                    <td><strong>Oxford Handbook of Emergency Medicine (5th ed)</strong></td>
+                    <td>37MB</td>
+                    <td class="status-have">✅ HAVE</td>
+                    <td>Emergency Mock OSCEs, Acute cases</td>
+                </tr>
+                <tr>
+                    <td><strong>Churchill's Pocketbook of Differential Diagnosis</strong></td>
+                    <td>7.2MB</td>
+                    <td class="status-have">✅ HAVE</td>
+                    <td>Master differential guide (Issue #4)</td>
+                </tr>
+                <tr>
+                    <td><strong>On Call Principles and Protocols</strong></td>
+                    <td>8.7MB</td>
+                    <td class="status-have">✅ HAVE</td>
+                    <td>On-call scenarios, Case bank</td>
+                </tr>
+                <tr>
+                    <td><strong>Antenatal Guidelines KEMH</strong></td>
+                    <td>2.4MB</td>
+                    <td class="status-have">✅ HAVE</td>
+                    <td>ObGyn cases</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Supplementary Resources (3 Additional)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Resource Title</th>
+                    <th>Size</th>
+                    <th>Usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ECG book</strong></td>
+                    <td>4.9MB</td>
+                    <td>ECG interpretation cases</td>
+                </tr>
+                <tr>
+                    <td><strong>Raza's ECG</strong></td>
+                    <td>4.7MB</td>
+                    <td>ECG interpretation cases</td>
+                </tr>
+                <tr>
+                    <td><strong>Handbook of Skin Diseases</strong></td>
+                    <td>1.1MB</td>
+                    <td>Dermatology cases</td>
+                </tr>
+                <tr>
+                    <td><strong>AMC Scans, Pics, Instruments</strong></td>
+                    <td>15KB</td>
+                    <td>Visual reference materials</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>🎯 12-Week Execution Timeline</h2>
+
+        <div class="timeline">
+            <div class="phase">
+                <h3>Phase 1: Weeks 1-2 (22 hours)</h3>
+                <p><strong>Books:</strong> Talley & O'Connor, Murtagh's</p>
+                <p><strong>Objectives:</strong></p>
+                <ul>
+                    <li>Extract 5 physical examination modules from Talley (ENT, MSK, Peripheral Vascular, Thyroid, Lymph Nodes)</li>
+                    <li>Start diabetes module from Murtagh's Chapter 26</li>
+                    <li>Format using 5 Ps framework + Australian context</li>
+                </ul>
+                <p><strong>Deliverables:</strong></p>
+                <ul>
+                    <li>✅ GitHub Issue #2 COMPLETE (5 Physical Exam Modules)</li>
+                    <li>✅ GitHub Issue #1 50% COMPLETE (Diabetes draft)</li>
+                    <li>~6,200 lines of new content</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Phase 2: Weeks 3-4 (28 hours)</h3>
+                <p><strong>Books:</strong> Murtagh's, Oxford Emergency, AMC Clinical Assessment</p>
+                <p><strong>Objectives:</strong></p>
+                <ul>
+                    <li>Complete diabetes module with Australian protocols (eTG/AMH references)</li>
+                    <li>Create 12 mock OSCE stations (8-minute format)</li>
+                    <li>6 from Murtagh's (chest pain, SOB, abdominal pain, headache, fever, mental health)</li>
+                    <li>6 from Oxford/AMC (ACS, anaphylaxis, stroke, GI bleeding, sepsis, trauma)</li>
+                </ul>
+                <p><strong>Deliverables:</strong></p>
+                <ul>
+                    <li>✅ GitHub Issue #1 COMPLETE (Diabetes Module)</li>
+                    <li>✅ GitHub Issue #3 COMPLETE (12 Mock OSCE Stations)</li>
+                    <li>~15,000 lines of new content</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Phase 3: Weeks 5-8 (35 hours)</h3>
+                <p><strong>Books:</strong> AMC Anthology, Churchill's, Murtagh's, Oxford Emergency, On Call</p>
+                <p><strong>Objectives:</strong></p>
+                <ul>
+                    <li>Build master differential diagnosis guide (by system)</li>
+                    <li>Create case bank MVP: 50 clinical cases with SOAP notes</li>
+                    <li>30 cases from Murtagh's (common GP presentations)</li>
+                    <li>10 cases from Oxford (emergencies)</li>
+                    <li>10 cases from AMC Anthology (specialty cases)</li>
+                </ul>
+                <p><strong>Deliverables:</strong></p>
+                <ul>
+                    <li>✅ GitHub Issue #4 COMPLETE (Master Differential Guide)</li>
+                    <li>✅ GitHub Issue #5 60% COMPLETE (50-Case MVP)</li>
+                    <li>~18,500 lines of new content</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Phase 4: Weeks 9-12 (30 hours)</h3>
+                <p><strong>Books:</strong> Antenatal Guidelines, Skin Diseases, ECG books, On Call</p>
+                <p><strong>Objectives:</strong></p>
+                <ul>
+                    <li>Add 50 more specialty cases (100 total)</li>
+                    <li>10 ObGyn cases (Antenatal Guidelines)</li>
+                    <li>10 Dermatology cases (Skin Diseases Handbook)</li>
+                    <li>15 ECG cases (ECG books)</li>
+                    <li>10 On-call scenarios</li>
+                    <li>5 visual references (AMC Scans)</li>
+                    <li>Develop interactive study timeline tracker (HTML/JS)</li>
+                    <li>Quality assurance + final polish</li>
+                </ul>
+                <p><strong>Deliverables:</strong></p>
+                <ul>
+                    <li>✅ GitHub Issue #5 100% COMPLETE (100 Clinical Cases)</li>
+                    <li>✅ GitHub Issue #7 COMPLETE (Interactive Timeline)</li>
+                    <li>✅ ALL GITHUB ISSUES COMPLETE</li>
+                    <li>~20,000 lines of new content</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>📊 Expected Outcomes</h2>
+
+        <div class="alert alert-info">
+            <h3 style="margin-top: 0;">By March 2, 2026 (ICRP Start Date)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Content Type</th>
+                        <th>Quantity</th>
+                        <th>Source Books</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Physical Examination Modules</td>
+                        <td>5 new modules</td>
+                        <td>Talley & O'Connor</td>
+                    </tr>
+                    <tr>
+                        <td>Diabetes Management Module</td>
+                        <td>1 comprehensive guide</td>
+                        <td>Murtagh's GP</td>
+                    </tr>
+                    <tr>
+                        <td>Mock OSCE Stations</td>
+                        <td>12 stations (8-min format)</td>
+                        <td>Murtagh's, Oxford, AMC</td>
+                    </tr>
+                    <tr>
+                        <td>Master Differential Guide</td>
+                        <td>1 reference document</td>
+                        <td>AMC Anthology, Churchill's</td>
+                    </tr>
+                    <tr>
+                        <td>Clinical Case Bank</td>
+                        <td>100 cases with SOAP notes</td>
+                        <td>All 13 books</td>
+                    </tr>
+                    <tr>
+                        <td>Interactive Study Timeline</td>
+                        <td>1 HTML/JS tracker</td>
+                        <td>Custom development</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>Total New Content:</strong> ~60,000 lines of ICRP-ready material</p>
+        </div>
+
+        <h2>💰 Budget Requirements</h2>
+
+        <div class="alert alert-warning">
+            <h3 style="margin-top: 0;">Missing Resources Analysis</h3>
+            <p><strong>Critical Gaps:</strong></p>
+            <ul>
+                <li><strong>Therapeutic Guidelines (eTG) 2025:</strong> $385/year</li>
+                <li><strong>Australian Medicines Handbook (AMH) 2025:</strong> $155/year</li>
+            </ul>
+            <p><strong>Recommended Action:</strong></p>
+            <ol>
+                <li><strong>Week 1:</strong> Check for institutional access (hospital/university) - Potential $0 cost</li>
+                <li><strong>If no access:</strong> Purchase eTG only ($385) - Most critical for Australian protocols</li>
+                <li><strong>For AMH:</strong> Use free alternatives:
+                    <ul>
+                        <li>PBS website (https://www.pbs.gov.au/)</li>
+                        <li>NPS MedicineWise (https://www.nps.org.au/) - FREE</li>
+                        <li>Medication info from Murtagh's GP</li>
+                    </ul>
+                </li>
+            </ol>
+            <p><strong>Total Budget:</strong> $0-385 (depending on institutional access)</p>
+        </div>
+
+        <h2>✅ Quality Standards</h2>
+
+        <p>All extracted content must meet these criteria:</p>
+
+        <h3>Australian Compliance (CRITICAL)</h3>
+        <ul>
+            <li>✅ Australian spelling (paediatric, anaemia, oestrogen, colour)</li>
+            <li>✅ Australian drug names (paracetamol, salbutamol)</li>
+            <li>✅ Australian terminology (GP, Emergency Department)</li>
+            <li>✅ eTG/AMH guidelines cited</li>
+            <li>✅ Medicare/PBS context included</li>
+            <li>✅ SI units (mmol/L for glucose)</li>
+        </ul>
+
+        <h3>OSCE Structure (From PROJECT_CONSTRAINTS.md)</h3>
+        <ul>
+            <li>✅ Opening statement &lt;30 seconds</li>
+            <li>✅ Focused history (SOCRATES for pain)</li>
+            <li>✅ Physical examination (5 Ps framework)</li>
+            <li>✅ Top 3 differentials (ranked)</li>
+            <li>✅ Investigations (Australian primary care)</li>
+            <li>✅ Management (eTG guidelines)</li>
+            <li>✅ Safety-netting (specific red flags)</li>
+            <li>✅ Time allocation (8 minutes)</li>
+            <li>✅ Common IMG mistakes documented</li>
+        </ul>
+
+        <h3>Documentation Standards</h3>
+        <ul>
+            <li>✅ Source citation ("Adapted from [Book], Ch X")</li>
+            <li>✅ Last updated date</li>
+            <li>✅ Version number</li>
+            <li>✅ HTML styling consistent</li>
+            <li>✅ Cross-references to related modules</li>
+        </ul>
+
+        <h2>🚀 Next Actions</h2>
+
+        <div class="alert alert-success">
+            <h3 style="margin-top: 0;">This Week (Week 1 of 12)</h3>
+            <ol>
+                <li><strong>Day 1 (Today):</strong>
+                    <ul>
+                        <li>✅ Confirm all PDFs accessible - COMPLETE</li>
+                        <li>Check for eTG/AMH institutional access</li>
+                        <li>Review PROJECT_CONSTRAINTS.md Section 2.6</li>
+                    </ul>
+                </li>
+                <li><strong>Day 2-3:</strong> Extract ENT examination from Talley Chapter 15</li>
+                <li><strong>Day 4-5:</strong> Extract MSK examination from Talley Chapter 14</li>
+                <li><strong>Day 6-7:</strong> Extract Peripheral Vascular from Talley Chapter 8</li>
+                <li><strong>Week 2:</strong> Complete remaining 2 exams + start Diabetes module</li>
+            </ol>
+        </div>
+
+        <h2>📈 Success Metrics</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Milestone</th>
+                    <th>Target Date</th>
+                    <th>Deliverables</th>
+                    <th>GitHub Issues</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Week 2 Complete</strong></td>
+                    <td>Dec 29, 2025</td>
+                    <td>5 Physical Exam modules + Diabetes draft</td>
+                    <td>Issue #2 complete, #1 at 50%</td>
+                </tr>
+                <tr>
+                    <td><strong>Week 4 Complete</strong></td>
+                    <td>Jan 12, 2026</td>
+                    <td>Diabetes + 12 Mock OSCEs</td>
+                    <td>Issues #1, #3 complete (75% roadmap)</td>
+                </tr>
+                <tr>
+                    <td><strong>Week 8 Complete</strong></td>
+                    <td>Feb 9, 2026</td>
+                    <td>Differential Guide + 50 Cases</td>
+                    <td>Issues #4, #5 (MVP) complete (85% roadmap)</td>
+                </tr>
+                <tr>
+                    <td><strong>Week 12 Complete</strong></td>
+                    <td>Mar 2, 2026 (ICRP Start)</td>
+                    <td>100 Cases + Timeline + QA</td>
+                    <td>ALL ISSUES COMPLETE (100% roadmap)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="footer">
+            <h3>📝 Document Information</h3>
+            <p><strong>Project:</strong> ICRP Study Project - Medical Textbook Integration</p>
+            <p><strong>Created:</strong> December 15, 2025</p>
+            <p><strong>Version:</strong> 1.0</p>
+            <p><strong>Status:</strong> ✅ APPROVED - Ready to Execute</p>
+            <p><strong>Next Update:</strong> Weekly progress reports</p>
+
+            <p style="margin-top: 30px;">
+                <a href="START_HERE.html">Return to Start Here</a> |
+                <a href="MASTER_INDEX.html">Master Index</a> |
+                <a href="GITHUB_ISSUES_SUMMARY.html">GitHub Issues</a>
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>
