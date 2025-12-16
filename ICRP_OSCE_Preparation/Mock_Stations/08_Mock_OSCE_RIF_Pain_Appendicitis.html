@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock OSCE Station S01: Right Iliac Fossa Pain - Appendicitis Assessment</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #c41e3a;
+            border-bottom: 3px solid #c41e3a;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2c5f77;
+            margin-top: 30px;
+            border-left: 5px solid #2c5f77;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #1a472a;
+            margin-top: 20px;
+        }
+        h4 {
+            color: #5a5a5a;
+            margin-top: 15px;
+        }
+        .station-header {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 6px solid #2c5f77;
+        }
+        .section {
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .candidate-instructions {
+            background-color: #fff3cd;
+            border-left: 6px solid #ffc107;
+        }
+        .patient-script {
+            background-color: #d1ecf1;
+            border-left: 6px solid #17a2b8;
+        }
+        .examiner-instructions {
+            background-color: #f8d7da;
+            border-left: 6px solid #dc3545;
+        }
+        .marking-checklist {
+            background-color: #d4edda;
+            border-left: 6px solid #28a745;
+        }
+        .model-answer {
+            background-color: #e7e7ff;
+            border-left: 6px solid #6610f2;
+        }
+        .img-mistakes {
+            background-color: #ffe6e6;
+            border-left: 6px solid #dc3545;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background-color: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #2c5f77;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .critical-item {
+            color: #c41e3a;
+            font-weight: bold;
+        }
+        .red-flag {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .pass-criteria {
+            background-color: #d4edda;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border: 2px solid #28a745;
+        }
+        .fail-criteria {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border: 2px solid #dc3545;
+        }
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .tip {
+            background-color: #e7f3ff;
+            padding: 12px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #0066cc;
+        }
+        .warning {
+            background-color: #fff3cd;
+            padding: 12px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #ffc107;
+        }
+        .mistake {
+            background-color: #ffe6e6;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #dc3545;
+        }
+        .mistake-title {
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 8px;
+        }
+        .mistake-explanation {
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .correct-approach {
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 Mock OSCE Station S01: Right Iliac Fossa Pain</h1>
+
+        <div class="station-header">
+            <h3>Station Information</h3>
+            <p><strong>Type:</strong> Surgery - History Taking</p>
+            <p><strong>Time:</strong> 8 minutes</p>
+            <p><strong>Setting:</strong> Emergency Department, Young District Hospital, NSW</p>
+            <p><strong>Difficulty:</strong> Intermediate</p>
+            <p><strong>AMC Blueprint Area:</strong> Acute Abdominal Pain Assessment</p>
+        </div>
+
+        <!-- SECTION 1: CANDIDATE INSTRUCTIONS -->
+        <div class="section candidate-instructions">
+            <h2>📋 Candidate Instructions</h2>
+
+            <h3>Scenario</h3>
+            <p>You are the RMO on call in the Emergency Department at Young District Hospital. You have been asked to assess a 24-year-old woman, Sarah Mitchell, who has presented with right-sided abdominal pain for the past 12 hours.</p>
+
+            <h3>Your Task (8 minutes)</h3>
+            <p><strong>Take a focused history</strong> to identify the likely diagnosis and establish the severity of her condition. You do NOT need to examine the patient.</p>
+
+            <h3>You Should Cover:</h3>
+            <ul>
+                <li>Nature and progression of the abdominal pain</li>
+                <li>Associated symptoms</li>
+                <li>Relevant gynaecological history</li>
+                <li>Past medical and surgical history</li>
+                <li>Risk assessment and differential diagnoses</li>
+            </ul>
+
+            <div class="warning">
+                <strong>⏰ Time Warning:</strong> The examiner will give you a 1-minute warning at the 7-minute mark to allow you to summarize your findings.
+            </div>
+
+            <div class="tip">
+                <strong>💡 Australian Context:</strong> This is a common AMC OSCE scenario. Focus on systematic surgical history taking for acute abdomen, using the "SOCRATES" framework for pain assessment. Be thorough with red flags for surgical emergencies.
+            </div>
+        </div>
+
+        <!-- SECTION 2: SIMULATED PATIENT SCRIPT -->
+        <div class="section patient-script">
+            <h2>👤 Simulated Patient Script</h2>
+
+            <h3>Patient Background</h3>
+            <p><strong>Name:</strong> Sarah Mitchell</p>
+            <p><strong>Age:</strong> 24 years old</p>
+            <p><strong>Occupation:</strong> Primary school teacher</p>
+            <p><strong>Presentation:</strong> Right-sided abdominal pain for 12 hours</p>
+
+            <h3>Clinical Scenario</h3>
+            <p><strong>Diagnosis:</strong> Acute appendicitis</p>
+            <p><strong>Symptoms:</strong> Periumbilical pain migrated to RIF, anorexia, nausea, low-grade fever</p>
+            <p><strong>Last Menstrual Period:</strong> 2 weeks ago (mid-cycle), regular 28-day cycle</p>
+            <p><strong>Sexually Active:</strong> Yes, uses oral contraceptive pill (Levlen ED)</p>
+
+            <h3>Opening Statement</h3>
+            <p><em>(Patient looks uncomfortable, lying still on the ED trolley, holding right lower abdomen)</em></p>
+            <p><strong>"I've got this terrible pain in my stomach. It started around my belly button last night but now it's moved to the right side here. I couldn't go to work today - I teach Year 3 and I just couldn't stand up properly. The pain is getting worse."</strong></p>
+
+            <h3>If Asked About Pain (SOCRATES Framework)</h3>
+
+            <h4>Site:</h4>
+            <ul>
+                <li><strong>Where is the pain?</strong> "It started around my belly button last night, but now it's here in the right lower part" <em>(points to RIF, McBurney's point)</em></li>
+                <li><strong>Has it moved?</strong> "Yes, definitely. It was in the middle first, then over a few hours it moved to the right side"</li>
+            </ul>
+
+            <h4>Onset:</h4>
+            <ul>
+                <li><strong>When did it start?</strong> "About 12 hours ago - around 8pm last night. I was just watching TV after dinner"</li>
+                <li><strong>How did it start?</strong> "It came on gradually. At first I thought it was just indigestion or something"</li>
+                <li><strong>What were you doing?</strong> "Nothing really, just sitting on the couch"</li>
+            </ul>
+
+            <h4>Character:</h4>
+            <ul>
+                <li><strong>What does the pain feel like?</strong> "It's a sharp, constant pain. When I move or cough it gets really sharp"</li>
+                <li><strong>Constant or comes and goes?</strong> "It's there all the time now, but it gets sharper when I move"</li>
+            </ul>
+
+            <h4>Radiation:</h4>
+            <ul>
+                <li><strong>Does the pain go anywhere else?</strong> "No, it's just in the right lower side"</li>
+            </ul>
+
+            <h4>Associated Symptoms:</h4>
+            <ul>
+                <li><strong>Nausea?</strong> "Yes, I've felt really nauseous since this morning. I actually vomited once about 2 hours ago"</li>
+                <li><strong>Vomiting?</strong> "Yes, once - it was just bile and stomach contents"</li>
+                <li><strong>Appetite?</strong> "I haven't eaten anything today. I'm just not hungry at all - even the thought of food makes me feel sick" 🚨 <em>ANOREXIA - KEY FEATURE</em></li>
+                <li><strong>Diarrhoea?</strong> "No diarrhoea"</li>
+                <li><strong>Constipation?</strong> "I haven't had my bowels open today, but that's not unusual for me"</li>
+                <li><strong>Bowel movements?</strong> "Normal yesterday, nothing today"</li>
+                <li><strong>Blood in stool?</strong> "No"</li>
+                <li><strong>Urinary symptoms?</strong> "No burning, no frequency. Urine is normal color"</li>
+                <li><strong>Fever/chills?</strong> "I felt a bit hot and sweaty this morning - I took my temperature at home and it was 37.9°C" 🚨 <em>LOW-GRADE FEVER</em></li>
+            </ul>
+
+            <h4>Timing/Severity:</h4>
+            <ul>
+                <li><strong>How severe is the pain (0-10)?</strong> "Right now it's about 7 or 8 out of 10. When I move it's a 9"</li>
+                <li><strong>Getting better or worse?</strong> "Definitely worse. It's much more painful than last night"</li>
+                <li><strong>Any pattern?</strong> "No, it's just constant and getting worse"</li>
+            </ul>
+
+            <h4>Exacerbating/Relieving Factors:</h4>
+            <ul>
+                <li><strong>What makes it worse?</strong> "Moving, coughing, walking. Even when the car went over speed bumps on the way here it was agony" 🚨 <em>PERITONISM</em></li>
+                <li><strong>What makes it better?</strong> "Lying very still. I've been trying to stay as still as possible"</li>
+                <li><strong>Have you taken any pain relief?</strong> "I took two paracetamol this morning but it didn't help at all"</li>
+            </ul>
+
+            <h3>Gynaecological History</h3>
+            <h4>Menstrual History:</h4>
+            <ul>
+                <li><strong>When was your last period?</strong> "About 2 weeks ago - around the 2nd of December" <em>(Regular 28-day cycle, mid-cycle now)</em></li>
+                <li><strong>Was it normal?</strong> "Yes, completely normal - usual 5 days, normal flow"</li>
+                <li><strong>Are your periods regular?</strong> "Yes, very regular - every 28 days like clockwork"</li>
+                <li><strong>Any chance you could be pregnant?</strong> "I don't think so - I'm on the pill and I take it every day. My period was normal 2 weeks ago" 🚨 <em>IMPORTANT - rules out ectopic pregnancy risk</em></li>
+                <li><strong>Contraception?</strong> "I'm on the oral contraceptive pill - Levlen ED"</li>
+                <li><strong>Sexually active?</strong> "Yes, I have a regular partner. We've been together for 3 years"</li>
+                <li><strong>Any abnormal vaginal discharge?</strong> "No"</li>
+                <li><strong>Any vaginal bleeding?</strong> "No, nothing since my period 2 weeks ago"</li>
+            </ul>
+
+            <h3>Past Medical History</h3>
+            <ul>
+                <li><strong>Any previous medical problems?</strong> "No, I'm usually very healthy"</li>
+                <li><strong>Any previous surgeries?</strong> "Just my wisdom teeth removed when I was 18, nothing else"</li>
+                <li><strong>Ever had this pain before?</strong> "No, never anything like this"</li>
+                <li><strong>Any previous abdominal problems?</strong> "No"</li>
+            </ul>
+
+            <h3>Medications & Allergies</h3>
+            <ul>
+                <li><strong>Current medications?</strong> "Just the pill - Levlen ED. I took paracetamol this morning"</li>
+                <li><strong>Any allergies?</strong> "No known allergies"</li>
+            </ul>
+
+            <h3>Social History</h3>
+            <ul>
+                <li><strong>Occupation?</strong> "I'm a primary school teacher - Year 3"</li>
+                <li><strong>Living situation?</strong> "I live with my partner in an apartment in Young"</li>
+                <li><strong>Smoking?</strong> "No, never smoked"</li>
+                <li><strong>Alcohol?</strong> "Socially - maybe a glass of wine on weekends"</li>
+                <li><strong>Recreational drugs?</strong> "No"</li>
+            </ul>
+
+            <h3>Family History</h3>
+            <ul>
+                <li><strong>Any family history of abdominal problems?</strong> "Not that I know of"</li>
+                <li><strong>Any family history of inflammatory bowel disease?</strong> "No"</li>
+            </ul>
+
+            <h3>Patient Concerns (ICE - Ideas, Concerns, Expectations)</h3>
+            <h4>If Asked "What do you think is causing this?"</h4>
+            <p>"I was worried it might be appendicitis - my cousin had appendicitis last year and she said it started the same way. Is that what you think it is?"</p>
+
+            <h4>If Asked "What are you worried about?"</h4>
+            <p>"I'm worried I might need an operation. I've never had surgery before apart from my wisdom teeth. And I'm supposed to be teaching next week - the kids are doing their Christmas concert rehearsals."</p>
+
+            <h4>If Asked "What were you hoping we could do?"</h4>
+            <p>"I just want the pain to go away. If I need surgery, I want to get it sorted. I can't go on like this."</p>
+
+            <h3>Emotional State</h3>
+            <p>Patient is in moderate pain, cooperative but uncomfortable. Lies very still on the trolley. Grimaces with any movement. Answers questions but keeps responses brief due to pain.</p>
+        </div>
+
+        <!-- SECTION 3: EXAMINER INSTRUCTIONS -->
+        <div class="section examiner-instructions">
+            <h2>🎓 Examiner Instructions</h2>
+
+            <h3>Your Role</h3>
+            <p>You are observing a history-taking station for acute right iliac fossa (RIF) pain. The candidate should demonstrate:</p>
+            <ul>
+                <li>Systematic pain assessment using SOCRATES framework</li>
+                <li>Appropriate questioning about associated gastrointestinal symptoms</li>
+                <li>Thorough gynaecological history (essential in female of reproductive age)</li>
+                <li>Recognition of classical appendicitis features</li>
+                <li>Identification of red flags requiring urgent surgical review</li>
+            </ul>
+
+            <h3>Station Objectives</h3>
+            <p>This station assesses the candidate's ability to:</p>
+            <ol>
+                <li>Take a focused surgical history for acute abdominal pain</li>
+                <li>Recognize classical features of acute appendicitis</li>
+                <li>Differentiate appendicitis from gynaecological causes (in females)</li>
+                <li>Identify peritonitis/perforation risk</li>
+                <li>Demonstrate appropriate communication with a patient in pain</li>
+            </ol>
+
+            <h3>Key Clinical Features</h3>
+            <p><strong>Classical Appendicitis Presentation:</strong></p>
+            <ul>
+                <li>🚨 Periumbilical pain migrating to RIF (within 24 hours)</li>
+                <li>🚨 Anorexia (loss of appetite) - present in 95% of cases</li>
+                <li>🚨 Pain worse with movement/coughing (peritonism)</li>
+                <li>Nausea and vomiting (after pain onset)</li>
+                <li>Low-grade fever (37.5-38.5°C)</li>
+                <li>No diarrhoea (distinguishes from gastroenteritis)</li>
+            </ul>
+
+            <h3>Timing Instructions</h3>
+            <ul>
+                <li>Allow 7 minutes for history taking</li>
+                <li>Give 1-minute warning at 7 minutes</li>
+                <li>Ask for summary in final minute</li>
+                <li>Total station time: 8 minutes</li>
+            </ul>
+
+            <h3>Expected Summary</h3>
+            <p>The candidate should provide a concise summary including:</p>
+            <ul>
+                <li>Patient demographics and presenting complaint</li>
+                <li>Classical appendicitis features identified</li>
+                <li>Differential diagnoses considered</li>
+                <li>Next steps (examination, investigations, management)</li>
+            </ul>
+
+            <div class="fail-criteria">
+                <h4>🚨 Critical Failures (Automatic Fail)</h4>
+                <ul>
+                    <li>Fails to ask about last menstrual period (LMP) in female of reproductive age</li>
+                    <li>Fails to ask about pregnancy possibility</li>
+                    <li>Does not recognize peritonism (pain worse with movement)</li>
+                    <li>Does not identify anorexia (key diagnostic feature)</li>
+                    <li>Suggests discharge home without surgical review</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 4: MARKING CHECKLIST -->
+        <div class="section marking-checklist">
+            <h2>✅ Marking Checklist (80 Points Total)</h2>
+
+            <div class="pass-criteria">
+                <h4>Pass Mark: ≥56/80 (70%)</h4>
+                <p>Candidates must achieve at least 70% overall AND must not trigger any critical failures.</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 60%">Assessment Criteria</th>
+                        <th style="width: 15%">Points</th>
+                        <th style="width: 25%">Achieved (✓/✗)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- SECTION 1: INTRODUCTION & COMMUNICATION (10 points) -->
+                    <tr>
+                        <td colspan="3"><strong>SECTION 1: INTRODUCTION & COMMUNICATION (10 points)</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Introduces self with name and role</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Confirms patient identity and gains consent</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Shows empathy (acknowledges patient is in pain)</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Clear, jargon-free language throughout</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+
+                    <!-- SECTION 2: PAIN ASSESSMENT - SOCRATES (25 points) -->
+                    <tr>
+                        <td colspan="3"><strong>SECTION 2: PAIN ASSESSMENT - SOCRATES (25 points)</strong></td>
+                    </tr>
+                    <tr>
+                        <td><span class="red-flag">🚨 Site: Asks about initial location AND migration to RIF</span></td>
+                        <td>4</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Onset: Timing (when started) and mode of onset (sudden vs gradual)</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Character: Type of pain (sharp, dull, constant, colicky)</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Radiation: Asks if pain radiates anywhere</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="red-flag">🚨 Associated symptoms: Nausea/vomiting</span></td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="critical-item">🚨 Associated symptoms: ANOREXIA (loss of appetite) - CRITICAL</span></td>
+                        <td>4</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Timing: Severity (0-10 scale) and progression (better/worse)</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="red-flag">🚨 Exacerbating factors: Pain worse with movement/coughing (PERITONISM)</span></td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+
+                    <!-- SECTION 3: ASSOCIATED SYMPTOMS & GYNAECOLOGICAL HISTORY (25 points) -->
+                    <tr>
+                        <td colspan="3"><strong>SECTION 3: ASSOCIATED SYMPTOMS & GYNAECOLOGICAL HISTORY (25 points)</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Bowel symptoms: Diarrhoea, constipation, blood in stool</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Urinary symptoms: Dysuria, frequency, haematuria</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="red-flag">🚨 Fever/chills/rigors (evidence of infection)</span></td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="critical-item">🚨 Last Menstrual Period (LMP) - CRITICAL in female of reproductive age</span></td>
+                        <td>5</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="critical-item">🚨 Pregnancy possibility - CRITICAL (rules out ectopic pregnancy)</span></td>
+                        <td>5</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Gynaecological: Vaginal discharge, bleeding, contraception, sexual activity</td>
+                        <td>4</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Previous similar episodes</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+
+                    <!-- SECTION 4: PAST HISTORY & RISK FACTORS (15 points) -->
+                    <tr>
+                        <td colspan="3"><strong>SECTION 4: PAST HISTORY & RISK FACTORS (15 points)</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Past medical history (particularly previous abdominal pathology)</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Past surgical history (previous abdominal surgery)</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Medications (current medications, pain relief tried)</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Allergies (drug allergies)</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Family history (inflammatory bowel disease, familial conditions)</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Social history (occupation, living situation relevant to recovery)</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+
+                    <!-- SECTION 5: SUMMARY & CLINICAL REASONING (5 points) -->
+                    <tr>
+                        <td colspan="3"><strong>SECTION 5: SUMMARY & CLINICAL REASONING (5 points)</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Provides concise summary (patient demographics, key features)</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>States most likely diagnosis (acute appendicitis)</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Mentions appropriate differentials OR next steps (examination/investigations)</td>
+                        <td>1</td>
+                        <td></td>
+                    </tr>
+
+                    <!-- TOTAL -->
+                    <tr style="background-color: #d4edda; font-weight: bold;">
+                        <td><strong>TOTAL SCORE</strong></td>
+                        <td><strong>/80</strong></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="fail-criteria">
+                <h4>🚨 Critical Failures (Automatic Fail Regardless of Score)</h4>
+                <ul>
+                    <li>❌ Fails to ask about Last Menstrual Period (LMP) in female of reproductive age</li>
+                    <li>❌ Fails to ask about pregnancy possibility/sexual activity</li>
+                    <li>❌ Does not identify anorexia (key appendicitis feature)</li>
+                    <li>❌ Does not recognize peritonism (pain worse with movement/coughing)</li>
+                    <li>❌ Suggests patient can go home without surgical review</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 5: MODEL ANSWER -->
+        <div class="section model-answer">
+            <h2>📝 Model Answer - Concise Summary</h2>
+
+            <h3>Patient Summary</h3>
+            <p><strong>"This is Sarah Mitchell, a 24-year-old woman presenting with a 12-hour history of right iliac fossa pain, consistent with acute appendicitis."</strong></p>
+
+            <h3>Key Positive Findings</h3>
+            <ul>
+                <li>🚨 <strong>Classical migration:</strong> Periumbilical pain → RIF pain over 12 hours</li>
+                <li>🚨 <strong>Anorexia:</strong> Complete loss of appetite (present in 95% of appendicitis cases)</li>
+                <li>🚨 <strong>Peritonism:</strong> Pain worse with movement, coughing, car bumps</li>
+                <li><strong>Nausea and vomiting:</strong> Vomited once, feels nauseous</li>
+                <li><strong>Low-grade fever:</strong> 37.9°C (consistent with uncomplicated appendicitis)</li>
+                <li><strong>Progressive worsening:</strong> Pain 7-8/10, increasing severity</li>
+                <li><strong>Location:</strong> McBurney's point (RIF)</li>
+            </ul>
+
+            <h3>Key Negative Findings</h3>
+            <ul>
+                <li>❌ <strong>No diarrhoea</strong> (makes gastroenteritis less likely)</li>
+                <li>❌ <strong>No urinary symptoms</strong> (makes UTI/pyelonephritis less likely)</li>
+                <li>❌ <strong>Not pregnant</strong> (LMP 2 weeks ago, regular cycle, on OCP - makes ectopic pregnancy very unlikely)</li>
+                <li>❌ <strong>No vaginal bleeding or discharge</strong> (makes PID less likely)</li>
+                <li>❌ <strong>Mid-cycle timing</strong> (Mittelschmerz possible but less likely given severity and fever)</li>
+                <li>❌ <strong>No previous episodes</strong></li>
+                <li>❌ <strong>No previous abdominal surgery</strong></li>
+            </ul>
+
+            <h3>Differential Diagnoses (in order of likelihood)</h3>
+            <ol>
+                <li><strong>Acute appendicitis</strong> (MOST LIKELY) 🚨
+                    <ul>
+                        <li>Classical migration of pain (periumbilical → RIF)</li>
+                        <li>Anorexia, nausea, vomiting (in correct sequence: pain first, then vomiting)</li>
+                        <li>Peritonism (pain worse with movement)</li>
+                        <li>Low-grade fever</li>
+                        <li>Young adult (peak age 10-30 years)</li>
+                    </ul>
+                </li>
+                <li><strong>Mittelschmerz (ovulation pain)</strong>
+                    <ul>
+                        <li>Mid-cycle timing (LMP 2 weeks ago)</li>
+                        <li>Right-sided pain</li>
+                        <li>BUT: Less likely due to severity, fever, anorexia, progressive worsening</li>
+                    </ul>
+                </li>
+                <li><strong>Ovarian cyst rupture/torsion</strong>
+                    <ul>
+                        <li>Female of reproductive age</li>
+                        <li>Sudden onset RIF pain possible</li>
+                        <li>BUT: Less likely due to classical appendicitis features (anorexia, fever, migration)</li>
+                    </ul>
+                </li>
+                <li><strong>Mesenteric adenitis</strong>
+                    <ul>
+                        <li>Can mimic appendicitis in young adults</li>
+                        <li>Usually associated with recent viral illness (not present here)</li>
+                    </ul>
+                </li>
+                <li><strong>Ectopic pregnancy</strong>
+                    <ul>
+                        <li>MUST be considered in all females of reproductive age with abdominal pain</li>
+                        <li>Very unlikely here: LMP 2 weeks ago (normal), on OCP, no vaginal bleeding</li>
+                        <li>BUT: Still requires βhCG to definitively exclude</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>Immediate Next Steps</h3>
+
+            <h4>Clinical Examination:</h4>
+            <ul>
+                <li>Abdominal examination: Tenderness at McBurney's point, rebound tenderness, guarding</li>
+                <li>Rovsing's sign, psoas sign, obturator sign</li>
+                <li>Vital signs: HR, BP, temperature, RR (assess for sepsis)</li>
+            </ul>
+
+            <h4>Investigations (eTG 2024 recommendations):</h4>
+            <ul>
+                <li>🚨 <strong>Pregnancy test (βhCG)</strong> - MANDATORY in all females of reproductive age with abdominal pain</li>
+                <li><strong>Full blood count (FBC):</strong> Elevated WCC with neutrophilia (typically 10-18 × 10⁹/L)</li>
+                <li><strong>CRP:</strong> Elevated (typically 20-100 mg/L in uncomplicated appendicitis)</li>
+                <li><strong>Electrolytes, urea, creatinine (EUC):</strong> Pre-operative assessment</li>
+                <li><strong>Urinalysis:</strong> May show mild pyuria (5-10 WBC/hpf), helps exclude UTI</li>
+                <li><strong>CT abdomen/pelvis with IV contrast</strong> (if diagnosis unclear):
+                    <ul>
+                        <li>Sensitivity 94%, specificity 95% for appendicitis</li>
+                        <li>Dilated appendix (>6mm), appendiceal wall thickening, periappendiceal fat stranding</li>
+                        <li>Can identify complications (perforation, abscess)</li>
+                        <li>Can identify alternative diagnoses (ovarian pathology)</li>
+                    </ul>
+                </li>
+                <li><strong>Ultrasound pelvis</strong> (alternative in females, especially if βhCG positive or CT contraindicated):
+                    <ul>
+                        <li>Can visualize appendix and ovaries</li>
+                        <li>Less sensitive than CT (sensitivity 78-83%)</li>
+                        <li>Operator dependent</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Immediate Management (eTG 2024):</h4>
+            <ul>
+                <li><strong>Keep nil by mouth (NBM)</strong></li>
+                <li><strong>IV access:</strong> Large-bore cannula (16-18G)</li>
+                <li><strong>IV fluids:</strong> Sodium chloride 0.9% or Hartmann's solution</li>
+                <li><strong>Analgesia:</strong>
+                    <ul>
+                        <li>Paracetamol 1g IV 6-hourly</li>
+                        <li>Oxycodone 5-10mg PO/SC PRN (or morphine 2.5-5mg IV PRN)</li>
+                        <li>Consider ketorolac 10-30mg IV (NSAID - if no contraindications)</li>
+                        <li>⚠️ Note: Analgesia does NOT mask clinical signs and should be given early</li>
+                    </ul>
+                </li>
+                <li><strong>Anti-emetics:</strong> Ondansetron 4-8mg IV (if vomiting)</li>
+                <li><strong>Antibiotics:</strong>
+                    <ul>
+                        <li>If diagnosis confirmed or high suspicion:</li>
+                        <li>Piperacillin-tazobactam 4.5g IV (eTG first-line for acute appendicitis)</li>
+                        <li>OR Ceftriaxone 1g IV + metronidazole 500mg IV (if penicillin allergy)</li>
+                        <li>Timing: Pre-operative (within 60 minutes of incision)</li>
+                    </ul>
+                </li>
+                <li><strong>🚨 Urgent surgical review</strong> (General Surgery registrar/consultant)</li>
+                <li><strong>Consent for appendicectomy</strong> (laparoscopic preferred)</li>
+            </ul>
+
+            <h4>Definitive Management:</h4>
+            <ul>
+                <li><strong>Laparoscopic appendicectomy</strong> (gold standard):
+                    <ul>
+                        <li>Shorter hospital stay (1-2 days vs 3-5 days open)</li>
+                        <li>Less post-operative pain</li>
+                        <li>Faster return to normal activities (1-2 weeks)</li>
+                        <li>Lower wound infection rate</li>
+                        <li>Better cosmetic result</li>
+                    </ul>
+                </li>
+                <li><strong>Open appendicectomy</strong> (if laparoscopy contraindicated or complicated appendicitis)</li>
+            </ul>
+
+            <h3>Clinical Scoring Systems (Optional)</h3>
+
+            <h4>Alvarado Score (MANTRELS Mnemonic):</h4>
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <th>Points</th>
+                    <th>This Patient</th>
+                </tr>
+                <tr>
+                    <td><strong>M</strong>igration of pain (periumbilical → RIF)</td>
+                    <td>1</td>
+                    <td>✅ 1</td>
+                </tr>
+                <tr>
+                    <td><strong>A</strong>norexia</td>
+                    <td>1</td>
+                    <td>✅ 1</td>
+                </tr>
+                <tr>
+                    <td><strong>N</strong>ausea/vomiting</td>
+                    <td>1</td>
+                    <td>✅ 1</td>
+                </tr>
+                <tr>
+                    <td><strong>T</strong>enderness RIF (on examination)</td>
+                    <td>2</td>
+                    <td>? (not examined yet)</td>
+                </tr>
+                <tr>
+                    <td><strong>R</strong>ebound tenderness</td>
+                    <td>1</td>
+                    <td>? (not examined yet)</td>
+                </tr>
+                <tr>
+                    <td><strong>E</strong>levated temperature (>37.5°C)</td>
+                    <td>1</td>
+                    <td>✅ 1 (37.9°C)</td>
+                </tr>
+                <tr>
+                    <td><strong>L</strong>eukocytosis (WCC >10)</td>
+                    <td>2</td>
+                    <td>? (bloods pending)</td>
+                </tr>
+                <tr>
+                    <td><strong>S</strong>hift to left (neutrophilia >75%)</td>
+                    <td>1</td>
+                    <td>? (bloods pending)</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><strong>Total (from history alone)</strong></td>
+                    <td><strong>4/10</strong></td>
+                </tr>
+            </table>
+
+            <p><strong>Interpretation:</strong></p>
+            <ul>
+                <li>Score 1-4: Low probability (15% appendicitis)</li>
+                <li>Score 5-6: Moderate probability (50% appendicitis) - consider imaging</li>
+                <li>Score 7-8: High probability (75% appendicitis) - likely surgical</li>
+                <li>Score 9-10: Very high probability (>90% appendicitis) - definite surgical</li>
+            </ul>
+
+            <p><em>Note: This patient scores 4 from history alone, but examination and bloods will likely increase score to 7-9 range (high probability). Clinical judgment and imaging (CT) should guide decision.</em></p>
+
+            <h3>Complications to Monitor For</h3>
+            <ul>
+                <li>🚨 <strong>Perforation:</strong> High fever (>38.5°C), severe pain, peritonitis, sepsis (occurs in 20-30% if delay >48 hours)</li>
+                <li>🚨 <strong>Abscess formation:</strong> Persistent fever, palpable mass</li>
+                <li>🚨 <strong>Peritonitis:</strong> Generalized abdominal pain, guarding, rigidity</li>
+                <li>🚨 <strong>Sepsis:</strong> Tachycardia, hypotension, altered conscious state</li>
+            </ul>
+
+            <h3>Prognosis</h3>
+            <ul>
+                <li>Excellent with early surgery (mortality <0.1% for uncomplicated appendicitis)</li>
+                <li>Risk of perforation increases 5% per 12 hours after symptom onset</li>
+                <li>Laparoscopic appendicectomy: typical recovery 1-2 weeks</li>
+                <li>Return to work: 1-2 weeks (uncomplicated)</li>
+            </ul>
+
+            <h3>Australian-Specific Considerations</h3>
+            <ul>
+                <li><strong>eTG 2024 first-line antibiotic:</strong> Piperacillin-tazobactam 4.5g IV (NOT ceftriaxone + metronidazole unless penicillin allergy)</li>
+                <li><strong>NSW Health pathway:</strong> All suspected appendicitis requires surgical review within 4 hours</li>
+                <li><strong>Terminology:</strong> Use "RIF pain" (not "right lower quadrant"), "theatre" (not OR), "NBM" (not NPO)</li>
+                <li><strong>Imaging:</strong> CT with IV contrast preferred over ultrasound in adults (eTG 2024)</li>
+                <li><strong>Analgesia:</strong> Australian practice encourages early adequate analgesia (does not mask signs)</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 6: IMG COMMON MISTAKES -->
+        <div class="section img-mistakes">
+            <h2>⚠️ IMG Common Mistakes - Critical Errors to Avoid</h2>
+
+            <p><strong>These 10 mistakes are commonly made by international medical graduates and will lead to failure in the AMC OSCE. Learn from these to avoid critical errors.</strong></p>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #1: Not Asking About Last Menstrual Period (LMP) in Female Patient</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> In Australia, asking about LMP is MANDATORY for ALL females of reproductive age (roughly 12-55 years) presenting with abdominal pain. This is a CRITICAL FAILURE if omitted because ectopic pregnancy can be life-threatening and presents with abdominal pain.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates often jump straight to surgical assessment without considering gynaecological causes. Australian examiners expect systematic gynae history in all females with abdominal pain.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: "When was your last menstrual period?" and "Is there any chance you could be pregnant?" are NON-NEGOTIABLE questions. Ask these early in the history.
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #2: Not Asking About Anorexia (Loss of Appetite)</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> Anorexia is present in 95% of appendicitis cases and is one of the most important diagnostic features. Not asking about appetite/food intake is a critical omission.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates often focus on pain and vomiting but forget to ask "Have you been able to eat?" or "How is your appetite?" This is a KEY discriminator between appendicitis and other causes.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: Ask explicitly "How has your appetite been?" or "Have you felt like eating?" The answer "I haven't felt hungry at all" or "The thought of food makes me sick" is HIGHLY suggestive of appendicitis.
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #3: Not Recognizing Peritonism (Pain Worse with Movement)</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> Peritonism (peritoneal inflammation) is a red flag for surgical emergency. If the patient says "pain worse with coughing" or "lying very still," this indicates peritoneal irritation and requires urgent surgical review.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates often don't ask the specific question "What makes the pain worse?" and miss the critical clue that movement/coughing exacerbates the pain.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: Ask "What makes the pain worse?" and "What makes it better?" Listen for: worse with movement, coughing, car bumps, walking. This patient said "Even when the car went over speed bumps it was agony" - CLASSIC peritonism.
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #4: Not Asking About Pain Migration (Periumbilical → RIF)</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> Classical appendicitis presents with pain starting AROUND THE BELLY BUTTON (periumbilical) which then MIGRATES to the right iliac fossa (RIF) over several hours. This migration is pathognomonic for appendicitis.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates ask "Where is the pain?" but don't ask "Where did it start?" or "Has the pain moved?" Missing this migration pattern means missing the diagnosis.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: Ask "Where exactly did the pain start?" and "Has it moved anywhere?" The answer "It started around my belly button and moved to the right lower side" is GOLD STANDARD for appendicitis.
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #5: Using American/British Terminology Instead of Australian</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> Australian medical culture uses specific terminology. Using American terms like "RLQ" (right lower quadrant) instead of "RIF" (right iliac fossa), or "NPO" instead of "NBM" (nil by mouth) marks you as unfamiliar with Australian practice.
+                    <br><br>
+                    <strong>What happens:</strong> While this alone won't fail you, accumulated terminology errors signal to examiners that you haven't adapted to Australian medical culture.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT Australian terms: "RIF" not "RLQ", "NBM" not "NPO", "theatre" not "OR", "paracetamol" not "acetaminophen", "ED" not "ER", "bloods" not "labs", "FBC" not "CBC".
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #6: Not Asking About Sequence of Symptoms (Pain Before Vomiting)</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> In appendicitis, PAIN comes BEFORE vomiting (95% of cases). If vomiting comes before pain, this suggests gastroenteritis, not appendicitis. The sequence matters diagnostically.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates ask about vomiting but don't establish the timeline. "When did you start vomiting in relation to the pain?" is crucial.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: Ask "Did the pain start before or after the vomiting?" In appendicitis: pain first (periumbilical), then anorexia, then nausea, then vomiting (several hours later).
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #7: Not Excluding Ectopic Pregnancy (Even if Patient Says "No Chance")</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> In Australian practice, ectopic pregnancy MUST be formally excluded with βhCG in ALL females of reproductive age with abdominal pain, regardless of contraception use, LMP, or patient's stated pregnancy risk.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates take the patient's word ("I'm on the pill, I can't be pregnant") and don't mention βhCG testing. This is unsafe practice - contraception can fail, and ectopic pregnancy can be life-threatening.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: Even though this patient is on OCP with normal LMP 2 weeks ago, your summary MUST include "We'll need to do a pregnancy test to be safe" or "βhCG to exclude pregnancy." This is NON-NEGOTIABLE in Australian EM/Surgical practice.
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #8: Not Asking About Diarrhoea (Key Negative Finding)</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> ABSENCE of diarrhoea is a key discriminator. Gastroenteritis (common differential) typically presents with diarrhoea + vomiting. Appendicitis does NOT cause diarrhoea. Not asking means you can't differentiate.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates focus on positive findings (pain, vomiting) but forget that NEGATIVE findings (no diarrhoea, no urinary symptoms) are equally important for building a differential.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: Ask "Have you had any diarrhoea?" The answer "No" helps you exclude gastroenteritis and supports appendicitis diagnosis. Always ask about bowel habits in abdominal pain.
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #9: Poor Time Management - Running Out of Time Before Completing Gynae History</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> IMG candidates often spend too long on pain history (asking repetitive questions about the same pain) and run out of time before asking about LMP, pregnancy, sexual history. This results in CRITICAL FAILURES.
+                    <br><br>
+                    <strong>What happens:</strong> You have 8 minutes. If you spend 5 minutes on pain alone, you won't have time for gynae history (which is MANDATORY). Structure is everything.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: Time allocation for RIF pain in female: Introduction (30 sec) → Pain SOCRATES (2-3 min) → Associated GI symptoms (1 min) → Gynae history INCLUDING LMP/pregnancy (1.5 min) → PMHx/Meds/Allergies (1 min) → ICE + Summary (1.5 min). Practice this structure.
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #10: Not Demonstrating Empathy for Patient in Acute Pain</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> This patient is in 7-8/10 pain and lying very still. If you launch into rapid-fire questions without acknowledging their discomfort ("I can see you're in a lot of pain, I'll be as quick as I can"), you'll fail the communication domain.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates sometimes focus so hard on "getting the history right" that they forget the patient is suffering. Australian OSCE heavily weights empathy and communication.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: Start with "I can see you're uncomfortable" or "I know this is painful, I'll try to be as quick as possible" or "Please let me know if you need a break." Show awareness of their distress throughout the consultation.
+                </div>
+            </div>
+
+            <h3>Summary of Critical "Must Do" Items for RIF Pain Station:</h3>
+            <ol>
+                <li>✅ Ask about Last Menstrual Period (LMP) - MANDATORY</li>
+                <li>✅ Ask about pregnancy possibility - MANDATORY</li>
+                <li>✅ Ask about anorexia (appetite/food intake) - KEY diagnostic feature</li>
+                <li>✅ Ask about pain migration (periumbilical → RIF) - PATHOGNOMONIC</li>
+                <li>✅ Ask what makes pain worse (looking for peritonism) - RED FLAG</li>
+                <li>✅ Ask about diarrhoea (absence helps exclude gastroenteritis)</li>
+                <li>✅ Ask about sequence (pain before vomiting?) - DIAGNOSTIC</li>
+                <li>✅ Use Australian terminology (RIF not RLQ, NBM not NPO)</li>
+                <li>✅ Manage time to complete gynae history (don't run out of time)</li>
+                <li>✅ Show empathy throughout (patient is in acute pain)</li>
+            </ol>
+
+            <div class="tip">
+                <h4>🎯 IMG Success Tips for Surgical History Stations:</h4>
+                <ul>
+                    <li><strong>Use SOCRATES for ALL pain:</strong> Site, Onset, Character, Radiation, Associated symptoms, Timing, Exacerbating/relieving, Severity. This ensures systematic coverage.</li>
+                    <li><strong>Always ask about "red flag" symptoms:</strong> Fever, peritonism, progression, severity.</li>
+                    <li><strong>Female + abdominal pain = ALWAYS ask LMP and pregnancy:</strong> This is non-negotiable in Australian practice.</li>
+                    <li><strong>Practice saying "When was your last period?" naturally:</strong> Don't be embarrassed - it's routine medical history.</li>
+                    <li><strong>Learn Australian differential diagnoses for RIF pain in females:</strong> Appendicitis, ovarian cyst/torsion, ectopic pregnancy, PID, Mittelschmerz, mesenteric adenitis, UTI/pyelonephritis, Crohn's disease.</li>
+                    <li><strong>Know eTG 2024 first-line treatment:</strong> Piperacillin-tazobactam 4.5g IV for appendicitis (not ceftriaxone unless allergy).</li>
+                    <li><strong>Always mention βhCG in your management:</strong> Even if pregnancy seems unlikely, you MUST exclude it formally.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📚 References - Australian Guidelines 2024</h2>
+            <ul>
+                <li><strong>eTG Complete:</strong> Acute Appendicitis - Therapeutic Guidelines (2024)</li>
+                <li><strong>eTG Complete:</strong> Intra-abdominal Infections - Antibiotic Guidelines (2024)</li>
+                <li><strong>RACS (Royal Australasian College of Surgeons):</strong> Clinical Practice Guidelines - Acute Appendicitis (2024)</li>
+                <li><strong>NSW Health:</strong> Acute Abdominal Pain Clinical Pathway (2024)</li>
+                <li><strong>AMC:</strong> Clinical Examination Blueprint - Surgery Domain (2024)</li>
+                <li><strong>RANZCOG:</strong> Acute Pelvic Pain in Women - Differential Diagnosis (2024)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <p><em>Document created: December 16, 2025</em></p>
+            <p><em>For ICRP preparation - NSW Young Hospital (March 2026 intake)</em></p>
+            <p><em>Based on eTG 2024, RACS guidelines, and AMC Clinical Examination Blueprint 2024</em></p>
+        </div>
+    </div>
+</body>
+</html>

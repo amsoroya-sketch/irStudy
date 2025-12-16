@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock OSCE Station - Shortness of Breath History</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin: 30px 0 15px 0;
+            padding: 10px 0;
+            border-bottom: 2px solid #ecf0f1;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #2c3e50;
+            margin: 20px 0 10px 0;
+            font-size: 1.3em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin: 15px 0 8px 0;
+            font-size: 1.1em;
+        }
+
+        /* Content */
+        p {
+            margin: 10px 0;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        em {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #ecf0f1;
+            margin: 30px 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+        }
+
+        th {
+            background: #34495e;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* Code blocks */
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #e74c3c;
+            font-size: 0.95em;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Info boxes */
+        .info-box {
+            background: #d6eaf8;
+            border-left: 4px solid #3498db;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .info-box h4 {
+            color: #2980b9;
+            margin-top: 0;
+        }
+
+        .warning-box {
+            background: #ffeaa7;
+            border-left: 4px solid #f39c12;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .warning-box h4 {
+            color: #d68910;
+            margin-top: 0;
+        }
+
+        .success-box {
+            background: #d5f4e6;
+            border-left: 4px solid #27ae60;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .success-box h4 {
+            color: #1e8449;
+            margin-top: 0;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../../START_HERE.html">🏠 Home</a>
+            <span>→</span>
+            <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">ICRP OSCE Preparation</a>
+            <span>→</span>
+            <span>Mock Stations</span>
+        </div>
+
+        <div class="quick-nav">
+            <h3>📑 Quick Navigation</h3>
+            <ul>
+                <li><a href="#candidate">For the Candidate</a></li>
+                <li><a href="#simulated-patient">For the Simulated Patient</a></li>
+                <li><a href="#examiner">For the Examiner</a></li>
+                <li><a href="#marking-checklist">Examiner Marking Checklist</a></li>
+                <li><a href="#model-answer">Model Answer</a></li>
+                <li><a href="#img-mistakes">IMG Common Mistakes</a></li>
+            </ul>
+        </div>
+
+        <h1>Mock OSCE Station - Shortness of Breath History</h1>
+        <h2>AMC Clinical Style with Examiner Marking Checklist</h2>
+
+        <p><strong>Station Number:</strong> M01 (Medicine)</p>
+        <p><strong>System:</strong> Respiratory / Cardiovascular</p>
+        <p><strong>Task:</strong> History-taking</p>
+        <p><strong>Time:</strong> 8 minutes</p>
+        <p><strong>Difficulty:</strong> Medium-Hard</p>
+        <p><strong>Created:</strong> December 16, 2025</p>
+
+        <hr>
+
+        <h2 id="candidate">FOR THE CANDIDATE</h2>
+
+        <h3>INSTRUCTIONS (Read Before Entering Station - 1 minute)</h3>
+
+        <p>You are a junior doctor in the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department at Young District Hospital, NSW.</p>
+
+        <p><strong>Task:</strong> Take a focused history from this patient.</p>
+
+        <p><strong>Patient Details:</strong></p>
+        <ul>
+            <li>Name: Mrs Margaret Thompson</li>
+            <li>Age: 72 years old</li>
+            <li>Presenting Complaint: Shortness of breath</li>
+        </ul>
+
+        <p><strong>You have 8 minutes for this station.</strong></p>
+
+        <p>At the 7-minute mark, the examiner will ask you to summarize your findings and provide your differential diagnoses.</p>
+
+        <p><em>You may now enter the station.</em></p>
+
+        <hr>
+
+        <h2 id="simulated-patient">FOR THE SIMULATED PATIENT</h2>
+
+        <h3>BACKGROUND INFORMATION (Candidate CANNOT see this)</h3>
+
+        <p><strong>Name:</strong> Mrs Margaret Thompson</p>
+        <p><strong>Age:</strong> 72 years old</p>
+        <p><strong>Occupation:</strong> Retired primary school teacher</p>
+        <p><strong>Living situation:</strong> Lives alone in a single-storey house, daughter visits twice weekly</p>
+
+        <h3>PRESENTING COMPLAINT</h3>
+
+        <p><strong>Chief Complaint:</strong> "I've been getting very short of breath, especially when I walk"</p>
+
+        <h3>HISTORY OF PRESENTING COMPLAINT</h3>
+
+        <p><strong>If asked to describe the problem in your own words:</strong></p>
+        <p>"Well, over the past 3 months or so, I've been finding it harder and harder to catch my breath. At first, it was only when I was doing the stairs at my daughter's house, but now even walking to the letterbox leaves me puffing. I have to stop and rest halfway."</p>
+
+        <h3>DETAILED HISTORY (Only provide if specifically asked)</h3>
+
+        <h4>Onset & Time Course:</h4>
+        <ul>
+            <li><strong>When did it start?</strong> "About 3 months ago, gradually getting worse"</li>
+            <li><strong>Was it sudden or gradual?</strong> "Gradual, definitely gradual"</li>
+            <li><strong>Getting better, worse, or same?</strong> "Definitely getting worse each week"</li>
+        </ul>
+
+        <h4>Severity & Functional Impact:</h4>
+        <ul>
+            <li><strong>Can you walk on flat ground?</strong> "I can walk about 50 metres before I have to stop"</li>
+            <li><strong>Can you climb stairs?</strong> "No, not anymore. I avoid stairs completely now"</li>
+            <li><strong>How many pillows do you sleep with?</strong> "I use 3 pillows now. If I lie flat, I feel like I'm drowning"</li>
+            <li><strong>Do you wake up short of breath at night?</strong> "Yes! About 2-3 times a night. I have to sit up on the edge of the bed for 10-15 minutes"</li>
+        </ul>
+
+        <h4>Associated Symptoms:</h4>
+        <ul>
+            <li><strong>Cough?</strong> "Yes, a bit of a cough, especially in the mornings. Sometimes brings up white frothy sputum"</li>
+            <li><strong>Wheeze?</strong> "No wheeze"</li>
+            <li><strong>Chest pain?</strong> "No chest pain"</li>
+            <li><strong>Leg swelling?</strong> "Yes, actually. My ankles have been quite swollen, especially by the end of the day"</li>
+            <li><strong>Weight change?</strong> "I've put on about 4 kilos in the last month, which is strange because I'm not eating more"</li>
+            <li><strong>Palpitations?</strong> "No"</li>
+            <li><strong>Dizziness or fainting?</strong> "Sometimes feel a bit lightheaded when I stand up quickly"</li>
+        </ul>
+
+        <h3>PAST MEDICAL HISTORY</h3>
+
+        <p><strong>If asked about medical problems:</strong></p>
+        <ul>
+            <li><strong>Heart attack 5 years ago</strong> (2020) - "I had a stent put in"</li>
+            <li><strong>High blood pressure</strong> - "For about 15 years"</li>
+            <li><strong>Type 2 diabetes</strong> - "Diagnosed 10 years ago"</li>
+            <li><strong>High cholesterol</strong></li>
+            <li>No asthma or COPD</li>
+            <li>No previous clots (DVT/PE)</li>
+        </ul>
+
+        <h3>MEDICATIONS</h3>
+
+        <p><strong>If asked about medications (have a written list):</strong></p>
+        <ul>
+            <li>Aspirin 100mg daily</li>
+            <li>Atorvastatin 40mg at night</li>
+            <li>Ramipril 10mg daily</li>
+            <li>Metformin 1000mg twice daily</li>
+            <li>GTN spray (rarely use)</li>
+        </ul>
+
+        <p><strong>Compliance:</strong> "I take them every day, never miss a dose"</p>
+
+        <h3>ALLERGIES</h3>
+        <ul>
+            <li>No known drug allergies</li>
+        </ul>
+
+        <h3>SOCIAL HISTORY</h3>
+
+        <p><strong>If asked about smoking:</strong></p>
+        <ul>
+            <li>"I smoked for 40 years, about 20 cigarettes a day. I quit 5 years ago after my heart attack"</li>
+            <li>Smoking history: 40 pack-years</li>
+        </ul>
+
+        <p><strong>If asked about alcohol:</strong></p>
+        <ul>
+            <li>"Just a glass of wine with dinner on weekends, maybe 2-3 glasses per week"</li>
+        </ul>
+
+        <p><strong>If asked about exercise tolerance:</strong></p>
+        <ul>
+            <li>"I used to walk 30 minutes every morning. Now I can barely make it to the mailbox"</li>
+        </ul>
+
+        <h3>FAMILY HISTORY</h3>
+
+        <p><strong>If asked:</strong></p>
+        <ul>
+            <li>Father died of heart attack at age 68</li>
+            <li>Mother died of stroke at age 75</li>
+            <li>No family history of lung disease or clots</li>
+        </ul>
+
+        <h3>SYSTEMS REVIEW</h3>
+
+        <p><strong>If asked about other systems</strong> (only volunteer if specifically asked):</p>
+        <ul>
+            <li>No fever or chills</li>
+            <li>No night sweats or weight loss (actually gained weight)</li>
+            <li>No haemoptysis (coughing blood)</li>
+            <li>No recent travel or long flights</li>
+            <li>No recent surgery</li>
+        </ul>
+
+        <h3>EMOTIONS & BEHAVIOR</h3>
+
+        <p><strong>Emotional State:</strong></p>
+        <ul>
+            <li>You're quite worried and frustrated</li>
+            <li>You're afraid of becoming dependent on your daughter</li>
+            <li>If doctor shows empathy, you open up more about your fears</li>
+        </ul>
+
+        <p><strong>If asked "What are you most worried about?":</strong></p>
+        <p>"I'm worried this is my heart again. After my heart attack, I was told I needed to look after myself. I don't want to be a burden on my daughter."</p>
+
+        <p><strong>If doctor shows good communication:</strong></p>
+        <ul>
+            <li>Be more forthcoming with information</li>
+            <li>Express relief that they're taking you seriously</li>
+        </ul>
+
+        <p><strong>If doctor is rushed or dismissive:</strong></p>
+        <ul>
+            <li>Become more anxious</li>
+            <li>May downplay symptoms to avoid "wasting their time"</li>
+        </ul>
+
+        <h3>QUESTIONS YOU SHOULD ASK (at appropriate time)</h3>
+
+        <ul>
+            <li>"Is this my heart acting up again?"</li>
+            <li>"Do I need to be admitted to hospital?"</li>
+            <li>"Will I be able to stay in my own home?"</li>
+        </ul>
+
+        <hr>
+
+        <h2 id="examiner">FOR THE EXAMINER</h2>
+
+        <h3>EXAMINER INSTRUCTIONS</h3>
+
+        <p><strong>Your Role:</strong></p>
+        <ul>
+            <li>Observe the candidate silently</li>
+            <li>Mark using the checklist below</li>
+            <li>At 7 minutes, say: <em>"You have 1 minute remaining. Please summarize your findings and provide your differential diagnoses."</em></li>
+            <li>At 8 minutes, say: <em>"Thank you, time is up."</em></li>
+        </ul>
+
+        <p><strong>Do NOT:</strong></p>
+        <ul>
+            <li>Interrupt the candidate</li>
+            <li>Give hints or feedback during the station</li>
+            <li>Answer questions for the simulated patient</li>
+        </ul>
+
+        <h3>STATION OBJECTIVES</h3>
+
+        <p>This station assesses the candidate's ability to:</p>
+        <ol>
+            <li>Take a focused respiratory/cardiovascular history</li>
+            <li>Identify <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s for acute decompensated heart failure</li>
+            <li>Differentiate between cardiac and respiratory causes of dyspnoea</li>
+            <li>Assess functional status and severity (NYHA classification)</li>
+            <li>Generate appropriate differential diagnoses</li>
+            <li>Communicate effectively with empathy and professionalism</li>
+        </ol>
+
+        <hr>
+
+        <h2 id="marking-checklist">EXAMINER MARKING CHECKLIST</h2>
+
+        <p><strong>Candidate Name:</strong> _________________________</p>
+        <p><strong>Candidate Number:</strong> _________________________</p>
+        <p><strong>Date:</strong> _________________________</p>
+
+        <h3>SECTION 1: INTRODUCTION & COMMUNICATION (10 points)</h3>
+
+        <table>
+            <tr>
+                <th>Criteria</th>
+                <th style="width: 60px;">Yes</th>
+                <th style="width: 60px;">No</th>
+                <th>Comments</th>
+            </tr>
+            <tr>
+                <td><strong>1.1</strong> Hand hygiene performed</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.2</strong> Introduced self appropriately</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.3</strong> Confirmed patient name/age</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.4</strong> Explained purpose of consultation</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.5</strong> Obtained verbal consent to proceed</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.6</strong> Demonstrated empathy (acknowledged patient concerns)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.7</strong> Used open-ended questions initially</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.8</strong> Active listening (eye contact, not interrupting)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.9</strong> Checked understanding periodically</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.10</strong> Professional manner throughout</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <p><strong>Section 1 Score:</strong> ___/10</p>
+
+        <hr>
+
+        <h3>SECTION 2: HISTORY OF PRESENTING COMPLAINT - DYSPNOEA (30 points)</h3>
+
+        <table>
+            <tr>
+                <th>Criteria</th>
+                <th style="width: 60px;">Yes</th>
+                <th style="width: 60px;">No</th>
+                <th>Comments</th>
+            </tr>
+            <tr>
+                <td><strong>2.1</strong> Onset: When did shortness of breath start?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.2</strong> Time course: Sudden vs gradual? Progressive?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.3</strong> Severity: Exercise tolerance assessed (distance/stairs)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.4</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Orthopnoea asked (pillows to sleep)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.5</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Paroxysmal nocturnal dyspnoea (PND) asked</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.6</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Leg swelling/oedema asked</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.7</strong> Weight gain/loss asked</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.8</strong> Cough asked (productive vs dry)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.9</strong> Sputum character asked (colour, volume, frothy)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.10</strong> Wheeze asked</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.11</strong> Chest pain asked</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.12</strong> Palpitations asked</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.13</strong> Dizziness/syncope asked</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.14</strong> Fever/chills asked (to exclude infection)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.15</strong> Haemoptysis asked (coughing blood)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <p><strong>Section 2 Score:</strong> ___/30</p>
+
+        <hr>
+
+        <h3>SECTION 3: PAST MEDICAL HISTORY & RISK FACTORS (15 points)</h3>
+
+        <table>
+            <tr>
+                <th>Criteria</th>
+                <th style="width: 60px;">Yes</th>
+                <th style="width: 60px;">No</th>
+                <th>Comments</th>
+            </tr>
+            <tr>
+                <td><strong>3.1</strong> Previous heart problems asked (IHD, MI, HF)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.2</strong> Hypertension asked</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.3</strong> Diabetes asked</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.4</strong> Hypercholesterolaemia asked</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.5</strong> Asthma/COPD history asked</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.6</strong> Previous DVT/PE asked</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.7</strong> Current medications reviewed</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.8</strong> Medication compliance asked</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.9</strong> Drug allergies asked</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.10</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Smoking history (pack-years calculated)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.11</strong> Alcohol intake asked</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.12</strong> Family history of heart disease asked</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.13</strong> Recent travel/surgery (DVT/PE risk factors)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.14</strong> Occupational history (asbestos, dust exposure)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.15</strong> Social situation (living arrangements, supports)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <p><strong>Section 3 Score:</strong> ___/15</p>
+
+        <hr>
+
+        <h3>SECTION 4: SUMMARY & CLINICAL REASONING (20 points)</h3>
+
+        <table>
+            <tr>
+                <th>Criteria</th>
+                <th style="width: 60px;">Yes</th>
+                <th style="width: 60px;">No</th>
+                <th>Comments</th>
+            </tr>
+            <tr>
+                <td><strong>4.1</strong> Summarized history concisely (1-2 minutes)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.2</strong> Identified key positive findings (orthopnoea, PND, oedema)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.3</strong> Identified key negative findings (no fever, no wheeze)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.4</strong> Listed risk factors (previous MI, HTN, DM, smoking)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.5</strong> Provided appropriate differential diagnoses (at least 3)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.6</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Identified acute decompensated heart failure as top differential</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.7</strong> Considered COPD exacerbation as differential (smoking history)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.8</strong> Considered other reasonable differentials (PE, pneumonia, anaemia)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.9</strong> Justified differentials with reasoning from history</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.10</strong> Proposed appropriate initial investigations</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <p><strong>Section 4 Score:</strong> ___/20</p>
+
+        <hr>
+
+        <h3>SECTION 5: PROFESSIONALISM & PATIENT SAFETY (5 points)</h3>
+
+        <table>
+            <tr>
+                <th>Criteria</th>
+                <th style="width: 60px;">Yes</th>
+                <th style="width: 60px;">No</th>
+                <th>Comments</th>
+            </tr>
+            <tr>
+                <td><strong>5.1</strong> Asked about patient's main concerns/worries</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>5.2</strong> Responded to patient's questions appropriately</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>5.3</strong> Recognized urgency (indicated patient needs admission)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>5.4</strong> Thanked patient at end of consultation</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>5.5</strong> Overall professionalism and rapport</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <p><strong>Section 5 Score:</strong> ___/5</p>
+
+        <hr>
+
+        <h3>OVERALL SCORE</h3>
+
+        <table>
+            <tr>
+                <th>Section</th>
+                <th>Score</th>
+                <th>Maximum</th>
+            </tr>
+            <tr>
+                <td>Section 1: Introduction & Communication</td>
+                <td>___</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>Section 2: History of Presenting Complaint</td>
+                <td>___</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>Section 3: Past Medical History & Risk Factors</td>
+                <td>___</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>Section 4: Summary & Clinical Reasoning</td>
+                <td>___</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>Section 5: Professionalism & Patient Safety</td>
+                <td>___</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td><strong>TOTAL</strong></td>
+                <td><strong>___</strong></td>
+                <td><strong>80</strong></td>
+            </tr>
+        </table>
+
+        <div class="alert alert-blue">
+            <h4>📊 Pass/Fail Criteria</h4>
+            <p><strong>PASS:</strong> ≥56/80 (70%)</p>
+            <p><strong>BORDERLINE:</strong> 48-55/80 (60-69%) - Review required</p>
+            <p><strong>FAIL:</strong> <48/80 (<60%)</p>
+            <p><strong>CRITICAL FAILURES (Automatic Fail regardless of score):</strong></p>
+            <ul>
+                <li>Failed to ask about orthopnoea (2.4)</li>
+                <li>Failed to ask about PND (2.5)</li>
+                <li>Failed to ask about leg oedema (2.6)</li>
+                <li>Failed to identify heart failure as top differential (4.6)</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <h2 id="model-answer">MODEL ANSWER</h2>
+
+        <h3>Ideal Candidate Performance (Timeline)</h3>
+
+        <p><strong>Introduction (30 seconds):</strong></p>
+        <ul>
+            <li>Hand hygiene</li>
+            <li>"Good morning, Mrs Thompson. My name is Dr [Name], I'm one of the junior doctors here in the Emergency Department. I understand you've been having some shortness of breath. I'd like to take a history from you today to better understand what's been happening. Is that okay with you?"</li>
+            <li>Confirm name, age, check patient is comfortable</li>
+        </ul>
+
+        <p><strong>Open Question (30 seconds):</strong></p>
+        <ul>
+            <li>"Can you tell me, in your own words, what's been troubling you?"</li>
+            <li>Listen actively, show empathy: "That must be very concerning for you"</li>
+        </ul>
+
+        <p><strong>Focused Dyspnoea History (4 minutes):</strong></p>
+
+        <p><em>Onset & Time Course:</em></p>
+        <ul>
+            <li>"When did you first notice the shortness of breath?"</li>
+            <li>"Did it come on suddenly or gradually?"</li>
+            <li>"Has it been getting better, worse, or staying the same?"</li>
+        </ul>
+
+        <p><em>Severity & Functional Assessment:</em></p>
+        <ul>
+            <li>"How far can you walk on flat ground before you get short of breath?"</li>
+            <li>"Can you manage stairs?"</li>
+            <li>"How many pillows do you use to sleep at night?" <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL</span></li>
+            <li>"Do you ever wake up at night feeling short of breath?" <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL (PND)</span></li>
+        </ul>
+
+        <p><em>Associated Symptoms:</em></p>
+        <ul>
+            <li>"Have you noticed any swelling in your legs or ankles?" <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL</span></li>
+            <li>"Any changes in your weight recently?"</li>
+            <li>"Do you have a cough? If so, are you bringing anything up?"</li>
+            <li>"Any wheeze or whistling in your chest?"</li>
+            <li>"Any chest pain?"</li>
+            <li>"Any palpitations or irregular heartbeat?"</li>
+            <li>"Any dizziness or fainting?"</li>
+        </ul>
+
+        <p><em>Exclude Other Causes:</em></p>
+        <ul>
+            <li>"Any fever or chills?"</li>
+            <li>"Have you coughed up any blood?"</li>
+            <li>"Any recent long flights or surgery?" (DVT/PE risk)</li>
+        </ul>
+
+        <p><strong>Past Medical & Medication History (2 minutes):</strong></p>
+        <ul>
+            <li>"Do you have any other medical conditions?" → Elicit previous MI, HTN, DM, hypercholesterolaemia</li>
+            <li>"Any history of asthma or lung problems?"</li>
+            <li>"What medications are you currently taking?"</li>
+            <li>"Do you take them regularly?"</li>
+            <li>"Any allergies to medications?"</li>
+        </ul>
+
+        <p><strong>Social & Family History (1 minute):</strong></p>
+        <ul>
+            <li>"Have you ever smoked?" → Calculate pack-years: 40 years × 1 pack/day = 40 pack-years</li>
+            <li>"Do you drink alcohol?"</li>
+            <li>"Who do you live with? Do you have support at home?"</li>
+            <li>"Any family history of heart or lung problems?"</li>
+        </ul>
+
+        <p><strong>Patient's Concerns (30 seconds):</strong></p>
+        <ul>
+            <li>"What are you most worried about?"</li>
+            <li>Respond empathetically: "I can understand why you'd be concerned given your previous heart attack. We're going to do some tests to find out what's causing this."</li>
+        </ul>
+
+        <p><strong>Summary & Differentials (1 minute):</strong></p>
+
+        <div class="success-box">
+            <h4>📝 Model Summary to Examiner</h4>
+            <p>"This is a 72-year-old woman presenting with a 3-month history of progressive dyspnoea, now limiting her to 50 metres on flat ground.</p>
+
+            <p><strong>Key positive findings:</strong></p>
+            <ul>
+                <li>Orthopnoea (3 pillows)</li>
+                <li>Paroxysmal nocturnal dyspnoea (wakes 2-3 times/night)</li>
+                <li>Bilateral ankle oedema</li>
+                <li>Weight gain 4kg in 1 month</li>
+                <li>Productive cough with white frothy sputum</li>
+            </ul>
+
+            <p><strong>Key negative findings:</strong></p>
+            <ul>
+                <li>No fever, wheeze, chest pain, haemoptysis</li>
+                <li>No recent travel or surgery</li>
+            </ul>
+
+            <p><strong>Significant past history:</strong></p>
+            <ul>
+                <li>Previous MI 5 years ago (stent)</li>
+                <li>Hypertension, type 2 diabetes, hypercholesterolaemia</li>
+                <li>Ex-smoker (40 pack-years)</li>
+                <li>Strong family history of IHD</li>
+            </ul>
+
+            <p><strong>My differential diagnoses are:</strong></p>
+            <ol>
+                <li><strong>Acute decompensated heart failure (most likely)</strong> - supported by orthopnoea, PND, peripheral oedema, weight gain, frothy sputum, previous MI, and cardiac risk factors</li>
+                <li><strong>COPD exacerbation</strong> - possible given 40 pack-year smoking history, though absence of wheeze and lack of previous COPD diagnosis make this less likely</li>
+                <li><strong>Coronary artery disease/ischaemia</strong> - could be contributing to heart failure, though no chest pain</li>
+                <li><strong>Pulmonary embolism</strong> - less likely with gradual onset and no risk factors, but should exclude</li>
+                <li><strong>Pneumonia</strong> - less likely without fever or chest pain</li>
+            </ol>
+
+            <p><strong>Immediate investigations I would request:</strong></p>
+            <ul>
+                <li>ECG (within 10 minutes)</li>
+                <li>Chest X-ray (looking for pulmonary oedema, cardiomegaly)</li>
+                <li>NT-proBNP or BNP (to confirm heart failure)</li>
+                <li>FBC (anaemia can worsen heart failure)</li>
+                <li>UEC (renal function - important for diuretic therapy)</li>
+                <li>Troponin (to exclude acute MI)</li>
+                <li>ABG/VBG (if respiratory distress)</li>
+                <li>Echocardiogram (to assess LV function, though may not be immediately available)</li>
+            </ul>
+
+            <p><strong>Immediate management:</strong></p>
+            <ul>
+                <li>Admit for monitoring</li>
+                <li>Oxygen if SpO2 <94%</li>
+                <li>IV frusemide for diuresis</li>
+                <li>Consider GTN if pulmonary oedema confirmed</li>
+                <li>Senior/cardiology review</li>
+            </ul>
+
+            <p>This patient requires <span style="color: #e74c3c; font-weight: bold;">admission</span> and should <strong>NOT be discharged</strong> from ED."</p>
+        </div>
+
+        <hr>
+
+        <h2 id="img-mistakes">⚠️ IMG COMMON MISTAKES TO AVOID</h2>
+
+        <div class="alert alert-yellow">
+            <h4>🚨 Critical Errors That Lead to Failure</h4>
+
+            <h4>1. MISSING THE "MAGIC THREE" FOR HEART FAILURE</h4>
+            <p><strong>Mistake:</strong> Failing to ask about orthopnoea, PND, or peripheral oedema</p>
+            <p><strong>Why this fails:</strong> These are pathognomonic for left heart failure. Missing even ONE is a critical error.</p>
+            <p><strong>Australian expectation:</strong> ALL three must be explicitly asked and documented. Examiners expect: "How many pillows?" not "Do you get short of breath lying flat?"</p>
+
+            <h4>2. NOT CALCULATING PACK-YEARS</h4>
+            <p><strong>Mistake:</strong> Asking "Do you smoke?" → Patient says "I quit 5 years ago" → Candidate moves on</p>
+            <p><strong>Why this fails:</strong> 40 pack-years is massive COPD risk. Australian OSCEs expect calculation: "20 cigarettes/day for 40 years = 1 pack × 40 years = 40 pack-years"</p>
+            <p><strong>Correct approach:</strong></p>
+            <ul>
+                <li>"How many cigarettes per day?"</li>
+                <li>"For how many years?"</li>
+                <li>"When did you quit?"</li>
+                <li>Calculate aloud: "So that's about 40 pack-years"</li>
+            </ul>
+
+            <h4>3. POOR FUNCTIONAL ASSESSMENT</h4>
+            <p><strong>Mistake:</strong> Asking "Do you get short of breath?" → Yes → Moving on</p>
+            <p><strong>Why this fails:</strong> Doesn't quantify severity. Australian OSCEs expect NYHA classification evidence:</p>
+            <ul>
+                <li>NYHA I: No limitation (>500m)</li>
+                <li>NYHA II: Slight limitation (100-500m)</li>
+                <li>NYHA III: Marked limitation (<100m) → <strong>This patient</strong></li>
+                <li>NYHA IV: Symptoms at rest</li>
+            </ul>
+            <p><strong>Correct approach:</strong> "How far can you walk on flat ground before you need to stop? Can you manage stairs?"</p>
+
+            <h4>4. CONFUSING "FROTHY SPUTUM" WITH "PURULENT SPUTUM"</h4>
+            <p><strong>Mistake:</strong> Patient says "white frothy sputum" → Candidate thinks "pneumonia" → Wrong differential</p>
+            <p><strong>Why this fails:</strong></p>
+            <ul>
+                <li><strong>Frothy white/pink sputum</strong> = Pulmonary oedema (heart failure) ✅ THIS PATIENT</li>
+                <li><strong>Purulent yellow/green sputum</strong> = Infection (pneumonia, bronchitis)</li>
+            </ul>
+            <p><strong>Australian teaching:</strong> "Frothy = Flash pulmonary oedema"</p>
+
+            <h4>5. MISSING WEIGHT GAIN IN HEART FAILURE</h4>
+            <p><strong>Mistake:</strong> Not asking about weight change</p>
+            <p><strong>Why this fails:</strong> 4kg in 1 month = fluid retention = decompensated heart failure</p>
+            <p><strong>Australian context:</strong> NSW Health HF guidelines use <strong>daily weights</strong> for monitoring. AMC expects you to ask: "Have you noticed any weight changes?"</p>
+
+            <h4>6. CALLING IT "SOB" INSTEAD OF "DYSPNOEA"</h4>
+            <p><strong>Mistake:</strong> Using "SOB" in summary</p>
+            <p><strong>Why this fails:</strong> While "SOB" is common in notes, Australian OSCE examiners prefer formal terminology in presentations</p>
+            <p><strong>Use instead:</strong></p>
+            <ul>
+                <li>"Dyspnoea" or "Shortness of breath" ✅</li>
+                <li>NOT "SOB" ❌</li>
+            </ul>
+
+            <h4>7. FORGETTING TO ASK ABOUT MEDICATION COMPLIANCE</h4>
+            <p><strong>Mistake:</strong> Patient lists medications → Candidate moves on</p>
+            <p><strong>Why this fails:</strong> <strong>Non-compliance is the #1 cause of heart failure exacerbations in Australia</strong></p>
+            <p><strong>Must ask:</strong> "Do you take these every day? Do you ever miss doses? Any problems affording your medications?" (PBS coverage important in Australian context)</p>
+
+            <h4>8. NOT ASKING ABOUT ICE</h4>
+            <p><strong>Mistake:</strong> Rushing through history without asking "What are you most worried about?"</p>
+            <p><strong>Why this fails:</strong> AMC specifically tests <strong>ICE (Ideas, Concerns, Expectations)</strong>. This patient is worried about "being a burden on her daughter" - key psychosocial factor</p>
+            <p><strong>Australian OSCE marker:</strong> "Did candidate explore patient's concerns?" - worth 2-5 marks</p>
+
+            <h4>9. WRONG MANAGEMENT PLAN</h4>
+            <p><strong>Mistake #1:</strong> "I would discharge with GP follow-up"</p>
+            <p><strong>Why this fails:</strong> NYHA III heart failure with acute decompensation = <strong>ADMISSION</strong>. Discharging is unsafe.</p>
+
+            <p><strong>Mistake #2:</strong> "I would start antibiotics"</p>
+            <p><strong>Why this fails:</strong> No fever, no purulent sputum, no consolidation on exam → Antibiotics inappropriate</p>
+
+            <p><strong>Mistake #3:</strong> Not mentioning <strong>NT-proBNP</strong></p>
+            <p><strong>Why this fails:</strong> Australian guidelines (NHFA 2018) require BNP/NT-proBNP for heart failure diagnosis. Must mention this test.</p>
+
+            <h4>10. POOR SUMMARIZATION STRUCTURE</h4>
+            <p><strong>Mistake:</strong> Rambling 3-minute summary listing every detail</p>
+            <p><strong>Why this fails:</strong> Australian OSCEs give 1 minute for summary. Must be concise.</p>
+
+            <p><strong>Correct structure (60 seconds):</strong></p>
+            <ol>
+                <li><strong>Signpost (5 sec):</strong> "This is a 72-year-old woman with progressive dyspnoea"</li>
+                <li><strong>Key positives (15 sec):</strong> "Orthopnoea, PND, peripheral oedema, weight gain, frothy sputum"</li>
+                <li><strong>Key negatives (10 sec):</strong> "No fever, chest pain, or haemoptysis"</li>
+                <li><strong>Risk factors (10 sec):</strong> "Previous MI, HTN, DM, 40 pack-years smoking"</li>
+                <li><strong>Top 3 differentials (15 sec):</strong> "1. Acute decompensated heart failure (most likely), 2. COPD, 3. PE"</li>
+                <li><strong>Plan (5 sec):</strong> "ECG, CXR, BNP, bloods, admit for diuresis"</li>
+            </ol>
+        </div>
+
+        <div class="alert alert-blue">
+            <h4>💡 Australian-Specific Tips for IMGs</h4>
+
+            <h4>Terminology Differences:</h4>
+            <table>
+                <tr>
+                    <th>❌ Avoid (US/UK/Other)</th>
+                    <th>✅ Use (Australian)</th>
+                </tr>
+                <tr>
+                    <td>ER / A&E</td>
+                    <td>Emergency Department (ED)</td>
+                </tr>
+                <tr>
+                    <td>IV Lasix</td>
+                    <td>IV frusemide (generic names preferred in Australia)</td>
+                </tr>
+                <tr>
+                    <td>Admitted to hospital</td>
+                    <td>Admitted to hospital (same, but say "admitted FOR" not "admitted WITH")</td>
+                </tr>
+                <tr>
+                    <td>Congestive heart failure (CHF)</td>
+                    <td>Heart failure (HF) - "Congestive" is outdated in Australian guidelines</td>
+                </tr>
+            </table>
+
+            <h4>Cultural Communication Points:</h4>
+            <ul>
+                <li><strong>Address elderly patients formally:</strong> "Mrs Thompson" not "Margaret" (unless invited)</li>
+                <li><strong>Acknowledge family concerns:</strong> This patient worries about "being a burden on daughter" - validate this: "It's understandable to worry about that, but right now we need to focus on getting you better"</li>
+                <li><strong>Explain in plain English:</strong> Avoid jargon. Say "fluid on the lungs" not "pulmonary oedema" when speaking to patient</li>
+            </ul>
+
+            <h4>AMC OSCE-Specific Expectations:</h4>
+            <ul>
+                <li><strong>Hand hygiene:</strong> Verbalise it: "I'm just going to wash my hands"</li>
+                <li><strong>Privacy:</strong> Even though it's a curtained station, show awareness: "Is it okay if we discuss this here?"</li>
+                <li><strong>Time management:</strong> Practice finishing at 7 minutes to allow 1 min for summary</li>
+                <li><strong>Red flags must be explicit:</strong> Don't assume examiner knows you're thinking about PND - ask aloud: "Do you ever wake up at night gasping for air?"</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <p><strong>Last Updated:</strong> December 16, 2025</p>
+        <p><strong>Version:</strong> 1.0</p>
+        <p><strong>Author:</strong> ICRP NSW Young Hospital Preparation Team</p>
+        <p><strong>References:</strong></p>
+        <ul>
+            <li>National Heart Foundation of Australia (NHFA) Guidelines 2024</li>
+            <li>eTG Complete (Therapeutic Guidelines) - Heart Failure 2024</li>
+            <li>AMC Clinical Examination Blueprint 2024</li>
+            <li>NSW Health Heart Failure Management Pathway 2024</li>
+        </ul>
+
+        <div class="footer">
+            <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+            <p>Generated: December 16, 2025</p>
+            <p><a href="../../START_HERE.html">Return to Start</a> | <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Return to OSCE Index</a></p>
+        </div>
+    </div>
+</body>
+</html>

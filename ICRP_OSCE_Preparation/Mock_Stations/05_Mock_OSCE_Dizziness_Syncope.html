@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock OSCE Station - Dizziness & Syncope History</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin: 30px 0 15px 0;
+            padding: 10px 0;
+            border-bottom: 2px solid #ecf0f1;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #2c3e50;
+            margin: 20px 0 10px 0;
+            font-size: 1.3em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin: 15px 0 8px 0;
+            font-size: 1.1em;
+        }
+
+        p {
+            margin: 10px 0;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        em {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #ecf0f1;
+            margin: 30px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+        }
+
+        th {
+            background: #34495e;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #e74c3c;
+            font-size: 0.95em;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        .success-box {
+            background: #d5f4e6;
+            border-left: 4px solid #27ae60;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .success-box h4 {
+            color: #1e8449;
+            margin-top: 0;
+        }
+
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs, .quick-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../../START_HERE.html">🏠 Home</a>
+            <span>→</span>
+            <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">ICRP OSCE Preparation</a>
+            <span>→</span>
+            <span>Mock Stations</span>
+        </div>
+
+        <div class="quick-nav">
+            <h3>📑 Quick Navigation</h3>
+            <ul>
+                <li><a href="#candidate">For the Candidate</a></li>
+                <li><a href="#simulated-patient">For the Simulated Patient</a></li>
+                <li><a href="#examiner">For the Examiner</a></li>
+                <li><a href="#marking-checklist">Examiner Marking Checklist</a></li>
+                <li><a href="#model-answer">Model Answer</a></li>
+                <li><a href="#img-mistakes">IMG Common Mistakes</a></li>
+            </ul>
+        </div>
+
+        <h1>Mock OSCE Station - Dizziness & Syncope History</h1>
+        <h2>AMC Clinical Style with Examiner Marking Checklist</h2>
+
+        <p><strong>Station Number:</strong> M02 (Medicine)</p>
+        <p><strong>System:</strong> Cardiovascular / Neurological</p>
+        <p><strong>Task:</strong> History-taking</p>
+        <p><strong>Time:</strong> 8 minutes</p>
+        <p><strong>Difficulty:</strong> Hard</p>
+        <p><strong>Created:</strong> December 16, 2025</p>
+
+        <hr>
+
+        <h2 id="candidate">FOR THE CANDIDATE</h2>
+
+        <h3>INSTRUCTIONS (Read Before Entering Station - 1 minute)</h3>
+
+        <p>You are a junior doctor in the <span style="color: #e74c3c; font-weight: bold;">⚠️ EMERGENCY</span> Department at Young District Hospital, NSW.</p>
+
+        <p><strong>Task:</strong> Take a focused history from this patient.</p>
+
+        <p><strong>Patient Details:</strong></p>
+        <ul>
+            <li>Name: Mr Robert Chen</li>
+            <li>Age: 65 years old</li>
+            <li>Presenting Complaint: Dizziness and collapse</li>
+        </ul>
+
+        <p><strong>You have 8 minutes for this station.</strong></p>
+
+        <p>At the 7-minute mark, the examiner will ask you to summarize your findings and provide your differential diagnoses.</p>
+
+        <p><em>You may now enter the station.</em></p>
+
+        <hr>
+
+        <h2 id="simulated-patient">FOR THE SIMULATED PATIENT</h2>
+
+        <h3>BACKGROUND INFORMATION (Candidate CANNOT see this)</h3>
+
+        <p><strong>Name:</strong> Mr Robert Chen</p>
+        <p><strong>Age:</strong> 65 years old</p>
+        <p><strong>Occupation:</strong> Retired accountant</p>
+        <p><strong>Living situation:</strong> Lives with wife, two adult children nearby</p>
+
+        <h3>PRESENTING COMPLAINT</h3>
+
+        <p><strong>Chief Complaint:</strong> "I've been having dizzy spells and I collapsed at the shops yesterday"</p>
+
+        <h3>HISTORY OF PRESENTING COMPLAINT</h3>
+
+        <p><strong>If asked to describe the problem in your own words:</strong></p>
+        <p>"I've been feeling dizzy on and off for about 2 weeks now. Yesterday at Woolworths, I suddenly felt very lightheaded and the next thing I knew, I was on the floor. My wife said I was only out for a few seconds, maybe 10-15 seconds. I was very embarrassed."</p>
+
+        <h3>DETAILED HISTORY (Only provide if specifically asked)</h3>
+
+        <h4>The Collapse Episode (Yesterday):</h4>
+        <ul>
+            <li><strong>What were you doing?</strong> "I was standing in the checkout queue, just standing still"</li>
+            <li><strong>Any warning?</strong> "Yes, I felt very lightheaded, and my vision went grey around the edges. I felt my heart racing"</li>
+            <li><strong>Did you actually lose consciousness?</strong> "Yes, my wife said I went completely limp and fell to the ground"</li>
+            <li><strong>How long were you unconscious?</strong> "My wife said maybe 10-15 seconds"</li>
+            <li><strong>Any jerking movements or shaking?</strong> "My wife said my arms twitched a bit, but no major shaking"</li>
+            <li><strong>Did you bite your tongue or wet yourself?</strong> "No, nothing like that"</li>
+            <li><strong>How did you feel when you woke up?</strong> "I came around quickly, knew where I was straight away. Felt a bit embarrassed"</li>
+            <li><strong>Any confusion after?</strong> "No confusion, I was clear-headed"</li>
+            <li><strong>Any chest pain?</strong> "No chest pain, but my heart was pounding"</li>
+            <li><strong>Any palpitations before collapse?</strong> "Yes, definitely. My heart felt like it was racing and skipping beats"</li>
+        </ul>
+
+        <h4>Previous Dizzy Spells (Past 2 Weeks):</h4>
+        <ul>
+            <li><strong>How many episodes?</strong> "About 4-5 times"</li>
+            <li><strong>What brings them on?</strong> "Standing up from sitting, sometimes just standing still"</li>
+            <li><strong>Describe the dizziness:</strong> "Lightheaded, like I might faint. Not spinning - just woozy"</li>
+            <li><strong>Do you feel your heart racing?</strong> "Yes, sometimes I can feel my heart going very fast or irregular"</li>
+            <li><strong>Any other symptoms with dizziness?</strong> "Sometimes I feel a bit breathless"</li>
+        </ul>
+
+        <h4>Type of Dizziness Clarification:</h4>
+        <ul>
+            <li><strong>Is the room spinning (vertigo)?</strong> "No, not spinning. More like I'm going to pass out"</li>
+            <li><strong>Worse with head movements?</strong> "No, not really related to head position"</li>
+            <li><strong>Any hearing problems or ringing in ears?</strong> "No"</li>
+        </ul>
+
+        <h3>PAST MEDICAL HISTORY</h3>
+
+        <p><strong>If asked about medical problems:</strong></p>
+        <ul>
+            <li><strong>Atrial fibrillation</strong> - "Diagnosed 3 years ago"</li>
+            <li><strong>High blood pressure</strong> - "For about 10 years"</li>
+            <li><strong>Type 2 diabetes</strong> - "For 5 years, well controlled"</li>
+            <li>No previous heart attack or stroke</li>
+            <li>No epilepsy or seizures</li>
+        </ul>
+
+        <h3>MEDICATIONS</h3>
+
+        <p><strong>If asked about medications (have a written list):</strong></p>
+        <ul>
+            <li>Apixaban 5mg twice daily (for AF)</li>
+            <li>Metoprolol 50mg twice daily (for AF rate control)</li>
+            <li>Irbesartan 150mg daily (for BP)</li>
+            <li>Metformin 1000mg twice daily</li>
+        </ul>
+
+        <p><strong>Important if asked about RECENT medication changes:</strong></p>
+        <p>"Actually, my GP increased my metoprolol dose from 25mg to 50mg twice daily about 3 weeks ago because my heart rate was still running a bit fast."</p>
+
+        <p><strong>Compliance:</strong> "I take them religiously, every day at the same time"</p>
+
+        <h3>ALLERGIES</h3>
+        <ul>
+            <li>No known drug allergies</li>
+        </ul>
+
+        <h3>SOCIAL HISTORY</h3>
+
+        <p><strong>Smoking:</strong> Never smoked</p>
+        <p><strong>Alcohol:</strong> "Social drinker, maybe 1-2 beers on weekends"</p>
+        <p><strong>Occupation:</strong> "Retired last year"</p>
+        <p><strong>Exercise:</strong> "I used to walk 30 minutes daily, but stopped since these dizzy spells started - too worried"</p>
+
+        <h3>FAMILY HISTORY</h3>
+
+        <p><strong>If asked:</strong></p>
+        <ul>
+            <li>Father had AF, died of stroke at age 70</li>
+            <li>Brother has high blood pressure</li>
+            <li>No family history of sudden cardiac death</li>
+        </ul>
+
+        <h3>SYSTEMS REVIEW</h3>
+
+        <p><strong>If asked about other systems:</strong></p>
+        <ul>
+            <li>No headaches</li>
+            <li>No visual changes (apart from greying out before collapse)</li>
+            <li>No weakness or numbness</li>
+            <li>No speech problems</li>
+            <li>No chest pain (but does get palpitations)</li>
+            <li>No shortness of breath at rest (only with palpitations)</li>
+            <li>No leg swelling</li>
+            <li>No recent illness or infection</li>
+        </ul>
+
+        <h3>EMOTIONS & BEHAVIOR</h3>
+
+        <p><strong>Emotional State:</strong></p>
+        <ul>
+            <li>You're quite anxious</li>
+            <li>Worried about having another collapse</li>
+            <li>Concerned about driving (you've stopped driving since yesterday)</li>
+        </ul>
+
+        <p><strong>If asked "What are you most worried about?":</strong></p>
+        <p>"I'm worried my heart is acting up. My father had atrial fibrillation and he had a stroke. I don't want that to happen to me. Also, can I still drive? I've stopped driving since yesterday."</p>
+
+        <p><strong>If doctor shows good communication:</strong></p>
+        <ul>
+            <li>Be forthcoming about medication changes</li>
+            <li>Mention the driving concern</li>
+        </ul>
+
+        <h3>QUESTIONS YOU SHOULD ASK (at appropriate time)</h3>
+
+        <ul>
+            <li>"Is this my heart? Or could it be a stroke?"</li>
+            <li>"Am I allowed to drive?"</li>
+            <li>"Could it be my medication?"</li>
+        </ul>
+
+        <hr>
+
+        <h2 id="examiner">FOR THE EXAMINER</h2>
+
+        <h3>EXAMINER INSTRUCTIONS</h3>
+
+        <p><strong>Your Role:</strong></p>
+        <ul>
+            <li>Observe the candidate silently</li>
+            <li>Mark using the checklist below</li>
+            <li>At 7 minutes, say: <em>"You have 1 minute remaining. Please summarize your findings and provide your differential diagnoses."</em></li>
+            <li>At 8 minutes, say: <em>"Thank you, time is up."</em></li>
+        </ul>
+
+        <h3>STATION OBJECTIVES</h3>
+
+        <p>This station assesses the candidate's ability to:</p>
+        <ol>
+            <li>Take a focused syncope history</li>
+            <li>Differentiate cardiac vs neurological vs vasovagal syncope</li>
+            <li>Identify <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s for cardiac syncope</li>
+            <li>Elicit medication-related causes (beta-blocker dose increase)</li>
+            <li>Assess driving safety (Australian legal requirements)</li>
+            <li>Generate appropriate differential diagnoses</li>
+        </ol>
+
+        <div class="alert alert-red">
+            <h4>🚨 KEY DIAGNOSTIC CLUES (For Examiner)</h4>
+            <p><strong>This patient has CARDIAC syncope (likely bradycardia from beta-blocker)</strong></p>
+            <p><strong>Red flags present:</strong></p>
+            <ul>
+                <li>Known atrial fibrillation</li>
+                <li>Palpitations before syncope (suggests arrhythmia)</li>
+                <li>Recent increase in beta-blocker dose (metoprolol 25mg → 50mg BD)</li>
+                <li>No warning (minimal prodrome)</li>
+                <li>Rapid recovery (no post-ictal confusion)</li>
+                <li>Age 65 with cardiac risk factors</li>
+            </ul>
+            <p><strong>Against seizure:</strong> No tongue biting, no incontinence, no post-ictal confusion, brief twitching only (anoxic seizure from syncope)</p>
+            <p><strong>Against stroke/TIA:</strong> No focal neurology, rapid recovery</p>
+            <p><strong>Against BPPV/vestibular:</strong> Not spinning, not positional</p>
+        </div>
+
+        <hr>
+
+        <h2 id="marking-checklist">EXAMINER MARKING CHECKLIST</h2>
+
+        <p><strong>Candidate Name:</strong> _________________________</p>
+        <p><strong>Candidate Number:</strong> _________________________</p>
+        <p><strong>Date:</strong> _________________________</p>
+
+        <h3>SECTION 1: INTRODUCTION & COMMUNICATION (10 points)</h3>
+
+        <table>
+            <tr>
+                <th>Criteria</th>
+                <th style="width: 60px;">Yes</th>
+                <th style="width: 60px;">No</th>
+                <th>Comments</th>
+            </tr>
+            <tr>
+                <td><strong>1.1</strong> Hand hygiene performed</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.2</strong> Introduced self appropriately</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.3</strong> Confirmed patient name/age</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.4</strong> Explained purpose of consultation</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.5</strong> Obtained verbal consent</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.6</strong> Demonstrated empathy</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.7</strong> Used open-ended questions initially</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.8</strong> Active listening</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.9</strong> Checked understanding</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>1.10</strong> Professional manner</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <p><strong>Section 1 Score:</strong> ___/10</p>
+
+        <hr>
+
+        <h3>SECTION 2: SYNCOPE HISTORY - "THE 5 Ps" (30 points)</h3>
+
+        <table>
+            <tr>
+                <th>Criteria</th>
+                <th style="width: 60px;">Yes</th>
+                <th style="width: 60px;">No</th>
+                <th>Comments</th>
+            </tr>
+            <tr>
+                <td colspan="4"><strong>P1: PRECIPITANT/PRODROME (Before collapse)</strong></td>
+            </tr>
+            <tr>
+                <td><strong>2.1</strong> What were you doing when it happened?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.2</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Any warning symptoms? (prodrome)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.3</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Palpitations before collapse?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.4</strong> Chest pain before/during episode?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.5</strong> Nausea, sweating, or warmth before collapse?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="4"><strong>P2: POSTURE (Position when collapsed)</strong></td>
+            </tr>
+            <tr>
+                <td><strong>2.6</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Standing, sitting, or lying down?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.7</strong> Did collapse occur on standing up? (orthostatic)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.8</strong> Related to exertion/exercise?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="4"><strong>P3: PHENOMENA DURING (What happened)</strong></td>
+            </tr>
+            <tr>
+                <td><strong>2.9</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Did you lose consciousness completely?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.10</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> How long were you unconscious?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.11</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Witness account: Any jerking/shaking? (seizure activity)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.12</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Did you bite your tongue?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.13</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Did you wet yourself? (incontinence)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="4"><strong>P4: POST-ICTAL (After waking up)</strong></td>
+            </tr>
+            <tr>
+                <td><strong>2.14</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> How did you feel when you woke up?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.15</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Were you confused after? (post-ictal confusion)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.16</strong> Any injuries from fall?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="4"><strong>P5: PREVIOUS EPISODES</strong></td>
+            </tr>
+            <tr>
+                <td><strong>2.17</strong> Has this happened before?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.18</strong> How many times? How frequent?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.19</strong> When did dizzy spells start?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>2.20</strong> Describe dizziness: Spinning (vertigo) vs lightheaded (presyncope)?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <p><strong>Section 2 Score:</strong> ___/30</p>
+
+        <hr>
+
+        <h3>SECTION 3: CARDIAC & NEUROLOGICAL RED FLAGS (20 points)</h3>
+
+        <table>
+            <tr>
+                <th>Criteria</th>
+                <th style="width: 60px;">Yes</th>
+                <th style="width: 60px;">No</th>
+                <th>Comments</th>
+            </tr>
+            <tr>
+                <td><strong>3.1</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Previous heart problems? (AF, IHD, HF)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.2</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Recent medication changes? (KEY!)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.3</strong> Current medications reviewed</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.4</strong> Anticoagulation status (if AF)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.5</strong> Hypertension history</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.6</strong> Diabetes history</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.7</strong> Previous seizures or epilepsy?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.8</strong> Previous stroke or TIA?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.9</strong> Headaches?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.10</strong> Weakness or numbness? (focal neurology)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.11</strong> Visual or speech changes?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.12</strong> Hearing problems or tinnitus? (vestibular)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.13</strong> Family history of sudden cardiac death?</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.14</strong> Smoking, alcohol history</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>3.15</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Asked about driving (safety concern)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <p><strong>Section 3 Score:</strong> ___/20</p>
+
+        <hr>
+
+        <h3>SECTION 4: SUMMARY & CLINICAL REASONING (15 points)</h3>
+
+        <table>
+            <tr>
+                <th>Criteria</th>
+                <th style="width: 60px;">Yes</th>
+                <th style="width: 60px;">No</th>
+                <th>Comments</th>
+            </tr>
+            <tr>
+                <td><strong>4.1</strong> Summarized history concisely</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.2</strong> Identified key positives (AF, palpitations, beta-blocker increase)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.3</strong> Identified key negatives (no tongue bite, no incontinence, no post-ictal confusion)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.4</strong> Provided appropriate differential diagnoses (at least 3)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.5</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Identified cardiac syncope as top differential</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.6</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Mentioned arrhythmia (bradycardia or tachycardia)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.7</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</strong> Recognized beta-blocker as possible cause</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.8</strong> Considered seizure as differential (but argued against)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.9</strong> Proposed appropriate investigations (ECG, Holter, echo)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>4.10</strong> Addressed driving safety (notify Austroads guidelines)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <p><strong>Section 4 Score:</strong> ___/15</p>
+
+        <hr>
+
+        <h3>SECTION 5: PROFESSIONALISM & PATIENT SAFETY (5 points)</h3>
+
+        <table>
+            <tr>
+                <th>Criteria</th>
+                <th style="width: 60px;">Yes</th>
+                <th style="width: 60px;">No</th>
+                <th>Comments</th>
+            </tr>
+            <tr>
+                <td><strong>5.1</strong> Asked about patient's main concerns</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>5.2</strong> Responded to patient's questions</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>5.3</strong> Recognized urgency (needs admission/monitoring)</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>5.4</strong> Thanked patient</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>5.5</strong> Overall professionalism</td>
+                <td>☐</td>
+                <td>☐</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <p><strong>Section 5 Score:</strong> ___/5</p>
+
+        <hr>
+
+        <h3>OVERALL SCORE</h3>
+
+        <table>
+            <tr>
+                <th>Section</th>
+                <th>Score</th>
+                <th>Maximum</th>
+            </tr>
+            <tr>
+                <td>Section 1: Introduction & Communication</td>
+                <td>___</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>Section 2: Syncope History ("5 Ps")</td>
+                <td>___</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>Section 3: Cardiac & Neurological Red Flags</td>
+                <td>___</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>Section 4: Summary & Clinical Reasoning</td>
+                <td>___</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>Section 5: Professionalism & Patient Safety</td>
+                <td>___</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td><strong>TOTAL</strong></td>
+                <td><strong>___</strong></td>
+                <td><strong>80</strong></td>
+            </tr>
+        </table>
+
+        <div class="alert alert-blue">
+            <h4>📊 Pass/Fail Criteria</h4>
+            <p><strong>PASS:</strong> ≥56/80 (70%)</p>
+            <p><strong>BORDERLINE:</strong> 48-55/80 (60-69%)</p>
+            <p><strong>FAIL:</strong> <48/80 (<60%)</p>
+            <p><strong>CRITICAL FAILURES (Automatic Fail):</strong></p>
+            <ul>
+                <li>Failed to ask about palpitations (2.3)</li>
+                <li>Failed to ask about loss of consciousness (2.9)</li>
+                <li>Failed to ask about post-ictal confusion (2.15)</li>
+                <li>Failed to ask about recent medication changes (3.2) - KEY DIAGNOSTIC CLUE</li>
+                <li>Failed to identify cardiac syncope as top differential (4.5)</li>
+                <li>Failed to recognize beta-blocker as possible cause (4.7)</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <h2 id="model-answer">MODEL ANSWER</h2>
+
+        <div class="success-box">
+            <h4>📝 Model Summary to Examiner</h4>
+            <p>"This is a 65-year-old man with a witnessed syncopal episode yesterday at Woolworths, plus recurrent presyncope over the past 2 weeks.</p>
+
+            <p><strong>Key positive findings:</strong></p>
+            <ul>
+                <li>Complete loss of consciousness for 10-15 seconds</li>
+                <li>Prodrome of palpitations and lightheadedness (cardiac warning)</li>
+                <li>Syncope while standing still (not orthostatic)</li>
+                <li>Brief arm twitching (anoxic seizure, not epilepsy)</li>
+                <li>Immediate recovery, no post-ictal confusion (against seizure)</li>
+                <li>Known atrial fibrillation</li>
+                <li><strong>Recent increase in metoprolol from 25mg to 50mg BD (3 weeks ago)</strong> - KEY!</li>
+            </ul>
+
+            <p><strong>Key negative findings:</strong></p>
+            <ul>
+                <li>No tongue biting, no incontinence (against seizure)</li>
+                <li>No vertigo or spinning (not vestibular)</li>
+                <li>No focal neurological symptoms (against stroke/TIA)</li>
+                <li>No chest pain (against MI)</li>
+            </ul>
+
+            <p><strong>My differential diagnoses are:</strong></p>
+            <ol>
+                <li><strong>Cardiac syncope due to bradycardia from beta-blocker overdose (most likely)</strong> - Recent dose increase of metoprolol, known AF, palpitations, minimal prodrome, rapid recovery</li>
+                <li><strong>Cardiac arrhythmia (AF with rapid ventricular response or complete heart block)</strong> - Known AF, palpitations suggest either RVR or bradycardia</li>
+                <li><strong>Vasovagal syncope</strong> - Less likely (no clear trigger, has palpitations), but possible</li>
+                <li><strong>Seizure (anoxic vs epileptic)</strong> - Brief twitching was present, but absence of tongue bite, incontinence, and post-ictal confusion argue against epilepsy. More likely anoxic seizure from cardiac syncope</li>
+                <li><strong>Stroke/TIA</strong> - Less likely without focal neurology, but patient on anticoagulation for AF stroke prevention</li>
+            </ul>
+
+            <p><strong>Immediate investigations:</strong></p>
+            <ul>
+                <li><span style="color: #e74c3c; font-weight: bold;">URGENT</span> 12-lead ECG (to check for bradycardia, heart block, AF with RVR)</li>
+                <li>24-48 hour Holter monitor (to correlate symptoms with arrhythmias)</li>
+                <li>Echocardiogram (to assess structural heart disease)</li>
+                <li>Bloods: FBC, UEC, glucose, troponin, thyroid function</li>
+                <li>Lying & standing BP (to exclude orthostatic hypotension)</li>
+                <li>Consider CT head if atypical features (but unlikely needed here)</li>
+            </ul>
+
+            <p><strong>Immediate management:</strong></p>
+            <ul>
+                <li>Admit for telemetry monitoring</li>
+                <li><strong>Review beta-blocker dose</strong> - likely needs reduction back to 25mg BD or alternative rate control (diltiazem, digoxin)</li>
+                <li>Ensure adequate anticoagulation (apixaban for AF)</li>
+                <li>Cardiology consult if recurrent syncope or significant arrhythmia</li>
+                <li><span style="color: #e74c3c; font-weight: bold;">🚨 DRIVING:</span> Patient must NOT drive - Austroads guidelines: Syncope = driving ban until cleared by cardiologist (minimum 4 weeks if cardiac cause identified and treated)</li>
+            </ul>
+
+            <p>This patient should <strong>NOT be discharged</strong> without telemetry monitoring and beta-blocker review."</p>
+        </div>
+
+        <hr>
+
+        <h2 id="img-mistakes">⚠️ IMG COMMON MISTAKES TO AVOID</h2>
+
+        <div class="alert alert-yellow">
+            <h4>🚨 Critical Errors That Lead to Failure</h4>
+
+            <h4>1. NOT ASKING ABOUT RECENT MEDICATION CHANGES</h4>
+            <p><strong>Mistake:</strong> Reviewing current medications but not asking "Have any doses been changed recently?"</p>
+            <p><strong>Why this fails:</strong> The beta-blocker dose increase is THE key diagnostic clue. Missing this = automatic fail</p>
+            <p><strong>Correct approach:</strong></p>
+            <ul>
+                <li>"What medications are you taking?" (lists them)</li>
+                <li>"Have any of these changed recently? New medications or dose changes?"</li>
+                <li>Patient reveals: "My GP increased metoprolol from 25mg to 50mg BD 3 weeks ago"</li>
+                <li><strong>Candidate must recognize:</strong> Timing correlates with dizzy spells (2 weeks onset)</li>
+            </ul>
+
+            <h4>2. MISSING THE "5 Ps" OF SYNCOPE</h4>
+            <p><strong>Mistake:</strong> Asking random questions without systematic approach</p>
+            <p><strong>Australian OSCE expectation:</strong> Use the "5 Ps" framework (taught in all Australian medical schools)</p>
+            <ul>
+                <li><strong>P1: Precipitant/Prodrome</strong> - What brought it on? Warning symptoms?</li>
+                <li><strong>P2: Posture</strong> - Standing, sitting, lying? (orthostatic?)</li>
+                <li><strong>P3: Phenomena</strong> - What happened during? (LOC, jerking, tongue bite, incontinence)</li>
+                <li><strong>P4: Post-ictal</strong> - How did you feel after? (confusion?)</li>
+                <li><strong>P5: Previous episodes</strong> - First time or recurrent?</li>
+            </ul>
+
+            <h4>3. CONFUSING "DIZZY" TERMINOLOGY</h4>
+            <p><strong>Mistake:</strong> Patient says "dizzy" → Candidate accepts this without clarification</p>
+            <p><strong>Why this fails:</strong> "Dizzy" has multiple meanings - must differentiate</p>
+            <p><strong>Correct approach - Ask:</strong></p>
+            <ul>
+                <li>"When you say dizzy, do you mean:</li>
+                <li>(a) The room is spinning around you (vertigo)?</li>
+                <li>(b) You feel lightheaded like you're going to faint (presyncope)?</li>
+                <li>(c) You feel unsteady or off-balance (disequilibrium)?</li>
+                <li>(d) Your head feels woolly or unclear (non-specific dizziness)?"</li>
+            </ul>
+            <p><strong>This patient:</strong> Lightheaded/presyncope (cardiac), NOT vertigo (vestibular)</p>
+
+            <h4>4. MISSING PALPITATIONS</h4>
+            <p><strong>Mistake:</strong> Not specifically asking about palpitations before syncope</p>
+            <p><strong>Why this fails:</strong> Palpitations + syncope = arrhythmia until proven otherwise</p>
+            <p><strong>Must ask:</strong></p>
+            <ul>
+                <li>"Did you feel your heart racing or pounding before you collapsed?"</li>
+                <li>"Was your heartbeat regular or irregular?"</li>
+                <li>"How fast was it?"</li>
+            </ul>
+            <p><strong>This patient:</strong> "Yes, heart racing and skipping beats" = AF with RVR OR bradycardia</p>
+
+            <h4>5. NOT DISTINGUISHING ANOXIC SEIZURE FROM EPILEPSY</h4>
+            <p><strong>Mistake:</strong> Witness says "arms twitched" → Candidate thinks "seizure = epilepsy"</p>
+            <p><strong>Why this fails:</strong> Brief twitching from syncope (anoxic seizure) is common and does NOT mean epilepsy</p>
+
+            <p><strong>Anoxic Seizure (from syncope):</strong></p>
+            <ul>
+                <li>Brief twitching only (not tonic-clonic)</li>
+                <li>NO tongue biting</li>
+                <li>NO incontinence</li>
+                <li>NO post-ictal confusion (immediate recovery)</li>
+                <li>Caused by cerebral hypoperfusion</li>
+            </ul>
+
+            <p><strong>True Epileptic Seizure:</strong></p>
+            <ul>
+                <li>Tonic-clonic movements (whole body)</li>
+                <li>Tongue biting common (lateral tongue)</li>
+                <li>Incontinence common</li>
+                <li>Prolonged post-ictal confusion (30 min - 2 hours)</li>
+            </ul>
+
+            <p><strong>Australian teaching:</strong> "If confusion after = seizure. If no confusion = syncope with anoxic jerks"</p>
+
+            <h4>6. FORGETTING TO ADDRESS DRIVING SAFETY</h4>
+            <p><strong>Mistake:</strong> Completing history without mentioning driving</p>
+            <p><strong>Why this fails:</strong> Australian OSCEs test legal/safety awareness. <strong>Syncope = mandatory driving restriction</strong></p>
+
+            <p><strong>Austroads Guidelines 2024 (Australian standard):</strong></p>
+            <ul>
+                <li><strong>Private vehicle:</strong> No driving until cause identified and treated (minimum 4 weeks if cardiac cause)</li>
+                <li><strong>Commercial vehicle:</strong> No driving for 6-12 months depending on cause</li>
+                <li><strong>Doctor's duty:</strong> Advise patient NOT to drive (document in notes)</li>
+                <li><strong>If patient refuses:</strong> May need to notify Road Traffic Authority (RTA/RMS in NSW)</li>
+            </ul>
+
+            <p><strong>Must tell patient:</strong> "I understand you've stopped driving, which was the right decision. You'll need to avoid driving until we've identified the cause and you've been cleared by a cardiologist. This is for your safety and the safety of others."</p>
+
+            <h4>7. WRONG DIFFERENTIAL DIAGNOSIS</h4>
+            <p><strong>Mistake #1:</strong> "Top differential = vasovagal syncope"</p>
+            <p><strong>Why this fails:</strong> Patient has AF, palpitations, and recent beta-blocker increase → CARDIAC until proven otherwise</p>
+
+            <p><strong>Mistake #2:</strong> "Top differential = seizure"</p>
+            <p><strong>Why this fails:</strong> No tongue bite, no incontinence, no post-ictal confusion → Not epilepsy</p>
+
+            <p><strong>Mistake #3:</strong> "Top differential = stroke"</p>
+            <p><strong>Why this fails:</strong> No focal neurology, rapid recovery → Not stroke</p>
+
+            <p><strong>Correct answer:</strong> "Cardiac syncope due to beta-blocker-induced bradycardia" (metoprolol dose increase)</p>
+
+            <h4>8. NOT ASKING ABOUT WITNESS ACCOUNT</h4>
+            <p><strong>Mistake:</strong> Patient was unconscious → Can't describe what happened → Candidate moves on</p>
+            <p><strong>Why this fails:</strong> Witness information is GOLD STANDARD for syncope/seizure diagnosis</p>
+
+            <p><strong>Must ask:</strong></p>
+            <ul>
+                <li>"Your wife was with you - what did she see?"</li>
+                <li>"Did she notice any jerking or shaking?"</li>
+                <li>"How long does she think you were out for?"</li>
+                <li>"What were you like when you woke up?"</li>
+            </ul>
+
+            <p><strong>Australian OSCE tip:</strong> Simulated patient will have been briefed with witness details - ASK FOR THEM</p>
+
+            <h4>9. POOR TIME MANAGEMENT</h4>
+            <p><strong>Mistake:</strong> Spending 5 minutes on introduction/social history → Running out of time for critical questions</p>
+
+            <p><strong>Correct time allocation (8 minutes):</strong></p>
+            <ul>
+                <li>30 sec: Introduction</li>
+                <li>30 sec: Open question</li>
+                <li>4 min: "5 Ps" syncope history</li>
+                <li>1.5 min: PMH, medications (especially RECENT CHANGES), red flags</li>
+                <li>30 sec: Social/family history</li>
+                <li>30 sec: Patient concerns</li>
+                <li>1 min: Summary to examiner</li>
+            </ul>
+
+            <h4>10. MISSING BETA-BLOCKER SIDE EFFECTS</h4>
+            <p><strong>Mistake:</strong> Not recognizing beta-blockers cause bradycardia → syncope</p>
+
+            <p><strong>Key Australian pharmacology (eTG 2024):</strong></p>
+            <ul>
+                <li><strong>Metoprolol (Betaloc/Lopressor):</strong> Cardioselective beta-blocker</li>
+                <li><strong>Common in AF:</strong> For rate control (target HR 60-80 bpm)</li>
+                <li><strong>Side effects:</strong> Bradycardia, hypotension, fatigue, dizziness, SYNCOPE</li>
+                <li><strong>Overdose signs:</strong> HR <50 bpm, syncope, hypotension</li>
+            </ul>
+
+            <p><strong>This patient:</strong> Metoprolol increased from 25mg to 50mg BD (doubled dose) → Likely bradycardia <50 bpm → Syncope</p>
+
+            <p><strong>Management:</strong> Reduce dose or switch to alternative rate control (diltiazem, digoxin)</p>
+        </div>
+
+        <div class="alert alert-blue">
+            <h4>💡 Australian-Specific Tips for IMGs</h4>
+
+            <h4>Terminology:</h4>
+            <table>
+                <tr>
+                    <th>❌ Avoid</th>
+                    <th>✅ Use (Australian)</th>
+                </tr>
+                <tr>
+                    <td>Passed out / Fainted / Blacked out</td>
+                    <td>Syncope / Loss of consciousness</td>
+                </tr>
+                <tr>
+                    <td>Seizure disorder</td>
+                    <td>Epilepsy (if confirmed) or "seizure" (if single episode)</td>
+                </tr>
+                <tr>
+                    <td>Lopressor (US brand)</td>
+                    <td>Metoprolol or Betaloc (Australian brands)</td>
+                </tr>
+                <tr>
+                    <td>RTA (Road Traffic Accident)</td>
+                    <td>MVA (Motor Vehicle Accident) in medical context</td>
+                </tr>
+            </table>
+
+            <h4>NSW Health Driving Guidelines:</h4>
+            <ul>
+                <li>Refer to <strong>Austroads Assessing Fitness to Drive 2024</strong></li>
+                <li>Syncope of unknown cause = NO driving until investigated</li>
+                <li>Syncope with identified cardiac cause = NO driving for 4 weeks AFTER treatment</li>
+                <li>Doctor must document driving advice in medical record</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <p><strong>Last Updated:</strong> December 16, 2025</p>
+        <p><strong>Version:</strong> 1.0</p>
+        <p><strong>Author:</strong> ICRP NSW Young Hospital Preparation Team</p>
+        <p><strong>References:</strong></p>
+        <ul>
+            <li>eTG Complete - Cardiovascular (Atrial Fibrillation, Syncope) 2024</li>
+            <li>Austroads Assessing Fitness to Drive 2024</li>
+            <li>AMC Clinical Examination Blueprint 2024</li>
+            <li>NSW Health Syncope Management Pathway 2024</li>
+            <li>Australian Resuscitation Council (ARC) Guidelines 2024</li>
+        </ul>
+
+        <div class="footer">
+            <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+            <p>Generated: December 16, 2025</p>
+            <p><a href="../../START_HERE.html">Return to Start</a> | <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Return to OSCE Index</a></p>
+        </div>
+    </div>
+</body>
+</html>

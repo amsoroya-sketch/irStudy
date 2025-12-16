@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock OSCE Station - Acute Confusional State (Delirium)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin: 30px 0 15px 0;
+            padding: 10px 0;
+            border-bottom: 2px solid #ecf0f1;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #2c3e50;
+            margin: 20px 0 10px 0;
+            font-size: 1.3em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin: 15px 0 8px 0;
+            font-size: 1.1em;
+        }
+
+        p {
+            margin: 10px 0;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #ecf0f1;
+            margin: 30px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th {
+            background: #34495e;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        .success-box {
+            background: #d5f4e6;
+            border-left: 4px solid #27ae60;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .success-box h4 {
+            color: #1e8449;
+            margin-top: 0;
+        }
+
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        @media print {
+            .breadcrumbs, .quick-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../../START_HERE.html">🏠 Home</a>
+            <span>→</span>
+            <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">ICRP OSCE Preparation</a>
+            <span>→</span>
+            <span>Mock Stations</span>
+        </div>
+
+        <div class="quick-nav">
+            <h3>📑 Quick Navigation</h3>
+            <ul>
+                <li><a href="#candidate">For the Candidate</a></li>
+                <li><a href="#relative">For the Relative/Informant</a></li>
+                <li><a href="#examiner">For the Examiner</a></li>
+                <li><a href="#marking-checklist">Examiner Marking Checklist</a></li>
+                <li><a href="#model-answer">Model Answer</a></li>
+                <li><a href="#img-mistakes">IMG Common Mistakes</a></li>
+            </ul>
+        </div>
+
+        <h1>Mock OSCE Station - Acute Confusional State (Delirium)</h1>
+        <h2>AMC Clinical Style - Collateral History from Relative</h2>
+
+        <p><strong>Station Number:</strong> M03 (Medicine)</p>
+        <p><strong>System:</strong> Geriatrics / Neurology / General Medicine</p>
+        <p><strong>Task:</strong> Collateral history-taking from relative</p>
+        <p><strong>Time:</strong> 8 minutes</p>
+        <p><strong>Difficulty:</strong> Medium</p>
+        <p><strong>Created:</strong> December 16, 2025</p>
+
+        <hr>
+
+        <h2 id="candidate">FOR THE CANDIDATE</h2>
+
+        <h3>INSTRUCTIONS (Read Before Entering Station - 1 minute)</h3>
+
+        <p>You are a junior doctor working on the <span style="color: #e74c3c; font-weight: bold;">⚠️ MEDICAL</span> ward at Young District Hospital, NSW.</p>
+
+        <p><strong>Clinical Scenario:</strong></p>
+        <p>Mrs Dorothy Williams, an 82-year-old woman, was admitted 2 days ago with a urinary tract infection. She has been receiving IV antibiotics. The nursing staff have reported that she has become increasingly confused over the past 24 hours.</p>
+
+        <p><strong>Task:</strong> Mrs Williams' daughter has come to visit. Take a collateral history from the daughter to help assess the patient's confusion.</p>
+
+        <p><strong>You have 8 minutes for this station.</strong></p>
+
+        <p>At the 7-minute mark, the examiner will ask you to summarize your findings and provide your differential diagnoses.</p>
+
+        <p><strong>Note:</strong> The patient herself is not available for this station. You are speaking with her daughter only.</p>
+
+        <p><em>You may now enter the station.</em></p>
+
+        <hr>
+
+        <h2 id="relative">FOR THE RELATIVE/INFORMANT (Simulated Daughter)</h2>
+
+        <h3>BACKGROUND INFORMATION (Candidate CANNOT see this)</h3>
+
+        <p><strong>Your Name:</strong> Susan Williams (daughter)</p>
+        <p><strong>Patient's Name:</strong> Dorothy Williams (your mother)</p>
+        <p><strong>Patient's Age:</strong> 82 years old</p>
+        <p><strong>Your Relationship:</strong> Daughter, visit mum twice a week usually</p>
+
+        <h3>PRESENTING CONCERN</h3>
+
+        <p><strong>Opening statement:</strong> "I'm really worried about mum. She's not herself at all. She didn't even recognize me when I visited this morning. This isn't like her."</p>
+
+        <h3>PATIENT'S BASELINE (Before admission)</h3>
+
+        <p><strong>If asked about usual mental state/cognition:</strong></p>
+        <ul>
+            <li>"Mum has always been sharp as a tack. She lives independently, does her own shopping, manages her own medications, pays her bills. She does the crossword every day."</li>
+            <li>"She has never had memory problems before"</li>
+            <li>"No dementia, no Alzheimer's - the GP said her mind was fine at her last checkup 3 months ago"</li>
+        </ul>
+
+        <p><strong>Activities of Daily Living (before admission):</strong></p>
+        <ul>
+            <li>Fully independent with all ADLs</li>
+            <li>Drives to the shops (has a current licence)</li>
+            <li>Cooks, cleans, gardens</li>
+            <li>Active in church community</li>
+        </ul>
+
+        <h3>TIMELINE OF CONFUSION</h3>
+
+        <p><strong>If asked when confusion started:</strong></p>
+        <ul>
+            <li>"When I visited her 3 days ago at home, before she came to hospital, she was completely normal"</li>
+            <li>"She was admitted 2 days ago with a urine infection"</li>
+            <li>"Yesterday (day 1 in hospital) she seemed okay when I visited in the afternoon - a bit sleepy but knew who I was"</li>
+            <li>"But this morning (day 2) when I came in at 9am, she didn't recognize me at all. She called me 'nurse' and asked me to take her home"</li>
+            <li>"The nurses said she was up all night wandering around, trying to leave"</li>
+        </ul>
+
+        <h3>CURRENT BEHAVIOUR (What nurses/you have observed)</h3>
+
+        <p><strong>If asked to describe current confusion:</strong></p>
+        <ul>
+            <li>"She doesn't know where she is - thinks she's at home or sometimes at a hotel"</li>
+            <li>"She doesn't know what day it is"</li>
+            <li>"She keeps asking for her husband - but he died 10 years ago"</li>
+            <li>"She's seeing things that aren't there - this morning she was swatting at 'flies' but there were no flies"</li>
+            <li>"At night she's worse - the nurses said she was very agitated, shouting, trying to pull her IV out"</li>
+            <li>"During the day she's sometimes drowsy, sometimes agitated"</li>
+        </ul>
+
+        <h3>PAST MEDICAL HISTORY</h3>
+
+        <p><strong>If asked about medical conditions:</strong></p>
+        <ul>
+            <li>High blood pressure - for 20 years, well controlled</li>
+            <li>Osteoarthritis in her knees</li>
+            <li>No diabetes</li>
+            <li>No previous strokes or heart attacks</li>
+            <li>No previous psychiatric illness</li>
+            <li>No dementia (confirmed by GP 3 months ago)</li>
+        </ul>
+
+        <h3>MEDICATIONS (Before admission)</h3>
+
+        <p><strong>If asked about usual medications:</strong></p>
+        <ul>
+            <li>Perindopril 4mg daily (for blood pressure)</li>
+            <li>Paracetamol as needed for arthritis pain (maybe 2-3 times a week)</li>
+            <li>"That's all - just those two"</li>
+        </ul>
+
+        <p><strong>If asked about NEW medications in hospital:</strong></p>
+        <ul>
+            <li>"I don't know exactly what they're giving her here"</li>
+            <li>"I know she's on antibiotics through the drip"</li>
+            <li>"The nurse mentioned they gave her something to help her sleep last night because she was so agitated"</li>
+        </ul>
+
+        <h3>REASON FOR ADMISSION</h3>
+
+        <p><strong>If asked why she came to hospital:</strong></p>
+        <ul>
+            <li>"She had a urine infection - she was having pain when she weed, and her urine was dark and smelly"</li>
+            <li>"She also had a fever - about 38.5 degrees"</li>
+            <li>"But she was mentally fine when she was admitted - she was talking normally to me"</li>
+        </ul>
+
+        <h3>SOCIAL HISTORY</h3>
+
+        <p><strong>Living situation:</strong></p>
+        <ul>
+            <li>Lives alone in her own house (single-storey)</li>
+            <li>Widowed 10 years ago</li>
+            <li>You (daughter) visit twice a week, son visits once a week</li>
+            <li>Neighbours check on her</li>
+        </ul>
+
+        <p><strong>Alcohol:</strong></p>
+        <ul>
+            <li>"Mum doesn't drink - maybe a sherry at Christmas, that's all"</li>
+            <li>Definitely not a heavy drinker</li>
+        </ul>
+
+        <p><strong>Smoking:</strong></p>
+        <ul>
+            <li>Never smoked</li>
+        </ul>
+
+        <h3>RECENT CHANGES (Past week before admission)</h3>
+
+        <p><strong>If asked about recent changes:</strong></p>
+        <ul>
+            <li>"She mentioned she was having trouble sleeping the week before - said she was only getting 3-4 hours a night"</li>
+            <li>"She seemed a bit tired, but her mind was still sharp"</li>
+            <li>"No falls recently"</li>
+            <li>"No new medications started"</li>
+        </ul>
+
+        <h3>YOUR CONCERNS & QUESTIONS</h3>
+
+        <p><strong>Emotional state:</strong></p>
+        <ul>
+            <li>You're quite distressed and tearful</li>
+            <li>Worried this is "the beginning of the end"</li>
+            <li>Concerned she might need a nursing home</li>
+        </ul>
+
+        <p><strong>If asked "What are you most worried about?":</strong></p>
+        <p>"I'm terrified this is dementia or Alzheimer's. My grandmother had Alzheimer's and I watched her deteriorate. Is that what's happening to mum? Will she ever go back to normal?"</p>
+
+        <p><strong>Questions you should ask:</strong></p>
+        <ul>
+            <li>"Is this dementia?"</li>
+            <li>"Will she get better?"</li>
+            <li>"Can she come home or will she need to go into a nursing home?"</li>
+        </ul>
+
+        <hr>
+
+        <h2 id="examiner">FOR THE EXAMINER</h2>
+
+        <h3>EXAMINER INSTRUCTIONS</h3>
+
+        <p><strong>Your Role:</strong></p>
+        <ul>
+            <li>Observe silently</li>
+            <li>Mark using checklist below</li>
+            <li>At 7 minutes: <em>"You have 1 minute remaining. Please summarize and provide your differential diagnoses."</em></li>
+            <li>At 8 minutes: <em>"Thank you, time is up."</em></li>
+        </ul>
+
+        <h3>STATION OBJECTIVES</h3>
+
+        <p>This station assesses:</p>
+        <ol>
+            <li>Ability to take collateral history for acute confusion</li>
+            <li>Distinguish delirium from dementia from depression</li>
+            <li>Identify <span style="color: #e74c3c; font-weight: bold;">🚨 RED FLAG</span>s for delirium</li>
+            <li>Assess baseline cognitive function</li>
+            <li>Identify precipitating factors (infection, medications)</li>
+            <li>Communication with distressed relative</li>
+        </ol>
+
+        <div class="alert alert-red">
+            <h4>🚨 DIAGNOSIS (For Examiner)</h4>
+            <p><strong>This is DELIRIUM (hyperactive type), NOT dementia</strong></p>
+            <p><strong>Key features present:</strong></p>
+            <ul>
+                <li>Acute onset (24-48 hours)</li>
+                <li>Fluctuating course (worse at night = sundowning)</li>
+                <li>Inattention + disorientation</li>
+                <li>Perceptual disturbances (visual hallucinations - "flies")</li>
+                <li>Normal baseline cognition (no dementia)</li>
+            </ul>
+            <p><strong>Precipitating factors:</strong></p>
+            <ul>
+                <li>Infection (UTI)</li>
+                <li>Unfamiliar environment (hospital)</li>
+                <li>Sleep deprivation</li>
+                <li>Possible medication (benzodiazepine for agitation)</li>
+            </ul>
+            <p><strong>Against dementia:</strong> Acute onset, previously normal cognition, fluctuating</p>
+        </div>
+
+        <hr>
+
+        <h2 id="marking-checklist">EXAMINER MARKING CHECKLIST</h2>
+
+        <p><strong>Candidate Name:</strong> _________________________</p>
+        <p><strong>Date:</strong> _________________________</p>
+
+        <h3>SECTION 1: INTRODUCTION & COMMUNICATION (10 points)</h3>
+
+        <table>
+            <tr>
+                <th>Criteria</th>
+                <th style="width: 60px;">Yes</th>
+                <th style="width: 60px;">No</th>
+            </tr>
+            <tr>
+                <td><strong>1.1</strong> Introduced self appropriately</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>1.2</strong> Confirmed relationship to patient</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>1.3</strong> Explained purpose (taking history from relative)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>1.4</strong> Showed empathy for daughter's distress</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>1.5</strong> Used open questions initially</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>1.6</strong> Active listening</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>1.7</strong> Reassuring manner (not dismissive)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>1.8</strong> Checked understanding</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>1.9</strong> Professional throughout</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>1.10</strong> Thanked relative at end</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+        </table>
+
+        <p><strong>Section 1 Score:</strong> ___/10</p>
+
+        <hr>
+
+        <h3>SECTION 2: BASELINE COGNITIVE ASSESSMENT (15 points)</h3>
+
+        <table>
+            <tr>
+                <th>Criteria</th>
+                <th style="width: 60px;">Yes</th>
+                <th style="width: 60px;">No</th>
+            </tr>
+            <tr>
+                <td><strong>2.1</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Asked about patient's USUAL mental state</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>2.2</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Established baseline cognition (normal vs dementia)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>2.3</strong> Asked about memory problems before admission</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>2.4</strong> Asked about functional independence (ADLs)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>2.5</strong> Asked about managing own medications</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>2.6</strong> Asked about managing own finances</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>2.7</strong> Asked about driving status</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>2.8</strong> Asked about social activities</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>2.9</strong> Previous diagnosis of dementia asked</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>2.10</strong> Previous cognitive testing asked</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+        </table>
+
+        <p><strong>Section 2 Score:</strong> ___/15</p>
+
+        <hr>
+
+        <h3>SECTION 3: DELIRIUM ASSESSMENT - Timeline & Features (25 points)</h3>
+
+        <table>
+            <tr>
+                <th>Criteria</th>
+                <th style="width: 60px;">Yes</th>
+                <th style="width: 60px;">No</th>
+            </tr>
+            <tr>
+                <td><strong>3.1</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> When did confusion start? (acute vs gradual)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>3.2</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Fluctuating course asked (better/worse at different times?)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>3.3</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Sundowning asked (worse at night?)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>3.4</strong> Orientation: Does she know where she is?</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>3.5</strong> Orientation: Does she know what day/time it is?</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>3.6</strong> Recognition: Does she recognize you/family?</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>3.7</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Hallucinations asked (seeing/hearing things?)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>3.8</strong> Delusions asked (false beliefs?)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>3.9</strong> Agitation level assessed</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>3.10</strong> Sleep pattern asked</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>3.11</strong> Sleep reversal (awake at night, asleep during day)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>3.12</strong> Wandering behaviour asked</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>3.13</strong> Aggression or resistance to care</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>3.14</strong> Level of consciousness (drowsy vs alert vs agitated)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>3.15</strong> Compared to 1 week ago (was she normal then?)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+        </table>
+
+        <p><strong>Section 3 Score:</strong> ___/25</p>
+
+        <hr>
+
+        <h3>SECTION 4: PRECIPITATING FACTORS (20 points)</h3>
+
+        <table>
+            <tr>
+                <th>Criteria</th>
+                <th style="width: 60px;">Yes</th>
+                <th style="width: 60px;">No</th>
+            </tr>
+            <tr>
+                <td><strong>4.1</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Reason for admission asked (infection = UTI)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>4.2</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Recent medications asked (new drugs in hospital?)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>4.3</strong> Baseline medications asked</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>4.4</strong> Sedatives/sleeping tablets asked</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>4.5</strong> Recent surgery or procedures</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>4.6</strong> Recent falls or head injury</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>4.7</strong> Pain level asked</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>4.8</strong> Constipation or urinary retention</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>4.9</strong> Sleep deprivation (before admission)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>4.10</strong> Alcohol history (withdrawal risk)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>4.11</strong> Previous similar episodes</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>4.12</strong> Past medical history (stroke, dementia, etc.)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>4.13</strong> Living situation (change in environment)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>4.14</strong> Sensory impairment (glasses, hearing aid)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>4.15</strong> Recent bereavement or life stressors</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+        </table>
+
+        <p><strong>Section 4 Score:</strong> ___/20</p>
+
+        <hr>
+
+        <h3>SECTION 5: SUMMARY & MANAGEMENT (10 points)</h3>
+
+        <table>
+            <tr>
+                <th>Criteria</th>
+                <th style="width: 60px;">Yes</th>
+                <th style="width: 60px;">No</th>
+            </tr>
+            <tr>
+                <td><strong>5.1</strong> Summarized history concisely</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>5.2</strong> <span style="color: #e74c3c; font-weight: bold;">🚨 CRITICAL:</span> Identified DELIRIUM as top differential</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>5.3</strong> Distinguished delirium from dementia</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>5.4</strong> Identified precipitating factors (UTI, meds, environment)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>5.5</strong> Reassured daughter (likely reversible)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>5.6</strong> Addressed daughter's concerns about dementia</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>5.7</strong> Proposed investigations (bloods, urine, imaging if needed)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>5.8</strong> Mentioned non-pharmacological management (reorientation, familiar objects)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>5.9</strong> Discussed prognosis (can improve with treatment)</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+            <tr>
+                <td><strong>5.10</strong> Involved daughter in care planning</td>
+                <td>☐</td>
+                <td>☐</td>
+            </tr>
+        </table>
+
+        <p><strong>Section 5 Score:</strong> ___/10</p>
+
+        <hr>
+
+        <h3>OVERALL SCORE</h3>
+
+        <table>
+            <tr>
+                <th>Section</th>
+                <th>Score</th>
+                <th>Maximum</th>
+            </tr>
+            <tr>
+                <td>Section 1: Introduction & Communication</td>
+                <td>___</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>Section 2: Baseline Cognitive Assessment</td>
+                <td>___</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>Section 3: Delirium Assessment</td>
+                <td>___</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>Section 4: Precipitating Factors</td>
+                <td>___</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>Section 5: Summary & Management</td>
+                <td>___</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td><strong>TOTAL</strong></td>
+                <td><strong>___</strong></td>
+                <td><strong>80</strong></td>
+            </tr>
+        </table>
+
+        <div class="alert alert-blue">
+            <h4>📊 Pass/Fail Criteria</h4>
+            <p><strong>PASS:</strong> ≥56/80 (70%)</p>
+            <p><strong>BORDERLINE:</strong> 48-55/80 (60-69%)</p>
+            <p><strong>FAIL:</strong> <48/80 (<60%)</p>
+            <p><strong>CRITICAL FAILURES (Automatic Fail):</strong></p>
+            <ul>
+                <li>Failed to establish baseline cognition (2.1, 2.2)</li>
+                <li>Failed to ask about acute onset (3.1)</li>
+                <li>Failed to ask about fluctuating course (3.2)</li>
+                <li>Failed to identify delirium as diagnosis (5.2)</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <h2 id="model-answer">MODEL ANSWER</h2>
+
+        <div class="success-box">
+            <h4>📝 Model Summary to Examiner</h4>
+            <p>"This is an 82-year-old woman who has developed acute confusion following admission for urinary tract infection.</p>
+
+            <p><strong>Key findings suggesting DELIRIUM:</strong></p>
+            <ul>
+                <li><strong>Acute onset:</strong> Confusion started 24 hours ago (not gradual)</li>
+                <li><strong>Normal baseline cognition:</strong> Previously independent, sharp, no dementia</li>
+                <li><strong>Fluctuating course:</strong> Worse at night (sundowning), drowsy during day</li>
+                <li><strong>Inattention:</strong> Disorientated to place and time</li>
+                <li><strong>Perceptual disturbances:</strong> Visual hallucinations (seeing flies)</li>
+                <li><strong>Altered consciousness:</strong> Hyperactive type (agitated, wandering)</li>
+            </ul>
+
+            <p><strong>Precipitating factors identified:</strong></p>
+            <ul>
+                <li>Infection (UTI) - most common cause in elderly</li>
+                <li>Unfamiliar environment (hospital admission)</li>
+                <li>Sleep deprivation (poor sleep week before + disrupted in hospital)</li>
+                <li>Possible sedative medication (given for agitation)</li>
+            </ul>
+
+            <p><strong>Against dementia:</strong></p>
+            <ul>
+                <li>Acute onset (dementia is insidious over months-years)</li>
+                <li>Previously normal cognition 3 days ago</li>
+                <li>Fluctuating course (dementia is progressive, not fluctuating)</li>
+            </ul>
+
+            <p><strong>My diagnosis: Hyperactive delirium secondary to UTI</strong></p>
+
+            <p><strong>Investigations needed:</strong></p>
+            <ul>
+                <li>Urine M/C/S (likely already sent)</li>
+                <li>FBC (infection markers)</li>
+                <li>UEC (renal function, dehydration)</li>
+                <li>LFTs</li>
+                <li>Glucose (hypoglycaemia can cause confusion)</li>
+                <li>Calcium (hypercalcaemia)</li>
+                <li>TSH (thyroid)</li>
+                <li>Medication review (check for deliriogenic drugs)</li>
+                <li>Consider CT head if focal neurology or fall</li>
+            </ul>
+
+            <p><strong>Management plan:</strong></p>
+            <ul>
+                <li><strong>Treat underlying cause:</strong> Continue antibiotics for UTI</li>
+                <li><strong>Review medications:</strong> STOP benzodiazepines/sedatives if given</li>
+                <li><strong>Non-pharmacological management (first-line):</strong>
+                    <ul>
+                        <li>Reorientation strategies (clock, calendar visible)</li>
+                        <li>Familiar objects from home (photos)</li>
+                        <li>Encourage family visits for reassurance</li>
+                        <li>Ensure glasses/hearing aids in place</li>
+                        <li>Avoid restraints</li>
+                        <li>Regular toileting, mobilisation</li>
+                        <li>Sleep hygiene (reduce noise at night)</li>
+                    </ul>
+                </li>
+                <li><strong>Pharmacological (last resort only if severe agitation/harm risk):</strong>
+                    <ul>
+                        <li>Low-dose haloperidol 0.5-1mg (avoid benzodiazepines)</li>
+                        <li>Or risperidone 0.25-0.5mg</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p><strong>Prognosis & counselling for daughter:</strong></p>
+            <ul>
+                <li>"This is delirium, not dementia or Alzheimer's"</li>
+                <li>"Delirium is usually reversible once we treat the infection"</li>
+                <li>"It may take days to weeks to fully resolve in elderly patients"</li>
+                <li>"She's likely to return to her baseline cognitive function"</li>
+                <li>"However, delirium does increase risk of future dementia, so we'll arrange follow-up cognitive assessment in 3 months"</li>
+                <li>"For now, we need your help with reorientation - bring in family photos, talk to her about familiar topics"</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <h2 id="img-mistakes">⚠️ IMG COMMON MISTAKES TO AVOID</h2>
+
+        <div class="alert alert-yellow">
+            <h4>🚨 Critical Errors That Lead to Failure</h4>
+
+            <h4>1. NOT ESTABLISHING BASELINE COGNITION</h4>
+            <p><strong>Mistake:</strong> Jumping straight to "What's happening now?" without asking about usual mental state</p>
+            <p><strong>Why this fails:</strong> Cannot distinguish delirium from dementia without knowing baseline</p>
+            <p><strong>MUST ASK:</strong></p>
+            <ul>
+                <li>"Before this hospital admission, what was your mother's memory like?"</li>
+                <li>"Could she manage her own medications? Pay her bills? Do her shopping?"</li>
+                <li>"Did she have any diagnosis of dementia or memory problems?"</li>
+            </ul>
+            <p><strong>This patient:</strong> Normal baseline = delirium (not dementia)</p>
+
+            <h4>2. CONFUSING DELIRIUM WITH DEMENTIA</h4>
+            <p><strong>Mistake:</strong> Elderly + confused = dementia</p>
+            <p><strong>Why this fails:</strong> Delirium is REVERSIBLE, dementia is PROGRESSIVE</p>
+
+            <p><strong>Key Differences (Australian eTG teaching):</strong></p>
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <th>DELIRIUM ✅ This Patient</th>
+                    <th>DEMENTIA ❌</th>
+                </tr>
+                <tr>
+                    <td>Onset</td>
+                    <td>Acute (hours-days)</td>
+                    <td>Insidious (months-years)</td>
+                </tr>
+                <tr>
+                    <td>Course</td>
+                    <td>Fluctuating (worse at night)</td>
+                    <td>Progressive (slowly worsening)</td>
+                </tr>
+                <tr>
+                    <td>Duration</td>
+                    <td>Days-weeks (reversible)</td>
+                    <td>Permanent</td>
+                </tr>
+                <tr>
+                    <td>Consciousness</td>
+                    <td>Altered (drowsy or agitated)</td>
+                    <td>Normal until late stages</td>
+                </tr>
+                <tr>
+                    <td>Hallucinations</td>
+                    <td>Common (visual)</td>
+                    <td>Rare (until late)</td>
+                </tr>
+                <tr>
+                    <td>Reversible?</td>
+                    <td>YES (treat cause)</td>
+                    <td>NO</td>
+                </tr>
+            </table>
+
+            <h4>3. MISSING THE "CAM" CRITERIA FOR DELIRIUM</h4>
+            <p><strong>Mistake:</strong> Not using structured approach</p>
+            <p><strong>Australian OSCEs expect CAM (Confusion Assessment Method):</strong></p>
+            <ol>
+                <li><strong>Acute onset + fluctuating course</strong> ✅ This patient (24 hours, worse at night)</li>
+                <li><strong>Inattention</strong> ✅ This patient (disorientated, can't focus)</li>
+                <li><strong>Disorganized thinking OR</strong></li>
+                <li><strong>Altered level of consciousness</strong> ✅ This patient (hyper active, agitated)</li>
+            </ol>
+            <p><strong>Delirium diagnosis:</strong> Need #1 + #2 + (#3 OR #4)</p>
+
+            <h4>4. NOT ASKING ABOUT "SUNDOWNING"</h4>
+            <p><strong>Mistake:</strong> Not asking "Is she worse at a particular time of day?"</p>
+            <p><strong>Why this fails:</strong> Sundowning (worsening at night) is PATHOGNOMONIC for delirium</p>
+            <p><strong>Must ask:</strong> "Is the confusion worse during the day or at night?"</p>
+            <p><strong>This patient:</strong> Agitated at night, drowsy during day = CLASSIC sundowning</p>
+
+            <h4>5. FORGETTING TO ASK ABOUT MEDICATIONS</h4>
+            <p><strong>Mistake:</strong> Not asking "Have any new medications been started in hospital?"</p>
+            <p><strong>Why this fails:</strong> Medications are the #2 most common cause of delirium (after infection)</p>
+
+            <p><strong>Deliriogenic drugs (Australian eTG):</strong></p>
+            <ul>
+                <li><strong>Benzodiazepines</strong> - #1 culprit (temazepam, diazepam) ⚠️ This patient got "something to sleep"</li>
+                <li>Anticholinergics (oxybutynin, hyoscine)</li>
+                <li>Opioids (morphine, oxycodone)</li>
+                <li>Antihistamines (promethazine)</li>
+                <li>Corticosteroids</li>
+            </ul>
+
+            <p><strong>Australian nursing practice:</strong> Often give "PRN temazepam" for agitation → WORSENS delirium!</p>
+
+            <h4>6. WRONG INITIAL MANAGEMENT</h4>
+            <p><strong>Mistake #1:</strong> "I would start her on haloperidol"</p>
+            <p><strong>Why this fails:</strong> Non-pharmacological first! Drugs are LAST resort</p>
+
+            <p><strong>Correct approach (Australian Delirium Guidelines 2024):</strong></p>
+            <ol>
+                <li><strong>FIRST:</strong> Treat underlying cause (UTI antibiotics)</li>
+                <li><strong>SECOND:</strong> Non-pharmacological (reorientation, familiar objects, family presence)</li>
+                <li><strong>THIRD:</strong> Review medications (STOP benzodiazepines)</li>
+                <li><strong>LAST RESORT:</strong> Antipsychotics (only if severe agitation risking harm)</li>
+            </ol>
+
+            <p><strong>Mistake #2:</strong> "Continue the sleeping tablet"</p>
+            <p><strong>Why this fails:</strong> Benzodiazepines CAUSE delirium - must STOP them</p>
+
+            <h4>7. NOT REASSURING THE DAUGHTER</h4>
+            <p><strong>Mistake:</strong> Giving medical information without addressing emotional concerns</p>
+            <p><strong>Why this fails:</strong> Daughter is terrified this is "the beginning of the end"</p>
+
+            <p><strong>Must explicitly say:</strong></p>
+            <ul>
+                <li>"This is NOT dementia or Alzheimer's"</li>
+                <li>"This is delirium, which is usually reversible"</li>
+                <li>"Your mum is likely to return to her normal self once we treat the infection"</li>
+                <li>"It may take a few days or weeks, but we expect good recovery"</li>
+            </ul>
+
+            <p><strong>Australian cultural expectation:</strong> Families are VERY involved in care - reassure and include them</p>
+
+            <h4>8. MISSING THE "PINCH" MNEMONIC</h4>
+            <p><strong>Mistake:</strong> Not systematically ruling out other causes</p>
+
+            <p><strong>Australian teaching - PINCH ME causes of delirium:</strong></p>
+            <ul>
+                <li><strong>P</strong> - Pain ✅ Ask about</li>
+                <li><strong>I</strong> - Infection ✅ This patient (UTI)</li>
+                <li><strong>N</strong> - Nutrition/Hydration ✅ Check</li>
+                <li><strong>C</strong> - Constipation ✅ Ask about</li>
+                <li><strong>H</strong> - Hypoxia ✅ Check sats</li>
+                <li><strong>M</strong> - Medications ✅ This patient (benzodiazepine)</li>
+                <li><strong>E</strong> - Environment change ✅ This patient (hospital admission)</li>
+            </ul>
+
+            <h4>9. POOR COLLATERAL HISTORY TECHNIQUE</h4>
+            <p><strong>Mistake:</strong> Talking to relative like they're the patient</p>
+
+            <p><strong>Correct approach:</strong></p>
+            <ul>
+                <li>"Thank you for coming in. I'd like to ask you some questions about your mother to help me understand what's been happening"</li>
+                <li>Use third person: "How is <strong>she</strong> normally?" not "How are <strong>you</strong>?"</li>
+                <li>Get daughter's perspective: "What have <strong>you</strong> noticed?" "What are <strong>you</strong> most worried about?"</li>
+            </ul>
+
+            <h4>10. NOT DISCUSSING PROGNOSIS</h4>
+            <p><strong>Mistake:</strong> Making diagnosis but not explaining what happens next</p>
+
+            <p><strong>Australian OSCE expects prognostic counselling:</strong></p>
+            <ul>
+                <li>"Most cases of delirium resolve within 1-2 weeks"</li>
+                <li>"However, in elderly patients, full recovery can take up to 3 months"</li>
+                <li>"About 10-20% may have persistent cognitive changes"</li>
+                <li>"Delirium does slightly increase future dementia risk, so we'll arrange follow-up cognitive testing in 3 months"</li>
+                <li>"For now, your mum will likely be able to return home once the infection clears and confusion improves"</li>
+            </ul>
+        </div>
+
+        <div class="alert alert-blue">
+            <h4>💡 Australian-Specific Tips for IMGs</h4>
+
+            <h4>Terminology:</h4>
+            <table>
+                <tr>
+                    <th>❌ Avoid</th>
+                    <th>✅ Use (Australian)</th>
+                </tr>
+                <tr>
+                    <td>Acute confusional state / Acute brain syndrome</td>
+                    <td>Delirium (preferred term in Australia)</td>
+                </tr>
+                <tr>
+                    <td>Senile dementia</td>
+                    <td>Dementia (never use "senile" - considered ageist)</td>
+                </tr>
+                <tr>
+                    <td>Nursing home</td>
+                    <td>Residential aged care facility (RACF) or "aged care"</td>
+                </tr>
+                <tr>
+                    <td>ADL</td>
+                    <td>Activities of Daily Living (spell out in OSCE)</td>
+                </tr>
+            </table>
+
+            <h4>NSW Health Delirium Pathway:</h4>
+            <ul>
+                <li>All patients >65 screened for delirium risk on admission</li>
+                <li>CAM used for diagnosis</li>
+                <li>Non-pharmacological interventions FIRST</li>
+                <li>Benzodiazepines avoided (contraindicated in delirium)</li>
+                <li>Family encouraged to stay bedside for reorientation</li>
+            </ul>
+
+            <h4>Cultural Points:</h4>
+            <ul>
+                <li>Australian families expect to be involved in care decisions</li>
+                <li>Explain medical terms in plain English</li>
+                <li>Address both clinical facts AND emotional concerns</li>
+                <li>Discharge planning starts from day 1 (discuss with family early)</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <p><strong>Last Updated:</strong> December 16, 2025</p>
+        <p><strong>Version:</strong> 1.0</p>
+        <p><strong>References:</strong></p>
+        <ul>
+            <li>eTG Complete - Delirium Management 2024</li>
+            <li>Australian Commission on Safety and Quality in Health Care - Delirium Clinical Care Standard 2024</li>
+            <li>NSW Health Delirium Prevention and Management Pathway 2024</li>
+            <li>AMC Clinical Examination Blueprint 2024</li>
+        </ul>
+
+        <div class="footer">
+            <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+            <p>Generated: December 16, 2025</p>
+            <p><a href="../../START_HERE.html">Return to Start</a> | <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Return to OSCE Index</a></p>
+        </div>
+    </div>
+</body>
+</html>

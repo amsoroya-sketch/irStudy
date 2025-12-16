@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Index - Mock OSCE Stations</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #c41e3a;
+            border-bottom: 4px solid #c41e3a;
+            padding-bottom: 15px;
+            font-size: 2.5em;
+            text-align: center;
+        }
+        h2 {
+            color: #2c5f77;
+            margin-top: 40px;
+            border-left: 6px solid #2c5f77;
+            padding-left: 20px;
+            font-size: 1.8em;
+        }
+        .header-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .header-info h3 {
+            margin: 10px 0;
+            font-size: 1.3em;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .stat-card h4 {
+            margin: 0 0 10px 0;
+            font-size: 2em;
+        }
+        .stat-card p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+        .specialty-section {
+            margin: 30px 0;
+            padding: 25px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            border: 2px solid #dee2e6;
+        }
+        .station-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .station-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 6px solid #28a745;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .station-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .station-card.medicine {
+            border-left-color: #007bff;
+        }
+        .station-card.surgery {
+            border-left-color: #dc3545;
+        }
+        .station-card.obgyn {
+            border-left-color: #e83e8c;
+        }
+        .station-card.mixed {
+            border-left-color: #6f42c1;
+        }
+        .station-number {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+        }
+        .medicine .station-number {
+            background: #007bff;
+        }
+        .surgery .station-number {
+            background: #dc3545;
+        }
+        .obgyn .station-number {
+            background: #e83e8c;
+        }
+        .mixed .station-number {
+            background: #6f42c1;
+        }
+        .station-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+        .station-description {
+            color: #6c757d;
+            font-size: 0.9em;
+            margin: 10px 0;
+        }
+        .station-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .meta-tag {
+            background: #e9ecef;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            color: #495057;
+        }
+        .meta-tag.emergency {
+            background: #dc3545;
+            color: white;
+            font-weight: bold;
+        }
+        .meta-tag.advanced {
+            background: #ffc107;
+            color: #000;
+        }
+        .station-link {
+            display: block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: transform 0.2s;
+        }
+        .station-link:hover {
+            transform: scale(1.05);
+            text-decoration: none;
+            color: white;
+        }
+        .quick-links {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        .quick-links h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+        .quick-links a {
+            display: inline-block;
+            margin: 5px 10px 5px 0;
+            padding: 8px 15px;
+            background: white;
+            border: 2px solid #ffc107;
+            border-radius: 5px;
+            color: #856404;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        .quick-links a:hover {
+            background: #ffc107;
+            color: white;
+        }
+        .legend {
+            background: #e7f3ff;
+            border: 2px solid #0066cc;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        .legend h3 {
+            color: #004085;
+            margin-top: 0;
+        }
+        .legend-item {
+            display: inline-block;
+            margin: 5px 15px 5px 0;
+        }
+        .legend-color {
+            display: inline-block;
+            width: 30px;
+            height: 15px;
+            margin-right: 8px;
+            border-radius: 3px;
+            vertical-align: middle;
+        }
+        @media print {
+            body {
+                background: white;
+            }
+            .station-link {
+                display: none;
+            }
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            .station-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 Master Index - Mock OSCE Stations</h1>
+
+        <div class="header-info">
+            <h3>ICRP OSCE Preparation - NSW Young Hospital (March 2026 Intake)</h3>
+            <p>Complete Collection of AMC-Format Mock OSCE Stations</p>
+            <p>✅ 100% Australian Medical Context | ✅ eTG 2024 Guidelines | ✅ IMG-Focused</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h4>10</h4>
+                <p>Total OSCE Stations</p>
+            </div>
+            <div class="stat-card">
+                <h4>528 KB</h4>
+                <p>Total Content</p>
+            </div>
+            <div class="stat-card">
+                <h4>~95</h4>
+                <p>IMG Mistakes Documented</p>
+            </div>
+            <div class="stat-card">
+                <h4>156</h4>
+                <p>Red Flags Marked</p>
+            </div>
+            <div class="stat-card">
+                <h4>80</h4>
+                <p>Points Per Station</p>
+            </div>
+            <div class="stat-card">
+                <h4>8 min</h4>
+                <p>Station Duration</p>
+            </div>
+        </div>
+
+        <div class="quick-links">
+            <h3>📚 Quick Links</h3>
+            <a href="../START_HERE.html">← Back to Main Index</a>
+            <a href="../../PHASE_2_COMPLETE_FINAL_REPORT.md" target="_blank">View Final Report</a>
+            <a href="../../ICRP_Program_Resources/Flashcards/ICRP_Flashcards_Interactive.html" target="_blank">Open Flashcards</a>
+            <a href="#medicine">Jump to Medicine</a>
+            <a href="#surgery">Jump to Surgery</a>
+            <a href="#obgyn">Jump to ObGyn</a>
+            <a href="#mixed">Jump to Mixed</a>
+        </div>
+
+        <div class="legend">
+            <h3>🎨 Station Category Legend</h3>
+            <div class="legend-item">
+                <span class="legend-color" style="background:#007bff;"></span>
+                <strong>Medicine</strong>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background:#dc3545;"></span>
+                <strong>Surgery</strong>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background:#e83e8c;"></span>
+                <strong>ObGyn</strong>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background:#6f42c1;"></span>
+                <strong>Mixed/GP</strong>
+            </div>
+        </div>
+
+        <!-- MEDICINE STATIONS -->
+        <div class="specialty-section" id="medicine">
+            <h2>🫀 Medicine OSCE Stations (4 Stations)</h2>
+            <p><strong>Focus Areas:</strong> Cardiology, Endocrinology, Geriatrics | <strong>Total Size:</strong> 195 KB</p>
+
+            <div class="station-grid">
+                <!-- Medicine Station 1 -->
+                <div class="station-card medicine">
+                    <span class="station-number">M01</span>
+                    <div class="station-title">Shortness of Breath - Heart Failure vs COPD</div>
+                    <div class="station-description">82-year-old woman with orthopnoea, PND, and peripheral oedema. Assess using "5 Ps" framework for dyspnoea.</div>
+                    <div class="station-meta">
+                        <span class="meta-tag">Cardiology</span>
+                        <span class="meta-tag">History Taking</span>
+                        <span class="meta-tag">49 KB</span>
+                        <span class="meta-tag">10 IMG Mistakes</span>
+                    </div>
+                    <div class="station-meta">
+                        <span class="meta-tag">🚨 NYHA Classification</span>
+                        <span class="meta-tag">🚨 NHFA 2024 Guidelines</span>
+                    </div>
+                    <a href="04_Mock_OSCE_Shortness_of_Breath.html" class="station-link">Open Station M01 →</a>
+                </div>
+
+                <!-- Medicine Station 2 -->
+                <div class="station-card medicine">
+                    <span class="station-number">M02</span>
+                    <div class="station-title">Dizziness & Syncope - Cardiac vs Neurological</div>
+                    <div class="station-description">65-year-old man with cardiac syncope. Beta-blocker overdose scenario. Use "5 Ps" syncope framework.</div>
+                    <div class="station-meta">
+                        <span class="meta-tag">Cardiology</span>
+                        <span class="meta-tag">History Taking</span>
+                        <span class="meta-tag">50 KB</span>
+                        <span class="meta-tag">10 IMG Mistakes</span>
+                    </div>
+                    <div class="station-meta">
+                        <span class="meta-tag">🚨 Driving Safety (Austroads)</span>
+                        <span class="meta-tag">🚨 Anoxic Seizure Differentiation</span>
+                    </div>
+                    <a href="05_Mock_OSCE_Dizziness_Syncope.html" class="station-link">Open Station M02 →</a>
+                </div>
+
+                <!-- Medicine Station 3 -->
+                <div class="station-card medicine">
+                    <span class="station-number">M03</span>
+                    <div class="station-title">Acute Confusional State - Delirium Assessment</div>
+                    <div class="station-description">82-year-old woman with delirium. COLLATERAL HISTORY from daughter (not direct patient interview).</div>
+                    <div class="station-meta">
+                        <span class="meta-tag">Geriatrics</span>
+                        <span class="meta-tag">Collateral History</span>
+                        <span class="meta-tag">46 KB</span>
+                        <span class="meta-tag">10 IMG Mistakes</span>
+                    </div>
+                    <div class="station-meta">
+                        <span class="meta-tag">🚨 CAM Criteria</span>
+                        <span class="meta-tag">🚨 PINCH ME Mnemonic</span>
+                    </div>
+                    <a href="06_Mock_OSCE_Acute_Confusion_Delirium.html" class="station-link">Open Station M03 →</a>
+                </div>
+
+                <!-- Medicine Station 4 -->
+                <div class="station-card medicine">
+                    <span class="station-number">M04</span>
+                    <div class="station-title">Polyuria & Polydipsia - New Diabetes Diagnosis</div>
+                    <div class="station-description">45-year-old Indian Australian man with Type 2 diabetes. Classical triad: polyuria, polydipsia, weight loss.</div>
+                    <div class="station-meta">
+                        <span class="meta-tag">Endocrinology</span>
+                        <span class="meta-tag">History Taking</span>
+                        <span class="meta-tag">50 KB</span>
+                        <span class="meta-tag">10 IMG Mistakes</span>
+                    </div>
+                    <div class="station-meta">
+                        <span class="meta-tag">🚨 AUSDRISK (4× Risk)</span>
+                        <span class="meta-tag">🚨 NDSS Registration</span>
+                    </div>
+                    <a href="07_Mock_OSCE_Diabetes_Polyuria_Polydipsia.html" class="station-link">Open Station M04 →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SURGERY STATIONS -->
+        <div class="specialty-section" id="surgery">
+            <h2>🔪 Surgery OSCE Stations (2 Stations)</h2>
+            <p><strong>Focus Areas:</strong> Acute Abdomen, Hernias | <strong>Total Size:</strong> 126 KB</p>
+
+            <div class="station-grid">
+                <!-- Surgery Station 1 -->
+                <div class="station-card surgery">
+                    <span class="station-number">S01</span>
+                    <div class="station-title">Right Iliac Fossa Pain - Appendicitis Differential</div>
+                    <div class="station-description">24-year-old woman with classical appendicitis. MUST ask LMP and pregnancy status in ALL females with abdominal pain.</div>
+                    <div class="station-meta">
+                        <span class="meta-tag">Acute Abdomen</span>
+                        <span class="meta-tag">History Taking</span>
+                        <span class="meta-tag">55 KB</span>
+                        <span class="meta-tag">10 IMG Mistakes</span>
+                    </div>
+                    <div class="station-meta">
+                        <span class="meta-tag">🚨 Anorexia (95% sensitivity)</span>
+                        <span class="meta-tag">🚨 Peritonism Assessment</span>
+                        <span class="meta-tag">🚨 Alvarado Score</span>
+                    </div>
+                    <a href="08_Mock_OSCE_RIF_Pain_Appendicitis.html" class="station-link">Open Station S01 →</a>
+                </div>
+
+                <!-- Surgery Station 2 -->
+                <div class="station-card surgery">
+                    <span class="station-number">S02</span>
+                    <div class="station-title">Groin Lump - Hernia Examination</div>
+                    <div class="station-description">58-year-old man with right indirect inguinal hernia. Physical examination station - examine STANDING then LYING.</div>
+                    <div class="station-meta">
+                        <span class="meta-tag">Hernias</span>
+                        <span class="meta-tag">Physical Examination</span>
+                        <span class="meta-tag">71 KB</span>
+                        <span class="meta-tag">10 IMG Mistakes</span>
+                    </div>
+                    <div class="station-meta">
+                        <span class="meta-tag">🚨 "Above & Medial" Rule</span>
+                        <span class="meta-tag">🚨 Deep Ring Occlusion Test</span>
+                        <span class="meta-tag">🚨 Cough Impulse</span>
+                    </div>
+                    <a href="09_Mock_OSCE_Groin_Lump_Hernia.html" class="station-link">Open Station S02 →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- OBGYN STATIONS -->
+        <div class="specialty-section" id="obgyn">
+            <h2>👶 Obstetrics & Gynaecology Stations (2 Stations)</h2>
+            <p><strong>Focus Areas:</strong> Early Pregnancy, Abnormal Uterine Bleeding | <strong>Total Size:</strong> 154 KB</p>
+
+            <div class="station-grid">
+                <!-- ObGyn Station 1 -->
+                <div class="station-card obgyn">
+                    <span class="station-number">O01</span>
+                    <div class="station-title">First Trimester Bleeding - Ectopic vs Miscarriage</div>
+                    <div class="station-description">28-year-old woman with RIGHT TUBAL ECTOPIC (high risk). LIFE-THREATENING EMERGENCY - recognize red flags!</div>
+                    <div class="station-meta">
+                        <span class="meta-tag">Early Pregnancy</span>
+                        <span class="meta-tag">History Taking</span>
+                        <span class="meta-tag emergency">⚠️ EMERGENCY</span>
+                        <span class="meta-tag">71 KB</span>
+                        <span class="meta-tag">10 IMG Mistakes</span>
+                    </div>
+                    <div class="station-meta">
+                        <span class="meta-tag">🚨🚨 Shoulder Tip Pain (PATHOGNOMONIC)</span>
+                        <span class="meta-tag">🚨🚨 Orthostatic Symptoms</span>
+                        <span class="meta-tag">🚨 Previous PID (6× Risk)</span>
+                    </div>
+                    <a href="10_Mock_OSCE_First_Trimester_Bleeding.html" class="station-link">Open Station O01 →</a>
+                </div>
+
+                <!-- ObGyn Station 2 -->
+                <div class="station-card obgyn">
+                    <span class="station-number">O02</span>
+                    <div class="station-title">Abnormal Vaginal Bleeding - Menorrhagia Assessment</div>
+                    <div class="station-description">48-year-old woman with heavy menstrual bleeding (fibroids). AGE >45 = MANDATORY endometrial sampling!</div>
+                    <div class="station-meta">
+                        <span class="meta-tag">Gynaecology</span>
+                        <span class="meta-tag">History Taking</span>
+                        <span class="meta-tag">83 KB</span>
+                        <span class="meta-tag">10 IMG Mistakes</span>
+                    </div>
+                    <div class="station-meta">
+                        <span class="meta-tag">🚨 Age >45 = Endometrial Biopsy</span>
+                        <span class="meta-tag">🚨 Quantify Bleeding (Pads/Hour)</span>
+                        <span class="meta-tag">🚨 QOL Impact</span>
+                    </div>
+                    <a href="11_Mock_OSCE_Abnormal_Vaginal_Bleeding.html" class="station-link">Open Station O02 →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MIXED STATIONS -->
+        <div class="specialty-section" id="mixed">
+            <h2>🩺 Mixed/General Practice Stations (2 Stations)</h2>
+            <p><strong>Focus Areas:</strong> Geriatrics, Medication Safety, Communication | <strong>Total Size:</strong> 53 KB</p>
+
+            <div class="station-grid">
+                <!-- Mixed Station 1 -->
+                <div class="station-card mixed">
+                    <span class="station-number">MX01</span>
+                    <div class="station-title">Elderly Patient Fall - Multifactorial Assessment</div>
+                    <div class="station-description">82-year-old woman, recurrent faller (2 falls/4 months). Assess ALL risk factors: intrinsic + extrinsic + functional.</div>
+                    <div class="station-meta">
+                        <span class="meta-tag">Geriatrics</span>
+                        <span class="meta-tag">History Taking</span>
+                        <span class="meta-tag advanced">Advanced</span>
+                        <span class="meta-tag">35 KB</span>
+                        <span class="meta-tag">10 IMG Mistakes</span>
+                    </div>
+                    <div class="station-meta">
+                        <span class="meta-tag">🚨 Polypharmacy (5 meds)</span>
+                        <span class="meta-tag">🚨 Temazepam (Fall Risk)</span>
+                        <span class="meta-tag">🚨 Vision (Cataracts)</span>
+                        <span class="meta-tag">🚨 Fear of Falling</span>
+                    </div>
+                    <a href="12_Mock_OSCE_Elderly_Falls_Assessment.html" class="station-link">Open Station MX01 →</a>
+                </div>
+
+                <!-- Mixed Station 2 -->
+                <div class="station-card mixed">
+                    <span class="station-number">MX02</span>
+                    <div class="station-title">Medication Reconciliation - Patient Education</div>
+                    <div class="station-description">72-year-old man post-hospital discharge. Confused about medications - reconcile home vs discharge meds.</div>
+                    <div class="station-meta">
+                        <span class="meta-tag">General Practice</span>
+                        <span class="meta-tag">Communication</span>
+                        <span class="meta-tag">18 KB</span>
+                        <span class="meta-tag">5 IMG Mistakes</span>
+                    </div>
+                    <div class="station-meta">
+                        <span class="meta-tag">🚨 Teach-Back Method</span>
+                        <span class="meta-tag">🚨 STOP vs CONTINUE</span>
+                        <span class="meta-tag">🚨 Written List</span>
+                    </div>
+                    <a href="13_Mock_OSCE_Medication_Reconciliation.html" class="station-link">Open Station MX02 →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- STUDY RESOURCES -->
+        <div class="specialty-section">
+            <h2>📖 Additional Study Resources</h2>
+            <div class="station-grid">
+                <div class="station-card" style="border-left-color: #28a745;">
+                    <div class="station-title">Phase 2 Final Report</div>
+                    <div class="station-description">Comprehensive verification report with quality metrics, IMG mistake analysis, and study recommendations.</div>
+                    <a href="../../PHASE_2_COMPLETE_FINAL_REPORT.md" target="_blank" class="station-link">View Report →</a>
+                </div>
+
+                <div class="station-card" style="border-left-color: #28a745;">
+                    <div class="station-title">Interactive Flashcards</div>
+                    <div class="station-description">750 flashcards with spaced repetition (SM-2 algorithm). Offline-capable HTML app.</div>
+                    <a href="../../ICRP_Program_Resources/Flashcards/ICRP_Flashcards_Interactive.html" target="_blank" class="station-link">Open Flashcards →</a>
+                </div>
+
+                <div class="station-card" style="border-left-color: #28a745;">
+                    <div class="station-title">Anki Deck</div>
+                    <div class="station-description">750 flashcards in Anki format (.apkg). Import into Anki desktop/mobile for cross-device sync.</div>
+                    <a href="../../ICRP_Program_Resources/Flashcards/ICRP_AMC_Clinical.apkg" class="station-link">Download Anki Deck →</a>
+                </div>
+
+                <div class="station-card" style="border-left-color: #28a745;">
+                    <div class="station-title">Main Clinical Index</div>
+                    <div class="station-description">Master index of all 45 clinical modules organized by specialty.</div>
+                    <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html" class="station-link">View Main Index →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- HOW TO USE -->
+        <div class="specialty-section" style="background:#e7f3ff; border-color:#0066cc;">
+            <h2>📋 How to Use These OSCE Stations</h2>
+
+            <h3>For Self-Study:</h3>
+            <ol>
+                <li><strong>Read candidate instructions</strong> thoroughly before starting</li>
+                <li><strong>Time yourself</strong> - set 8-minute timer</li>
+                <li><strong>Practice out loud</strong> - speak as if patient is present</li>
+                <li><strong>Use marking checklist</strong> to score yourself (/80)</li>
+                <li><strong>Review IMG mistakes</strong> section after each attempt</li>
+                <li><strong>Repeat until scoring consistently ≥70%</strong> (56/80)</li>
+            </ol>
+
+            <h3>For Study Partner Practice:</h3>
+            <ol>
+                <li><strong>Partner 1:</strong> Reads candidate instructions (candidate role)</li>
+                <li><strong>Partner 2:</strong> Acts as simulated patient using patient script</li>
+                <li><strong>Partner 3 (optional):</strong> Acts as examiner, times station, uses marking checklist</li>
+                <li><strong>Rotate roles</strong> each station</li>
+                <li><strong>Provide feedback</strong> using marking criteria</li>
+                <li><strong>Discuss IMG mistakes</strong> together after each station</li>
+            </ol>
+
+            <h3>Focus Areas by Weakness:</h3>
+            <ul>
+                <li><strong>If weak on communication:</strong> Focus on O01 (breaking bad news), MX02 (patient education)</li>
+                <li><strong>If weak on emergency recognition:</strong> Focus on O01 (ectopic), S01 (appendicitis)</li>
+                <li><strong>If weak on examination skills:</strong> Focus on S02 (hernia examination)</li>
+                <li><strong>If weak on elderly medicine:</strong> Focus on M03 (delirium), MX01 (falls)</li>
+                <li><strong>If weak on structured frameworks:</strong> Focus on M01/M02 ("5 Ps"), M03 (CAM)</li>
+            </ul>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="text-align:center; margin-top:40px; padding:20px; background:#f8f9fa; border-radius:10px;">
+            <p><strong>📅 Created:</strong> December 16, 2025</p>
+            <p><strong>📍 For:</strong> ICRP Preparation - NSW Young Hospital (March 2026 Intake)</p>
+            <p><strong>✅ Status:</strong> Phase 2 Complete - All 10 Stations Ready</p>
+            <p style="margin-top:15px; color:#6c757d;">
+                <em>Based on eTG 2024, AMC Clinical Examination Blueprint 2024, and Australian specialty college guidelines</em>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

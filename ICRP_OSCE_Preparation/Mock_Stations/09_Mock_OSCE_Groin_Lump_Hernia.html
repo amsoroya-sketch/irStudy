@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock OSCE Station S02: Groin Lump - Hernia Examination</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #c41e3a;
+            border-bottom: 3px solid #c41e3a;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2c5f77;
+            margin-top: 30px;
+            border-left: 5px solid #2c5f77;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #1a472a;
+            margin-top: 20px;
+        }
+        h4 {
+            color: #5a5a5a;
+            margin-top: 15px;
+        }
+        .station-header {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 6px solid #2c5f77;
+        }
+        .section {
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .candidate-instructions {
+            background-color: #fff3cd;
+            border-left: 6px solid #ffc107;
+        }
+        .patient-script {
+            background-color: #d1ecf1;
+            border-left: 6px solid #17a2b8;
+        }
+        .examiner-instructions {
+            background-color: #f8d7da;
+            border-left: 6px solid #dc3545;
+        }
+        .marking-checklist {
+            background-color: #d4edda;
+            border-left: 6px solid #28a745;
+        }
+        .model-answer {
+            background-color: #e7e7ff;
+            border-left: 6px solid #6610f2;
+        }
+        .img-mistakes {
+            background-color: #ffe6e6;
+            border-left: 6px solid #dc3545;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background-color: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #2c5f77;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .critical-item {
+            color: #c41e3a;
+            font-weight: bold;
+        }
+        .red-flag {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .pass-criteria {
+            background-color: #d4edda;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border: 2px solid #28a745;
+        }
+        .fail-criteria {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border: 2px solid #dc3545;
+        }
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .tip {
+            background-color: #e7f3ff;
+            padding: 12px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #0066cc;
+        }
+        .warning {
+            background-color: #fff3cd;
+            padding: 12px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #ffc107;
+        }
+        .mistake {
+            background-color: #ffe6e6;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #dc3545;
+        }
+        .mistake-title {
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 8px;
+        }
+        .mistake-explanation {
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .correct-approach {
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+        .anatomy-diagram {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 2px solid #4682b4;
+        }
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 Mock OSCE Station S02: Groin Lump - Hernia Examination</h1>
+
+        <div class="station-header">
+            <h3>Station Information</h3>
+            <p><strong>Type:</strong> Surgery - Physical Examination (Groin/Inguinal Region)</p>
+            <p><strong>Time:</strong> 8 minutes</p>
+            <p><strong>Setting:</strong> Surgical Outpatient Clinic, Young District Hospital, NSW</p>
+            <p><strong>Difficulty:</strong> Intermediate</p>
+            <p><strong>AMC Blueprint Area:</strong> Abdominal Examination - Groin Lump Assessment</p>
+        </div>
+
+        <!-- SECTION 1: CANDIDATE INSTRUCTIONS -->
+        <div class="section candidate-instructions">
+            <h2>📋 Candidate Instructions</h2>
+
+            <h3>Scenario</h3>
+            <p>You are the surgical RMO in the outpatient clinic at Young District Hospital. Mr. David Thompson, a 58-year-old man, has been referred by his GP with a 3-month history of a lump in his right groin. The GP's referral letter states: "3/12 history right inguinal lump, appears when straining, reducible, painless. ?inguinal hernia. For surgical assessment."</p>
+
+            <h3>Your Task (8 minutes)</h3>
+            <p><strong>Examine the groin lump</strong> to determine the nature of the lump and assess its characteristics. You should:</p>
+            <ul>
+                <li>Perform a focused groin examination</li>
+                <li>Assess the lump characteristics</li>
+                <li>Differentiate between types of hernias</li>
+                <li>Check for complications</li>
+            </ul>
+
+            <p><strong>You do NOT need to take a full history</strong> - the patient has already provided this to the GP. Focus on examination.</p>
+
+            <h3>Examination Requirements:</h3>
+            <ul>
+                <li>Inspection (standing and lying)</li>
+                <li>Palpation of the lump</li>
+                <li>Assessment of lump characteristics</li>
+                <li>Cough impulse test</li>
+                <li>Reducibility assessment</li>
+                <li>Differentiation of hernia type</li>
+            </ul>
+
+            <div class="warning">
+                <strong>⏰ Time Warning:</strong> The examiner will give you a 1-minute warning at the 7-minute mark to allow you to summarize your findings and state your diagnosis.
+            </div>
+
+            <div class="tip">
+                <strong>💡 Australian Context:</strong> Groin lump examination is a common AMC OSCE station. Examiners expect systematic examination technique including: inspection (standing + lying), palpation, "above and medial" rule to differentiate inguinal from femoral hernia, and assessment for complications (irreducibility, strangulation).
+            </div>
+
+            <div class="anatomy-diagram">
+                <h4>🔍 Key Anatomical Landmarks to Identify:</h4>
+                <ul>
+                    <li><strong>Inguinal ligament:</strong> From ASIS (anterior superior iliac spine) to pubic tubercle</li>
+                    <li><strong>Mid-inguinal point:</strong> Midpoint between ASIS and pubic symphysis (superficial inguinal ring - direct hernia emerges here)</li>
+                    <li><strong>Deep inguinal ring:</strong> 1-2cm above mid-inguinal point (indirect hernia emerges here)</li>
+                    <li><strong>Pubic tubercle:</strong> Bony prominence on superior pubic ramus</li>
+                    <li><strong>Femoral canal:</strong> BELOW and LATERAL to pubic tubercle (femoral hernia location)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 2: SIMULATED PATIENT SCRIPT -->
+        <div class="section patient-script">
+            <h2>👤 Simulated Patient Script</h2>
+
+            <h3>Patient Background</h3>
+            <p><strong>Name:</strong> David Thompson</p>
+            <p><strong>Age:</strong> 58 years old</p>
+            <p><strong>Occupation:</strong> Warehouse manager (heavy lifting)</p>
+            <p><strong>Presentation:</strong> Right inguinal lump, 3 months duration</p>
+
+            <h3>Clinical Scenario</h3>
+            <p><strong>Diagnosis:</strong> Right indirect inguinal hernia (uncomplicated, reducible)</p>
+            <p><strong>Physical Findings:</strong></p>
+            <ul>
+                <li><strong>Lump location:</strong> Right inguinal region, above and medial to pubic tubercle</li>
+                <li><strong>Size:</strong> Approximately 4 × 3 cm when standing/straining</li>
+                <li><strong>Appearance:</strong> Soft swelling in right groin, disappears when lying flat</li>
+                <li><strong>Characteristics:</strong> Reducible, soft, non-tender, expansile cough impulse present</li>
+                <li><strong>Examination findings:</strong> Lump extends down towards scrotum (indirect hernia), disappears with gentle pressure, reappears with coughing/standing</li>
+            </ul>
+
+            <h3>Patient Instructions During Examination</h3>
+
+            <h4>When Asked to Stand:</h4>
+            <p><em>(Patient stands, lump becomes visible in right groin - soft bulge approximately 4cm × 3cm in right inguinal region, above and medial to pubic tubercle)</em></p>
+
+            <h4>When Asked to Cough (Standing Position):</h4>
+            <p><em>(Patient coughs, lump becomes more prominent and pushes outward against examiner's fingers - clear expansile cough impulse felt)</em></p>
+
+            <h4>When Asked to Lie Down:</h4>
+            <p><em>(Patient lies supine on examination couch, lump spontaneously reduces and disappears - groin appears normal)</em></p>
+
+            <h4>When Examiner Palpates the Lump (Standing):</h4>
+            <p><em>(Lump feels soft, compressible, non-tender. When gentle pressure applied, lump reduces completely back into abdomen with gurgling sensation)</em></p>
+
+            <h4>When Examiner Tests Cough Impulse (Lying Position):</h4>
+            <p><em>(Examiner places fingers over inguinal canal. Patient coughs. Examiner feels impulse pushing against fingers from lateral/superior direction, passing down inguinal canal - consistent with indirect hernia)</em></p>
+
+            <h4>When Asked "Does This Hurt?"</h4>
+            <p>"No, it's not painful at all. Just a bit uncomfortable sometimes when it's out."</p>
+
+            <h4>If Asked About Symptoms:</h4>
+            <ul>
+                <li><strong>"When do you notice the lump?"</strong> "It comes out when I'm lifting heavy boxes at work, or if I cough or strain"</li>
+                <li><strong>"Does it go away?"</strong> "Yes, if I lie down it goes back in by itself. Sometimes I have to push it back gently"</li>
+                <li><strong>"Any pain?"</strong> "No, not really. Just a dragging feeling in my groin at the end of the day"</li>
+                <li><strong>"Can you reduce it yourself?"</strong> "Yes, I can usually push it back in gently"</li>
+                <li><strong>"Ever got stuck?"</strong> "No, never"</li>
+                <li><strong>"Any bowel problems?"</strong> "No, bowels are normal"</li>
+            </ul>
+
+            <h3>Physical Examination Findings</h3>
+
+            <h4>Inspection (Standing):</h4>
+            <ul>
+                <li>Obvious bulge in right inguinal region (approximately 4 × 3 cm)</li>
+                <li>Swelling located ABOVE and MEDIAL to pubic tubercle (inguinal hernia, not femoral)</li>
+                <li>Lump has ovoid shape, smooth contour</li>
+                <li>Skin overlying lump appears normal (no erythema, no visible veins)</li>
+                <li>Scrotum appears normal (lump does extend slightly toward scrotum - indirect pattern)</li>
+                <li>Left groin appears normal (no contralateral hernia visible)</li>
+            </ul>
+
+            <h4>Inspection (Lying):</h4>
+            <ul>
+                <li>Lump disappears completely when patient lies flat</li>
+                <li>Both groins appear symmetrical</li>
+                <li>No visible masses or scars</li>
+            </ul>
+
+            <h4>Palpation Findings:</h4>
+            <ul>
+                <li><strong>Temperature:</strong> Same as surrounding skin (not hot)</li>
+                <li><strong>Tenderness:</strong> Non-tender (gentle palpation does not cause pain)</li>
+                <li><strong>Consistency:</strong> Soft, compressible (like a balloon filled with water)</li>
+                <li><strong>Reducibility:</strong> Completely reducible with gentle pressure (gurgling sensation as contents return to abdomen)</li>
+                <li><strong>Edges:</strong> Cannot define edges clearly (lump extends into inguinal canal)</li>
+                <li><strong>Cough impulse:</strong> Positive expansile cough impulse (lump expands and pushes outward when patient coughs)</li>
+                <li><strong>Auscultation:</strong> Bowel sounds audible over lump (confirms bowel content)</li>
+            </ul>
+
+            <h4>Special Tests:</h4>
+
+            <h5>1. "Above and Medial" Test (Relation to Pubic Tubercle):</h5>
+            <p><em>(Examiner palpates pubic tubercle with one hand, lump with other hand. Lump is clearly ABOVE and MEDIAL to pubic tubercle → indicates INGUINAL hernia, NOT femoral)</em></p>
+
+            <h5>2. Occlusion Test (Deep Ring Occlusion Test):</h5>
+            <p><em>(Patient lies down, lump reduces. Examiner places fingers over deep inguinal ring - approximately 1-2cm above mid-inguinal point. Patient stands or coughs. If lump does NOT appear → suggests INDIRECT inguinal hernia, as occlusion of deep ring prevents hernia from emerging. If lump still appears despite occlusion → suggests DIRECT inguinal hernia)</em></p>
+            <p><strong>Finding in this case:</strong> Lump does NOT appear when deep ring occluded → INDIRECT inguinal hernia ✅</p>
+
+            <h5>3. Direction of Impulse (Zieman's Test):</h5>
+            <p><em>(Examiner invaginates scrotal skin into superficial inguinal ring with index finger, asks patient to cough. In INDIRECT hernia, impulse felt on tip of finger from lateral direction. In DIRECT hernia, impulse felt on side of finger from medial direction)</em></p>
+            <p><strong>Finding in this case:</strong> Impulse felt on fingertip from lateral/superior direction → INDIRECT inguinal hernia ✅</p>
+
+            <h3>Patient Concerns</h3>
+            <h4>If Asked "What Are You Hoping We Can Do?"</h4>
+            <p>"My GP said I might need an operation. I'm okay with that - I just want to get it fixed before it gets worse. I'm worried it might get stuck one day and I'll need emergency surgery."</p>
+
+            <h4>If Asked "Any Concerns About Surgery?"</h4>
+            <p>"I'm a bit worried about time off work - I'm a warehouse manager and I need to be on my feet. How long would I be off?"</p>
+
+            <h3>Emotional State</h3>
+            <p>Patient is cooperative, not anxious, understands he likely needs surgery. Willing to have examination and comfortable being examined in underwear.</p>
+        </div>
+
+        <!-- SECTION 3: EXAMINER INSTRUCTIONS -->
+        <div class="section examiner-instructions">
+            <h2>🎓 Examiner Instructions</h2>
+
+            <h3>Your Role</h3>
+            <p>You are observing a groin examination station. The candidate should demonstrate systematic examination technique for a groin lump, including:</p>
+            <ul>
+                <li>Adequate exposure and patient positioning</li>
+                <li>Inspection (standing and lying positions)</li>
+                <li>Systematic palpation technique</li>
+                <li>Assessment of lump characteristics (site, size, shape, consistency, etc.)</li>
+                <li>Cough impulse test</li>
+                <li>Reducibility assessment</li>
+                <li>Differentiation between inguinal and femoral hernia ("above and medial" rule)</li>
+                <li>Differentiation between direct and indirect inguinal hernia (occlusion test)</li>
+            </ul>
+
+            <h3>Station Objectives</h3>
+            <p>This station assesses the candidate's ability to:</p>
+            <ol>
+                <li>Perform a systematic groin examination</li>
+                <li>Identify a hernia and distinguish it from other groin lumps</li>
+                <li>Differentiate between inguinal and femoral hernias</li>
+                <li>Differentiate between direct and indirect inguinal hernias</li>
+                <li>Assess for complications (irreducibility, strangulation)</li>
+                <li>Communicate findings clearly</li>
+            </ol>
+
+            <h3>Key Examination Steps to Observe</h3>
+            <p><strong>Expected Sequence:</strong></p>
+            <ol>
+                <li>Introduction, consent, chaperone offered, handwashing</li>
+                <li>Adequate exposure (patient in underwear, groin exposed)</li>
+                <li>Inspection - patient STANDING (lump visible)</li>
+                <li>Inspection - patient LYING (lump disappears if reducible)</li>
+                <li>Palpation of lump (standing position): temperature, tenderness, consistency, size</li>
+                <li>Assessment of lump characteristics: reducibility, cough impulse</li>
+                <li>Identification of pubic tubercle (key landmark)</li>
+                <li>"Above and medial" test (inguinal vs femoral differentiation)</li>
+                <li>Deep ring occlusion test (direct vs indirect differentiation)</li>
+                <li>Examination of contralateral side</li>
+                <li>Examination of scrotum/external genitalia (rule out scrotal cause)</li>
+                <li>Thank patient, allow re-dressing</li>
+                <li>Present findings and diagnosis</li>
+            </ol>
+
+            <h3>Physical Findings (For Examiner's Reference)</h3>
+            <p><strong>Diagnosis: Right INDIRECT inguinal hernia (uncomplicated, reducible)</strong></p>
+            <ul>
+                <li>✅ Lump in right inguinal region, ABOVE and MEDIAL to pubic tubercle</li>
+                <li>✅ Appears when standing/straining, disappears when lying</li>
+                <li>✅ Soft, compressible, non-tender</li>
+                <li>✅ Completely reducible (with gurgling)</li>
+                <li>✅ Positive expansile cough impulse</li>
+                <li>✅ Bowel sounds audible over lump</li>
+                <li>✅ Lump does NOT appear when deep ring occluded (INDIRECT hernia)</li>
+                <li>✅ Impulse felt at fingertip when invaginating scrotal skin (INDIRECT hernia)</li>
+                <li>✅ Extends toward scrotum (INDIRECT pattern)</li>
+                <li>❌ No signs of irreducibility or strangulation (soft, non-tender, reducible)</li>
+            </ul>
+
+            <h3>Timing Instructions</h3>
+            <ul>
+                <li>Allow 7 minutes for examination</li>
+                <li>Give 1-minute warning at 7 minutes</li>
+                <li>Ask for summary and diagnosis in final minute</li>
+                <li>Total station time: 8 minutes</li>
+            </ul>
+
+            <h3>Expected Summary</h3>
+            <p>The candidate should provide a concise summary including:</p>
+            <ul>
+                <li>Patient demographics</li>
+                <li>Examination findings (positive and negative)</li>
+                <li>Diagnosis: Right INDIRECT inguinal hernia, uncomplicated, reducible</li>
+                <li>Rationale for diagnosis (above and medial to pubic tubercle, occlusion test positive for indirect)</li>
+                <li>Management plan (elective surgical repair)</li>
+            </ul>
+
+            <div class="fail-criteria">
+                <h4>🚨 Critical Failures (Automatic Fail)</h4>
+                <ul>
+                    <li>Fails to obtain consent before examination</li>
+                    <li>Does not examine patient in STANDING position (lump won't be visible lying down)</li>
+                    <li>Does not test for cough impulse</li>
+                    <li>Does not assess reducibility</li>
+                    <li>Cannot identify pubic tubercle (essential landmark)</li>
+                    <li>Does not differentiate inguinal from femoral hernia</li>
+                    <li>Causes significant pain or discomfort to patient</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 4: MARKING CHECKLIST -->
+        <div class="section marking-checklist">
+            <h2>✅ Marking Checklist (80 Points Total)</h2>
+
+            <div class="pass-criteria">
+                <h4>Pass Mark: ≥56/80 (70%)</h4>
+                <p>Candidates must achieve at least 70% overall AND must not trigger any critical failures.</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 60%">Assessment Criteria</th>
+                        <th style="width: 15%">Points</th>
+                        <th style="width: 25%">Achieved (✓/✗)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- SECTION 1: INTRODUCTION & PREPARATION (10 points) -->
+                    <tr>
+                        <td colspan="3"><strong>SECTION 1: INTRODUCTION & PREPARATION (10 points)</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Introduces self with name and role</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Confirms patient identity and obtains consent for examination</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Offers chaperone</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Washes hands or uses alcohol gel</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Ensures adequate exposure (patient in underwear, groin area visible)</td>
+                        <td>1</td>
+                        <td></td>
+                    </tr>
+
+                    <!-- SECTION 2: INSPECTION (15 points) -->
+                    <tr>
+                        <td colspan="3"><strong>SECTION 2: INSPECTION (15 points)</strong></td>
+                    </tr>
+                    <tr>
+                        <td><span class="critical-item">🚨 Inspects patient in STANDING position - CRITICAL</span></td>
+                        <td>5</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Inspects patient in LYING position (to assess reducibility)</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Comments on presence/absence of lump in right groin</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Inspects BOTH groins (compares left and right)</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Comments on skin changes (redness, bruising, scars)</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Inspects scrotum/external genitalia (rules out scrotal pathology)</td>
+                        <td>1</td>
+                        <td></td>
+                    </tr>
+
+                    <!-- SECTION 3: PALPATION & LUMP CHARACTERISTICS (30 points) -->
+                    <tr>
+                        <td colspan="3"><strong>SECTION 3: PALPATION & LUMP CHARACTERISTICS (30 points)</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Asks "Does this hurt?" before palpating (demonstrates care)</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Assesses temperature of lump (using back of hand)</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Assesses tenderness (gentle palpation)</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Assesses consistency (soft, firm, hard)</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Assesses size (approximately measures lump)</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="critical-item">🚨 Tests for COUGH IMPULSE - CRITICAL (asks patient to cough while palpating lump)</span></td>
+                        <td>5</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="critical-item">🚨 Assesses REDUCIBILITY - CRITICAL (applies gentle pressure to see if lump reduces)</span></td>
+                        <td>5</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="red-flag">🚨 Identifies PUBIC TUBERCLE (key anatomical landmark)</span></td>
+                        <td>4</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="critical-item">🚨 "Above and medial" test - determines if lump is above/medial to pubic tubercle (inguinal) or below/lateral (femoral)</span></td>
+                        <td>5</td>
+                        <td></td>
+                    </tr>
+
+                    <!-- SECTION 4: SPECIAL TESTS & DIFFERENTIATION (20 points) -->
+                    <tr>
+                        <td colspan="3"><strong>SECTION 4: SPECIAL TESTS & DIFFERENTIATION (20 points)</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Performs deep ring occlusion test (to differentiate direct vs indirect hernia)</td>
+                        <td>6</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Invaginates scrotal skin to assess direction of impulse (Zieman's test - optional advanced technique)</td>
+                        <td>4</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Auscultates over lump (listens for bowel sounds - confirms bowel content)</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Examines contralateral (left) groin systematically</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Thanks patient and allows re-dressing/maintains dignity</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="red-flag">🚨 Checks for signs of complications (irreducibility, strangulation - tenderness, erythema, hot)</span></td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+
+                    <!-- SECTION 5: PRESENTATION & DIAGNOSIS (5 points) -->
+                    <tr>
+                        <td colspan="3"><strong>SECTION 5: PRESENTATION & DIAGNOSIS (5 points)</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Presents findings clearly and systematically</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>States correct diagnosis (right indirect inguinal hernia, uncomplicated)</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Mentions appropriate next step (elective surgical repair)</td>
+                        <td>1</td>
+                        <td></td>
+                    </tr>
+
+                    <!-- TOTAL -->
+                    <tr style="background-color: #d4edda; font-weight: bold;">
+                        <td><strong>TOTAL SCORE</strong></td>
+                        <td><strong>/80</strong></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="fail-criteria">
+                <h4>🚨 Critical Failures (Automatic Fail Regardless of Score)</h4>
+                <ul>
+                    <li>❌ Fails to obtain consent before examination</li>
+                    <li>❌ Does not examine patient in STANDING position (hernia may not be visible lying down)</li>
+                    <li>❌ Does not test for cough impulse</li>
+                    <li>❌ Does not assess reducibility</li>
+                    <li>❌ Cannot identify pubic tubercle</li>
+                    <li>❌ Does not differentiate inguinal from femoral hernia ("above and medial" test)</li>
+                    <li>❌ Causes significant pain or discomfort (rough examination)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 5: MODEL ANSWER -->
+        <div class="section model-answer">
+            <h2>📝 Model Answer - Examination Findings & Diagnosis</h2>
+
+            <h3>Patient Summary</h3>
+            <p><strong>"This is Mr. David Thompson, a 58-year-old man with a right inguinal lump. On examination, I have identified a right INDIRECT inguinal hernia, which is uncomplicated and reducible."</strong></p>
+
+            <h3>Examination Findings</h3>
+
+            <h4>Inspection:</h4>
+            <ul>
+                <li>✅ <strong>Standing position:</strong> Obvious 4 × 3 cm ovoid swelling in right inguinal region</li>
+                <li>✅ <strong>Lying position:</strong> Swelling disappears completely (spontaneously reducible)</li>
+                <li>✅ <strong>Location:</strong> ABOVE and MEDIAL to pubic tubercle (inguinal hernia, NOT femoral)</li>
+                <li>✅ <strong>Skin:</strong> Normal appearance, no erythema, no bruising</li>
+                <li>✅ <strong>Scrotum:</strong> Normal, lump extends slightly toward scrotum (indirect pattern)</li>
+                <li>❌ <strong>Left groin:</strong> Normal, no contralateral hernia visible</li>
+            </ul>
+
+            <h4>Palpation:</h4>
+            <ul>
+                <li><strong>Temperature:</strong> Same as surrounding skin (not hot - no strangulation)</li>
+                <li><strong>Tenderness:</strong> Non-tender (no strangulation)</li>
+                <li><strong>Consistency:</strong> Soft, compressible</li>
+                <li><strong>Size:</strong> Approximately 4 × 3 cm</li>
+                <li>✅ <strong>Cough impulse:</strong> POSITIVE - expansile impulse felt when patient coughs (confirms hernia)</li>
+                <li>✅ <strong>Reducibility:</strong> Completely reducible with gentle pressure, with gurgling sensation (bowel contents)</li>
+                <li>✅ <strong>Bowel sounds:</strong> Audible over lump (confirms bowel content in hernia sac)</li>
+            </ul>
+
+            <h4>Special Tests:</h4>
+            <ul>
+                <li>✅ <strong>"Above and medial" rule:</strong> Lump is ABOVE and MEDIAL to pubic tubercle → INGUINAL hernia (NOT femoral)</li>
+                <li>✅ <strong>Deep ring occlusion test:</strong> When deep inguinal ring occluded (1-2cm above mid-inguinal point), hernia does NOT reappear when patient coughs → INDIRECT inguinal hernia (emerges through deep ring)</li>
+                <li>✅ <strong>Direction of impulse (Zieman's test):</strong> Impulse felt at fingertip from lateral/superior direction → INDIRECT inguinal hernia</li>
+                <li>✅ <strong>Extension pattern:</strong> Hernia extends toward scrotum → consistent with INDIRECT (follows path of spermatic cord through inguinal canal)</li>
+            </ul>
+
+            <h4>Signs of Complications:</h4>
+            <ul>
+                <li>❌ No irreducibility (hernia reduces completely)</li>
+                <li>❌ No signs of strangulation (not tender, not erythematous, not hot)</li>
+                <li>❌ No signs of obstruction (no abdominal distension, patient reports normal bowel habit)</li>
+            </ul>
+
+            <h3>Diagnosis</h3>
+            <p><strong>Right INDIRECT inguinal hernia, uncomplicated, reducible</strong></p>
+
+            <h3>Rationale for Diagnosis</h3>
+
+            <h4>Why INGUINAL (not femoral)?</h4>
+            <ul>
+                <li>✅ Lump is ABOVE and MEDIAL to pubic tubercle (inguinal location)</li>
+                <li>✅ Male patient (inguinal hernias 10× more common in males than femoral)</li>
+                <li>✅ Bowel sounds audible (femoral hernias often contain only omentum)</li>
+            </ul>
+
+            <h4>Why INDIRECT (not direct)?</h4>
+            <ul>
+                <li>✅ Deep ring occlusion test positive (hernia does NOT appear when deep ring occluded)</li>
+                <li>✅ Direction of impulse from lateral/superior (deep ring location)</li>
+                <li>✅ Extends toward scrotum (follows spermatic cord - indirect pattern)</li>
+                <li>✅ Patient age 58 (indirect hernias occur at any age; direct hernias typically >40 but less likely to extend to scrotum)</li>
+            </ul>
+
+            <h4>Why UNCOMPLICATED?</h4>
+            <ul>
+                <li>✅ Completely reducible (not irreducible)</li>
+                <li>✅ Non-tender (not strangulated)</li>
+                <li>✅ Normal skin color and temperature (no ischemia)</li>
+                <li>✅ No signs of bowel obstruction</li>
+            </ul>
+
+            <h3>Differential Diagnoses (Other Groin Lumps to Consider)</h3>
+
+            <table>
+                <tr>
+                    <th>Diagnosis</th>
+                    <th>Key Features</th>
+                    <th>How to Differentiate</th>
+                </tr>
+                <tr>
+                    <td><strong>Femoral hernia</strong></td>
+                    <td>Lump BELOW and LATERAL to pubic tubercle</td>
+                    <td>"Above and medial" test: Inguinal = above/medial, Femoral = below/lateral. This patient's lump is above/medial → NOT femoral</td>
+                </tr>
+                <tr>
+                    <td><strong>Direct inguinal hernia</strong></td>
+                    <td>Emerges through Hesselbach's triangle (medial to inferior epigastric vessels), does NOT extend to scrotum, still appears when deep ring occluded</td>
+                    <td>Occlusion test: This patient's hernia does NOT appear when deep ring occluded → NOT direct. Also, extends toward scrotum → indirect pattern</td>
+                </tr>
+                <tr>
+                    <td><strong>Inguinal lymphadenopathy</strong></td>
+                    <td>Multiple discrete lumps, firm consistency, may be tender, NO cough impulse, NOT reducible</td>
+                    <td>This patient has single lump, soft, positive cough impulse, completely reducible → NOT lymph nodes</td>
+                </tr>
+                <tr>
+                    <td><strong>Saphena varix</strong></td>
+                    <td>Compressible lump at saphenofemoral junction (groin crease), blue discoloration, disappears when lying, positive cough impulse BUT no bowel sounds, may have varicose veins distally</td>
+                    <td>This patient has bowel sounds over lump, no blue discoloration, lump above inguinal ligament → NOT saphena varix</td>
+                </tr>
+                <tr>
+                    <td><strong>Femoral artery aneurysm</strong></td>
+                    <td>Pulsatile, expansile mass, non-reducible, audible bruit on auscultation</td>
+                    <td>This patient's lump is reducible, no pulsation described, has cough impulse → NOT aneurysm</td>
+                </tr>
+                <tr>
+                    <td><strong>Lipoma</strong></td>
+                    <td>Soft, lobulated, non-tender, NO cough impulse, NOT reducible, does not change with position</td>
+                    <td>This patient's lump has cough impulse, reducible, disappears when lying → NOT lipoma</td>
+                </tr>
+                <tr>
+                    <td><strong>Undescended testis</strong></td>
+                    <td>Smooth, ovoid, mobile, NO cough impulse, empty hemiscrotum</td>
+                    <td>This patient has normal scrotum (both testes palpable), cough impulse present → NOT undescended testis</td>
+                </tr>
+            </table>
+
+            <h3>Anatomical Review - Inguinal Canal</h3>
+
+            <div class="anatomy-diagram">
+                <h4>Key Anatomical Points:</h4>
+
+                <p><strong>Inguinal Canal:</strong></p>
+                <ul>
+                    <li><strong>Length:</strong> 4 cm oblique passage in anterior abdominal wall</li>
+                    <li><strong>Direction:</strong> Downward and medially, parallel to inguinal ligament</li>
+                    <li><strong>Contents (male):</strong> Spermatic cord (ductus deferens, testicular vessels, cremasteric vessels, nerves)</li>
+                    <li><strong>Contents (female):</strong> Round ligament of uterus</li>
+                </ul>
+
+                <p><strong>Inguinal Canal Boundaries:</strong></p>
+                <ul>
+                    <li><strong>Anterior wall:</strong> External oblique aponeurosis</li>
+                    <li><strong>Posterior wall:</strong> Transversalis fascia, conjoint tendon medially</li>
+                    <li><strong>Roof:</strong> Internal oblique and transversus abdominis arching fibers</li>
+                    <li><strong>Floor:</strong> Inguinal ligament</li>
+                </ul>
+
+                <p><strong>Two Openings:</strong></p>
+                <ul>
+                    <li><strong>Deep inguinal ring:</strong> Opening in transversalis fascia, 1-2cm above mid-inguinal point, lateral to inferior epigastric vessels</li>
+                    <li><strong>Superficial inguinal ring:</strong> Opening in external oblique aponeurosis, above and medial to pubic tubercle</li>
+                </ul>
+
+                <p><strong>Hesselbach's Triangle (Direct Hernia Site):</strong></p>
+                <ul>
+                    <li><strong>Boundaries:</strong></li>
+                    <ul>
+                        <li>Lateral: Inferior epigastric vessels</li>
+                        <li>Medial: Lateral border of rectus abdominis</li>
+                        <li>Inferior: Inguinal ligament</li>
+                    </ul>
+                    <li>Direct hernias emerge through this triangle (weakness in transversalis fascia)</li>
+                </ul>
+
+                <p><strong>Femoral Canal (Femoral Hernia Site):</strong></p>
+                <ul>
+                    <li><strong>Location:</strong> BELOW inguinal ligament, medial compartment of femoral sheath</li>
+                    <li><strong>Boundaries:</strong></li>
+                    <ul>
+                        <li>Anterior: Inguinal ligament</li>
+                        <li>Posterior: Pectineal ligament</li>
+                        <li>Medial: Lacunar ligament</li>
+                        <li>Lateral: Femoral vein</li>
+                    </ul>
+                    <li>Femoral hernias emerge BELOW and LATERAL to pubic tubercle</li>
+                </ul>
+            </div>
+
+            <h3>Management Plan - eTG 2024 Guidelines</h3>
+
+            <h4>1. Immediate Management (Clinic Setting):</h4>
+            <ul>
+                <li>✅ <strong>Confirm diagnosis:</strong> Indirect inguinal hernia, uncomplicated, reducible</li>
+                <li>✅ <strong>Safety netting:</strong> Advise patient on red flag symptoms (severe pain, irreducibility, vomiting, abdominal distension → emergency presentation)</li>
+                <li>✅ <strong>Lifestyle advice:</strong> Avoid heavy lifting until surgery, manage constipation (straining increases risk), smoking cessation if applicable</li>
+            </ul>
+
+            <h4>2. Investigation:</h4>
+            <ul>
+                <li><strong>No imaging required</strong> for straightforward clinical diagnosis of inguinal hernia</li>
+                <li><strong>Ultrasound groin</strong> may be considered if:
+                    <ul>
+                        <li>Diagnosis uncertain (occult hernia)</li>
+                        <li>Concern about alternative diagnosis (lymph nodes, lipoma, etc.)</li>
+                    </ul>
+                </li>
+                <li><strong>Pre-operative workup:</strong>
+                    <ul>
+                        <li>FBC, EUC (routine pre-operative bloods)</li>
+                        <li>ECG if age >50 or cardiovascular risk factors</li>
+                        <li>CXR if respiratory comorbidities</li>
+                        <li>Anesthetic assessment</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>3. Definitive Management - Surgical Repair:</h4>
+
+            <p><strong>Indications for Surgery (Australian Guidelines 2024):</strong></p>
+            <ul>
+                <li>✅ Symptomatic inguinal hernia (this patient - dragging discomfort, visible lump, impacts work)</li>
+                <li>✅ Risk of complications (incarceration, strangulation - occurs in 1-3% per year)</li>
+                <li>⚠️ Asymptomatic hernias: "Watchful waiting" is acceptable alternative in low-risk patients, but most Australian surgeons recommend elective repair due to quality of life and low surgical risk</li>
+            </ul>
+
+            <p><strong>Surgical Options (eTG 2024 & RACS Guidelines):</strong></p>
+
+            <table>
+                <tr>
+                    <th>Approach</th>
+                    <th>Technique</th>
+                    <th>Advantages</th>
+                    <th>Disadvantages</th>
+                </tr>
+                <tr>
+                    <td><strong>Laparoscopic repair (TAPP or TEP)</strong><br><em>Preferred for bilateral/recurrent hernias</em></td>
+                    <td>TAPP = Transabdominal preperitoneal<br>TEP = Totally extraperitoneal<br>Mesh placed in preperitoneal space</td>
+                    <td>
+                        • Less post-op pain<br>
+                        • Faster return to normal activity (1-2 weeks)<br>
+                        • Lower recurrence rate (1-2%)<br>
+                        • Can repair bilateral hernias simultaneously<br>
+                        • Better cosmetic result (3 small incisions)
+                    </td>
+                    <td>
+                        • Requires general anaesthesia<br>
+                        • Longer operating time<br>
+                        • Higher cost<br>
+                        • Specialist expertise required<br>
+                        • Risk of visceral/vascular injury (rare)
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Open repair (Lichtenstein)</strong><br><em>Gold standard for primary unilateral hernias</em></td>
+                    <td>Open inguinal incision, mesh placed over posterior wall, secured to inguinal ligament and conjoint tendon</td>
+                    <td>
+                        • Can be done under local/regional anaesthesia<br>
+                        • Shorter operating time<br>
+                        • Lower cost<br>
+                        • Day-case procedure<br>
+                        • Widely available<br>
+                        • Excellent outcomes (recurrence 1-3%)
+                    </td>
+                    <td>
+                        • Slightly more post-op pain<br>
+                        • Longer return to work (2-3 weeks)<br>
+                        • Visible scar (5-6cm)<br>
+                        • Risk of chronic groin pain (5-10%)
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Non-mesh repair (Shouldice)</strong><br><em>Rarely used in Australia</em></td>
+                    <td>Multilayered suture repair of posterior wall without mesh</td>
+                    <td>
+                        • No foreign material<br>
+                        • Useful if mesh contraindicated (infection)
+                    </td>
+                    <td>
+                        • Higher recurrence rate (5-10%)<br>
+                        • Technically demanding<br>
+                        • Rarely performed in Australia
+                    </td>
+                </tr>
+            </table>
+
+            <p><strong>Recommended Approach for This Patient:</strong></p>
+            <ul>
+                <li><strong>Open Lichtenstein mesh repair</strong> (first-line for unilateral inguinal hernia in Australia)</li>
+                <li><strong>Day-case surgery</strong> under local anaesthesia with sedation OR general anaesthesia</li>
+                <li><strong>Mesh type:</strong> Lightweight polypropylene mesh (reduces chronic pain risk)</li>
+                <li><strong>Antibiotic prophylaxis:</strong> Single dose cefazolin 2g IV pre-incision (eTG 2024)</li>
+            </ul>
+
+            <h4>4. Post-Operative Management:</h4>
+            <ul>
+                <li><strong>Analgesia:</strong>
+                    <ul>
+                        <li>Paracetamol 1g PO 6-hourly (regularly for first 48 hours)</li>
+                        <li>Ibuprofen 400mg PO 8-hourly (if no contraindications)</li>
+                        <li>Oxycodone 5-10mg PO PRN (for breakthrough pain)</li>
+                    </ul>
+                </li>
+                <li><strong>Wound care:</strong>
+                    <ul>
+                        <li>Keep dressing dry for 48 hours</li>
+                        <li>Shower after 48 hours (pat dry, no soaking)</li>
+                        <li>Sutures: Usually absorbable (no removal needed)</li>
+                        <li>Monitor for infection (increasing pain, redness, discharge)</li>
+                    </ul>
+                </li>
+                <li><strong>Activity restrictions:</strong>
+                    <ul>
+                        <li>Mobilize same day (reduces DVT risk)</li>
+                        <li>Avoid heavy lifting (>5kg) for 4-6 weeks</li>
+                        <li>Return to light duties: 1-2 weeks</li>
+                        <li>Return to heavy manual work: 4-6 weeks</li>
+                        <li>Driving: When able to perform emergency stop without pain (usually 1-2 weeks)</li>
+                    </ul>
+                </li>
+                <li><strong>Complications to monitor:</strong>
+                    <ul>
+                        <li>🚨 Wound infection (1-2%)</li>
+                        <li>🚨 Haematoma/seroma (3-5%)</li>
+                        <li>🚨 Urinary retention (especially if older male, prostatic hypertrophy)</li>
+                        <li>🚨 Chronic groin pain (5-10% - may require mesh removal in severe cases)</li>
+                        <li>🚨 Recurrence (1-3% with mesh repair)</li>
+                        <li>🚨 Testicular ischemia/atrophy (rare, <1%)</li>
+                    </ul>
+                </li>
+                <li><strong>Follow-up:</strong> Routine review at 2 weeks (wound check), 6 weeks (confirm recovery)</li>
+            </ul>
+
+            <h4>5. Prognosis:</h4>
+            <ul>
+                <li>Excellent prognosis with elective repair</li>
+                <li>95-97% success rate (no recurrence at 5 years with mesh repair)</li>
+                <li>Return to normal activities: 4-6 weeks</li>
+                <li>Complication rate low in elective setting (<5%)</li>
+            </ul>
+
+            <h3>Emergency Presentation - Strangulated Hernia</h3>
+
+            <p><strong>If hernia becomes irreducible/strangulated (emergency):</strong></p>
+
+            <h4>Clinical Features of Strangulation: 🚨</h4>
+            <ul>
+                <li>Sudden severe pain in groin</li>
+                <li>Irreducible lump (cannot push back in)</li>
+                <li>Tender, tense lump</li>
+                <li>Overlying skin erythema/bruising</li>
+                <li>Signs of bowel obstruction (vomiting, abdominal distension, absolute constipation)</li>
+                <li>Systemic signs (fever, tachycardia, hypotension if bowel necrosis)</li>
+            </ul>
+
+            <h4>Emergency Management:</h4>
+            <ul>
+                <li>🚨 <strong>Urgent surgical review</strong> (within 2 hours)</li>
+                <li><strong>NBM (nil by mouth)</strong></li>
+                <li><strong>IV access:</strong> Large-bore cannula, IV fluids (sodium chloride 0.9%)</li>
+                <li><strong>Analgesia:</strong> Morphine 2.5-5mg IV PRN</li>
+                <li><strong>Anti-emetics:</strong> Ondansetron 4-8mg IV</li>
+                <li><strong>Nasogastric tube:</strong> If vomiting/bowel obstruction</li>
+                <li><strong>Investigations:</strong>
+                    <ul>
+                        <li>FBC (elevated WCC if ischemia/necrosis)</li>
+                        <li>EUC (may be dehydrated)</li>
+                        <li>Lactate (elevated if bowel ischemia)</li>
+                        <li>Group & hold</li>
+                        <li>CT abdomen/pelvis if diagnosis unclear (but don't delay surgery)</li>
+                    </ul>
+                </li>
+                <li><strong>Antibiotics:</strong> Piperacillin-tazobactam 4.5g IV (if signs of bowel compromise)</li>
+                <li><strong>Emergency surgery:</strong> Open repair, assess bowel viability, resect if necrotic</li>
+            </ul>
+
+            <p><strong>Mortality:</strong> Strangulated hernia has 5-10% mortality (vs <0.5% for elective repair) → emphasizes importance of elective repair before complications occur.</p>
+
+            <h3>Patient Counseling - Key Points</h3>
+
+            <h4>What to Tell the Patient:</h4>
+            <ol>
+                <li><strong>Diagnosis:</strong> "You have a hernia in your right groin. This is where part of your bowel pushes through a weak spot in the muscle wall."</li>
+                <li><strong>Why it happened:</strong> "Hernias are common, especially in men. They can be caused by heavy lifting, straining, or sometimes just a natural weakness in the muscle."</li>
+                <li><strong>Natural history:</strong> "Hernias don't get better on their own - they usually stay the same or gradually get bigger over time."</li>
+                <li><strong>Risk of complications:</strong> "There's a small risk (1-3% per year) that the hernia could get stuck and cut off blood supply to your bowel. This would be an emergency requiring urgent surgery."</li>
+                <li><strong>Treatment options:</strong> "The definitive treatment is surgery to repair the hernia with a mesh. This is a very common, safe operation with excellent results."</li>
+                <li><strong>Surgery details:</strong>
+                    <ul>
+                        <li>"Usually day-case surgery (go home same day)"</li>
+                        <li>"Can be done under local anaesthetic or general anaesthetic"</li>
+                        <li>"Takes about 45-60 minutes"</li>
+                        <li>"Success rate 95-97%"</li>
+                    </ul>
+                </li>
+                <li><strong>Recovery:</strong>
+                    <ul>
+                        <li>"Return to light duties: 1-2 weeks"</li>
+                        <li>"Return to heavy lifting: 4-6 weeks"</li>
+                        <li>"Most people are back to normal in about a month"</li>
+                    </ul>
+                </li>
+                <li><strong>Alternative (watchful waiting):</strong> "If the hernia is very small and not causing problems, sometimes we can monitor it without surgery. However, most people choose surgery because of the risk of complications and the impact on quality of life."</li>
+            </ol>
+
+            <h4>Answering This Patient's Concerns:</h4>
+            <p><strong>Patient asked: "How long would I be off work?"</strong></p>
+            <p><strong>Answer:</strong> "For your job as a warehouse manager, it depends on how much heavy lifting you do. If you're mainly supervising and doing light duties, you could return in 1-2 weeks. If you're regularly lifting heavy boxes yourself, I'd recommend taking 4-6 weeks off to allow the mesh to heal properly. Going back to heavy lifting too early increases the risk of the hernia coming back."</p>
+
+            <h3>Australian-Specific Considerations</h3>
+            <ul>
+                <li><strong>Public vs private:</strong> Public waiting list for elective hernia repair typically 3-12 months (category 3). Private insurance: usually within 2-4 weeks.</li>
+                <li><strong>Medicare rebates:</strong> Inguinal hernia repair is covered under Medicare (item 30614 - open repair, item 30618 - laparoscopic repair)</li>
+                <li><strong>Terminology:</strong> Use "theatre" (not OR), "day-case surgery" (not same-day surgery), "groin" (preferred over "inguinal" in patient communication)</li>
+                <li><strong>Referral pathway:</strong> GP referral → Surgical outpatients → Waitlist for elective surgery OR private surgeon consult</li>
+                <li><strong>Guidelines:</strong> eTG 2024, RACS Clinical Practice Guidelines for Inguinal Hernia (2024)</li>
+            </ul>
+        </div>
+
+        <!-- SECTION 6: IMG COMMON MISTAKES -->
+        <div class="section img-mistakes">
+            <h2>⚠️ IMG Common Mistakes - Critical Errors to Avoid</h2>
+
+            <p><strong>These 10 mistakes are commonly made by international medical graduates in groin examination stations and will lead to failure in the AMC OSCE.</strong></p>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #1: Not Examining Patient in Standing Position</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> Reducible inguinal hernias may NOT be visible when the patient is lying down. If you only examine the patient lying on the couch, you may completely miss the hernia. Australian OSCE stations expect examination in BOTH standing and lying positions.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates are used to examining all patients lying down. They forget that hernias are dynamic - they appear with increased intra-abdominal pressure (standing, coughing) and disappear when pressure reduces (lying down).
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: ALWAYS examine groin lumps with patient STANDING first (to see the lump at its largest), then lying (to assess reducibility). Say to the patient: "I'd like to examine you standing up first, then lying down on the couch."
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #2: Not Testing for Cough Impulse</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> Cough impulse is the GOLD STANDARD test to confirm a hernia. Without testing for cough impulse, you cannot definitively diagnose a hernia. This is a CRITICAL FAILURE if omitted.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates palpate the lump but forget to ask the patient to cough while palpating. An expansile cough impulse (lump pushes outward with each cough) confirms that the lump is connected to the abdominal cavity = hernia.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: Place your hand firmly over the lump and say "Can you give me a big cough please?" Feel for an expansile impulse (lump pushes outward). A positive cough impulse confirms hernia. Always test this - it's NON-NEGOTIABLE.
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #3: Cannot Identify the Pubic Tubercle</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> The pubic tubercle is the KEY landmark for differentiating inguinal from femoral hernia. If you cannot locate the pubic tubercle, you cannot use the "above and medial" rule, and you cannot make the diagnosis. This is a CRITICAL FAILURE.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates are often not confident palpating the pubic area. They vaguely gesture at the groin without actually identifying the bony pubic tubercle. Examiners will ask "Can you show me the pubic tubercle?" and failure to locate it = fail.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: The pubic tubercle is a small bony prominence on the superior pubic ramus, 2-3cm lateral to the pubic symphysis. Palpate along the superior edge of the pubic bone from medial to lateral - you will feel a small "bump" (tubercle). Inguinal ligament attaches here. Practice finding this landmark on yourself and colleagues.
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #4: Not Using "Above and Medial" Rule to Differentiate Inguinal vs Femoral Hernia</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> Inguinal and femoral hernias have VERY different management (femoral hernias have much higher strangulation risk - 40% vs 5% for inguinal - and require urgent repair). Not differentiating them is a critical error.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates identify "a groin hernia" but don't specify inguinal vs femoral. The "above and medial" rule is simple but must be explicitly demonstrated: inguinal hernia = ABOVE and MEDIAL to pubic tubercle; femoral hernia = BELOW and LATERAL to pubic tubercle.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: After identifying the pubic tubercle, palpate the lump with your other hand. Determine the relationship: "This lump is above and medial to the pubic tubercle, therefore this is an INGUINAL hernia." You must SAY this out loud to demonstrate your understanding.
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #5: Not Assessing Reducibility</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> Reducibility is critical for risk assessment. Irreducible hernias are at high risk of strangulation and require urgent surgery. Reducible hernias can have elective surgery. Not assessing reducibility means you cannot risk-stratify the patient.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates see the lump disappear when the patient lies down and assume it's reducible, but they don't actively TEST reducibility by applying gentle pressure with the lump present (standing position).
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: With patient standing and lump visible, gently apply pressure with your hand over the lump. A reducible hernia will "slide back" into the abdomen with a gurgling sensation. Say "I'm going to gently try to push this back in" and demonstrate reduction. Then assess if it stays reduced or immediately reappears.
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #6: Not Performing Deep Ring Occlusion Test (Missing Direct vs Indirect Differentiation)</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> While both direct and indirect inguinal hernias are managed similarly, examiners expect you to know HOW to differentiate them. The deep ring occlusion test is the clinical method. Not performing it shows incomplete examination technique.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates identify "inguinal hernia" but cannot specify direct vs indirect. In Australian OSCE, you're expected to perform the occlusion test to demonstrate systematic examination.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: Deep ring occlusion test: (1) Patient lies down, hernia reduces. (2) Locate deep inguinal ring (approximately 1-2cm above mid-inguinal point). (3) Place fingers firmly over deep ring. (4) Ask patient to stand or cough while maintaining pressure on deep ring. (5) If hernia does NOT reappear = INDIRECT (emerges from deep ring, which you're occluding). If hernia still appears = DIRECT (emerges medially through Hesselbach's triangle, not affected by deep ring occlusion).
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #7: Forgetting to Examine the Contralateral (Opposite) Side</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> 10-15% of patients with inguinal hernia have bilateral hernias. Not examining the opposite groin means you miss a potentially significant finding. Australian OSCE expects bilateral examination.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates focus entirely on the "affected" side (right groin in this case) and completely forget to examine the left groin. This is marked as incomplete examination.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: After completing examination of right groin, say "Now I'll examine the left groin to check for any hernias on that side." Perform systematic inspection and palpation of left groin (standing and lying). In this case, left groin is normal - but you MUST check.
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #8: Not Checking for Signs of Strangulation/Irreducibility</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> Strangulated hernia is a SURGICAL EMERGENCY (requires surgery within 6 hours). Not assessing for strangulation signs means you cannot recognize when urgent intervention is needed. This is a patient safety issue.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates assume all hernias are uncomplicated and don't specifically look for red flags: tenderness, erythema, warmth, firm/tense consistency, irreducibility.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: When palpating any hernia, specifically assess: (1) Tenderness - "Does this hurt?" (2) Temperature - use back of hand to check if lump is hot (3) Skin changes - look for erythema, bruising (4) Consistency - if lump is tense/hard rather than soft = concerning for strangulation. In this patient: non-tender, normal temperature, soft = uncomplicated. But you MUST check these every time.
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #9: Not Offering a Chaperone Before Groin/Genital Examination</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> In Australian medical practice, offering a chaperone for intimate examinations (groin, genitalia, breast, rectal) is MANDATORY professional conduct. Not offering a chaperone is a professionalism failure and automatic fail in OSCE.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates from cultures where chaperones are not routine may forget to offer one. Australian medical culture takes patient dignity and professional boundaries very seriously - this is non-negotiable.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT: Before starting examination, say "I'll need to examine your groin area, which means you'll need to undress to your underwear. I can offer you a chaperone if you'd like - there's a nurse available." Document in notes: "Chaperone offered, patient declined" (or "accepted"). This protects both patient and clinician.
+                </div>
+            </div>
+
+            <div class="mistake">
+                <div class="mistake-title">❌ MISTAKE #10: Using American/British Terminology Instead of Australian</div>
+                <div class="mistake-explanation">
+                    <strong>Why this fails:</strong> While this alone won't cause failure, accumulated terminology errors signal to examiners that you haven't adapted to Australian medical practice. Groin examination has specific terminology differences.
+                    <br><br>
+                    <strong>What happens:</strong> IMG candidates say "inguinal canal repair in the OR under general anesthesia" instead of "inguinal hernia repair in theatre under general anaesthetic." These small differences add up.
+                </div>
+                <div class="correct-approach">
+                    ✅ CORRECT Australian terms:
+                    <ul>
+                        <li>"Groin" or "inguinal region" (not "inguinal area")</li>
+                        <li>"Hernia repair" or "herniorrhaphy" (not "hernioplasty")</li>
+                        <li>"Theatre" (not "OR" or "operating room")</li>
+                        <li>"Day-case surgery" (not "outpatient surgery")</li>
+                        <li>"General anaesthetic" (not "anesthesia")</li>
+                        <li>"Cefazolin" (not "cefazolin")</li>
+                        <li>"Paracetamol" (not "acetaminophen")</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Summary of Critical "Must Do" Items for Groin Examination Station:</h3>
+            <ol>
+                <li>✅ Offer chaperone - MANDATORY for groin/genital examination</li>
+                <li>✅ Examine patient STANDING first (hernia visible) then lying (assess reducibility)</li>
+                <li>✅ Test for cough impulse - GOLD STANDARD for confirming hernia</li>
+                <li>✅ Identify pubic tubercle - KEY landmark</li>
+                <li>✅ "Above and medial" rule - differentiate inguinal vs femoral</li>
+                <li>✅ Assess reducibility - apply gentle pressure to see if hernia reduces</li>
+                <li>✅ Deep ring occlusion test - differentiate direct vs indirect</li>
+                <li>✅ Check for strangulation signs - tenderness, warmth, erythema, irreducibility</li>
+                <li>✅ Examine contralateral side - check for bilateral hernias</li>
+                <li>✅ Maintain patient dignity - allow re-dressing, thank patient</li>
+            </ol>
+
+            <div class="tip">
+                <h4>🎯 IMG Success Tips for Groin Examination Stations:</h4>
+                <ul>
+                    <li><strong>Practice finding the pubic tubercle:</strong> This is the single most important landmark. Practice on yourself and colleagues until you can find it confidently every time.</li>
+                    <li><strong>Remember the sequence: Standing → Lying → Standing:</strong> Inspect standing (see lump), inspect lying (lump disappears = reducible), palpate standing (test cough impulse, reducibility).</li>
+                    <li><strong>Learn the "above and medial" rule by heart:</strong> Inguinal hernia = above and medial to pubic tubercle. Femoral hernia = below and lateral to pubic tubercle. This is asked in EVERY groin lump station.</li>
+                    <li><strong>Always offer a chaperone:</strong> For ANY examination involving groin, genitalia, breast, or rectal area. This is non-negotiable in Australian practice.</li>
+                    <li><strong>Know the difference between direct and indirect:</strong> Indirect = through deep ring (lateral), can extend to scrotum, any age. Direct = through Hesselbach's triangle (medial), doesn't extend to scrotum, older patients (>40).</li>
+                    <li><strong>Check for red flags:</strong> Always assess tenderness, temperature, erythema, reducibility. Strangulated hernia is an emergency.</li>
+                    <li><strong>Examine both sides:</strong> Don't forget the contralateral groin - 10-15% of inguinal hernias are bilateral.</li>
+                    <li><strong>Practice your summary:</strong> "This is a 58-year-old man with a right INDIRECT inguinal hernia, which is uncomplicated and reducible. My findings are: lump above and medial to pubic tubercle (inguinal), positive cough impulse, completely reducible, deep ring occlusion test consistent with indirect hernia. I recommend elective surgical repair with mesh."</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📚 References - Australian Guidelines 2024</h2>
+            <ul>
+                <li><strong>eTG Complete:</strong> Inguinal Hernia - Surgical Management (2024)</li>
+                <li><strong>RACS (Royal Australasian College of Surgeons):</strong> Clinical Practice Guidelines - Inguinal Hernia (2024)</li>
+                <li><strong>NSW Health:</strong> Inguinal Hernia Management Pathway (2024)</li>
+                <li><strong>AMC:</strong> Clinical Examination Blueprint - Abdominal Examination (2024)</li>
+                <li><strong>HerniaSurge Group:</strong> International Guidelines for Groin Hernia Management (2024)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <p><em>Document created: December 16, 2025</em></p>
+            <p><em>For ICRP preparation - NSW Young Hospital (March 2026 intake)</em></p>
+            <p><em>Based on eTG 2024, RACS guidelines, and AMC Clinical Examination Blueprint 2024</em></p>
+        </div>
+    </div>
+</body>
+</html>

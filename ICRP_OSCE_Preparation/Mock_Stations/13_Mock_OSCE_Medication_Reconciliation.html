@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock OSCE Station M02: Medication Reconciliation & Patient Education</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #c41e3a;
+            border-bottom: 3px solid #c41e3a;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2c5f77;
+            margin-top: 30px;
+            border-left: 5px solid #2c5f77;
+            padding-left: 15px;
+        }
+        h3, h4 {
+            color: #1a472a;
+            margin-top: 15px;
+        }
+        .station-header {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 6px solid #2c5f77;
+        }
+        .section {
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .candidate-instructions, .patient-script, .examiner-instructions, .model-answer, .img-mistakes {
+            margin: 25px 0;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .candidate-instructions {
+            background-color: #fff3cd;
+            border-left: 6px solid #ffc107;
+        }
+        .patient-script {
+            background-color: #d1ecf1;
+            border-left: 6px solid #17a2b8;
+        }
+        .critical-item {
+            color: #c41e3a;
+            font-weight: bold;
+        }
+        .red-flag {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .tip, .warning {
+            padding: 12px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .tip {
+            background-color: #e7f3ff;
+            border-left: 4px solid #0066cc;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 Mock OSCE Station M02: Medication Reconciliation</h1>
+
+        <div class="station-header">
+            <h3>Station Information</h3>
+            <p><strong>Type:</strong> General Practice / Pharmacy - Communication & Patient Education</p>
+            <p><strong>Time:</strong> 8 minutes</p>
+            <p><strong>Setting:</strong> GP Clinic Post-Hospital Discharge</p>
+            <p><strong>Difficulty:</strong> Intermediate</p>
+            <p><strong>AMC Blueprint Area:</strong> Medication Safety & Patient Communication</p>
+        </div>
+
+        <div class="section candidate-instructions">
+            <h2>📋 Candidate Instructions</h2>
+
+            <h3>Scenario</h3>
+            <p>You are a GP registrar. Mr. Robert Chen, a 72-year-old man, was discharged from hospital yesterday after treatment for pneumonia. He has brought his discharge summary and all his medications to today's appointment and is confused about what to take.</p>
+
+            <h3>Your Task (8 minutes)</h3>
+            <p><strong>Perform medication reconciliation</strong> and educate the patient about his medications. You should:</p>
+            <ul>
+                <li>Review discharge medications vs home medications</li>
+                <li>Identify discrepancies and explain changes</li>
+                <li>Ensure patient understands each medication (indication, dosing, side effects)</li>
+                <li>Identify and address any medication safety concerns</li>
+                <li>Provide clear instructions and check understanding</li>
+            </ul>
+
+            <div class="warning">
+                <strong>⏰ Time Warning:</strong> You have 8 minutes. The examiner will give a 1-minute warning.
+            </div>
+
+            <div class="warning">
+                <strong>🚨 CRITICAL:</strong> Medication errors at transitions of care cause 50% of medication-related adverse events in Australia. Effective medication reconciliation prevents harm.
+            </div>
+
+            <div class="tip">
+                <strong>💡 Australian Context:</strong> Use "teach-back" method to confirm understanding. Provide written medication list. Ensure patient knows which medications to STOP and which to CONTINUE.
+            </div>
+        </div>
+
+        <div class="section patient-script">
+            <h2>👤 Simulated Patient Script</h2>
+
+            <h3>Patient Background</h3>
+            <p><strong>Name:</strong> Robert Chen</p>
+            <p><strong>Age:</strong> 72 years old</p>
+            <p><strong>Recent History:</strong> 5-day hospital admission for pneumonia, discharged yesterday</p>
+            <p><strong>Problem:</strong> Confused about which medications to take - has old medications at home plus new discharge medications</p>
+
+            <h3>Medications</h3>
+
+            <h4>HOME Medications (Before Hospital):</h4>
+            <ol>
+                <li>Aspirin 100mg daily (for heart)</li>
+                <li>Atorvastatin 40mg nocte (cholesterol)</li>
+                <li>Metoprolol 50mg BD (blood pressure)</li>
+                <li>Omeprazole 20mg daily (reflux)</li>
+            </ol>
+
+            <h4>DISCHARGE Medications (From Hospital):</h4>
+            <ol>
+                <li>Aspirin 100mg daily ✅ CONTINUE</li>
+                <li>Atorvastatin 40mg nocte ✅ CONTINUE</li>
+                <li>Metoprolol 50mg BD ✅ CONTINUE</li>
+                <li>Omeprazole 20mg daily ✅ CONTINUE</li>
+                <li>Amoxicillin 500mg TDS - for 7 days (total) 🆕 NEW (5 days in hospital, 2 days to complete at home)</li>
+                <li>Prednisolone 25mg daily - for 5 days 🆕 NEW (started in hospital, 3 days remaining)</li>
+            </ol>
+
+            <h3>Patient Opening Statement</h3>
+            <p><em>(Patient looks anxious, has brought plastic bag full of medication boxes and hospital discharge papers)</em></p>
+            <p><strong>"Doctor, I'm really confused. The hospital gave me all these new tablets and I don't know if I'm supposed to keep taking my old ones or stop them. I've got tablets everywhere and I don't want to take the wrong thing. Can you help me work out what I should be taking?"</strong></p>
+
+            <h3>If Asked Questions:</h3>
+            <ul>
+                <li><strong>What medications were you taking before hospital?</strong> "I have this list here - aspirin, atorvastatin, metoprolol, and omeprazole. I've been taking these for years"</li>
+                <li><strong>What did the hospital give you?</strong> "They gave me antibiotics and steroids for the pneumonia. And they said to keep taking my regular tablets too. But I'm not sure which is which"</li>
+                <li><strong>Do you understand what each medication is for?</strong> "Not really - I know the aspirin is for my heart, and the statin is for cholesterol. But I'm not sure about the others"</li>
+                <li><strong>Any side effects or concerns?</strong> "The steroids make me feel jittery and I can't sleep well"</li>
+                <li><strong>How do you usually take your medications?</strong> "I keep them all in a drawer and try to remember to take them in the morning and evening. Sometimes I forget"</li>
+            </ul>
+
+            <h3>Patient Concerns</h3>
+            <p>"I'm worried about taking too many tablets or mixing them up. My wife usually helps me but she's away visiting our daughter. I want to get this right."</p>
+        </div>
+
+        <div class="section model-answer">
+            <h2>📝 Model Answer - Medication Reconciliation</h2>
+
+            <h3>Step 1: Medication Review & Reconciliation</h3>
+
+            <p><strong>"Mr. Chen, I can see why you're confused - let's go through this together and make it clear. I'm going to create a simple list for you showing exactly what to take."</strong></p>
+
+            <h4>Medications to CONTINUE (4 regular medications):</h4>
+            <table border="1" cellpadding="10" style="width:100%; background:white;">
+                <tr style="background:#d4edda;">
+                    <th>Medication</th>
+                    <th>Dose</th>
+                    <th>When to Take</th>
+                    <th>What It's For</th>
+                </tr>
+                <tr>
+                    <td><strong>Aspirin</strong></td>
+                    <td>100mg</td>
+                    <td>Once daily (morning)</td>
+                    <td>"This is a blood thinner to protect your heart. Keep taking this every day."</td>
+                </tr>
+                <tr>
+                    <td><strong>Atorvastatin</strong></td>
+                    <td>40mg</td>
+                    <td>Once at night</td>
+                    <td>"This controls your cholesterol. Take at bedtime - it works better at night."</td>
+                </tr>
+                <tr>
+                    <td><strong>Metoprolol</strong></td>
+                    <td>50mg</td>
+                    <td>Twice daily (morning and evening)</td>
+                    <td>"This is your blood pressure tablet. Take morning and night."</td>
+                </tr>
+                <tr>
+                    <td><strong>Omeprazole</strong></td>
+                    <td>20mg</td>
+                    <td>Once daily (morning before breakfast)</td>
+                    <td>"This reduces stomach acid for your reflux. Take before breakfast."</td>
+                </tr>
+            </table>
+
+            <h4>Medications to take for SHORT COURSE (2 new medications):</h4>
+            <table border="1" cellpadding="10" style="width:100%; background:white;">
+                <tr style="background:#fff3cd;">
+                    <th>Medication</th>
+                    <th>Dose</th>
+                    <th>How Long</th>
+                    <th>Instructions</th>
+                </tr>
+                <tr>
+                    <td><strong>Amoxicillin (antibiotic)</strong></td>
+                    <td>500mg three times daily</td>
+                    <td>2 more days (you took 5 days in hospital)</td>
+                    <td>"Finish the course - take with food if it upsets your stomach. Complete by [date]."</td>
+                </tr>
+                <tr>
+                    <td><strong>Prednisolone (steroid)</strong></td>
+                    <td>25mg once daily</td>
+                    <td>3 more days (you took 2 days in hospital)</td>
+                    <td>"Take in the morning with food. This may cause insomnia - that's why we take it morning. Finish by [date], then STOP."</td>
+                </tr>
+            </table>
+
+            <h3>Step 2: Patient Education (Using Teach-Back Method)</h3>
+
+            <p><strong>For Each Medication, Explain:</strong></p>
+            <ul>
+                <li><strong>Name:</strong> "This is called..."</li>
+                <li><strong>Purpose:</strong> "It's for..."</li>
+                <li><strong>Dose & Timing:</strong> "Take X at Y time"</li>
+                <li><strong>Important warnings:</strong> "Don't take with... Watch for..."</li>
+            </ul>
+
+            <p><strong>Then CHECK UNDERSTANDING:</strong> "Can you tell me back which tablets you'll take in the morning?"</p>
+
+            <h3>Step 3: Medication Safety Points</h3>
+
+            <h4>Key Safety Messages:</h4>
+            <ol>
+                <li>🚨 <strong>"Your 4 regular medications - aspirin, atorvastatin, metoprolol, omeprazole - CONTINUE these every day. Don't stop."</strong></li>
+                <li>🚨 <strong>"The antibiotic (amoxicillin) - finish the full course. You have 2 more days."</strong></li>
+                <li>🚨 <strong>"The steroid (prednisolone) - you have 3 more days, then STOP. Don't continue after that."</strong></li>
+                <li><strong>"The steroid may make you feel jittery and affect your sleep - this is normal and will stop when you finish the course."</strong></li>
+                <li><strong>"If you get a rash, severe diarrhea, or feel unwell while on the antibiotic - stop it and call us."</strong></li>
+            </ol>
+
+            <h3>Step 4: Provide Written Plan & Aids</h3>
+
+            <p><strong>Give patient:</strong></p>
+            <ul>
+                <li>✅ <strong>Written medication list</strong> (typed, clear, with purpose of each medication)</li>
+                <li>✅ <strong>Dosette box (Webster pack)</strong> - arrange pharmacy to prepare weekly blister pack</li>
+                <li>✅ <strong>Calendar marked with finish dates</strong> for antibiotics and steroids</li>
+                <li>✅ <strong>Contact number</strong> if questions arise</li>
+            </ul>
+
+            <h3>Step 5: Safety Netting</h3>
+
+            <p><strong>"If you experience any of these, contact us immediately:"</strong></p>
+            <ul>
+                <li>Severe rash or allergic reaction</li>
+                <li>Difficulty breathing</li>
+                <li>Severe diarrhea (>6 times/day)</li>
+                <li>Confusion or dizziness</li>
+            </ul>
+
+            <h3>Step 6: Follow-up</h3>
+            <ul>
+                <li><strong>Review in 1 week</strong> (after finishing antibiotic and steroid courses)</li>
+                <li><strong>Check chest X-ray</strong> in 6 weeks to ensure pneumonia resolved</li>
+                <li><strong>Annual medication review</strong> for elderly patients on polypharmacy</li>
+            </ul>
+
+            <h3>Australian Best Practice - Medication Reconciliation</h3>
+            <ul>
+                <li>Use National Residential Medication Chart (NRMC) format</li>
+                <li>Include generic AND brand names</li>
+                <li>Specify indication for each medication</li>
+                <li>Arrange Webster packing for compliance</li>
+                <li>Engage community pharmacist for ongoing support</li>
+                <li>Use MedChart app or similar for patient medication records</li>
+            </ul>
+        </div>
+
+        <div class="section img-mistakes">
+            <h2>⚠️ IMG Common Mistakes</h2>
+
+            <h3>❌ MISTAKE #1: Not Clarifying Which Medications to STOP vs CONTINUE</h3>
+            <p><strong>Why this fails:</strong> Patients assume new medications REPLACE old ones. If you don't explicitly say "Continue your regular medications AND add these new ones," patient may stop regular medications.</p>
+            <p><strong>✅ CORRECT:</strong> "Your 4 regular tablets - keep taking those. The hospital has ADDED 2 new medications for the infection - these are temporary."</p>
+
+            <h3>❌ MISTAKE #2: Using Medical Jargon</h3>
+            <p><strong>Why this fails:</strong> Saying "Take your beta-blocker and PPI" means nothing to patients. Use simple language.</p>
+            <p><strong>✅ CORRECT:</strong> "Take your blood pressure tablet (metoprolol) and your stomach tablet (omeprazole)."</p>
+
+            <h3>❌ MISTAKE #3: Not Using Teach-Back Method</h3>
+            <p><strong>Why this fails:</strong> Explaining is not enough - you must CHECK the patient understands.</p>
+            <p><strong>✅ CORRECT:</strong> After explaining, ask "Can you tell me which tablets you'll take in the morning?" or "Can you show me which ones you'll stop after 3 days?"</p>
+
+            <h3>❌ MISTAKE #4: Not Providing Written Instructions</h3>
+            <p><strong>Why this fails:</strong> Verbal instructions alone are forgotten. 50% of information is forgotten within minutes.</p>
+            <p><strong>✅ CORRECT:</strong> Always provide WRITTEN medication list with names, doses, times, and purposes.</p>
+
+            <h3>❌ MISTAKE #5: Not Addressing Patient's Concerns</h3>
+            <p><strong>Why this fails:</strong> Patient expressed worry about "mixing up tablets." If you don't address this, patient remains anxious.</p>
+            <p><strong>✅ CORRECT:</strong> "I understand you're worried about mixing them up. Let's organize a Webster pack from the pharmacy - all your tablets pre-packed for each day."</p>
+
+            <h3>Summary - Critical "Must Do" Items:</h3>
+            <ol>
+                <li>✅ Review BOTH home medications AND discharge medications</li>
+                <li>✅ Explicitly state which to CONTINUE vs which to STOP</li>
+                <li>✅ Explain PURPOSE of each medication in simple language</li>
+                <li>✅ Use TEACH-BACK method to check understanding</li>
+                <li>✅ Provide WRITTEN medication list</li>
+                <li>✅ Arrange compliance aid (Webster pack)</li>
+                <li>✅ Address patient's specific concerns</li>
+                <li>✅ Safety net - when to seek help</li>
+                <li>✅ Arrange follow-up</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>📚 References</h2>
+            <ul>
+                <li><strong>Australian Commission on Safety and Quality in Health Care:</strong> Medication Reconciliation Guidelines (2024)</li>
+                <li><strong>RACGP:</strong> Medication Management in General Practice (2024)</li>
+                <li><strong>eTG Complete:</strong> Medicines Safety (2024)</li>
+                <li><strong>AMC:</strong> Clinical Examination Blueprint - Communication Skills (2024)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <p><em>Document created: December 16, 2025</em></p>
+            <p><em>For ICRP preparation - NSW Young Hospital (March 2026 intake)</em></p>
+        </div>
+    </div>
+</body>
+</html>
