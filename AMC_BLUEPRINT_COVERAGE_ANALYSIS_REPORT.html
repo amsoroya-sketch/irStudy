@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMC Blueprint Coverage Analysis Report - ICRP OSCE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 15px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 50px;
+            margin: -60px -60px 40px -60px;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.5em;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+
+        .header .meta {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .approval-badge {
+            background: #28a745;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(40,167,69,0.4);
+        }
+
+        .exec-summary {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+            border-left: 6px solid #28a745;
+        }
+
+        .exec-summary h2 {
+            color: #1e7e34;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .coverage-number {
+            font-size: 4em;
+            font-weight: bold;
+            color: #28a745;
+            text-align: center;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .finding-box {
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid;
+        }
+
+        .finding-box.strengths {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .finding-box.gaps {
+            background: #fff3cd;
+            border-color: #ffc107;
+        }
+
+        .finding-box h3 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .finding-box ul {
+            margin-left: 20px;
+        }
+
+        .finding-box li {
+            margin: 8px 0;
+        }
+
+        iframe {
+            width: 100%;
+            height: 2000px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 3px solid #28a745;
+            text-align: center;
+        }
+
+        .footer h3 {
+            color: #28a745;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .footer p {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 15px;
+        }
+
+        .footer a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✅ QUALITY GATE 2 APPROVED</h1>
+            <div class="subtitle">AMC Blueprint Coverage Analysis Report</div>
+            <div class="meta">ICRP NSW Young Hospital OSCE Preparation</div>
+            <div class="approval-badge">92% Coverage - EXCEEDS TARGET</div>
+        </div>
+
+        <div class="exec-summary">
+            <h2>📊 Executive Summary</h2>
+            
+            <div class="coverage-number">92%</div>
+            <p style="text-align: center; font-size: 1.3em; color: #1e7e34; margin-bottom: 30px;">
+                <strong>Overall AMC Blueprint Coverage</strong><br>
+                <span style="font-size: 0.9em;">(Target: >80%)</span>
+            </p>
+
+            <div class="findings-grid">
+                <div class="finding-box strengths">
+                    <h3>✨ Strengths</h3>
+                    <ul>
+                        <li>8/8 competency areas covered</li>
+                        <li>0 critical gaps</li>
+                        <li>Communication skills: 100%</li>
+                        <li>History-taking: 95%</li>
+                        <li>Physical examination: 95%</li>
+                    </ul>
+                </div>
+
+                <div class="finding-box gaps">
+                    <h3>📝 Enhancement Areas</h3>
+                    <ul>
+                        <li>3 important gaps (non-critical)</li>
+                        <li>All in low-weight categories</li>
+                        <li>Procedural skills: 60%</li>
+                        <li>Interpretation skills: 70%</li>
+                        <li>Can be addressed post-ICRP</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="font-size: 1.2em; text-align: center; margin-top: 30px; color: #1e7e34;">
+                <strong>✅ Recommendation: APPROVE</strong><br>
+                <span style="font-size: 0.9em;">Materials exceed 80% threshold and provide excellent ICRP preparation</span>
+            </p>
+        </div>
+
+        <h2 style="margin-top: 50px; color: #2c3e50; font-size: 2.2em; padding-bottom: 15px; border-bottom: 3px solid #667eea;">
+            📋 Full Coverage Analysis Report
+        </h2>
+
+        <p style="font-size: 1.1em; margin: 20px 0; line-height: 1.8;">
+            The complete detailed analysis is available in the markdown file below. 
+            This report provides comprehensive coverage assessment across all 8 AMC competency areas, 
+            module-by-module inventory, gap analysis, and recommendations for future enhancement.
+        </p>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="AMC_BLUEPRINT_COVERAGE_ANALYSIS_REPORT.md" class="btn">📄 Download Full Report (Markdown)</a>
+            <a href="ICRP_OSCE_Preparation/00_MASTER_INDEX_AMC_CLINICAL_OSCE.html" class="btn">📚 View OSCE Materials</a>
+        </div>
+
+        <div style="background: #f8f9fa; padding: 30px; margin: 40px 0; border-radius: 10px; border-left: 5px solid #17a2b8;">
+            <h3 style="color: #17a2b8; margin-bottom: 15px;">📊 Coverage Summary by Competency</h3>
+            
+            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                <thead>
+                    <tr style="background: #17a2b8; color: white;">
+                        <th style="padding: 12px; text-align: left;">AMC Competency</th>
+                        <th style="padding: 12px; text-align: center;">Weight</th>
+                        <th style="padding: 12px; text-align: center;">Coverage %</th>
+                        <th style="padding: 12px; text-align: center;">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: #e8f5e9;">
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;"><strong>History Taking</strong></td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">30%</td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;"><strong>95%</strong></td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">✅ EXCELLENT</td>
+                    </tr>
+                    <tr style="background: #e8f5e9;">
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;"><strong>Physical Examination</strong></td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">25%</td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;"><strong>95%</strong></td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">✅ EXCELLENT</td>
+                    </tr>
+                    <tr style="background: #d4edda;">
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;"><strong>Communication Skills</strong></td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">20%</td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;"><strong>100%</strong></td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">✅ EXCELLENT</td>
+                    </tr>
+                    <tr style="background: #fff3cd;">
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;"><strong>Emergency Management</strong></td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">10%</td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;"><strong>85%</strong></td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">✅ GOOD</td>
+                    </tr>
+                    <tr style="background: #fff3cd;">
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;"><strong>Procedural Skills</strong></td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">5%</td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;"><strong>60%</strong></td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">⚠️ ADEQUATE</td>
+                    </tr>
+                    <tr style="background: #fff3cd;">
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;"><strong>Interpretation Skills</strong></td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">5%</td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;"><strong>70%</strong></td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">✅ GOOD</td>
+                    </tr>
+                    <tr style="background: #e8f5e9;">
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;"><strong>Ethics & Professional</strong></td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">3%</td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;"><strong>90%</strong></td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">✅ EXCELLENT</td>
+                    </tr>
+                    <tr style="background: #e8f5e9;">
+                        <td style="padding: 12px; border-bottom: 1px solid #ddd;"><strong>Clinical Reasoning</strong></td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">2%</td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;"><strong>95%</strong></td>
+                        <td style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">✅ EXCELLENT</td>
+                    </tr>
+                    <tr style="background: #d4edda; font-weight: bold;">
+                        <td style="padding: 15px; border-top: 3px solid #28a745;"><strong>TOTAL WEIGHTED COVERAGE</strong></td>
+                        <td style="padding: 15px; text-align: center; border-top: 3px solid #28a745;">100%</td>
+                        <td style="padding: 15px; text-align: center; border-top: 3px solid #28a745; font-size: 1.3em; color: #28a745;"><strong>92%</strong></td>
+                        <td style="padding: 15px; text-align: center; border-top: 3px solid #28a745;">✅ EXCELLENT</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <h3>🎓 Quality Assurance System</h3>
+            <p><strong>Report Generated:</strong> December 16, 2025</p>
+            <p><strong>Agent:</strong> Coverage_Analyst_Agent</p>
+            <p><strong>Modules Analyzed:</strong> 45/45 (100%)</p>
+            <p><strong>Analysis Duration:</strong> 45 minutes</p>
+            <p><strong>Confidence Level:</strong> High</p>
+            
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #dee2e6;">
+                <p><strong>Quick Links:</strong></p>
+                <p>
+                    <a href="MASTER_INDEX.html">🏠 Master Index</a> |
+                    <a href="ICRP_OSCE_Preparation/00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">📚 OSCE Materials</a> |
+                    <a href="QUICKSTART.html">⚡ Quick Start</a> |
+                    <a href="AMC_BLUEPRINT_COVERAGE_ANALYSIS_REPORT.md">📄 Full Report (MD)</a>
+                </p>
+            </div>
+
+            <div style="margin-top: 40px; font-size: 1.3em; color: #28a745;">
+                <strong>✅ Quality Gate 2: APPROVED</strong><br>
+                <span style="font-size: 0.8em; color: #6c757d;">Ready for Quality Gate 3: Final Integration Review</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
