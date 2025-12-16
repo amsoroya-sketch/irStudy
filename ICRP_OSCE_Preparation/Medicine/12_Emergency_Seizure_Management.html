@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Seizure Management - AMC OSCE Preparation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">🏠 Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Medicine</span>
+</div>
+        <div class="quick-nav">
+<h3>📚 Medicine Navigation</h3>
+<ul>
+<li><a href="01_Cardiovascular_Respiratory_History.html">CV/Resp History</a></li>
+<li><a href="02_Physical_Examination_Cardiovascular_Respiratory.html">CV/Resp Exam</a></li>
+<li><a href="03_Neurology_Headache_Differentials.html">Headache Differentials</a></li>
+<li><a href="04_Neurology_Weakness_Limb_Examination.html">Weakness/Limb Exam</a></li>
+<li><a href="12_Emergency_Seizure_Management.html">Seizure Management</a></li>
+</ul>
+</div>
+        <h1>Emergency Seizure Management</h1>
+<h2>AMC Clinical / ICRP NSW Young Hospital Preparation</h2>
+
+<strong>Purpose</strong>: AMC Clinical-style OSCE notes for seizure presentations and status epilepticus management
+<strong>Target Time</strong>: 8 minutes per station
+<strong>Format</strong>: Australian teaching hospital standard (ANZCOR, eTG 2024)
+<strong>Created</strong>: December 16, 2025
+
+<hr>
+
+<div class="alert alert-red">
+<strong>CRITICAL: Status Epilepticus = Medical Emergency</strong><br>
+Definition: Seizure lasting >5 minutes OR recurrent seizures without full recovery of consciousness<br>
+Time is brain - immediate benzodiazepine treatment required within 5 minutes
+</div>
+
+<h2>STATUS EPILEPTICUS - EMERGENCY MANAGEMENT</h2>
+
+<h3>Opening Statement (Emergency Scenario)</h3>
+<p>
+"I'm Dr [Name]. I can see this patient is having a seizure. Let me assess and manage this immediately. Can someone please help me?"
+</p>
+
+<h3>Immediate Assessment (DRABCD - Australian Resuscitation Council)</h3>
+
+<strong>D - Danger</strong>: "Is the environment safe? Move objects away from the patient"
+
+<strong>R - Response</strong>: Check consciousness level
+
+<strong>A - Airway</strong>: Position patient on their side (recovery position), protect airway
+<ul>
+<li>DO NOT put anything in the mouth</li>
+<li>DO NOT restrain the patient</li>
+</ul>
+
+<strong>B - Breathing</strong>: Check breathing, apply oxygen if available (target SpO₂ >94%)
+
+<strong>C - Circulation</strong>: Check pulse, IV access if possible
+
+<strong>D - Disability</strong>: Check pupils, blood glucose level (BGL) - hypoglycaemia can cause seizures
+
+<h3>Medical Management Timeline (ANZCOR Guideline 9.1.9)</h3>
+
+<div class="alert alert-yellow">
+<strong>TIME-CRITICAL PROTOCOL</strong><br>
+Every minute counts in status epilepticus. Follow this structured timeline:
+</div>
+
+<h4>0-5 Minutes: First-Line Treatment</h4>
+
+<strong>1. Benzodiazepine Administration</strong> (choose ONE route):
+
+<table>
+<tr>
+<th>Route</th>
+<th>Medication & Dose</th>
+<th>Notes</th>
+</tr>
+<tr>
+<td><strong>IV access available</strong></td>
+<td>Midazolam 10mg IV (or diazepam 10mg IV)</td>
+<td>FASTEST - preferred if IV access established</td>
+</tr>
+<tr>
+<td><strong>No IV access</strong></td>
+<td>Midazolam 10mg IM (or buccal 10mg)</td>
+<td>Give into deltoid or lateral thigh</td>
+</tr>
+<tr>
+<td><strong>Pre-hospital</strong></td>
+<td>Diazepam 10-20mg PR</td>
+<td>Last resort - less reliable absorption</td>
+</tr>
+</table>
+
+<strong>2. Supportive Care</strong>:
+<ul>
+<li>Position on side (recovery position)</li>
+<li>Oxygen via non-rebreather mask 15L/min (if SpO₂ <94%)</li>
+<li>Check BGL immediately - give glucose if hypoglycaemic</li>
+<li>Establish IV access if not already done</li>
+<li>Nil by mouth</li>
+</ul>
+
+<strong>3. Immediate Investigations</strong>:
+<ul>
+<li>Point-of-care BGL</li>
+<li>Vital signs (BP, HR, RR, SpO₂, temperature)</li>
+<li>ECG monitoring</li>
+</ul>
+
+<h4>5-10 Minutes: Second Benzodiazepine Dose</h4>
+
+<p><strong>If seizure continues after 5 minutes</strong>:</p>
+<ul>
+<li>Repeat benzodiazepine (same dose as above)</li>
+<li>Call for senior help (MET call or Code Blue)</li>
+<li>Consider thiamine 300mg IV (if alcohol abuse or malnutrition suspected)</li>
+<li>Prepare for second-line antiepileptic drugs</li>
+</ul>
+
+<h4>10-30 Minutes: Second-Line Antiepileptic Drugs</h4>
+
+<p><strong>If still seizing after 2 doses of benzodiazepines</strong>, give ONE of the following:</p>
+
+<table>
+<tr>
+<th>Drug</th>
+<th>Dose</th>
+<th>Administration</th>
+<th>Notes</th>
+</tr>
+<tr>
+<td><strong>Levetiracetam</strong></td>
+<td>60mg/kg IV (max 4.5g)</td>
+<td>Over 10-15 min</td>
+<td>PREFERRED - fewest interactions, safest in pregnancy</td>
+</tr>
+<tr>
+<td><strong>Phenytoin</strong></td>
+<td>20mg/kg IV (max 2g)</td>
+<td>Over 20-30 min</td>
+<td>Cardiac monitoring required, max rate 50mg/min</td>
+</tr>
+<tr>
+<td><strong>Valproate sodium</strong></td>
+<td>40mg/kg IV (max 3g)</td>
+<td>Over 10-15 min</td>
+<td>Avoid in women of childbearing age, liver disease</td>
+</tr>
+</table>
+
+<div class="alert alert-red">
+<strong>Critical Monitoring During IV Loading:</strong>
+<ul>
+<li>Continuous cardiac monitoring (phenytoin can cause arrhythmias)</li>
+<li>Monitor BP (risk of hypotension)</li>
+<li>Monitor respiratory rate (risk of respiratory depression)</li>
+<li>Ensure resuscitation equipment ready</li>
+</ul>
+</div>
+
+<h4>30+ Minutes: Refractory Status Epilepticus</h4>
+
+<p><strong>If seizure continues >30 minutes</strong> = <span style="color: #e74c3c; font-weight: bold;">REFRACTORY STATUS EPILEPTICUS</span></p>
+
+<ul>
+<li>URGENT ICU transfer</li>
+<li>Intubation and ventilation required</li>
+<li>Anaesthetic agents: Propofol or midazolam infusion or thiopentone</li>
+<li>Continuous EEG monitoring</li>
+<li>Neurology consultation MANDATORY</li>
+</ul>
+
+<h3>Investigations During/After Seizure</h3>
+
+<strong>Immediate (Medicare bulk-billed)</strong>:
+<ul>
+<li><strong>Blood glucose</strong> - bedside, IMMEDIATE (hypoglycaemia causes seizures)</li>
+<li><strong>Bloods</strong>: FBC, UEC (sodium, calcium, magnesium), LFTs, glucose</li>
+<li><strong>Toxicology screen</strong> - if drug/alcohol intoxication suspected</li>
+<li><strong>Antiepileptic drug levels</strong> - if known epileptic (phenytoin, carbamazepine, valproate levels)</li>
+<li><strong>Pregnancy test</strong> - all women of childbearing age</li>
+<li><strong>ECG</strong> - check for arrhythmias</li>
+</ul>
+
+<strong>Further investigations (after stabilisation)</strong>:
+<ul>
+<li><strong>CT brain non-contrast</strong> - URGENT if:
+<ul>
+<li>First seizure</li>
+<li>Focal neurological signs</li>
+<li>Head trauma</li>
+<li>Not returning to baseline consciousness</li>
+<li>Persistent headache</li>
+</ul>
+</li>
+<li><strong>Lumbar puncture</strong> - if meningitis/encephalitis suspected (fever, neck stiffness, altered consciousness)</li>
+<li><strong>MRI brain</strong> - if CT normal but high clinical suspicion (not urgent, can be outpatient)</li>
+<li><strong>EEG</strong> - for ongoing seizures or to characterise epilepsy type</li>
+</ul>
+
+<h3>Post-Seizure Care (Postictal Phase)</h3>
+
+<strong>Monitoring</strong>:
+<ul>
+<li>Conscious state - may be drowsy for 30-60 minutes</li>
+<li>Vital signs every 15 minutes until stable</li>
+<li>Check for injuries sustained during seizure</li>
+<li>Maintain lateral position until fully conscious</li>
+<li>Aspiration precautions (nil by mouth until fully alert)</li>
+</ul>
+
+<strong>Documentation Required</strong>:
+<ul>
+<li>Time seizure started and stopped</li>
+<li>Description of seizure (focal vs generalised, body parts involved)</li>
+<li>Medications given (drug, dose, route, time)</li>
+<li>Post-ictal state and recovery time</li>
+<li>Any complications</li>
+</ul>
+
+<hr>
+
+<h2>FIRST SEIZURE - OUTPATIENT PRESENTATION</h2>
+
+<h3>Opening Statement (8 minutes)</h3>
+<p>
+"Good morning, I'm Dr [Name]. I understand you had what sounds like a seizure for the first time. I'd like to ask you some questions to understand what happened and work out why this might have occurred. Is that okay?"
+</p>
+
+<h3>Focused History</h3>
+
+<strong>Witness Account (CRUCIAL - seizures have amnesia)</strong>:
+<ul>
+<li>"Who was with you when this happened? Can I speak with them?"</li>
+<li>"Please describe exactly what you saw, from the beginning"</li>
+</ul>
+
+<strong>Before the Event (Pre-ictal)</strong>:
+<ul>
+<li>"What were you doing just before it happened?"</li>
+<li>"Did you have any warning signs?" (aura: strange smell, déjà vu, rising epigastric sensation, visual changes)</li>
+<li>"Any headache, fever, or feeling unwell beforehand?"</li>
+</ul>
+
+<strong>During the Event (Ictal)</strong>:
+<ul>
+<li>"Did you lose consciousness? For how long?"</li>
+<li>"What movements did you have?" (specific body parts vs whole body)</li>
+<li>"Did your body go stiff first, then start jerking?" (tonic-clonic sequence)</li>
+<li>"Did your eyes roll back or deviate to one side?"</li>
+<li>"Did you bite your tongue? Which part?" (lateral tongue = seizure; tip = pseudoseizure)</li>
+<li>"Did you lose bladder or bowel control?"</li>
+<li>"How long did the shaking last?"</li>
+</ul>
+
+<strong>After the Event (Post-ictal)</strong>:
+<ul>
+<li>"How did you feel when you woke up?"</li>
+<li>"Were you confused? For how long?"</li>
+<li>"Did you have a headache or muscle aches?"</li>
+<li>"Did you sleep deeply afterwards?"</li>
+<li>"Were you weak on one side of your body?" (Todd's paresis = post-seizure focal weakness, suggests focal onset)</li>
+</ul>
+
+<h3>Seizure Classification (Important for AMC OSCE)</h3>
+
+<table>
+<tr>
+<th>Type</th>
+<th>Features</th>
+<th>Consciousness</th>
+<th>Example</th>
+</tr>
+<tr>
+<td><strong>Generalised</strong></td>
+<td>Whole brain involved from onset</td>
+<td>Always impaired</td>
+<td>Tonic-clonic, absence, myoclonic</td>
+</tr>
+<tr>
+<td><strong>Focal (partial)</strong></td>
+<td>One area of brain, may spread</td>
+<td>May be preserved or impaired</td>
+<td>Temporal lobe epilepsy, motor cortex</td>
+</tr>
+<tr>
+<td><strong>Focal → bilateral tonic-clonic</strong></td>
+<td>Starts focal, becomes generalised</td>
+<td>Eventually impaired</td>
+<td>Aura followed by generalised seizure</td>
+</tr>
+</table>
+
+<h4>Generalised Tonic-Clonic Seizure (Grand Mal)</h4>
+<ul>
+<li><strong>Tonic phase</strong> (10-30 sec): Sudden loss of consciousness, body stiffens, falls, may cry out, breathing stops</li>
+<li><strong>Clonic phase</strong> (30-60 sec): Rhythmic jerking of all limbs, jaw clenching, tongue biting, urinary incontinence</li>
+<li><strong>Post-ictal</strong>: Deep confusion, drowsiness, headache, muscle aches (lasts 15-60 minutes)</li>
+</ul>
+
+<h4>Focal Seizures</h4>
+<ul>
+<li><strong>Focal aware</strong>: Consciousness preserved, may have motor (jerking one limb), sensory (tingling, visual), or autonomic symptoms</li>
+<li><strong>Focal impaired awareness</strong>: Altered consciousness, staring, lip-smacking, picking at clothes, wandering (automatisms)</li>
+</ul>
+
+<h4>Absence Seizures</h4>
+<ul>
+<li>Brief (5-10 sec) loss of awareness</li>
+<li>Staring spell, stops mid-activity, no falling</li>
+<li>Immediate return to normal (no post-ictal confusion)</li>
+<li>Usually children/adolescents</li>
+</ul>
+
+<h3>Differential Diagnosis (Not All Collapses are Seizures!)</h3>
+
+<table>
+<tr>
+<th>Condition</th>
+<th>Key Distinguishing Features</th>
+</tr>
+<tr>
+<td><strong>Epileptic Seizure</strong></td>
+<td>Tonic-clonic movements, tongue biting (lateral), post-ictal confusion, incontinence</td>
+</tr>
+<tr>
+<td><strong>Syncope (Vasovagal)</strong></td>
+<td>Preceded by lightheadedness, pallor, sweating; brief/absent jerking; rapid recovery (<1 min); situational trigger (standing, heat, pain)</td>
+</tr>
+<tr>
+<td><strong>Cardiac Syncope</strong></td>
+<td>No warning, collapse during exertion, palpitations, family history sudden death, rapid recovery</td>
+</tr>
+<tr>
+<td><strong>Psychogenic Non-Epileptic Seizure (PNES)</strong></td>
+<td>Eyes closed during event, pelvic thrusting, side-to-side head movements, prolonged duration (>2 min), no post-ictal confusion, tip of tongue biting, psychiatric history</td>
+</tr>
+<tr>
+<td><strong>Hypoglycaemia</strong></td>
+<td>Diabetic, missed meal, sweating, confusion before event, rapid improvement with glucose</td>
+</tr>
+<tr>
+<td><strong>Transient Ischaemic Attack (TIA)</strong></td>
+<td>Sudden focal deficit (weakness, numbness, speech), no jerking, vascular risk factors, older age</td>
+</tr>
+<tr>
+<td><strong>Panic Attack</strong></td>
+<td>Hyperventilation, anxiety, chest tightness, tingling, no loss of consciousness</td>
+</tr>
+</table>
+
+<h3>Red Flags Suggesting Serious Underlying Cause</h3>
+
+<div class="alert alert-red">
+<strong>🚨 RED FLAGS - Investigate Urgently:</strong>
+<ul>
+<li>Focal neurological signs (weakness, sensory loss, visual field defect)</li>
+<li>Persistent headache or altered consciousness</li>
+<li>Fever + neck stiffness (meningitis/encephalitis)</li>
+<li>Head trauma</li>
+<li>Age >55 with first seizure (higher risk of tumour/stroke)</li>
+<li>Known cancer (brain metastases)</li>
+<li>Anticoagulated (intracranial haemorrhage)</li>
+<li>Pregnancy (eclampsia if pregnant, pre-eclampsia risk)</li>
+</ul>
+</div>
+
+<h3>Aetiological History</h3>
+
+<strong>Precipitants (VITAMINS mnemonic)</strong>:
+<ul>
+<li><strong>V</strong> - Vascular (stroke, haemorrhage, vasculitis)</li>
+<li><strong>I</strong> - Infection/Inflammation (meningitis, encephalitis, cerebral abscess)</li>
+<li><strong>T</strong> - Trauma (head injury, previous TBI)</li>
+<li><strong>A</strong> - Autoimmune (SLE, paraneoplastic)</li>
+<li><strong>M</strong> - Metabolic (hypoglycaemia, hyponatraemia, hypocalcaemia, uraemia)</li>
+<li><strong>I</strong> - Idiopathic/Inherited (genetic epilepsy syndromes)</li>
+<li><strong>N</strong> - Neoplasm (brain tumour, metastases)</li>
+<li><strong>S</strong> - Substances (alcohol withdrawal, drug toxicity/withdrawal, medications)</li>
+</ul>
+
+<strong>Specific Questions</strong>:
+<ul>
+<li>"Do you drink alcohol? Have you recently stopped or cut down?" (alcohol withdrawal)</li>
+<li>"Do you use recreational drugs?" (cocaine, amphetamines)</li>
+<li>"Have you had any recent head injuries?"</li>
+<li>"Any recent infections or fevers?"</li>
+<li>"Do you have diabetes? What was your blood sugar level at the time?"</li>
+<li>"Any history of stroke, brain tumour, or meningitis?"</li>
+<li>"Family history of epilepsy or seizures?"</li>
+</ul>
+
+<strong>Current Medications</strong>:
+<ul>
+<li>List all medications (some lower seizure threshold: tramadol, bupropion, clozapine, ciprofloxacin)</li>
+<li>Any recent antibiotic or antidepressant changes?</li>
+</ul>
+
+<strong>Birth/Developmental History (if young patient)</strong>:
+<ul>
+<li>Birth complications, neonatal seizures</li>
+<li>Developmental delays</li>
+<li>Febrile seizures as a child</li>
+</ul>
+
+<h3>Social Impact & Safety</h3>
+
+<strong>Driving (CRITICAL for AMC OSCE - Australian Law)</strong>:
+
+<div class="alert alert-yellow">
+<strong>Driving Restrictions After First Seizure (NSW/Most Australian States):</strong>
+<ul>
+<li><strong>Private vehicle</strong>: MUST NOT drive for 6 months seizure-free (3 months if provoked seizure with removed trigger)</li>
+<li><strong>Commercial vehicle</strong>: MUST NOT drive for 12 months seizure-free, then requires specialist review</li>
+<li><strong>Doctor's legal obligation</strong>: Must inform patient of driving restrictions</li>
+<li><strong>Patient's legal obligation</strong>: Must inform insurance company and not drive during restriction period</li>
+<li>Failure to comply = fines up to $3,300 and insurance void if accident occurs</li>
+</ul>
+</div>
+
+<p><strong>Explain to patient</strong>: "I'm legally required to tell you that you cannot drive for at least 6 months after this seizure. This is for your safety and others on the road. You must inform your car insurance. When you're seizure-free for 6 months, we can reassess whether you can drive again. Do you understand this?"</p>
+
+<strong>Occupational Risks</strong>:
+<ul>
+<li>"What do you do for work?"</li>
+<li>High-risk occupations: Working at heights, operating machinery, commercial driving, swimming instructor</li>
+<li>May need workplace modifications or time off work</li>
+</ul>
+
+<strong>Safety at Home</strong>:
+<ul>
+<li>"Do you live alone? Who can stay with you for the next 24-48 hours?"</li>
+<li>Avoid swimming alone, heights, operating heavy machinery</li>
+<li>Supervise bathing/showering (risk of drowning if seizure occurs)</li>
+</ul>
+
+<h3>Investigations for First Seizure (eTG 2024)</h3>
+
+<strong>Mandatory Investigations</strong>:
+<ul>
+<li><strong>ECG</strong> - exclude cardiac syncope (long QT, Brugada syndrome, arrhythmia)</li>
+<li><strong>CT brain non-contrast</strong> - exclude structural lesion (tumour, stroke, haemorrhage)
+<ul>
+<li>URGENT if red flags present</li>
+<li>Routine within 48 hours if uncomplicated first seizure</li>
+</ul>
+</li>
+<li><strong>Bloods</strong>: FBC, UEC (sodium, calcium, magnesium), glucose, LFTs</li>
+<li><strong>Pregnancy test</strong> - all women of childbearing age (eclampsia risk)</li>
+</ul>
+
+<strong>Additional Investigations (depending on context)</strong>:
+<ul>
+<li><strong>MRI brain</strong> - more sensitive than CT, recommended if:
+<ul>
+<li>Young age (<55 years)</li>
+<li>Focal seizure</li>
+<li>CT normal but still suspicious for epilepsy</li>
+<li>Can be done as outpatient</li>
+</ul>
+</li>
+<li><strong>EEG</strong> - helps classify seizure type and syndrome
+<ul>
+<li>NOT diagnostic (normal EEG doesn't exclude epilepsy)</li>
+<li>Useful for prognosis and treatment decisions</li>
+<li>Can be outpatient</li>
+</ul>
+</li>
+<li><strong>Lumbar puncture</strong> - only if infection suspected</li>
+<li><strong>Toxicology screen</strong> - if drug/alcohol suspected</li>
+</ul>
+
+<h3>Management of First Seizure (eTG 2024)</h3>
+
+<strong>When to Start Antiepileptic Drugs (AEDs)?</strong>
+
+<p><strong>Generally DO NOT start AEDs after single unprovoked seizure</strong> unless:</p>
+<ul>
+<li>Structural brain lesion on imaging (tumour, old stroke, trauma)</li>
+<li>Abnormal EEG with epileptiform activity</li>
+<li>Second seizure occurs</li>
+<li>Patient occupation/lifestyle makes recurrence very high risk (e.g., commercial pilot)</li>
+<li>Patient strongly prefers treatment after discussion of risks/benefits</li>
+</ul>
+
+<p><strong>Recurrence risk after first unprovoked seizure</strong>: ~40-50% within 2 years</p>
+
+<strong>If AEDs indicated, first-line options</strong>:
+
+<table>
+<tr>
+<th>Drug</th>
+<th>Starting Dose</th>
+<th>Maintenance Dose</th>
+<th>Notes</th>
+</tr>
+<tr>
+<td><strong>Levetiracetam</strong></td>
+<td>500mg BD</td>
+<td>500-1500mg BD</td>
+<td>First choice - minimal interactions, no blood monitoring, safe in pregnancy (Category B2)</td>
+</tr>
+<tr>
+<td><strong>Lamotrigine</strong></td>
+<td>25mg daily × 2 weeks</td>
+<td>100-200mg BD</td>
+<td>Slow titration to avoid rash; good for focal and generalised</td>
+</tr>
+<tr>
+<td><strong>Valproate sodium</strong></td>
+<td>200mg BD</td>
+<td>400-1000mg BD</td>
+<td>Broad spectrum but AVOID in women of childbearing potential (Category D - teratogenic)</td>
+</tr>
+<tr>
+<td><strong>Carbamazepine</strong></td>
+<td>100mg BD</td>
+<td>400-600mg BD</td>
+<td>Good for focal seizures; many drug interactions</td>
+</tr>
+</table>
+
+<div class="alert alert-blue">
+<strong>PBS Requirements (Australian Context):</strong>
+<ul>
+<li>Most antiepileptic drugs are PBS-subsidised (~$31.60 per script for general patients, $7.70 for concession)</li>
+<li>Requires diagnosis of epilepsy or documented seizures</li>
+<li>Initial prescription often needs neurologist or specialist endorsement</li>
+</ul>
+</div>
+
+<strong>Provoked Seizure</strong>:
+
+<p>If clear precipitant identified and removed, may NOT need long-term AEDs:</p>
+<ul>
+<li>Alcohol withdrawal - treat withdrawal, alcohol cessation counselling</li>
+<li>Severe hypoglycaemia - optimise diabetes management</li>
+<li>Hyponatraemia - correct sodium carefully (risk of osmotic demyelination)</li>
+<li>Drug toxicity - cease offending drug</li>
+<li>Acute infection (meningitis) - treat infection</li>
+</ul>
+
+<p>Driving restriction: 3 months (not 6) if provoked seizure with removed trigger</p>
+
+<h3>Referral & Follow-up</h3>
+
+<strong>Neurology Referral (Mandatory)</strong>:
+<ul>
+<li>ALL first seizures should be discussed with or referred to neurology</li>
+<li>Urgent if red flags present</li>
+<li>Routine referral within 2-4 weeks for first uncomplicated seizure</li>
+<li>Neurology will decide on AED initiation, EEG, further imaging</li>
+</ul>
+
+<strong>GP Follow-up</strong>:
+<ul>
+<li>Review within 1 week</li>
+<li>Ensure imaging completed</li>
+<li>Reinforce driving restrictions</li>
+<li>Safety advice</li>
+<li>Provide written information</li>
+</ul>
+
+<h3>Safety-Netting</h3>
+
+<p>
+"Please call 000 or return to Emergency Department immediately if:
+</p>
+<ul>
+<li>You have another seizure lasting more than 5 minutes</li>
+<li>You have repeated seizures without full recovery in between</li>
+<li>You develop severe headache, fever, neck stiffness, or persistent confusion</li>
+<li>You develop weakness or numbness on one side of your body</li>
+<li>You have any concerns at all</li>
+</ul>
+
+<p>
+If you have a brief seizure that stops on its own:
+</p>
+<ul>
+<li>Ensure you're safe and not injured</li>
+<li>Contact your GP or neurology team the same day</li>
+<li>Do NOT drive - remember the 6-month rule</li>
+</ul>
+
+<h3>Common IMG Mistakes</h3>
+
+<ol>
+<li>❌ <strong>Not getting witness account</strong> - Patients have amnesia for seizures, witnesses are ESSENTIAL</li>
+<li>❌ <strong>Assuming all collapses with jerking are seizures</strong> - Syncope can have brief myoclonic jerks; ask about duration, post-ictal confusion</li>
+<li>❌ <strong>Not asking about lateral tongue biting</strong> - Highly specific for epileptic seizure (vs tip biting in pseudoseizure)</li>
+<li>❌ <strong>Forgetting to mention driving restrictions</strong> - Legal requirement to inform patient; AMC examiners will fail you</li>
+<li>❌ <strong>Saying "6 months no driving" without explaining it's from LAST seizure</strong> - Clock resets with each seizure</li>
+<li>❌ <strong>Not differentiating NSW vs other states</strong> - Driving laws vary slightly; know NSW rules (6 months private, 12 months commercial)</li>
+<li>❌ <strong>Starting AEDs immediately after first seizure</strong> - Usually observe unless specific indications (see above)</li>
+<li>❌ <strong>Using phenytoin for first-line treatment</strong> - Levetiracetam is preferred in Australia now (eTG 2024)</li>
+<li>❌ <strong>Not asking about pregnancy/contraception in women</strong> - Valproate is Category D (teratogenic); many AEDs reduce OCP efficacy</li>
+<li>❌ <strong>Saying "epilepsy" after one seizure</strong> - Epilepsy = ≥2 unprovoked seizures; one seizure ≠ epilepsy diagnosis</li>
+<li>❌ <strong>Not explaining what to do if another seizure occurs</strong> - First aid for seizures (timing, safety, when to call ambulance)</li>
+<li>❌ <strong>Using US drug names</strong> - "Keppra" is acceptable but say levetiracetam; avoid "Depakote" (use valproate sodium)</li>
+<li>❌ <strong>Forgetting to check BGL</strong> - Hypoglycaemia is easily reversible cause of seizures</li>
+<li>❌ <strong>Not asking about alcohol</strong> - Alcohol withdrawal is common cause of seizures in ED</li>
+<li>❌ <strong>Ordering MRI as first imaging</strong> - CT brain first for acute assessment; MRI is for subacute/outpatient</li>
+</ol>
+
+<hr>
+
+<h2>AMC OSCE PRACTICE SCENARIOS</h2>
+
+<h3>Scenario 1: Status Epilepticus Management</h3>
+
+<div class="alert alert-blue">
+<strong>Station Brief:</strong><br>
+A 34-year-old man presents to ED with a witnessed tonic-clonic seizure that started 3 minutes ago and is still ongoing. Manage this patient appropriately. A nurse is available to assist.
+</div>
+
+<strong>Expected Actions (8 minutes)</strong>:
+
+<ol>
+<li><strong>Introduce & assess situation</strong> (30 sec):
+<ul>
+<li>"I'm Dr [Name]. I can see this patient is having a seizure. How long has this been going on?"</li>
+<li>"Let me assess him immediately"</li>
+</ul>
+</li>
+<li><strong>DRABCD assessment</strong> (1 min):
+<ul>
+<li>Danger: "Move objects away, protect patient"</li>
+<li>Response: Check consciousness</li>
+<li>Airway: "Position on side, protect airway"</li>
+<li>Breathing: "Apply oxygen 15L via non-rebreather mask"</li>
+<li>Circulation: "Check pulse, establish IV access"</li>
+<li>Disability: "Check pupils, check BGL urgently"</li>
+</ul>
+</li>
+<li><strong>First-line treatment</strong> (1 min):
+<ul>
+<li>"This seizure has been going for more than 5 minutes, so this is status epilepticus - a medical emergency"</li>
+<li>"Please give midazolam 10mg IV now" OR "If no IV access, give midazolam 10mg IM into deltoid"</li>
+<li>"Start the clock - we'll reassess in 5 minutes"</li>
+</ul>
+</li>
+<li><strong>Call for help</strong> (30 sec):
+<ul>
+<li>"Please call for senior help - we may need MET call"</li>
+<li>"Ensure resuscitation equipment is ready"</li>
+</ul>
+</li>
+<li><strong>Immediate investigations</strong> (1 min):
+<ul>
+<li>"Check BGL immediately - give IV glucose if hypoglycaemic"</li>
+<li>"Send bloods: FBC, UEC, LFTs, glucose, toxicology screen, antiepileptic drug levels if known epileptic"</li>
+<li>"ECG and continuous monitoring"</li>
+</ul>
+</li>
+<li><strong>Second-line if seizure continues</strong> (2 min):
+<ul>
+<li>"The seizure has now lasted 10 minutes despite benzodiazepines"</li>
+<li>"I'll give levetiracetam 60mg/kg IV - that's approximately 4.5g for this patient"</li>
+<li>"Give over 10-15 minutes with cardiac monitoring"</li>
+<li>"Prepare for possible intubation if this doesn't work"</li>
+</ul>
+</li>
+<li><strong>Disposition & monitoring</strong> (1 min):
+<ul>
+<li>"Once seizure stops, patient needs admission for observation"</li>
+<li>"Monitor conscious state, vital signs every 15 minutes"</li>
+<li>"CT brain once stable"</li>
+<li>"Neurology consultation"</li>
+</ul>
+</li>
+<li><strong>Documentation</strong> (1 min):
+<ul>
+<li>"Document seizure start and stop times, medications given, response"</li>
+</ul>
+</li>
+</ol>
+
+<strong>Key Points for Marks</strong>:
+<ul>
+<li>Recognise status epilepticus definition (>5 minutes)</li>
+<li>DRABCD assessment</li>
+<li>Benzodiazepine within 5 minutes</li>
+<li>Call for help</li>
+<li>Check BGL</li>
+<li>Second-line AED if continues (levetiracetam preferred)</li>
+<li>Timeline awareness (5-10-30 minutes)</li>
+</ul>
+
+<h3>Scenario 2: First Seizure Counselling</h3>
+
+<div class="alert alert-blue">
+<strong>Station Brief:</strong><br>
+Sarah Thompson, a 28-year-old teacher, had her first witnessed tonic-clonic seizure 2 hours ago. She has now recovered and her CT brain is normal. Counsel her about the diagnosis, investigations, and management plan. Address her concerns about driving and work.
+</div>
+
+<strong>Expected Approach (8 minutes)</strong>:
+
+<ol>
+<li><strong>Introduction & rapport</strong> (1 min):
+<ul>
+<li>"Hello Sarah, I'm Dr [Name]. How are you feeling now?"</li>
+<li>"I understand you've had a seizure today - that must have been frightening. Can you tell me what you remember?"</li>
+</ul>
+</li>
+<li><strong>Explain what happened</strong> (1 min):
+<ul>
+<li>"From the description from your friend, you had what we call a generalised tonic-clonic seizure"</li>
+<li>"This means there was abnormal electrical activity in your brain causing your body to shake"</li>
+<li>"The good news is the seizure has stopped and your CT scan is normal"</li>
+</ul>
+</li>
+<li><strong>Investigations & diagnosis</strong> (1.5 min):
+<ul>
+<li>"We've done blood tests and a CT scan, which are normal"</li>
+<li>"I'm going to refer you to a neurologist who may arrange an MRI and EEG - these give more detailed information"</li>
+<li>"One seizure doesn't necessarily mean you have epilepsy - we need to find out why it happened"</li>
+<li>"Epilepsy is diagnosed when someone has two or more unprovoked seizures"</li>
+</ul>
+</li>
+<li><strong>Treatment discussion</strong> (1 min):
+<ul>
+<li>"For now, we won't start medication after just one seizure"</li>
+<li>"The risk of another seizure in the next 2 years is about 40-50%"</li>
+<li>"The neurologist will discuss whether medication is needed after they see the MRI and EEG results"</li>
+</ul>
+</li>
+<li><strong>Driving restrictions (CRITICAL)</strong> (1.5 min):
+<ul>
+<li>"Sarah, I need to tell you something very important about driving"</li>
+<li>"By law, you cannot drive for 6 months from today's seizure"</li>
+<li>"This is for your safety - if you had another seizure while driving, it could be fatal for you or others"</li>
+<li>"You must inform your car insurance company about this"</li>
+<li>"If you're seizure-free for 6 months, the neurologist can reassess whether you can drive again"</li>
+<li>"Do you drive to work? We may need to organise alternative transport or work from home arrangements"</li>
+</ul>
+</li>
+<li><strong>Work & safety</strong> (1 min):
+<ul>
+<li>"You're a teacher - are there any situations at work where a seizure could be dangerous?" (e.g., supervising swimming, climbing ladders)</li>
+<li>"You should inform your employer so they can do a risk assessment"</li>
+<li>"Most people can continue working with some adjustments"</li>
+<li>"Avoid heights, swimming alone, and operating heavy machinery until cleared by neurology"</li>
+</ul>
+</li>
+<li><strong>Safety advice & follow-up</strong> (1 min):
+<ul>
+<li>"For the next 24-48 hours, make sure someone is with you"</li>
+<li>"Avoid hot baths - have showers with someone nearby"</li>
+<li>"If you have another seizure, time how long it lasts"</li>
+<li>"If it lasts more than 5 minutes or you have repeated seizures, call 000"</li>
+<li>"I'll arrange neurology follow-up within 2-4 weeks and GP appointment within 1 week"</li>
+</ul>
+</li>
+<li><strong>Address concerns & ICE</strong> (1 min):
+<ul>
+<li>"What concerns do you have about this?" (Ideas, Concerns, Expectations)</li>
+<li>"Do you have any questions?"</li>
+<li>"I'll give you some written information to take home"</li>
+</ul>
+</li>
+</ol>
+
+<strong>Key Points for Marks</strong>:
+<ul>
+<li>Empathy and rapport</li>
+<li>Explain difference between seizure and epilepsy</li>
+<li>Not starting AEDs after first seizure (usual practice)</li>
+<li>MUST mention 6-month driving ban (legal requirement)</li>
+<li>MUST tell patient to inform insurance</li>
+<li>Occupational impact and safety advice</li>
+<li>Appropriate referral to neurology</li>
+<li>Safety-netting for recurrent seizures</li>
+</ul>
+
+<hr>
+
+<h2>QUICK REFERENCE: AUSTRALIAN TERMINOLOGY</h2>
+
+<table>
+<tr>
+<th>Australian Term</th>
+<th>US/Other Term (Avoid)</th>
+</tr>
+<tr>
+<td>Tonic-clonic seizure</td>
+<td>Grand mal seizure (outdated)</td>
+</tr>
+<tr>
+<td>Focal seizure</td>
+<td>Partial seizure (outdated term)</td>
+</tr>
+<tr>
+<td>Midazolam</td>
+<td>Versed</td>
+</tr>
+<tr>
+<td>Diazepam</td>
+<td>Valium (brand name acceptable)</td>
+</tr>
+<tr>
+<td>Levetiracetam</td>
+<td>Keppra (brand name acceptable)</td>
+</tr>
+<tr>
+<td>Valproate sodium</td>
+<td>Depakote, valproic acid</td>
+</tr>
+<tr>
+<td>Phenytoin</td>
+<td>Dilantin</td>
+</tr>
+<tr>
+<td>Carbamazepine</td>
+<td>Tegretol (brand name acceptable)</td>
+</tr>
+<tr>
+<td>Emergency Department (ED)</td>
+<td>ER, Emergency Room</td>
+</tr>
+<tr>
+<td>General Practitioner (GP)</td>
+<td>PCP, Primary Care Physician</td>
+</tr>
+<tr>
+<td>Casualty, ED</td>
+<td>ER</td>
+</tr>
+</table>
+
+<hr>
+
+<h2>SUMMARY: AMC OSCE ESSENTIALS</h2>
+
+<div class="alert alert-green">
+<strong>Must-Know Points for AMC Clinical Exam:</strong>
+<ol>
+<li><strong>Status epilepticus</strong> = seizure >5 minutes = EMERGENCY
+<ul>
+<li>Benzodiazepine within 5 minutes (midazolam 10mg IV/IM preferred)</li>
+<li>Second-line: levetiracetam 60mg/kg IV (preferred over phenytoin in 2024)</li>
+<li>ANZCOR timeline: 0-5 min, 5-10 min, 10-30 min, 30+ min ICU</li>
+</ul>
+</li>
+<li><strong>First seizure workup</strong>:
+<ul>
+<li>Witness account essential (patient has amnesia)</li>
+<li>Distinguish seizure from syncope (tongue biting, post-ictal confusion, incontinence)</li>
+<li>CT brain + bloods + ECG mandatory</li>
+<li>Neurology referral ALL first seizures</li>
+</ul>
+</li>
+<li><strong>Driving restrictions (NSW)</strong>:
+<ul>
+<li>6 months seizure-free for private vehicle</li>
+<li>3 months if provoked seizure with removed trigger</li>
+<li>12 months for commercial vehicle</li>
+<li>MUST inform patient (legal requirement) and insurance</li>
+</ul>
+</li>
+<li><strong>Treatment</strong>:
+<ul>
+<li>Usually DO NOT start AEDs after single unprovoked seizure</li>
+<li>If AED needed: levetiracetam first-line (minimal interactions, safe pregnancy Category B2)</li>
+<li>AVOID valproate in women of childbearing age (Category D teratogenic)</li>
+</ul>
+</li>
+<li><strong>Safety advice</strong>:
+<ul>
+<li>No swimming alone, avoid heights, supervise bathing</li>
+<li>Inform employer if occupation has risks</li>
+<li>24-48 hour supervision post-seizure</li>
+</ul>
+</li>
+<li><strong>Terminology</strong>:
+<ul>
+<li>Generalised vs focal (not grand mal/partial)</li>
+<li>Emergency Department (not ER)</li>
+<li>GP (not PCP)</li>
+<li>Levetiracetam (Keppra acceptable), valproate sodium (not Depakote)</li>
+</ul>
+</li>
+</ol>
+</div>
+
+<hr>
+
+<strong>Last Updated</strong>: December 16, 2025
+<strong>Version</strong>: 1.0
+<strong>Author</strong>: ICRP NSW Young Hospital Preparation Team
+<strong>References</strong>: eTG 2024, ANZCOR Guideline 9.1.9, RoadSafety NSW
+
+
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 16, 2025</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+
+    </div>
+</body>
+</html>

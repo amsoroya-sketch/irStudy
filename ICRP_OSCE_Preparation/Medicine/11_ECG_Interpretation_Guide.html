@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECG Interpretation Guide - AMC Clinical OSCE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs">
+<a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Home</a>
+<span>→</span>
+<span>/</span>
+<span>→</span>
+<span>ICRP OSCE Preparation</span>
+<span>→</span>
+<span>Medicine</span>
+</div>
+        <div class="quick-nav">
+<h3>Medicine Navigation</h3>
+<ul>
+<li><a href="MASTER_INDEX.html">Master Index</a></li>
+<li><a href="01_Cardiovascular_Respiratory_History.html">CV/Resp History</a></li>
+<li><a href="02_Physical_Examination_Cardiovascular_Respiratory.html">CV/Resp Exam</a></li>
+<li><a href="03_Physical_Examination_Abdominal_Neurological.html">Abdo/Neuro Exam</a></li>
+<li><a href="#systematic-approach">Systematic ECG Interpretation</a></li>
+<li><a href="#life-threatening">Life-Threatening Patterns</a></li>
+<li><a href="#common-arrhythmias">Common Arrhythmias</a></li>
+</ul>
+</div>
+        <h1>ECG Interpretation Guide - AMC Clinical OSCE</h1>
+<h2>Systematic Approach for Australian Medical Practice</h2>
+
+<strong>Purpose</strong>: AMC Clinical-style ECG interpretation for OSCE stations<br>
+<strong>Target Time</strong>: 3-5 minutes to analyze and present findings<br>
+<strong>Format</strong>: Australian teaching hospital standard<br>
+<strong>Created</strong>: December 16, 2025
+
+<hr>
+
+<h2 id="systematic-approach">SYSTEMATIC ECG INTERPRETATION - "RRAIM" METHOD</h2>
+
+<p>
+<strong>CRITICAL OSCE SKILL</strong>: ALWAYS use a systematic approach. Never jump to diagnosis.
+</p>
+
+<div class="alert alert-blue">
+<strong>Say to Examiner</strong>: "I'd like to interpret this ECG systematically using the RRAIM approach: Rate, Rhythm, Axis, Intervals, and Morphology."
+</div>
+
+<h3>Step 1: RATE (Is the heart too fast, too slow, or normal?)</h3>
+
+<strong>Method 1 - "300 Rule" (Regular Rhythms)</strong>:
+<ul>
+<li>Count large squares between consecutive R waves</li>
+<li>Divide 300 by number of large squares</li>
+<li>Example: 4 large squares = 300/4 = 75 bpm</li>
+</ul>
+
+<strong>Method 2 - "Count and Multiply" (Irregular Rhythms)</strong>:
+<ul>
+<li>Count R waves in 30 large squares (6 seconds on standard ECG)</li>
+<li>Multiply by 10 to get beats per minute</li>
+</ul>
+
+<strong>Normal Values (Australian Standards)</strong>:
+<ul>
+<li><strong>Normal</strong>: 60-100 bpm</li>
+<li><strong>Bradycardia</strong>: <60 bpm</li>
+<li><strong>Tachycardia</strong>: >100 bpm</li>
+</ul>
+
+<h3>Step 2: RHYTHM (Is it regular and are P waves present?)</h3>
+
+<strong>Questions to Ask</strong>:
+<ol>
+<li><strong>Is the rhythm regular or irregular?</strong></li>
+<p>
+</ol>
+   - Use calipers or mark paper to measure R-R intervals
+   - Regular = same distance between all R waves
+   - Irregular = varying distances
+</p>
+
+<ol>
+<li><strong>Are P waves present?</strong></li>
+<p>
+</ol>
+   - Look in leads II, III, aVF (best for P waves)
+   - P wave = atrial depolarization (should be <0.12s wide, <2.5mm tall)
+</p>
+
+<ol>
+<li><strong>Is there a P wave before every QRS?</strong></li>
+<p>
+</ol>
+   - Normal = 1:1 ratio (one P wave for every QRS)
+</p>
+
+<ol>
+<li><strong>Is the PR interval consistent?</strong></li>
+<p>
+</ol>
+   - PR interval = start of P wave to start of QRS
+   - Normal: 0.12-0.20 seconds (3-5 small squares)
+</p>
+
+<strong>Common Rhythm Patterns</strong>:
+<ul>
+<li><strong>Sinus rhythm</strong>: Regular, P before every QRS, PR 0.12-0.20s</li>
+<li><strong>Atrial fibrillation (AF)</strong>: Irregularly irregular, no clear P waves, irregular R-R intervals</li>
+<li><strong>Atrial flutter</strong>: Sawtooth flutter waves (best in leads II, III, aVF)</li>
+<li><strong>Junctional rhythm</strong>: No P waves or inverted P waves after QRS</li>
+</ul>
+
+<h3>Step 3: AXIS (Is the electrical axis normal?)</h3>
+
+<strong>Quick Method - "Lead I and aVF"</strong>:
+<ul>
+<li><strong>Normal Axis</strong> (-30° to +90°): Both Lead I and aVF positive (upright QRS)</li>
+<li><strong>Left Axis Deviation</strong> (-30° to -90°): Lead I positive, aVF negative</li>
+<li><strong>Right Axis Deviation</strong> (+90° to +180°): Lead I negative, aVF positive</li>
+<li><strong>Extreme Axis</strong> (-90° to -180°): Both Lead I and aVF negative</li>
+</ul>
+
+<strong>Causes of Axis Deviation</strong>:
+<ul>
+<li><strong>Left Axis Deviation</strong>: LVH, left bundle branch block, inferior MI</li>
+<li><strong>Right Axis Deviation</strong>: RVH, pulmonary embolism, left posterior hemiblock</li>
+</ul>
+
+<div class="alert alert-yellow">
+<strong>IMG Tip</strong>: Don't spend >30 seconds calculating axis in OSCE. Quick "Lead I + aVF" method is sufficient for most cases.
+</div>
+
+<h3>Step 4: INTERVALS (Are PR, QRS, and QT normal?)</h3>
+
+<table>
+<thead>
+<tr>
+<th>Interval</th>
+<th>Normal Range</th>
+<th>How to Measure</th>
+<th>Abnormalities</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PR Interval</strong></td>
+<td>0.12-0.20s (3-5 small squares)</td>
+<td>Start of P wave to start of QRS</td>
+<td>Short: <0.12s (WPW syndrome)<br>Long: >0.20s (AV block)</td>
+</tr>
+<tr>
+<td><strong>QRS Duration</strong></td>
+<td><0.12s (<3 small squares)</td>
+<td>Start to end of QRS complex</td>
+<td>Wide: ≥0.12s (BBB, VT, hyperkalaemia)</td>
+</tr>
+<tr>
+<td><strong>QT Interval</strong></td>
+<td>0.35-0.44s (depends on rate)</td>
+<td>Start of QRS to end of T wave</td>
+<td>Long: >0.44s (corrected >0.45 in men, >0.47 in women)<br>Risk of Torsades de Pointes</td>
+</tr>
+</tbody>
+</table>
+
+<strong>QTc Calculation (Corrected for Heart Rate)</strong>:
+<ul>
+<li><strong>Bazett's Formula</strong>: QTc = QT / √(RR interval in seconds)</li>
+<li><strong>Quick Rule</strong>: QT should be <half the RR interval</li>
+<li><strong>Abnormal QTc</strong>: >0.45s (men), >0.47s (women)</li>
+</ul>
+
+<div class="alert alert-red">
+<strong>CRITICAL - Long QT Syndrome</strong>: QTc >0.50s significantly increases risk of sudden cardiac death. MUST identify in OSCE.
+</div>
+
+<h3>Step 5: MORPHOLOGY (Are there ST changes, Q waves, or hypertrophy?)</h3>
+
+<strong>A. ST Segment Analysis</strong>:
+<ul>
+<li><strong>Normal</strong>: Isoelectric (at baseline)</li>
+<li><strong>ST Elevation</strong>:</li>
+</ul>
+  - ≥1mm in limb leads (I, II, III, aVF, aVL, aVR)
+  - ≥2mm in chest leads (V1-V6)
+  - <strong>Causes</strong>: STEMI, pericarditis, early repolarization, LV aneurysm
+
+<ul>
+<li><strong>ST Depression</strong>:</li>
+</ul>
+  - ≥0.5mm horizontal or downsloping
+  - <strong>Causes</strong>: NSTEMI, ischaemia, digoxin effect, LVH strain
+
+<strong>B. Q Waves</strong>:
+<ul>
+<li><strong>Pathological Q Wave</strong> (indicates old MI):</li>
+</ul>
+  - >0.04s (1 small square) wide
+  - >2mm deep or >25% of R wave height
+  - Present in ≥2 contiguous leads
+
+<strong>C. T Wave Changes</strong>:
+<ul>
+<li><strong>T Wave Inversion</strong>: Ischaemia, old MI, LVH, PE</li>
+<li><strong>Tall Peaked T Waves</strong>: Hyperkalaemia (K+ >5.5 mmol/L)</li>
+<li><strong>Flat T Waves</strong>: Hypokalaemia, ischaemia</li>
+</ul>
+
+<strong>D. Ventricular Hypertrophy</strong>:
+<ul>
+<li><strong>Left Ventricular Hypertrophy (LVH)</strong>:</li>
+</ul>
+  - <strong>Sokolow-Lyon Criteria</strong>: S wave in V1 + R wave in V5 or V6 ≥35mm
+  - Often with left axis deviation, ST depression + T wave inversion in lateral leads (I, aVL, V5-V6)
+
+<ul>
+<li><strong>Right Ventricular Hypertrophy (RVH)</strong>:</li>
+</ul>
+  - Tall R wave in V1 (R:S ratio >1)
+  - Right axis deviation
+  - Causes: Pulmonary hypertension, chronic lung disease, congenital heart disease
+
+<hr>
+
+<h2 id="life-threatening">LIFE-THREATENING ECG PATTERNS - DO NOT MISS</h2>
+
+<div class="alert alert-red">
+<strong>OSCE CRITICAL</strong>: These patterns require IMMEDIATE action. State urgency to examiner.
+</div>
+
+<h3>1. ST-Elevation Myocardial Infarction (STEMI)</h3>
+
+<strong>Definition (Australian Guidelines)</strong>:
+<ul>
+<li><strong>ST elevation</strong> ≥1mm in ≥2 contiguous limb leads OR ≥2mm in ≥2 contiguous chest leads</li>
+<li>Must be in <strong>vascular territory</strong> (see table below)</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Territory</th>
+<th>Leads with ST Elevation</th>
+<th>Coronary Artery</th>
+<th>Associated Findings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Anterior</strong></td>
+<td>V2, V3, V4</td>
+<td>Left Anterior Descending (LAD)</td>
+<td>Q waves in V1-V4 if old MI</td>
+</tr>
+<tr>
+<td><strong>Lateral</strong></td>
+<td>I, aVL, V5, V6</td>
+<td>Left Circumflex (LCx)</td>
+<td>Often with anterior or inferior STEMI</td>
+</tr>
+<tr>
+<td><strong>Inferior</strong></td>
+<td>II, III, aVF</td>
+<td>Right Coronary Artery (RCA)</td>
+<td>Check for right ventricular involvement (V4R)</td>
+</tr>
+<tr>
+<td><strong>Posterior</strong></td>
+<td>Tall R waves in V1-V2 (mirror image)</td>
+<td>RCA or LCx</td>
+<td>ST depression V1-V3 (reciprocal change)</td>
+</tr>
+</tbody>
+</table>
+
+<strong>IMMEDIATE OSCE Response</strong>:
+<p>
+"This ECG shows ST elevation in leads [specify], consistent with <strong>STEMI</strong> in the [territory] distribution. This is a medical emergency requiring immediate reperfusion therapy."
+</p>
+
+<strong>Management (Therapeutic Guidelines eTG 2024)</strong>:
+<ol>
+<li><strong>Call for senior help IMMEDIATELY</strong> - Registrar/Consultant/Emergency physician</li>
+<li><strong>MONA</strong>:</li>
+</ol>
+   - <strong>M</strong>orphine 2.5-5mg IV (for pain)
+   - <strong>O</strong>xygen (only if SpO₂ <94% - avoid hyperoxia)
+   - <strong>N</strong>itrates - GTN 300-600mcg sublingual (avoid if inferior STEMI with RV involvement or hypotension)
+   - <strong>A</strong>spirin 300mg chewed (loading dose)
+
+<ol>
+<li><strong>Antiplatelet therapy</strong>: Ticagrelor 180mg or prasugrel 60mg (or clopidogrel 300-600mg)</li>
+<li><strong>Anticoagulation</strong>: Enoxaparin 1mg/kg SC or unfractionated heparin bolus + infusion</li>
+<li><strong>URGENT reperfusion</strong>:</li>
+</ol>
+   - <strong>Primary PCI</strong> (percutaneous coronary intervention) - preferred if available within 90 minutes
+   - <strong>Thrombolysis</strong> - if PCI not available within 90 min and <12 hours from symptom onset (tenecteplase or alteplase)
+
+<div class="alert alert-yellow">
+<strong>Common IMG Mistakes</strong>:
+<ul>
+<li>Not checking for <strong>reciprocal changes</strong> (ST depression opposite to ST elevation confirms STEMI)</li>
+<li>Missing <strong>posterior STEMI</strong> (look for tall R waves in V1-V2)</li>
+<li>Giving GTN in <strong>inferior STEMI with RV involvement</strong> - can cause severe hypotension (check V4R)</li>
+<li>Using US terminology: "cath lab" → "coronary angiography suite" in Australia</li>
+</ul>
+</div>
+
+<h3>2. Ventricular Fibrillation (VF) & Ventricular Tachycardia (VT)</h3>
+
+<strong>Ventricular Fibrillation (VF)</strong>:
+<ul>
+<li><strong>ECG Pattern</strong>: Chaotic, irregular waveform with no identifiable QRS complexes</li>
+<li><strong>Clinical</strong>: Cardiac arrest - no pulse, no blood pressure</li>
+<li><strong>Management</strong>: IMMEDIATE CPR + defibrillation (unsynchronized shock 200J biphasic)</li>
+</ul>
+
+<strong>Ventricular Tachycardia (VT)</strong>:
+<ul>
+<li><strong>ECG Pattern</strong>:</li>
+</ul>
+  - Wide QRS complexes (≥0.12s)
+  - Rate >100 bpm (usually 120-250 bpm)
+  - Regular rhythm
+  - No discernible P waves or AV dissociation (P waves and QRS independent)
+
+<ul>
+<li><strong>Clinical Types</strong>:</li>
+</ul>
+  - <strong>Sustained VT</strong>: >30 seconds or causing haemodynamic compromise
+  - <strong>Non-sustained VT</strong>: <30 seconds, terminates spontaneously
+
+<strong>VT vs SVT with Aberrancy (Brugada Criteria)</strong>:
+<ol>
+<li>Absence of RS complex in all chest leads → VT</li>
+<li>RS interval >100ms in any chest lead → VT</li>
+<li>AV dissociation present → VT</li>
+<li>Morphology criteria (LBBB or RBBB pattern) → If doesn't match typical BBB, likely VT</li>
+</ol>
+
+<strong>Management (ARC Guidelines 2024)</strong>:
+<ul>
+<li><strong>Pulseless VT</strong> (cardiac arrest):</li>
+</ul>
+  - CPR immediately
+  - Defibrillation 200J (unsynchronized shock)
+  - Adrenaline 1mg IV every 3-5 minutes
+  - Amiodarone 300mg IV bolus after 3rd shock
+
+<ul>
+<li><strong>VT with pulse (stable)</strong>:</li>
+</ul>
+  - Continuous ECG monitoring
+  - Amiodarone 300mg IV over 20-60 min, then 900mg over 24 hours
+  - Prepare for cardioversion if becomes unstable
+
+<ul>
+<li><strong>VT with pulse (unstable - hypotensive, chest pain, pulmonary oedema)</strong>:</li>
+</ul>
+  - <strong>Synchronized DC cardioversion</strong> 100-200J
+  - Sedation if conscious (midazolam 2-5mg IV)
+
+<h3>3. Complete (Third-Degree) Heart Block</h3>
+
+<strong>ECG Pattern</strong>:
+<ul>
+<li><strong>P waves present</strong> at regular intervals (atrial rate normal, e.g., 70 bpm)</li>
+<li><strong>QRS complexes present</strong> at slow regular intervals (ventricular rate slow, e.g., 30-40 bpm)</li>
+<li><strong>No relationship between P waves and QRS</strong> (AV dissociation)</li>
+<li>QRS may be wide (if ventricular escape rhythm) or narrow (if junctional escape rhythm)</li>
+</ul>
+
+<strong>Clinical Significance</strong>:
+<ul>
+<li>Bradycardia (often <40 bpm)</li>
+<li>Syncope, dizziness, fatigue</li>
+<li>Risk of asystole</li>
+</ul>
+
+<strong>Management (eTG 2024)</strong>:
+<ol>
+<li><strong>Immediate</strong>:</li>
+</ol>
+   - Call for senior help
+   - If unstable (hypotension, syncope, heart failure): Atropine 600mcg IV (may repeat to 3mg total)
+   - If atropine ineffective: <strong>Transcutaneous pacing</strong> or isoprenaline infusion
+
+<ol>
+<li><strong>Definitive</strong>:</li>
+</ol>
+   - <strong>Permanent pacemaker insertion</strong> (almost always required for complete heart block)
+
+<div class="alert alert-blue">
+<strong>OSCE Statement</strong>: "This ECG shows complete heart block with AV dissociation. The patient requires urgent cardiology review for pacemaker insertion. I would assess haemodynamic stability and consider temporary pacing if unstable."
+</div>
+
+<h3>4. Long QT Syndrome</h3>
+
+<strong>ECG Pattern</strong>:
+<ul>
+<li>QTc >0.45s (men) or >0.47s (women)</li>
+<li>QTc >0.50s = high risk</li>
+</ul>
+
+<strong>Causes (Mnemonic: "LQTS Drugs")</strong>:
+<ul>
+<li><strong>Congenital</strong>: Romano-Ward syndrome, Jervell and Lange-Nielsen syndrome</li>
+<li><strong>Medications</strong>:</li>
+</ul>
+  - Antiarrhythmics: Amiodarone, sotalol, flecainide
+  - Antibiotics: Macrolides (erythromycin, clarithromycin), fluoroquinolones
+  - Antipsychotics: Haloperidol, risperidone
+  - Antidepressants: Citalopram, escitalopram
+
+<ul>
+<li><strong>Electrolytes</strong>: Hypokalaemia, hypomagnesaemia, hypocalcaemia</li>
+<li><strong>Other</strong>: Hypothermia, subarachnoid haemorrhage, myocardial ischaemia</li>
+</ul>
+
+<strong>Clinical Risk</strong>:
+<ul>
+<li><strong>Torsades de Pointes</strong> (polymorphic VT) - "twisting of the points"</li>
+<li>Can degenerate to VF and sudden cardiac death</li>
+</ul>
+
+<strong>Management</strong>:
+<ol>
+<li><strong>Stop offending drugs</strong> immediately</li>
+<li><strong>Correct electrolytes</strong>: K+ >4.0 mmol/L, Mg2+ >1.0 mmol/L</li>
+<li>If Torsades de Pointes: <strong>Magnesium sulfate 2g IV</strong> over 10 min</li>
+<li>Cardiology referral (may need beta-blockers, ICD if high risk)</li>
+</ol>
+
+<h3>5. Hyperkalaemia (Life-Threatening)</h3>
+
+<strong>Progressive ECG Changes as K+ Increases</strong>:
+<ul>
+<li><strong>Mild (5.5-6.5 mmol/L)</strong>: Tall, peaked T waves (narrow base, "tented")</li>
+<li><strong>Moderate (6.5-7.5 mmol/L)</strong>: Flattened P waves, prolonged PR interval</li>
+<li><strong>Severe (>7.5 mmol/L)</strong>:</li>
+</ul>
+  - Loss of P waves
+  - Widened QRS (>0.12s)
+  - "Sine wave" pattern (pre-cardiac arrest)
+
+<strong>IMMEDIATE Management (eTG 2024)</strong>:
+<ol>
+<li><strong>Cardiac protection (FIRST)</strong>:</li>
+</ol>
+   - <strong>Calcium gluconate 10% 10mL IV</strong> over 5-10 minutes (stabilizes cardiac membrane)
+   - Does NOT lower K+, but prevents arrhythmias
+
+<ol>
+<li><strong>Shift K+ intracellularly</strong>:</li>
+</ol>
+   - <strong>Insulin 10 units IV + 50mL 50% glucose</strong> (or 25g dextrose)
+   - <strong>Salbutamol 10-20mg nebulized</strong>
+   - <strong>Sodium bicarbonate 50-100 mmol IV</strong> (if acidotic)
+
+<ol>
+<li><strong>Remove K+ from body</strong> (slower):</li>
+</ol>
+   - <strong>Resonium A (calcium polystyrene sulfonate) 15g PO/PR</strong> TDS
+   - <strong>Haemodialysis</strong> if refractory or K+ >7.5 mmol/L
+
+<div class="alert alert-red">
+<strong>OSCE CRITICAL</strong>: If you see tall peaked T waves + wide QRS, state immediately: "This ECG shows signs of severe hyperkalaemia which is a medical emergency. I would give calcium gluconate immediately to stabilize the cardiac membrane, then insulin-dextrose and salbutamol to shift potassium intracellularly."
+</div>
+
+<hr>
+
+<h2 id="common-arrhythmias">COMMON ARRHYTHMIAS (AMC OSCE Favourites)</h2>
+
+<h3>1. Atrial Fibrillation (AF)</h3>
+
+<strong>ECG Pattern</strong>:
+<ul>
+<li><strong>Irregularly irregular rhythm</strong> (hallmark)</li>
+<li><strong>No clear P waves</strong> - replaced by fibrillatory waves (chaotic atrial activity)</li>
+<li><strong>Narrow QRS</strong> (unless bundle branch block)</li>
+<li>Variable R-R intervals</li>
+</ul>
+
+<strong>Clinical Features</strong>:
+<ul>
+<li>Palpitations, dyspnoea, fatigue, dizziness</li>
+<li>May be asymptomatic (found incidentally)</li>
+<li><strong>Major complication</strong>: Stroke risk (5x increased without anticoagulation)</li>
+</ul>
+
+<strong>Management Principles (eTG 2024)</strong>:
+<ol>
+<li><strong>Acute Management</strong>:</li>
+</ol>
+   - If <strong>unstable</strong> (hypotension, pulmonary oedema, angina): <strong>Synchronized DC cardioversion 100-200J</strong>
+   - If <strong>stable</strong>: Rate or rhythm control
+
+<ol>
+<li><strong>Rate Control</strong> (most common strategy):</li>
+</ol>
+   - <strong>Beta-blocker</strong>: Metoprolol 25-50mg BD or atenolol 25-50mg daily
+   - <strong>Calcium channel blocker</strong>: Diltiazem 60mg TDS or verapamil 40mg TDS
+   - <strong>Digoxin</strong>: 125-250mcg daily (if heart failure or sedentary elderly)
+   - Target rate: <110 bpm at rest
+
+<ol>
+<li><strong>Rhythm Control</strong> (if symptomatic, young, first episode):</li>
+</ol>
+   - <strong>Electrical cardioversion</strong> (if <48 hours duration OR adequately anticoagulated for 3 weeks)
+   - <strong>Pharmacological</strong>: Flecainide (if no structural heart disease) or amiodarone
+   - Long-term: Consider catheter ablation
+
+<ol>
+<li><strong>Anticoagulation</strong> (MOST IMPORTANT - prevents stroke):</li>
+</ol>
+   - Calculate <strong>CHA₂DS₂-VASc score</strong>:
+     - <strong>C</strong>ongestive heart failure (1 point)
+     - <strong>H</strong>ypertension (1 point)
+     - <strong>A</strong>ge ≥75 (2 points)
+     - <strong>D</strong>iabetes (1 point)
+     - <strong>S</strong>troke/TIA/thromboembolism (2 points)
+     - <strong>V</strong>ascular disease (1 point)
+     - <strong>A</strong>ge 65-74 (1 point)
+     - <strong>S</strong>ex category (female = 1 point)
+
+   - <strong>Anticoagulation if</strong>: Score ≥2 (men) or ≥3 (women)
+   - <strong>First-line</strong>: Direct oral anticoagulants (DOACs) - PBS-listed
+     - <strong>Apixaban 5mg BD</strong> (reduce to 2.5mg BD if ≥2 of: age ≥80, weight ≤60kg, Cr ≥133)
+     - <strong>Rivaroxaban 20mg daily</strong>
+     - <strong>Dabigatran 150mg BD</strong>
+   - Alternative: Warfarin (target INR 2-3)
+
+<div class="alert alert-blue">
+<strong>OSCE Presentation</strong>: "This ECG shows atrial fibrillation with an irregularly irregular rhythm and absent P waves. I would assess haemodynamic stability, control rate with beta-blockers, calculate CHA₂DS₂-VASc score for stroke risk, and consider anticoagulation."
+</div>
+
+<h3>2. Supraventricular Tachycardia (SVT)</h3>
+
+<strong>ECG Pattern</strong>:
+<ul>
+<li><strong>Narrow QRS tachycardia</strong> (QRS <0.12s)</li>
+<li><strong>Regular rhythm</strong></li>
+<li>Rate usually 150-250 bpm</li>
+<li>P waves may be hidden in QRS or T wave</li>
+</ul>
+
+<strong>Types</strong>:
+<ul>
+<li><strong>AVNRT</strong> (AV nodal re-entrant tachycardia) - most common (60%)</li>
+<li><strong>AVRT</strong> (AV re-entrant tachycardia) - accessory pathway (WPW syndrome)</li>
+<li><strong>Atrial tachycardia</strong></li>
+</ul>
+
+<strong>Management (ARC Guidelines 2024)</strong>:
+<ol>
+<li><strong>If unstable</strong>: Synchronized DC cardioversion 100-200J</li>
+<li><strong>If stable</strong>:</li>
+</ol>
+
+   <strong>A. Vagal Manoeuvres</strong> (try first):
+   - <strong>Valsalva manoeuvre</strong>: "Take a deep breath and bear down like you're having a bowel movement for 10-15 seconds"
+   - <strong>Carotid sinus massage</strong>: Only if trained, never both sides simultaneously, contraindicated if carotid bruit
+   - <strong>Diving reflex</strong>: Face in ice-cold water
+
+   <strong>B. Adenosine</strong> (if vagal manoeuvres fail):
+   - <strong>Adenosine 6mg rapid IV push</strong> (via large vein, followed by 20mL saline flush)
+   - Warn patient: "You'll feel very unwell for a few seconds - chest tightness, feeling like you can't breathe - this is normal and will pass quickly"
+   - If no response: 12mg, then 18mg
+   - Continuous ECG monitoring during administration
+   - <strong>Contraindications</strong>: Asthma (use verapamil 5-10mg IV instead), WPW with AF
+
+<ol>
+<li><strong>Prevention</strong>:</li>
+</ol>
+   - <strong>Beta-blocker</strong>: Metoprolol 25-50mg BD
+   - <strong>Calcium channel blocker</strong>: Verapamil 40-80mg TDS
+   - <strong>Definitive</strong>: Catheter ablation (curative in >90%, refer to cardiology)
+
+<h3>3. Sinus Bradycardia</h3>
+
+<strong>ECG Pattern</strong>:
+<ul>
+<li>Rate <60 bpm</li>
+<li>Regular rhythm</li>
+<li>P wave before every QRS</li>
+<li>Normal PR interval (0.12-0.20s)</li>
+</ul>
+
+<strong>Causes</strong>:
+<ul>
+<li><strong>Physiological</strong>: Athletes, sleep, increased vagal tone</li>
+<li><strong>Pathological</strong>:</li>
+</ul>
+  - Medications: Beta-blockers, calcium channel blockers, digoxin, amiodarone
+  - Hypothyroidism
+  - Hypothermia
+  - Increased intracranial pressure (Cushing's reflex)
+  - Sick sinus syndrome
+  - Inferior MI (RCA supplies SA node)
+
+<strong>Management</strong>:
+<ul>
+<li><strong>If asymptomatic and haemodynamically stable</strong>: No treatment (especially if athlete)</li>
+<li><strong>If symptomatic (dizziness, syncope, fatigue) or unstable</strong>:</li>
+</ul>
+  - <strong>Atropine 600mcg IV</strong> (may repeat to 3mg total)
+  - If refractory: <strong>Isoprenaline infusion</strong> or <strong>transcutaneous pacing</strong>
+  - <strong>Definitive</strong>: Permanent pacemaker if persistent symptomatic bradycardia
+
+<h3>4. Atrial Flutter</h3>
+
+<strong>ECG Pattern</strong>:
+<ul>
+<li><strong>Sawtooth flutter waves</strong> (best seen in leads II, III, aVF, V1)</li>
+<li>Atrial rate typically 250-350 bpm</li>
+<li>Regular ventricular response (usually 2:1, 3:1, or 4:1 AV block)</li>
+</ul>
+  - 2:1 block = ventricular rate ~150 bpm
+  - 3:1 block = ventricular rate ~100 bpm
+
+<strong>Management</strong>:
+<ul>
+<li>Similar to AF: Rate control, rhythm control, anticoagulation (same CHA₂DS₂-VASc criteria)</li>
+<li><strong>Rate control</strong>: Beta-blockers, calcium channel blockers</li>
+<li><strong>Rhythm control</strong>: DC cardioversion or catheter ablation (more successful than AF ablation)</li>
+<li><strong>Anticoagulation</strong>: Same as AF (DOACs preferred)</li>
+</ul>
+
+<hr>
+
+<h2>ELECTROLYTE ABNORMALITIES ON ECG</h2>
+
+<table>
+<thead>
+<tr>
+<th>Electrolyte</th>
+<th>ECG Changes</th>
+<th>Clinical Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hyperkalaemia (K+ >5.5)</strong></td>
+<td>Tall peaked T waves → Flat P waves → Wide QRS → Sine wave</td>
+<td>Renal failure, ACE-I/ARB, potassium-sparing diuretics</td>
+</tr>
+<tr>
+<td><strong>Hypokalaemia (K+ <3.5)</strong></td>
+<td>Flat/inverted T waves, prominent U waves, ST depression, long QT</td>
+<td>Diuretics, vomiting, diarrhoea</td>
+</tr>
+<tr>
+<td><strong>Hypercalcaemia (Ca2+ >2.6)</strong></td>
+<td>Short QT interval, widened T wave</td>
+<td>Hyperparathyroidism, malignancy</td>
+</tr>
+<tr>
+<td><strong>Hypocalcaemia (Ca2+ <2.1)</strong></td>
+<td>Prolonged QT interval (long ST segment)</td>
+<td>Chronic kidney disease, hypoparathyroidism</td>
+</tr>
+<tr>
+<td><strong>Hypomagnesaemia (Mg2+ <0.7)</strong></td>
+<td>Similar to hypokalaemia, Torsades de Pointes</td>
+<td>Often coexists with hypokalaemia</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>AMC OSCE SCENARIOS - ECG STATIONS</h2>
+
+<h3>Scenario 1: Chest Pain with ECG</h3>
+
+<strong>Station Setup</strong>:
+<p>
+"Mr. Smith, 58 years old, presents with 2 hours of central crushing chest pain radiating to his left arm. Here is his ECG. Please interpret the ECG and outline your immediate management."
+</p>
+
+<strong>Systematic Approach</strong>:
+<ol>
+<li><strong>Identify yourself</strong>: "I'm going to interpret this ECG systematically."</li>
+<li><strong>RRAIM method</strong>:</li>
+</ol>
+   - Rate: ~70 bpm (state how calculated)
+   - Rhythm: Sinus rhythm, regular
+   - Axis: Normal (Lead I and aVF both positive)
+   - Intervals: PR normal, QRS normal, QT normal
+   - Morphology: <strong>"There is ST elevation of 3mm in leads V2, V3, and V4, consistent with anterior STEMI"</strong>
+
+<ol>
+<li><strong>State diagnosis</strong>: "This ECG shows an <strong>acute anterior ST-elevation myocardial infarction</strong>."</li>
+<li><strong>Immediate management</strong>:</li>
+</ol>
+   - "This is a medical emergency requiring immediate reperfusion therapy."
+   - MONA protocol (morphine, oxygen if hypoxic, nitrates, aspirin)
+   - Dual antiplatelet therapy (aspirin + ticagrelor/prasugrel)
+   - Anticoagulation
+   - URGENT cardiology referral for primary PCI
+
+<h3>Scenario 2: Palpitations with ECG</h3>
+
+<strong>Station Setup</strong>:
+<p>
+"Mrs. Jones, 72 years old, presents with palpitations and dyspnoea. Her ECG is shown. Please interpret the ECG and outline your management plan."
+</p>
+
+<strong>ECG Shows</strong>: Atrial fibrillation
+
+<strong>Systematic Approach</strong>:
+<ol>
+<li><strong>RRAIM</strong>:</li>
+</ol>
+   - Rate: ~110 bpm (count and multiply method due to irregularity)
+   - Rhythm: <strong>"Irregularly irregular rhythm with no clear P waves, consistent with atrial fibrillation"</strong>
+   - Axis: Cannot accurately assess due to irregularity
+   - Intervals: QRS normal width
+   - Morphology: No ST changes
+
+<ol>
+<li><strong>Assessment of stability</strong>:</li>
+</ol>
+   - "I would assess haemodynamic stability - BP, conscious state, chest pain, signs of heart failure"
+   - If unstable: DC cardioversion
+   - If stable: Rate control
+
+<ol>
+<li><strong>Management plan</strong>:</li>
+</ol>
+   - <strong>Rate control</strong>: Beta-blocker (metoprolol) or calcium channel blocker (diltiazem)
+   - <strong>Anticoagulation assessment</strong>: "I would calculate CHA₂DS₂-VASc score to assess stroke risk"
+     - Age 72 = 1 point
+     - Female = 1 point
+     - Total ≥2 → Anticoagulation indicated
+   - "I would start a DOAC such as apixaban 5mg BD, which is PBS-listed"
+   - Consider rhythm control vs long-term rate control
+   - Cardiology referral
+
+<h3>Scenario 3: Routine Pre-Operative ECG</h3>
+
+<strong>Station Setup</strong>:
+<p>
+"Mr. Brown, 65, is scheduled for elective knee replacement. This is his pre-operative ECG. Please interpret it and advise if he is fit for surgery."
+</p>
+
+<strong>ECG Shows</strong>: Left bundle branch block (LBBB)
+
+<strong>Systematic Approach</strong>:
+<ol>
+<li><strong>RRAIM</strong>:</li>
+</ol>
+   - Rate: 72 bpm
+   - Rhythm: Sinus rhythm, regular
+   - Axis: Normal or left axis deviation
+   - Intervals: PR normal, <strong>QRS wide (≥0.12s)</strong>
+   - Morphology: <strong>"Wide QRS with broad notched R waves in lateral leads (I, aVL, V5-V6) and deep S waves in V1-V2, consistent with left bundle branch block"</strong>
+
+<ol>
+<li><strong>Clinical significance</strong>:</li>
+</ol>
+   - "LBBB can indicate underlying structural heart disease"
+   - Need to assess: History of chest pain, dyspnoea, cardiac history
+
+<ol>
+<li><strong>Further assessment</strong>:</li>
+</ol>
+   - "I would take a cardiac history and examine the patient"
+   - Check if <strong>new LBBB</strong> (compare to old ECGs) - new LBBB with chest pain = STEMI equivalent
+   - Consider echocardiogram to assess LV function
+   - Cardiology review if symptomatic or new finding
+
+<ol>
+<li><strong>Fitness for surgery</strong>:</li>
+</ol>
+   - "If this is chronic LBBB with no new symptoms and patient is otherwise well, he is likely fit for elective surgery"
+   - "However, I would recommend cardiology clearance and optimization before proceeding"
+
+<hr>
+
+<h2>COMMON IMG MISTAKES - ECG INTERPRETATION</h2>
+
+<ol>
+<li><strong>Not using systematic approach</strong></li>
+</ol>
+   - ❌ Jumping straight to "This looks like a STEMI"
+   - ✅ Always use RRAIM method, state each step out loud
+
+<ol>
+<li><strong>Missing reciprocal changes in STEMI</strong></li>
+</ol>
+   - ❌ Only looking at ST elevation
+   - ✅ Check for ST depression in opposite leads (confirms STEMI, rules out pericarditis)
+
+<ol>
+<li><strong>Forgetting to check for posterior MI</strong></li>
+</ol>
+   - ❌ Missing tall R waves in V1-V2
+   - ✅ Posterior MI presents as ST depression V1-V3 with tall R waves (mirror image)
+
+<ol>
+<li><strong>Not correcting QT for heart rate</strong></li>
+</ol>
+   - ❌ Saying "QT looks long" without calculating QTc
+   - ✅ Use Bazett's formula or quick rule (QT should be <half RR interval)
+
+<ol>
+<li><strong>Confusing VT with SVT + aberrancy</strong></li>
+</ol>
+   - ❌ Calling all wide-complex tachycardias "SVT"
+   - ✅ Use Brugada criteria; if in doubt, treat as VT (safer)
+
+<ol>
+<li><strong>Not recognizing hyperkalaemia urgency</strong></li>
+</ol>
+   - ❌ "Tall T waves, probably normal variant"
+   - ✅ Tall peaked T waves + wide QRS = medical emergency, give calcium immediately
+
+<ol>
+<li><strong>Using US terminology</strong></li>
+</ol>
+   - ❌ "Cardiac enzymes", "cath lab", "ER"
+   - ✅ "<strong>Troponin</strong>", "coronary angiography suite", "<strong>Emergency Department</strong>"
+
+<ol>
+<li><strong>Not mentioning anticoagulation in AF</strong></li>
+</ol>
+   - ❌ Only discussing rate/rhythm control
+   - ✅ <strong>Always</strong> calculate CHA₂DS₂-VASc score and discuss stroke prevention (most important!)
+
+<ol>
+<li><strong>Forgetting to check old ECGs</strong></li>
+</ol>
+   - ❌ Treating chronic changes as acute
+   - ✅ State "I would compare this to previous ECGs" - ST elevation could be old LV aneurysm
+
+<ol>
+<li><strong>Not stating urgency for emergencies</strong></li>
+</ol>
+   - ❌ "This is a STEMI, we should do something"
+   - ✅ "This is a STEMI, a medical emergency requiring <strong>immediate</strong> reperfusion therapy. I would call for senior help now."
+
+<ol>
+<li><strong>Ignoring clinical context</strong></li>
+</ol>
+   - ❌ Interpreting ECG in isolation
+   - ✅ "This ECG shows [finding]. In the context of this patient's presentation of [symptoms], this is consistent with [diagnosis]."
+
+<ol>
+<li><strong>Not knowing Australian guidelines</strong></li>
+</ol>
+   - ❌ Recommending treatments not available/PBS-listed in Australia
+   - ✅ Know eTG 2024, mention PBS status for medications (apixaban, rivaroxaban PBS-listed for AF)
+
+<hr>
+
+<h2>QUICK REFERENCE - NORMAL VALUES (AUSTRALIAN STANDARDS)</h2>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Normal Range</th>
+<th>How to Measure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Heart Rate</strong></td>
+<td>60-100 bpm</td>
+<td>300 ÷ large squares OR count R waves × 10</td>
+</tr>
+<tr>
+<td><strong>PR Interval</strong></td>
+<td>0.12-0.20s (3-5 small squares)</td>
+<td>Start of P to start of QRS</td>
+</tr>
+<tr>
+<td><strong>QRS Duration</strong></td>
+<td><0.12s (<3 small squares)</td>
+<td>Start to end of QRS</td>
+</tr>
+<tr>
+<td><strong>QT Interval</strong></td>
+<td>0.35-0.44s (rate dependent)</td>
+<td>Start of QRS to end of T wave</td>
+</tr>
+<tr>
+<td><strong>QTc (corrected)</strong></td>
+<td>Men: <0.45s, Women: <0.47s</td>
+<td>QT ÷ √RR interval</td>
+</tr>
+<tr>
+<td><strong>P Wave</strong></td>
+<td>Width <0.12s, Height <2.5mm</td>
+<td>Best seen in leads II, III, aVF</td>
+</tr>
+<tr>
+<td><strong>Axis</strong></td>
+<td>-30° to +90°</td>
+<td>Lead I and aVF both positive = normal</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>SUMMARY - ECG INTERPRETATION CHECKLIST</h2>
+
+<p>
+Before finishing ECG interpretation in OSCE, ensure you've covered:
+</p>
+
+<ul>
+<li>✅ Introduced systematic approach ("I'll use RRAIM method")</li>
+<li>✅ Stated rate and how calculated</li>
+<li>✅ Identified rhythm (regular/irregular, P waves present)</li>
+<li>✅ Assessed axis (quick Lead I + aVF method)</li>
+<li>✅ Measured intervals (PR, QRS, QT/QTc)</li>
+<li>✅ Assessed morphology (ST changes, Q waves, T waves, hypertrophy)</li>
+<li>✅ Stated diagnosis clearly</li>
+<li>✅ Mentioned clinical context (related to patient's symptoms)</li>
+<li>✅ Outlined immediate management if emergency</li>
+<li>✅ Stated urgency appropriately (STEMI, VF, complete heart block = IMMEDIATE)</li>
+<li>✅ Used Australian terminology (troponin, Emergency Department, PBS)</li>
+<li>✅ Mentioned anticoagulation if AF</li>
+<li>✅ Offered to compare with old ECGs if available</li>
+</ul>
+
+<hr>
+
+<strong>Last Updated</strong>: December 16, 2025<br>
+<strong>Version</strong>: 1.0<br>
+<strong>Author</strong>: ICRP NSW Young Hospital Preparation Team<br>
+<strong>References</strong>: Therapeutic Guidelines eTG 2024, Australian Resuscitation Council (ARC) Guidelines 2024
+
+
+    <div class="footer">
+        <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
+        <p>Generated: December 16, 2025</p>
+        <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
+    </div>
+
+    </div>
+</body>
+</html>
