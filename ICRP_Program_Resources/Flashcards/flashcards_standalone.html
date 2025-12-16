@@ -722,12 +722,15 @@
                 // Auto-load embedded flashcards
                 if (this.allCards.length > 0) {
                     this.filteredCards = [...this.allCards];
-                    this.showCard(0);
+
+                    // Hide file input, show app
+                    document.getElementById('fileInputWrapper').style.display = 'none';
+                    document.getElementById('appContainer').style.display = 'block';
+
+                    // Initialize app (using correct function names from original code)
+                    this.populateFilters();
                     this.updateStats();
-                    this.updateCategoryFilter();
-                    this.updateDeckFilter();
-                    document.getElementById('uploadSection').style.display = 'none';
-                    document.getElementById('studySection').style.display = 'block';
+                    this.showCard();
                 }
                 this.loadProgress();
                 this.setupEventListeners();
