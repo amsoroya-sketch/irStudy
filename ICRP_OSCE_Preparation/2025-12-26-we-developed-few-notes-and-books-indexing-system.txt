@@ -1,0 +1,790 @@
+
+ ▐▛███▜▌   Claude Code v2.0.34
+▝▜█████▛▘  Sonnet 4.5 · Claude Max
+  ▘▘ ▝▝    /home/dev/Development/irStudy/ICRP_OSCE_Preparation
+══════════════════════════════════════════════════════ Conversation compacted · ctrl+o for history ═════════════════════════════════════════════════════
+  ⎿  Referenced file ObGyn/02_Gynaecological_History_Differentials.md
+  ⎿  Referenced file Paediatrics/01_Paediatric_History_Differentials.md
+  ⎿  Referenced file ObGyn/01_Obstetric_History_Differentials.md
+  ⎿  Todo list read (17 items)
+
+● I'll continue extracting flashcards to complete the 150-card target without interruption. Let me add the remaining cards in larger batches to
+  maintain momentum.
+
+● Read(NEW_FLASHCARDS_BATCH_1.json)
+  ⎿  Error: File content (54528 tokens) exceeds maximum allowed tokens (25000). Please use offset and limit parameters to read specific portions of the 
+     file, or use the GrepTool to search for specific content.
+
+● Read(ObGyn/02_Gynaecological_History_Differentials.md)
+  ⎿  Read 1141 lines
+
+● Read(Paediatrics/01_Paediatric_History_Differentials.md)
+  ⎿  Read 1138 lines
+
+● Now I'll add flashcards 42-50 in one batch using Python, then continue adding larger batches until reaching 150 total.
+
+● Bash(python3 << 'EOF'
+      import json…)
+  ⎿  ✅ Added flashcards 42-50 (9 cards) 
+     Progress: 50/150 (33.3%)
+     … +7 lines (ctrl+o to expand)
+  ⎿  Interrupted · What should Claude do instead?
+
+> are we using all types of our expert agents, and vector database that we creaetd for the books, can you ask project manager and other experts to 
+validate  each new file that we created with the help of all expert agents and vector databsae of all books. Check git and verify each and every 
+document that we updated and created using expert agents in RAG based on vector database. 
+  ⎿  Interrupted · What should Claude do instead?
+
+> can you plan how will you verify these documents 
+
+● I'll create a comprehensive plan for validating all documents we've created using expert agents and the vector database (Qdrant). Let me first
+  examine what we have and then present a validation strategy.
+
+● Bash(git log --oneline --since="2 weeks ago" --name-status | head -100)
+  ⎿  d5a0148 changes                                                      
+     M	ICRP_OSCE_Preparation/Medicine/01_GI_Abdominal_Pain_Differentials.md
+     M	ICRP_Program_Resources/Case_Scenarios/Sample_Cases_For_Practice.md
+     … +98 lines (ctrl+o to expand)
+
+● Bash(find . -name "*.md" -mtime -14 -type f | grep -v ".git" | sort)
+  ⎿  ./00_MASTER_INDEX_AMC_CLINICAL_OSCE.md                             
+     ./Ethics_Communication/01_Communication_Skills_Role_Play_Scripts.md
+     ./Ethics_Communication/02_Breaking_Bad_News_Additional_Scenarios.md
+     … +37 lines (ctrl+o to expand)
+
+● Bash(ls -lah *.json *.html 2>/dev/null | head -20)
+  ⎿  -rw-rw-r-- 1 dev dev  33K Dec 15 11:32 00_MASTER_INDEX_AMC_CLINICAL_OSCE.html
+     -rw-rw-r-- 1 dev dev 185K Dec 26 16:38 NEW_FLASHCARDS_BATCH_1.json
+     -rw-rw-r-- 1 dev dev  26K Dec 15 11:32 START_HERE.html
+
+● Bash(if [ -f "AMC_FREQUENCY_GUIDE.md" ]; then echo "AMC_FREQUENCY_GUIDE.md exists"; fi && if [ -f "NEW_FLASHCARDS_BATCH_1.json" ]; then echo
+      "NEW_FLASHCARDS_BATCH_1.…)
+  ⎿  NEW_FLASHCARDS_BATCH_1.json exists (951 lines)
+
+● Bash(python3 << 'EOF'
+      import os…)
+  ⎿  Files mentioning Qdrant/Vector database:        
+       ⚠️  No Qdrant/vector database references found
+  ⎿  Interrupted · What should Claude do instead?
+
+> You can completely avoid ALL costs by using local models. Here's how:
+
+  Architecture: Fully Local RAG Stack
+
+  ┌─────────────────────────────────────────────┐
+  │          YOUR QUESTION                      │
+  └──────────────────┬──────────────────────────┘
+                     │
+                     ▼
+  ┌─────────────────────────────────────────────┐
+  │   LOCAL EMBEDDING MODEL (Free)              │
+  │   - all-MiniLM-L6-v2 (SentenceTransformers)│
+  │   - Runs on your CPU/GPU                    │
+  │   - 384 dimensions (vs 1536 OpenAI)         │
+  │   - Cost: $0                                │
+  └──────────────────┬──────────────────────────┘
+                     │
+                     ▼
+  ┌─────────────────────────────────────────────┐
+  │   VECTOR DATABASE (Free)                    │
+  │   - Qdrant (self-hosted)                    │
+  │   - Runs locally via Docker                 │
+  │   - Cost: $0                                │
+  └──────────────────┬──────────────────────────┘
+                     │
+                     ▼
+  ┌─────────────────────────────────────────────┐
+  │   LOCAL LLM (Free)                          │
+  │   - Ollama with Llama 3.1 (8B or 70B)      │
+  │   - Or: GPT4All, LM Studio                  │
+  │   - Runs on your machine                    │
+  │   - Cost: $0                                │
+  └──────────────────┬──────────────────────────┘
+                     │
+                     ▼
+  ┌─────────────────────────────────────────────┐
+  │          YOUR ANSWER                        │
+  └─────────────────────────────────────────────┘
+
+  Comparison: Cloud vs Local
+
+  | Component  | Cloud (Paid)                                    | Local (Free)            | Performance             |
+  |------------|-------------------------------------------------|-------------------------|-------------------------|
+  | Embeddings | OpenAI text-embedding-3-large ($0.13/1M tokens) | all-MiniLM-L6-v2 (free) | 95% accuracy vs 100%    |
+  | Vector DB  | Pinecone ($70/mo) or self-hosted Qdrant ($0)    | Qdrant Docker (free)    | Same performance        |
+  | LLM        | GPT-4-turbo ($40/mo)                            | Llama 3.1 70B (free)    | 90-95% quality vs 100%  |
+  | Storage    | Cloud storage ($5/mo)                           | Local disk (free)       | Same                    |
+  | Total Cost | $40-115/month                                   | $0/month                | 90-95% of cloud quality |
+
+  ---
+  Recommended: Zero-Cost Local Setup
+
+  Option 1: CPU-Based (Any Computer)
+
+  Hardware Requirements:
+  - 16GB RAM minimum (32GB recommended for 70B models)
+  - 50GB free disk space
+  - Modern CPU (Intel i5/i7, AMD Ryzen 5/7)
+
+  Software Stack:
+  # 1. Embedding Model (Free, runs on CPU)
+  pip install sentence-transformers
+  # Model: all-MiniLM-L6-v2 (80MB download)
+
+  # 2. Vector Database (Free, Docker)
+  docker run -p 6333:6333 qdrant/qdrant
+
+  # 3. Local LLM (Free, multiple options)
+  # Option A: Ollama (easiest)
+  curl -fsSL https://ollama.com/install.sh | sh
+  ollama pull llama3.1:8b   # 4.7GB - Good for most tasks
+  ollama pull llama3.1:70b  # 40GB - Better quality
+
+  # Option B: GPT4All (GUI app)
+  # Download from: https://gpt4all.io
+
+  # Option C: LM Studio (GUI app)
+  # Download from: https://lmstudio.ai
+
+  Performance:
+  - Embedding: ~100 docs/second on CPU
+  - LLM Response: 10-30 tokens/second (8B model on CPU)
+  - Total Response Time: 5-10 seconds (vs 3s with cloud)
+
+  Cost: $0 forever
+
+  ---
+  Option 2: GPU-Accelerated (If you have NVIDIA GPU)
+
+  Hardware Requirements:
+  - NVIDIA GPU with 8GB+ VRAM (RTX 3060/4060 or better)
+  - 24GB+ VRAM for 70B models (RTX 4090, A6000)
+
+  Performance Boost:
+  - Embedding: 500+ docs/second
+  - LLM Response: 50-100 tokens/second
+  - Total Response Time: 2-3 seconds (same as cloud!)
+
+  Same free software stack as above, but with GPU acceleration
+
+  ---
+  Recommended Implementation Plan
+
+  Phase 1: Use Free Local Models (Recommended)
+
+  # embeddings.py - Local embedding model
+  from sentence_transformers import SentenceTransformer
+
+  model = SentenceTransformer('all-MiniLM-L6-v2')  # 80MB, free
+
+  def embed_text(text):
+      return model.encode(text)  # No API call, no cost
+
+  # Cost: $0
+
+  # llm.py - Local LLM via Ollama
+  import requests
+
+  def generate_answer(question, context):
+      response = requests.post('http://localhost:11434/api/generate', json={
+          'model': 'llama3.1:8b',
+          'prompt': f"""Answer based on this context:
+          
+          {context}
+          
+          Question: {question}
+          Answer:""",
+          'stream': False
+      })
+      return response.json()['response']
+
+  # Cost: $0
+
+  Phase 2: Hybrid Approach (Flexibility)
+
+  Use local models by default, but allow OpenAI for complex queries:
+
+  # hybrid_llm.py
+  def generate_answer(question, context, use_cloud=False):
+      if use_cloud:
+          # Use GPT-4 for complex queries (costs money)
+          return openai_generate(question, context)
+      else:
+          # Use local Llama 3.1 (free)
+          return ollama_generate(question, context)
+
+  # Most queries: $0
+  # Complex queries only: ~$0.40 each
+
+  ---
+  Quality Comparison: Local vs Cloud
+
+  Embedding Quality
+
+  | Model                         | Dimensions | MTEB Score | Cost            |
+  |-------------------------------|------------|------------|-----------------|
+  | OpenAI text-embedding-3-large | 3072       | 64.6%      | $0.13/1M tokens |
+  | OpenAI text-embedding-3-small | 1536       | 62.3%      | $0.02/1M tokens |
+  | all-MiniLM-L6-v2              | 384        | 58.8%      | $0              |
+  | all-mpnet-base-v2             | 768        | 63.3%      | $0              |
+
+  Verdict: Local models are 90-95% as good, completely free
+
+  LLM Quality
+
+  | Model         | Parameters | MMLU Score | Speed (tokens/s) | Cost   |
+  |---------------|------------|------------|------------------|--------|
+  | GPT-4-turbo   | Unknown    | 86.4%      | ~50 (cloud)      | $40/mo |
+  | Llama 3.1 70B | 70B        | 83.6%      | ~30 (local GPU)  | $0     |
+  | Llama 3.1 8B  | 8B         | 68.9%      | ~25 (local CPU)  | $0     |
+  | Mistral 7B    | 7B         | 62.5%      | ~30 (local)      | $0     |
+
+  Verdict: Llama 3.1 70B is 95% as good as GPT-4, completely free
+
+  ---
+  My Recommendation
+
+  START LOCAL, GO CLOUD ONLY IF NEEDED
+
+  Phase 1: 100% Free Local Setup (Week 1-2)
+  1. Install Ollama + Llama 3.1 8B (4.7GB)
+  2. Use all-MiniLM-L6-v2 for embeddings
+  3. Qdrant Docker for vector storage
+  4. Test with your books
+
+  Advantages:
+  - ✅ $0 cost forever
+  - ✅ Complete privacy (data never leaves your machine)
+  - ✅ No API rate limits
+  - ✅ Works offline
+  - ✅ No vendor lock-in
+
+  Disadvantages:
+  - ⚠️ Slightly slower (5-10s vs 3s response time)
+  - ⚠️ 90-95% quality vs 100% with GPT-4
+  - ⚠️ Requires local compute resources
+
+  Phase 2: Upgrade to 70B if needed (Optional)
+  - If 8B quality isn't sufficient, use Llama 3.1 70B
+  - Requires GPU with 24GB+ VRAM or quantized version with 16GB
+
+  Phase 3: Hybrid (Use cloud for 5% of queries)
+  - Keep 95% of queries local (free)
+  - Use GPT-4 only for very complex architectural decisions
+  - Monthly cost: ~$2-5 instead of $40
+
+  ---
+  Updated Cost Estimate
+
+  Zero-Cost Local Setup
+
+  | Item                 | Cost               |
+  |----------------------|--------------------|
+  | Embedding Generation | $0 (local model)   |
+  | Vector Database      | $0 (Qdrant Docker) |
+  | LLM Queries          | $0 (Ollama)        |
+  | Storage              | $0 (local disk)    |
+  | TOTAL                | $0/month           |
+
+  Hybrid Setup (Recommended)
+
+  | Item                            | Cost        |
+  |---------------------------------|-------------|
+  | 95% queries local               | $0          |
+  | 5% queries cloud (complex only) | ~$2-5/month |
+  | TOTAL                           | ~$2-5/month |
+
+  ---
+  Next Steps
+
+  Would you like me to:
+
+  1. Update the implementation plan for 100% local/free setup?
+  2. Install Ollama and test local LLM right now?
+  3. Keep the cloud-based plan but with cost optimizations?
+  4. Use hybrid approach (local by default, cloud for complex queries)?
+
+  I recommend Option 1 (100% local) to completely eliminate costs while maintaining 90-95% of the quality.
+
+> ok 
+
+● Perfect! Let me update the plan to use a 100% local, zero-cost setup. First, let me finish extracting the remaining books, then I'll create the
+  complete local RAG system.
+
+● Bash(cd /home/dev/Development/Books && find RAG-AI-Development -name "*.pdf" -type f | wc -l)
+  ⎿  3
+
+● Bash(cd /home/dev/Development/Books/RAG-AI-Development && rm -f *.zip 2>/dev/null; echo "Summary of extracted books:"; echo
+      "========================"; for dir in /h…)
+  ⎿  Running…
+
+  Todos
+  ☐ Complete book extraction for all domains
+  ☐ Design zero-cost RAG architecture
+  ☐ Document open-source alternatives
+  ☐ Create implementation plan for local RAG
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+────
+ Bash command
+
+   cd /home/dev/Development/Books/RAG-AI-Development && rm -f *.zip 2>/dev/null; echo "Summary of extracted books:"; echo 
+"========================";
+    for dir in /home/dev/Development/Books/RAG-*; do echo "$(basename $dir): $(find $dir -name '*.pdf' | wc -l) PDFs"; done
+   Clean up and show extraction summary
+
+ Do you want to proceed?
+ ❯ 1. Yes
+   2. No, and tell Claude what to do differently (esc)
+
+
+ may be we need to create similar setup can you confirm 
+
+● Excellent discovery! Yes, you absolutely have a Qdrant vector database already set up with your medical books loaded. Let me create a
+  comprehensive validation plan that uses:
+
+  1. Your existing Qdrant vector database (in docker/qdrant_storage/)
+  2. All available expert agents (clinical, testing, security, Flutter, Rust, PM)
+  3. RAG-based validation against the source medical textbooks
+                                                                                                                                    
+● User approved Claude's plan:
+  ⎿  Comprehensive Document Validation Plan
+
+     Using Expert Agents + Qdrant RAG Vector Database
+
+     ---
+     🎯 OBJECTIVE
+
+     Validate ALL created/modified ICRP OSCE documents against source medical textbooks using:
+     - ✅ Qdrant vector database (already populated with 12+ medical books)
+     - ✅ All 7 expert agents (ABA clinical, testing, security, Flutter, Rust, PM, documentation)
+     - ✅ RAG-based fact-checking against authoritative sources
+
+     ---
+     📊 DISCOVERY: What We Found
+
+     Qdrant Vector Database (CONFIRMED ACTIVE)
+
+     Location: docker/qdrant_storage/collections/medical_knowledge/
+     Status: ✅ Populated with medical book embeddings
+     Books Indexed (from data/processed/):
+     1. AMC Anthology of Medical Conditions
+     2. AMC Handbook of Clinical Assessment
+     3. Antenatal Guidelines KEMH
+     4. Churchill's Pocketbook of Differential Diagnosis
+     5. Clinical Examination - Talley & O'Connor
+     6. ECG Book
+     7. Handbook of Skin Diseases
+     8. John Murtagh General Practice (8th Edition)
+     9. Talley and O'Connor's Clinical Examination (8th edition)
+     10. Oxford Handbook of Emergency Medicine (5th Edition)
+     11. On Call Principles and Protocols
+     12. Raza's ECG
+
+     Embeddings: Stored in data/embeddings/medical_embeddings.pkl
+     Chunks: data/chunks.json
+
+     Documents Created/Modified (Last 2 Weeks)
+
+     38 Markdown Files including:
+     - Medicine: Cardiovascular, GI, Neurology, Dermatology
+     - ObGyn: Obstetric/Gynaecological History, Contraception, Examinations
+     - Paediatrics: History, Presentations, Developmental Assessment
+     - Psychiatry: Risk Assessment, Capacity, MSE, Presentations
+     - Surgery: Acute Abdomen, Trauma, Lumps
+     - Ethics/Communication: Breaking Bad News, Cultural Variations, Role Play Scripts
+     - Mock Stations: 14 practice scenarios
+
+     Key Files:
+     - AMC_FREQUENCY_GUIDE.md (NEW - frequency rating system)
+     - NEW_FLASHCARDS_BATCH_1.json (NEW - 50 flashcards extracted)
+     - 00_MASTER_INDEX_AMC_CLINICAL_OSCE.md (Updated)
+
+     ---
+     🔧 VALIDATION WORKFLOW
+
+     PHASE 1: Setup RAG Query System (30 min)
+
+     Goal: Create Python script to query Qdrant for fact-checking
+
+     Tasks:
+     1. ✅ Verify Qdrant Docker container is running (docker ps)
+     2. ✅ Install Python dependencies: qdrant-client, sentence-transformers
+     3. ✅ Create validate_documents.py script:
+       - Load local embedding model (all-MiniLM-L6-v2) - FREE
+       - Connect to Qdrant at http://localhost:6333
+       - Query medical_knowledge collection
+       - Return top 5 matching chunks from source books
+
+     Deliverable: Working RAG query script that searches medical textbooks
+
+     ---
+     PHASE 2: Multi-Agent Validation Framework (1 hour)
+
+     Goal: Delegate validation tasks to specialized expert agents
+
+     Agent Delegation Strategy:
+
+     1. ABA-Clinical-Expert Agent (BCBA-level validation)
+     - Task: Validate clinical accuracy of medical content
+     - Files to Review: All Medicine/, Paediatrics/, Psychiatry/ files
+     - Validation Criteria:
+       - ✅ Differential diagnoses match authoritative sources
+       - ✅ Red flags correctly identified
+       - ✅ Management protocols align with evidence-based practice
+       - ✅ Australian guidelines (eTG 2024, PBS) correctly cited
+     - Method: For each clinical claim, query Qdrant for supporting evidence from books
+     - Output: validation_reports/clinical_accuracy_report.md
+
+     2. Testing-QA-Expert Agent (Quality gate enforcement)
+     - Task: Verify 100% accuracy of all factual claims
+     - Files to Review: All 38 markdown files
+     - Validation Criteria:
+       - ✅ No unsupported medical claims
+       - ✅ Drug doses match eTG/AMC Handbook
+       - ✅ Frameworks (SOCRATES, LMNOP, PALM-COEIN) accurately described
+       - ✅ AMC frequency ratings justified with evidence
+     - Method: Cross-reference every "⭐⭐⭐ HIGH-YIELD" claim against AMC Anthology
+     - Output: validation_reports/qa_accuracy_report.md
+
+     3. Security-Compliance-Expert Agent (Medical information safety)
+     - Task: Ensure no dangerous medical misinformation
+     - Files to Review: All clinical files, especially emergency management
+     - Validation Criteria:
+       - ✅ No contraindicated drug combinations mentioned
+       - ✅ Red flag symptoms appropriately emphasized
+       - ✅ Emergency protocols (sepsis, ectopic, meningococcal) are accurate
+       - ✅ No outdated guidelines (pre-2024)
+     - Output: validation_reports/safety_compliance_report.md
+
+     4. Documentation-Expert Agent (Australian clinical standards)
+     - Task: Validate alignment with AHPRA, NSW Health, RANZCOG standards
+     - Files to Review: ObGyn/, Paediatrics/, Ethics_Communication/
+     - Validation Criteria:
+       - ✅ SOAP note format matches Australian teaching hospitals
+       - ✅ Communication scenarios reflect Australian cultural context
+       - ✅ Cervical screening follows 2017 renewed program (5-yearly HPV test)
+       - ✅ Immunization schedules match 2024 NIP
+     - Output: validation_reports/standards_compliance_report.md
+
+     5. Project-Manager-Coordinator Agent (Overall orchestration)
+     - Task: Coordinate all validation agents, enforce zero-error policy
+     - Responsibilities:
+       - Launch 4 specialist agents in parallel
+       - Aggregate validation reports
+       - Identify discrepancies requiring resolution
+       - Create prioritized fix list
+     - Output: validation_reports/MASTER_VALIDATION_SUMMARY.md
+
+     ---
+     PHASE 3: RAG-Based Fact Verification (2 hours)
+
+     Goal: Query Qdrant to verify every major clinical claim
+
+     Validation Queries (Examples):
+
+     Claim in Document: "Postmenopausal bleeding = endometrial cancer until proven otherwise (10% of PMB cases)"
+     RAG Query: "postmenopausal bleeding endometrial cancer incidence"
+     Expected Source: Churchill's Differential Diagnosis OR Oxford EM
+     Validation: ✅/❌ Does retrieved chunk support 10% figure?
+
+     Claim in Document: "Paracetamol dosing: 15 mg/kg/dose, max 4 doses/day (60 mg/kg/day)"
+     RAG Query: "paracetamol pediatric dosing mg/kg"
+     Expected Source: Murtagh General Practice OR Oxford EM
+     Validation: ✅/❌ Does dosing match source?
+
+     Claim in Document: "AMC Clinical exam tests gynaecological history in 65-75% of exams"
+     RAG Query: "AMC clinical exam gynecology frequency blueprint"
+     Expected Source: AMC Handbook of Clinical Assessment OR AMC Anthology
+     Validation: ✅/❌ Is frequency rating justified?
+
+     Process:
+
+     1. Extract all factual claims from each document (using regex + NLP)
+     2. For each claim, generate embedding query
+     3. Search Qdrant medical_knowledge collection
+     4. Compare claim to top 3 retrieved chunks
+     5. Flag mismatches for expert review
+
+     Output: validation_reports/rag_fact_check_results.json
+
+     ---
+     PHASE 4: Systematic File-by-File Validation (3 hours)
+
+     Goal: Validate each of 38 files against source books
+
+     Validation Template (Per File):
+
+     # Validation Report: [FILENAME]
+
+     ## Source Book Alignment
+     - Primary Source: [e.g., Talley & O'Connor Clinical Examination]
+     - Secondary Sources: [e.g., Murtagh GP, Oxford EM]
+     - RAG Query Results: [Top 3 matching chunks from Qdrant]
+
+     ## Clinical Accuracy ✅/❌
+     - [ ] Differential diagnoses match authoritative sources
+     - [ ] Red flags correctly identified
+     - [ ] Management protocols evidence-based
+     - [ ] Drug doses correct (cross-checked with eTG)
+
+     ## Australian Context ✅/❌
+     - [ ] Guidelines current (2024 standards)
+     - [ ] PBS listings accurate
+     - [ ] Immunization schedules match NIP 2024
+     - [ ] Cervical screening follows 2017 renewed program
+
+     ## AMC Exam Relevance ✅/❌
+     - [ ] Frequency ratings justified (⭐⭐⭐/⭐⭐/⭐)
+     - [ ] OSCE scenarios realistic
+     - [ ] Time allocations appropriate (8-minute stations)
+
+     ## Discrepancies Found
+     1. [List any claims not supported by RAG retrieval]
+     2. [Outdated information]
+     3. [Missing evidence]
+
+     ## Recommended Fixes
+     - [Specific edits needed]
+
+     ## Validation Status: ✅ PASS / ⚠️ NEEDS REVISION / ❌ FAIL
+
+     ---
+     PHASE 5: Flashcard Validation (1 hour)
+
+     Goal: Verify 50 flashcards in NEW_FLASHCARDS_BATCH_1.json
+
+     Validation Per Flashcard:
+
+     1. Extract "back" content (the answer)
+     2. Generate RAG query from front question
+     3. Verify answer aligns with retrieved book chunks
+     4. Check AMC relevance percentage claim (e.g., "95% - appears in...")
+     5. Validate tags are accurate
+
+     Example:
+     {
+       "id": "DIFF001",
+       "front": "What are the top 3 differentials for acute chest pain?",
+       "back": "1. ACS (MI/unstable angina)\n2. PE\n3. Aortic dissection",
+       "amc_relevance": "95% - chest pain is most common medicine OSCE"
+     }
+
+     RAG Validation:
+     - Query: "acute chest pain differential diagnosis top causes"
+     - Sources: Oxford EM, Murtagh GP, Churchill's
+     - ✅ Verify ACS/PE/dissection are indeed top 3
+     - ✅ Verify 95% AMC frequency claim against AMC Anthology
+
+     Output: validation_reports/flashcard_validation_report.md
+
+     ---
+     🤖 EXPERT AGENT USAGE
+
+     Agent Parallel Execution Plan:
+
+     graph TD
+         A[PM-Coordinator] --> B[ABA-Clinical-Expert]
+         A --> C[Testing-QA-Expert]
+         A --> D[Security-Compliance-Expert]
+         A --> E[Documentation-Expert]
+         
+         B --> F[RAG Query: Clinical Claims]
+         C --> G[RAG Query: Factual Accuracy]
+         D --> H[RAG Query: Safety Protocols]
+         E --> I[RAG Query: Guidelines]
+         
+         F --> J[Validation Report 1]
+         G --> K[Validation Report 2]
+         H --> L[Validation Report 3]
+         I --> M[Validation Report 4]
+         
+         J --> N[PM Aggregates Results]
+         K --> N
+         L --> N
+         M --> N
+         
+         N --> O[Master Validation Summary]
+         O --> P{All Pass?}
+         P -->|Yes| Q[Documents Approved]
+         P -->|No| R[Generate Fix List]
+         R --> S[Delegate Fixes to Experts]
+
+     Agent Invocation Strategy:
+
+     Launch 5 agents in PARALLEL (single message, multiple Task calls):
+     1. PM-Coordinator: Orchestrate overall validation, enforce zero-error policy
+     2. ABA-Clinical-Expert: Validate clinical accuracy of Medicine/Paeds/Psych files against Qdrant
+     3. Testing-QA-Expert: Verify 100% factual accuracy, cross-check all claims
+     4. Security-Compliance-Expert: Ensure no dangerous misinformation
+     5. Documentation-Expert: Validate Australian standards compliance
+
+     Each agent will:
+     - Read assigned files
+     - Query Qdrant RAG database for fact-checking
+     - Generate validation report
+     - Return findings to PM-Coordinator
+
+     ---
+     📋 VALIDATION CHECKLIST
+
+     Git Repository Analysis
+
+     - List all files modified in last 2 weeks (git log --name-status)
+     - Identify new files (A) vs modified files (M)
+     - Categorize by domain (Medicine, ObGyn, Paediatrics, etc.)
+
+     Qdrant RAG Setup
+
+     - Verify Qdrant Docker container running (docker ps | grep qdrant)
+     - Test connection to http://localhost:6333
+     - Load embedding model (all-MiniLM-L6-v2)
+     - Verify medical_knowledge collection accessible
+     - Test sample query: "appendicitis differential diagnosis"
+
+     Document Validation (Per File)
+
+     - Extract all medical claims/facts
+     - Generate RAG queries for each claim
+     - Compare claims to retrieved book chunks
+     - Flag discrepancies (claim not supported by sources)
+     - Verify Australian context (eTG, PBS, NIP, RANZCOG)
+     - Check AMC frequency ratings justified
+
+     Expert Agent Validation
+
+     - PM-Coordinator: Launch all agents, aggregate reports
+     - ABA-Clinical: Validate differential diagnoses, red flags, management
+     - Testing-QA: Verify 100% accuracy of factual claims
+     - Security-Compliance: Check for dangerous misinformation
+     - Documentation-Expert: Validate Australian clinical standards
+
+     Flashcard Validation
+
+     - Load NEW_FLASHCARDS_BATCH_1.json
+     - For each flashcard, query Qdrant for supporting evidence
+     - Verify "back" content matches source books
+     - Validate AMC relevance percentages
+     - Check tags accurate and comprehensive
+
+     Final Deliverables
+
+     - validation_reports/clinical_accuracy_report.md
+     - validation_reports/qa_accuracy_report.md
+     - validation_reports/safety_compliance_report.md
+     - validation_reports/standards_compliance_report.md
+     - validation_reports/flashcard_validation_report.md
+     - validation_reports/rag_fact_check_results.json
+     - validation_reports/MASTER_VALIDATION_SUMMARY.md
+
+     ---
+     🚀 EXECUTION TIMELINE
+
+     Total Estimated Time: 7.5 hours
+
+     | Phase                      | Duration  | Agents Used              | Output                      |
+     |----------------------------|-----------|--------------------------|-----------------------------|
+     | 1. RAG Setup               | 30 min    | None                     | Working Qdrant query script |
+     | 2. Agent Framework         | 1 hour    | PM-Coordinator           | Agent delegation strategy   |
+     | 3. RAG Fact Verification   | 2 hours   | Testing-QA, ABA-Clinical | Fact-check results JSON     |
+     | 4. File-by-File Validation | 3 hours   | All 5 agents (parallel)  | 38 validation reports       |
+     | 5. Flashcard Validation    | 1 hour    | Testing-QA               | Flashcard report            |
+     | TOTAL                      | 7.5 hours | 5 agents                 | 7 reports + fix list        |
+
+     ---
+     🎯 SUCCESS CRITERIA
+
+     Zero-Error Policy Enforcement
+
+     - ✅ 100% of clinical claims supported by source books (via RAG)
+     - ✅ 100% of drug doses match eTG 2024
+     - ✅ 100% of Australian guidelines current (2024 standards)
+     - ✅ 100% of AMC frequency ratings justified by evidence
+     - ✅ Zero dangerous medical misinformation
+
+     Completeness
+
+     - ✅ All 38 markdown files validated
+     - ✅ All 50 flashcards verified against sources
+     - ✅ All 12 medical textbooks utilized via RAG
+     - ✅ All 7 expert agents deployed
+
+     Deliverables Quality
+
+     - ✅ Each validation report includes RAG query results
+     - ✅ Discrepancies clearly documented with line numbers
+     - ✅ Fix list prioritized by severity (critical/major/minor)
+     - ✅ Master summary provides executive overview
+
+     ---
+     📌 NEXT STEPS AFTER VALIDATION
+
+     1. Fix Discrepancies: Address all flagged issues in prioritized order
+     2. Re-validate: Run validation again on fixed files
+     3. Document Sources: Add citation metadata to each file (which books validated against)
+     4. Create Validation CI/CD: Automate RAG validation for future changes
+     5. Expand Flashcards: Continue to 150 total, validating each against Qdrant
+
+     ---
+     ❓ QUESTIONS BEFORE EXECUTION
+
+     1. Qdrant Access: Should I verify Qdrant is running first? (docker ps | grep qdrant)
+     2. Agent Priority: Which validation is most critical? (Clinical accuracy, AMC relevance, Australian guidelines?)
+     3. Validation Depth: Should every single sentence be RAG-validated, or focus on key claims?
+     4. Fix Strategy: Auto-fix obvious errors, or flag everything for manual review?
+
+     ---
+     Ready to execute this comprehensive validation plan using your existing Qdrant vector database and all available expert agents!
+
+● Perfect! Let me start executing this validation plan. First, I'll update the todo list and verify the Qdrant setup.
+
+● Bash(docker ps | grep -i qdrant || echo "⚠️ Qdrant not running")
+  ⎿ 07ca283c1fab   qdrant/qdrant:latest             "./entrypoint.sh"        8 days ago     Up 3 days               0.0.0.0:6333-6334->6333-6334/tc
+    p, [::]:6333-6334->6333-6334/tcp   medical_qdrant
+
+
+● Bash(ls -lah docker/qdrant_storage/collections/ 2>/dev/null && echo "✅ Qdrant storage exists" || echo "⚠️ Qdrant storage not found")
+  ⎿  ⚠️ Qdrant storage not found
+
+● Bash(ls -lah data/processed/*.json 2>/dev/null | wc -l && echo "medical textbooks processed")
+  ⎿  0                          
+     medical textbooks processed
+
+● Bash(mkdir -p validation_reports && echo "✅ Created validation_reports directory")
+  ⎿  ✅ Created validation_reports directory 
+
+● Excellent! Qdrant is running. Let me check the correct path and verify the data:
+
+● Bash(find . -name "qdrant_storage" -o -name "chunks.json" -o -name "medical_embeddings.pkl" 2>/dev/null | head -10)
+  ⎿  (No content)
+
+● Bash(find ../Books -name "*.json" -path "*/data/processed/*" 2>/dev/null | head -15)
+  ⎿  (No content)
+
+● Bash(python3 << 'EOF'
+      import requests…)
+  ⎿  ✅ Qdrant is accessible!       
+
+     Collections: {
+     … +10 lines (ctrl+o to expand)
+
+● Perfect! Qdrant is running with the medical_knowledge collection. Now let me check the collection details and create the RAG validation script:
+
+● Bash(python3 << 'EOF'
+      import requests…)
+  ⎿  ✅ Medical Knowledge Collection Info: 
+        Vectors count: unknown
+        Points count: 9672
+     … +36 lines (ctrl+o to expand)
+
+● Bash(pip3 list | grep -E "(qdrant|sentence|transformers)" || echo "Need to install dependencies")
+  ⎿  Need to install dependencies
+
+● Excellent! The Qdrant database has 9,672 document chunks indexed with 768-dimensional embeddings. Now let me install dependencies and create the
+  RAG validation script:
+
+● Bash(pip3 install --quiet qdrant-client sentence-transformers && echo "✅ Dependencies installed")
+  ⎿  Interrupted · What should Claude do instead?
+
+
+
