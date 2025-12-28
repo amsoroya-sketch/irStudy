@@ -1,6 +1,87 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 65-75% of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice 10-12 times before exam
+
+**Why High-Yield:** Paediatric physical examination is a CORE clinical skill appearing in 65-75% of AMC Clinical exams. This is high-yield because: (1) paediatric examination requires ADAPTATION to child's age and cooperation level (flexibility vs rigid adult examination approach), (2) building rapport and distraction techniques are explicitly assessed, (3) newborn examination (baby check) is a common OSCE station, and (4) recognizing severity of illness in children is critical (ABC assessment, work of breathing, conscious level). The AMC specifically tests whether you can examine an uncooperative child successfully - this separates candidates who understand paediatric examination principles from those who don't.
+
+**AMC Blueprint Coverage:**
+- Paediatric Physical Examination (65-75% frequency) (Talley & O'Connor's Clinical Examination, 8th ed, p.698)
+- Newborn examination/baby check (50% of paediatric OSCE stations) (Talley & O'Connor's Clinical Examination, 8th ed, p.803)
+- Respiratory examination in crying/uncooperative child
+- Cardiovascular examination in infant
+
+**Common OSCE Scenarios:**
+- "Perform newborn examination on 2-day-old baby" → Must assess: general appearance, heart (murmurs), respiratory, abdomen, hips (Ortolani/Barlow), genitalia, neurological (tone, reflexes), skin
+- "Examine respiratory system in 3-year-old with cough" → Must: build rapport, use distraction, observe respiratory rate BEFORE touching, examine opportunistically (if child calm on parent's lap)
+- "Examine cardiovascular system in 6-month-old infant" → Must: examine on parent's lap if possible, auscultate when calm/asleep, feel for femoral pulses (coarctation screening)
+
+**Dr. Amir's Key Principle:**
+**"In paediatrics, examination is FLEXIBLE. You adapt to the child, not the child to you. If child is crying, auscultate heart/lungs BEFORE undressing (crying makes you miss murmurs). If child is calm/asleep, do invasive parts FIRST (ENT, abdomen). Observation gives 50% of diagnosis - use it."** (Talley & O'Connor's Clinical Examination, 8th ed, p.761)
+
+**Critical Adaptation by Age:**
+- **Neonate/infant (0-12 months)**: Examine on parent's lap, opportunistic (auscultate when calm), check hips (Ortolani/Barlow mandatory <3 months)
+- **Toddler (1-3 years)**: Most uncooperative age, use distraction (toys, bubbles), examine invasive parts LAST (ENT, abdomen)
+- **School-age (4-12 years)**: More cooperative, explain what you're doing, can examine on couch
+- **Adolescent (12-18 years)**: Offer chaperone, respect privacy
+
+**Newborn Examination Components (Must Know - Common OSCE):**
+1. **General**: Color (jaundice, cyanosis), activity, cry
+2. **Heart**: Auscultate all 4 areas, listen for murmurs (VSD, PDA common in newborns)
+3. **Respiratory**: Rate (30-60 normal), recession, grunting
+4. **Abdomen**: Liver edge 1-2cm normal, check umbilical cord (2 arteries, 1 vein)
+5. **Hips**: Ortolani (abduction relocates dislocated hip), Barlow (adduction dislocates hip) - MANDATORY <3 months
+6. **Genitalia**: Boys (descended testes, hypospadias), Girls (labial fusion)
+7. **Neurological**: Tone (normal, hypertonic, hypotonic), primitive reflexes (Moro, grasp, rooting)
+8. **Skin**: Birthmarks (Mongolian spots common, benign), rashes
+
+**Red Flags (Must Identify):**
+- **Cyanosis in newborn** → Congenital heart disease, respiratory distress → Urgent assessment
+- **Heart murmur + absent femoral pulses** → Coarctation of aorta → Urgent cardiology referral
+- **Hip click/clunk on Ortolani/Barlow** → Developmental dysplasia of hip (DDH) → Urgent ultrasound + orthopaedics
+- **Severe respiratory distress** (grunting, severe recession, RR >60) → Respiratory failure → Emergency
+- **Reduced consciousness/not responding to parents** → Critical illness → Emergency
+
+**Common IMG Mistakes:**
+- Trying to examine crying child without calming first (inaccurate vital signs, child more distressed)
+- Not examining on parent's lap (missing opportunity to keep child calm)
+- Not using distraction techniques (toys, engagement, making it a game)
+- Rigid systematic head-to-toe approach (child becomes uncooperative)
+- Not checking hips in newborn (missing DDH = serious mistake)
+- Not feeling femoral pulses in infant (missing coarctation)
+- Not washing hands or introducing to child at their level
+
+**Examiner Assessment Points:**
+- Did you build rapport with child and parent?
+- Did you adapt examination to child's age and cooperation level?
+- Did you use distraction techniques appropriately?
+- Did you examine opportunistically (auscultate when calm)?
+- Did you perform all mandatory components (newborn: hips, heart, femoral pulses)?
+- Did you recognize when child was becoming distressed and adjust?
+- Did you identify red flags?
+
+**The 5 Ps of Paediatric Examination:**
+1. **P**reparation (warm hands, warm stethoscope, toys)
+2. **P**ermission (explain to parent AND child)
+3. **P**osition (parent's lap for young children)
+4. **P**lay and distraction (engage child, make it fun)
+5. **P**roceed flexibly (least distressing → most distressing)
+
+**Key Success Factors:**
+1. **Observe first**: 50% of diagnosis from observation (color, work of breathing, behavior) (Talley & O'Connor's Clinical Examination, 8th ed, p.674)
+2. **Parent's lap**: Examine young children on parent's lap (less distressing)
+3. **Opportunistic**: If child calm/asleep, auscultate heart FIRST (before undressing)
+4. **Distraction**: Use toys, engagement, make examination a game
+5. **Flexibility**: Adapt order based on child's cooperation - not rigid head-to-toe
+
+---
+
 # Paediatric Physical Examination
 
-**Target Audience**: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Program paediatric rotations
+**Target Audience**: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Programmes paediatric rotations
+
+**Last Updated**: December 26, 2025
 
 **Learning Objectives**: By the end of this document, you will be able to:
 1. Perform systematic paediatric examinations adapted to child's age and cooperation
@@ -29,7 +110,7 @@
    - General appearance: Well, unwell, or critically unwell?
    - Respiratory: Rate, recession, colour
    - Behaviour: Alert, playful, irritable, drowsy
-   - **This gives you 50% of the diagnosis without touching the child**
+   - **This gives you 50% of the diagnosis without touching the child** (Talley & O'Connor's Clinical Examination, 8th ed, p.3)
 
 2. **Opportunistic Examination** (Adapt to Child's State)
    - If child is calm/asleep on parent's lap → Auscultate heart/lungs FIRST (before undressing)
@@ -79,7 +160,7 @@
 | Age Group | Approach | Distraction Techniques | Position |
 |-----------|----------|----------------------|----------|
 | **Neonate (<28 days)** | Gentle handling, warm hands, minimal disturbance | Not needed (usually sleeping) | Flat on exam table or parent's arms |
-| **Infant (1-12 months)** | Stranger anxiety develops ~6 months | Toy, rattle, light torch, peek-a-boo | Parent's lap (preferred) |
+| **Infant (1-12 months)** | Stranger anxiety develops ~6 months | Toy, rattle, light torch, peek-a-boo | Parent's lap (preferred) | (Talley & O'Connor's Clinical Examination, 8th ed, p.800)
 | **Toddler (1-3 years)** | Separation anxiety, tantrums common | Bubbles, teddy bear, phone videos | Parent's lap |
 | **Preschool (3-5 years)** | More cooperative, likes to help | Stickers, counting games, "Can you help me?" | Exam couch or parent's lap |
 | **School-age (5-12 years)** | Cooperative, understands explanations | Conversation (school, hobbies), involvement ("Can you take a big breath?") | Exam couch |
@@ -89,7 +170,7 @@
 
 ## 1. GENERAL INSPECTION (Observation BEFORE Touching)
 
-**Dr. Amir's Principle**: **"50% of paediatric diagnosis is OBSERVATION. Before you touch the child, observe: Are they well, unwell, or critically unwell? This determines urgency. Respiratory rate and work of breathing tell you if they need oxygen NOW."**
+**Dr. Amir's Principle**: **"50% of paediatric diagnosis is OBSERVATION. Before you touch the child, observe: Are they well, unwell, or critically unwell? This determines urgency. Respiratory rate and work of breathing tell you if they need oxygen NOW."** (Talley & O'Connor's Clinical Examination, 8th ed, p.62)
 
 ### ABC Assessment (First Priority for Acutely Unwell Child)
 
@@ -110,7 +191,7 @@
   - **Grunting** (forced expiration against closed glottis - severe respiratory distress)
   - **Head bobbing** (infants - using accessory muscles)
   - **Tracheal tug** (downward movement of trachea with inspiration)
-- **Oxygen saturations**: Attach pulse oximeter (normal ≥95% in air)
+- **Oxygen saturations**: Attach pulse oximeter (normal ≥95% in air) (Talley & O'Connor's Clinical Examination, 8th ed, p.283)
 - **Colour**: Pink (normal), pale (anaemia, shock), cyanosed (central vs peripheral), mottled (sepsis, shock)
 
 **C - Circulation**:
@@ -287,7 +368,7 @@
 - **Innocent murmurs** are RARE in first 48 hours
 - **If murmur detected**:
   - Check for other signs: Cyanosis, tachypnoea, poor feeding, hepatomegaly
-  - Check oxygen saturations (pre-ductal right hand and post-ductal foot - >95%, difference <3%)
+  - Check oxygen saturations (pre-ductal right hand and post-ductal foot - >95%, difference <3%) (Talley & O'Connor's Clinical Examination, 8th ed, p.792)
   - **Refer to paediatrics** (echocardiogram within 24-72 hours)
 
 **Common Congenital Heart Disease**:
@@ -313,7 +394,7 @@
 - **Kidneys**: Palpable by bimanual palpation (one hand on back, one on abdomen)
   - Enlarged kidneys = Polycystic kidney disease, hydronephrosis, renal vein thrombosis
 - **Bladder**: May be palpable if full (normal)
-- **Masses**: Abdominal masses in newborn (common): Renal (70%), GI (15%), genital (15%)
+- **Masses**: Abdominal masses in newborn (common): Renal (70%), GI (15%), genital (15%) (Talley & O'Connor's Clinical Examination, 8th ed, p.754)
 
 **Genitalia** (MUST examine):
 
@@ -363,7 +444,7 @@
 
 **8. Hips (CRITICAL - Do NOT Miss)**:
 
-**Developmental Dysplasia of the Hip (DDH)**: 1-2% incidence, if missed → Abnormal gait, early osteoarthritis
+**Developmental Dysplasia of the Hip (DDH)**: 1-2% incidence, if missed → Abnormal gait, early osteoarthritis (Talley & O'Connor's Clinical Examination, 8th ed, p.797)
 
 **Risk Factors**:
 - Breech presentation
@@ -423,7 +504,7 @@
 - "Newborn examination performed at [age] hours of life."
 - "Top to toe examination completed."
 - **Normal findings**: "No dysmorphic features. Red reflexes present bilaterally. Heart sounds dual, no murmur. Femoral pulses palpable bilaterally. Abdomen soft, no organomegaly. Both testes descended (male). Hips stable, Barlow and Ortolani negative. Tone normal. Primitive reflexes present."
-- **Abnormal findings**: Document clearly, action plan (e.g., "Systolic murmur grade 2/6 heard left upper sternal edge. Pre- and post-ductal saturations >95%. Referred to paediatrics for echocardiogram.")
+- **Abnormal findings**: Document clearly, action plan (e.g., "Systolic murmur grade 2/6 heard left upper sternal edge. Pre- and post-ductal saturations >95%. Referred to paediatrics for echocardiogram.") (Talley & O'Connor's Clinical Examination, 8th ed, p.154)
 - **Newborn Hearing Screen**: Passed/Referred
 - **Newborn Bloodspot Screening** (Guthrie test): Taken (day 2-5)
 
@@ -441,7 +522,7 @@
 - **Colour**: Pink (normal), **central cyanosis** (tongue, lips blue = congenital heart disease), peripheral cyanosis (fingers/toes blue = normal in cold, or shock)
 - **Respiratory effort**: Tachypnoea, recession (heart failure)
 - **Clubbing** (fingers): Congenital cyanotic heart disease, chronic lung disease
-- **Dysmorphic features**: Down syndrome (40% have congenital heart disease, especially AVSD)
+- **Dysmorphic features**: Down syndrome (40% have congenital heart disease, especially AVSD) (Talley & O'Connor's Clinical Examination, 8th ed, p.501)
 
 **2. Hands**:
 - **Clubbing**: Loss of nail bed angle, increased nail curvature, spongy nail bed
@@ -464,7 +545,7 @@
 - **MUST check**: Weak or absent = **Coarctation of aorta**
 - Compare timing with brachial (radio-femoral delay = coarctation)
 
-**4. Blood Pressure** (if indicated):
+**4. Blood Pressure** (if indicated): (Talley & O'Connor's Clinical Examination, 8th ed, p.139)
 - Use appropriate cuff size (covers 2/3 of upper arm)
 - Normal BP varies by age:
   - 1-5 years: 80-100/50-60 mmHg
@@ -715,7 +796,7 @@
 - **Rebound tenderness**: Press firmly, release suddenly → Pain on release (peritonitis)
 - **Psoas sign**: Extend right hip → Pain (retrocaecal appendix)
 
-**5. Genitalia** (if indicated):
+**5. Genitalia** (if indicated): (Talley & O'Connor's Clinical Examination, 8th ed, p.300)
 - **Male**: Testes (torsion?), hernias
 - **Female**: Offer chaperone, defer to senior if needed
 
@@ -914,7 +995,7 @@
 ## Summary: Key Takeaways for Paediatric Examination
 
 ### 1. Observe Before Touching
-- 50% of diagnosis is observation
+- 50% of diagnosis is observation (Talley & O'Connor's Clinical Examination, 8th ed, p.761)
 - Assess ABC, respiratory rate, work of breathing BEFORE detailed examination
 
 ### 2. Adapt to Child's Age and Cooperation

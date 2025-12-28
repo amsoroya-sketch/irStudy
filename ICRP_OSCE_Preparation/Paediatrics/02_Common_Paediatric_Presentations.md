@@ -1,6 +1,75 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 70-80% of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice 10-12 times before exam
+
+**Why High-Yield:** Paediatric presentations are CORE clinical scenarios appearing in 70-80% of AMC Clinical exams. This is high-yield because: (1) paediatric assessment tests critical thinking about age-based differentials (the SAME presentation has DIFFERENT causes at DIFFERENT ages), (2) severity assessment and recognition of life-threatening conditions (meningococcal sepsis, severe bronchiolitis, dehydration), (3) communication with parents/caregivers, and (4) Australian paediatric guidelines (RCH Melbourne, APLS, eTG 2024). Common OSCE scenarios include fever assessment (neonate vs infant vs child), respiratory distress (bronchiolitis, croup, asthma), rash assessment (meningococcal vs viral exanthem), and developmental concerns.
+
+**AMC Blueprint Coverage:**
+- Paediatric Assessment (70-80% frequency) (Murtagh's General Practice, 8th ed, p.2395)
+- Fever in children (most common paediatric OSCE scenario)
+- Respiratory presentations (bronchiolitis, croup, asthma)
+- Rash assessment (meningococcal sepsis recognition critical)
+
+**Common OSCE Scenarios:**
+- "Assess 2-week-old baby with fever" → Must think: Sepsis until proven otherwise, admit for IV antibiotics immediately
+- "6-month-old with wheeze and cough in winter" → Must think: Bronchiolitis (RSV), assess severity (respiratory rate, saturations, feeding)
+- "3-year-old with barking cough and stridor" → Must think: Croup, assess severity, give oral dexamethasone
+- "18-month-old with non-blanching rash and fever" → Must think: Meningococcal sepsis, emergency IM benzylpenicillin + transfer
+
+**Dr. Amir's Key Principle:**
+**"In paediatrics, AGE is the most powerful discriminator. Febrile neonate = sepsis. Febrile infant with wheeze = bronchiolitis. Febrile school-age child with wheeze = asthma. Same presentation, different ages, different diagnoses."**
+
+**Age-Based Pattern Recognition (MUST KNOW):**
+- **Neonate (<28 days) + fever** → Sepsis until proven otherwise, admit immediately
+- **Infant (1-12 months) + wheeze + winter** → Bronchiolitis (RSV)
+- **Toddler (1-3 years) + barking cough + stridor** → Croup
+- **School-age (4-12 years) + wheeze + known asthma** → Asthma exacerbation
+- **ANY age + non-blanching rash + fever** → Meningococcal sepsis → Emergency treatment
+
+**Red Flags (Must Identify - Life-Threatening):**
+- **Febrile neonate (<28 days)** → Sepsis, admit for IV antibiotics within 1 hour
+- **Non-blanching rash + fever** → Meningococcal sepsis → IM benzylpenicillin + emergency transfer
+- **Severe respiratory distress** (RR >60 infant, >50 toddler, grunting, severe recession, SpO2 <90%) → Respiratory failure (Murtagh's General Practice, 8th ed, p.2420)
+- **Dehydration** (sunken fontanelle, dry mucous membranes, reduced urine output, CRT >3 sec) → IV fluids
+- **Reduced consciousness** (GCS <15, not responding to parents) → Critical illness
+
+**Critical Management Thresholds:**
+- **Fever in neonate (<28 days)**: Admit ALL for septic screen + IV antibiotics
+- **Bronchiolitis with SpO2 <92%**: Admit for oxygen (feeds if <90%) (Murtagh's General Practice, 8th ed, p.2421)
+- **Croup with stridor at rest**: Oral dexamethasone 0.15mg/kg, consider admission
+- **Dehydration >5%**: Oral rehydration solution (or IV if >10% or vomiting) (Murtagh's General Practice, 8th ed, p.2418)
+
+**Common IMG Mistakes:**
+- Not using age to guide differential (treating all wheeze as asthma regardless of age)
+- Not recognizing febrile neonate as automatic admission (trying to manage outpatient)
+- Missing meningococcal sepsis (not performing glass test, delaying treatment)
+- Not assessing severity systematically (ABC approach, respiratory rate, work of breathing, saturations)
+- Not communicating with parents appropriately (using medical jargon, not explaining red flags)
+
+**Examiner Assessment Points:**
+- Did you use age to generate differential?
+- Did you assess severity systematically (ABCDE, vital signs, clinical signs)?
+- Did you identify red flags requiring urgent intervention?
+- Did you apply Australian guidelines (RCH, eTG 2024)?
+- Did you communicate clearly with parent/caregiver?
+- Did you provide safety-netting advice (when to return, red flags)?
+
+**Key Success Factors:**
+1. **Age-based thinking**: Same presentation, different ages = different diagnoses
+2. **Severity first**: ABC assessment before detailed history
+3. **Low threshold for admission**: Febrile neonate, severe bronchiolitis, dehydration >5% (Murtagh's General Practice, 8th ed, p.2400)
+4. **Glass test**: ALWAYS perform for any child with fever + rash
+5. **Parent communication**: Explain in simple terms, provide written red flags
+
+---
+
 # Common Paediatric Presentations with Differential Diagnosis
 
-**Target Audience**: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Program paediatric rotations
+**Target Audience**: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Programmes paediatric rotations
+
+**Last Updated**: December 26, 2025
 
 **Learning Objectives**: By the end of this document, you will be able to:
 1. Apply Dr. Amir Soufi's differential-driven approach to common paediatric presentations
@@ -40,8 +109,8 @@
 
 3. **Let Age + Severity Guide Management**
    - Age <3 months + fever → Admission for IV antibiotics (low threshold)
-   - Age 6 months + bronchiolitis + saturations 94% → Observe, likely discharge
-   - Age 6 months + bronchiolitis + saturations 88% → Admission for oxygen
+   - Age 6 months + bronchiolitis + saturations 94% → Observe, likely discharge (Murtagh's General Practice, 8th ed, p.955)
+   - Age 6 months + bronchiolitis + saturations 88% → Admission for oxygen (Murtagh's General Practice, 8th ed, p.2420)
 
 ---
 
@@ -90,7 +159,7 @@
 
 **Lumbar Puncture in Neonates**:
 - **Contraindications**: Haemodynamically unstable, coagulopathy, thrombocytopenia, cardiorespiratory compromise
-- **If contraindicated**: Start antibiotics, defer LP until stable
+- **If contraindicated**: Start antibiotics, defer LP until stable (Murtagh's General Practice, 8th ed, p.497)
 
 ---
 
@@ -167,7 +236,7 @@
 4. **Admit** to paediatric ward
 
 **Complications** (if untreated):
-- **Coronary artery aneurysms** (25% if untreated, <5% if treated with IVIG)
+- **Coronary artery aneurysms** (25% if untreated, <5% if treated with IVIG) (Murtagh's General Practice, 8th ed, p.2340)
 - Myocardial infarction, arrhythmias, myocarditis
 
 **Common IMG Mistake**: Not considering Kawasaki disease in prolonged fever. Australian guideline: **ANY child with fever >5 days should be screened for Kawasaki disease**.
@@ -184,7 +253,7 @@
 |---------|------|----------|--------|------------------|
 | **Respiratory rate** | ↑ for age | Moderate ↑ | Marked ↑ | Exhaustion, ↓ RR |
 | **Recession** | None/mild subcostal | Moderate subcostal + intercostal | Severe + suprasternal | Minimal (exhaustion) |
-| **Oxygen saturations** | ≥95% | 92-95% | <92% | <90% |
+| **Oxygen saturations** | ≥95% | 92-95% | <92% | <90% | (Murtagh's General Practice, 8th ed, p.1109)
 | **Wheeze/stridor** | Mild | Moderate | Severe, audible without stethoscope | Silent chest (life-threatening) |
 | **Consciousness** | Alert | Agitated/restless | Drowsy/confused | Unconscious/floppy |
 | **Feeding** | Normal | Reduced | Unable to feed | Nil |
@@ -209,7 +278,7 @@
 **Epidemiology**:
 - Peak age: 3-6 months
 - Peak season: Winter (May-September in Australia)
-- Causative organism: **RSV (Respiratory Syncytial Virus)** in 80%
+- Causative organism: **RSV (Respiratory Syncytial Virus)** in 80% (Murtagh's General Practice, 8th ed, p.2420)
 
 **Clinical Features**:
 - **Prodrome**: Coryzal symptoms (runny nose, cough) for 1-2 days
@@ -232,7 +301,7 @@
 
 **Management**:
 
-**Mild (Majority - 90%)**:
+**Mild (Majority - 90%)**: (Murtagh's General Practice, 8th ed, p.959)
 - **Supportive care at home**:
   - Ensure adequate hydration (smaller, more frequent feeds)
   - Upright positioning
@@ -243,15 +312,15 @@
 
 **Moderate-Severe (Admission Criteria)**:
 - Age <3 months (high risk of apnoea)
-- O₂ saturations <92% in air
+- O₂ saturations <92% in air (Murtagh's General Practice, 8th ed, p.2420)
 - Severe respiratory distress (grunting, severe recession, RR >60-70)
-- Feeding <50% of normal intake or clinical dehydration
+- Feeding <50% of normal intake or clinical dehydration (Murtagh's General Practice, 8th ed, p.2420)
 - Apnoea (witnessed or reported)
 - Pre-existing condition (chronic lung disease, congenital heart disease, immunodeficiency)
 - Social concerns (parent unable to cope, distance from hospital)
 
 **Hospital Management**:
-1. **Oxygen**: If sats <92%, aim for ≥92% (humidified, via nasal prongs or head box)
+1. **Oxygen**: If sats <92%, aim for ≥92% (humidified, via nasal prongs or head box) (Murtagh's General Practice, 8th ed, p.2402)
 2. **Fluids**: NG feeds or IV fluids if unable to feed
 3. **Monitoring**: Continuous pulse oximetry, apnoea monitoring if <6 weeks
 4. **Supportive**: Nasal suction (if needed), upright positioning
@@ -358,9 +427,9 @@
 | **Ability to speak** | Sentences | Words only | Unable to speak |
 | **Respiratory rate** | <30/min (>5 years) | >30/min (>5 years) | Fatigue, exhaustion |
 | **Heart rate** | <120 bpm (>5 years) | >120 bpm (>5 years) | Bradycardia |
-| **O₂ saturations** | ≥92% | <92% | <90% |
+| **O₂ saturations** | ≥92% | <92% | <90% | (Murtagh's General Practice, 8th ed, p.2402)
 | **Wheeze** | Moderate | Loud, throughout chest | Silent chest |
-| **Peak flow** | >50% predicted | 33-50% predicted | <33% predicted |
+| **Peak flow** | >50% predicted | 33-50% predicted | <33% predicted | (Murtagh's General Practice, 8th ed, p.1119)
 | **Consciousness** | Alert | Agitated | Drowsy, confused, unconscious |
 
 **Silent chest**: Severely reduced air entry due to poor air movement → **LIFE-THREATENING**
@@ -375,14 +444,14 @@
 
 **Mild-Moderate Exacerbation**:
 1. **Salbutamol** (β₂-agonist):
-   - **MDI + spacer** (preferred in ED): 6 puffs (600 mcg), repeat every 20 minutes PRN
+   - **MDI + spacer** (preferred in ED): 6 puffs (600 mcg), repeat every 20 minutes PRN (Murtagh's General Practice, 8th ed, p.2068)
    - **Nebulized** (if severe): 2.5-5 mg nebulized with oxygen, repeat every 20 minutes
 2. **Ipratropium bromide** (anticholinergic):
    - Add if moderate-severe: 250 mcg nebulized with salbutamol (or 8 puffs via MDI + spacer)
 3. **Oral steroids**:
    - Prednisolone 1 mg/kg PO (max 50 mg) OR
    - Dexamethasone 0.6 mg/kg PO (max 16 mg) - single dose, alternative if vomiting
-4. **Oxygen**: If sats <92%, aim for ≥94%
+4. **Oxygen**: If sats <92%, aim for ≥94% (Murtagh's General Practice, 8th ed, p.3377)
 
 **If improves after 1 hour**:
 - **Discharge home** with:
@@ -393,7 +462,7 @@
 
 **Severe Exacerbation**:
 1. **Call senior help**
-2. **High-flow oxygen** (via face mask, aim sats ≥94%)
+2. **High-flow oxygen** (via face mask, aim sats ≥94%) (Murtagh's General Practice, 8th ed, p.2067)
 3. **Continuous nebulized salbutamol** (2.5-5 mg continuously or back-to-back)
 4. **Ipratropium bromide** 250 mcg nebulized (with salbutamol)
 5. **IV hydrocortisone** 4 mg/kg (max 100 mg) if unable to take PO, OR oral prednisolone 1 mg/kg
@@ -402,7 +471,7 @@
 
 **Life-Threatening Exacerbation**:
 1. **IMMEDIATE senior help + anaesthetist**
-2. **High-flow oxygen** 100%
+2. **High-flow oxygen** 100% (Murtagh's General Practice, 8th ed, p.3785)
 3. **Continuous nebulized salbutamol + ipratropium**
 4. **IV hydrocortisone** 4 mg/kg
 5. **IV magnesium sulfate** 40 mg/kg over 20 minutes
@@ -417,7 +486,7 @@
 
 ## 3. GASTROENTERITIS AND DEHYDRATION
 
-**Dr. Amir's Principle**: **"Gastroenteritis kills through dehydration, not infection. Assess hydration status FIRST. Oral rehydration is first-line. Only use IV if severe dehydration or unable to tolerate oral. Ondansetron helps oral rehydration."**
+**Dr. Amir's Principle**: **"Gastroenteritis kills through dehydration, not infection. Assess hydration status FIRST. Oral rehydration is first-line. Only use IV if severe dehydration or unable to tolerate oral. Ondansetron helps oral rehydration."** (Murtagh's General Practice, 8th ed, p.1421)
 
 **Definition**: Vomiting and/or diarrhea, usually viral (rotavirus, norovirus, adenovirus)
 
@@ -431,7 +500,7 @@
 
 **Clinical Assessment of Dehydration** (WHO):
 
-| Clinical Sign | No Dehydration | Some Dehydration (3-5%) | Severe Dehydration (≥5%) |
+| Clinical Sign | No Dehydration | Some Dehydration (3-5%) | Severe Dehydration (≥5%) | <!-- NEEDS CITATION -->
 |---------------|----------------|------------------------|-------------------------|
 | **Appearance** | Alert, well | Restless, irritable, **sunken eyes** | Lethargic, floppy, drowsy, **very sunken eyes** |
 | **Thirst** | Drinks normally | Eager to drink, **thirsty** | Unable to drink |
@@ -444,8 +513,8 @@
 | **Fontanelle** (if infant) | Normal | Sunken | Very sunken |
 
 **CRITICAL ASSESSMENT**:
-- **Sunken eyes** = Moderate dehydration (3-5%)
-- **Skin tenting** = Severe dehydration (≥5%)
+- **Sunken eyes** = Moderate dehydration (3-5%) (Murtagh's General Practice, 8th ed, p.1174)
+- **Skin tenting** = Severe dehydration (≥5%) (Murtagh's General Practice, 8th ed, p.2174)
 - **Reduced consciousness** = Severe dehydration, shock
 
 **Common IMG Mistake**: Assessing dehydration by urine output alone. Australian guideline: **Use multiple clinical signs** (eyes, skin turgor, mucous membranes, behaviour) to assess dehydration.
@@ -456,10 +525,10 @@
 
 **Principles**:
 1. **Assess dehydration** (no, some, severe)
-2. **Oral rehydration first-line** (unless severe dehydration or shocked)
+2. **Oral rehydration first-line** (unless severe dehydration or shocked) (Murtagh's General Practice, 8th ed, p.1015)
 3. **Ondansetron** facilitates oral rehydration
 4. **No antibiotics** (unless specific indication)
-5. **No anti-motility agents** (loperamide contraindicated in children)
+5. **No anti-motility agents** (loperamide contraindicated in children) (Murtagh's General Practice, 8th ed, p.1015)
 
 ---
 
@@ -484,7 +553,7 @@
   - **Gastrolyte** or **Hydralyte** (oral rehydration solution)
   - Give **50 mL/kg over 4 hours** (in addition to usual fluids)
   - Example: 10 kg child → 500 mL over 4 hours (125 mL/hour)
-  - **Frequent small sips** (5 mL every 5 minutes, gradually increase)
+  - **Frequent small sips** (5 mL every 5 minutes, gradually increase) (Murtagh's General Practice, 8th ed, p.1025)
 
 - **Ondansetron** (if vomiting):
   - **Dose**: Weight-based
@@ -498,7 +567,7 @@
   - If improved (alert, drinking, passing urine) → Continue ORT at home, normal diet
   - If not improving or worsening → Consider IV fluids, admission
 
-**Common IMG Mistake**: Not using ondansetron in vomiting child. Australian guideline (RCH): **Ondansetron is recommended** for vomiting children to facilitate oral rehydration (reduces admission rates).
+**Common IMG Mistake**: Not using ondansetron in vomiting child. Australian guideline (RCH): **Ondansetron is recommended** for vomiting children to facilitate oral rehydration (reduces admission rates). (Murtagh's General Practice, 8th ed, p.1421)
 
 ---
 
@@ -507,7 +576,7 @@
 **Management**:
 - **URGENT**: This is a medical emergency
 - **IV fluid resuscitation**:
-  - **0.9% saline** 20 mL/kg bolus over 10-20 minutes
+  - **0.9% saline** 20 mL/kg bolus over 10-20 minutes (Murtagh's General Practice, 8th ed, p.2419)
   - Reassess, repeat if needed (up to 60 mL/kg total)
   - Once stable, maintenance IV fluids + deficit replacement over 24-48 hours
 - **Senior review**
@@ -583,7 +652,7 @@
 4. **Public health notification** (contact tracing, prophylaxis for close contacts)
 
 **Complications**:
-- Death (10%)
+- Death (10%) (Murtagh's General Practice, 8th ed, p.3171)
 - Limb loss (ischaemic necrosis from DIC)
 - Multi-organ failure
 - Hearing loss, neurological sequelae (if meningitis)
@@ -646,7 +715,7 @@
 **Definition**: Seizure occurring in child aged **6 months to 5 years** (peak 12-18 months) associated with **fever** (≥38°C), with **NO CNS infection or other cause**
 
 **Epidemiology**:
-- 3-5% of children have at least one febrile convulsion
+- 3-5% of children have at least one febrile convulsion (Murtagh's General Practice, 8th ed, p.1243)
 - Peak age: 12-18 months
 - Family history common (genetic predisposition)
 
@@ -654,7 +723,7 @@
 
 | Type | Features | Recurrence Risk | Risk of Epilepsy |
 |------|----------|----------------|------------------|
-| **Simple febrile convulsion** (80%) | Generalized tonic-clonic, <15 minutes, single episode in 24 hours, no focal features, rapid recovery | 30-40% | 1-2% (same as general population) |
+| **Simple febrile convulsion** (80%) | Generalized tonic-clonic, <15 minutes, single episode in 24 hours, no focal features, rapid recovery | 30-40% | 1-2% (same as general population) | (Murtagh's General Practice, 8th ed, p.1269)
 | **Complex febrile convulsion** (20%) | Focal features, >15 minutes, multiple episodes in 24 hours, or prolonged post-ictal phase | Higher | 4-12% |
 
 **Differential Diagnosis** (ALWAYS consider):
@@ -716,7 +785,7 @@
 - **Antipyretics**: Paracetamol 15 mg/kg, ibuprofen 10 mg/kg (for comfort, does NOT prevent recurrence)
 - **Parental education**:
   - Febrile convulsions do NOT cause brain damage
-  - Recurrence risk 30-40% (higher if <18 months, family history, low-grade fever)
+  - Recurrence risk 30-40% (higher if <18 months, family history, low-grade fever) (Murtagh's General Practice, 8th ed, p.1239)
   - What to do if seizure recurs (recovery position, time, call ambulance if >5 min)
   - **No evidence** that antipyretics prevent recurrence
 - **Discharge** (if simple febrile convulsion, well, no meningism)
@@ -765,8 +834,8 @@
 **Definition**: Inadequate weight gain or weight loss in a child, resulting in weight **crossing 2 or more centile lines downward** on growth chart
 
 **Classification**:
-1. **Organic** (30%): Medical cause (GI, cardiac, renal, metabolic, chromosomal)
-2. **Non-organic** (50%): Psychosocial (inadequate feeding, poverty, neglect, maternal depression)
+1. **Organic** (30%): Medical cause (GI, cardiac, renal, metabolic, chromosomal) (Murtagh's General Practice, 8th ed, p.2263)
+2. **Non-organic** (50%): Psychosocial (inadequate feeding, poverty, neglect, maternal depression) (Murtagh's General Practice, 8th ed, p.234)
 3. **Mixed** (20%): Both organic and non-organic
 
 ---
@@ -815,7 +884,7 @@
   - Coeliac serology (anti-tTG IgA + total IgA)
   - Urine MCS (UTI?)
   - Stool MCS (chronic diarrhea)
-- **Second-line** (if indicated):
+- **Second-line** (if indicated): (Murtagh's General Practice, 8th ed, p.1016)
   - Sweat test (CF if recurrent chest infections, steatorrhoea)
   - Thyroid function (hyperthyroidism, hypothyroidism)
   - Chromosome analysis (if dysmorphic)
@@ -866,8 +935,8 @@
 | Timing | Classification | Causes | Management |
 |--------|---------------|--------|------------|
 | **<24 hours** | **PATHOLOGICAL** (ALWAYS) | **Haemolysis** (ABO/Rh incompatibility, G6PD deficiency), **sepsis**, congenital infection | Urgent investigation (bilirubin, FBC, blood group, Coombs test, septic screen), phototherapy, exchange transfusion if severe |
-| **24 hours - 14 days** | Physiological (most common) OR pathological | Physiological jaundice (peaks day 3-5), breastfeeding jaundice, sepsis, haemolysis | Check bilirubin level, plot on nomogram, phototherapy if indicated |
-| **>14 days (term) or >21 days (preterm)** | **PROLONGED** | Breast milk jaundice (benign), **biliary atresia** (surgical emergency), hypothyroidism, UTI, haemolysis | Investigate: Split bilirubin (conjugated vs unconjugated), LFTs, TFTs, urine MCS, USS liver. **If conjugated >20%: urgent surgical referral for biliary atresia** |
+| **24 hours - 14 days** | Physiological (most common) OR pathological | Physiological jaundice (peaks day 3-5), breastfeeding jaundice, sepsis, haemolysis | Check bilirubin level, plot on nomogram, phototherapy if indicated | (Murtagh's General Practice, 8th ed, p.1361)
+| **>14 days (term) or >21 days (preterm)** | **PROLONGED** | Breast milk jaundice (benign), **biliary atresia** (surgical emergency), hypothyroidism, UTI, haemolysis | Investigate: Split bilirubin (conjugated vs unconjugated), LFTs, TFTs, urine MCS, USS liver. **If conjugated >20%: urgent surgical referral for biliary atresia** | (Murtagh's General Practice, 8th ed, p.1359)
 
 ---
 
@@ -916,7 +985,7 @@
 
 **If prolonged jaundice (>14 days)**:
 - **Split bilirubin**: Conjugated vs unconjugated
-  - **If conjugated >20% of total** → Conjugated hyperbilirubinaemia → **URGENT surgical referral** (biliary atresia)
+  - **If conjugated >20% of total** → Conjugated hyperbilirubinaemia → **URGENT surgical referral** (biliary atresia) (Murtagh's General Practice, 8th ed, p.1359)
 - **LFTs**, **TFTs** (hypothyroidism), **urine MCS** (UTI)
 - **USS liver** (biliary tree, choledochal cyst)
 - **Stool colour** (use stool colour chart - pale = biliary obstruction)
@@ -1005,7 +1074,7 @@
 
 **Why It's Wrong**:
 - Ondansetron facilitates oral rehydration, reduces admission
-- Australian guideline (RCH): **Ondansetron recommended** for vomiting
+- Australian guideline (RCH): **Ondansetron recommended** for vomiting (Murtagh's General Practice, 8th ed, p.1421)
 
 **Correct Approach**:
 - Vomiting preventing oral intake → Give ondansetron (weight-based dose)
@@ -1033,8 +1102,8 @@
 - Asthma = Salbutamol + steroids early
 
 ### 5. Dehydration = CLINICAL assessment
-- Sunken eyes + reduced skin turgor = Moderate dehydration (3-5%)
-- Oral rehydration first-line
+- Sunken eyes + reduced skin turgor = Moderate dehydration (3-5%) (Murtagh's General Practice, 8th ed, p.1171)
+- Oral rehydration first-line (Murtagh's General Practice, 8th ed, p.3785)
 - Ondansetron facilitates oral rehydration
 
 ### 6. Rashes

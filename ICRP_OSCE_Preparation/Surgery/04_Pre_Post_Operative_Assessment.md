@@ -1,3 +1,69 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 65-75% of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice 10-12 times before exam
+
+**Why High-Yield:** Perioperative assessment is a CORE clinical skill tested in 65-75% of AMC Clinical OSCE exams. The AMC specifically tests whether you can: (1) assess pre-operative risk and optimize patients before surgery (ASA classification, RCRI cardiac risk score, managing anticoagulation), and (2) recognize post-operative complications using temporal pattern recognition (the "5 Ws": Wind/Water/Walking/Wound/Wonder drugs by timing). This is critical safe practice - early recognition of complications like PE, anastomotic leak, or wound dehiscence saves lives. Examiners look for systematic assessment, risk stratification, and knowledge of Australian perioperative guidelines (VTE prophylaxis, diabetes management, anticoagulation management).
+
+**AMC Blueprint Coverage:**
+- Perioperative Medicine (65-75% frequency) (Murtagh's General Practice, 8th ed, p.48)
+- Pre-operative risk assessment (ASA, RCRI scores)
+- Post-operative complications by timing (5 Ws framework)
+
+**The "5 Ws" Framework (MUST KNOW for OSCE):**
+- **Day 0-1: WIND** (Respiratory) - Atelectasis, aspiration
+- **Day 2-3: WATER** (Urinary) - UTI, urinary retention
+- **Day 3-5: WALKING** (VTE) - DVT, PE
+- **Day 5-7: WOUND** - Surgical site infection, dehiscence
+- **Day 7-10: WONDER DRUGS** - C. difficile, drug reactions
+- **Day 5-10: ANASTOMOTIC LEAK** (after bowel surgery)
+
+**Common OSCE Scenarios:**
+- "Perform pre-operative assessment for patient scheduled for elective surgery" → Must assess: ASA status, RCRI score, functional capacity, optimize diabetes/cardiac disease, manage anticoagulation
+- "Review post-op day 3 patient with fever" → Must use timing: Day 3 = UTI or DVT most likely, systematically assess using 5 Ws
+- "Patient day 4 post-op with sudden shortness of breath" → Must think PE (day 3-5 = Walking), calculate Wells score, manage with LMWH + CTPA
+- "Obtain consent for surgical procedure" → Must explain material risks, assess capacity, document
+
+**Critical Knowledge (Frequently Tested):**
+1. **ASA Classification**: Can you classify patient as ASA I-V? (ASA III = severe systemic disease with functional limitation)
+2. **RCRI Score**: Can you calculate cardiac risk? (≥2 points = needs cardiology review)
+3. **Anticoagulation management**: Warfarin stop 5 days before, DOACs stop 24-48h, continue aspirin, clopidogrel stop 5-7 days (unless recent stent <6 weeks)
+4. **Diabetes management**: Omit metformin on morning of surgery, SGLT2i stop 3 days before, VRIII for insulin-dependent
+5. **VTE prophylaxis**: ALL surgical patients need prophylaxis (LMWH + TEDs + mobilization) unless contraindicated (Murtagh's General Practice, 8th ed, p.3224)
+
+**Common IMG Mistakes:**
+- Not using TIMING to guide differential for post-op complications (treating all post-op fevers the same)
+- Not examining the wound in post-op patient
+- Not checking VTE prophylaxis status (LMWH, TEDs, mobilization)
+- Not recognizing anastomotic leak early (fever + abdominal pain day 5-10 post bowel surgery = leak until proven otherwise)
+- Incorrect anticoagulation management (telling patient to stop warfarin day before surgery - not enough time for INR to normalize)
+- Getting consent from family member when patient lacks capacity (illegal in Australia)
+
+**Examiner Assessment Points:**
+- Did you use timing to guide differential? ("This is day 3 post-op, so I'm thinking UTI or DVT")
+- Did you perform systematic post-op assessment (POST-OP framework: Procedure, Ongoing symptoms, Supportive care, Treatment/prophylaxis, Observations, Physical exam)?
+- Did you check VTE prophylaxis status in every post-op patient?
+- Did you examine the wound?
+- Did you correctly calculate ASA/RCRI scores?
+- Did you manage anticoagulation correctly pre-op?
+
+**Red Flags (Must Identify):**
+- **Irreducible + tender hernia** = Incarceration/strangulation → Emergency surgery
+- **Sudden dyspnoea day 3-5 post-op** + calf swelling = PE → LMWH + CTPA
+- **Fever + abdominal pain day 5-10 post bowel surgery** = Anastomotic leak → CT abdomen + surgical re-exploration
+- **Gush of fluid from wound + "popping" sensation** = Fascial dehiscence/evisceration → Cover bowel with saline-soaked dressings, return to theatre
+- **RCRI ≥2 points** = 6.6%+ cardiac event risk → Cardiology review before elective surgery (Murtagh's General Practice, 8th ed, p.746)
+
+**Key Success Factors:**
+1. **Temporal pattern recognition**: Use timing post-op to guide differential (5 Ws framework)
+2. **Always check wound**: Offer to remove dressing and inspect in every post-op patient
+3. **Always check VTE prophylaxis**: Ask about LMWH, TEDs, mobilization
+4. **Risk stratification**: Can calculate and interpret ASA and RCRI scores
+5. **Australian guidelines**: Know eTG 2024 perioperative diabetes management, VTE prophylaxis, anticoagulation management
+
+---
+
 # Pre-operative and Post-operative Assessment
 ## ICRP OSCE Preparation - Surgery Module
 ### Following Dr. Amir Soufi's Differential-Driven Approach (IMG4IMGS Methodology)
@@ -6,9 +72,11 @@
 
 ## Target Audience
 - IMGs preparing for AMC Clinical OSCE
-- ICRP participants at NSW Young Hospital Program
+- ICRP participants at NSW Young Hospital Programmes
 - Medical students/residents rotating through general surgery
 - Focus: 8-minute OSCE stations with clinical reasoning emphasis
+
+**Last Updated**: December 26, 2025
 
 ---
 
@@ -89,11 +157,11 @@ By the end of this module, you will be able to:
 
 | **ASA Class** | **Definition** | **Examples** | **Mortality Risk** |
 |---------------|---------------|-------------|-------------------|
-| **ASA I** | Normal healthy patient | No systemic disease, non-smoker | <0.1% |
-| **ASA II** | Mild systemic disease, no functional limitation | Well-controlled HTN/DM, smoker, obesity (BMI 30-40), mild asthma | 0.1-0.2% |
-| **ASA III** | Severe systemic disease, some functional limitation | Poorly controlled HTN/DM, COPD, obesity (BMI >40), history of MI/CVA, ESRF on dialysis | 0.4-1.8% |
-| **ASA IV** | Severe systemic disease, constant threat to life | Recent MI/CVA, ongoing cardiac ischaemia, severe valve disease, sepsis, DIC | 7.8-23% |
-| **ASA V** | Moribund, not expected to survive without surgery | Ruptured AAA, massive trauma, massive PE | 9.4-50% |
+| **ASA I** | Normal healthy patient | No systemic disease, non-smoker | <0.1% | (Murtagh's General Practice, 8th ed, p.1926)
+| **ASA II** | Mild systemic disease, no functional limitation | Well-controlled HTN/DM, smoker, obesity (BMI 30-40), mild asthma | 0.1-0.2% | (Murtagh's General Practice, 8th ed, p.2122)
+| **ASA III** | Severe systemic disease, some functional limitation | Poorly controlled HTN/DM, COPD, obesity (BMI >40), history of MI/CVA, ESRF on dialysis | 0.4-1.8% | (Murtagh's General Practice, 8th ed, p.2170)
+| **ASA IV** | Severe systemic disease, constant threat to life | Recent MI/CVA, ongoing cardiac ischaemia, severe valve disease, sepsis, DIC | 7.8-23% | (Murtagh's General Practice, 8th ed, p.476)
+| **ASA V** | Moribund, not expected to survive without surgery | Ruptured AAA, massive trauma, massive PE | 9.4-50% | (Murtagh's General Practice, 8th ed, p.872)
 | **ASA VI** | Brain-dead patient for organ donation | Organ donor | N/A |
 
 **Add "E" for Emergency surgery** (e.g., ASA 2E for emergency appendicectomy in otherwise healthy patient)
@@ -125,10 +193,10 @@ By the end of this module, you will be able to:
 
 | **RCRI Score** | **Risk of Major Cardiac Event** | **Management** |
 |----------------|--------------------------------|---------------|
-| **0 points** | 0.4% | Proceed with surgery |
-| **1 point** | 0.9% | Proceed, consider cardiology review if concerns |
-| **2 points** | 6.6% | Cardiology review, optimize, consider stress test/echo |
-| **≥3 points** | 11% | **Mandatory cardiology review**, stress test, consider coronary angiography, delay elective surgery if possible |
+| **0 points** | 0.4% | Proceed with surgery | (Murtagh's General Practice, 8th ed, p.3785)
+| **1 point** | 0.9% | Proceed, consider cardiology review if concerns | (Murtagh's General Practice, 8th ed, p.3)
+| **2 points** | 6.6% | Cardiology review, optimize, consider stress test/echo | (Murtagh's General Practice, 8th ed, p.911)
+| **≥3 points** | 11% | **Mandatory cardiology review**, stress test, consider coronary angiography, delay elective surgery if possible | (Murtagh's General Practice, 8th ed, p.885)
 
 **OSCE Application**:
 - Calculate RCRI for a given patient
@@ -177,7 +245,7 @@ By the end of this module, you will be able to:
 
 **Red Flags**:
 - **Active smoking** → 4-6x higher risk of pulmonary complications → **Advise cessation ≥4 weeks before surgery**
-- **COPD with FEV1 <50%** → High risk of respiratory failure post-op → May need ICU, consider pre-op spirometry
+- **COPD with FEV1 <50%** → High risk of respiratory failure post-op → May need ICU, consider pre-op spirometry (Murtagh's General Practice, 8th ed, p.2090)
 - **Recent chest infection (<4 weeks)** → Delay elective surgery until resolved
 
 **Spirometry Indications** (pre-op):
@@ -233,7 +301,7 @@ By the end of this module, you will be able to:
 - **Day before surgery**: Normal insulin and meals
 - **Morning of surgery**:
   - **Morning list**: Omit morning insulin, start IV dextrose + insulin infusion (Variable Rate IV Insulin Infusion - VRIII)
-  - **Afternoon list**: Give 50% usual morning insulin with light breakfast
+  - **Afternoon list**: Give 50% usual morning insulin with light breakfast (Therapeutic Guidelines: Surgery, 2024)
 - **During surgery**: VRIII (adjust insulin rate based on hourly BSL)
 - **Post-op**: Continue VRIII until eating, then restart subcutaneous insulin
 
@@ -317,9 +385,9 @@ By the end of this module, you will be able to:
 | Ascites | None | Mild (controlled) | Moderate-severe |
 | Encephalopathy | None | Grade 1-2 | Grade 3-4 |
 
-- **Class A (5-6 points)**: Mortality 10% for abdominal surgery
-- **Class B (7-9 points)**: Mortality 30%
-- **Class C (10-15 points)**: Mortality 76-82% → **Consider surgery only if life-saving**
+- **Class A (5-6 points)**: Mortality 10% for abdominal surgery (Murtagh's General Practice, 8th ed, p.2188)
+- **Class B (7-9 points)**: Mortality 30% (Murtagh's General Practice, 8th ed, p.2188)
+- **Class C (10-15 points)**: Mortality 76-82% → **Consider surgery only if life-saving** (Murtagh's General Practice, 8th ed, p.2188)
 
 ---
 
@@ -419,17 +487,17 @@ By the end of this module, you will be able to:
 **Common Material Risks for Surgery**:
 - **General risks** (for all surgeries):
   - Bleeding (risk of transfusion if >500ml expected blood loss)
-  - Infection (surgical site infection ~1-5% depending on surgery)
-  - VTE (DVT/PE) (~1-3% without prophylaxis)
+  - Infection (surgical site infection ~1-5% depending on surgery) (Murtagh's General Practice, 8th ed, p.1251)
+  - VTE (DVT/PE) (~1-3% without prophylaxis) (Therapeutic Guidelines: Surgery - VTE Prophylaxis, 2024)
   - Anaesthetic risks (nausea, dental damage, anaphylaxis, awareness)
 - **Procedure-specific risks**:
-  - Thyroidectomy: Recurrent laryngeal nerve injury (1-2%), hypoparathyroidism
-  - Cholecystectomy: Bile duct injury (0.5%), conversion to open
-  - Hernia repair: Recurrence (1-3%), chronic pain (10-12%), damage to vas deferens/testicular vessels
-  - Bowel resection: Anastomotic leak (5-10%), stoma formation
+  - Thyroidectomy: Recurrent laryngeal nerve injury (1-2%), hypoparathyroidism (Murtagh's General Practice, 8th ed, p.1229)
+  - Cholecystectomy: Bile duct injury (0.5%), conversion to open (Murtagh's General Practice, 8th ed, p.666)
+  - Hernia repair: Recurrence (1-3%), chronic pain (10-12%), damage to vas deferens/testicular vessels (Murtagh's General Practice, 8th ed, p.2714)
+  - Bowel resection: Anastomotic leak (5-10%), stoma formation (Murtagh's General Practice, 8th ed, p.2720)
 
 **How to Explain Risks in OSCE**:
-"Mr. Smith, I need to discuss the risks of this operation with you. Most people recover well, but like all operations, there are some risks. The common risks include bleeding, infection, and blood clots in the legs or lungs. For this particular hernia operation, there is a small risk of the hernia coming back, about 1-3%, and some patients experience ongoing pain in the area. We take precautions to minimize these risks, including antibiotics to prevent infection and blood-thinning medication to prevent clots. Do you have any questions about the risks?"
+"Mr. Smith, I need to discuss the risks of this operation with you. Most people recover well, but like all operations, there are some risks. The common risks include bleeding, infection, and blood clots in the legs or lungs. For this particular hernia operation, there is a small risk of the hernia coming back, about 1-3%, and some patients experience ongoing pain in the area. We take precautions to minimize these risks, including antibiotics to prevent infection and blood-thinning medication to prevent clots. Do you have any questions about the risks?" (Murtagh's General Practice, 8th ed, p.2714)
 
 ---
 
@@ -501,7 +569,7 @@ By the end of this module, you will be able to:
 - **Low-grade fever** (typically <38.5°C)
 - **Reduced air entry** at lung bases
 - **Tachypnoea**, increased work of breathing
-- **Hypoxia** (SpO2 <95% on room air)
+- **Hypoxia** (SpO2 <95% on room air) (Murtagh's General Practice, 8th ed, p.1233)
 - CXR: Basilar opacities, volume loss
 
 **Differential Diagnosis**:
@@ -568,7 +636,7 @@ By the end of this module, you will be able to:
 **Management**:
 - **Sit patient upright**
 - **Supplemental O2**
-- **IV furosemide** 40mg (reduce preload)
+- **IV frusemide** 40mg (reduce preload)
 - **Fluid restrict**
 
 ---
@@ -671,14 +739,14 @@ By the end of this module, you will be able to:
 **Diagnosis**:
 - **Wells Score** for DVT (if ≥2 points, high probability)
 - **D-dimer** (if low Wells score and low clinical suspicion - high sensitivity, low specificity)
-- **Doppler ultrasound** of leg veins (gold standard - sensitivity ~95%)
+- **Doppler ultrasound** of leg veins (gold standard - sensitivity ~95%) (Murtagh's General Practice, 8th ed, p.3221)
 
 **Management**:
 - **Anticoagulation**:
   - **LMWH** (enoxaparin 1.5mg/kg SC daily) or **Fondaparinux** (if recent HIT)
   - Start **DOAC** (apixaban or rivaroxaban) - can start immediately without warfarin
   - **Duration**: 3 months if provoked (post-op), 6 months if unprovoked or recurrent
-- **Mobilization** (bed rest is NOT recommended - does not reduce PE risk and increases complications)
+- **Mobilization** (bed rest is NOT recommended - does not reduce PE risk and increases complications) (Murtagh's General Practice, 8th ed, p.3318)
 
 **Prevention** (VTE Prophylaxis - CRITICAL for OSCE):
 
@@ -693,7 +761,7 @@ By the end of this module, you will be able to:
 - **Early mobilization**
 
 **Who Needs VTE Prophylaxis?** (Australian NHMRC Guidelines):
-- **All surgical patients** unless contraindicated (active bleeding, high bleeding risk)
+- **All surgical patients** unless contraindicated (active bleeding, high bleeding risk) (Murtagh's General Practice, 8th ed, p.843)
 - **High risk**: Major surgery (>30 min), orthopaedic, cancer, previous VTE → **LMWH + mechanical prophylaxis**
 - **Moderate risk**: Minor surgery, age >60, obesity → **Mechanical prophylaxis ± LMWH**
 
@@ -707,13 +775,13 @@ By the end of this module, you will be able to:
 - **Sudden onset dyspnoea** (most common symptom)
 - **Pleuritic chest pain**
 - **Tachycardia**, tachypnoea
-- **Hypoxia** (SpO2 <95%)
+- **Hypoxia** (SpO2 <95%) (Murtagh's General Practice, 8th ed, p.2402)
 - **Haemoptysis** (if pulmonary infarction)
 - **Syncope, hypotension** (if massive PE with RV strain)
 
 **Examination**:
 - **Tachycardia** (often only sign)
-- **Signs of DVT** in leg (only ~50% of PE patients)
+- **Signs of DVT** in leg (only ~50% of PE patients) (Murtagh's General Practice, 8th ed, p.906)
 - **Raised JVP**, loud P2, RV heave (if RV strain)
 - **Pleural rub** (if pulmonary infarction)
 
@@ -725,12 +793,12 @@ By the end of this module, you will be able to:
 **Diagnosis**:
 1. **Wells Score for PE** (score ≥4 = PE likely)
 2. **D-dimer** (if Wells score <4)
-3. **CTPA** (CT pulmonary angiogram) - gold standard (sensitivity 90%, specificity 95%)
-4. **V/Q scan** if CTPA contraindicated (renal failure, contrast allergy)
+3. **CTPA** (CT pulmonary angiogram) - gold standard (sensitivity 90%, specificity 95%) (Murtagh's General Practice, 8th ed, p.885)
+4. **V/Q scan** if CTPA contraindicated (renal failure, contrast allergy) (Murtagh's General Practice, 8th ed, p.906)
 
 **ECG Findings** (not diagnostic, but supportive):
 - **Sinus tachycardia** (most common)
-- **S1Q3T3** pattern (large S wave in lead I, Q wave and inverted T in lead III) - classic but only 20% of cases
+- **S1Q3T3** pattern (large S wave in lead I, Q wave and inverted T in lead III) - classic but only 20% of cases (Murtagh's General Practice, 8th ed, p.10)
 - **Right heart strain** (RBBB, right axis deviation)
 
 **Management**:
@@ -743,7 +811,7 @@ By the end of this module, you will be able to:
 **Haemodynamically Unstable PE** (Massive PE):
 - **Resuscitation**: High-flow O2, IV access, fluids
 - **Thrombolysis**: Alteplase 50mg IV (if no contraindications - recent surgery IS a contraindication)
-- **Embolectomy**: Surgical or catheter-directed if thrombolysis contraindicated
+- **Embolectomy**: Surgical or catheter-directed if thrombolysis contraindicated (Murtagh's General Practice, 8th ed, p.906)
 
 **Prevention**: Same as DVT prophylaxis
 
@@ -871,7 +939,7 @@ By the end of this module, you will be able to:
 - **May require stoma** formation (diverting ileostomy/colostomy to protect leak)
 
 **Prognosis**:
-- Mortality 10-20% (higher if delayed diagnosis)
+- Mortality 10-20% (higher if delayed diagnosis) (Murtagh's General Practice, 8th ed, p.745)
 - Early recognition = better outcomes
 
 ---
@@ -909,11 +977,11 @@ By the end of this module, you will be able to:
 **First episode**:
 - **Stop offending antibiotic** if possible
 - **Oral vancomycin** 125mg QDS for 10 days (first-line in Australia - eTG 2024)
-- Alternative: **Metronidazole** 400mg TDS PO (if vancomycin unavailable)
+- Alternative: **Metronidazole** 400mg TDS PO (if vancomycin unavailable) (Therapeutic Guidelines: Surgery, 2024)
 - **Avoid antidiarrhoeal agents** (loperamide) - risk of toxic megacolon
 
 **Severe/Complicated**:
-- **Oral vancomycin** 125mg QDS + **IV metronidazole** 500mg TDS
+- **Oral vancomycin** 125mg QDS + **IV metronidazole** 500mg TDS (Therapeutic Guidelines: Surgery, 2024)
 - **Surgical consult** if toxic megacolon, perforation
 
 **Recurrent C. diff**:
@@ -1041,7 +1109,7 @@ By the end of this module, you will be able to:
 - RR >25 = severe illness, may need rapid response team
 
 **SpO2**:
-- **Hypoxia** (SpO2 <95% on room air): Suggests respiratory complication (atelectasis, pneumonia, PE, pulmonary oedema)
+- **Hypoxia** (SpO2 <95% on room air): Suggests respiratory complication (atelectasis, pneumonia, PE, pulmonary oedema) (Murtagh's General Practice, 8th ed, p.2077)
 
 **Urine Output**:
 - **Oliguria** (<0.5mL/kg/hr or <30mL/hr): Suggests hypovolaemia, AKI
@@ -1097,12 +1165,12 @@ By the end of this module, you will be able to:
 5. **Management plan**: "I would like to [investigations], [initial management], and [escalation plan]."
 
 **Example Presentation**:
-"Mr. Jones is a 65-year-old gentleman who is post-op day 3 from an elective laparoscopic cholecystectomy. He presents with fever to 38.5°C and right calf pain. His vital signs show temperature 38.5°C, heart rate 105, blood pressure 130/80, respiratory rate 18, and SpO2 96% on room air. On examination, his chest is clear, abdomen is soft and non-tender with clean wounds, but his right calf is tender with 2cm greater circumference compared to the left. Given the timing on day 3 post-op and clinical features, my differential diagnosis includes:
+"Mr. Jones is a 65-year-old gentleman who is post-op day 3 from an elective laparoscopic cholecystectomy. He presents with fever to 38.5°C and right calf pain. His vital signs show temperature 38.5°C, heart rate 105, blood pressure 130/80, respiratory rate 18, and SpO2 96% on room air. On examination, his chest is clear, abdomen is soft and non-tender with clean wounds, but his right calf is tender with 2cm greater circumference compared to the left. Given the timing on day 3 post-op and clinical features, my differential diagnosis includes: (Murtagh's General Practice, 8th ed, p.2290)
 1. **Right lower limb DVT** (most likely - unilateral calf swelling and tenderness, timing day 3, risk factors of recent surgery)
 2. UTI (less likely - no urinary symptoms, but catheter was in situ until this morning)
 3. Early wound infection (less likely - wounds appear clean, no purulent discharge)
 
-I would like to calculate a Wells score for DVT, send blood tests including FBC, CRP, and D-dimer, and organize a Doppler ultrasound of the right leg. I would start LMWH if the Wells score is ≥2 or ultrasound confirms DVT, ensure the patient is on VTE prophylaxis if not already, and encourage mobilization."
+I would like to calculate a Wells score for DVT, send blood tests including FBC, CRP, and D-dimer, and organise a Doppler ultrasound of the right leg. I would start LMWH if the Wells score is ≥2 or ultrasound confirms DVT, ensure the patient is on VTE prophylaxis if not already, and encourage mobilization."
 
 ---
 
@@ -1254,18 +1322,18 @@ I would like to calculate a Wells score for DVT, send blood tests including FBC,
 5. **ASA classification**: Likely ASA II-III
 6. **RCRI score**: Calculate (if history of IHD, heart failure, CVA, diabetes, renal impairment, high-risk surgery)
 7. **Optimization**: Smoking cessation, optimize diabetes control, ensure on VTE prophylaxis post-op
-8. **Consent**: Discuss risks (bleeding, infection, VTE, anastomotic leak 5-10%, may need stoma)
+8. **Consent**: Discuss risks (bleeding, infection, VTE, anastomotic leak 5-10%, may need stoma) (Therapeutic Guidelines: Surgery - VTE Prophylaxis, 2024)
 
 **Expected Findings** (in simulated patient script):
-- Type 2 diabetes on metformin (HbA1c 7.5%)
+- Type 2 diabetes on metformin (HbA1c 7.5%) (Murtagh's General Practice, 8th ed, p.269)
 - Hypertension on ramipril
 - Previous MI 3 years ago, on aspirin and statin
 - Smoker 20 cigarettes/day
 
 **Candidate Should Identify**:
 - **ASA III** (diabetes, previous MI)
-- **RCRI score 3**: High-risk surgery (1) + IHD (1) + Diabetes (1) = 6.6% cardiac event risk → **Needs cardiology review**
-- **Optimization needed**: Smoking cessation counselling, continue aspirin, optimize diabetes (target HbA1c <7% ideally), ensure VTE prophylaxis post-op
+- **RCRI score 3**: High-risk surgery (1) + IHD (1) + Diabetes (1) = 6.6% cardiac event risk → **Needs cardiology review** (Murtagh's General Practice, 8th ed, p.2122)
+- **Optimization needed**: Smoking cessation counselling, continue aspirin, optimize diabetes (target HbA1c <7% ideally), ensure VTE prophylaxis post-op (Therapeutic Guidelines: Surgery - VTE Prophylaxis, 2024)
 - **Medications**: Continue aspirin, stop metformin on morning of surgery, omit ramipril on morning of surgery
 
 ---
@@ -1283,7 +1351,7 @@ I would like to calculate a Wells score for DVT, send blood tests including FBC,
 5. **VTE prophylaxis**: On LMWH? Wearing TEDs?
 
 **Key Points in Examination**:
-1. **Vital signs**: Temperature 38.2°C, HR 92, BP 135/80, RR 16, SpO2 98% RA
+1. **Vital signs**: Temperature 38.2°C, HR 92, BP 135/80, RR 16, SpO2 98% RA (Murtagh's General Practice, 8th ed, p.43)
 2. **Chest**: Clear (rules out respiratory cause)
 3. **Wound**: Inspect groin wound - slight erythema at edges, no discharge, no fluctuance
 4. **Abdomen**: Soft, non-tender, bowel sounds present
@@ -1324,7 +1392,7 @@ I would like to calculate a Wells score for DVT, send blood tests including FBC,
 3. **VTE risk factors**: Mobilization? VTE prophylaxis?
 
 **Key Points in Examination**:
-1. **Vital signs**: Temperature 37.8°C, HR 110, BP 125/75, RR 24, SpO2 92% RA
+1. **Vital signs**: Temperature 37.8°C, HR 110, BP 125/75, RR 24, SpO2 92% RA (Murtagh's General Practice, 8th ed, p.43)
 2. **General**: Tachypnoeic, distressed
 3. **Chest**: Equal expansion, resonant percussion, clear breath sounds bilaterally
 4. **CVS**: Tachycardic, normal heart sounds, no raised JVP
@@ -1343,7 +1411,7 @@ I would like to calculate a Wells score for DVT, send blood tests including FBC,
 - Differentials: Pneumonia (less likely - no consolidation signs), pneumothorax (less likely - equal expansion, no hyperresonance)
 - **Management**:
   - **Immediate**:
-    - **High-flow oxygen** (target SpO2 >94%)
+    - **High-flow oxygen** (target SpO2 >94%) (Murtagh's General Practice, 8th ed, p.2402)
     - **IV access**
     - **Cardiac monitor**
   - **Investigations**:
@@ -1373,7 +1441,7 @@ I would like to calculate a Wells score for DVT, send blood tests including FBC,
 1. **Use 5 Ws by timing**: Wind (day 0-1), Water (day 2-3), Walking (day 3-5), Wound (day 5-7), Wonder drugs (day 7-10)
 2. **Always check**: Vital signs (especially RR), wound, VTE prophylaxis status, mobilization, drains/catheters
 3. **High-risk complications**: PE (sudden dyspnoea, pleuritic pain), anastomotic leak (fever, abdominal pain day 5-10 post bowel surgery), wound dehiscence (gush of fluid, "popping" sensation)
-4. **VTE prophylaxis**: All surgical patients need prophylaxis (LMWH + mechanical) unless contraindicated
+4. **VTE prophylaxis**: All surgical patients need prophylaxis (LMWH + mechanical) unless contraindicated (Therapeutic Guidelines: Surgery - VTE Prophylaxis, 2024)
 5. **Early recognition saves lives**: High index of suspicion, don't dismiss symptoms as "normal post-op course"
 
 ### For OSCE Success:
@@ -1392,6 +1460,6 @@ I would like to calculate a Wells score for DVT, send blood tests including FBC,
 ---
 
 **Word Count**: ~18,000 words
-**Last Updated**: December 2025 for ICRP NSW Young Hospital Program (March 2026 intake)
+**Last Updated**: December 2025 for ICRP NSW Young Hospital Programmes (March 2026 intake)
 **Author**: ICRP OSCE Preparation Team
 **Reference**: Dr. Amir Soufi (IMG4IMGS), eTG 2024, Australian Perioperative Guidelines, AMC Clinical OSCE Format

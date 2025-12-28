@@ -142,34 +142,103 @@ glucose = {'value': 100, 'unit': 'mg/dL'}  # Don't use mg/dL
 
 ### 1.4 Citation Requirements (MANDATORY)
 
-**EVERY medical claim MUST have a citation:**
+**EVERY medical claim MUST have exact reference with page/section numbers:**
+
+#### Citation Format Requirements
+
+**✅ REQUIRED - Book citations MUST include page numbers:**
+```markdown
+✅ (Talley & O'Connor's Clinical Examination, 8th ed, p.145)
+✅ (Murtagh's General Practice, 8th ed, p.892)
+✅ (Oxford Handbook of Emergency Medicine, 5th ed, p.234)
+✅ (AMC Clinical Exam Handbook, p.67)
+
+❌ (Talley & O'Connor's Clinical Examination, 8th ed)  # Missing page number
+❌ (Murtagh's General Practice, 8th ed)  # Missing page number
+```
+
+**✅ REQUIRED - eTG citations MUST include section numbers:**
+```markdown
+✅ (Therapeutic Guidelines: Paediatric, Section 2.3.1, 2024)
+✅ (Therapeutic Guidelines: Surgery, Section 1.4.2, 2024)
+✅ (Therapeutic Guidelines: Cardiovascular, Section 5.2, 2024)
+
+❌ (Therapeutic Guidelines: Paediatric, 2024)  # Missing section number
+❌ (eTG Paediatric, 2024)  # Missing section number
+```
+
+**✅ REQUIRED - RAG verification for auto-citations:**
+- Minimum confidence threshold: **>0.65** for automatic page/section addition
+- All auto-generated citations MUST be RAG-verified against actual medical textbooks
+- RAG collection: `medical_knowledge` (9,672+ medical text chunks)
+- Embedding model: `pritamdeka/S-PubMedBert-MS-MARCO`
+
+**❌ NEVER use generic citations:**
+```markdown
+❌ (eTG 2024)  # No specialty, no section
+❌ (Talley)  # No edition, no page
+❌ (Australian guidelines)  # Too vague
+❌ (Standard practice)  # Not a citation
+```
+
+#### RAG-Verified Citation Workflow
 
 ```python
-# ✅ CORRECT
+# ✅ CORRECT - RAG-verified citation with exact page
 question = {
-    'stem': 'First-line treatment for type 2 diabetes is...',
-    'answer': 'Metformin',
-    'explanation': 'Metformin is first-line as per Therapeutic Guidelines: Endocrinology.',
-    'citation': 'Therapeutic Guidelines: Endocrinology, Section 3.2.1 (2024)',
-    'evidence_level': 'Grade A recommendation'
+    'stem': 'What is the first-line antibiotic for community-acquired pneumonia?',
+    'answer': 'Amoxicillin 1g TDS for 5 days',
+    'explanation': 'Amoxicillin is first-line for CAP in previously well patients.',
+    'citation': '(Therapeutic Guidelines: Antibiotic, Section 2.3.1, 2024)',
+    'rag_confidence': 0.87,
+    'rag_verified': True
 }
 
-# ❌ INCORRECT - No citation
+# ❌ INCORRECT - Generic citation without section
 question = {
-    'stem': 'First-line treatment for type 2 diabetes is...',
-    'answer': 'Metformin',
-    'explanation': 'Metformin is first-line.'  # ❌ Missing citation
+    'stem': 'What is the first-line antibiotic for community-acquired pneumonia?',
+    'answer': 'Amoxicillin 1g TDS for 5 days',
+    'explanation': 'Amoxicillin is first-line for CAP.',
+    'citation': '(Therapeutic Guidelines: Antibiotic, 2024)',  # ❌ Missing section
+    'rag_verified': False
 }
 ```
 
-**Acceptable Citations:**
-- Therapeutic Guidelines: [Specialty], Section X.Y.Z (Year)
-- Harrison's Internal Medicine, Chapter XYZ
-- Talley & O'Connor's Clinical Examination, Page XYZ
-- AMC Clinical Exam Handbook
-- NSW Health Clinical Practice Guidelines
-- RACGP (Royal Australian College of General Practitioners) Guidelines
-- Australian Medicines Handbook (AMH)
+#### Acceptable Citation Sources (with exact references)
+
+**Primary Australian Sources:**
+- **Therapeutic Guidelines (eTG)**: MUST include Section X.Y.Z
+  - Example: `(Therapeutic Guidelines: Paediatric, Section 2.3.1, 2024)`
+- **Talley & O'Connor's Clinical Examination**: MUST include page number
+  - Example: `(Talley & O'Connor's Clinical Examination, 8th ed, p.145)`
+- **Murtagh's General Practice**: MUST include page number
+  - Example: `(Murtagh's General Practice, 8th ed, p.892)`
+- **AMC Handbook of Clinical Assessment**: MUST include page number
+  - Example: `(AMC Handbook of Clinical Assessment, p.67)`
+- **Oxford Handbook of Emergency Medicine**: MUST include page number
+  - Example: `(Oxford Handbook of Emergency Medicine, 5th ed, p.234)`
+
+**Secondary Sources (when primary not available):**
+- NSW Health Clinical Practice Guidelines (with document title and section)
+- RACGP Guidelines (with section/page)
+- Australian Medicines Handbook (with page)
+
+#### Exceptions
+
+**ONLY exception - General knowledge statements:**
+- Statements about AMC exam structure (e.g., "AMC exam has 16 stations")
+- Basic anatomy facts universally accepted
+- General medical definitions
+
+**All clinical claims, drug dosages, treatment protocols, diagnostic criteria MUST have exact citations with page/section numbers.**
+
+#### Validation
+
+Use `validate_exact_citations.py` to ensure:
+- [ ] All citations have page numbers (books) OR section numbers (eTG)
+- [ ] No generic citations remain
+- [ ] RAG confidence scores logged for all auto-citations
+- [ ] Manual review completed for low-confidence matches (<0.65)
 
 ---
 

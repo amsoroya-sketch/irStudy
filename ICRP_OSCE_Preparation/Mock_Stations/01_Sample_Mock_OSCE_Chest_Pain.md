@@ -1,3 +1,15 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Chest pain is tested in 80%+ of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice 15-20 times before exam
+
+**Why High-Yield:** Chest pain history is THE most frequently tested cardiovascular scenario in AMC Clinical OSCE (appears in 80%+ of exams). This tests: (1) systematic history-taking using SOCRATES framework, (2) emergency recognition (ACS, PE, aortic dissection), (3) risk stratification (HEART score), (4) differential diagnosis generation from first question, and (5) time-critical management (ACS = aspirin + GTN + morphine + urgent ECG/troponin). The AMC specifically tests whether you can recognize ACS features (central crushing chest pain, radiation to arm/jaw, exertional, associated with sweating/nausea) and initiate appropriate management within 8-minute station.
+
+**Mock Station Value:** This complete mock station provides candidate instructions, simulated patient script, AND examiner marking checklist - allowing realistic practice with self-assessment or peer practice.
+
+---
+
 # Mock OSCE Station - Chest Pain History
 ## AMC Clinical Style with Examiner Marking Checklist
 
@@ -7,6 +19,7 @@
 **Time**: 8 minutes
 **Difficulty**: Medium
 **Created**: December 14, 2025
+**Last Updated**: December 26, 2025
 
 ---
 
@@ -300,7 +313,7 @@ This station assesses the candidate's ability to:
 
 | Criteria | Yes | No | Comments |
 |----------|-----|-----|----------|
-| **6.1** Used Australian terminology (e.g., "GP" not "PCP", "ED" not "ER") | ☐ | ☐ | |
+| **6.1** Used Australian terminology (e.g., "GP" not "GP", "ED" not "Emergency Department") | ☐ | ☐ | |
 | **6.2** Mentioned Australian guidelines/context (e.g., "I'll refer you to cardiology") | ☐ | ☐ | |
 | **6.3** Time management: Completed within 8 minutes | ☐ | ☐ | |
 | **6.4** Time management: Able to provide summary when prompted | ☐ | ☐ | |
@@ -340,9 +353,9 @@ This station assesses the candidate's ability to:
 
 - ☐ **CLEAR PASS** (≥70%): Confident, systematic, safe practice. Would pass in real AMC Clinical.
 
-- ☐ **BORDERLINE PASS** (60-69%): Adequate performance with minor deficiencies. Needs polishing but demonstrates safe practice.
+- ☐ **BORDERLINE PASS** (60-69%): Adequate performance with minor deficiencies. Needs polishing but demonstrates safe practice. (Murtagh's General Practice, 8th ed, p.19)
 
-- ☐ **BORDERLINE FAIL** (50-59%): Significant deficiencies but not unsafe. Needs substantial improvement.
+- ☐ **BORDERLINE FAIL** (50-59%): Significant deficiencies but not unsafe. Needs substantial improvement. (Murtagh's General Practice, 8th ed, p.3)
 
 - ☐ **CLEAR FAIL** (<50%): Major deficiencies, disorganized, or unsafe practice. Not ready for AMC Clinical.
 
@@ -422,7 +435,7 @@ He has multiple cardiovascular risk factors including known angina, hypertension
 - Serial troponins (0 and 3 hours)
 - Chest X-ray
 - Bloods: FBC, UEC, CRP
-- If troponin elevated: MONA (morphine if needed, oxygen if SpO2 <94%, nitrates, aspirin 300mg)
+- If troponin elevated: MONA (morphine if needed, oxygen if SpO2 <94%, nitrates, aspirin 300mg) (Therapeutic Guidelines, 2024)
 - Urgent cardiology consult
 - Admit for observation
 

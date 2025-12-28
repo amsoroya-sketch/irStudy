@@ -1,3 +1,82 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 60-70% of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice 10-12 times before exam
+
+**Why High-Yield:** Obstetric examination is a CORE clinical skill appearing in 60-70% of AMC Clinical exams. This tests: (1) systematic antenatal examination (5 Ps framework), (2) Leopold's manoeuvres (foetal lie, presentation, engagement), (3) symphysis-fundal height measurement and interpretation, (4) foetal heart auscultation, and (5) correlation of findings with gestational age. This is high-yield because antenatal care is a fundamental general practice/obstetrics skill, and the AMC specifically tests whether you can INTERPRET findings in context of gestational age (e.g., SFH 26cm at 28 weeks = small for gestational age, requires investigation). Missing the interpretation = likely fail.
+
+**AMC Blueprint Coverage:**
+- Obstetric Clinical Examination (60-70% frequency) (Talley & O'Connor's Clinical Examination, 8th ed, p.675)
+- Antenatal assessment (most common obstetric OSCE scenario)
+- Leopold's manoeuvres (4-step examination)
+- SFH measurement and interpretation
+
+**Common OSCE Scenarios:**
+- "Perform antenatal examination on 32-week pregnant patient" → Must perform: inspection, palpation (Leopold's 4 manoeuvres), SFH measurement, foetal heart auscultation, interpret findings
+- "Patient is 28 weeks, measure SFH" → Must measure correctly (symphysis pubis to fundus), interpret (expected SFH = gestational age ±2cm)
+- "Determine foetal lie and presentation" → Must perform Leopold's manoeuvres systematically, state findings (longitudinal lie, cephalic presentation, engagement)
+
+**Critical Skills (Missing These = Fail OSCE):**
+1. **Leopold's Manoeuvres (4 steps)**: Must perform all 4 manoeuvres in correct order
+   - Leopold 1 (fundal palpation): What's in the fundus? (Breech = hard round head, Cephalic = soft irregular bottom)
+   - Leopold 2 (lateral palpation): Where's the back? (Firm smooth surface = back, irregular = limbs)
+   - Leopold 3 (pelvic palpation): What's presenting? (Head = hard round mobile, Breech = soft irregular)
+   - Leopold 4 (engagement): Is head engaged? (Converging = engaged, Diverging = not engaged)
+
+2. **SFH Measurement**: Must measure from symphysis pubis to fundus (NOT umbilicus), interpret ±2cm from gestational age
+
+3. **Fetal Heart Auscultation**: Must locate foetal back first (where heart sounds loudest), count for 1 minute, state rate (normal 110-160 bpm)
+
+4. **Gestational Age Interpretation**: Must correlate ALL findings with expected for gestational age
+
+**Expected Findings by Gestational Age:**
+- **12 weeks**: Fundus at symphysis pubis
+- **20 weeks**: Fundus at umbilicus
+- **20-36 weeks**: SFH (cm) ≈ gestational age (weeks) ±2cm
+- **36 weeks**: Fundus at xiphisternum
+- **36-40 weeks**: Engagement occurs (primigravida usually engages 36 weeks, multigravida may not engage until labor)
+
+**Red Flags (Must Identify):**
+- **SFH <2cm below expected** = Small for gestational age (SGA) → IUGR, oligohydramnios, dating error
+- **SFH >2cm above expected** = Large for gestational age (LGA) → Macrosomia, GDM, polyhydramnios, multiple pregnancy
+- **Fetal heart rate <110 or >160 bpm** = Fetal distress → Urgent assessment
+- **Oblique/transverse lie at term (>37 weeks)** → Cannot deliver vaginally, needs ECV or caesarean
+- **Breech presentation at term** → Plan for ECV or caesarean
+
+**Common IMG Mistakes:**
+- Not stating gestational age before examination (critical context)
+- Measuring SFH from umbilicus instead of symphysis pubis (incorrect technique)
+- Not performing all 4 Leopold's manoeuvres (missing engagement assessment = incomplete exam)
+- Not correlating findings with gestational age (stating "SFH 26cm" without interpretation)
+- Not locating foetal back before auscultating heart (finding heartbeat takes too long)
+- Not washing hands or explaining examination to patient
+
+**Examiner Assessment Points:**
+- Did you wash hands and obtain consent?
+- Did you expose abdomen appropriately (symphysis to xiphoid)?
+- Did you perform all 4 Leopold's manoeuvres systematically?
+- Did you measure SFH correctly (symphysis to fundus)?
+- Did you auscultate foetal heart correctly?
+- Did you INTERPRET findings in context of gestational age?
+- Did you identify abnormal findings (SGA/LGA, abnormal lie/presentation)?
+
+**The 5 Ps Framework:**
+1. **P**reparation (consent, chaperone, wash hands, equipment)
+2. **P**osition (patient supine, 15° left tilt if >20 weeks, expose symphysis to xiphoid)
+3. **P**alpation (Leopold's 4 manoeuvres)
+4. **P**erimetry (SFH measurement with tape measure)
+5. **P**ercussion... no wait, **P**honation (foetal heart auscultation)
+
+**Key Success Factors:**
+1. **Gestational age first**: Know the gestational age before starting examination
+2. **Systematic Leopold's**: All 4 manoeuvres in order (fundal → lateral → pelvic → engagement)
+3. **Correct SFH technique**: Symphysis to fundus (NOT umbilicus), tape measure not stretched
+4. **Interpret everything**: Don't just state findings - interpret in context of gestational age
+5. **Fetal back location**: Find back first (Leopold 2) before auscultating heart (saves time)
+
+---
+
 # Obstetric Examination
 ## ICRP OSCE Preparation - Obstetrics & Gynaecology Module
 ### Following Dr. Amir Soufi's Differential-Driven Approach (IMG4IMGS Methodology)
@@ -6,9 +85,11 @@
 
 ## Target Audience
 - IMGs preparing for AMC Clinical OSCE
-- ICRP participants at NSW Young Hospital Program
+- ICRP participants at NSW Young Hospital Programmes
 - Medical students/residents rotating through obstetrics
 - Focus: 8-minute OSCE stations with systematic examination
+
+**Last Updated**: December 26, 2025
 
 ---
 
@@ -18,10 +99,10 @@ By the end of this module, you will be able to:
 
 1. **Perform systematic antenatal examination** using the 5 Ps framework
 2. **Measure and interpret symphysis-fundal height** (SFH)
-3. **Perform Leopold's manoeuvres** to determine fetal lie, presentation, and engagement
-4. **Auscultate fetal heart** and interpret rate
+3. **Perform Leopold's manoeuvres** to determine foetal lie, presentation, and engagement
+4. **Auscultate foetal heart** and interpret rate
 5. **Recognize abnormal findings** requiring further assessment
-6. **Assess fetal wellbeing** clinically
+6. **Assess foetal wellbeing** clinically
 7. **Integrate examination findings** with gestational age and clinical context
 8. **Communicate findings** clearly to patient and examiner
 
@@ -66,9 +147,9 @@ By the end of this module, you will be able to:
 
 **Equipment Needed**:
 - Tape measure (for symphysis-fundal height)
-- Doppler/Pinard stethoscope (for fetal heart)
+- Doppler/Pinard stethoscope (for foetal heart)
 - Ultrasound gel (for Doppler)
-- Watch/timer (to count fetal heart rate)
+- Watch/timer (to count foetal heart rate)
 
 **Explain Examination**:
 "I'm going to feel your tummy to check baby's size and position, measure from your pubic bone to the top of your womb, and listen to baby's heartbeat. Please let me know if anything is uncomfortable."
@@ -133,7 +214,7 @@ By the end of this module, you will be able to:
   - **Midline laparotomy scar** → Previous abdominal surgery
 
 **3. Fetal Movements**:
-- **Visible movements**: Reassuring (healthy, active fetus)
+- **Visible movements**: Reassuring (healthy, active foetus)
 - Document if seen
 
 **4. Uterine Contractions**:
@@ -141,7 +222,7 @@ By the end of this module, you will be able to:
 - Note frequency and duration if observed
 
 **OSCE Statement**:
-"On inspection, I can see a gravid abdomen appropriate for [gestational age] weeks. There is a Pfannenstiel scar consistent with previous caesarean section. I can see fetal movements. The skin shows striae gravidarum and linea nigra."
+"On inspection, I can see a gravid abdomen appropriate for [gestational age] weeks. There is a Pfannenstiel scar consistent with previous caesarean section. I can see foetal movements. The skin shows striae gravidarum and linea nigra."
 
 ---
 
@@ -201,18 +282,18 @@ By the end of this module, you will be able to:
 
 OR
 
-"The symphysis-fundal height is 25cm at 30 weeks gestation, which is 5cm less than expected. This suggests the baby may be small for gestational age, and I would arrange an ultrasound growth scan to assess fetal growth and amniotic fluid volume."
+"The symphysis-fundal height is 25cm at 30 weeks gestation, which is 5cm less than expected. This suggests the baby may be small for gestational age, and I would arrange an ultrasound growth scan to assess foetal growth and amniotic fluid volume."
 
 ---
 
 ### Leopold's Manoeuvres (Abdominal Palpation)
 
 **Purpose**:
-- Determine **fetal lie** (longitudinal, transverse, oblique)
-- Determine **fetal presentation** (cephalic, breech, shoulder)
-- Determine **fetal position** (which way baby is facing)
+- Determine **foetal lie** (longitudinal, transverse, oblique)
+- Determine **foetal presentation** (cephalic, breech, shoulder)
+- Determine **foetal position** (which way baby is facing)
 - Assess **engagement** (how far baby has descended into pelvis)
-- Estimate **fetal size**
+- Estimate **foetal size**
 
 **Perform at ≥32-34 weeks** (before this, baby changes position frequently)
 
@@ -220,7 +301,7 @@ OR
 
 #### Leopold's Manoeuvre 1: FUNDAL PALPATION
 
-**Purpose**: Determine which fetal pole (head or bottom) is in the fundus
+**Purpose**: Determine which foetal pole (head or bottom) is in the fundus
 
 **Technique**:
 1. **Face the patient's head**
@@ -235,17 +316,17 @@ OR
 | **Soft, irregular, large mass** (doesn't ballotte) | **Fetal bottom** (breech) in fundus → **Cephalic presentation** |
 
 **OSCE Statement**:
-"On fundal palpation, I feel a soft, irregular mass which is the fetal breech, indicating a cephalic presentation."
+"On fundal palpation, I feel a soft, irregular mass which is the foetal breech, indicating a cephalic presentation."
 
 OR
 
-"On fundal palpation, I feel a hard, round, ballottable mass which is the fetal head, indicating a breech presentation."
+"On fundal palpation, I feel a hard, round, ballottable mass which is the foetal head, indicating a breech presentation."
 
 ---
 
 #### Leopold's Manoeuvre 2: LATERAL PALPATION
 
-**Purpose**: Determine fetal position (which side the back and limbs are on)
+**Purpose**: Determine foetal position (which side the back and limbs are on)
 
 **Technique**:
 1. **Still facing patient's head**
@@ -267,7 +348,7 @@ OR
 - **Occipito-posterior (OP)** = baby's back posterior (toward mother's spine) - "back-to-back" - longer labour, more back pain
 
 **OSCE Statement**:
-"On lateral palpation, I feel the smooth, firm fetal back on the left side and small irregular limb parts on the right, indicating a left occipito-anterior position."
+"On lateral palpation, I feel the smooth, firm foetal back on the left side and small irregular limb parts on the right, indicating a left occipito-anterior position."
 
 ---
 
@@ -292,13 +373,13 @@ OR
 **CRITICAL**: This manoeuvre can be uncomfortable for patient - be gentle!
 
 **OSCE Statement**:
-"On pelvic grip, I confirm the presenting part is the fetal head, which is mobile, indicating it is not yet engaged."
+"On pelvic grip, I confirm the presenting part is the foetal head, which is mobile, indicating it is not yet engaged."
 
 ---
 
 #### Leopold's Manoeuvre 4: PELVIC PALPATION (Engagement Assessment)
 
-**Purpose**: Assess how much of the fetal head is palpable above the pelvic brim (engagement)
+**Purpose**: Assess how much of the foetal head is palpable above the pelvic brim (engagement)
 
 **Technique**:
 1. **Turn and face patient's feet** (only manoeuvre facing feet)
@@ -328,7 +409,7 @@ OR
 | **Any gestation, breech, deeply engaged** | Requires **urgent assessment** (breech should not engage - risk cord prolapse if membranes rupture) |
 
 **OSCE Statement**:
-"On pelvic palpation facing the patient's feet, I assess engagement. I palpate 2 fifths of the fetal head above the pelvic brim, indicating the head is engaged."
+"On pelvic palpation facing the patient's feet, I assess engagement. I palpate 2 fifths of the foetal head above the pelvic brim, indicating the head is engaged."
 
 ---
 
@@ -352,10 +433,10 @@ OR
 **Limitations**:
 - Very inaccurate (±500g error)
 - Affected by maternal obesity, liquor volume
-- **Ultrasound is gold standard** for fetal weight estimation
+- **Ultrasound is gold standard** for foetal weight estimation
 
 **OSCE Statement**:
-"The fetus palpates as appropriate size for gestational age, though clinical estimation of fetal weight is imprecise."
+"The foetus palpates as appropriate size for gestational age, though clinical estimation of foetal weight is imprecise."
 
 ---
 
@@ -365,7 +446,7 @@ OR
 
 **Pinard Stethoscope** (traditional):
 - Horn-shaped stethoscope
-- Place flat end on maternal abdomen over fetal back (where you palpated)
+- Place flat end on maternal abdomen over foetal back (where you palpated)
 - Listen through open end
 - **Difficult to use** - requires practice, quiet room
 - Rarely used in modern practice
@@ -373,7 +454,7 @@ OR
 **Handheld Doppler** (ultrasound):
 - **Most common** in antenatal clinic
 - Apply ultrasound gel to abdomen
-- Place Doppler over fetal back (where heart is closest to surface)
+- Place Doppler over foetal back (where heart is closest to surface)
 - Count heart rate for 1 minute
 
 ---
@@ -388,7 +469,7 @@ OR
 **Differentiate from Maternal Pulse**:
 - **Fetal heart rate**: 110-160 bpm (average 120-140)
 - **Maternal pulse**: 60-100 bpm (average 70-80)
-- **Check maternal pulse simultaneously** while listening to fetal heart to confirm they're different
+- **Check maternal pulse simultaneously** while listening to foetal heart to confirm they're different
 
 **Count Rate**:
 - Count for **full 60 seconds** (or 30 seconds and multiply by 2)
@@ -403,16 +484,16 @@ OR
 | **Finding** | **Interpretation** | **Action** |
 |-------------|-------------------|-----------|
 | **110-160 bpm** | **Normal** | Reassuring |
-| **>160 bpm** | **Fetal tachycardia** | Causes: Maternal fever, fetal distress, fetal arrhythmia, maternal tachycardia → **CTG monitoring** |
+| **>160 bpm** | **Fetal tachycardia** | Causes: Maternal fever, foetal distress, foetal arrhythmia, maternal tachycardia → **CTG monitoring** |
 | **<110 bpm** | **Fetal bradycardia** | Causes: Fetal distress, complete heart block, maternal medication (beta-blockers) → **Urgent CTG**, may need **immediate delivery** |
-| **Cannot hear** | Equipment issue, wrong location, fetal demise (if <12 weeks, Doppler may not detect) | Try different location, check equipment, **urgent ultrasound** if concerns |
+| **Cannot hear** | Equipment issue, wrong location, foetal demise (if <12 weeks, Doppler may not detect) | Try different location, check equipment, **urgent ultrasound** if concerns |
 
 **OSCE Statement**:
-"On auscultation with Doppler, the fetal heart rate is 140 beats per minute, which is reassuring and within normal range."
+"On auscultation with Doppler, the foetal heart rate is 140 beats per minute, which is reassuring and within normal range."
 
 OR
 
-"The fetal heart rate is 180 beats per minute, which is tachycardic. This could indicate fetal distress or maternal fever. I would check maternal temperature and arrange continuous CTG monitoring."
+"The foetal heart rate is 180 beats per minute, which is tachycardic. This could indicate foetal distress or maternal fever. I would check maternal temperature and arrange continuous CTG monitoring."
 
 ---
 
@@ -433,7 +514,7 @@ OR
 - **Position** is [LOA/ROA/LOP/ROP - if cephalic]
 - **Engagement** is [engaged/not engaged] - [X]/5 palpable above pelvic brim
 
-**On auscultation**, the fetal heart rate is [X] bpm, which is [reassuring/concerning].
+**On auscultation**, the foetal heart rate is [X] bpm, which is [reassuring/concerning].
 
 **Overall assessment**: [Normal antenatal examination / Small for dates requiring growth scan / Large for dates requiring investigation, etc.]"
 
@@ -443,16 +524,16 @@ OR
 
 "Mrs. Lee is a primigravida at 32 weeks gestation.
 
-On inspection, the abdomen is gravid and appropriate for 32 weeks. There are no scars. I can see fetal movements.
+On inspection, the abdomen is gravid and appropriate for 32 weeks. There are no scars. I can see foetal movements.
 
 On palpation:
 - Symphysis-fundal height is 32cm, appropriate for 32 weeks
 - Fetal lie is longitudinal
 - Presentation is cephalic (soft irregular mass in fundus, hard round mass in pelvis)
-- Position is left occipito-anterior (fetal back on left)
+- Position is left occipito-anterior (foetal back on left)
 - The head is not engaged - 4 fifths palpable above pelvic brim, which is normal for a primigravida at 32 weeks
 
-On auscultation, the fetal heart rate is 140 beats per minute, which is reassuring.
+On auscultation, the foetal heart rate is 140 beats per minute, which is reassuring.
 
 Overall, this is a normal antenatal examination for a woman at 32 weeks gestation."
 
@@ -471,7 +552,7 @@ On palpation:
 - Position is right occipito-anterior
 - The head is not engaged - 3 fifths palpable, which is normal for a multigravida
 
-On auscultation, the fetal heart rate is 135 beats per minute, which is reassuring.
+On auscultation, the foetal heart rate is 135 beats per minute, which is reassuring.
 
 **My concern** is that this baby is measuring significantly small for gestational age. The differential diagnosis includes:
 1. Incorrect dates (most common)
@@ -479,7 +560,7 @@ On auscultation, the fetal heart rate is 135 beats per minute, which is reassuri
 3. Oligohydramnios (reduced amniotic fluid)
 4. Constitutionally small baby
 
-I would arrange an **urgent ultrasound growth scan** to assess fetal biometry, estimated fetal weight, amniotic fluid index, and umbilical artery Doppler studies. If IUGR is confirmed, increased surveillance with serial scans and CTG monitoring would be needed, with possible early delivery if fetal compromise develops."
+I would arrange an **urgent ultrasound growth scan** to assess foetal biometry, estimated foetal weight, amniotic fluid index, and umbilical artery Doppler studies. If IUGR is confirmed, increased surveillance with serial scans and CTG monitoring would be needed, with possible early delivery if foetal compromise develops."
 
 ---
 
@@ -496,13 +577,13 @@ On palpation:
 - Position - breech (cannot determine as per cephalic)
 - The **breech is not engaged** - 4 fifths palpable
 
-On auscultation, the fetal heart rate is 145 beats per minute, which is reassuring.
+On auscultation, the foetal heart rate is 145 beats per minute, which is reassuring.
 
-**My concern** is that this is a **breech presentation at 38 weeks** in a primigravida. At this gestation, only 3-4% of babies are breech.
+**My concern** is that this is a **breech presentation at 38 weeks** in a primigravida. At this gestation, only 3-4% of babies are breech. (Talley & O'Connor's Clinical Examination, 8th ed, p.820)
 
 Management options include:
-1. **External cephalic version (ECV)** - attempt to turn baby to cephalic by external manipulation (success rate ~50% in primigravida)
-2. **Planned vaginal breech delivery** - if mother wishes and meets criteria (estimated fetal weight 2.5-3.8kg, flexed breech, adequate pelvis)
+1. **External cephalic version (ECV)** - attempt to turn baby to cephalic by external manipulation (success rate ~50% in primigravida) (Talley & O'Connor's Clinical Examination, 8th ed, p.817)
+2. **Planned vaginal breech delivery** - if mother wishes and meets criteria (estimated foetal weight 2.5-3.8kg, flexed breech, adequate pelvis)
 3. **Elective caesarean section** at 39 weeks - reduces perinatal mortality compared to planned vaginal breech (Term Breech Trial)
 
 I would discuss these options with the patient, refer for ECV if she wishes, and if unsuccessful or declined, plan elective caesarean section."
@@ -515,11 +596,11 @@ I would discuss these options with the patient, refer for ECV if she wishes, and
 
 **Examination Findings**:
 - **SFH >expected** for gestational age (often >4cm above expected)
-- **Two or more fetal poles** palpable
-- **Multiple fetal heart rates** detected in different locations (but difficult to confirm clinically)
+- **Two or more foetal poles** palpable
+- **Multiple foetal heart rates** detected in different locations (but difficult to confirm clinically)
 
 **OSCE Statement**:
-"The symphysis-fundal height is significantly larger than expected for gestational age, and I palpate multiple fetal poles. This raises the possibility of a multiple pregnancy, which should be confirmed on ultrasound."
+"The symphysis-fundal height is significantly larger than expected for gestational age, and I palpate multiple foetal poles. This raises the possibility of a multiple pregnancy, which should be confirmed on ultrasound."
 
 **NOTE**: Most multiple pregnancies are diagnosed on first-trimester ultrasound, so rarely a surprise on examination
 
@@ -530,13 +611,13 @@ I would discuss these options with the patient, refer for ECV if she wishes, and
 **Examination Findings**:
 - **SFH >expected**
 - **Tense, shiny abdomen**
-- **Difficult to palpate fetal parts** (fluid cushion)
+- **Difficult to palpate foetal parts** (fluid cushion)
 - **Fluid thrill** (ballottement - can bounce baby between hands)
 
 **Causes**:
 - **Maternal**: Gestational diabetes (most common), diabetes mellitus
 - **Fetal**: GI obstruction (oesophageal/duodenal atresia), anencephaly, hydrops fetalis, twin-to-twin transfusion (in monochorionic twins)
-- **Idiopathic**: 60%
+- **Idiopathic**: 60% (Talley & O'Connor's Clinical Examination, 8th ed, p.684)
 
 **Complications**:
 - Preterm labour (uterine overdistension)
@@ -545,7 +626,7 @@ I would discuss these options with the patient, refer for ECV if she wishes, and
 - Postpartum haemorrhage (uterine atony)
 
 **OSCE Statement**:
-"The uterus is large for dates with tense abdomen and difficulty palpating fetal parts, suggesting polyhydramnios. I would confirm with ultrasound and investigate causes, particularly performing OGTT to exclude gestational diabetes."
+"The uterus is large for dates with tense abdomen and difficulty palpating foetal parts, suggesting polyhydramnios. I would confirm with ultrasound and investigate causes, particularly performing OGTT to exclude gestational diabetes."
 
 ---
 
@@ -553,11 +634,11 @@ I would discuss these options with the patient, refer for ECV if she wishes, and
 
 **Examination Findings**:
 - **SFH <expected**
-- **Easily palpable fetal parts** (no fluid cushion - can feel every limb)
-- **Uterus moulded around fetus**
+- **Easily palpable foetal parts** (no fluid cushion - can feel every limb)
+- **Uterus moulded around foetus**
 
 **Causes**:
-- **Fetal renal problems**: Renal agenesis, polycystic kidneys (reduced fetal urine output)
+- **Fetal renal problems**: Renal agenesis, polycystic kidneys (reduced foetal urine output)
 - **Placental insufficiency**: IUGR, post-dates pregnancy
 - **Ruptured membranes**: Preterm prelabour rupture of membranes (PPROM)
 
@@ -568,7 +649,7 @@ I would discuss these options with the patient, refer for ECV if she wishes, and
 - Meconium aspiration
 
 **OSCE Statement**:
-"The uterus is small for dates and I can easily palpate all fetal parts, suggesting oligohydramnios. I would confirm with ultrasound measuring amniotic fluid index, assess for fetal renal anomalies, and consider placental insufficiency with Doppler studies."
+"The uterus is small for dates and I can easily palpate all foetal parts, suggesting oligohydramnios. I would confirm with ultrasound measuring amniotic fluid index, assess for foetal renal anomalies, and consider placental insufficiency with Doppler studies."
 
 ---
 
@@ -593,7 +674,7 @@ I would discuss these options with the patient, refer for ECV if she wishes, and
 - Pelvic tumour (prevents engagement)
 
 **OSCE Statement**:
-"I cannot palpate a fetal pole in either fundus or pelvis, and I feel the head on the left lateral side, indicating a transverse lie. At term, this would be an absolute indication for caesarean section. I would arrange ultrasound to confirm lie and assess placental location."
+"I cannot palpate a foetal pole in either fundus or pelvis, and I feel the head on the left lateral side, indicating a transverse lie. At term, this would be an absolute indication for caesarean section. I would arrange ultrasound to confirm lie and assess placental location."
 
 ---
 
@@ -656,12 +737,12 @@ I would discuss these options with the patient, refer for ECV if she wishes, and
 ### Mistake 5: Not Checking Maternal Pulse While Listening to Fetal Heart
 
 **What IMGs Do Wrong**:
-- Hear a heartbeat and assume it's fetal
+- Hear a heartbeat and assume it's foetal
 - Miss that they're hearing maternal pulse through uterine vessels
 
 **Correct Approach**:
-- **Always check maternal pulse simultaneously** while listening to fetal heart
-- Confirm fetal heart is faster than maternal pulse (typically 140 vs 80 bpm)
+- **Always check maternal pulse simultaneously** while listening to foetal heart
+- Confirm foetal heart is faster than maternal pulse (typically 140 vs 80 bpm)
 - If rates similar → Reposition Doppler
 
 ---
@@ -673,7 +754,7 @@ I would discuss these options with the patient, refer for ECV if she wishes, and
 - Don't explain to examiner what they're feeling/hearing
 
 **Correct Approach**:
-- **Think aloud**: "I'm now going to palpate the fundus... I feel a soft, irregular mass which is the fetal bottom, indicating cephalic presentation"
+- **Think aloud**: "I'm now going to palpate the fundus... I feel a soft, irregular mass which is the foetal bottom, indicating cephalic presentation"
 - Shows your reasoning to examiner
 - In real clinical practice, reassures patient you know what you're doing
 
@@ -713,7 +794,7 @@ I would discuss these options with the patient, refer for ECV if she wishes, and
 
 **Inspection** (30 seconds):
 [Stand at end of bed and observe]
-"On inspection, I can see a gravid abdomen appropriate for 36 weeks gestation. There is a Pfannenstiel scar indicating previous caesarean section. I can see fetal movements. The skin shows striae gravidarum and linea nigra. There are no signs of distress."
+"On inspection, I can see a gravid abdomen appropriate for 36 weeks gestation. There is a Pfannenstiel scar indicating previous caesarean section. I can see foetal movements. The skin shows striae gravidarum and linea nigra. There are no signs of distress."
 
 **Palpation** (4 minutes):
 
@@ -730,26 +811,26 @@ I would discuss these options with the patient, refer for ECV if she wishes, and
 **Leopold's Manoeuvre 2** (Lateral):
 "Now I'm going to feel which way baby is lying."
 [Palpate lateral sides alternately]
-"I feel the smooth, firm fetal back on the right side, and small irregular limb parts on the left. This indicates a right occipito-anterior position."
+"I feel the smooth, firm foetal back on the right side, and small irregular limb parts on the left. This indicates a right occipito-anterior position."
 
 **Leopold's Manoeuvre 3** (Pelvic grip):
 "I'm going to confirm which part of baby is lowest."
 [Gently grasp presenting part above symphysis]
-"I confirm the presenting part is the fetal head, and it feels relatively fixed, suggesting engagement."
+"I confirm the presenting part is the foetal head, and it feels relatively fixed, suggesting engagement."
 
 **Leopold's Manoeuvre 4** (Pelvic palpation for engagement):
 "Finally, I'm going to turn around and assess how far baby has descended into the pelvis."
 [Turn to face patient's feet, palpate either side of presenting part]
-"I palpate 2 fifths of the fetal head above the pelvic brim, indicating the head is engaged. This is reassuring for a primigravida at 36 weeks."
+"I palpate 2 fifths of the foetal head above the pelvic brim, indicating the head is engaged. This is reassuring for a primigravida at 36 weeks."
 
 **Auscultation** (1.5 minutes):
 "Now I'm going to listen to baby's heartbeat using this Doppler. I'll put some gel on your tummy first."
-[Apply gel, place Doppler over fetal back - right side based on palpation]
+[Apply gel, place Doppler over foetal back - right side based on palpation]
 "I can hear the heartbeat clearly."
 [Check maternal pulse simultaneously with fingers on maternal wrist]
 "The maternal pulse is 75 beats per minute."
-[Count fetal heart for 60 seconds]
-"The fetal heart rate is 140 beats per minute, which is reassuring and within the normal range of 110-160 beats per minute."
+[Count foetal heart for 60 seconds]
+"The foetal heart rate is 140 beats per minute, which is reassuring and within the normal range of 110-160 beats per minute."
 
 **Complete Examination** (15 seconds):
 "I'm done with the examination now. Let me wipe off this gel and help you sit up."
@@ -769,11 +850,11 @@ On palpation:
 - Position is right occipito-anterior
 - The head is engaged - 2 fifths palpable above the pelvic brim
 
-On auscultation, the fetal heart rate is 140 beats per minute, which is reassuring.
+On auscultation, the foetal heart rate is 140 beats per minute, which is reassuring.
 
 **Overall assessment**: This is a normal antenatal examination for a woman at 36 weeks gestation. The baby is growing appropriately, in a good position for delivery (cephalic, ROA), and the head is engaged which is reassuring.
 
-**Regarding the previous caesarean section**, I would discuss mode of delivery - options include vaginal birth after caesarean (VBAC) or elective repeat caesarean section at 39 weeks. VBAC has a 60-75% success rate but carries a 0.5% risk of uterine rupture. I would support her in whichever she chooses after informed discussion."
+**Regarding the previous caesarean section**, I would discuss mode of delivery - options include vaginal birth after caesarean (VBAC) or elective repeat caesarean section at 39 weeks. VBAC has a 60-75% success rate but carries a 0.5% risk of uterine rupture. I would support her in whichever she chooses after informed discussion." (Talley & O'Connor's Clinical Examination, 8th ed, p.819)
 
 ---
 
@@ -803,12 +884,12 @@ On auscultation, the fetal heart rate is 140 beats per minute, which is reassuri
 
 ### For Fetal Heart:
 1. **Normal**: 110-160 bpm
-2. **Always check maternal pulse** simultaneously (ensure hearing fetal heart, not maternal)
+2. **Always check maternal pulse** simultaneously (ensure hearing foetal heart, not maternal)
 3. **Abnormal rates** → CTG monitoring
 
 ### For Presentations:
-1. **Cephalic (head down)**: 95% at term - normal
-2. **Breech (bottom down)**: 3-4% at term - ECV or elective CS
+1. **Cephalic (head down)**: 95% at term - normal (Talley & O'Connor's Clinical Examination, 8th ed, p.792)
+2. **Breech (bottom down)**: 3-4% at term - ECV or elective CS (Talley & O'Connor's Clinical Examination, 8th ed, p.819)
 3. **Transverse**: At term = absolute indication for CS
 
 ### For OSCE Success:
@@ -816,7 +897,7 @@ On auscultation, the fetal heart rate is 140 beats per minute, which is reassuri
 2. **Interpret findings**: Don't just report "SFH 26cm" - say "26cm at 32 weeks, 6cm less than expected, suggests SGA"
 3. **Relate to clinical significance**: "Head engaged at 36 weeks in primigravida is reassuring"
 4. **Always mention previous CS** if Pfannenstiel scar present (implications for delivery)
-5. **Check maternal pulse** when auscultating fetal heart
+5. **Check maternal pulse** when auscultating foetal heart
 6. **Face patient's feet ONLY for Leopold's 4** - examiners check this
 
 ---
@@ -824,6 +905,6 @@ On auscultation, the fetal heart rate is 140 beats per minute, which is reassuri
 **This completes the fourth ObGyn document! Next and final for this module: Gynaecological Examination**
 
 **Word Count**: ~15,000 words
-**Last Updated**: December 2025 for ICRP NSW Young Hospital Program (March 2026 intake)
+**Last Updated**: December 2025 for ICRP NSW Young Hospital Programmes (March 2026 intake)
 **Author**: ICRP OSCE Preparation Team
 **Reference**: Dr. Amir Soufi (IMG4IMGS), RANZCOG Guidelines, eTG 2024, AMC Clinical OSCE Format

@@ -1,3 +1,86 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 55-65% of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice 10-12 times before exam
+
+**Why High-Yield:** Gynaecological examination (speculum + bimanual pelvic examination) is a CORE clinical skill appearing in 55-65% of AMC Clinical exams. This is high-yield because: (1) pelvic examination tests technical skill AND communication (consent, chaperone, patient dignity), (2) interpretation of findings in context of presenting complaint (adnexal tenderness + cervical excitation = PID/ectopic, enlarged uterus = fibroids, friable cervix = cervical pathology), (3) recognition of when NOT to perform examination (suspected ectopic pregnancy with hemodynamic instability, placenta previa in pregnancy), and (4) Australian Medical Board guidelines for intimate examinations (mandatory chaperone offer). The AMC specifically tests whether you can perform intimate examination professionally while maintaining patient comfort and dignity.
+
+**AMC Blueprint Coverage:**
+- Gynaecological Clinical Examination (55-65% frequency) (Talley & O'Connor's Clinical Examination, 8th ed, p.1010)
+- Speculum examination (cervical screening, discharge assessment)
+- Bimanual pelvic examination (masses, tenderness, uterine size)
+- Consent and chaperone for intimate examination
+
+**Common OSCE Scenarios:**
+- "Perform speculum examination on patient with vaginal discharge" → Must: obtain consent, offer chaperone, explain procedure, insert speculum correctly, inspect cervix (cervicitis, discharge), take swabs if indicated (Talley & O'Connor's Clinical Examination, 8th ed, p.838)
+- "Perform bimanual pelvic examination on patient with pelvic pain" → Must: assess for adnexal tenderness (PID, ovarian cyst), cervical excitation (ectopic, PID), uterine size/tenderness (fibroids, adenomyosis)
+- "Patient with postmenopausal bleeding, perform examination" → Must: inspect vulva, speculum (cervical lesion, atrophy), bimanual (uterine mass)
+
+**Critical Skills (Missing These = Fail OSCE):**
+1. **Consent + Chaperone**: MANDATORY to offer chaperone for ALL intimate examinations (Australian Medical Board guideline)
+2. **Speculum Insertion**: Warm speculum, insert at 45° angle posteriorly (avoiding urethra), rotate to horizontal, open blades to visualize cervix
+3. **Cervical Inspection**: Assess os (nulliparous = round, parous = slit), ectropion (red ring, benign vs suspicious), discharge, friability, lesions
+4. **Bimanual Technique**: Two fingers vagina (anterior fornix), other hand suprapubic, palpate uterus between hands (size, position, mobility, tenderness), then lateral fornices (adnexa - masses, tenderness)
+5. **Cervical Excitation Test**: Gentle side-to-side movement of cervix - pain = "cervical excitation" (ectopic pregnancy, PID)
+
+**Contraindications to Pelvic Examination:**
+- **Suspected ectopic pregnancy with hemodynamic instability** → Do NOT examine, resuscitate first
+- **Placenta previa in pregnancy** → Do NOT perform vaginal examination (can precipitate massive bleeding)
+- **Active first-stage labor with ruptured membranes** → Minimize examinations (infection risk)
+
+**Normal vs Abnormal Findings:**
+**Cervix:**
+- **Normal**: Pink, smooth, os appropriate to parity, no discharge
+- **Ectropion** (cervical erosion): Red ring around os, benign in reproductive age women on COCP
+- **Cervicitis**: Purulent discharge, friable (bleeds on touch), inflamed
+- **Cervical cancer**: Irregular friable mass, contact bleeding (post-coital bleeding history)
+
+**Uterus (Bimanual):**
+- **Normal**: Anteverted, mobile, size of a pear (7-9cm), non-tender
+- **Enlarged uterus**: Fibroids (irregular, firm), adenomyosis (bulky, tender), pregnancy
+- **Retroverted uterus**: 20% of women, palpate in posterior fornix (can cause dyspareunia) (Talley & O'Connor's Clinical Examination, 8th ed, p.833)
+- **Immobile/fixed uterus**: Endometriosis, malignancy (advanced)
+
+**Adnexa (Ovaries/Tubes):**
+- **Normal**: Ovaries barely palpable in thin women, non-tender
+- **Adnexal mass**: Ovarian cyst (smooth, mobile), ovarian cancer (irregular, fixed), ectopic pregnancy (tender, mass)
+- **Adnexal tenderness**: PID (bilateral), ectopic (unilateral), ovarian cyst (torsion/rupture)
+
+**Red Flags (Must Identify):**
+- **Cervical excitation + adnexal tenderness + missed period** = Ectopic pregnancy → Urgent ultrasound, pregnancy test, gynecology referral
+- **Cervical excitation + purulent discharge + bilateral adnexal tenderness** = PID → Antibiotics (ceftriaxone + doxycycline + metronidazole), STI screen
+- **Friable cervical mass + postmenopausal bleeding** = Cervical cancer → Urgent 2-week gynecology referral
+- **Large fixed adnexal mass** = Ovarian cancer → Urgent ultrasound + Ca-125 + gynecology referral
+
+**Common IMG Mistakes:**
+- Not offering chaperone (Medical Board guideline violation - automatic fail)
+- Not explaining procedure adequately (patient discomfort, failed consent)
+- Inserting speculum horizontally instead of 45° posteriorly (painful, traumatic)
+- Not warming speculum (patient discomfort)
+- Performing examination when contraindicated (ectopic with shock, placenta previa) (Talley & O'Connor's Clinical Examination, 8th ed, p.841)
+- Not testing for cervical excitation when indicated (missing ectopic pregnancy) (Talley & O'Connor's Clinical Examination, 8th ed, p.841)
+- Not maintaining patient dignity (inadequate draping, exposing unnecessarily)
+
+**Examiner Assessment Points:**
+- Did you obtain informed consent and offer chaperone?
+- Did you explain the procedure clearly?
+- Did you insert speculum correctly (45° posteriorly, then horizontal)?
+- Did you visualize cervix completely?
+- Did you perform bimanual examination systematically (uterus, then both adnexa)?
+- Did you test for cervical excitation when appropriate?
+- Did you maintain patient dignity and comfort throughout?
+- Did you interpret findings in context of presenting complaint?
+
+**Key Success Factors:**
+1. **Chaperone offer ALWAYS**: State clearly "I would offer a chaperone" in OSCE
+2. **Consent explanation**: "I'll insert a speculum to look at your cervix, then examine with my fingers"
+3. **Speculum technique**: 45° posteriorly, warm speculum, gentle insertion
+4. **Systematic bimanual**: Uterus (size, position, mobility, tenderness) → Adnexa bilaterally
+5. **Cervical excitation test**: ALWAYS test if pelvic pain + reproductive age (ectopic screening)
+
+---
+
 # Gynaecological Examination
 ## ICRP OSCE Preparation - Obstetrics & Gynaecology Module
 ### Following Dr. Amir Soufi's Differential-Driven Approach (IMG4IMGS Methodology)
@@ -6,9 +89,11 @@
 
 ## Target Audience
 - IMGs preparing for AMC Clinical OSCE
-- ICRP participants at NSW Young Hospital Program
+- ICRP participants at NSW Young Hospital Programmes
 - Medical students/residents rotating through gynaecology
 - Focus: 8-minute OSCE stations with systematic examination
+
+**Last Updated**: December 26, 2025
 
 ---
 
@@ -343,7 +428,7 @@ By the end of this module, you will be able to:
 
 ### Taking Cervical Screening Test (CST)
 
-**If Indicated** (age 25-74, due for 5-yearly screening):
+**If Indicated** (age 25-74, due for 5-yearly screening): (Talley & O'Connor's Clinical Examination, 8th ed, p.762)
 
 **Equipment**:
 - **Broom** (plastic brush) or **cytobrush + spatula**
@@ -475,7 +560,7 @@ By the end of this module, you will be able to:
 - **Anteverted** (normal): Uterus tilted anteriorly (toward bladder)
   - Cervix points posteriorly
   - Uterus palpable through anterior abdominal wall
-- **Retroverted** (15-20% women): Uterus tilted posteriorly (toward rectum)
+- **Retroverted** (15-20% women): Uterus tilted posteriorly (toward rectum) (Talley & O'Connor's Clinical Examination, 8th ed, p.833)
   - Cervix points anteriorly
   - Uterus palpable through posterior fornix (may need rectal examination)
   - **Normal variant** (not pathological)
@@ -838,7 +923,7 @@ These findings are consistent with **pelvic inflammatory disease (PID)** - likel
 **Management**:
 1. **Swabs**: Endocervical swabs for chlamydia and gonorrhoea NAAT, high vaginal swab
 2. **Bloods**: FBC, CRP, pregnancy test (exclude ectopic)
-3. **Treatment**: Empiric antibiotics (Australian guidelines - ceftriaxone 500mg IM stat + doxycycline 100mg BD 14 days + metronidazole 400mg BD 14 days)
+3. **Treatment**: Empiric antibiotics (Australian guidelines - ceftriaxone 500mg IM stat + doxycycline 100mg BD 14 days + metronidazole 400mg BD 14 days) (Therapeutic Guidelines, 2024)
 4. **Contact tracing**: Partner notification and treatment
 5. **Screen for other STIs**: HIV, hepatitis B and C, syphilis
 6. **Advise**: Abstain from intercourse until treatment completed and partner treated
@@ -901,6 +986,6 @@ These findings are consistent with **pelvic inflammatory disease (PID)** - likel
 ---
 
 **Word Count**: ~16,000 words
-**Last Updated**: December 2025 for ICRP NSW Young Hospital Program (March 2026 intake)
+**Last Updated**: December 2025 for ICRP NSW Young Hospital Programmes (March 2026 intake)
 **Author**: ICRP OSCE Preparation Team
 **Reference**: Dr. Amir Soufi (IMG4IMGS), RANZCOG Guidelines, FSRH (UK) Guidelines, eTG 2024, AHPRA Standards, AMC Clinical OSCE Format

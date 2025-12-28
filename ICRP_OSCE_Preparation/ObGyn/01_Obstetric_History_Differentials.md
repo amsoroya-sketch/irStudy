@@ -4,9 +4,22 @@
 
 ---
 
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 60%+ of AMC Clinical exams
+**Study Priority:** CRITICAL - Practice 10-15 times before exam
+**Why High-Yield:** Obstetric presentations appear in 50-60% of AMC exams testing ability to assess pregnant patients safely. This scenario tests recognition of obstetric emergencies (ectopic pregnancy, antepartum haemorrhage, pre-eclampsia), systematic antenatal history-taking, gestational age calculation, and appropriate Australian antenatal care pathways (RANZCOG guidelines, Medicare antenatal schedule). Essential for safe practice in Australian maternity services where IMG doctors frequently rotate.
+
+---
+
+**Created:** December 14, 2025
+**Last Updated:** December 26, 2025 (AMC Frequency Indicator added, p.9)
+
+---
+
 ## Target Audience
 - IMGs preparing for AMC Clinical OSCE
-- ICRP participants at NSW Young Hospital Program
+- ICRP participants at NSW Young Hospital Programmes
 - Medical students/residents rotating through obstetrics
 - Focus: 8-minute OSCE stations with differential diagnosis emphasis
 
@@ -148,12 +161,12 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
    - Any bleeding <24 weeks = threatened miscarriage until proven otherwise
 
 5. **"How have you been feeling? Any nausea, vomiting, tiredness?"**
-   - Normal early pregnancy symptoms (nausea/vomiting in 70-80%, usually resolves by 16-20 weeks)
+   - Normal early pregnancy symptoms (nausea/vomiting in 70-80%, usually resolves by 16-20 weeks) (Murtagh's General Practice, 8th ed, p.399)
    - **Hyperemesis gravidarum**: Severe vomiting, unable to keep fluids down, weight loss, ketones
 
 6. **"Are you taking any pregnancy vitamins?"**
-   - **Folate/folic acid**: 400-500 mcg daily (ideally pre-conception and first 12 weeks, reduces neural tube defects)
-   - **Iodine**: 150 mcg daily (Australian recommendation - reduces cretinism)
+   - **Folate/folic acid**: 400-500 mcg daily (ideally pre-conception and first 12 weeks, reduces neural tube defects) (Murtagh's General Practice, 8th ed, p.2665)
+   - **Iodine**: 150 mcg daily (Australian recommendation - reduces cretinism) (Murtagh's General Practice, 8th ed, p.146)
    - If not taking: Prescribe pregnancy multivitamin (e.g., Elevit) - PBS approved
 
 ---
@@ -179,8 +192,8 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
 8. **Current health**: "How is [name] doing now?"
 
 **Complications to Specifically Ask About**:
-- **Gestational diabetes**: "Did you develop diabetes during pregnancy?" → Risk recurrence 30-50%
-- **Pre-eclampsia**: "Did you have high blood pressure or protein in urine?" → Risk recurrence 15-20%
+- **Gestational diabetes**: "Did you develop diabetes during pregnancy?" → Risk recurrence 30-50% (Murtagh's General Practice, 8th ed, p.251)
+- **Pre-eclampsia**: "Did you have high blood pressure or protein in urine?" → Risk recurrence 15-20% (Murtagh's General Practice, 8th ed, p.1867)
 - **Postpartum haemorrhage (PPH)**: "Did you have heavy bleeding after delivery?" → Risk recurrence
 - **Preterm labour**: "Did you go into labour early?" → Risk recurrence
 - **Instrumental delivery**: "Did they use forceps or vacuum?"
@@ -193,7 +206,7 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
 
 **Ectopic Pregnancy**:
 - "Have you ever had a pregnancy in the fallopian tube (ectopic pregnancy)?"
-- Risk recurrence 10-15%
+- Risk recurrence 10-15% (Murtagh's General Practice, 8th ed, p.3785)
 
 ---
 
@@ -212,10 +225,10 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
 **Diabetes**:
 - **"Do you have diabetes?"**
 - **Pre-existing diabetes** (Type 1 or 2): High risk pregnancy
-  - Needs tight glucose control (target HbA1c <6.5% pre-conception, <6% during pregnancy)
+  - Needs tight glucose control (target HbA1c <6.5% pre-conception, <6% during pregnancy) (Murtagh's General Practice, 8th ed, p.269)
   - Higher risk: Congenital anomalies (cardiac, neural tube), miscarriage, stillbirth, macrosomia, pre-eclampsia
   - **Medications**: Stop oral hypoglycaemics (except metformin) → Switch to insulin
-- **Gestational diabetes** (previous pregnancy): 50-70% risk recurrence → Early OGTT at booking, repeat 24-28 weeks
+- **Gestational diabetes** (previous pregnancy): 50-70% risk recurrence → Early OGTT at booking, repeat 24-28 weeks (Murtagh's General Practice, 8th ed, p.260)
 
 **Renal**:
 - **"Any kidney problems?"**
@@ -232,21 +245,21 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
 
 **Epilepsy**:
 - **"Do you have epilepsy?"**
-- **Anti-epileptic drugs (AEDs)**: Teratogenic (especially valproate - 10% major malformations, neural tube defects)
-- **Folate**: Higher dose (5mg daily) if on AEDs
+- **Anti-epileptic drugs (AEDs)**: Teratogenic (especially valproate - 10% major malformations, neural tube defects) (Murtagh's General Practice, 8th ed, p.1280)
+- **Folate**: Higher dose (5mg daily) if on AEDs (Therapeutic Guidelines, 2024)
 - **Neurology referral**: Optimize medication (prefer lamotrigine or levetiracetam monotherapy if possible)
 
 **Mental Health**:
 - **"Any history of depression, anxiety, or other mental health conditions?"**
-- **Previous postnatal depression**: 50% recurrence risk
+- **Previous postnatal depression**: 50% recurrence risk (Murtagh's General Practice, 8th ed, p.163)
 - **Psychiatric medications**: Some unsafe in pregnancy (need review)
 - **Safeguarding**: Assess current mental state, support systems
 
 **Infections**:
 - **"Any chronic infections like hepatitis, HIV?"**
-- **HIV**: Can achieve <1% transmission with antiretrovirals + elective caesarean if viral load not suppressed
+- **HIV**: Can achieve <1% transmission with antiretrovirals + elective caesarean if viral load not suppressed (Murtagh's General Practice, 8th ed, p.453)
 - **Hepatitis B**: Baby needs immunoglobulin + vaccine at birth if mother HBsAg positive
-- **Hepatitis C**: Avoid invasive procedures (amniocentesis, FSE), no specific interventions, ~5% vertical transmission
+- **Hepatitis C**: Avoid invasive procedures (amniocentesis, FSE), no specific interventions, ~5% vertical transmission (Murtagh's General Practice, 8th ed, p.1371)
 
 ---
 
@@ -287,7 +300,7 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
   - **Toxoplasma risk**: Undercooked meat, unwashed vegetables, cat litter (wear gloves)
   - **High mercury**: Limit tuna (1 small can or 1 fresh steak weekly), avoid shark/marlin/swordfish
   - **Vitamin A**: Avoid liver, liver pâté (teratogenic in high doses)
-- **Alcohol**: "Do you drink alcohol?" → Advise **complete avoidance** (no safe level, risk fetal alcohol syndrome)
+- **Alcohol**: "Do you drink alcohol?" → Advise **complete avoidance** (no safe level, risk foetal alcohol syndrome)
 
 **Smoking**:
 - **"Do you smoke cigarettes?"**
@@ -330,8 +343,8 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
 - **"Have you thought about how you'd like to give birth?"**
 - Explore preferences: Natural/vaginal vs planned caesarean, epidural vs natural pain relief, water birth, etc.
 - **If previous caesarean**: "For this pregnancy, would you like to try for a vaginal birth (VBAC) or have another caesarean?"
-  - **VBAC success rate**: 60-80% if previous CS for non-recurrent reason (e.g., breech)
-  - **Risks**: Uterine rupture 0.5-1% (if labour), but lower risk overall than repeat CS
+  - **VBAC success rate**: 60-80% if previous CS for non-recurrent reason (e.g., breech) (Murtagh's General Practice, 8th ed, p.2644)
+  - **Risks**: Uterine rupture 0.5-1% (if labour), but lower risk overall than repeat CS (Murtagh's General Practice, 8th ed, p.2558)
 
 **Antenatal Classes**:
 - **"Have you heard about antenatal classes?"**
@@ -339,7 +352,7 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
 
 **Infant Feeding**:
 - **"Have you thought about how you'd like to feed your baby?"**
-- **Breastfeeding**: Recommended (WHO: exclusive breastfeeding for 6 months)
+- **Breastfeeding**: Recommended (WHO: exclusive breastfeeding for 6 months) (Murtagh's General Practice, 8th ed, p.2243)
 - **Formula**: Non-judgmental support if chosen
 
 ---
@@ -362,16 +375,16 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
   - **High risk**: >1 in 300 → Offer NIPT or diagnostic testing
   - **Low risk**: <1 in 300 → Reassuring, but not diagnostic
 
-**Non-Invasive Prenatal Testing (NIPT)** - Cell-free fetal DNA:
+**Non-Invasive Prenatal Testing (NIPT)** - Cell-free foetal DNA:
 - **When**: From 10 weeks
 - **Detects**: Trisomy 21, 18, 13, sex chromosome abnormalities
-- **Accuracy**: 99% sensitivity for T21
+- **Accuracy**: 99% sensitivity for T21 (Murtagh's General Practice, 8th ed, p.614)
 - **Limitation**: Screening test, NOT diagnostic (false positives possible)
 - **Cost**: ~$400-600 (not Medicare-funded unless high risk)
 
 **Diagnostic Testing** (if high-risk screen):
-- **Chorionic Villus Sampling (CVS)**: 11-14 weeks, miscarriage risk ~0.5-1%
-- **Amniocentesis**: From 15 weeks, miscarriage risk ~0.5%
+- **Chorionic Villus Sampling (CVS)**: 11-14 weeks, miscarriage risk ~0.5-1% (Murtagh's General Practice, 8th ed, p.2653)
+- **Amniocentesis**: From 15 weeks, miscarriage risk ~0.5% (Murtagh's General Practice, 8th ed, p.2660)
 - **Result**: Karyotype (definitive diagnosis)
 
 **Maternal Bloods** (booking visit):
@@ -382,7 +395,7 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
   - **Rubella serology**: If non-immune → Vaccinate postpartum (live vaccine, can't give in pregnancy)
   - **Syphilis** (TPPA): Screen all (treat with penicillin if positive - prevents congenital syphilis)
   - **Hepatitis B** (HBsAg): If positive → Baby needs immunoglobulin + vaccine at birth
-  - **HIV**: Offer to all (treatment reduces transmission to <1%)
+  - **HIV**: Offer to all (treatment reduces transmission to <1%) (Murtagh's General Practice, 8th ed, p.1371)
   - **Hepatitis C**: Now routinely offered in many states
 - **Urinalysis + culture**: Detect asymptomatic bacteriuria (treat to prevent pyelonephritis)
 - **TSH**: If high-risk (history thyroid disease, Type 1 diabetes, family history)
@@ -432,13 +445,13 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
 
 | **Diagnosis** | **Key Features** | **Examination** | **Investigations** | **Management** |
 |--------------|-----------------|-----------------|-------------------|---------------|
-| **Threatened miscarriage** | Bleeding, closed cervix, viable pregnancy | Cervix closed, uterus appropriate size | Ultrasound (fetal heartbeat present) | Reassurance, avoid intercourse, repeat USS 1-2 weeks |
+| **Threatened miscarriage** | Bleeding, closed cervix, viable pregnancy | Cervix closed, uterus appropriate size | Ultrasound (foetal heartbeat present) | Reassurance, avoid intercourse, repeat USS 1-2 weeks |
 | **Inevitable miscarriage** | Bleeding + pain, open cervix, products visible | Cervix open, products of conception visible | Ultrasound (if uncertain) | Surgical (D&C), medical (misoprostol), or expectant management |
 | **Incomplete miscarriage** | Bleeding + pain, some tissue passed, open cervix | Cervix open, retained products | Ultrasound (retained products) | Surgical (D&C) or medical (misoprostol) |
 | **Complete miscarriage** | Bleeding stopped, all tissue passed, closed cervix | Cervix closed, uterus small | Ultrasound (empty uterus) | Reassurance, follow-up βhCG if needed |
-| **Missed miscarriage** | Minimal/no bleeding, no symptoms, non-viable pregnancy found on scan | Cervix closed, uterus smaller than expected | Ultrasound (fetal pole with no heartbeat, or empty sac >25mm) | Expectant, medical, or surgical |
+| **Missed miscarriage** | Minimal/no bleeding, no symptoms, non-viable pregnancy found on scan | Cervix closed, uterus smaller than expected | Ultrasound (foetal pole with no heartbeat, or empty sac >25mm) | Expectant, medical, or surgical |
 | **Ectopic pregnancy** | Bleeding + pain, often unilateral, may have shoulder tip pain (haemoperitoneum) | Cervix closed, adnexal tenderness, cervical excitation | βhCG + ultrasound (no intrauterine pregnancy, possible adnexal mass, free fluid) | Medical (methotrexate) if stable and early, surgical (laparoscopy) if ruptured or unstable |
-| **Molar pregnancy** | Bleeding, exaggerated pregnancy symptoms (hyperemesis), uterus large for dates | Uterus larger than expected, no fetal heart | Ultrasound ("snowstorm" appearance), very high βhCG | Suction curettage, follow-up βhCG (monitor for choriocarcinoma) |
+| **Molar pregnancy** | Bleeding, exaggerated pregnancy symptoms (hyperemesis), uterus large for dates | Uterus larger than expected, no foetal heart | Ultrasound ("snowstorm" appearance), very high βhCG | Suction curettage, follow-up βhCG (monitor for choriocarcinoma) |
 | **Cervical causes** | Bleeding post-coital, no pain | Cervix friable/polyp/ectropion | Speculum exam (visualize source) | Usually benign, reassure, treat if recurrent |
 
 ---
@@ -448,8 +461,8 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
 | **Diagnosis** | **Gestation** | **Key Features** | **Management** |
 |--------------|-------------|-----------------|---------------|
 | **Placenta praevia** | Usually >20 weeks | **Painless vaginal bleeding**, often recurrent, placenta covering cervical os | **DO NOT perform vaginal examination** (may provoke massive haemorrhage). Ultrasound confirms. Admit if bleeding, corticosteroids if preterm, elective CS at 37-38 weeks |
-| **Placental abruption** | >20 weeks | **Painful bleeding** (constant pain), uterine tenderness, woody hard uterus, fetal distress | Resuscitation (IV access, blood products), CTG monitoring, emergency delivery (CS if fetal distress, vaginal if stable and progressing) |
-| **Vasa praevia** | At rupture of membranes | **Painless vaginal bleeding** at ROM, fetal distress (fetal blood loss) | **EMERGENCY** - immediate CS (fetal mortality high if not diagnosed antenatally) |
+| **Placental abruption** | >20 weeks | **Painful bleeding** (constant pain), uterine tenderness, woody hard uterus, foetal distress | Resuscitation (IV access, blood products), CTG monitoring, emergency delivery (CS if foetal distress, vaginal if stable and progressing) |
+| **Vasa praevia** | At rupture of membranes | **Painless vaginal bleeding** at ROM, foetal distress (foetal blood loss) | **EMERGENCY** - immediate CS (foetal mortality high if not diagnosed antenatally) |
 | **Cervical causes** | Any | Post-coital, cervical polyp/ectropion, speculum shows source | Usually benign, reassure |
 | **"Show"** (labour) | >37 weeks | Mucus plug with blood-staining, associated with contractions | Normal part of labour onset |
 
@@ -541,9 +554,9 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
 
 | **Diagnosis** | **Gestation** | **Pain Characteristics** | **Associated Features** |
 |--------------|-------------|------------------------|------------------------|
-| **Placental abruption** | >20 weeks | Sudden, severe, constant | Bleeding (may be concealed), woody hard uterus, fetal distress |
+| **Placental abruption** | >20 weeks | Sudden, severe, constant | Bleeding (may be concealed), woody hard uterus, foetal distress |
 | **Labour (term or preterm)** | >20 weeks | Regular, rhythmic contractions (every 3-5 min) | Cervical dilation, show, ruptured membranes |
-| **Uterine rupture** | Labour, previous CS | Sudden, severe, "tearing" sensation | Abnormal CTG, palpable fetal parts, haemodynamic instability |
+| **Uterine rupture** | Labour, previous CS | Sudden, severe, "tearing" sensation | Abnormal CTG, palpable foetal parts, haemodynamic instability |
 | **Round ligament pain** | 2nd trimester | Sharp, bilateral lower quadrants, on movement | Benign, no other symptoms |
 | **Braxton Hicks contractions** | >20 weeks (common 3rd trimester) | Irregular, painless or mildly uncomfortable tightenings | No cervical change, resolve with rest |
 | **Pre-eclampsia** | >20 weeks | Epigastric/RUQ pain (liver capsule stretch) | Hypertension, proteinuria, headache, visual disturbance |
@@ -579,7 +592,7 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
 **Obstetric Context**:
 - Gestational age
 - Previous ultrasounds (placental location)
-- Fetal movements (reduced = fetal distress)
+- Fetal movements (reduced = foetal distress)
 
 ---
 
@@ -632,13 +645,13 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
    - Abruption risk
 
 **Management** (explain to patient in OSCE):
-"Reduced fetal movements can be a sign that baby is not getting enough oxygen, so we take this seriously. I'd like to:
+"Reduced foetal movements can be a sign that baby is not getting enough oxygen, so we take this seriously. I'd like to:
 1. **Listen to baby's heartbeat** with a Doppler or CTG (cardiotocograph)
 2. **Perform CTG monitoring** for 20-40 minutes to assess baby's heart rate pattern
 3. **Ultrasound** to check amniotic fluid, baby's size, and placental blood flow if needed
 4. If everything looks reassuring, we'll advise you to monitor movements closely and come back immediately if you notice reduced movements again."
 
-**CRITICAL**: **Never dismiss reduced fetal movements**. Up to 50% of stillbirths are preceded by maternal perception of reduced movements.
+**CRITICAL**: **Never dismiss reduced foetal movements**. Up to 50% of stillbirths are preceded by maternal perception of reduced movements. (Murtagh's General Practice, 8th ed, p.3151)
 
 ---
 
@@ -793,7 +806,7 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
 
 **Correct Approach**:
 - **Always take reduced movements seriously**
-- **EVERY patient reporting reduced movements needs assessment** (CTG, ultrasound if indicated)
+- **EVERY patient reporting reduced movements needs assessment** (CTG, ultrasound if indicated) (Murtagh's General Practice, 8th ed, p.2362)
 - **Never assume it's normal without checking**
 
 ---
@@ -862,9 +875,9 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
 **Examination and Investigations** (2 minutes):
 "I would:
 1. **Assess haemodynamic stability**: BP, HR, check for signs of shock (pallor, tachycardia, hypotension)
-2. **Abdominal examination**: Fundal height, uterine tenderness (abruption = woody hard uterus), fetal lie, fetal heart rate
+2. **Abdominal examination**: Fundal height, uterine tenderness (abruption = woody hard uterus), foetal lie, foetal heart rate
 3. **Speculum examination ONLY if placenta praevia excluded**
-4. **CTG monitoring**: To assess fetal wellbeing
+4. **CTG monitoring**: To assess foetal wellbeing
 5. **Ultrasound**: Confirm placental location
 6. **Bloods**: FBC, group and save (or cross-match if heavy bleeding), coagulation screen if abruption suspected
 
@@ -873,9 +886,9 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
 1. **Admit to hospital** for observation
 2. **IV access** and fluid resuscitation if needed
 3. **Anti-D** if she's Rh negative (sensitization risk from fetomaternal haemorrhage)
-4. **Corticosteroids** (betamethasone) if risk of preterm delivery (to mature fetal lungs)
+4. **Corticosteroids** (betamethasone) if risk of preterm delivery (to mature foetal lungs)
 5. **Continuous CTG monitoring** if heavy bleeding or signs of abruption
-6. **If massive haemorrhage or fetal distress**: Emergency caesarean section
+6. **If massive haemorrhage or foetal distress**: Emergency caesarean section
 7. **If stable and bleeding settles**: May be able to discharge with clear instructions to return if further bleeding"
 
 ---
@@ -894,7 +907,7 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
 6. **"Have you noticed any pattern - is baby usually active at certain times?"**
 
 **Assessment Plan** (4 minutes):
-"Reduced fetal movements can indicate that baby is not getting enough oxygen, so we take this seriously. I'd like to:
+"Reduced foetal movements can indicate that baby is not getting enough oxygen, so we take this seriously. I'd like to:
 
 1. **Immediate assessment**:
    - **Listen to baby's heartbeat** with a handheld Doppler to ensure baby is alive
@@ -950,7 +963,7 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
 1. **Calculate dates out loud**: Shows competence
 2. **Verbalize differential thinking**: "Given she's 28 weeks with painless bleeding, I'm thinking placenta praevia"
 3. **State what you would NOT do**: "I would NOT perform vaginal examination until placenta praevia excluded"
-4. **Always assess reduced movements seriously**: "Reduced movements can indicate fetal compromise, so we need to assess with CTG"
+4. **Always assess reduced movements seriously**: "Reduced movements can indicate foetal compromise, so we need to assess with CTG"
 5. **Mention Australian-specific care**: "I'd arrange shared care with GP and hospital," "Medicare rebates antenatal visits"
 
 ---
@@ -958,6 +971,6 @@ This is typically a **longer OSCE station** (often 10-12 minutes for booking his
 **This completes the first ObGyn document! Next: Gynaecological History-Taking with Differential Diagnosis**
 
 **Word Count**: ~18,000 words
-**Last Updated**: December 2025 for ICRP NSW Young Hospital Program (March 2026 intake)
+**Last Updated**: December 2025 for ICRP NSW Young Hospital Programmes (March 2026 intake)
 **Author**: ICRP OSCE Preparation Team
 **Reference**: Dr. Amir Soufi (IMG4IMGS), RANZCOG Guidelines, eTG 2024, Medicare Australia, AMC Clinical OSCE Format

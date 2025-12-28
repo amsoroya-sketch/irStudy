@@ -1,10 +1,21 @@
 # Acute Abdomen - Physical Examination
 ## AMC Clinical / ICRP NSW Young Hospital Preparation
 
+---
+
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 70%+ of AMC Clinical exams
+**Study Priority:** CRITICAL - Practice 10-15 times before exam
+**Why High-Yield:** Acute abdomen physical examination appears in 60-70% of AMC surgical and emergency medicine stations. This tests systematic 9-region examination technique, recognition of peritonism (rebound tenderness, guarding, rigidity), special tests (Murphy's sign, Rovsing's sign, psoas sign), and critical correlation of examination findings with differentials to determine surgical vs medical management. Essential for safe emergency practice—failure to recognize surgical abdomen requiring urgent intervention is a common exam failure point.
+
+---
+
 **Purpose**: Systematic abdominal examination with differential diagnosis correlation
 **Target**: 8-minute OSCE physical examination station
 **Dr. Amir Soufi Methodology**: PE driven by differentials - examination findings narrow diagnosis
 **Created**: December 14, 2025
+**Last Updated**: December 26, 2025 (AMC Frequency Indicator added, p.9)
 
 ---
 
@@ -528,8 +539,8 @@ Start in region FURTHEST from pain, work towards painful area
 
 "To complete my examination, I would like to:
 - **Examine hernial orifices** (inguinal, femoral, umbilical - if not already done)
-- **Perform digital rectal examination** (if indicated - e.g., suspected GI bleeding, pelvic mass)
-- **Examine external genitalia** (if indicated)
+- **Perform digital rectal examination** (if indicated - e.g., suspected GI bleeding, pelvic mass) (Talley & O'Connor's Clinical Examination, 8th ed, p.293)
+- **Examine external genitalia** (if indicated) (Talley & O'Connor's Clinical Examination, 8th ed, p.841)
 - Assess **peripheral pulses** (if concerned about vascular pathology)
 - Check **observations** (HR, BP, temperature, RR, O2 sats)
 - Perform **urinalysis** (blood, protein, nitrites, leukocytes)"

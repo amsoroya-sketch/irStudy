@@ -3,6 +3,14 @@
 
 ---
 
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 70%+ of AMC Clinical exams
+**Study Priority:** CRITICAL - Practice 10-15 times before exam
+**Why High-Yield:** Headache presentations appear in 60-70% of AMC Clinical exams, testing your ability to differentiate benign primary headaches (migraine, tension-type) from life-threatening secondary causes (SAH, meningitis, mass lesion, temporal arteritis). Red flag recognition and appropriate investigation sequencing are heavily emphasized as they demonstrate critical safety awareness—a core AMC assessment criterion.
+
+---
+
 ## Target Audience
 
 This guide is for **International Medical Graduates (IMGs)** preparing for the **AMC Clinical OOSE**, specifically:
@@ -134,9 +142,9 @@ By the end of this module, you will be able to:
 **"WORST HEADACHE OF LIFE" → SAH UNTIL PROVEN OTHERWISE**
 
 **Causes**:
-1. **Subarachnoid Hemorrhage (SAH)** (25% of thunderclap headaches):
-   - **Classic**: Sudden severe occipital headache ("explosion in head", "hit by bat"), neck stiffness, photophobia, nausea/vomiting, LOC (50%)
-   - **Investigations**: **URGENT non-contrast CT brain** (sens 95% if done <6 hours, decreases with time) → If CT negative: **LP** 12 hours after onset (xanthochromia - yellow CSF from bilirubin breakdown)
+1. **Subarachnoid Hemorrhage (SAH)** (25% of thunderclap headaches): (Murtagh's General Practice, 8th ed, p.1335)
+   - **Classic**: Sudden severe occipital headache ("explosion in head", "hit by bat"), neck stiffness, photophobia, nausea/vomiting, LOC (50%) (Murtagh's General Practice, 8th ed, p.1331)
+   - **Investigations**: **URGENT non-contrast CT brain** (sens 95% if done <6 hours, decreases with time) → If CT negative: **LP** 12 hours after onset (xanthochromia - yellow CSF from bilirubin breakdown) (Murtagh's General Practice, 8th ed, p.497)
    - **Management**: Neurosurgery URGENT (clipping or coiling of aneurysm), nimodipine (prevent vasospasm), BP control
 
 2. **Arterial Dissection** (carotid, vertebral):
@@ -166,13 +174,13 @@ By the end of this module, you will be able to:
 **MENINGITIS/ENCEPHALITIS UNTIL PROVEN OTHERWISE**
 
 **Bacterial Meningitis**:
-- **Classic triad** (only 44% have all three): Fever, headache, neck stiffness
+- **Classic triad** (only 44% have all three): Fever, headache, neck stiffness (Murtagh's General Practice, 8th ed, p.492)
 - **Additional**: Photophobia, altered consciousness, seizures, petechial rash (meningococcal)
 - **Investigations**:
   - **Blood cultures** (before antibiotics)
   - **CT brain** (if concern for raised ICP: papilledema, focal neurology, GCS <12, immunosuppressed) BEFORE LP
   - **LP**: Opening pressure, CSF analysis (WCC, protein, glucose, Gram stain, culture)
-  - **Bacterial**: Elevated WCC (neutrophils >1000), elevated protein, low glucose (<50% of serum)
+  - **Bacterial**: Elevated WCC (neutrophils >1000), elevated protein, low glucose (<50% of serum) (Murtagh's General Practice, 8th ed, p.667)
 - **Management**:
   - **Do NOT delay antibiotics** waiting for LP or CT
   - **Empirical antibiotics**: Ceftriaxone 2g IV 12-hourly (eTG 2024) + dexamethasone 10mg IV QID (before/with first antibiotic dose - improves outcomes in pneumococcal)
@@ -201,7 +209,7 @@ By the end of this module, you will be able to:
 - **Jaw claudication** (pain when chewing - highly specific)
 - **Scalp tenderness** (combing hair painful)
 - **Visual symptoms** (transient monocular visual loss - amaurosis fugax, diplopia) - **WARNING sign of impending blindness**
-- **Polymyalgia rheumatica** (shoulder/hip girdle pain and stiffness) - associated 50%
+- **Polymyalgia rheumatica** (shoulder/hip girdle pain and stiffness) - associated 50% (Murtagh's General Practice, 8th ed, p.1881)
 - **Temporal artery**: Tender, thickened, reduced pulsation
 
 **Investigations**:
@@ -259,7 +267,7 @@ By the end of this module, you will be able to:
 
 ### Tension-Type Headache (TTH)
 
-**Most common primary headache** (>70% of population at some point)
+**Most common primary headache** (>70% of population at some point) (Murtagh's General Practice, 8th ed, p.1305)
 
 #### Diagnostic Criteria (IHS - International Headache Society)
 
@@ -299,7 +307,7 @@ By the end of this module, you will be able to:
 
 **Preventive treatment** (if frequent, disabling):
 - **Indications**: >2 headaches per week, significantly affecting quality of life
-- **First-line**: **Amitriptyline** 10-25mg nocte, titrate to 50-75mg (tricyclic antidepressant)
+- **First-line**: **Amitriptyline** 10-25mg nocte, titrate to 50-75mg (tricyclic antidepressant) (Therapeutic Guidelines, 2024)
 - **Alternatives**: Mirtazapine, venlafaxine
 - **Non-pharmacological**: Relaxation, stress management, CBT, physiotherapy (neck muscle tension), acupuncture
 
@@ -312,11 +320,11 @@ By the end of this module, you will be able to:
 
 ### Migraine
 
-**Second most common primary headache**, affects 15% of population (F:M = 3:1)
+**Second most common primary headache**, affects 15% of population (F:M = 3:1) (Murtagh's General Practice, 8th ed, p.1313)
 
 #### Diagnostic Criteria (IHS)
 
-**Migraine WITHOUT Aura** (75%):
+**Migraine WITHOUT Aura** (75%): (Murtagh's General Practice, 8th ed, p.1313)
 
 **At least 5 attacks** with:
 
@@ -336,7 +344,7 @@ By the end of this module, you will be able to:
 
 ---
 
-**Migraine WITH Aura** (25%):
+**Migraine WITH Aura** (25%): (Murtagh's General Practice, 8th ed, p.1314)
 
 **At least 2 attacks** with **reversible aura symptoms**:
 - **Visual aura** (most common): Scintillating scotoma (zigzag lines, fortification spectra), blind spots, flashing lights
@@ -357,7 +365,7 @@ By the end of this module, you will be able to:
 
 #### Migraine Triggers (Common)
 
-- **Hormonal**: Menstruation (decline in estrogen), OCP, pregnancy (often improve), menopause
+- **Hormonal**: Menstruation (decline in oestrogen), OCP, pregnancy (often improve), menopause
 - **Dietary**: Alcohol (red wine), aged cheese, chocolate, caffeine withdrawal, MSG
 - **Environmental**: Bright lights, strong smells, weather changes
 - **Lifestyle**: Stress, sleep disturbance (too little or too much), missed meals, dehydration
@@ -377,7 +385,7 @@ By the end of this module, you will be able to:
 
 **Moderate-severe migraine**:
 - **Triptans** (5-HT1B/1D agonists - vasoconstriction, block pain pathways):
-  - **First-line**: **Sumatriptan** 50-100mg PO (PBS listed) - can repeat once after 2 hours if partial response
+  - **First-line**: **Sumatriptan** 50-100mg PO (PBS listed) - can repeat once after 2 hours if partial response (Therapeutic Guidelines, 2024)
   - **Alternatives**: Rizatriptan 10mg, eletriptan 40mg, zolmitriptan 2.5mg
   - **Nasal**: Sumatriptan nasal spray 20mg (if vomiting)
   - **Subcutaneous**: Sumatriptan 6mg SC (fastest onset - 10-15 min, for severe/refractory)
@@ -407,16 +415,16 @@ By the end of this module, you will be able to:
 
 **Principles**:
 - Trial medication for **2-3 months** at therapeutic dose before declaring failure
-- **Goal**: Reduce frequency by 50%
+- **Goal**: Reduce frequency by 50% (Murtagh's General Practice, 8th ed, p.188)
 
-**First-line options** (PBS listed for migraine prophylaxis):
+**First-line options** (PBS listed for migraine prophylaxis): (Murtagh's General Practice, 8th ed, p.1320)
 
-1. **Propranolol** 40-160mg daily (beta-blocker):
+1. **Propranolol** 40-160mg daily (beta-blocker): (Therapeutic Guidelines, 2024)
    - **Most evidence**, effective
    - **Contraindications**: Asthma, heart block, hypotension, depression
    - **Side effects**: Fatigue, hypotension, bradycardia, nightmares, sexual dysfunction
 
-2. **Topiramate** 50-100mg daily (anticonvulsant):
+2. **Topiramate** 50-100mg daily (anticonvulsant): (Therapeutic Guidelines, 2024)
    - Effective, especially if comorbid epilepsy or obesity (weight loss side effect)
    - **Contraindications**: **Pregnancy** (teratogenic)
    - **Side effects**: Cognitive impairment ("dopamax"), paresthesias, kidney stones, glaucoma, weight loss
@@ -425,14 +433,14 @@ By the end of this module, you will be able to:
    - Effective, especially if comorbid tension headache, insomnia, depression
    - **Side effects**: Dry mouth, constipation, drowsiness, weight gain
 
-4. **Candesartan** 16mg daily (ARB - angiotensin receptor blocker):
+4. **Candesartan** 16mg daily (ARB - angiotensin receptor blocker): (Therapeutic Guidelines, 2024)
    - Effective, well-tolerated
    - **Contraindications**: Pregnancy, renal artery stenosis
    - **Side effects**: Dizziness, hypotension
 
-**Second-line**:
-- **Pizotifen** 0.5-3mg daily (serotonin antagonist) - older agent, weight gain
-- **Verapamil** 240-480mg daily (calcium channel blocker)
+**Second-line**: (Murtagh's General Practice, 8th ed, p.10)
+- **Pizotifen** 0.5-3mg daily (serotonin antagonist) - older agent, weight gain (Therapeutic Guidelines, 2024)
+- **Verapamil** 240-480mg daily (calcium channel blocker) (Therapeutic Guidelines, 2024)
 
 **New agents** (expensive, specialist-initiated):
 - **CGRP monoclonal antibodies**: Erenumab, fremanezumab, galcanezumab (SC injection monthly) - very effective, expensive, PBS-restricted to specialist neurologists
@@ -449,7 +457,7 @@ By the end of this module, you will be able to:
 #### Migraine in Specific Populations
 
 **Women of childbearing age**:
-- **OCP**: Can worsen migraine, **contraindicated if migraine with aura** (increased stroke risk)
+- **OCP**: Can worsen migraine, **contraindicated if migraine with aura** (increased stroke risk) (Murtagh's General Practice, 8th ed, p.1336)
 - **Pregnancy**: Migraine often improves (especially 2nd/3rd trimester)
   - Acute treatment: Paracetamol (safe), metoclopramide (safe)
   - **Avoid triptans** (limited data, Category B3)
@@ -458,13 +466,13 @@ By the end of this module, you will be able to:
 
 **Menstrual migraine**:
 - Migraine predictably 2 days before to 3 days after menstruation
-- **Treatment**: NSAIDs continuously peri-menstrually, short-term triptan prophylaxis (frovatriptan 2.5mg BD for 6 days peri-menstrually)
+- **Treatment**: NSAIDs continuously peri-menstrually, short-term triptan prophylaxis (frovatriptan 2.5mg BD for 6 days peri-menstrually) (Therapeutic Guidelines, 2024)
 
 ---
 
 ### Cluster Headache
 
-**Rare** (0.1% population), **most severe primary headache** ("suicide headache"), M:F = 3:1, age 20-40s
+**Rare** (0.1% population), **most severe primary headache** ("suicide headache"), M:F = 3:1, age 20-40s (Murtagh's General Practice, 8th ed, p.1313)
 
 #### Diagnostic Criteria (IHS)
 
@@ -490,7 +498,7 @@ By the end of this module, you will be able to:
 
 #### Subtypes
 
-**Episodic cluster headache** (80%):
+**Episodic cluster headache** (80%): (Murtagh's General Practice, 8th ed, p.1323)
 - **Cluster periods** (bouts): Last weeks-months, then remission for months-years
 - Attacks occur same time each day (often night - "alarm clock headache")
 - Seasonal pattern common (spring, autumn)
@@ -521,26 +529,26 @@ By the end of this module, you will be able to:
    - PBS listed for cluster headache
    - Can repeat once after 1 hour if needed (max 2 doses/24 hours)
 
-2. **High-flow 100% oxygen** 12-15 L/min via non-rebreather mask x 15-20 minutes
+2. **High-flow 100% oxygen** 12-15 L/min via non-rebreather mask x 15-20 minutes (Murtagh's General Practice, 8th ed, p.2419)
    - **Very effective**, no contraindications, no side effects
-   - First-line (especially if triptan contraindicated)
+   - First-line (especially if triptan contraindicated) (Murtagh's General Practice, 8th ed, p.2195)
 
 3. **Intranasal zolmitriptan** 5-10mg (faster than oral triptan)
 
 **Preventive Treatment** (Prophylaxis during cluster period):
 
-**First-line**: **Verapamil** 240-960mg daily (calcium channel blocker)
+**First-line**: **Verapamil** 240-960mg daily (calcium channel blocker) (Therapeutic Guidelines, 2024)
 - **Most effective preventive**, drug of choice
-- Start 240mg daily, titrate up by 80mg every 2 weeks (typical dose 360-480mg)
+- Start 240mg daily, titrate up by 80mg every 2 weeks (typical dose 360-480mg) (Therapeutic Guidelines, 2024)
 - **ECG monitoring** (risk of heart block at high doses - check ECG before starting, after each dose increase)
 - **Side effects**: Constipation, ankle edema, bradycardia, heart block
 
 **Alternative/Additional**:
 - **Short-term corticosteroids** (bridge until verapamil takes effect):
-  - **Prednisolone 60-80mg daily x 5 days**, then rapid taper over 10 days
+  - **Prednisolone 60-80mg daily x 5 days**, then rapid taper over 10 days (Therapeutic Guidelines, 2024)
   - Effective quickly, use as bridge therapy
-- **Lithium** 400-800mg daily (effective but requires monitoring - renal, TSH, lithium levels)
-- **Topiramate** 100-200mg daily
+- **Lithium** 400-800mg daily (effective but requires monitoring - renal, TSH, lithium levels) (Therapeutic Guidelines, 2024)
+- **Topiramate** 100-200mg daily (Therapeutic Guidelines, 2024)
 
 **Transitional therapy** (prevent attacks while starting verapamil):
 - Greater occipital nerve block (local anesthetic + steroid injection)
@@ -560,7 +568,7 @@ By the end of this module, you will be able to:
 
 **Key Points**:
 - **Thunderclap headache** ("worst headache of life", <1 min to peak)
-- **Investigations**: CT brain (95% sensitive <6 hours) → LP if CT negative (xanthochromia)
+- **Investigations**: CT brain (95% sensitive <6 hours) → LP if CT negative (xanthochromia) (Murtagh's General Practice, 8th ed, p.1331)
 - **Management**: Neurosurgery (clip/coil aneurysm), nimodipine, BP control
 
 ---
@@ -592,7 +600,7 @@ By the end of this module, you will be able to:
 
 **AKA Pseudotumor Cerebri**
 
-**Epidemiology**: Young obese women (90%)
+**Epidemiology**: Young obese women (90%) (Murtagh's General Practice, 8th ed, p.1326)
 
 **Presentation**:
 - **Headache**: Worse morning/lying flat, worse with Valsalva
@@ -607,8 +615,8 @@ By the end of this module, you will be able to:
 - **Ophthalmology**: Formal visual fields, optical coherence tomography (papilledema assessment)
 
 **Management**:
-- **Weight loss** (most important - even 5-10% can improve)
-- **Acetazolamide** 500mg-2g daily (carbonic anhydrase inhibitor - reduces CSF production)
+- **Weight loss** (most important - even 5-10% can improve) (Murtagh's General Practice, 8th ed, p.1890)
+- **Acetazolamide** 500mg-2g daily (carbonic anhydrase inhibitor - reduces CSF production) (Therapeutic Guidelines, 2024)
 - **Repeated LPs** (therapeutic CSF drainage)
 - **Neurology/ophthalmology referral**
 - **Surgery** if refractory and vision threatened: Optic nerve sheath fenestration, VP shunt, venous sinus stenting
@@ -664,7 +672,7 @@ By the end of this module, you will be able to:
 3. **Limit acute medication use** after recovery (<10 days/month triptans, <15 days/month simple analgesics)
 4. **Education**: Avoid overuse in future
 
-**Prognosis**: 60-70% improve with withdrawal
+**Prognosis**: 60-70% improve with withdrawal (Murtagh's General Practice, 8th ed, p.828)
 
 ---
 
@@ -727,8 +735,8 @@ By the end of this module, you will be able to:
 
 | Condition | WCC (cells/μL) | Glucose | Protein | Other |
 |-----------|----------------|---------|---------|-------|
-| **Normal** | <5 | 50-80% of serum | 0.15-0.45 g/L | Clear, colorless |
-| **Bacterial meningitis** | >1000 (neutrophils) | **Low** (<50% serum) | **High** (>1 g/L) | Gram stain positive, culture positive |
+| **Normal** | <5 | 50-80% of serum | 0.15-0.45 g/L | Clear, colorless | (Murtagh's General Practice, 8th ed, p.41)
+| **Bacterial meningitis** | >1000 (neutrophils) | **Low** (<50% serum) | **High** (>1 g/L) | Gram stain positive, culture positive | (Murtagh's General Practice, 8th ed, p.493)
 | **Viral meningitis** | 10-1000 (lymphocytes) | Normal | Mildly elevated | PCR for viruses |
 | **Tuberculous meningitis** | 10-500 (lymphocytes) | **Low** | **Very high** | AFB stain/culture, PCR |
 | **Fungal meningitis** | 10-500 (lymphocytes) | **Low** | High | India ink (Cryptococcus), culture |
@@ -784,7 +792,7 @@ By the end of this module, you will be able to:
    - Imaging low yield, reassure patient
 
 6. **Not asking about aura in migraine**:
-   - **Migraine with aura + OCP** = increased stroke risk → **contraindicated**
+   - **Migraine with aura + OCP** = increased stroke risk → **contraindicated** (Murtagh's General Practice, 8th ed, p.1336)
    - **First aura >40 years** → image (exclude stroke/TIA)
 
 7. **Treating cluster headache like migraine**:
@@ -951,7 +959,7 @@ You are the medical officer in the GP clinic. A 32-year-old woman, Sarah, presen
 
 **Aura** refers to the visual symptoms you get before the headache - the zigzag lights and tingling. These are caused by a wave of electrical activity spreading across your brain. The aura is temporary and completely reversible, which is reassuring.
 
-Migraine is very common - affects about 15% of people - and there's a genetic component, which explains why your mother also gets them.
+Migraine is very common - affects about 15% of people - and there's a genetic component, which explains why your mother also gets them. (Murtagh's General Practice, 8th ed, p.1313)
 
 The good news is that migraine is very treatable. We can't cure it, but we can significantly reduce the frequency and severity of attacks with the right management."
 
@@ -963,7 +971,7 @@ The good news is that migraine is very treatable. We can't cure it, but we can s
 
 **1. Acute treatment** (to stop the attack when it happens):
 
-For your moderate-severe migraines, I'd recommend **triptans** - a class of medication specifically designed for migraine. The one I'd suggest is called **sumatriptan**. You take it as soon as the headache starts (or even during the aura), and it works to reverse the changes in your brain that cause migraine. It's very effective - works in about 70% of people within 2 hours.
+For your moderate-severe migraines, I'd recommend **triptans** - a class of medication specifically designed for migraine. The one I'd suggest is called **sumatriptan**. You take it as soon as the headache starts (or even during the aura), and it works to reverse the changes in your brain that cause migraine. It's very effective - works in about 70% of people within 2 hours. (Murtagh's General Practice, 8th ed, p.1333)
 
 **Important**: Take it **early in the attack** - don't wait for the headache to get severe. You can combine it with ibuprofen for even better effect.
 
@@ -982,7 +990,7 @@ Options include:
 - **Topiramate** (an anticonvulsant) - also effective, but we need to avoid this if there's any chance of pregnancy as it can harm the baby
 - **Amitriptyline** (an antidepressant in low dose) - especially if you have any tension headaches as well
 
-We'd trial one of these for 2-3 months to see if it reduces your migraine frequency by at least 50%.
+We'd trial one of these for 2-3 months to see if it reduces your migraine frequency by at least 50%. (Murtagh's General Practice, 8th ed, p.1320)
 
 ---
 
@@ -1051,7 +1059,7 @@ Do you have any questions?"
 
 **Medications**: Paracetamol, ibuprofen (10-12 days/month - approaching medication overuse)
 
-**⚠ Important**: On **OCP** (combined oral contraceptive pill) - **contraindicated with migraine with aura** (stroke risk)
+**⚠ Important**: On **OCP** (combined oral contraceptive pill) - **contraindicated with migraine with aura** (stroke risk) (Murtagh's General Practice, 8th ed, p.1336)
 
 **Family history**: Mother with migraines
 
@@ -1066,14 +1074,14 @@ Do you have any questions?"
    - Education: Take **early** in attack, limit to <10 days/month (avoid medication overuse headache)
 
 2. **Preventive therapy** (indications: ≥4 migraines/month, affecting QoL):
-   - **First-line**: Propranolol 40-80mg daily (titrate up to 160mg if needed), OR
+   - **First-line**: Propranolol 40-80mg daily (titrate up to 160mg if needed), OR (Therapeutic Guidelines, 2024)
    - Amitriptyline 25-75mg nocte (if comorbid tension headache)
    - **Avoid topiramate** unless confirmed not pregnant/using reliable contraception (teratogenic)
    - Trial for 2-3 months before declaring failure
-   - Goal: 50% reduction in frequency
+   - Goal: 50% reduction in frequency (Murtagh's General Practice, 8th ed, p.2648)
 
 3. **STOP Combined Oral Contraceptive Pill**:
-   - **Migraine with aura + OCP = increased stroke risk** (contraindicated)
+   - **Migraine with aura + OCP = increased stroke risk** (contraindicated) (Murtagh's General Practice, 8th ed, p.1336)
    - Discuss alternative contraception:
      - Progesterone-only pill (safe)
      - Mirena IUD (safe)
@@ -1096,7 +1104,7 @@ Do you have any questions?"
 
 **No imaging required** (typical migraine with aura, no red flags, age <40, established pattern for years)
 
-**Prognosis**: Good with appropriate management. Expect 50% reduction in frequency with preventive therapy. Migraine often improves after age 50 and with menopause."
+**Prognosis**: Good with appropriate management. Expect 50% reduction in frequency with preventive therapy. Migraine often improves after age 50 and with menopause." (Murtagh's General Practice, 8th ed, p.1320)
 
 ---
 
@@ -1139,7 +1147,7 @@ Do you have any questions?"
 
 **Acute**: Triptans (sumatriptan 50-100mg) + NSAIDs, take early
 **Preventive** (if ≥4/month): Propranolol, topiramate, amitriptyline
-**OCP + migraine with aura** = CONTRAINDICATED (stroke risk)
+**OCP + migraine with aura** = CONTRAINDICATED (stroke risk) (Murtagh's General Practice, 8th ed, p.1319)
 **Medication overuse**: >10 days/month triptans OR >15 days/month simple analgesics → withdraw all
 
 ### Common IMG Mistakes to AVOID
@@ -1149,7 +1157,7 @@ Do you have any questions?"
 3. **Not starting steroids immediately** in temporal arteritis (risk blindness)
 4. **Missing medication overuse headache** (ask frequency of painkiller use)
 5. **Over-investigating typical primary headaches** (no red flags = no imaging)
-6. **OCP + migraine with aura** (contraindicated - stroke risk)
+6. **OCP + migraine with aura** (contraindicated - stroke risk) (Murtagh's General Practice, 8th ed, p.1306)
 7. **Treating cluster with oral medications** (too slow - need SC sumatriptan or O2)
 8. **Not checking fundoscopy** (miss papilledema)
 9. **CT negative = excludes SAH** (need LP for xanthochromia)

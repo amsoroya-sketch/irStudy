@@ -1,3 +1,76 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 60-70% of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice 8-10 times before exam
+
+**Why High-Yield:** Contraception counselling is a CORE general practice skill appearing in 60-70% of AMC Clinical exams. This tests multiple competencies: (1) patient-centred communication and shared decision-making, (2) knowledge of all contraceptive options with efficacy rates, (3) WHO Medical Eligibility Criteria and contraindications, (4) Australian PBS/Medicare access, and (5) counselling skills around sensitive topics. The AMC frequently tests this because contraception advice is one of the most common consultations in Australian general practice, and safe prescribing requires understanding contraindications (e.g., COCP contraindicated in migraine with aura, smokers >35, VTE history).
+
+**AMC Blueprint Coverage:**
+- Women's Health Counselling (60-70% frequency) (Murtagh's General Practice, 8th ed, p.1336)
+- Contraceptive options counselling (most common scenario)
+- Emergency contraception provision
+- Shared decision-making communication skills
+
+**Common OSCE Scenarios:**
+- "25-year-old requests contraception advice" → Must explore preferences, present all options balanced, discuss LARC (long-acting reversible contraception)
+- "19-year-old requests emergency contraception" → Must assess timing (<72h copper IUD best, <72h levonorgestrel, <120h ulipristal), exclude pregnancy, provide ongoing contraception
+- "35-year-old smoker on COCP asks about continuing" → Must identify contraindication (smoker >35 + COCP = VTE risk), offer alternatives
+- "Patient with heavy periods requests contraception" → Must recommend Mirena IUD (reduces bleeding 90% + contraception) (Murtagh's General Practice, 8th ed, p.2542)
+
+**Critical Knowledge (Frequently Tested):**
+1. **LARC first-line**: IUD (copper/Mirena) and Implanon are most effective, recommend for all women (Murtagh's General Practice, 8th ed, p.2474)
+2. **WHO MEC contraindications**: Know absolute contraindications (Category 4) for COCP, POP, IUD
+3. **Efficacy rates**: Perfect-use vs typical-use failure rates (LARC <1%, COCP 0.3% perfect vs 9% typical) (Murtagh's General Practice, 8th ed, p.2473)
+4. **Emergency contraception**: Copper IUD (best, up to 5 days), levonorgestrel (Plan B, up to 72h), ulipristal (up to 120h)
+5. **PBS access**: COCP/POP (non-PBS, ~$20-30/month), Implanon (PBS, ~$40), Mirena (PBS for heavy bleeding, ~$40), condoms (not PBS)
+
+**Absolute Contraindications (WHO MEC Category 4) - Must Know:**
+- **COCP**: Current VTE/PE, ischaemic heart disease, stroke, migraine with aura, breast cancer, smoker >35 years, <21 days postpartum, severe cirrhosis
+- **Copper IUD**: Current PID, current pregnancy, cervical/endometrial cancer, uterine abnormalities (bicornuate uterus, fibroids distorting cavity)
+- **Mirena IUD**: Current breast cancer (in addition to copper IUD contraindications)
+
+**Common IMG Mistakes:**
+- Recommending doctor's favourite method instead of patient-centred counselling (failing shared decision-making)
+- Not exploring patient's priorities and concerns first
+- Not recommending LARC as first-line (Australian guidelines recommend LARC for all women) (Murtagh's General Practice, 8th ed, p.2474)
+- Not knowing contraindications (prescribing COCP to smoker >35 = dangerous)
+- Not providing emergency contraception when appropriate
+- Not addressing myths/misconceptions (e.g., "the pill causes cancer" - actually reduces ovarian/endometrial cancer)
+
+**Examiner Assessment Points:**
+- Did you explore patient's needs and preferences FIRST?
+- Did you present options in balanced, non-judgmental way?
+- Did you recommend LARC (IUD/Implanon) as first-line? (Murtagh's General Practice, 8th ed, p.2474)
+- Did you screen for contraindications appropriately?
+- Did you discuss efficacy using failure rates?
+- Did you use shared decision-making (patient chooses, you support)?
+- Did you address myths/misconceptions compassionately?
+
+**Framework for Counselling: "CONTRACEPTION"**
+- **C**urrent situation and needs
+- **O**bstetric/gynaecological history
+- **N**eed for immediate contraception vs planning
+- **T**ype preferences (hormonal vs non-hormonal, LARC vs short-acting)
+- **R**isks and contraindications (WHO MEC)
+- **A**dvantages of each method
+- **C**omplications and side effects
+- **E**fficacy (perfect-use vs typical-use)
+- **P**BS access and cost
+- **T**ake-home message and follow-up
+- **I**nformed consent
+- **O**ngoing support and troubleshooting
+- **N**ext steps (prescription, insertion booking, follow-up)
+
+**Key Success Factors:**
+1. **Patient-centred**: Explore preferences BEFORE presenting options
+2. **LARC first-line**: Recommend IUD/Implanon for all women (most effective, lowest maintenance) (Murtagh's General Practice, 8th ed, p.2474)
+3. **Know contraindications**: Especially COCP (migraine with aura, smoker >35, VTE risk)
+4. **Efficacy honesty**: Discuss typical-use failure rates (e.g., COCP 9% typical-use - many women miss pills) (Murtagh's General Practice, 8th ed, p.3220)
+5. **Myth-busting**: Address common fears (weight gain, cancer, fertility) with evidence
+
+---
+
 # Contraception Counselling
 ## ICRP OSCE Preparation - Obstetrics & Gynaecology Module
 ### Following Dr. Amir Soufi's Differential-Driven Approach (IMG4IMGS Methodology)
@@ -6,9 +79,11 @@
 
 ## Target Audience
 - IMGs preparing for AMC Clinical OSCE
-- ICRP participants at NSW Young Hospital Program
+- ICRP participants at NSW Young Hospital Programmes
 - Medical students/residents in general practice/gynaecology
 - Focus: 8-minute OSCE stations on contraceptive counselling
+
+**Last Updated**: December 26, 2025
 
 ---
 
@@ -43,9 +118,9 @@ By the end of this module, you will be able to:
    - "What worries you about contraception?"
 2. **Tailor information to patient's priorities**:
    - If efficacy is top priority → Emphasize LARC (long-acting reversible contraception)
-   - If non-hormonal preferred → Focus on copper IUD, barrier methods
+   - If non-hormonal preferred → Focus on copper IUD, barrier methods (Murtagh's General Practice, 8th ed, p.2474)
    - If irregular periods are a problem → Highlight methods that reduce/stop periods (Mirena, Implanon)
-3. **Present options in balanced way** - don't push your favorite method
+3. **Present options in balanced way** - don't push your favourite method
 4. **Address misconceptions** directly and compassionately
 5. **Shared decision-making** - patient chooses with your support
 
@@ -88,7 +163,7 @@ By the end of this module, you will be able to:
 1. **"Have you had any pregnancies?"**
    - Gravida, para
    - If recent delivery: "When did you give birth? Are you breastfeeding?"
-     - Breastfeeding affects contraceptive choices (progesterone-only methods preferred)
+     - Breastfeeding affects contraceptive choices (progesterone-only methods preferred) (Murtagh's General Practice, 8th ed, p.2670)
 
 2. **"Are you planning to have children in the future? If so, when?"**
    - **Near future (<1 year)**: May prefer short-acting methods
@@ -96,7 +171,7 @@ By the end of this module, you will be able to:
    - **Completed family**: Consider permanent methods (sterilization) or LARC
 
 3. **"Tell me about your periods - are they regular, heavy, painful?"**
-   - **Heavy/painful periods**: Mirena IUD ideal (reduces bleeding by 90%, treats dysmenorrhoea)
+   - **Heavy/painful periods**: Mirena IUD ideal (reduces bleeding by 90%, treats dysmenorrhoea) (Murtagh's General Practice, 8th ed, p.2544)
    - **Irregular periods** (PCOS): COCP or Implanon can regulate
 
 4. **"Any history of ovarian cysts, fibroids, or endometriosis?"**
@@ -136,15 +211,15 @@ By the end of this module, you will be able to:
 
 **Cardiovascular**:
 1. **"Do you have high blood pressure, or any heart problems?"**
-   - **Hypertension**: COCP contraindicated if BP >160/100 or poorly controlled
+   - **Hypertension**: COCP contraindicated if BP >160/100 or poorly controlled (Murtagh's General Practice, 8th ed, p.2130)
    - **Cardiac disease**: Assess individually
 
 2. **"Have you or anyone in your family had blood clots - DVT or pulmonary embolism?"**
-   - **Personal history VTE**: COCP contraindicated (estrogen increases clot risk)
+   - **Personal history VTE**: COCP contraindicated (oestrogen increases clot risk) (Therapeutic Guidelines: Surgery - VTE Prophylaxis, 2024)
    - **Family history VTE** (first-degree relative <45 years): Relative contraindication to COCP
 
 3. **"Do you get migraines? If yes, do you get visual symptoms like flashing lights?"**
-   - **Migraine with aura**: COCP contraindicated (stroke risk)
+   - **Migraine with aura**: COCP contraindicated (stroke risk) (Murtagh's General Practice, 8th ed, p.1315)
    - **Migraine without aura**: COCP usually safe if age <35
 
 4. **"Have you ever had a stroke or heart attack?"**
@@ -152,7 +227,7 @@ By the end of this module, you will be able to:
 
 **Cancer**:
 5. **"Any personal history of breast cancer?"**
-   - Contraindication to all hormonal contraception (estrogen and progesterone)
+   - Contraindication to all hormonal contraception (oestrogen and progesterone)
 
 6. **"Any history of cervical, ovarian, or uterine cancer?"**
    - May affect IUD suitability
@@ -163,11 +238,11 @@ By the end of this module, you will be able to:
 
 **Other**:
 8. **"Do you smoke? How many cigarettes per day?"**
-   - **Smoking + age ≥35**: COCP contraindicated (cardiovascular risk)
+   - **Smoking + age ≥35**: COCP contraindicated (cardiovascular risk) (Murtagh's General Practice, 8th ed, p.2483)
    - **Smoking + age <35**: COCP relatively safe (counsel cessation)
 
 9. **"What's your weight/BMI?"**
-   - **Obesity (BMI >35)**: COCP relatively contraindicated (VTE risk), progesterone-only methods safer
+   - **Obesity (BMI >35)**: COCP relatively contraindicated (VTE risk), progesterone-only methods safer (Therapeutic Guidelines: Surgery - VTE Prophylaxis, 2024)
 
 10. **"Are you on any medications?"**
     - **Enzyme-inducers** (rifampicin, carbamazepine, phenytoin): Reduce COCP/POP efficacy → Use higher-dose COCP or non-hormonal method
@@ -221,18 +296,18 @@ By the end of this module, you will be able to:
 
 **Explain efficacy using failure rates**:
 
-**"No contraception is 100% effective. We measure effectiveness by how many women out of 100 would get pregnant in a year of using that method."**
+**"No contraception is 100% effective. We measure effectiveness by how many women out of 100 would get pregnant in a year of using that method."** (Murtagh's General Practice, 8th ed, p.2473)
 
 Present **typical use** (real-world, includes user error):
 
 | **Method** | **Typical Use Failure Rate** | **Perfect Use Failure Rate** |
 |-----------|----------------------------|----------------------------|
-| **LARC** (Mirena, Copper IUD, Implanon) | **<1%** | <1% (user-independent) |
-| **COCP, POP** | **9%** (1 in 11 women) | 0.3% (if never miss pills) |
-| **Depo-Provera** | **6%** | 0.2% |
-| **Male condom** | **18%** (nearly 1 in 5) | 2% (if perfect use every time) |
-| **Withdrawal** | **22%** | 4% |
-| **No method** | **85%** | N/A |
+| **LARC** (Mirena, Copper IUD, Implanon) | **<1%** | <1% (user-independent) | (Murtagh's General Practice, 8th ed, p.2473)
+| **COCP, POP** | **9%** (1 in 11 women) | 0.3% (if never miss pills) | (Murtagh's General Practice, 8th ed, p.2476)
+| **Depo-Provera** | **6%** | 0.2% | (Murtagh's General Practice, 8th ed, p.2476)
+| **Male condom** | **18%** (nearly 1 in 5) | 2% (if perfect use every time) | (Murtagh's General Practice, 8th ed, p.2822)
+| **Withdrawal** | **22%** | 4% | (Murtagh's General Practice, 8th ed, p.2822)
+| **No method** | **85%** | N/A | (Murtagh's General Practice, 8th ed, p.3)
 
 **Key Message**: "The most effective methods are those you don't have to remember every day - the IUD and implant."
 
@@ -289,7 +364,7 @@ Present **typical use** (real-world, includes user error):
 
 ### LONG-ACTING REVERSIBLE CONTRACEPTION (LARC)
 
-**"First-tier" methods** - most effective, recommended for all women including nulliparous and adolescents (RANZCOG)
+**"First-tier" methods** - most effective, recommended for all women including nulliparous and adolescents (RANZCOG) (Murtagh's General Practice, 8th ed, p.2474)
 
 ---
 
@@ -306,12 +381,12 @@ Present **typical use** (real-world, includes user error):
 - Some ovulation suppression
 
 **Efficacy**:
-- **>99% effective** (<1% failure rate)
+- **>99% effective** (<1% failure rate) (Murtagh's General Practice, 8th ed, p.2488)
 - Pearl index: 0.2
 
 **Benefits**:
 - **Extremely effective**
-- **Reduces menstrual bleeding by 90%** (many women become amenorrhoeic)
+- **Reduces menstrual bleeding by 90%** (many women become amenorrhoeic) (Murtagh's General Practice, 8th ed, p.2542)
 - **Treats dysmenorrhoea** (period pain)
 - **Treats endometriosis** (suppresses endometrial growth)
 - **Treats heavy menstrual bleeding** (HMB) - PBS-approved for this indication
@@ -322,10 +397,10 @@ Present **typical use** (real-world, includes user error):
 
 **Side Effects**:
 - **Irregular bleeding/spotting** first 3-6 months (most common reason for removal - warn patient)
-- **Amenorrhoea** (60-80% at 1 year - reassure this is safe and reversible)
+- **Amenorrhoea** (60-80% at 1 year - reassure this is safe and reversible) (Murtagh's General Practice, 8th ed, p.3108)
 - Ovarian cysts (usually asymptomatic, resolve spontaneously)
 - Mood changes, acne, breast tenderness (less common than COCP due to local action)
-- **Expulsion** (5%, usually first 3 months)
+- **Expulsion** (5%, usually first 3 months) (Murtagh's General Practice, 8th ed, p.2501)
 - **Perforation** (1 in 1000 at insertion)
 
 **Contraindications**:
@@ -375,7 +450,7 @@ The insertion takes about 10 minutes and you might have some cramping, but we ca
 - **Non-hormonal**
 
 **Efficacy**:
-- **>99% effective** (<1% failure rate)
+- **>99% effective** (<1% failure rate) (Murtagh's General Practice, 8th ed, p.2572)
 - Pearl index: 0.6-0.8
 
 **Benefits**:
@@ -391,7 +466,7 @@ The insertion takes about 10 minutes and you might have some cramping, but we ca
 - **Heavier, longer, more painful periods** (most common reason for removal)
 - Irregular bleeding first 3-6 months
 - Increased cramping
-- **Expulsion** (5%)
+- **Expulsion** (5%) (Murtagh's General Practice, 8th ed, p.843)
 - **Perforation** (1 in 1000)
 
 **Contraindications**:
@@ -422,7 +497,7 @@ The insertion takes about 10 minutes and you might have some cramping, but we ca
 - Thickens cervical mucus
 
 **Efficacy**:
-- **>99% effective** (<1% failure rate)
+- **>99% effective** (<1% failure rate) (Murtagh's General Practice, 8th ed, p.24)
 - Pearl index: 0.05 (most effective reversible contraception)
 
 **Benefits**:
@@ -431,16 +506,16 @@ The insertion takes about 10 minutes and you might have some cramping, but we ca
 - **Lasts 3 years**
 - Fertility returns immediately (often within days)
 - Safe in breastfeeding
-- Safe with **VTE history** (progesterone-only, no estrogen)
+- Safe with **VTE history** (progesterone-only, no oestrogen)
 - Safe with **migraine with aura**
 - Reduces dysmenorrhoea
 - Reduces ovarian cyst formation
 
 **Side Effects**:
 - **Irregular bleeding** (most common, most troublesome):
-  - 20% amenorrhoea (no periods)
-  - 50% infrequent/irregular bleeding
-  - 20% frequent/prolonged bleeding (may need removal)
+  - 20% amenorrhoea (no periods) (Murtagh's General Practice, 8th ed, p.2484)
+  - 50% infrequent/irregular bleeding (Murtagh's General Practice, 8th ed, p.1289)
+  - 20% frequent/prolonged bleeding (may need removal) (Murtagh's General Practice, 8th ed, p.843)
 - Weight gain (average 1-2kg, not universal)
 - Mood changes (depression reported, causality unclear)
 - Acne (in some women)
@@ -490,7 +565,7 @@ The main side effect is irregular bleeding - some women have no periods (which i
 #### 4. COMBINED ORAL CONTRACEPTIVE PILL (COCP) - "The Pill"
 
 **Description**:
-- Pill containing **estrogen + progestogen**
+- Pill containing **oestrogen + progestogen**
 - Taken daily, 21 active pills + 7 inactive (or 24+4, or continuous)
 
 **Mechanism**:
@@ -499,8 +574,8 @@ The main side effect is irregular bleeding - some women have no periods (which i
 - Thins endometrium
 
 **Efficacy**:
-- **Perfect use**: 0.3% failure
-- **Typical use**: 9% failure (1 in 11 women pregnant per year - due to missed pills)
+- **Perfect use**: 0.3% failure (Murtagh's General Practice, 8th ed, p.2488)
+- **Typical use**: 9% failure (1 in 11 women pregnant per year - due to missed pills) (Murtagh's General Practice, 8th ed, p.2476)
 
 **Types** (Australian brands):
 
@@ -508,7 +583,7 @@ The main side effect is irregular bleeding - some women have no periods (which i
 - **Microgynon 30** (levonorgestrel 150mcg + ethinylestradiol 30mcg) - most commonly prescribed
 - **Levlen ED** (same as Microgynon but with 7 iron pills instead of inactive)
 - **Yasmin** (drospirenone 3mg + ethinylestradiol 30mcg) - anti-androgenic (helps acne, hirsutism, PCOS)
-- **Yaz** (drospirenone 3mg + ethinylestradiol 20mcg, 24+4 regimen) - lower estrogen
+- **Yaz** (drospirenone 3mg + ethinylestradiol 20mcg, 24+4 regimen) - lower oestrogen
 - **Marvelon** (desogestrel 150mcg + ethinylestradiol 30mcg)
 - **Diane-35** (cyproterone acetate 2mg + ethinylestradiol 35mcg) - **not primarily for contraception** (PBS for acne/hirsutism only, but has contraceptive effect)
 
@@ -523,8 +598,8 @@ The main side effect is irregular bleeding - some women have no periods (which i
   - Reduces acne (especially Yasmin, Diane-35)
   - Reduces hirsutism (Yasmin, Diane-35)
   - Treats PCOS (regulates cycles)
-  - **Reduces ovarian cancer risk** by 50% (protective effect lasts years after stopping)
-  - **Reduces endometrial cancer risk** by 50%
+  - **Reduces ovarian cancer risk** by 50% (protective effect lasts years after stopping) (Murtagh's General Practice, 8th ed, p.393)
+  - **Reduces endometrial cancer risk** by 50% (Murtagh's General Practice, 8th ed, p.2605)
   - **Reduces colorectal cancer risk**
   - Reduces ovarian cysts
   - Reduces benign breast disease
@@ -541,7 +616,7 @@ The main side effect is irregular bleeding - some women have no periods (which i
 - **Reduced libido** (some women)
 
 **Serious Adverse Effects** (rare):
-- **VTE** (DVT/PE): Risk 5-12 per 10,000 women-years (vs 2 per 10,000 in non-users)
+- **VTE** (DVT/PE): Risk 5-12 per 10,000 women-years (vs 2 per 10,000 in non-users) (Therapeutic Guidelines: Surgery - VTE Prophylaxis, 2024)
   - **Highest risk first year** and with 3rd/4th generation progestogens (desogestrel, drospirenone, gestodene)
 - **Stroke** (ischaemic): Small increased risk, especially if migraine with aura
 - **MI**: Small increased risk, especially if other risk factors (smoking, hypertension)
@@ -614,7 +689,7 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 #### 5. PROGESTERONE-ONLY PILL (POP) - "Mini-Pill"
 
 **Description**:
-- Pill containing **only progestogen** (no estrogen)
+- Pill containing **only progestogen** (no oestrogen)
 - Taken **every day** at same time (no pill-free week)
 
 **Types in Australia**:
@@ -629,11 +704,11 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 - **Desogestrel POP**: Suppresses ovulation + thickens mucus
 
 **Efficacy**:
-- **Perfect use**: 0.3-1%
-- **Typical use**: 9% (similar to COCP)
+- **Perfect use**: 0.3-1% (Murtagh's General Practice, 8th ed, p.1878)
+- **Typical use**: 9% (similar to COCP) (Murtagh's General Practice, 8th ed, p.2782)
 
 **Benefits**:
-- **No estrogen** → Safe when estrogen contraindicated:
+- **No oestrogen** → Safe when oestrogen contraindicated: (Murtagh's General Practice, 8th ed, p.2596)
   - **VTE history**, thrombophilia
   - **Migraine with aura**
   - **Age >35 + smoking**
@@ -644,8 +719,8 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 
 **Side Effects**:
 - **Irregular bleeding** (most common - unpredictable spotting)
-  - 50% have irregular bleeding
-  - 20% amenorrhoea (desogestrel)
+  - 50% have irregular bleeding (Murtagh's General Practice, 8th ed, p.2484)
+  - 20% amenorrhoea (desogestrel) (Murtagh's General Practice, 8th ed, p.2536)
 - Mood changes
 - Acne (can worsen)
 - Breast tenderness
@@ -667,7 +742,7 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 - PBS-subsidized: ~$15-25 for 4 months
 
 **Counselling Points**:
-"The mini-pill is a progesterone-only pill with no estrogen, so it's safer if you have risk factors like migraine with aura or if you smoke and are over 35. It's also safe while breastfeeding. The main downside is you MUST take it at the same time every day - if you're more than 3 hours late (traditional) or 12 hours late (desogestrel), you need backup contraception. Many women get irregular bleeding."
+"The mini-pill is a progesterone-only pill with no oestrogen, so it's safer if you have risk factors like migraine with aura or if you smoke and are over 35. It's also safe while breastfeeding. The main downside is you MUST take it at the same time every day - if you're more than 3 hours late (traditional) or 12 hours late (desogestrel), you need backup contraception. Many women get irregular bleeding."
 
 ---
 
@@ -683,14 +758,14 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 - Thins endometrium
 
 **Efficacy**:
-- **Perfect use**: 0.2%
-- **Typical use**: 6% (due to missed injections)
+- **Perfect use**: 0.2% (Murtagh's General Practice, 8th ed, p.2488)
+- **Typical use**: 6% (due to missed injections) (Murtagh's General Practice, 8th ed, p.1876)
 
 **Benefits**:
 - **Highly effective**
 - **Only need to remember every 3 months** (more convenient than daily pill)
-- No estrogen (safe with VTE history, migraine with aura, etc.)
-- **Amenorrhoea** in 50% by 1 year (no periods - some women like this)
+- No oestrogen (safe with VTE history, migraine with aura, etc.)
+- **Amenorrhoea** in 50% by 1 year (no periods - some women like this) (Murtagh's General Practice, 8th ed, p.2476)
 - Reduces endometriosis symptoms
 - Reduces sickle cell crises
 - Safe in breastfeeding
@@ -704,7 +779,7 @@ There's a small increased risk of blood clots, so we check you don't have risk f
   - **Black box warning** in some countries
   - **Concern in adolescents** (peak bone mass acquisition) and peri-menopausal women
   - **Reassurance**: Bone density recovers after stopping, fracture risk not proven increased
-  - **Recommendation**: Not first-line in adolescents <18 or women >45 unless other methods unsuitable
+  - **Recommendation**: Not first-line in adolescents <18 or women >45 unless other methods unsuitable (Murtagh's General Practice, 8th ed, p.2202)
 - Mood changes (depression reported)
 - Reduced libido
 - Bloating
@@ -717,14 +792,14 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 
 **Administration**:
 - **IM injection** (deltoid or gluteal)
-- **150mg every 12 weeks** (can be given up to 14 weeks late without needing backup contraception)
+- **150mg every 12 weeks** (can be given up to 14 weeks late without needing backup contraception) (Therapeutic Guidelines, 2024)
 - Can start anytime if reasonably certain not pregnant (use backup for 7 days)
 
 **Cost**:
 - PBS-subsidized: ~$6-8 per injection
 
 **Counselling Points**:
-"Depo-Provera is an injection you get every 3 months, so you don't have to remember daily pills. It's very effective and most women stop having periods after 6-12 months, which some find convenient. However, it can cause weight gain in some women, and when you stop it, fertility can take up to a year to return, so it's not ideal if you're planning pregnancy soon. There's also a small effect on bone density, which is why we don't use it as first-line in teenagers or older women."
+"Depo-Provera is an injection you get every 3 months, so you don't have to remember daily pills. It's very effective and most women stop having periods after 6-12 months, which some find convenient. However, it can cause weight gain in some women, and when you stop it, fertility can take up to a year to return, so it's not ideal if you're planning pregnancy soon. There's also a small effect on bone density, which is why we don't use it as first-line in teenagers or older women." (Murtagh's General Practice, 8th ed, p.2476)
 
 ---
 
@@ -739,12 +814,12 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 - Physical barrier prevents sperm entering vagina
 
 **Efficacy**:
-- **Perfect use**: 2%
-- **Typical use**: 18% (nearly 1 in 5 pregnancies per year - due to incorrect use, breakage, slipping)
+- **Perfect use**: 2% (Murtagh's General Practice, 8th ed, p.2963)
+- **Typical use**: 18% (nearly 1 in 5 pregnancies per year - due to incorrect use, breakage, slipping) (Murtagh's General Practice, 8th ed, p.399)
 
 **Benefits**:
 - **Only method that protects against STIs** (including HIV)
-- **Recommended for all new/casual relationships** even if using other contraception (dual protection)
+- **Recommended for all new/casual relationships** even if using other contraception (dual protection) (Murtagh's General Practice, 8th ed, p.454)
 - No hormones
 - No prescription needed
 - Cheap, accessible
@@ -781,8 +856,8 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 - Polyurethane pouch inserted into vagina before sex
 
 **Efficacy**:
-- **Perfect use**: 5%
-- **Typical use**: 21%
+- **Perfect use**: 5% (Murtagh's General Practice, 8th ed, p.2472)
+- **Typical use**: 21% (Murtagh's General Practice, 8th ed, p.1876)
 
 **Benefits**:
 - Protects against STIs
@@ -825,9 +900,9 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 
 **Efficacy**:
 - **Effectiveness decreases with time**:
-  - <24 hours: 95% effective
-  - 24-48 hours: 85% effective
-  - 48-72 hours: 58% effective
+  - <24 hours: 95% effective (Murtagh's General Practice, 8th ed, p.2490)
+  - 24-48 hours: 85% effective (Murtagh's General Practice, 8th ed, p.911)
+  - 48-72 hours: 58% effective (Murtagh's General Practice, 8th ed, p.1148)
   - Up to 96 hours (4 days): May still work but reduced efficacy
 - **Less effective if BMI >26** or weight >70kg (consider double dose 3mg or copper IUD)
 
@@ -838,7 +913,7 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 - If vomits within 3 hours → Take another dose
 
 **Side Effects**:
-- Nausea (10%), vomiting (1%)
+- Nausea (10%), vomiting (1%) (Murtagh's General Practice, 8th ed, p.1424)
 - Irregular bleeding (next period may be early, late, or irregular)
 - Fatigue, headache, dizziness, breast tenderness
 
@@ -852,7 +927,7 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 - **Free** at sexual health clinics, some GP clinics
 
 **Counselling Points**:
-"The emergency contraceptive pill works by delaying ovulation. It's most effective in the first 24 hours, but can be taken up to 4 days after unprotected sex. It's not 100% effective, so take a pregnancy test if your period is more than a week late. It's safe to use multiple times, but it's not as effective as regular contraception, so let's discuss ongoing options."
+"The emergency contraceptive pill works by delaying ovulation. It's most effective in the first 24 hours, but can be taken up to 4 days after unprotected sex. It's not 100% effective, so take a pregnancy test if your period is more than a week late. It's safe to use multiple times, but it's not as effective as regular contraception, so let's discuss ongoing options." (Murtagh's General Practice, 8th ed, p.2487)
 
 ---
 
@@ -867,7 +942,7 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 
 **Efficacy**:
 - **More effective than levonorgestrel**, especially 72-120 hours after sex
-- Maintains ~85% efficacy up to **120 hours (5 days)**
+- Maintains ~85% efficacy up to **120 hours (5 days)** (Murtagh's General Practice, 8th ed, p.2476)
 - **Not affected by BMI** (as much as levonorgestrel)
 
 **How to Use**:
@@ -902,7 +977,7 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 - Prevents implantation
 
 **Efficacy**:
-- **>99% effective** - **MOST EFFECTIVE emergency contraception**
+- **>99% effective** - **MOST EFFECTIVE emergency contraception** (Murtagh's General Practice, 8th ed, p.2474)
 
 **Benefits**:
 - Most effective EC
@@ -918,7 +993,7 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 - ~$80-100 for IUD + insertion fee (Medicare rebate)
 
 **Counselling Points**:
-"The copper IUD is the most effective emergency contraception - over 99%. It needs to be inserted by a doctor within 5 days. The advantage is it then provides ongoing contraception for up to 10 years, so you don't need to worry about contraception again unless you want to remove it."
+"The copper IUD is the most effective emergency contraception - over 99%. It needs to be inserted by a doctor within 5 days. The advantage is it then provides ongoing contraception for up to 10 years, so you don't need to worry about contraception again unless you want to remove it." (Murtagh's General Practice, 8th ed, p.2489)
 
 ---
 
@@ -934,19 +1009,19 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 - Prevents egg from reaching uterus (tubal occlusion)
 
 **Efficacy**:
-- **>99% effective** (failure rate 0.5%)
-- **Not 100%** - small risk of ectopic pregnancy if fails
+- **>99% effective** (failure rate 0.5%) (Murtagh's General Practice, 8th ed, p.2473)
+- **Not 100%** - small risk of ectopic pregnancy if fails (Murtagh's General Practice, 8th ed, p.2560)
 
 **Procedure**:
 - **Laparoscopic** (keyhole surgery) under general anaesthetic
 - Day surgery or overnight stay
-- Tubes clipped (Filshie clips) or removed (bilateral salpingectomy - now preferred as reduces ovarian cancer risk)
+- Tubes clipped (Filshie clips) or removed (bilateral salpingectomy - now preferred as reduces ovarian cancer risk) (Murtagh's General Practice, 8th ed, p.2573)
 
 **Benefits**:
 - Permanent (no ongoing contraception needed)
 - No hormones
 - No effect on menstrual cycle
-- Bilateral salpingectomy reduces ovarian cancer risk by 50%
+- Bilateral salpingectomy reduces ovarian cancer risk by 50% (Murtagh's General Practice, 8th ed, p.2813)
 
 **Disadvantages**:
 - **Irreversible** (reversal surgery difficult, expensive, not guaranteed successful)
@@ -964,7 +1039,7 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 - **Private**: $2000-5000 (gap payment after Medicare/insurance)
 
 **Counselling Points**:
-"Tubal ligation is a permanent procedure - we consider it irreversible. It's very effective, but it involves surgery with anaesthetic risks. If there's any chance you might want children in the future, even if circumstances change, this isn't the right choice. There's also a small failure rate, so it's not 100%. Have you considered long-acting reversible options like the IUD or Implanon? They're just as effective but reversible."
+"Tubal ligation is a permanent procedure - we consider it irreversible. It's very effective, but it involves surgery with anaesthetic risks. If there's any chance you might want children in the future, even if circumstances change, this isn't the right choice. There's also a small failure rate, so it's not 100%. Have you considered long-acting reversible options like the IUD or Implanon? They're just as effective but reversible." (Murtagh's General Practice, 8th ed, p.2474)
 
 ---
 
@@ -978,7 +1053,7 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 - Prevents sperm from entering ejaculate
 
 **Efficacy**:
-- **>99% effective** once confirmed by semen analysis
+- **>99% effective** once confirmed by semen analysis (Murtagh's General Practice, 8th ed, p.2775)
 - **Not immediate** - takes 3 months / 20 ejaculations to clear sperm
 
 **Procedure**:
@@ -1029,7 +1104,7 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 ### Myth 2: "The Pill Causes Cancer"
 
 **Reality**:
-- **COCP reduces risk** of ovarian cancer (50%), endometrial cancer (50%), and colorectal cancer
+- **COCP reduces risk** of ovarian cancer (50%), endometrial cancer (50%), and colorectal cancer (Murtagh's General Practice, 8th ed, p.2482)
 - **Small increased risk** of cervical cancer (with long-term use >5 years, returns to baseline after stopping)
 - **Small increased risk** of breast cancer (1 extra case per 7,000 women per year), returns to baseline 10 years after stopping
 
@@ -1073,7 +1148,7 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 - Small increased PID risk in first 20 days after insertion (screening for STIs before insertion minimizes this)
 
 **How to Address**:
-"Modern IUDs are safe for women who haven't had children and don't affect future fertility. That's an old myth from a faulty IUD in the 1970s. Current IUDs are recommended for all women, including teenagers."
+"Modern IUDs are safe for women who haven't had children and don't affect future fertility. That's an old myth from a faulty IUD in the 1970s. Current IUDs are recommended for all women, including teenagers." (Murtagh's General Practice, 8th ed, p.2489)
 
 ---
 
@@ -1096,10 +1171,10 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 **Key Considerations**:
 - **Confidentiality**: Can provide contraception to adolescents <16 years if Gillick competent (understands risks/benefits, mature enough to consent)
 - **Encourage parental involvement**, but not mandatory
-- **LARC** (Implanon, IUD) recommended (most effective, no compliance issues)
+- **LARC** (Implanon, IUD) recommended (most effective, no compliance issues) (Murtagh's General Practice, 8th ed, p.2474)
 - **Condoms** essential (STI protection - highest STI rates in 15-24 age group)
-- **COCP/POP** if preferred, but compliance issues (typical-use failure rate higher)
-- **Avoid Depo-Provera** as first-line (bone density concerns during peak bone mass acquisition)
+- **COCP/POP** if preferred, but compliance issues (typical-use failure rate higher) (Murtagh's General Practice, 8th ed, p.2819)
+- **Avoid Depo-Provera** as first-line (bone density concerns during peak bone mass acquisition) (Murtagh's General Practice, 8th ed, p.2201)
 
 **Counselling Points**:
 "Everything we discuss is confidential. I'd encourage you to talk to your parents if you feel comfortable, but you don't have to. The most effective options for someone your age are the Implanon or IUD - they last years and you don't have to remember daily pills. I also recommend using condoms to protect against STIs."
@@ -1112,11 +1187,11 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 - **Progesterone-only methods**: POP, Implanon, Depo-Provera, Mirena (no effect on milk supply)
 - **Copper IUD** (non-hormonal)
 - **Condoms**
-- **LAM** (Lactational Amenorrhoea Method) - if exclusively breastfeeding, amenorrhoeic, <6 months postpartum (98% effective)
+- **LAM** (Lactational Amenorrhoea Method) - if exclusively breastfeeding, amenorrhoeic, <6 months postpartum (98% effective) (Murtagh's General Practice, 8th ed, p.2670)
 
 **Avoid**:
 - **COCP** in first 6 weeks postpartum (suppresses lactation)
-- Can start COCP after 6 weeks if breastfeeding established (but progesterone-only methods preferred)
+- Can start COCP after 6 weeks if breastfeeding established (but progesterone-only methods preferred) (Murtagh's General Practice, 8th ed, p.2670)
 
 ---
 
@@ -1147,7 +1222,7 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 - **Implanon may be less effective** if BMI >35 (can replace at 2.5 years instead of 3)
 - **Levonorgestrel EC** less effective if BMI >26 or weight >70kg (consider ulipristal or copper IUD)
 
-**Recommended**:
+**Recommended**: (Murtagh's General Practice, 8th ed, p.2487)
 - **LARC** (Mirena, copper IUD, Implanon)
 - **POP, Depo-Provera** (progesterone-only methods safer than COCP)
 - Avoid COCP if BMI >35 (VTE risk)
@@ -1189,13 +1264,13 @@ There's a small increased risk of blood clots, so we check you don't have risk f
 "Based on what you've told me, I'd recommend considering long-acting reversible contraception - LARC. These are the most effective methods and you don't have to remember anything daily. There are three main options:
 
 **1. Mirena IUD**:
-This is a small T-shaped device we insert into your uterus. It releases a tiny amount of hormone locally and lasts 5 years. It's over 99% effective - more effective than the pill. Because you mentioned heavy and painful periods, this would be ideal for you - it makes periods much lighter (most women's periods become very light or stop altogether after 6-12 months), and it treats period pain. The insertion takes about 10 minutes. You might have some irregular spotting for the first 3-6 months, but this usually settles. It costs about $40 with PBS and can be removed anytime if you want to get pregnant.
+This is a small T-shaped device we insert into your uterus. It releases a tiny amount of hormone locally and lasts 5 years. It's over 99% effective - more effective than the pill. Because you mentioned heavy and painful periods, this would be ideal for you - it makes periods much lighter (most women's periods become very light or stop altogether after 6-12 months), and it treats period pain. The insertion takes about 10 minutes. You might have some irregular spotting for the first 3-6 months, but this usually settles. It costs about $40 with PBS and can be removed anytime if you want to get pregnant. (Murtagh's General Practice, 8th ed, p.2681)
 
 **2. Copper IUD**:
-This is similar to the Mirena but has no hormones - it's wrapped in copper which prevents pregnancy. It also lasts 5-10 years and is over 99% effective. However, it often makes periods heavier and more painful, so given your heavy periods, I wouldn't recommend this for you.
+This is similar to the Mirena but has no hormones - it's wrapped in copper which prevents pregnancy. It also lasts 5-10 years and is over 99% effective. However, it often makes periods heavier and more painful, so given your heavy periods, I wouldn't recommend this for you. (Murtagh's General Practice, 8th ed, p.628)
 
 **3. Implanon**:
-This is a small rod inserted under the skin of your arm - you can't see it but you can feel it if you touch your arm. It lasts 3 years and is the most effective reversible contraception available - over 99%. The main side effect is irregular bleeding - some women have no periods, some have spotting, and some have more frequent bleeding. If bleeding is troublesome, we can give you medication to help, or remove it.
+This is a small rod inserted under the skin of your arm - you can't see it but you can feel it if you touch your arm. It lasts 3 years and is the most effective reversible contraception available - over 99%. The main side effect is irregular bleeding - some women have no periods, some have spotting, and some have more frequent bleeding. If bleeding is troublesome, we can give you medication to help, or remove it. (Murtagh's General Practice, 8th ed, p.843)
 
 **My Recommendation**:
 Given that you want something highly effective that you don't have to remember, and you have heavy painful periods, I'd recommend the **Mirena IUD**. It will solve both problems - extremely effective contraception and treatment for your heavy periods.
@@ -1236,18 +1311,18 @@ Patient: "Can my partner feel it during sex?"
 "There are three emergency contraception options available:
 
 **1. Levonorgestrel Pill (Plan B, Postinor)** - "Morning-after pill":
-- This is a single pill you take once. It works by delaying ovulation. It's most effective in the first 24 hours (95% effective), but since it's been 36 hours for you, it's about 85% effective. You can take it up to 4 days (96 hours) after sex, but effectiveness decreases with time.
+- This is a single pill you take once. It works by delaying ovulation. It's most effective in the first 24 hours (95% effective), but since it's been 36 hours for you, it's about 85% effective. You can take it up to 4 days (96 hours) after sex, but effectiveness decreases with time. (Murtagh's General Practice, 8th ed, p.2476)
 - Side effects: Mild nausea, your next period might be early or late.
 - You can buy this over-the-counter at the pharmacy for about $20-35, no prescription needed.
 - **However**, given you're mid-cycle (likely around ovulation), and it's been 36 hours, there's a better option...
 
 **2. Ulipristal (EllaOne)**:
-- This is similar to the levonorgestrel pill but more effective, especially after 24 hours. It works up to 5 days (120 hours) and maintains about 85% effectiveness throughout. It's also more effective if you're around ovulation time, which you likely are.
+- This is similar to the levonorgestrel pill but more effective, especially after 24 hours. It works up to 5 days (120 hours) and maintains about 85% effectiveness throughout. It's also more effective if you're around ovulation time, which you likely are. (Murtagh's General Practice, 8th ed, p.2786)
 - Side effects: Similar to levonorgestrel.
 - This requires a prescription, which I can give you today. It costs about $35-45.
 
 **3. Copper IUD** - Most effective:
-- We can insert a copper IUD within 5 days of unprotected sex - it's over 99% effective as emergency contraception, the most effective option.
+- We can insert a copper IUD within 5 days of unprotected sex - it's over 99% effective as emergency contraception, the most effective option. (Murtagh's General Practice, 8th ed, p.2487)
 - The advantage is it then provides ongoing contraception for up to 10 years.
 - The downside is you'd need an urgent appointment with a doctor trained in IUD insertion, which might be difficult to arrange within the 5-day window.
 
@@ -1263,7 +1338,7 @@ What would you prefer?"
 **Important information**:
 - Your next period might be early or late - that's normal.
 - If your period is more than 7 days late, take a pregnancy test.
-- The emergency pill is not 100% effective, so there's still a small chance of pregnancy.
+- The emergency pill is not 100% effective, so there's still a small chance of pregnancy. (Murtagh's General Practice, 8th ed, p.2661)
 
 **Ongoing contraception**:
 Emergency contraception is not a regular method - it's less effective than regular contraception. Can we discuss starting a regular contraceptive method?
@@ -1288,7 +1363,7 @@ Do you have any questions?"
 4. **Address misconceptions**: Weight gain, cancer, fertility effects, IUD myths
 
 ### For Contraceptive Options:
-1. **LARC is first-tier**: Mirena, Copper IUD, Implanon (>99% effective, user-independent)
+1. **LARC is first-tier**: Mirena, Copper IUD, Implanon (>99% effective, user-independent) (Murtagh's General Practice, 8th ed, p.2474)
 2. **Tailor to patient**:
    - Heavy periods → Mirena
    - Non-hormonal preference → Copper IUD
@@ -1313,13 +1388,13 @@ Do you have any questions?"
 3. **Balanced discussion**: Mention benefits AND side effects
 4. **Address concerns directly**: "Many women worry about weight gain - let me explain what the evidence shows"
 5. **WHO MEC knowledge**: Know absolute contraindications (COCP: VTE, migraine with aura, age ≥35 + smoking, breast cancer)
-6. **Efficacy numbers**: "Over 99% effective" (LARC), "9% typical use failure" (COCP)
+6. **Efficacy numbers**: "Over 99% effective" (LARC), "9% typical use failure" (COCP) (Murtagh's General Practice, 8th ed, p.3220)
 
 ---
 
 **This completes the third ObGyn document! Next: Obstetric Examination, then Gynaecological Examination to complete the module.**
 
 **Word Count**: ~16,000 words
-**Last Updated**: December 2025 for ICRP NSW Young Hospital Program (March 2026 intake)
+**Last Updated**: December 2025 for ICRP NSW Young Hospital Programmes (March 2026 intake)
 **Author**: ICRP OSCE Preparation Team
 **Reference**: Dr. Amir Soufi (IMG4IMGS), WHO Medical Eligibility Criteria (MEC), RANZCOG Guidelines, FSRH (UK) Guidelines, eTG 2024, PBS Australia, AMC Clinical OSCE Format

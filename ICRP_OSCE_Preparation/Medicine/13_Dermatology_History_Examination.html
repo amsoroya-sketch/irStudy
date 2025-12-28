@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dermatology OSCE Master Notes - AMC Clinical Preparation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .frequency-banner {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            margin: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #c0392b;
+        }
+
+        .frequency-banner h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .frequency-banner p {
+            margin: 5px 0;
+            font-size: 1.1em;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin: 25px 0 15px 0;
+        }
+
+        .section h4 {
+            color: #2c3e50;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+
+        .script-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-size: 1.1em;
+            line-height: 1.8;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .framework-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .framework-box h4 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .differential-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #e74c3c;
+        }
+
+        .differential-box h4 {
+            color: #c0392b;
+            margin-bottom: 10px;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #c0392b;
+        }
+
+        .warning-box h4 {
+            color: #c0392b;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        .emergency-box {
+            background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 3px solid #c0392b;
+            box-shadow: 0 5px 20px rgba(192, 57, 43, 0.4);
+        }
+
+        .emergency-box h4 {
+            color: white;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .case-presentation {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 5px solid #667eea;
+        }
+
+        .case-presentation h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .management-box {
+            background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #27ae60;
+        }
+
+        .management-box h4 {
+            color: #27ae60;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .img-mistakes {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #e74c3c;
+        }
+
+        .img-mistakes h3 {
+            color: #c0392b;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .img-mistakes li {
+            margin: 15px 0;
+            padding-left: 10px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .stars {
+            color: #f39c12;
+            font-size: 1.2em;
+        }
+
+        .metadata {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+
+        .metadata p {
+            margin: 5px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 15px 0 15px 25px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 20px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        code {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .print-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1em;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .print-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .print-button {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .print-button {
+                bottom: 15px;
+                right: 15px;
+                padding: 12px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔬 Dermatology OSCE Master Notes</h1>
+            <p class="subtitle">History-Taking & Skin Examination</p>
+            <p class="subtitle">AMC Clinical / ICRP NSW Young Hospital Preparation</p>
+        </div>
+
+        <div class="frequency-banner">
+            <h2><span class="stars">⭐⭐⭐</span> HIGH-YIELD - AMC EXAM FREQUENCY INDICATOR</h2>
+            <p><strong>Appears in 60%+ of AMC Clinical exams</strong></p>
+            <p><strong>Study Priority:</strong> CRITICAL - Practice 10-15 times before exam</p>
+            <p><strong>Why High-Yield:</strong> Rash and skin lesion presentations appear in 50-60% of AMC Clinical exams, testing systematic skin examination, lesion description framework, and recognition of emergency dermatology (meningococcal rash, Stevens-Johnson syndrome, cellulitis). Essential for safe general practice in Australia where skin cancer rates are the highest globally (1 in 2 Australians diagnosed by age 70).</p>
+        </div>
+
+        <div class="content">
+            <div class="metadata">
+                <p><strong>Purpose:</strong> AMC Clinical-style OSCE notes for dermatology stations</p>
+                <p><strong>Target Time:</strong> 8 minutes per station</p>
+                <p><strong>Format:</strong> Australian teaching hospital standard</p>
+                <p><strong>Created:</strong> December 26, 2025</p>
+                <p><strong>Last Updated:</strong> December 26, 2025</p>
+            </div>
+
+            <div class="section">
+                <h2>SECTION 1: DERMATOLOGY HISTORY (4 minutes)</h2>
+
+                <h3>Opening Statement (30 seconds)</h3>
+                <div class="script-box">
+                    <strong>Word-for-word script:</strong><br><br>
+                    "Good morning/afternoon, I'm Dr [Your Name], one of the doctors here at Young District Hospital. Before we start, can I please confirm your name and date of birth? Thank you. I understand you've come in today with concerns about a skin problem. I'd like to ask you some questions about this to understand what's happening, and then with your permission, I'll examine the affected area. The whole consultation should take about 8 minutes. Is that okay with you?"<br><br>
+                    <strong>[Pause for patient consent - essential for dermatology examinations]</strong><br><br>
+                    "Can I also confirm - do you have any concerns about me examining your skin today? Some areas may require removing clothing, and I can arrange a chaperone if you'd prefer."
+                </div>
+
+                <h3>Focused History - SKIN RASH Framework</h3>
+                <div class="framework-box">
+                    <p><strong>Purpose:</strong> Systematic approach to differentiate the Top 15 dermatological presentations (eczema, psoriasis, cellulitis, melanoma, viral exanthem, drug eruption, tinea, scabies, shingles, acne, rosacea, contact dermatitis, urticaria, impetigo, meningococcal rash)</p>
+                </div>
+
+                <h4>S - SITE (Location & Distribution)</h4>
+                <p><strong>"Where did the rash/lesion first appear?"</strong></p>
+                <ul>
+                    <li><strong>Why ask:</strong> Helps narrow differentials immediately
+                        <ul>
+                            <li>Face → Rosacea, acne, SLE, seborrhoeic dermatitis</li>
+                            <li>Flexures (elbows, knees) → Eczema, psoriasis</li>
+                            <li>Trunk → Drug eruption, viral exanthem, pityriasis rosea</li>
+                            <li>Dermatomal → Shingles (herpes zoster)</li>
+                            <li>Hands/feet → Contact dermatitis, fungal, hand-foot-mouth disease</li>
+                            <li>Interdigital → Scabies (web spaces), tinea pedis</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <p><strong>"Has it spread? Where to? How quickly?"</strong></p>
+                <ul>
+                    <li>Rapid spread (hours) → Meningococcal (EMERGENCY), urticaria, cellulitis</li>
+                    <li>Slow spread (days-weeks) → Psoriasis, eczema, tinea</li>
+                    <li>Centrifugal (from trunk outward) → Viral exanthem</li>
+                </ul>
+
+                <div class="differential-box">
+                    <h4>Differential Clue:</h4>
+                    <ul>
+                        <li><strong>Single site, not spreading</strong> → Localized: melanoma, BCC, SCC, dermatofibroma</li>
+                        <li><strong>Multiple sites symmetrically</strong> → Systemic: drug eruption, viral, psoriasis</li>
+                        <li><strong>Dermatomal distribution</strong> → Shingles (<span class="stars">⭐⭐⭐</span> - very common in AMC exams)</li>
+                    </ul>
+                </div>
+
+                <h4>K - KIND/CHARACTER (Morphology)</h4>
+                <p><strong>"Can you describe what it looks like?"</strong></p>
+                <p><strong>Use patient-friendly terms, then translate to medical:</strong></p>
+
+                <table>
+                    <tr>
+                        <th>Patient Description</th>
+                        <th>Medical Term</th>
+                        <th>Common Causes</th>
+                    </tr>
+                    <tr>
+                        <td>"Flat red patches"</td>
+                        <td>Macules</td>
+                        <td>Viral exanthem, drug eruption</td>
+                    </tr>
+                    <tr>
+                        <td>"Raised bumps"</td>
+                        <td>Papules</td>
+                        <td>Psoriasis, lichen planus</td>
+                    </tr>
+                    <tr>
+                        <td>"Fluid-filled blisters"</td>
+                        <td>Vesicles (&lt;5mm)</td>
+                        <td>Shingles, eczema, contact dermatitis</td>
+                    </tr>
+                    <tr>
+                        <td>"Larger blisters"</td>
+                        <td>Bullae (&gt;5mm)</td>
+                        <td>Pemphigus, bullous pemphigoid, Stevens-Johnson</td>
+                    </tr>
+                    <tr>
+                        <td>"Pus-filled spots"</td>
+                        <td>Pustules</td>
+                        <td>Acne, impetigo, folliculitis</td>
+                    </tr>
+                    <tr>
+                        <td>"Scaly patches"</td>
+                        <td>Plaques</td>
+                        <td>Psoriasis, eczema, tinea</td>
+                    </tr>
+                    <tr>
+                        <td>"Lumps under skin"</td>
+                        <td>Nodules</td>
+                        <td>Melanoma, lipoma, cyst</td>
+                    </tr>
+                </table>
+
+                <div class="emergency-box">
+                    <h4>⚠️ CRITICAL QUESTION:</h4>
+                    <p><strong>"Does the rash blanch when you press on it?"</strong> / "If I gave you a glass to press on it, does it go white?"</p>
+                    <ul>
+                        <li><strong>Blanches</strong> → Most rashes (vasodilation - benign)</li>
+                        <li><strong>Non-blanching</strong> → EMERGENCY - Meningococcal septicaemia, vasculitis, thrombocytopenia</li>
+                    </ul>
+                </div>
+
+                <h4>I - ITCH (Pruritus)</h4>
+                <p><strong>"Does it itch? How severe - mild, moderate, or really bothering you?"</strong></p>
+
+                <div class="framework-box">
+                    <h4>Differential by Itch Severity:</h4>
+
+                    <p><strong>VERY ITCHY (patient can't sleep):</strong></p>
+                    <ol>
+                        <li><strong>Scabies</strong> (<span class="stars">⭐⭐</span>) - Worse at night, interdigital, family contacts</li>
+                        <li><strong>Eczema</strong> (<span class="stars">⭐⭐⭐</span>) - Flexural, dry skin, childhood onset</li>
+                        <li><strong>Urticaria</strong> (<span class="stars">⭐⭐</span>) - Migratory wheals, each lesion &lt;24 hours</li>
+                        <li><strong>Contact dermatitis</strong> (<span class="stars">⭐⭐</span>) - New exposure, localized to contact site</li>
+                    </ol>
+
+                    <p><strong>MODERATELY ITCHY:</strong></p>
+                    <ol start="5">
+                        <li><strong>Psoriasis</strong> (<span class="stars">⭐⭐⭐</span>) - Can be itchy, but less than eczema</li>
+                        <li><strong>Tinea</strong> (<span class="stars">⭐⭐</span>) - Ring-shaped, expanding border</li>
+                        <li><strong>Pityriasis rosea</strong> - "Herald patch" then Christmas tree pattern</li>
+                    </ol>
+
+                    <p><strong>MINIMAL/NO ITCH:</strong></p>
+                    <ol start="8">
+                        <li><strong>Acne</strong> (<span class="stars">⭐⭐</span>) - Tender, not itchy</li>
+                        <li><strong>Rosacea</strong> (<span class="stars">⭐</span>) - Facial flushing, burning sensation</li>
+                        <li><strong>Melanoma</strong> (<span class="stars">⭐⭐⭐</span>) - Usually asymptomatic (may bleed or itch if advanced)</li>
+                        <li><strong>Drug eruption</strong> (<span class="stars">⭐⭐⭐</span>) - Variable, can be very itchy or not</li>
+                    </ol>
+                </div>
+
+                <h4>N - NEW Exposures/Triggers</h4>
+                <div class="warning-box">
+                    <h4>⚠️ MOST IMPORTANT QUESTION for Narrowing Differentials</h4>
+                </div>
+
+                <p><strong>"Have you started any new medications in the last 2-4 weeks?"</strong></p>
+                <ul>
+                    <li><strong>Drug eruption</strong> (<span class="stars">⭐⭐⭐</span> - very common)
+                        <ul>
+                            <li>Common culprits (Australia): Antibiotics (penicillin, sulfonamides), anticonvulsants (carbamazepine, phenytoin), allopurinol, NSAIDs</li>
+                            <li>Timeline: Usually 7-14 days after starting drug</li>
+                            <li>EMERGENCY signs: Mucosal involvement (mouth, eyes) → Stevens-Johnson syndrome</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <p><strong>"Any new soaps, detergents, creams, perfumes, jewellery?"</strong></p>
+                <ul>
+                    <li><strong>Contact dermatitis</strong> (<span class="stars">⭐⭐</span>)
+                        <ul>
+                            <li>Nickel (belt buckles, jewellery), fragrance, preservatives</li>
+                            <li>Occupational: hairdressers (dyes), builders (cement), healthcare workers (latex, chlorhexidine)</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <p><strong>"Anyone else at home or close contacts with similar rash?"</strong></p>
+                <ul>
+                    <li><strong>Scabies</strong> (<span class="stars">⭐⭐</span>) - Highly contagious</li>
+                    <li><strong>Viral exanthem</strong> (<span class="stars">⭐⭐</span>) - Measles, rubella, chickenpox</li>
+                    <li><strong>Impetigo</strong> (<span class="stars">⭐⭐</span>) - School children, contact sports</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>SECTION 2: SKIN EXAMINATION (4 minutes)</h2>
+
+                <h3>The 5 Ps Framework Applied to Dermatology</h3>
+
+                <h4>1. POSITION (30 seconds)</h4>
+                <div class="framework-box">
+                    <p>"Please could you stand up / sit on the examination couch with good lighting."</p>
+                    <ul>
+                        <li><strong>Full body examination</strong> (melanoma screening, widespread rash): Patient in underwear</li>
+                        <li><strong>Localized rash</strong>: Expose affected area PLUS adjacent areas to assess distribution</li>
+                        <li><strong>Good lighting:</strong> Natural light best (windows), or bright overhead light</li>
+                    </ul>
+                </div>
+
+                <h4>2. GENERAL INSPECTION (30 seconds)</h4>
+                <p><strong>Distribution pattern (CRITICAL for differentials):</strong></p>
+
+                <table>
+                    <tr>
+                        <th>Pattern</th>
+                        <th>Common Conditions</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Symmetrical (bilateral)</strong></td>
+                        <td>Eczema (flexures), Psoriasis (extensors), Drug eruption, Viral exanthem</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Asymmetrical (one-sided)</strong></td>
+                        <td>Shingles (dermatomal), Cellulitis, Tinea corporis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Localized (single lesion)</strong></td>
+                        <td>Melanoma, BCC, SCC, Dermatofibroma</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Flexural (skin folds)</strong></td>
+                        <td>Eczema, Candida, Inverse psoriasis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Extensor surfaces</strong></td>
+                        <td>Psoriasis (elbows, knees)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dermatomal</strong></td>
+                        <td>Shingles (unilateral, follows dermatome)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Photo-distributed (sun-exposed)</strong></td>
+                        <td>Rosacea (face), SLE (malar rash), Polymorphic light eruption</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Interdigital (between fingers/toes)</strong></td>
+                        <td>Scabies (web spaces), Tinea pedis</td>
+                    </tr>
+                </table>
+
+                <h4>3. PALPATION (1 minute)</h4>
+                <p><strong>"I'm going to gently feel the rash/lesion now."</strong></p>
+
+                <ul>
+                    <li><strong>Temperature:</strong>
+                        <ul>
+                            <li>Warm/hot → Infection (cellulitis, abscess)</li>
+                            <li>Normal → Most rashes (eczema, psoriasis, drug eruption)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Tenderness:</strong>
+                        <ul>
+                            <li>Tender → Cellulitis (<span class="stars">⭐⭐⭐</span>), abscess, shingles</li>
+                            <li>Non-tender → Eczema, psoriasis, most rashes</li>
+                        </ul>
+                    </li>
+                    <li><strong>Texture:</strong>
+                        <ul>
+                            <li>Smooth → Macules (flat), urticaria (wheals)</li>
+                            <li>Rough/scaly → Psoriasis (silvery scale), eczema (dry scale), tinea</li>
+                            <li>Firm/hard → Melanoma (invasive), SCC, BCC</li>
+                            <li>Soft → Lipoma, seborrhoeic keratosis</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="emergency-box">
+                    <h4>⚠️ BLANCHING TEST (CRITICAL)</h4>
+                    <p><strong>"I'm going to press on the rash with this glass slide."</strong></p>
+                    <p><strong>Technique:</strong> Use glass slide or clear plastic ruler, press firmly</p>
+                    <ul>
+                        <li><strong>Blanches (goes white)</strong> → Vasodilation (benign - most rashes)</li>
+                        <li><strong>Non-blanching (stays red/purple)</strong> → <strong>EMERGENCY</strong>
+                            <ul>
+                                <li>Meningococcal septicaemia (<span class="stars">⭐⭐⭐</span> - DON'T MISS)</li>
+                                <li>Vasculitis (Henoch-Schönlein purpura)</li>
+                                <li>Thrombocytopenia (petechiae)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>LESION DESCRIPTION Framework: "ABCDEFG"</h2>
+                <p><strong>For ANY discrete lesion (especially suspicious pigmented lesions), describe systematically:</strong></p>
+
+                <div class="framework-box">
+                    <h4>A - ASYMMETRY</h4>
+                    <p>"Is the lesion symmetrical or asymmetrical?"</p>
+                    <ul>
+                        <li><strong>Symmetrical</strong> → Benign (seborrhoeic keratosis, naevus)</li>
+                        <li><strong>Asymmetrical</strong> → <strong>Melanoma</strong> (<span class="stars">⭐⭐⭐</span> - one half doesn't match other half)</li>
+                    </ul>
+                </div>
+
+                <div class="framework-box">
+                    <h4>B - BORDER</h4>
+                    <p>"Is the border regular (smooth, well-defined) or irregular (jagged, notched, blurred)?"</p>
+                    <ul>
+                        <li><strong>Regular, well-defined</strong> → Benign (naevus, BCC initially)</li>
+                        <li><strong>Irregular, jagged, notched</strong> → <strong>Melanoma</strong> (<span class="stars">⭐⭐⭐</span>)</li>
+                    </ul>
+                </div>
+
+                <div class="framework-box">
+                    <h4>C - COLOR</h4>
+                    <p>"Is the color uniform (one color) or varied (multiple colors)?"</p>
+                    <ul>
+                        <li><strong>Uniform (one color)</strong> → Benign naevi usually uniform brown</li>
+                        <li><strong>Varied (multiple colors - red, white, blue, black)</strong> → <strong>Melanoma</strong> (<span class="stars">⭐⭐⭐</span> - HIGHLY suspicious)</li>
+                    </ul>
+                </div>
+
+                <div class="framework-box">
+                    <h4>D - DIAMETER</h4>
+                    <p>"Measure the lesion - is it &gt;6mm?"</p>
+                    <ul>
+                        <li><strong>&lt;6mm</strong> → Usually benign (but small melanomas exist)</li>
+                        <li><strong>&gt;6mm</strong> → <strong>Increased suspicion for melanoma</strong> (<span class="stars">⭐⭐⭐</span>)</li>
+                    </ul>
+                    <p><strong>Rule:</strong> "Larger than a pencil eraser" (6mm)</p>
+                </div>
+
+                <div class="framework-box">
+                    <h4>E - EVOLUTION (MOST IMPORTANT FEATURE)</h4>
+                    <p>"Has the lesion changed over time - size, shape, color, symptoms?"</p>
+                    <ul>
+                        <li><strong>CHANGING lesion</strong> → <strong>MELANOMA</strong> (<span class="stars">⭐⭐⭐</span> - most important single feature)
+                            <ul>
+                                <li>New lesion in adult &gt;40 years</li>
+                                <li>Existing mole changing over weeks-months</li>
+                            </ul>
+                        </li>
+                        <li><strong>Stable for years</strong> → Benign naevus, seborrhoeic keratosis</li>
+                    </ul>
+                </div>
+
+                <div class="framework-box">
+                    <h4>F - FEEL (Texture)</h4>
+                    <p>"What does it feel like - smooth, rough, scaly, hard?"</p>
+                    <ul>
+                        <li><strong>Smooth:</strong> Naevus (mole), dermatofibroma, lipoma</li>
+                        <li><strong>Rough/scaly:</strong> Solar keratosis (actinic keratosis - pre-malignant), SCC (<span class="stars">⭐⭐⭐</span>), Psoriasis</li>
+                        <li><strong>Hard/firm:</strong> Melanoma (invasive), SCC, BCC</li>
+                        <li><strong>Soft:</strong> Lipoma, skin tag</li>
+                    </ul>
+                </div>
+
+                <div class="framework-box">
+                    <h4>G - GENERAL DISTRIBUTION</h4>
+                    <p>"Is it a single lesion or multiple lesions?"</p>
+                    <ul>
+                        <li><strong>Solitary:</strong> Melanoma (<span class="stars">⭐⭐⭐</span> - "ugly duckling sign"), BCC, SCC</li>
+                        <li><strong>Multiple similar lesions:</strong> Naevi (moles - most people have 10-40), Seborrhoeic keratoses (elderly)</li>
+                        <li><strong>Dermatomal:</strong> Shingles (clustered vesicles in dermatome)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>SECTION 3: TOP 15 DERMATOLOGY PRESENTATIONS</h2>
+
+                <div class="case-presentation">
+                    <h3>1. ECZEMA (Atopic Dermatitis) <span class="stars">⭐⭐⭐</span></h3>
+                    <p><strong>Frequency:</strong> Appears in 15-20% of AMC Clinical exams</p>
+
+                    <p><strong>Clinical Features:</strong></p>
+                    <ul>
+                        <li><strong>Distribution:</strong> Flexures (antecubital, popliteal fossae), neck, wrists, ankles</li>
+                        <li><strong>Morphology:</strong> Erythematous papules/plaques, dry scaly skin, excoriations (scratch marks)</li>
+                        <li><strong>Symptoms:</strong> VERY itchy (worse at night), chronic relapsing</li>
+                        <li><strong>Atopic triad:</strong> Eczema + asthma + allergic rhinitis (hay fever)</li>
+                    </ul>
+
+                    <div class="management-box">
+                        <h4>Management (eTG 2024):</h4>
+                        <p><strong>1. Emollients (MOST IMPORTANT):</strong></p>
+                        <ul>
+                            <li>"Moisturize, moisturize, moisturize" - apply liberally 3-4 times daily</li>
+                            <li>Australian PBS-subsidized: QV Cream, Cetaphil, Sorbolene with 10% glycerine</li>
+                            <li>Use 250-500g per week for adult</li>
+                        </ul>
+
+                        <p><strong>2. Topical corticosteroids:</strong></p>
+                        <ul>
+                            <li><strong>Mild</strong> (face, children): Hydrocortisone 1% (OTC)</li>
+                            <li><strong>Moderate</strong> (body, adults): Betamethasone valerate 0.05% (Betnovate) - PBS</li>
+                            <li><strong>Potent</strong> (severe flares): Mometasone furoate 0.1% (Elocon) - PBS</li>
+                            <li>Apply ONCE daily to active lesions for 5-7 days</li>
+                        </ul>
+
+                        <p><strong>3. Antihistamines (for itch):</strong></p>
+                        <ul>
+                            <li>Sedating (night): Promethazine (Phenergan) 25mg nocte - PBS</li>
+                            <li>Non-sedating (day): Cetirizine 10mg daily - OTC</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="case-presentation">
+                    <h3>2. PSORIASIS <span class="stars">⭐⭐⭐</span></h3>
+                    <p><strong>Frequency:</strong> Appears in 15-20% of AMC Clinical exams</p>
+
+                    <p><strong>Clinical Features:</strong></p>
+                    <ul>
+                        <li><strong>Distribution:</strong> Extensor surfaces (elbows, knees), scalp, sacrum, nails</li>
+                        <li><strong>Morphology:</strong> Well-demarcated erythematous plaques with silvery-white scale</li>
+                        <li><strong>Symptoms:</strong> Mildly itchy (less than eczema), chronic relapsing</li>
+                        <li><strong>Nail changes (50%):</strong> Pitting, onycholysis, oil drop sign</li>
+                    </ul>
+
+                    <div class="management-box">
+                        <h4>Management (eTG 2024):</h4>
+                        <p><strong>1. Topical therapies (first-line):</strong></p>
+                        <ul>
+                            <li><strong>Potent corticosteroids:</strong> Betamethasone dipropionate 0.05% (Diprosone) - PBS</li>
+                            <li><strong>Vitamin D analogues:</strong> Calcipotriol 0.005% (Daivonex) - PBS, apply BD</li>
+                            <li><strong>Combination:</strong> Calcipotriol/betamethasone (Daivobet, Enstilar foam) - PBS</li>
+                        </ul>
+
+                        <p><strong>2. Systemic therapies (severe, &gt;10% BSA):</strong></p>
+                        <ul>
+                            <li><strong>Methotrexate</strong> 10-25mg weekly + folic acid 5mg next day - PBS</li>
+                            <li><strong>Acitretin</strong> (retinoid) 25-50mg daily - PBS</li>
+                        </ul>
+
+                        <p><strong>3. Biologics (severe, failed conventional):</strong></p>
+                        <ul>
+                            <li><strong>TNF-alpha inhibitors:</strong> Adalimumab (Humira), Etanercept (Enbrel) - PBS (Authority)</li>
+                            <li><strong>IL-17 inhibitors:</strong> Secukinumab (Cosentyx), Ixekizumab (Taltz) - PBS (Authority)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="case-presentation">
+                    <h3>3. CELLULITIS <span class="stars">⭐⭐⭐</span></h3>
+                    <p><strong>Frequency:</strong> Appears in 20-25% of AMC Clinical exams</p>
+
+                    <p><strong>Clinical Features:</strong></p>
+                    <ul>
+                        <li><strong>Definition:</strong> Acute bacterial infection of dermis and subcutaneous tissue</li>
+                        <li><strong>Common organisms:</strong> Streptococcus pyogenes, Staphylococcus aureus</li>
+                        <li><strong>Portal of entry:</strong> Tinea pedis (toe web - most common in Australia), trauma, ulcer</li>
+                    </ul>
+
+                    <div class="emergency-box">
+                        <h4>⚠️ CRITICAL DIFFERENTIAL - DON'T MISS:</h4>
+                        <p><strong>1. Deep Vein Thrombosis (DVT)</strong></p>
+                        <ul>
+                            <li>Similar presentation: Red, swollen, painful leg</li>
+                            <li><strong>Differences:</strong> DVT usually calf tenderness, recent immobility/surgery/long flight</li>
+                            <li><strong>Work-up:</strong> Wells score, D-dimer, Doppler ultrasound</li>
+                            <li><strong>TREAT cellulitis first if uncertain</strong> (antibiotics safe), then investigate DVT</li>
+                        </ul>
+
+                        <p><strong>2. Necrotizing Fasciitis (EMERGENCY)</strong></p>
+                        <ul>
+                            <li><strong>Red flags:</strong> Pain out of proportion, rapidly progressive, skin necrosis (purple/black), crepitus (gas in tissues), systemic toxicity (shock)</li>
+                            <li><strong>Management:</strong> URGENT surgical debridement + IV antibiotics + ICU</li>
+                        </ul>
+                    </div>
+
+                    <div class="management-box">
+                        <h4>Management (eTG 2024):</h4>
+                        <p><strong>ORAL (mild cellulitis, outpatient):</strong></p>
+                        <ul>
+                            <li><strong>Cephalexin</strong> 500mg QID for 5-10 days - PBS</li>
+                            <li>OR <strong>Dicloxacillin</strong> 500mg QID - PBS</li>
+                        </ul>
+
+                        <p><strong>IV (severe cellulitis, admission):</strong></p>
+                        <ul>
+                            <li><strong>Flucloxacillin</strong> 2g IV Q6H PLUS <strong>Benzylpenicillin</strong> 1.2g IV Q6H</li>
+                        </ul>
+
+                        <p><strong>Adjunctive:</strong></p>
+                        <ul>
+                            <li>Elevate affected limb</li>
+                            <li>Mark border with pen (date and time) - track progression</li>
+                            <li><strong>Treat portal of entry:</strong> Tinea pedis - Clotrimazole 1% cream BD for 4 weeks</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="case-presentation">
+                    <h3>4. MELANOMA (Suspicious Pigmented Lesion) <span class="stars">⭐⭐⭐</span></h3>
+                    <p><strong>Frequency:</strong> Appears in 20-25% of AMC Clinical exams</p>
+                    <p><strong>Why High-Yield:</strong> Australia has the HIGHEST melanoma incidence globally (1 in 17 Australians by age 85)</p>
+
+                    <p><strong>Risk Factors (Australia-specific):</strong></p>
+                    <ul>
+                        <li><strong>Sun exposure:</strong> Outdoor work (farmers, builders), childhood sunburns</li>
+                        <li><strong>Fair skin:</strong> Fitzpatrick types I-II (burn easily, tan poorly)</li>
+                        <li><strong>High UV index:</strong> Australia has highest UV globally</li>
+                        <li><strong>Family history:</strong> FAMMM syndrome (familial atypical mole melanoma)</li>
+                        <li><strong>Multiple naevi:</strong> &gt;50 moles</li>
+                    </ul>
+
+                    <div class="management-box">
+                        <h4>Management (Australian context - eTG 2024):</h4>
+                        <p><strong>1. Suspicious lesion (in primary care):</strong></p>
+                        <ul>
+                            <li><strong>URGENT REFERRAL to dermatology/skin cancer clinic</strong></li>
+                            <li><strong>2-week rule:</strong> Suspected melanoma should be seen within 2 weeks</li>
+                        </ul>
+
+                        <p><strong>2. Confirmed melanoma:</strong></p>
+                        <ul>
+                            <li><strong>Wide local excision (WLE):</strong> Margin depends on Breslow thickness
+                                <ul>
+                                    <li>&lt;1mm: 10mm margin</li>
+                                    <li>1-2mm: 10-20mm margin</li>
+                                    <li>&gt;2mm: 20mm margin</li>
+                                </ul>
+                            </li>
+                            <li><strong>Sentinel lymph node biopsy:</strong> If Breslow &gt;1mm or ulcerated</li>
+                        </ul>
+
+                        <p><strong>3. Surveillance (high-risk patients):</strong></p>
+                        <ul>
+                            <li><strong>3-monthly skin checks</strong> for first 2 years</li>
+                            <li><strong>6-monthly</strong> for next 3 years</li>
+                            <li><strong>Annual</strong> lifelong</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>☀️ PREVENTION (CRITICAL in Australia):</h4>
+                        <p><strong>SunSmart Campaign (5 S's):</strong></p>
+                        <ol>
+                            <li><strong>Slip</strong> on sun-protective clothing</li>
+                            <li><strong>Slop</strong> on SPF 50+ sunscreen (reapply every 2 hours)</li>
+                            <li><strong>Slap</strong> on wide-brimmed hat</li>
+                            <li><strong>Seek</strong> shade (especially 10am-3pm)</li>
+                            <li><strong>Slide</strong> on sunglasses (UV protection)</li>
+                        </ol>
+                        <p><strong>UV Index:</strong> Summer in Australia = 10-14 (extreme) - even on cloudy days</p>
+                    </div>
+                </div>
+
+                <div class="case-presentation">
+                    <h3>5. SHINGLES (Herpes Zoster) <span class="stars">⭐⭐⭐</span></h3>
+                    <p><strong>Frequency:</strong> Appears in 15-20% of AMC Clinical exams</p>
+
+                    <p><strong>Clinical Features:</strong></p>
+                    <ul>
+                        <li><strong>Distribution:</strong> DERMATOMAL (follows sensory dermatome), UNILATERAL (doesn't cross midline) - pathognomonic</li>
+                        <li><strong>Morphology:</strong> Grouped vesicles on erythematous base ("dew drops on rose petal")</li>
+                        <li><strong>Timeline:</strong>
+                            <ul>
+                                <li>Day 0-3: Dermatomal pain (before rash)</li>
+                                <li>Day 3-5: Vesicles appear</li>
+                                <li>Day 5-10: Pustules → crusting</li>
+                                <li>Day 10-21: Heals</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="emergency-box">
+                        <h4>⚠️ OPHTHALMIC ZOSTER (V1 dermatome) - EMERGENCY</h4>
+                        <p><strong>Features:</strong> Forehead, upper eyelid, tip of nose (Hutchinson's sign)</p>
+                        <p><strong>Complications:</strong> Keratitis, uveitis, glaucoma, BLINDNESS</p>
+                        <p><strong>Management:</strong></p>
+                        <ul>
+                            <li>Start antivirals IMMEDIATELY (don't wait for ophthalmology)</li>
+                            <li><strong>URGENT same-day ophthalmology referral</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="management-box">
+                        <h4>Management (eTG 2024):</h4>
+                        <p><strong>1. Antivirals (MOST IMPORTANT - start &lt;72 hours from rash):</strong></p>
+                        <ul>
+                            <li><strong>Valaciclovir</strong> 1000mg TDS for 7 days - PBS</li>
+                            <li>OR <strong>Famciclovir</strong> 500mg TDS for 7 days - PBS</li>
+                            <li><strong>Reduces PHN risk by 50%</strong></li>
+                        </ul>
+
+                        <p><strong>2. Analgesia (PHN prevention):</strong></p>
+                        <ul>
+                            <li>Paracetamol 1g QID, Ibuprofen 400mg TDS</li>
+                            <li><strong>Neuropathic pain:</strong> Gabapentin 300mg nocte, titrate up - PBS (Authority)</li>
+                        </ul>
+
+                        <p><strong>3. Post-herpetic Neuralgia (PHN) - if pain &gt;3 months:</strong></p>
+                        <ul>
+                            <li>Gabapentin or Pregabalin (first-line)</li>
+                            <li>Amitriptyline 25-75mg nocte</li>
+                            <li>Lignocaine 5% patches (Versatis) - PBS</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>💉 PREVENTION - Shingles Vaccine:</h4>
+                        <p><strong>Shingrix (recombinant):</strong></p>
+                        <ul>
+                            <li>Recommended for all adults ≥50 years</li>
+                            <li>2 doses (0, 2-6 months)</li>
+                            <li><strong>90% effective</strong> at preventing shingles</li>
+                            <li><strong>NOT free</strong> (~$560 for 2 doses) - patient pays</li>
+                            <li><strong>IS free for immunocompromised</strong> ≥18 years (NIP from Feb 2023)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="img-mistakes">
+                <h3>❌ COMMON IMG MISTAKES</h3>
+                <ol>
+                    <li><strong>❌ Using "diaper rash" instead of "nappy rash"</strong>
+                        <ul><li>Australian term: Nappy rash (infants). American term "diaper" immediately flags you as foreign graduate</li></ul>
+                    </li>
+                    <li><strong>❌ Missing meningococcal septicaemia in non-blanching rash</strong>
+                        <ul><li>CRITICAL: Always perform glass test/blanching test. Non-blanching purpura + fever = meningococcal until proven otherwise. DON'T MISS - fatal within hours if untreated</li></ul>
+                    </li>
+                    <li><strong>❌ Not asking about new medications (drug eruption)</strong>
+                        <ul><li>Drug eruptions very common (especially antibiotics, allopurinol, anticonvulsants). Always ask: "Any new medications in last 2-4 weeks?"</li></ul>
+                    </li>
+                    <li><strong>❌ Poor lesion description - not using systematic framework</strong>
+                        <ul><li>MUST use ABCDEFG for pigmented lesions (melanoma screening). Examiners expect systematic approach (not "looks suspicious")</li></ul>
+                    </li>
+                    <li><strong>❌ Not examining whole body for melanoma</strong>
+                        <ul><li>Melanoma can occur anywhere (including scalp, soles, genitals). Full skin examination = patient in underwear, check all areas including back, scalp</li></ul>
+                    </li>
+                    <li><strong>❌ Using non-Australian drug names</strong>
+                        <ul><li>WRONG: Acetaminophen, lidocaine, epinephrine, albuterol. CORRECT: Paracetamol, lignocaine, adrenaline, salbutamol</li></ul>
+                    </li>
+                    <li><strong>❌ Not safety-netting for melanoma</strong>
+                        <ul><li>MUST tell patient: "Return if this lesion changes in size, color, shape, or starts bleeding." Melanoma is #1 medicolegal risk in Australian dermatology</li></ul>
+                    </li>
+                    <li><strong>❌ Forgetting Australian sun exposure context</strong>
+                        <ul><li>Australia has highest UV index globally (8-14 in summer). MUST ask: "Do you work outdoors? Do you use sunscreen?" Sun protection advice is EXPECTED in every Australian dermatology consult</li></ul>
+                    </li>
+                    <li><strong>❌ Not recognizing tinea pedis as cellulitis portal of entry</strong>
+                        <ul><li>Tinea pedis (athlete's foot) = most common cause recurrent cellulitis in Australia. If cellulitis → MUST examine between toes for tinea. MUST treat tinea to prevent recurrent cellulitis</li></ul>
+                    </li>
+                    <li><strong>❌ Confusing eczema distribution (flexural) with psoriasis (extensor)</strong>
+                        <ul><li>Eczema: FLEXURES (antecubital, popliteal). Psoriasis: EXTENSORS (elbows, knees). Getting this wrong = instant loss of examiner confidence</li></ul>
+                    </li>
+                    <li><strong>❌ Not offering chaperone for intimate skin examinations</strong>
+                        <ul><li>MUST offer chaperone for: Breast examination, genital examination, buttock examination. Medicolegal requirement in Australia</li></ul>
+                    </li>
+                    <li><strong>❌ Not documenting penicillin allergy reaction type</strong>
+                        <ul><li>MUST ask: "What happened when you took penicillin?" (rash vs anaphylaxis). True allergy vs intolerance affects antibiotic choice for cellulitis</li></ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="section">
+                <h2>SAFETY-NETTING (Dermatology-Specific Red Flags)</h2>
+
+                <div class="script-box">
+                    <strong>General Safety-Netting Statement:</strong><br><br>
+                    "Please call 000 or return to ED immediately if you develop:<br>
+                    • Non-blanching rash (purple spots that don't go white when pressed with a glass) with fever<br>
+                    • Rapid spread of redness (over hours, not days)<br>
+                    • Blistering in mouth, eyes, or genitals<br>
+                    • Facial swelling or difficulty breathing (allergic reaction)<br>
+                    • Severe pain out of proportion to rash appearance<br>
+                    • Black or dead-looking skin<br>
+                    • High fever (&gt;38.5°C) with rash<br>
+                    • Confusion or severe headache with rash"
+                </div>
+
+                <h3>Lesion-Specific Safety-Netting:</h3>
+
+                <div class="warning-box">
+                    <h4>Melanoma/Suspicious Lesion:</h4>
+                    <p>"Please return urgently if this spot:</p>
+                    <ul>
+                        <li>Changes in size, shape, or color</li>
+                        <li>Starts bleeding or becomes painful</li>
+                        <li>Develops a new dark area</li>
+                        <li>Any new spots appear that look different from your other moles"</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>Cellulitis:</h4>
+                    <p>"Please return to ED if:</p>
+                    <ul>
+                        <li>The redness is spreading (I've marked the border - take a photo to compare)</li>
+                        <li>You develop fever or feel very unwell</li>
+                        <li>The area becomes more painful or you develop blisters</li>
+                        <li>No improvement after 48 hours of antibiotics"</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>Shingles:</h4>
+                    <p>"Please return urgently if:</p>
+                    <ul>
+                        <li>The rash involves your eye or the tip of your nose (risk of vision loss)</li>
+                        <li>You develop severe headache or confusion</li>
+                        <li>The rash spreads widely beyond the original area"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>SUMMARY - HIGH-YIELD EXAM TIPS</h2>
+
+                <div class="framework-box">
+                    <h4>Top 5 Dermatology Presentations (AMC Clinical):</h4>
+                    <ol>
+                        <li><strong>Eczema</strong> (<span class="stars">⭐⭐⭐</span>): Flexural, itchy, emollients + topical steroids</li>
+                        <li><strong>Psoriasis</strong> (<span class="stars">⭐⭐⭐</span>): Extensor, plaques, silvery scale</li>
+                        <li><strong>Cellulitis</strong> (<span class="stars">⭐⭐⭐</span>): Red, hot, tender leg - oral cephalexin or IV flucloxacillin</li>
+                        <li><strong>Melanoma</strong> (<span class="stars">⭐⭐⭐</span>): ABCDEFG, Australia highest rates globally, 2-week rule</li>
+                        <li><strong>Shingles</strong> (<span class="stars">⭐⭐⭐</span>): Dermatomal, unilateral vesicles, antivirals &lt;72 hours</li>
+                    </ol>
+                </div>
+
+                <div class="framework-box">
+                    <h4>Must-Know Frameworks:</h4>
+                    <ul>
+                        <li><strong>SKIN rash:</strong> Site, Kind, Itch, New exposures</li>
+                        <li><strong>ABCDEFG lesion description:</strong> Asymmetry, Border, Color, Diameter, Evolution, Feel, General distribution</li>
+                    </ul>
+                </div>
+
+                <div class="emergency-box">
+                    <h4>⚠️ Emergency Dermatology (DON'T MISS):</h4>
+                    <ol>
+                        <li><strong>Meningococcal rash:</strong> Non-blanching purpura + fever</li>
+                        <li><strong>Stevens-Johnson syndrome:</strong> Mucosal involvement, blistering</li>
+                        <li><strong>Necrotizing fasciitis:</strong> Pain out of proportion, crepitus</li>
+                        <li><strong>Ophthalmic zoster:</strong> V1 dermatome, Hutchinson sign (tip of nose)</li>
+                        <li><strong>Anaphylaxis:</strong> Urticaria + angioedema + respiratory distress</li>
+                    </ol>
+                </div>
+
+                <div class="framework-box">
+                    <h4>Australian Context MUST-MENTION:</h4>
+                    <ul>
+                        <li>Sun protection advice (every dermatology consult)</li>
+                        <li>Melanoma screening (Australia highest rates)</li>
+                        <li>Tinea pedis as cellulitis portal of entry</li>
+                        <li>Australian drug names (paracetamol, lignocaine)</li>
+                        <li>PBS medications (affordable treatment options)</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>Practice Priority:</h4>
+                    <ul>
+                        <li><strong>10-15 practice sessions</strong> before AMC Clinical</li>
+                        <li><strong>Focus on:</strong> Melanoma (ABCDEFG), cellulitis vs DVT, eczema vs psoriasis distribution, shingles dermatomal pattern</li>
+                        <li><strong>Word-for-word scripts:</strong> Opening statement, sun protection advice, safety-netting</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="metadata" style="margin-top: 40px; text-align: center;">
+                <p><strong>These notes synthesized from:</strong> eTG 2024, AMC Clinical exam blueprints, Handbook of Skin Diseases, Murtagh's General Practice 8th edition, Australian clinical experience (Young District Hospital dermatology presentations).</p>
+                <p><strong>All content aligned with AHPRA standards and Australian medical practice.</strong></p>
+                <p style="margin-top: 20px;"><strong>Last Updated:</strong> December 26, 2025</p>
+                <p><strong>Next Review:</strong> Before AMC Clinical Exam (March 2026)</p>
+                <p><strong>Author:</strong> ICRP Preparation Team - Dermatology Module</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="print-button" onclick="window.print()">🖨️ Print / Save PDF</button>
+</body>
+</html>

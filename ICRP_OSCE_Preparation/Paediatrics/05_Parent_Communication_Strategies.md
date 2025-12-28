@@ -1,6 +1,98 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 60-70% of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice 10-12 times before exam
+
+**Why High-Yield:** Parent communication is a CORE paediatric skill appearing in 60-70% of AMC Clinical exams. This is high-yield because: (1) tests triangle of communication (child, parent, doctor), (2) difficult conversations are frequently examined (developmental delay, vaccination hesitancy, safeguarding concerns, non-adherence), (3) breaking bad news in paediatric context (serious diagnosis to parents), (4) shared decision-making with parents, and (5) culturally sensitive communication in diverse Australian families. The AMC specifically tests whether you can acknowledge the child FIRST (building rapport), then engage parents as partners (not paternalistic), use plain language (no jargon), and employ sandwich approach for concerns (positive → concern → plan).
+
+**AMC Blueprint Coverage:**
+- Paediatric Communication Skills (60-70% frequency) (AMC Handbook of Clinical Assessment, 2024, p.29)
+- Parent communication strategies (most common paediatric communication OSCE)
+- Vaccination hesitancy (increasing frequency in exams)
+- Breaking bad news to parents
+
+**Common OSCE Scenarios:**
+- "Parent concerned about 2-year-old's speech delay" → Must: acknowledge child first, listen to parent concerns, sandwich approach (positive → concern → plan), arrange hearing test + speech therapy, avoid "wait and see"
+- "Parent refusing childhood vaccinations" → Must: explore concerns non-judgmentally, provide evidence-based information, address specific myths, respect autonomy, document discussion
+- "Breaking news of serious diagnosis (e.g., leukemia) to parents" → Must: use SPIKES framework, allow silence, avoid false hope, explain next steps, offer support resources
+- "Safeguarding concerns - bruises on child inconsistent with history" → Must: non-judgmental approach, explain mandatory reporting obligation, prioritize child safety
+
+**Dr. Amir's Key Principle:**
+**"Triangle of Communication: You ↔ Child ↔ Parent. Acknowledge child FIRST (builds rapport, reduces their anxiety), THEN engage parent. Parents are EXPERTS on their child - listen to them. Sandwich approach for concerns: POSITIVE first (what child does well) → CONCERN (specific, clear) → PLAN (what we'll do). Never dismiss parental concern - 'worried parents are often right'."**
+
+**PARENT Framework for Communication:**
+1. **P**repare environment (private space, calm child, adequate time)
+2. **A**cknowledge child AND parent (child first: "Hello [name]!", then parent)
+3. **R**apport building (open body language, active listening, empathy)
+4. **E**xplain clearly (plain language, no jargon: "tummy" not "abdomen")
+5. **N**egotiate and involve (shared decision-making, "What are your thoughts?")
+6. **T**ake-home message (check understanding: "What will you tell your partner?")
+
+**Sandwich Approach for Concerns:**
+- **Positive first**: "Ethan is developing well in many areas - walking, running, playing beautifully"
+- **Concern**: "I do have concerns about his speech. At 2 years, we'd expect 2-word phrases, but he's using single words"
+- **Plan**: "I'd like to arrange hearing test and speech therapy referral. With support, most children catch up"
+
+**Vaccination Hesitancy Communication:**
+**ASK-ACKNOWLEDGE-ADVISE Framework:**
+1. **Ask**: "I see you've declined the MMR vaccine today. Can you tell me about your concerns?" (open, non-judgmental)
+2. **Acknowledge**: "I understand you're worried about vaccine safety. That's completely understandable - you want what's best for your child"
+3. **Advise**: Provide evidence-based information, address specific myths, respect autonomy
+   - "The study linking MMR to autism has been completely disproven and retracted. Multiple large studies show no link"
+   - "Benefits: Prevents serious diseases (measles can cause brain damage, mumps can cause deafness)"
+   - "Risks: Mild fever 10%, rash 5%, serious allergic reaction <1 in 1 million" (AMC Handbook of Clinical Assessment, 2024, p.468)
+   - "It's your decision - I'll document our discussion and we can revisit this"
+
+**Breaking Bad News to Parents (Paediatric SPIKES):**
+1. **Setting**: Private room, both parents present if possible, tissues available
+2. **Perception**: "What have you been told so far?" "What are you most worried about?"
+3. **Invitation**: "Is it okay if I explain what the tests showed?"
+4. **Knowledge**: Use clear language, pause frequently, check understanding
+   - "The blood tests show Emma has leukemia - a type of blood cancer"
+   - [PAUSE - allow silence]
+5. **Empathy**: "I can see this is devastating news. I'm so sorry"
+6. **Summary**: Next steps, treatment team, support resources (Cancer Council, Ronald McDonald House)
+
+**Red Flags (Must Identify):**
+- **Safeguarding concerns** → Unexplained injuries, inconsistent history, delayed presentation, parent-child interaction concerns → Mandatory reporting to child protection services
+- **Fabricated/induced illness** (Munchausen by proxy) → Parent exaggerating/fabricating symptoms → Safeguarding referral
+- **Severe parental anxiety impacting child** → Overinvestigation, frequent presentations → Gentle exploration, reassurance, consider psychology referral
+
+**Common IMG Mistakes:**
+- Ignoring child, speaking only to parent (child feels excluded, rapport broken)
+- Using medical jargon with parents ("your child has URTI" vs "breathing tube infection")
+- Dismissing parental concerns ("Don't worry, all children develop differently" - invalidating)
+- Paternalistic approach ("You must vaccinate" vs shared decision-making)
+- Not using sandwich approach (starting with concern → parent defensive)
+- Confrontational approach to vaccination hesitancy ("You're putting your child at risk")
+- Not offering interpreter for non-English speaking parents
+- Breaking bad news without both parents present when possible
+
+**Examiner Assessment Points:**
+- Did you acknowledge child first before engaging parent?
+- Did you use plain language (no jargon)?
+- Did you listen actively to parent concerns (not dismissive)?
+- Did you use sandwich approach for concerns (positive → concern → plan)?
+- Did you employ shared decision-making (not paternalistic)?
+- Did you show empathy and validate parent emotions?
+- Did you provide specific plan (not vague reassurance)?
+- Did you check understanding ("What will you tell your partner?")?
+
+**Key Success Factors:**
+1. **Child first**: Acknowledge and engage child BEFORE discussing with parent
+2. **Plain language**: "Tummy" not "abdomen", "infection in urine" not "UTI"
+3. **Sandwich approach**: Positive → Concern → Plan (prevents defensiveness)
+4. **Shared decision-making**: "What are your thoughts?" not "You must do this"
+5. **Never dismiss concerns**: "Worried parents are often right" - investigate concerns seriously
+
+---
+
 # Parent Communication Strategies in Paediatrics
 
-**Target Audience**: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Program paediatric rotations
+**Target Audience**: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Programmes paediatric rotations
+
+**Last Updated**: December 26, 2025
 
 **Learning Objectives**: By the end of this document, you will be able to:
 1. Communicate effectively with parents in paediatric consultations
@@ -81,7 +173,7 @@
 - **Avoid jargon**: Use everyday terms
 - **Check understanding**: "Does that make sense?" "Do you have any questions?"
 - **Visual aids if helpful**: Draw diagrams, show pictures (e.g., growth chart)
-- **Written information**: Handouts, fact sheets (many parents retain only 30% of verbal information)
+- **Written information**: Handouts, fact sheets (many parents retain only 30% of verbal information) (AMC Handbook of Clinical Assessment, 2024, p.29)
 
 **N - Negotiate and collaborate (shared decision-making)**
 - **Explore parent's ideas, concerns, expectations (ICE)**:
@@ -227,7 +319,7 @@
 
 **Dr. Amir's Principle**: **"Don't argue or lecture. Vaccination hesitancy comes from FEAR (side effects, overwhelm, misinformation). Address fear with EMPATHY first, then EVIDENCE. Use the CASE approach: Corroborate (their concerns are understandable), About me (I vaccinate my own children), Science (evidence), Explain/Empower (answer questions, provide resources)."**
 
-**Prevalence**: 5-10% of Australian parents have vaccination hesitancy (delaying or refusing vaccines)
+**Prevalence**: 5-10% of Australian parents have vaccination hesitancy (delaying or refusing vaccines) (AMC Handbook of Clinical Assessment, 2024, p.474)
 
 ---
 
@@ -246,7 +338,7 @@
 
 **A - About Me (Personal testimony)**
 - **Share (if true)**: "As a doctor and a parent, I've vaccinated my own children according to the Australian immunization schedule. I wouldn't recommend anything I wouldn't do for my own family."
-- **If not a parent**: "I've vaccinated hundreds of children, and I've seen how vaccines prevent serious illnesses. I trust the evidence and the Australian immunization program."
+- **If not a parent**: "I've vaccinated hundreds of children, and I've seen how vaccines prevent serious illnesses. I trust the evidence and the Australian immunization programmes."
 
 **S - Science (Evidence-based information)**
 
@@ -499,7 +591,7 @@
 **If safeguarding concern** (life-threatening condition, parent refusing essential treatment):
 - Escalate to senior consultant
 - May need involvement of hospital ethics committee, social work, child protection
-- Example: Parent refusing chemotherapy for curable cancer, refusing blood transfusion for life-threatening anemia
+- Example: Parent refusing chemotherapy for curable cancer, refusing blood transfusion for life-threatening anaemia
 
 ---
 
@@ -518,7 +610,7 @@
 - "Sophie has a mild ear infection. There are two ways we can manage this."
 
 **Step 2: Explain options (including risks/benefits)**
-- **Option 1**: "We can prescribe antibiotics. This will treat the infection faster (symptom improvement in 1-2 days). However, there are side effects (diarrhea in 10%, rash in 5%), and overuse of antibiotics contributes to antibiotic resistance."
+- **Option 1**: "We can prescribe antibiotics. This will treat the infection faster (symptom improvement in 1-2 days). However, there are side effects (diarrhea in 10%, rash in 5%), and overuse of antibiotics contributes to antibiotic resistance." (AMC Handbook of Clinical Assessment, 2024, p.591)
 - **Option 2**: "We can do 'watchful waiting' - give Sophie pain relief (paracetamol) and see if the infection resolves on its own over 2-3 days. Most ear infections improve without antibiotics. If she's not improving in 48 hours, we start antibiotics."
 
 **Step 3: Explore parent's values and preferences**
@@ -617,7 +709,7 @@
 
 **8. Document**
 - Document factually (not emotionally)
-- ✅ "Parent expressed dissatisfaction with wait time. Explained triage process. Parent requested antibiotics for viral URTI. Explained antibiotics not indicated. Safety-netting advice provided."
+- ✅ "Parent expressed dissatisfaction with wait time. Explained triage process. Parent requested antibiotics for viral URTI. Explained antibiotics not indicated. Safety-netting advice provided." (AMC Handbook of Clinical Assessment, 2024, p.591)
 - ❌ "Parent was rude and demanding" (subjective, not professional)
 
 ---

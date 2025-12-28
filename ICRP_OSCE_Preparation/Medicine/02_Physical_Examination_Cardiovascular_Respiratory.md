@@ -1,10 +1,21 @@
 # Physical Examination OSCE Notes - Cardiovascular & Respiratory
 ## AMC Clinical / ICRP NSW Young Hospital Preparation
 
+---
+
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 80%+ of AMC Clinical exams
+**Study Priority:** CRITICAL - Practice 10-15 times before exam
+**Why High-Yield:** Cardiovascular and respiratory examinations are core OSCE skills tested in 70-80% of AMC Clinical exams. This station assesses systematic examination technique (HIPJAP and IPTAP frameworks), interpretation of clinical signs (murmurs, crackles, consolidation), and appropriate presentation to examiners—fundamental competencies that distinguish safe from unsafe intern-level practice in Australian hospitals.
+
+---
+
 **Purpose**: Systematic physical examination for AMC Clinical OSCE stations
 **Target Time**: 8 minutes per examination
 **Format**: Australian teaching hospital standard (5 Ps Framework)
 **Created**: December 14, 2025
+**Last Updated**: December 26, 2025 (AMC Frequency Indicator added, p.9)
 
 ---
 

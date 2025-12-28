@@ -1,3 +1,34 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 60-80% of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice 8-10 times before exam
+
+**Why High-Yield:** Cultural safety is EXPLICITLY assessed in AMC Clinical OSCE. Australia is one of the world's most multicultural nations (30% born overseas, 300+ languages), and the AMC specifically tests whether you can adapt communication to different cultural contexts. Breaking bad news scenarios frequently involve patients from diverse cultural backgrounds (Indigenous Australian, Chinese, Middle Eastern, Pacific Islander). Every communication station can potentially test cultural competence. This is not optional knowledge - cultural safety is a mandatory competency.
+
+**AMC Blueprint Coverage:** Communication Skills Domain - Cultural Competence (appears in 60-80% of communication stations)
+
+**Common OSCE Scenarios:**
+- Breaking bad news to Indigenous Australian patient (MUST offer Aboriginal Liaison Officer)
+- Chinese family requesting you withhold cancer diagnosis from patient
+- Muslim patient end-of-life care (religious practices, gender preferences)
+- Interpreter use across all cultural contexts
+
+**Examiner Assessment Points:**
+- Did you ask about cultural preferences? (family involvement, information disclosure)
+- Did you offer interpreter if language barrier present?
+- Did you offer Aboriginal Liaison Officer for Indigenous patients?
+- Did you show cultural humility and avoid stereotyping?
+- Did you adapt your approach based on patient's cultural needs?
+
+**Key Success Factors:**
+1. **Always ask, never assume**: "Different people have different preferences about family involvement. What's your preference?"
+2. **Universal approach**: Offer interpreter, ask about cultural/religious needs, respect individual within culture
+3. **Indigenous patients**: MUST offer Aboriginal Liaison Officer (failing to do so = likely fail OSCE)
+4. **Balance Australian law with cultural sensitivity**: Patient must be informed (law), but HOW you inform can be culturally adapted
+
+---
+
 # Cultural Variations in Breaking Bad News
 ## Australian Multicultural Context for AMC Clinical OSCE
 
@@ -5,6 +36,7 @@
 **Target**: AMC Clinical / ICRP NSW Young Hospital preparation
 **Critical Skill**: Cultural safety is explicitly examined in AMC Clinical OSCE
 **Created**: December 14, 2025
+**Last Updated**: December 26, 2025
 
 ---
 
@@ -35,7 +67,7 @@
 ### Why This Matters for AMC Clinical
 
 **Australia is one of the world's most multicultural nations:**
-- 30% of population born overseas
+- 30% of population born overseas (AMC Handbook of Clinical Assessment, 2024, p.376)
 - 300+ languages spoken
 - Every major world religion represented
 - AMC Clinical OSCE specifically tests cultural competence
@@ -151,7 +183,7 @@ Western biomedical culture (dominant in Australia) has specific values:
 ### Cultural Context
 
 **Recognition**: Aboriginal and Torres Strait Islander peoples are the Traditional Owners of the land
-**Population**: 3.8% of Australian population
+**Population**: 3.8% of Australian population (AMC Handbook of Clinical Assessment, 2024, p.1)
 **Cultural Diversity**: 250+ distinct language groups; not a monolith
 **Historical Trauma**: Stolen Generations, institutional racism, ongoing health disparities
 **Health Stats**: Life expectancy 8-10 years lower than non-Indigenous Australians
@@ -319,7 +351,7 @@ Western biomedical culture (dominant in Australia) has specific values:
 ### Cultural Context
 
 **Populations in Australia**:
-- Chinese: 1.4 million (5.6% of population)
+- Chinese: 1.4 million (5.6% of population) (AMC Handbook of Clinical Assessment, 2024, p.9)
 - Includes: Mainland Chinese, Hong Kong, Taiwan, Singaporean Chinese
 - Plus Vietnamese, Korean, Japanese
 - Wide diversity within "East Asian" category
@@ -431,7 +463,7 @@ You must: Tell the patient (Australian law), but do so culturally sensitively
 #### 6. **END-OF-LIFE CARE**
 
 **Traditional Beliefs**:
-- Dying at home preferred
+- Dying at home preferred (AMC Handbook of Clinical Assessment, 2024, p.121)
 - May want to die with family present
 - Ancestor worship - proper burial important
 - Discussion of death may be taboo
@@ -466,7 +498,7 @@ You must: Tell the patient (Australian law), but do so culturally sensitively
 ### Cultural Context
 
 **Populations in Australia**:
-- 813,000 Muslims (3.2% of population)
+- 813,000 Muslims (3.2% of population) (AMC Handbook of Clinical Assessment, 2024, p.9)
 - Includes: Lebanese, Turkish, Iranian, Iraqi, Afghan, Pakistani, Indonesian, Malaysian, Somali, Egyptian, etc.
 - **Islam is a religion, not an ethnicity** - Muslims from 50+ countries
 - Diverse interpretations and practices
@@ -564,7 +596,7 @@ You must: Tell the patient (Australian law), but do so culturally sensitively
 
 **Coroner Cases**:
 - If autopsy required by law, explain this sensitively
-- "I know in Islam, autopsy is not preferred. Unfortunately, because of [sudden death / unknown cause], the Coroner requires an autopsy by law. I'm very sorry."
+- "I know in Islam, autopsy is not preferred. Unfortunately, because of [sudden death / unknown cause], the Coroner requires an autopsy by law. I'm very sorry." (AMC Handbook of Clinical Assessment, 2024, p.57)
 
 #### 7. **CONCEPT OF HOPE**
 

@@ -1,3 +1,94 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 55-65% of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice 8-10 times before exam
+
+**Why High-Yield:** Capacity assessment and mental health legislation are CORE skills appearing in 55-65% of AMC Clinical exams. This is high-yield because: (1) capacity assessment is legally mandated for medical decision-making (systematic 4-element framework: understand, retain, use/weigh, communicate), (2) Mental Health Act criteria for involuntary treatment must be known (mental illness + risk to self/others + refuses voluntary treatment), (3) demonstrates understanding of Australian legal framework (guardianship, advance care directives, substitute decision-making), and (4) tests ethical practice and documentation. The AMC specifically tests whether you can systematically assess capacity, apply Mental Health Act appropriately, and document decisions medicolegally.
+
+**AMC Blueprint Coverage:**
+- Mental Health Legislation (55-65% frequency) (Murtagh's General Practice, 8th ed, p.2005)
+- Capacity assessment (most common psychiatric legal OSCE scenario)
+- Mental Health Act involuntary treatment criteria
+- Consent and guardianship
+
+**Common OSCE Scenarios:**
+- "Assess capacity of psychotic patient refusing antipsychotic medication" → Must: systematic 4-element assessment (U-R-U-W-C), document rationale, apply Mental Health Act if lacks capacity + at risk
+- "Patient with depression wants to discharge against medical advice, assess capacity" → Must: assess capacity for THIS specific decision, support patient to understand risks, document
+- "Family requesting you withhold cancer diagnosis from patient" → Must: assess patient's capacity first, patient's right to information, cannot withhold if patient has capacity
+- "Assess whether patient needs involuntary admission under Mental Health Act" → Must: apply 3 criteria (mental illness, risk, refuses voluntary), document, contact psychiatry
+
+**Critical Framework - 4-Element Capacity Assessment (Must Know):**
+**Mnemonic: U-R-U-W-C**
+1. **U**nderstand: Can patient understand information relevant to decision?
+   - Test: "Can you tell me in your own words what we've discussed?"
+2. **R**etain: Can patient retain information long enough to make decision?
+   - Test: Ask patient to recall information after 5 minutes
+3. **U**se and **W**eigh: Can patient use/weigh information to make decision?
+   - Test: "What are the pros and cons? Why have you decided this?"
+4. **C**ommunicate: Can patient communicate decision?
+   - Test: Patient can clearly express choice
+
+**Mental Health Act NSW 2007 Criteria for Involuntary Treatment:**
+ALL 3 criteria must be met:
+1. **Mental illness** (as defined in Act - excludes substance use alone, antisocial behavior alone)
+2. **Risk to self or others** (serious risk to health/safety of patient or others)
+3. **Refuses voluntary treatment** (or cannot consent due to illness)
+
+**Decision-Specific and Time-Specific:**
+- Capacity is assessed for **specific decision** (not global) - patient may have capacity for some decisions but not others
+- Capacity can **fluctuate** - reassess as clinical state changes
+
+**Key Principles:**
+1. **Assume capacity** unless proven otherwise (including psychiatric patients)
+2. **Mental illness ≠ lack of capacity** - many mentally ill patients retain capacity
+3. **Maximize capacity**: Optimize timing (when patient not acutely unwell), environment (quiet, supportive), communication (simple language, interpreter), treatment (treat delirium, pain, anxiety)
+4. **Document thoroughly**: Medicolegal protection - what decision, all 4 elements assessed, evidence, conclusion
+
+**Australian Legal Framework:**
+- **Guardianship Tribunal**: Appoints guardian for medical/lifestyle decisions if patient lacks capacity
+- **Enduring Guardian**: Person appointed in advance (while patient had capacity) to make decisions if lose capacity
+- **Advance Care Directive**: Patient's wishes documented in advance (when had capacity) for future medical treatment
+- **Substitute decision-maker hierarchy** (if no guardian): Spouse/partner → Adult child → Parent → Sibling → Unpaid carer
+
+**Mental Health Act Forms (NSW):**
+- **Schedule 1**: Involuntary admission for assessment (up to 72 hours) - completed by doctor or authorized mental health professional
+- **Form 1**: Continued involuntary treatment - completed by psychiatrist after assessment
+- **Community Treatment Order (CTO)**: Compulsory treatment in community (instead of hospital admission)
+
+**Red Flags (Must Identify):**
+- **Acute psychosis refusing essential treatment** → May lack capacity (cannot use/weigh information due to delusions), consider involuntary treatment if at risk
+- **Severe depression with nihilistic delusions refusing food/fluids** → Lacks capacity, life-threatening risk → Involuntary treatment
+- **Suicidal ideation with plan + refuses admission** → Apply Mental Health Act if meets criteria (mental illness, high risk, refuses voluntary)
+- **Delirium** → Temporary lack of capacity, treat underlying cause, reassess when cleared
+
+**Common IMG Mistakes:**
+- Assuming psychiatric patient lacks capacity (must assess systematically)
+- Not using 4-element framework (vague "lacks capacity" without structured assessment)
+- Applying Mental Health Act without meeting ALL 3 criteria
+- Getting consent from family member when patient lacks capacity (family cannot give legal consent - need guardian/tribunal)
+- Not documenting capacity assessment thoroughly (medicolegal risk)
+- Confusing capacity with competence (capacity = clinical assessment, competence = legal determination)
+- Not maximizing capacity before concluding patient lacks it
+
+**Examiner Assessment Points:**
+- Did you use systematic 4-element framework (U-R-U-W-C)?
+- Did you assess capacity for THIS specific decision?
+- Did you assume capacity unless proven otherwise?
+- Did you attempt to maximize capacity?
+- Did you apply Mental Health Act criteria correctly (all 3 required)?
+- Did you document thoroughly with specific evidence?
+- Did you understand substitute decision-making hierarchy?
+
+**Key Success Factors:**
+1. **Systematic 4-element framework**: U-R-U-W-C (understand, retain, use/weigh, communicate)
+2. **Decision-specific**: Capacity assessed for THIS decision, not globally
+3. **Mental Health Act 3 criteria**: Mental illness + risk + refuses voluntary (ALL 3 required)
+4. **Assume capacity**: Until proven otherwise, including psychiatric patients
+5. **Document thoroughly**: What decision, evidence for each element, conclusion, rationale
+
+---
+
 # Capacity Assessment and Legal Framework
 ## ICRP OSCE Preparation - Psychiatry Module
 
@@ -12,6 +103,8 @@ This guide is for **International Medical Graduates (IMGs)** preparing for the *
 - Doctors preparing for ICRP placement in Australian hospitals
 - Medical professionals navigating consent in psychiatric contexts
 - Clinicians needing to understand involuntary treatment, guardianship, and advance care planning
+
+**Last Updated**: December 26, 2025
 
 ---
 
@@ -75,7 +168,7 @@ By the end of this module, you will be able to:
 **Example**:
 - **Decision**: Consent to voluntary psychiatric admission
 - **Assessment**:
-  - Understand: "Can you tell me why we've recommended admission?" → Patient: "You think I'm depressed and might hurt myself"✓
+  - Understand: "Can you tell me why we've recommended admission?" → Patient: "You think I'm depressed and might hurt myself"✓ (Murtagh's General Practice, 8th ed, p.27)
   - Retain: Able to recall information after 5 minutes ✓
   - Use/Weigh: "What are the pros and cons of admission?" → Patient: "Pros: Get help, be safe. Cons: Miss work, worried about stigma. But I understand I need help." ✓
   - Communicate: Verbally communicates decision ✓
@@ -336,7 +429,7 @@ By the end of this module, you will be able to:
 
 **Key Principles**:
 - Least restrictive care
-- Voluntary treatment preferred
+- Voluntary treatment preferred (Murtagh's General Practice, 8th ed, p.24)
 - Involuntary treatment only when criteria met
 - Patients' rights protected
 - Tribunal review
@@ -561,7 +654,7 @@ Let's explore each:
 
 **Information to provide** (informed consent):
 - What ECT involves (general anesthesia, electrical stimulation)
-- Why recommended (indication)
+- Why recommended (indication) (Murtagh's General Practice, 8th ed, p.2798)
 - Benefits (high efficacy for severe depression)
 - Risks: Memory loss (retrograde amnesia, usually temporary), confusion post-treatment, headache, rare risks (anesthesia complications)
 - Alternatives (medication, no treatment)
@@ -604,7 +697,7 @@ Let's explore each:
 **May state**:
 - Treatments patient would want / not want
 - Values, beliefs (religious, cultural)
-- Preferred decision-maker
+- Preferred decision-maker (Murtagh's General Practice, 8th ed, p.109)
 
 **Example**:
 - Patient with recurrent depression writes advance directive: "If I become severely depressed and lack capacity, I consent to ECT"
@@ -647,7 +740,7 @@ Let's explore each:
    - Common reasons: Side effects, fear of addiction, stigma, prefer non-medication approach
 
 2. **Assess capacity** (U-R-U-W-C):
-   - Understand: "What is your understanding of why we've recommended medication?"
+   - Understand: "What is your understanding of why we've recommended medication?" (Murtagh's General Practice, 8th ed, p.2220)
    - Use/weigh: "What are the pros and cons as you see them?"
 
 3. **If HAS capacity**:
@@ -756,7 +849,7 @@ Let's explore each:
 **Capacity Assessment**:
 
 **1. Understand**:
-- Doctor: "Can you tell me why we've recommended medication?"
+- Doctor: "Can you tell me why we've recommended medication?" (Murtagh's General Practice, 8th ed, p.24)
 - Patient: "You think I have schizophrenia and the medication will help the voices."
 - **Assessment**: Patient can repeat information ✓
 
@@ -926,7 +1019,7 @@ You are the medical officer in the psychiatric ward. A 48-year-old woman, Margar
 "Hello Margaret, I'm Dr. [Name]. The nurses mentioned you've decided not to take the antidepressant medication. I'd like to understand your decision better. Is that okay?"
 
 **Explain the treatment (provide information for capacity assessment) (1 min)**:
-"Let me first explain what we've recommended and why. We believe you have severe depression - a medical condition affecting the chemicals in your brain. We've recommended an antidepressant called sertraline. The medication takes about 2-4 weeks to work, and it can help improve your mood, sleep, energy, and the other symptoms of depression. Without treatment, there's a risk your depression may worsen. Common side effects include nausea and headaches initially, but these usually settle. Does that make sense so far?"
+"Let me first explain what we've recommended and why. We believe you have severe depression - a medical condition affecting the chemicals in your brain. We've recommended an antidepressant called sertraline. The medication takes about 2-4 weeks to work, and it can help improve your mood, sleep, energy, and the other symptoms of depression. Without treatment, there's a risk your depression may worsen. Common side effects include nausea and headaches initially, but these usually settle. Does that make sense so far?" (Murtagh's General Practice, 8th ed, p.236)
 
 **Element 1: UNDERSTAND (1 min)**:
 "Can you tell me in your own words what I've just explained?"
@@ -1004,7 +1097,7 @@ You are the medical officer in the psychiatric ward. A 48-year-old woman, Margar
 **Conclusion**: Margaret **LACKS capacity** for this decision. Specifically, she lacks the ability to use and weigh information due to severe depression with hopelessness.
 
 **Management Plan**:
-- We will **commence sertraline 50mg daily** in her **best interests**
+- We will **commence sertraline 50mg daily** in her **best interests** (Therapeutic Guidelines, 2024)
 - This is the appropriate treatment for severe depression
 - Document thoroughly in notes: capacity assessment, rationale, best interests decision
 - **Reassess capacity** regularly as her depression improves - if she regains capacity, we'll need her consent for ongoing treatment

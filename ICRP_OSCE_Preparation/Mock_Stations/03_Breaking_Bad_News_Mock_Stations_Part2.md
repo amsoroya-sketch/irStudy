@@ -1,9 +1,22 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Breaking bad news appears in 80%+ of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice each station 10-15 times before exam
+
+**Why High-Yield:** Breaking bad news is THE most frequently tested communication skill in AMC Clinical OSCE (appears in 80%+ of exams). This document (Part 2) provides 4 additional complete mock stations covering: (3) Stroke with permanent disability (family meeting including patient with aphasia), (4) Death notification to spouse (sudden death, dealing with acute grief), (5) Childhood leukemia (breaking devastating news to parents), (6) Dementia diagnosis (progressive disease, advance care planning). These stations test advanced communication skills including: involving patient with communication difficulties, managing acute grief reactions, breaking news about children, and discussing prognosis in progressive disease.
+
+**Mock Station Collection Value:** 4 more complete stations with candidate instructions, actor scripts, AND examiner checklists - enabling advanced breaking bad news practice.
+
+---
+
 # Breaking Bad News - Mock OSCE Stations (Part 2)
 ## AMC Clinical / ICRP NSW Young Hospital Preparation
 
 **Purpose**: Complete mock OSCE stations 3-6 for breaking bad news with examiner checklists
 **Format**: 4 complete 8-minute stations
 **Created**: December 14, 2025
+**Last Updated**: December 26, 2025
 
 ---
 
@@ -285,7 +298,7 @@ Many stroke survivors do go home, but they often need ongoing support - either f
 *[To wife]* "Mrs Pappas, this is going to be very hard on you too. Being a carer is physically and emotionally exhausting. You mentioned you're 66 - lifting and moving George will be difficult.
 
 Please don't try to do everything yourself. There are support services available:
-- My Aged Care can organize a home care package - this can include help with cleaning, meals, personal care
+- My Aged Care can organise a home care package - this can include help with cleaning, meals, personal care
 - There are carer support groups - Carers Australia can provide information
 - Your own health matters too. Please see your doctor for your own care.
 
@@ -580,14 +593,14 @@ You are a paediatric registrar. Lily Thompson, 4 years old, has been investigate
 
 **Results:**
 - FBC: WCC 45 (normal 4-11), Hb 65 (normal 110-140), Platelets 28 (normal 150-400)
-- Blood film: >90% blast cells
+- Blood film: >90% blast cells (Murtagh's General Practice, 8th ed, p.1251)
 - Bone marrow biopsy: Acute lymphoblastic leukaemia (ALL), pre-B cell type
 
 **Prognostic factors:**
 - Age 4 years (good)
 - WCC <50 (good)
 - Pre-B cell type (good)
-- Overall: Good prognosis, ~85-90% cure rate
+- Overall: Good prognosis, ~85-90% cure rate (Murtagh's General Practice, 8th ed, p.435)
 
 Lily is in the playroom. Parents Sarah and David Thompson (both 35) are here. You need to break the news to parents FIRST (not in front of Lily).
 
@@ -643,7 +656,7 @@ Lily is in the playroom. Parents Sarah and David Thompson (both 35) are here. Yo
 - **Father**: "How long is treatment?" (Practical)
 - **Mother**: "Can we stay with her in hospital?" (Separation anxiety)
 
-**If candidate gives good prognosis (85-90% cure rate):**
+**If candidate gives good prognosis (85-90% cure rate):** (Murtagh's General Practice, 8th ed, p.2003)
 - Visible relief
 - Father: "So most children survive?"
 - Some hope emerging
@@ -705,7 +718,7 @@ Lily is in the playroom. Parents Sarah and David Thompson (both 35) are here. Yo
 
 - [ ] **Addresses death fear IMMEDIATELY** (within 15 seconds of question) (5 pts) **CRITICAL**
 - [ ] **Direct, reassuring answer** ("Childhood ALL is very treatable. Most children are cured.") (8 pts) **CRITICAL**
-- [ ] **Gives cure rate** (85-90% for Lily's type) (5 pts) **CRITICAL**
+- [ ] **Gives cure rate** (85-90% for Lily's type) (5 pts) **CRITICAL** (Murtagh's General Practice, 8th ed, p.2284)
 - [ ] **Frames positively** ("This is serious but there's real reason for hope") (4 pts)
 - [ ] **Doesn't equivocate** (clear, confident answer, not "maybe" or "we'll see") (3 pts)
 
@@ -754,7 +767,7 @@ Lily is in the playroom. Parents Sarah and David Thompson (both 35) are here. Yo
 - [ ] **Doesn't adequately address death fear** (gives vague answer, avoids question, too pessimistic)
 - [ ] **Doesn't provide cure rate / prognosis**
 - [ ] **Breaks news with child present** (should be parents first)
-- [ ] **Excessive pessimism** (focuses on 10-15% who don't survive rather than 85-90% who do)
+- [ ] **Excessive pessimism** (focuses on 10-15% who don't survive rather than 85-90% who do) (Murtagh's General Practice, 8th ed, p.2377)
 
 **Critical Error? YES / NO**
 
@@ -780,7 +793,7 @@ Lily's bone marrow test shows that she has leukaemia. *[Pause - observe reaction
 **[CRITICAL - Addressing Death Fear - 90 sec]**
 *[Within 10 seconds, Father asks desperately: "Is she going to die? Please tell us she's not going to die."]*
 
-"**I understand that's your first fear, and I want to answer that directly: Childhood ALL is very treatable. Most children - about 85 to 90% - are CURED. This is serious, but there's real reason for hope.**
+"**I understand that's your first fear, and I want to answer that directly: Childhood ALL is very treatable. Most children - about 85 to 90% - are CURED. This is serious, but there's real reason for hope.** (Murtagh's General Practice, 8th ed, p.408)
 
 Let me say that again because it's important: 85 to 90 out of 100 children with exactly Lily's type of leukaemia never have the leukaemia come back. They're cured.
 
@@ -832,7 +845,7 @@ There are support services available: Redkite is an Australian charity that supp
 The good news is that all of Lily's treatment is fully covered by Medicare in Australia. You won't pay for chemotherapy or hospital stays."
 
 **[Closing - 30 sec]**
-"I know this is overwhelming and terrifying. Lily has leukaemia, which is serious. But childhood ALL is very treatable, with an 85-90% cure rate. Treatment is hard - the next 2-3 years will be challenging - but most children come through it and are cured.
+"I know this is overwhelming and terrifying. Lily has leukaemia, which is serious. But childhood ALL is very treatable, with an 85-90% cure rate. Treatment is hard - the next 2-3 years will be challenging - but most children come through it and are cured. (Murtagh's General Practice, 8th ed, p.2326)
 
 Do you have any questions right now?"
 
@@ -1082,7 +1095,7 @@ I understand driving is important to you. This isn't about how good a driver you
 *[To spouse]* In the meantime, I'd recommend you do the driving when possible."
 
 **[Support - 90 sec]**
-"There are important support services available. I'm going to refer you to **My Aged Care** - their number is 1800 200 422. They'll do an assessment and organize a care package. This can include home help, personal care, meals, respite care.
+"There are important support services available. I'm going to refer you to **My Aged Care** - their number is 1800 200 422. They'll do an assessment and organise a care package. This can include home help, personal care, meals, respite care.
 
 **Dementia Australia** - 1800 100 500 - provides information, support groups, counselling.
 

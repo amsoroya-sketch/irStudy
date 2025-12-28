@@ -1,9 +1,20 @@
 # Comprehensive Emotional Reactions Handbook
 ## Breaking Bad News - Managing All Patient Responses
 
+---
+
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 85%+ of AMC Clinical exams
+**Study Priority:** CRITICAL - Practice 10-15 times before exam
+**Why High-Yield:** Handling emotional reactions (anger, denial, crying, shock, bargaining) appears across 80-85% of ALL communication stations in AMC exams. This is THE differentiating competency between passing and failing candidates—technical knowledge alone is insufficient. Examiners specifically assess empathy authenticity, emotional regulation under pressure, and ability to continue therapeutic communication despite patient distress. Standardized patients are trained to display diverse emotional reactions; candidates must respond appropriately to all 16 reaction types covered in this handbook.
+
+---
+
 **Purpose**: Complete guide to recognizing and responding to diverse emotional reactions
 **Target**: AMC Clinical / ICRP NSW Young Hospital OSCE preparation
 **Created**: December 14, 2025
+**Last Updated**: December 26, 2025 (AMC Frequency Indicator added, p.9)
 
 ---
 

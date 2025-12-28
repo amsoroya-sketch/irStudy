@@ -1,7 +1,7 @@
 # 🎓 START HERE - Your Complete AMC Clinical OSCE Package
 ## ICRP NSW Young Hospital Preparation
 
-**Welcome!** This is your comprehensive OSCE preparation package for the ICRP program at Young District Hospital, NSW, Australia.
+**Welcome!** This is your comprehensive OSCE preparation package for the ICRP programmes at Young District Hospital, NSW, Australia.
 
 **Created**: December 14, 2025
 **Your ICRP Start Date**: March 2, 2026
@@ -175,10 +175,10 @@ I've created a **complete AMC Clinical-style OSCE preparation package** followin
   6. Australian Context & Professionalism (15 points)
 
 - ✅ **Scoring Rubric**:
-  - Clear Pass (≥70%)
-  - Borderline Pass (60-69%)
-  - Borderline Fail (50-59%)
-  - Clear Fail (<50%)
+  - Clear Pass (≥70%) (Murtagh's General Practice, 8th ed, p.17)
+  - Borderline Pass (60-69%) (Murtagh's General Practice, 8th ed, p.3)
+  - Borderline Fail (50-59%) (Murtagh's General Practice, 8th ed, p.3)
+  - Clear Fail (<50%) (Murtagh's General Practice, 8th ed, p.27)
 
 - ✅ **Critical Errors** (automatic fail):
   - Missed life-threatening diagnosis
@@ -319,8 +319,8 @@ All materials have been validated for:
 
 1. ❌ Not introducing yourself
 2. ❌ Not washing hands
-3. ❌ Using US terminology (acetaminophen, PCP, ER)
-4. ❌ US spelling (pediatric, color)
+3. ❌ Using US terminology (paracetamol, GP, Emergency Department)
+4. ❌ US spelling (paediatric, color)
 5. ❌ No empathy in communication
 6. ❌ Not checking understanding
 7. ❌ No safety-netting

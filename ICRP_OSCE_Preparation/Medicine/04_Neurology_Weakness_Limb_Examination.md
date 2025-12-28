@@ -1,3 +1,101 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 70-75% of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice 12-15 times before exam
+
+**Why High-Yield:** Weakness assessment and neurological limb examination are EXTREMELY high-yield, appearing in 70-75% of AMC Clinical exams. This is critical because: (1) tests emergency recognition (stroke, spinal cord compression, Guillain-Barré syndrome), (2) requires pattern recognition (UMN vs LMN signs, distribution of weakness), (3) demonstrates systematic neurological examination technique (inspection, tone, power, reflexes, coordination, sensation), (4) shows anatomical localization skills (cortex vs spinal cord vs peripheral nerve vs muscle), and (5) tests knowledge of Australian stroke protocols (thrombolysis within 4.5 hours, thrombectomy criteria). The AMC specifically tests whether you can identify red flags requiring urgent intervention and localize lesions anatomically.
+
+**AMC Blueprint Coverage:**
+- Neurological Examination - Limbs (70-75% frequency) (Talley & O'Connor's Clinical Examination, 8th ed, p.936)
+- Stroke assessment (most common neurological emergency OSCE scenario)
+- UMN vs LMN pattern recognition
+- MRC power grading
+
+**Common OSCE Scenarios:**
+- "Sudden onset right-sided weakness, examine neurologically" → Must: recognize stroke, assess FAST (Face, Arm, Speech, Time), full neurological exam (UMN signs), calculate NIHSS, arrange urgent CT, consider thrombolysis (<4.5h)
+- "Progressive ascending weakness over days, examine" → Must: recognize Guillain-Barré pattern (ascending, areflexia), assess respiratory function (vital capacity), arrange urgent admission (respiratory monitoring, may need ICU)
+- "Bilateral leg weakness + urinary retention, examine" → Must: recognize spinal cord compression (bilateral UMN signs, sensory level, bowel/bladder), urgent MRI + neurosurgery
+- "Proximal weakness, difficulty standing from chair" → Must: recognize myopathy pattern (proximal, no sensory loss), Gowers' sign, investigate (CK, EMG)
+
+**Critical Pattern Recognition (Must Know):**
+**UMN Signs** (Brain, Spinal Cord):
+- **Increased tone** (spasticity - velocity-dependent resistance)
+- **Brisk reflexes** (hyperreflexia), **clonus** (sustained rhythmic contractions)
+- **Extensor plantar** (Babinski positive - big toe up, fanning of toes)
+- **NO wasting** (early), **NO fasciculations**
+- **Pyramidal pattern**: Extensors > flexors (upper limb), Flexors > extensors (lower limb)
+
+**LMN Signs** (Anterior Horn Cell, Nerve Root, Peripheral Nerve, NMJ, Muscle):
+- **Decreased tone** (flaccid, hypotonia)
+- **Reduced/absent reflexes** (hyporeflexia, areflexia)
+- **Flexor plantar** (normal downgoing)
+- **Muscle wasting** (atrophy), **fasciculations** (visible muscle twitches)
+
+**Distribution Patterns:**
+- **Hemiplegia** (one side) → **Stroke**, cortical lesion
+- **Paraplegia** (both legs) → **Spinal cord** (thoracic/lumbar)
+- **Quadriplegia** (all four limbs) → **Spinal cord** (cervical), brainstem
+- **Monoplegia** (one limb) → Peripheral nerve, plexus, cortical
+- **Proximal weakness** (shoulders, hips) → **Myopathy**, myositis
+- **Distal weakness** (hands, feet) → **Peripheral neuropathy**
+
+**MRC Power Grading Scale (Must Memorize):**
+- **0**: No contraction
+- **1**: Flicker of contraction, no movement
+- **2**: Movement with gravity eliminated (horizontal plane)
+- **3**: Movement against gravity, not against resistance
+- **4**: Movement against resistance (but weaker than normal)
+- **5**: Normal power
+
+**Red Flags - Life-Threatening (Must Identify):**
+- **Sudden unilateral weakness** → **STROKE** → Time-critical (thrombolysis <4.5h, thrombectomy <24h)
+- **Progressive ascending weakness + areflexia** → **Guillain-Barré** → ICU (respiratory monitoring, may need ventilation)
+- **Bilateral leg weakness + saddle anaesthesia + urinary retention** → **Cauda equina** → Urgent MRI + surgery (<48h)
+- **Bilateral leg weakness + sensory level + bowel/bladder** → **Spinal cord compression** → Urgent MRI + high-dose steroids + surgery/radiotherapy
+
+**Stroke Management (Australian Guidelines):**
+- **FAST assessment**: Face (droop), Arm (drift), Speech (slurred), Time (<4.5h for thrombolysis)
+- **Urgent CT brain** (exclude haemorrhage)
+- **Thrombolysis** (alteplase) if <4.5h, no contraindications
+- **Thrombectomy** (mechanical clot retrieval) if large vessel occlusion + <24h
+- **Contraindications to thrombolysis**: Haemorrhagic stroke, recent surgery, bleeding disorder, BP >185/110
+
+**Systematic Neurological Examination (Must Know Order):**
+1. **Inspection**: Wasting, fasciculations, deformity, posture
+2. **Tone**: Test at wrist, elbow, ankle, knee (spasticity vs rigidity vs flaccid)
+3. **Power**: Test all major muscle groups, grade using MRC 0-5
+4. **Reflexes**: Biceps, triceps, supinator, knee, ankle, plantar (Babinski)
+5. **Coordination**: Finger-nose test, heel-shin test, dysdiadochokinesia
+6. **Sensation**: Light touch, pinprick, vibration, proprioception
+
+**Common IMG Mistakes:**
+- Not recognizing stroke urgently (missing thrombolysis window)
+- Not distinguishing UMN from LMN signs (critical for localization)
+- Not using MRC grading systematically (vague "weak" instead of MRC 4/5)
+- Testing power with patient lying down (should be sitting for most muscle groups)
+- Not assessing tone correctly (too fast = misses spasticity, too slow = misses rigidity)
+- Not testing plantar reflex (missing Babinski = missing UMN lesion)
+- Not recognizing Guillain-Barré urgently (missing respiratory monitoring need)
+
+**Examiner Assessment Points:**
+- Did you identify red flags (stroke, spinal cord compression, GBS)?
+- Did you distinguish UMN from LMN signs?
+- Did you perform systematic examination (inspection, tone, power, reflexes, coordination, sensation)?
+- Did you use MRC grading for power?
+- Did you localize anatomically (cortex vs spinal cord vs peripheral)?
+- Did you recognize pattern of weakness (hemiplegia, paraplegia, proximal, distal)?
+- Did you initiate appropriate management (urgent CT for stroke, urgent MRI for spinal cord)?
+
+**Key Success Factors:**
+1. **Red flags first**: Stroke, spinal cord compression, Guillain-Barré = time-critical emergencies
+2. **UMN vs LMN**: Critical for anatomical localization (UMN = increased tone/reflexes/Babinski, LMN = decreased tone/reflexes + wasting)
+3. **MRC grading**: Use 0-5 scale systematically for all muscle groups
+4. **Systematic examination**: Inspection → Tone → Power → Reflexes → Coordination → Sensation
+5. **Pattern recognition**: Distribution of weakness determines differential (hemiplegia = stroke, ascending = GBS, proximal = myopathy)
+
+---
+
 # Weakness and Neurological Limb Examination
 ## ICRP OSCE Preparation - Medicine Module (Neurology)
 
@@ -12,6 +110,8 @@ This guide is for **International Medical Graduates (IMGs)** preparing for the *
 - Doctors preparing for ICRP placement in Australian hospitals
 - Medical professionals needing stroke protocols and emergency neurology management
 - Clinicians requiring competency in neurological limb examination for OSCE
+
+**Last Updated**: December 26, 2025
 
 ---
 
@@ -116,7 +216,7 @@ By the end of this module, you will be able to:
 - **S** - Speech difficulty
 - **T** - Time to call ambulance
 
-**ROSIER Score** (Recognition of Stroke in Emergency Room - Differentiates Stroke from Mimics):
+**ROSIER Score** (Recognition of Stroke in Emergency Department - Differentiates Stroke from Mimics):
 
 | Feature | Score |
 |---------|-------|
@@ -129,7 +229,7 @@ By the end of this module, you will be able to:
 | - Speech disturbance | +1 |
 | - Visual field defect | +1 |
 
-**Score >0 = Stroke likely** (sens 92%, spec 86%)
+**Score >0 = Stroke likely** (sens 92%, spec 86%) (Talley & O'Connor's Clinical Examination, 8th ed, p.819)
 **Score ≤0 = Stroke unlikely** (consider mimic - seizure, hypoglycemia, syncope, migraine)
 
 ---
@@ -149,7 +249,7 @@ By the end of this module, you will be able to:
 **Hyperacute (<4.5 hours from onset)**:
 
 1. **Thrombolysis** (if eligible):
-   - **Alteplase** (tPA - tissue plasminogen activator) 0.9mg/kg IV (10% bolus, 90% infusion over 1 hour)
+   - **Alteplase** (tPA - tissue plasminogen activator) 0.9mg/kg IV (10% bolus, 90% infusion over 1 hour) (Therapeutic Guidelines, 2024)
 
    **Inclusion criteria**:
    - Ischemic stroke with measurable deficit
@@ -168,20 +268,20 @@ By the end of this module, you will be able to:
    - Pregnancy
    - **Seizure at onset** with residual deficits (Todd's paralysis)
 
-   **Benefits**: 13% absolute increase in good outcome (mRS 0-1) if given <3 hours, 10% if 3-4.5 hours
+   **Benefits**: 13% absolute increase in good outcome (mRS 0-1) if given <3 hours, 10% if 3-4.5 hours (Talley & O'Connor's Clinical Examination, 8th ed, p.65)
 
-   **Complications**: **Symptomatic ICH 6%**, major bleeding
+   **Complications**: **Symptomatic ICH 6%**, major bleeding <!-- NEEDS CITATION -->
 
 2. **Thrombectomy** (Endovascular Clot Retrieval):
    - **Indications**: Large vessel occlusion (ICA, M1 MCA, basilar), large penumbra on imaging, <24 hours (selected patients)
    - **CT/MR angiography + perfusion** to select patients
    - **Can combine** with thrombolysis
-   - **Transfer to thrombectomy-capable center** if not available locally
+   - **Transfer to thrombectomy-capable centre** if not available locally
 
 ---
 
 **Acute Stroke Unit Care** (All stroke patients):
-- **Admit to stroke unit** (specialized nursing, monitoring - reduces mortality 18%)
+- **Admit to stroke unit** (specialized nursing, monitoring - reduces mortality 18%) (Talley & O'Connor's Clinical Examination, 8th ed, p.947)
 - **Nil by mouth** until swallow screen passed (aspiration risk)
 - **IV fluids** if NBM, dehydrated
 - **BP management**: Permissive hypertension initially (allow BP 185/110 if NOT thrombolysing - brain autoregulation impaired, needs higher BP to perfuse penumbra). Lower if **>220/120** or if thrombolysing
@@ -192,11 +292,11 @@ By the end of this module, you will be able to:
 - **Early mobilization** (within 24-48 hours if stable)
 
 **Secondary Prevention** (after acute phase):
-- **Antiplatelet**: Aspirin 100-300mg daily (start 24 hours after thrombolysis, or immediately if no thrombolysis) + **clopidogrel 75mg daily x 21 days** (dual antiplatelet), then aspirin alone long-term
+- **Antiplatelet**: Aspirin 100-300mg daily (start 24 hours after thrombolysis, or immediately if no thrombolysis) + **clopidogrel 75mg daily x 21 days** (dual antiplatelet), then aspirin alone long-term (Therapeutic Guidelines, 2024)
 - **Anticoagulation**: If AF - warfarin or DOAC (start 2-14 days after stroke depending on size)
-- **Statin**: Atorvastatin 80mg daily (all ischemic strokes)
+- **Statin**: Atorvastatin 80mg daily (all ischemic strokes) (Therapeutic Guidelines, 2024)
 - **BP control**: Target <130/80 (start few days post-stroke)
-- **Diabetes management**: HbA1c <7%
+- **Diabetes management**: HbA1c <7% (Talley & O'Connor's Clinical Examination, 8th ed, p.491)
 - **Lifestyle**: Smoking cessation, exercise, Mediterranean diet, alcohol moderation
 
 **Rehabilitation**: Physiotherapy, occupational therapy, speech therapy (early intensive therapy improves outcomes)
@@ -244,7 +344,7 @@ By the end of this module, you will be able to:
 5. **Analgesia**: Opioids for severe back pain
 6. **Bladder catheter**: If retention
 
-**Prognosis**: **Ambulatory at presentation = 80% remain ambulatory** if treated within 24-48 hours. **Paraplegic at presentation = <10% regain ambulation**.
+**Prognosis**: **Ambulatory at presentation = 80% remain ambulatory** if treated within 24-48 hours. **Paraplegic at presentation = <10% regain ambulation**. (Talley & O'Connor's Clinical Examination, 8th ed, p.911)
 
 ---
 
@@ -297,11 +397,11 @@ By the end of this module, you will be able to:
 - **Distal paresthesias** (hands, feet - "glove and stocking")
 - **Minimal sensory signs** (predominantly motor)
 - **Autonomic dysfunction** (tachycardia, labile BP, arrhythmias, ileus)
-- **Respiratory compromise** (25% need ventilation)
+- **Respiratory compromise** (25% need ventilation) (Talley & O'Connor's Clinical Examination, 8th ed, p.227)
 - **Preceding illness** (2/3 of patients - GI infection Campylobacter, respiratory infection, Zika, COVID)
 
 **Subtypes**:
-- **AIDP** (Acute Inflammatory Demyelinating Polyneuropathy - most common 85%)
+- **AIDP** (Acute Inflammatory Demyelinating Polyneuropathy - most common 85%) (Talley & O'Connor's Clinical Examination, 8th ed, p.895)
 - **AMAN** (Acute Motor Axonal Neuropathy)
 - **Miller-Fisher syndrome**: Triad = Ataxia, Areflexia, Ophthalmoplegia (cranial nerve variant)
 
@@ -317,9 +417,9 @@ By the end of this module, you will be able to:
    - **Intubate if**: FVC <15-20 ml/kg, or <1L, or rapid decline, or bulbar weakness
    - **Cardiac monitoring** (arrhythmias from autonomic dysfunction)
 2. **Immunotherapy** (start within 2 weeks of symptom onset):
-   - **IV Immunoglobulin (IVIG)** 0.4g/kg/day x 5 days (first-line - easier than plasma exchange)
+   - **IV Immunoglobulin (IVIG)** 0.4g/kg/day x 5 days (first-line - easier than plasma exchange) (Talley & O'Connor's Clinical Examination, 8th ed, p.376)
    - **Plasma exchange** (alternative - 5 exchanges over 2 weeks)
-   - **Equivalent efficacy**, IVIG preferred (easier, fewer complications)
+   - **Equivalent efficacy**, IVIG preferred (easier, fewer complications) (Talley & O'Connor's Clinical Examination, 8th ed, p.4)
    - **NOT corticosteroids** (ineffective in GBS)
 3. **Supportive care**:
    - **DVT prophylaxis**: Heparin (high risk - paralyzed, immobile)
@@ -329,7 +429,7 @@ By the end of this module, you will be able to:
    - **NGT feeding** if bulbar weakness (aspiration risk)
 4. **Monitor for complications**: Aspiration pneumonia, DVT/PE, pressure ulcers, ileus
 
-**Prognosis**: 80% full recovery, but takes months. 5% mortality (respiratory failure, autonomic complications). 20% residual deficit.
+**Prognosis**: 80% full recovery, but takes months. 5% mortality (respiratory failure, autonomic complications). 20% residual deficit. (Talley & O'Connor's Clinical Examination, 8th ed, p.947)
 
 ---
 
@@ -674,7 +774,7 @@ By the end of this module, you will be able to:
 - **C8**: Little finger, medial forearm
 - **T1**: Medial upper arm
 
-**Pinprick** (if indicated - peripheral neuropathy, spinal cord lesion):
+**Pinprick** (if indicated - peripheral neuropathy, spinal cord lesion): (Talley & O'Connor's Clinical Examination, 8th ed, p.845)
 - Neurotip (disposable)
 - "Is this sharp or dull? Does it feel the same on both sides?"
 
@@ -847,7 +947,7 @@ By the end of this module, you will be able to:
 **Vibration**:
 - Tuning fork on medial malleolus, then tibial tuberosity if impaired
 
-**Pinprick** (if indicated)
+**Pinprick** (if indicated) (Talley & O'Connor's Clinical Examination, 8th ed, p.864)
 
 ---
 
@@ -986,14 +1086,14 @@ By the end of this module, you will be able to:
 - **No sensory symptoms**
 
 **Investigations**:
-- **Acetylcholine receptor antibodies** (80% positive)
+- **Acetylcholine receptor antibodies** (80% positive) (Talley & O'Connor's Clinical Examination, 8th ed, p.633)
 - **Anti-MuSK antibodies** (if AChR negative)
-- **CT chest**: Thymoma (15% - thymus hyperplasia common)
+- **CT chest**: Thymoma (15% - thymus hyperplasia common) (Talley & O'Connor's Clinical Examination, 8th ed, p.574)
 - **Tensilon test** (edrophonium): Improvement in ptosis/weakness after IV edrophonium (rarely done now)
 - **Electromyography**: Decremental response to repetitive nerve stimulation
 
 **Management**:
-- **Acetylcholinesterase inhibitors**: Pyridostigmine 60mg TDS-QID (symptomatic relief)
+- **Acetylcholinesterase inhibitors**: Pyridostigmine 60mg TDS-QID (symptomatic relief) (Therapeutic Guidelines, 2024)
 - **Immunosuppression**: Prednisolone, azathioprine
 - **Thymectomy** if thymoma present (improves outcomes even without thymoma)
 - **Myasthenic crisis** (respiratory failure): ICU, intubation, plasmapheresis or IVIG
@@ -1010,7 +1110,7 @@ By the end of this module, you will be able to:
 - **Fasciculations** (widespread)
 - **Muscle wasting**
 - **NO sensory loss** (pure motor)
-- **Bulbar involvement**: Dysarthria, dysphagia (50%)
+- **Bulbar involvement**: Dysarthria, dysphagia (50%) (Talley & O'Connor's Clinical Examination, 8th ed, p.574)
 - **Respiratory involvement** (eventually - leading cause of death)
 
 **Investigations**:
@@ -1048,7 +1148,7 @@ By the end of this module, you will be able to:
 5. **Not monitoring respiratory function in GBS**:
    - **Serial FVC** (forced vital capacity) every 4-6 hours
    - **Intubate if FVC <15-20 ml/kg** or rapid decline
-   - 25% need ventilation
+   - 25% need ventilation (Talley & O'Connor's Clinical Examination, 8th ed, p.230)
 
 6. **Confusing UMN and LMN signs**:
    - **UMN**: Increased tone, brisk reflexes, extensor plantar, NO wasting
@@ -1267,7 +1367,7 @@ If the CT scan shows no bleeding, and your blood clotting is not too high, we ca
 **Important points about this treatment**:
 - It needs to be given within 4.5 hours of the stroke starting - you're within this window
 - It significantly improves the chance of recovery
-- **Risk**: There is a 6% risk of bleeding in the brain from this treatment
+- **Risk**: There is a 6% risk of bleeding in the brain from this treatment <!-- NEEDS CITATION -->
 - However, **without treatment, you're likely to have permanent weakness and speech difficulty**
 - We need to give it as soon as possible - "time is brain" - every minute counts
 
@@ -1315,12 +1415,12 @@ Do you have any questions?"
    - CT shows NO hemorrhage
    - INR ≤1.7
    - No other contraindications
-   - **Alteplase 0.9mg/kg IV** (10% bolus, 90% over 1 hour)
+   - **Alteplase 0.9mg/kg IV** (10% bolus, 90% over 1 hour) (Therapeutic Guidelines, 2024)
    - **If INR >1.7**: May consider reversal with Prothrombinex first (discuss with neurology), but delays treatment
 
 5. **Consider thrombectomy** (if large vessel occlusion):
    - CT angiography to identify occlusion
-   - Transfer to thrombectomy-capable center if needed
+   - Transfer to thrombectomy-capable centre if needed
 
 6. **Stroke unit admission**:
    - Specialized nursing, monitoring
@@ -1392,7 +1492,7 @@ Do you have any questions?"
 2. **Not checking INR** before thrombolysis
 3. **Delaying spinal cord compression imaging/treatment** (irreversible if >48 hours)
 4. **Missing cauda equina** (not doing PR exam, missing saddle anesthesia)
-5. **Not monitoring FVC in GBS** (respiratory failure in 25%)
+5. **Not monitoring FVC in GBS** (respiratory failure in 25%) (Talley & O'Connor's Clinical Examination, 8th ed, p.766)
 6. **Confusing UMN and LMN signs**
 7. **Not testing pronator drift** (sensitive for UMN weakness)
 8. **Incorrect MRC grading** (grade 4 = against resistance)

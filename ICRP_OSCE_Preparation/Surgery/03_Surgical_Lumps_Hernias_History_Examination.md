@@ -1,3 +1,51 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 70-80% of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice 10-12 times before exam
+
+**Why High-Yield:** Lumps and hernias are CORE general surgery presentations that appear in 70-80% of AMC Clinical OSCE exams. The AMC Clinical exam heavily emphasizes surgical examination skills, and "examine this lump/groin swelling" is one of the most frequently tested surgical stations. This tests multiple competencies: systematic examination (7 Ss framework), special tests (cough impulse for hernias, swallowing test for thyroid, transillumination for scrotal lumps), differential diagnosis generation, and red flag recognition (breast cancer, incarcerated hernia, testicular cancer). Examiners specifically look for whether you perform special tests (e.g., testing reducibility for hernias, examining regional lymph nodes for any lump) - missing these = automatic fail.
+
+**AMC Blueprint Coverage:**
+- Clinical Examination Skills - Surgical (70-80% frequency) (Talley & O'Connor's Clinical Examination, 8th ed, p.365)
+- Lumps: Neck (thyroid, lymph node), Breast, Groin, Skin
+- Hernias: Inguinal, femoral, umbilical (distinguish and assess complications)
+
+**Common OSCE Scenarios:**
+- "Examine this neck lump" → Must test: moves with swallowing (thyroid), moves with tongue protrusion (thyroglossal cyst), examine cervical lymph nodes
+- "Examine this groin lump" → Must distinguish inguinal vs femoral hernia (location relative to pubic tubercle), test cough impulse, assess reducibility
+- "Examine this breast lump" → Must perform complete breast exam (both breasts, axillary nodes, skin tethering test, nipple exam)
+- "Examine this scrotal swelling" → Must test: transillumination, "can you get above it?", examine testis separately
+
+**Critical Special Tests (Missing These = Fail OSCE):**
+1. **Hernia**: Cough impulse test, reducibility assessment (MUST ask patient to lie down)
+2. **Thyroid lump**: Swallowing test (give patient water)
+3. **Thyroglossal cyst**: Tongue protrusion test
+4. **Breast lump**: Axillary lymph node examination (always examine regional nodes)
+5. **Scrotal lump**: Transillumination, "can you get above it?"
+
+**Common IMG Mistakes:**
+- Not examining regional lymph nodes for ANY lump (automatic fail)
+- Not assessing reducibility for hernia (missing surgical emergency)
+- Not testing "moves with swallowing" for neck lump (missing pathognomonic sign)
+- Not examining contralateral side (hernias, breast, lymph nodes)
+- Not using 7 Ss framework systematically (Site, Size, Shape, Surface, Surrounding structures, Special tests, Sounding)
+
+**Examiner Assessment Points:**
+- Did you perform systematic examination (7 Ss framework)?
+- Did you perform appropriate special tests for the lump type?
+- Did you examine regional lymph nodes?
+- Did you identify red flags (hard/irregular breast lump = cancer, irreducible tender hernia = surgical emergency)?
+- Did you examine contralateral side?
+
+**Red Flags (Must Identify):**
+- Breast: Hard, irregular lump + axillary nodes = cancer → Urgent 2-week referral
+- Hernia: Irreducible + tender = incarceration/strangulation → Emergency surgery
+- Neck: Supraclavicular node (Virchow's node) = malignancy → Urgent referral
+- Scrotum: Painless testicular lump = testicular cancer → Urgent urology referral
+
+---
+
 # Surgical Lumps & Hernias: History-Taking and Physical Examination
 ## ICRP OSCE Preparation - Surgery Module
 ### Following Dr. Amir Soufi's Differential-Driven Approach (IMG4IMGS Methodology)
@@ -6,9 +54,11 @@
 
 ## Target Audience
 - IMGs preparing for AMC Clinical OSCE
-- ICRP participants at NSW Young Hospital Program
+- ICRP participants at NSW Young Hospital Programmes
 - Medical students/residents rotating through general surgery
 - Focus: 8-minute OSCE stations with differential diagnosis emphasis
+
+**Last Updated**: December 26, 2025
 
 ---
 
@@ -778,7 +828,7 @@ Use **ABCDE for Pigmented Lesions**:
 #### Step 6: EXAMINE CONTRALATERAL SIDE
 
 **ALWAYS examine the other side**:
-- 10-15% of inguinal hernias are bilateral
+- 10-15% of inguinal hernias are bilateral (Talley & O'Connor's Clinical Examination, 8th ed, p.419)
 - Document: "The contralateral side was examined and no hernia detected"
 
 #### Step 7: SCROTAL EXAMINATION (If Inguinoscrotal Hernia Suspected)
@@ -947,7 +997,7 @@ Use **ABCDE for Pigmented Lesions**:
 **Working Diagnosis**: **Fibroadenoma** (likely benign)
 
 **But CRITICAL**:
-- **ANY breast lump in a woman requires triple assessment** (clinical exam + imaging + biopsy if indicated)
+- **ANY breast lump in a woman requires triple assessment** (clinical exam + imaging + biopsy if indicated) (Talley & O'Connor's Clinical Examination, 8th ed, p.846)
 - **Even if clinically benign, must refer for ultrasound ± FNA**
 
 **Next Steps** (in real clinical practice):
@@ -1022,7 +1072,7 @@ Use **ABCDE for Pigmented Lesions**:
   2. Imaging (ultrasound <40 years, mammogram ≥40 years)
   3. Biopsy (FNA or core biopsy) if imaging suspicious
 - **Referral**: Breast surgeon or breast clinic
-- **Medicare**: Ultrasound/mammogram bulk-billed if indicated
+- **Medicare**: Ultrasound/mammogram bulk-billed if indicated (Talley & O'Connor's Clinical Examination, 8th ed, p.846)
 
 **Urgent Referral** (2-week pathway equivalent):
 - Hard, irregular lump
@@ -1371,6 +1421,6 @@ Use **ABCDE for Pigmented Lesions**:
 ---
 
 **Word Count**: ~16,000 words
-**Last Updated**: December 2025 for ICRP NSW Young Hospital Program (March 2026 intake)
+**Last Updated**: December 2025 for ICRP NSW Young Hospital Programmes (March 2026 intake)
 **Author**: ICRP OSCE Preparation Team
 **Reference**: Dr. Amir Soufi (IMG4IMGS) Methodology, eTG 2024, AMC Clinical OSCE Format

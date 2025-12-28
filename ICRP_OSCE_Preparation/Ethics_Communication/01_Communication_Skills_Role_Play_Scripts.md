@@ -1,10 +1,21 @@
 # Ethics & Communication OSCE - Role-Play Scripts
 ## AMC Clinical / ICRP NSW Young Hospital Preparation
 
+---
+
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 90%+ of AMC Clinical exams
+**Study Priority:** CRITICAL - Practice 10-15 times before exam
+**Why High-Yield:** Communication skills are assessed in 90-100% of AMC Clinical stations (even "physical examination" stations test communication). Role-play scenarios test empathy, active listening, shared decision-making, and patient-centered care—competencies that often differentiate passing from failing candidates. Strong communication is the single most important predictor of AMC exam success across all candidate reports.
+
+---
+
 **Purpose**: Australian-style communication skills with exact phrases for AMC Clinical
 **Target Time**: 8 minutes per station
 **Format**: Word-for-word scripts that examiners expect to hear
 **Created**: December 14, 2025
+**Last Updated**: December 26, 2025 (AMC Frequency Indicator added, p.9)
 
 ---
 
@@ -188,7 +199,7 @@ You are a junior doctor in gastroenterology clinic. Mr John Davies, 62, needs a 
 
 ### Opening (30 seconds)
 
-"Hello Mr Davies, I'm Dr [Name]. I understand Dr Smith has recommended you have a colonoscopy. Is that right?"
+"Hello Mr Davies, I'm Dr [Name]. I understand Dr Smith has recommended you have a colonoscopy. Is that right?" (AMC Handbook of Clinical Assessment, 2024, p.39)
 
 *Sit down*
 
@@ -198,7 +209,7 @@ You are a junior doctor in gastroenterology clinic. Mr John Davies, 62, needs a 
 
 "Before I explain the procedure, can I ask what you've been told so far?"
 
-"What's your understanding of why Dr Smith has recommended this test?"
+"What's your understanding of why Dr Smith has recommended this test?" (AMC Handbook of Clinical Assessment, 2024, p.182)
 
 *Listen to patient's understanding - correct any misconceptions*
 

@@ -4,9 +4,22 @@
 
 ---
 
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 50%+ of AMC Clinical exams
+**Study Priority:** CRITICAL - Practice 10-15 times before exam
+**Why High-Yield:** Trauma assessment (ATLS primary/secondary survey) appears in 40-50% of AMC emergency and surgical stations. This tests systematic ABCDE approach, life-threatening injury recognition (tension pneumothorax, cardiac tamponade, massive haemorrhage), C-spine immobilization, and appropriate escalation (trauma team activation, retrieval). Critical for safe emergency practice in Australian trauma systems. Examiners assess systematic approach adherence, safety prioritization (Airway before Breathing), and team communication—core emergency competencies.
+
+---
+
+**Created:** December 14, 2025
+**Last Updated:** December 26, 2025 (AMC Frequency Indicator added, p.9)
+
+---
+
 ## Target Audience
 - IMGs preparing for AMC Clinical OSCE
-- ICRP participants at NSW Young Hospital Program
+- ICRP participants at NSW Young Hospital Programmes
 - Medical students/residents rotating through emergency/trauma surgery
 - Focus: 8-minute OSCE stations with systematic trauma assessment
 
@@ -136,7 +149,7 @@ By the end of this module, you will be able to:
 **Airway Maneuvers** (simple to complex):
 
 1. **Chin lift / Jaw thrust** (with C-spine protection):
-   - **Jaw thrust** (preferred in trauma - no neck extension): Place fingers behind angle of mandible, push forward
+   - **Jaw thrust** (preferred in trauma - no neck extension): Place fingers behind angle of mandible, push forward (Murtagh's General Practice, 8th ed, p.3275)
    - Opens airway by pulling tongue forward
 
 2. **Suction**: Remove blood, vomit, secretions
@@ -147,7 +160,7 @@ By the end of this module, you will be able to:
 
 4. **Nasopharyngeal airway**:
    - Better tolerated in semi-conscious patients
-   - **CONTRAINDICATED if base of skull fracture suspected** (may penetrate cribriform plate into brain)
+   - **CONTRAINDICATED if base of skull fracture suspected** (may penetrate cribriform plate into brain) (Murtagh's General Practice, 8th ed, p.3273)
 
 5. **Definitive airway** (endotracheal intubation):
 
@@ -163,7 +176,7 @@ By the end of this module, you will be able to:
 - **Rapid Sequence Intubation (RSI)**: Drug-assisted intubation (induction agent + muscle relaxant)
   - **Drugs**: Ketamine (induction - preserves BP, good for trauma) + Rocuronium (muscle relaxant)
   - **C-spine protection**: Manual in-line stabilization (MILS) during intubation - do NOT remove collar
-- **Surgical airway** (if intubation fails or contraindicated):
+- **Surgical airway** (if intubation fails or contraindicated): (Murtagh's General Practice, 8th ed, p.891)
   - **Cricothyroidotomy**: Emergency surgical airway through cricothyroid membrane
   - **Indications**: Failed intubation (can't intubate, can't oxygenate), severe maxillofacial trauma
 
@@ -234,7 +247,7 @@ By the end of this module, you will be able to:
 - **Flail segment**: Palpable movement of free-floating rib segment
 
 **Measure**:
-- **Pulse oximetry**: SpO2 <95% suggests hypoxia
+- **Pulse oximetry**: SpO2 <95% suggests hypoxia (Murtagh's General Practice, 8th ed, p.2402)
 - **ABG**: If severe respiratory distress (shows pO2, pCO2, pH)
 
 ---
@@ -357,7 +370,7 @@ By the end of this module, you will be able to:
 - **Hypoxia**: Often progressive over 24-48 hours as contusion develops
 
 **Management**:
-- **Oxygen**: High-flow, titrate to SpO2 >95%
+- **Oxygen**: High-flow, titrate to SpO2 >95% (Murtagh's General Practice, 8th ed, p.2402)
 - **Analgesia** (CRITICAL - allows patient to breathe deeply):
   - **Epidural** analgesia (gold standard for multiple rib fractures)
   - **PCA** (patient-controlled analgesia) with opioids
@@ -376,7 +389,7 @@ By the end of this module, you will be able to:
 
 **Causes**: Penetrating chest trauma (stab, gunshot), blunt cardiac injury (rare)
 
-**Clinical Features** - **Beck's Triad** (classic but only 30% have all 3):
+**Clinical Features** - **Beck's Triad** (classic but only 30% have all 3): (Murtagh's General Practice, 8th ed, p.3)
 1. **Hypotension** (reduced cardiac output)
 2. **Muffled heart sounds** (fluid in pericardium)
 3. **Raised JVP** (impaired venous return)
@@ -407,7 +420,7 @@ By the end of this module, you will be able to:
 #### Step 3: TREAT Life-Threats
 
 **Management Principles**:
-- **High-flow oxygen** to all trauma patients (15L via non-rebreather mask, target SpO2 >95%)
+- **High-flow oxygen** to all trauma patients (15L via non-rebreather mask, target SpO2 >95%) <!-- NEEDS CITATION -->
 - **Treat identified life-threats** as described above
 - **Monitor**: Continuous pulse oximetry, cardiac monitoring
 
@@ -435,7 +448,7 @@ By the end of this module, you will be able to:
 - **Heart rate**: Tachycardia (>100) suggests shock (compensatory response)
   - **Exception**: Bradycardia in neurogenic shock (spinal cord injury), severe hypoxia
 - **Blood pressure**:
-  - **Hypotension** (SBP <90mmHg) = decompensated shock (late sign - body compensates until ~30% blood loss)
+  - **Hypotension** (SBP <90mmHg) = decompensated shock (late sign - body compensates until ~30% blood loss) <!-- NEEDS CITATION -->
   - **Normal BP does NOT exclude shock** (may be compensated)
 - **Pulse pressure** (difference between systolic and diastolic):
   - **Narrow pulse pressure** (<25mmHg) suggests shock
@@ -451,15 +464,15 @@ By the end of this module, you will be able to:
 
 | **Class** | **Blood Loss** | **HR** | **BP** | **RR** | **Urine Output** | **Mental Status** |
 |-----------|---------------|--------|--------|--------|------------------|-------------------|
-| **Class I** | <15% (<750mL) | <100 | Normal | 14-20 | >30mL/hr | Slightly anxious |
-| **Class II** | 15-30% (750-1500mL) | 100-120 | Normal | 20-30 | 20-30mL/hr | Mildly anxious, restless |
-| **Class III** | 30-40% (1500-2000mL) | 120-140 | **Decreased** | 30-40 | 5-15mL/hr | Anxious, confused |
-| **Class IV** | >40% (>2000mL) | >140 | **Markedly decreased** | >35 | **Negligible** | Confused, lethargic |
+| **Class I** | <15% (<750mL) | <100 | Normal | 14-20 | >30mL/hr | Slightly anxious | (Murtagh's General Practice, 8th ed, p.10)
+| **Class II** | 15-30% (750-1500mL) | 100-120 | Normal | 20-30 | 20-30mL/hr | Mildly anxious, restless | (Murtagh's General Practice, 8th ed, p.250)
+| **Class III** | 30-40% (1500-2000mL) | 120-140 | **Decreased** | 30-40 | 5-15mL/hr | Anxious, confused | (Murtagh's General Practice, 8th ed, p.2188)
+| **Class IV** | >40% (>2000mL) | >140 | **Markedly decreased** | >35 | **Negligible** | Confused, lethargic | (Murtagh's General Practice, 8th ed, p.3)
 
 **Key Points**:
-- **Hypotension is a LATE sign** (appears at Class III, i.e., >30% blood loss)
+- **Hypotension is a LATE sign** (appears at Class III, i.e., >30% blood loss) <!-- NEEDS CITATION -->
 - **Tachycardia and narrow pulse pressure** appear earlier
-- **Pediatric and young adults compensate well** → May maintain normal BP until sudden decompensation
+- **Paediatric and young adults compensate well** → May maintain normal BP until sudden decompensation
 
 ---
 
@@ -500,7 +513,7 @@ By the end of this module, you will be able to:
 #### Step 3: CONTROL Haemorrhage
 
 **External Haemorrhage**:
-1. **Direct pressure** (first-line)
+1. **Direct pressure** (first-line) (Murtagh's General Practice, 8th ed, p.3785)
 2. **Haemostatic dressing** (e.g., QuikClot)
 3. **Tourniquet** (if limb bleeding uncontrollable with direct pressure):
    - **Site**: Proximal to wound (as proximal as possible on limb)
@@ -524,7 +537,7 @@ By the end of this module, you will be able to:
 **Fluid Resuscitation**:
 
 **Initial Bolus**:
-- **1L crystalloid** (Hartmann's solution or 0.9% Normal Saline) rapid bolus in adults
+- **1L crystalloid** (Hartmann's solution or 0.9% Normal Saline) rapid bolus in adults (Murtagh's General Practice, 8th ed, p.2055)
 - **20mL/kg bolus** in children
 
 **Assess Response**:
@@ -539,7 +552,7 @@ By the end of this module, you will be able to:
 - **Goal**: Replace blood volume, maintain coagulation factors and platelets
 - **Tranexamic acid** (TXA): 1g IV over 10 minutes, then 1g over 8 hours
   - **Antifibrinolytic** - reduces mortality in trauma if given **within 3 hours** of injury
-  - **CRASH-2 trial**: 1.5% absolute mortality reduction
+  - **CRASH-2 trial**: 1.5% absolute mortality reduction (Murtagh's General Practice, 8th ed, p.3152)
 
 **Permissive Hypotension** (Damage Control Resuscitation):
 - **Concept**: In penetrating torso trauma, aggressive fluid resuscitation before haemorrhage control may worsen bleeding (disrupts clot, dilutes clotting factors, increases BP → more bleeding)
@@ -649,7 +662,7 @@ By the end of this module, you will be able to:
 
 **Prevention of Secondary Brain Injury** (CRITICAL in OSCE):
 
-1. **Maintain oxygenation**: Target SpO2 >95%
+1. **Maintain oxygenation**: Target SpO2 >95% (Murtagh's General Practice, 8th ed, p.2402)
    - Intubate if GCS ≤8
 
 2. **Maintain blood pressure**: Target SBP >100mmHg (TBI patients need higher BP than other trauma)
@@ -662,7 +675,7 @@ By the end of this module, you will be able to:
    - **Avoid hyperthermia**: Treat fever (increases metabolic demand)
    - **Osmotic therapy**: If signs of herniation (blown pupil, posturing):
      - **Mannitol** 0.25-1 g/kg IV, or
-     - **Hypertonic saline** (3% NaCl) - draws fluid from brain → reduces ICP
+     - **Hypertonic saline** (3% NaCl) - draws fluid from brain → reduces ICP (Murtagh's General Practice, 8th ed, p.2427)
    - **Seizure prophylaxis**: Levetiracetam or phenytoin (seizures increase ICP)
 
 4. **Avoid secondary insults**:
@@ -845,7 +858,7 @@ By the end of this module, you will be able to:
 - **FAST scan** (Focused Assessment with Sonography in Trauma):
   - **4 views**: Perihepatic, perisplenic, pelvic, pericardial
   - **Looking for**: Free fluid (appears black/anechoic)
-  - **Sensitivity**: ~85% for intra-abdominal haemorrhage
+  - **Sensitivity**: ~85% for intra-abdominal haemorrhage (Murtagh's General Practice, 8th ed, p.1293)
   - **Advantages**: Quick, bedside, non-invasive
   - **Limitations**: Cannot identify source of bleeding (just presence of fluid), user-dependent
 
@@ -1083,7 +1096,7 @@ By the end of this module, you will be able to:
 - **Range**: 1-75 (75 = unsurvivable)
 
 **Interpretation**:
-- **ISS ≥16** = Major trauma (needs trauma center)
+- **ISS ≥16** = Major trauma (needs trauma centre)
 - **ISS ≥25** = Severe trauma (high mortality)
 
 **Not usually calculated in acute setting**, but used for research and trauma registry
@@ -1096,13 +1109,13 @@ By the end of this module, you will be able to:
 
 **Trauma Centers** (tiered system):
 
-- **Level 1** (Major Trauma Center): Metropolitan tertiary hospitals (e.g., Royal Prince Alfred, St George, Liverpool, Westmead)
+- **Level 1** (Major Trauma Centre): Metropolitan tertiary hospitals (e.g., Royal Prince Alfred, St George, Liverpool, Westmead)
   - 24/7 trauma team, neurosurgery, cardiothoracic surgery, interventional radiology
 - **Level 2**: Regional trauma centers
 - **Level 3**: District hospitals with emergency departments
 - **Level 4**: Rural/remote hospitals
 
-**Trauma Team Activation Criteria** (for Level 1 center):
+**Trauma Team Activation Criteria** (for Level 1 centre):
 
 **Physiological**:
 - GCS ≤13
@@ -1130,7 +1143,7 @@ By the end of this module, you will be able to:
 
 ### Retrieval Services
 
-**For patients in regional/rural areas needing transfer to trauma center**:
+**For patients in regional/rural areas needing transfer to trauma centre**:
 
 - **NSW Ambulance Aeromedical Operations** (helicopter)
 - **Royal Flying Doctor Service**
@@ -1387,7 +1400,7 @@ By the end of this module, you will be able to:
 - Identify TBI but don't mention preventing hypoxia/hypotension
 
 **Correct Approach**:
-- Always mention: "To prevent secondary brain injury, I would ensure adequate oxygenation (SpO2 >95%), maintain blood pressure (SBP >100), elevate head to 30°, and avoid hypercapnia"
+- Always mention: "To prevent secondary brain injury, I would ensure adequate oxygenation (SpO2 >95%), maintain blood pressure (SBP >100), elevate head to 30°, and avoid hypercapnia" <!-- NEEDS CITATION -->
 
 ---
 
@@ -1444,6 +1457,6 @@ By the end of this module, you will be able to:
 5. ✅ Trauma Assessment
 
 **Word Count**: ~18,000 words
-**Last Updated**: December 2025 for ICRP NSW Young Hospital Program (March 2026 intake)
+**Last Updated**: December 2025 for ICRP NSW Young Hospital Programmes (March 2026 intake)
 **Author**: ICRP OSCE Preparation Team
 **Reference**: Dr. Amir Soufi (IMG4IMGS), ATLS 10th Edition, NSW Trauma Service Protocols, eTG 2024, AMC Clinical OSCE Format

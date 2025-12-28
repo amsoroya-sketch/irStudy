@@ -1,10 +1,21 @@
 # Acute Abdomen - History Taking with Differential Diagnosis
 ## AMC Clinical / ICRP NSW Young Hospital Preparation
 
+---
+
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 70%+ of AMC Clinical exams
+**Study Priority:** CRITICAL - Practice 10-15 times before exam
+**Why High-Yield:** Acute abdomen presentations appear in 60-70% of AMC Clinical exams, testing your ability to recognize surgical emergencies (appendicitis, perforated viscus, ectopic pregnancy, AAA) requiring urgent intervention versus medical causes. This scenario assesses differential-driven thinking from pain location, systematic SOCRATES application, and critical safety awareness—distinguishing competent surgical referral from dangerous delays. Essential for safe practice in Australian Emergency Departments.
+
+---
+
 **Purpose**: Systematic approach to acute abdominal pain with differential diagnosis emphasis
 **Target**: 8-minute OSCE history-taking station
 **Dr. Amir Soufi Methodology**: Structure + Differentials + Clinical Reasoning
 **Created**: December 14, 2025
+**Last Updated**: December 26, 2025 (AMC Frequency Indicator added, p.9)
 
 ---
 

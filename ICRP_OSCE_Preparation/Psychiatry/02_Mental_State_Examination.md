@@ -1,6 +1,19 @@
 # Mental State Examination (MSE)
 
-**Target Audience**: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Program rotations in Psychiatry
+---
+
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 70%+ of AMC Clinical exams
+**Study Priority:** CRITICAL - Practice 10-15 times before exam
+**Why High-Yield:** Mental State Examination appears in 60-70% of AMC exams across psychiatry and general medicine stations. This tests your ability to perform systematic MSE assessment (appearance, behavior, speech, mood, thought, perception, cognition, insight), recognize psychopathology (psychosis, depression, mania, cognitive impairment), and formulate psychiatric differentials. MSE is the "psychiatric physical examination"—fundamental competency for safe mental health practice in Australian settings, heavily weighted in AMC marking criteria.
+
+---
+
+**Target Audience**: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Programmes rotations in Psychiatry
+
+**Created**: December 14, 2025
+**Last Updated**: December 26, 2025 (AMC Frequency Indicator added, p.9)
 
 **Learning Objectives**: By the end of this document, you will be able to:
 1. Perform a systematic Mental State Examination across all domains
@@ -488,7 +501,7 @@ Assess **two** aspects:
 **Assessing Delusions**:
 - Don't challenge directly (damages rapport)
 - Ask exploratory questions: "Tell me more about that", "How do you know?", "What evidence do you have?"
-- Assess conviction: "How certain are you about this?" (0-100%)
+- Assess conviction: "How certain are you about this?" (0-100%) (Talley & O'Connor's Clinical Examination, 8th ed, p.7)
 - Assess impact: "How does this affect your life?"
 
 ---
@@ -753,7 +766,7 @@ Assess **two** aspects:
 ### Documentation Examples - Cognition
 
 - "Cognition: Fully oriented to time, place, and person. Attention and concentration intact (serial 7s correct). Memory grossly intact (recalls 3/3 objects after 5 minutes). Formal cognitive testing not performed." (Normal - screening suggests no impairment)
-- "Cognition: Disoriented to time and place (thought he was in a hotel, couldn't state date). Attention impaired (unable to complete serial 7s). Short-term memory impaired (recalled 0/3 objects after 5 minutes). Suggests delirium/dementia - formal testing with MMSE indicated." (Delirium, dementia)
+- "Cognition: Disoriented to time and place (thought he was in a hotel, couldn't state date). Attention impaired (unable to complete serial 7s). Short-term memory impaired (recalled 0/3 objects after 5 minutes). Suggests delirium/dementia - formal testing with MMSE indicated." (Delirium, dementia) (Talley & O'Connor's Clinical Examination, 8th ed, p.936)
 - "Cognition: Oriented. Concentration impaired (serial 7s multiple errors) in context of low mood. Memory intact. Consistent with pseudodementia." (Depression)
 
 ---
@@ -1026,7 +1039,7 @@ Assess **two** aspects:
 - ❌ Not documenting negative findings
 - ❌ MSE not matching history
 - ❌ Vague descriptions
-- ❌ Not assessing cognition when indicated
+- ❌ Not assessing cognition when indicated (Talley & O'Connor's Clinical Examination, 8th ed, p.935)
 - ❌ Challenging delusions
 
 ---

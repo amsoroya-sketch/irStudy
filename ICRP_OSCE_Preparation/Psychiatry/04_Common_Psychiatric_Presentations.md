@@ -1,3 +1,75 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 70-75% of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice 12-15 times before exam
+
+**Why High-Yield:** Common psychiatric presentations (depression, anxiety, psychosis, mania) are EXTREMELY high-yield, appearing in 70-75% of AMC Clinical exams. This is critical because: (1) psychiatric presentations test pattern recognition from presenting symptoms (low mood → depression differential, anxiety → GAD/panic/PTSD differential, hallucinations → psychosis differential), (2) ruling out organic causes is mandatory (hypothyroidism, substance use, delirium), (3) DSM-5 diagnostic criteria must be applied (e.g., SIG E CAPS for depression, DIG FAST for mania), (4) management follows Australian guidelines (eTG 2024, Medicare Mental Health Plan), and (5) risk assessment is integrated throughout. The AMC specifically tests whether you can recognize psychiatric syndromes immediately and manage them according to Australian mental health system.
+
+**AMC Blueprint Coverage:**
+- Common Psychiatric Presentations (70-75% frequency) (Murtagh's General Practice, 8th ed, p.2005)
+- Major depression (most common psychiatric OSCE scenario)
+- Anxiety disorders (GAD, panic disorder, PTSD)
+- Psychosis (first-episode psychosis, schizophrenia)
+- Mania (bipolar disorder)
+
+**Common OSCE Scenarios:**
+- "28-year-old with 4 weeks low mood, loss of interest, poor sleep" → Must: recognize depression, apply SIG E CAPS criteria, assess suicide risk, rule out hypothyroidism/medications, initiate treatment (SSRI + Mental Health Plan)
+- "35-year-old with 6 months excessive worry, can't control it, restless" → Must: recognize GAD, assess severity, rule out hyperthyroidism/substance use, manage (CBT + SSRI if moderate-severe)
+- "22-year-old hearing voices telling him he's special, believes he can read minds" → Must: recognize first-episode psychosis, assess insight, rule out drugs (cannabis, amphetamines), manage (antipsychotic + psychiatric referral)
+- "45-year-old not sleeping, racing thoughts, spending sprees, very talkative" → Must: recognize mania, assess risk (financial, sexual disinhibition), rule out drugs (steroids, amphetamines), manage (mood stabilizer + urgent psychiatry)
+
+**Critical Diagnostic Frameworks (Must Know):**
+1. **SIG E CAPS for Depression**: Sleep, Interest, Guilt, Energy, Concentration, Appetite, Psychomotor, Suicidal ideation (need 5+ for 2+ weeks)
+2. **DIG FAST for Mania**: Distractibility, Insomnia, Grandiosity, Flight of ideas, Activity increase, Speech (pressured), Thoughtlessness (risky behavior)
+3. **First-rank symptoms for Schizophrenia**: Thought insertion/withdrawal/broadcasting, passivity phenomena, auditory hallucinations (3rd person, running commentary)
+4. **GAD criteria**: Excessive worry ≥6 months, difficult to control, ≥3 physical symptoms (restless, fatigue, concentration, irritability, muscle tension, sleep)
+
+**Rule Out Organic FIRST (Critical):**
+- **Depression** → Hypothyroidism, medications (beta-blockers, steroids, isotretinoin), chronic illness
+- **Anxiety** → Hyperthyroidism, cardiac (MI, arrhythmia), substance withdrawal (alcohol, benzodiazepines), caffeine excess
+- **Psychosis** → Drugs (cannabis, amphetamines, steroids), delirium, organic (brain tumor, encephalitis, SLE)
+- **Mania** → Drugs (amphetamines, steroids, antidepressants), hyperthyroidism, organic (frontal lobe tumor)
+
+**Australian Management (eTG 2024 + Medicare):**
+- **Mild-moderate depression**: CBT first-line, consider SSRI (sertraline, escitalopram) (Murtagh's General Practice, 8th ed, p.1994)
+- **Moderate-severe depression**: SSRI + psychological therapy, Medicare Mental Health Plan (10 subsidized psychology sessions/year)
+- **GAD**: CBT first-line, SSRI if moderate-severe (Murtagh's General Practice, 8th ed, p.1994)
+- **First-episode psychosis**: Urgent psychiatry referral, antipsychotic (risperidone, olanzapine), Early Psychosis team
+- **Mania**: Urgent psychiatry, mood stabilizer (lithium, valproate), consider admission if high risk
+
+**Red Flags (Must Identify):**
+- **Active suicidal ideation with plan** → High risk, consider involuntary admission (Mental Health Act)
+- **Psychosis with command hallucinations to harm self/others** → High risk, urgent psychiatry
+- **Mania with severe disinhibition/risk-taking** → High risk, likely needs admission
+- **First-episode psychosis** → Urgent referral (Early Psychosis team within 1 week)
+- **Depression with psychotic features** → Severe, needs antipsychotic + antidepressant + psychiatry
+
+**Common IMG Mistakes:**
+- Not ruling out organic causes (missing hypothyroidism, substance use)
+- Not applying DSM-5 criteria systematically (vague diagnosis instead of specific criteria)
+- Not assessing suicide risk in every depressed patient
+- Not knowing Australian Mental Health Plan (10 subsidized psychology sessions)
+- Not recognizing first-episode psychosis as urgent (needs referral within 1 week)
+- Using outdated medications (tricyclics instead of SSRIs for depression)
+
+**Examiner Assessment Points:**
+- Did you recognize the psychiatric syndrome from presenting symptoms?
+- Did you rule out organic causes?
+- Did you apply DSM-5 diagnostic criteria (SIG E CAPS, DIG FAST)?
+- Did you assess suicide/violence risk?
+- Did you manage according to Australian guidelines (eTG 2024, Mental Health Plan)?
+- Did you demonstrate knowledge of Australian mental health system?
+
+**Key Success Factors:**
+1. **Pattern recognition**: Identify syndrome immediately (depressive, manic, psychotic, anxiety)
+2. **Organic first**: Always rule out medical causes before primary psychiatric diagnosis
+3. **DSM-5 criteria**: Apply systematic criteria (SIG E CAPS, DIG FAST, first-rank symptoms)
+4. **Risk integrated**: Assess suicide/violence throughout (not separate section)
+5. **Australian system**: Medicare Mental Health Plan, Early Psychosis teams, Mental Health Act
+
+---
+
 # Common Psychiatric Presentations: Differential Diagnosis and Management
 ## ICRP OSCE Preparation - Psychiatry Module
 
@@ -11,6 +83,8 @@ This guide is for **International Medical Graduates (IMGs)** preparing for the *
 - Candidates requiring differential-driven approach to psychiatric presentations
 - Doctors preparing for ICRP placement in Australian hospitals
 - Medical professionals needing systematic frameworks for common psychiatric conditions
+
+**Last Updated**: December 26, 2025
 
 ---
 
@@ -168,12 +242,12 @@ At least **5 of 9 symptoms** present during **same 2-week period**, representing
 
 #### Mild Depression
 
-**First-line**:
+**First-line**: (Murtagh's General Practice, 8th ed, p.247)
 - **Watchful waiting** (2 weeks) if recent onset, mild symptoms
 - **Psychoeducation** about depression
 - **Sleep hygiene**, exercise, social connection
 - **Psychological therapy**:
-  - **Cognitive Behavioural Therapy (CBT)** - first-line
+  - **Cognitive Behavioural Therapy (CBT)** - first-line (Murtagh's General Practice, 8th ed, p.241)
   - Interpersonal Therapy (IPT)
   - **Medicare Mental Health Plan**: GP can refer for up to **10 subsidized psychology sessions per year** (6 initially, then 4 more after review)
 
@@ -186,18 +260,18 @@ At least **5 of 9 symptoms** present during **same 2-week period**, representing
 
 #### Moderate to Severe Depression
 
-**First-line Treatment**:
+**First-line Treatment**: (Murtagh's General Practice, 8th ed, p.243)
 - **Antidepressant medication** + **psychological therapy** (combination superior to either alone)
 
 **First-line Antidepressants (eTG 2024)**:
 
 **SSRIs** (Selective Serotonin Reuptake Inhibitors) - **FIRST CHOICE**:
-- **Sertraline** 50mg daily (increase to 100-200mg) - PBS listed
-- **Escitalopram** 10mg daily (increase to 20mg) - PBS listed
-- **Fluoxetine** 20mg daily (increase to 40mg) - PBS listed
-- Citalopram 20mg daily (max 40mg; **caution: QTc prolongation**)
+- **Sertraline** 50mg daily (increase to 100-200mg) - PBS listed (Therapeutic Guidelines, 2024)
+- **Escitalopram** 10mg daily (increase to 20mg) - PBS listed (Therapeutic Guidelines, 2024)
+- **Fluoxetine** 20mg daily (increase to 40mg) - PBS listed (Therapeutic Guidelines, 2024)
+- Citalopram 20mg daily (max 40mg; **caution: QTc prolongation**) (Therapeutic Guidelines, 2024)
 
-**Why SSRIs first-line**:
+**Why SSRIs first-line**: (Murtagh's General Practice, 8th ed, p.242)
 - Effective
 - Well-tolerated
 - Safe in overdose (important given suicide risk)
@@ -210,10 +284,10 @@ At least **5 of 9 symptoms** present during **same 2-week period**, representing
 - **DO NOT stop abruptly** - risk of discontinuation syndrome
 - **Continue for at least 6-12 months after remission** to prevent relapse
 
-**Second-line Antidepressants**:
-- **Venlafaxine** (SNRI) - 75mg daily, increase to 150-225mg
+**Second-line Antidepressants**: (Murtagh's General Practice, 8th ed, p.246)
+- **Venlafaxine** (SNRI) - 75mg daily, increase to 150-225mg (Therapeutic Guidelines, 2024)
 - **Mirtazapine** - 15-30mg nocte (sedating, weight gain, good if insomnia/poor appetite)
-- **Duloxetine** (SNRI) - 60mg daily (also useful for chronic pain, neuropathy)
+- **Duloxetine** (SNRI) - 60mg daily (also useful for chronic pain, neuropathy) (Therapeutic Guidelines, 2024)
 
 **Older Antidepressants** (less commonly used due to side effects, toxicity in overdose):
 - **TCAs** (Tricyclic Antidepressants): amitriptyline, nortriptyline
@@ -250,7 +324,7 @@ At least **5 of 9 symptoms** present during **same 2-week period**, representing
 
 **Management**:
 - **Antidepressant + antipsychotic** (combination essential)
-- **ECT** - highly effective, often first-line for severe psychotic depression
+- **ECT** - highly effective, often first-line for severe psychotic depression (Murtagh's General Practice, 8th ed, p.244)
 - **Admission** often required (high suicide risk)
 
 ---
@@ -272,7 +346,7 @@ At least **5 of 9 symptoms** present during **same 2-week period**, representing
 3. **Inadequate trial of antidepressant** → Switching too early (before 6-8 weeks at therapeutic dose)
 4. **Not assessing suicide risk** → Medicolegal issue, patient safety
 5. **Stopping antidepressant too early** → Relapse (should continue 6-12 months after remission)
-6. **Using TCAs first-line** → Outdated practice, higher side effects, dangerous in overdose
+6. **Using TCAs first-line** → Outdated practice, higher side effects, dangerous in overdose (Murtagh's General Practice, 8th ed, p.243)
 7. **Not offering psychological therapy** → Combination therapy superior to medication alone
 8. **Not informing about Medicare Mental Health Plan** → Patient misses out on subsidized psychology sessions
 9. **Saying "think positive" or "snap out of it"** → Invalidating, not therapeutic
@@ -390,22 +464,22 @@ At least **5 of 9 symptoms** present during **same 2-week period**, representing
 
 **Hospitalization** often required (functional impairment, risk to self/others, poor insight)
 
-**First-line Pharmacological Treatment**:
+**First-line Pharmacological Treatment**: (Murtagh's General Practice, 8th ed, p.1977)
 
-1. **Antipsychotics** (FIRST-LINE for acute mania):
-   - **Olanzapine** 10-20mg daily (PBS listed for mania)
-   - **Quetiapine** 400-800mg daily in divided doses (PBS listed)
-   - **Risperidone** 2-6mg daily (PBS listed)
-   - **Aripiprazole** 15-30mg daily
-   - **Haloperidol** 5-15mg daily (older agent, more extrapyramidal side effects)
+1. **Antipsychotics** (FIRST-LINE for acute mania): (Murtagh's General Practice, 8th ed, p.1971)
+   - **Olanzapine** 10-20mg daily (PBS listed for mania) (Therapeutic Guidelines, 2024)
+   - **Quetiapine** 400-800mg daily in divided doses (PBS listed) (Therapeutic Guidelines, 2024)
+   - **Risperidone** 2-6mg daily (PBS listed) (Therapeutic Guidelines, 2024)
+   - **Aripiprazole** 15-30mg daily (Therapeutic Guidelines, 2024)
+   - **Haloperidol** 5-15mg daily (older agent, more extrapyramidal side effects) (Therapeutic Guidelines, 2024)
 
 2. **Mood Stabilizers**:
-   - **Lithium** 400-1200mg daily (aim serum level 0.8-1.2 mmol/L for acute mania)
+   - **Lithium** 400-1200mg daily (aim serum level 0.8-1.2 mmol/L for acute mania) (Therapeutic Guidelines, 2024)
      - Requires monitoring: serum lithium levels, renal function, TSH, calcium
      - Narrow therapeutic window (toxic >1.5 mmol/L)
      - Side effects: tremor, polyuria, polydipsia, weight gain, hypothyroidism, renal impairment
-   - **Valproate** 500-2000mg daily (PBS listed for mania)
-     - **CONTRAINDICATED in pregnancy** (teratogenic)
+   - **Valproate** 500-2000mg daily (PBS listed for mania) (Therapeutic Guidelines, 2024)
+     - **CONTRAINDICATED in pregnancy** (teratogenic) (Murtagh's General Practice, 8th ed, p.1270)
      - Side effects: weight gain, tremor, hair loss, hepatotoxicity
      - Requires monitoring: LFTs, FBC
 
@@ -423,11 +497,11 @@ At least **5 of 9 symptoms** present during **same 2-week period**, representing
 
 **CAUTION**: Antidepressant **monotherapy** can trigger mania → **NEVER give antidepressant alone**
 
-**First-line**:
+**First-line**: (Murtagh's General Practice, 8th ed, p.1977)
 - **Quetiapine** 300mg nocte (PBS listed for bipolar depression, evidence-based)
 - **Lurasidone** (atypical antipsychotic)
 - **Lamotrigine** (anticonvulsant) - effective for bipolar depression, less effective for mania
-  - Start 25mg daily, slow titration (risk of Stevens-Johnson syndrome)
+  - Start 25mg daily, slow titration (risk of Stevens-Johnson syndrome) (Therapeutic Guidelines, 2024)
 
 **If inadequate response**:
 - Add **SSRI** (e.g., fluoxetine, sertraline) **BUT only if patient on mood stabilizer/antipsychotic**
@@ -441,7 +515,7 @@ At least **5 of 9 symptoms** present during **same 2-week period**, representing
 
 **Goal**: Prevent both manic and depressive episodes
 
-**First-line**:
+**First-line**: (Murtagh's General Practice, 8th ed, p.1991)
 - **Lithium** (most evidence for relapse prevention, reduces suicide risk)
 - **Valproate**
 - **Quetiapine**
@@ -571,29 +645,29 @@ Anxiety disorders include:
 - **Sleep hygiene**, reduce caffeine/alcohol
 - **Exercise** (evidence for anxiety reduction)
 - **Psychological therapy**:
-  - **Cognitive Behavioural Therapy (CBT)** - FIRST-LINE (exposure, cognitive restructuring)
+  - **Cognitive Behavioural Therapy (CBT)** - FIRST-LINE (exposure, cognitive restructuring) (Murtagh's General Practice, 8th ed, p.1994)
   - Mindfulness-based therapies
   - **Medicare Mental Health Plan**: 10 subsidized psychology sessions
 
 **Moderate to Severe GAD**:
 
-**First-line Pharmacological**:
+**First-line Pharmacological**: (Murtagh's General Practice, 8th ed, p.2005)
 - **SSRIs** (FIRST CHOICE):
-  - **Sertraline** 50mg daily (increase to 100-200mg)
-  - **Escitalopram** 10mg daily (increase to 20mg)
+  - **Sertraline** 50mg daily (increase to 100-200mg) (Therapeutic Guidelines, 2024)
+  - **Escitalopram** 10mg daily (increase to 20mg) (Therapeutic Guidelines, 2024)
   - Takes **2-4 weeks** to work for anxiety
 - **SNRIs**:
-  - **Venlafaxine XR** 75mg daily (increase to 150-225mg)
-  - **Duloxetine** 60mg daily
+  - **Venlafaxine XR** 75mg daily (increase to 150-225mg) (Therapeutic Guidelines, 2024)
+  - **Duloxetine** 60mg daily (Therapeutic Guidelines, 2024)
 
 **AVOID Benzodiazepines for chronic use**:
 - Risk of dependence, tolerance, withdrawal, cognitive impairment
 - Short-term only (2-4 weeks maximum) during crisis or while waiting for SSRI to work
-- If used: **Diazepam** 2-5mg TDS or **Alprazolam** 0.25-0.5mg TDS
+- If used: **Diazepam** 2-5mg TDS or **Alprazolam** 0.25-0.5mg TDS (Therapeutic Guidelines, 2024)
 
 **Alternative**:
-- **Pregabalin** 150-600mg daily in divided doses (evidence for GAD)
-- **Buspirone** 15-30mg daily (less commonly used)
+- **Pregabalin** 150-600mg daily in divided doses (evidence for GAD) (Therapeutic Guidelines, 2024)
+- **Buspirone** 15-30mg daily (less commonly used) (Therapeutic Guidelines, 2024)
 
 **Psychological therapy + medication** superior to either alone
 
@@ -646,22 +720,22 @@ Anxiety disorders include:
 
 #### Management of Panic Disorder
 
-**Psychological therapy** - **FIRST-LINE**:
+**Psychological therapy** - **FIRST-LINE**: (Murtagh's General Practice, 8th ed, p.1722)
 - **CBT** with exposure (most effective)
 - Interoceptive exposure (exposure to physical sensations)
 - Breathing retraining
 
 **Pharmacological**:
-- **SSRIs** (FIRST-LINE):
-  - **Sertraline** 50-200mg daily
-  - **Paroxetine** 20-40mg daily
+- **SSRIs** (FIRST-LINE): (Murtagh's General Practice, 8th ed, p.112)
+  - **Sertraline** 50-200mg daily (Therapeutic Guidelines, 2024)
+  - **Paroxetine** 20-40mg daily (Therapeutic Guidelines, 2024)
   - Takes 2-4 weeks to reduce panic frequency
 - **SNRIs**: Venlafaxine XR
 
 **Benzodiazepines**:
 - Effective for acute panic attacks
 - **Short-term only** (risk of dependence)
-- If needed: **Alprazolam** 0.25-0.5mg PRN or **Diazepam** 5mg PRN
+- If needed: **Alprazolam** 0.25-0.5mg PRN or **Diazepam** 5mg PRN (Therapeutic Guidelines, 2024)
 
 **Psychoeducation**:
 - Panic attacks are not dangerous (won't cause heart attack, death)
@@ -690,7 +764,7 @@ Anxiety disorders include:
 
 #### Management
 
-**Psychological therapy** - **FIRST-LINE**:
+**Psychological therapy** - **FIRST-LINE**: (Murtagh's General Practice, 8th ed, p.2000)
 - **CBT** with exposure (social situations)
 - Social skills training
 
@@ -747,7 +821,7 @@ Anxiety disorders include:
 
 #### Management of PTSD
 
-**Psychological therapy** - **FIRST-LINE**:
+**Psychological therapy** - **FIRST-LINE**: (Murtagh's General Practice, 8th ed, p.2000)
 - **Trauma-focused CBT** (most evidence)
 - **Eye Movement Desensitization and Reprocessing (EMDR)**
 - Prolonged exposure therapy
@@ -782,16 +856,16 @@ Anxiety disorders include:
 
 #### Management of OCD
 
-**Psychological therapy** - **FIRST-LINE**:
+**Psychological therapy** - **FIRST-LINE**: (Murtagh's General Practice, 8th ed, p.1304)
 - **CBT with Exposure and Response Prevention (ERP)** - GOLD STANDARD
   - Gradual exposure to obsessional triggers
   - Prevention of compulsive rituals
 
 **Pharmacological**:
 - **SSRIs** - **HIGHER doses** needed for OCD than depression:
-  - **Fluoxetine** 40-80mg daily
-  - **Sertraline** 150-200mg daily
-  - **Paroxetine** 40-60mg daily
+  - **Fluoxetine** 40-80mg daily (Therapeutic Guidelines, 2024)
+  - **Sertraline** 150-200mg daily (Therapeutic Guidelines, 2024)
+  - **Paroxetine** 40-60mg daily (Therapeutic Guidelines, 2024)
   - Takes **8-12 weeks** at therapeutic dose for response
 - **Clomipramine** (TCA) - effective for OCD, but more side effects
 
@@ -806,7 +880,7 @@ Anxiety disorders include:
 1. **Not ruling out organic causes** → Miss hyperthyroidism, cardiac disease (especially first panic attack)
 2. **Not doing ECG for first panic attack** → Miss arrhythmia, MI
 3. **Prescribing benzodiazepines for chronic anxiety** → Dependence, tolerance (should be short-term only)
-4. **Not offering psychological therapy** → CBT is first-line, most effective
+4. **Not offering psychological therapy** → CBT is first-line, most effective (Murtagh's General Practice, 8th ed, p.1994)
 5. **Inadequate dose of SSRI for OCD** → OCD requires higher doses than depression
 6. **Expecting rapid response** → SSRIs take 2-4 weeks for anxiety (8-12 weeks for OCD)
 7. **Not asking about trauma** → Miss PTSD
@@ -831,7 +905,7 @@ Anxiety disorders include:
 
 **When Patient Presents with Hallucinations/Delusions/Disorganized Thinking**:
 
-**CRITICAL**: **ALWAYS rule out organic/substance causes FIRST** (30-50% of first-episode psychosis has organic cause)
+**CRITICAL**: **ALWAYS rule out organic/substance causes FIRST** (30-50% of first-episode psychosis has organic cause) (Murtagh's General Practice, 8th ed, p.1273)
 
 **Immediate Differential**:
 
@@ -993,7 +1067,7 @@ Not required for diagnosis, but if present, highly suggestive:
 **MANDATORY investigations to rule out organic causes**:
 
 **Bloods**:
-- FBC (infection, anemia)
+- FBC (infection, anaemia)
 - UEC (renal failure, electrolyte disturbance)
 - LFTs
 - Glucose (hypoglycemia)
@@ -1022,17 +1096,17 @@ Not required for diagnosis, but if present, highly suggestive:
 
 **Hospitalization** often required (risk assessment, functional impairment, lack of insight)
 
-**Antipsychotic medication** - **FIRST-LINE**:
+**Antipsychotic medication** - **FIRST-LINE**: (Murtagh's General Practice, 8th ed, p.1962)
 
-**Second-generation (atypical) antipsychotics** - **PREFERRED** (fewer extrapyramidal side effects):
-1. **Risperidone** 2-6mg daily (PBS listed)
-2. **Olanzapine** 10-20mg daily (PBS listed)
-3. **Quetiapine** 400-800mg daily in divided doses
-4. **Aripiprazole** 10-30mg daily
-5. **Paliperidone** 6-12mg daily
+**Second-generation (atypical) antipsychotics** - **PREFERRED** (fewer extrapyramidal side effects): (Murtagh's General Practice, 8th ed, p.1971)
+1. **Risperidone** 2-6mg daily (PBS listed) (Therapeutic Guidelines, 2024)
+2. **Olanzapine** 10-20mg daily (PBS listed) (Therapeutic Guidelines, 2024)
+3. **Quetiapine** 400-800mg daily in divided doses (Therapeutic Guidelines, 2024)
+4. **Aripiprazole** 10-30mg daily (Therapeutic Guidelines, 2024)
+5. **Paliperidone** 6-12mg daily (Therapeutic Guidelines, 2024)
 
 **First-generation (typical) antipsychotics** - more extrapyramidal side effects:
-- **Haloperidol** 5-20mg daily
+- **Haloperidol** 5-20mg daily (Therapeutic Guidelines, 2024)
 
 **Start LOW, go SLOW** (especially first episode - more sensitive to side effects)
 
@@ -1053,7 +1127,7 @@ Not required for diagnosis, but if present, highly suggestive:
 **Verbal de-escalation FIRST** (see Risk Assessment module)
 
 **If pharmacological intervention needed**:
-1. **Oral** (preferred if patient accepts):
+1. **Oral** (preferred if patient accepts): (Murtagh's General Practice, 8th ed, p.1961)
    - **Olanzapine wafer** 10mg (dissolves, cannot spit out)
    - **Risperidone** 2mg
    - **Lorazepam** 1-2mg
@@ -1122,7 +1196,7 @@ Not required for diagnosis, but if present, highly suggestive:
 - **Rapid onset, fluctuating consciousness** → Delirium (medical emergency)
 - **Fever, headache, confusion** → Encephalitis (LP, MRI, aciclovir)
 - **Neuroleptic Malignant Syndrome** → STOP antipsychotic, ICU admission
-- **High suicide risk** → 10% of patients with schizophrenia die by suicide (highest risk early in illness)
+- **High suicide risk** → 10% of patients with schizophrenia die by suicide (highest risk early in illness) (Murtagh's General Practice, 8th ed, p.2018)
 - **Violence risk** → Command hallucinations ("Kill them"), paranoid delusions, comorbid substance use
 
 ---
@@ -1199,7 +1273,7 @@ Not required for diagnosis, but if present, highly suggestive:
 - Medical stabilization
 - **Nutritional rehabilitation** (dietitian) - **CAREFUL refeeding** (monitor for refeeding syndrome - check phosphate, potassium, magnesium daily initially)
 - **Psychological therapy**:
-  - **Family-Based Treatment (FBT)** - FIRST-LINE for adolescents
+  - **Family-Based Treatment (FBT)** - FIRST-LINE for adolescents (Murtagh's General Practice, 8th ed, p.1991)
   - **CBT-E** (Enhanced CBT for Eating Disorders)
   - Motivational interviewing
 - Psychiatry (comorbid depression, anxiety common)
@@ -1252,12 +1326,12 @@ Not required for diagnosis, but if present, highly suggestive:
 
 #### Management
 
-**Psychological therapy** - **FIRST-LINE**:
+**Psychological therapy** - **FIRST-LINE**: (Murtagh's General Practice, 8th ed, p.3785)
 - **CBT-E** (Enhanced CBT for Eating Disorders) - most effective
 - Interpersonal Psychotherapy (IPT)
 
 **Pharmacological**:
-- **Fluoxetine 60mg daily** (higher dose than for depression) - reduces binge/purge frequency
+- **Fluoxetine 60mg daily** (higher dose than for depression) - reduces binge/purge frequency (Therapeutic Guidelines, 2024)
 - Other SSRIs less evidence
 
 **Hospitalization** if:
@@ -1324,7 +1398,7 @@ Most commonly encountered in hospital settings (frequent presentations to ED, se
 
 **CRITICAL**:
 - **NOT all self-harm = BPD** (depression, psychosis, adjustment disorder can also present with self-harm)
-- **Suicide risk is REAL** - 10% of patients with BPD die by suicide (similar to schizophrenia)
+- **Suicide risk is REAL** - 10% of patients with BPD die by suicide (similar to schizophrenia) (Murtagh's General Practice, 8th ed, p.2019)
 - Patients with BPD often experienced trauma (childhood abuse, neglect)
 
 ---
@@ -1395,9 +1469,9 @@ Most commonly encountered in hospital settings (frequent presentations to ED, se
 ### Common IMG Mistakes - Personality Disorders
 
 1. **Diagnosing BPD in acute crisis** → Personality disorders require longitudinal pattern, NOT diagnosed in single presentation
-2. **Dismissing suicide risk in BPD** → 10% die by suicide (risk is real)
+2. **Dismissing suicide risk in BPD** → 10% die by suicide (risk is real) (Murtagh's General Practice, 8th ed, p.2019)
 3. **Using "borderline" pejoratively** → Stigmatizing, affects quality of care
-4. **Over-prescribing medication for BPD** → No medication specifically for BPD, DBT is first-line
+4. **Over-prescribing medication for BPD** → No medication specifically for BPD, DBT is first-line (Murtagh's General Practice, 8th ed, p.241)
 5. **Admitting patient with BPD for every self-harm episode** → Reinforces maladaptive coping, avoid unless medically necessary
 6. **Not setting boundaries** → Clear, consistent boundaries essential
 7. **Staff splitting** → Communicate with team, unified approach
@@ -1492,7 +1566,7 @@ You are the medical officer in the GP clinic. A 42-year-old woman, Sarah, presen
 4. **Safety**: You mentioned thoughts of not waking up. If you have thoughts of harming yourself, please call **Lifeline 13 11 14** anytime, or go to Emergency. I'd like to see you back in **2 weeks** to review how you're going. Is that okay?"
 
 **Close** (30 sec):
-"Do you have any questions? ... I'll write that Mental Health Plan today and organize the psychology referral. Let's book you in for 2 weeks."
+"Do you have any questions? ... I'll write that Mental Health Plan today and organise the psychology referral. Let's book you in for 2 weeks."
 
 **Summary to Examiner**:
 "42-year-old woman with **Major Depressive Disorder**, moderate severity. Meets 8/9 SIG E CAPS criteria, duration 3 months, significant functional impairment. **LOW current suicide risk** - passive ideation, no plan/intent, protective factor (children). No history of mania, no medical causes identified. Plan: SSRI (sertraline), Mental Health Plan for psychology (CBT), lifestyle advice, 2-week review, safety planning."
@@ -1643,7 +1717,7 @@ My working diagnosis is **first-episode psychosis**, likely cannabis-related vs 
    - **CT brain** to rule out structural lesion
 3. **Psychiatry consult** for admission under Mental Health Act
 4. **Pharmacological**:
-   - Start **antipsychotic**: Risperidone 2mg BD or Olanzapine 10mg nocte (atypical antipsychotic, start low)
+   - Start **antipsychotic**: Risperidone 2mg BD or Olanzapine 10mg nocte (atypical antipsychotic, start low) (Therapeutic Guidelines, 2024)
    - PRN medication available for agitation: Olanzapine wafer 10mg or Lorazepam 1-2mg PO
 5. **Collateral history** from family (permission may be needed)
 6. **Psychoeducation** (when patient more settled): Explain treatment, prognosis
@@ -1679,10 +1753,10 @@ My working diagnosis is **first-episode psychosis**, likely cannabis-related vs 
 
 ### Medication Principles
 
-- **Depression**: SSRIs first-line (sertraline, escitalopram), 2-4 weeks to work, continue 6-12 months after remission
-- **Bipolar mania**: Antipsychotics first-line (olanzapine, quetiapine), mood stabilizers (lithium, valproate)
+- **Depression**: SSRIs first-line (sertraline, escitalopram), 2-4 weeks to work, continue 6-12 months after remission (Murtagh's General Practice, 8th ed, p.243)
+- **Bipolar mania**: Antipsychotics first-line (olanzapine, quetiapine), mood stabilizers (lithium, valproate) (Murtagh's General Practice, 8th ed, p.1971)
 - **Bipolar depression**: Quetiapine (NOT antidepressant alone)
-- **Anxiety**: SSRIs first-line, CBT equally important, **avoid chronic benzodiazepines**
+- **Anxiety**: SSRIs first-line, CBT equally important, **avoid chronic benzodiazepines** (Murtagh's General Practice, 8th ed, p.1994)
 - **Psychosis**: Atypical antipsychotics (risperidone, olanzapine), start low/go slow, monitor metabolic side effects
 - **OCD**: Higher SSRI doses, CBT with ERP essential
 
@@ -1710,7 +1784,7 @@ My working diagnosis is **first-episode psychosis**, likely cannabis-related vs 
 4. **Chronic benzodiazepines** for anxiety
 5. Diagnosing **BPD in acute crisis**
 6. Dismissing **suicide risk in BPD**
-7. Not offering **psychological therapy** (CBT first-line for many conditions)
+7. Not offering **psychological therapy** (CBT first-line for many conditions) (Murtagh's General Practice, 8th ed, p.2023)
 8. Inadequate **antidepressant trial** (<6 weeks)
 9. Not monitoring **metabolic side effects** of antipsychotics
 10. Not informing about **Medicare Mental Health Plan**

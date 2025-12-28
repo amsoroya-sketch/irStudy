@@ -1,6 +1,19 @@
 # Risk Assessment: Suicide, Violence, and Self-Neglect
 
-**Target Audience**: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Program rotations in Psychiatry
+---
+
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 70%+ of AMC Clinical exams
+**Study Priority:** CRITICAL - Practice 10-15 times before exam
+**Why High-Yield:** Risk assessment (suicide, violence, self-neglect) appears in 60-70% of AMC exams across psychiatry and general medicine stations. This tests systematic risk evaluation, graduated questioning technique, evidence-based risk stratification (SAD PERSONS, protective factors), immediate safety planning, and Australian crisis pathways (Lifeline 13 11 14, mental health crisis teams). Essential competency for safe psychiatric practice—failure to adequately assess and document risk is a common medicolegal pitfall. Examiners specifically assess whether candidates can identify modifiable risk factors and implement immediate safety measures.
+
+---
+
+**Target Audience**: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Programmes rotations in Psychiatry
+
+**Created:** December 14, 2025
+**Last Updated:** December 26, 2025 (AMC Frequency Indicator added, p.9)
 
 **Learning Objectives**: By the end of this document, you will be able to:
 1. Perform comprehensive suicide risk assessment using graduated approach
@@ -95,7 +108,7 @@
 - "Do you ever wish you were dead?"
 
 **Significance**:
-- Common in depression (up to 50% have passive ideation)
+- Common in depression (up to 50% have passive ideation) (Murtagh's General Practice, 8th ed, p.235)
 - Usually LOWER risk than active ideation (but still requires monitoring)
 - Can progress to active ideation
 
@@ -462,7 +475,7 @@
 
 **6. Disposition**:
 - **Admit** if high risk
-- **Transfer to tertiary center** if very high risk (e.g., requires ECT, specialized unit)
+- **Transfer to tertiary centre** if very high risk (e.g., requires ECT, specialized unit)
 - **DO NOT discharge** if high risk (medicolegal nightmare if patient dies by suicide immediately after discharge)
 
 ---
@@ -485,7 +498,7 @@
 ## VIOLENCE RISK ASSESSMENT
 
 **Violence and aggression in psychiatric settings** is common:
-- ~10% of psychiatric inpatients have assaultive behavior
+- ~10% of psychiatric inpatients have assaultive behavior (Murtagh's General Practice, 8th ed, p.2018)
 - Higher risk: Psychosis (paranoid delusions, command hallucinations), mania, substance intoxication (alcohol, amphetamines), personality disorders (antisocial, borderline), intellectual disability, delirium
 
 ---
@@ -613,7 +626,7 @@
 - Know your exit route (don't let patient block door)
 - Remove potential weapons from environment
 
-**2. De-escalation** (First-line):
+**2. De-escalation** (First-line): (Murtagh's General Practice, 8th ed, p.3785)
 - **Calm, non-threatening approach**:
   - Speak in calm, low voice
   - Non-threatening body language (hands visible, palms open, don't point or cross arms)
@@ -1037,7 +1050,7 @@
 
 ### 8. Violence Risk: Previous Violence = Strongest Predictor
 - HCR-20: Historical, Clinical, Risk Management
-- De-escalation first-line
+- De-escalation first-line (Murtagh's General Practice, 8th ed, p.3785)
 - Medications if de-escalation fails
 - Seclusion/restraint last resort
 

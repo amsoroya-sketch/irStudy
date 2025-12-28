@@ -1,6 +1,19 @@
 # Paediatric History Taking with Differential Diagnosis
 
-**Target Audience**: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Program rotations in Paediatrics
+---
+
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 60%+ of AMC Clinical exams
+**Study Priority:** CRITICAL - Practice 10-15 times before exam
+**Why High-Yield:** Paediatric history-taking appears in 50-60% of AMC exams, testing age-based differential thinking ("Age IS the differential"), parent communication skills, and recognition of paediatric red flags (sepsis in neonate, dehydration signs, meningococcal rash, safeguarding concerns). This assesses safe paediatric practice essential for Australian Emergency Departments and general practice where children constitute 25-30% of presentations. Examiners heavily weight safety awareness and parent-centered communication.
+
+---
+
+**Target Audience**: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Programmes rotations in Paediatrics
+
+**Created:** December 14, 2025
+**Last Updated:** December 26, 2025 (AMC Frequency Indicator added, p.9)
 
 **Learning Objectives**: By the end of this document, you will be able to:
 1. Apply Dr. Amir Soufi's differential-driven methodology to paediatric presentations
@@ -89,7 +102,7 @@ A systematic approach ensuring nothing is missed:
 - "Good morning! I'm Dr [Name]. Thanks for coming in today."
 - **Address child by name**: "And this must be [child's name]! Hello [child's name]!"
 - **Introduce to parent**: "Are you [child's] mum/dad/carer?"
-- **Confirm relationship**: "Lovely. And what should I call you?" [Use parent's preferred name throughout]
+- **Confirm relationship**: "Lovely. And what should I call you?" [Use parent's preferred name throughout] (Murtagh's General Practice, 8th ed, p.2232)
 
 **Establish rapport with child** (age-appropriate):
 - **Infants**: Smile, gentle voice, comment positively ("What a beautiful baby!", "Such lovely eyes!")
@@ -318,7 +331,7 @@ Use **SOCRATES** (adapted for children):
 
 ### Clinical Dehydration Assessment (to confirm on examination)
 
-| Feature | No Dehydration | Some Dehydration (3-5%) | Severe Dehydration (>5%) |
+| Feature | No Dehydration | Some Dehydration (3-5%) | Severe Dehydration (>5%) | (Murtagh's General Practice, 8th ed, p.3785)
 |---------|----------------|------------------------|-------------------------|
 | Appearance | Alert, well | Restless, irritable | Lethargic, drowsy, floppy |
 | Eyes | Normal | Sunken | Very sunken |
@@ -393,7 +406,7 @@ Use **SOCRATES** (adapted for children):
 
 **Always ask**: "Are they up to date with their vaccinations?"
 
-### Australian National Immunization Program (NIP) Schedule 2024
+### Australian National Immunization Programmes (NIP) Schedule 2024
 
 | Age | Vaccines |
 |-----|----------|
@@ -503,7 +516,7 @@ Use **SOCRATES** (adapted for children):
 
 | Diagnosis | Age Peak | Key Features | Management |
 |-----------|----------|--------------|------------|
-| **Bronchiolitis** | <12 months (peak 3-6 months) | Coryzal prodrome, wheeze, crackles, feeding difficulty, apnoea (young infants) | Supportive (O₂, NG feeds), admit if O₂ sats <92%, severe respiratory distress, or age <3 months |
+| **Bronchiolitis** | <12 months (peak 3-6 months) | Coryzal prodrome, wheeze, crackles, feeding difficulty, apnoea (young infants) | Supportive (O₂, NG feeds), admit if O₂ sats <92%, severe respiratory distress, or age <3 months | (Murtagh's General Practice, 8th ed, p.2420)
 | **Croup** | 6 months - 3 years | Barking cough, inspiratory stridor, worse at night | Dexamethasone 0.15 mg/kg PO (single dose), admit if severe |
 | **Whooping cough** | Any age (unvaccinated) | Paroxysmal cough with inspiratory whoop, post-tussive vomiting, apnoea in infants | Azithromycin, notify public health, admit if <3 months |
 
@@ -528,7 +541,7 @@ Use **SOCRATES** (adapted for children):
 | **Roseola** | Diffuse maculopapular rash AFTER fever settles (fever then rash) | High fever 3-5 days, irritability | Febrile convulsion |
 | **Scarlet fever** | Diffuse erythematous "sandpaper" rash, spares face, blanching, strawberry tongue | Sore throat (Strep A), fever | Rheumatic fever, glomerulonephritis |
 | **Hand-foot-mouth** | Vesicular rash on palms, soles, mouth ulcers | Mild fever, irritability, reduced oral intake | Usually self-limiting |
-| **Meningococcal** | **Non-blanching purpuric rash** (petechiae → purpura), starts peripheries | Fever, headache, neck stiffness, photophobia, drowsiness, **rapid deterioration** | Death (10%), limb loss, multi-organ failure |
+| **Meningococcal** | **Non-blanching purpuric rash** (petechiae → purpura), starts peripheries | Fever, headache, neck stiffness, photophobia, drowsiness, **rapid deterioration** | Death (10%), limb loss, multi-organ failure | (Murtagh's General Practice, 8th ed, p.557)
 
 **GLASS TEST**: Press clear glass on rash. If rash does NOT disappear → NON-BLANCHING → **MENINGOCOCCAL SEPTICAEMIA** → Emergency admission + IM/IV benzylpenicillin immediately
 

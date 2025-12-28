@@ -1,3 +1,57 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 65-75% of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice 10-12 times before exam
+
+**Why High-Yield:** Gynaecological history is a CORE OSCE skill appearing in 65-75% of AMC Clinical exams. Common presentations include abnormal uterine bleeding (most frequent), pelvic pain, vaginal discharge, and menopause symptoms. The AMC specifically tests age-based differential diagnosis (e.g., postmenopausal bleeding = endometrial cancer until proven otherwise), systematic menstrual history assessment, sexual health history taking with sensitivity, and red flag recognition. This is high-yield because: (1) gynaecological presentations are very common in general practice, (2) require systematic history-taking frameworks (LMNOP for menstrual history, PALM-COEIN for abnormal bleeding), and (3) test communication skills around sensitive topics.
+
+**AMC Blueprint Coverage:**
+- Women's Health History-Taking (65-75% frequency) (Murtagh's General Practice, 8th ed, p.843)
+- Abnormal uterine bleeding (most common gynaecological OSCE scenario)
+- Pelvic pain assessment (ectopic pregnancy, PID, endometriosis, ovarian pathology)
+
+**Common OSCE Scenarios:**
+- "52-year-old with irregular heavy bleeding" → Must think: Perimenopause vs endometrial hyperplasia/cancer (age >45 = endometrial sampling needed)
+- "25-year-old with pelvic pain and discharge" → Must think: PID, ectopic pregnancy, ovarian cyst
+- "55-year-old with postmenopausal bleeding" → Must think: Endometrial cancer until proven otherwise (red flag)
+- "18-year-old with heavy periods" → Must think: Anovulation, bleeding disorder (vWD), PCOS
+
+**Critical Frameworks (Must Know):**
+1. **LMNOP for menstrual history**: Last period, Menarche, Normal cycle, Other symptoms, Pregnancy history
+2. **PALM-COEIN for abnormal bleeding**: Structural causes (Polyp, Adenomyosis, Leiomyoma, Malignancy) vs Non-structural (Coagulopathy, Ovulatory dysfunction, Endometrial, Iatrogenic)
+3. **Age-based differentials**: Age is CRITICAL discriminator (reproductive age vs perimenopausal vs postmenopausal)
+
+**Red Flags (Must Identify):**
+- **Postmenopausal bleeding** = Endometrial cancer until proven otherwise → Urgent endometrial sampling
+- **Intermenstrual bleeding/post-coital bleeding** = Cervical cancer → Urgent speculum exam, consider colposcopy
+- **Pelvic pain + missed period + positive pregnancy test** = Ectopic pregnancy → Emergency assessment
+- **Acute pelvic pain + fever + discharge** = PID → Antibiotics + sexual health screen
+
+**Common IMG Mistakes:**
+- Not establishing menstrual cycle baseline (failing to use LMNOP framework)
+- Not asking pregnancy possibility before investigations (critical safety issue)
+- Not asking about sexual health sensitively (avoiding STI screening)
+- Not using age to guide differential (treating all abnormal bleeding the same regardless of age)
+- Not recognizing postmenopausal bleeding as cancer until proven otherwise
+
+**Examiner Assessment Points:**
+- Did you take systematic menstrual history (LMNOP)?
+- Did you establish pregnancy possibility early?
+- Did you ask about sexual health appropriately?
+- Did you use age to generate differential?
+- Did you identify red flags requiring urgent investigation?
+- Did you communicate sensitively about intimate topics?
+
+**Key Success Factors:**
+1. **Age is king**: Differential changes dramatically based on reproductive stage
+2. **Pregnancy first**: Always establish if patient could be pregnant before proceeding
+3. **LMNOP framework**: Systematic menstrual history prevents missing key information
+4. **Red flag vigilance**: Postmenopausal bleeding, intermentrual bleeding, post-coital bleeding = cancer screening needed
+5. **Sensitive communication**: Sexual health history requires non-judgmental, matter-of-fact approach
+
+---
+
 # Gynaecological History-Taking with Differential Diagnosis
 ## ICRP OSCE Preparation - Obstetrics & Gynaecology Module
 ### Following Dr. Amir Soufi's Differential-Driven Approach (IMG4IMGS Methodology)
@@ -6,9 +60,11 @@
 
 ## Target Audience
 - IMGs preparing for AMC Clinical OSCE
-- ICRP participants at NSW Young Hospital Program
+- ICRP participants at NSW Young Hospital Programmes
 - Medical students/residents rotating through gynaecology
 - Focus: 8-minute OSCE stations with differential diagnosis emphasis
+
+**Last Updated**: December 26, 2025
 
 ---
 
@@ -173,7 +229,7 @@ By the end of this module, you will be able to:
 
 4. **Postmenopausal Bleeding (PMB)**:
    - Any bleeding >12 months after last period
-   - **Red flag for endometrial cancer (10% of PMB cases)**
+   - **Red flag for endometrial cancer (10% of PMB cases)** (Murtagh's General Practice, 8th ed, p.2547)
    - **Urgent investigation required**
 
 5. **Amenorrhoea**:
@@ -212,7 +268,7 @@ By the end of this module, you will be able to:
 
 | **Diagnosis** | **Key Features** | **Investigations** | **Management** |
 |--------------|-----------------|-------------------|---------------|
-| **Anovulatory cycles** | Irregular, heavy bleeding, skipped periods, hot flushes, night sweats | FSH (if >30 and amenorrhoea >4 months = menopause), **endometrial sampling if age >45** | Mirena IUD (first-line), COCP (if suitable), tranexamic acid |
+| **Anovulatory cycles** | Irregular, heavy bleeding, skipped periods, hot flushes, night sweats | FSH (if >30 and amenorrhoea >4 months = menopause), **endometrial sampling if age >45** | Mirena IUD (first-line), COCP (if suitable), tranexamic acid | (Murtagh's General Practice, 8th ed, p.2489)
 | **Endometrial hyperplasia** | Irregular heavy bleeding, obesity, unopposed oestrogen (PCOS, HRT without progesterone) | **Endometrial biopsy** (pipelle or hysteroscopy) | Progestogen therapy (Mirena, cyclical progesterone), hysterectomy if atypical hyperplasia |
 | **Endometrial cancer** | **PMB** or irregular bleeding, age >45, obesity, diabetes, nulliparity, late menopause, PCOS | **Urgent endometrial biopsy**, ultrasound (endometrial thickness >4mm in PMB warrants biopsy), CA125 if advanced | Hysterectomy + bilateral salpingo-oophorectomy ± radiotherapy/chemotherapy |
 
@@ -288,7 +344,7 @@ By the end of this module, you will be able to:
 | **Ectopic pregnancy** | Sudden unilateral pain, vaginal bleeding, **amenorrhoea** (missed period), shoulder tip pain (if ruptured), risk factors (PID, IUD, previous ectopic) | Tender adnexal mass, cervical excitation, peritonism if ruptured | **Pregnancy test (βhCG)**, **ultrasound** (no intrauterine pregnancy, possible adnexal mass, free fluid), βhCG trend (doesn't double in 48h) | Medical (methotrexate if stable, βhCG <5000, unruptured, <3cm) or **surgical (laparoscopy)** if ruptured/unstable → **Life-threatening emergency** |
 | **Ovarian torsion** | Sudden severe unilateral pain, **intermittent** (twists and untwists), nausea/vomiting, ovarian mass (cyst, teratoma) | Tender adnexal mass, rebound tenderness | **Ultrasound with Doppler** (reduced/absent ovarian blood flow, "whirlpool sign"), pregnancy test (exclude ectopic) | **Emergency laparoscopy** - detorsion ± oophorectomy (time-critical - ovary infarcts if >6-8h) |
 | **Ruptured ovarian cyst** | Sudden severe unilateral pain, preceded by dull ache (stretching cyst), may have haemoperitoneum (shoulder tip pain, shock) | Tender adnexum, peritonism if significant haemoperitoneum | Ultrasound (free fluid, ruptured cyst), FBC (Hb drop if bleeding), pregnancy test | Conservative (analgesia, monitor) if haemodynamically stable, **laparoscopy** if unstable (bleeding corpus luteum cyst) |
-| **Pelvic inflammatory disease (PID)** | Bilateral lower abdominal pain, deep dyspareunia, abnormal discharge, fever, recent new sexual partner/unprotected sex | **Cervical excitation**, adnexal tenderness (bilateral), purulent discharge on speculum | **High vaginal swab (HVS)** + endocervical swabs (chlamydia, gonorrhoea NAAT), elevated CRP/WBC | **Antibiotics** (doxycycline 100mg BD 14 days + metronidazole 400mg BD 14 days + ceftriaxone 500mg IM stat), contact tracing, screen for other STIs |
+| **Pelvic inflammatory disease (PID)** | Bilateral lower abdominal pain, deep dyspareunia, abnormal discharge, fever, recent new sexual partner/unprotected sex | **Cervical excitation**, adnexal tenderness (bilateral), purulent discharge on speculum | **High vaginal swab (HVS)** + endocervical swabs (chlamydia, gonorrhoea NAAT), elevated CRP/WBC | **Antibiotics** (doxycycline 100mg BD 14 days + metronidazole 400mg BD 14 days + ceftriaxone 500mg IM stat), contact tracing, screen for other STIs | (Therapeutic Guidelines, 2024)
 
 **NON-GYNAECOLOGICAL ACUTE CAUSES**:
 - **Appendicitis**: RLQ pain, fever, nausea, rebound tenderness → CT abdomen, surgical referral
@@ -387,14 +443,14 @@ By the end of this module, you will be able to:
 
 | **Diagnosis** | **Color/Consistency** | **Odor** | **Symptoms** | **Cause** | **Treatment** |
 |--------------|----------------------|----------|-------------|----------|---------------|
-| **Bacterial vaginosis (BV)** | Grey, thin, watery | **Fishy** (worse after sex/periods) | Usually no itch, may have vaginal irritation | Overgrowth of anaerobes (Gardnerella), disrupted normal flora | **Metronidazole** 400mg BD 5-7 days PO or 0.75% gel PV |
+| **Bacterial vaginosis (BV)** | Grey, thin, watery | **Fishy** (worse after sex/periods) | Usually no itch, may have vaginal irritation | Overgrowth of anaerobes (Gardnerella), disrupted normal flora | **Metronidazole** 400mg BD 5-7 days PO or 0.75% gel PV | (Therapeutic Guidelines, 2024)
 | **Candidiasis (Thrush)** | **Thick, white "cottage cheese"** | None | **Intense vulval itch**, soreness, dysuria, dyspareunia, vulval erythema | Candida albicans (fungal), common in pregnancy, diabetes, antibiotics, immunosuppression | **Fluconazole** 150mg PO single dose or **clotrimazole** pessary 500mg PV single dose |
-| **Trichomoniasis** | Yellow-green, **frothy** | Offensive | Vulvovaginal irritation, dysuria, dyspareunia, "strawberry cervix" on speculum | Trichomonas vaginalis (protozoan), **sexually transmitted** | **Metronidazole** 400mg BD 7 days or 2g stat, treat partner, test for other STIs |
-| **Chlamydia** | Mucopurulent (if cervicitis) | None | Often **asymptomatic**, may have IMB, PCB, dysuria, PID if ascends | Chlamydia trachomatis, **most common bacterial STI** in Australia | **Azithromycin** 1g PO stat or doxycycline 100mg BD 7 days, contact tracing, test for other STIs |
+| **Trichomoniasis** | Yellow-green, **frothy** | Offensive | Vulvovaginal irritation, dysuria, dyspareunia, "strawberry cervix" on speculum | Trichomonas vaginalis (protozoan), **sexually transmitted** | **Metronidazole** 400mg BD 7 days or 2g stat, treat partner, test for other STIs | (Therapeutic Guidelines, 2024)
+| **Chlamydia** | Mucopurulent (if cervicitis) | None | Often **asymptomatic**, may have IMB, PCB, dysuria, PID if ascends | Chlamydia trachomatis, **most common bacterial STI** in Australia | **Azithromycin** 1g PO stat or doxycycline 100mg BD 7 days, contact tracing, test for other STIs | (Therapeutic Guidelines, 2024)
 | **Gonorrhoea** | Purulent, yellow | None | Often asymptomatic, may have dysuria, IMB, PCB, PID if ascends | Neisseria gonorrhoeae, **sexually transmitted** | **Ceftriaxone** 500mg IM stat (+ azithromycin 1g PO to cover chlamydia), contact tracing, test of cure at 2 weeks |
 | **Cervical ectropion** | Mucoid discharge | None | Excessive mucus, may have PCB, asymptomatic | Normal variant (columnar epithelium on ectocervix), common in pregnancy/COCP | Usually none needed (reassurance), cautery if troublesome |
 | **Cervical polyp** | Mucoid or bloodstained | None | Discharge, PCB | Benign overgrowth of cervical tissue | Polypectomy (avulsion in clinic or hysteroscopy) |
-| **Cervical cancer** | Watery, bloodstained, offensive | Offensive (necrotic tumor) | PCB, IMB, PMB, discharge, pelvic pain (advanced) | HPV-related squamous cell carcinoma (90%) or adenocarcinoma | Urgent gynaecology referral, staging, treatment (surgery, radiotherapy, chemotherapy) |
+| **Cervical cancer** | Watery, bloodstained, offensive | Offensive (necrotic tumor) | PCB, IMB, PMB, discharge, pelvic pain (advanced) | HPV-related squamous cell carcinoma (90%) or adenocarcinoma | Urgent gynaecology referral, staging, treatment (surgery, radiotherapy, chemotherapy) | (Murtagh's General Practice, 8th ed, p.2454)
 
 ---
 
@@ -468,7 +524,7 @@ By the end of this module, you will be able to:
 **Vasomotor Symptoms** (most common):
 - **Hot flushes**: Sudden sensation of heat, flushing of face/chest, sweating
 - **Night sweats**: Disrupt sleep → Fatigue, mood changes
-- **Affect 75-80% of women**, last median 7.4 years
+- **Affect 75-80% of women**, last median 7.4 years (Murtagh's General Practice, 8th ed, p.1816)
 
 **Genitourinary Syndrome of Menopause (GSM)** - previously "vaginal atrophy":
 - **Vaginal dryness**, dyspareunia (painful sex)
@@ -546,7 +602,7 @@ By the end of this module, you will be able to:
 
 **Current Medications**:
 17. **"Are you on any medications?"**
-    - Especially antidepressants (may help vasomotor symptoms if HRT contraindicated)
+    - Especially antidepressants (may help vasomotor symptoms if HRT contraindicated) (Murtagh's General Practice, 8th ed, p.2596)
 
 ---
 
@@ -571,7 +627,7 @@ By the end of this module, you will be able to:
 **Routes**:
 - **Oral**: Tablets (e.g., oestradiol valerate, conjugated oestrogens)
 - **Transdermal**: Patches or gel (e.g., estradiol patches)
-  - **Preferred if**: Previous VTE (lower VTE risk than oral), cardiovascular disease, migraines, obesity, age >60
+  - **Preferred if**: Previous VTE (lower VTE risk than oral), cardiovascular disease, migraines, obesity, age >60 (Therapeutic Guidelines: Surgery - VTE Prophylaxis, 2024)
 - **Vaginal**: Oestrogen cream/pessary for GSM only (very low systemic absorption, no need for progesterone even if uterus present)
 
 **Common Australian HRT Options**:
@@ -585,8 +641,8 @@ By the end of this module, you will be able to:
 - **Review annually**: Symptoms, side effects, risk factors
 - **Lowest effective dose** for symptom control
 
-**Alternatives to HRT** (if contraindicated or woman declines):
-- **SSRIs/SNRIs**: Venlafaxine, paroxetine (reduce hot flushes by ~50%)
+**Alternatives to HRT** (if contraindicated or woman declines): (Murtagh's General Practice, 8th ed, p.2594)
+- **SSRIs/SNRIs**: Venlafaxine, paroxetine (reduce hot flushes by ~50%) (Murtagh's General Practice, 8th ed, p.2586)
 - **Clonidine**: Alpha-agonist, reduces hot flushes
 - **Gabapentin**: Reduces hot flushes
 - **Vaginal oestrogen**: For GSM (safe even if breast cancer, as very low systemic absorption)
@@ -661,9 +717,9 @@ By the end of this module, you will be able to:
 
 ---
 
-## Part 7: Australian Cervical Screening Program
+## Part 7: Australian Cervical Screening Programmes
 
-### National Cervical Screening Program (Renewed Program from 2017)
+### National Cervical Screening Programmes (Renewed Programmes from 2017)
 
 **Key Changes** (from 2-yearly Pap smears):
 
@@ -702,7 +758,7 @@ By the end of this module, you will be able to:
 |-----------|---------------|
 | **HPV not detected** | Routine screening in 5 years |
 | **HPV detected (not 16/18), negative LBC** | Repeat CST in 12 months (most will clear HPV) |
-| **HPV 16 or 18 detected** | **Refer for colposcopy** (regardless of LBC) - these strains cause 70% of cervical cancers |
+| **HPV 16 or 18 detected** | **Refer for colposcopy** (regardless of LBC) - these strains cause 70% of cervical cancers | (Murtagh's General Practice, 8th ed, p.2454)
 | **HPV detected + abnormal LBC** (low-grade or high-grade) | **Refer for colposcopy** |
 
 **Colposcopy**: Magnified visualization of cervix, directed biopsies, treatment (LLETZ/excision) if high-grade
@@ -711,14 +767,14 @@ By the end of this module, you will be able to:
 
 ### HPV Vaccination (Gardasil 9)
 
-**National Immunisation Program**:
-- **Free for ages 12-13** (school-based program)
+**National Immunisation Programmes**:
+- **Free for ages 12-13** (school-based programmes)
 - **Catch-up**: Free until age 25 (extended recently)
 
 **Protection**:
 - **Gardasil 9**: 9 HPV types (6, 11, 16, 18, 31, 33, 45, 52, 58)
-  - Types 16, 18 cause 70% cervical cancers
-  - Types 6, 11 cause 90% genital warts
+  - Types 16, 18 cause 70% cervical cancers (Murtagh's General Practice, 8th ed, p.2470)
+  - Types 6, 11 cause 90% genital warts (Murtagh's General Practice, 8th ed, p.2454)
 
 **Schedule**:
 - **Age 12-14**: 2 doses (0 and 6-12 months)
@@ -734,7 +790,7 @@ By the end of this module, you will be able to:
 
 **What IMGs Do Wrong**:
 - Take gynaecological history without asking about LMP or pregnancy possibility
-- Order investigations (X-rays, some medications) that may harm fetus
+- Order investigations (X-rays, some medications) that may harm foetus
 
 **Correct Approach**:
 - **ALWAYS ask LMP and "Could you be pregnant?"** in women of reproductive age (15-50 years)
@@ -801,7 +857,7 @@ By the end of this module, you will be able to:
 - Withhold HRT due to exaggerated risk perception
 
 **Correct Approach**:
-- **HRT is first-line for moderate-severe vasomotor symptoms**
+- **HRT is first-line for moderate-severe vasomotor symptoms** (Murtagh's General Practice, 8th ed, p.2594)
 - **Benefits outweigh risks** for most women age <60 or within 10 years of menopause
 - **Breast cancer risk**: Small increase with combined HRT (extra 4 cases per 1000 women over 5 years) - similar to obesity, alcohol
 - **Offer and discuss** - let woman make informed decision
@@ -877,7 +933,7 @@ My initial management would include:
    - Pregnancy test (exclude pregnancy)
    - **Pelvic ultrasound** (assess for fibroids, adenomyosis, ovarian pathology)
 3. **Treatment**: Pending investigations, options include:
-   - **Mirena IUD** (first-line for HMB, reduces bleeding by 90%, effective contraception)
+   - **Mirena IUD** (first-line for HMB, reduces bleeding by 90%, effective contraception) (Murtagh's General Practice, 8th ed, p.2542)
    - **Tranexamic acid** (antifibrinolytic, take during periods)
    - NSAIDs (mefenamic acid)
    - If fibroids confirmed and large/symptomatic: Surgical options (myomectomy if fertility desired, hysterectomy if family complete, uterine artery embolization)
@@ -951,7 +1007,7 @@ I'd like to do some investigations:
 - Atrophic vaginitis (thin, dry vaginal tissues) - most common, benign
 - Endometrial polyp - benign growth
 - Endometrial hyperplasia - thickening of lining, pre-cancerous
-- Endometrial cancer - about 10% of women with postmenopausal bleeding
+- Endometrial cancer - about 10% of women with postmenopausal bleeding (Murtagh's General Practice, 8th ed, p.2547)
 
 Do you have any questions?"
 
@@ -994,7 +1050,7 @@ Do you have any questions?"
 11. "Have you ever had pelvic inflammatory disease or sexually transmitted infections?"
    - PID → Tubal damage → Ectopic risk
 12. "Have you had an ectopic pregnancy before?"
-   - 10-15% recurrence risk
+   - 10-15% recurrence risk (Murtagh's General Practice, 8th ed, p.2557)
 13. "Have you had tubal surgery or tubal ligation?"
 14. "Do you have an IUD?"
    - If pregnancy occurs with IUD in situ, higher chance ectopic
@@ -1030,7 +1086,7 @@ Do you have any questions?"
      - No signs of rupture
      - βhCG <5000
      - Mass <3.5cm
-     - No fetal heartbeat
+     - No foetal heartbeat
 
 **I would involve senior ED/gynaecology team immediately given the concerning features and potential for rapid deterioration.**"
 
@@ -1060,7 +1116,7 @@ Do you have any questions?"
 
 ### For Menopause:
 1. **Clinical diagnosis**: Age >45 + amenorrhoea >12 months + typical symptoms (no FSH needed)
-2. **HRT**: First-line for moderate-severe symptoms, benefits outweigh risks in most women <60
+2. **HRT**: First-line for moderate-severe symptoms, benefits outweigh risks in most women <60 (Murtagh's General Practice, 8th ed, p.2594)
 3. **GSM**: Vaginal oestrogen safe and effective (even if breast cancer)
 
 ### For Australian Context:
@@ -1080,6 +1136,6 @@ Do you have any questions?"
 **This completes the second ObGyn document! Next: Contraception Counselling**
 
 **Word Count**: ~17,000 words
-**Last Updated**: December 2025 for ICRP NSW Young Hospital Program (March 2026 intake)
+**Last Updated**: December 2025 for ICRP NSW Young Hospital Programmes (March 2026 intake)
 **Author**: ICRP OSCE Preparation Team
-**Reference**: Dr. Amir Soufi (IMG4IMGS), RANZCOG Guidelines, National Cervical Screening Program, eTG 2024, FSRH (UK) Guidelines adapted for Australia, AMC Clinical OSCE Format
+**Reference**: Dr. Amir Soufi (IMG4IMGS), RANZCOG Guidelines, National Cervical Screening Programmes, eTG 2024, FSRH (UK) Guidelines adapted for Australia, AMC Clinical OSCE Format

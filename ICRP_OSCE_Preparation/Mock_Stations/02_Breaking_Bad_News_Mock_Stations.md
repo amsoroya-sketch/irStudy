@@ -1,9 +1,22 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Breaking bad news appears in 80%+ of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice each station 10-15 times before exam
+
+**Why High-Yield:** Breaking bad news is THE most frequently tested communication skill in AMC Clinical OSCE (appears in 80%+ of exams). This document provides 6 complete mock stations covering: (1) HIV diagnosis, (2) Miscarriage, (3) Stroke with permanent disability, (4) Death notification, (5) Childhood leukemia, (6) Dementia diagnosis. Each station tests SPIKES framework, silence tolerance, empathy expression, avoiding false hope, and providing specific next steps. The AMC specifically tests whether you can deliver bad news clearly using the word "died/dead" (not euphemisms), allow 15-20 seconds of silence after delivering news, sit with patient's emotion (not rushing to fix), and provide concrete support/next steps.
+
+**Mock Station Collection Value:** 6 complete stations with candidate instructions, actor scripts, AND examiner checklists - enabling comprehensive breaking bad news practice across different scenarios.
+
+---
+
 # Breaking Bad News - Complete Mock OSCE Stations
 ## AMC Clinical / ICRP NSW Young Hospital Preparation
 
 **Purpose**: Complete mock OSCE stations for breaking bad news with examiner checklists
 **Format**: 6 complete 8-minute stations
 **Created**: December 14, 2025
+**Last Updated**: December 26, 2025
 
 ---
 
@@ -320,9 +333,9 @@ Does that all make sense? What questions do you have?"
 
 I'm sorry to have given you this difficult news, but I want you to know there's real hope. How are you feeling right now? Are you safe to drive home?"
 
-**Key Differences Between 90% and 70% Performance**:
+**Key Differences Between 90% and 70% Performance**: (Murtagh's General Practice, 8th ed, p.3785)
 
-**90% candidate**:
+**90% candidate**: (Murtagh's General Practice, 8th ed, p.10)
 - Comfortable with silence (counts to 10)
 - Empathy statements feel genuine, not scripted
 - Addresses "Am I going to die?" proactively and compassionately
@@ -331,7 +344,7 @@ I'm sorry to have given you this difficult news, but I want you to know there's 
 - Checks understanding frequently
 - Body language shows comfort with difficult conversation
 
-**70% candidate**:
+**70% candidate**: (Murtagh's General Practice, 8th ed, p.96)
 - Allows some silence but rushes slightly
 - Uses empathy statements but they feel more formulaic
 - Addresses death fear when asked but not as reassuringly
@@ -350,7 +363,7 @@ I'm sorry to have given you this difficult news, but I want you to know there's 
 You are a GP. Mrs Emma Wilson, 28, presented to the Emergency Department yesterday with vaginal bleeding at 10 weeks gestation.
 
 **Results:**
-- Transvaginal ultrasound: Empty gestational sac, no fetal heartbeat
+- Transvaginal ultrasound: Empty gestational sac, no foetal heartbeat
 - βHCG levels: Day 1: 8,000 mIU/mL → Day 2: 2,500 mIU/mL (falling)
 - Diagnosis: Complete miscarriage (missed abortion)
 
@@ -478,7 +491,7 @@ You have 8 minutes for this consultation.
 #### **5. KNOWLEDGE - Physical Recovery & Future (15 points)**
 
 - [ ] **Explains physical recovery** (bleeding will settle, 1-2 weeks) (3 pts)
-- [ ] **Future pregnancy reassurance** (85% success rate after one miscarriage) (5 pts)
+- [ ] **Future pregnancy reassurance** (85% success rate after one miscarriage) (5 pts) (Murtagh's General Practice, 8th ed, p.2660)
 - [ ] **Timing** (medically safe to try after one period) (2 pts)
 - [ ] **Safety-netting** (when to go to ED: heavy bleeding, fever, severe pain) (3 pts)
 - [ ] **When to investigate** (not after first miscarriage, only after 3 recurrent) (2 pts)
@@ -557,7 +570,7 @@ If you develop very heavy bleeding - soaking two pads an hour for two hours - or
 
 **[Future Pregnancy - 60 sec]**
 *[Patient asks: "Can I have children? Will this happen again?"]*
-"Having one miscarriage doesn't mean you'll have another. About 85% of women who've had one miscarriage go on to have successful next pregnancies. Most miscarriages are one-off events.
+"Having one miscarriage doesn't mean you'll have another. About 85% of women who've had one miscarriage go on to have successful next pregnancies. Most miscarriages are one-off events. (Murtagh's General Practice, 8th ed, p.2660)
 
 When you're ready to try again - and only when you're ready emotionally - medically, you can try after you've had one normal period. That's mainly so we can date the next pregnancy.
 

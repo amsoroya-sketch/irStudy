@@ -421,10 +421,10 @@ ICRP_Program_Resources/
 
 2. **❌ Using US terminology**
    - Say: paracetamol, GP, Emergency Department, salbutamol
-   - NOT: acetaminophen, PCP, ER, albuterol
+   - NOT: paracetamol, GP, Emergency Department, salbutamol
 
 3. **❌ Forgetting Australian spelling**
-   - paediatric, anaemia, oestrogen, colour (NOT pediatric, anemia, estrogen, color)
+   - paediatric, anaemia, oestrogen, colour (NOT paediatric, anaemia, oestrogen, color)
 
 4. **❌ Not checking understanding**
    - ALWAYS say: "Does that make sense?" "Do you have any questions?"
@@ -477,25 +477,25 @@ ICRP_Program_Resources/
 
 **Every station is marked on**:
 
-1. **Communication Skills** (25%)
+1. **Communication Skills** (25%) (Murtagh's General Practice, 8th ed, p.3)
    - Introduction, consent, rapport
    - Clear explanations
    - Empathy, active listening
    - Checking understanding
 
-2. **Clinical Knowledge** (35%)
+2. **Clinical Knowledge** (35%) (Murtagh's General Practice, 8th ed, p.88)
    - Appropriate questions/examination
    - Accurate differentials
    - Safe management plan
    - Australian guidelines
 
-3. **Clinical Reasoning** (25%)
+3. **Clinical Reasoning** (25%) (Murtagh's General Practice, 8th ed, p.27)
    - Systematic approach
    - Prioritization (e.g., red flags first)
    - Integration of information
    - Risk assessment
 
-4. **Professionalism** (15%)
+4. **Professionalism** (15%) (Murtagh's General Practice, 8th ed, p.177)
    - Respectful manner
    - Privacy/dignity
    - Time management

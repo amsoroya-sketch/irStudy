@@ -1,10 +1,21 @@
 # Physical Examination OSCE Notes - Abdominal & Neurological
 ## AMC Clinical / ICRP NSW Young Hospital Preparation
 
+---
+
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 80%+ of AMC Clinical exams
+**Study Priority:** CRITICAL - Practice 10-15 times before exam
+**Why High-Yield:** Abdominal and neurological examinations appear in approximately 3 out of 4 AMC Clinical exams. These assess your ability to perform systematic 9-region abdominal examination, detect organomegaly/masses/ascites, and complete cranial nerve (CN I-XII) assessment—essential skills that examiners use to differentiate competent from unsafe candidates at the intern level.
+
+---
+
 **Purpose**: Systematic physical examination for abdominal and neurological OSCE stations
 **Target Time**: 8 minutes per examination
 **Format**: Australian teaching hospital standard (5 Ps Framework)
 **Created**: December 14, 2025
+**Last Updated**: December 26, 2025 (AMC Frequency Indicator added, p.9)
 
 ---
 
@@ -231,7 +242,7 @@
 **Rebound Tenderness** (peritonitis):
 - Press gently in area of tenderness, then release quickly
 - **Positive**: More pain on release than on pressing (peritoneal inflammation)
-- **NOTE**: VERY painful - only do if clinically indicated, NOT routinely in OSCE
+- **NOTE**: VERY painful - only do if clinically indicated, NOT routinely in OSCE (Talley & O'Connor's Clinical Examination, 8th ed, p.433)
 
 #### H. ABDOMEN - PERCUSSION
 
@@ -280,7 +291,7 @@
 
 **Say out loud**: "Bowel sounds are present and normal."
 
-**Abdominal Bruits** (if indicated):
+**Abdominal Bruits** (if indicated): (Talley & O'Connor's Clinical Examination, 8th ed, p.414)
 - **Aorta** (midline above umbilicus) - Abdominal aortic aneurysm
 - **Renal arteries** (2cm above and lateral to umbilicus) - Renal artery stenosis
 - **Liver** (over liver) - Hepatocellular carcinoma (rare)

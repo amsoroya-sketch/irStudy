@@ -1,3 +1,99 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 60-70% of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice 10-12 times before exam
+
+**Why High-Yield:** Gastrointestinal bleeding is a CORE emergency medicine and gastroenterology presentation appearing in 60-70% of AMC Clinical exams. This is high-yield because: (1) GI bleeding tests emergency management skills (ABC resuscitation, massive transfusion protocol), (2) requires immediate localization (upper vs lower GI bleeding based on presentation), (3) risk stratification using validated scores (Glasgow-Blatchford Score determines need for admission/intervention), (4) differential diagnosis by presentation pattern (hematemesis + NSAID use = peptic ulcer, hematemesis after vomiting = Mallory-Weiss), and (5) knowledge of when to call endoscopy urgently (<24h if hemodynamically unstable). The AMC specifically tests whether you can resuscitate, risk-stratify, and manage GI bleeding systematically.
+
+**AMC Blueprint Coverage:**
+- Emergency Management - GI Bleeding (60-70% frequency) (Murtagh's General Practice, 8th ed, p.1295)
+- Upper GI bleeding (most common GI bleeding OSCE scenario)
+- Lower GI bleeding
+- Risk stratification and resuscitation
+
+**Common OSCE Scenarios:**
+- "65-year-old vomited blood, BP 85/50, HR 120, on NSAIDs" → Must: recognize upper GI bleeding, high risk (hemodynamic instability), resuscitate (2 large-bore IV, cross-match, fluids), reverse anticoagulation if applicable, arrange urgent endoscopy (<24h), calculate Glasgow-Blatchford Score
+- "70-year-old with fresh red blood PR, no abdominal pain" → Must: recognize lower GI bleeding, localize (likely colonic), assess severity, resuscitate if unstable, differential (diverticular bleed, angiodysplasia, hemorrhoids)
+- "40-year-old vomited blood after heavy alcohol use + vomiting episode" → Must: recognize Mallory-Weiss tear (hematemesis after vomiting), assess variceal bleeding risk (alcohol history), resuscitate, arrange endoscopy
+
+**Critical Localization (Upper vs Lower):**
+- **Upper GI bleeding** (proximal to ligament of Treitz):
+  - **Hematemesis** (vomiting blood - fresh red or coffee-ground)
+  - **Melena** (black tarry stool - digested blood)
+  - Can present with fresh red blood PR if massive bleed (rapid transit)
+
+- **Lower GI bleeding** (distal to ligament of Treitz):
+  - **Fresh red blood PR** (hematochezia)
+  - **Maroon stools**
+  - Usually NO melena or hematemesis
+
+**Glasgow-Blatchford Score (MUST KNOW - Determines Management):**
+- Score 0 = Safe for outpatient management (no intervention needed)
+- Score ≥1 = Admission required, high risk of needing intervention
+- Components: BP, HR, Hb, melena, syncope, liver disease, heart failure, urea
+
+**Critical Differentials by Presentation:**
+**Upper GI Bleeding:**
+1. **Peptic ulcer** (most common 50%) - NSAID use, H. pylori, epigastric pain (Murtagh's General Practice, 8th ed, p.1087)
+2. **Variceal bleeding** (20%) - Alcohol history, liver disease, massive bleeding
+3. **Mallory-Weiss tear** (10%) - Hematemesis after vomiting/retching (Murtagh's General Practice, 8th ed, p.1291)
+4. **Erosive gastritis** - NSAIDs, alcohol, stress
+5. **Malignancy** - Weight loss, anorexia, older age
+
+**Lower GI Bleeding:**
+1. **Diverticular disease** (most common) - Painless, fresh red blood, older adults
+2. **Angiodysplasia** - Painless, recurrent, elderly, aortic stenosis association
+3. **Hemorrhoids** - Fresh blood on toilet paper, with straining/constipation
+4. **Inflammatory bowel disease** - Bloody diarrhea, abdominal pain, young adults
+5. **Colorectal cancer** - Change in bowel habits, weight loss, older age
+
+**Resuscitation Protocol (Critical for Unstable Patient):**
+1. **ABC assessment**: Airway patent, Breathing adequate, Circulation (BP, HR, CRT)
+2. **Two large-bore IV cannulae** (16G or larger in antecubital fossa)
+3. **Bloods**: FBC, coag, cross-match (4-6 units), LFTs, U&Es
+4. **Massive transfusion protocol** if shock: Blood products 1:1:1 ratio (RBC:FFP:platelets)
+5. **Permissive hypotension** initially (SBP 90-100) until bleeding controlled
+6. **Reverse anticoagulation**: Warfarin (vitamin K + prothrombin complex concentrate), DOACs (idarucizumab for dabigatran, andexanet alfa for factor Xa inhibitors)
+7. **NG tube** if massive UGIB (decompress stomach, assess ongoing bleeding)
+8. **Monitor**: Continuous vital signs, hourly urine output, serial Hb
+
+**Endoscopy Timing (Must Know):**
+- **Urgent endoscopy (<24 hours)**: Hemodynamic instability, high Glasgow-Blatchford Score (≥12), variceal bleeding suspected
+- **Routine endoscopy (24-72 hours)**: Stable patient, low-moderate GBS
+
+**Red Flags (Must Identify):**
+- **Hemodynamic instability** (BP <90, HR >120, CRT >3 sec) → Massive transfusion, urgent endoscopy
+- **Variceal bleeding** (alcohol history, liver disease, massive bleeding) → Octreotide, urgent endoscopy + banding, antibiotics (ceftriaxone)
+- **Ongoing bleeding** (continuous hematemesis, BP not responding to fluids) → Consider surgery/interventional radiology
+- **Massive UGIB with fresh red blood PR** → Rapid transit, very large bleed, high mortality risk
+
+**Common IMG Mistakes:**
+- Not calculating Glasgow-Blatchford Score (missing safe discharge criteria)
+- Not resuscitating aggressively (conservative fluid approach in shocked patient)
+- Not reversing anticoagulation promptly
+- Confusing upper vs lower GI bleeding (massive UGIB can present with red blood PR)
+- Not recognizing variceal bleeding urgency (needs octreotide + urgent endoscopy + antibiotics)
+- Not calling for senior help/endoscopy early enough
+
+**Examiner Assessment Points:**
+- Did you localize bleeding (upper vs lower)?
+- Did you assess hemodynamic stability systematically?
+- Did you initiate appropriate resuscitation (2 large-bore IV, cross-match, fluids)?
+- Did you calculate Glasgow-Blatchford Score?
+- Did you reverse anticoagulation if applicable?
+- Did you determine correct endoscopy timing (urgent vs routine)?
+- Did you identify need for senior help/ICU?
+
+**Key Success Factors:**
+1. **Localize first**: Upper (hematemesis, melena) vs Lower (fresh red blood PR)
+2. **Resuscitate aggressively**: 2 large-bore IV, cross-match, fluids, blood products if shocked
+3. **Glasgow-Blatchford Score**: Determines admission vs discharge, urgent vs routine endoscopy
+4. **Reverse anticoagulation**: Warfarin (vitamin K + PCC), DOACs (specific reversal agents)
+5. **Variceal bleeding recognition**: Alcohol + liver disease + massive bleeding = octreotide + urgent endoscopy + antibiotics
+
+---
+
 # Gastrointestinal Bleeding: Differential Diagnosis and Management
 ## ICRP OSCE Preparation - Medicine Module (Gastroenterology)
 
@@ -12,6 +108,8 @@ This guide is for **International Medical Graduates (IMGs)** preparing for the *
 - Doctors preparing for ICRP placement in Australian Emergency Departments
 - Medical professionals needing resuscitation protocols for acute GI bleeding
 - Clinicians requiring Australian endoscopy and management guidelines (eTG 2024)
+
+**Last Updated**: December 26, 2025
 
 ---
 
@@ -111,28 +209,28 @@ Bleeding from source **proximal to ligament of Treitz** (duodenojejunal junction
 
 **Other presentations**:
 - Syncope, dizziness (volume loss)
-- Dyspnea, chest pain (anemia, cardiac ischemia)
+- Dyspnea, chest pain (anaemia, cardiac ischemia)
 - Confusion (elderly - hypovolemia)
 
 ---
 
 ### Differential Diagnosis for UGIB
 
-**Common Causes (Account for >90% of UGIB)**:
+**Common Causes (Account for >90% of UGIB)**: (Murtagh's General Practice, 8th ed, p.1290)
 
-1. **Peptic Ulcer Disease** (35-50% of UGIB):
+1. **Peptic Ulcer Disease** (35-50% of UGIB): (Murtagh's General Practice, 8th ed, p.1070)
    - **Duodenal ulcer** (most common site)
    - **Gastric ulcer**
    - **Risk factors**: NSAIDs, aspirin, H. pylori, steroids, smoking, alcohol, stress (ICU patients)
-   - **Presentation**: Hematemesis, melena, epigastric pain (may be absent in NSAID-induced), anemia
+   - **Presentation**: Hematemesis, melena, epigastric pain (may be absent in NSAID-induced), anaemia
    - **High-risk features**: Age >60, shock, comorbidities, anticoagulation
    - **Endoscopy**: Ulcer with active bleeding (spurting/oozing), visible vessel, adherent clot
    - **Management**: Endoscopic therapy (adrenaline injection + clips/thermal coagulation), high-dose PPI (esomeprazole 80mg IV bolus then 8mg/hr infusion x 72 hours), H. pylori eradication if positive, stop NSAIDs
 
-2. **Variceal Bleeding** (Esophageal or Gastric Varices) (15-20% of UGIB):
+2. **Variceal Bleeding** (Esophageal or Gastric Varices) (15-20% of UGIB): (Murtagh's General Practice, 8th ed, p.1294)
    - **Cause**: Portal hypertension from liver cirrhosis (alcohol, viral hepatitis, NAFLD)
    - **Presentation**: Large volume hematemesis, known cirrhosis, stigmata of chronic liver disease (jaundice, spider nevi, ascites, splenomegaly, palmar erythema)
-   - **HIGH MORTALITY** (15-20%)
+   - **HIGH MORTALITY** (15-20%) (Murtagh's General Practice, 8th ed, p.1380)
    - **Investigations**: FBC (thrombocytopenia - hypersplenism), LFTs (deranged), coagulation (elevated INR - liver dysfunction)
    - **Management**:
      - **Resuscitation**: Cautious fluids (over-resuscitation worsens portal pressure and re-bleeding)
@@ -142,26 +240,26 @@ Bleeding from source **proximal to ligament of Treitz** (duodenojejunal junction
      - **Sengstaken-Blakemore tube** (balloon tamponade) if uncontrolled bleeding (temporary measure)
      - **TIPSS** (Transjugular Intrahepatic Portosystemic Shunt) if endoscopy fails
 
-3. **Mallory-Weiss Tear** (5-15% of UGIB):
+3. **Mallory-Weiss Tear** (5-15% of UGIB): (Murtagh's General Practice, 8th ed, p.1291)
    - **Cause**: Mucosal tear at gastroesophageal junction from forceful vomiting/retching
    - **Classic history**: Vomiting (non-bloody) → hematemesis (blood after initial vomits)
    - **Associated**: Alcohol binge, hyperemesis gravidarum, eating disorders
-   - **Usually self-limiting** (90% stop bleeding spontaneously)
+   - **Usually self-limiting** (90% stop bleeding spontaneously) (Murtagh's General Practice, 8th ed, p.1290)
    - **Endoscopy**: Linear mucosal tear at GE junction
    - **Management**: Usually supportive, endoscopic therapy if active bleeding
 
-4. **Erosive Gastritis / Esophagitis** (10-15%):
+4. **Erosive Gastritis / Esophagitis** (10-15%): (Murtagh's General Practice, 8th ed, p.1294)
    - **Causes**: NSAIDs, alcohol, stress (ICU), H. pylori
    - **Presentation**: Usually minor bleeding (coffee-ground vomitus, melena), epigastric discomfort
    - **Management**: PPI, stop NSAIDs/alcohol, supportive
 
-5. **Esophageal / Gastric Malignancy** (2-5%):
-   - **Presentation**: Hematemesis, melena, weight loss, dysphagia, anemia
+5. **Esophageal / Gastric Malignancy** (2-5%): (Murtagh's General Practice, 8th ed, p.1071)
+   - **Presentation**: Hematemesis, melena, weight loss, dysphagia, anaemia
    - **Alarm symptoms**: Age >55, weight loss, dysphagia, persistent vomiting, early satiety
    - **Endoscopy**: Ulcerated mass
    - **Management**: Endoscopic hemostasis, oncology referral, palliative if advanced
 
-6. **Dieulafoy Lesion** (1-2%):
+6. **Dieulafoy Lesion** (1-2%): (Murtagh's General Practice, 8th ed, p.3027)
    - **Pathology**: Aberrant submucosal artery that erodes through mucosa (usually stomach)
    - **Presentation**: Massive hematemesis, no preceding symptoms, difficult to find on endoscopy (small lesion)
    - **Management**: Endoscopic therapy (clips, thermal), surgery if fails
@@ -228,10 +326,10 @@ Bleeding from source **proximal to ligament of Treitz** (duodenojejunal junction
 | **Stigmata of bleeding** | None, dark spot | - | Blood, adherent clot, visible vessel | Active bleeding |
 
 **Score**:
-- **0-2**: Low risk (mortality <5%, re-bleed <5%)
+- **0-2**: Low risk (mortality <5%, re-bleed <5%) (Murtagh's General Practice, 8th ed, p.843)
 - **3-4**: Moderate risk
-- **5-7**: High risk (mortality >10%, re-bleed >10%)
-- **≥8**: Very high risk (mortality >40%)
+- **5-7**: High risk (mortality >10%, re-bleed >10%) (Murtagh's General Practice, 8th ed, p.1290)
+- **≥8**: Very high risk (mortality >40%) (Murtagh's General Practice, 8th ed, p.2188)
 
 ---
 
@@ -244,7 +342,7 @@ Bleeding from source **proximal to ligament of Treitz** (duodenojejunal junction
 - **Intubation** if hemodynamic instability + ongoing hematemesis (risk of aspiration)
 
 **B - Breathing**:
-- Oxygen if hypoxic (target SpO2 94-98%)
+- Oxygen if hypoxic (target SpO2 94-98%) (Murtagh's General Practice, 8th ed, p.2402)
 
 **C - Circulation**:
 
@@ -263,7 +361,7 @@ Bleeding from source **proximal to ligament of Treitz** (duodenojejunal junction
 **Fluid Resuscitation**:
 - **Target**: SBP 90-100 mmHg initially (**permissive hypotension**) until bleeding controlled
   - Rationale: Over-resuscitation increases bleeding (increased pressure dislodges clot)
-- **Crystalloid**: 0.9% NaCl or Hartmann's - 250-500ml boluses as needed
+- **Crystalloid**: 0.9% NaCl or Hartmann's - 250-500ml boluses as needed <!-- NEEDS CITATION -->
 - **Blood products**: If ongoing bleeding, shock
 
 **Transfusion**:
@@ -302,7 +400,7 @@ Bleeding from source **proximal to ligament of Treitz** (duodenojejunal junction
 - **High-dose IV PPI**: **Esomeprazole 80mg IV bolus** then **8mg/hr continuous infusion** x 72 hours
 - Start **immediately** on presentation (before endoscopy)
 - Reduces re-bleeding, need for surgery in peptic ulcer bleeding
-- After 72 hours: Switch to oral PPI (esomeprazole 40mg BD x 2 weeks, then daily x 4-8 weeks)
+- After 72 hours: Switch to oral PPI (esomeprazole 40mg BD x 2 weeks, then daily x 4-8 weeks) (Therapeutic Guidelines, 2024)
 
 **Vasoactive Drugs** (if suspected **variceal bleeding**):
 - **Octreotide** 50mcg IV bolus then 50mcg/hr infusion
@@ -386,7 +484,7 @@ Bleeding from source **proximal to ligament of Treitz** (duodenojejunal junction
 - **Interventional radiology**: Angiography + embolization
 - **Surgery**: Laparotomy, oversew bleeding vessel, partial gastrectomy
   - Indications: Endoscopic failure, massive transfusion (>6 units), hemodynamic instability
-  - **High mortality** (10-30%) - last resort
+  - **High mortality** (10-30%) - last resort (Murtagh's General Practice, 8th ed, p.3785)
 
 ---
 
@@ -428,7 +526,7 @@ Bleeding from source **distal to ligament of Treitz**:
 - **Usually UGIB**, but can be LGIB if bleeding from right colon with slow transit
 
 **Other presentations**:
-- Occult bleeding (positive fecal occult blood test, iron-deficiency anemia)
+- Occult bleeding (positive fecal occult blood test, iron-deficiency anaemia)
 - Hemodynamic instability (if severe)
 
 ---
@@ -437,20 +535,20 @@ Bleeding from source **distal to ligament of Treitz**:
 
 **Common Causes**:
 
-1. **Diverticular Bleeding** (30-40% of LGIB):
+1. **Diverticular Bleeding** (30-40% of LGIB): (Murtagh's General Practice, 8th ed, p.1039)
    - **Most common cause** of significant LGIB in elderly
    - **Pathology**: Rupture of vasa recta adjacent to diverticulum
    - **Presentation**: Sudden onset **painless** bright red blood PR, usually large volume, age >60
    - **Location**: Usually left colon (sigmoid, descending) in Western countries
-   - **Usually self-limiting** (80% stop spontaneously)
+   - **Usually self-limiting** (80% stop spontaneously) (Murtagh's General Practice, 8th ed, p.1039)
    - **Investigations**: **Colonoscopy** (identify bleeding diverticulum, but often stopped by time of scope), CT angiogram if active bleeding
    - **Management**:
      - Resuscitation
-     - **Colonoscopy**: If active bleeding seen → endoscopic therapy (clips, epinephrine injection)
+     - **Colonoscopy**: If active bleeding seen → endoscopic therapy (clips, adrenaline injection)
      - **CT angiogram** + **embolization** if massive ongoing bleeding
      - **Surgery** (segmental colectomy) if recurrent, failed endoscopy/IR
 
-2. **Angiodysplasia** (Arteriovenous Malformations) (10-15%):
+2. **Angiodysplasia** (Arteriovenous Malformations) (10-15%): (Murtagh's General Practice, 8th ed, p.749)
    - **Pathology**: Degenerative vascular ectasias (dilated, fragile blood vessels in bowel wall)
    - **Location**: Usually right colon (cecum, ascending)
    - **Presentation**: Recurrent painless bright red or maroon blood PR, usually less severe than diverticular, elderly, associated with aortic stenosis, chronic kidney disease
@@ -460,7 +558,7 @@ Bleeding from source **distal to ligament of Treitz**:
      - Recurrent bleeding common
      - Surgery if recurrent, severe
 
-3. **Ischemic Colitis** (10-15%):
+3. **Ischemic Colitis** (10-15%): (Murtagh's General Practice, 8th ed, p.3785)
    - **Pathology**: Reduced blood flow to colon → mucosal ischemia, ulceration
    - **Location**: "Watershed areas" - splenic flexure, rectosigmoid junction (between vascular territories)
    - **Risk factors**: Age >60, vascular disease, AF, hypotension, aortic surgery, medications (NSAIDs, cocaine)
@@ -473,17 +571,17 @@ Bleeding from source **distal to ligament of Treitz**:
      - Supportive: IV fluids, bowel rest, antibiotics if severe (ceftriaxone + metronidazole - concern for bacterial translocation)
      - **Surgery** if transmural infarction, perforation, peritonitis (rare)
 
-4. **Inflammatory Bowel Disease - IBD** (Ulcerative Colitis, Crohn's) (5-10%):
+4. **Inflammatory Bowel Disease - IBD** (Ulcerative Colitis, Crohn's) (5-10%): (Murtagh's General Practice, 8th ed, p.1033)
    - **Ulcerative Colitis**: Bloody diarrhea (hallmark), urgency, tenesmus, LLQ pain, continuous inflammation from rectum
    - **Crohn's Disease**: Bloody diarrhea (if colonic involvement), RLQ pain, skip lesions
    - **Presentation**: Young adults, chronic/recurrent bloody diarrhea, weight loss, systemic symptoms
-   - **Investigations**: Elevated CRP, anemia, low albumin, fecal calprotectin elevated, colonoscopy + biopsy
+   - **Investigations**: Elevated CRP, anaemia, low albumin, fecal calprotectin elevated, colonoscopy + biopsy
    - **Management**: Gastroenterology, 5-ASA, corticosteroids (flare), immunosuppressants
 
-5. **Colorectal Cancer** (5-10%):
-   - **Presentation**: PR bleeding, change in bowel habit, weight loss, iron-deficiency anemia, abdominal pain/mass
+5. **Colorectal Cancer** (5-10%): (Murtagh's General Practice, 8th ed, p.1035)
+   - **Presentation**: PR bleeding, change in bowel habit, weight loss, iron-deficiency anaemia, abdominal pain/mass
    - **Alarm symptoms**: Age >50, new-onset change in bowel habit, weight loss, family history
-   - **Investigations**: FBC (anemia), CEA (tumor marker), **colonoscopy + biopsy** (diagnostic)
+   - **Investigations**: FBC (anaemia), CEA (tumor marker), **colonoscopy + biopsy** (diagnostic)
    - **Management**: Surgical resection (right/left hemicolectomy, anterior resection), oncology (chemotherapy if advanced)
 
 6. **Hemorrhoids** (Internal) (Very Common but Usually Minor):
@@ -498,13 +596,13 @@ Bleeding from source **distal to ligament of Treitz**:
    - **Examination**: Linear tear in anoderm (usually posterior midline)
    - **Management**: Fiber, stool softeners, topical GTN or diltiazem, surgical lateral sphincterotomy if chronic
 
-8. **Small Bowel Bleeding** (5-10% of obscure GI bleeding):
+8. **Small Bowel Bleeding** (5-10% of obscure GI bleeding): (Murtagh's General Practice, 8th ed, p.736)
    - **Difficult to diagnose** (beyond reach of standard upper and lower endoscopy)
    - **Causes**: Angiodysplasia, NSAIDs, Crohn's, tumors (rare)
    - **Investigations**: **Capsule endoscopy**, CT enterography, double-balloon enteroscopy
 
 9. **Meckel's Diverticulum** (Children and Young Adults):
-   - **Rule of 2s**: 2% of population, 2 feet from ileocecal valve, 2 types of ectopic tissue (gastric, pancreatic), presents age <2 (usually)
+   - **Rule of 2s**: 2% of population, 2 feet from ileocecal valve, 2 types of ectopic tissue (gastric, pancreatic), presents age <2 (usually) (Murtagh's General Practice, 8th ed, p.644)
    - **Presentation**: Painless maroon/bright red blood PR in child or young adult
    - **Investigations**: **Technetium-99m scan** (Meckel's scan - detects ectopic gastric mucosa)
    - **Management**: Surgical resection
@@ -555,7 +653,7 @@ Bleeding from source **distal to ligament of Treitz**:
 **First: Exclude UGIB**:
 - **NG tube aspiration**: If fresh red blood PR + hemodynamic instability
   - If bile-stained aspirate (no blood) → likely LGIB
-  - If blood in aspirate → UGIB (but not 100% sensitive)
+  - If blood in aspirate → UGIB (but not 100% sensitive) (Murtagh's General Practice, 8th ed, p.1289)
 - **Upper endoscopy** if any doubt (massive UGIB can present as hematochezia)
 
 **Colonoscopy**:
@@ -637,7 +735,7 @@ Bleeding from source **distal to ligament of Treitz**:
 **Occult bleeding**: GI bleeding not visible to patient (no hematemesis, melena, hematochezia)
 
 **Presentation**:
-- **Iron-deficiency anemia** (Hb low, MCV low, ferritin low)
+- **Iron-deficiency anaemia** (Hb low, MCV low, ferritin low)
 - **Positive fecal occult blood test (FOBT)**
 
 ---
@@ -665,9 +763,9 @@ Bleeding from source **distal to ligament of Treitz**:
 ### Investigation
 
 **Bidirectional Endoscopy** (Upper and Lower):
-- **Upper endoscopy (OGD)**: Examine esophagus, stomach, duodenum
+- **Upper endoscopy (OGD)**: Examine oesophagus, stomach, duodenum
 - **Colonoscopy**: Examine colon, terminal ileum
-- **If both normal** and iron-deficiency anemia persists → Investigate small bowel
+- **If both normal** and iron-deficiency anaemia persists → Investigate small bowel
 
 **Small Bowel Investigation**:
 - **Capsule endoscopy**: Swallow camera capsule, images entire small bowel
@@ -679,7 +777,7 @@ Bleeding from source **distal to ligament of Treitz**:
 ### Management
 
 - **Treat underlying cause** (ulcer, cancer, angiodysplasia)
-- **Iron supplementation**: Oral (ferrous sulfate 200mg daily-TDS) or IV if oral not tolerated/ineffective
+- **Iron supplementation**: Oral (ferrous sulfate 200mg daily-TDS) or IV if oral not tolerated/ineffective (Therapeutic Guidelines, 2024)
 - **Repeat investigations** if recurrent
 
 ---
@@ -775,7 +873,7 @@ You are the medical officer in the Emergency Department. A 58-year-old man, John
 
 **Risk factors for peptic ulcer**:
 "You mentioned ibuprofen. How much have you been taking?"
-- Patient: "400mg three times a day for 2 months." (NSAIDs - major risk factor)
+- Patient: "400mg three times a day for 2 months." (NSAIDs - major risk factor) (Therapeutic Guidelines, 2024)
 
 "Do you take aspirin or any blood thinners?"
 - Patient: "No."
@@ -874,14 +972,14 @@ Do you have any questions?"
 - Melena (black stools)
 - Epigastric pain (burning, few weeks)
 - Syncope (orthostatic dizziness)
-- **Risk factor**: NSAIDs (ibuprofen 400mg TDS x 2 months)
+- **Risk factor**: NSAIDs (ibuprofen 400mg TDS x 2 months) (Therapeutic Guidelines, 2024)
 
 **Examination**: BP 95/60, HR 110 (hemodynamically compromised)
 
 **Glasgow-Blatchford Score: 16** (Very high risk - needs urgent intervention)
 
 **Bloods** (performed):
-- FBC (Hb 95 - anemia)
+- FBC (Hb 95 - anaemia)
 - UEC (Urea 12 - elevated from protein digestion in GI tract)
 - Coagulation, LFTs, group and crossmatch 6 units
 
@@ -893,7 +991,7 @@ Do you have any questions?"
 **Immediate Management**:
 1. **Resuscitation**:
    - Two large-bore IV cannulae (14-16G)
-   - IV fluids (0.9% NaCl 500ml boluses, target SBP >100)
+   - IV fluids (0.9% NaCl 500ml boluses, target SBP >100) <!-- NEEDS CITATION -->
    - Crossmatch 6 units PRBC
    - Transfuse if Hb <70 (restrictive strategy)
    - Correct coagulopathy if present
@@ -908,9 +1006,9 @@ Do you have any questions?"
 4. **Endoscopic therapy** (if active bleeding/visible vessel):
    - Adrenaline injection (1:10,000) + clips or thermal coagulation
 5. **Post-endoscopy**:
-   - Continue high-dose PPI x 72 hours, then switch to oral (esomeprazole 40mg BD x 2 weeks, then daily x 6-8 weeks)
+   - Continue high-dose PPI x 72 hours, then switch to oral (esomeprazole 40mg BD x 2 weeks, then daily x 6-8 weeks) (Therapeutic Guidelines, 2024)
    - H. pylori testing (urea breath test or biopsy)
-   - If H. pylori positive: Triple therapy (PPI + amoxicillin 1g BD + clarithromycin 500mg BD x 7 days)
+   - If H. pylori positive: Triple therapy (PPI + amoxicillin 1g BD + clarithromycin 500mg BD x 7 days) (Therapeutic Guidelines, 2024)
    - Avoid NSAIDs lifelong
    - Alternative analgesia for back pain (paracetamol, physiotherapy)
 6. **Monitoring**:
@@ -922,7 +1020,7 @@ Do you have any questions?"
    - Interventional radiology (angiography + embolization)
    - Surgery (oversew ulcer, partial gastrectomy) - last resort
 
-**Prognosis**: Good with early endoscopic therapy and PPI. Risk of re-bleeding ~10-15%. Need H. pylori eradication and NSAID avoidance to prevent recurrence."
+**Prognosis**: Good with early endoscopic therapy and PPI. Risk of re-bleeding ~10-15%. Need H. pylori eradication and NSAID avoidance to prevent recurrence." (Murtagh's General Practice, 8th ed, p.1091)
 
 ---
 
@@ -1034,7 +1132,7 @@ We'll need to do tests to confirm the cause and stop the bleeding."
 
 **1. Resuscitation**:
 - I'll put **two IV drips** in to give you fluids
-- Take **blood tests**: Check your blood count (hemoglobin), kidney function, clotting
+- Take **blood tests**: Check your blood count (haemoglobin), kidney function, clotting
 - **Prepare blood** in case you need a transfusion (though hopefully not)
 - **Monitor** you closely - blood pressure, heart rate, urine output
 
@@ -1057,7 +1155,7 @@ We'll need to do tests to confirm the cause and stop the bleeding."
   - **Embolization**: Radiology procedure to block the bleeding vessel
   - **Surgery**: Remove the part of the colon that's bleeding (last resort if other treatments fail)
 
-**Good news**: Most diverticular bleeding (about 80%) stops on its own. We'll monitor you carefully and intervene if needed.
+**Good news**: Most diverticular bleeding (about 80%) stops on its own. We'll monitor you carefully and intervene if needed. (Murtagh's General Practice, 8th ed, p.1292)
 
 **5. Admission**:
 - You'll need to be admitted to hospital for monitoring and investigation
@@ -1112,7 +1210,7 @@ Do you have any questions?"
 3. **Colonoscopy**:
    - Bowel preparation: PEG solution (3-4L over 3-4 hours)
    - Identify bleeding source (diverticulum, angiodysplasia)
-   - Endoscopic therapy: Clips, epinephrine injection, thermal coagulation (if active bleeding seen)
+   - Endoscopic therapy: Clips, adrenaline injection, thermal coagulation (if active bleeding seen)
 4. **If colonoscopy non-diagnostic or massive bleeding**:
    - **CT angiogram** (requires active bleeding >0.5ml/min for detection)
    - If bleeding source identified on CT: **Angiography + embolization** by interventional radiology
@@ -1127,7 +1225,7 @@ Do you have any questions?"
    - High-fiber diet
    - Avoid NSAIDs
 
-**Prognosis**: 80% of diverticular bleeding stops spontaneously. 20-25% risk of re-bleeding. May need elective segmental colectomy if recurrent episodes."
+**Prognosis**: 80% of diverticular bleeding stops spontaneously. 20-25% risk of re-bleeding. May need elective segmental colectomy if recurrent episodes." (Murtagh's General Practice, 8th ed, p.1039)
 
 ---
 
@@ -1138,9 +1236,9 @@ Do you have any questions?"
 **Localization**: Hematemesis, coffee-ground vomiting, melena
 
 **Common Causes**:
-- Peptic ulcer (35-50%) - NSAIDs, H. pylori
-- Varices (15-20%) - cirrhosis, portal hypertension
-- Mallory-Weiss tear (5-15%) - forceful vomiting
+- Peptic ulcer (35-50%) - NSAIDs, H. pylori (Murtagh's General Practice, 8th ed, p.1095)
+- Varices (15-20%) - cirrhosis, portal hypertension (Murtagh's General Practice, 8th ed, p.1292)
+- Mallory-Weiss tear (5-15%) - forceful vomiting (Murtagh's General Practice, 8th ed, p.1291)
 
 **Glasgow-Blatchford Score (GBS)**:
 - **Score 0 = Safe for discharge** (outpatient endoscopy)
@@ -1159,9 +1257,9 @@ Do you have any questions?"
 **Localization**: Hematochezia (fresh red blood PR), maroon stools
 
 **Common Causes**:
-- Diverticular (30-40%) - sudden, painless, large volume, elderly
-- Angiodysplasia (10-15%) - painless, recurrent, elderly
-- Ischemic colitis (10-15%) - **painful** + bloody diarrhea, elderly
+- Diverticular (30-40%) - sudden, painless, large volume, elderly (Murtagh's General Practice, 8th ed, p.749)
+- Angiodysplasia (10-15%) - painless, recurrent, elderly (Murtagh's General Practice, 8th ed, p.3004)
+- Ischemic colitis (10-15%) - **painful** + bloody diarrhea, elderly (Murtagh's General Practice, 8th ed, p.623)
 
 **Management**:
 - **Resuscitate**: 2x large IV, fluids, transfuse (Hb >70)

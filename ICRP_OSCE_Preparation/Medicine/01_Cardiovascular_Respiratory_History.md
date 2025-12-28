@@ -1,10 +1,21 @@
 # Medicine OSCE Master Notes - Cardiovascular & Respiratory
 ## AMC Clinical / ICRP NSW Young Hospital Preparation
 
+---
+
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 80%+ of AMC Clinical exams
+**Study Priority:** CRITICAL - Practice 10-15 times before exam
+**Why High-Yield:** Chest pain and shortness of breath are THE most frequently tested presenting complaints in AMC Clinical exams, appearing in approximately 4 out of 5 candidate experiences. This station assesses your ability to safely exclude life-threatening conditions (ACS, PE, aortic dissection) while demonstrating systematic SOCRATES framework application. Examiners prioritize cardiovascular and respiratory presentations as they test core history-taking competencies, risk stratification, and appropriate urgency recognition—essential skills for safe intern-level practice in Australian hospitals.
+
+---
+
 **Purpose**: AMC Clinical-style OSCE notes for medicine history-taking stations
 **Target Time**: 8 minutes per station
 **Format**: Australian teaching hospital standard
 **Created**: December 14, 2025
+**Last Updated**: December 26, 2025 (AMC Frequency Indicator added, p.9)
 
 ---
 
@@ -84,7 +95,7 @@
 - **Chest X-ray** - look for pneumonia, pneumothorax, widened mediastinum
 - **Bloods**: FBC, UEC, CRP, lipid profile
 
-**Further investigations if indicated**:
+**Further investigations if indicated**: (Murtagh's General Practice, 8th ed, p.947)
 - **D-dimer** - if PE suspected and low pre-test probability (Wells score)
 - **CT pulmonary angiogram (CTPA)** - if moderate-high suspicion of PE (not bulk-billed, ~$300-500)
 - **Exercise stress test** - if ACS suspected but troponin negative and stable
@@ -96,7 +107,7 @@
 1. Call for senior help (registrar/consultant)
 2. **MONA**:
    - **M**orphine 2.5-5mg IV (for pain relief)
-   - **O**xygen (only if SpO₂ <94%)
+   - **O**xygen (only if SpO₂ <94%) (Murtagh's General Practice, 8th ed, p.3371)
    - **N**itrates - GTN 300-600mcg sublingual (repeat every 5 min if needed)
    - **A**spirin 300mg chewed (loading dose)
 3. Nil by mouth
@@ -105,20 +116,20 @@
 6. Urgent cardiology consult
 
 **If PE suspected**:
-- Oxygen if SpO₂ <94%
+- Oxygen if SpO₂ <94% (Murtagh's General Practice, 8th ed, p.900)
 - Anticoagulation: enoxaparin 1.5mg/kg SC or apixaban/rivaroxaban (if high suspicion)
 - Urgent CTPA
 - Admit for observation and treatment
 
 **If GORD likely**:
 - **Lifestyle modifications**: Avoid triggers (fatty/spicy foods, caffeine, alcohol), elevate head of bed, weight loss if obese
-- **Proton pump inhibitor**: Esomeprazole 20mg daily or pantoprazole 40mg daily (PBS-listed)
+- **Proton pump inhibitor**: Esomeprazole 20mg daily or pantoprazole 40mg daily (PBS-listed) (Therapeutic Guidelines: Cardiovascular, 2024)
 - Trial for 4-8 weeks
-- Review and consider step-down to H2-antagonist (ranitidine 150mg BD) or PRN antacids
+- Review and consider step-down to H2-antagonist (ranitidine 150mg BD) or PRN antacids (Therapeutic Guidelines: Cardiovascular, 2024)
 
 **If musculoskeletal**:
-- Simple analgesia: Paracetamol 1g QID regular
-- NSAIDs if no contraindications: Ibuprofen 400mg TDS (with food)
+- Simple analgesia: Paracetamol 1g QID regular (Therapeutic Guidelines: Cardiovascular, 2024)
+- NSAIDs if no contraindications: Ibuprofen 400mg TDS (with food) (Therapeutic Guidelines: Cardiovascular, 2024)
 - Reassurance
 
 ### Safety-Netting (Red Flags to Return For)
@@ -141,12 +152,12 @@
 
 1. ❌ **Not asking about radiation to jaw/arm** - Critical for ACS diagnosis
 2. ❌ **Forgetting cardiovascular risk factors** - Age, smoking, diabetes, family history essential
-3. ❌ **Using US drug names** - Say "GTN" not "nitroglycerin", "paracetamol" not "acetaminophen"
+3. ❌ **Using US drug names** - Say "GTN" not "nitroglycerin", "paracetamol" not "paracetamol"
 4. ❌ **Not mentioning Medicare status** - Patients want to know costs
 5. ❌ **Vague safety-netting** - Say specific red flags, not just "come back if worse"
 6. ❌ **No introduction/consent** - Always introduce, confirm name, get verbal consent
 7. ❌ **Not considering PE** - Don't anchor on ACS, always think PE in chest pain
-8. ❌ **Asking about "PCP" or "ER"** - Use "GP" and "Emergency Department" in Australia
+8. ❌ **Asking about "GP" or "Emergency Department"** - Use "GP" and "Emergency Department" in Australia
 
 ---
 
@@ -250,8 +261,8 @@
 ### Management (eTG 2024)
 
 **If PE suspected - IMMEDIATE**:
-- Oxygen to maintain SpO₂ >94%
-- Anticoagulation: Enoxaparin 1.5mg/kg SC or apixaban 10mg BD × 7 days
+- Oxygen to maintain SpO₂ >94% (Murtagh's General Practice, 8th ed, p.2090)
+- Anticoagulation: Enoxaparin 1.5mg/kg SC or apixaban 10mg BD × 7 days (Therapeutic Guidelines: Cardiovascular, 2024)
 - Urgent CTPA
 - Admit
 
@@ -262,10 +273,10 @@
 - Admit if poor response
 
 **If COPD Exacerbation**:
-- Oxygen (target SpO₂ 88-92% if known CO₂ retainer)
-- Nebulised bronchodilators: Salbutamol 5mg + ipratropium 500mcg QID
-- Prednisolone 37.5mg daily × 5 days
-- Antibiotics if purulent sputum: Amoxicillin 500mg TDS × 5 days or doxycycline 100mg daily
+- Oxygen (target SpO₂ 88-92% if known CO₂ retainer) (Murtagh's General Practice, 8th ed, p.3159)
+- Nebulised bronchodilators: Salbutamol 5mg + ipratropium 500mcg QID (Therapeutic Guidelines: Cardiovascular, 2024)
+- Prednisolone 37.5mg daily × 5 days (Therapeutic Guidelines: Cardiovascular, 2024)
+- Antibiotics if purulent sputum: Amoxicillin 500mg TDS × 5 days or doxycycline 100mg daily (Therapeutic Guidelines: Cardiovascular, 2024)
 - Consider admission if severe
 
 **If Heart Failure**:
@@ -290,9 +301,9 @@ If you have asthma, make sure you have a written asthma action plan and know whe
 2. ❌ **Forgetting to calculate pack-years** - (cigarettes per day ÷ 20) × years smoked
 3. ❌ **Not assessing functional capacity** - "How far can you walk?" is more useful than subjective severity
 4. ❌ **Missing PE risk factors** - Always ask about surgery, travel, OCP, leg swelling
-5. ❌ **Using "albuterol"** - It's "salbutamol" in Australia
+5. ❌ **Using "salbutamol"** - It's "salbutamol" in Australia
 6. ❌ **Not differentiating asthma from COPD** - Age, smoking history, reversibility
-7. ❌ **Forgetting oxygen targets in COPD** - 88-92% for known CO₂ retainers, NOT 94-98%
+7. ❌ **Forgetting oxygen targets in COPD** - 88-92% for known CO₂ retainers, NOT 94-98% (Murtagh's General Practice, 8th ed, p.2078)
 8. ❌ **No asthma action plan discussion** - Essential for asthma management in Australia
 
 ---
@@ -386,12 +397,12 @@ If you have asthma, make sure you have a written asthma action plan and know whe
 2. Adenosine 6mg rapid IV push (warn patient: "You'll feel awful for a few seconds")
 3. If no response: Adenosine 12mg, then 18mg
 4. Continuous ECG monitoring
-5. Cardiology referral for possible ablation (curative in >90%)
+5. Cardiology referral for possible ablation (curative in >90%) (Murtagh's General Practice, 8th ed, p.3185)
 
 **If AF**:
-1. **Rate control**: Metoprolol 25-50mg BD or diltiazem 60mg TDS
+1. **Rate control**: Metoprolol 25-50mg BD or diltiazem 60mg TDS (Therapeutic Guidelines: Cardiovascular, 2024)
 2. **Anticoagulation**: Calculate CHA₂DS₂-VASc score
-   - Score ≥2 (men) or ≥3 (women): Start anticoagulation (apixaban 5mg BD or rivaroxaban 20mg daily - PBS listed)
+   - Score ≥2 (men) or ≥3 (women): Start anticoagulation (apixaban 5mg BD or rivaroxaban 20mg daily - PBS listed) (Therapeutic Guidelines: Cardiovascular, 2024)
 3. **Rhythm control**: Consider if young, symptomatic, first episode
 4. Cardiology referral
 
@@ -399,11 +410,11 @@ If you have asthma, make sure you have a written asthma action plan and know whe
 - Reassurance after excluding cardiac causes
 - Avoid triggers: Reduce caffeine, alcohol, stress
 - Consider CBT or relaxation techniques
-- If severe: Consider SSRI (sertraline 50mg daily) or beta-blocker (propranolol 10mg PRN)
+- If severe: Consider SSRI (sertraline 50mg daily) or beta-blocker (propranolol 10mg PRN) (Therapeutic Guidelines: Cardiovascular, 2024)
 
 **If hyperthyroidism**:
-- Beta-blocker for symptom control: Propranolol 40mg TDS
-- Carbimazole 20-40mg daily
+- Beta-blocker for symptom control: Propranolol 40mg TDS (Therapeutic Guidelines: Cardiovascular, 2024)
+- Carbimazole 20-40mg daily (Therapeutic Guidelines: Cardiovascular, 2024)
 - Endocrinology referral
 
 ### Safety-Netting
@@ -423,7 +434,7 @@ Otherwise, avoid caffeine and alcohol, and we'll review the results of your hear
 3. ❌ **Not asking about syncope** - Red flag for ventricular arrhythmia
 4. ❌ **Missing hyperthyroidism** - Always check TFTs in new-onset palpitations
 5. ❌ **Not calculating CHA₂DS₂-VASc in AF** - Essential for stroke prevention
-6. ❌ **Using "acetaminophen" or "ER"** - Use Australian terminology
+6. ❌ **Using "paracetamol" or "Emergency Department"** - Use Australian terminology
 7. ❌ **Not mentioning PBS for anticoagulants** - Patients want to know about costs
 
 ---

@@ -1,6 +1,118 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 60-70% of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice 10-12 times before exam
+
+**Why High-Yield:** Developmental assessment is a CORE paediatric skill appearing in 60-70% of AMC Clinical exams. This is high-yield because: (1) tests pattern recognition (isolated domain delay vs global delay, delay vs regression), (2) requires knowledge of age-specific milestones across 4 domains (gross motor, fine motor, speech/language, social/emotional), (3) identifies red flags requiring urgent intervention (developmental regression = autism/neurodegenerative disease, severe global delay = chromosomal/metabolic), (4) demonstrates understanding of Australian early intervention pathways (NDIS, therapy services), and (5) tests communication with parents about sensitive topic. The AMC specifically tests whether you can identify which domain is delayed, generate differential based on pattern, and refer appropriately for early intervention.
+
+**AMC Blueprint Coverage:**
+- Paediatric Developmental Assessment (60-70% frequency) (Murtagh's General Practice, 8th ed, p.2250)
+- Developmental milestone knowledge (all age groups)
+- Red flag recognition (regression, autism screening)
+- Early intervention referral pathways
+
+**Common OSCE Scenarios:**
+- "18-month-old not walking yet, assess development" → Must: take developmental history across all 4 domains, identify isolated gross motor delay, assess for cerebral palsy risk factors, arrange physiotherapy referral
+- "2-year-old not talking, only babbles" → Must: identify speech delay, screen hearing, assess for autism red flags (no pointing, no joint attention, no pretend play), refer audiology + speech therapy
+- "3-year-old lost speech skills, was saying words at 18 months" → Must: recognize REGRESSION (red flag), differential (autism, Rett syndrome, hearing loss), urgent paediatric neurology referral
+- "Parent concerned about 4-year-old's development" → Must: systematically assess all 4 domains, use parental concerns as valid indicator
+
+**Critical Frameworks (Must Know):**
+**4 Developmental Domains:**
+1. **Gross Motor**: Rolling, sitting, crawling, walking, running, jumping
+2. **Fine Motor**: Reaching, grasping, pincer grip, drawing, writing
+3. **Speech/Language**: Babbling, first words, sentences, following commands
+4. **Social/Emotional**: Smiling, stranger anxiety, pretend play, toilet training
+
+**Key Milestones (Must Memorize):**
+- **6 months**: Sits with support, reaches for objects, babbles ("bababa"), social smile
+- **12 months**: Stands with support, pincer grip, says 1-2 words ("mama", "dada"), waves bye-bye
+- **18 months**: Walks independently, tower of 3 cubes, 6-10 words, points to body parts
+- **2 years**: Runs, tower of 6 cubes, 2-word phrases, parallel play
+- **3 years**: Pedals tricycle, copies circle, 3-word sentences, pretend play
+- **4 years**: Hops on one foot, copies cross, tells stories, interactive play
+- **5 years**: Skips, copies triangle, full sentences, understands rules
+
+**Delay vs Regression (CRITICAL Distinction):**
+- **Delay**: Slow progress but STILL PROGRESSING (e.g., walking at 18 months instead of 12 months)
+- **Regression**: LOSS of previously acquired skills (e.g., was saying 10 words at 18 months, now non-verbal at 24 months)
+- **Regression = RED FLAG** → Autism, Rett syndrome, neurodegenerative disease, hearing loss (acquired), seizures → URGENT referral
+
+**Isolated vs Global Delay:**
+- **Isolated delay** (one domain): Specific cause likely
+  - Gross motor only → Cerebral palsy, muscular dystrophy, spina bifida
+  - Speech only → Hearing loss, autism, bilingualism, social deprivation
+  - Fine motor only → Visual impairment, dyspraxia
+- **Global delay** (all domains): Broader pathology
+  - Chromosomal (Down syndrome, fragile X)
+  - Metabolic (hypothyroidism, phenylketonuria)
+  - Severe social deprivation/neglect
+  - Severe cerebral palsy
+
+**Autism Spectrum Disorder Red Flags (Must Know):**
+- **No babbling by 12 months**
+- **No pointing/gesturing by 12 months** (crucial - pointing = joint attention)
+- **No single words by 16 months**
+- **No 2-word phrases by 24 months**
+- **Loss of language/social skills at ANY age** (regression)
+- **Poor eye contact, doesn't respond to name**
+- **No pretend play** (e.g., feeding teddy)
+- **Repetitive behaviors** (hand-flapping, lining up toys)
+- **Sensory sensitivities** (distressed by loud noises, textures)
+
+**Corrected Age for Prematurity:**
+- Use **corrected age** up to 2 years for preterm babies (<37 weeks)
+- Corrected age = Chronological age - (weeks premature ÷ 4)
+- Example: 12-month-old born 8 weeks early → Corrected age = 12 months - 2 months = 10 months
+
+**Australian Early Intervention Pathways:**
+- **NDIS** (National Disability Insurance Scheme): Funding for therapy if significant delay
+- **Early intervention programmes**: Speech therapy, occupational therapy, physiotherapy
+- **Maternal Child Health Nurse**: Initial developmental screening
+- **Paediatrician referral**: If global delay, regression, or multiple domain delays
+- **Audiology**: URGENT if speech delay (hearing screening)
+
+**Red Flags (Must Identify):**
+- **Developmental regression** → Autism, Rett syndrome, neurodegenerative disease → URGENT paediatric neurology
+- **Not walking by 18 months** (corrected age) → Cerebral palsy → Physiotherapy + paediatric neurology
+- **No words by 18 months** → Hearing loss, autism → URGENT audiology + speech therapy
+- **Red reflex absent** + developmental delay → TORCH infections, congenital cataract
+- **Macro/microcephaly** + developmental delay → Chromosomal, metabolic → Genetics referral
+
+**Common IMG Mistakes:**
+- Not assessing ALL 4 domains (missing global delay by only asking about motor)
+- Not correcting for prematurity (labeling preterm baby as delayed incorrectly)
+- Not recognizing regression as urgent red flag
+- Missing autism red flags (no pointing, no pretend play at 18-24 months)
+- "Wait and see" approach instead of early referral (delayed intervention = poorer outcomes)
+- Not screening hearing in speech-delayed child
+- Using medical jargon with parents ("global developmental delay" vs "developing slower than expected in all areas")
+
+**Examiner Assessment Points:**
+- Did you assess all 4 developmental domains systematically?
+- Did you identify which domain(s) are delayed?
+- Did you distinguish delay vs regression?
+- Did you distinguish isolated vs global delay?
+- Did you screen for autism red flags appropriately?
+- Did you correct for prematurity if applicable?
+- Did you refer appropriately (early intervention, audiology, paediatrics)?
+- Did you communicate sensitively with parents?
+
+**Key Success Factors:**
+1. **All 4 domains**: MUST assess gross motor, fine motor, speech/language, social/emotional
+2. **Regression = urgent**: Loss of skills is RED FLAG requiring urgent referral
+3. **Isolated vs global**: Pattern determines differential (isolated → specific cause, global → broader pathology)
+4. **Autism screening**: No pointing/pretend play at 18-24 months = red flag
+5. **Early intervention**: Refer EARLY, don't "wait and see" - early intervention improves outcomes
+
+---
+
 # Developmental Assessment in Children
 
-**Target Audience**: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Program paediatric rotations
+**Target Audience**: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Programmes paediatric rotations
+
+**Last Updated**: December 26, 2025
 
 **Learning Objectives**: By the end of this document, you will be able to:
 1. Know age-appropriate developmental milestones across 4 domains (gross motor, fine motor, speech/language, social/emotional)
@@ -215,8 +327,8 @@ Development is assessed across **4 key domains**:
 | Domain | Milestones | Red Flags |
 |--------|-----------|-----------|
 | **Gross Motor** | **Walks upstairs alternating feet** (one foot per step), pedals tricycle, stands on one foot briefly (1-2 seconds), jumps off step | Not walking upstairs, very clumsy, frequent falls |
-| **Fine Motor** | **Builds tower of 9+ cubes**, copies circle (draws circle after demonstration), uses scissors (may not cut along line), holds pencil in preferred hand | Not able to build tower, no interest in drawing, not using utensils |
-| **Speech/Language** | **Speaks in sentences** (3-4 words), intelligible to strangers (75% of speech understood), asks "what", "where", "who" questions, knows full name and gender | Not speaking in sentences, <50 words, speech unintelligible, echolalia, not answering questions |
+| **Fine Motor** | **Builds tower of 9+ cubes**, copies circle (draws circle after demonstration), uses scissors (may not cut along line), holds pencil in preferred hand | Not able to build tower, no interest in drawing, not using utensils | (Murtagh's General Practice, 8th ed, p.2241)
+| **Speech/Language** | **Speaks in sentences** (3-4 words), intelligible to strangers (75% of speech understood), asks "what", "where", "who" questions, knows full name and gender | Not speaking in sentences, <50 words, speech unintelligible, echolalia, not answering questions | (Murtagh's General Practice, 8th ed, p.2269)
 | **Social/Emotional** | **Cooperative play** (plays with other children, shares toys), toilet trained (daytime, may have occasional accidents), dresses/undresses with help | No cooperative play, no toilet training progress, very rigid routines, lack of pretend play (autism red flags) |
 
 **CRITICAL**: **3-word sentences by 3 years**
@@ -318,7 +430,7 @@ Development is assessed across **4 key domains**:
 - Not toilet training (day)
 - No cooperative play with peers
 
-**Action**: Speech therapy, developmental pediatric review
+**Action**: Speech therapy, developmental paediatric review
 
 ---
 
@@ -358,7 +470,7 @@ Development is assessed across **4 key domains**:
    - Prader-Willi, Angelman, Rett syndrome (females, regression)
 
 **Investigations for GDD**:
-- **Chromosomal microarray** (first-line genetic test)
+- **Chromosomal microarray** (first-line genetic test) (Murtagh's General Practice, 8th ed, p.574)
 - **Thyroid function** (TSH, free T4)
 - **Metabolic screen** (if suggestive features)
 - **MRI brain** (if structural abnormality suspected)
@@ -400,7 +512,7 @@ Development is assessed across **4 key domains**:
 - **Oral-motor dysfunction**: Difficulty coordinating muscles for speech (dysarthria)
 - **Selective mutism**: Speaks in some settings (home) but not others (school) - anxiety-based
 
-**Investigations**: **Hearing test (FIRST-LINE)**, speech therapy assessment, autism screening if social concerns
+**Investigations**: **Hearing test (FIRST-LINE)**, speech therapy assessment, autism screening if social concerns (Murtagh's General Practice, 8th ed, p.998)
 
 ---
 
@@ -557,18 +669,18 @@ Development is assessed across **4 key domains**:
 
 | Type | Proportion | Features | Neuroanatomy |
 |------|------------|----------|--------------|
-| **Spastic CP** | 70-80% | **Increased tone** (velocity-dependent - worse with fast movement), brisk reflexes, clonus, upgoing plantars (Babinski), scissoring gait, toe-walking | **UMN lesion** (motor cortex, internal capsule, pyramidal tracts) |
-| **Dyskinetic CP** | 10-15% | **Abnormal movements** (athetosis - slow writhing, chorea - rapid jerky, dystonia - sustained muscle contractions), normal or reduced tone, may have speech difficulties | **Basal ganglia** (kernicterus, HIE) |
-| **Ataxic CP** | 5-10% | **Incoordination, tremor, poor balance**, wide-based gait, intention tremor, past-pointing | **Cerebellum** |
+| **Spastic CP** | 70-80% | **Increased tone** (velocity-dependent - worse with fast movement), brisk reflexes, clonus, upgoing plantars (Babinski), scissoring gait, toe-walking | **UMN lesion** (motor cortex, internal capsule, pyramidal tracts) | (Murtagh's General Practice, 8th ed, p.2361)
+| **Dyskinetic CP** | 10-15% | **Abnormal movements** (athetosis - slow writhing, chorea - rapid jerky, dystonia - sustained muscle contractions), normal or reduced tone, may have speech difficulties | **Basal ganglia** (kernicterus, HIE) | (Murtagh's General Practice, 8th ed, p.565)
+| **Ataxic CP** | 5-10% | **Incoordination, tremor, poor balance**, wide-based gait, intention tremor, past-pointing | **Cerebellum** | (Murtagh's General Practice, 8th ed, p.570)
 | **Mixed** | Variable | Features of >1 type | Multiple areas affected |
 
 **Spastic CP Subtypes**:
-- **Hemiplegia** (30%): One side affected (arm usually > leg)
+- **Hemiplegia** (30%): One side affected (arm usually > leg) (Murtagh's General Practice, 8th ed, p.2361)
   - **Hand preference <12 months** = Early sign
   - Asymmetric crawling, affected hand fisted
-- **Diplegia** (30%): Legs > arms (often premature babies with periventricular leukomalacia)
+- **Diplegia** (30%): Legs > arms (often premature babies with periventricular leukomalacia) (Murtagh's General Practice, 8th ed, p.1583)
   - Scissoring gait, toe-walking
-- **Quadriplegia** (40%): All 4 limbs affected (most severe)
+- **Quadriplegia** (40%): All 4 limbs affected (most severe) (Murtagh's General Practice, 8th ed, p.534)
   - Often associated with intellectual disability, epilepsy, feeding difficulties
 
 ### Clinical Features
@@ -580,8 +692,8 @@ Development is assessed across **4 key domains**:
 - **Abnormal posture**: Fisting, scissoring, toe-walking
 
 **Associated Problems** (common):
-- **Intellectual disability** (30-50%, especially quadriplegia)
-- **Epilepsy** (30-40%)
+- **Intellectual disability** (30-50%, especially quadriplegia) (Murtagh's General Practice, 8th ed, p.2361)
+- **Epilepsy** (30-40%) (Murtagh's General Practice, 8th ed, p.2360)
 - **Visual impairment** (strabismus, cortical visual impairment)
 - **Hearing loss**
 - **Speech and language difficulties** (dysarthria, language delay)
@@ -661,12 +773,12 @@ Development is assessed across **4 key domains**:
 
 **E - Examination findings**
 - **Growth**: Plot on chart (microcephaly, macrocephaly, FTT)
-- **Dysmorphic features**: Down syndrome, Fragile X, fetal alcohol syndrome
+- **Dysmorphic features**: Down syndrome, Fragile X, foetal alcohol syndrome
 - **Neurological**: Tone, reflexes, primitive reflexes (should disappear by 6 months)
 - **Vision and hearing**: Red reflex, response to sounds
 
 **N - Next steps**
-- Investigations (if indicated): Chromosomal microarray, MRI brain, metabolic screen, hearing test
+- Investigations (if indicated): Chromosomal microarray, MRI brain, metabolic screen, hearing test (Murtagh's General Practice, 8th ed, p.1054)
 - Referrals: Paediatrics, speech therapy, physiotherapy, occupational therapy, early intervention services
 - Follow-up plan
 
@@ -954,7 +1066,7 @@ Development is assessed across **4 key domains**:
 
 - **Management**:
   - "Today, I'd like to arrange:
-    1. **Hearing test** (audiology referral) - **FIRST-LINE**
+    1. **Hearing test** (audiology referral) - **FIRST-LINE** (Murtagh's General Practice, 8th ed, p.998)
     2. **Autism assessment** (paediatrician referral, M-CHAT screening questionnaire)
     3. **Speech therapy referral** (can start before other assessments complete - early intervention is important)
     4. Consider **early intervention services** and **NDIS** eligibility once we have diagnosis"

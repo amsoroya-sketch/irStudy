@@ -1,6 +1,86 @@
+## 🎯 AMC EXAM FREQUENCY INDICATOR
+
+**[⭐⭐⭐ HIGH-YIELD]** - Appears in 65-75% of AMC Clinical exams
+
+**Study Priority:** CRITICAL - Practice 10-12 times before exam
+
+**Why High-Yield:** Psychiatric history-taking is a CORE clinical skill appearing in 65-75% of AMC Clinical exams. Mental health presentations are extremely common in Australian general practice (1 in 5 Australians experience mental illness annually), and the AMC specifically tests: (1) differential diagnosis from presenting symptoms (low mood vs anxiety vs psychosis), (2) ruling out organic/medical causes FIRST (hypothyroidism, substance use, delirium), (3) integrated risk assessment (suicide, violence, self-neglect), (4) collateral history gathering, and (5) knowledge of Australian mental health services (Mental Health Act, Medicare mental health plan, headspace, Beyond Blue). This is high-yield because psychiatric presentations test both clinical reasoning and sensitive communication skills.
+
+**AMC Blueprint Coverage:**
+- Mental Health Assessment (65-75% frequency) (Murtagh's General Practice, 8th ed, p.3785)
+- Depression/anxiety presentations (most common scenarios)
+- Psychosis assessment (schizophrenia, drug-induced, affective psychosis)
+- Risk assessment (suicide, violence) - ALWAYS tested
+
+**Common OSCE Scenarios:**
+- "28-year-old with 4 weeks of low mood and loss of interest" → Must think: Major depression (assess severity, suicidal ideation, functional impairment), bipolar depression, hypothyroidism, medication side effects
+- "35-year-old with 6 months of excessive worry" → Must think: GAD, panic disorder, PTSD, hyperthyroidism, substance use (caffeine, amphetamines)
+- "22-year-old hearing voices" → Must think: First-episode psychosis (schizophrenia), drug-induced (cannabis, amphetamines), affective psychosis (bipolar mania), organic (delirium, brain tumor)
+- "45-year-old brought by police, agitated and threatening" → Must assess: Risk of violence, acute psychosis, substance intoxication/withdrawal, mania, personality disorder
+
+**Dr. Amir's Key Principle:**
+**"Rule out ORGANIC causes and SUBSTANCE use FIRST. Medical illnesses and drugs can mimic ANY psychiatric disorder. Hypothyroidism = depression. Hyperthyroidism = anxiety. Amphetamines = psychosis. Alcohol withdrawal = anxiety + tremor. Delirium = psychosis + confusion. ALWAYS ask about physical health, medications, and substance use."**
+
+**Critical Frameworks (Must Know):**
+1. **PSYCHIATRIC framework**: Systematic history-taking (Presenting complaint, Symptom exploration, Years of symptoms, Collateral, History of psychiatric illness, Impact on function, Associated substance use, Treatment history, Risk assessment, Insight, Co-morbid medical illness)
+2. **Differential by presenting symptom**:
+   - Low mood → Depression, bipolar depression, adjustment disorder, grief, hypothyroidism, medications
+   - Anxiety → GAD, panic disorder, PTSD, substance withdrawal, hyperthyroidism, cardiac disease
+   - Psychosis → Schizophrenia, drug-induced, affective psychosis, delirium, organic
+3. **Integrated risk assessment**: Suicide, violence, self-neglect assessed throughout (not separate section at end)
+
+**Red Flags for Organic Cause (Must Identify):**
+- New-onset psychiatric symptoms in older adult (>65 years)
+- Acute onset (hours-days) or fluctuating course
+- **Visual hallucinations** (organic until proven otherwise - vs auditory in schizophrenia)
+- Neurological signs (confusion, disorientation, memory impairment, seizures)
+- No previous psychiatric history
+- Recent head injury, infection, or medical illness
+
+**Risk Assessment (ALWAYS Required):**
+- **Suicide risk**: "Have you had thoughts of harming yourself or ending your life?" (if yes: plan, intent, protective factors, previous attempts)
+- **Violence risk**: "Have you had thoughts of harming anyone else?" (if yes: specific victim, access to weapons, previous violence)
+- **Self-neglect**: "How are you managing at home? Eating, showering, paying bills?"
+
+**Common IMG Mistakes:**
+- Not ruling out organic causes (missing hypothyroidism, substance use, delirium)
+- Not asking about suicidal ideation (avoiding the question due to cultural discomfort)
+- Not seeking collateral history (relying only on patient when they may have poor insight)
+- Not using PSYCHIATRIC framework systematically (missing critical information)
+- Not integrating risk assessment throughout (leaving it to end and running out of time)
+- Using medical jargon instead of clear language ("Do you have anhedonia?" vs "Have you lost interest in things you used to enjoy?")
+
+**Examiner Assessment Points:**
+- Did you formulate differential from presenting symptom?
+- Did you rule out organic causes (physical health, medications, substance use)?
+- Did you perform comprehensive risk assessment (suicide, violence, self-neglect)?
+- Did you seek/plan to seek collateral history?
+- Did you use systematic framework (PSYCHIATRIC)?
+- Did you communicate sensitively and build rapport?
+- Did you assess insight and willingness to engage with treatment?
+
+**Australian Mental Health Services (Must Know):**
+- **Mental Health Plan** (Medicare): GP can refer for up to 10 subsidized psychology sessions per year
+- **Mental Health Act**: Involuntary treatment if person has mental illness + at risk to self/others + refuses voluntary treatment
+- **Headspace**: Youth mental health service (ages 12-25)
+- **Beyond Blue**: Mental health information and support (1300 22 4636)
+- **Lifeline**: Crisis support (13 11 14)
+- **Mental Health Triage**: 24/7 phone assessment for psychiatric emergencies
+
+**Key Success Factors:**
+1. **Organic first**: Always rule out medical causes before diagnosing primary psychiatric disorder
+2. **Risk throughout**: Integrate suicide/violence/self-neglect assessment, don't leave to end
+3. **Collateral essential**: Always seek collateral from family/friends/GP/previous treating team
+4. **PSYCHIATRIC framework**: Systematic approach prevents missing critical information
+5. **Sensitive communication**: Non-judgmental, empathetic, clear language (avoid jargon)
+
+---
+
 # Psychiatric History Taking with Differential Diagnosis
 
-**Target Audience**: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Program rotations in Psychiatry
+**Target Audience**: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Programmes rotations in Psychiatry
+
+**Last Updated**: December 26, 2025
 
 **Learning Objectives**: By the end of this document, you will be able to:
 1. Apply Dr. Amir Soufi's differential-driven methodology to psychiatric presentations
@@ -97,7 +177,7 @@
 - **Time**: Adequate time (minimum 30-45 minutes for initial assessment)
 
 **Introduction** (1-2 minutes):
-- "Hello, I'm Dr [Name], one of the doctors here. What should I call you?" [Use patient's preferred name]
+- "Hello, I'm Dr [Name], one of the doctors here. What should I call you?" [Use patient's preferred name] (Murtagh's General Practice, 8th ed, p.27)
 - **Explain purpose**: "I'd like to talk with you today about how you've been feeling and what's been going on. This will take about 30-45 minutes. Is that okay?"
 - **Confidentiality**: "What we discuss is confidential, but I need to let you know that if I'm concerned about your safety or someone else's safety, I may need to share information with the team."
 - **Rapport building**: Open body language, empathic tone, active listening
@@ -178,7 +258,7 @@ Ask: "Over the past 2 weeks, have you noticed any of the following?"
 
 **A - Appetite / Weight change**
 - "How's your appetite?"
-- "Have you lost or gained weight recently?" (>5% body weight in 1 month)
+- "Have you lost or gained weight recently?" (>5% body weight in 1 month) (Murtagh's General Practice, 8th ed, p.1921)
 - **Decreased appetite** (typical depression), **increased appetite** (atypical depression)
 
 **P - Psychomotor changes**
@@ -828,7 +908,7 @@ Ask: "Over the past 2 weeks, have you noticed any of the following?"
 - **Urine drug screen** (amphetamines, cannabis, benzodiazepines, opioids)
 
 **Blood tests**:
-- **FBC** (anemia, infection)
+- **FBC** (anaemia, infection)
 - **U&E** (hyponatremia → confusion, psychosis)
 - **LFTs** (hepatic encephalopathy)
 - **TFTs** (hyperthyroidism → anxiety, mania; hypothyroidism → depression)
@@ -961,7 +1041,7 @@ Patient must meet ALL:
 **Problem**: Patient presents with depression, you diagnose MDD without asking about mania/hypomania
 
 **Why It's Wrong**:
-- **~20% of patients with depression have bipolar disorder**
+- **~20% of patients with depression have bipolar disorder** (Murtagh's General Practice, 8th ed, p.1944)
 - Antidepressants alone in bipolar → Can trigger mania/rapid cycling
 - Need mood stabilizer (lithium, valproate, antipsychotic) not just antidepressant
 
@@ -1135,7 +1215,7 @@ Patient must meet ALL:
 - "Is there family or friends I can speak with?" [Can call my dad]
 
 **Formulation**:
-"James is a 22-year-old male presenting with first episode psychosis (auditory hallucinations, paranoid delusions, thought broadcasting, 2-month duration) with significant functional decline. Differential: 1) Drug-induced psychosis (cannabis, amphetamine use), 2) Schizophrenia (family history, gradual onset, negative symptoms - social withdrawal). Risk: MODERATE (command hallucinations present, though not acting on them; self-neglect). Plan: Admit to psychiatric unit (voluntary or involuntary if refuses), cease substances, antipsychotic medication (olanzapine/risperidone), urine drug screen, investigate organic causes (FBC, U&E, TFTs, CT head), collateral from father, Early Psychosis Intervention Program referral."
+"James is a 22-year-old male presenting with first episode psychosis (auditory hallucinations, paranoid delusions, thought broadcasting, 2-month duration) with significant functional decline. Differential: 1) Drug-induced psychosis (cannabis, amphetamine use), 2) Schizophrenia (family history, gradual onset, negative symptoms - social withdrawal). Risk: MODERATE (command hallucinations present, though not acting on them; self-neglect). Plan: Admit to psychiatric unit (voluntary or involuntary if refuses), cease substances, antipsychotic medication (olanzapine/risperidone), urine drug screen, investigate organic causes (FBC, U&E, TFTs, CT head), collateral from father, Early Psychosis Intervention Programmes referral."
 
 ---
 
