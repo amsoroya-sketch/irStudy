@@ -11,13 +11,77 @@
 
 ## 📋 TABLE OF CONTENTS
 
-1. [Overview & How to Use This Package](#overview)
-2. [What's Included](#whats-included)
-3. [Study Schedule Recommendations](#study-schedule)
-4. [Quick Reference Cards](#quick-reference)
-5. [File Navigation](#file-navigation)
-6. [Common IMG Mistakes (Avoid These!)](#common-mistakes)
-7. [Assessment Criteria](#assessment-criteria)
+1. [🎯 Official AMC Resources](#official-amc-resources) **NEW!**
+2. [Overview & How to Use This Package](#overview)
+3. [What's Included](#whats-included)
+4. [Study Schedule Recommendations](#study-schedule)
+5. [Quick Reference Cards](#quick-reference)
+6. [File Navigation](#file-navigation)
+7. [Common IMG Mistakes (Avoid These!)](#common-mistakes)
+8. [Assessment Criteria](#assessment-criteria)
+
+---
+
+## <a name="official-amc-resources"></a>🎯 OFFICIAL AMC RESOURCES
+
+### Complete AMC Clinical Exam Resource Center
+
+A **comprehensive AMC resource center** has been created with all official documents, study materials, and preparation guides.
+
+📂 **Location**: `../AMC_Clinical_Exam_Official_Resources/`
+
+#### Quick Access to Official Documents
+
+**Essential Downloads (FREE):**
+1. **AMC Clinical Examination Specifications (2024)**
+   - File: `../AMC_Clinical_Exam_Official_Resources/01_Official_AMC_Documents/AMC_Clinical_Examination_Specifications_2024.pdf`
+   - Complete exam format, assessment domains, station types
+
+2. **AMC Tips from Examiners (2024)**
+   - File: `../AMC_Clinical_Exam_Official_Resources/01_Official_AMC_Documents/AMC_Tips_From_Examiners_2024.pdf`
+   - What examiners look for, common mistakes to avoid
+
+3. **AHPRA Good Medical Practice Code**
+   - File: `../AMC_Clinical_Exam_Official_Resources/09_Professional_Standards/AHPRA_Guidelines/Good_Medical_Practice_Code_of_Conduct.pdf`
+   - Professional standards frequently tested in communication stations
+
+#### Comprehensive Resource Guides
+
+📖 **Master Guide**: `../AMC_Clinical_Exam_Official_Resources/CATALOGS/AMC_CLINICAL_EXAM_MASTER_GUIDE.md`
+- Complete catalog of 60+ AMC resources
+- Official textbooks, question banks, OSCE platforms
+- Free vs paid resources comparison
+- Study timeline recommendations
+- Budget planning guide
+
+📊 **Filterable Catalog**: `../AMC_Clinical_Exam_Official_Resources/CATALOGS/AMC_Resources_Catalog.csv`
+- Spreadsheet with 64 resources
+- Filter by: Type, Clinical Area, Cost, Priority
+- Direct URLs to all resources
+
+✅ **Progress Tracker**: `../AMC_Clinical_Exam_Official_Resources/CATALOGS/AMC_STUDY_PROGRESS_TRACKER.md`
+- Interactive checklist with 900+ practice station targets
+- Textbook reading progress (150 hours)
+- Question bank tracking (2000+ questions)
+- Mock exam scoring
+- Weekly study hour log
+
+#### Key Official Resources to Review
+
+**BEFORE starting ICRP OSCE practice:**
+- [ ] Read AMC Clinical Examination Specifications (understand exam format)
+- [ ] Watch AMC Briefing Video (know what to expect on exam day)
+- [ ] Read AMC Tips from Examiners (learn what examiners prioritize)
+- [ ] Review AHPRA Good Medical Practice (know professional standards)
+
+**Integration with This ICRP Package:**
+- This ICRP OSCE package provides **detailed clinical scenarios** and **practice materials**
+- Official AMC resources provide **exam format**, **assessment criteria**, and **standards**
+- Use them together: Study ICRP notes → Practice with official AMC criteria in mind
+
+**For detailed study planning:**
+- See: `../AMC_Clinical_Exam_Official_Resources/CATALOGS/AMC_EXAM_TIMELINE.md` (6-month study plan)
+- See: `../AMC_Clinical_Exam_Official_Resources/README_AMC_RESOURCES.md` (quick start guide)
 
 ---
 
