@@ -476,4 +476,4 @@ If you encounter exam content that doesn't match these frequency classifications
 
 ---
 
-*This guide is designed to complement the Dr. Aamir Saeed methodology ("dar aamir" pattern) used throughout this OSCE preparation system. All 220+ notes follow the 9-principle framework while incorporating these evidence-based frequency indicators.*
+*This guide is designed to complement the Structured OSCE Methodology (differential-driven pattern) used throughout this OSCE preparation system. All 220+ notes follow the 9-principle framework while incorporating these evidence-based frequency indicators.*

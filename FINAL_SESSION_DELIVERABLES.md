@@ -89,7 +89,7 @@ You requested: **"1, 2, 3"** (Continue frequency tagging + Extract flashcards + 
 - Ophthalmology from Oxford EM + Murtagh
 - Endocrinology from Murtagh + AMC Anthology
 
-### **3. Quality Maintenance (100% Dar Aamir Compliance)**
+### **3. Quality Maintenance (100% Differential-Driven OSCE Compliance)**
 
 **Every update preserves:**
 - ✅ 9-principle methodology (differential-driven, frameworks, time allocations)
@@ -168,7 +168,7 @@ You requested: **"1, 2, 3"** (Continue frequency tagging + Extract flashcards + 
 2. **Confidence:** Know what to prioritize
 3. **Coverage:** Systematic plan to fill all gaps
 4. **Quantity:** Active expansion underway
-5. **Quality:** Dar Aamir pattern maintained
+5. **Quality:** Differential-Driven OSCE pattern maintained
 
 ---
 
@@ -187,9 +187,9 @@ You requested: **"1, 2, 3"** (Continue frequency tagging + Extract flashcards + 
   - 🔄 Flashcard expansion (750 → 1,200+ target)
   - 🔄 Case expansion (13 → 120+ target)
 
-### **2. Preserved "Dar Aamir" Excellence**
+### **2. Preserved "Differential-Driven OSCE" Excellence**
 
-Reader mentioned: "Can you recall pattern dar aamir"
+Reader mentioned: "Can you recall pattern differential-driven OSCE"
 
 **We recalled AND enhanced:**
 - ✅ Dr. Amir Soufi's 9-principle methodology documented
@@ -262,7 +262,7 @@ Reader asked: "How can we better use of book indexing"
 
 ### **What Worked Well:**
 1. **Parallel workstreams** - All three tasks progressing simultaneously
-2. **Quality over quantity** - Each update maintains Dar Aamir standards
+2. **Quality over quantity** - Each update maintains Differential-Driven OSCE standards
 3. **Documentation** - Comprehensive guides enable future work
 4. **Evidence-based approach** - AMC blueprints + candidate reports
 
@@ -306,7 +306,7 @@ You requested all three tasks (1, 2, 3) and we've:
 
 **The transformation from 92% coverage to 100% coverage with comprehensive prioritization guidance and expanded content is underway.**
 
-Your feedback about "wider range and large quantity" is being systematically addressed while maintaining the excellent "Dar Aamir" pattern quality that makes these notes valuable.
+Your feedback about "wider range and large quantity" is being systematically addressed while maintaining the excellent "Differential-Driven OSCE" pattern quality that makes these notes valuable.
 
 ---
 

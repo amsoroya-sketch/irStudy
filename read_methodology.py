@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 import os
 
-# Read DR AAMIR Methodology Guide
-print("=== READING DR_AAMIR_METHODOLOGY_GUIDE.html ===\n")
-with open('/home/dev/Development/irStudy/DR_AAMIR_METHODOLOGY_GUIDE.html', 'r', encoding='utf-8') as f:
+# Read OSCE Methodology Guide
+print("=== READING OSCE_METHODOLOGY_GUIDE.html ===\n")
+with open('/home/dev/Development/irStudy/OSCE_METHODOLOGY_GUIDE.html', 'r', encoding='utf-8') as f:
     content = f.read()
     # Find Template 2 section
     if 'Template 2: Physical Examination Station' in content:

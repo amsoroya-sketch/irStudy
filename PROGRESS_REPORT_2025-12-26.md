@@ -7,7 +7,7 @@
 
 ## 📊 Executive Summary
 
-Comprehensive expansion of ICRP OSCE system addressing reader feedback: "notes need to cover wider range and large quantity" while maintaining the excellent "Dar Aamir" pattern quality.
+Comprehensive expansion of ICRP OSCE system addressing reader feedback: "notes need to cover wider range and large quantity" while maintaining the excellent "Differential-Driven OSCE" pattern quality.
 
 **Current Status:**
 - ✅ Planning & Framework: **100% Complete**
@@ -150,7 +150,7 @@ Comprehensive expansion of ICRP OSCE system addressing reader feedback: "notes n
 
 ✅ **Quality Standards:**
 - 100% Australian context maintained
-- Dar Aamir 9 principles preserved
+- Differential-Driven OSCE 9 principles preserved
 - IMG mistakes documented
 - eTG 2024 referenced
 
@@ -189,7 +189,7 @@ Comprehensive expansion of ICRP OSCE system addressing reader feedback: "notes n
 **Example:** Dermatology module will mine:
 - Handbook of Skin Diseases (1.1MB)
 - Murtagh Ch 29 (Dermatology section)
-- Transform into dar aamir 8-minute OSCE format
+- Transform into differential-driven OSCE 8-minute OSCE format
 
 ### **3. Parallel Workstream Efficiency**
 
@@ -265,7 +265,7 @@ Comprehensive expansion of ICRP OSCE system addressing reader feedback: "notes n
 - **Confidence:** Know what's most important
 - **Coverage:** Filling specialty gaps systematically
 - **Quantity:** More practice materials being added
-- **Quality:** Maintaining "Dar Aamir" excellence
+- **Quality:** Maintaining "Differential-Driven OSCE" excellence
 
 ---
 
@@ -282,7 +282,7 @@ Comprehensive expansion of ICRP OSCE system addressing reader feedback: "notes n
 **New Modules:**
 - [ ] Dermatology module complete (1/5 specialties)
 - [ ] Main notes + 15 cases + 50 flashcards
-- [ ] Following Dar Aamir 9 principles
+- [ ] Following Differential-Driven OSCE 9 principles
 
 **Quality Standards:**
 - [x] 100% Australian context ✅
@@ -317,4 +317,4 @@ Comprehensive expansion of ICRP OSCE system addressing reader feedback: "notes n
 
 ---
 
-*This progress report documents comprehensive work on expanding the ICRP OSCE system while maintaining the high-quality "Dar Aamir" pattern that readers value.*
+*This progress report documents comprehensive work on expanding the ICRP OSCE system while maintaining the high-quality "Differential-Driven OSCE" pattern that readers value.*

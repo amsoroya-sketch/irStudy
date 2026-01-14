@@ -53,7 +53,7 @@ Verified coverage of common conditions including eczema, psoriasis, acne, skin c
 
 ---
 
-## Dar Aamir 9-Principle Compliance
+## Differential-Driven OSCE 9-Principle Compliance
 
 Spot-checked multiple presentations - all include:
 - ✅ Opening statement (30 seconds)
@@ -109,7 +109,7 @@ Spot-checked multiple presentations - all include:
 |-----------|-------|--------|
 | Australian compliance | 100% | ✅ PASS |
 | Framework completeness | 100% | ✅ PASS |
-| Dar Aamir pattern | 100% | ✅ PASS |
+| Differential-Driven OSCE pattern | 100% | ✅ PASS |
 | Case scenarios | 15/15 | ✅ PASS |
 | Citations | Present | ✅ PASS |
 | Integration | Complete | ✅ PASS |
@@ -127,7 +127,7 @@ Spot-checked multiple presentations - all include:
 2. 100% Australian compliance achieved
 3. All required frameworks present and complete
 4. 15 presentations + 15 cases verified
-5. Dar Aamir 9-principle pattern maintained
+5. Differential-Driven OSCE 9-principle pattern maintained
 6. Citations from Australian sources present
 7. Integration with existing modules complete
 

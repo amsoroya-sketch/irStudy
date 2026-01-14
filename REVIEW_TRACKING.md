@@ -145,7 +145,7 @@
 
 - [ ] **OSCE_Format_Agent:** 100% AMC OSCE format compliance
   - All stations meet 8-minute timing requirement
-  - All content follows Dr. Aamir's 9 core principles
+  - All content follows the OSCE 9 core principles
   - All history-taking uses differential-driven approach
   - All physical exams use appropriate frameworks (5 Ps, GALS, etc.)
 
@@ -244,7 +244,7 @@
 
 **Review Focus:**
 - 8-minute AMC OSCE timing
-- Dr. Aamir's 9 principles validation
+- the OSCE 9 principles validation
 - Differential-driven history taking
 - Physical exam framework compliance (5 Ps, GALS, etc.)
 - Mock station structure validation

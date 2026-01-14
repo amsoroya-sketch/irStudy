@@ -17,8 +17,8 @@
 
 ### 1. **Assessment & Gap Analysis** ✅ COMPLETE
 
-**"Dar Aamir" Pattern Confirmed:**
-- Dr. Aamir Saeed's 9-principle methodology
+**"Differential-Driven OSCE" Pattern Confirmed:**
+- Structured OSCE's 9-principle methodology
 - 101 files, 37,401 lines, 92% AMC coverage
 - 750 flashcards, 13 textbooks indexed
 - Excellent quality, needs expansion & prioritization
@@ -131,7 +131,7 @@ Each file now has:
 **Target:** Complete new specialty module addressing major gap
 **Components:**
 1. Main OSCE Module (Dermatology History & Examination)
-   - Following "Dar Aamir" 9-principle methodology
+   - Following "Differential-Driven OSCE" 9-principle methodology
    - SKIN rash framework + ABCDEFG lesion description
    - 15 common presentations
    - ⭐⭐⭐ HIGH-YIELD (60%+ AMC frequency)
@@ -189,7 +189,7 @@ Each file now has:
 - Create main module first
 - Then create 15 cases
 - Then create 50 flashcards
-- Validate against "Dar Aamir" 9 principles
+- Validate against "Differential-Driven OSCE" 9 principles
 
 ---
 
@@ -248,7 +248,7 @@ Each file now has:
 - ✅ "Last Updated" fields accurate
 - ✅ Visual formatting correct (⭐ emojis render properly)
 
-**Dar Aamir Compliance:**
+**Differential-Driven OSCE Compliance:**
 - ✅ 9 principles maintained in all updates
 - ✅ Australian context preserved
 - ✅ IMG mistakes sections intact
@@ -293,7 +293,7 @@ Each file now has:
 - Manual review: Every frequency tag
 - Template compliance: 100%
 - Australian context: 100%
-- Dar Aamir principles: 100%
+- Differential-Driven OSCE principles: 100%
 
 **Output Quality:**
 - Frequency tags: High (specific, evidence-based, contextual)
@@ -329,4 +329,4 @@ Each file now has:
 
 ---
 
-*This summary documents comprehensive assessment, planning, and initial implementation of the 6-month ICRP OSCE expansion. The "dar aamir" pattern quality is preserved while adding strategic prioritization and expanding coverage.*
+*This summary documents comprehensive assessment, planning, and initial implementation of the 6-month ICRP OSCE expansion. The "differential-driven OSCE" pattern quality is preserved while adding strategic prioritization and expanding coverage.*

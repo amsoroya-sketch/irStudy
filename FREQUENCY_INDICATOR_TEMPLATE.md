@@ -435,4 +435,4 @@ After adding frequency tags to all notes:
 
 ---
 
-*This template complements the AMC_FREQUENCY_GUIDE.md and follows the Dr. Aamir Saeed "dar aamir" methodology used throughout this OSCE preparation system.*
+*This template complements the AMC_FREQUENCY_GUIDE.md and follows the Structured OSCE Methodology (differential-driven pattern) used throughout this OSCE preparation system.*

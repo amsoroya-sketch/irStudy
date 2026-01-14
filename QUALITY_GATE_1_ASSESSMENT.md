@@ -182,7 +182,7 @@ The ICRP OSCE materials demonstrate **EXCELLENT structure, Australian compliance
 **Review Status:** ✅ **PASSED**
 **Report Location:** Inline in this assessment
 
-#### Dr. Aamir's 9 Principles Compliance: 92% (Excellent)
+#### the OSCE 9 Principles Compliance: 92% (Excellent)
 
 1. **Principle 1: Differential-Driven History Taking** - ✅ COMPLIANT
    - All history modules use differential thinking from opening (NOT checklist approach)
@@ -235,7 +235,7 @@ The ICRP OSCE materials demonstrate **EXCELLENT structure, Australian compliance
 1. Add interim timing checkpoints in longer modules (e.g., "At 4 minutes, you should be finishing SOCRATES")
 2. Expand cross-references between related modules for better navigation
 
-**OSCE Format Recommendation:** ✅ **PASS** - Full compliance with AMC OSCE format and Dr. Aamir's 9 principles. Minor enhancements optional.
+**OSCE Format Recommendation:** ✅ **PASS** - Full compliance with AMC OSCE format and 9-Principle OSCE Framework. Minor enhancements optional.
 
 ---
 
@@ -379,7 +379,7 @@ The ICRP OSCE materials demonstrate **EXCELLENT structure, Australian compliance
 ### OSCE Format Review: HIGH Confidence (95%)
 
 - ✅ Comprehensive sampling across all module types
-- ✅ DR_AAMIR_METHODOLOGY_GUIDE.html provides complete documentation
+- ✅ OSCE_METHODOLOGY_GUIDE.html provides complete documentation
 - ✅ All 9 principles verified with specific examples
 - ✅ Mock OSCE stations comprehensively reviewed
 

@@ -86,13 +86,13 @@ All 7 review agents across 3 tiers have completed comprehensive quality assuranc
 - Australian terminology: ✅ 100% consistent (268 files scanned)
 - RED FLAG system: ✅ 268 occurrences, 31 files
 - IMG warnings: ✅ 76% files have explicit sections
-- Differential frameworks: ✅ Dr. Aamir methodology consistent
+- Differential frameworks: ✅ Structured OSCE Methodology consistent
 - Physical exam frameworks: ✅ Consistent application (5 Ps, GALS, etc.)
 - Visual design: ✅ Identical HTML/CSS across all 46 files
 
 **Minor Inconsistencies (Low Impact):**
 - RED FLAG capitalization varies slightly
-- Dr. Aamir methodology explicit in 52%, implicit in others
+- Structured OSCE Methodology explicit in 52%, implicit in others
 - Differential depth varies appropriately by module complexity
 
 **Recommendation:** APPROVED for release
@@ -165,7 +165,7 @@ All 7 review agents across 3 tiers have completed comprehensive quality assuranc
 ### Examination Failure Risks: ✅ MITIGATED
 - 94% AMC blueprint coverage
 - All core competencies 100% covered
-- OSCE format 100% compliant with Dr. Aamir methodology
+- OSCE format 100% compliant with Structured OSCE Methodology
 - Mock stations mirror AMC format
 
 **Risk Level:** LOW
@@ -319,7 +319,7 @@ All 7 review agents across 3 tiers have completed comprehensive quality assuranc
 
 ## Acknowledgments
 
-**Review System Architecture:** Dr. Aamir Saeed OSCE methodology (9 core principles)
+**Review System Architecture:** Structured OSCE OSCE methodology (9 core principles)
 **Australian Medical Standards:** eTG 2024, PBS 2024, ANZCOR 2024, AHPRA guidelines
 **AMC Examination Blueprint:** AMC Part 2 Clinical Examination 2024
 **Quality Assurance:** 7-agent, 3-tier review system
@@ -327,7 +327,7 @@ All 7 review agents across 3 tiers have completed comprehensive quality assuranc
 **Agents Contributing to Quality:**
 1. Clinical_Accuracy_Agent (Medical facts, drug safety, emergency protocols)
 2. Australian_Standards_Agent (Terminology, PBS/eTG compliance)
-3. OSCE_Format_Agent (AMC format, Dr. Aamir principles)
+3. OSCE_Format_Agent (AMC format, 9-Principle OSCE Framework)
 4. IMG_Navigator_Agent (IMG guidance, cultural context)
 5. Coverage_Analyst_Agent (AMC blueprint mapping)
 6. Technical_QA_Agent (HTML quality, formatting)

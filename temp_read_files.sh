@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "=== DR AAMIR METHODOLOGY GUIDE ==="
-cat "/home/dev/Development/irStudy/DR_AAMIR_METHODOLOGY_GUIDE.html" | head -500
+echo "=== OSCE METHODOLOGY GUIDE ==="
+cat "/home/dev/Development/irStudy/OSCE_METHODOLOGY_GUIDE.html" | head -500
 
 echo -e "\n\n=== CARDIOVASCULAR RESPIRATORY EXAM ==="
 cat "/home/dev/Development/irStudy/ICRP_OSCE_Preparation/Medicine/02_Physical_Examination_Cardiovascular_Respiratory.html" | head -300

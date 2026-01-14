@@ -98,7 +98,7 @@ The **AMC Clinical Examination** is an OSCE (Objective Structured Clinical Exami
 
 ### How These Materials Help You
 
-This package provides **AMC Clinical-style notes** following the exact format and standards used in courses like Dr Aamir Saeed's preparation course, with:
+This package provides **AMC Clinical-style notes** following the exact format and standards used in professional OSCE preparation courses, with:
 
 ✅ **Australian medical context** (eTG, AMH, Medicare, PBS)
 ✅ **Exact phrases** examiners expect to hear
@@ -651,7 +651,7 @@ All materials in this package have been created following:
 - ✅ **Australian Medical Context** - eTG 2024, AMH, Medicare, PBS
 - ✅ **AHPRA Standards** - Australian clinical competency requirements
 - ✅ **AMC Clinical Format** - 8-minute stations, observable criteria
-- ✅ **Course-Style Structure** - Following Dr Aamir Saeed's course format
+- ✅ **Structured OSCE Methodology** - Following 9-principle OSCE framework
 - ✅ **IMG-Focused** - Common mistakes documented and corrected
 
 **Validated for**:

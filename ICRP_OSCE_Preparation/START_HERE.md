@@ -13,7 +13,7 @@
 
 ### ✅ **5 Complete OSCE Documents** Ready for Immediate Use
 
-I've created a **complete AMC Clinical-style OSCE preparation package** following the structure and quality of courses like Dr Aamir Saeed's. Here's exactly what you have:
+I've created a **complete AMC Clinical-style OSCE preparation package** following the structure and quality of professional OSCE preparation courses. Here's exactly what you have:
 
 ---
 

@@ -626,7 +626,7 @@ Average time per card: **15-20 seconds**
 - 48 ICRP OSCE modules (Australian context)
 - eTG 2024 (Therapeutic Guidelines)
 - AMC Clinical OSCE blueprint
-- Dr. Aamir Saeed's 9 OSCE principles
+- 9-Principle OSCE Framework
 
 **Algorithm:**
 - SM-2 spaced repetition (SuperMemo 2)

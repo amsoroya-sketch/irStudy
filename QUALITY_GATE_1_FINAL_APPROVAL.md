@@ -118,7 +118,7 @@ All fixes align with current Australian medical standards:
 - All Australian services correct (Lifeline, Beyond Blue, 000)
 
 ### Criterion 3: AMC OSCE Format Compliance
-**Requirement:** 100% AMC OSCE format and Dr. Aamir's 9 principles
+**Requirement:** 100% AMC OSCE format and 9-Principle OSCE Framework
 **Status:** ✅ **MET** (No remediation required)
 - All 9 principles verified (differential-driven, 8-minute timing, frameworks)
 - Mock stations perfectly mirror AMC format

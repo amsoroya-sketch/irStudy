@@ -76,7 +76,7 @@ Comprehensive OSCE preparation materials for ICRP (International Clinical Rotati
 ### Tier 1: Critical Reviews (BLOCKING)
 ✅ **Clinical_Accuracy_Agent** - 10 critical errors fixed, 100% verified
 ✅ **Australian_Standards_Agent** - 100% terminology compliance
-✅ **OSCE_Format_Agent** - 100% AMC format + Dr. Aamir methodology
+✅ **OSCE_Format_Agent** - 100% AMC format + Structured OSCE Methodology
 
 ### Tier 2: Important Reviews
 ✅ **IMG_Navigator_Agent** - EXCELLENT (80% explicit IMG sections)
@@ -94,7 +94,7 @@ Comprehensive OSCE preparation materials for ICRP (International Clinical Rotati
 
 ### 🎯 AMC OSCE Focused
 - 8-minute station timing throughout
-- Dr. Aamir Saeed's 9 core principles integrated
+- Structured OSCE's 9 core principles integrated
 - Differential-driven history taking
 - Framework-based physical examination (5 Ps, GALS, etc.)
 
@@ -250,7 +250,7 @@ Medical guidelines change. Always verify current recommendations before clinical
 
 ## Acknowledgments
 
-**Content Framework:** Dr. Aamir Saeed OSCE Methodology
+**Content Framework:** Structured OSCE OSCE Methodology
 **Australian Standards:** eTG, PBS, ANZCOR, AHPRA
 **AMC Guidelines:** AMC Part 2 Clinical Examination Blueprint 2024
 **Quality Assurance:** 7-agent, 3-tier review system
