@@ -1,92 +1,596 @@
 version: '3.8'
 
 services:
-  # Qdrant Vector Database (for medical knowledge embeddings)
-  qdrant:
-    image: qdrant/qdrant:latest
-    container_name: medical_qdrant
-    ports:
-      - "6333:6333"  # HTTP API
-      - "6334:6334"  # gRPC API
-    volumes:
-      - ./docker/qdrant_storage:/qdrant/storage
-    environment:
-      - QDRANT__SERVICE__GRPC_PORT=6334
+  # PostgreSQL Database (Security Hardened)
+  postgres:
+    image: postgres:16-alpine
+    container_name: irstudy-postgres
     restart: unless-stopped
 
-  # Neo4j Knowledge Graph (medical relationships)
+    # Security: Read-only root filesystem
+    read_only: true
+
+    # Security: Drop all capabilities, add only required ones
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+      - SETGID
+      - SETUID
+      - FOWNER
+
+    # Security: Prevent privilege escalation
+    security_opt:
+      - no-new-privileges:true
+
+    # Security: Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 4G
+        reservations:
+          cpus: '1'
+          memory: 1G
+
+    environment:
+      POSTGRES_DB: irstudy_medical
+      POSTGRES_USER: postgres
+      # Security: Use Docker secrets instead of hardcoded passwords
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+      POSTGRES_INITDB_ARGS: "-E UTF8 --locale=en_US.UTF-8"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backup:/backup  # Mount for database backup/restore
+      # Required for read_only mode - PostgreSQL needs writable /tmp and /run
+      - postgres_run:/var/run/postgresql
+      - postgres_tmp:/tmp
+
+    ports:
+      - "5432:5432"
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d irstudy_medical"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    networks:
+      - irstudy-network
+
+    secrets:
+      - db_password
+
+  # Redis Cache & Message Broker (Security Hardened)
+  redis:
+    image: redis:7-alpine
+    container_name: irstudy-redis
+    restart: unless-stopped
+
+    # Security: Prevent privilege escalation
+    security_opt:
+      - no-new-privileges:true
+
+    # Security: Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+    environment:
+      REDIS_PASSWORD_FILE: /run/secrets/redis_password
+
+    command: >
+      sh -c "
+        redis-server
+        --requirepass $$(cat /run/secrets/redis_password)
+        --maxmemory 1gb
+        --maxmemory-policy allkeys-lru
+        --save 900 1
+        --save 300 10
+        --save 60 10000
+        --appendonly yes
+      "
+
+    volumes:
+      - redis_data:/data
+
+    ports:
+      - "6379:6379"
+
+    healthcheck:
+      test: ["CMD", "redis-cli", "--no-auth-warning", "-a", "$$(cat /run/secrets/redis_password)", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    networks:
+      - irstudy-network
+
+    secrets:
+      - redis_password
+
+  # Qdrant Vector Database (For RAG System - Security Hardened)
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: irstudy-qdrant
+    restart: unless-stopped
+
+    # Security: Prevent privilege escalation
+    security_opt:
+      - no-new-privileges:true
+
+    # Security: Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 6G
+        reservations:
+          cpus: '2'
+          memory: 2G
+
+    environment:
+      QDRANT__SERVICE__API_KEY_FILE: /run/secrets/qdrant_api_key
+      QDRANT__SERVICE__GRPC_PORT: 6334
+
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+    ports:
+      - "6333:6333"  # HTTP API
+      - "6334:6334"  # gRPC port
+
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:6333/"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+
+    networks:
+      - irstudy-network
+
+    secrets:
+      - qdrant_api_key
+
+  # Neo4j Knowledge Graph (Medical Relationships - Security Hardened)
   neo4j:
     image: neo4j:5.16.0-community
-    container_name: medical_neo4j
+    container_name: irstudy-neo4j
+    restart: unless-stopped
+
+    # Security: Prevent privilege escalation
+    security_opt:
+      - no-new-privileges:true
+
+    # Security: Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 4G
+        reservations:
+          cpus: '1'
+          memory: 1G
+
+    environment:
+      NEO4J_AUTH_FILE: /run/secrets/neo4j_auth
+      NEO4J_PLUGINS: '["apoc", "graph-data-science"]'
+      NEO4J_apoc_export_file_enabled: "true"
+      NEO4J_apoc_import_file_enabled: "true"
+
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+      - ./docker/neo4j_import:/var/lib/neo4j/import
+
     ports:
       - "7474:7474"  # HTTP
       - "7687:7687"  # Bolt
-    volumes:
-      - ./docker/neo4j_data:/data
-      - ./docker/neo4j_logs:/logs
-      - ./docker/neo4j_import:/var/lib/neo4j/import
+
+    healthcheck:
+      test: ["CMD", "cypher-shell", "-u", "neo4j", "-p", "$$NEO4J_AUTH", "RETURN 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+
+    networks:
+      - irstudy-network
+
+    secrets:
+      - neo4j_auth
+
+  # FastAPI Backend (Security Hardened) - TO BE CREATED
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: irstudy-backend
+    restart: unless-stopped
+
+    # Security: Prevent privilege escalation
+    security_opt:
+      - no-new-privileges:true
+
+    # Security: Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 4G
+        reservations:
+          cpus: '1'
+          memory: 1G
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      qdrant:
+        condition: service_healthy
+
     environment:
-      - NEO4J_AUTH=neo4j/medical_ai_password_2025
-      - NEO4J_PLUGINS=["apoc", "graph-data-science"]
-      - NEO4J_apoc_export_file_enabled=true
-      - NEO4J_apoc_import_file_enabled=true
+      # Security: Build DATABASE_URL from secret at runtime
+      DATABASE_URL_TEMPLATE: postgresql://postgres:__DB_PASSWORD__@postgres:5432/irstudy_medical
+      REDIS_URL_TEMPLATE: redis://:__REDIS_PASSWORD__@redis:6379/0
+      QDRANT_URL: http://qdrant:6333
+      NEO4J_URI: bolt://neo4j:7687
+      PORT: 8000
+      PYTHON_ENV: production
+      # Medical AI Configuration
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      # Logging
+      LOG_LEVEL: INFO
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./backend:/app  # For development
+      - ./data:/app/data  # Medical knowledge data
+      - ./scripts:/app/scripts  # Utility scripts
+
+    networks:
+      - irstudy-network
+
+    secrets:
+      - db_password
+      - redis_password
+      - qdrant_api_key
+      - neo4j_auth
+      - openai_api_key
+      - anthropic_api_key
+
+    # Security: Custom entrypoint to build URLs from secrets
+    command: >
+      sh -c "
+        echo '🔐 Loading credentials from secrets...' &&
+        export DATABASE_URL=$$(cat /run/secrets/db_password | sed 's|^|postgresql://postgres:|; s|$$|@postgres:5432/irstudy_medical|') &&
+        export REDIS_URL=$$(cat /run/secrets/redis_password | sed 's|^|redis://:|; s|$$|@redis:6379/0|') &&
+        export QDRANT_API_KEY=$$(cat /run/secrets/qdrant_api_key) &&
+        export NEO4J_PASSWORD=$$(cat /run/secrets/neo4j_auth | cut -d'/' -f2) &&
+        export OPENAI_API_KEY=$$(cat /run/secrets/openai_api_key) &&
+        export ANTHROPIC_API_KEY=$$(cat /run/secrets/anthropic_api_key) &&
+        echo '✅ Credentials loaded securely' &&
+        echo '🔧 Running database migrations...' &&
+        alembic upgrade head &&
+        echo '✅ Migrations complete' &&
+        echo '🚀 Starting FastAPI backend server...' &&
+        uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+      "
+
+  # Celery Worker (Background Tasks) - TO BE CREATED
+  celery-worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: irstudy-celery-worker
     restart: unless-stopped
 
-  # PostgreSQL (user data, questions, progress)
-  postgres:
-    image: postgres:16-alpine
-    container_name: medical_postgres
-    ports:
-      - "5432:5432"
-    volumes:
-      - ./docker/postgres_data:/var/lib/postgresql/data
+    # Security: Prevent privilege escalation
+    security_opt:
+      - no-new-privileges:true
+
+    # Security: Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 6G
+        reservations:
+          cpus: '2'
+          memory: 2G
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
     environment:
-      - POSTGRES_DB=medical_education
-      - POSTGRES_USER=medical_user
-      - POSTGRES_PASSWORD=medical_pass_2025
-    restart: unless-stopped
+      DATABASE_URL_TEMPLATE: postgresql://postgres:__DB_PASSWORD__@postgres:5432/irstudy_medical
+      REDIS_URL_TEMPLATE: redis://:__REDIS_PASSWORD__@redis:6379/0
+      QDRANT_URL: http://qdrant:6333
+      PYTHON_ENV: production
+      CELERY_WORKER_CONCURRENCY: 4
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
 
-  # Redis (caching, job queue)
-  redis:
-    image: redis:7-alpine
-    container_name: medical_redis
-    ports:
-      - "6379:6379"
     volumes:
-      - ./docker/redis_data:/data
-    command: redis-server --appendonly yes
+      - ./backend:/app
+      - ./data:/app/data
+
+    networks:
+      - irstudy-network
+
+    secrets:
+      - db_password
+      - redis_password
+      - qdrant_api_key
+      - openai_api_key
+      - anthropic_api_key
+
+    command: >
+      sh -c "
+        echo '🔐 Loading credentials...' &&
+        export DATABASE_URL=$$(cat /run/secrets/db_password | sed 's|^|postgresql://postgres:|; s|$$|@postgres:5432/irstudy_medical|') &&
+        export REDIS_URL=$$(cat /run/secrets/redis_password | sed 's|^|redis://:|; s|$$|@redis:6379/0|') &&
+        export QDRANT_API_KEY=$$(cat /run/secrets/qdrant_api_key) &&
+        export OPENAI_API_KEY=$$(cat /run/secrets/openai_api_key) &&
+        export ANTHROPIC_API_KEY=$$(cat /run/secrets/anthropic_api_key) &&
+        echo '✅ Credentials loaded' &&
+        echo '🔄 Starting Celery worker...' &&
+        celery -A src.tasks.celery_app worker --loglevel=info --concurrency=4
+      "
+
+  # Celery Beat (Scheduled Tasks) - TO BE CREATED
+  celery-beat:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: irstudy-celery-beat
     restart: unless-stopped
 
-  # Prometheus (metrics)
+    # Security: Prevent privilege escalation
+    security_opt:
+      - no-new-privileges:true
+
+    # Security: Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+    depends_on:
+      - redis
+
+    environment:
+      REDIS_URL_TEMPLATE: redis://:__REDIS_PASSWORD__@redis:6379/0
+      PYTHON_ENV: production
+
+    networks:
+      - irstudy-network
+
+    secrets:
+      - redis_password
+
+    command: >
+      sh -c "
+        echo '🔐 Loading credentials...' &&
+        export REDIS_URL=$$(cat /run/secrets/redis_password | sed 's|^|redis://:|; s|$$|@redis:6379/0|') &&
+        echo '✅ Credentials loaded' &&
+        echo '⏰ Starting Celery beat scheduler...' &&
+        celery -A src.tasks.celery_app beat --loglevel=info
+      "
+
+  # Flower (Celery Monitoring) - TO BE CREATED
+  flower:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: irstudy-flower
+    restart: unless-stopped
+
+    # Security: Prevent privilege escalation
+    security_opt:
+      - no-new-privileges:true
+
+    # Security: Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
+
+    depends_on:
+      - redis
+
+    environment:
+      REDIS_URL_TEMPLATE: redis://:__REDIS_PASSWORD__@redis:6379/0
+      FLOWER_PORT: 5555
+
+    ports:
+      - "5555:5555"
+
+    networks:
+      - irstudy-network
+
+    secrets:
+      - redis_password
+      - flower_auth
+
+    command: >
+      sh -c "
+        echo '🔐 Loading credentials...' &&
+        export REDIS_URL=$$(cat /run/secrets/redis_password | sed 's|^|redis://:|; s|$$|@redis:6379/0|') &&
+        export FLOWER_BASIC_AUTH=$$(cat /run/secrets/flower_auth) &&
+        echo '✅ Credentials loaded' &&
+        echo '🌸 Starting Flower monitoring...' &&
+        celery -A src.tasks.celery_app flower --port=5555 --basic_auth=$$FLOWER_BASIC_AUTH
+      "
+
+  # Prometheus (Metrics - Security Hardened)
   prometheus:
     image: prom/prometheus:latest
-    container_name: medical_prometheus
+    container_name: irstudy-prometheus
+    restart: unless-stopped
+
+    # Security: Prevent privilege escalation
+    security_opt:
+      - no-new-privileges:true
+
+    # Security: Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+
     ports:
       - "9090:9090"
-    volumes:
-      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml
-      - ./docker/prometheus_data:/prometheus
+
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
-    restart: unless-stopped
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
 
-  # Grafana (dashboards)
+    networks:
+      - irstudy-network
+
+  # Grafana (Dashboards - Security Hardened)
   grafana:
     image: grafana/grafana:latest
-    container_name: medical_grafana
-    ports:
-      - "3001:3000"  # Using 3001 to avoid conflict with Next.js
-    volumes:
-      - ./docker/grafana_data:/var/lib/grafana
-      - ./docker/grafana_dashboards:/etc/grafana/provisioning/dashboards
-    environment:
-      - GF_SECURITY_ADMIN_PASSWORD=medical_admin_2025
-      - GF_USERS_ALLOW_SIGN_UP=false
-    depends_on:
-      - prometheus
+    container_name: irstudy-grafana
     restart: unless-stopped
 
+    # Security: Prevent privilege escalation
+    security_opt:
+      - no-new-privileges:true
+
+    # Security: Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+    depends_on:
+      - prometheus
+
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD_FILE: /run/secrets/grafana_password
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_INSTALL_PLUGINS: grafana-clock-panel
+
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
+
+    ports:
+      - "3001:3000"
+
+    networks:
+      - irstudy-network
+
+    secrets:
+      - grafana_password
+
+  # Adminer (Database Admin UI - Lightweight)
+  adminer:
+    image: adminer:latest
+    container_name: irstudy-adminer
+    restart: unless-stopped
+
+    # Security: Prevent privilege escalation
+    security_opt:
+      - no-new-privileges:true
+
+    # Security: Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
+
+    ports:
+      - "8080:8080"
+
+    networks:
+      - irstudy-network
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+# Docker Secrets Configuration
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+  redis_password:
+    file: ./secrets/redis_password.txt
+  qdrant_api_key:
+    file: ./secrets/qdrant_api_key.txt
+  neo4j_auth:
+    file: ./secrets/neo4j_auth.txt
+  openai_api_key:
+    file: ./secrets/openai_api_key.txt
+  anthropic_api_key:
+    file: ./secrets/anthropic_api_key.txt
+  flower_auth:
+    file: ./secrets/flower_auth.txt
+  grafana_password:
+    file: ./secrets/grafana_password.txt
+
+volumes:
+  postgres_data:
+    driver: local
+  # Additional volumes required for read-only postgres
+  postgres_run:
+    driver: local
+  postgres_tmp:
+    driver: local
+  redis_data:
+    driver: local
+  qdrant_data:
+    driver: local
+  neo4j_data:
+    driver: local
+  neo4j_logs:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+
 networks:
-  default:
-    name: medical_education_network
+  irstudy-network:
+    driver: bridge
