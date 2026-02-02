@@ -552,32 +552,32 @@ Design architecture for Tauri desktop app (implementation starts Week 2).
 ## 📝 Week 1 Completion Checklist
 
 ### Infrastructure (Developer 1)
-- [ ] Task 001: Cybersecurity framework applied ✅ 30 min
-- [ ] Task 002: Secrets directory created ✅ 15 min
-- [ ] Task 003: Docker stack tested ✅ 1 hour
-- [ ] Task 004: arQ Dockerfile copied ✅ 1 hour
-- [ ] Task 005: .env.template created ✅ 1 hour
-- [ ] Task 006: Security workflows copied ✅ 2 hours
-- [ ] Task 007: Security documentation ✅ 1 hour
+- [ ] Task 001: Cybersecurity framework applied ⏸️ 30 min (BLOCKED: script approval required)
+- [x] Task 002: Secrets directory created ✅ 15 min
+- [ ] Task 003: Docker stack tested ⏸️ 1 hour (BLOCKED: docker approval required)
+- [x] Task 004: arQ Dockerfile copied ✅ 1 hour
+- [x] Task 005: .env.template created ✅ 1 hour
+- [ ] Task 006: Security workflows copied ⏸️ 2 hours (BLOCKED: depends on 001)
+- [ ] Task 007: Security documentation ⏸️ 1 hour (BLOCKED: depends on 001-006)
 
 ### Backend (Developer 2)
-- [ ] Task 008: FastAPI structure setup ✅ 2 hours
-- [ ] Task 009: JWT authentication ✅ 3 hours
-- [ ] Task 010: Database schema ✅ 3 hours
-- [ ] Task 011: API endpoints scaffolded ✅ 2 hours
+- [x] Task 008: FastAPI structure setup ✅ 2 hours
+- [x] Task 009: JWT authentication ✅ 3 hours
+- [x] Task 010: Database schema ✅ 3 hours
+- [x] Task 011: API endpoints scaffolded ✅ 2 hours
 
 ### Frontend (Developer 3)
-- [ ] Task 012: React + TypeScript setup ✅ 2 hours
-- [ ] Task 013: MCQ components copied ✅ 3 hours
-- [ ] Task 014: Dashboard wireframe ✅ 2 hours
-- [ ] Task 015: Authentication UI ✅ 2 hours
-- [ ] Task 016: API client setup ✅ 1 hour
+- [ ] Task 012: React + TypeScript setup ⏸️ 2 hours (BLOCKED: npm approval required)
+- [ ] Task 013: MCQ components copied ⏸️ 3 hours (BLOCKED: depends on 012)
+- [ ] Task 014: Dashboard wireframe ⏸️ 2 hours (BLOCKED: depends on 012)
+- [ ] Task 015: Authentication UI ⏸️ 2 hours (BLOCKED: depends on 012)
+- [ ] Task 016: API client setup ⏸️ 1 hour (BLOCKED: depends on 012)
 
 ### AI/Agent OS (Developer 4)
-- [ ] Task 017: skills-registry.json ✅ 2 hours
-- [ ] Task 018: BaseAgent methods ✅ 3 hours
-- [ ] Task 019: RAG optimization ✅ 3 hours
-- [ ] Task 020: Tauri architecture ✅ 2 hours
+- [x] Task 017: skills-registry.json ✅ 2 hours
+- [x] Task 018: BaseAgent methods ✅ 3 hours
+- [ ] Task 019: RAG optimization ⏸️ 3 hours (BLOCKED: depends on Docker Task 003)
+- [x] Task 020: Tauri architecture ✅ 2 hours
 
 ---
 
