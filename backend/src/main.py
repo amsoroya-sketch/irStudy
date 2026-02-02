@@ -33,9 +33,8 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 # Prometheus metrics
 from prometheus_client import Counter, Histogram, make_asgi_app
 
-# Import routers (will be created)
-# from src.api.v1.router import api_router
-# from src.api.auth.router import auth_router
+# Import routers
+from api.v1.router import api_router
 
 # Import database
 # from src.db.session import engine, SessionLocal
@@ -338,9 +337,8 @@ app.mount("/metrics", metrics_app)
 # API ROUTERS
 # ============================================================================
 
-# Include API routers (will be created)
-# app.include_router(auth_router, prefix="/api/auth", tags=["Authentication"])
-# app.include_router(api_router, prefix="/api/v1")
+# Include API routers
+app.include_router(api_router, prefix="/api")
 
 
 # ============================================================================

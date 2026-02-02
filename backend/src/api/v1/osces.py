@@ -236,7 +236,6 @@ async def create_osce(
         red_flags=osce_data.red_flags,
         australian_guidelines=osce_data.australian_guidelines,
         tags=osce_data.tags,
-        created_by_id=current_user.id,
         is_published=False  # Requires review before publishing
     )
 

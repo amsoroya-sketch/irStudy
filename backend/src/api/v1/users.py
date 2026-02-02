@@ -23,7 +23,7 @@ from sqlalchemy.orm import Session
 
 from db.base import get_db
 from db.models import User
-from schemas.user import UserResponse, UserUpdate, PasswordChange
+from schemas.user import UserPrivate, UserAdmin, UserUpdate, PasswordChange
 from auth.dependencies import get_current_user, get_current_active_user, require_admin
 from auth.security import verify_password, hash_password
 
@@ -35,7 +35,7 @@ router = APIRouter(prefix="/users", tags=["users"])
 # CURRENT USER PROFILE
 # ============================================================================
 
-@router.get("/me", response_model=UserResponse)
+@router.get("/me", response_model=UserPrivate)
 async def get_current_user_profile(
     current_user: User = Depends(get_current_active_user)
 ):
@@ -49,7 +49,7 @@ async def get_current_user_profile(
     return current_user
 
 
-@router.put("/me", response_model=UserResponse)
+@router.put("/me", response_model=UserPrivate)
 async def update_current_user_profile(
     user_update: UserUpdate,
     current_user: User = Depends(get_current_active_user),
@@ -173,7 +173,7 @@ async def deactivate_account(
 # ADMIN ENDPOINTS
 # ============================================================================
 
-@router.get("/{user_id}", response_model=UserResponse)
+@router.get("/{user_id}", response_model=UserAdmin)
 async def get_user_by_id(
     user_id: int,
     current_user: User = Depends(require_admin),
@@ -202,7 +202,7 @@ async def get_user_by_id(
     return user
 
 
-@router.get("/", response_model=List[UserResponse])
+@router.get("/", response_model=List[UserAdmin])
 async def list_users(
     skip: int = 0,
     limit: int = 100,

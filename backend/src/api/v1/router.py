@@ -6,11 +6,12 @@ Combines all v1 endpoint routers:
 - /api/v1/users - User management
 - /api/v1/mcqs - MCQ CRUD and attempts
 - /api/v1/osces - OSCE CRUD and practice
+- /api/v1/progress - User progress and analytics
 """
 
 from fastapi import APIRouter
 
-from api.v1 import auth, users, mcqs, osces
+from api.v1 import auth, users, mcqs, osces, progress
 
 
 # Create main v1 router
@@ -21,3 +22,4 @@ api_router.include_router(auth.router)
 api_router.include_router(users.router)
 api_router.include_router(mcqs.router)
 api_router.include_router(osces.router)
+api_router.include_router(progress.router)

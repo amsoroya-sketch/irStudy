@@ -180,7 +180,6 @@ async def create_mcq(
         tags=mcq_data.tags,
         image_url=mcq_data.image_url,
         image_caption=mcq_data.image_caption,
-        created_by_id=current_user.id,
         is_published=False  # Requires review before publishing
     )
 
