@@ -13,7 +13,7 @@
 - **Target Date**: 2026-02-08 (7 days from now)
 - **Team Size**: 4 developers working in parallel
 
-**Completion**: 45% (18/40 tasks complete)
+**Completion**: 48% (19/40 tasks complete)
 
 ---
 
@@ -393,7 +393,7 @@ cp -r ~/Development/irStudy/respiratory-mcq-app/src/components/MCQ* \
 
 #### Task 014: Create Dashboard Wireframe ⏱️ 2 hours
 **Priority**: P2 (Medium)
-**Status**: TODO
+**Status**: ✅ DONE (design complete)
 **Owner**: Developer 3
 **Dependencies**: Task 012 (React setup)
 
@@ -569,7 +569,7 @@ Design architecture for Tauri desktop app (implementation starts Week 2).
 ### Frontend (Developer 3)
 - [x] Task 012: React + TypeScript setup ✅ 2 hours (Vite, Material-UI v7, React Router v7, TanStack Query)
 - [x] Task 013: MCQ components designed ✅ 3 hours (MCQCard, MCQViewer, TypeScript types)
-- [ ] Task 014: Dashboard wireframe ⏸️ 2 hours (Depends on 012)
+- [x] Task 014: Dashboard wireframe ✅ 2 hours (Header, Sidebar, Layout, theme, routes)
 - [ ] Task 015: Authentication UI ⏸️ 2 hours (Depends on 012)
 - [ ] Task 016: API client setup ⏸️ 1 hour (Depends on 012)
 
