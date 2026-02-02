@@ -1,0 +1,32 @@
+repos:
+- hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  - id: check-yaml
+  - args:
+    - --maxkb=500
+    id: check-added-large-files
+  - id: check-json
+  - id: check-merge-conflict
+  - id: detect-private-key
+  repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.5.0
+- hooks:
+  - id: gitleaks
+  repo: https://github.com/gitleaks/gitleaks
+  rev: v8.18.1
+- hooks:
+  - args:
+    - -r
+    - backend/
+    - scripts/
+    exclude: tests/
+    id: bandit
+  repo: https://github.com/PyCQA/bandit
+  rev: 1.7.5
+- hooks:
+  - args:
+    - --line-length=100
+    id: black
+  repo: https://github.com/psf/black
+  rev: 23.12.1
