@@ -1,827 +1,520 @@
 {
   "version": "1.0.0",
   "project": "irStudy Medical Education Platform",
-  "description": "Agent OS skills registry for medical content generation, validation, and learning optimization",
-  "updated": "2026-02-01",
-  "total_skills": 35,
-  "categories": [
-    "content_generation",
-    "quality_assurance",
-    "study_tools",
-    "rag_system",
-    "analytics",
-    "clinical_validation"
-  ],
+  "description": "Agent OS skill registry for ICRP exam preparation",
+  "categories": {
+    "content_generation": {
+      "name": "Content Generation",
+      "description": "AI-powered medical content creation with Australian context"
+    },
+    "quality_assurance": {
+      "name": "Quality Assurance",
+      "description": "Content validation and quality control"
+    },
+    "study_tools": {
+      "name": "Study Tools",
+      "description": "Personalized learning and performance optimization"
+    },
+    "rag_system": {
+      "name": "RAG System",
+      "description": "Knowledge retrieval and citation management"
+    },
+    "clinical_skills": {
+      "name": "Clinical Skills",
+      "description": "OSCE and clinical examination support"
+    }
+  },
   "skills": [
     {
       "id": "mcq-generator",
       "name": "MCQ Generator",
       "category": "content_generation",
-      "description": "Generate high-quality multiple choice questions for medical education with Australian medical context",
+      "description": "Generate multiple choice questions with Australian medical context",
       "parameters": {
         "topic": {
           "type": "string",
-          "required": true,
-          "description": "Medical topic (e.g., 'cardiology', 'respiratory', 'psychiatry')"
+          "required": true
         },
         "difficulty": {
           "type": "string",
-          "enum": ["easy", "medium", "hard"],
-          "default": "medium"
+          "enum": ["easy", "medium", "hard"]
         },
         "count": {
           "type": "integer",
-          "min": 1,
-          "max": 50,
           "default": 10
         },
         "specialty": {
           "type": "string",
-          "required": true
+          "enum": ["cardiology", "respiratory", "psychiatry", "general_medicine"]
         }
       },
-      "returns": {
-        "type": "array",
-        "items": "MCQ objects with question, options, answer, explanation, citations"
-      },
-      "usage": "Generate 10 medium difficulty cardiology MCQs with Australian medical context",
-      "claude_command": "/generate-mcqs --topic cardiology --difficulty medium --count 10"
+      "usage": "Generate MCQs for specific medical topics with eTG/AHPRA citations",
+      "claude_command": "/generate-mcq {topic}"
     },
     {
       "id": "osce-generator",
-      "name": "OSCE Station Generator",
+      "name": "OSCE Generator",
       "category": "content_generation",
-      "description": "Generate OSCE stations following AMC Clinical Exam 15-mark rubric format",
+      "description": "Generate OSCE stations with AMC Clinical Exam format",
+      "parameters": {
+        "scenario": {
+          "type": "string",
+          "required": true
+        },
+        "skills": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "specialty": {
+          "type": "string",
+          "enum": ["cardiology", "respiratory", "psychiatry", "general_medicine"]
+        }
+      },
+      "usage": "Create 8-minute OSCE stations with 15-mark rubrics",
+      "claude_command": "/generate-osce {scenario}"
+    },
+    {
+      "id": "study-card-generator",
+      "name": "Study Card Generator",
+      "category": "content_generation",
+      "description": "Generate spaced repetition study cards",
+      "parameters": {
+        "topic": {
+          "type": "string",
+          "required": true
+        },
+        "count": {
+          "type": "integer",
+          "default": 20
+        }
+      },
+      "usage": "Create flashcards for spaced repetition learning",
+      "claude_command": "/generate-cards {topic}"
+    },
+    {
+      "id": "revision-guide-generator",
+      "name": "Revision Guide Generator",
+      "category": "content_generation",
+      "description": "Generate comprehensive revision guides",
+      "parameters": {
+        "topic": {
+          "type": "string",
+          "required": true
+        },
+        "format": {
+          "type": "string",
+          "enum": ["summary", "detailed", "quick_reference"]
+        }
+      },
+      "usage": "Create structured revision materials",
+      "claude_command": "/generate-guide {topic}"
+    },
+    {
+      "id": "practice-exam-generator",
+      "name": "Practice Exam Generator",
+      "category": "content_generation",
+      "description": "Generate full-length practice exams",
       "parameters": {
         "specialty": {
           "type": "string",
           "required": true
         },
-        "station_type": {
-          "type": "string",
-          "enum": ["history_taking", "physical_examination", "counseling", "emergency_management", "procedural_skills"],
-          "required": true
-        },
-        "count": {
+        "question_count": {
           "type": "integer",
-          "min": 1,
-          "max": 20,
-          "default": 5
+          "default": 100
         }
       },
-      "returns": {
-        "type": "array",
-        "items": "OSCE station with patient/candidate/examiner instructions, 15-mark rubric"
-      },
-      "usage": "Generate 5 history-taking OSCE stations for cardiology",
-      "claude_command": "/generate-osces --specialty cardiology --type history_taking --count 5"
+      "usage": "Create timed practice exams matching AMC format",
+      "claude_command": "/generate-exam {specialty}"
     },
     {
-      "id": "explanation-generator",
-      "name": "Clinical Explanation Generator",
-      "category": "content_generation",
-      "description": "Generate detailed clinical explanations with Australian guidelines citations",
+      "id": "qa-validator",
+      "name": "QA Validator",
+      "category": "quality_assurance",
+      "description": "Validate medical content against QA-003 standards",
       "parameters": {
-        "question_id": {
+        "content_type": {
+          "type": "string",
+          "enum": ["mcq", "osce", "study_card", "revision_guide"]
+        },
+        "file_path": {
           "type": "string",
           "required": true
-        },
-        "depth": {
-          "type": "string",
-          "enum": ["basic", "intermediate", "advanced"],
-          "default": "intermediate"
         }
       },
-      "returns": {
-        "type": "object",
-        "properties": ["explanation_text", "citations", "learning_points", "red_flags"]
-      },
-      "usage": "Generate intermediate-level explanation for MCQ-CARD-001",
-      "claude_command": "/explain --question MCQ-CARD-001 --depth intermediate"
+      "usage": "Run comprehensive quality validation checks",
+      "claude_command": "/validate {file_path}"
     },
     {
       "id": "citation-validator",
       "name": "Citation Validator",
       "category": "quality_assurance",
-      "description": "Validate citations reference Australian medical guidelines (eTG, AHPRA, AMH, PBS)",
+      "description": "Verify RAG citations meet >0.70 confidence threshold",
       "parameters": {
-        "citation": {
+        "mcq_id": {
           "type": "string",
-          "required": true
-        },
-        "source_type": {
-          "type": "string",
-          "enum": ["etg", "ahpra", "amh", "pbs", "racgp", "ranzcp"],
-          "required": false
-        }
-      },
-      "returns": {
-        "type": "object",
-        "properties": ["is_valid", "source_identified", "recommendations", "corrected_citation"]
-      },
-      "usage": "Validate citation references Therapeutic Guidelines",
-      "claude_command": "/validate-citation --text 'Therapeutic Guidelines: Cardiovascular 2024'"
-    },
-    {
-      "id": "clinical-accuracy-checker",
-      "name": "Clinical Accuracy Checker",
-      "category": "quality_assurance",
-      "description": "Verify clinical accuracy against Australian medical standards",
-      "parameters": {
-        "content": {
-          "type": "string",
-          "required": true
-        },
-        "content_type": {
-          "type": "string",
-          "enum": ["mcq", "osce", "explanation"],
           "required": true
         }
       },
-      "returns": {
-        "type": "object",
-        "properties": ["accuracy_score", "errors_found", "warnings", "suggestions"]
-      },
-      "usage": "Check clinical accuracy of MCQ content",
-      "claude_command": "/check-accuracy --type mcq --content-id MCQ-001"
+      "usage": "Validate exactly 3 citations per MCQ with page numbers",
+      "claude_command": "/validate-citations {mcq_id}"
     },
     {
-      "id": "australian-standards-validator",
-      "name": "Australian Medical Standards Validator",
+      "id": "australian-standards-checker",
+      "name": "Australian Standards Checker",
       "category": "quality_assurance",
-      "description": "Validate content follows Australian medical terminology, units, and emergency protocols",
+      "description": "Verify Australian medical terminology and references",
       "parameters": {
         "content": {
           "type": "string",
           "required": true
         }
       },
-      "returns": {
-        "type": "object",
-        "properties": ["is_compliant", "american_terms_found", "corrections", "emergency_number_check"]
-      },
-      "usage": "Validate Australian medical standards compliance",
-      "claude_command": "/validate-australian --content-id MCQ-001"
+      "usage": "Check for paracetamol vs acetaminophen, eTG citations, SI units",
+      "claude_command": "/check-australian {content}"
     },
     {
-      "id": "drug-name-validator",
-      "name": "Drug Name Validator",
+      "id": "placeholder-detector",
+      "name": "Placeholder Detector",
       "category": "quality_assurance",
-      "description": "Ensure Australian drug names used (paracetamol not acetaminophen)",
+      "description": "Detect placeholder content in generated materials",
       "parameters": {
-        "text": {
+        "file_path": {
           "type": "string",
           "required": true
         }
       },
-      "returns": {
-        "type": "object",
-        "properties": ["is_valid", "american_drugs_found", "australian_equivalents", "corrected_text"]
+      "usage": "Find 'Option A', 'Clinical scenario for...', templates",
+      "claude_command": "/detect-placeholders {file_path}"
+    },
+    {
+      "id": "hipaa-compliance-scanner",
+      "name": "HIPAA Compliance Scanner",
+      "category": "quality_assurance",
+      "description": "Scan for PHI leaks and HIPAA violations",
+      "parameters": {
+        "scope": {
+          "type": "string",
+          "enum": ["code", "data", "logs", "all"]
+        }
       },
-      "usage": "Validate drug names are Australian terminology",
-      "claude_command": "/validate-drugs --text 'Administer acetaminophen 500mg'"
+      "usage": "Detect hardcoded credentials, PHI in logs, unencrypted data",
+      "claude_command": "/scan-hipaa {scope}"
+    },
+    {
+      "id": "performance-analyzer",
+      "name": "Performance Analyzer",
+      "category": "study_tools",
+      "description": "Analyze user performance and identify weak areas",
+      "parameters": {
+        "user_id": {
+          "type": "string",
+          "required": true
+        },
+        "time_range": {
+          "type": "string",
+          "enum": ["week", "month", "all_time"]
+        }
+      },
+      "usage": "Generate personalized analytics dashboard",
+      "claude_command": "/analyze-performance {user_id}"
+    },
+    {
+      "id": "adaptive-study-planner",
+      "name": "Adaptive Study Planner",
+      "category": "study_tools",
+      "description": "Generate personalized study plans based on weak areas",
+      "parameters": {
+        "user_id": {
+          "type": "string",
+          "required": true
+        },
+        "exam_date": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "usage": "Create AI-optimized study schedules",
+      "claude_command": "/plan-study {user_id}"
     },
     {
       "id": "spaced-repetition-scheduler",
       "name": "Spaced Repetition Scheduler",
       "category": "study_tools",
-      "description": "Schedule MCQ review using SM-2 algorithm for optimal retention",
+      "description": "Schedule flashcard reviews using SM-2 algorithm",
       "parameters": {
         "user_id": {
-          "type": "integer",
-          "required": true
-        },
-        "mcq_id": {
-          "type": "integer",
-          "required": true
-        },
-        "performance": {
           "type": "string",
-          "enum": ["forgot", "hard", "good", "easy"],
           "required": true
         }
       },
-      "returns": {
-        "type": "object",
-        "properties": ["next_review_date", "interval_days", "easiness_factor", "repetition_number"]
-      },
-      "usage": "Schedule next review after user answered 'good'",
-      "claude_command": "/schedule-review --user 123 --mcq 456 --performance good"
+      "usage": "Optimize review timing for maximum retention",
+      "claude_command": "/schedule-reviews {user_id}"
     },
     {
-      "id": "adaptive-difficulty-adjuster",
-      "name": "Adaptive Difficulty Adjuster",
+      "id": "weak-area-identifier",
+      "name": "Weak Area Identifier",
       "category": "study_tools",
-      "description": "Dynamically adjust question difficulty based on user performance",
+      "description": "Identify knowledge gaps from MCQ attempts",
       "parameters": {
         "user_id": {
-          "type": "integer",
-          "required": true
-        },
-        "specialty": {
           "type": "string",
           "required": true
         },
-        "recent_performance": {
-          "type": "object",
-          "required": true
+        "threshold": {
+          "type": "number",
+          "default": 0.6
         }
       },
-      "returns": {
-        "type": "object",
-        "properties": ["recommended_difficulty", "reasoning", "performance_trend"]
-      },
-      "usage": "Adjust difficulty based on last 20 MCQ attempts",
-      "claude_command": "/adjust-difficulty --user 123 --specialty cardiology"
+      "usage": "Find topics with <60% accuracy for targeted study",
+      "claude_command": "/find-weak-areas {user_id}"
     },
     {
-      "id": "performance-analyzer",
-      "name": "Performance Analyzer",
-      "category": "analytics",
-      "description": "Analyze user performance and identify weak areas",
-      "parameters": {
-        "user_id": {
-          "type": "integer",
-          "required": true
-        },
-        "time_period": {
-          "type": "string",
-          "enum": ["week", "month", "all_time"],
-          "default": "month"
-        }
-      },
-      "returns": {
-        "type": "object",
-        "properties": ["overall_score", "specialty_breakdown", "weak_areas", "improvement_suggestions"]
-      },
-      "usage": "Analyze performance for last month",
-      "claude_command": "/analyze-performance --user 123 --period month"
-    },
-    {
-      "id": "study-plan-creator",
-      "name": "Study Plan Creator",
+      "id": "progress-tracker",
+      "name": "Progress Tracker",
       "category": "study_tools",
-      "description": "Create personalized study plan based on target exam and current performance",
+      "description": "Track learning progress across all specialties",
       "parameters": {
         "user_id": {
-          "type": "integer",
-          "required": true
-        },
-        "target_exam": {
           "type": "string",
-          "enum": ["amc_mcq", "amc_clinical", "fracgp", "racp_written"],
-          "required": true
-        },
-        "weeks_until_exam": {
-          "type": "integer",
-          "min": 1,
-          "max": 52,
           "required": true
         }
       },
-      "returns": {
-        "type": "object",
-        "properties": ["daily_schedule", "weekly_goals", "topic_allocation", "revision_strategy"]
-      },
-      "usage": "Create 12-week study plan for AMC Clinical Exam",
-      "claude_command": "/create-study-plan --user 123 --exam amc_clinical --weeks 12"
+      "usage": "Visualize completion rates and mastery levels",
+      "claude_command": "/track-progress {user_id}"
     },
     {
-      "id": "semantic-search",
-      "name": "Semantic Medical Knowledge Search",
+      "id": "rag-query-engine",
+      "name": "RAG Query Engine",
       "category": "rag_system",
-      "description": "Search 42,647 medical knowledge chunks using semantic similarity",
+      "description": "Query Qdrant vector database for medical knowledge",
       "parameters": {
         "query": {
           "type": "string",
           "required": true
         },
-        "collection": {
-          "type": "string",
-          "default": "medical_knowledge"
-        },
         "top_k": {
           "type": "integer",
-          "min": 1,
-          "max": 50,
-          "default": 10
+          "default": 5
         },
-        "min_score": {
-          "type": "float",
-          "min": 0.0,
-          "max": 1.0,
+        "min_confidence": {
+          "type": "number",
           "default": 0.7
         }
       },
-      "returns": {
-        "type": "array",
-        "items": "Knowledge chunks with text, metadata, similarity score"
-      },
-      "usage": "Search for acute coronary syndrome management",
-      "claude_command": "/search --query 'acute coronary syndrome management' --top-k 10"
+      "usage": "Retrieve evidence-based citations with confidence scores",
+      "claude_command": "/rag-query {query}"
     },
     {
-      "id": "citation-retriever",
-      "name": "Citation Retriever",
+      "id": "citation-generator",
+      "name": "Citation Generator",
       "category": "rag_system",
-      "description": "Retrieve relevant citations from RAG database for content generation",
+      "description": "Generate exactly 3 citations per MCQ from RAG database",
       "parameters": {
         "topic": {
           "type": "string",
           "required": true
-        },
-        "source_preference": {
-          "type": "array",
-          "items": ["etg", "ahpra", "amh", "pbs"],
-          "default": ["etg"]
-        },
-        "max_citations": {
-          "type": "integer",
-          "min": 1,
-          "max": 10,
-          "default": 3
         }
       },
-      "returns": {
-        "type": "array",
-        "items": "Citations with full text, source, page number, relevance score"
-      },
-      "usage": "Retrieve 3 eTG citations for hypertension management",
-      "claude_command": "/retrieve-citations --topic hypertension --source etg --max 3"
+      "usage": "Ensure >0.70 confidence with page numbers",
+      "claude_command": "/generate-citations {topic}"
     },
     {
-      "id": "knowledge-graph-query",
-      "name": "Knowledge Graph Query",
+      "id": "knowledge-graph-builder",
+      "name": "Knowledge Graph Builder",
       "category": "rag_system",
-      "description": "Query Neo4j knowledge graph for related medical concepts",
+      "description": "Build Neo4j knowledge graph from medical texts",
       "parameters": {
-        "concept": {
+        "source": {
           "type": "string",
-          "required": true
-        },
-        "relationship_type": {
-          "type": "string",
-          "enum": ["treats", "causes", "diagnoses", "contraindicated_with"],
-          "required": false
-        },
-        "max_depth": {
-          "type": "integer",
-          "min": 1,
-          "max": 5,
-          "default": 2
+          "enum": ["cochrane", "statpearls", "etg"]
         }
       },
-      "returns": {
-        "type": "object",
-        "properties": ["nodes", "relationships", "paths", "subgraph"]
-      },
-      "usage": "Find all drugs that treat hypertension (2 hops)",
-      "claude_command": "/query-graph --concept hypertension --relation treats --depth 2"
+      "usage": "Create interconnected medical knowledge structures",
+      "claude_command": "/build-graph {source}"
     },
     {
-      "id": "weak-area-identifier",
-      "name": "Weak Area Identifier",
-      "category": "analytics",
-      "description": "Identify user's weak areas across specialties and topics",
-      "parameters": {
-        "user_id": {
-          "type": "integer",
-          "required": true
-        },
-        "min_attempts": {
-          "type": "integer",
-          "default": 10
-        }
-      },
-      "returns": {
-        "type": "object",
-        "properties": ["weak_specialties", "weak_topics", "priority_recommendations", "confidence_score"]
-      },
-      "usage": "Identify weak areas with min 10 attempts per topic",
-      "claude_command": "/identify-weak-areas --user 123 --min-attempts 10"
-    },
-    {
-      "id": "progress-tracker",
-      "name": "Progress Tracker",
-      "category": "analytics",
-      "description": "Track user progress over time with trend analysis",
-      "parameters": {
-        "user_id": {
-          "type": "integer",
-          "required": true
-        },
-        "granularity": {
-          "type": "string",
-          "enum": ["daily", "weekly", "monthly"],
-          "default": "weekly"
-        }
-      },
-      "returns": {
-        "type": "object",
-        "properties": ["timeline_data", "trend_direction", "velocity", "projected_exam_readiness"]
-      },
-      "usage": "Track weekly progress with trend analysis",
-      "claude_command": "/track-progress --user 123 --granularity weekly"
-    },
-    {
-      "id": "exam-readiness-scorer",
-      "name": "Exam Readiness Scorer",
-      "category": "analytics",
-      "description": "Calculate exam readiness score based on performance across all specialties",
-      "parameters": {
-        "user_id": {
-          "type": "integer",
-          "required": true
-        },
-        "target_exam": {
-          "type": "string",
-          "required": true
-        }
-      },
-      "returns": {
-        "type": "object",
-        "properties": ["readiness_score", "specialty_scores", "recommended_action", "estimated_pass_probability"]
-      },
-      "usage": "Calculate readiness for AMC Clinical Exam",
-      "claude_command": "/exam-readiness --user 123 --exam amc_clinical"
-    },
-    {
-      "id": "red-flag-validator",
-      "name": "Red Flag Validator",
-      "category": "clinical_validation",
-      "description": "Validate OSCE stations include appropriate red flags and safety checks",
-      "parameters": {
-        "osce_id": {
-          "type": "string",
-          "required": true
-        }
-      },
-      "returns": {
-        "type": "object",
-        "properties": ["red_flags_present", "safety_checks", "missing_critical_elements", "recommendations"]
-      },
-      "usage": "Validate red flags in OSCE station",
-      "claude_command": "/validate-red-flags --osce OSCE-CARD-001"
-    },
-    {
-      "id": "amc-rubric-validator",
-      "name": "AMC Rubric Validator",
-      "category": "clinical_validation",
-      "description": "Validate OSCE rubric follows AMC 15-mark format (5 categories × 3 marks)",
-      "parameters": {
-        "rubric": {
-          "type": "object",
-          "required": true
-        }
-      },
-      "returns": {
-        "type": "object",
-        "properties": ["is_valid", "total_marks", "missing_categories", "mark_distribution", "errors"]
-      },
-      "usage": "Validate rubric totals 15 marks with correct structure",
-      "claude_command": "/validate-amc-rubric --osce OSCE-001"
-    },
-    {
-      "id": "differential-diagnosis-generator",
-      "name": "Differential Diagnosis Generator",
-      "category": "content_generation",
-      "description": "Generate comprehensive differential diagnosis lists for clinical scenarios",
-      "parameters": {
-        "presenting_complaint": {
-          "type": "string",
-          "required": true
-        },
-        "patient_age": {
-          "type": "integer",
-          "required": false
-        },
-        "include_rare": {
-          "type": "boolean",
-          "default": false
-        }
-      },
-      "returns": {
-        "type": "object",
-        "properties": ["differentials", "likelihood_ranking", "must_not_miss", "investigations"]
-      },
-      "usage": "Generate differentials for chest pain presentation",
-      "claude_command": "/generate-differentials --complaint 'chest pain' --age 58"
-    },
-    {
-      "id": "image-suggestion-generator",
-      "name": "Medical Image Suggestion Generator",
-      "category": "content_generation",
-      "description": "Suggest appropriate medical images for MCQs (ECG, X-ray, blood results)",
-      "parameters": {
-        "mcq_id": {
-          "type": "string",
-          "required": true
-        },
-        "image_type": {
-          "type": "string",
-          "enum": ["ecg", "xray", "ct", "blood_results", "clinical_photo"],
-          "required": false
-        }
-      },
-      "returns": {
-        "type": "object",
-        "properties": ["suggested_images", "image_description", "integration_points", "copyright_info"]
-      },
-      "usage": "Suggest ECG image for cardiology MCQ",
-      "claude_command": "/suggest-image --mcq MCQ-CARD-001 --type ecg"
-    },
-    {
-      "id": "learning-objective-mapper",
-      "name": "Learning Objective Mapper",
-      "category": "study_tools",
-      "description": "Map content to AMC learning objectives and curriculum",
-      "parameters": {
-        "content_id": {
-          "type": "string",
-          "required": true
-        },
-        "content_type": {
-          "type": "string",
-          "enum": ["mcq", "osce"],
-          "required": true
-        }
-      },
-      "returns": {
-        "type": "object",
-        "properties": ["learning_objectives", "curriculum_mapping", "amc_domain", "competency_level"]
-      },
-      "usage": "Map MCQ to AMC learning objectives",
-      "claude_command": "/map-objectives --id MCQ-001 --type mcq"
-    },
-    {
-      "id": "peer-comparison-analyzer",
-      "name": "Peer Comparison Analyzer",
-      "category": "analytics",
-      "description": "Compare user performance against anonymized peer cohort",
-      "parameters": {
-        "user_id": {
-          "type": "integer",
-          "required": true
-        },
-        "cohort": {
-          "type": "string",
-          "enum": ["all_users", "same_exam_target", "same_timeframe"],
-          "default": "same_exam_target"
-        }
-      },
-      "returns": {
-        "type": "object",
-        "properties": ["percentile_rank", "cohort_average", "areas_of_strength", "areas_below_average"]
-      },
-      "usage": "Compare performance with same exam cohort",
-      "claude_command": "/peer-comparison --user 123 --cohort same_exam_target"
-    },
-    {
-      "id": "mock-exam-generator",
-      "name": "Mock Exam Generator",
-      "category": "study_tools",
-      "description": "Generate full mock exams matching real exam format and difficulty distribution",
-      "parameters": {
-        "exam_type": {
-          "type": "string",
-          "enum": ["amc_mcq", "amc_clinical"],
-          "required": true
-        },
-        "difficulty_distribution": {
-          "type": "object",
-          "default": {"easy": 0.2, "medium": 0.5, "hard": 0.3}
-        }
-      },
-      "returns": {
-        "type": "object",
-        "properties": ["exam_id", "questions", "time_limit", "specialty_distribution", "expected_pass_score"]
-      },
-      "usage": "Generate AMC MCQ mock exam with standard distribution",
-      "claude_command": "/generate-mock-exam --type amc_mcq"
-    },
-    {
-      "id": "concept-relationship-mapper",
-      "name": "Concept Relationship Mapper",
+      "id": "embedding-generator",
+      "name": "Embedding Generator",
       "category": "rag_system",
-      "description": "Map relationships between medical concepts using knowledge graph",
+      "description": "Generate semantic embeddings for medical texts",
       "parameters": {
-        "concept1": {
+        "text_file": {
           "type": "string",
           "required": true
         },
-        "concept2": {
+        "model": {
+          "type": "string",
+          "default": "sentence-transformers/all-MiniLM-L6-v2"
+        }
+      },
+      "usage": "Create vector embeddings for Qdrant indexing",
+      "claude_command": "/generate-embeddings {text_file}"
+    },
+    {
+      "id": "rag-database-inspector",
+      "name": "RAG Database Inspector",
+      "category": "rag_system",
+      "description": "Inspect Qdrant database metadata and statistics",
+      "parameters": {
+        "collection": {
+          "type": "string",
+          "default": "medical_knowledge"
+        }
+      },
+      "usage": "View chunk counts, embedding dimensions, metadata quality",
+      "claude_command": "/inspect-rag {collection}"
+    },
+    {
+      "id": "history-taking-trainer",
+      "name": "History Taking Trainer",
+      "category": "clinical_skills",
+      "description": "Generate history taking OSCE scenarios",
+      "parameters": {
+        "system": {
+          "type": "string",
+          "enum": ["cardiovascular", "respiratory", "neurological", "gastrointestinal"]
+        }
+      },
+      "usage": "Practice systematic history taking with 15-mark rubrics",
+      "claude_command": "/train-history {system}"
+    },
+    {
+      "id": "physical-exam-trainer",
+      "name": "Physical Examination Trainer",
+      "category": "clinical_skills",
+      "description": "Generate physical examination OSCE scenarios",
+      "parameters": {
+        "examination": {
           "type": "string",
           "required": true
         }
       },
-      "returns": {
-        "type": "object",
-        "properties": ["shortest_path", "relationship_chain", "common_nodes", "clinical_relevance"]
-      },
-      "usage": "Find relationship between diabetes and heart failure",
-      "claude_command": "/map-concepts --from diabetes --to 'heart failure'"
+      "usage": "Practice systematic examination techniques",
+      "claude_command": "/train-exam {examination}"
     },
     {
-      "id": "study-streak-tracker",
-      "name": "Study Streak Tracker",
-      "category": "analytics",
-      "description": "Track consecutive study days and maintain motivation",
+      "id": "communication-skills-trainer",
+      "name": "Communication Skills Trainer",
+      "category": "clinical_skills",
+      "description": "Generate communication OSCE scenarios",
       "parameters": {
-        "user_id": {
-          "type": "integer",
+        "scenario_type": {
+          "type": "string",
+          "enum": ["breaking_bad_news", "informed_consent", "difficult_conversation"]
+        }
+      },
+      "usage": "Practice patient-centered communication",
+      "claude_command": "/train-communication {scenario_type}"
+    },
+    {
+      "id": "clinical-reasoning-trainer",
+      "name": "Clinical Reasoning Trainer",
+      "category": "clinical_skills",
+      "description": "Generate clinical reasoning OSCE scenarios",
+      "parameters": {
+        "complexity": {
+          "type": "string",
+          "enum": ["straightforward", "intermediate", "complex"]
+        }
+      },
+      "usage": "Practice diagnostic reasoning and management planning",
+      "claude_command": "/train-reasoning {complexity}"
+    },
+    {
+      "id": "osce-feedback-generator",
+      "name": "OSCE Feedback Generator",
+      "category": "clinical_skills",
+      "description": "Generate detailed feedback for OSCE attempts",
+      "parameters": {
+        "attempt_id": {
+          "type": "string",
           "required": true
         }
       },
-      "returns": {
-        "type": "object",
-        "properties": ["current_streak", "longest_streak", "total_study_days", "streak_milestones"]
-      },
-      "usage": "Track study streak for gamification",
-      "claude_command": "/track-streak --user 123"
+      "usage": "Provide constructive feedback with improvement tips",
+      "claude_command": "/feedback-osce {attempt_id}"
     },
     {
-      "id": "flashcard-generator",
-      "name": "Flashcard Generator",
+      "id": "medical-agent-coordinator",
+      "name": "Medical Agent Coordinator",
       "category": "content_generation",
-      "description": "Generate Anki-compatible flashcards from MCQs and OSCEs",
+      "description": "Coordinate all 46 medical expert agents (MED-001 to MED-046)",
       "parameters": {
-        "source_content": {
+        "task": {
           "type": "string",
           "required": true
         },
-        "card_type": {
-          "type": "string",
-          "enum": ["basic", "cloze", "image_occlusion"],
-          "default": "basic"
-        }
-      },
-      "returns": {
-        "type": "object",
-        "properties": ["flashcards", "deck_name", "anki_export_format", "total_cards"]
-      },
-      "usage": "Generate basic flashcards from cardiology MCQs",
-      "claude_command": "/generate-flashcards --source MCQ-CARD-001 --type basic"
-    },
-    {
-      "id": "clinical-reasoning-scorer",
-      "name": "Clinical Reasoning Scorer",
-      "category": "clinical_validation",
-      "description": "Score clinical reasoning in OSCE responses using AI",
-      "parameters": {
-        "osce_response": {
-          "type": "string",
-          "required": true
-        },
-        "rubric": {
-          "type": "object",
-          "required": true
-        }
-      },
-      "returns": {
-        "type": "object",
-        "properties": ["reasoning_score", "strengths", "weaknesses", "improvement_suggestions", "rubric_breakdown"]
-      },
-      "usage": "Score clinical reasoning in OSCE submission",
-      "claude_command": "/score-reasoning --response-id 456 --osce OSCE-001"
-    },
-    {
-      "id": "emergency-protocol-validator",
-      "name": "Emergency Protocol Validator",
-      "category": "clinical_validation",
-      "description": "Validate emergency management follows Australian protocols (000, Australian Resuscitation Council)",
-      "parameters": {
-        "content": {
-          "type": "string",
-          "required": true
-        },
-        "emergency_type": {
-          "type": "string",
-          "required": false
-        }
-      },
-      "returns": {
-        "type": "object",
-        "properties": ["is_compliant", "protocol_matched", "critical_errors", "recommendations"]
-      },
-      "usage": "Validate cardiac arrest protocol follows ARC guidelines",
-      "claude_command": "/validate-emergency --content-id OSCE-001 --type cardiac_arrest"
-    },
-    {
-      "id": "content-gap-analyzer",
-      "name": "Content Gap Analyzer",
-      "category": "analytics",
-      "description": "Identify gaps in MCQ/OSCE coverage across AMC curriculum",
-      "parameters": {
         "specialty": {
           "type": "string",
-          "required": false
+          "required": true
         }
       },
-      "returns": {
-        "type": "object",
-        "properties": ["covered_topics", "missing_topics", "coverage_percentage", "priority_recommendations"]
-      },
-      "usage": "Analyze cardiology content coverage",
-      "claude_command": "/analyze-gaps --specialty cardiology"
+      "usage": "Delegate to specialist agents for content generation",
+      "claude_command": "/coordinate-agents {task}"
     },
     {
-      "id": "citation-auto-formatter",
-      "name": "Citation Auto-Formatter",
+      "id": "security-scanner",
+      "name": "Security Scanner",
       "category": "quality_assurance",
-      "description": "Auto-format citations to consistent Australian medical style",
+      "description": "Run comprehensive security scans (pre-commit hooks)",
       "parameters": {
-        "citation": {
+        "scope": {
           "type": "string",
-          "required": true
-        },
-        "style": {
-          "type": "string",
-          "enum": ["vancouver", "ama", "amc"],
-          "default": "amc"
+          "enum": ["all", "credentials", "dependencies", "code_quality"]
         }
       },
-      "returns": {
-        "type": "object",
-        "properties": ["formatted_citation", "style_applied", "corrections_made", "warnings"]
-      },
-      "usage": "Format citation to AMC style",
-      "claude_command": "/format-citation --text 'Therapeutic Guidelines' --style amc"
+      "usage": "Detect vulnerabilities, hardcoded secrets, security misconfigurations",
+      "claude_command": "/scan-security {scope}"
     },
     {
-      "id": "performance-prediction-model",
-      "name": "Performance Prediction Model",
-      "category": "analytics",
-      "description": "Predict exam performance based on current study patterns",
+      "id": "docker-health-checker",
+      "name": "Docker Health Checker",
+      "category": "quality_assurance",
+      "description": "Check health status of all 11 Docker services",
       "parameters": {
-        "user_id": {
-          "type": "integer",
-          "required": true
-        },
-        "target_exam": {
-          "type": "string",
-          "required": true
-        },
-        "weeks_until_exam": {
-          "type": "integer",
-          "required": true
+        "service": {
+          "type": "string"
         }
       },
-      "returns": {
-        "type": "object",
-        "properties": ["predicted_score", "confidence_interval", "factors", "recommendations"]
-      },
-      "usage": "Predict AMC Clinical Exam score in 12 weeks",
-      "claude_command": "/predict-performance --user 123 --exam amc_clinical --weeks 12"
+      "usage": "Verify backend, frontend, databases, vector store, monitoring stack",
+      "claude_command": "/check-docker {service}"
     },
     {
-      "id": "study-session-optimizer",
-      "name": "Study Session Optimizer",
-      "category": "study_tools",
-      "description": "Optimize study session content based on time available and energy level",
+      "id": "database-migrator",
+      "name": "Database Migrator",
+      "category": "rag_system",
+      "description": "Run Alembic database migrations",
       "parameters": {
-        "user_id": {
-          "type": "integer",
-          "required": true
-        },
-        "available_time_minutes": {
-          "type": "integer",
-          "required": true
-        },
-        "energy_level": {
+        "direction": {
           "type": "string",
-          "enum": ["low", "medium", "high"],
-          "default": "medium"
+          "enum": ["upgrade", "downgrade"]
+        },
+        "revision": {
+          "type": "string",
+          "default": "head"
         }
       },
-      "returns": {
-        "type": "object",
-        "properties": ["recommended_content", "session_structure", "break_schedule", "expected_retention"]
-      },
-      "usage": "Optimize 45-minute study session at medium energy",
-      "claude_command": "/optimize-session --user 123 --time 45 --energy medium"
+      "usage": "Apply or rollback database schema changes",
+      "claude_command": "/migrate-db {direction} {revision}"
     },
     {
-      "id": "collaborative-learning-matcher",
-      "name": "Collaborative Learning Matcher",
-      "category": "study_tools",
-      "description": "Match users with similar study goals for collaborative learning",
+      "id": "test-runner",
+      "name": "Test Runner",
+      "category": "quality_assurance",
+      "description": "Run backend and frontend test suites",
       "parameters": {
-        "user_id": {
-          "type": "integer",
-          "required": true
+        "scope": {
+          "type": "string",
+          "enum": ["backend", "frontend", "all"]
         },
-        "matching_criteria": {
-          "type": "array",
-          "items": ["exam_target", "specialty_focus", "study_schedule", "performance_level"],
-          "default": ["exam_target"]
+        "coverage": {
+          "type": "boolean",
+          "default": true
         }
       },
-      "returns": {
-        "type": "object",
-        "properties": ["matched_users", "similarity_scores", "shared_weak_areas", "collaboration_suggestions"]
-      },
-      "usage": "Find study partners with same exam target",
-      "claude_command": "/match-learners --user 123 --criteria exam_target"
+      "usage": "Verify 100% test pass rate and ≥70% coverage",
+      "claude_command": "/run-tests {scope}"
     }
   ]
 }
