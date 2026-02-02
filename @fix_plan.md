@@ -13,7 +13,7 @@
 - **Target Date**: 2026-02-08 (7 days from now)
 - **Team Size**: 4 developers working in parallel
 
-**Completion**: 38% (15/40 tasks complete)
+**Completion**: 40% (16/40 tasks complete)
 
 ---
 
@@ -338,7 +338,7 @@ Create API endpoint stubs that return mock data (implement later).
 
 #### Task 012: Setup React + TypeScript Project ⏱️ 2 hours
 **Priority**: P1 (High)
-**Status**: TODO
+**Status**: ✅ DONE
 **Owner**: Developer 3 (Frontend Lead)
 **Dependencies**: None
 
@@ -567,7 +567,7 @@ Design architecture for Tauri desktop app (implementation starts Week 2).
 - [x] Task 011: API endpoints scaffolded ✅ 2 hours
 
 ### Frontend (Developer 3)
-- [ ] Task 012: React + TypeScript setup ⏸️ 2 hours (Ready - npm allowed via Bash(*))
+- [x] Task 012: React + TypeScript setup ✅ 2 hours (Vite, Material-UI v7, React Router v7, TanStack Query)
 - [ ] Task 013: MCQ components copied ⏸️ 3 hours (Depends on 012)
 - [ ] Task 014: Dashboard wireframe ⏸️ 2 hours (Depends on 012)
 - [ ] Task 015: Authentication UI ⏸️ 2 hours (Depends on 012)
