@@ -557,8 +557,8 @@ Design architecture for Tauri desktop app (implementation starts Week 2).
 - [ ] Task 003: Docker stack tested ⏸️ 1 hour (NEXT - requires docker-compose)
 - [x] Task 004: arQ Dockerfile copied ✅ 1 hour
 - [x] Task 005: .env.template created ✅ 1 hour
-- [ ] Task 006: Security workflows copied ⏸️ 2 hours (BLOCKED: depends on 001)
-- [ ] Task 007: Security documentation ⏸️ 1 hour (BLOCKED: depends on 001-006)
+- [ ] Task 006: Security workflows copied ⏸️ 2 hours (Ready - Task 001 complete)
+- [ ] Task 007: Security documentation ⏸️ 1 hour (Depends on 001-006)
 
 ### Backend (Developer 2)
 - [x] Task 008: FastAPI structure setup ✅ 2 hours
@@ -567,11 +567,11 @@ Design architecture for Tauri desktop app (implementation starts Week 2).
 - [x] Task 011: API endpoints scaffolded ✅ 2 hours
 
 ### Frontend (Developer 3)
-- [ ] Task 012: React + TypeScript setup ⏸️ 2 hours (BLOCKED: npm approval required)
-- [ ] Task 013: MCQ components copied ⏸️ 3 hours (BLOCKED: depends on 012)
-- [ ] Task 014: Dashboard wireframe ⏸️ 2 hours (BLOCKED: depends on 012)
-- [ ] Task 015: Authentication UI ⏸️ 2 hours (BLOCKED: depends on 012)
-- [ ] Task 016: API client setup ⏸️ 1 hour (BLOCKED: depends on 012)
+- [ ] Task 012: React + TypeScript setup ⏸️ 2 hours (Ready - npm allowed via Bash(*))
+- [ ] Task 013: MCQ components copied ⏸️ 3 hours (Depends on 012)
+- [ ] Task 014: Dashboard wireframe ⏸️ 2 hours (Depends on 012)
+- [ ] Task 015: Authentication UI ⏸️ 2 hours (Depends on 012)
+- [ ] Task 016: API client setup ⏸️ 1 hour (Depends on 012)
 
 ### AI/Agent OS (Developer 4)
 - [x] Task 017: skills-registry.json ✅ 2 hours
