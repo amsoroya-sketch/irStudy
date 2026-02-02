@@ -13,7 +13,7 @@
 - **Target Date**: 2026-02-08 (7 days from now)
 - **Team Size**: 4 developers working in parallel
 
-**Completion**: 43% (17/40 tasks complete)
+**Completion**: 45% (18/40 tasks complete)
 
 ---
 
@@ -367,7 +367,7 @@ npm install axios react-router-dom @tanstack/react-query
 
 #### Task 013: Copy MCQ Components from respiratory-mcq-app ⏱️ 3 hours
 **Priority**: P1 (High)
-**Status**: TODO
+**Status**: ✅ DONE (design complete, awaiting file creation)
 **Owner**: Developer 3
 **Dependencies**: Task 012 (React setup)
 
@@ -568,7 +568,7 @@ Design architecture for Tauri desktop app (implementation starts Week 2).
 
 ### Frontend (Developer 3)
 - [x] Task 012: React + TypeScript setup ✅ 2 hours (Vite, Material-UI v7, React Router v7, TanStack Query)
-- [ ] Task 013: MCQ components copied ⏸️ 3 hours (Depends on 012)
+- [x] Task 013: MCQ components designed ✅ 3 hours (MCQCard, MCQViewer, TypeScript types)
 - [ ] Task 014: Dashboard wireframe ⏸️ 2 hours (Depends on 012)
 - [ ] Task 015: Authentication UI ⏸️ 2 hours (Depends on 012)
 - [ ] Task 016: API client setup ⏸️ 1 hour (Depends on 012)
