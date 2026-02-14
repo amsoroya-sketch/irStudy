@@ -1,0 +1,365 @@
+# AMC Clinical Exam Simulation - Development Environment
+# v2.0 Enhanced Architecture - Phase 1, Week 1
+# Security-First Infrastructure Setup
+
+services:
+  # ============================================================================
+  # HashiCorp Vault - Secrets Management
+  # ============================================================================
+  vault:
+    image: hashicorp/vault:1.15
+    container_name: amc-vault-dev
+    ports:
+      - "8200:8200"
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: ${VAULT_ROOT_TOKEN:-dev-only-token-change-in-prod}
+      VAULT_DEV_LISTEN_ADDRESS: "0.0.0.0:8200"
+    volumes:
+      - vault_data:/vault/file
+      - ./vault/config:/vault/config:ro
+    cap_add:
+      - IPC_LOCK
+    command: server -dev
+    networks:
+      - amc_network
+    healthcheck:
+      test: ["CMD", "vault", "status"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # ============================================================================
+  # PostgreSQL - Primary Database (with encryption support)
+  # ============================================================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: amc-postgres-dev
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-amc_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-amc_simulation}
+      # Enable pgcrypto extension on startup
+      POSTGRES_INITDB_ARGS: "-E UTF8"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/db/init:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "5433:5432"
+    networks:
+      - amc_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-amc_user} -d ${POSTGRES_DB:-amc_simulation}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    command: >
+      postgres
+      -c shared_preload_libraries='pg_stat_statements'
+      -c max_connections=200
+      -c shared_buffers=256MB
+
+  # ============================================================================
+  # Redis Cluster - High Availability Session Storage
+  # 3 Masters + 3 Replicas
+  # ============================================================================
+
+  # Master Nodes
+  redis-master-1:
+    image: redis:7-alpine
+    container_name: amc-redis-master-1
+    command: >
+      redis-server
+      --cluster-enabled yes
+      --cluster-config-file nodes.conf
+      --cluster-node-timeout 5000
+      --appendonly yes
+      --requirepass ${REDIS_PASSWORD}
+      --masterauth ${REDIS_PASSWORD}
+      --protected-mode no
+      --port 6379
+    ports:
+      - "7379:6379"
+      - "17379:16379"  # Cluster bus port
+    volumes:
+      - redis_master_1_data:/data
+    networks:
+      - amc_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  redis-master-2:
+    image: redis:7-alpine
+    container_name: amc-redis-master-2
+    command: >
+      redis-server
+      --cluster-enabled yes
+      --cluster-config-file nodes.conf
+      --cluster-node-timeout 5000
+      --appendonly yes
+      --requirepass ${REDIS_PASSWORD}
+      --masterauth ${REDIS_PASSWORD}
+      --protected-mode no
+      --port 6379
+    ports:
+      - "7380:6379"
+      - "17380:16379"
+    volumes:
+      - redis_master_2_data:/data
+    networks:
+      - amc_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  redis-master-3:
+    image: redis:7-alpine
+    container_name: amc-redis-master-3
+    command: >
+      redis-server
+      --cluster-enabled yes
+      --cluster-config-file nodes.conf
+      --cluster-node-timeout 5000
+      --appendonly yes
+      --requirepass ${REDIS_PASSWORD}
+      --masterauth ${REDIS_PASSWORD}
+      --protected-mode no
+      --port 6379
+    ports:
+      - "7381:6379"
+      - "17381:16379"
+    volumes:
+      - redis_master_3_data:/data
+    networks:
+      - amc_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  # Replica Nodes
+  redis-replica-1:
+    image: redis:7-alpine
+    container_name: amc-redis-replica-1
+    command: >
+      redis-server
+      --cluster-enabled yes
+      --cluster-config-file nodes.conf
+      --cluster-node-timeout 5000
+      --appendonly yes
+      --requirepass ${REDIS_PASSWORD}
+      --masterauth ${REDIS_PASSWORD}
+      --protected-mode no
+      --port 6379
+    ports:
+      - "7382:6379"
+      - "17382:16379"
+    volumes:
+      - redis_replica_1_data:/data
+    networks:
+      - amc_network
+    depends_on:
+      - redis-master-1
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  redis-replica-2:
+    image: redis:7-alpine
+    container_name: amc-redis-replica-2
+    command: >
+      redis-server
+      --cluster-enabled yes
+      --cluster-config-file nodes.conf
+      --cluster-node-timeout 5000
+      --appendonly yes
+      --requirepass ${REDIS_PASSWORD}
+      --masterauth ${REDIS_PASSWORD}
+      --protected-mode no
+      --port 6379
+    ports:
+      - "7383:6379"
+      - "17383:16379"
+    volumes:
+      - redis_replica_2_data:/data
+    networks:
+      - amc_network
+    depends_on:
+      - redis-master-2
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  redis-replica-3:
+    image: redis:7-alpine
+    container_name: amc-redis-replica-3
+    command: >
+      redis-server
+      --cluster-enabled yes
+      --cluster-config-file nodes.conf
+      --cluster-node-timeout 5000
+      --appendonly yes
+      --requirepass ${REDIS_PASSWORD}
+      --masterauth ${REDIS_PASSWORD}
+      --protected-mode no
+      --port 6379
+    ports:
+      - "7384:6379"
+      - "17384:16379"
+    volumes:
+      - redis_replica_3_data:/data
+    networks:
+      - amc_network
+    depends_on:
+      - redis-master-3
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  # ============================================================================
+  # Redis Cluster Initialization
+  # This runs once to create the cluster from the 6 nodes
+  # ============================================================================
+  redis-cluster-init:
+    image: redis:7-alpine
+    container_name: amc-redis-cluster-init
+    command: >
+      sh -c "
+        sleep 10 &&
+        redis-cli --cluster create
+          redis-master-1:6379
+          redis-master-2:6380
+          redis-master-3:6381
+          redis-replica-1:6382
+          redis-replica-2:6383
+          redis-replica-3:6384
+          --cluster-replicas 1
+          --cluster-yes
+          -a ${REDIS_PASSWORD}
+      "
+    networks:
+      - amc_network
+    depends_on:
+      redis-master-1:
+        condition: service_healthy
+      redis-master-2:
+        condition: service_healthy
+      redis-master-3:
+        condition: service_healthy
+      redis-replica-1:
+        condition: service_healthy
+      redis-replica-2:
+        condition: service_healthy
+      redis-replica-3:
+        condition: service_healthy
+
+  # ============================================================================
+  # Redis Sentinel - Automatic Failover (Optional for dev, required for prod)
+  # ============================================================================
+  redis-sentinel-1:
+    image: redis:7-alpine
+    container_name: amc-redis-sentinel-1
+    command: >
+      sh -c "
+        echo 'port 26379' > /tmp/sentinel.conf &&
+        echo 'sentinel monitor amc-master redis-master-1 6379 2' >> /tmp/sentinel.conf &&
+        echo 'sentinel auth-pass amc-master ${REDIS_PASSWORD}' >> /tmp/sentinel.conf &&
+        echo 'sentinel down-after-milliseconds amc-master 5000' >> /tmp/sentinel.conf &&
+        echo 'sentinel parallel-syncs amc-master 1' >> /tmp/sentinel.conf &&
+        echo 'sentinel failover-timeout amc-master 10000' >> /tmp/sentinel.conf &&
+        redis-sentinel /tmp/sentinel.conf
+      "
+    ports:
+      - "26379:26379"
+    networks:
+      - amc_network
+    depends_on:
+      - redis-cluster-init
+
+  # ============================================================================
+  # Application Services (Backend API)
+  # ============================================================================
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: development
+    container_name: amc-api-dev
+    environment:
+      # Vault connection (ONLY secrets in env)
+      VAULT_ADDR: http://vault:8200
+      VAULT_TOKEN: ${VAULT_ROOT_TOKEN:-dev-only-token-change-in-prod}
+
+      # Application settings
+      ENVIRONMENT: development
+      DEBUG: "true"
+
+      # All other secrets fetched from Vault at runtime
+    volumes:
+      - ./backend:/app
+      - /app/.venv  # Don't mount venv from host
+    ports:
+      - "8000:8000"
+    networks:
+      - amc_network
+    depends_on:
+      vault:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      redis-cluster-init:
+        condition: service_completed_successfully
+    command: >
+      sh -c "
+        python scripts/wait_for_services.py &&
+        uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+      "
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+# ============================================================================
+# Volumes - Persistent Data Storage
+# ============================================================================
+volumes:
+  vault_data:
+    name: amc_vault_data_dev
+  postgres_data:
+    name: amc_postgres_data_dev
+  redis_master_1_data:
+    name: amc_redis_master_1_data_dev
+  redis_master_2_data:
+    name: amc_redis_master_2_data_dev
+  redis_master_3_data:
+    name: amc_redis_master_3_data_dev
+  redis_replica_1_data:
+    name: amc_redis_replica_1_data_dev
+  redis_replica_2_data:
+    name: amc_redis_replica_2_data_dev
+  redis_replica_3_data:
+    name: amc_redis_replica_3_data_dev
+
+# ============================================================================
+# Networks
+# ============================================================================
+networks:
+  amc_network:
+    name: amc_network_dev
+    driver: bridge

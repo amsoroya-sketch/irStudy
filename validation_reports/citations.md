@@ -2193,4 +2193,3 @@ Metformin 500mg BD, increase to 1g BD (eTG Diabetes 2024)
 Chest pain differentials (Murtagh GP 8th Ed p.456)
 Murphy's sign indicates acute cholecystitis (Talley & O'Connor p.234)
 ```
-

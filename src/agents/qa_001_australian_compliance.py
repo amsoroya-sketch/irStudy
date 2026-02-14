@@ -22,6 +22,7 @@ from src.agents.base_agent import BaseAgent, AgentMetadata, AgentRole, AgentTask
 from scripts.validate_australian_compliance import AustralianComplianceValidator
 
 import logging
+
 logger = logging.getLogger(__name__)
 
 
@@ -46,26 +47,26 @@ class AustralianComplianceQA(BaseAgent):
                 "Australian medical terminology",
                 "AHPRA standards",
                 "AMC exam requirements",
-                "PROJECT_CONSTRAINTS.md compliance"
+                "PROJECT_CONSTRAINTS.md compliance",
             ],
             specializations=[
                 "Australian vs American terminology",
                 "PBS drug naming",
                 "SI unit enforcement",
-                "Australian clinical conventions"
+                "Australian clinical conventions",
             ],
             pros=[
                 "100% compliance with Australian standards",
                 "Auto-correction capability",
                 "Comprehensive terminology database",
-                "Zero-tolerance for American terms"
+                "Zero-tolerance for American terms",
             ],
             cons=[
                 "May flag British spellings as issues",
-                "Requires manual review for ambiguous terms"
+                "Requires manual review for ambiguous terms",
             ],
             max_concurrent_tasks=5,
-            quality_gate_required=True
+            quality_gate_required=True,
         )
         super().__init__(metadata)
 
@@ -87,10 +88,10 @@ class AustralianComplianceQA(BaseAgent):
         self.logger.info(f"🇦🇺 Starting Australian compliance validation")
 
         # Extract parameters
-        directory = Path(task.metadata.get('directory'))
-        pattern = task.metadata.get('pattern', '*.md')
-        auto_correct = task.metadata.get('auto_correct', True)
-        output_dir = Path(task.metadata.get('output_dir', 'validation_reports'))
+        directory = Path(task.metadata.get("directory"))
+        pattern = task.metadata.get("pattern", "*.md")
+        auto_correct = task.metadata.get("auto_correct", True)
+        output_dir = Path(task.metadata.get("output_dir", "validation_reports"))
 
         # Ensure directories exist
         if not directory.exists():
@@ -116,17 +117,14 @@ class AustralianComplianceQA(BaseAgent):
 
         # Prepare result
         result = {
-            'status': 'success',
-            'files_scanned': report.files_scanned,
-            'issues_found': report.issues_found,
-            'auto_corrections': report.auto_corrections,
-            'manual_review_needed': report.manual_review_needed,
-            'compliance_score': report.compliance_score,
-            'reports': {
-                'markdown': str(md_output),
-                'json': str(json_output)
-            },
-            'artifacts': [str(md_output), str(json_output)]
+            "status": "success",
+            "files_scanned": report.files_scanned,
+            "issues_found": report.issues_found,
+            "auto_corrections": report.auto_corrections,
+            "manual_review_needed": report.manual_review_needed,
+            "compliance_score": report.compliance_score,
+            "reports": {"markdown": str(md_output), "json": str(json_output)},
+            "artifacts": [str(md_output), str(json_output)],
         }
 
         self.logger.info(f"✓ Australian compliance validation complete")
@@ -149,19 +147,19 @@ class AustralianComplianceQA(BaseAgent):
         errors = []
 
         # Check status
-        if output.get('status') != 'success':
+        if output.get("status") != "success":
             errors.append("Task did not complete successfully")
 
         # Check files scanned
-        if output.get('files_scanned', 0) == 0:
+        if output.get("files_scanned", 0) == 0:
             errors.append("No files were scanned")
 
         # Check reports generated
-        if 'reports' not in output:
+        if "reports" not in output:
             errors.append("Reports not generated")
         else:
-            md_path = Path(output['reports']['markdown'])
-            json_path = Path(output['reports']['json'])
+            md_path = Path(output["reports"]["markdown"])
+            json_path = Path(output["reports"]["json"])
 
             if not md_path.exists():
                 errors.append(f"Markdown report not found: {md_path}")
@@ -169,11 +167,11 @@ class AustralianComplianceQA(BaseAgent):
                 errors.append(f"JSON report not found: {json_path}")
 
         # Check compliance score calculated
-        if 'compliance_score' not in output:
+        if "compliance_score" not in output:
             errors.append("Compliance score not calculated")
 
         # Quality gate: For ICRP content, we expect high compliance
-        if output.get('compliance_score', 0) < 90:
+        if output.get("compliance_score", 0) < 90:
             self.logger.warning(f"⚠️ Compliance score below 90%: {output.get('compliance_score')}%")
             # Don't fail, but log warning
 
@@ -199,25 +197,25 @@ if __name__ == "__main__":
         title="Validate ICRP OSCE content for Australian compliance",
         description="Scan all OSCE preparation files and auto-correct American terminology",
         metadata={
-            'directory': 'ICRP_OSCE_Preparation',
-            'pattern': '*.md',
-            'auto_correct': True,
-            'output_dir': 'validation_reports'
-        }
+            "directory": "ICRP_OSCE_Preparation",
+            "pattern": "*.md",
+            "auto_correct": True,
+            "output_dir": "validation_reports",
+        },
     )
 
     # Assign and run
     if agent.assign_task(task):
         result_task = agent.run_task(task)
 
-        if result_task.status.value == 'completed':
-            print("\n" + "="*60)
+        if result_task.status.value == "completed":
+            print("\n" + "=" * 60)
             print("✓ Australian Compliance Validation Complete")
-            print("="*60)
+            print("=" * 60)
             print(f"Files Scanned: {result_task.result['files_scanned']}")
             print(f"Issues Found: {result_task.result['issues_found']}")
             print(f"Auto-Corrections: {result_task.result['auto_corrections']}")
             print(f"Compliance Score: {result_task.result['compliance_score']:.1f}%")
-            print("="*60)
+            print("=" * 60)
         else:
             print(f"❌ Task failed: {result_task.error}")

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OSCE Video Interview - irStudy</title>
+  <link rel="stylesheet" href="../../css/design-system.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-sans); background: var(--color-gray-900); color: white; min-height: 100vh; overflow: hidden; }
+    .video-interview { display: flex; flex-direction: column; height: 100vh; }
+    
+    /* Header */
+    .interview-header { background: rgba(0,0,0,0.8); padding: var(--space-4) var(--space-6); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .header-left { display: flex; align-items: center; gap: var(--space-4); }
+    .station-info h2 { font-size: var(--font-size-lg); margin-bottom: var(--space-1); }
+    .station-meta { font-size: var(--font-size-sm); color: var(--color-gray-400); }
+    .timer-display { padding: var(--space-3) var(--space-6); background: var(--color-error-600); border-radius: var(--radius-lg); font-weight: var(--font-weight-bold); font-size: var(--font-size-xl); font-family: var(--font-family-mono); }
+    
+    /* Main Content */
+    .interview-content { flex: 1; display: flex; }
+    
+    /* Video Area */
+    .video-area { flex: 1; display: flex; flex-direction: column; padding: var(--space-6); gap: var(--space-4); }
+    .video-grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-4); flex: 1; }
+    .video-panel { background: var(--color-gray-800); border-radius: var(--radius-xl); overflow: hidden; position: relative; }
+    .video-panel.patient { background: linear-gradient(135deg, #1e3a5f, #2d4a6f); }
+    .video-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .patient-avatar { width: 120px; height: 120px; background: rgba(255,255,255,0.1); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 60px; margin-bottom: var(--space-4); }
+    .patient-name { font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); }
+    .patient-role { color: var(--color-gray-400); }
+    .emotional-state { position: absolute; top: var(--space-4); left: var(--space-4); padding: var(--space-2) var(--space-4); background: rgba(0,0,0,0.6); border-radius: var(--radius-full); font-size: var(--font-size-sm); display: flex; align-items: center; gap: var(--space-2); }
+    .emotional-state.anxious { border: 2px solid var(--color-warning-500); }
+    .examiner-panel { position: absolute; bottom: var(--space-4); right: var(--space-4); width: 200px; aspect-ratio: 16/9; background: var(--color-gray-700); border-radius: var(--radius-lg); border: 2px solid var(--color-primary-500); }
+    .examiner-label { position: absolute; bottom: var(--space-2); left: var(--space-2); padding: var(--space-1) var(--space-2); background: rgba(0,0,0,0.7); border-radius: var(--radius-md); font-size: var(--font-size-xs); }
+    
+    /* Recording Indicator */
+    .recording-indicator { position: absolute; top: var(--space-4); right: var(--space-4); display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); background: rgba(239,68,68,0.2); border: 1px solid var(--color-error-500); border-radius: var(--radius-full); }
+    .rec-dot { width: 10px; height: 10px; background: var(--color-error-500); border-radius: var(--radius-full); animation: blink 1s infinite; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    
+    /* Side Panel */
+    .side-panel { width: 350px; background: var(--color-gray-800); border-left: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; }
+    .panel-tabs { display: flex; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .panel-tab { flex: 1; padding: var(--space-4); text-align: center; cursor: pointer; font-size: var(--font-size-sm); color: var(--color-gray-400); border-bottom: 2px solid transparent; }
+    .panel-tab.active { color: white; border-bottom-color: var(--color-primary-500); }
+    .panel-content { flex: 1; overflow-y: auto; padding: var(--space-4); }
+    
+    /* Task List */
+    .task-item { display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-lg); margin-bottom: var(--space-2); background: rgba(255,255,255,0.05); }
+    .task-checkbox { width: 20px; height: 20px; border: 2px solid var(--color-gray-500); border-radius: var(--radius-md); margin-top: var(--space-1); flex-shrink: 0; }
+    .task-checkbox.checked { background: var(--color-success-500); border-color: var(--color-success-500); }
+    .task-text { font-size: var(--font-size-sm); }
+    
+    /* Notes Area */
+    .notes-area { padding: var(--space-4); border-top: 1px solid rgba(255,255,255,0.1); }
+    .notes-input { width: 100%; min-height: 80px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: var(--space-3); color: white; resize: none; }
+    
+    /* Controls */
+    .interview-controls { background: rgba(0,0,0,0.9); padding: var(--space-4) var(--space-6); display: flex; align-items: center; justify-content: center; gap: var(--space-4); }
+    .control-btn { padding: var(--space-3) var(--space-6); border-radius: var(--radius-lg); border: none; font-weight: var(--font-weight-medium); cursor: pointer; display: flex; align-items: center; gap: var(--space-2); }
+    .control-btn-secondary { background: var(--color-gray-700); color: white; }
+    .control-btn-primary { background: var(--color-primary-600); color: white; }
+    .control-btn-danger { background: var(--color-error-600); color: white; }
+    .control-btn-success { background: var(--color-success-600); color: white; }
+    
+    /* AI Feedback Overlay */
+    .ai-feedback-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 100; }
+    .ai-feedback-overlay.show { display: flex; }
+    .feedback-modal { background: var(--color-gray-800); border-radius: var(--radius-2xl); width: 90%; max-width: 800px; max-height: 80vh; overflow: hidden; }
+    .feedback-header { padding: var(--space-6); border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; }
+    .feedback-content { padding: var(--space-6); overflow-y: auto; }
+  </style>
+</head>
+<body>
+  <div class="video-interview">
+    <header class="interview-header">
+      <div class="header-left">
+        <button class="control-btn control-btn-secondary" onclick="location.href='../../web/dashboard.html'">← Exit</button>
+        <div class="station-info">
+          <h2>Station 3: Chest Pain History</h2>
+          <div class="station-meta">8 minutes • History Taking • Cardiovascular</div>
+        </div>
+      </div>
+      <div class="timer-display">⏱️ 6:42</div>
+    </header>
+
+    <div class="interview-content">
+      <div class="video-area">
+        <div class="video-grid">
+          <div class="video-panel patient">
+            <div class="video-placeholder">
+              <div class="patient-avatar">👨</div>
+              <div class="patient-name">Mr. Robert Thompson</div>
+              <div class="patient-role">AI Patient (Claude)</div>
+            </div>
+            <div class="emotional-state anxious">
+              <span>😰</span> Anxious
+            </div>
+            <div class="recording-indicator">
+              <span class="rec-dot"></span>
+              <span>REC</span>
+            </div>
+            <div class="examiner-panel">
+              <div class="examiner-label">You</div>
+            </div>
+          </div>
+          <div class="video-panel">
+            <div class="panel-content">
+              <h3 style="margin-bottom: var(--space-4);">📋 Tasks</h3>
+              <div class="task-item">
+                <div class="task-checkbox"></div>
+                <div class="task-text">Take focused history about chest pain (OPQRST)</div>
+              </div>
+              <div class="task-item">
+                <div class="task-checkbox checked">✓</div>
+                <div class="task-text">Identify cardiovascular risk factors</div>
+              </div>
+              <div class="task-item">
+                <div class="task-checkbox"></div>
+                <div class="task-text">Screen for red flags (ACS, PE, aortic dissection)</div>
+              </div>
+              <div class="task-item">
+                <div class="task-checkbox"></div>
+                <div class="task-text">Address patient anxiety appropriately</div>
+              </div>
+              <div class="task-item">
+                <div class="task-checkbox"></div>
+                <div class="task-text">Summarize findings and next steps</div>
+              </div>
+              
+              <h3 style="margin: var(--space-6) 0 var(--space-4);">📊 Live Metrics</h3>
+              <div style="display: grid; gap: var(--space-3);">
+                <div style="display: flex; justify-content: space-between; padding: var(--space-3); background: rgba(255,255,255,0.05); border-radius: var(--radius-lg);">
+                  <span>Questions Asked</span>
+                  <strong>8/12</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: var(--space-3); background: rgba(255,255,255,0.05); border-radius: var(--radius-lg);">
+                  <span>Rapport Score</span>
+                  <strong style="color: var(--color-success-500);">85%</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: var(--space-3); background: rgba(255,255,255,0.05); border-radius: var(--radius-lg);">
+                  <span>Red Flags Checked</span>
+                  <strong style="color: var(--color-warning-500);">3/5</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="notes-area">
+          <textarea class="notes-input" placeholder="Quick notes for examiner (not visible to patient)..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="interview-controls">
+      <button class="control-btn control-btn-secondary">🎤 Mute</button>
+      <button class="control-btn control-btn-secondary">🎥 Camera</button>
+      <button class="control-btn control-btn-secondary">⏸️ Pause</button>
+      <button class="control-btn control-btn-success" onclick="showFeedback()">✓ Complete Station</button>
+    </div>
+  </div>
+
+  <!-- AI Feedback Modal -->
+  <div class="ai-feedback-overlay" id="feedbackModal">
+    <div class="feedback-modal">
+      <div class="feedback-header">
+        <h2>🤖 AI Examiner Feedback</h2>
+        <button class="control-btn control-btn-secondary" onclick="hideFeedback()">✕</button>
+      </div>
+      <div class="feedback-content">
+        <div style="text-align: center; margin-bottom: var(--space-6);">
+          <div style="width: 120px; height: 120px; background: linear-gradient(135deg, var(--color-success-500), var(--color-success-600)); border-radius: var(--radius-full); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto;">
+            <span style="font-size: 36px; font-weight: bold;">12</span>
+            <span style="font-size: 14px;">/ 15</span>
+          </div>
+          <h3 style="margin-top: var(--space-4);">Well Done!</h3>
+        </div>
+        
+        <div style="display: grid; gap: var(--space-4);">
+          <div style="padding: var(--space-4); background: rgba(34,197,94,0.1); border-radius: var(--radius-lg); border-left: 4px solid var(--color-success-500);">
+            <h4 style="color: var(--color-success-500); margin-bottom: var(--space-2);">⭐ Strengths</h4>
+            <ul style="margin-left: var(--space-5); font-size: 14px;">
+              <li>Excellent rapport building - acknowledged patient anxiety</li>
+              <li>Thorough cardiovascular risk assessment</li>
+              <li>Good use of open-ended questions initially</li>
+            </ul>
+          </div>
+          
+          <div style="padding: var(--space-4); background: rgba(251,191,36,0.1); border-radius: var(--radius-lg); border-left: 4px solid var(--color-warning-500);">
+            <h4 style="color: var(--color-warning-500); margin-bottom: var(--space-2);">📈 Areas to Improve</h4>
+            <ul style="margin-left: var(--space-5); font-size: 14px;">
+              <li>Consider exploring differential diagnoses earlier</li>
+              <li>Ask specifically about family history of CAD</li>
+              <li>Document pain severity using 1-10 scale</li>
+            </ul>
+          </div>
+          
+          <div style="padding: var(--space-4); background: rgba(255,255,255,0.05); border-radius: var(--radius-lg);">
+            <h4 style="margin-bottom: var(--space-2);">🎯 AMC-Style Score Breakdown</h4>
+            <div style="display: grid; gap: var(--space-2); font-size: 14px;">
+              <div style="display: flex; justify-content: space-between;"><span>History Taking</span><strong>4/5</strong></div>
+              <div style="display: flex; justify-content: space-between;"><span>Communication Skills</span><strong>4/4</strong></div>
+              <div style="display: flex; justify-content: space-between;"><span>Clinical Reasoning</span><strong>2/3</strong></div>
+              <div style="display: flex; justify-content: space-between;"><span>Professionalism</span><strong>2/3</strong></div>
+            </div>
+          </div>
+        </div>
+        
+        <div style="display: flex; gap: var(--space-4); margin-top: var(--space-6);">
+          <button class="control-btn control-btn-secondary" style="flex: 1;">↻ Retry Station</button>
+          <button class="control-btn control-btn-primary" style="flex: 1;" onclick="location.href='../../web/dashboard.html'">Continue →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showFeedback() {
+      document.getElementById('feedbackModal').classList.add('show');
+    }
+    function hideFeedback() {
+      document.getElementById('feedbackModal').classList.remove('show');
+    }
+  </script>
+</body>
+</html>

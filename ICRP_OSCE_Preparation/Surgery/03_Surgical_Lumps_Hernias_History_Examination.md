@@ -46,6 +46,40 @@
 
 ---
 
+## 📺 RECOMMENDED VIDEO DEMONSTRATIONS
+
+### Surgical Lumps and Hernias Examination Videos
+
+**Essential Videos (Watch These First):**
+
+1. **Examination of Lumps - Stanford Medicine 25**
+   - URL: https://stanfordmedicine25.stanford.edu/the25/lumps.html
+   - Focus: 7 Ss framework for systematic lump examination
+   - Why recommended: Gold standard demonstration of special tests (transillumination, lymph node examination)
+   - Australian relevance: Systematic approach matches AMC Clinical exam surgical station requirements
+
+2. **Hernia Examination - Geeky Medics**
+   - URL: https://geekymedics.com/groin-lump-examination/
+   - Duration: 8 minutes (OSCE-appropriate)
+   - Focus: Distinguishing inguinal vs femoral hernias, cough impulse test, reducibility assessment
+   - Why recommended: Perfect for OSCE practice with clear demonstration of special tests
+
+3. **Neck Lump Examination - Geeky Medics**
+   - URL: https://geekymedics.com/neck-lump-examination/
+   - Duration: 8 minutes
+   - Focus: Thyroid examination, swallowing test, lymph node palpation
+   - Why recommended: Excellent for learning systematic neck lump assessment
+
+4. **Breast Examination - Geeky Medics**
+   - URL: https://geekymedics.com/breast-examination/
+   - Duration: 10 minutes
+   - Focus: Systematic breast examination including axillary lymph nodes
+   - Why recommended: Comprehensive demonstration of breast examination technique with special tests
+
+**Note:** Complete video resource catalog available in [00_VIDEO_RESOURCES_MASTER_LIST.md](../00_VIDEO_RESOURCES_MASTER_LIST.md)
+
+---
+
 # Surgical Lumps & Hernias: History-Taking and Physical Examination
 ## ICRP OSCE Preparation - Surgery Module
 ### Following Dr. Amir Soufi's Differential-Driven Approach (IMG4IMGS Methodology)

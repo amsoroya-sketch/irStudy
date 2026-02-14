@@ -1,0 +1,678 @@
+"""
+SQLAlchemy database models for irStudy Medical Education Platform
+
+MODELS:
+- User: User accounts with HIPAA-compliant security
+- MCQ: Multiple-choice questions with Australian medical context
+- OSCE: OSCE scenarios with rubrics
+- UserProgress: Progress tracking with analytics
+- MCQAttempt: Individual MCQ attempt records with audit trail
+
+SECURITY:
+- Passwords hashed with bcrypt (never stored plaintext)
+- PHI encrypted at rest where applicable
+- Audit timestamps on all records
+- Soft deletes for HIPAA compliance
+
+AUSTRALIAN MEDICAL CONTEXT:
+- All drug names use Australian terminology
+- All citations reference Australian guidelines (eTG, AHPRA, AMH)
+- Emergency number field defaults to "000"
+"""
+
+from sqlalchemy import (
+    Column,
+    Integer,
+    String,
+    Text,
+    Boolean,
+    DateTime,
+    ForeignKey,
+    JSON,
+    Enum as SQLEnum,
+    Float,
+    Table,
+    UniqueConstraint,
+)
+from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
+from datetime import datetime
+import enum
+
+from .base import Base
+
+
+# ============================================================================
+# ENUMS
+# ============================================================================
+
+
+class UserRole(str, enum.Enum):
+    """User roles for access control"""
+
+    STUDENT = "student"
+    EDUCATOR = "educator"
+    ADMIN = "admin"
+
+
+class DifficultyLevel(str, enum.Enum):
+    """Question difficulty levels"""
+
+    EASY = "easy"
+    MEDIUM = "medium"
+    HARD = "hard"
+
+
+class MedicalSpecialty(str, enum.Enum):
+    """Australian medical specialties"""
+
+    CARDIOLOGY = "cardiology"
+    RESPIRATORY = "respiratory"
+    GASTROENTEROLOGY = "gastroenterology"
+    NEUROLOGY = "neurology"
+    PSYCHIATRY = "psychiatry"
+    ENDOCRINOLOGY = "endocrinology"
+    EMERGENCY_MEDICINE = "emergency_medicine"
+    GENERAL_PRACTICE = "general_practice"
+    PAEDIATRICS = "paediatrics"
+    OBSTETRICS_GYNAECOLOGY = "obstetrics_gynaecology"
+    SURGERY = "surgery"
+
+
+class OSCEType(str, enum.Enum):
+    """OSCE station types"""
+
+    HISTORY_TAKING = "history_taking"
+    PHYSICAL_EXAMINATION = "physical_examination"
+    COUNSELLING = "counselling"
+    COMMUNICATION = "communication"
+    DIAGNOSIS_MANAGEMENT = "diagnosis_management"
+    EMERGENCY_SCENARIO = "emergency_scenario"
+
+
+# ============================================================================
+# ASSOCIATION TABLES (Many-to-Many)
+# ============================================================================
+
+user_favorite_mcqs = Table(
+    "user_favorite_mcqs",
+    Base.metadata,
+    Column("user_id", Integer, ForeignKey("users.id"), primary_key=True),
+    Column("mcq_id", Integer, ForeignKey("mcqs.id"), primary_key=True),
+    Column("created_at", DateTime(timezone=True), server_default=func.now()),
+)
+
+user_favorite_osces = Table(
+    "user_favorite_osces",
+    Base.metadata,
+    Column("user_id", Integer, ForeignKey("users.id"), primary_key=True),
+    Column("osce_id", Integer, ForeignKey("osces.id"), primary_key=True),
+    Column("created_at", DateTime(timezone=True), server_default=func.now()),
+)
+
+
+# ============================================================================
+# USER MODEL
+# ============================================================================
+
+
+class User(Base):
+    """
+    User account model with HIPAA-compliant security.
+
+    SECURITY:
+    - Passwords hashed with bcrypt (never plaintext)
+    - Account lockout after failed login attempts
+    - Session timeout tracking
+    - Audit trail for all actions
+
+    FIELDS:
+    - email: Unique email address (PHI - encrypted at rest)
+    - password_hash: Bcrypt hashed password
+    - full_name: User's full name (PHI - encrypted at rest)
+    - role: User role (student, educator, admin)
+    - is_active: Account active status
+    - is_verified: Email verification status
+    - failed_login_attempts: Counter for account lockout
+    - last_login_at: Last successful login timestamp
+    """
+
+    __tablename__ = "users"
+
+    # Primary key
+    id = Column(Integer, primary_key=True, index=True)
+
+    # Authentication
+    email = Column(String(255), unique=True, index=True, nullable=False)
+    password_hash = Column(String(255), nullable=False)
+
+    # Profile (PHI - should be encrypted at application layer)
+    full_name = Column(String(255), nullable=False)
+    # Use values_callable to tell SQLAlchemy to use enum.value (lowercase) not enum.name (uppercase)
+    role = Column(
+        SQLEnum(UserRole, values_callable=lambda x: [e.value for e in x]),
+        default=UserRole.STUDENT,
+        nullable=False
+    )
+
+    # Account status
+    is_active = Column(Boolean, default=True, nullable=False)
+    is_verified = Column(Boolean, default=False, nullable=False)
+
+    # Security
+    failed_login_attempts = Column(Integer, default=0, nullable=False)
+    locked_until = Column(DateTime(timezone=True), nullable=True)
+    last_login_at = Column(DateTime(timezone=True), nullable=True)
+
+    # Audit timestamps
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    updated_at = Column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
+    deleted_at = Column(DateTime(timezone=True), nullable=True)  # Soft delete
+
+    # Relationships
+    mcq_attempts = relationship("MCQAttempt", back_populates="user", cascade="all, delete-orphan")
+    progress_records = relationship(
+        "UserProgress", back_populates="user", cascade="all, delete-orphan"
+    )
+    favorite_mcqs = relationship("MCQ", secondary=user_favorite_mcqs, back_populates="favorited_by")
+    favorite_osces = relationship(
+        "OSCE", secondary=user_favorite_osces, back_populates="favorited_by"
+    )
+    study_cards = relationship("StudyCard", back_populates="user", cascade="all, delete-orphan")
+
+    def __repr__(self):
+        return f"<User(id={self.id}, email={self.email}, role={self.role})>"
+
+
+# ============================================================================
+# MCQ MODEL
+# ============================================================================
+
+
+class MCQ(Base):
+    """
+    Multiple-choice question model with Australian medical context.
+
+    AUSTRALIAN CONTEXT:
+    - Drug names: Australian (paracetamol not acetaminophen)
+    - Units: SI units (mmol/L not mg/dL)
+    - Guidelines: eTG, AHPRA, AMH citations required
+    - Emergency number: 000 (not 911)
+
+    FIELDS:
+    - question_text: Clinical vignette with patient demographics
+    - options: JSON array of answer options (A-E)
+    - correct_answer: Correct option letter
+    - explanation: Detailed explanation with clinical reasoning
+    - citation: Australian guideline reference (eTG, AHPRA, AMH)
+    - specialty: Medical specialty
+    - difficulty: Question difficulty (easy, medium, hard)
+    - tags: JSON array of topic tags
+    - image_url: Optional clinical image (ECG, X-ray, etc.)
+    """
+
+    __tablename__ = "mcqs"
+
+    # Primary key
+    id = Column(Integer, primary_key=True, index=True)
+
+    # Question content
+    question_id = Column(
+        String(50), unique=True, index=True, nullable=False
+    )  # e.g., "MCQ-CARD-001"
+    question_text = Column(Text, nullable=False)
+    options = Column(JSON, nullable=False)  # {"A": "...", "B": "...", ...}
+    correct_answer = Column(String(1), nullable=False)  # A, B, C, D, or E
+
+    # Educational content
+    explanation = Column(Text, nullable=False)
+    citation = Column(String(500), nullable=False)  # Australian guideline reference
+    learning_points = Column(JSON, nullable=True)  # ["Point 1", "Point 2", ...]
+
+    # Metadata
+    # Use values_callable to tell SQLAlchemy to use enum.value (lowercase) not enum.name (uppercase)
+    specialty = Column(
+        SQLEnum(MedicalSpecialty, values_callable=lambda x: [e.value for e in x]),
+        nullable=False,
+        index=True
+    )
+    difficulty = Column(
+        SQLEnum(DifficultyLevel, values_callable=lambda x: [e.value for e in x]),
+        default=DifficultyLevel.MEDIUM,
+        nullable=False
+    )
+    tags = Column(JSON, nullable=True)  # ["hypertension", "cardiovascular", "first-line"]
+
+    # Media
+    image_url = Column(String(500), nullable=True)
+    image_caption = Column(String(500), nullable=True)
+
+    # Statistics
+    times_attempted = Column(Integer, default=0, nullable=False)
+    times_correct = Column(Integer, default=0, nullable=False)
+    average_time_seconds = Column(Float, default=0.0, nullable=False)
+
+    # Flags
+    is_published = Column(Boolean, default=True, nullable=False)
+    requires_australian_context = Column(Boolean, default=True, nullable=False)
+
+    # Audit timestamps
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    updated_at = Column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
+    deleted_at = Column(DateTime(timezone=True), nullable=True)  # Soft delete
+
+    # Relationships
+    attempts = relationship("MCQAttempt", back_populates="mcq", cascade="all, delete-orphan")
+    favorited_by = relationship(
+        "User", secondary=user_favorite_mcqs, back_populates="favorite_mcqs"
+    )
+
+    def __repr__(self):
+        return f"<MCQ(id={self.question_id}, specialty={self.specialty}, difficulty={self.difficulty})>"
+
+    @property
+    def success_rate(self) -> float:
+        """Calculate success rate percentage"""
+        if self.times_attempted == 0:
+            return 0.0
+        return (self.times_correct / self.times_attempted) * 100
+
+
+# ============================================================================
+# OSCE MODEL
+# ============================================================================
+
+
+class OSCE(Base):
+    """
+    OSCE (Objective Structured Clinical Examination) scenario model.
+
+    AMC CLINICAL EXAM FORMAT:
+    - 16 stations × 8 minutes each
+    - Rubric-based scoring (15 marks per station, 9/15 to pass)
+    - Focus: History taking, physical examination, communication
+
+    AUSTRALIAN CONTEXT:
+    - Patient scenarios reflect Australian demographics
+    - Management plans follow Australian guidelines (eTG, NSW Health)
+    - Communication adjusted for Australian cultural norms
+
+    FIELDS:
+    - station_title: OSCE station title
+    - station_type: Type (history, examination, counselling, etc.)
+    - patient_instructions: Instructions for simulated patient/actor
+    - candidate_instructions: Instructions shown to candidate
+    - rubric: JSON scoring rubric (15 marks total)
+    - time_limit_minutes: Time limit (default: 8 minutes)
+    - learning_objectives: Educational objectives
+    """
+
+    __tablename__ = "osces"
+
+    # Primary key
+    id = Column(Integer, primary_key=True, index=True)
+
+    # Station identification
+    osce_id = Column(String(50), unique=True, index=True, nullable=False)  # e.g., "OSCE-CARD-001"
+    station_title = Column(String(255), nullable=False)
+    station_type = Column(
+        SQLEnum(OSCEType, values_callable=lambda x: [e.value for e in x]),
+        nullable=False,
+        index=True
+    )
+
+    # Instructions
+    patient_instructions = Column(Text, nullable=False)  # For simulated patient/actor
+    candidate_instructions = Column(Text, nullable=False)  # Shown to candidate at station
+    examiner_instructions = Column(Text, nullable=True)  # For examiner (marking guide)
+
+    # Rubric (15-mark AMC format)
+    rubric = Column(JSON, nullable=False)
+    """
+    Example rubric JSON:
+    {
+        "introduction": {"max_marks": 1, "criteria": "Introduces self, confirms patient identity"},
+        "history_taking": {"max_marks": 5, "criteria": "Systematic history using SOCRATES"},
+        "examination": {"max_marks": 4, "criteria": "Correct technique, patient comfort"},
+        "diagnosis": {"max_marks": 3, "criteria": "Appropriate differential diagnosis"},
+        "management": {"max_marks": 2, "criteria": "Evidence-based management plan"}
+    }
+    """
+
+    # Metadata
+    specialty = Column(
+        SQLEnum(MedicalSpecialty, values_callable=lambda x: [e.value for e in x]),
+        nullable=False,
+        index=True
+    )
+    difficulty = Column(
+        SQLEnum(DifficultyLevel, values_callable=lambda x: [e.value for e in x]),
+        default=DifficultyLevel.MEDIUM,
+        nullable=False
+    )
+    time_limit_minutes = Column(Integer, default=8, nullable=False)
+
+    # Educational content
+    learning_objectives = Column(JSON, nullable=True)  # ["Objective 1", "Objective 2", ...]
+    key_points = Column(JSON, nullable=True)
+    red_flags = Column(JSON, nullable=True)  # Red flag conditions to identify
+    tags = Column(JSON, nullable=True)  # ["tag1", "tag2", ...] for filtering and categorization
+
+    # Australian context
+    australian_guidelines = Column(JSON, nullable=True)  # eTG, NSW Health protocols
+
+    # Media
+    supporting_documents = Column(JSON, nullable=True)  # URLs to test results, images
+
+    # Statistics
+    times_practiced = Column(Integer, default=0, nullable=False)
+    average_score = Column(Float, default=0.0, nullable=False)
+
+    # Flags
+    is_published = Column(Boolean, default=True, nullable=False)
+
+    # Audit timestamps
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    updated_at = Column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
+    deleted_at = Column(DateTime(timezone=True), nullable=True)  # Soft delete
+
+    # Relationships
+    favorited_by = relationship(
+        "User", secondary=user_favorite_osces, back_populates="favorite_osces"
+    )
+
+    def __repr__(self):
+        return f"<OSCE(id={self.osce_id}, type={self.station_type}, specialty={self.specialty})>"
+
+
+# ============================================================================
+# MCQ ATTEMPT MODEL
+# ============================================================================
+
+
+class MCQAttempt(Base):
+    """
+    Individual MCQ attempt record with audit trail.
+
+    HIPAA COMPLIANCE:
+    - Tracks student performance (PHI)
+    - Audit trail for learning analytics
+    - Retention period: 7 years (configurable)
+
+    FIELDS:
+    - user_id: Foreign key to User
+    - mcq_id: Foreign key to MCQ
+    - selected_answer: Answer chosen by user
+    - is_correct: Whether answer was correct
+    - time_taken_seconds: Time taken to answer
+    - confidence_level: User's confidence (1-5)
+    """
+
+    __tablename__ = "mcq_attempts"
+
+    # Primary key
+    id = Column(Integer, primary_key=True, index=True)
+
+    # Foreign keys
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+    mcq_id = Column(Integer, ForeignKey("mcqs.id"), nullable=False, index=True)
+
+    # Attempt details
+    selected_answer = Column(String(1), nullable=False)  # A, B, C, D, or E
+    is_correct = Column(Boolean, nullable=False)
+    time_taken_seconds = Column(Integer, nullable=False)
+    confidence_level = Column(Integer, nullable=True)  # 1-5 scale (1=guessing, 5=certain)
+
+    # Context
+    attempt_number = Column(
+        Integer, default=1, nullable=False
+    )  # How many times user attempted this MCQ
+    was_flagged_for_review = Column(Boolean, default=False, nullable=False)
+
+    # Audit timestamp
+    attempted_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+    # Relationships
+    user = relationship("User", back_populates="mcq_attempts")
+    mcq = relationship("MCQ", back_populates="attempts")
+
+    def __repr__(self):
+        return (
+            f"<MCQAttempt(user_id={self.user_id}, mcq_id={self.mcq_id}, correct={self.is_correct})>"
+        )
+
+
+# ============================================================================
+# USER PROGRESS MODEL
+# ============================================================================
+
+
+class UserProgress(Base):
+    """
+    User progress tracking with learning analytics.
+
+    FEATURES:
+    - Specialty-specific progress tracking
+    - Spaced repetition scheduling
+    - Weak areas identification
+    - Study time tracking
+
+    FIELDS:
+    - user_id: Foreign key to User
+    - specialty: Medical specialty
+    - total_mcqs_attempted: Total MCQs attempted in specialty
+    - total_mcqs_correct: Total correct answers
+    - current_streak_days: Current daily study streak
+    - longest_streak_days: Longest study streak
+    - total_study_time_minutes: Total study time in specialty
+    - weak_topics: JSON array of topics needing improvement
+    """
+
+    __tablename__ = "user_progress"
+
+    # Primary key
+    id = Column(Integer, primary_key=True, index=True)
+
+    # Foreign key
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+
+    # Specialty progress
+    specialty = Column(
+        SQLEnum(MedicalSpecialty, values_callable=lambda x: [e.value for e in x]),
+        nullable=False,
+        index=True
+    )
+
+    # MCQ statistics
+    total_mcqs_attempted = Column(Integer, default=0, nullable=False)
+    total_mcqs_correct = Column(Integer, default=0, nullable=False)
+    unique_mcqs_attempted = Column(Integer, default=0, nullable=False)
+
+    # OSCE statistics
+    total_osces_practiced = Column(Integer, default=0, nullable=False)
+    average_osce_score = Column(Float, default=0.0, nullable=False)
+
+    # Streaks
+    current_streak_days = Column(Integer, default=0, nullable=False)
+    longest_streak_days = Column(Integer, default=0, nullable=False)
+    last_activity_date = Column(DateTime(timezone=True), nullable=True)
+
+    # Study time
+    total_study_time_minutes = Column(Integer, default=0, nullable=False)
+
+    # Weak areas (for targeted revision)
+    weak_topics = Column(JSON, nullable=True)  # ["hypertension", "arrhythmias", ...]
+
+    # Mastery level
+    mastery_percentage = Column(Float, default=0.0, nullable=False)  # Overall mastery in specialty
+
+    # Audit timestamps
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    updated_at = Column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
+
+    # Relationships
+    user = relationship("User", back_populates="progress_records")
+
+    # Unique constraint: One progress record per user per specialty
+    __table_args__ = (
+        UniqueConstraint("user_id", "specialty", name="unique_user_specialty_progress"),
+    )
+
+    def __repr__(self):
+        return f"<UserProgress(user_id={self.user_id}, specialty={self.specialty}, mastery={self.mastery_percentage:.1f}%)>"
+
+    @property
+    def success_rate(self) -> float:
+        """Calculate MCQ success rate percentage"""
+        if self.total_mcqs_attempted == 0:
+            return 0.0
+        return (self.total_mcqs_correct / self.total_mcqs_attempted) * 100
+
+
+# ============================================================================
+# STUDY CARD MODEL
+# ============================================================================
+
+
+class StudyCard(Base):
+    """
+    Study card model for spaced repetition learning.
+
+    SPACED REPETITION:
+    - Uses SM-2 algorithm for optimal review scheduling
+    - Tracks ease factor, interval, and repetition count
+    - Supports quality ratings 0-5 for review
+
+    AUSTRALIAN CONTEXT:
+    - Citations reference Australian medical guidelines
+    - Content aligned with AMC examination requirements
+    - Drug names and units follow Australian standards
+
+    FIELDS:
+    - card_id: Unique card identifier (e.g., "CARDI-CARD-0001")
+    - specialty: Medical specialty category
+    - topic: Main topic (e.g., "ECG Interpretation")
+    - subtopic: Specific subtopic (e.g., "STEMI patterns")
+    - question: Front of flashcard
+    - answer: Back of flashcard
+    - explanation: Additional context/clinical pearls
+    - citations: JSON array of Australian guideline references
+    - difficulty: Card difficulty level
+    - next_review_date: When card should be reviewed next
+    - interval_days: Days until next review (SM-2)
+    - ease_factor: SM-2 ease factor (default 2.5)
+    - repetitions: Number of successful reviews
+    """
+
+    __tablename__ = "study_cards"
+
+    # Primary key
+    id = Column(Integer, primary_key=True, index=True)
+
+    # Foreign key (nullable for shared/public cards)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=True, index=True)
+
+    # Card identification
+    card_id = Column(String(50), unique=True, index=True, nullable=False)  # e.g., "CARDI-CARD-0001"
+
+    # Content fields
+    specialty = Column(
+        SQLEnum(MedicalSpecialty, values_callable=lambda x: [e.value for e in x]),
+        nullable=False,
+        index=True
+    )
+    topic = Column(String(255), nullable=False, index=True)
+    subtopic = Column(String(255), nullable=True)
+    question = Column(Text, nullable=False)  # Front of card
+    answer = Column(Text, nullable=False)  # Back of card
+    explanation = Column(Text, nullable=True)  # Additional context
+
+    # Citations (Australian medical guidelines)
+    citations = Column(JSON, nullable=False)  # List of citation objects
+
+    # Metadata
+    difficulty = Column(
+        SQLEnum(DifficultyLevel, values_callable=lambda x: [e.value for e in x]),
+        default=DifficultyLevel.MEDIUM,
+        nullable=False,
+        index=True
+    )
+    tags = Column(JSON, nullable=True)  # ["tag1", "tag2", ...]
+    card_type = Column(String(50), default="concept", nullable=False)  # concept, clinical_pearl, etc.
+
+    # Spaced Repetition (SM-2 Algorithm)
+    next_review_date = Column(
+        DateTime(timezone=True),
+        server_default=func.now(),
+        nullable=False,
+        index=True
+    )
+    interval_days = Column(Integer, default=1, nullable=False)
+    ease_factor = Column(Float, default=2.5, nullable=False)
+    repetitions = Column(Integer, default=0, nullable=False)
+
+    # Flags
+    is_active = Column(Boolean, default=True, nullable=False)
+
+    # Audit timestamps
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    updated_at = Column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
+    deleted_at = Column(DateTime(timezone=True), nullable=True)  # Soft delete
+
+    # Relationships
+    user = relationship("User", back_populates="study_cards")
+
+    def __repr__(self):
+        return f"<StudyCard(id={self.card_id}, specialty={self.specialty}, topic={self.topic})>"
+
+    def update_sm2(self, quality: int) -> None:
+        """
+        Update spaced repetition schedule using SM-2 algorithm.
+
+        Args:
+            quality: Quality rating 0-5 (0=complete blackout, 5=perfect recall)
+
+        SM-2 Algorithm:
+        - If quality < 3: Reset to day 1
+        - If quality >= 3: Increase interval based on ease factor
+        - Ease factor adjusted by quality (min 1.3)
+        """
+        from datetime import timedelta
+
+        if quality < 3:
+            # Failed review - reset
+            self.repetitions = 0
+            self.interval_days = 1
+        else:
+            # Successful review
+            if self.repetitions == 0:
+                self.interval_days = 1
+            elif self.repetitions == 1:
+                self.interval_days = 6
+            else:
+                self.interval_days = int(self.interval_days * self.ease_factor)
+
+            self.repetitions += 1
+
+        # Update ease factor
+        self.ease_factor = max(
+            1.3,
+            self.ease_factor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02))
+        )
+
+        # Calculate next review date
+        self.next_review_date = datetime.utcnow() + timedelta(days=self.interval_days)
+
+
+# Import sqlalchemy for unique constraint
+import sqlalchemy

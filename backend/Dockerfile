@@ -12,7 +12,8 @@
 # ============================================================================
 # STAGE 1: Builder
 # ============================================================================
-FROM python:3.12-slim as builder
+# Using Python 3.11 due to medical NLP packages (scispacy/spacy) not yet supporting 3.12
+FROM python:3.11-slim as builder
 
 # Install system dependencies required for Python packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -35,7 +36,8 @@ RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
 # ============================================================================
 # STAGE 2: Production Runtime
 # ============================================================================
-FROM python:3.12-slim
+# Using Python 3.11 due to medical NLP packages (scispacy/spacy) not yet supporting 3.12
+FROM python:3.11-slim
 
 # Metadata labels (OCI standard)
 LABEL org.opencontainers.image.title="irStudy Medical Education Platform - Backend"

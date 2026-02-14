@@ -19,6 +19,61 @@
 
 ---
 
+## 📺 RECOMMENDED VIDEO DEMONSTRATIONS
+
+### Abdominal Examination Videos
+
+**Essential Videos (Watch These First):**
+
+1. **Abdominal Examination - Stanford Medicine 25**
+   - URL: https://stanfordmedicine25.stanford.edu/the25/abdominal.html
+   - Focus: Complete systematic 9-region abdominal examination with organ-specific techniques
+   - Why recommended: Excellent demonstration of liver, spleen, kidney palpation and ascites assessment
+   - Australian relevance: Systematic approach aligns with AMC Clinical exam standards
+
+2. **Abdominal Examination OSCE Guide - Geeky Medics**
+   - URL: https://geekymedics.com/abdominal-examination/
+   - Duration: 8 minutes (OSCE-appropriate)
+   - Focus: OSCE-formatted examination with communication and presentation
+   - Why recommended: Perfect for practicing the 9-region systematic approach and special tests
+
+3. **Abdominal Examination - Oxford Medical Education**
+   - URL: https://www.oxfordmedicaleducation.com/clinical-skills/examination/abdominal-examination/
+   - Focus: Detailed guide with common findings and interpretation
+   - Why recommended: Excellent visual guide for identifying organomegaly and masses
+
+### Neurological Examination Videos
+
+**Essential Videos (Watch These First):**
+
+1. **Cranial Nerve Examination - Stanford Medicine 25**
+   - URL: https://stanfordmedicine25.stanford.edu/the25/cranial.html
+   - Focus: Complete CN I-XII systematic examination
+   - Why recommended: Gold standard for cranial nerve testing, excellent for learning proper technique
+   - Australian relevance: Technique matches Australian teaching hospital protocols
+
+2. **Cranial Nerve Examination - Geeky Medics**
+   - URL: https://geekymedics.com/cranial-nerve-examination/
+   - Duration: 8-10 minutes
+   - Focus: OSCE-formatted CN examination with clear structure
+   - Why recommended: Perfect for OSCE practice with systematic CN I-XII approach
+
+3. **Upper Limb Neurological Examination - Geeky Medics**
+   - URL: https://geekymedics.com/upper-limb-neurological-examination/
+   - Duration: 8 minutes
+   - Focus: Tone, power, reflexes, coordination, sensation
+   - Why recommended: Excellent for learning MRC power grading and reflex testing
+
+4. **Lower Limb Neurological Examination - Geeky Medics**
+   - URL: https://geekymedics.com/lower-limb-neurological-examination/
+   - Duration: 8 minutes
+   - Focus: Complete lower limb motor and sensory examination
+   - Why recommended: Clear demonstration of lower limb reflexes and gait assessment
+
+**Note:** Complete video resource catalog available in [00_VIDEO_RESOURCES_MASTER_LIST.md](../00_VIDEO_RESOURCES_MASTER_LIST.md)
+
+---
+
 ## ABDOMINAL EXAMINATION
 
 ### 1. PREPARATION (60 seconds)

@@ -26,20 +26,20 @@ class MedicalPDFExtractor:
 
     def detect_table(self, text: str) -> bool:
         """Detect if text contains table structure"""
-        table_indicators = ['│', '┌', '┐', '└', '┘', '├', '┤', '─', '|']
+        table_indicators = ["│", "┌", "┐", "└", "┘", "├", "┤", "─", "|"]
         return any(indicator in text for indicator in table_indicators)
 
     def detect_drug_info(self, text: str) -> bool:
         """Detect if text contains drug dosage information"""
         patterns = [
-            r'\d+\s*mg',
-            r'\d+\s*mcg',
-            r'\d+\s*g',
-            r'\d+\s*mL',
-            r'\d+\s*units',
-            r'Dose:',
-            r'Dosage:',
-            r'Administration:',
+            r"\d+\s*mg",
+            r"\d+\s*mcg",
+            r"\d+\s*g",
+            r"\d+\s*mL",
+            r"\d+\s*units",
+            r"Dose:",
+            r"Dosage:",
+            r"Administration:",
         ]
         return any(re.search(pattern, text, re.IGNORECASE) for pattern in patterns)
 
@@ -48,18 +48,18 @@ class MedicalPDFExtractor:
         doc = fitz.open(pdf_path)
 
         book_data = {
-            'filename': pdf_path.name,
-            'source_path': str(pdf_path),
-            'total_pages': len(doc),
-            'pages': [],
-            'metadata': {
-                'title': doc.metadata.get('title', ''),
-                'author': doc.metadata.get('author', ''),
-                'subject': doc.metadata.get('subject', ''),
+            "filename": pdf_path.name,
+            "source_path": str(pdf_path),
+            "total_pages": len(doc),
+            "pages": [],
+            "metadata": {
+                "title": doc.metadata.get("title", ""),
+                "author": doc.metadata.get("author", ""),
+                "subject": doc.metadata.get("subject", ""),
             },
-            'has_images': False,
-            'has_tables': False,
-            'extraction_method': 'pymupdf'
+            "has_images": False,
+            "has_tables": False,
+            "extraction_method": "pymupdf",
         }
 
         for page_num in range(len(doc)):
@@ -92,22 +92,22 @@ class MedicalPDFExtractor:
             has_drug_info = self.detect_drug_info(text)
 
             page_data = {
-                'page_number': page_num + 1,
-                'text': text,
-                'char_count': len(text),
-                'word_count': len(text.split()),
-                'images': len(images),
-                'has_table': has_table,
-                'has_drug_info': has_drug_info,
-                'needs_special_handling': has_table or has_drug_info
+                "page_number": page_num + 1,
+                "text": text,
+                "char_count": len(text),
+                "word_count": len(text.split()),
+                "images": len(images),
+                "has_table": has_table,
+                "has_drug_info": has_drug_info,
+                "needs_special_handling": has_table or has_drug_info,
             }
 
-            book_data['pages'].append(page_data)
+            book_data["pages"].append(page_data)
 
             if images:
-                book_data['has_images'] = True
+                book_data["has_images"] = True
             if has_table:
-                book_data['has_tables'] = True
+                book_data["has_tables"] = True
 
         doc.close()
         return book_data
@@ -121,11 +121,9 @@ class MedicalPDFExtractor:
                 page_tables = page.extract_tables()
                 if page_tables:
                     for table_idx, table in enumerate(page_tables):
-                        tables.append({
-                            'page': page_num + 1,
-                            'table_index': table_idx,
-                            'data': table
-                        })
+                        tables.append(
+                            {"page": page_num + 1, "table_index": table_idx, "data": table}
+                        )
 
         return tables
 
@@ -137,25 +135,29 @@ class MedicalPDFExtractor:
         book_data = self.extract_with_pymupdf(pdf_path)
 
         # Enhanced table extraction if tables detected
-        if book_data['has_tables']:
+        if book_data["has_tables"]:
             logger.info(f"  Extracting tables with pdfplumber...")
             try:
                 tables = self.extract_tables_with_pdfplumber(pdf_path)
-                book_data['tables'] = tables
+                book_data["tables"] = tables
                 logger.info(f"  Found {len(tables)} tables")
             except Exception as e:
                 logger.warning(f"  Table extraction failed: {e}")
-                book_data['tables'] = []
+                book_data["tables"] = []
 
         # Statistics
-        total_chars = sum(p['char_count'] for p in book_data['pages'])
-        total_words = sum(p['word_count'] for p in book_data['pages'])
+        total_chars = sum(p["char_count"] for p in book_data["pages"])
+        total_words = sum(p["word_count"] for p in book_data["pages"])
 
-        book_data['statistics'] = {
-            'total_characters': total_chars,
-            'total_words': total_words,
-            'avg_chars_per_page': total_chars / len(book_data['pages']) if book_data['pages'] else 0,
-            'avg_words_per_page': total_words / len(book_data['pages']) if book_data['pages'] else 0,
+        book_data["statistics"] = {
+            "total_characters": total_chars,
+            "total_words": total_words,
+            "avg_chars_per_page": total_chars / len(book_data["pages"])
+            if book_data["pages"]
+            else 0,
+            "avg_words_per_page": total_words / len(book_data["pages"])
+            if book_data["pages"]
+            else 0,
         }
 
         logger.info(f"  ✓ Extracted {len(book_data['pages'])} pages, {total_words:,} words")
@@ -164,7 +166,7 @@ class MedicalPDFExtractor:
 
     def save_json(self, data: Dict, output_path: Path):
         """Save extracted data as JSON"""
-        with open(output_path, 'w', encoding='utf-8') as f:
+        with open(output_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
 
     def process_all_pdfs(self, pdf_dir: str = "data/pdfs"):
@@ -207,7 +209,9 @@ def main():
 
     parser = argparse.ArgumentParser(description="Extract text from medical PDF textbooks")
     parser.add_argument("--input", default="data/pdfs", help="Input directory containing PDFs")
-    parser.add_argument("--output", default="data/processed", help="Output directory for JSON files")
+    parser.add_argument(
+        "--output", default="data/processed", help="Output directory for JSON files"
+    )
 
     args = parser.parse_args()
 

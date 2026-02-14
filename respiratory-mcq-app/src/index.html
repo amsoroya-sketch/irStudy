@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Week 3 Respiratory Medicine MCQs - Australian Medical Context">
+    <title>Week 3 Respiratory MCQs | Medical Study App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Main Application Container -->
+    <div id="app" class="app-container">
+
+        <!-- Header with Progress & Controls -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">Week 3: Respiratory Medicine MCQs</h1>
+                <p class="app-subtitle">200 Australian Medical Context Questions</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-stats">
+                    <span id="current-question">Question 1</span>
+                    <span class="separator">of</span>
+                    <span id="total-questions">200</span>
+                    <span class="separator">|</span>
+                    <span id="score-display">Score: 0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Filter & Controls -->
+            <div class="controls-panel">
+                <div class="control-group">
+                    <label for="topic-filter">Filter by Topic:</label>
+                    <select id="topic-filter" class="control-select">
+                        <option value="all">All Topics (200)</option>
+                        <option value="Asthma">Asthma & COPD</option>
+                        <option value="Pneumonia">Pneumonia & Infections</option>
+                        <option value="PE">Pulmonary Embolism & DVT</option>
+                        <option value="ILD">Interstitial Lung Disease</option>
+                        <option value="Ventilation">Respiratory Failure & Ventilation</option>
+                        <option value="Lung Cancer">Lung Cancer</option>
+                        <option value="Sleep">Sleep Medicine & PFT</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="view-mode">View Mode:</label>
+                    <select id="view-mode" class="control-select">
+                        <option value="all">All Questions</option>
+                        <option value="unanswered">Unanswered Only</option>
+                        <option value="incorrect">Incorrect Only</option>
+                        <option value="flagged">Flagged for Review</option>
+                    </select>
+                </div>
+
+                <button id="reset-progress" class="btn btn-secondary">Reset Progress</button>
+            </div>
+        </header>
+
+        <!-- Main MCQ Display Area -->
+        <main class="mcq-main">
+            <div class="mcq-container">
+
+                <!-- Question Number Badge -->
+                <div class="question-badge">
+                    <span id="question-number">Q1</span>
+                    <button id="flag-btn" class="flag-btn" title="Flag for review">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 3v14M4 3l10 5-10 5V3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Question Scenario & Stem -->
+                <div class="question-section">
+                    <div id="question-scenario" class="question-scenario"></div>
+                    <div id="question-stem" class="question-stem"></div>
+                </div>
+
+                <!-- Answer Options -->
+                <div id="options-container" class="options-container">
+                    <!-- Options will be dynamically generated -->
+                </div>
+
+                <!-- Submit Answer Button -->
+                <div class="action-buttons">
+                    <button id="submit-answer" class="btn btn-primary" disabled>Submit Answer</button>
+                    <button id="show-explanation" class="btn btn-info" style="display: none;">Show Explanation</button>
+                </div>
+
+                <!-- Feedback Section -->
+                <div id="feedback-section" class="feedback-section" style="display: none;">
+                    <div id="feedback-message" class="feedback-message"></div>
+                </div>
+
+                <!-- Explanation Section -->
+                <div id="explanation-section" class="explanation-section" style="display: none;">
+                    <h3 class="explanation-title">Explanation</h3>
+                    <div id="explanation-content" class="explanation-content"></div>
+
+                    <div class="explanation-summary">
+                        <h4>Summary</h4>
+                        <p id="explanation-summary"></p>
+                    </div>
+
+                    <div class="citations-section">
+                        <h4>References</h4>
+                        <ul id="citations-list" class="citations-list"></ul>
+                    </div>
+
+                    <div class="learning-objectives">
+                        <h4>Learning Objectives</h4>
+                        <ul id="learning-objectives-list" class="objectives-list"></ul>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- Footer Navigation -->
+        <footer class="app-footer">
+            <div class="navigation-controls">
+                <button id="prev-btn" class="btn btn-nav" disabled>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M10 2L4 8l6 6V2z"/>
+                    </svg>
+                    Previous
+                </button>
+
+                <div class="jump-to">
+                    <label for="jump-input">Jump to:</label>
+                    <input type="number" id="jump-input" class="jump-input" min="1" max="200" value="1">
+                    <button id="jump-btn" class="btn btn-secondary-sm">Go</button>
+                </div>
+
+                <button id="next-btn" class="btn btn-nav">
+                    Next
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M6 2l6 6-6 6V2z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="quick-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Answered:</span>
+                    <span id="answered-count" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Correct:</span>
+                    <span id="correct-count" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Flagged:</span>
+                    <span id="flagged-count" class="stat-value">0</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Loading MCQs...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>

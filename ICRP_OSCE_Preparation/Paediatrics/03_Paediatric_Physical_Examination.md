@@ -77,6 +77,40 @@
 
 ---
 
+## 📺 RECOMMENDED VIDEO DEMONSTRATIONS
+
+### Paediatric Examination Videos
+
+**Essential Videos (Watch These First):**
+
+1. **Newborn Examination - Geeky Medics**
+   - URL: https://geekymedics.com/newborn-examination/
+   - Duration: 12 minutes (comprehensive baby check)
+   - Focus: Complete newborn examination including hips (Ortolani/Barlow), heart, reflexes
+   - Why recommended: Excellent step-by-step demonstration of baby check - most common paediatric OSCE station
+   - Australian relevance: Follows Australian newborn screening protocols
+
+2. **Paediatric Respiratory Examination - Geeky Medics**
+   - URL: https://geekymedics.com/paediatric-respiratory-examination/
+   - Duration: 8 minutes
+   - Focus: Examining uncooperative child, distraction techniques, opportunistic examination
+   - Why recommended: Perfect for learning age-appropriate examination techniques
+
+3. **Paediatric Cardiovascular Examination - Geeky Medics**
+   - URL: https://geekymedics.com/paediatric-cardiovascular-examination/
+   - Duration: 8 minutes
+   - Focus: Heart examination in infant/child, assessing for congenital heart disease
+   - Why recommended: Clear demonstration of examining child on parent's lap and femoral pulse palpation
+
+4. **Developmental Assessment - Oxford Medical Education**
+   - URL: https://www.oxfordmedicaleducation.com/clinical-skills/paediatrics/developmental-assessment/
+   - Focus: Age-appropriate developmental milestones assessment
+   - Why recommended: Helpful for understanding normal development and red flags
+
+**Note:** Complete video resource catalog available in [00_VIDEO_RESOURCES_MASTER_LIST.md](../00_VIDEO_RESOURCES_MASTER_LIST.md)
+
+---
+
 # Paediatric Physical Examination
 
 **Target Audience**: International Medical Graduates (IMGs) preparing for AMC Clinical OSCE and ICRP NSW Junior Hospital Programmes paediatric rotations

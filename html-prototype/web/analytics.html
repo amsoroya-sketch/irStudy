@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress & Analytics - irStudy</title>
+  <link rel="stylesheet" href="../css/design-system.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-sans); background: var(--color-gray-50); min-height: 100vh; }
+    .app-layout { display: flex; min-height: 100vh; }
+    .sidebar { width: 260px; background: white; border-right: 1px solid var(--color-gray-200); display: flex; flex-direction: column; position: fixed; height: 100vh; }
+    .sidebar-header { padding: var(--space-6); border-bottom: 1px solid var(--color-gray-100); }
+    .sidebar-logo { display: flex; align-items: center; gap: var(--space-3); }
+    .sidebar-logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--color-primary-600), var(--color-purple-600)); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+    .sidebar-nav { flex: 1; padding: var(--space-4); overflow-y: auto; }
+    .nav-section { margin-bottom: var(--space-6); }
+    .nav-section-title { font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-gray-500); margin-bottom: var(--space-3); padding-left: var(--space-3); }
+    .nav-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-lg); color: var(--color-gray-600); text-decoration: none; font-size: var(--font-size-sm); transition: var(--transition-fast); cursor: pointer; }
+    .nav-item:hover { background: var(--color-gray-100); color: var(--color-gray-900); }
+    .nav-item.active { background: var(--color-primary-50); color: var(--color-primary-600); }
+    .nav-item-icon { width: 20px; text-align: center; }
+    .main-content { flex: 1; margin-left: 260px; min-height: 100vh; }
+    .top-header { background: white; border-bottom: 1px solid var(--color-gray-200); padding: var(--space-4) var(--space-6); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; }
+    .header-search { display: flex; align-items: center; gap: var(--space-3); flex: 1; max-width: 400px; }
+    .header-search input { width: 100%; padding: var(--space-3) var(--space-4); border: 1px solid var(--color-gray-200); border-radius: var(--radius-lg); font-size: var(--font-size-base); background: var(--color-gray-50); }
+    .header-actions { display: flex; align-items: center; gap: var(--space-3); }
+    .icon-btn { width: 40px; height: 40px; border-radius: var(--radius-lg); border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--color-gray-600); }
+    .icon-btn:hover { background: var(--color-gray-100); }
+    
+    .analytics-content { padding: var(--space-6); }
+    .page-header { margin-bottom: var(--space-8); }
+    .page-header h1 { font-size: var(--font-size-3xl); margin-bottom: var(--space-2); }
+    .page-header p { color: var(--color-gray-600); }
+    
+    /* Stats Overview */
+    .stats-overview { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); margin-bottom: var(--space-8); }
+    .stat-card { background: white; padding: var(--space-6); border-radius: var(--radius-xl); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-sm); }
+    .stat-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4); }
+    .stat-icon { width: 48px; height: 48px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: var(--font-size-xl); }
+    .stat-trend { font-size: var(--font-size-xs); padding: var(--space-1) var(--space-2); border-radius: var(--radius-full); font-weight: var(--font-weight-medium); }
+    .stat-trend.up { background: var(--color-success-100); color: var(--color-success-700); }
+    .stat-value { font-size: var(--font-size-3xl); font-weight: bold; margin-bottom: var(--space-1); }
+    .stat-label { font-size: var(--font-size-sm); color: var(--color-gray-500); }
+    
+    /* Charts Section */
+    .charts-grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-6); margin-bottom: var(--space-8); }
+    .chart-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-sm); }
+    .chart-header { padding: var(--space-6); border-bottom: 1px solid var(--color-gray-100); display: flex; align-items: center; justify-content: space-between; }
+    .chart-title { font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold); }
+    .chart-filters { display: flex; gap: var(--space-2); }
+    .filter-btn { padding: var(--space-2) var(--space-4); border: 1px solid var(--color-gray-200); background: white; border-radius: var(--radius-lg); font-size: var(--font-size-sm); cursor: pointer; }
+    .filter-btn.active { background: var(--color-primary-600); color: white; border-color: var(--color-primary-600); }
+    .chart-body { padding: var(--space-6); height: 300px; position: relative; }
+    
+    /* Simple Bar Chart */
+    .bar-chart { display: flex; align-items: flex-end; justify-content: space-around; height: 100%; padding-bottom: 40px; position: relative; }
+    .bar-chart::before { content: ''; position: absolute; bottom: 40px; left: 0; right: 0; height: 1px; background: var(--color-gray-200); }
+    .bar-item { display: flex; flex-direction: column; align-items: center; flex: 1; max-width: 60px; }
+    .bar { width: 100%; background: linear-gradient(to top, var(--color-primary-600), var(--color-primary-400)); border-radius: var(--radius-md) var(--radius-md) 0 0; transition: var(--transition-base); }
+    .bar:hover { opacity: 0.8; }
+    .bar-label { margin-top: var(--space-2); font-size: var(--font-size-xs); color: var(--color-gray-500); }
+    .bar-value { position: absolute; bottom: 100%; margin-bottom: var(--space-1); font-size: var(--font-size-xs); font-weight: var(--font-weight-semibold); color: var(--color-gray-700); }
+    
+    /* Donut Chart */
+    .donut-chart { width: 200px; height: 200px; margin: 0 auto; position: relative; }
+    .donut-svg { transform: rotate(-90deg); }
+    .donut-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+    .donut-value { font-size: var(--font-size-3xl); font-weight: bold; color: var(--color-gray-900); }
+    .donut-label { font-size: var(--font-size-xs); color: var(--color-gray-500); }
+    .donut-legend { margin-top: var(--space-6); }
+    .legend-item { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2); font-size: var(--font-size-sm); }
+    .legend-dot { width: 12px; height: 12px; border-radius: var(--radius-full); }
+    
+    /* Weak Areas */
+    .weak-areas { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    .weak-area-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-gray-200); padding: var(--space-6); }
+    .weak-area-header { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); }
+    .weak-area-icon { width: 48px; height: 48px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: var(--font-size-xl); }
+    .weak-area-title { font-weight: var(--font-weight-semibold); }
+    .weak-area-score { font-size: var(--font-size-2xl); font-weight: bold; color: var(--color-error-600); margin-bottom: var(--space-1); }
+    .weak-area-bar { height: 8px; background: var(--color-gray-200); border-radius: var(--radius-full); overflow: hidden; margin-bottom: var(--space-4); }
+    .weak-area-fill { height: 100%; background: var(--color-error-500); border-radius: var(--radius-full); }
+    .improvement-list { list-style: none; }
+    .improvement-list li { padding: var(--space-2) 0; font-size: var(--font-size-sm); color: var(--color-gray-600); display: flex; align-items: center; gap: var(--space-2); }
+    .improvement-list li::before { content: '→'; color: var(--color-primary-600); font-weight: bold; }
+    
+    /* Study Streak */
+    .streak-calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--space-2); }
+    .calendar-day { aspect-ratio: 1; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: var(--font-size-xs); }
+    .calendar-day.empty { background: transparent; }
+    .calendar-day.future { background: var(--color-gray-100); color: var(--color-gray-400); }
+    .calendar-day.studied { background: var(--color-success-500); color: white; }
+    .calendar-day.missed { background: var(--color-gray-200); color: var(--color-gray-500); }
+    .calendar-day.today { background: var(--color-primary-600); color: white; border: 2px solid var(--color-primary-800); }
+    
+    @media (max-width: 1024px) {
+      .sidebar { display: none; }
+      .main-content { margin-left: 0; }
+      .stats-overview { grid-template-columns: repeat(2, 1fr); }
+      .charts-grid { grid-template-columns: 1fr; }
+      .weak-areas { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <div class="sidebar-logo-icon">ir</div>
+          <span class="font-bold text-lg">irStudy</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <div class="nav-section-title">Main</div>
+          <a href="dashboard.html" class="nav-item"><span class="nav-item-icon">🏠</span> Dashboard</a>
+          <a href="mcq-study.html" class="nav-item"><span class="nav-item-icon">📚</span> MCQ Practice</a>
+          <a href="osce-practice.html" class="nav-item"><span class="nav-item-icon">🎯</span> OSCE Scenarios</a>
+          <a href="emr-simulation.html" class="nav-item"><span class="nav-item-icon">🏥</span> EMR Simulation</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">Learning</div>
+          <a href="analytics.html" class="nav-item active"><span class="nav-item-icon">📊</span> Progress</a>
+          <a href="#" class="nav-item"><span class="nav-item-icon">⭐</span> Bookmarks</a>
+          <a href="#" class="nav-item"><span class="nav-item-icon">📝</span> Notes</a>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="top-header">
+        <div class="header-search">
+          <span>🔍</span>
+          <input type="text" placeholder="Search analytics...">
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn">🔔</button>
+          <button class="icon-btn">⚙️</button>
+        </div>
+      </header>
+
+      <div class="analytics-content">
+        <div class="page-header">
+          <h1>Progress & Analytics 📊</h1>
+          <p>Track your study performance and identify areas for improvement</p>
+        </div>
+
+        <div class="stats-overview">
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon" style="background: var(--color-primary-100);">📚</div>
+              <span class="stat-trend up">↑ 12%</span>
+            </div>
+            <div class="stat-value">1,247</div>
+            <div class="stat-label">Questions Answered</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon" style="background: var(--color-success-100);">🎯</div>
+              <span class="stat-trend up">↑ 8%</span>
+            </div>
+            <div class="stat-value">84.2%</div>
+            <div class="stat-label">Average Accuracy</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon" style="background: var(--color-warning-100);">⏱️</div>
+              <span class="stat-trend up">↑ 15%</span>
+            </div>
+            <div class="stat-value">47h 32m</div>
+            <div class="stat-label">Total Study Time</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon" style="background: #F3E8FF;">🔥</div>
+              <span class="stat-trend up">↑ 3 days</span>
+            </div>
+            <div class="stat-value">12</div>
+            <div class="stat-label">Day Streak</div>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3 class="chart-title">Study Activity (Last 7 Days)</h3>
+              <div class="chart-filters">
+                <button class="filter-btn active">Week</button>
+                <button class="filter-btn">Month</button>
+                <button class="filter-btn">Year</button>
+              </div>
+            </div>
+            <div class="chart-body">
+              <div class="bar-chart">
+                <div class="bar-item">
+                  <div class="bar" style="height: 60%;"></div>
+                  <span class="bar-label">Mon</span>
+                </div>
+                <div class="bar-item">
+                  <div class="bar" style="height: 85%;"></div>
+                  <span class="bar-label">Tue</span>
+                </div>
+                <div class="bar-item">
+                  <div class="bar" style="height: 45%;"></div>
+                  <span class="bar-label">Wed</span>
+                </div>
+                <div class="bar-item">
+                  <div class="bar" style="height: 90%;"></div>
+                  <span class="bar-label">Thu</span>
+                </div>
+                <div class="bar-item">
+                  <div class="bar" style="height: 70%;"></div>
+                  <span class="bar-label">Fri</span>
+                </div>
+                <div class="bar-item">
+                  <div class="bar" style="height: 100%;"></div>
+                  <span class="bar-label">Sat</span>
+                </div>
+                <div class="bar-item">
+                  <div class="bar" style="height: 55%;"></div>
+                  <span class="bar-label">Sun</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3 class="chart-title">Performance by Type</h3>
+            </div>
+            <div class="chart-body">
+              <div class="donut-chart">
+                <svg class="donut-svg" width="200" height="200" viewBox="0 0 200 200">
+                  <circle cx="100" cy="100" r="80" fill="none" stroke="#e5e7eb" stroke-width="30"/>
+                  <circle cx="100" cy="100" r="80" fill="none" stroke="#2563eb" stroke-width="30" stroke-dasharray="251.2" stroke-dashoffset="62.8" stroke-linecap="round"/>
+                  <circle cx="100" cy="100" r="80" fill="none" stroke="#10b981" stroke-width="30" stroke-dasharray="188.4" stroke-dashoffset="125.6" transform="rotate(90 100 100)" stroke-linecap="round"/>
+                  <circle cx="100" cy="100" r="80" fill="none" stroke="#8b5cf6" stroke-width="30" stroke-dasharray="125.6" stroke-dashoffset="188.4" transform="rotate(180 100 100)" stroke-linecap="round"/>
+                </svg>
+                <div class="donut-center">
+                  <div class="donut-value">84%</div>
+                  <div class="donut-label">Avg Score</div>
+                </div>
+              </div>
+              <div class="donut-legend">
+                <div class="legend-item"><div class="legend-dot" style="background: var(--color-primary-600);"></div> MCQs (75%)</div>
+                <div class="legend-item"><div class="legend-dot" style="background: var(--color-success-500);"></div> OSCEs (80%)</div>
+                <div class="legend-item"><div class="legend-dot" style="background: var(--color-purple-500);"></div> EMR (65%)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 style="margin-bottom: var(--space-6);">📉 Areas Needing Improvement</h2>
+        <div class="weak-areas">
+          <div class="weak-area-card">
+            <div class="weak-area-header">
+              <div class="weak-area-icon" style="background: var(--color-error-100);">💊</div>
+              <span class="weak-area-title">Pharmacology</span>
+            </div>
+            <div class="weak-area-score">58%</div>
+            <div class="weak-area-bar"><div class="weak-area-fill" style="width: 58%;"></div></div>
+            <ul class="improvement-list">
+              <li>Drug interactions</li>
+              <li>Dosing calculations</li>
+              <li>Side effect profiles</li>
+            </ul>
+          </div>
+          <div class="weak-area-card">
+            <div class="weak-area-header">
+              <div class="weak-area-icon" style="background: var(--color-warning-100);">🧬</div>
+              <span class="weak-area-title">Genetics</span>
+            </div>
+            <div class="weak-area-score">62%</div>
+            <div class="weak-area-bar"><div class="weak-area-fill" style="width: 62%; background: var(--color-warning-500);"></div></div>
+            <ul class="improvement-list">
+              <li>Inheritance patterns</li>
+              <li>Genetic testing</li>
+              <li>Cancer genetics</li>
+            </ul>
+          </div>
+          <div class="weak-area-card">
+            <div class="weak-area-header">
+              <div class="weak-area-icon" style="background: var(--color-primary-100);">👶</div>
+              <span class="weak-area-title">Paediatrics</span>
+            </div>
+            <div class="weak-area-score">68%</div>
+            <div class="weak-area-bar"><div class="weak-area-fill" style="width: 68%; background: var(--color-primary-500);"></div></div>
+            <ul class="improvement-list">
+              <li>Development milestones</li>
+              <li>Vaccination schedule</li>
+              <li>Common infections</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

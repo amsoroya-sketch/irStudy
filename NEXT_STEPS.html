@@ -295,7 +295,7 @@
 <span>→</span>
 <span>/</span>
 </div>
-        
+
         <h1>Next Steps - What To Do Now</h1>
 
 <h2>✅ Infrastructure Complete!</h2>
@@ -488,7 +488,7 @@ def ask<em>medical</em>question(question: str) -> str:
     client = QdrantClient(url="http://localhost:6333")
     model = SentenceTransformer('pritamdeka/S-PubMedBert-MS-MARCO')
 </p>
-    
+
 <p>
     query_vec = model.encode(question).tolist()
     results = client.search(
@@ -497,12 +497,12 @@ def ask<em>medical</em>question(question: str) -> str:
         limit=5
     )
 </p>
-    
+
 <p>
     # 2. Build context from search results
     context = "\n\n".join([r.payload['text'] for r in results])
 </p>
-    
+
 <p>
     # 3. Generate answer with LLM
     llm = OllamaClient()
@@ -520,7 +520,7 @@ Question: {question}
 <p>
 Provide a comprehensive, evidence-based answer with citations."""
 </p>
-    
+
 <p>
     answer = llm.generate(prompt, model_name="meditron:7b")
     return answer
@@ -762,13 +762,13 @@ Good luck building the world's best AI-powered medical education system! 🚀
 
 <strong>Questions?</strong> Re-read the documentation or reach out for help.
 
-        
+
     <div class="footer">
         <p><strong>ICRP Study Project</strong> | NSW Young Hospital Preparation</p>
         <p>Generated: December 15, 2025 at 11:32</p>
         <p><a href="/home/dev/Development/irStudy/MASTER_INDEX.html">Return to Master Index</a></p>
     </div>
-    
+
     </div>
 </body>
 </html>

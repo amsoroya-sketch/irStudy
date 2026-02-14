@@ -30,11 +30,16 @@ from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
+# Rate limiting
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
+
 # Prometheus metrics
 from prometheus_client import Counter, Histogram, make_asgi_app
 
 # Import routers
-from api.v1.router import api_router
+from src.api.v1.router import api_router
 
 # Import database
 # from src.db.session import engine, SessionLocal
@@ -42,22 +47,20 @@ from api.v1.router import api_router
 
 # Logging configuration
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
 
+# Initialize rate limiter
+limiter = Limiter(key_func=get_remote_address)
+
 # Prometheus metrics
 REQUEST_COUNT = Counter(
-    'http_requests_total',
-    'Total HTTP requests',
-    ['method', 'endpoint', 'status']
+    "http_requests_total", "Total HTTP requests", ["method", "endpoint", "status"]
 )
 
 REQUEST_LATENCY = Histogram(
-    'http_request_duration_seconds',
-    'HTTP request latency',
-    ['method', 'endpoint']
+    "http_request_duration_seconds", "HTTP request latency", ["method", "endpoint"]
 )
 
 
@@ -100,8 +103,12 @@ app = FastAPI(
     docs_url="/api/docs",
     redoc_url="/api/redoc",
     openapi_url="/api/openapi.json",
-    lifespan=lifespan
+    lifespan=lifespan,
 )
+
+# Add rate limiter to app
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 
 # ============================================================================
@@ -116,20 +123,18 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE", "PATCH"],
     allow_headers=["*"],
-    expose_headers=["X-Total-Count", "X-Request-ID"]
+    expose_headers=["X-Total-Count", "X-Request-ID"],
 )
 
 # Trusted host middleware (prevent host header attacks)
 if os.getenv("ENV") == "production":
-    app.add_middleware(
-        TrustedHostMiddleware,
-        allowed_hosts=["irstudy.com", "*.irstudy.com"]
-    )
+    app.add_middleware(TrustedHostMiddleware, allowed_hosts=["irstudy.com", "*.irstudy.com"])
 
 
 # ============================================================================
 # REQUEST LOGGING & METRICS MIDDLEWARE
 # ============================================================================
+
 
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
@@ -159,15 +164,10 @@ async def log_requests(request: Request, call_next):
 
     # Record metrics
     REQUEST_COUNT.labels(
-        method=request.method,
-        endpoint=request.url.path,
-        status=response.status_code
+        method=request.method, endpoint=request.url.path, status=response.status_code
     ).inc()
 
-    REQUEST_LATENCY.labels(
-        method=request.method,
-        endpoint=request.url.path
-    ).observe(latency)
+    REQUEST_LATENCY.labels(method=request.method, endpoint=request.url.path).observe(latency)
 
     # Log response
     logger.info(
@@ -193,6 +193,7 @@ async def log_requests(request: Request, call_next):
 # EXCEPTION HANDLERS
 # ============================================================================
 
+
 @app.exception_handler(StarletteHTTPException)
 async def http_exception_handler(request: Request, exc: StarletteHTTPException):
     """Handle HTTP exceptions with consistent format"""
@@ -206,23 +207,15 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException):
     return JSONResponse(
         status_code=exc.status_code,
         content={
-            "error": {
-                "code": exc.status_code,
-                "message": exc.detail,
-                "path": request.url.path
-            }
-        }
+            "error": {"code": exc.status_code, "message": exc.detail, "path": request.url.path}
+        },
     )
 
 
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
     """Handle validation errors with detailed field-level errors"""
-    logger.warning(
-        f"Validation error | "
-        f"Path: {request.url.path} | "
-        f"Errors: {exc.errors()}"
-    )
+    logger.warning(f"Validation error | " f"Path: {request.url.path} | " f"Errors: {exc.errors()}")
 
     return JSONResponse(
         status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
@@ -231,9 +224,9 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
                 "code": 422,
                 "message": "Validation error",
                 "details": exc.errors(),
-                "path": request.url.path
+                "path": request.url.path,
             }
-        }
+        },
     )
 
 
@@ -241,10 +234,7 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 async def general_exception_handler(request: Request, exc: Exception):
     """Handle unexpected exceptions"""
     logger.error(
-        f"Unexpected error | "
-        f"Path: {request.url.path} | "
-        f"Error: {str(exc)}",
-        exc_info=True
+        f"Unexpected error | " f"Path: {request.url.path} | " f"Error: {str(exc)}", exc_info=True
     )
 
     # Don't expose internal errors in production
@@ -255,13 +245,7 @@ async def general_exception_handler(request: Request, exc: Exception):
 
     return JSONResponse(
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-        content={
-            "error": {
-                "code": 500,
-                "message": detail,
-                "path": request.url.path
-            }
-        }
+        content={"error": {"code": 500, "message": detail, "path": request.url.path}},
     )
 
 
@@ -269,8 +253,10 @@ async def general_exception_handler(request: Request, exc: Exception):
 # HEALTH CHECK ENDPOINTS
 # ============================================================================
 
+
 @app.get("/health", tags=["Health"])
-async def health_check() -> Dict[str, Any]:
+@limiter.limit("20/minute")  # Rate limit: 20 requests per minute for anonymous users
+async def health_check(request: Request) -> Dict[str, Any]:
     """
     Basic health check endpoint
     Used by Docker healthcheck, k8s liveness probe
@@ -279,12 +265,13 @@ async def health_check() -> Dict[str, Any]:
         "status": "healthy",
         "service": "irStudy Medical Education Platform",
         "version": "1.0.0",
-        "environment": os.getenv("ENV", "development")
+        "environment": os.getenv("ENV", "development"),
     }
 
 
 @app.get("/health/ready", tags=["Health"])
-async def readiness_check() -> Dict[str, Any]:
+@limiter.limit("20/minute")  # Rate limit: 20 requests per minute for anonymous users
+async def readiness_check(request: Request) -> Dict[str, Any]:
     """
     Readiness check - verifies all dependencies are available
     Used by k8s readiness probe
@@ -318,10 +305,7 @@ async def readiness_check() -> Dict[str, Any]:
         checks["qdrant"] = f"error: {str(e)}"
         overall_status = "not_ready"
 
-    return {
-        "status": overall_status,
-        "checks": checks
-    }
+    return {"status": overall_status, "checks": checks}
 
 
 # ============================================================================
@@ -345,8 +329,10 @@ app.include_router(api_router, prefix="/api")
 # ROOT ENDPOINT
 # ============================================================================
 
+
 @app.get("/", tags=["Root"])
-async def root() -> Dict[str, Any]:
+@limiter.limit("20/minute")  # Rate limit: 20 requests per minute for anonymous users
+async def root(request: Request) -> Dict[str, Any]:
     """
     Root endpoint - API information
     """
@@ -358,7 +344,7 @@ async def root() -> Dict[str, Any]:
         "emergency_number": os.getenv("EMERGENCY_NUMBER", "000"),
         "docs": "/api/docs",
         "health": "/health",
-        "metrics": "/metrics"
+        "metrics": "/metrics",
     }
 
 
@@ -371,5 +357,5 @@ if __name__ == "__main__":
         port=int(os.getenv("UVICORN_PORT", 8000)),
         reload=os.getenv("DEBUG", "False").lower() == "true",
         workers=int(os.getenv("UVICORN_WORKERS", 1)),
-        log_level=os.getenv("LOG_LEVEL", "info").lower()
+        log_level=os.getenv("LOG_LEVEL", "info").lower(),
     )

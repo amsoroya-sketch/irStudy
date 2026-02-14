@@ -31,6 +31,9 @@ passlib[bcrypt]==1.7.4
 python-multipart==0.0.6
 bcrypt==4.1.2
 
+# HashiCorp Vault client
+hvac==2.1.0
+
 # JWT handling
 PyJWT==2.8.0
 cryptography==42.0.0
@@ -44,13 +47,13 @@ qdrant-client==1.7.3
 # Neo4j knowledge graph
 neo4j==5.16.0
 
-# Sentence transformers for embeddings
+# Sentence transformers for embeddings (Python 3.11 compatible - reverted to original versions)
 sentence-transformers==2.3.1
 torch==2.1.2
 transformers==4.37.0
 
-# OpenAI & Anthropic LLMs
-openai==1.9.0
+# OpenAI & Anthropic LLMs (langchain-openai requires openai>=1.10.0)
+openai==1.10.0
 anthropic==0.17.0
 
 # LangChain for AI orchestration
@@ -59,7 +62,7 @@ langchain-openai==0.0.5
 langchain-anthropic==0.1.1
 langchain-community==0.0.16
 
-# Ollama client
+# Ollama client (requires httpx<0.26.0)
 ollama==0.1.6
 
 # ============================================================================
@@ -77,8 +80,8 @@ sentry-sdk[fastapi]==1.40.0
 # ============================================================================
 # UTILITIES
 # ============================================================================
-# HTTP client
-httpx==0.26.0
+# HTTP client (ollama requires httpx<0.26.0)
+httpx==0.25.2
 aiohttp==3.9.1
 
 # Date/time handling
@@ -110,7 +113,7 @@ pytest==7.4.4
 pytest-asyncio==0.23.3
 pytest-cov==4.1.0
 pytest-mock==3.12.0
-httpx==0.26.0
+httpx==0.25.2  # Must match main httpx version (ollama compatibility)
 
 # Code quality
 black==24.1.1
@@ -121,9 +124,9 @@ isort==5.13.2
 # ============================================================================
 # MEDICAL DOMAIN SPECIFIC
 # ============================================================================
-# Medical NLP
+# Medical NLP (scispacy requires spacy<3.7.0, using Python 3.11)
 scispacy==0.5.3
-spacy==3.7.2
+spacy==3.6.1
 
 # Medical knowledge bases (optional)
 # biopython==1.83
@@ -132,3 +135,7 @@ spacy==3.7.2
 # ENVIRONMENT & CONFIGURATION
 # ============================================================================
 python-dotenv==1.0.1
+
+# WebSocket support
+websockets==12.0
+slowapi==0.1.9

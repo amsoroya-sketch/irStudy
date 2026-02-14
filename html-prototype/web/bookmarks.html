@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookmarks & Notes - irStudy</title>
+  <link rel="stylesheet" href="../css/design-system.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-sans); background: var(--color-gray-50); min-height: 100vh; }
+    .app-layout { display: flex; min-height: 100vh; }
+    .sidebar { width: 260px; background: white; border-right: 1px solid var(--color-gray-200); display: flex; flex-direction: column; position: fixed; height: 100vh; }
+    .sidebar-header { padding: var(--space-6); border-bottom: 1px solid var(--color-gray-100); }
+    .sidebar-logo { display: flex; align-items: center; gap: var(--space-3); }
+    .sidebar-logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--color-primary-600), var(--color-purple-600)); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+    .sidebar-nav { flex: 1; padding: var(--space-4); overflow-y: auto; }
+    .nav-section { margin-bottom: var(--space-6); }
+    .nav-section-title { font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-gray-500); margin-bottom: var(--space-3); padding-left: var(--space-3); }
+    .nav-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-lg); color: var(--color-gray-600); text-decoration: none; font-size: var(--font-size-sm); transition: var(--transition-fast); cursor: pointer; }
+    .nav-item:hover { background: var(--color-gray-100); color: var(--color-gray-900); }
+    .nav-item.active { background: var(--color-primary-50); color: var(--color-primary-600); }
+    .main-content { flex: 1; margin-left: 260px; min-height: 100vh; }
+    .top-header { background: white; border-bottom: 1px solid var(--color-gray-200); padding: var(--space-4) var(--space-6); display: flex; align-items: center; justify-content: space-between; }
+    .header-search { display: flex; align-items: center; gap: var(--space-3); flex: 1; max-width: 400px; }
+    .header-search input { width: 100%; padding: var(--space-3) var(--space-4); border: 1px solid var(--color-gray-200); border-radius: var(--radius-lg); font-size: var(--font-size-base); background: var(--color-gray-50); }
+    .header-actions { display: flex; align-items: center; gap: var(--space-3); }
+    .icon-btn { width: 40px; height: 40px; border-radius: var(--radius-lg); border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--color-gray-600); }
+    
+    .bookmarks-content { padding: var(--space-6); }
+    .page-header { margin-bottom: var(--space-8); }
+    .page-header h1 { font-size: var(--font-size-3xl); margin-bottom: var(--space-2); }
+    .page-header p { color: var(--color-gray-600); }
+    
+    /* Tabs */
+    .content-tabs { display: flex; gap: var(--space-1); margin-bottom: var(--space-8); border-bottom: 1px solid var(--color-gray-200); }
+    .content-tab { padding: var(--space-3) var(--space-6); color: var(--color-gray-500); font-weight: var(--font-weight-medium); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+    .content-tab.active { color: var(--color-primary-600); border-bottom-color: var(--color-primary-600); }
+    
+    /* Filter Bar */
+    .filter-bar { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-6); }
+    .filter-select { padding: var(--space-2) var(--space-4); border: 1px solid var(--color-gray-300); border-radius: var(--radius-lg); background: white; font-size: var(--font-size-sm); }
+    .search-input { flex: 1; max-width: 300px; padding: var(--space-2) var(--space-4); border: 1px solid var(--color-gray-300); border-radius: var(--radius-lg); font-size: var(--font-size-sm); }
+    
+    /* Bookmark Grid */
+    .bookmarks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    .bookmark-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-gray-200); padding: var(--space-6); transition: var(--transition-fast); position: relative; }
+    .bookmark-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .bookmark-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: var(--space-4); }
+    .bookmark-type { padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-size: var(--font-size-xs); font-weight: var(--font-weight-medium); }
+    .bookmark-type.mcq { background: var(--color-primary-100); color: var(--color-primary-700); }
+    .bookmark-type.osce { background: var(--color-success-100); color: var(--color-success-700); }
+    .bookmark-type.emr { background: var(--color-purple-100); color: var(--color-purple-700); }
+    .bookmark-actions { display: flex; gap: var(--space-2); }
+    .bookmark-action { width: 32px; height: 32px; border-radius: var(--radius-lg); border: none; background: transparent; cursor: pointer; color: var(--color-gray-400); }
+    .bookmark-action:hover { background: var(--color-gray-100); color: var(--color-gray-600); }
+    .bookmark-question { font-size: var(--font-size-base); line-height: var(--line-height-relaxed); margin-bottom: var(--space-4); color: var(--color-gray-800); }
+    .bookmark-meta { display: flex; align-items: center; gap: var(--space-4); font-size: var(--font-size-xs); color: var(--color-gray-500); margin-bottom: var(--space-4); }
+    .bookmark-tag { padding: var(--space-1) var(--space-2); background: var(--color-gray-100); border-radius: var(--radius-md); }
+    .bookmark-footer { display: flex; align-items: center; justify-content: space-between; padding-top: var(--space-4); border-top: 1px solid var(--color-gray-100); }
+    .bookmark-date { font-size: var(--font-size-xs); color: var(--color-gray-500); }
+    .btn-sm { padding: var(--space-2) var(--space-4); border-radius: var(--radius-lg); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); border: none; cursor: pointer; }
+    .btn-primary-sm { background: var(--color-primary-600); color: white; }
+    
+    /* Notes Section */
+    .notes-list { display: flex; flex-direction: column; gap: var(--space-4); }
+    .note-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-gray-200); padding: var(--space-6); }
+    .note-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4); }
+    .note-title { font-weight: var(--font-weight-semibold); font-size: var(--font-size-lg); }
+    .note-content { color: var(--color-gray-700); line-height: var(--line-height-relaxed); margin-bottom: var(--space-4); }
+    .note-link { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); background: var(--color-primary-50); color: var(--color-primary-600); border-radius: var(--radius-lg); font-size: var(--font-size-sm); text-decoration: none; }
+    .note-footer { display: flex; align-items: center; gap: var(--space-4); margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--color-gray-100); }
+    .note-tag { padding: var(--space-1) var(--space-3); background: var(--color-warning-100); color: var(--color-warning-700); border-radius: var(--radius-full); font-size: var(--font-size-xs); }
+    
+    /* Floating Action Button */
+    .fab { position: fixed; bottom: var(--space-8); right: var(--space-8); width: 56px; height: 56px; border-radius: var(--radius-full); background: var(--color-primary-600); color: white; border: none; font-size: var(--font-size-2xl); cursor: pointer; box-shadow: var(--shadow-lg); }
+    
+    @media (max-width: 1024px) {
+      .sidebar { display: none; }
+      .main-content { margin-left: 0; }
+      .bookmarks-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .bookmarks-grid { grid-template-columns: 1fr; }
+      .filter-bar { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <div class="sidebar-logo-icon">ir</div>
+          <span class="font-bold text-lg">irStudy</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <div class="nav-section-title">Main</div>
+          <a href="dashboard.html" class="nav-item"><span style="margin-right: var(--space-3);">🏠</span> Dashboard</a>
+          <a href="mcq-study.html" class="nav-item"><span style="margin-right: var(--space-3);">📚</span> MCQ Practice</a>
+          <a href="osce-practice.html" class="nav-item"><span style="margin-right: var(--space-3);">🎯</span> OSCE Scenarios</a>
+          <a href="emr-simulation.html" class="nav-item"><span style="margin-right: var(--space-3);">🏥</span> EMR Simulation</a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-title">Learning</div>
+          <a href="analytics.html" class="nav-item"><span style="margin-right: var(--space-3);">📊</span> Progress</a>
+          <a href="bookmarks.html" class="nav-item active"><span style="margin-right: var(--space-3);">⭐</span> Bookmarks</a>
+          <a href="#" class="nav-item"><span style="margin-right: var(--space-3);">📝</span> Notes</a>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="top-header">
+        <div class="header-search">
+          <span>🔍</span>
+          <input type="text" placeholder="Search bookmarks and notes...">
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn">🔔</button>
+          <button class="icon-btn">⚙️</button>
+        </div>
+      </header>
+
+      <div class="bookmarks-content">
+        <div class="page-header">
+          <h1>Bookmarks & Notes ⭐</h1>
+          <p>Save important questions and add your personal notes</p>
+        </div>
+
+        <div class="content-tabs">
+          <div class="content-tab active">⭐ Bookmarks (24)</div>
+          <div class="content-tab">📝 Notes (12)</div>
+          <div class="content-tab">🏷️ Tags</div>
+        </div>
+
+        <div class="filter-bar">
+          <select class="filter-select">
+            <option>All Types</option>
+            <option>MCQs</option>
+            <option>OSCEs</option>
+            <option>EMR Cases</option>
+          </select>
+          <select class="filter-select">
+            <option>All Specialties</option>
+            <option>Cardiology</option>
+            <option>Respiratory</option>
+            <option>Neurology</option>
+          </select>
+          <input type="text" class="search-input" placeholder="Search...">
+        </div>
+
+        <div class="bookmarks-grid">
+          <div class="bookmark-card">
+            <div class="bookmark-header">
+              <span class="bookmark-type mcq">MCQ</span>
+              <div class="bookmark-actions">
+                <button class="bookmark-action">📝</button>
+                <button class="bookmark-action">✕</button>
+              </div>
+            </div>
+            <p class="bookmark-question">A 68-year-old man with atrial fibrillation presents with acute onset weakness of right arm and face. CT head shows no bleed. What is the most appropriate immediate management?</p>
+            <div class="bookmark-meta">
+              <span class="bookmark-tag">Cardiology</span>
+              <span class="bookmark-tag">Stroke</span>
+            </div>
+            <div class="bookmark-footer">
+              <span class="bookmark-date">Bookmarked Jan 15, 2026</span>
+              <button class="btn-sm btn-primary-sm">Review</button>
+            </div>
+          </div>
+
+          <div class="bookmark-card">
+            <div class="bookmark-header">
+              <span class="bookmark-type osce">OSCE</span>
+              <div class="bookmark-actions">
+                <button class="bookmark-action">📝</button>
+                <button class="bookmark-action">✕</button>
+              </div>
+            </div>
+            <p class="bookmark-question">Station: Chest Pain History Taking. Key learning points about ACS risk stratification and atypical presentations in women and diabetics.</p>
+            <div class="bookmark-meta">
+              <span class="bookmark-tag">Cardiovascular</span>
+              <span class="bookmark-tag">History</span>
+            </div>
+            <div class="bookmark-footer">
+              <span class="bookmark-date">Bookmarked Jan 12, 2026</span>
+              <button class="btn-sm btn-primary-sm">Review</button>
+            </div>
+          </div>
+
+          <div class="bookmark-card">
+            <div class="bookmark-header">
+              <span class="bookmark-type emr">EMR</span>
+              <div class="bookmark-actions">
+                <button class="bookmark-action">📝</button>
+                <button class="bookmark-action">✕</button>
+              </div>
+            </div>
+            <p class="bookmark-question">Diabetic Ketoacidosis Case: Key management priorities - fluid resuscitation, insulin protocol, potassium monitoring.</p>
+            <div class="bookmark-meta">
+              <span class="bookmark-tag">Endocrine</span>
+              <span class="bookmark-tag">Emergency</span>
+            </div>
+            <div class="bookmark-footer">
+              <span class="bookmark-date">Bookmarked Jan 10, 2026</span>
+              <button class="btn-sm btn-primary-sm">Review</button>
+            </div>
+          </div>
+
+          <div class="bookmark-card">
+            <div class="bookmark-header">
+              <span class="bookmark-type mcq">MCQ</span>
+              <div class="bookmark-actions">
+                <button class="bookmark-action">📝</button>
+                <button class="bookmark-action">✕</button>
+              </div>
+            </div>
+            <p class="bookmark-question">Which antibiotic is contraindicated in pregnancy due to risk of fetal tooth discoloration?</p>
+            <div class="bookmark-meta">
+              <span class="bookmark-tag">Pharmacology</span>
+              <span class="bookmark-tag">Obstetrics</span>
+            </div>
+            <div class="bookmark-footer">
+              <span class="bookmark-date">Bookmarked Jan 8, 2026</span>
+              <button class="btn-sm btn-primary-sm">Review</button>
+            </div>
+          </div>
+
+          <div class="bookmark-card">
+            <div class="bookmark-header">
+              <span class="bookmark-type mcq">MCQ</span>
+              <div class="bookmark-actions">
+                <button class="bookmark-action">📝</button>
+                <button class="bookmark-action">✕</button>
+              </div>
+            </div>
+            <p class="bookmark-question">A patient on warfarin presents with INR 8.0 and no bleeding. What is the appropriate management?</p>
+            <div class="bookmark-meta">
+              <span class="bookmark-tag">Haematology</span>
+              <span class="bookmark-tag">Anticoagulation</span>
+            </div>
+            <div class="bookmark-footer">
+              <span class="bookmark-date">Bookmarked Jan 5, 2026</span>
+              <button class="btn-sm btn-primary-sm">Review</button>
+            </div>
+          </div>
+
+          <div class="bookmark-card">
+            <div class="bookmark-header">
+              <span class="bookmark-type osce">OSCE</span>
+              <div class="bookmark-actions">
+                <button class="bookmark-action">📝</button>
+                <button class="bookmark-action">✕</button>
+              </div>
+            </div>
+            <p class="bookmark-question">Breaking Bad News Station: SPIKES protocol reminder - Setting, Perception, Invitation, Knowledge, Emotions, Strategy.</p>
+            <div class="bookmark-meta">
+              <span class="bookmark-tag">Communication</span>
+              <span class="bookmark-tag">Ethics</span>
+            </div>
+            <div class="bookmark-footer">
+              <span class="bookmark-date">Bookmarked Jan 3, 2026</span>
+              <button class="btn-sm btn-primary-sm">Review</button>
+            </div>
+          </div>
+        </div>
+
+        <h2 style="margin-top: var(--space-10); margin-bottom: var(--space-6);">📝 My Notes</h2>
+        <div class="notes-list">
+          <div class="note-card">
+            <div class="note-header">
+              <span class="note-title">Cardiology Mnemonics</span>
+              <span style="font-size: var(--font-size-xs); color: var(--color-gray-500);">Last edited 2 hours ago</span>
+            </div>
+            <div class="note-content">
+              <strong>CHADS₂-VASc</strong> for AF stroke risk:<br>
+              C - Congestive heart failure (1)<br>
+              H - Hypertension (1)<br>
+              A2 - Age ≥75 (2)<br>
+              D - Diabetes (1)<br>
+              S2 - Stroke/TIA (2)<br>
+              V - Vascular disease (1)<br>
+              A - Age 65-74 (1)<br>
+              Sc - Sex category female (1)
+            </div>
+            <a href="#" class="note-link">🔗 Linked to Q45 - Atrial Fibrillation</a>
+            <div class="note-footer">
+              <span class="note-tag">Cardiology</span>
+              <span class="note-tag">Memory Aid</span>
+            </div>
+          </div>
+
+          <div class="note-card">
+            <div class="note-header">
+              <span class="note-title">PBS Drug Codes</span>
+              <span style="font-size: var(--font-size-xs); color: var(--color-gray-500);">Last edited yesterday</span>
+            </div>
+            <div class="note-content">
+              Remember PBS authority code format for restricted items:<br>
+              - Diabetes: 4221<br>
+              - Hypertension: 4414<br>
+              - COPD: 4532<br><br>
+              Always check eTG before prescribing restricted items in EMR scenarios.
+            </div>
+            <a href="#" class="note-link">🔗 Linked to EMR Case #24</a>
+            <div class="note-footer">
+              <span class="note-tag">EMR</span>
+              <span class="note-tag">PBS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="fab">+</button>
+    </main>
+  </div>
+</body>
+</html>

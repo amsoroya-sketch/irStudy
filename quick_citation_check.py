@@ -2,7 +2,7 @@
 import json
 
 # Quick check of citations.json structure
-with open('/home/dev/Development/irStudy/validation_reports/citations.json', 'r') as f:
+with open("/home/dev/Development/irStudy/validation_reports/citations.json", "r") as f:
     claims = json.load(f)
 
 print(f"Total claims: {len(claims)}")
@@ -18,7 +18,7 @@ for i, claim in enumerate(claims[:5], 1):
 # Count by severity
 severities = {}
 for claim in claims:
-    sev = claim.get('severity', 'unknown')
+    sev = claim.get("severity", "unknown")
     severities[sev] = severities.get(sev, 0) + 1
 
 print(f"\nClaims by severity:")

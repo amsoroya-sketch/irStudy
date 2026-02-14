@@ -19,6 +19,61 @@
 
 ---
 
+## 📺 RECOMMENDED VIDEO DEMONSTRATIONS
+
+### Cardiovascular Examination Videos
+
+**Essential Videos (Watch These First):**
+
+1. **Cardiovascular Examination - Stanford Medicine 25**
+   - URL: https://stanfordmedicine25.stanford.edu/the25/cardiovascular.html
+   - Focus: Complete systematic cardiac examination with emphasis on auscultation techniques
+   - Why recommended: Gold standard demonstration from Stanford, excellent for murmur identification and dynamic maneuvers
+   - Australian relevance: Technique fully compatible with AMC Clinical exam requirements
+
+2. **Cardiovascular Examination OSCE Guide - Geeky Medics**
+   - URL: https://geekymedics.com/cardiovascular-examination/
+   - Duration: 8-10 minutes (OSCE-appropriate timing)
+   - Focus: Step-by-step OSCE format with examiner communication
+   - Why recommended: Perfect for OSCE practice, includes common findings and presentation structure
+
+3. **Heart Sounds and Murmurs - Stanford Medicine 25**
+   - URL: https://stanfordmedicine25.stanford.edu/the25/heart.html
+   - Focus: Detailed auscultation training with audio examples
+   - Why recommended: Best resource for learning to distinguish different heart sounds and murmurs
+
+### Respiratory Examination Videos
+
+**Essential Videos (Watch These First):**
+
+1. **Respiratory Examination - Stanford Medicine 25**
+   - URL: https://stanfordmedicine25.stanford.edu/the25/lung.html
+   - Focus: Complete respiratory examination including percussion and auscultation techniques
+   - Why recommended: Excellent demonstration of proper percussion technique and breath sound interpretation
+   - Australian relevance: Systematic approach matches Australian teaching hospital standards
+
+2. **Respiratory Examination OSCE Guide - Geeky Medics**
+   - URL: https://geekymedics.com/respiratory-examination/
+   - Duration: 8 minutes (OSCE-appropriate)
+   - Focus: OSCE-formatted examination with clear communication and presentation
+   - Why recommended: Ideal for practicing the 5 Ps framework and OSCE timing
+
+3. **Lung Auscultation - Oxford Medical Education**
+   - URL: https://www.oxfordmedicaleducation.com/clinical-skills/examination/lung-auscultation/
+   - Focus: Detailed guide to breath sounds with audio examples
+   - Why recommended: Excellent for learning to distinguish normal vs abnormal breath sounds
+
+**Supplementary Videos:**
+
+4. **Chest Percussion Technique - Stanford Medicine 25**
+   - URL: https://stanfordmedicine25.stanford.edu/the25/percussion.html
+   - Focus: Detailed percussion technique demonstration
+   - Why recommended: Helpful if struggling with percussion technique
+
+**Note:** Complete video resource catalog with 50+ videos available in [00_VIDEO_RESOURCES_MASTER_LIST.md](../00_VIDEO_RESOURCES_MASTER_LIST.md)
+
+---
+
 ## THE 5 Ps FRAMEWORK (Universal for ALL Examinations)
 
 Every physical examination MUST follow this structure:

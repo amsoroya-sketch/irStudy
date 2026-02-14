@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>irStudy Mobile</title>
+  <link rel="stylesheet" href="../css/design-system.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body { font-family: var(--font-family-sans); background: var(--color-gray-50); min-height: 100vh; padding-bottom: 80px; }
+    
+    /* Safe Area for iOS */
+    @supports (padding-bottom: env(safe-area-inset-bottom)) {
+      body { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+    }
+    
+    /* Mobile Header */
+    .mobile-header {
+      background: white; padding: var(--space-4) var(--space-4);
+      border-bottom: 1px solid var(--color-gray-200); position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .mobile-logo { display: flex; align-items: center; gap: var(--space-2); }
+    .mobile-logo-icon { width: 32px; height: 32px; background: linear-gradient(135deg, var(--color-primary-600), var(--color-purple-600)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: var(--font-size-sm); }
+    .mobile-header-actions { display: flex; gap: var(--space-2); }
+    .icon-btn { width: 40px; height: 40px; border-radius: var(--radius-full); border: none; background: transparent; display: flex; align-items: center; justify-content: center; font-size: var(--font-size-lg); }
+    
+    /* Mobile Content */
+    .mobile-content { padding: var(--space-4); }
+    
+    /* Welcome Card */
+    .welcome-card { background: linear-gradient(135deg, var(--color-primary-600), var(--color-purple-600)); color: white; border-radius: var(--radius-xl); padding: var(--space-6); margin-bottom: var(--space-6); }
+    .welcome-card h1 { font-size: var(--font-size-xl); margin-bottom: var(--space-2); }
+    .welcome-card p { opacity: 0.9; font-size: var(--font-size-sm); }
+    .welcome-stats { display: flex; gap: var(--space-6); margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid rgba(255,255,255,0.2); }
+    .welcome-stat { text-align: center; }
+    .welcome-stat-value { font-size: var(--font-size-xl); font-weight: bold; }
+    .welcome-stat-label { font-size: var(--font-size-xs); opacity: 0.8; }
+    
+    /* Section Header */
+    .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4); }
+    .section-title { font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold); }
+    .section-link { font-size: var(--font-size-sm); color: var(--color-primary-600); text-decoration: none; }
+    
+    /* Module Cards - Horizontal Scroll */
+    .modules-scroll { display: flex; gap: var(--space-4); overflow-x: auto; padding-bottom: var(--space-2); margin-bottom: var(--space-6); scrollbar-width: none; }
+    .modules-scroll::-webkit-scrollbar { display: none; }
+    .module-card {
+      min-width: 160px; background: white; border-radius: var(--radius-xl);
+      padding: var(--space-4); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-sm);
+      text-decoration: none; color: inherit;
+    }
+    .module-icon { width: 48px; height: 48px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: var(--font-size-xl); margin-bottom: var(--space-3); }
+    .module-card h3 { font-size: var(--font-size-base); margin-bottom: var(--space-1); }
+    .module-card p { font-size: var(--font-size-xs); color: var(--color-gray-500); }
+    .module-progress { margin-top: var(--space-3); }
+    .progress-bar { height: 4px; background: var(--color-gray-200); border-radius: var(--radius-full); overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--color-primary-600); border-radius: var(--radius-full); }
+    
+    /* Activity List */
+    .activity-list { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-gray-200); overflow: hidden; }
+    .activity-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-4); border-bottom: 1px solid var(--color-gray-100); }
+    .activity-item:last-child { border-bottom: none; }
+    .activity-icon { width: 40px; height: 40px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: var(--font-size-lg); flex-shrink: 0; }
+    .activity-icon.mcq { background: var(--color-primary-100); }
+    .activity-icon.osce { background: var(--color-success-100); }
+    .activity-icon.emr { background: var(--color-purple-100); }
+    .activity-content { flex: 1; }
+    .activity-title { font-weight: var(--font-weight-medium); font-size: var(--font-size-sm); }
+    .activity-meta { font-size: var(--font-size-xs); color: var(--color-gray-500); }
+    .activity-score { font-weight: var(--font-weight-semibold); font-size: var(--font-size-sm); padding: var(--space-1) var(--space-2); border-radius: var(--radius-md); }
+    .activity-score.good { background: var(--color-success-100); color: var(--color-success-700); }
+    
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed; bottom: 0; left: 0; right: 0; background: white;
+      border-top: 1px solid var(--color-gray-200); display: flex;
+      justify-content: space-around; padding: var(--space-2) 0 calc(var(--space-2) + env(safe-area-inset-bottom));
+      z-index: 1000;
+    }
+    .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: var(--space-2) var(--space-4); text-decoration: none; color: var(--color-gray-500); font-size: var(--font-size-xs); }
+    .nav-item.active { color: var(--color-primary-600); }
+    .nav-item-icon { font-size: var(--font-size-xl); }
+    
+    /* Floating Action Button */
+    .fab {
+      position: fixed; bottom: calc(90px + env(safe-area-inset-bottom)); right: var(--space-4);
+      width: 56px; height: 56px; border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--color-primary-600), var(--color-purple-600));
+      color: white; border: none; font-size: var(--font-size-2xl); box-shadow: var(--shadow-lg);
+      display: flex; align-items: center; justify-content: center; z-index: 999;
+    }
+    
+    /* Touch optimization */
+    .btn, .nav-item, .icon-btn { min-height: 44px; min-width: 44px; }
+  </style>
+</head>
+<body>
+  <header class="mobile-header">
+    <div class="mobile-logo">
+      <div class="mobile-logo-icon">ir</div>
+      <span class="font-bold">irStudy</span>
+    </div>
+    <div class="mobile-header-actions">
+      <button class="icon-btn">🔔</button>
+      <div style="width: 32px; height: 32px; background: var(--color-primary-100); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: var(--color-primary-600); font-weight: var(--font-weight-semibold); font-size: var(--font-size-sm);">JD</div>
+    </div>
+  </header>
+
+  <main class="mobile-content">
+    <div class="welcome-card">
+      <h1>Good morning, Dr. Doe! ☀️</h1>
+      <p>Ready to continue your AMC preparation?</p>
+      <div class="welcome-stats">
+        <div class="welcome-stat">
+          <div class="welcome-stat-value">1,247</div>
+          <div class="welcome-stat-label">MCQs Done</div>
+        </div>
+        <div class="welcome-stat">
+          <div class="welcome-stat-value">86</div>
+          <div class="welcome-stat-label">OSCEs</div>
+        </div>
+        <div class="welcome-stat">
+          <div class="welcome-stat-value">47h</div>
+          <div class="welcome-stat-label">Study Time</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <h2 class="section-title">Study Modules</h2>
+      <a href="#" class="section-link">See All</a>
+    </div>
+
+    <div class="modules-scroll">
+      <a href="mcq.html" class="module-card">
+        <div class="module-icon" style="background: var(--color-primary-100);">📚</div>
+        <h3>MCQ Practice</h3>
+        <p>18,000+ questions</p>
+        <div class="module-progress">
+          <div class="progress-bar"><div class="progress-fill" style="width: 68%;"></div></div>
+        </div>
+      </a>
+      <a href="osce.html" class="module-card">
+        <div class="module-icon" style="background: var(--color-success-100);">🎯</div>
+        <h3>OSCE</h3>
+        <p>3,000+ scenarios</p>
+        <div class="module-progress">
+          <div class="progress-bar"><div class="progress-fill" style="width: 42%; background: var(--color-success-600);"></div></div>
+        </div>
+      </a>
+      <a href="emr.html" class="module-card">
+        <div class="module-icon" style="background: var(--color-purple-100);">🏥</div>
+        <h3>EMR Sim</h3>
+        <p>200+ patients</p>
+        <div class="module-progress">
+          <div class="progress-bar"><div class="progress-fill" style="width: 25%; background: var(--color-purple-600);"></div></div>
+        </div>
+      </a>
+      <a href="#" class="module-card">
+        <div class="module-icon" style="background: var(--color-warning-100);">🤖</div>
+        <h3>AI Examiner</h3>
+        <p>Practice mode</p>
+        <div class="module-progress">
+          <div class="progress-bar"><div class="progress-fill" style="width: 15%; background: var(--color-warning-600);"></div></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="section-header">
+      <h2 class="section-title">Recent Activity</h2>
+      <a href="#" class="section-link">View All</a>
+    </div>
+
+    <div class="activity-list">
+      <div class="activity-item">
+        <div class="activity-icon mcq">📚</div>
+        <div class="activity-content">
+          <div class="activity-title">Cardiology MCQ Set</div>
+          <div class="activity-meta">Today, 2:30 PM • 25 questions</div>
+        </div>
+        <span class="activity-score good">92%</span>
+      </div>
+      <div class="activity-item">
+        <div class="activity-icon osce">🎯</div>
+        <div class="activity-content">
+          <div class="activity-title">Chest Pain OSCE</div>
+          <div class="activity-meta">Today, 11:15 AM • 15 min</div>
+        </div>
+        <span class="activity-score good">88%</span>
+      </div>
+      <div class="activity-item">
+        <div class="activity-icon emr">🏥</div>
+        <div class="activity-content">
+          <div class="activity-title">Diabetes Patient</div>
+          <div class="activity-meta">Yesterday • SOAP Note</div>
+        </div>
+        <span class="activity-score good">85%</span>
+      </div>
+    </div>
+  </main>
+
+  <button class="fab" onclick="location.href='mcq.html'">➕</button>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-item active">
+      <span class="nav-item-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="mcq.html" class="nav-item">
+      <span class="nav-item-icon">📚</span>
+      <span>MCQs</span>
+    </a>
+    <a href="osce.html" class="nav-item">
+      <span class="nav-item-icon">🎯</span>
+      <span>OSCE</span>
+    </a>
+    <a href="emr.html" class="nav-item">
+      <span class="nav-item-icon">🏥</span>
+      <span>EMR</span>
+    </a>
+    <a href="#" class="nav-item">
+      <span class="nav-item-icon">👤</span>
+      <span>Profile</span>
+    </a>
+  </nav>
+</body>
+</html>

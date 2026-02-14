@@ -25,6 +25,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class ComplianceIssue:
     """Represents a compliance issue found"""
+
     file_path: str
     line_number: int
     issue_type: str  # 'american_term', 'drug_name', 'unit', 'emergency_number'
@@ -37,6 +38,7 @@ class ComplianceIssue:
 @dataclass
 class ComplianceReport:
     """Compliance validation report"""
+
     files_scanned: int = 0
     issues_found: int = 0
     auto_corrections: int = 0
@@ -55,69 +57,66 @@ class AustralianComplianceValidator:
     # American → Australian terminology
     AMERICAN_TERMS = {
         # Medical specialties
-        r'\bpediatric(s?)\b': r'paediatric\1',
-        r'\bPediatric(s?)\b': r'Paediatric\1',
-
+        r"\bpediatric(s?)\b": r"paediatric\1",
+        r"\bPediatric(s?)\b": r"Paediatric\1",
         # Medical settings
-        r'\bER\b': 'Emergency Department',
-        r'\bemergency room\b': 'emergency department',
-        r'\bEmergency Room\b': 'Emergency Department',
-        r'\bPCP\b': 'GP',
-        r'\bprimary care physician\b': 'general practitioner',
-
+        r"\bER\b": "Emergency Department",
+        r"\bemergency room\b": "emergency department",
+        r"\bEmergency Room\b": "Emergency Department",
+        r"\bPCP\b": "GP",
+        r"\bprimary care physician\b": "general practitioner",
         # Spelling
-        r'\banaemia\b': 'anaemia',  # Already correct, but check American version
-        r'\banemia\b': 'anaemia',
-        r'\bfavorable\b': 'favourable',
-        r'\bfavorite\b': 'favourite',
-        r'\bcenter\b': 'centre',
-        r'\bCenter\b': 'Centre',
-        r'\banalyze\b': 'analyse',
-        r'\borganize\b': 'organise',
-        r'\bspecialize\b': 'specialise',
-        r'\bhospitalize\b': 'hospitalise',
-        r'\bhemoglobin\b': 'haemoglobin',
-        r'\bhaematology\b': 'haematology',  # Correct
-        r'\bhematology\b': 'haematology',
-        r'\besthetics\b': 'aesthetics',
-        r'\besophagus\b': 'oesophagus',
-        r'\bestrogen\b': 'oestrogen',
-        r'\bfetus\b': 'foetus',
-        r'\bfetal\b': 'foetal',
-
+        r"\banaemia\b": "anaemia",  # Already correct, but check American version
+        r"\banemia\b": "anaemia",
+        r"\bfavorable\b": "favourable",
+        r"\bfavorite\b": "favourite",
+        r"\bcenter\b": "centre",
+        r"\bCenter\b": "Centre",
+        r"\banalyze\b": "analyse",
+        r"\borganize\b": "organise",
+        r"\bspecialize\b": "specialise",
+        r"\bhospitalize\b": "hospitalise",
+        r"\bhemoglobin\b": "haemoglobin",
+        r"\bhaematology\b": "haematology",  # Correct
+        r"\bhematology\b": "haematology",
+        r"\besthetics\b": "aesthetics",
+        r"\besophagus\b": "oesophagus",
+        r"\bestrogen\b": "oestrogen",
+        r"\bfetus\b": "foetus",
+        r"\bfetal\b": "foetal",
         # Australian conventions
-        r'\bprograms?\b': 'programmes',
-        r'\bPrograms?\b': 'Programmes',
+        r"\bprograms?\b": "programmes",
+        r"\bPrograms?\b": "Programmes",
     }
 
     # American drug names → Australian drug names
     DRUG_NAMES = {
-        r'\bacetaminophen\b': 'paracetamol',
-        r'\bAcetaminophen\b': 'Paracetamol',
-        r'\bTylenol\b': 'paracetamol',
-        r'\bepinephrine\b': 'adrenaline',
-        r'\bEpinephrine\b': 'Adrenaline',
-        r'\balbuterol\b': 'salbutamol',
-        r'\bAlbuterol\b': 'Salbutamol',
-        r'\bfurosemide\b': 'frusemide',
-        r'\bFurosemide\b': 'Frusemide',
-        r'\bmeperidine\b': 'pethidine',
-        r'\bMeperidine\b': 'Pethidine',
+        r"\bacetaminophen\b": "paracetamol",
+        r"\bAcetaminophen\b": "Paracetamol",
+        r"\bTylenol\b": "paracetamol",
+        r"\bepinephrine\b": "adrenaline",
+        r"\bEpinephrine\b": "Adrenaline",
+        r"\balbuterol\b": "salbutamol",
+        r"\bAlbuterol\b": "Salbutamol",
+        r"\bfurosemide\b": "frusemide",
+        r"\bFurosemide\b": "Frusemide",
+        r"\bmeperidine\b": "pethidine",
+        r"\bMeperidine\b": "Pethidine",
     }
 
     # Emergency numbers
     EMERGENCY_NUMBERS = {
-        r'\b911\b': '000',
-        r'\bcall 911\b': 'call 000',
-        r'\bCall 911\b': 'Call 000',
-        r'\bphone 911\b': 'phone 000',
-        r'\bPhone 911\b': 'Phone 000',
-        r'\bdial 911\b': 'dial 000',
-        r'\bDial 911\b': 'Dial 000',
+        r"\b911\b": "000",
+        r"\bcall 911\b": "call 000",
+        r"\bCall 911\b": "Call 000",
+        r"\bphone 911\b": "phone 000",
+        r"\bPhone 911\b": "Phone 000",
+        r"\bdial 911\b": "dial 000",
+        r"\bDial 911\b": "Dial 000",
     }
 
     # Frequency indicator format check
-    FREQUENCY_PATTERN = r'\[([⭐]{1,3})\s+(HIGH|MEDIUM|LOW)-YIELD\]'
+    FREQUENCY_PATTERN = r"\[([⭐]{1,3})\s+(HIGH|MEDIUM|LOW)-YIELD\]"
 
     def __init__(self, auto_correct: bool = True):
         """
@@ -142,7 +141,7 @@ class AustralianComplianceValidator:
         issues = []
 
         try:
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with open(file_path, "r", encoding="utf-8") as f:
                 lines = f.readlines()
 
             modified = False
@@ -156,15 +155,17 @@ class AustralianComplianceValidator:
                     if re.search(pattern, line):
                         new_line = re.sub(pattern, replacement, line)
                         if new_line != line:
-                            issues.append(ComplianceIssue(
-                                file_path=str(file_path),
-                                line_number=line_num,
-                                issue_type='american_term',
-                                original=line.strip(),
-                                corrected=new_line.strip(),
-                                severity='important',
-                                auto_corrected=self.auto_correct
-                            ))
+                            issues.append(
+                                ComplianceIssue(
+                                    file_path=str(file_path),
+                                    line_number=line_num,
+                                    issue_type="american_term",
+                                    original=line.strip(),
+                                    corrected=new_line.strip(),
+                                    severity="important",
+                                    auto_corrected=self.auto_correct,
+                                )
+                            )
                             line = new_line
                             modified = True
 
@@ -173,15 +174,17 @@ class AustralianComplianceValidator:
                     if re.search(pattern, line):
                         new_line = re.sub(pattern, replacement, line)
                         if new_line != line:
-                            issues.append(ComplianceIssue(
-                                file_path=str(file_path),
-                                line_number=line_num,
-                                issue_type='drug_name',
-                                original=line.strip(),
-                                corrected=new_line.strip(),
-                                severity='critical',
-                                auto_corrected=self.auto_correct
-                            ))
+                            issues.append(
+                                ComplianceIssue(
+                                    file_path=str(file_path),
+                                    line_number=line_num,
+                                    issue_type="drug_name",
+                                    original=line.strip(),
+                                    corrected=new_line.strip(),
+                                    severity="critical",
+                                    auto_corrected=self.auto_correct,
+                                )
+                            )
                             line = new_line
                             modified = True
 
@@ -190,15 +193,17 @@ class AustralianComplianceValidator:
                     if re.search(pattern, line):
                         new_line = re.sub(pattern, replacement, line)
                         if new_line != line:
-                            issues.append(ComplianceIssue(
-                                file_path=str(file_path),
-                                line_number=line_num,
-                                issue_type='emergency_number',
-                                original=line.strip(),
-                                corrected=new_line.strip(),
-                                severity='critical',
-                                auto_corrected=self.auto_correct
-                            ))
+                            issues.append(
+                                ComplianceIssue(
+                                    file_path=str(file_path),
+                                    line_number=line_num,
+                                    issue_type="emergency_number",
+                                    original=line.strip(),
+                                    corrected=new_line.strip(),
+                                    severity="critical",
+                                    auto_corrected=self.auto_correct,
+                                )
+                            )
                             line = new_line
                             modified = True
 
@@ -206,7 +211,7 @@ class AustralianComplianceValidator:
 
             # Write back if auto-correcting and modified
             if self.auto_correct and modified:
-                with open(file_path, 'w', encoding='utf-8') as f:
+                with open(file_path, "w", encoding="utf-8") as f:
                     f.writelines(new_lines)
                 logger.info(f"✓ Auto-corrected {len(issues)} issues in {file_path.name}")
 
@@ -232,7 +237,7 @@ class AustralianComplianceValidator:
         all_issues = []
 
         for file_path in files:
-            if file_path.name.startswith('.'):
+            if file_path.name.startswith("."):
                 continue
 
             issues = self.validate_file(file_path)
@@ -255,7 +260,7 @@ class AustralianComplianceValidator:
 
     def generate_report_markdown(self, output_path: Path):
         """Generate markdown report"""
-        with open(output_path, 'w', encoding='utf-8') as f:
+        with open(output_path, "w", encoding="utf-8") as f:
             f.write("# Australian Compliance Validation Report\n\n")
             f.write(f"**Date**: {Path.cwd()}\n\n")
 
@@ -267,9 +272,9 @@ class AustralianComplianceValidator:
             f.write(f"- **Compliance Score**: {self.report.compliance_score:.1f}%\n\n")
 
             # Group by severity
-            critical = [i for i in self.report.issues if i.severity == 'critical']
-            important = [i for i in self.report.issues if i.severity == 'important']
-            minor = [i for i in self.report.issues if i.severity == 'minor']
+            critical = [i for i in self.report.issues if i.severity == "critical"]
+            important = [i for i in self.report.issues if i.severity == "important"]
+            minor = [i for i in self.report.issues if i.severity == "minor"]
 
             if critical:
                 f.write(f"## Critical Issues ({len(critical)})\n\n")
@@ -278,45 +283,51 @@ class AustralianComplianceValidator:
                     f.write(f"- **Type**: {issue.issue_type}\n")
                     f.write(f"- **Original**: `{issue.original}`\n")
                     f.write(f"- **Corrected**: `{issue.corrected}`\n")
-                    f.write(f"- **Auto-corrected**: {'✅' if issue.auto_corrected else '❌ Manual review needed'}\n\n")
+                    f.write(
+                        f"- **Auto-corrected**: {'✅' if issue.auto_corrected else '❌ Manual review needed'}\n\n"
+                    )
 
             if important:
                 f.write(f"## Important Issues ({len(important)})\n\n")
                 for issue in important:
-                    f.write(f"- **{Path(issue.file_path).name}:{issue.line_number}**: {issue.original} → {issue.corrected}\n")
+                    f.write(
+                        f"- **{Path(issue.file_path).name}:{issue.line_number}**: {issue.original} → {issue.corrected}\n"
+                    )
 
             if minor:
                 f.write(f"## Minor Issues ({len(minor)})\n\n")
                 for issue in minor:
-                    f.write(f"- **{Path(issue.file_path).name}:{issue.line_number}**: {issue.original} → {issue.corrected}\n")
+                    f.write(
+                        f"- **{Path(issue.file_path).name}:{issue.line_number}**: {issue.original} → {issue.corrected}\n"
+                    )
 
         logger.info(f"✓ Report saved to {output_path}")
 
     def generate_report_json(self, output_path: Path):
         """Generate JSON report"""
         report_dict = {
-            'summary': {
-                'files_scanned': self.report.files_scanned,
-                'issues_found': self.report.issues_found,
-                'auto_corrections': self.report.auto_corrections,
-                'manual_review_needed': self.report.manual_review_needed,
-                'compliance_score': round(self.report.compliance_score, 2)
+            "summary": {
+                "files_scanned": self.report.files_scanned,
+                "issues_found": self.report.issues_found,
+                "auto_corrections": self.report.auto_corrections,
+                "manual_review_needed": self.report.manual_review_needed,
+                "compliance_score": round(self.report.compliance_score, 2),
             },
-            'issues': [
+            "issues": [
                 {
-                    'file': i.file_path,
-                    'line': i.line_number,
-                    'type': i.issue_type,
-                    'original': i.original,
-                    'corrected': i.corrected,
-                    'severity': i.severity,
-                    'auto_corrected': i.auto_corrected
+                    "file": i.file_path,
+                    "line": i.line_number,
+                    "type": i.issue_type,
+                    "original": i.original,
+                    "corrected": i.corrected,
+                    "severity": i.severity,
+                    "auto_corrected": i.auto_corrected,
                 }
                 for i in self.report.issues
-            ]
+            ],
         }
 
-        with open(output_path, 'w', encoding='utf-8') as f:
+        with open(output_path, "w", encoding="utf-8") as f:
             json.dump(report_dict, f, indent=2, ensure_ascii=False)
 
         logger.info(f"✓ JSON report saved to {output_path}")
@@ -326,11 +337,15 @@ def main():
     """Main execution"""
     import argparse
 
-    parser = argparse.ArgumentParser(description="Validate Australian medical terminology compliance")
+    parser = argparse.ArgumentParser(
+        description="Validate Australian medical terminology compliance"
+    )
     parser.add_argument("directory", help="Directory to scan")
     parser.add_argument("--pattern", default="*.md", help="File pattern (default: *.md)")
     parser.add_argument("--no-auto-correct", action="store_true", help="Disable auto-correction")
-    parser.add_argument("--output", default="validation_reports/australian_compliance.md", help="Output report path")
+    parser.add_argument(
+        "--output", default="validation_reports/australian_compliance.md", help="Output report path"
+    )
     parser.add_argument("--json", help="Also output JSON report to this path")
 
     args = parser.parse_args()
@@ -360,16 +375,16 @@ def main():
         validator.generate_report_json(json_path)
 
     # Print summary
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print(f"✓ Australian Compliance Validation Complete")
-    print("="*60)
+    print("=" * 60)
     print(f"Files Scanned: {report.files_scanned}")
     print(f"Issues Found: {report.issues_found}")
     print(f"Auto-Corrected: {report.auto_corrections}")
     print(f"Manual Review: {report.manual_review_needed}")
     print(f"Compliance Score: {report.compliance_score:.1f}%")
     print(f"\nReport: {output_path}")
-    print("="*60)
+    print("=" * 60)
 
 
 if __name__ == "__main__":

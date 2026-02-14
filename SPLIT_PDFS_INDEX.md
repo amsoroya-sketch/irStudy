@@ -91,6 +91,6 @@ python3 scripts/split_pdf.py <input.pdf> --output-dir <dir> --prefix <name> --pa
 
 ---
 
-**Last Updated:** December 16, 2025  
-**Total Split Files:** 75 files  
+**Last Updated:** December 16, 2025
+**Total Split Files:** 75 files
 **Total Coverage:** 6,207 pages across 4 major textbooks

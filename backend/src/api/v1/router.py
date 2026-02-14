@@ -11,7 +11,7 @@ Combines all v1 endpoint routers:
 
 from fastapi import APIRouter
 
-from api.v1 import auth, users, mcqs, osces, progress
+from src.api.v1 import auth, users, mcqs, osces, progress, permissions, gdpr, study_cards, study_cards_optimized
 
 
 # Create main v1 router
@@ -23,3 +23,7 @@ api_router.include_router(users.router)
 api_router.include_router(mcqs.router)
 api_router.include_router(osces.router)
 api_router.include_router(progress.router)
+api_router.include_router(permissions.router)  # Task 3.2: RBAC permissions API
+api_router.include_router(gdpr.router)  # PRD 2 Step 8: GDPR Compliance APIs
+api_router.include_router(study_cards.router)  # Task 3: Study Card System with SM-2
+api_router.include_router(study_cards_optimized.router)  # Task 5: Spaced Repetition Engine Optimization

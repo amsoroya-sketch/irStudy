@@ -7,4 +7,4 @@ Provides:
 
 from .rag_query_service import RAGQueryService, RAGVerificationResult, RAGMatch
 
-__all__ = ['RAGQueryService', 'RAGVerificationResult', 'RAGMatch']
+__all__ = ["RAGQueryService", "RAGVerificationResult", "RAGMatch"]

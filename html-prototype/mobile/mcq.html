@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>MCQ Practice - Mobile</title>
+  <link rel="stylesheet" href="../css/design-system.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body { font-family: var(--font-family-sans); background: var(--color-gray-50); min-height: 100vh; }
+    
+    /* Full Screen Question */
+    .mcq-fullscreen { min-height: 100vh; display: flex; flex-direction: column; background: white; }
+    
+    /* Header */
+    .mcq-header { background: white; padding: var(--space-4); border-bottom: 1px solid var(--color-gray-200); display: flex; align-items: center; justify-content: space-between; }
+    .mcq-header-left { display: flex; align-items: center; gap: var(--space-3); }
+    .back-btn { width: 40px; height: 40px; border-radius: var(--radius-full); border: none; background: var(--color-gray-100); display: flex; align-items: center; justify-content: center; font-size: var(--font-size-lg); }
+    .mcq-progress { font-weight: var(--font-weight-semibold); font-size: var(--font-size-sm); }
+    .mcq-timer { display: flex; align-items: center; gap: var(--space-2); font-size: var(--font-size-sm); color: var(--color-gray-600); }
+    
+    /* Progress Bar */
+    .progress-track { height: 4px; background: var(--color-gray-200); }
+    .progress-fill { height: 100%; background: var(--color-primary-600); width: 45%; }
+    
+    /* Question Content */
+    .question-content { flex: 1; padding: var(--space-6); overflow-y: auto; }
+    .question-tags { display: flex; gap: var(--space-2); margin-bottom: var(--space-4); }
+    .question-tag { padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-size: var(--font-size-xs); font-weight: var(--font-weight-medium); }
+    .tag-specialty { background: var(--color-primary-100); color: var(--color-primary-700); }
+    .tag-topic { background: var(--color-success-100); color: var(--color-success-700); }
+    .question-text { font-size: var(--font-size-lg); line-height: var(--line-height-relaxed); margin-bottom: var(--space-6); }
+    
+    /* Options */
+    .options-list { display: flex; flex-direction: column; gap: var(--space-3); }
+    .option {
+      display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-4);
+      border: 2px solid var(--color-gray-200); border-radius: var(--radius-xl);
+      cursor: pointer; transition: var(--transition-fast); background: white;
+    }
+    .option:active { transform: scale(0.98); }
+    .option.selected { border-color: var(--color-primary-600); background: var(--color-primary-50); }
+    .option.correct { border-color: var(--color-success-500); background: var(--color-success-50); }
+    .option-letter {
+      width: 28px; height: 28px; border-radius: var(--radius-full); border: 2px solid var(--color-gray-300);
+      display: flex; align-items: center; justify-content: center; font-weight: var(--font-weight-semibold);
+      font-size: var(--font-size-sm); flex-shrink: 0;
+    }
+    .option.selected .option-letter { border-color: var(--color-primary-600); background: var(--color-primary-600); color: white; }
+    .option-text { flex: 1; padding-top: var(--space-1); }
+    
+    /* Explanation Panel */
+    .explanation-panel {
+      background: var(--color-success-50); border: 1px solid var(--color-success-200);
+      border-radius: var(--radius-xl); padding: var(--space-5); margin-top: var(--space-6);
+    }
+    .explanation-header { display: flex; align-items: center; gap: var(--space-2); color: var(--color-success-700); font-weight: var(--font-weight-semibold); margin-bottom: var(--space-3); }
+    .explanation-text { color: var(--color-gray-700); line-height: var(--line-height-relaxed); font-size: var(--font-size-sm); }
+    .citation { margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--color-success-200); font-size: var(--font-size-xs); color: var(--color-gray-500); }
+    
+    /* Bottom Actions */
+    .bottom-actions {
+      padding: var(--space-4); background: white; border-top: 1px solid var(--color-gray-200);
+      display: flex; gap: var(--space-3); padding-bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
+    }
+    .btn {
+      flex: 1; padding: var(--space-4); border-radius: var(--radius-xl); font-weight: var(--font-weight-semibold);
+      border: none; cursor: pointer; transition: var(--transition-fast); font-size: var(--font-size-base);
+      min-height: 56px;
+    }
+    .btn-primary { background: var(--color-primary-600); color: white; }
+    .btn-secondary { background: var(--color-gray-100); color: var(--color-gray-700); }
+    .btn-outline { background: transparent; border: 2px solid var(--color-gray-200); color: var(--color-gray-700); flex: 0 0 auto; padding: var(--space-4); }
+    
+    /* Swipe Indicator */
+    .swipe-indicator { text-align: center; padding: var(--space-2); color: var(--color-gray-400); font-size: var(--font-size-xs); }
+  </style>
+</head>
+<body>
+  <div class="mcq-fullscreen">
+    <header class="mcq-header">
+      <div class="mcq-header-left">
+        <button class="back-btn" onclick="location.href='index.html'">←</button>
+        <span class="mcq-progress">45/100</span>
+      </div>
+      <div class="mcq-timer">⏱️ 12:34</div>
+    </header>
+    
+    <div class="progress-track">
+      <div class="progress-fill"></div>
+    </div>
+    
+    <div class="question-content">
+      <div class="question-tags">
+        <span class="question-tag tag-specialty">Cardiology</span>
+        <span class="question-tag tag-topic">Arrhythmias</span>
+      </div>
+      
+      <p class="question-text">
+        A 68-year-old man presents with palpitations and dizziness. His ECG shows an irregularly irregular rhythm with no discernible P waves. The ventricular rate is 110 bpm. Which of the following is the most appropriate initial management?
+      </p>
+      
+      <div class="options-list">
+        <div class="option" onclick="selectOption(this)">
+          <div class="option-letter">A</div>
+          <div class="option-text">Immediate electrical cardioversion</div>
+        </div>
+        <div class="option" onclick="selectOption(this)">
+          <div class="option-letter">B</div>
+          <div class="option-text">IV Metoprolol for rate control</div>
+        </div>
+        <div class="option selected" onclick="selectOption(this)">
+          <div class="option-letter">C</div>
+          <div class="option-text">IV Amiodarone for rhythm control</div>
+        </div>
+        <div class="option" onclick="selectOption(this)">
+          <div class="option-letter">D</div>
+          <div class="option-text">Start Warfarin anticoagulation</div>
+        </div>
+        <div class="option" onclick="selectOption(this)">
+          <div class="option-letter">E</div>
+          <div class="option-text">Adenosine 6mg IV push</div>
+        </div>
+      </div>
+      
+      <div class="explanation-panel">
+        <div class="explanation-header">✓ Correct</div>
+        <div class="explanation-text">
+          This patient has atrial fibrillation with rapid ventricular response. IV Amiodarone is appropriate for rhythm control in a patient with hemodynamic instability.
+        </div>
+        <div class="citation">
+          <strong>Reference:</strong> eTG Complete, March 2025
+        </div>
+      </div>
+      
+      <div class="swipe-indicator">Swipe for next question →</div>
+    </div>
+    
+    <div class="bottom-actions">
+      <button class="btn btn-outline" style="flex: 0 0 auto;">🔖</button>
+      <button class="btn btn-secondary">Previous</button>
+      <button class="btn btn-primary" onclick="location.href='mcq.html'">Next</button>
+    </div>
+  </div>
+  
+  <script>
+    function selectOption(element) {
+      document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+      element.classList.add('selected');
+    }
+  </script>
+</body>
+</html>

@@ -18,18 +18,22 @@ import os
 import argparse
 from pathlib import Path
 
+
 def check_dependencies():
     """Check if required dependencies are installed."""
     try:
         import PyPDF2
+
         return True
     except ImportError:
         return False
+
 
 def install_dependencies():
     """Install required dependencies."""
     print("Installing required dependency: PyPDF2...")
     import subprocess
+
     try:
         subprocess.check_call([sys.executable, "-m", "pip", "install", "PyPDF2"])
         print("✓ PyPDF2 installed successfully!")
@@ -38,6 +42,7 @@ def install_dependencies():
         print("✗ Failed to install PyPDF2")
         print("Please run manually: pip install PyPDF2")
         return False
+
 
 def split_pdf_by_pages(input_path, pages_per_split, output_dir, prefix):
     """Split PDF into chunks of specified page count."""
@@ -62,7 +67,7 @@ def split_pdf_by_pages(input_path, pages_per_split, output_dir, prefix):
         output_filename = f"{prefix}_part{part_num:03d}_pages{start_page+1}-{end_page}.pdf"
         output_path = output_dir / output_filename
 
-        with open(output_path, 'wb') as output_file:
+        with open(output_path, "wb") as output_file:
             writer.write(output_file)
 
         file_size = output_path.stat().st_size / (1024 * 1024)  # MB
@@ -71,6 +76,7 @@ def split_pdf_by_pages(input_path, pages_per_split, output_dir, prefix):
         part_num += 1
 
     return output_files
+
 
 def split_pdf_by_parts(input_path, num_parts, output_dir, prefix):
     """Split PDF into specified number of equal parts."""
@@ -103,7 +109,7 @@ def split_pdf_by_parts(input_path, num_parts, output_dir, prefix):
         output_filename = f"{prefix}_part{part_num:03d}_pages{start_page}-{end_page}.pdf"
         output_path = output_dir / output_filename
 
-        with open(output_path, 'wb') as output_file:
+        with open(output_path, "wb") as output_file:
             writer.write(output_file)
 
         file_size = output_path.stat().st_size / (1024 * 1024)  # MB
@@ -112,9 +118,10 @@ def split_pdf_by_parts(input_path, num_parts, output_dir, prefix):
 
     return output_files
 
+
 def main():
     parser = argparse.ArgumentParser(
-        description='Split large PDF files into smaller parts',
+        description="Split large PDF files into smaller parts",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -129,15 +136,15 @@ Examples:
 
   # Custom output directory and prefix
   python split_pdf.py large_book.pdf --output-dir ./output --prefix mybook
-        """
+        """,
     )
 
-    parser.add_argument('input_pdf', nargs='?', help='Input PDF file path')
-    parser.add_argument('--pages', type=int, help='Split every N pages')
-    parser.add_argument('--parts', type=int, help='Split into N equal parts')
-    parser.add_argument('--output-dir', help='Output directory (default: ./split_pdfs)')
-    parser.add_argument('--prefix', help='Output file prefix (default: input filename)')
-    parser.add_argument('--install', action='store_true', help='Install required dependencies')
+    parser.add_argument("input_pdf", nargs="?", help="Input PDF file path")
+    parser.add_argument("--pages", type=int, help="Split every N pages")
+    parser.add_argument("--parts", type=int, help="Split into N equal parts")
+    parser.add_argument("--output-dir", help="Output directory (default: ./split_pdfs)")
+    parser.add_argument("--prefix", help="Output file prefix (default: input filename)")
+    parser.add_argument("--install", action="store_true", help="Install required dependencies")
 
     args = parser.parse_args()
 
@@ -166,12 +173,12 @@ Examples:
         print(f"✗ Error: Input file not found: {input_path}")
         sys.exit(1)
 
-    if not input_path.suffix.lower() == '.pdf':
+    if not input_path.suffix.lower() == ".pdf":
         print(f"✗ Error: Input file must be a PDF: {input_path}")
         sys.exit(1)
 
     # Set up output directory
-    output_dir = Path(args.output_dir) if args.output_dir else Path('./split_pdfs')
+    output_dir = Path(args.output_dir) if args.output_dir else Path("./split_pdfs")
     output_dir.mkdir(parents=True, exist_ok=True)
 
     # Set up prefix
@@ -199,5 +206,6 @@ Examples:
         print(f"\n✗ Error during PDF splitting: {str(e)}")
         sys.exit(1)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

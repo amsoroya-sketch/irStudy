@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMC Exam - Live Scoring Dashboard</title>
+  <link rel="stylesheet" href="../../css/design-system.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-sans); background: var(--color-gray-900); color: white; min-height: 100vh; }
+    .scoring-dashboard { max-width: 1400px; margin: 0 auto; padding: var(--space-6); }
+    
+    /* Header */
+    .dashboard-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-8); padding-bottom: var(--space-6); border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .header-left { display: flex; align-items: center; gap: var(--space-4); }
+    .back-btn { padding: var(--space-3) var(--space-4); background: rgba(255,255,255,0.1); border: none; border-radius: var(--radius-lg); color: white; cursor: pointer; }
+    .exam-title h1 { font-size: var(--font-size-2xl); margin-bottom: var(--space-1); }
+    .exam-meta { color: var(--color-gray-400); font-size: var(--font-size-sm); }
+    .exam-progress { text-align: right; }
+    .progress-text { font-size: var(--font-size-3xl); font-weight: bold; color: #60a5fa; }
+    .progress-label { font-size: var(--font-size-sm); color: var(--color-gray-400); }
+    
+    /* Main Grid */
+    .dashboard-grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-6); }
+    
+    /* Left Column - Station Scores */
+    .stations-panel { background: rgba(255,255,255,0.05); border-radius: var(--radius-2xl); padding: var(--space-6); }
+    .panel-title { font-size: var(--font-size-xl); font-weight: 600; margin-bottom: var(--space-6); }
+    .stations-list { display: flex; flex-direction: column; gap: var(--space-4); }
+    .station-card { background: rgba(255,255,255,0.05); border-radius: var(--radius-xl); padding: var(--space-5); display: grid; grid-template-columns: auto 1fr auto; gap: var(--space-4); align-items: center; transition: var(--transition-fast); }
+    .station-card:hover { background: rgba(255,255,255,0.1); }
+    .station-card.current { border: 2px solid #3b82f6; }
+    .station-number { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-weight: bold; }
+    .station-card.passed .station-number { background: rgba(34,197,94,0.2); color: #4ade80; }
+    .station-card.failed .station-number { background: rgba(239,68,68,0.2); color: #f87171; }
+    .station-info h3 { font-weight: 600; margin-bottom: var(--space-1); }
+    .station-type { font-size: var(--font-size-sm); color: var(--color-gray-400); }
+    .station-score { text-align: right; }
+    .score-number { font-size: var(--font-size-2xl); font-weight: bold; }
+    .score-number.pass { color: #4ade80; }
+    .score-number.fail { color: #f87171; }
+    .score-total { font-size: var(--font-size-sm); color: var(--color-gray-400); }
+    .station-status { display: inline-block; padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-size: 11px; font-weight: 600; margin-top: var(--space-2); }
+    .status-pending { background: rgba(251,191,36,0.2); color: #fbbf24; }
+    .status-complete { background: rgba(34,197,94,0.2); color: #4ade80; }
+    
+    /* Right Column - Summary & Details */
+    .sidebar { display: flex; flex-direction: column; gap: var(--space-6); }
+    .summary-card { background: rgba(255,255,255,0.05); border-radius: var(--radius-2xl); padding: var(--space-6); }
+    .summary-title { font-size: var(--font-size-lg); font-weight: 600; margin-bottom: var(--space-4); }
+    .overall-score { text-align: center; padding: var(--space-6); background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(139,92,246,0.2)); border-radius: var(--radius-xl); margin-bottom: var(--space-4); }
+    .overall-number { font-size: 64px; font-weight: bold; color: #60a5fa; }
+    .overall-label { color: var(--color-gray-400); margin-top: var(--space-2); }
+    .pass-status { display: inline-block; padding: var(--space-2) var(--space-4); background: rgba(34,197,94,0.2); color: #4ade80; border-radius: var(--radius-full); font-weight: 600; margin-top: var(--space-3); }
+    
+    .breakdown-section { margin-top: var(--space-6); }
+    .breakdown-title { font-size: var(--font-size-sm); color: var(--color-gray-400); margin-bottom: var(--space-3); }
+    .breakdown-item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-3) 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .breakdown-bar { width: 100px; height: 8px; background: rgba(255,255,255,0.1); border-radius: var(--radius-full); overflow: hidden; }
+    .breakdown-fill { height: 100%; border-radius: var(--radius-full); }
+    
+    /* AI Insights */
+    .insights-card { background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(59,130,246,0.1)); border: 1px solid rgba(139,92,246,0.3); border-radius: var(--radius-2xl); padding: var(--space-6); }
+    .insights-header { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); }
+    .insights-icon { width: 40px; height: 40px; background: #8b5cf6; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: var(--font-size-xl); }
+    .insights-title { font-weight: 600; }
+    .insights-list { list-style: none; }
+    .insights-list li { padding: var(--space-3) 0; padding-left: var(--space-8); position: relative; font-size: var(--font-size-sm); }
+    .insights-list li::before { content: '→'; position: absolute; left: 0; width: 24px; height: 24px; background: rgba(139,92,246,0.2); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: #8b5cf6; font-weight: bold; }
+    
+    /* Legend */
+    .legend { display: flex; gap: var(--space-6); margin-top: var(--space-6); padding-top: var(--space-6); border-top: 1px solid rgba(255,255,255,0.1); }
+    .legend-item { display: flex; align-items: center; gap: var(--space-2); font-size: var(--font-size-sm); }
+    .legend-dot { width: 12px; height: 12px; border-radius: var(--radius-full); }
+    
+    @media (max-width: 1024px) {
+      .dashboard-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scoring-dashboard">
+    <header class="dashboard-header">
+      <div class="header-left">
+        <button class="back-btn" onclick="location.href='station-interface.html'">← Back</button>
+        <div class="exam-title">
+          <h1>AMC Clinical Exam - Live Scoring</h1>
+          <div class="exam-meta">Candidate: Dr. John Doe • Exam Date: 15 March 2026</div>
+        </div>
+      </div>
+      <div class="exam-progress">
+        <div class="progress-text">8/16</div>
+        <div class="progress-label">Stations Complete</div>
+      </div>
+    </header>
+
+    <div class="dashboard-grid">
+      <!-- Stations List -->
+      <div class="stations-panel">
+        <h2 class="panel-title">Station Scores</h2>
+        <div class="stations-list">
+          <div class="station-card passed">
+            <div class="station-number">1</div>
+            <div class="station-info">
+              <h3>History Taking - Abdominal Pain</h3>
+              <div class="station-type">8 minutes • Gastroenterology</div>
+            </div>
+            <div class="station-score">
+              <div class="score-number pass">13</div>
+              <div class="score-total">/ 15</div>
+              <span class="station-status status-complete">PASS</span>
+            </div>
+          </div>
+
+          <div class="station-card passed">
+            <div class="station-number">2</div>
+            <div class="station-info">
+              <h3>Physical Examination - CVS</h3>
+              <div class="station-type">8 minutes • Cardiology</div>
+            </div>
+            <div class="station-score">
+              <div class="score-number pass">11</div>
+              <div class="score-total">/ 15</div>
+              <span class="station-status status-complete">PASS</span>
+            </div>
+          </div>
+
+          <div class="station-card current">
+            <div class="station-number">3</div>
+            <div class="station-info">
+              <h3>History Taking - Chest Pain</h3>
+              <div class="station-type">8 minutes • Cardiology</div>
+            </div>
+            <div class="station-score">
+              <div class="score-number">--</div>
+              <div class="score-total">/ 15</div>
+              <span class="station-status status-pending">IN PROGRESS</span>
+            </div>
+          </div>
+
+          <div class="station-card">
+            <div class="station-number">4</div>
+            <div class="station-info">
+              <h3>Counseling - Smoking Cessation</h3>
+              <div class="station-type">8 minutes • Preventive Health</div>
+            </div>
+            <div class="station-score">
+              <div class="score-number">--</div>
+              <div class="score-total">/ 15</div>
+              <span class="station-status status-pending">PENDING</span>
+            </div>
+          </div>
+
+          <div class="station-card">
+            <div class="station-number">5</div>
+            <div class="station-info">
+              <h3>Physical Examination - Respiratory</h3>
+              <div class="station-type">8 minutes • Respiratory</div>
+            </div>
+            <div class="station-score">
+              <div class="score-number">--</div>
+              <div class="score-total">/ 15</div>
+              <span class="station-status status-pending">PENDING</span>
+            </div>
+          </div>
+
+          <div class="station-card failed">
+            <div class="station-number">6</div>
+            <div class="station-info">
+              <h3>Data Interpretation - ECG</h3>
+              <div class="station-type">8 minutes • Cardiology</div>
+            </div>
+            <div class="station-score">
+              <div class="score-number fail">7</div>
+              <div class="score-total">/ 15</div>
+              <span class="station-status status-complete">FAIL</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="legend">
+          <div class="legend-item"><div class="legend-dot" style="background: #4ade80;"></div> Pass (≥9/15)</div>
+          <div class="legend-item"><div class="legend-dot" style="background: #f87171;"></div> Fail (&lt;9/15)</div>
+          <div class="legend-item"><div class="legend-dot" style="background: #fbbf24;"></div> Pending</div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="summary-card">
+          <h3 class="summary-title">Current Performance</h3>
+          <div class="overall-score">
+            <div class="overall-number">12.0</div>
+            <div class="overall-label">Average Score</div>
+            <span class="pass-status">ON TRACK TO PASS</span>
+          </div>
+          
+          <div class="breakdown-section">
+            <div class="breakdown-title">Domain Breakdown</div>
+            <div class="breakdown-item">
+              <span>History Taking</span>
+              <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <div class="breakdown-bar"><div class="breakdown-fill" style="width: 87%; background: #4ade80;"></div></div>
+                <strong>87%</strong>
+              </div>
+            </div>
+            <div class="breakdown-item">
+              <span>Communication</span>
+              <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <div class="breakdown-bar"><div class="breakdown-fill" style="width: 92%; background: #4ade80;"></div></div>
+                <strong>92%</strong>
+              </div>
+            </div>
+            <div class="breakdown-item">
+              <span>Clinical Skills</span>
+              <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <div class="breakdown-bar"><div class="breakdown-fill" style="width: 73%; background: #fbbf24;"></div></div>
+                <strong>73%</strong>
+              </div>
+            </div>
+            <div class="breakdown-item">
+              <span>Data Interpretation</span>
+              <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <div class="breakdown-bar"><div class="breakdown-fill" style="width: 47%; background: #f87171;"></div></div>
+                <strong>47%</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="insights-card">
+          <div class="insights-header">
+            <div class="insights-icon">🤖</div>
+            <div class="insights-title">AI Examiner Insights</div>
+          </div>
+          <ul class="insights-list">
+            <li>Strong performance in communication skills</li>
+            <li>Focus on ECG interpretation - weakest area</li>
+            <li>Consider more practice with data stations</li>
+            <li>Maintain current pace - on track to pass</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

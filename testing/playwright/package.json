@@ -1,0 +1,43 @@
+{
+  "name": "amc-clinical-exam-e2e-tests",
+  "version": "1.0.0",
+  "description": "Playwright E2E tests for AMC Clinical Exam Simulation platform",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:auth": "playwright test tests/auth",
+    "test:rbac": "playwright test tests/rbac",
+    "test:mcq": "playwright test tests/mcq",
+    "test:e2e": "playwright test tests/e2e",
+    "test:a11y": "playwright test tests/accessibility",
+    "test:student": "playwright test tests/rbac/student-permissions.spec.ts tests/e2e/student-journey.spec.ts",
+    "test:educator": "playwright test tests/rbac/educator-permissions.spec.ts tests/e2e/educator-journey.spec.ts",
+    "test:admin": "playwright test tests/rbac/admin-permissions.spec.ts tests/e2e/admin-journey.spec.ts",
+    "test:report": "playwright show-report",
+    "test:codegen": "playwright codegen http://localhost:5173",
+    "test:ci": "playwright test --reporter=html,json",
+    "install:browsers": "playwright install --with-deps"
+  },
+  "keywords": [
+    "playwright",
+    "e2e",
+    "testing",
+    "rbac",
+    "medical-education"
+  ],
+  "author": "AMC Clinical Exam Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@faker-js/faker": "^9.4.0",
+    "@playwright/test": "^1.48.0",
+    "dotenv": "^16.4.7",
+    "msw": "^2.12.9",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

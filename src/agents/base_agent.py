@@ -15,6 +15,7 @@ import uuid
 
 class AgentRole(Enum):
     """Agent role categories"""
+
     PROJECT_MANAGEMENT = "project_management"
     MEDICAL_EXPERT = "medical_expert"
     BACKEND_DEV = "backend_dev"
@@ -27,6 +28,7 @@ class AgentRole(Enum):
 
 class TaskStatus(Enum):
     """Task execution status"""
+
     PENDING = "pending"
     IN_PROGRESS = "in_progress"
     COMPLETED = "completed"
@@ -37,6 +39,7 @@ class TaskStatus(Enum):
 @dataclass
 class AgentTask:
     """Represents a task assigned to an agent"""
+
     task_id: str = field(default_factory=lambda: str(uuid.uuid4()))
     title: str = ""
     description: str = ""
@@ -53,6 +56,7 @@ class AgentTask:
 @dataclass
 class AgentMetadata:
     """Agent metadata and capabilities"""
+
     agent_id: str
     name: str
     role: AgentRole
@@ -93,7 +97,7 @@ class BaseAgent(ABC):
         # Console handler
         handler = logging.StreamHandler()
         formatter = logging.Formatter(
-            f'[{self.metadata.agent_id}] %(asctime)s - %(levelname)s - %(message)s'
+            f"[{self.metadata.agent_id}] %(asctime)s - %(levelname)s - %(message)s"
         )
         handler.setFormatter(formatter)
         logger.addHandler(handler)
@@ -102,10 +106,7 @@ class BaseAgent(ABC):
 
     def register_tool(self, name: str, func: Callable, description: str = ""):
         """Register a tool that this agent can use"""
-        self.tools[name] = {
-            'function': func,
-            'description': description
-        }
+        self.tools[name] = {"function": func, "description": description}
         self.logger.info(f"Registered tool: {name}")
 
     def can_accept_task(self) -> bool:
@@ -207,34 +208,30 @@ class BaseAgent(ABC):
     def get_status_report(self) -> Dict[str, Any]:
         """Generate status report for this agent"""
         return {
-            'agent_id': self.metadata.agent_id,
-            'name': self.metadata.name,
-            'role': self.metadata.role.value,
-            'current_tasks': len(self.current_tasks),
-            'completed_tasks': len(self.completed_tasks),
-            'can_accept_tasks': self.can_accept_task(),
-            'active_tasks': [
-                {
-                    'task_id': t.task_id,
-                    'title': t.title,
-                    'status': t.status.value
-                }
+            "agent_id": self.metadata.agent_id,
+            "name": self.metadata.name,
+            "role": self.metadata.role.value,
+            "current_tasks": len(self.current_tasks),
+            "completed_tasks": len(self.completed_tasks),
+            "can_accept_tasks": self.can_accept_task(),
+            "active_tasks": [
+                {"task_id": t.task_id, "title": t.title, "status": t.status.value}
                 for t in self.current_tasks
-            ]
+            ],
         }
 
     def get_expertise_summary(self) -> Dict[str, Any]:
         """Get agent expertise and capabilities"""
         return {
-            'agent_id': self.metadata.agent_id,
-            'name': self.metadata.name,
-            'role': self.metadata.role.value,
-            'experience_years': self.metadata.experience_years,
-            'technologies': self.metadata.technologies,
-            'specializations': self.metadata.specializations,
-            'pros': self.metadata.pros,
-            'cons': self.metadata.cons,
-            'tools_available': list(self.tools.keys())
+            "agent_id": self.metadata.agent_id,
+            "name": self.metadata.name,
+            "role": self.metadata.role.value,
+            "experience_years": self.metadata.experience_years,
+            "technologies": self.metadata.technologies,
+            "specializations": self.metadata.specializations,
+            "pros": self.metadata.pros,
+            "cons": self.metadata.cons,
+            "tools_available": list(self.tools.keys()),
         }
 
     def __repr__(self) -> str:
@@ -249,7 +246,7 @@ class BaseAgent(ABC):
         topic: str,
         difficulty: str = "medium",
         count: int = 10,
-        specialty: Optional[str] = None
+        specialty: Optional[str] = None,
     ) -> Dict[str, Any]:
         """
         Generate multiple choice questions for a given medical topic.
@@ -278,31 +275,24 @@ class BaseAgent(ABC):
                 'metadata': {'generation_time_ms': 2340, 'quality_score': 0.92}
             }
         """
-        if difficulty not in ['easy', 'medium', 'hard']:
+        if difficulty not in ["easy", "medium", "hard"]:
             raise ValueError(f"Invalid difficulty: {difficulty}. Must be easy, medium, or hard.")
 
         self.logger.info(f"Generating {count} {difficulty} MCQs for topic: {topic}")
 
         # Check if MCQ generation tool is registered
-        if 'generate_mcq' not in self.tools:
+        if "generate_mcq" not in self.tools:
             raise RuntimeError("MCQ generation tool not registered. Register with register_tool().")
 
         # Call the registered tool
-        result = self.tools['generate_mcq']['function'](
-            topic=topic,
-            difficulty=difficulty,
-            count=count,
-            specialty=specialty
+        result = self.tools["generate_mcq"]["function"](
+            topic=topic, difficulty=difficulty, count=count, specialty=specialty
         )
 
         self.logger.info(f"Generated {len(result.get('mcqs', []))} MCQs successfully")
         return result
 
-    def validate_citation(
-        self,
-        citation: Dict[str, Any],
-        source: str = "qdrant"
-    ) -> Dict[str, Any]:
+    def validate_citation(self, citation: Dict[str, Any], source: str = "qdrant") -> Dict[str, Any]:
         """
         Validate a RAG citation meets quality standards.
 
@@ -348,43 +338,43 @@ class BaseAgent(ABC):
         warnings = []
 
         # Rule 1: Confidence threshold
-        confidence = citation.get('confidence_score', 0.0)
+        confidence = citation.get("confidence_score", 0.0)
         if confidence < 0.70:
             errors.append(f"Confidence score {confidence:.2f} below minimum threshold 0.70")
 
         # Rule 2: Page number
-        if 'page_number' not in citation or not citation['page_number']:
+        if "page_number" not in citation or not citation["page_number"]:
             errors.append("Missing page_number (required for citations)")
 
         # Rule 3: Source title validation
-        source_title = citation.get('source_title', '')
-        australian_sources = ['etg', 'amh', 'pbs', 'therapeutic guidelines', 'ahpra']
+        source_title = citation.get("source_title", "")
+        australian_sources = ["etg", "amh", "pbs", "therapeutic guidelines", "ahpra"]
         if not any(src in source_title.lower() for src in australian_sources):
             warnings.append(f"Source '{source_title}' may not be Australian-specific")
 
         # Rule 4: Chunk text not empty
-        chunk_text = citation.get('chunk_text', '').strip()
+        chunk_text = citation.get("chunk_text", "").strip()
         if not chunk_text:
             errors.append("chunk_text is empty")
         elif len(chunk_text) < 50:
             warnings.append(f"chunk_text very short ({len(chunk_text)} chars) - may lack context")
 
         # Rule 5: No placeholder content
-        placeholders = ['[PLACEHOLDER]', 'Option A', 'Option B', 'Clinical scenario for']
+        placeholders = ["[PLACEHOLDER]", "Option A", "Option B", "Clinical scenario for"]
         if any(ph in chunk_text for ph in placeholders):
             errors.append(f"Placeholder content detected in chunk_text")
 
         valid = len(errors) == 0
 
         result = {
-            'valid': valid,
-            'errors': errors,
-            'warnings': warnings,
-            'metadata': {
-                'confidence_score': confidence,
-                'source': source,
-                'validation_rules_checked': 5
-            }
+            "valid": valid,
+            "errors": errors,
+            "warnings": warnings,
+            "metadata": {
+                "confidence_score": confidence,
+                "source": source,
+                "validation_rules_checked": 5,
+            },
         }
 
         if valid:
@@ -394,11 +384,7 @@ class BaseAgent(ABC):
 
         return result
 
-    def analyze_performance(
-        self,
-        user_id: str,
-        time_period: str = "month"
-    ) -> Dict[str, Any]:
+    def analyze_performance(self, user_id: str, time_period: str = "month") -> Dict[str, Any]:
         """
         Analyze user performance and identify weak areas.
 
@@ -432,29 +418,27 @@ class BaseAgent(ABC):
                 ]
             }
         """
-        if time_period not in ['week', 'month', 'all_time']:
-            raise ValueError(f"Invalid time_period: {time_period}. Must be week, month, or all_time.")
+        if time_period not in ["week", "month", "all_time"]:
+            raise ValueError(
+                f"Invalid time_period: {time_period}. Must be week, month, or all_time."
+            )
 
         self.logger.info(f"Analyzing performance for user {user_id} (period: {time_period})")
 
         # Check if performance analysis tool is registered
-        if 'analyze_performance' not in self.tools:
+        if "analyze_performance" not in self.tools:
             raise RuntimeError("Performance analysis tool not registered.")
 
-        result = self.tools['analyze_performance']['function'](
-            user_id=user_id,
-            time_period=time_period
+        result = self.tools["analyze_performance"]["function"](
+            user_id=user_id, time_period=time_period
         )
 
-        self.logger.info(f"Performance analysis complete: {result.get('overall_accuracy', 0):.1f}% accuracy")
+        self.logger.info(
+            f"Performance analysis complete: {result.get('overall_accuracy', 0):.1f}% accuracy"
+        )
         return result
 
-    def create_study_plan(
-        self,
-        user_id: str,
-        target_exam: str,
-        weeks: int = 8
-    ) -> Dict[str, Any]:
+    def create_study_plan(self, user_id: str, target_exam: str, weeks: int = 8) -> Dict[str, Any]:
         """
         Create personalized study plan based on user's weak areas.
 
@@ -500,23 +484,17 @@ class BaseAgent(ABC):
         """
         self.logger.info(f"Creating {weeks}-week study plan for {target_exam}")
 
-        if 'create_study_plan' not in self.tools:
+        if "create_study_plan" not in self.tools:
             raise RuntimeError("Study plan tool not registered.")
 
-        result = self.tools['create_study_plan']['function'](
-            user_id=user_id,
-            target_exam=target_exam,
-            weeks=weeks
+        result = self.tools["create_study_plan"]["function"](
+            user_id=user_id, target_exam=target_exam, weeks=weeks
         )
 
         self.logger.info(f"Study plan created: {result.get('plan_id', 'unknown')}")
         return result
 
-    def query_knowledge_graph(
-        self,
-        query: str,
-        max_depth: int = 3
-    ) -> Dict[str, Any]:
+    def query_knowledge_graph(self, query: str, max_depth: int = 3) -> Dict[str, Any]:
         """
         Query Neo4j knowledge graph for medical knowledge relationships.
 
@@ -551,22 +529,16 @@ class BaseAgent(ABC):
 
         self.logger.info(f"Querying knowledge graph: '{query}' (depth: {max_depth})")
 
-        if 'query_knowledge_graph' not in self.tools:
+        if "query_knowledge_graph" not in self.tools:
             raise RuntimeError("Knowledge graph tool not registered.")
 
-        result = self.tools['query_knowledge_graph']['function'](
-            query=query,
-            max_depth=max_depth
-        )
+        result = self.tools["query_knowledge_graph"]["function"](query=query, max_depth=max_depth)
 
         self.logger.info(f"Knowledge graph query returned {len(result.get('nodes', []))} nodes")
         return result
 
     def semantic_search(
-        self,
-        query: str,
-        collection: str = "medical_knowledge",
-        top_k: int = 5
+        self, query: str, collection: str = "medical_knowledge", top_k: int = 5
     ) -> Dict[str, Any]:
         """
         Perform semantic search on Qdrant vector database.
@@ -617,17 +589,15 @@ class BaseAgent(ABC):
 
         self.logger.info(f"Semantic search: '{query}' (top_k: {top_k}, collection: {collection})")
 
-        if 'semantic_search' not in self.tools:
+        if "semantic_search" not in self.tools:
             raise RuntimeError("Semantic search tool not registered.")
 
-        result = self.tools['semantic_search']['function'](
-            query=query,
-            collection=collection,
-            top_k=top_k
+        result = self.tools["semantic_search"]["function"](
+            query=query, collection=collection, top_k=top_k
         )
 
-        results_count = len(result.get('results', []))
-        search_time = result.get('search_time_ms', 0)
+        results_count = len(result.get("results", []))
+        search_time = result.get("search_time_ms", 0)
         self.logger.info(f"Semantic search returned {results_count} results in {search_time}ms")
 
         return result

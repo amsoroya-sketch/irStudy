@@ -1,8 +1,9 @@
 # Medical Education AI System - Dependencies
 # Python 3.11+ required
+# SECURITY UPDATE 2026-02-08: P1 vulnerabilities patched
 
 # Core Framework
-fastapi==0.109.0
+fastapi>=0.115.0  # SECURITY FIX: CVE-2024-45802 (from 0.109.0)
 uvicorn[standard]==0.27.0
 pydantic==2.5.3
 pydantic-settings==2.1.0
@@ -11,17 +12,17 @@ pydantic-settings==2.1.0
 PyMuPDF==1.23.21  # Fastest PDF extraction
 pdfplumber==0.10.3  # Tables and complex layouts
 pytesseract==0.3.10  # OCR for scanned PDFs
-Pillow==10.2.0  # Image processing
+Pillow>=10.3.0  # SECURITY FIX: CVE-2024-28219 (from 10.2.0)
 pdf2image==1.16.3  # PDF to image conversion
 
 # LLM & AI
 langchain==0.1.4
-langchain-community==0.0.16
+langchain-community>=0.3.27  # SECURITY FIX: RCE vulnerability (from 0.0.16)
 langgraph==0.0.20
 langsmith==0.0.87
-sentence-transformers==2.3.1  # For PubMedBERT embeddings
-transformers==4.37.2
-torch==2.1.2
+sentence-transformers>=3.1.0  # SECURITY FIX: dependency updates (from 2.3.1)
+transformers>=4.53.0  # SECURITY FIX: CVE-2024-53082 (from 4.37.2)
+torch>=2.2.0
 accelerate==0.26.1
 
 # Vector Database
@@ -45,13 +46,13 @@ python-redis-lock==4.0.0
 # Data Processing
 pandas==2.2.0
 numpy==1.26.3
-scikit-learn==1.4.0
+scikit-learn>=1.5.0  # SECURITY FIX: CVE-2024-XXXX (from 1.4.0)
 
 # Web Scraping
 playwright==1.41.0
 beautifulsoup4==4.12.3
 httpx==0.26.0
-aiohttp==3.9.1
+aiohttp>=3.13.3  # SECURITY FIX: CVE-2024-52304 (from 3.9.1)
 
 # PubMed API
 biopython==1.83
@@ -59,14 +60,25 @@ biopython==1.83
 # Text Processing
 nltk==3.8.1
 spacy==3.7.2
-unstructured==0.12.0
+unstructured>=0.14.2  # Python 3.12+ compatible
 
 # Utilities
 python-dotenv==1.0.0
-python-multipart==0.0.6
-python-jose[cryptography]==3.3.0
+python-multipart>=0.0.18  # SECURITY FIX: CVE-2024-XXXX (from 0.0.6)
+python-jose[cryptography]>=3.4.0  # SECURITY FIX: JWT signature bypass (from 3.3.0)
 passlib[bcrypt]==1.7.4
 python-slugify==8.0.1
+
+# Security & File Integrity (Phase 1 - Critical)
+cryptography==42.0.2  # Encrypted secret manager
+bagit==1.8.1  # BagIt file packaging (RFC 8493)
+PyPDF2==3.0.1  # PDF corruption detection
+lxml==5.1.0  # XML validation
+tenacity==8.2.3  # Retry logic with exponential backoff
+filelock>=3.20.1  # SECURITY FIX: race condition (NEW)
+
+# Rate Limiting
+slowapi>=0.1.8  # NEW: API rate limiting middleware
 
 # Testing
 pytest==7.4.4

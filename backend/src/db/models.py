@@ -21,8 +21,18 @@ AUSTRALIAN MEDICAL CONTEXT:
 """
 
 from sqlalchemy import (
-    Column, Integer, String, Text, Boolean, DateTime,
-    ForeignKey, JSON, Enum as SQLEnum, Float, Table
+    Column,
+    Integer,
+    String,
+    Text,
+    Boolean,
+    DateTime,
+    ForeignKey,
+    JSON,
+    Enum as SQLEnum,
+    Float,
+    Table,
+    UniqueConstraint,
 )
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
@@ -36,8 +46,10 @@ from .base import Base
 # ENUMS
 # ============================================================================
 
+
 class UserRole(str, enum.Enum):
     """User roles for access control"""
+
     STUDENT = "student"
     EDUCATOR = "educator"
     ADMIN = "admin"
@@ -45,6 +57,7 @@ class UserRole(str, enum.Enum):
 
 class DifficultyLevel(str, enum.Enum):
     """Question difficulty levels"""
+
     EASY = "easy"
     MEDIUM = "medium"
     HARD = "hard"
@@ -52,6 +65,7 @@ class DifficultyLevel(str, enum.Enum):
 
 class MedicalSpecialty(str, enum.Enum):
     """Australian medical specialties"""
+
     CARDIOLOGY = "cardiology"
     RESPIRATORY = "respiratory"
     GASTROENTEROLOGY = "gastroenterology"
@@ -67,6 +81,7 @@ class MedicalSpecialty(str, enum.Enum):
 
 class OSCEType(str, enum.Enum):
     """OSCE station types"""
+
     HISTORY_TAKING = "history_taking"
     PHYSICAL_EXAMINATION = "physical_examination"
     COUNSELLING = "counselling"
@@ -80,25 +95,26 @@ class OSCEType(str, enum.Enum):
 # ============================================================================
 
 user_favorite_mcqs = Table(
-    'user_favorite_mcqs',
+    "user_favorite_mcqs",
     Base.metadata,
-    Column('user_id', Integer, ForeignKey('users.id'), primary_key=True),
-    Column('mcq_id', Integer, ForeignKey('mcqs.id'), primary_key=True),
-    Column('created_at', DateTime(timezone=True), server_default=func.now())
+    Column("user_id", Integer, ForeignKey("users.id"), primary_key=True),
+    Column("mcq_id", Integer, ForeignKey("mcqs.id"), primary_key=True),
+    Column("created_at", DateTime(timezone=True), server_default=func.now()),
 )
 
 user_favorite_osces = Table(
-    'user_favorite_osces',
+    "user_favorite_osces",
     Base.metadata,
-    Column('user_id', Integer, ForeignKey('users.id'), primary_key=True),
-    Column('osce_id', Integer, ForeignKey('osces.id'), primary_key=True),
-    Column('created_at', DateTime(timezone=True), server_default=func.now())
+    Column("user_id", Integer, ForeignKey("users.id"), primary_key=True),
+    Column("osce_id", Integer, ForeignKey("osces.id"), primary_key=True),
+    Column("created_at", DateTime(timezone=True), server_default=func.now()),
 )
 
 
 # ============================================================================
 # USER MODEL
 # ============================================================================
+
 
 class User(Base):
     """
@@ -120,6 +136,7 @@ class User(Base):
     - failed_login_attempts: Counter for account lockout
     - last_login_at: Last successful login timestamp
     """
+
     __tablename__ = "users"
 
     # Primary key
@@ -131,7 +148,12 @@ class User(Base):
 
     # Profile (PHI - should be encrypted at application layer)
     full_name = Column(String(255), nullable=False)
-    role = Column(SQLEnum(UserRole), default=UserRole.STUDENT, nullable=False)
+    # Use values_callable to tell SQLAlchemy to use enum.value (lowercase) not enum.name (uppercase)
+    role = Column(
+        SQLEnum(UserRole, values_callable=lambda x: [e.value for e in x]),
+        default=UserRole.STUDENT,
+        nullable=False,
+    )
 
     # Account status
     is_active = Column(Boolean, default=True, nullable=False)
@@ -142,16 +164,32 @@ class User(Base):
     locked_until = Column(DateTime(timezone=True), nullable=True)
     last_login_at = Column(DateTime(timezone=True), nullable=True)
 
+    # Email verification (Task 3.1)
+    verification_token = Column(String(255), nullable=True, unique=True)
+    verification_token_created_at = Column(DateTime(timezone=True), nullable=True)
+
+    # Password reset (Task 3.1)
+    reset_token = Column(String(255), nullable=True, unique=True)
+    reset_token_created_at = Column(DateTime(timezone=True), nullable=True)
+
     # Audit timestamps
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
-    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
+    updated_at = Column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
     deleted_at = Column(DateTime(timezone=True), nullable=True)  # Soft delete
 
     # Relationships
     mcq_attempts = relationship("MCQAttempt", back_populates="user", cascade="all, delete-orphan")
-    progress_records = relationship("UserProgress", back_populates="user", cascade="all, delete-orphan")
+    osce_attempts = relationship("OSCEAttempt", back_populates="user", cascade="all, delete-orphan")
+    progress_records = relationship(
+        "UserProgress", back_populates="user", cascade="all, delete-orphan"
+    )
     favorite_mcqs = relationship("MCQ", secondary=user_favorite_mcqs, back_populates="favorited_by")
-    favorite_osces = relationship("OSCE", secondary=user_favorite_osces, back_populates="favorited_by")
+    favorite_osces = relationship(
+        "OSCE", secondary=user_favorite_osces, back_populates="favorited_by"
+    )
+    study_cards = relationship("StudyCard", back_populates="user", cascade="all, delete-orphan")
 
     def __repr__(self):
         return f"<User(id={self.id}, email={self.email}, role={self.role})>"
@@ -160,6 +198,7 @@ class User(Base):
 # ============================================================================
 # MCQ MODEL
 # ============================================================================
+
 
 class MCQ(Base):
     """
@@ -182,13 +221,16 @@ class MCQ(Base):
     - tags: JSON array of topic tags
     - image_url: Optional clinical image (ECG, X-ray, etc.)
     """
+
     __tablename__ = "mcqs"
 
     # Primary key
     id = Column(Integer, primary_key=True, index=True)
 
     # Question content
-    question_id = Column(String(50), unique=True, index=True, nullable=False)  # e.g., "MCQ-CARD-001"
+    question_id = Column(
+        String(50), unique=True, index=True, nullable=False
+    )  # e.g., "MCQ-CARD-001"
     question_text = Column(Text, nullable=False)
     options = Column(JSON, nullable=False)  # {"A": "...", "B": "...", ...}
     correct_answer = Column(String(1), nullable=False)  # A, B, C, D, or E
@@ -199,8 +241,17 @@ class MCQ(Base):
     learning_points = Column(JSON, nullable=True)  # ["Point 1", "Point 2", ...]
 
     # Metadata
-    specialty = Column(SQLEnum(MedicalSpecialty), nullable=False, index=True)
-    difficulty = Column(SQLEnum(DifficultyLevel), default=DifficultyLevel.MEDIUM, nullable=False)
+    # Use values_callable to tell SQLAlchemy to use enum.value (lowercase) not enum.name (uppercase)
+    specialty = Column(
+        SQLEnum(MedicalSpecialty, values_callable=lambda x: [e.value for e in x]),
+        nullable=False,
+        index=True,
+    )
+    difficulty = Column(
+        SQLEnum(DifficultyLevel, values_callable=lambda x: [e.value for e in x]),
+        default=DifficultyLevel.MEDIUM,
+        nullable=False,
+    )
     tags = Column(JSON, nullable=True)  # ["hypertension", "cardiovascular", "first-line"]
 
     # Media
@@ -216,14 +267,26 @@ class MCQ(Base):
     is_published = Column(Boolean, default=True, nullable=False)
     requires_australian_context = Column(Boolean, default=True, nullable=False)
 
+    # Email verification (Task 3.1)
+    verification_token = Column(String(255), nullable=True, unique=True)
+    verification_token_created_at = Column(DateTime(timezone=True), nullable=True)
+
+    # Password reset (Task 3.1)
+    reset_token = Column(String(255), nullable=True, unique=True)
+    reset_token_created_at = Column(DateTime(timezone=True), nullable=True)
+
     # Audit timestamps
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
-    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
+    updated_at = Column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
     deleted_at = Column(DateTime(timezone=True), nullable=True)  # Soft delete
 
     # Relationships
     attempts = relationship("MCQAttempt", back_populates="mcq", cascade="all, delete-orphan")
-    favorited_by = relationship("User", secondary=user_favorite_mcqs, back_populates="favorite_mcqs")
+    favorited_by = relationship(
+        "User", secondary=user_favorite_mcqs, back_populates="favorite_mcqs"
+    )
 
     def __repr__(self):
         return f"<MCQ(id={self.question_id}, specialty={self.specialty}, difficulty={self.difficulty})>"
@@ -239,6 +302,7 @@ class MCQ(Base):
 # ============================================================================
 # OSCE MODEL
 # ============================================================================
+
 
 class OSCE(Base):
     """
@@ -263,6 +327,7 @@ class OSCE(Base):
     - time_limit_minutes: Time limit (default: 8 minutes)
     - learning_objectives: Educational objectives
     """
+
     __tablename__ = "osces"
 
     # Primary key
@@ -271,7 +336,11 @@ class OSCE(Base):
     # Station identification
     osce_id = Column(String(50), unique=True, index=True, nullable=False)  # e.g., "OSCE-CARD-001"
     station_title = Column(String(255), nullable=False)
-    station_type = Column(SQLEnum(OSCEType), nullable=False, index=True)
+    station_type = Column(
+        SQLEnum(OSCEType, values_callable=lambda x: [e.value for e in x]),
+        nullable=False,
+        index=True,
+    )
 
     # Instructions
     patient_instructions = Column(Text, nullable=False)  # For simulated patient/actor
@@ -292,20 +361,46 @@ class OSCE(Base):
     """
 
     # Metadata
-    specialty = Column(SQLEnum(MedicalSpecialty), nullable=False, index=True)
-    difficulty = Column(SQLEnum(DifficultyLevel), default=DifficultyLevel.MEDIUM, nullable=False)
+    specialty = Column(
+        SQLEnum(MedicalSpecialty, values_callable=lambda x: [e.value for e in x]),
+        nullable=False,
+        index=True,
+    )
+    difficulty = Column(
+        SQLEnum(DifficultyLevel, values_callable=lambda x: [e.value for e in x]),
+        default=DifficultyLevel.MEDIUM,
+        nullable=False,
+    )
     time_limit_minutes = Column(Integer, default=8, nullable=False)
 
     # Educational content
     learning_objectives = Column(JSON, nullable=True)  # ["Objective 1", "Objective 2", ...]
     key_points = Column(JSON, nullable=True)
     red_flags = Column(JSON, nullable=True)  # Red flag conditions to identify
+    tags = Column(JSON, nullable=True)  # ["tag1", "tag2", ...] for filtering and categorization
 
     # Australian context
     australian_guidelines = Column(JSON, nullable=True)  # eTG, NSW Health protocols
 
     # Media
     supporting_documents = Column(JSON, nullable=True)  # URLs to test results, images
+    video_resources = Column(JSON, nullable=True)  # Video demonstration links
+    """
+    Example video_resources JSON:
+    {
+        "essential_videos": [
+            {
+                "title": "Cardiovascular Examination - Stanford Medicine 25",
+                "url": "https://stanfordmedicine25.stanford.edu/the25/cardiovascular.html",
+                "source": "Stanford Medicine 25",
+                "duration_minutes": 10,
+                "focus": "Complete systematic cardiac examination",
+                "why_recommended": "Gold standard demonstration"
+            }
+        ],
+        "supplementary_videos": [...]
+    }
+    """
 
     # Statistics
     times_practiced = Column(Integer, default=0, nullable=False)
@@ -314,13 +409,26 @@ class OSCE(Base):
     # Flags
     is_published = Column(Boolean, default=True, nullable=False)
 
+    # Email verification (Task 3.1)
+    verification_token = Column(String(255), nullable=True, unique=True)
+    verification_token_created_at = Column(DateTime(timezone=True), nullable=True)
+
+    # Password reset (Task 3.1)
+    reset_token = Column(String(255), nullable=True, unique=True)
+    reset_token_created_at = Column(DateTime(timezone=True), nullable=True)
+
     # Audit timestamps
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
-    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
+    updated_at = Column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
     deleted_at = Column(DateTime(timezone=True), nullable=True)  # Soft delete
 
     # Relationships
-    favorited_by = relationship("User", secondary=user_favorite_osces, back_populates="favorite_osces")
+    attempts = relationship("OSCEAttempt", back_populates="osce", cascade="all, delete-orphan")
+    favorited_by = relationship(
+        "User", secondary=user_favorite_osces, back_populates="favorite_osces"
+    )
 
     def __repr__(self):
         return f"<OSCE(id={self.osce_id}, type={self.station_type}, specialty={self.specialty})>"
@@ -329,6 +437,7 @@ class OSCE(Base):
 # ============================================================================
 # MCQ ATTEMPT MODEL
 # ============================================================================
+
 
 class MCQAttempt(Base):
     """
@@ -347,6 +456,7 @@ class MCQAttempt(Base):
     - time_taken_seconds: Time taken to answer
     - confidence_level: User's confidence (1-5)
     """
+
     __tablename__ = "mcq_attempts"
 
     # Primary key
@@ -363,7 +473,9 @@ class MCQAttempt(Base):
     confidence_level = Column(Integer, nullable=True)  # 1-5 scale (1=guessing, 5=certain)
 
     # Context
-    attempt_number = Column(Integer, default=1, nullable=False)  # How many times user attempted this MCQ
+    attempt_number = Column(
+        Integer, default=1, nullable=False
+    )  # How many times user attempted this MCQ
     was_flagged_for_review = Column(Boolean, default=False, nullable=False)
 
     # Audit timestamp
@@ -374,12 +486,75 @@ class MCQAttempt(Base):
     mcq = relationship("MCQ", back_populates="attempts")
 
     def __repr__(self):
-        return f"<MCQAttempt(user_id={self.user_id}, mcq_id={self.mcq_id}, correct={self.is_correct})>"
+        return (
+            f"<MCQAttempt(user_id={self.user_id}, mcq_id={self.mcq_id}, correct={self.is_correct})>"
+        )
+
+
+# ============================================================================
+# OSCE ATTEMPT MODEL
+# ============================================================================
+
+
+class OSCEAttempt(Base):
+    """
+    OSCE station practice attempt record with rubric scoring.
+
+    AMC CLINICAL EXAM CONTEXT:
+    - 15-mark rubric (5 categories × 3 marks each)
+    - Pass mark: 9/15 (60%)
+    - Tracks performance across categories for targeted improvement
+
+    FIELDS:
+    - user_id: Foreign key to User
+    - osce_id: Foreign key to OSCE
+    - scores: JSON dict of category scores (history_examination: 2, etc.)
+    - total_score: Total score out of 15
+    - time_taken_seconds: Time taken to complete station
+    - self_reflection: Optional student self-assessment
+    - areas_for_improvement: JSON array of weak categories
+    """
+
+    __tablename__ = "osce_attempts"
+
+    # Primary key
+    id = Column(Integer, primary_key=True, index=True)
+
+    # Foreign keys
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+    osce_id = Column(Integer, ForeignKey("osces.id"), nullable=False, index=True)
+
+    # Scoring (AMC 15-mark format)
+    scores = Column(JSON, nullable=False)  # {"history_examination": 2, "clinical_reasoning": 3, ...}
+    total_score = Column(Integer, nullable=False)  # Sum of all category scores (max 15)
+    passed = Column(Boolean, nullable=False)  # True if total_score >= 9
+
+    # Time tracking
+    time_taken_seconds = Column(Integer, nullable=False)
+
+    # Reflective practice
+    self_reflection = Column(Text, nullable=True)
+    areas_for_improvement = Column(JSON, nullable=True)  # ["communication", "safety", ...]
+
+    # Context
+    attempt_number = Column(Integer, default=1, nullable=False)  # User's attempt count for this OSCE
+    was_flagged_for_review = Column(Boolean, default=False, nullable=False)
+
+    # Audit timestamp
+    attempted_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+
+    # Relationships
+    user = relationship("User", back_populates="osce_attempts")
+    osce = relationship("OSCE", back_populates="attempts")
+
+    def __repr__(self):
+        return f"<OSCEAttempt(user_id={self.user_id}, osce_id={self.osce_id}, score={self.total_score}/15)>"
 
 
 # ============================================================================
 # USER PROGRESS MODEL
 # ============================================================================
+
 
 class UserProgress(Base):
     """
@@ -401,6 +576,7 @@ class UserProgress(Base):
     - total_study_time_minutes: Total study time in specialty
     - weak_topics: JSON array of topics needing improvement
     """
+
     __tablename__ = "user_progress"
 
     # Primary key
@@ -410,7 +586,11 @@ class UserProgress(Base):
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
 
     # Specialty progress
-    specialty = Column(SQLEnum(MedicalSpecialty), nullable=False, index=True)
+    specialty = Column(
+        SQLEnum(MedicalSpecialty, values_callable=lambda x: [e.value for e in x]),
+        nullable=False,
+        index=True,
+    )
 
     # MCQ statistics
     total_mcqs_attempted = Column(Integer, default=0, nullable=False)
@@ -435,16 +615,26 @@ class UserProgress(Base):
     # Mastery level
     mastery_percentage = Column(Float, default=0.0, nullable=False)  # Overall mastery in specialty
 
+    # Email verification (Task 3.1)
+    verification_token = Column(String(255), nullable=True, unique=True)
+    verification_token_created_at = Column(DateTime(timezone=True), nullable=True)
+
+    # Password reset (Task 3.1)
+    reset_token = Column(String(255), nullable=True, unique=True)
+    reset_token_created_at = Column(DateTime(timezone=True), nullable=True)
+
     # Audit timestamps
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
-    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
+    updated_at = Column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
 
     # Relationships
     user = relationship("User", back_populates="progress_records")
 
     # Unique constraint: One progress record per user per specialty
     __table_args__ = (
-        sqlalchemy.UniqueConstraint('user_id', 'specialty', name='unique_user_specialty_progress'),
+        UniqueConstraint("user_id", "specialty", name="unique_user_specialty_progress"),
     )
 
     def __repr__(self):
@@ -456,6 +646,201 @@ class UserProgress(Base):
         if self.total_mcqs_attempted == 0:
             return 0.0
         return (self.total_mcqs_correct / self.total_mcqs_attempted) * 100
+
+
+# ============================================================================
+# STUDY CARD MODEL
+# ============================================================================
+
+
+class StudyCard(Base):
+    """
+    Study card model for spaced repetition learning.
+
+    SPACED REPETITION:
+    - Uses SM-2 algorithm for optimal review scheduling
+    - Tracks ease factor, interval, and repetition count
+    - Supports quality ratings 0-5 for review
+
+    AUSTRALIAN CONTEXT:
+    - Citations reference Australian medical guidelines
+    - Content aligned with AMC examination requirements
+    - Drug names and units follow Australian standards
+
+    FIELDS:
+    - card_id: Unique card identifier (e.g., "CARDI-CARD-0001")
+    - specialty: Medical specialty category
+    - topic: Main topic (e.g., "ECG Interpretation")
+    - subtopic: Specific subtopic (e.g., "STEMI patterns")
+    - question: Front of flashcard
+    - answer: Back of flashcard
+    - explanation: Additional context/clinical pearls
+    - citations: JSON array of Australian guideline references
+    - difficulty: Card difficulty level
+    - next_review_date: When card should be reviewed next
+    - interval_days: Days until next review (SM-2)
+    - ease_factor: SM-2 ease factor (default 2.5)
+    - repetitions: Number of successful reviews
+    """
+
+    __tablename__ = "study_cards"
+
+    # Primary key
+    id = Column(Integer, primary_key=True, index=True)
+
+    # Foreign key (nullable for shared/public cards)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=True, index=True)
+
+    # Card identification
+    card_id = Column(String(50), unique=True, index=True, nullable=False)  # e.g., "CARDI-CARD-0001"
+
+    # Content fields
+    specialty = Column(
+        SQLEnum(MedicalSpecialty, values_callable=lambda x: [e.value for e in x]),
+        nullable=False,
+        index=True,
+    )
+    topic = Column(String(255), nullable=False, index=True)
+    subtopic = Column(String(255), nullable=True)
+    question = Column(Text, nullable=False)  # Front of card
+    answer = Column(Text, nullable=False)  # Back of card
+    explanation = Column(Text, nullable=True)  # Additional context
+
+    # Citations (Australian medical guidelines)
+    citations = Column(JSON, nullable=False)  # List of citation objects
+
+    # Metadata
+    difficulty = Column(
+        SQLEnum(DifficultyLevel, values_callable=lambda x: [e.value for e in x]),
+        default=DifficultyLevel.MEDIUM,
+        nullable=False,
+        index=True,
+    )
+    tags = Column(JSON, nullable=True)  # ["tag1", "tag2", ...]
+    card_type = Column(
+        String(50), default="concept", nullable=False
+    )  # concept, clinical_pearl, etc.
+
+    # Spaced Repetition (SM-2 Algorithm)
+    next_review_date = Column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False, index=True
+    )
+    interval_days = Column(Integer, default=1, nullable=False)
+    ease_factor = Column(Float, default=2.5, nullable=False)
+    repetitions = Column(Integer, default=0, nullable=False)
+
+    # Flags
+    is_active = Column(Boolean, default=True, nullable=False)
+
+    # Email verification (Task 3.1)
+    verification_token = Column(String(255), nullable=True, unique=True)
+    verification_token_created_at = Column(DateTime(timezone=True), nullable=True)
+
+    # Password reset (Task 3.1)
+    reset_token = Column(String(255), nullable=True, unique=True)
+    reset_token_created_at = Column(DateTime(timezone=True), nullable=True)
+
+    # Audit timestamps
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    updated_at = Column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
+    deleted_at = Column(DateTime(timezone=True), nullable=True)  # Soft delete
+
+    # Relationships
+    user = relationship("User", back_populates="study_cards")
+
+    def __repr__(self):
+        return f"<StudyCard(id={self.card_id}, specialty={self.specialty}, topic={self.topic})>"
+
+    def update_sm2(self, quality: int) -> None:
+        """
+        Update spaced repetition schedule using SM-2 algorithm.
+
+        Args:
+            quality: Quality rating 0-5 (0=complete blackout, 5=perfect recall)
+
+        SM-2 Algorithm:
+        - If quality < 3: Reset to day 1
+        - If quality >= 3: Increase interval based on ease factor
+        - Ease factor adjusted by quality (min 1.3)
+        """
+        from datetime import timedelta
+
+        if quality < 3:
+            # Failed review - reset
+            self.repetitions = 0
+            self.interval_days = 1
+        else:
+            # Successful review
+            if self.repetitions == 0:
+                self.interval_days = 1
+            elif self.repetitions == 1:
+                self.interval_days = 6
+            else:
+                self.interval_days = int(self.interval_days * self.ease_factor)
+
+            self.repetitions += 1
+
+        # Update ease factor
+        self.ease_factor = max(
+            1.3, self.ease_factor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02))
+        )
+
+        # Calculate next review date
+        self.next_review_date = datetime.utcnow() + timedelta(days=self.interval_days)
+
+
+# ============================================================================
+# STUDY CARD REVIEW MODEL
+# ============================================================================
+
+
+class StudyCardReview(Base):
+    """
+    Individual study card review record with SM-2 tracking.
+
+    FEATURES:
+    - Tracks every review attempt for analytics
+    - Records quality ratings (0-5) for SM-2 algorithm
+    - Stores time taken for performance analysis
+    - Maintains review history for learning insights
+
+    FIELDS:
+    - user_id: Foreign key to User
+    - card_id: Foreign key to StudyCard
+    - quality: Quality rating 0-5 (0=complete blackout, 5=perfect recall)
+    - time_taken_seconds: Time taken to review card
+    - ease_factor_after: Ease factor after this review
+    - interval_days_after: Interval days after this review
+    - repetitions_after: Repetitions count after this review
+    - next_review_date_after: Next review date after this review
+    """
+
+    __tablename__ = "study_card_reviews"
+
+    # Primary key
+    id = Column(Integer, primary_key=True, index=True)
+
+    # Foreign keys
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+    card_id = Column(Integer, ForeignKey("study_cards.id"), nullable=False, index=True)
+
+    # Review details
+    quality = Column(Integer, nullable=False)  # 0-5 scale (SM-2)
+    time_taken_seconds = Column(Integer, nullable=False)
+
+    # SM-2 state after this review
+    ease_factor_after = Column(Float, nullable=False)
+    interval_days_after = Column(Integer, nullable=False)
+    repetitions_after = Column(Integer, nullable=False)
+    next_review_date_after = Column(DateTime(timezone=True), nullable=False)
+
+    # Audit timestamp
+    reviewed_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False, index=True)
+
+    def __repr__(self):
+        return f"<StudyCardReview(user_id={self.user_id}, card_id={self.card_id}, quality={self.quality})>"
 
 
 # Import sqlalchemy for unique constraint

@@ -13,6 +13,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import QueuePool
 import os
 
+
 # Read database password from Docker secret
 def get_database_url() -> str:
     """
@@ -20,8 +21,18 @@ def get_database_url() -> str:
 
     In production: Reads password from /run/secrets/db_password
     In development: Falls back to environment variable
+
+    Priority:
+    1. Use DATABASE_URL if already set (from docker-compose)
+    2. Construct from individual components
     """
-    host = os.getenv("DATABASE_HOST", "localhost")
+    # If DATABASE_URL is already set (from docker-compose), use it
+    database_url = os.getenv("DATABASE_URL")
+    if database_url:
+        return database_url
+
+    # Otherwise, construct from components
+    host = os.getenv("DATABASE_HOST", "postgres")  # Changed default from localhost to postgres
     port = os.getenv("DATABASE_PORT", "5432")
     name = os.getenv("DATABASE_NAME", "irstudy_medical")
     user = os.getenv("DATABASE_USER", "postgres")
@@ -29,7 +40,7 @@ def get_database_url() -> str:
     # Try to read password from Docker secret
     secret_path = "/run/secrets/db_password"
     if os.path.exists(secret_path):
-        with open(secret_path, 'r') as f:
+        with open(secret_path, "r") as f:
             password = f.read().strip()
     else:
         # Fallback to environment variable (development only)
@@ -53,15 +64,11 @@ engine = create_engine(
     max_overflow=int(os.getenv("DB_MAX_OVERFLOW", 40)),
     pool_timeout=int(os.getenv("DB_POOL_TIMEOUT", 30)),
     pool_pre_ping=True,  # Verify connections before using
-    echo=os.getenv("DB_ECHO", "False").lower() == "true"
+    echo=os.getenv("DB_ECHO", "False").lower() == "true",
 )
 
 # Session factory
-SessionLocal = sessionmaker(
-    autocommit=False,
-    autoflush=False,
-    bind=engine
-)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Declarative base for all models
 Base = declarative_base()

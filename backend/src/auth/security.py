@@ -32,15 +32,24 @@ def get_secret_key() -> str:
     # Try Docker secret first
     secret_path = "/run/secrets/jwt_secret"
     if os.path.exists(secret_path):
-        with open(secret_path, 'r') as f:
+        with open(secret_path, "r") as f:
             return f.read().strip()
 
     # Fallback to environment variable
     secret_key = os.getenv("SECRET_KEY")
     if not secret_key:
         raise ValueError(
-            "JWT secret key not found. "
-            "Set SECRET_KEY env var or mount /run/secrets/jwt_secret"
+            "JWT secret key not found. " "Set SECRET_KEY env var or mount /run/secrets/jwt_secret"
+        )
+
+    # SECURITY FIX (TASK_001 P1-001): Validate secret key minimum length
+    # JWT secret must be ≥64 characters (32 bytes hex) for security
+    if len(secret_key) < 64:
+        raise ValueError(
+            f"JWT secret key too weak. "
+            f"Must be ≥64 characters (32 bytes hex). "
+            f"Current length: {len(secret_key)}. "
+            f"Generate with: openssl rand -hex 32"
         )
 
     return secret_key
@@ -55,6 +64,7 @@ REFRESH_TOKEN_EXPIRE_DAYS = int(os.getenv("REFRESH_TOKEN_EXPIRE_DAYS", 7))
 # ============================================================================
 # PASSWORD HASHING
 # ============================================================================
+
 
 def hash_password(password: str) -> str:
     """
@@ -87,10 +97,8 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
 # JWT TOKEN GENERATION
 # ============================================================================
 
-def create_access_token(
-    data: dict,
-    expires_delta: Optional[timedelta] = None
-) -> str:
+
+def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
     """
     Create JWT access token.
 
@@ -108,11 +116,7 @@ def create_access_token(
     else:
         expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
 
-    to_encode.update({
-        "exp": expire,
-        "iat": datetime.utcnow(),
-        "type": "access"
-    })
+    to_encode.update({"exp": expire, "iat": datetime.utcnow(), "type": "access"})
 
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
@@ -131,11 +135,7 @@ def create_refresh_token(data: dict) -> str:
     to_encode = data.copy()
     expire = datetime.utcnow() + timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS)
 
-    to_encode.update({
-        "exp": expire,
-        "iat": datetime.utcnow(),
-        "type": "refresh"
-    })
+    to_encode.update({"exp": expire, "iat": datetime.utcnow(), "type": "refresh"})
 
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
@@ -144,6 +144,7 @@ def create_refresh_token(data: dict) -> str:
 # ============================================================================
 # JWT TOKEN VERIFICATION
 # ============================================================================
+
 
 def decode_token(token: str) -> Optional[dict]:
     """

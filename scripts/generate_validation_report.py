@@ -26,6 +26,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class ValidationSummary:
     """Overall validation summary"""
+
     total_files: int = 0
     total_issues: int = 0
     critical_issues: int = 0
@@ -57,7 +58,7 @@ class ComprehensiveReportGenerator:
         """Load Australian compliance validation report"""
         json_path = self.reports_dir / "australian_compliance.json"
         if json_path.exists():
-            with open(json_path, 'r') as f:
+            with open(json_path, "r") as f:
                 return json.load(f)
         return None
 
@@ -65,7 +66,7 @@ class ComprehensiveReportGenerator:
         """Load citation validation report"""
         json_path = self.reports_dir / "citations.json"
         if json_path.exists():
-            with open(json_path, 'r') as f:
+            with open(json_path, "r") as f:
                 return json.load(f)
         return None
 
@@ -73,7 +74,7 @@ class ComprehensiveReportGenerator:
         """Load RAG validation report"""
         json_path = self.reports_dir / "rag_validation.json"
         if json_path.exists():
-            with open(json_path, 'r') as f:
+            with open(json_path, "r") as f:
                 return json.load(f)
         return None
 
@@ -95,25 +96,25 @@ class ComprehensiveReportGenerator:
         manual_review = 0
 
         if compliance_report:
-            files_scanned.add(compliance_report['summary']['files_scanned'])
-            all_issues.extend(compliance_report.get('issues', []))
-            auto_corrections += compliance_report['summary']['auto_corrections']
-            manual_review += compliance_report['summary']['manual_review_needed']
-            self.summary.compliance_score = compliance_report['summary']['compliance_score']
+            files_scanned.add(compliance_report["summary"]["files_scanned"])
+            all_issues.extend(compliance_report.get("issues", []))
+            auto_corrections += compliance_report["summary"]["auto_corrections"]
+            manual_review += compliance_report["summary"]["manual_review_needed"]
+            self.summary.compliance_score = compliance_report["summary"]["compliance_score"]
 
         if citation_report:
-            files_scanned.add(citation_report['summary']['files_scanned'])
-            all_issues.extend(citation_report.get('issues', []))
-            self.summary.citation_coverage = citation_report['summary']['citation_coverage']
+            files_scanned.add(citation_report["summary"]["files_scanned"])
+            all_issues.extend(citation_report.get("issues", []))
+            self.summary.citation_coverage = citation_report["summary"]["citation_coverage"]
 
         if rag_report:
-            files_scanned.add(rag_report['summary']['files_scanned'])
-            auto_corrections += rag_report['summary']['auto_corrected']
-            manual_review += rag_report['summary']['unverified_claims']
-            if rag_report['summary']['claims_extracted'] > 0:
+            files_scanned.add(rag_report["summary"]["files_scanned"])
+            auto_corrections += rag_report["summary"]["auto_corrected"]
+            manual_review += rag_report["summary"]["unverified_claims"]
+            if rag_report["summary"]["claims_extracted"] > 0:
                 self.summary.rag_verification_rate = (
-                    rag_report['summary']['rag_verified'] /
-                    rag_report['summary']['claims_extracted']
+                    rag_report["summary"]["rag_verified"]
+                    / rag_report["summary"]["claims_extracted"]
                 ) * 100
 
         # Update summary
@@ -124,19 +125,19 @@ class ComprehensiveReportGenerator:
 
         # Count by severity
         for issue in all_issues:
-            severity = issue.get('severity', 'minor')
-            if severity == 'critical':
+            severity = issue.get("severity", "minor")
+            if severity == "critical":
                 self.summary.critical_issues += 1
-            elif severity == 'important':
+            elif severity == "important":
                 self.summary.important_issues += 1
             else:
                 self.summary.minor_issues += 1
 
         return {
-            'compliance': compliance_report,
-            'citations': citation_report,
-            'rag': rag_report,
-            'summary': self.summary
+            "compliance": compliance_report,
+            "citations": citation_report,
+            "rag": rag_report,
+            "summary": self.summary,
         }
 
     def generate_html_report(self, output_path: Path, data: Dict[str, Any]):
@@ -426,7 +427,7 @@ class ComprehensiveReportGenerator:
 </body>
 </html>"""
 
-        with open(output_path, 'w', encoding='utf-8') as f:
+        with open(output_path, "w", encoding="utf-8") as f:
             f.write(html)
 
         logger.info(f"✓ HTML report saved to {output_path}")
@@ -434,27 +435,27 @@ class ComprehensiveReportGenerator:
     def generate_json_report(self, output_path: Path, data: Dict[str, Any]):
         """Generate comprehensive JSON report"""
         report = {
-            'generated_at': datetime.now().isoformat(),
-            'summary': {
-                'total_files': self.summary.total_files,
-                'total_issues': self.summary.total_issues,
-                'critical_issues': self.summary.critical_issues,
-                'important_issues': self.summary.important_issues,
-                'minor_issues': self.summary.minor_issues,
-                'auto_corrections': self.summary.auto_corrections,
-                'manual_review_needed': self.summary.manual_review_needed,
-                'compliance_score': round(self.summary.compliance_score, 2),
-                'citation_coverage': round(self.summary.citation_coverage, 2),
-                'rag_verification_rate': round(self.summary.rag_verification_rate, 2)
+            "generated_at": datetime.now().isoformat(),
+            "summary": {
+                "total_files": self.summary.total_files,
+                "total_issues": self.summary.total_issues,
+                "critical_issues": self.summary.critical_issues,
+                "important_issues": self.summary.important_issues,
+                "minor_issues": self.summary.minor_issues,
+                "auto_corrections": self.summary.auto_corrections,
+                "manual_review_needed": self.summary.manual_review_needed,
+                "compliance_score": round(self.summary.compliance_score, 2),
+                "citation_coverage": round(self.summary.citation_coverage, 2),
+                "rag_verification_rate": round(self.summary.rag_verification_rate, 2),
             },
-            'validation_reports': {
-                'australian_compliance': data.get('compliance'),
-                'citations': data.get('citations'),
-                'rag': data.get('rag')
-            }
+            "validation_reports": {
+                "australian_compliance": data.get("compliance"),
+                "citations": data.get("citations"),
+                "rag": data.get("rag"),
+            },
         }
 
-        with open(output_path, 'w', encoding='utf-8') as f:
+        with open(output_path, "w", encoding="utf-8") as f:
             json.dump(report, f, indent=2, ensure_ascii=False)
 
         logger.info(f"✓ JSON report saved to {output_path}")
@@ -475,9 +476,9 @@ class ComprehensiveReportGenerator:
         self.generate_json_report(json_path, data)
 
         # Print summary
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("✓ Comprehensive Validation Reports Generated")
-        print("="*60)
+        print("=" * 60)
         print(f"Files Scanned: {self.summary.total_files}")
         print(f"Total Issues: {self.summary.total_issues}")
         print(f"  - Critical: {self.summary.critical_issues}")
@@ -490,7 +491,7 @@ class ComprehensiveReportGenerator:
         print(f"RAG Verification: {self.summary.rag_verification_rate:.1f}%")
         print(f"\nHTML Dashboard: {html_path}")
         print(f"JSON Export: {json_path}")
-        print("="*60)
+        print("=" * 60)
 
 
 def main():
@@ -498,7 +499,9 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(description="Generate comprehensive validation reports")
-    parser.add_argument("--reports-dir", default="validation_reports", help="Validation reports directory")
+    parser.add_argument(
+        "--reports-dir", default="validation_reports", help="Validation reports directory"
+    )
 
     args = parser.parse_args()
 

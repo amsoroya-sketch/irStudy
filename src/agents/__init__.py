@@ -24,26 +24,19 @@ Available Agent Categories:
     - Medical Experts (15): MED-001 to MED-015
 """
 
-from .base_agent import (
-    BaseAgent,
-    AgentMetadata,
-    AgentRole,
-    AgentTask,
-    TaskStatus
-)
+from .base_agent import BaseAgent, AgentMetadata, AgentRole, AgentTask, TaskStatus
 
 from .pm_001_project_manager import ProjectManagerAgent
 
 __all__ = [
     # Base classes
-    'BaseAgent',
-    'AgentMetadata',
-    'AgentRole',
-    'AgentTask',
-    'TaskStatus',
-
+    "BaseAgent",
+    "AgentMetadata",
+    "AgentRole",
+    "AgentTask",
+    "TaskStatus",
     # Agents
-    'ProjectManagerAgent',
+    "ProjectManagerAgent",
 ]
 
-__version__ = '1.0.0'
+__version__ = "1.0.0"

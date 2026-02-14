@@ -77,6 +77,33 @@
 
 ---
 
+## 📺 RECOMMENDED VIDEO DEMONSTRATIONS
+
+### Obstetric Examination Videos
+
+**Essential Videos (Watch These First):**
+
+1. **Obstetric Examination (Antenatal) - Geeky Medics**
+   - URL: https://geekymedics.com/obstetric-examination/
+   - Duration: 10 minutes (OSCE-appropriate)
+   - Focus: Complete antenatal examination including Leopold's manoeuvres and SFH measurement
+   - Why recommended: Excellent OSCE-formatted demonstration with clear communication and systematic approach
+   - Australian relevance: Follows Australian antenatal care protocols
+
+2. **Leopold's Manoeuvres - Oxford Medical Education**
+   - URL: https://www.oxfordmedicaleducation.com/clinical-skills/examination/leopolds-manoeuvres/
+   - Focus: Detailed demonstration of all 4 Leopold's manoeuvres
+   - Why recommended: Clear visual guide to determining fetal lie, presentation, and engagement
+
+3. **Antenatal Examination - Stanford Medicine 25**
+   - URL: https://stanfordmedicine25.stanford.edu/the25/obstetric.html
+   - Focus: Systematic obstetric examination with clinical correlation
+   - Why recommended: Comprehensive demonstration of examination technique and interpretation
+
+**Note:** Complete video resource catalog available in [00_VIDEO_RESOURCES_MASTER_LIST.md](../00_VIDEO_RESOURCES_MASTER_LIST.md)
+
+---
+
 # Obstetric Examination
 ## ICRP OSCE Preparation - Obstetrics & Gynaecology Module
 ### Following Dr. Amir Soufi's Differential-Driven Approach (IMG4IMGS Methodology)

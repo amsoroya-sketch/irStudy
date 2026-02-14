@@ -51,7 +51,7 @@ Checked all 50 cards for American terms:
 ### Frequency Indicators ✅
 All cards tagged with appropriate frequency:
 - ⭐⭐⭐ (HIGH-YIELD)
-- ⭐⭐ (MEDIUM-YIELD)  
+- ⭐⭐ (MEDIUM-YIELD)
 - ⭐ (LOW-YIELD)
 
 ### Citations & References ✅

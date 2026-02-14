@@ -5,32 +5,29 @@ Fix the standalone flashcard file with correct function names.
 
 import json
 
+
 def fix_standalone():
     # Read the JSON data
-    with open('flashcard_data.json', 'r', encoding='utf-8') as f:
+    with open("flashcard_data.json", "r", encoding="utf-8") as f:
         flashcard_data = json.load(f)
 
     # Read the original HTML template
-    with open('ICRP_Flashcards_Interactive.html', 'r', encoding='utf-8') as f:
+    with open("ICRP_Flashcards_Interactive.html", "r", encoding="utf-8") as f:
         html_content = f.read()
 
     # Convert cards data to JavaScript
-    cards_json = json.dumps(flashcard_data['cards'])
+    cards_json = json.dumps(flashcard_data["cards"])
 
     # Replace the empty allCards array with actual data
-    html_content = html_content.replace(
-        'allCards: [],',
-        f'allCards: {cards_json},',
-        1
-    )
+    html_content = html_content.replace("allCards: [],", f"allCards: {cards_json},", 1)
 
     # Fix the init() function with CORRECT function names from the original code
-    old_init = '''init() {
+    old_init = """init() {
                 this.loadProgress();
                 this.setupEventListeners();
-            },'''
+            },"""
 
-    new_init = '''init() {
+    new_init = """init() {
                 // Auto-load embedded flashcards
                 if (this.allCards.length > 0) {
                     this.filteredCards = [...this.allCards];
@@ -46,12 +43,12 @@ def fix_standalone():
                 }
                 this.loadProgress();
                 this.setupEventListeners();
-            },'''
+            },"""
 
     html_content = html_content.replace(old_init, new_init)
 
     # Write the fixed standalone file
-    with open('flashcards_standalone.html', 'w', encoding='utf-8') as f:
+    with open("flashcards_standalone.html", "w", encoding="utf-8") as f:
         f.write(html_content)
 
     print(f"✅ Fixed standalone flashcard app: flashcards_standalone.html")
@@ -63,5 +60,6 @@ def fix_standalone():
     print(f"   - showCard() ✓")
     print(f"\n💡 Open 'flashcards_standalone.html' in your browser to use!")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     fix_standalone()

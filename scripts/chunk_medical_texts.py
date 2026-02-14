@@ -31,34 +31,34 @@ class MedicalTextChunker:
 
     def is_table(self, text: str) -> bool:
         """Check if text is a table"""
-        indicators = ['│', '┌', '┐', '└', '┘', '├', '┤', '─', '|']
+        indicators = ["│", "┌", "┐", "└", "┘", "├", "┤", "─", "|"]
         return any(ind in text for ind in indicators)
 
     def is_drug_info(self, text: str) -> bool:
         """Check if text contains drug dosage info (keep intact)"""
-        patterns = [r'\d+\s*mg', r'\d+\s*mcg', r'Dose:', r'Dosage:']
+        patterns = [r"\d+\s*mg", r"\d+\s*mcg", r"Dose:", r"Dosage:"]
         return any(re.search(p, text, re.IGNORECASE) for p in patterns)
 
     def is_list(self, text: str) -> bool:
         """Check if text is a list (differential diagnosis, etc.)"""
-        lines = text.strip().split('\n')
+        lines = text.strip().split("\n")
         if len(lines) < 3:
             return False
         # Check if most lines start with bullets or numbers
-        bullet_count = sum(1 for line in lines if re.match(r'^\s*[-•*\d+.)]', line))
+        bullet_count = sum(1 for line in lines if re.match(r"^\s*[-•*\d+.)]", line))
         return bullet_count / len(lines) > 0.5
 
     def split_text(self, text: str) -> List[str]:
         """Split text into chunks"""
         # Try different separators in order of preference
         separators = [
-            "\n\n## ",     # Major headings
-            "\n\n### ",    # Sub-headings
-            "\n\n#### ",   # Sub-sub-headings
-            "\n\n",        # Paragraphs
-            "\n",          # Lines
-            ". ",          # Sentences
-            " ",           # Words
+            "\n\n## ",  # Major headings
+            "\n\n### ",  # Sub-headings
+            "\n\n#### ",  # Sub-sub-headings
+            "\n\n",  # Paragraphs
+            "\n",  # Lines
+            ". ",  # Sentences
+            " ",  # Words
         ]
 
         chunks = [text]
@@ -105,7 +105,9 @@ class MedicalTextChunker:
                 # Add end of previous chunk to beginning of current
                 prev_chunk = chunks[i - 1]
                 prev_words = prev_chunk.split()
-                overlap_words = prev_words[-self.overlap:] if len(prev_words) > self.overlap else prev_words
+                overlap_words = (
+                    prev_words[-self.overlap :] if len(prev_words) > self.overlap else prev_words
+                )
 
                 overlapped_chunk = " ".join(overlap_words) + " " + chunk
                 overlapped.append(overlapped_chunk)
@@ -114,34 +116,48 @@ class MedicalTextChunker:
 
     def chunk_page(self, page_data: Dict, source_metadata: Dict) -> List[Dict]:
         """Chunk a single page"""
-        text = page_data['text']
-        page_num = page_data['page_number']
+        text = page_data["text"]
+        page_num = page_data["page_number"]
 
         # Don't chunk special content
-        if page_data.get('has_table') or page_data.get('has_drug_info'):
-            return [{
-                'text': text,
-                'metadata': {
-                    'source': source_metadata['filename'],
-                    'page': page_num,
-                    'type': 'table' if page_data.get('has_table') else 'drug_info',
-                    'char_count': page_data['char_count'],
-                    'word_count': page_data['word_count'],
+        if page_data.get("has_table") or page_data.get("has_drug_info"):
+            return [
+                {
+                    "text": text,
+                    "metadata": {
+                        "source": source_metadata["filename"],
+                        "page": page_num,
+                        "type": "table" if page_data.get("has_table") else "drug_info",
+                        "char_count": page_data["char_count"],
+                        "word_count": page_data["word_count"],
+                        # CRITICAL: Preserve bibliographic metadata for RAG citations
+                        "title": source_metadata.get("title", ""),
+                        "author": source_metadata.get("author", ""),
+                        "year": source_metadata.get("year", ""),
+                        "edition": source_metadata.get("edition", ""),
+                    },
                 }
-            }]
+            ]
 
         # Check for lists (keep intact)
         if self.is_list(text):
-            return [{
-                'text': text,
-                'metadata': {
-                    'source': source_metadata['filename'],
-                    'page': page_num,
-                    'type': 'list',
-                    'char_count': page_data['char_count'],
-                    'word_count': page_data['word_count'],
+            return [
+                {
+                    "text": text,
+                    "metadata": {
+                        "source": source_metadata["filename"],
+                        "page": page_num,
+                        "type": "list",
+                        "char_count": page_data["char_count"],
+                        "word_count": page_data["word_count"],
+                        # CRITICAL: Preserve bibliographic metadata for RAG citations
+                        "title": source_metadata.get("title", ""),
+                        "author": source_metadata.get("author", ""),
+                        "year": source_metadata.get("year", ""),
+                        "edition": source_metadata.get("edition", ""),
+                    },
                 }
-            }]
+            ]
 
         # Normal chunking
         chunks_text = self.split_text(text)
@@ -149,18 +165,25 @@ class MedicalTextChunker:
 
         chunks = []
         for idx, chunk_text in enumerate(chunks_text):
-            chunks.append({
-                'text': chunk_text,
-                'metadata': {
-                    'source': source_metadata['filename'],
-                    'page': page_num,
-                    'chunk_index': idx,
-                    'total_chunks': len(chunks_text),
-                    'type': 'text',
-                    'char_count': len(chunk_text),
-                    'word_count': len(chunk_text.split()),
+            chunks.append(
+                {
+                    "text": chunk_text,
+                    "metadata": {
+                        "source": source_metadata["filename"],
+                        "page": page_num,
+                        "chunk_index": idx,
+                        "total_chunks": len(chunks_text),
+                        "type": "text",
+                        "char_count": len(chunk_text),
+                        "word_count": len(chunk_text.split()),
+                        # CRITICAL: Preserve bibliographic metadata for RAG citations
+                        "title": source_metadata.get("title", ""),
+                        "author": source_metadata.get("author", ""),
+                        "year": source_metadata.get("year", ""),
+                        "edition": source_metadata.get("edition", ""),
+                    },
                 }
-            })
+            )
 
         return chunks
 
@@ -169,19 +192,23 @@ class MedicalTextChunker:
         all_chunks = []
 
         source_metadata = {
-            'filename': book_data['filename'],
-            'source_path': book_data.get('source_path', ''),
-            'title': book_data.get('metadata', {}).get('title', ''),
-            'author': book_data.get('metadata', {}).get('author', ''),
+            "filename": book_data["filename"],
+            "source_path": book_data.get("source_path", ""),
+            "title": book_data.get("metadata", {}).get("title", ""),
+            "author": book_data.get("metadata", {}).get("author", ""),
+            "year": book_data.get("metadata", {}).get("year", ""),
+            "edition": book_data.get("metadata", {}).get("edition", ""),
         }
 
-        for page_data in book_data['pages']:
+        for page_data in book_data["pages"]:
             page_chunks = self.chunk_page(page_data, source_metadata)
             all_chunks.extend(page_chunks)
 
         return all_chunks
 
-    def process_all_books(self, input_dir: str = "data/processed", output_file: str = "data/chunks.json"):
+    def process_all_books(
+        self, input_dir: str = "data/processed", output_file: str = "data/chunks.json"
+    ):
         """Process all extracted books"""
         input_path = Path(input_dir)
         output_path = Path(output_file)
@@ -204,7 +231,7 @@ class MedicalTextChunker:
         for json_file in tqdm(json_files, desc="Chunking books"):
             try:
                 # Load book data
-                with open(json_file, 'r', encoding='utf-8') as f:
+                with open(json_file, "r", encoding="utf-8") as f:
                     book_data = json.load(f)
 
                 # Chunk
@@ -219,11 +246,11 @@ class MedicalTextChunker:
 
         # Save all chunks
         logger.info(f"\nSaving {len(all_chunks)} total chunks...")
-        with open(output_path, 'w', encoding='utf-8') as f:
+        with open(output_path, "w", encoding="utf-8") as f:
             json.dump(all_chunks, f, indent=2, ensure_ascii=False)
 
         # Statistics
-        total_words = sum(c['metadata']['word_count'] for c in all_chunks)
+        total_words = sum(c["metadata"]["word_count"] for c in all_chunks)
         logger.info(f"✓ Chunking complete!")
         logger.info(f"  Total chunks: {len(all_chunks):,}")
         logger.info(f"  Total words: {total_words:,}")
@@ -234,7 +261,9 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(description="Chunk medical texts intelligently")
-    parser.add_argument("--input", default="data/processed", help="Input directory with extracted JSON")
+    parser.add_argument(
+        "--input", default="data/processed", help="Input directory with extracted JSON"
+    )
     parser.add_argument("--output", default="data/chunks.json", help="Output file for all chunks")
     parser.add_argument("--chunk-size", type=int, default=1000, help="Target chunk size in tokens")
     parser.add_argument("--overlap", type=int, default=150, help="Overlap between chunks in tokens")

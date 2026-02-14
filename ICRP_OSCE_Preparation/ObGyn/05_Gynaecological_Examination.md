@@ -81,6 +81,34 @@
 
 ---
 
+## 📺 RECOMMENDED VIDEO DEMONSTRATIONS
+
+### Gynaecological Examination Videos
+
+**Essential Videos (Watch These First):**
+
+1. **Speculum Examination - Geeky Medics**
+   - URL: https://geekymedics.com/speculum-examination/
+   - Duration: 8 minutes (OSCE-appropriate)
+   - Focus: Proper speculum insertion technique, cervical inspection, taking swabs
+   - Why recommended: Excellent demonstration of technique with emphasis on patient comfort and communication
+   - Australian relevance: Includes consent and chaperone requirements (Australian Medical Board standards)
+
+2. **Bimanual Pelvic Examination - Geeky Medics**
+   - URL: https://geekymedics.com/bimanual-examination/
+   - Duration: 8 minutes
+   - Focus: Systematic bimanual examination technique including cervical excitation test
+   - Why recommended: Clear demonstration of proper technique for assessing uterus and adnexa
+
+3. **Gynaecological Examination - Stanford Medicine 25**
+   - URL: https://stanfordmedicine25.stanford.edu/the25/gynecologic.html
+   - Focus: Complete pelvic examination with clinical findings interpretation
+   - Why recommended: Comprehensive guide to examination technique and abnormal findings
+
+**Note:** Complete video resource catalog available in [00_VIDEO_RESOURCES_MASTER_LIST.md](../00_VIDEO_RESOURCES_MASTER_LIST.md)
+
+---
+
 # Gynaecological Examination
 ## ICRP OSCE Preparation - Obstetrics & Gynaecology Module
 ### Following Dr. Amir Soufi's Differential-Driven Approach (IMG4IMGS Methodology)

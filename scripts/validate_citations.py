@@ -24,17 +24,19 @@ logger = logging.getLogger(__name__)
 @dataclass
 class CitationIssue:
     """Represents a citation issue"""
+
     file_path: str
     line_number: int
     issue_type: str  # 'missing_citation', 'invalid_source', 'weak_citation'
     claim: str
     existing_citation: Optional[str] = None
-    severity: str = 'important'  # 'critical', 'important', 'minor'
+    severity: str = "important"  # 'critical', 'important', 'minor'
 
 
 @dataclass
 class CitationReport:
     """Citation validation report"""
+
     files_scanned: int = 0
     claims_found: int = 0
     cited_claims: int = 0
@@ -53,27 +55,43 @@ class CitationValidator:
 
     # Acceptable Australian sources
     ACCEPTABLE_SOURCES = {
-        'etg', 'therapeutic guidelines', 'murtagh', 'talley', 'o\'connor',
-        'amc', 'harrison', 'oxford', 'kemh', 'ahpra', 'nsw health',
-        'racgp', 'racp', 'anzca', 'ranzcp', 'ranzcog',
-        'churchill', 'nelson', 'davidson', 'kumar'
+        "etg",
+        "therapeutic guidelines",
+        "murtagh",
+        "talley",
+        "o'connor",
+        "amc",
+        "harrison",
+        "oxford",
+        "kemh",
+        "ahpra",
+        "nsw health",
+        "racgp",
+        "racp",
+        "anzca",
+        "ranzcp",
+        "ranzcog",
+        "churchill",
+        "nelson",
+        "davidson",
+        "kumar",
     }
 
     # Patterns that indicate medical claims requiring citation
     CLAIM_PATTERNS = {
-        'dosage': r'\d+[-–]?\d*\s*(?:mg|g|mcg|μg|mL|units?|IU)\s*(?:\/\s*(?:kg|day|dose|m2))?\s+(?:once\s+)?(?:daily|BD|TDS|QID|QD|PRN|stat|every|q\d+h|twice|three times|four times)',
-        'percentage': r'\d+[-–]?\d*%',
-        'sensitivity_specificity': r'(?:sensitivity|specificity|PPV|NPV|accuracy)(?:\s+of)?\s+\d+[-–]?\d*%',
-        'statistics': r'(?:prevalence|incidence|mortality|morbidity|risk)(?:\s+of)?\s+\d+',
-        'guideline': r'(?:first-line|second-line|recommended|indicated|contraindicated|preferred)',
-        'evidence_level': r'(?:level\s+[IVXABC]|grade\s+[ABC]|class\s+[IVX])\s+evidence',
+        "dosage": r"\d+[-–]?\d*\s*(?:mg|g|mcg|μg|mL|units?|IU)\s*(?:\/\s*(?:kg|day|dose|m2))?\s+(?:once\s+)?(?:daily|BD|TDS|QID|QD|PRN|stat|every|q\d+h|twice|three times|four times)",
+        "percentage": r"\d+[-–]?\d*%",
+        "sensitivity_specificity": r"(?:sensitivity|specificity|PPV|NPV|accuracy)(?:\s+of)?\s+\d+[-–]?\d*%",
+        "statistics": r"(?:prevalence|incidence|mortality|morbidity|risk)(?:\s+of)?\s+\d+",
+        "guideline": r"(?:first-line|second-line|recommended|indicated|contraindicated|preferred)",
+        "evidence_level": r"(?:level\s+[IVXABC]|grade\s+[ABC]|class\s+[IVX])\s+evidence",
     }
 
     # Citation format patterns
     CITATION_PATTERNS = [
-        r'\(.*?(?:etg|therapeutic|murtagh|talley|amc|harrison|kemh).*?\)',  # (Source Name)
-        r'\[.*?(?:etg|therapeutic|murtagh|talley|amc|harrison|kemh).*?\]',  # [Source Name]
-        r'(?:etg|therapeutic|murtagh|talley|amc|harrison|kemh).*?(?:p\.\s*\d+|\d{4})',  # Source p.123 or Source 2024
+        r"\(.*?(?:etg|therapeutic|murtagh|talley|amc|harrison|kemh).*?\)",  # (Source Name)
+        r"\[.*?(?:etg|therapeutic|murtagh|talley|amc|harrison|kemh).*?\]",  # [Source Name]
+        r"(?:etg|therapeutic|murtagh|talley|amc|harrison|kemh).*?(?:p\.\s*\d+|\d{4})",  # Source p.123 or Source 2024
     ]
 
     def __init__(self, strict_mode: bool = True):
@@ -143,12 +161,12 @@ class CitationValidator:
         issues = []
 
         try:
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with open(file_path, "r", encoding="utf-8") as f:
                 lines = f.readlines()
 
             for line_num, line in enumerate(lines, 1):
                 # Skip headers, code blocks, and comments
-                if line.startswith('#') or line.startswith('```') or line.startswith('<!--'):
+                if line.startswith("#") or line.startswith("```") or line.startswith("<!--"):
                     continue
 
                 # Extract claims from this line
@@ -168,34 +186,38 @@ class CitationValidator:
 
                         # Check if citation source is valid
                         if self.strict_mode and not self.is_valid_source(citation):
-                            issues.append(CitationIssue(
-                                file_path=str(file_path),
-                                line_number=line_num,
-                                issue_type='invalid_source',
-                                claim=claim_text,
-                                existing_citation=citation,
-                                severity='important'
-                            ))
+                            issues.append(
+                                CitationIssue(
+                                    file_path=str(file_path),
+                                    line_number=line_num,
+                                    issue_type="invalid_source",
+                                    claim=claim_text,
+                                    existing_citation=citation,
+                                    severity="important",
+                                )
+                            )
                             self.report.invalid_citations += 1
 
                     else:
                         self.report.uncited_claims += 1
 
                         # Determine severity based on claim type
-                        if claim_type in ['dosage', 'guideline']:
-                            severity = 'critical'
-                        elif claim_type in ['sensitivity_specificity', 'statistics']:
-                            severity = 'important'
+                        if claim_type in ["dosage", "guideline"]:
+                            severity = "critical"
+                        elif claim_type in ["sensitivity_specificity", "statistics"]:
+                            severity = "important"
                         else:
-                            severity = 'minor'
+                            severity = "minor"
 
-                        issues.append(CitationIssue(
-                            file_path=str(file_path),
-                            line_number=line_num,
-                            issue_type='missing_citation',
-                            claim=claim_text,
-                            severity=severity
-                        ))
+                        issues.append(
+                            CitationIssue(
+                                file_path=str(file_path),
+                                line_number=line_num,
+                                issue_type="missing_citation",
+                                claim=claim_text,
+                                severity=severity,
+                            )
+                        )
 
         except Exception as e:
             logger.error(f"Error validating {file_path}: {e}")
@@ -219,7 +241,7 @@ class CitationValidator:
         all_issues = []
 
         for file_path in files:
-            if file_path.name.startswith('.'):
+            if file_path.name.startswith("."):
                 continue
 
             issues = self.validate_file(file_path)
@@ -231,13 +253,15 @@ class CitationValidator:
 
         # Calculate citation coverage
         if self.report.claims_found > 0:
-            self.report.citation_coverage = (self.report.cited_claims / self.report.claims_found) * 100
+            self.report.citation_coverage = (
+                self.report.cited_claims / self.report.claims_found
+            ) * 100
 
         return self.report
 
     def generate_report_markdown(self, output_path: Path):
         """Generate markdown report"""
-        with open(output_path, 'w', encoding='utf-8') as f:
+        with open(output_path, "w", encoding="utf-8") as f:
             f.write("# Citation Validation Report\n\n")
 
             f.write("## Summary\n\n")
@@ -249,9 +273,9 @@ class CitationValidator:
             f.write(f"- **Citation Coverage**: {self.report.citation_coverage:.1f}%\n\n")
 
             # Group by severity
-            critical = [i for i in self.report.issues if i.severity == 'critical']
-            important = [i for i in self.report.issues if i.severity == 'important']
-            minor = [i for i in self.report.issues if i.severity == 'minor']
+            critical = [i for i in self.report.issues if i.severity == "critical"]
+            important = [i for i in self.report.issues if i.severity == "important"]
+            minor = [i for i in self.report.issues if i.severity == "minor"]
 
             if critical:
                 f.write(f"## 🔴 Critical Issues ({len(critical)})\n\n")
@@ -262,7 +286,9 @@ class CitationValidator:
                     f.write(f"- **Issue**: {issue.issue_type}\n")
                     if issue.existing_citation:
                         f.write(f"- **Existing Citation**: {issue.existing_citation}\n")
-                    f.write(f"- **Action Required**: Add citation from eTG 2024, Murtagh, or AMC sources\n\n")
+                    f.write(
+                        f"- **Action Required**: Add citation from eTG 2024, Murtagh, or AMC sources\n\n"
+                    )
 
             if important:
                 f.write(f"## 🟡 Important Issues ({len(important)})\n\n")
@@ -297,28 +323,28 @@ class CitationValidator:
     def generate_report_json(self, output_path: Path):
         """Generate JSON report"""
         report_dict = {
-            'summary': {
-                'files_scanned': self.report.files_scanned,
-                'claims_found': self.report.claims_found,
-                'cited_claims': self.report.cited_claims,
-                'uncited_claims': self.report.uncited_claims,
-                'invalid_citations': self.report.invalid_citations,
-                'citation_coverage': round(self.report.citation_coverage, 2)
+            "summary": {
+                "files_scanned": self.report.files_scanned,
+                "claims_found": self.report.claims_found,
+                "cited_claims": self.report.cited_claims,
+                "uncited_claims": self.report.uncited_claims,
+                "invalid_citations": self.report.invalid_citations,
+                "citation_coverage": round(self.report.citation_coverage, 2),
             },
-            'issues': [
+            "issues": [
                 {
-                    'file': i.file_path,
-                    'line': i.line_number,
-                    'type': i.issue_type,
-                    'claim': i.claim,
-                    'existing_citation': i.existing_citation,
-                    'severity': i.severity
+                    "file": i.file_path,
+                    "line": i.line_number,
+                    "type": i.issue_type,
+                    "claim": i.claim,
+                    "existing_citation": i.existing_citation,
+                    "severity": i.severity,
                 }
                 for i in self.report.issues
-            ]
+            ],
         }
 
-        with open(output_path, 'w', encoding='utf-8') as f:
+        with open(output_path, "w", encoding="utf-8") as f:
             json.dump(report_dict, f, indent=2, ensure_ascii=False)
 
         logger.info(f"✓ JSON report saved to {output_path}")
@@ -331,8 +357,12 @@ def main():
     parser = argparse.ArgumentParser(description="Validate medical content citations")
     parser.add_argument("directory", help="Directory to scan")
     parser.add_argument("--pattern", default="*.md", help="File pattern (default: *.md)")
-    parser.add_argument("--lenient", action="store_true", help="Use lenient mode (don't validate sources)")
-    parser.add_argument("--output", default="validation_reports/citations.md", help="Output report path")
+    parser.add_argument(
+        "--lenient", action="store_true", help="Use lenient mode (don't validate sources)"
+    )
+    parser.add_argument(
+        "--output", default="validation_reports/citations.md", help="Output report path"
+    )
     parser.add_argument("--json", help="Also output JSON report to this path")
 
     args = parser.parse_args()
@@ -362,16 +392,16 @@ def main():
         validator.generate_report_json(json_path)
 
     # Print summary
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print(f"✓ Citation Validation Complete")
-    print("="*60)
+    print("=" * 60)
     print(f"Files Scanned: {report.files_scanned}")
     print(f"Medical Claims Found: {report.claims_found}")
     print(f"Cited Claims: {report.cited_claims}")
     print(f"Uncited Claims: {report.uncited_claims}")
     print(f"Citation Coverage: {report.citation_coverage:.1f}%")
     print(f"\nReport: {output_path}")
-    print("="*60)
+    print("=" * 60)
 
 
 if __name__ == "__main__":

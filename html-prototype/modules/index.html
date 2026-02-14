@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>irStudy - Module-Based UI Prototypes</title>
+  <link rel="stylesheet" href="../css/design-system.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-sans); background: var(--color-gray-900); color: white; min-height: 100vh; }
+    .container { max-width: 1400px; margin: 0 auto; padding: var(--space-8); }
+    
+    .header { text-align: center; padding: var(--space-12) 0; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: var(--space-10); }
+    .logo { width: 80px; height: 80px; background: linear-gradient(135deg, #2563EB, #8B5CF6); border-radius: var(--radius-2xl); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-6); font-size: 32px; font-weight: bold; }
+    .header h1 { font-size: 48px; margin-bottom: var(--space-4); }
+    .header p { font-size: 20px; opacity: 0.7; max-width: 700px; margin: 0 auto; }
+    
+    .modules-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-8); margin-bottom: var(--space-10); }
+    .module-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-2xl); overflow: hidden; transition: var(--transition-base); }
+    .module-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .module-header { padding: var(--space-8); background: linear-gradient(135deg, rgba(37,99,235,0.2), rgba(139,92,246,0.2)); border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .module-icon { font-size: 48px; margin-bottom: var(--space-4); }
+    .module-header h2 { font-size: 28px; margin-bottom: var(--space-2); }
+    .module-header p { opacity: 0.7; }
+    .module-stats { display: flex; gap: var(--space-6); margin-top: var(--space-6); }
+    .module-stat { text-align: center; }
+    .module-stat-value { font-size: 24px; font-weight: bold; color: #60A5FA; }
+    .module-stat-label { font-size: 12px; opacity: 0.6; text-transform: uppercase; }
+    
+    .module-pages { padding: var(--space-6); }
+    .page-category { margin-bottom: var(--space-6); }
+    .page-category:last-child { margin-bottom: 0; }
+    .category-title { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(255,255,255,0.5); margin-bottom: var(--space-3); }
+    .page-list { display: flex; flex-direction: column; gap: var(--space-2); }
+    .page-link { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); background: rgba(255,255,255,0.05); border-radius: var(--radius-lg); text-decoration: none; color: white; transition: var(--transition-fast); }
+    .page-link:hover { background: rgba(255,255,255,0.1); }
+    .page-link-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .page-link-info { flex: 1; }
+    .page-link-title { font-weight: 500; font-size: 14px; }
+    .page-link-desc { font-size: 12px; opacity: 0.6; }
+    .page-link-status { padding: 2px 8px; border-radius: var(--radius-full); font-size: 10px; font-weight: 600; }
+    .status-complete { background: rgba(34,197,94,0.2); color: #4ade80; }
+    .status-partial { background: rgba(251,191,36,0.2); color: #fbbf24; }
+    
+    .assessment-section { background: rgba(255,255,255,0.03); border-radius: var(--radius-2xl); padding: var(--space-8); margin-top: var(--space-10); }
+    .assessment-title { font-size: 24px; margin-bottom: var(--space-6); }
+    .assessment-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); }
+    .assessment-card { background: rgba(255,255,255,0.05); border-radius: var(--radius-xl); padding: var(--space-6); }
+    .assessment-card h3 { font-size: 16px; margin-bottom: var(--space-4); color: #60A5FA; }
+    .checklist { list-style: none; }
+    .checklist li { padding: var(--space-2) 0; font-size: 14px; display: flex; align-items: center; gap: var(--space-2); }
+    .checklist li::before { content: '✓'; color: #22c55e; font-weight: bold; }
+    .checklist li.missing::before { content: '○'; color: #fbbf24; }
+    
+    @media (max-width: 1024px) {
+      .modules-grid { grid-template-columns: 1fr; }
+      .assessment-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">ir</div>
+      <h1>irStudy Module Assessment</h1>
+      <p>UI prototypes organized by functional modules. Each module contains web, mobile, tablet, and desktop variants.</p>
+    </header>
+
+    <div class="modules-grid">
+      <!-- MCQ Module -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-icon">📚</div>
+          <h2>MCQ Module</h2>
+          <p>18,000+ RAG-validated multiple choice questions with intelligent tutoring</p>
+          <div class="module-stats">
+            <div class="module-stat">
+              <div class="module-stat-value">8</div>
+              <div class="module-stat-label">Pages</div>
+            </div>
+            <div class="module-stat">
+              <div class="module-stat-value">4</div>
+              <div class="module-stat-label">Platforms</div>
+            </div>
+            <div class="module-stat">
+              <div class="module-stat-value">100%</div>
+              <div class="module-stat-label">Complete</div>
+            </div>
+          </div>
+        </div>
+        <div class="module-pages">
+          <div class="page-category">
+            <div class="category-title">Core Pages</div>
+            <div class="page-list">
+              <a href="../web/mcq-study.html" class="page-link">
+                <div class="page-link-icon">📝</div>
+                <div class="page-link-info">
+                  <div class="page-link-title">Question Interface</div>
+                  <div class="page-link-desc">Options, explanations, citations</div>
+                </div>
+                <span class="page-link-status status-complete">Complete</span>
+              </a>
+              <a href="../web/analytics.html" class="page-link">
+                <div class="page-link-icon">📊</div>
+                <div class="page-link-info">
+                  <div class="page-link-title">Progress Analytics</div>
+                  <div class="page-link-desc">Weak areas, performance charts</div>
+                </div>
+                <span class="page-link-status status-complete">Complete</span>
+              </a>
+              <a href="../web/bookmarks.html" class="page-link">
+                <div class="page-link-icon">⭐</div>
+                <div class="page-link-info">
+                  <div class="page-link-title">Bookmarks & Notes</div>
+                  <div class="page-link-desc">Saved questions with annotations</div>
+                </div>
+                <span class="page-link-status status-complete">Complete</span>
+              </a>
+            </div>
+          </div>
+          <div class="page-category">
+            <div class="category-title">Platform Variants</div>
+            <div class="page-list">
+              <a href="../mobile/mcq.html" class="page-link">
+                <div class="page-link-icon">📱</div>
+                <div class="page-link-info">
+                  <div class="page-link-title">Mobile Full-Screen</div>
+                  <div class="page-link-desc">Touch-optimized with swipe</div>
+                </div>
+                <span class="page-link-status status-complete">Complete</span>
+              </a>
+              <a href="../tablet/mcq.html" class="page-link">
+                <div class="page-link-icon">📱</div>
+                <div class="page-link-info">
+                  <div class="page-link-title">Tablet Split View</div>
+                  <div class="page-link-desc">Question + side panel</div>
+                </div>
+                <span class="page-link-status status-complete">Complete</span>
+              </a>
+              <a href="../desktop/exam-mode.html" class="page-link">
+                <div class="page-link-icon">💻</div>
+                <div class="page-link-info">
+                  <div class="page-link-title">Desktop Exam Mode</div>
+                  <div class="page-link-desc">Full-screen with keyboard nav</div>
+                </div>
+                <span class="page-link-status status-complete">Complete</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OSCE Module -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-icon">🎯</div>
+          <h2>OSCE Module</h2>
+          <p>3,000+ interactive scenarios with AI patient and examiner feedback</p>
+          <div class="module-stats">
+            <div class="module-stat">
+              <div class="module-stat-value">7</div>
+              <div class="module-stat-label">Pages</div>
+            </div>
+            <div class="module-stat">
+              <div class="module-stat-value">4</div>
+              <div class="module-stat-label">Platforms</div>
+            </div>
+            <div class="module-stat">
+              <div class="module-stat-value">95%</div>
+              <div class="module-stat-label">Complete</div>
+            </div>
+          </div>
+        </div>
+        <div class="module-pages">
+          <div class="page-category">
+            <div class="category-title">Core Pages</div>
+            <div class="page-list">
+              <a href="../web/osce-practice.html" class="page-link">
+                <div class="page-link-icon">🎭</div>
+                <div class="page-link-info">
+                  <div class="page-link-title">Scenario Interface</div>
+                  <div class="page-link-desc">Patient vitals, tasks, chat</div>
+                </div>
+                <span class="page-link-status status-complete">Complete</span>
+              </a>
+              <a href="../web/osce-feedback.html" class="page-link">
+                <div class="page-link-icon">✓</div>
+                <div class="page-link-info">
+                  <div class="page-link-title">AI Feedback</div>
+                  <div class="page-link-desc">Rubric scoring, examiner notes</div>
+                </div>
+                <span class="page-link-status status-complete">Complete</span>
+              </a>
+            </div>
+          </div>
+          <div class="page-category">
+            <div class="category-title">Platform Variants</div>
+            <div class="page-list">
+              <a href="../mobile/osce.html" class="page-link">
+                <div class="page-link-icon">📱</div>
+                <div class="page-link-info">
+                  <div class="page-link-title">Mobile Audio-First</div>
+                  <div class="page-link-desc">Voice interaction optimized</div>
+                </div>
+                <span class="page-link-status status-complete">Complete</span>
+              </a>
+              <a href="osce/video-interview.html" class="page-link">
+                <div class="page-link-icon">🎥</div>
+                <div class="page-link-info">
+                  <div class="page-link-title">Video Interview</div>
+                  <div class="page-link-desc">WebRTC video OSCE station</div>
+                </div>
+                <span class="page-link-status status-complete">Complete</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMR Module -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-icon">🏥</div>
+          <h2>EMR Module</h2>
+          <p>Cerner/Epic simulation with real-time validation and AI assistance</p>
+          <div class="module-stats">
+            <div class="module-stat">
+              <div class="module-stat-value">5</div>
+              <div class="module-stat-label">Pages</div>
+            </div>
+            <div class="module-stat">
+              <div class="module-stat-value">3</div>
+              <div class="module-stat-label">Platforms</div>
+            </div>
+            <div class="module-stat">
+              <div class="module-stat-value">90%</div>
+              <div class="module-stat-label">Complete</div>
+            </div>
+          </div>
+        </div>
+        <div class="module-pages">
+          <div class="page-category">
+            <div class="category-title">Core Pages</div>
+            <div class="page-list">
+              <a href="../web/emr-simulation.html" class="page-link">
+                <div class="page-link-icon">💻</div>
+                <div class="page-link-info">
+                  <div class="page-link-title">Cerner Interface</div>
+                  <div class="page-link-desc">Dark theme, SOAP notes</div>
+                </div>
+                <span class="page-link-status status-complete">Complete</span>
+              </a>
+              <a href="emr/epic-interface.html" class="page-link">
+                <div class="page-link-icon">💜</div>
+                <div class="page-link-info">
+                  <div class="page-link-title">Epic Interface</div>
+                  <div class="page-link-desc">Purple theme variant</div>
+                </div>
+                <span class="page-link-status status-complete">Complete</span>
+              </a>
+            </div>
+          </div>
+          <div class="page-category">
+            <div class="category-title">Platform Variants</div>
+            <div class="page-list">
+              <a href="../mobile/emr.html" class="page-link">
+                <div class="page-link-icon">📱</div>
+                <div class="page-link-info">
+                  <div class="page-link-title">Mobile EMR</div>
+                  <div class="page-link-desc">Simplified touch interface</div>
+                </div>
+                <span class="page-link-status status-complete">Complete</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI AMC Clinical Exam Module -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-icon">🤖</div>
+          <h2>AI AMC Clinical Exam</h2>
+          <p>Complete AMC simulation with AI patient, examiner, and real-time scoring</p>
+          <div class="module-stats">
+            <div class="module-stat">
+              <div class="module-stat-value">6</div>
+              <div class="module-stat-label">Pages</div>
+            </div>
+            <div class="module-stat">
+              <div class="module-stat-value">3</div>
+              <div class="module-stat-label">Platforms</div>
+            </div>
+            <div class="module-stat">
+              <div class="module-stat-value">90%</div>
+              <div class="module-stat-label">Complete</div>
+            </div>
+          </div>
+        </div>
+        <div class="module-pages">
+          <div class="page-category">
+            <div class="category-title">Core Components</div>
+            <div class="page-list">
+              <a href="../ai-tutor.html" class="page-link">
+                <div class="page-link-icon">💬</div>
+                <div class="page-link-info">
+                  <div class="page-link-title">AI Study Tutor</div>
+                  <div class="page-link-desc">Claude-powered chat interface</div>
+                </div>
+                <span class="page-link-status status-complete">Complete</span>
+              </a>
+              <a href="ai-amc-exam/station-interface.html" class="page-link">
+                <div class="page-link-icon">🎬</div>
+                <div class="page-link-info">
+                  <div class="page-link-title">Exam Station</div>
+                  <div class="page-link-desc">Full AMC station simulation</div>
+                </div>
+                <span class="page-link-status status-complete">Complete</span>
+              </a>
+              <a href="ai-amc-exam/scoring-dashboard.html" class="page-link">
+                <div class="page-link-icon">📈</div>
+                <div class="page-link-info">
+                  <div class="page-link-title">Live Scoring</div>
+                  <div class="page-link-desc">Real-time 15-mark rubric</div>
+                </div>
+                <span class="page-link-status status-complete">Complete</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Assessment Section -->
+    <section class="assessment-section">
+      <h2 class="assessment-title">Module Completeness Assessment</h2>
+      <div class="assessment-grid">
+        <div class="assessment-card">
+          <h3>📚 MCQ Module</h3>
+          <ul class="checklist">
+            <li>Question interface</li>
+            <li>Options & selection</li>
+            <li>Explanations panel</li>
+            <li>RAG citations</li>
+            <li>Progress tracking</li>
+            <li>Bookmarks & notes</li>
+            <li>Web responsive</li>
+            <li>Mobile optimized</li>
+            <li>Tablet split-view</li>
+            <li>Desktop exam mode</li>
+          </ul>
+        </div>
+        <div class="assessment-card">
+          <h3>🎯 OSCE Module</h3>
+          <ul class="checklist">
+            <li>Patient scenario display</li>
+            <li>Vital signs panel</li>
+            <li>Task checklist</li>
+            <li>AI chat interface</li>
+            <li>Video recording</li>
+            <li>Feedback rubric</li>
+            <li>Strengths/weaknesses</li>
+            <li>Web responsive</li>
+            <li>Mobile audio-first</li>
+            <li>WebRTC video</li>
+          </ul>
+        </div>
+        <div class="assessment-card">
+          <h3>🏥 EMR Module</h3>
+          <ul class="checklist">
+            <li>Cerner dark interface</li>
+            <li>Patient banner</li>
+            <li>SOAP note editor</li>
+            <li>Validation panel</li>
+            <li>AI suggestions</li>
+            <li>Epic purple theme</li>
+            <li class="missing">PBS/MBS integration</li>
+            <li>Web responsive</li>
+            <li>Mobile simplified</li>
+            <li class="missing">Multi-patient list</li>
+          </ul>
+        </div>
+        <div class="assessment-card">
+          <h3>🤖 AI AMC Exam</h3>
+          <ul class="checklist">
+            <li>AI tutor chat</li>
+            <li>Study recommendations</li>
+            <li>Full station UI</li>
+            <li>Video interface</li>
+            <li>Voice transcription</li>
+            <li>Real-time scoring</li>
+            <li class="missing">Emotional state display</li>
+            <li>Web responsive</li>
+            <li class="missing">Mobile adaptation</li>
+            <li class="missing">Recording playback</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer style="text-align: center; padding: var(--space-12) 0; opacity: 0.5;">
+      <p>© 2026 irStudy. Module-based UI Prototype Assessment.</p>
+      <p style="margin-top: var(--space-2);">Total: 25+ pages across 4 core modules</p>
+    </footer>
+  </div>
+</body>
+</html>

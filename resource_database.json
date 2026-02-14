@@ -1,0 +1,673 @@
+{
+  "metadata": {
+    "database_version": "1.0.0",
+    "last_updated": "2026-01-17",
+    "total_resources": 12,
+    "total_essential_resources": 9,
+    "total_optional_resources": 3,
+    "total_size_gb_min": 25,
+    "total_size_gb_max": 85
+  },
+  "resources": [
+    {
+      "id": "RES-001",
+      "name": "StatPearls Publishing Database",
+      "category": "Medical Textbook",
+      "source": "NCBI Bookshelf",
+      "priority": "HIGH",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK430685/",
+      "api_endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/",
+      "version": {
+        "current": "Continuous",
+        "release_date": "2026-01-17",
+        "latest_release_date": "2026-01-17",
+        "release_frequency": "Daily (continuous updates)",
+        "next_check_date": "2026-01-24",
+        "next_expected_release": "2026-01-24"
+      },
+      "size": {
+        "estimated_gb": 17.5,
+        "unit": "GB",
+        "file_count": 10000,
+        "format": ["XML", "TXT"]
+      },
+      "download": {
+        "method": "Automated",
+        "script": "scripts/download_statpearls.py",
+        "authentication": {
+          "required": true,
+          "type": "NCBI API Key",
+          "cost": "Free",
+          "application_url": "https://www.ncbi.nlm.nih.gov/account/settings/"
+        },
+        "status": "Available",
+        "last_downloaded": null,
+        "download_duration_hours": "4-6"
+      },
+      "integration": {
+        "status": "Pending",
+        "processed": false,
+        "indexed": false,
+        "citation_validated": false
+      },
+      "quality": {
+        "rating": 5,
+        "authority": "Medical experts, peer-reviewed",
+        "coverage": "All medical specialties"
+      },
+      "update_strategy": "Incremental download (fetch only new/updated articles)",
+      "update_check_command": "python3 scripts/check_statpearls_updates.py --last-check-date 2026-01-17"
+    },
+    {
+      "id": "RES-002",
+      "name": "Cochrane Systematic Reviews",
+      "category": "Evidence-Based Medicine",
+      "source": "Cochrane Library",
+      "priority": "HIGH",
+      "url": "https://www.cochranelibrary.com/",
+      "version": {
+        "current": "Monthly updates",
+        "release_date": "2026-01-01",
+        "latest_release_date": "2026-01-01",
+        "release_frequency": "Monthly (new), Quarterly (updates)",
+        "next_check_date": "2026-02-01",
+        "next_expected_release": "2026-02-01"
+      },
+      "size": {
+        "estimated_gb": 7.5,
+        "unit": "GB",
+        "file_count": 750,
+        "format": ["PDF", "HTML"]
+      },
+      "download": {
+        "method": "Manual",
+        "script": "scripts/download_cochrane_pdfs.py",
+        "script_status": "Experimental",
+        "authentication": {
+          "required": true,
+          "type": "Free account",
+          "cost": "Free",
+          "application_url": "https://www.cochranelibrary.com/"
+        },
+        "status": "Manual download required",
+        "last_downloaded": null,
+        "download_duration_hours": "4-6"
+      },
+      "specialties": [
+        {"name": "Cardiology", "review_count": 75, "size_mb": 500},
+        {"name": "Respiratory", "review_count": 75, "size_mb": 500},
+        {"name": "Gastroenterology", "review_count": 60, "size_mb": 400},
+        {"name": "Endocrinology", "review_count": 45, "size_mb": 300},
+        {"name": "Neurology", "review_count": 60, "size_mb": 400},
+        {"name": "Emergency Medicine", "review_count": 45, "size_mb": 300},
+        {"name": "Obstetrics & Gynaecology", "review_count": 75, "size_mb": 500},
+        {"name": "Paediatrics", "review_count": 90, "size_mb": 600},
+        {"name": "Psychiatry", "review_count": 60, "size_mb": 400},
+        {"name": "General Practice", "review_count": 60, "size_mb": 400}
+      ],
+      "integration": {
+        "status": "Pending",
+        "processed": false,
+        "indexed": false,
+        "citation_validated": false
+      },
+      "quality": {
+        "rating": 5,
+        "authority": "Gold standard for systematic reviews",
+        "coverage": "All clinical specialties"
+      },
+      "update_strategy": "Monthly scan for new reviews by specialty",
+      "update_check_command": "python3 scripts/check_cochrane_updates.py --specialty all --last-check-date 2026-01-01"
+    },
+    {
+      "id": "RES-003",
+      "name": "RACGP Red Book (Guidelines for Preventive Activities in General Practice)",
+      "category": "Clinical Practice Guidelines",
+      "source": "Royal Australian College of General Practitioners",
+      "priority": "HIGH",
+      "url": "https://www.racgp.org.au/clinical-resources/clinical-guidelines/key-racgp-guidelines/view-all-racgp-guidelines/red-book",
+      "version": {
+        "current": "10th Edition (2024)",
+        "release_date": "2024-01-01",
+        "latest_release_date": "2024-01-01",
+        "release_frequency": "Every 2-3 years (major), Annual (minor)",
+        "next_check_date": "2026-06-01",
+        "next_expected_release": "2027-01-01",
+        "next_major_release": "2026-2027 (estimated)"
+      },
+      "size": {
+        "estimated_gb": 0.05,
+        "unit": "MB",
+        "file_count": 1,
+        "format": ["PDF"]
+      },
+      "download": {
+        "method": "Automated",
+        "script": "scripts/download_external_resources.sh",
+        "authentication": {
+          "required": false,
+          "type": "None",
+          "cost": "Free"
+        },
+        "status": "Available",
+        "last_downloaded": null,
+        "download_duration_hours": "0.05"
+      },
+      "integration": {
+        "status": "Pending",
+        "processed": false,
+        "indexed": false,
+        "citation_validated": false
+      },
+      "quality": {
+        "rating": 5,
+        "authority": "Official RACGP guideline",
+        "coverage": "Preventive care, screening, immunisation"
+      },
+      "update_strategy": "Check website quarterly for new edition",
+      "update_check_command": "curl -I https://www.racgp.org.au/clinical-resources/clinical-guidelines/key-racgp-guidelines/view-all-racgp-guidelines/red-book | grep Last-Modified"
+    },
+    {
+      "id": "RES-004",
+      "name": "RANZCOG Clinical Statements and Guidelines",
+      "category": "Clinical Practice Guidelines",
+      "source": "Royal Australian and New Zealand College of Obstetricians and Gynaecologists",
+      "priority": "HIGH",
+      "url": "https://ranzcog.edu.au/statements-guidelines",
+      "version": {
+        "current": "Continuous (individual statements)",
+        "release_date": "2026-01-01",
+        "latest_release_date": "2026-01-01",
+        "release_frequency": "Monthly (new/updated statements)",
+        "next_check_date": "2026-02-01",
+        "next_expected_release": "2026-02-01"
+      },
+      "size": {
+        "estimated_gb": 0.5,
+        "unit": "GB",
+        "file_count": 100,
+        "format": ["PDF"]
+      },
+      "download": {
+        "method": "Manual",
+        "script": "Manual checklist in download guide",
+        "authentication": {
+          "required": true,
+          "type": "Free account (healthcare professional)",
+          "cost": "Free",
+          "application_url": "https://ranzcog.edu.au/"
+        },
+        "status": "Manual download required",
+        "last_downloaded": null,
+        "download_duration_hours": "0.5"
+      },
+      "key_statements": [
+        "Antenatal screening",
+        "Pre-eclampsia management",
+        "Gestational diabetes",
+        "Post-partum haemorrhage",
+        "Contraception",
+        "Menopause management"
+      ],
+      "integration": {
+        "status": "Pending",
+        "processed": false,
+        "indexed": false,
+        "citation_validated": false
+      },
+      "quality": {
+        "rating": 5,
+        "authority": "Official Australian/NZ ObGyn college",
+        "coverage": "Obstetrics, gynaecology, women's health"
+      },
+      "update_strategy": "Monthly scan for new/updated statements",
+      "update_check_command": "python3 scripts/check_ranzcog_updates.py --last-check-date 2026-01-01"
+    },
+    {
+      "id": "RES-005",
+      "name": "RANZCP Clinical Practice Guidelines",
+      "category": "Clinical Practice Guidelines",
+      "source": "Royal Australian and New Zealand College of Psychiatrists",
+      "priority": "HIGH",
+      "url": "https://www.ranzcp.org/clinical-guidelines-publications",
+      "version": {
+        "current": "Varies by guideline (2020-2024)",
+        "release_date": "2024-01-01",
+        "latest_release_date": "2024-01-01",
+        "release_frequency": "Every 3-5 years per guideline",
+        "next_check_date": "2026-04-01",
+        "next_expected_release": "2027-01-01"
+      },
+      "size": {
+        "estimated_gb": 0.2,
+        "unit": "GB",
+        "file_count": 10,
+        "format": ["PDF"]
+      },
+      "download": {
+        "method": "Manual",
+        "script": "Manual checklist in download guide",
+        "authentication": {
+          "required": false,
+          "type": "None",
+          "cost": "Free"
+        },
+        "status": "Available",
+        "last_downloaded": null,
+        "download_duration_hours": "0.5"
+      },
+      "key_guidelines": [
+        "Depression treatment",
+        "Anxiety disorders",
+        "Schizophrenia management",
+        "Bipolar disorder",
+        "Suicide risk assessment"
+      ],
+      "integration": {
+        "status": "Pending",
+        "processed": false,
+        "indexed": false,
+        "citation_validated": false
+      },
+      "quality": {
+        "rating": 5,
+        "authority": "Official Australian/NZ psychiatry college",
+        "coverage": "Mental health, psychiatry"
+      },
+      "update_strategy": "Quarterly check for guideline updates",
+      "update_check_command": "python3 scripts/check_ranzcp_updates.py --last-check-date 2026-01-01"
+    },
+    {
+      "id": "RES-006",
+      "name": "MeSH (Medical Subject Headings)",
+      "category": "Medical Terminology",
+      "source": "U.S. National Library of Medicine",
+      "priority": "MEDIUM",
+      "url": "https://nlmpubs.nlm.nih.gov/projects/mesh/MESH_FILES/meshtrees/",
+      "version": {
+        "current": "2026 MeSH",
+        "release_date": "2025-12-01",
+        "latest_release_date": "2025-12-01",
+        "release_frequency": "Annual (December)",
+        "next_check_date": "2026-12-01",
+        "next_expected_release": "2026-12-01",
+        "next_major_release": "2027-01-01 (2027 MeSH)"
+      },
+      "size": {
+        "estimated_gb": 0.5,
+        "unit": "GB",
+        "file_count": 10,
+        "format": ["XML", "ASCII"]
+      },
+      "download": {
+        "method": "Automated",
+        "script": "scripts/download_external_resources.sh",
+        "authentication": {
+          "required": false,
+          "type": "None",
+          "cost": "Free"
+        },
+        "status": "Available",
+        "last_downloaded": null,
+        "download_duration_hours": "0.1"
+      },
+      "integration": {
+        "status": "Pending",
+        "processed": false,
+        "indexed": false,
+        "citation_validated": false
+      },
+      "quality": {
+        "rating": 5,
+        "authority": "NLM standard medical vocabulary",
+        "coverage": "Comprehensive medical terminology"
+      },
+      "update_strategy": "Annual download (December/January)",
+      "update_check_command": "curl -I https://nlmpubs.nlm.nih.gov/projects/mesh/MESH_FILES/meshtrees/mtrees2026.bin | grep Last-Modified"
+    },
+    {
+      "id": "RES-007",
+      "name": "The Australian Immunisation Handbook",
+      "category": "Clinical Practice Guidelines",
+      "source": "Australian Government Department of Health",
+      "priority": "HIGH",
+      "url": "https://immunisationhandbook.health.gov.au/",
+      "version": {
+        "current": "2023 (updated regularly)",
+        "release_date": "2023-01-01",
+        "latest_release_date": "2025-10-01",
+        "release_frequency": "Annual updates, quarterly revisions",
+        "next_check_date": "2026-04-01",
+        "next_expected_release": "2026-04-01"
+      },
+      "size": {
+        "estimated_gb": 0.1,
+        "unit": "GB",
+        "file_count": 20,
+        "format": ["HTML", "PDF"]
+      },
+      "download": {
+        "method": "Automated",
+        "script": "scripts/download_australian_guidelines.py",
+        "authentication": {
+          "required": false,
+          "type": "None",
+          "cost": "Free"
+        },
+        "status": "Available",
+        "last_downloaded": null,
+        "download_duration_hours": "0.1"
+      },
+      "integration": {
+        "status": "Pending",
+        "processed": false,
+        "indexed": false,
+        "citation_validated": false
+      },
+      "quality": {
+        "rating": 5,
+        "authority": "Official Australian government guideline",
+        "coverage": "Immunisation, vaccination schedules"
+      },
+      "update_strategy": "Quarterly check for updates",
+      "update_check_command": "python3 scripts/check_immunisation_updates.py --last-check-date 2026-01-01"
+    },
+    {
+      "id": "RES-008",
+      "name": "Clinical Guidelines for Stroke Management",
+      "category": "Clinical Practice Guidelines",
+      "source": "Stroke Foundation (Australia)",
+      "priority": "HIGH",
+      "url": "https://informme.org.au/guidelines/clinical-guidelines-for-stroke-management",
+      "version": {
+        "current": "2023 (Living guidelines)",
+        "release_date": "2023-01-01",
+        "latest_release_date": "2026-01-15",
+        "release_frequency": "Continuous (living guidelines)",
+        "next_check_date": "2026-02-01",
+        "next_expected_release": "Continuous"
+      },
+      "size": {
+        "estimated_gb": 0.2,
+        "unit": "GB",
+        "file_count": 5,
+        "format": ["PDF", "HTML"]
+      },
+      "download": {
+        "method": "Automated",
+        "script": "scripts/download_external_resources.sh",
+        "authentication": {
+          "required": false,
+          "type": "None",
+          "cost": "Free"
+        },
+        "status": "Available",
+        "last_downloaded": null,
+        "download_duration_hours": "0.1"
+      },
+      "integration": {
+        "status": "Pending",
+        "processed": false,
+        "indexed": false,
+        "citation_validated": false
+      },
+      "quality": {
+        "rating": 5,
+        "authority": "National Stroke Foundation Australia",
+        "coverage": "Stroke prevention, acute management, rehabilitation"
+      },
+      "update_strategy": "Monthly check (living guidelines)",
+      "update_check_command": "python3 scripts/check_stroke_updates.py --last-check-date 2026-01-01"
+    },
+    {
+      "id": "RES-009",
+      "name": "NSW Health Policy Directives and Guidelines",
+      "category": "Clinical Protocols",
+      "source": "NSW Ministry of Health",
+      "priority": "MEDIUM",
+      "url": "https://www.health.nsw.gov.au/policies/",
+      "version": {
+        "current": "Continuous (individual policies)",
+        "release_date": "2026-01-01",
+        "latest_release_date": "2026-01-10",
+        "release_frequency": "Weekly (new/updated policies)",
+        "next_check_date": "2026-02-01",
+        "next_expected_release": "Weekly"
+      },
+      "size": {
+        "estimated_gb": 0.3,
+        "unit": "GB",
+        "file_count": 50,
+        "format": ["PDF"]
+      },
+      "download": {
+        "method": "Manual",
+        "script": "Manual checklist in download guide",
+        "authentication": {
+          "required": false,
+          "type": "None",
+          "cost": "Free"
+        },
+        "status": "Manual download required",
+        "last_downloaded": null,
+        "download_duration_hours": "1"
+      },
+      "key_protocols": [
+        "Emergency medicine",
+        "Resuscitation",
+        "Sepsis management",
+        "Mental health crisis",
+        "Paediatric emergencies"
+      ],
+      "integration": {
+        "status": "Pending",
+        "processed": false,
+        "indexed": false,
+        "citation_validated": false
+      },
+      "quality": {
+        "rating": 5,
+        "authority": "Official NSW Health protocols",
+        "coverage": "Emergency, obstetric, mental health, paediatric protocols"
+      },
+      "update_strategy": "Monthly scan for new/updated policies",
+      "update_check_command": "python3 scripts/check_nsw_health_updates.py --last-check-date 2026-01-01"
+    },
+    {
+      "id": "RES-010",
+      "name": "Therapeutic Guidelines (eTG Complete)",
+      "category": "Clinical Practice Guidelines",
+      "source": "Therapeutic Guidelines Limited",
+      "priority": "LOW",
+      "url": "https://www.tg.org.au/",
+      "version": {
+        "current": "Continuous (subscription)",
+        "release_date": "2026-01-01",
+        "latest_release_date": "2026-01-01",
+        "release_frequency": "Monthly updates",
+        "next_check_date": "2026-02-01",
+        "next_expected_release": "2026-02-01"
+      },
+      "size": {
+        "estimated_gb": 1.0,
+        "unit": "GB",
+        "file_count": 15,
+        "format": ["PDF"]
+      },
+      "download": {
+        "method": "Manual",
+        "script": "N/A",
+        "authentication": {
+          "required": true,
+          "type": "Paid subscription",
+          "cost": "$300-500/year",
+          "application_url": "https://www.tg.org.au/"
+        },
+        "status": "Optional - Requires subscription",
+        "last_downloaded": null,
+        "download_duration_hours": "1"
+      },
+      "integration": {
+        "status": "Already integrated (9,672 chunks in vector DB)",
+        "processed": true,
+        "indexed": true,
+        "citation_validated": true
+      },
+      "quality": {
+        "rating": 5,
+        "authority": "Australian standard for therapeutic guidelines",
+        "coverage": "All therapeutic areas"
+      },
+      "update_strategy": "Monthly download if subscribed",
+      "notes": "Already have 9,672 eTG chunks in existing vector database"
+    },
+    {
+      "id": "RES-011",
+      "name": "UMLS Metathesaurus with SNOMED CT Australian Edition",
+      "category": "Medical Terminology",
+      "source": "U.S. National Library of Medicine / SNOMED International",
+      "priority": "MEDIUM",
+      "url": "https://uts.nlm.nih.gov/",
+      "version": {
+        "current": "2026 AA",
+        "release_date": "2026-01-01",
+        "latest_release_date": "2026-01-01",
+        "release_frequency": "Biannual (May, November)",
+        "next_check_date": "2026-05-01",
+        "next_expected_release": "2026-05-01",
+        "next_major_release": "2026-05-01 (2026 AB)"
+      },
+      "size": {
+        "estimated_gb": 2.0,
+        "unit": "GB",
+        "file_count": 100,
+        "format": ["RRF", "SQL"]
+      },
+      "download": {
+        "method": "Manual",
+        "script": "Manual download from UTS",
+        "authentication": {
+          "required": true,
+          "type": "UMLS License (free)",
+          "cost": "Free",
+          "approval_time_days": "1-3",
+          "application_url": "https://uts.nlm.nih.gov/uts/signup-login"
+        },
+        "status": "Requires UMLS license application",
+        "last_downloaded": null,
+        "download_duration_hours": "0.5"
+      },
+      "license_steps": [
+        "Visit: https://uts.nlm.nih.gov/uts/signup-login",
+        "Create UMLS account",
+        "Request UMLS Metathesaurus License",
+        "Select Affiliate License (free for non-commercial use)",
+        "Wait for approval (1-3 business days)",
+        "Download SNOMED CT Australian Edition"
+      ],
+      "integration": {
+        "status": "Not started",
+        "processed": false,
+        "indexed": false,
+        "citation_validated": false
+      },
+      "quality": {
+        "rating": 5,
+        "authority": "International standard (SNOMED CT)",
+        "coverage": "Comprehensive medical terminology mapping"
+      },
+      "update_strategy": "Biannual download (May, November)"
+    },
+    {
+      "id": "RES-012",
+      "name": "MIMIC-III (Medical Information Mart for Intensive Care III)",
+      "category": "Clinical Database",
+      "source": "MIT Lab for Computational Physiology",
+      "priority": "LOW",
+      "url": "https://physionet.org/content/mimiciii/1.4/",
+      "version": {
+        "current": "v1.4 (stable)",
+        "release_date": "2016-01-01",
+        "latest_release_date": "2016-01-01",
+        "release_frequency": "Stable (no regular updates)",
+        "next_check_date": "2027-01-01",
+        "next_expected_release": "N/A (stable)"
+      },
+      "size": {
+        "estimated_gb": 50.0,
+        "unit": "GB",
+        "file_count": 100,
+        "format": ["CSV", "SQL"]
+      },
+      "download": {
+        "method": "Manual",
+        "script": "Manual download from PhysioNet",
+        "authentication": {
+          "required": true,
+          "type": "PhysioNet credentialed access",
+          "cost": "Free",
+          "approval_time_days": "7-14",
+          "application_url": "https://physionet.org/"
+        },
+        "status": "Optional - Requires PhysioNet credentialing",
+        "last_downloaded": null,
+        "download_duration_hours": "2-4"
+      },
+      "credentialing_steps": [
+        "Visit: https://physionet.org/",
+        "Create account",
+        "Complete CITI training: https://physionet.org/about/citi-course/",
+        "Apply for MIMIC-III access",
+        "Wait for approval (1-2 weeks)",
+        "Download dataset"
+      ],
+      "integration": {
+        "status": "Not started",
+        "processed": false,
+        "indexed": false,
+        "citation_validated": false
+      },
+      "quality": {
+        "rating": 5,
+        "authority": "MIT, widely used in medical AI research",
+        "coverage": "ICU patient data (58,000+ admissions)"
+      },
+      "update_strategy": "Consider MIMIC-IV for updates",
+      "notes": "Optional - Only download if needed for advanced clinical decision support"
+    }
+  ],
+  "update_schedule": {
+    "weekly": [
+      {"resource_id": "RES-001", "check_day": "Monday"}
+    ],
+    "monthly": [
+      {"resource_id": "RES-002", "check_day": 1},
+      {"resource_id": "RES-004", "check_day": 1},
+      {"resource_id": "RES-008", "check_day": 1},
+      {"resource_id": "RES-009", "check_day": 1},
+      {"resource_id": "RES-010", "check_day": 1}
+    ],
+    "quarterly": [
+      {"resource_id": "RES-003", "check_months": [3, 6, 9, 12]},
+      {"resource_id": "RES-005", "check_months": [1, 4, 7, 10]},
+      {"resource_id": "RES-007", "check_months": [1, 4, 7, 10]}
+    ],
+    "annual": [
+      {"resource_id": "RES-006", "check_month": 12},
+      {"resource_id": "RES-012", "check_month": 1}
+    ],
+    "biannual": [
+      {"resource_id": "RES-011", "check_months": [5, 11]}
+    ]
+  },
+  "automation": {
+    "fully_automated": ["RES-001", "RES-003", "RES-006", "RES-007", "RES-008"],
+    "partially_automated": ["RES-002"],
+    "manual_only": ["RES-004", "RES-005", "RES-009", "RES-010", "RES-011", "RES-012"]
+  },
+  "priority_groups": {
+    "high": ["RES-001", "RES-002", "RES-003", "RES-004", "RES-005", "RES-007", "RES-008"],
+    "medium": ["RES-006", "RES-009", "RES-011"],
+    "low": ["RES-010", "RES-012"]
+  }
+}

@@ -27,6 +27,41 @@
 
 ---
 
+## 📺 RECOMMENDED VIDEO DEMONSTRATIONS
+
+### Mental State Examination Videos
+
+**Essential Videos (Watch These First):**
+
+1. **Mental State Examination - Geeky Medics**
+   - URL: https://geekymedics.com/mental-state-examination/
+   - Duration: 10 minutes (OSCE-appropriate)
+   - Focus: Complete systematic MSE assessment across all domains
+   - Why recommended: Excellent OSCE-formatted demonstration with clear structure and documentation
+   - Australian relevance: Follows Australian psychiatric assessment standards
+
+2. **Psychiatric History and MSE - Oxford Medical Education**
+   - URL: https://www.oxfordmedicaleducation.com/clinical-skills/psychiatry/psychiatric-history/
+   - Focus: Integrating psychiatric history with MSE findings
+   - Why recommended: Helps understand the relationship between history and current mental state
+
+3. **Cognitive Assessment (MMSE/MoCA) - Geeky Medics**
+   - URL: https://geekymedics.com/mini-mental-state-examination-mmse/
+   - Duration: 10 minutes
+   - Focus: Systematic cognitive function testing
+   - Why recommended: Essential for assessing cognitive impairment in MSE
+
+**Supplementary Videos:**
+
+4. **Risk Assessment in Psychiatry - Geeky Medics**
+   - URL: https://geekymedics.com/psychiatric-risk-assessment/
+   - Focus: Suicide and violence risk assessment
+   - Why recommended: Critical skill for safe psychiatric practice
+
+**Note:** Complete video resource catalog available in [00_VIDEO_RESOURCES_MASTER_LIST.md](../00_VIDEO_RESOURCES_MASTER_LIST.md)
+
+---
+
 ## Dr. Amir Soufi's Principle Applied to Mental State Examination
 
 > **"MSE is a SNAPSHOT of the patient's mental state RIGHT NOW - it's the psychiatric equivalent of physical examination. MSE findings CONFIRM your differential from history: If history suggests depression, MSE should show low mood, psychomotor retardation, poor eye contact. If history suggests psychosis, MSE should show hallucinations, delusions, thought disorder. MSE findings that DON'T match history = Red flag (patient hiding symptoms, delirium, malingering, or you've misunderstood the history)."**

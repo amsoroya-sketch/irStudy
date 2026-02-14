@@ -1,0 +1,293 @@
+/**
+ * Login Flow Tests
+ * Comprehensive testing of authentication login functionality
+ */
+
+import { test, expect } from '../../fixtures/auth.fixture';
+import { STUDENT_USER, EDUCATOR_USER, INVALID_USER } from '../../fixtures/users.fixture';
+
+test.describe('Login Page', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/login');
+  });
+
+  test.describe('Page Structure & Accessibility', () => {
+    test('should display login form with all required elements', async ({ page }) => {
+      // Check page title
+      await expect(page).toHaveTitle(/Login|Sign In/i);
+
+      // Check form elements
+      await expect(page.locator('input[name="email"]')).toBeVisible();
+      await expect(page.locator('input[name="password"]')).toBeVisible();
+      await expect(page.locator('button[type="submit"]')).toBeVisible();
+
+      // Check labels
+      await expect(page.locator('label:has-text("Email")')).toBeVisible();
+      await expect(page.locator('label:has-text("Password")')).toBeVisible();
+
+      // Check "Remember me" checkbox
+      const rememberMeCheckbox = page.locator('input[type="checkbox"]');
+      await expect(rememberMeCheckbox).toBeVisible();
+
+      // Check link to registration
+      const registerLink = page.locator('a:has-text("Sign up")');
+      await expect(registerLink).toBeVisible();
+    });
+
+    test('should have proper ARIA labels and accessibility attributes', async ({ page }) => {
+      const emailInput = page.locator('input[name="email"]');
+      const passwordInput = page.locator('input[name="password"]');
+
+      // Check input labels are associated
+      await expect(emailInput).toHaveAttribute('type', 'email');
+      await expect(passwordInput).toHaveAttribute('type', 'password');
+
+      // Submit button should be accessible
+      const submitButton = page.locator('button[type="submit"]');
+      await expect(submitButton).toBeEnabled();
+    });
+  });
+
+  test.describe('Valid Login Flow', () => {
+    test('should successfully login with student credentials', async ({ page }) => {
+      // Fill in credentials
+      await page.fill('input[name="email"]', STUDENT_USER.email);
+      await page.fill('input[name="password"]', STUDENT_USER.password);
+
+      // Submit form
+      await page.click('button[type="submit"]');
+
+      // Should redirect to dashboard
+      await page.waitForURL('/dashboard');
+
+      // Verify we're on dashboard
+      await expect(page).toHaveURL('/dashboard');
+
+      // Verify localStorage has tokens
+      const accessToken = await page.evaluate(() => localStorage.getItem('accessToken'));
+      const user = await page.evaluate(() => localStorage.getItem('user'));
+
+      expect(accessToken).toBeTruthy();
+      expect(user).toBeTruthy();
+
+      // Parse and verify user data
+      const userData = JSON.parse(user!);
+      expect(userData.email).toBe(STUDENT_USER.email);
+      expect(userData.role).toBe('student');
+    });
+
+    test('should successfully login with educator credentials', async ({ page }) => {
+      await page.fill('input[name="email"]', EDUCATOR_USER.email);
+      await page.fill('input[name="password"]', EDUCATOR_USER.password);
+      await page.click('button[type="submit"]');
+
+      await page.waitForURL('/dashboard');
+
+      const user = await page.evaluate(() => localStorage.getItem('user'));
+      const userData = JSON.parse(user!);
+      expect(userData.role).toBe('educator');
+    });
+
+    test('should persist session with "Remember me" checked', async ({ page }) => {
+      await page.fill('input[name="email"]', STUDENT_USER.email);
+      await page.fill('input[name="password"]', STUDENT_USER.password);
+
+      // Check "Remember me"
+      const rememberMeCheckbox = page.locator('input[type="checkbox"]');
+      await rememberMeCheckbox.check();
+
+      await page.click('button[type="submit"]');
+      await page.waitForURL('/dashboard');
+
+      // Verify rememberMe flag in localStorage
+      const rememberMe = await page.evaluate(() => localStorage.getItem('rememberMe'));
+      expect(rememberMe).toBe('true');
+    });
+
+    test('should auto-redirect if already authenticated', async ({ page }) => {
+      // Set auth tokens manually
+      await page.evaluate(() => {
+        localStorage.setItem('accessToken', 'mock-token');
+        localStorage.setItem('user', JSON.stringify({ email: 'test@example.com', role: 'student' }));
+      });
+
+      // Navigate to login page
+      await page.goto('/login');
+
+      // Should auto-redirect to dashboard
+      await page.waitForURL('/dashboard', { timeout: 5000 });
+      await expect(page).toHaveURL('/dashboard');
+    });
+  });
+
+  test.describe('Invalid Credentials', () => {
+    test('should show error for invalid email format', async ({ page }) => {
+      await page.fill('input[name="email"]', 'invalid-email');
+      await page.fill('input[name="password"]', 'ValidPassword123!');
+
+      // Trigger validation (blur event)
+      await page.locator('input[name="email"]').blur();
+
+      // Check for error message
+      const errorMessage = page.locator('text=/invalid.*email/i');
+      await expect(errorMessage).toBeVisible();
+    });
+
+    test('should show error for empty email', async ({ page }) => {
+      await page.fill('input[name="email"]', '');
+      await page.fill('input[name="password"]', 'ValidPassword123!');
+      await page.click('button[type="submit"]');
+
+      // Email required error
+      const errorMessage = page.locator('text=/email.*required/i');
+      await expect(errorMessage).toBeVisible();
+    });
+
+    test('should show error for empty password', async ({ page }) => {
+      await page.fill('input[name="email"]', 'test@example.com');
+      await page.fill('input[name="password"]', '');
+      await page.click('button[type="submit"]');
+
+      // Password required error
+      const errorMessage = page.locator('text=/password.*required/i');
+      await expect(errorMessage).toBeVisible();
+    });
+
+    test('should show error for incorrect credentials (401)', async ({ page }) => {
+      // Note: This test requires API mocking to return 401
+      await page.fill('input[name="email"]', INVALID_USER.email);
+      await page.fill('input[name="password"]', INVALID_USER.password);
+      await page.click('button[type="submit"]');
+
+      // Wait for error alert
+      const errorAlert = page.locator('[role="alert"]:has-text("Invalid credentials")');
+      await expect(errorAlert).toBeVisible({ timeout: 5000 });
+
+      // Should NOT redirect to dashboard
+      await expect(page).not.toHaveURL('/dashboard');
+    });
+  });
+
+  test.describe('Password Validation', () => {
+    test('should show error for password < 12 characters', async ({ page }) => {
+      await page.fill('input[name="email"]', 'test@example.com');
+      await page.fill('input[name="password"]', 'Short1!');
+      await page.locator('input[name="password"]').blur();
+
+      const errorMessage = page.locator('text=/at least 12 characters/i');
+      await expect(errorMessage).toBeVisible();
+    });
+
+    test('should show error for password without uppercase letter', async ({ page }) => {
+      await page.fill('input[name="email"]', 'test@example.com');
+      await page.fill('input[name="password"]', 'lowercase123!@#');
+      await page.locator('input[name="password"]').blur();
+
+      const errorMessage = page.locator('text=/uppercase/i');
+      await expect(errorMessage).toBeVisible();
+    });
+
+    test('should show error for password without number', async ({ page }) => {
+      await page.fill('input[name="email"]', 'test@example.com');
+      await page.fill('input[name="password"]', 'NoNumbersHere!');
+      await page.locator('input[name="password"]').blur();
+
+      const errorMessage = page.locator('text=/number/i');
+      await expect(errorMessage).toBeVisible();
+    });
+
+    test('should show error for password without special character', async ({ page }) => {
+      await page.fill('input[name="email"]', 'test@example.com');
+      await page.fill('input[name="password"]', 'NoSpecialChar123');
+      await page.locator('input[name="password"]').blur();
+
+      const errorMessage = page.locator('text=/special character/i');
+      await expect(errorMessage).toBeVisible();
+    });
+  });
+
+  test.describe('Loading States & UX', () => {
+    test('should disable submit button while loading', async ({ page }) => {
+      await page.fill('input[name="email"]', STUDENT_USER.email);
+      await page.fill('input[name="password"]', STUDENT_USER.password);
+
+      // Intercept API call to add delay
+      await page.route('**/api/v1/auth/login', async (route) => {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await route.continue();
+      });
+
+      await page.click('button[type="submit"]');
+
+      // Button should be disabled during loading
+      const submitButton = page.locator('button[type="submit"]');
+      await expect(submitButton).toBeDisabled();
+
+      // Loading spinner should be visible
+      const loadingSpinner = page.locator('[role="progressbar"]');
+      await expect(loadingSpinner).toBeVisible();
+    });
+
+    test('should show error alert on network failure', async ({ page }) => {
+      await page.fill('input[name="email"]', STUDENT_USER.email);
+      await page.fill('input[name="password"]', STUDENT_USER.password);
+
+      // Intercept API call to simulate network error
+      await page.route('**/api/v1/auth/login', (route) => route.abort('failed'));
+
+      await page.click('button[type="submit"]');
+
+      // Network error alert
+      const errorAlert = page.locator('[role="alert"]:has-text(/network|connection/i)');
+      await expect(errorAlert).toBeVisible({ timeout: 5000 });
+    });
+  });
+
+  test.describe('Navigation', () => {
+    test('should navigate to registration page via link', async ({ page }) => {
+      const registerLink = page.locator('a:has-text("Sign up")');
+      await registerLink.click();
+
+      await page.waitForURL('/register');
+      await expect(page).toHaveURL('/register');
+    });
+
+    test('should navigate to forgot password page', async ({ page }) => {
+      const forgotPasswordLink = page.locator('a:has-text("Forgot password")');
+
+      if (await forgotPasswordLink.isVisible()) {
+        await forgotPasswordLink.click();
+        await page.waitForURL('/forgot-password');
+        await expect(page).toHaveURL('/forgot-password');
+      }
+    });
+  });
+
+  test.describe('Keyboard Accessibility', () => {
+    test('should allow tab navigation through form fields', async ({ page }) => {
+      await page.keyboard.press('Tab'); // Email field
+      await expect(page.locator('input[name="email"]')).toBeFocused();
+
+      await page.keyboard.press('Tab'); // Password field
+      await expect(page.locator('input[name="password"]')).toBeFocused();
+
+      await page.keyboard.press('Tab'); // Remember me checkbox
+      await expect(page.locator('input[type="checkbox"]')).toBeFocused();
+
+      await page.keyboard.press('Tab'); // Submit button
+      await expect(page.locator('button[type="submit"]')).toBeFocused();
+    });
+
+    test('should submit form on Enter key in password field', async ({ page }) => {
+      await page.fill('input[name="email"]', STUDENT_USER.email);
+      await page.fill('input[name="password"]', STUDENT_USER.password);
+
+      // Press Enter in password field
+      await page.locator('input[name="password"]').press('Enter');
+
+      // Should submit and redirect
+      await page.waitForURL('/dashboard', { timeout: 5000 });
+      await expect(page).toHaveURL('/dashboard');
+    });
+  });
+});

@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 import json
 
-with open('/home/dev/Development/irStudy/validation_reports/citations.json', 'r') as f:
+with open("/home/dev/Development/irStudy/validation_reports/citations.json", "r") as f:
     claims = json.load(f)
 
 # Get first 20 CRITICAL claims for manual processing
-critical = [c for c in claims if c.get('severity') == 'critical'][:20]
+critical = [c for c in claims if c.get("severity") == "critical"][:20]
 
 print(f"Total claims: {len(claims)}")
 print(f"Total critical: {len([c for c in claims if c.get('severity') == 'critical'])}")

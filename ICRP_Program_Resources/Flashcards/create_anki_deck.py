@@ -174,26 +174,27 @@ BACK_TEMPLATE = """
 </div>
 """
 
+
 # Create custom note model for ICRP flashcards
 def create_note_model():
     """Creates a custom Anki note model with Australian medical styling"""
     model = genanki.Model(
         MODEL_ID,
-        'ICRP AMC Clinical Model',
+        "ICRP AMC Clinical Model",
         fields=[
-            {'name': 'Front'},
-            {'name': 'Back'},
-            {'name': 'Tags'},
-            {'name': 'Source'},
+            {"name": "Front"},
+            {"name": "Back"},
+            {"name": "Tags"},
+            {"name": "Source"},
         ],
         templates=[
             {
-                'name': 'ICRP Card',
-                'qfmt': FRONT_TEMPLATE,
-                'afmt': BACK_TEMPLATE,
+                "name": "ICRP Card",
+                "qfmt": FRONT_TEMPLATE,
+                "afmt": BACK_TEMPLATE,
             },
         ],
-        css=AUSTRALIAN_MEDICAL_CSS
+        css=AUSTRALIAN_MEDICAL_CSS,
     )
     return model
 
@@ -212,10 +213,10 @@ def parse_deck_hierarchy(deck_name):
 
     # Special mappings for cleaner hierarchy
     deck_mappings = {
-        'Red Flags': 'Red_Flags_Critical',
-        'Australian Context': 'Australian_Context',
-        'IMG Common Mistakes': 'IMG_Common_Mistakes',
-        'Physical Examination': 'Physical_Examination',
+        "Red Flags": "Red_Flags_Critical",
+        "Australian Context": "Australian_Context",
+        "IMG Common Mistakes": "IMG_Common_Mistakes",
+        "Physical Examination": "Physical_Examination",
     }
 
     # Apply mapping if exists
@@ -223,15 +224,15 @@ def parse_deck_hierarchy(deck_name):
         deck_name = deck_mappings[deck_name]
 
     # Handle Medicine subspecialties
-    if deck_name.startswith('Medicine_'):
-        parts = deck_name.split('_')
-        if len(parts) == 2 and parts[1] != 'General':
+    if deck_name.startswith("Medicine_"):
+        parts = deck_name.split("_")
+        if len(parts) == 2 and parts[1] != "General":
             return f"{base}::Medicine::{parts[1]}"
-        elif parts[1] == 'General':
+        elif parts[1] == "General":
             return f"{base}::Medicine"
 
     # Replace spaces and underscores
-    deck_name = deck_name.replace(' ', '_')
+    deck_name = deck_name.replace(" ", "_")
 
     return f"{base}::{deck_name}"
 
@@ -246,11 +247,11 @@ def create_anki_deck():
 
     # Load flashcard data
     print("Loading flashcard data...")
-    with open('flashcard_data.json', 'r', encoding='utf-8') as f:
+    with open("flashcard_data.json", "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    metadata = data['metadata']
-    cards = data['cards']
+    metadata = data["metadata"]
+    cards = data["cards"]
 
     print(f"✓ Loaded {metadata['total_cards']} cards")
     print(f"  Created: {metadata['created']}")
@@ -263,7 +264,7 @@ def create_anki_deck():
     # Group cards by deck
     deck_groups = defaultdict(list)
     for card in cards:
-        deck_name = card['deck']
+        deck_name = card["deck"]
         deck_groups[deck_name].append(card)
 
     print("Deck structure:")
@@ -285,51 +286,51 @@ def create_anki_deck():
     card_count = 0
 
     for card in cards:
-        deck_name = card['deck']
+        deck_name = card["deck"]
         deck = decks_dict[deck_name]
 
         # Prepare fields
-        front = card['front']
-        back = card['back']
-        tags = ' '.join(card.get('tags', []))
-        source = card.get('source', 'Unknown')
+        front = card["front"]
+        back = card["back"]
+        tags = " ".join(card.get("tags", []))
+        source = card.get("source", "Unknown")
 
         # Add CSS classes based on card attributes
         css_classes = []
 
         # Add difficulty class
-        difficulty = card.get('difficulty', 'medium')
-        css_classes.append(f'difficulty-{difficulty}')
+        difficulty = card.get("difficulty", "medium")
+        css_classes.append(f"difficulty-{difficulty}")
 
         # Add category class
-        category = card.get('category', '')
+        category = card.get("category", "")
         if category:
-            css_classes.append(category.replace('_', '-'))
+            css_classes.append(category.replace("_", "-"))
 
         # Add red flag class
-        if 'red-flag' in card.get('tags', []) or 'red_flag' in card.get('tags', []):
-            css_classes.append('red-flag')
+        if "red-flag" in card.get("tags", []) or "red_flag" in card.get("tags", []):
+            css_classes.append("red-flag")
 
         # Add IMG mistake class
-        if 'img_mistake' in card.get('tags', []):
-            css_classes.append('img-mistake')
+        if "img_mistake" in card.get("tags", []):
+            css_classes.append("img-mistake")
 
         # Add critical class
-        if 'critical' in card.get('tags', []):
-            css_classes.append('critical')
+        if "critical" in card.get("tags", []):
+            css_classes.append("critical")
 
         # Add Australian context class
-        if 'australian' in card.get('tags', []):
-            css_classes.append('australian-context')
+        if "australian" in card.get("tags", []):
+            css_classes.append("australian-context")
 
         # Create tags field with CSS classes
-        tags_with_classes = ' '.join(css_classes) + ' ' + tags
+        tags_with_classes = " ".join(css_classes) + " " + tags
 
         # Create the note
         note = genanki.Note(
             model=note_model,
             fields=[front, back, tags_with_classes, source],
-            tags=card.get('tags', [])
+            tags=card.get("tags", []),
         )
 
         deck.add_note(note)
@@ -343,7 +344,7 @@ def create_anki_deck():
     package = genanki.Package(list(decks_dict.values()))
 
     # Save the package
-    output_file = 'ICRP_AMC_Clinical.apkg'
+    output_file = "ICRP_AMC_Clinical.apkg"
     package.write_to_file(output_file)
 
     print(f"✓ Successfully created: {output_file}")
@@ -371,7 +372,7 @@ def create_anki_deck():
     print("Card statistics by category:")
     category_counts = defaultdict(int)
     for card in cards:
-        category = card.get('category', 'general')
+        category = card.get("category", "general")
         category_counts[category] += 1
 
     for category, count in sorted(category_counts.items()):
@@ -381,7 +382,7 @@ def create_anki_deck():
     print("Card statistics by difficulty:")
     difficulty_counts = defaultdict(int)
     for card in cards:
-        difficulty = card.get('difficulty', 'medium')
+        difficulty = card.get("difficulty", "medium")
         difficulty_counts[difficulty] += 1
 
     for difficulty, count in sorted(difficulty_counts.items()):
@@ -407,7 +408,7 @@ def create_anki_deck():
     print("=" * 60)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
         create_anki_deck()
     except FileNotFoundError:
@@ -417,5 +418,6 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"ERROR: {e}")
         import traceback
+
         traceback.print_exc()
         exit(1)

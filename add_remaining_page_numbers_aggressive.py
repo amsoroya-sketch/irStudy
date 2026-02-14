@@ -14,44 +14,47 @@ from sentence_transformers import SentenceTransformer
 from typing import List, Tuple, Optional
 import time
 
+
 class AggressiveRAGReferencer:
     def __init__(self, confidence_threshold=0.45):
         """Initialize with aggressive settings"""
         print("Loading embedding model...")
-        self.model = SentenceTransformer('pritamdeka/S-PubMedBert-MS-MARCO')
+        self.model = SentenceTransformer("pritamdeka/S-PubMedBert-MS-MARCO")
         self.client = QdrantClient(host="localhost", port=6333)
         self.confidence_threshold = confidence_threshold
-        print(f"✓ Aggressive RAG initialized (confidence: {confidence_threshold}, context: 500 chars)")
+        print(
+            f"✓ Aggressive RAG initialized (confidence: {confidence_threshold}, context: 500 chars)"
+        )
 
     def query_book(self, text: str, book_filter: List[str], limit=5) -> List[dict]:
         """Query Qdrant with more results"""
         try:
             embedding = self.model.encode(text).tolist()
             results = self.client.query_points(
-                collection_name='medical_knowledge',
-                query=embedding,
-                limit=limit,
-                with_payload=True
+                collection_name="medical_knowledge", query=embedding, limit=limit, with_payload=True
             ).points
 
             references = []
             for point in results:
                 payload = point.payload
-                source = payload.get('source', '').lower()
-                book = payload.get('book', '').lower()
+                source = payload.get("source", "").lower()
+                book = payload.get("book", "").lower()
 
-                if any(filter_term.lower() in source or filter_term.lower() in book
-                       for filter_term in book_filter):
-
-                    page = payload.get('page', 'unknown')
+                if any(
+                    filter_term.lower() in source or filter_term.lower() in book
+                    for filter_term in book_filter
+                ):
+                    page = payload.get("page", "unknown")
                     confidence = point.score
 
-                    references.append({
-                        'page': page,
-                        'confidence': confidence,
-                        'source': payload.get('source', 'Unknown'),
-                        'text': payload.get('text', '')[:200]
-                    })
+                    references.append(
+                        {
+                            "page": page,
+                            "confidence": confidence,
+                            "source": payload.get("source", "Unknown"),
+                            "text": payload.get("text", "")[:200],
+                        }
+                    )
 
             return references
 
@@ -59,21 +62,23 @@ class AggressiveRAGReferencer:
             print(f"Error querying Qdrant: {e}")
             return []
 
-    def get_page_reference(self, context: str, citation: str, line_content: str) -> Tuple[Optional[str], float]:
+    def get_page_reference(
+        self, context: str, citation: str, line_content: str
+    ) -> Tuple[Optional[str], float]:
         """
         Aggressive page reference search with multiple strategies
         """
 
         # Determine book filter
-        if 'Talley' in citation:
-            book_filter = ['talley', 'clinical examination']
-            book_name = 'Talley & O\'Connor\'s Clinical Examination, 8th ed'
-        elif 'Murtagh' in citation:
-            book_filter = ['murtagh', 'general practice']
-            book_name = 'Murtagh\'s General Practice, 8th ed'
-        elif 'AMC' in citation:
-            book_filter = ['amc', 'anthology']
-            book_name = 'AMC Handbook of Clinical Assessment'
+        if "Talley" in citation:
+            book_filter = ["talley", "clinical examination"]
+            book_name = "Talley & O'Connor's Clinical Examination, 8th ed"
+        elif "Murtagh" in citation:
+            book_filter = ["murtagh", "general practice"]
+            book_name = "Murtagh's General Practice, 8th ed"
+        elif "AMC" in citation:
+            book_filter = ["amc", "anthology"]
+            book_name = "AMC Handbook of Clinical Assessment"
         else:
             return None, 0.0
 
@@ -83,10 +88,10 @@ class AggressiveRAGReferencer:
         # Multiple query strategies (ordered by priority)
         queries = [
             context,  # Full context (500 chars)
-            ' '.join(medical_terms) if medical_terms else context,  # Medical keywords
-            context.split('(')[0].strip(),  # Before citation
-            ' '.join(context.split()[-40:]),  # Last 40 words
-            line_content.split('(')[0].strip()[:200]  # Current line before citation
+            " ".join(medical_terms) if medical_terms else context,  # Medical keywords
+            context.split("(")[0].strip(),  # Before citation
+            " ".join(context.split()[-40:]),  # Last 40 words
+            line_content.split("(")[0].strip()[:200],  # Current line before citation
         ]
 
         best_page = None
@@ -100,10 +105,10 @@ class AggressiveRAGReferencer:
             refs = self.query_book(query_text, book_filter, limit=8)
 
             for ref in refs:
-                if ref['confidence'] > best_confidence and ref['page'] != 'unknown':
-                    best_confidence = ref['confidence']
-                    best_page = ref['page']
-                    best_source_text = ref['text']
+                if ref["confidence"] > best_confidence and ref["page"] != "unknown":
+                    best_confidence = ref["confidence"]
+                    best_page = ref["page"]
+                    best_source_text = ref["text"]
 
                     # If we have very high confidence, stop searching
                     if best_confidence >= 0.75:
@@ -113,9 +118,9 @@ class AggressiveRAGReferencer:
                 break
 
         # Accept if confidence meets threshold
-        if best_page and best_page != 'unknown' and best_confidence >= self.confidence_threshold:
-            if ', p.' not in citation:
-                updated = citation.replace(')', f', p.{best_page})')
+        if best_page and best_page != "unknown" and best_confidence >= self.confidence_threshold:
+            if ", p." not in citation:
+                updated = citation.replace(")", f", p.{best_page})")
                 return updated, best_confidence
 
         return None, best_confidence
@@ -124,11 +129,11 @@ class AggressiveRAGReferencer:
         """Extract medical terminology from text"""
         # Common medical keywords patterns
         patterns = [
-            r'\b[A-Z]{2,}\b',  # Acronyms (VTE, DVT, PE, etc.)
-            r'\b\d+mg\b',  # Dosages
-            r'\b\d+%\b',  # Percentages
-            r'\b(?:treatment|diagnosis|examination|assessment|management)\b',
-            r'\b(?:patient|clinical|medical|surgical)\b'
+            r"\b[A-Z]{2,}\b",  # Acronyms (VTE, DVT, PE, etc.)
+            r"\b\d+mg\b",  # Dosages
+            r"\b\d+%\b",  # Percentages
+            r"\b(?:treatment|diagnosis|examination|assessment|management)\b",
+            r"\b(?:patient|clinical|medical|surgical)\b",
         ]
 
         keywords = []
@@ -142,21 +147,21 @@ class AggressiveRAGReferencer:
         """Process a single markdown file"""
 
         try:
-            content = file_path.read_text(encoding='utf-8')
-            lines = content.split('\n')
+            content = file_path.read_text(encoding="utf-8")
+            lines = content.split("\n")
             modified = False
             updates_count = 0
 
             # Pattern for generic citations (exclude those already with page numbers)
             generic_patterns = [
-                (r'\(Talley[^)]*?8th ed\)(?!\s*,\s*p\.)', 'Talley'),
-                (r'\(Murtagh[^)]*?8th ed\)(?!\s*,\s*p\.)', 'Murtagh'),
-                (r'\(AMC[^)]*?\)(?!\s*,\s*p\.)', 'AMC')
+                (r"\(Talley[^)]*?8th ed\)(?!\s*,\s*p\.)", "Talley"),
+                (r"\(Murtagh[^)]*?8th ed\)(?!\s*,\s*p\.)", "Murtagh"),
+                (r"\(AMC[^)]*?\)(?!\s*,\s*p\.)", "AMC"),
             ]
 
             for line_num, line in enumerate(lines):
                 # Skip if line already has multiple citations with pages
-                if line.count(', p.') >= 2:
+                if line.count(", p.") >= 2:
                     continue
 
                 for pattern, book_type in generic_patterns:
@@ -164,16 +169,16 @@ class AggressiveRAGReferencer:
                         citation = match.group()
 
                         # Skip if already has page number
-                        if ', p.' in citation:
+                        if ", p." in citation:
                             continue
 
                         # Skip "AMC Frequency Indicator added" - not a real citation
-                        if 'Frequency Indicator' in citation:
+                        if "Frequency Indicator" in citation:
                             continue
 
                         # Get extended context (500 chars before citation)
                         start_idx = max(0, match.start() - 500)
-                        context = line[start_idx:match.end()]
+                        context = line[start_idx : match.end()]
 
                         # Query RAG with aggressive settings
                         updated_citation, confidence = self.get_page_reference(
@@ -186,12 +191,14 @@ class AggressiveRAGReferencer:
                             modified = True
                             updates_count += 1
 
-                            print(f"  ✓ Line {line_num+1}: {citation[:50]}... → page added (conf: {confidence:.3f})")
+                            print(
+                                f"  ✓ Line {line_num+1}: {citation[:50]}... → page added (conf: {confidence:.3f})"
+                            )
 
             # Write back if modified
             if modified:
-                updated_content = '\n'.join(lines)
-                file_path.write_text(updated_content, encoding='utf-8')
+                updated_content = "\n".join(lines)
+                file_path.write_text(updated_content, encoding="utf-8")
                 return updates_count
 
             return 0
@@ -199,6 +206,7 @@ class AggressiveRAGReferencer:
         except Exception as e:
             print(f"  ✗ Error processing {file_path}: {e}")
             return 0
+
 
 def main():
     """Main processing function"""
@@ -213,7 +221,7 @@ def main():
     print()
 
     # Load generic citations report
-    with open('generic_citations_report.json', 'r') as f:
+    with open("generic_citations_report.json", "r") as f:
         report = json.load(f)
 
     # Initialize RAG
@@ -221,10 +229,10 @@ def main():
 
     # Process files with remaining generic citations
     files_to_process = set()
-    for source, citations in report['generic_by_source'].items():
-        if source in ['Talley', 'Murtagh', 'AMC']:
+    for source, citations in report["generic_by_source"].items():
+        if source in ["Talley", "Murtagh", "AMC"]:
             for citation_info in citations:
-                file_path = Path('ICRP_OSCE_Preparation') / citation_info['file']
+                file_path = Path("ICRP_OSCE_Preparation") / citation_info["file"]
                 files_to_process.add(file_path)
 
     print(f"📂 Processing {len(files_to_process)} files with generic citations...")
@@ -253,17 +261,18 @@ def main():
 
     # Generate summary
     summary = {
-        'files_modified': files_modified,
-        'citations_updated': total_updates,
-        'confidence_threshold': 0.45,
-        'context_window': 500,
-        'timestamp': time.strftime('%Y-%m-%d %H:%M:%S')
+        "files_modified": files_modified,
+        "citations_updated": total_updates,
+        "confidence_threshold": 0.45,
+        "context_window": 500,
+        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
     }
 
-    with open('aggressive_rag_log.json', 'w') as f:
+    with open("aggressive_rag_log.json", "w") as f:
         json.dump(summary, f, indent=2)
 
     print(f"📝 Log saved to: aggressive_rag_log.json")
+
 
 if __name__ == "__main__":
     main()

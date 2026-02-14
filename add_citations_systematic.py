@@ -9,6 +9,7 @@ import re
 from pathlib import Path
 from typing import Dict, List, Tuple
 
+
 class CitationProcessor:
     def __init__(self):
         self.base_path = Path("/home/dev/Development/irStudy")
@@ -21,26 +22,44 @@ class CitationProcessor:
         claim_lower = claim.lower()
 
         # Medication/dosage patterns
-        medication_keywords = ['mg', 'dose', 'dosage', 'medication', 'drug', 'therapy',
-                               'paracetamol', 'aspirin', 'antibiotic', 'treatment']
+        medication_keywords = [
+            "mg",
+            "dose",
+            "dosage",
+            "medication",
+            "drug",
+            "therapy",
+            "paracetamol",
+            "aspirin",
+            "antibiotic",
+            "treatment",
+        ]
 
         # Physical examination patterns
-        exam_keywords = ['examination', 'palpation', 'auscultation', 'percussion',
-                         'inspection', 'physical', 'sign', 'reflex']
+        exam_keywords = [
+            "examination",
+            "palpation",
+            "auscultation",
+            "percussion",
+            "inspection",
+            "physical",
+            "sign",
+            "reflex",
+        ]
 
         # Emergency/acute patterns
-        emergency_keywords = ['emergency', 'acute', 'resuscitation', 'trauma', 'cardiac arrest']
+        emergency_keywords = ["emergency", "acute", "resuscitation", "trauma", "cardiac arrest"]
 
         # Check for medications/dosages (highest priority for critical claims)
         if any(keyword in claim_lower for keyword in medication_keywords):
             # Determine specialty
-            if 'cardiac' in claim_lower or 'heart' in claim_lower:
+            if "cardiac" in claim_lower or "heart" in claim_lower:
                 return "(Therapeutic Guidelines: Cardiovascular, 2024)"
-            elif 'pain' in claim_lower or 'analges' in claim_lower:
+            elif "pain" in claim_lower or "analges" in claim_lower:
                 return "(Therapeutic Guidelines: Analgesic, 2024)"
-            elif 'antibiotic' in claim_lower or 'infection' in claim_lower:
+            elif "antibiotic" in claim_lower or "infection" in claim_lower:
                 return "(Therapeutic Guidelines: Antibiotic, 2024)"
-            elif 'psychiatric' in file_path.lower() or 'mental' in claim_lower:
+            elif "psychiatric" in file_path.lower() or "mental" in claim_lower:
                 return "(Therapeutic Guidelines: Psychotropic, 2024)"
             else:
                 return "(Therapeutic Guidelines, 2024)"
@@ -54,11 +73,11 @@ class CitationProcessor:
             return "(Talley & O'Connor's Clinical Examination, 8th ed, 2024)"
 
         # Obstetrics/Gynaecology
-        if 'obgyn' in file_path.lower() or 'obstetric' in file_path.lower():
+        if "obgyn" in file_path.lower() or "obstetric" in file_path.lower():
             return "(Therapeutic Guidelines: Pregnancy and Breastfeeding, 2024)"
 
         # Paediatrics
-        if 'paediatric' in file_path.lower() or 'pediatric' in file_path.lower():
+        if "paediatric" in file_path.lower() or "pediatric" in file_path.lower():
             return "(Therapeutic Guidelines: Paediatric, 2024)"
 
         # General practice fallback
@@ -67,39 +86,35 @@ class CitationProcessor:
     def process_claim(self, claim_data: Dict) -> bool:
         """Process a single claim and add citation."""
         try:
-            file_path = self.base_path / claim_data['file']
-            line_num = claim_data['line']
-            claim_text = claim_data['claim']
+            file_path = self.base_path / claim_data["file"]
+            line_num = claim_data["line"]
+            claim_text = claim_data["claim"]
 
             # Read file
             if not file_path.exists():
                 print(f"File not found: {file_path}")
-                self.unable_to_cite.append({
-                    'reason': 'file_not_found',
-                    'claim': claim_data
-                })
+                self.unable_to_cite.append({"reason": "file_not_found", "claim": claim_data})
                 return False
 
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with open(file_path, "r", encoding="utf-8") as f:
                 lines = f.readlines()
 
             # Check if line number is valid
             if line_num < 1 or line_num > len(lines):
                 print(f"Invalid line number {line_num} in {file_path}")
-                self.unable_to_cite.append({
-                    'reason': 'invalid_line_number',
-                    'claim': claim_data
-                })
+                self.unable_to_cite.append({"reason": "invalid_line_number", "claim": claim_data})
                 return False
 
             # Get the line (0-indexed)
             target_line = lines[line_num - 1]
 
             # Check if citation already exists
-            if '(Therapeutic Guidelines' in target_line or \
-               "(Talley & O'Connor" in target_line or \
-               "(Murtagh's General Practice" in target_line or \
-               "(AMC Handbook" in target_line:
+            if (
+                "(Therapeutic Guidelines" in target_line
+                or "(Talley & O'Connor" in target_line
+                or "(Murtagh's General Practice" in target_line
+                or "(AMC Handbook" in target_line
+            ):
                 print(f"Citation already exists at line {line_num} in {file_path.name}")
                 return False
 
@@ -108,10 +123,10 @@ class CitationProcessor:
 
             # Add citation at end of line (before newline)
             # Handle various line endings
-            target_line = target_line.rstrip('\n\r')
+            target_line = target_line.rstrip("\n\r")
 
             # Don't add citation if line ends with specific markers that shouldn't have citations
-            if target_line.strip().endswith((':', '─', '│', '├', '└', '```')):
+            if target_line.strip().endswith((":", "─", "│", "├", "└", "```")):
                 print(f"Skipping line {line_num} - ends with structural marker")
                 return False
 
@@ -120,7 +135,7 @@ class CitationProcessor:
             lines[line_num - 1] = new_line
 
             # Write back to file
-            with open(file_path, 'w', encoding='utf-8') as f:
+            with open(file_path, "w", encoding="utf-8") as f:
                 f.writelines(lines)
 
             self.citations_added += 1
@@ -130,21 +145,18 @@ class CitationProcessor:
 
         except Exception as e:
             print(f"Error processing claim: {e}")
-            self.unable_to_cite.append({
-                'reason': str(e),
-                'claim': claim_data
-            })
+            self.unable_to_cite.append({"reason": str(e), "claim": claim_data})
             return False
 
     def run(self, max_claims: int = 100):
         """Process first N critical claims."""
         # Read citations.json
         citations_file = self.base_path / "validation_reports/citations.json"
-        with open(citations_file, 'r') as f:
+        with open(citations_file, "r") as f:
             all_claims = json.load(f)
 
         # Filter critical claims
-        critical_claims = [c for c in all_claims if c.get('severity') == 'critical']
+        critical_claims = [c for c in all_claims if c.get("severity") == "critical"]
 
         print(f"Total claims: {len(all_claims)}")
         print(f"Critical claims: {len(critical_claims)}")
@@ -154,7 +166,7 @@ class CitationProcessor:
         claims_to_process = critical_claims[:max_claims]
 
         for i, claim in enumerate(claims_to_process, 1):
-            print(f"\n[{i}/{len(claims_to_process)}] Processing:", claim.get('claim', '')[:80])
+            print(f"\n[{i}/{len(claims_to_process)}] Processing:", claim.get("claim", "")[:80])
             self.process_claim(claim)
 
         # Generate report
@@ -192,13 +204,14 @@ Generated: 2025-12-28
 
         # Save report
         report_file = self.base_path / "citation_addition_report.md"
-        with open(report_file, 'w') as f:
+        with open(report_file, "w") as f:
             f.write(report)
 
         print(f"\n{'='*60}")
         print(report)
         print(f"{'='*60}")
         print(f"\nFull report saved to: {report_file}")
+
 
 if __name__ == "__main__":
     processor = CitationProcessor()

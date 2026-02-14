@@ -9,18 +9,13 @@ from datetime import datetime, timedelta
 from dataclasses import dataclass, field
 import json
 
-from .base_agent import (
-    BaseAgent,
-    AgentMetadata,
-    AgentRole,
-    AgentTask,
-    TaskStatus
-)
+from .base_agent import BaseAgent, AgentMetadata, AgentRole, AgentTask, TaskStatus
 
 
 @dataclass
 class Sprint:
     """Represents a development sprint"""
+
     sprint_id: str
     sprint_number: int
     start_date: datetime
@@ -34,6 +29,7 @@ class Sprint:
 @dataclass
 class ArchitectureDecision:
     """Architecture Decision Record (ADR)"""
+
     adr_id: str
     title: str
     status: str  # proposed, accepted, rejected, superseded
@@ -92,10 +88,17 @@ class ProjectManagerAgent(BaseAgent):
             role=AgentRole.PROJECT_MANAGEMENT,
             experience_years=10,
             technologies=[
-                "Jira", "Linear", "GitHub Projects",
-                "C4 Model", "UML", "DDD",
-                "Agile/Scrum", "Kanban",
-                "Confluence", "ADR", "RFC"
+                "Jira",
+                "Linear",
+                "GitHub Projects",
+                "C4 Model",
+                "UML",
+                "DDD",
+                "Agile/Scrum",
+                "Kanban",
+                "Confluence",
+                "ADR",
+                "RFC",
             ],
             specializations=[
                 "Medical software architecture",
@@ -103,7 +106,7 @@ class ProjectManagerAgent(BaseAgent):
                 "Multi-agent system coordination",
                 "SDLC process design",
                 "Risk management",
-                "Technical debt prevention"
+                "Technical debt prevention",
             ],
             pros=[
                 "Ensures system consistency across components",
@@ -111,16 +114,16 @@ class ProjectManagerAgent(BaseAgent):
                 "Coordinates complex multi-agent workflows",
                 "Enforces quality standards (80%+ coverage)",
                 "Long-term vision with short-term execution",
-                "Risk identification and mitigation"
+                "Risk identification and mitigation",
             ],
             cons=[
                 "Can slow down rapid prototyping",
                 "Documentation overhead in early stages",
                 "May over-engineer simple features",
-                "Requires balance between process and agility"
+                "Requires balance between process and agility",
             ],
             max_concurrent_tasks=10,
-            quality_gate_required=True
+            quality_gate_required=True,
         )
         super().__init__(metadata)
 
@@ -130,12 +133,12 @@ class ProjectManagerAgent(BaseAgent):
         self.architecture_decisions: List[ArchitectureDecision] = []
         self.registered_agents: Dict[str, BaseAgent] = {}
         self.quality_gates: Dict[str, bool] = {
-            'code_review': True,
-            'unit_tests': True,
-            'integration_tests': True,
-            'security_scan': True,
-            'performance_test': False,  # Optional for now
-            'documentation': True
+            "code_review": True,
+            "unit_tests": True,
+            "integration_tests": True,
+            "security_scan": True,
+            "performance_test": False,  # Optional for now
+            "documentation": True,
         }
 
         # Register PM tools
@@ -144,29 +147,25 @@ class ProjectManagerAgent(BaseAgent):
     def _register_pm_tools(self):
         """Register project management tools"""
         self.register_tool(
-            "create_sprint",
-            self.create_sprint,
-            "Create a new 2-week development sprint"
+            "create_sprint", self.create_sprint, "Create a new 2-week development sprint"
         )
         self.register_tool(
             "assign_task_to_agent",
             self.assign_task_to_agent,
-            "Assign a task to a specific expert agent"
+            "Assign a task to a specific expert agent",
         )
         self.register_tool(
             "create_architecture_decision",
             self.create_architecture_decision,
-            "Document an architecture decision (ADR)"
+            "Document an architecture decision (ADR)",
         )
         self.register_tool(
-            "run_quality_gates",
-            self.run_quality_gates,
-            "Run all quality gates for a deliverable"
+            "run_quality_gates", self.run_quality_gates, "Run all quality gates for a deliverable"
         )
         self.register_tool(
             "generate_sprint_report",
             self.generate_sprint_report,
-            "Generate sprint completion report"
+            "Generate sprint completion report",
         )
 
     def register_agent(self, agent: BaseAgent):
@@ -175,10 +174,7 @@ class ProjectManagerAgent(BaseAgent):
         self.logger.info(f"Registered agent: {agent.metadata.name} ({agent.metadata.agent_id})")
 
     def create_sprint(
-        self,
-        goal: str,
-        duration_weeks: int = 2,
-        tasks: Optional[List[Dict[str, Any]]] = None
+        self, goal: str, duration_weeks: int = 2, tasks: Optional[List[Dict[str, Any]]] = None
     ) -> Sprint:
         """Create a new development sprint"""
         sprint_number = len(self.sprints) + 1
@@ -191,16 +187,16 @@ class ProjectManagerAgent(BaseAgent):
             start_date=start_date,
             end_date=end_date,
             goal=goal,
-            tasks=[]
+            tasks=[],
         )
 
         # Create tasks if provided
         if tasks:
             for task_data in tasks:
                 task = AgentTask(
-                    title=task_data['title'],
-                    description=task_data['description'],
-                    metadata={'sprint_id': sprint.sprint_id}
+                    title=task_data["title"],
+                    description=task_data["description"],
+                    metadata={"sprint_id": sprint.sprint_id},
                 )
                 sprint.tasks.append(task)
 
@@ -211,12 +207,7 @@ class ProjectManagerAgent(BaseAgent):
         self.logger.info(f"Created {sprint.sprint_id}: {goal}")
         return sprint
 
-    def assign_task_to_agent(
-        self,
-        task: AgentTask,
-        agent_id: str,
-        force: bool = False
-    ) -> bool:
+    def assign_task_to_agent(self, task: AgentTask, agent_id: str, force: bool = False) -> bool:
         """
         Assign a task to a specific agent.
 
@@ -253,7 +244,7 @@ class ProjectManagerAgent(BaseAgent):
         decision: str,
         pros: List[str],
         cons: List[str],
-        alternatives: List[Dict[str, str]]
+        alternatives: List[Dict[str, str]],
     ) -> ArchitectureDecision:
         """
         Create an Architecture Decision Record (ADR).
@@ -280,7 +271,7 @@ class ProjectManagerAgent(BaseAgent):
             consequences={"pros": pros, "cons": cons},
             alternatives=alternatives,
             created_at=datetime.now(),
-            created_by=self.metadata.agent_id
+            created_by=self.metadata.agent_id,
         )
 
         self.architecture_decisions.append(adr)
@@ -305,31 +296,31 @@ class ProjectManagerAgent(BaseAgent):
         failed_gates = []
 
         # Code Review
-        if self.quality_gates['code_review']:
-            if not deliverable.get('code_review_approved', False):
+        if self.quality_gates["code_review"]:
+            if not deliverable.get("code_review_approved", False):
                 failed_gates.append("Code review not approved")
 
         # Unit Tests
-        if self.quality_gates['unit_tests']:
-            coverage = deliverable.get('test_coverage', 0)
+        if self.quality_gates["unit_tests"]:
+            coverage = deliverable.get("test_coverage", 0)
             if coverage < 80:
                 failed_gates.append(f"Test coverage {coverage}% < 80%")
 
         # Integration Tests
-        if self.quality_gates['integration_tests']:
-            if not deliverable.get('integration_tests_passed', False):
+        if self.quality_gates["integration_tests"]:
+            if not deliverable.get("integration_tests_passed", False):
                 failed_gates.append("Integration tests failed")
 
         # Security Scan
-        if self.quality_gates['security_scan']:
-            vulnerabilities = deliverable.get('security_vulnerabilities', [])
-            high_critical = [v for v in vulnerabilities if v['severity'] in ['high', 'critical']]
+        if self.quality_gates["security_scan"]:
+            vulnerabilities = deliverable.get("security_vulnerabilities", [])
+            high_critical = [v for v in vulnerabilities if v["severity"] in ["high", "critical"]]
             if high_critical:
                 failed_gates.append(f"Found {len(high_critical)} high/critical vulnerabilities")
 
         # Documentation
-        if self.quality_gates['documentation']:
-            if not deliverable.get('documentation_complete', False):
+        if self.quality_gates["documentation"]:
+            if not deliverable.get("documentation_complete", False):
                 failed_gates.append("Documentation incomplete")
 
         passed = len(failed_gates) == 0
@@ -349,20 +340,20 @@ class ProjectManagerAgent(BaseAgent):
         in_progress_tasks = [t for t in sprint.tasks if t.status == TaskStatus.IN_PROGRESS]
 
         report = {
-            'sprint_id': sprint.sprint_id,
-            'goal': sprint.goal,
-            'start_date': sprint.start_date.isoformat(),
-            'end_date': sprint.end_date.isoformat(),
-            'total_tasks': total_tasks,
-            'completed': len(completed_tasks),
-            'failed': len(failed_tasks),
-            'in_progress': len(in_progress_tasks),
-            'completion_rate': len(completed_tasks) / total_tasks * 100 if total_tasks > 0 else 0,
-            'tasks_by_status': {
-                'completed': [t.title for t in completed_tasks],
-                'failed': [t.title for t in failed_tasks],
-                'in_progress': [t.title for t in in_progress_tasks]
-            }
+            "sprint_id": sprint.sprint_id,
+            "goal": sprint.goal,
+            "start_date": sprint.start_date.isoformat(),
+            "end_date": sprint.end_date.isoformat(),
+            "total_tasks": total_tasks,
+            "completed": len(completed_tasks),
+            "failed": len(failed_tasks),
+            "in_progress": len(in_progress_tasks),
+            "completion_rate": len(completed_tasks) / total_tasks * 100 if total_tasks > 0 else 0,
+            "tasks_by_status": {
+                "completed": [t.title for t in completed_tasks],
+                "failed": [t.title for t in failed_tasks],
+                "in_progress": [t.title for t in in_progress_tasks],
+            },
         }
 
         return report
@@ -378,63 +369,45 @@ class ProjectManagerAgent(BaseAgent):
         - Quality gate enforcement
         - Risk management
         """
-        task_type = task.metadata.get('type', 'unknown')
+        task_type = task.metadata.get("type", "unknown")
 
-        if task_type == 'sprint_planning':
+        if task_type == "sprint_planning":
             sprint = self.create_sprint(
-                goal=task.metadata['goal'],
-                tasks=task.metadata.get('tasks', [])
+                goal=task.metadata["goal"], tasks=task.metadata.get("tasks", [])
             )
-            return {
-                'status': 'success',
-                'sprint': sprint,
-                'message': f"Created {sprint.sprint_id}"
-            }
+            return {"status": "success", "sprint": sprint, "message": f"Created {sprint.sprint_id}"}
 
-        elif task_type == 'architecture_decision':
+        elif task_type == "architecture_decision":
             adr = self.create_architecture_decision(
-                title=task.metadata['title'],
-                context=task.metadata['context'],
-                decision=task.metadata['decision'],
-                pros=task.metadata['pros'],
-                cons=task.metadata['cons'],
-                alternatives=task.metadata.get('alternatives', [])
+                title=task.metadata["title"],
+                context=task.metadata["context"],
+                decision=task.metadata["decision"],
+                pros=task.metadata["pros"],
+                cons=task.metadata["cons"],
+                alternatives=task.metadata.get("alternatives", []),
             )
-            return {
-                'status': 'success',
-                'adr': adr,
-                'message': f"Created {adr.adr_id}"
-            }
+            return {"status": "success", "adr": adr, "message": f"Created {adr.adr_id}"}
 
-        elif task_type == 'coordinate_agents':
+        elif task_type == "coordinate_agents":
             # Coordinate multiple agents for complex workflow
-            workflow = task.metadata['workflow']
+            workflow = task.metadata["workflow"]
             results = []
 
             for step in workflow:
-                agent_id = step['agent_id']
+                agent_id = step["agent_id"]
                 agent_task = AgentTask(
-                    title=step['task_title'],
-                    description=step['task_description']
+                    title=step["task_title"], description=step["task_description"]
                 )
 
                 success = self.assign_task_to_agent(agent_task, agent_id)
-                results.append({
-                    'agent_id': agent_id,
-                    'task_id': agent_task.task_id,
-                    'assigned': success
-                })
+                results.append(
+                    {"agent_id": agent_id, "task_id": agent_task.task_id, "assigned": success}
+                )
 
-            return {
-                'status': 'success',
-                'workflow_results': results
-            }
+            return {"status": "success", "workflow_results": results}
 
         else:
-            return {
-                'status': 'error',
-                'message': f"Unknown PM task type: {task_type}"
-            }
+            return {"status": "error", "message": f"Unknown PM task type: {task_type}"}
 
     def validate_output(self, task: AgentTask, output: Dict[str, Any]) -> tuple[bool, List[str]]:
         """
@@ -447,20 +420,20 @@ class ProjectManagerAgent(BaseAgent):
         """
         errors = []
 
-        task_type = task.metadata.get('type', 'unknown')
+        task_type = task.metadata.get("type", "unknown")
 
-        if task_type == 'sprint_planning':
-            sprint = output.get('sprint')
+        if task_type == "sprint_planning":
+            sprint = output.get("sprint")
             if not sprint:
                 errors.append("No sprint created")
             elif len(sprint.tasks) == 0:
                 errors.append("Sprint has no tasks")
 
-        elif task_type == 'architecture_decision':
-            adr = output.get('adr')
+        elif task_type == "architecture_decision":
+            adr = output.get("adr")
             if not adr:
                 errors.append("No ADR created")
-            elif len(adr.consequences['pros']) == 0:
+            elif len(adr.consequences["pros"]) == 0:
                 errors.append("ADR has no pros listed")
             elif len(adr.alternatives) == 0:
                 errors.append("ADR has no alternatives considered")
@@ -470,13 +443,13 @@ class ProjectManagerAgent(BaseAgent):
     def get_project_status(self) -> Dict[str, Any]:
         """Get comprehensive project status"""
         return {
-            'current_sprint': self.current_sprint.sprint_id if self.current_sprint else None,
-            'total_sprints': len(self.sprints),
-            'registered_agents': len(self.registered_agents),
-            'architecture_decisions': len(self.architecture_decisions),
-            'quality_gates': self.quality_gates,
-            'agent_status': {
+            "current_sprint": self.current_sprint.sprint_id if self.current_sprint else None,
+            "total_sprints": len(self.sprints),
+            "registered_agents": len(self.registered_agents),
+            "architecture_decisions": len(self.architecture_decisions),
+            "quality_gates": self.quality_gates,
+            "agent_status": {
                 agent_id: agent.get_status_report()
                 for agent_id, agent in self.registered_agents.items()
-            }
+            },
         }

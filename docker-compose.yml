@@ -49,7 +49,7 @@ services:
       - postgres_tmp:/tmp
 
     ports:
-      - "5432:5432"
+      - "5433:5432"  # Changed from 5432 to avoid conflict with skillbridge-postgres
 
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d irstudy_medical"]
@@ -102,7 +102,7 @@ services:
       - redis_data:/data
 
     ports:
-      - "6379:6379"
+      - "6380:6379"  # Changed from 6379 to avoid conflict with skillbridge-redis
 
     healthcheck:
       test: ["CMD", "redis-cli", "--no-auth-warning", "-a", "$$(cat /run/secrets/redis_password)", "ping"]
@@ -118,7 +118,10 @@ services:
 
   # Qdrant Vector Database (For RAG System - Security Hardened)
   qdrant:
-    image: qdrant/qdrant:latest
+    build:
+      context: ./docker/qdrant
+      dockerfile: Dockerfile
+    image: irstudy-qdrant:custom
     container_name: irstudy-qdrant
     restart: unless-stopped
 
@@ -148,7 +151,7 @@ services:
       - "6334:6334"  # gRPC port
 
     healthcheck:
-      test: ["CMD", "wget", "--spider", "-q", "http://localhost:6333/"]
+      test: ["CMD-SHELL", "curl -f http://localhost:6333/healthz || exit 1"]
       interval: 15s
       timeout: 10s
       retries: 5
@@ -180,7 +183,8 @@ services:
           memory: 1G
 
     environment:
-      NEO4J_AUTH_FILE: /run/secrets/neo4j_auth
+      # Security: Neo4j doesn't support _FILE suffix, load via command override
+      NEO4J_AUTH: none  # Will be overridden by entrypoint script
       NEO4J_PLUGINS: '["apoc", "graph-data-science"]'
       NEO4J_apoc_export_file_enabled: "true"
       NEO4J_apoc_import_file_enabled: "true"
@@ -195,7 +199,7 @@ services:
       - "7687:7687"  # Bolt
 
     healthcheck:
-      test: ["CMD", "cypher-shell", "-u", "neo4j", "-p", "$$NEO4J_AUTH", "RETURN 1"]
+      test: ["CMD-SHELL", "neo4j status || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -206,6 +210,13 @@ services:
 
     secrets:
       - neo4j_auth
+
+    # Override entrypoint to set NEO4J_AUTH from secret
+    command: >
+      sh -c "
+        export NEO4J_AUTH=$$(cat /run/secrets/neo4j_auth) &&
+        exec /startup/docker-entrypoint.sh neo4j
+      "
 
   # FastAPI Backend (Security Hardened) - TO BE CREATED
   backend:
@@ -249,9 +260,11 @@ services:
       OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
       # Logging
       LOG_LEVEL: INFO
+      # Testing/Development: Disable authentication for API testing
+      DISABLE_AUTH_FOR_TESTING: "true"
 
     ports:
-      - "8000:8000"
+      - "8001:8000"  # Changed from 8000 to avoid port conflicts
 
     volumes:
       - ./backend:/app  # For development
@@ -268,6 +281,7 @@ services:
       - neo4j_auth
       - openai_api_key
       - anthropic_api_key
+      - jwt_secret
 
     # Security: Custom entrypoint to build URLs from secrets
     command: >
@@ -279,7 +293,10 @@ services:
         export NEO4J_PASSWORD=$$(cat /run/secrets/neo4j_auth | cut -d'/' -f2) &&
         export OPENAI_API_KEY=$$(cat /run/secrets/openai_api_key) &&
         export ANTHROPIC_API_KEY=$$(cat /run/secrets/anthropic_api_key) &&
+        export SECRET_KEY=$$(cat /run/secrets/jwt_secret) &&
+        export PYTHONPATH=/app/src:$$PYTHONPATH &&
         echo '✅ Credentials loaded securely' &&
+        echo '⚠️  WARNING: Authentication bypass enabled (DISABLE_AUTH_FOR_TESTING=true from Docker environment)' &&
         echo '🔧 Running database migrations...' &&
         alembic upgrade head &&
         echo '✅ Migrations complete' &&
@@ -424,7 +441,7 @@ services:
       FLOWER_PORT: 5555
 
     ports:
-      - "5555:5555"
+      - "5556:5555"  # Changed from 5555 to avoid port conflicts
 
     networks:
       - irstudy-network
@@ -565,6 +582,8 @@ secrets:
     file: ./secrets/openai_api_key.txt
   anthropic_api_key:
     file: ./secrets/anthropic_api_key.txt
+  jwt_secret:
+    file: ./secrets/jwt_secret.txt
   flower_auth:
     file: ./secrets/flower_auth.txt
   grafana_password:

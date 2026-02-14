@@ -21,6 +21,7 @@ from src.agents.base_agent import BaseAgent, AgentMetadata, AgentRole, AgentTask
 from scripts.validate_rag_facts import RAGFactValidator
 
 import logging
+
 logger = logging.getLogger(__name__)
 
 
@@ -45,27 +46,27 @@ class ClinicalAccuracyQA(BaseAgent):
                 "RAG (Retrieval-Augmented Generation)",
                 "PubMedBERT embeddings",
                 "Qdrant vector database",
-                "Medical knowledge bases"
+                "Medical knowledge bases",
             ],
             specializations=[
                 "Drug dosage validation",
                 "Differential diagnosis verification",
                 "Evidence-based medicine",
-                "Australian clinical guidelines"
+                "Australian clinical guidelines",
             ],
             pros=[
                 "RAG-powered fact-checking across 13 textbooks",
                 "Auto-correction with high confidence matches",
                 "Australian source prioritization (2x boost)",
-                "Comprehensive citation generation"
+                "Comprehensive citation generation",
             ],
             cons=[
                 "Requires RAG system running (Qdrant)",
                 "May miss very recent guidelines (RAG knowledge cutoff)",
-                "Dependent on textbook quality in RAG"
+                "Dependent on textbook quality in RAG",
             ],
             max_concurrent_tasks=3,
-            quality_gate_required=True
+            quality_gate_required=True,
         )
         super().__init__(metadata)
 
@@ -88,11 +89,13 @@ class ClinicalAccuracyQA(BaseAgent):
         self.logger.info(f"🔬 Starting RAG-powered clinical accuracy validation")
 
         # Extract parameters
-        directory = Path(task.metadata.get('directory'))
-        pattern = task.metadata.get('pattern', '*.md')
-        auto_correct = task.metadata.get('auto_correct', True)
-        unverified_dir = Path(task.metadata.get('unverified_dir', 'validation_reports/unverified_claims'))
-        output_dir = Path(task.metadata.get('output_dir', 'validation_reports'))
+        directory = Path(task.metadata.get("directory"))
+        pattern = task.metadata.get("pattern", "*.md")
+        auto_correct = task.metadata.get("auto_correct", True)
+        unverified_dir = Path(
+            task.metadata.get("unverified_dir", "validation_reports/unverified_claims")
+        )
+        output_dir = Path(task.metadata.get("output_dir", "validation_reports"))
 
         # Ensure directories exist
         if not directory.exists():
@@ -104,8 +107,7 @@ class ClinicalAccuracyQA(BaseAgent):
         # Create validator (this initializes RAG service)
         self.logger.info("Initializing RAG Query Service...")
         self.validator = RAGFactValidator(
-            auto_correct=auto_correct,
-            unverified_claims_dir=unverified_dir
+            auto_correct=auto_correct, unverified_claims_dir=unverified_dir
         )
 
         # Validate directory
@@ -124,21 +126,18 @@ class ClinicalAccuracyQA(BaseAgent):
 
         # Prepare result
         result = {
-            'status': 'success',
-            'files_scanned': report.files_scanned,
-            'claims_extracted': report.claims_extracted,
-            'rag_verified': report.rag_verified,
-            'auto_corrected': report.auto_corrected,
-            'unverified_claims': report.unverified_claims,
-            'average_confidence': report.average_confidence,
-            'australian_sources_used': report.australian_sources_used,
-            'corrections_applied': report.corrections_applied,
-            'unverified_documents_created': report.unverified_documents_created,
-            'reports': {
-                'markdown': str(md_output),
-                'json': str(json_output)
-            },
-            'artifacts': [str(md_output), str(json_output)] + report.unverified_documents_created
+            "status": "success",
+            "files_scanned": report.files_scanned,
+            "claims_extracted": report.claims_extracted,
+            "rag_verified": report.rag_verified,
+            "auto_corrected": report.auto_corrected,
+            "unverified_claims": report.unverified_claims,
+            "average_confidence": report.average_confidence,
+            "australian_sources_used": report.australian_sources_used,
+            "corrections_applied": report.corrections_applied,
+            "unverified_documents_created": report.unverified_documents_created,
+            "reports": {"markdown": str(md_output), "json": str(json_output)},
+            "artifacts": [str(md_output), str(json_output)] + report.unverified_documents_created,
         }
 
         self.logger.info(f"✓ Clinical accuracy validation complete")
@@ -163,20 +162,22 @@ class ClinicalAccuracyQA(BaseAgent):
         errors = []
 
         # Check status
-        if output.get('status') != 'success':
+        if output.get("status") != "success":
             errors.append("Task did not complete successfully")
 
         # Check files scanned
-        if output.get('files_scanned', 0) == 0:
+        if output.get("files_scanned", 0) == 0:
             errors.append("No files were scanned")
 
         # Check claims extracted
-        if output.get('claims_extracted', 0) == 0:
-            self.logger.warning("⚠️ No medical claims extracted - this may indicate pattern matching issues")
+        if output.get("claims_extracted", 0) == 0:
+            self.logger.warning(
+                "⚠️ No medical claims extracted - this may indicate pattern matching issues"
+            )
 
         # Check RAG verification rate
-        claims = output.get('claims_extracted', 1)
-        verified = output.get('rag_verified', 0)
+        claims = output.get("claims_extracted", 1)
+        verified = output.get("rag_verified", 0)
         verification_rate = (verified / claims) * 100 if claims > 0 else 0
 
         if verification_rate < 90:
@@ -184,11 +185,11 @@ class ClinicalAccuracyQA(BaseAgent):
             # Don't fail, but log warning
 
         # Check reports generated
-        if 'reports' not in output:
+        if "reports" not in output:
             errors.append("Reports not generated")
         else:
-            md_path = Path(output['reports']['markdown'])
-            json_path = Path(output['reports']['json'])
+            md_path = Path(output["reports"]["markdown"])
+            json_path = Path(output["reports"]["json"])
 
             if not md_path.exists():
                 errors.append(f"Markdown report not found: {md_path}")
@@ -196,14 +197,14 @@ class ClinicalAccuracyQA(BaseAgent):
                 errors.append(f"JSON report not found: {json_path}")
 
         # Check unverified claims documented
-        unverified = output.get('unverified_claims', 0)
-        unverified_docs = len(output.get('unverified_documents_created', []))
+        unverified = output.get("unverified_claims", 0)
+        unverified_docs = len(output.get("unverified_documents_created", []))
 
         if unverified > 0 and unverified_docs == 0:
             errors.append(f"{unverified} unverified claims but no documents created")
 
         # Check average confidence
-        avg_confidence = output.get('average_confidence', 0)
+        avg_confidence = output.get("average_confidence", 0)
         if avg_confidence < 0.80:
             self.logger.warning(f"⚠️ Average RAG confidence below 0.80: {avg_confidence:.2f}")
 
@@ -227,14 +228,16 @@ if __name__ == "__main__":
         title="RAG fact-checking of ICRP OSCE content",
         description="Verify medical claims against RAG knowledge base with auto-correction",
         metadata={
-            'directory': 'ICRP_OSCE_Preparation',
-            'auto_correct': True,
-            'output_dir': 'validation_reports'
-        }
+            "directory": "ICRP_OSCE_Preparation",
+            "auto_correct": True,
+            "output_dir": "validation_reports",
+        },
     )
 
     if agent.assign_task(task):
         result_task = agent.run_task(task)
-        if result_task.status.value == 'completed':
-            print(f"✓ Verified {result_task.result['rag_verified']}/{result_task.result['claims_extracted']} claims")
+        if result_task.status.value == "completed":
+            print(
+                f"✓ Verified {result_task.result['rag_verified']}/{result_task.result['claims_extracted']} claims"
+            )
             print(f"✓ Auto-corrected {result_task.result['auto_corrected']} claims")

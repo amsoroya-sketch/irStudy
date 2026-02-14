@@ -15,11 +15,12 @@ from sentence_transformers import SentenceTransformer
 from typing import List, Tuple, Optional
 import time
 
+
 class ImprovedRAGPageReferencer:
     def __init__(self, confidence_threshold=0.55):
         """Initialize with lower confidence threshold"""
         print("Loading embedding model...")
-        self.model = SentenceTransformer('pritamdeka/S-PubMedBert-MS-MARCO')
+        self.model = SentenceTransformer("pritamdeka/S-PubMedBert-MS-MARCO")
         self.client = QdrantClient(host="localhost", port=6333)
         self.confidence_threshold = confidence_threshold
         print(f"✓ RAG Referencer initialized (confidence threshold: {confidence_threshold})")
@@ -32,32 +33,32 @@ class ImprovedRAGPageReferencer:
 
             # Query Qdrant
             results = self.client.query_points(
-                collection_name='medical_knowledge',
-                query=embedding,
-                limit=limit,
-                with_payload=True
+                collection_name="medical_knowledge", query=embedding, limit=limit, with_payload=True
             ).points
 
             # Filter by book and extract results
             references = []
             for point in results:
                 payload = point.payload
-                source = payload.get('source', '').lower()
-                book = payload.get('book', '').lower()
+                source = payload.get("source", "").lower()
+                book = payload.get("book", "").lower()
 
                 # Check if matches book filter
-                if any(filter_term.lower() in source or filter_term.lower() in book
-                       for filter_term in book_filter):
-
-                    page = payload.get('page', 'unknown')
+                if any(
+                    filter_term.lower() in source or filter_term.lower() in book
+                    for filter_term in book_filter
+                ):
+                    page = payload.get("page", "unknown")
                     confidence = point.score
 
-                    references.append({
-                        'page': page,
-                        'confidence': confidence,
-                        'source': payload.get('source', 'Unknown'),
-                        'text': payload.get('text', '')[:200]
-                    })
+                    references.append(
+                        {
+                            "page": page,
+                            "confidence": confidence,
+                            "source": payload.get("source", "Unknown"),
+                            "text": payload.get("text", "")[:200],
+                        }
+                    )
 
             return references
 
@@ -72,23 +73,23 @@ class ImprovedRAGPageReferencer:
         """
 
         # Determine book filter
-        if 'Talley' in citation:
-            book_filter = ['talley', 'clinical examination']
-            book_name = 'Talley & O\'Connor\'s Clinical Examination, 8th ed'
-        elif 'Murtagh' in citation:
-            book_filter = ['murtagh', 'general practice']
-            book_name = 'Murtagh\'s General Practice, 8th ed'
-        elif 'AMC' in citation:
-            book_filter = ['amc', 'anthology']
-            book_name = 'AMC Handbook of Clinical Assessment'
+        if "Talley" in citation:
+            book_filter = ["talley", "clinical examination"]
+            book_name = "Talley & O'Connor's Clinical Examination, 8th ed"
+        elif "Murtagh" in citation:
+            book_filter = ["murtagh", "general practice"]
+            book_name = "Murtagh's General Practice, 8th ed"
+        elif "AMC" in citation:
+            book_filter = ["amc", "anthology"]
+            book_name = "AMC Handbook of Clinical Assessment"
         else:
             return None, 0.0
 
         # Try multiple query strategies
         queries = [
             context,  # Full context
-            context.split('(')[0].strip(),  # Before citation
-            ' '.join(context.split()[-30:])  # Last 30 words
+            context.split("(")[0].strip(),  # Before citation
+            " ".join(context.split()[-30:]),  # Last 30 words
         ]
 
         best_page = None
@@ -101,9 +102,9 @@ class ImprovedRAGPageReferencer:
             refs = self.query_book(query_text, book_filter, limit=5)
 
             for ref in refs:
-                if ref['confidence'] > best_confidence:
-                    best_confidence = ref['confidence']
-                    best_page = ref['page']
+                if ref["confidence"] > best_confidence:
+                    best_confidence = ref["confidence"]
+                    best_page = ref["page"]
 
                     # If we have high confidence, stop searching
                     if best_confidence >= 0.70:
@@ -113,10 +114,10 @@ class ImprovedRAGPageReferencer:
                 break
 
         # If we found a page with sufficient confidence
-        if best_page and best_page != 'unknown' and best_confidence >= self.confidence_threshold:
+        if best_page and best_page != "unknown" and best_confidence >= self.confidence_threshold:
             # Update citation with page number
-            if ', p.' not in citation:
-                updated = citation.replace(')', f', p.{best_page})')
+            if ", p." not in citation:
+                updated = citation.replace(")", f", p.{best_page})")
                 return updated, best_confidence
 
         return None, best_confidence
@@ -125,16 +126,16 @@ class ImprovedRAGPageReferencer:
         """Process a single markdown file"""
 
         try:
-            content = file_path.read_text(encoding='utf-8')
-            lines = content.split('\n')
+            content = file_path.read_text(encoding="utf-8")
+            lines = content.split("\n")
             modified = False
             updates_count = 0
 
             # Pattern for generic citations
             generic_patterns = [
-                (r'\(Talley[^)]*?8th ed\)(?!\s*,\s*p\.)', 'Talley'),
-                (r'\(Murtagh[^)]*?8th ed\)(?!\s*,\s*p\.)', 'Murtagh'),
-                (r'\(AMC[^)]*?\)(?!\s*,\s*p\.)', 'AMC')
+                (r"\(Talley[^)]*?8th ed\)(?!\s*,\s*p\.)", "Talley"),
+                (r"\(Murtagh[^)]*?8th ed\)(?!\s*,\s*p\.)", "Murtagh"),
+                (r"\(AMC[^)]*?\)(?!\s*,\s*p\.)", "AMC"),
             ]
 
             for line_num, line in enumerate(lines):
@@ -143,12 +144,12 @@ class ImprovedRAGPageReferencer:
                         citation = match.group()
 
                         # Skip if already has page number
-                        if ', p.' in citation:
+                        if ", p." in citation:
                             continue
 
                         # Get context (300 chars before citation)
                         start_idx = max(0, match.start() - 300)
-                        context = line[start_idx:match.end()]
+                        context = line[start_idx : match.end()]
 
                         # Query RAG for page number
                         updated_citation, confidence = self.get_page_reference(context, citation)
@@ -159,12 +160,14 @@ class ImprovedRAGPageReferencer:
                             modified = True
                             updates_count += 1
 
-                            print(f"  ✓ Line {line_num+1}: {citation} → {updated_citation} (confidence: {confidence:.2f})")
+                            print(
+                                f"  ✓ Line {line_num+1}: {citation} → {updated_citation} (confidence: {confidence:.2f})"
+                            )
 
             # Write back if modified
             if modified:
-                updated_content = '\n'.join(lines)
-                file_path.write_text(updated_content, encoding='utf-8')
+                updated_content = "\n".join(lines)
+                file_path.write_text(updated_content, encoding="utf-8")
                 return updates_count
 
             return 0
@@ -173,6 +176,7 @@ class ImprovedRAGPageReferencer:
             print(f"  ✗ Error processing {file_path}: {e}")
             return 0
 
+
 def main():
     """Main processing function"""
 
@@ -180,7 +184,7 @@ def main():
     print("=" * 80)
 
     # Load generic citations report
-    with open('generic_citations_report.json', 'r') as f:
+    with open("generic_citations_report.json", "r") as f:
         report = json.load(f)
 
     # Initialize RAG
@@ -188,10 +192,10 @@ def main():
 
     # Process files with generic citations
     files_to_process = set()
-    for source, citations in report['generic_by_source'].items():
-        if source in ['Talley', 'Murtagh', 'AMC']:
+    for source, citations in report["generic_by_source"].items():
+        if source in ["Talley", "Murtagh", "AMC"]:
             for citation_info in citations:
-                file_path = Path('ICRP_OSCE_Preparation') / citation_info['file']
+                file_path = Path("ICRP_OSCE_Preparation") / citation_info["file"]
                 files_to_process.add(file_path)
 
     print(f"\n📂 Processing {len(files_to_process)} files...")
@@ -219,16 +223,17 @@ def main():
 
     # Generate summary
     summary = {
-        'files_modified': files_modified,
-        'citations_updated': total_updates,
-        'confidence_threshold': 0.55,
-        'timestamp': time.strftime('%Y-%m-%d %H:%M:%S')
+        "files_modified": files_modified,
+        "citations_updated": total_updates,
+        "confidence_threshold": 0.55,
+        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
     }
 
-    with open('remaining_page_numbers_log.json', 'w') as f:
+    with open("remaining_page_numbers_log.json", "w") as f:
         json.dump(summary, f, indent=2)
 
     print(f"📝 Log saved to: remaining_page_numbers_log.json")
+
 
 if __name__ == "__main__":
     main()

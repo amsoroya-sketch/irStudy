@@ -129,17 +129,17 @@ def ask_medical_question(question: str) -> str:
     # 1. Search knowledge base
     client = QdrantClient(url="http://localhost:6333")
     model = SentenceTransformer('pritamdeka/S-PubMedBert-MS-MARCO')
-    
+
     query_vec = model.encode(question).tolist()
     results = client.search(
         collection_name="medical_knowledge",
         query_vector=query_vec,
         limit=5
     )
-    
+
     # 2. Build context from search results
     context = "\n\n".join([r.payload['text'] for r in results])
-    
+
     # 3. Generate answer with LLM
     llm = OllamaClient()
     prompt = f"""Based on the following medical knowledge:
@@ -149,7 +149,7 @@ def ask_medical_question(question: str) -> str:
 Question: {question}
 
 Provide a comprehensive, evidence-based answer with citations."""
-    
+
     answer = llm.generate(prompt, model_name="meditron:7b")
     return answer
 

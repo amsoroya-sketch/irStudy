@@ -17,6 +17,33 @@
 
 ---
 
+## 📺 RECOMMENDED VIDEO DEMONSTRATIONS
+
+### Trauma Assessment Videos
+
+**Essential Videos (Watch These First):**
+
+1. **Primary Survey (ABCDE) - Geeky Medics**
+   - URL: https://geekymedics.com/primary-survey/
+   - Duration: 10 minutes
+   - Focus: Systematic ATLS primary survey approach with C-spine immobilization
+   - Why recommended: Excellent OSCE-formatted demonstration of ABCDE sequence
+   - Australian relevance: Follows Australian trauma protocols (NSW Trauma Service standards)
+
+2. **Trauma Assessment - Stanford Medicine 25**
+   - URL: https://stanfordmedicine25.stanford.edu/the25/trauma.html
+   - Focus: Clinical examination in trauma including secondary survey
+   - Why recommended: Comprehensive demonstration of systematic trauma examination
+
+3. **Secondary Survey - Oxford Medical Education**
+   - URL: https://www.oxfordmedicaleducation.com/clinical-skills/procedures/secondary-survey/
+   - Focus: Head-to-toe examination after primary survey stabilization
+   - Why recommended: Detailed guide to comprehensive trauma assessment
+
+**Note:** Complete video resource catalog available in [00_VIDEO_RESOURCES_MASTER_LIST.md](../00_VIDEO_RESOURCES_MASTER_LIST.md)
+
+---
+
 ## Target Audience
 - IMGs preparing for AMC Clinical OSCE
 - ICRP participants at NSW Young Hospital Programmes

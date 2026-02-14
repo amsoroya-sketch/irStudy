@@ -5,32 +5,31 @@ Merge flashcard JSON data into the HTML file to create a standalone flashcard ap
 
 import json
 
+
 def merge_flashcards():
     # Read the JSON data
-    with open('flashcard_data.json', 'r', encoding='utf-8') as f:
+    with open("flashcard_data.json", "r", encoding="utf-8") as f:
         flashcard_data = json.load(f)
 
     # Read the HTML template
-    with open('ICRP_Flashcards_Interactive.html', 'r', encoding='utf-8') as f:
+    with open("ICRP_Flashcards_Interactive.html", "r", encoding="utf-8") as f:
         html_content = f.read()
 
     # Convert cards data to JavaScript (compact to save space)
-    cards_json = json.dumps(flashcard_data['cards'])
+    cards_json = json.dumps(flashcard_data["cards"])
 
     # Replace the empty allCards array with actual data
     html_content = html_content.replace(
-        'allCards: [],',
-        f'allCards: {cards_json},',
-        1  # Only replace first occurrence
+        "allCards: [],", f"allCards: {cards_json},", 1  # Only replace first occurrence
     )
 
     # Modify init() to auto-load the embedded cards
-    old_init = '''init() {
+    old_init = """init() {
                 this.loadProgress();
                 this.setupEventListeners();
-            },'''
+            },"""
 
-    new_init = '''init() {
+    new_init = """init() {
                 // Auto-load embedded flashcards
                 if (this.allCards.length > 0) {
                     this.filteredCards = [...this.allCards];
@@ -43,12 +42,12 @@ def merge_flashcards():
                 }
                 this.loadProgress();
                 this.setupEventListeners();
-            },'''
+            },"""
 
     html_content = html_content.replace(old_init, new_init)
 
     # Write the merged HTML file
-    with open('flashcards_standalone.html', 'w', encoding='utf-8') as f:
+    with open("flashcards_standalone.html", "w", encoding="utf-8") as f:
         f.write(html_content)
 
     print(f"✅ Created standalone flashcard app: flashcards_standalone.html")
@@ -57,5 +56,6 @@ def merge_flashcards():
     print(f"\n💡 Open 'flashcards_standalone.html' in your browser to use!")
     print(f"\n📁 Location: ICRP_Program_Resources/Flashcards/flashcards_standalone.html")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     merge_flashcards()

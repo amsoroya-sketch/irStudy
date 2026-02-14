@@ -25,26 +25,73 @@ from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
-from db.base import get_db
-from db.models import User, MCQ, MCQAttempt, UserProgress, DifficultyLevel, MedicalSpecialty
-from schemas.mcq import (
+from src.db.base import get_db
+from src.db.models import User, MCQ, MCQAttempt, UserProgress, DifficultyLevel, MedicalSpecialty
+from src.schemas.mcq import (
     MCQCreate,
     MCQUpdate,
     MCQPublic,
     MCQWithAnswer,
     MCQAttemptCreate,
     MCQAttemptResponse,
-    MCQStatistics
+    MCQStatistics,
 )
-from auth.dependencies import get_current_active_user, require_educator
+from src.auth.dependencies import get_current_active_user, require_educator
 
 
 router = APIRouter(prefix="/mcqs", tags=["mcqs"])
 
 
 # ============================================================================
+# GET RANDOM MCQ
+# ============================================================================
+
+
+@router.get("/random", response_model=MCQPublic)
+async def get_random_mcq(
+    specialty: Optional[MedicalSpecialty] = None,
+    difficulty: Optional[DifficultyLevel] = None,
+    current_user: User = Depends(get_current_active_user),
+    db: Session = Depends(get_db),
+):
+    """
+    Get random MCQ with optional filtering.
+
+    Query parameters:
+    - specialty: Filter by medical specialty (cardiology, respiratory, etc.)
+    - difficulty: Filter by difficulty (easy, medium, hard)
+
+    Returns:
+    - Random MCQ matching filters (without answer)
+    - Use POST /{mcq_id}/attempt to submit answer
+
+    Raises:
+    - 404: No MCQs found matching filters
+    """
+    import random
+
+    query = db.query(MCQ).filter(MCQ.is_published == True)
+
+    # Apply filters
+    if specialty:
+        query = query.filter(MCQ.specialty == specialty)
+
+    if difficulty:
+        query = query.filter(MCQ.difficulty == difficulty)
+
+    total = query.count()
+    if total == 0:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No MCQs found matching filters")
+
+    # Get random MCQ
+    offset = random.randint(0, total - 1)
+    return query.offset(offset).first()
+
+
+# ============================================================================
 # LIST MCQs
 # ============================================================================
+
 
 @router.get("/", response_model=List[MCQPublic])
 async def list_mcqs(
@@ -54,7 +101,7 @@ async def list_mcqs(
     skip: int = 0,
     limit: int = 50,
     current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """
     List MCQs with optional filtering.
@@ -96,11 +143,12 @@ async def list_mcqs(
 # GET SINGLE MCQ
 # ============================================================================
 
+
 @router.get("/{mcq_id}", response_model=MCQPublic)
 async def get_mcq(
     mcq_id: int,
     current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """
     Get single MCQ by ID (without answer).
@@ -113,16 +161,10 @@ async def get_mcq(
     Returns:
     - MCQ without correct answer or explanation
     """
-    mcq = db.query(MCQ).filter(
-        MCQ.id == mcq_id,
-        MCQ.is_published == True
-    ).first()
+    mcq = db.query(MCQ).filter(MCQ.id == mcq_id, MCQ.is_published == True).first()
 
     if not mcq:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="MCQ not found"
-        )
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="MCQ not found")
 
     return mcq
 
@@ -131,11 +173,12 @@ async def get_mcq(
 # CREATE MCQ (Educator/Admin only)
 # ============================================================================
 
+
 @router.post("/", response_model=MCQWithAnswer, status_code=status.HTTP_201_CREATED)
 async def create_mcq(
     mcq_data: MCQCreate,
     current_user: User = Depends(require_educator),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """
     Create new MCQ (educator/admin only).
@@ -163,7 +206,7 @@ async def create_mcq(
     if existing_mcq:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"MCQ with question_id '{mcq_data.question_id}' already exists"
+            detail=f"MCQ with question_id '{mcq_data.question_id}' already exists",
         )
 
     # Create new MCQ
@@ -180,7 +223,7 @@ async def create_mcq(
         tags=mcq_data.tags,
         image_url=mcq_data.image_url,
         image_caption=mcq_data.image_caption,
-        is_published=False  # Requires review before publishing
+        is_published=False,  # Requires review before publishing
     )
 
     db.add(new_mcq)
@@ -194,12 +237,13 @@ async def create_mcq(
 # UPDATE MCQ (Educator/Admin only)
 # ============================================================================
 
+
 @router.put("/{mcq_id}", response_model=MCQWithAnswer)
 async def update_mcq(
     mcq_id: int,
     mcq_update: MCQUpdate,
     current_user: User = Depends(require_educator),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """
     Update existing MCQ (educator/admin only).
@@ -218,10 +262,7 @@ async def update_mcq(
     mcq = db.query(MCQ).filter(MCQ.id == mcq_id).first()
 
     if not mcq:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="MCQ not found"
-        )
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="MCQ not found")
 
     # Update fields
     update_data = mcq_update.dict(exclude_unset=True)
@@ -238,11 +279,10 @@ async def update_mcq(
 # DELETE MCQ (Admin only)
 # ============================================================================
 
+
 @router.delete("/{mcq_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_mcq(
-    mcq_id: int,
-    current_user: User = Depends(require_educator),
-    db: Session = Depends(get_db)
+    mcq_id: int, current_user: User = Depends(require_educator), db: Session = Depends(get_db)
 ):
     """
     Delete MCQ (soft delete for audit trail).
@@ -258,10 +298,7 @@ async def delete_mcq(
     mcq = db.query(MCQ).filter(MCQ.id == mcq_id).first()
 
     if not mcq:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="MCQ not found"
-        )
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="MCQ not found")
 
     # Soft delete
     mcq.deleted_at = datetime.now(datetime.now().astimezone().tzinfo)
@@ -275,12 +312,13 @@ async def delete_mcq(
 # SUBMIT MCQ ATTEMPT
 # ============================================================================
 
+
 @router.post("/{mcq_id}/attempt", response_model=MCQAttemptResponse)
 async def submit_mcq_attempt(
     mcq_id: int,
     attempt_data: MCQAttemptCreate,
     current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """
     Submit answer attempt for MCQ.
@@ -304,27 +342,19 @@ async def submit_mcq_attempt(
     """
     # Verify MCQ exists
     if attempt_data.mcq_id != mcq_id:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="MCQ ID mismatch"
-        )
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="MCQ ID mismatch")
 
-    mcq = db.query(MCQ).filter(
-        MCQ.id == mcq_id,
-        MCQ.is_published == True
-    ).first()
+    mcq = db.query(MCQ).filter(MCQ.id == mcq_id, MCQ.is_published == True).first()
 
     if not mcq:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="MCQ not found"
-        )
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="MCQ not found")
 
     # Check if user already attempted this question
-    previous_attempts = db.query(MCQAttempt).filter(
-        MCQAttempt.user_id == current_user.id,
-        MCQAttempt.mcq_id == mcq_id
-    ).count()
+    previous_attempts = (
+        db.query(MCQAttempt)
+        .filter(MCQAttempt.user_id == current_user.id, MCQAttempt.mcq_id == mcq_id)
+        .count()
+    )
 
     # Determine if answer is correct
     is_correct = attempt_data.selected_answer == mcq.correct_answer
@@ -337,7 +367,7 @@ async def submit_mcq_attempt(
         is_correct=is_correct,
         time_taken_seconds=attempt_data.time_taken_seconds,
         confidence_level=attempt_data.confidence_level,
-        attempt_number=previous_attempts + 1
+        attempt_number=previous_attempts + 1,
     )
 
     db.add(new_attempt)
@@ -348,10 +378,11 @@ async def submit_mcq_attempt(
         mcq.times_correct += 1
 
     # Update user progress
-    progress = db.query(UserProgress).filter(
-        UserProgress.user_id == current_user.id,
-        UserProgress.specialty == mcq.specialty
-    ).first()
+    progress = (
+        db.query(UserProgress)
+        .filter(UserProgress.user_id == current_user.id, UserProgress.specialty == mcq.specialty)
+        .first()
+    )
 
     if not progress:
         # Create new progress record
@@ -362,7 +393,7 @@ async def submit_mcq_attempt(
             mcqs_correct=1 if is_correct else 0,
             total_study_time_minutes=attempt_data.time_taken_seconds // 60,
             current_streak_days=0,
-            longest_streak_days=0
+            longest_streak_days=0,
         )
         db.add(progress)
     else:
@@ -386,7 +417,7 @@ async def submit_mcq_attempt(
         "citation": mcq.citation,
         "learning_points": mcq.learning_points,
         "time_taken_seconds": attempt_data.time_taken_seconds,
-        "attempt_number": new_attempt.attempt_number
+        "attempt_number": new_attempt.attempt_number,
     }
 
 
@@ -394,10 +425,10 @@ async def submit_mcq_attempt(
 # GET MCQ STATISTICS
 # ============================================================================
 
+
 @router.get("/statistics", response_model=MCQStatistics)
 async def get_mcq_statistics(
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    current_user: User = Depends(get_current_active_user), db: Session = Depends(get_db)
 ):
     """
     Get MCQ statistics across all specialties and difficulties.
@@ -414,44 +445,43 @@ async def get_mcq_statistics(
     - Identifying weak areas
     """
     # Total MCQs
-    total_mcqs = db.query(func.count(MCQ.id)).filter(
-        MCQ.is_published == True
-    ).scalar()
+    total_mcqs = db.query(func.count(MCQ.id)).filter(MCQ.is_published == True).scalar()
 
     # By specialty
-    specialty_counts = db.query(
-        MCQ.specialty,
-        func.count(MCQ.id)
-    ).filter(
-        MCQ.is_published == True
-    ).group_by(MCQ.specialty).all()
+    specialty_counts = (
+        db.query(MCQ.specialty, func.count(MCQ.id))
+        .filter(MCQ.is_published == True)
+        .group_by(MCQ.specialty)
+        .all()
+    )
 
     by_specialty = {str(specialty): count for specialty, count in specialty_counts}
 
     # By difficulty
-    difficulty_counts = db.query(
-        MCQ.difficulty,
-        func.count(MCQ.id)
-    ).filter(
-        MCQ.is_published == True
-    ).group_by(MCQ.difficulty).all()
+    difficulty_counts = (
+        db.query(MCQ.difficulty, func.count(MCQ.id))
+        .filter(MCQ.is_published == True)
+        .group_by(MCQ.difficulty)
+        .all()
+    )
 
     by_difficulty = {str(difficulty): count for difficulty, count in difficulty_counts}
 
     # Average success rate
-    avg_success_rate = db.query(
-        func.avg(
-            func.cast(MCQ.times_correct, db.Float) /
-            func.nullif(MCQ.times_attempted, 0) * 100
+    avg_success_rate = (
+        db.query(
+            func.avg(
+                func.cast(MCQ.times_correct, db.Float) / func.nullif(MCQ.times_attempted, 0) * 100
+            )
         )
-    ).filter(
-        MCQ.is_published == True,
-        MCQ.times_attempted > 0
-    ).scalar() or 0.0
+        .filter(MCQ.is_published == True, MCQ.times_attempted > 0)
+        .scalar()
+        or 0.0
+    )
 
     return {
         "total_mcqs": total_mcqs,
         "by_specialty": by_specialty,
         "by_difficulty": by_difficulty,
-        "average_success_rate": round(avg_success_rate, 2)
+        "average_success_rate": round(avg_success_rate, 2),
     }

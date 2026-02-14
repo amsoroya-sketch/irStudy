@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMC Clinical Exam - Station Interface</title>
+  <link rel="stylesheet" href="../../css/design-system.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-sans); background: var(--color-gray-900); color: white; min-height: 100vh; overflow: hidden; }
+    .exam-interface { display: flex; flex-direction: column; height: 100vh; }
+    
+    /* Top Bar */
+    .top-bar { background: linear-gradient(90deg, #1e3a5f, #2d5a87); padding: var(--space-3) var(--space-6); display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #f59e0b; }
+    .exam-branding { display: flex; align-items: center; gap: var(--space-4); }
+    .amc-logo { padding: var(--space-2) var(--space-4); background: #f59e0b; color: #78350f; border-radius: var(--radius-lg); font-weight: bold; font-size: var(--font-size-sm); }
+    .station-info h1 { font-size: var(--font-size-lg); margin-bottom: var(--space-1); }
+    .station-meta { font-size: var(--font-size-xs); opacity: 0.8; }
+    .exam-timer { display: flex; align-items: center; gap: var(--space-4); }
+    .timer-display { padding: var(--space-3) var(--space-6); background: rgba(0,0,0,0.3); border-radius: var(--radius-lg); font-family: var(--font-family-mono); font-size: var(--font-size-2xl); font-weight: bold; }
+    .timer-display.warning { background: rgba(239,68,68,0.3); color: #fca5a5; }
+    
+    /* Main Workspace */
+    .workspace { flex: 1; display: grid; grid-template-columns: 1fr 400px; gap: 0; }
+    
+    /* Video Area */
+    .video-area { display: flex; flex-direction: column; padding: var(--space-6); gap: var(--space-4); }
+    .video-stage { flex: 1; background: linear-gradient(135deg, #1f2937, #111827); border-radius: var(--radius-2xl); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .ai-patient { text-align: center; }
+    .patient-visual { width: 200px; height: 200px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 80px; margin: 0 auto var(--space-6); position: relative; }
+    .patient-visual::before { content: ''; position: absolute; inset: -10px; border: 3px solid rgba(59,130,246,0.5); border-radius: 50%; animation: pulse-ring 2s infinite; }
+    @keyframes pulse-ring { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.1); opacity: 0; } }
+    .patient-name { font-size: var(--font-size-2xl); font-weight: bold; margin-bottom: var(--space-2); }
+    .patient-scenario { opacity: 0.7; max-width: 400px; margin: 0 auto; }
+    
+    /* Emotional State Indicator */
+    .emotional-state { position: absolute; top: var(--space-6); left: var(--space-6); padding: var(--space-3) var(--space-5); background: rgba(0,0,0,0.6); border-radius: var(--radius-xl); display: flex; align-items: center; gap: var(--space-3); border: 2px solid; }
+    .emotional-state.anxious { border-color: #f59e0b; }
+    .emotion-icon { font-size: 24px; }
+    .emotion-label { font-weight: 600; }
+    .emotion-bar { width: 100px; height: 6px; background: rgba(255,255,255,0.2); border-radius: var(--radius-full); overflow: hidden; }
+    .emotion-fill { height: 100%; border-radius: var(--radius-full); }
+    
+    /* Recording Status */
+    .recording-status { position: absolute; top: var(--space-6); right: var(--space-6); display: flex; align-items: center; gap: var(--space-3); }
+    .rec-badge { padding: var(--space-2) var(--space-4); background: rgba(239,68,68,0.2); border: 1px solid var(--color-error-500); border-radius: var(--radius-full); display: flex; align-items: center; gap: var(--space-2); }
+    .rec-dot { width: 8px; height: 8px; background: var(--color-error-500); border-radius: 50%; animation: blink 1s infinite; }
+    .ai-badge { padding: var(--space-2) var(--space-4); background: rgba(139,92,246,0.2); border: 1px solid #8b5cf6; border-radius: var(--radius-full); }
+    
+    /* Live Transcript */
+    .transcript-panel { height: 150px; background: rgba(0,0,0,0.4); border-radius: var(--radius-xl); padding: var(--space-4); overflow-y: auto; }
+    .transcript-line { margin-bottom: var(--space-3); display: flex; gap: var(--space-3); }
+    .transcript-speaker { font-weight: 600; color: #60a5fa; min-width: 60px; }
+    .transcript-speaker.examiner { color: #4ade80; }
+    .transcript-text { flex: 1; opacity: 0.9; }
+    
+    /* Side Panel */
+    .side-panel { background: rgba(255,255,255,0.05); border-left: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; }
+    .panel-tabs { display: flex; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .panel-tab { flex: 1; padding: var(--space-4); text-align: center; cursor: pointer; font-size: var(--font-size-sm); opacity: 0.6; border-bottom: 2px solid transparent; }
+    .panel-tab.active { opacity: 1; border-bottom-color: #3b82f6; }
+    .panel-content { flex: 1; overflow-y: auto; padding: var(--space-4); }
+    
+    /* Tasks */
+    .task-list { display: flex; flex-direction: column; gap: var(--space-3); }
+    .task-item { display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-4); background: rgba(255,255,255,0.05); border-radius: var(--radius-lg); cursor: pointer; transition: var(--transition-fast); }
+    .task-item:hover { background: rgba(255,255,255,0.1); }
+    .task-item.completed { opacity: 0.5; }
+    .task-item.completed .task-text { text-decoration: line-through; }
+    .task-checkbox { width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-radius: var(--radius-md); margin-top: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .task-item.completed .task-checkbox { background: #22c55e; border-color: #22c55e; }
+    .task-text { flex: 1; font-size: var(--font-size-sm); }
+    .task-points { font-size: 11px; padding: 2px 8px; background: rgba(245,158,11,0.2); color: #fbbf24; border-radius: var(--radius-full); }
+    
+    /* Live Scoring */
+    .score-display { text-align: center; padding: var(--space-6); background: rgba(255,255,255,0.05); border-radius: var(--radius-xl); margin-bottom: var(--space-4); }
+    .score-value { font-size: 48px; font-weight: bold; color: #60a5fa; }
+    .score-label { font-size: var(--font-size-sm); opacity: 0.7; margin-top: var(--space-1); }
+    .score-breakdown { display: grid; gap: var(--space-3); }
+    .breakdown-item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-3); background: rgba(255,255,255,0.05); border-radius: var(--radius-lg); }
+    .breakdown-bar { width: 100px; height: 6px; background: rgba(255,255,255,0.1); border-radius: var(--radius-full); overflow: hidden; }
+    .breakdown-fill { height: 100%; border-radius: var(--radius-full); }
+    
+    /* Controls */
+    .controls { padding: var(--space-4) var(--space-6); background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; gap: var(--space-4); }
+    .control-btn { padding: var(--space-3) var(--space-6); border-radius: var(--radius-lg); border: none; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: var(--space-2); }
+    .control-btn-secondary { background: rgba(255,255,255,0.1); color: white; }
+    .control-btn-primary { background: #3b82f6; color: white; }
+    .control-btn-success { background: #22c55e; color: white; }
+    .control-btn-danger { background: #ef4444; color: white; }
+    
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  </style>
+</head>
+<body>
+  <div class="exam-interface">
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <div class="exam-branding">
+        <span class="amc-logo">AMC CLINICAL</span>
+        <div class="station-info">
+          <h1>Station 3 of 16: Chest Pain History</h1>
+          <div class="station-meta">8 minutes • History Taking • Cardiovascular</div>
+        </div>
+      </div>
+      <div class="exam-timer">
+        <span style="font-size: var(--font-size-sm); opacity: 0.8;">Time Remaining</span>
+        <div class="timer-display">05:23</div>
+      </div>
+    </header>
+
+    <!-- Workspace -->
+    <div class="workspace">
+      <!-- Video Area -->
+      <div class="video-area">
+        <div class="video-stage">
+          <div class="ai-patient">
+            <div class="patient-visual">👨</div>
+            <div class="patient-name">Mr. Robert Thompson</div>
+            <div class="patient-scenario">68-year-old male presenting with chest pain</div>
+          </div>
+          
+          <div class="emotional-state anxious">
+            <span class="emotion-icon">😰</span>
+            <span class="emotion-label">Anxious</span>
+            <div class="emotion-bar">
+              <div class="emotion-fill" style="width: 75%; background: #f59e0b;"></div>
+            </div>
+          </div>
+          
+          <div class="recording-status">
+            <div class="rec-badge">
+              <span class="rec-dot"></span>
+              <span>Recording</span>
+            </div>
+            <div class="ai-badge">🤖 AI Active</div>
+          </div>
+        </div>
+        
+        <div class="transcript-panel">
+          <div class="transcript-line">
+            <span class="transcript-speaker">Patient:</span>
+            <span class="transcript-text">"Doctor, I've been having this chest pain for about 2 hours now. It's really worrying me."</span>
+          </div>
+          <div class="transcript-line">
+            <span class="transcript-speaker examiner">You:</span>
+            <span class="transcript-text">"I'm sorry to hear that. Can you tell me more about when it started and what you were doing?"</span>
+          </div>
+          <div class="transcript-line">
+            <span class="transcript-speaker">Patient:</span>
+            <span class="transcript-text">"I was gardening when it started. It feels like pressure in the center of my chest..."</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Side Panel -->
+      <aside class="side-panel">
+        <div class="panel-tabs">
+          <div class="panel-tab active">Tasks</div>
+          <div class="panel-tab">Live Score</div>
+          <div class="panel-tab">Notes</div>
+        </div>
+        
+        <div class="panel-content">
+          <div class="task-list">
+            <div class="task-item completed" onclick="this.classList.toggle('completed')">
+              <div class="task-checkbox">✓</div>
+              <div class="task-text">Introduce yourself appropriately</div>
+              <span class="task-points">1 mark</span>
+            </div>
+            <div class="task-item" onclick="this.classList.toggle('completed')">
+              <div class="task-checkbox"></div>
+              <div class="task-text">Take focused history about chest pain (OPQRST)</div>
+              <span class="task-points">2 marks</span>
+            </div>
+            <div class="task-item" onclick="this.classList.toggle('completed')">
+              <div class="task-checkbox"></div>
+              <div class="task-text">Screen for cardiovascular risk factors</div>
+              <span class="task-points">2 marks</span>
+            </div>
+            <div class="task-item" onclick="this.classList.toggle('completed')">
+              <div class="task-checkbox"></div>
+              <div class="task-text">Identify red flags (ACS, PE, dissection)</div>
+              <span class="task-points">2 marks</span>
+            </div>
+            <div class="task-item" onclick="this.classList.toggle('completed')">
+              <div class="task-checkbox"></div>
+              <div class="task-text">Address patient anxiety and concerns</div>
+              <span class="task-points">2 marks</span>
+            </div>
+            <div class="task-item" onclick="this.classList.toggle('completed')">
+              <div class="task-checkbox"></div>
+              <div class="task-text">Summarize findings and next steps</div>
+              <span class="task-points">2 marks</span>
+            </div>
+            <div class="task-item" onclick="this.classList.toggle('completed')">
+              <div class="task-checkbox"></div>
+              <div class="task-text">Professional communication throughout</div>
+              <span class="task-points">4 marks</span>
+            </div>
+          </div>
+          
+          <div style="margin-top: var(--space-6); padding: var(--space-4); background: rgba(245,158,11,0.1); border-radius: var(--radius-lg); border: 1px solid rgba(245,158,11,0.3);">
+            <div style="font-size: var(--font-size-xs); color: #fbbf24; font-weight: 600; margin-bottom: var(--space-2);">💡 AI SUGGESTION</div>
+            <div style="font-size: var(--font-size-sm);">Consider asking about radiation of pain to arm/jaw and associated symptoms like nausea or diaphoresis.</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button class="control-btn control-btn-secondary">⏸️ Pause</button>
+      <button class="control-btn control-btn-secondary">📝 Quick Note</button>
+      <button class="control-btn control-btn-danger">🚩 Flag Station</button>
+      <button class="control-btn control-btn-success" onclick="location.href='scoring-dashboard.html'">✓ Complete Station</button>
+    </div>
+  </div>
+</body>
+</html>

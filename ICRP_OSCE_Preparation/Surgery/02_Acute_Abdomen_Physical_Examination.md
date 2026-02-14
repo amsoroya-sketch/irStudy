@@ -19,6 +19,40 @@
 
 ---
 
+## 📺 RECOMMENDED VIDEO DEMONSTRATIONS
+
+### Acute Abdominal Examination Videos
+
+**Essential Videos (Watch These First):**
+
+1. **Abdominal Examination - Stanford Medicine 25**
+   - URL: https://stanfordmedicine25.stanford.edu/the25/abdominal.html
+   - Focus: Complete abdominal examination including special tests for peritonism
+   - Why recommended: Excellent demonstration of systematic palpation and special maneuvers
+   - Australian relevance: Technique aligns with AMC Clinical exam surgical station requirements
+
+2. **Acute Abdominal Examination - Geeky Medics**
+   - URL: https://geekymedics.com/abdominal-examination/
+   - Duration: 8 minutes (OSCE-appropriate)
+   - Focus: 9-region examination with rebound tenderness, guarding, and special tests
+   - Why recommended: Perfect for OSCE practice with systematic approach to acute abdomen
+
+3. **Surgical Abdomen Assessment - Oxford Medical Education**
+   - URL: https://www.oxfordmedicaleducation.com/clinical-skills/examination/abdominal-examination/
+   - Focus: Clinical signs of peritonism and surgical abdomen
+   - Why recommended: Excellent for learning to recognize signs requiring urgent surgical intervention
+
+**Supplementary Videos:**
+
+4. **Murphy's Sign and Special Tests - Stanford Medicine 25**
+   - URL: https://stanfordmedicine25.stanford.edu/the25/murphy.html
+   - Focus: Detailed demonstration of Murphy's sign for cholecystitis
+   - Why recommended: Helpful for mastering specific special tests
+
+**Note:** Complete video resource catalog available in [00_VIDEO_RESOURCES_MASTER_LIST.md](../00_VIDEO_RESOURCES_MASTER_LIST.md)
+
+---
+
 ## TABLE OF CONTENTS
 
 1. [Introduction - Examination Driven by Differential](#introduction)

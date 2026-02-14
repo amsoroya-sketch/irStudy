@@ -19,7 +19,11 @@ logger = logging.getLogger(__name__)
 
 
 class MedicalEmbeddingGenerator:
-    def __init__(self, model_name: str = "pritamdeka/S-PubMedBert-MS-MARCO", device: str = None):
+    def __init__(
+        self,
+        model_name: str = "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext",
+        device: str = None,
+    ):
         """
         Initialize embedding generator with PubMedBERT
 
@@ -29,7 +33,7 @@ class MedicalEmbeddingGenerator:
         """
         # Auto-detect device
         if device is None:
-            device = 'cuda' if torch.cuda.is_available() else 'cpu'
+            device = "cuda" if torch.cuda.is_available() else "cpu"
 
         self.device = device
         logger.info(f"Using device: {self.device}")
@@ -46,10 +50,7 @@ class MedicalEmbeddingGenerator:
     def generate_embedding(self, text: str) -> np.ndarray:
         """Generate embedding for single text"""
         embedding = self.model.encode(
-            text,
-            device=self.device,
-            show_progress_bar=False,
-            convert_to_numpy=True
+            text, device=self.device, show_progress_bar=False, convert_to_numpy=True
         )
         return embedding
 
@@ -60,11 +61,16 @@ class MedicalEmbeddingGenerator:
             device=self.device,
             batch_size=batch_size,
             show_progress_bar=True,
-            convert_to_numpy=True
+            convert_to_numpy=True,
         )
         return embeddings
 
-    def process_chunks(self, chunks_file: str = "data/chunks.json", output_file: str = "data/embeddings/medical_embeddings.pkl", batch_size: int = 32):
+    def process_chunks(
+        self,
+        chunks_file: str = "data/chunks.json",
+        output_file: str = "data/embeddings/medical_embeddings.pkl",
+        batch_size: int = 32,
+    ):
         """Process all chunks and generate embeddings"""
         chunks_path = Path(chunks_file)
         output_path = Path(output_file)
@@ -72,13 +78,13 @@ class MedicalEmbeddingGenerator:
 
         # Load chunks
         logger.info(f"Loading chunks from {chunks_file}")
-        with open(chunks_path, 'r', encoding='utf-8') as f:
+        with open(chunks_path, "r", encoding="utf-8") as f:
             chunks = json.load(f)
 
         logger.info(f"Loaded {len(chunks):,} chunks")
 
         # Extract texts
-        texts = [chunk['text'] for chunk in chunks]
+        texts = [chunk["text"] for chunk in chunks]
 
         # Generate embeddings
         logger.info(f"Generating embeddings (batch_size={batch_size})...")
@@ -87,15 +93,17 @@ class MedicalEmbeddingGenerator:
         # Combine chunks with embeddings
         embedded_chunks = []
         for chunk, embedding in zip(chunks, embeddings):
-            embedded_chunks.append({
-                'text': chunk['text'],
-                'embedding': embedding.tolist(),  # Convert to list for JSON serialization
-                'metadata': chunk['metadata']
-            })
+            embedded_chunks.append(
+                {
+                    "text": chunk["text"],
+                    "embedding": embedding.tolist(),  # Convert to list for JSON serialization
+                    "metadata": chunk["metadata"],
+                }
+            )
 
         # Save
         logger.info(f"Saving embeddings to {output_file}")
-        with open(output_path, 'wb') as f:
+        with open(output_path, "wb") as f:
             pickle.dump(embedded_chunks, f)
 
         # Statistics
@@ -106,7 +114,7 @@ class MedicalEmbeddingGenerator:
 
         # Also save a sample as JSON for inspection
         sample_file = output_path.parent / "embeddings_sample.json"
-        with open(sample_file, 'w', encoding='utf-8') as f:
+        with open(sample_file, "w", encoding="utf-8") as f:
             json.dump(embedded_chunks[:10], f, indent=2, ensure_ascii=False)
         logger.info(f"  Sample saved to: {sample_file}")
 
@@ -118,15 +126,30 @@ def main():
 
     parser = argparse.ArgumentParser(description="Generate PubMedBERT embeddings for medical texts")
     parser.add_argument("--input", default="data/chunks.json", help="Input chunks JSON file")
-    parser.add_argument("--output", default="data/embeddings/medical_embeddings.pkl", help="Output embeddings file")
-    parser.add_argument("--model", default="pritamdeka/S-PubMedBert-MS-MARCO", help="Embedding model name")
-    parser.add_argument("--batch-size", type=int, default=32, help="Batch size for embedding generation")
-    parser.add_argument("--device", choices=['cuda', 'cpu'], default=None, help="Device to use (auto-detect if not specified)")
+    parser.add_argument(
+        "--output", default="data/embeddings/medical_embeddings.pkl", help="Output embeddings file"
+    )
+    parser.add_argument(
+        "--model",
+        default="microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext",
+        help="Embedding model name",
+    )
+    parser.add_argument(
+        "--batch-size", type=int, default=32, help="Batch size for embedding generation"
+    )
+    parser.add_argument(
+        "--device",
+        choices=["cuda", "cpu"],
+        default=None,
+        help="Device to use (auto-detect if not specified)",
+    )
 
     args = parser.parse_args()
 
     generator = MedicalEmbeddingGenerator(model_name=args.model, device=args.device)
-    generator.process_chunks(chunks_file=args.input, output_file=args.output, batch_size=args.batch_size)
+    generator.process_chunks(
+        chunks_file=args.input, output_file=args.output, batch_size=args.batch_size
+    )
 
 
 if __name__ == "__main__":

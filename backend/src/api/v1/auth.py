@@ -22,17 +22,17 @@ from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, status, Request
 from sqlalchemy.orm import Session
 
-from db.base import get_db
-from db.models import User, UserRole
-from schemas.user import UserCreate, UserLogin, Token, UserResponse
-from auth.security import (
+from src.db.base import get_db
+from src.db.models import User, UserRole
+from src.schemas.user import UserCreate, UserLogin, Token, UserPrivate
+from src.auth.security import (
     hash_password,
     verify_password,
     create_access_token,
     create_refresh_token,
     verify_refresh_token,
 )
-from auth.dependencies import get_current_user
+from src.auth.dependencies import get_current_user
 
 
 router = APIRouter(prefix="/auth", tags=["authentication"])
@@ -42,11 +42,9 @@ router = APIRouter(prefix="/auth", tags=["authentication"])
 # REGISTRATION
 # ============================================================================
 
-@router.post("/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
-async def register(
-    user_data: UserCreate,
-    db: Session = Depends(get_db)
-):
+
+@router.post("/register", response_model=UserPrivate, status_code=status.HTTP_201_CREATED)
+async def register(user_data: UserCreate, db: Session = Depends(get_db)):
     """
     Register new user account.
 
@@ -63,8 +61,7 @@ async def register(
     existing_user = db.query(User).filter(User.email == user_data.email).first()
     if existing_user:
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Email address already registered"
+            status_code=status.HTTP_400_BAD_REQUEST, detail="Email address already registered"
         )
 
     # Create new user
@@ -74,7 +71,7 @@ async def register(
         full_name=user_data.full_name,
         role=UserRole.STUDENT,  # Default role
         is_active=True,
-        is_verified=False  # Requires email verification
+        is_verified=False,  # Requires email verification
     )
 
     db.add(new_user)
@@ -91,12 +88,9 @@ async def register(
 # LOGIN
 # ============================================================================
 
+
 @router.post("/login", response_model=Token)
-async def login(
-    credentials: UserLogin,
-    request: Request,
-    db: Session = Depends(get_db)
-):
+async def login(credentials: UserLogin, request: Request, db: Session = Depends(get_db)):
     """
     Login with email and password.
 
@@ -115,8 +109,7 @@ async def login(
     # Check if user exists
     if not user:
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect email or password"
+            status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect email or password"
         )
 
     # Check if account is locked
@@ -125,7 +118,7 @@ async def login(
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail="Account is temporarily locked due to multiple failed login attempts. "
-                       f"Try again after {user.locked_until.strftime('%H:%M:%S')}"
+                f"Try again after {user.locked_until.strftime('%H:%M:%S')}",
             )
         else:
             # Lockout period expired - reset
@@ -140,25 +133,26 @@ async def login(
 
         # Lock account after 5 failed attempts
         if user.failed_login_attempts >= 5:
-            user.locked_until = datetime.now(datetime.now().astimezone().tzinfo) + timedelta(minutes=30)
+            user.locked_until = datetime.now(datetime.now().astimezone().tzinfo) + timedelta(
+                minutes=30
+            )
             db.commit()
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail="Account locked due to multiple failed login attempts. "
-                       "Please try again in 30 minutes."
+                "Please try again in 30 minutes.",
             )
 
         db.commit()
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect email or password"
+            status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect email or password"
         )
 
     # Check if account is active
     if not user.is_active:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="Account is inactive. Contact administrator."
+            detail="Account is inactive. Contact administrator.",
         )
 
     # Successful login - reset failed attempts
@@ -167,11 +161,7 @@ async def login(
     db.commit()
 
     # Create tokens
-    token_data = {
-        "user_id": user.id,
-        "email": user.email,
-        "role": user.role.value
-    }
+    token_data = {"user_id": user.id, "email": user.email, "role": user.role.value}
 
     access_token = create_access_token(token_data)
     refresh_token = create_refresh_token({"user_id": user.id, "email": user.email})
@@ -180,7 +170,7 @@ async def login(
         "access_token": access_token,
         "refresh_token": refresh_token,
         "token_type": "bearer",
-        "expires_in": 30 * 60  # 30 minutes in seconds
+        "expires_in": 30 * 60,  # 30 minutes in seconds
     }
 
 
@@ -188,11 +178,9 @@ async def login(
 # REFRESH TOKEN
 # ============================================================================
 
+
 @router.post("/refresh", response_model=Token)
-async def refresh_access_token(
-    refresh_token: str,
-    db: Session = Depends(get_db)
-):
+async def refresh_access_token(refresh_token: str, db: Session = Depends(get_db)):
     """
     Refresh access token using refresh token.
 
@@ -207,8 +195,7 @@ async def refresh_access_token(
     payload = verify_refresh_token(refresh_token)
     if payload is None:
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid or expired refresh token"
+            status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid or expired refresh token"
         )
 
     # Get user from database
@@ -217,16 +204,11 @@ async def refresh_access_token(
 
     if not user or not user.is_active:
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="User not found or inactive"
+            status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found or inactive"
         )
 
     # Create new access token
-    token_data = {
-        "user_id": user.id,
-        "email": user.email,
-        "role": user.role.value
-    }
+    token_data = {"user_id": user.id, "email": user.email, "role": user.role.value}
 
     new_access_token = create_access_token(token_data)
 
@@ -234,7 +216,7 @@ async def refresh_access_token(
         "access_token": new_access_token,
         "refresh_token": refresh_token,  # Return same refresh token
         "token_type": "bearer",
-        "expires_in": 30 * 60
+        "expires_in": 30 * 60,
     }
 
 
@@ -242,10 +224,9 @@ async def refresh_access_token(
 # LOGOUT
 # ============================================================================
 
+
 @router.post("/logout", status_code=status.HTTP_204_NO_CONTENT)
-async def logout(
-    current_user: User = Depends(get_current_user)
-):
+async def logout(current_user: User = Depends(get_current_user)):
     """
     Logout current user.
 
@@ -265,11 +246,9 @@ async def logout(
 # EMAIL VERIFICATION
 # ============================================================================
 
-@router.post("/verify-email", response_model=UserResponse)
-async def verify_email(
-    token: str,
-    db: Session = Depends(get_db)
-):
+
+@router.post("/verify-email", response_model=UserPrivate)
+async def verify_email(token: str, db: Session = Depends(get_db)):
     """
     Verify email address with verification token.
 
@@ -282,6 +261,5 @@ async def verify_email(
     # TODO: Implement email verification token validation
     # For now, this is a placeholder
     raise HTTPException(
-        status_code=status.HTTP_501_NOT_IMPLEMENTED,
-        detail="Email verification not yet implemented"
+        status_code=status.HTTP_501_NOT_IMPLEMENTED, detail="Email verification not yet implemented"
     )

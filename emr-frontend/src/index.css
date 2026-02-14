@@ -1,0 +1,539 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cerner theme variables */
+:root[data-theme="cerner"] {
+  --cerner-primary: #3498db;
+  --cerner-bg-dark: #2c3e50;
+  --cerner-bg-darker: #1a252f;
+  --cerner-success: #27ae60;
+  --cerner-error: #e74c3c;
+  --cerner-warning: #f39c12;
+}
+
+/* Epic theme variables */
+:root[data-theme="epic"] {
+  --epic-primary: #8b5cf6;
+  --epic-primary-dark: #7c3aed;
+  --epic-bg-white: #ffffff;
+  --epic-bg-light: #f9fafb;
+}
+
+/* Base styles */
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+}
+
+/* Cerner Sidebar Styles */
+.cerner-sidebar {
+  width: 240px;
+  height: 100vh;
+  background-color: var(--cerner-bg-dark);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.cerner-logo-section {
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cerner-nav {
+  flex: 1;
+  padding: 16px 0;
+  overflow-y: auto;
+}
+
+.cerner-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.cerner-nav-item:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.cerner-nav-item.active {
+  background-color: rgba(52, 152, 219, 0.15);
+}
+
+.cerner-active-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--cerner-primary);
+}
+
+.cerner-session-timer {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cerner-settings {
+  padding: 16px 20px;
+}
+
+.cerner-settings-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.cerner-settings-button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Cerner Patient Banner */
+.cerner-patient-banner {
+  background: linear-gradient(to bottom, #ffffff, #f7f9fb);
+  border-bottom: 3px solid var(--cerner-primary);
+  padding: 16px 24px;
+  margin-left: 240px; /* Account for sidebar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.cerner-banner-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.cerner-patient-name {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.cerner-patient-identifiers {
+  display: flex;
+  gap: 12px;
+}
+
+.cerner-badge {
+  background-color: #e8f4f8;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #2c5f7c;
+}
+
+.cerner-allergy-alert {
+  display: flex;
+  gap: 12px;
+  background-color: #fef3c7;
+  border: 2px solid #f59e0b;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  font-size: 0.875rem;
+  color: #92400e;
+}
+
+.cerner-allergy-alert.severe {
+  background-color: #fee2e2;
+  border-color: #ef4444;
+  color: #991b1b;
+}
+
+.cerner-banner-summary {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.cerner-summary-section {
+  display: flex;
+  align-items: center;
+}
+
+/* Cerner SOAP Note Editor */
+.cerner-soap-editor {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.cerner-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.cerner-autosave-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cerner-soap-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.cerner-soap-section {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.cerner-section-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--cerner-primary);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--cerner-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cerner-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.cerner-form-field label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.cerner-input {
+  padding: 10px 14px;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease;
+}
+
+.cerner-input:focus {
+  outline: none;
+  border-color: var(--cerner-primary);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.cerner-textarea {
+  padding: 10px 14px;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.cerner-textarea:focus {
+  outline: none;
+  border-color: var(--cerner-primary);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.cerner-vitals-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.cerner-error {
+  color: var(--cerner-error);
+  font-size: 0.75rem;
+  margin-top: 4px;
+}
+
+.cerner-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 24px;
+  border-top: 2px solid #e5e7eb;
+}
+
+.cerner-btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 32px;
+  background-color: var(--cerner-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cerner-btn-primary:hover {
+  background-color: #2980b9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2);
+}
+
+/* Epic Sidebar Styles */
+.epic-sidebar {
+  @apply w-64 bg-white border-r border-gray-200 flex flex-col h-screen;
+}
+
+.epic-sidebar-patient {
+  @apply p-4 border-b border-gray-200 bg-gradient-to-r from-epic-bg-light to-white;
+}
+
+.epic-patient-avatar {
+  @apply w-10 h-10 rounded-full bg-epic-primary/10 flex items-center justify-center text-epic-primary;
+}
+
+.epic-patient-name {
+  @apply text-sm font-semibold text-gray-900;
+}
+
+.epic-patient-mrn {
+  @apply text-xs text-gray-500;
+}
+
+.epic-timer {
+  @apply flex items-center justify-center gap-2 py-3 px-4 bg-epic-bg-light border-b border-gray-200;
+}
+
+.epic-timer-text {
+  @apply text-sm font-mono font-semibold text-gray-700;
+}
+
+.epic-nav {
+  @apply flex-1 overflow-y-auto py-2;
+}
+
+.epic-nav-section {
+  @apply mb-1;
+}
+
+.epic-nav-section-header {
+  @apply w-full flex items-center gap-2 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors;
+}
+
+.epic-nav-chevron {
+  @apply transition-transform duration-200;
+}
+
+.epic-nav-chevron.expanded {
+  @apply rotate-90;
+}
+
+.epic-nav-items {
+  @apply pl-4;
+}
+
+.epic-nav-item {
+  @apply w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-epic-bg-light hover:text-epic-primary transition-all rounded-r-lg my-0.5;
+}
+
+.epic-nav-item.active {
+  @apply bg-epic-primary/10 text-epic-primary font-semibold border-l-3 border-epic-primary;
+}
+
+.epic-nav-icon {
+  @apply flex-shrink-0;
+}
+
+.epic-nav-label {
+  @apply flex-1;
+}
+
+.epic-nav-badge {
+  @apply bg-epic-primary text-white text-xs font-bold px-2 py-0.5 rounded-full min-w-[1.25rem] text-center;
+}
+
+.epic-sidebar-footer {
+  @apply p-4 border-t border-gray-200;
+}
+
+.epic-settings-btn {
+  @apply w-full flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition-colors;
+}
+
+/* Epic Patient Banner Styles */
+.epic-patient-banner {
+  @apply bg-white border-b-2 border-epic-primary shadow-sm;
+}
+
+.epic-banner-main {
+  @apply px-6 py-3 bg-gradient-to-r from-epic-bg-light to-white;
+}
+
+.epic-banner-name {
+  @apply text-xl font-bold text-gray-900 mb-1;
+}
+
+.epic-banner-demographics {
+  @apply flex items-center gap-2 text-sm text-gray-600;
+}
+
+.epic-demo-item {
+  @apply flex items-center gap-1;
+}
+
+.epic-demo-divider {
+  @apply text-gray-400;
+}
+
+.epic-banner-encounter {
+  @apply px-6 py-2 bg-white flex items-center gap-4 border-b border-gray-200;
+}
+
+.epic-encounter-type {
+  @apply text-sm font-semibold text-epic-primary;
+}
+
+.epic-encounter-location {
+  @apply flex items-center gap-1 text-sm text-gray-600;
+}
+
+.epic-banner-alerts {
+  @apply px-6 py-2 bg-amber-50 border-b border-amber-200 space-y-1;
+}
+
+.epic-alert {
+  @apply flex items-center gap-2 text-sm;
+}
+
+.epic-alert-allergy {
+  @apply text-red-700;
+}
+
+.epic-alert-warning {
+  @apply text-amber-700;
+}
+
+.epic-alert-label {
+  @apply font-semibold;
+}
+
+.epic-alert-value {
+  @apply font-medium;
+}
+
+.epic-banner-contact {
+  @apply px-6 py-2 bg-gray-50 flex items-center gap-2 text-sm text-gray-600;
+}
+
+/* Epic Note Editor Styles */
+.epic-note-editor {
+  @apply bg-white rounded-lg shadow-lg h-full flex flex-col;
+}
+
+.epic-note-header {
+  @apply px-6 py-4 border-b border-gray-200 flex items-center justify-between bg-epic-bg-light;
+}
+
+.epic-note-title {
+  @apply text-xl font-bold text-gray-900;
+}
+
+.epic-note-actions {
+  @apply flex items-center gap-4;
+}
+
+.epic-autosave-status {
+  @apply min-w-[150px];
+}
+
+.epic-save-btn {
+  @apply flex items-center gap-2 px-4 py-2 bg-epic-primary text-white rounded-lg hover:bg-epic-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.epic-note-tabs {
+  @apply flex border-b border-gray-200 bg-gray-50 px-4;
+}
+
+.epic-tab {
+  @apply px-4 py-3 text-sm font-medium text-gray-600 hover:text-epic-primary hover:bg-white transition-all border-b-2 border-transparent;
+}
+
+.epic-tab.active {
+  @apply text-epic-primary bg-white border-epic-primary;
+}
+
+.epic-note-content {
+  @apply flex-1 overflow-y-auto p-6 space-y-6;
+}
+
+.epic-form-group {
+  @apply space-y-2;
+}
+
+.epic-label {
+  @apply block text-sm font-semibold text-gray-700;
+}
+
+.epic-input {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-epic-primary focus:border-transparent transition-all;
+}
+
+.epic-input-sm {
+  @apply w-full px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-epic-primary focus:border-transparent transition-all;
+}
+
+.epic-textarea {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-epic-primary focus:border-transparent transition-all resize-none;
+}
+
+.epic-textarea-sm {
+  @apply w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-epic-primary focus:border-transparent transition-all resize-none;
+}
+
+.epic-error {
+  @apply text-sm text-red-600 font-medium;
+}
+
+.epic-ros-grid {
+  @apply grid grid-cols-2 gap-4;
+}
+
+.epic-vitals-grid {
+  @apply grid grid-cols-3 gap-4 p-4 bg-epic-bg-light rounded-lg border border-gray-200;
+}

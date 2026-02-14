@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>irStudy Desktop App</title>
+  <link rel="stylesheet" href="../css/design-system.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-family-sans); background: var(--color-gray-100); min-height: 100vh; overflow: hidden; }
+    
+    /* Window Frame */
+    .window-frame { display: flex; flex-direction: column; height: 100vh; }
+    .titlebar {
+      height: 40px; background: var(--color-gray-800); display: flex; align-items: center;
+      justify-content: space-between; -webkit-app-region: drag; user-select: none;
+      border-bottom: 1px solid var(--color-gray-700);
+    }
+    .titlebar-left { display: flex; align-items: center; gap: var(--space-3); padding-left: var(--space-4); }
+    .window-icon { width: 20px; height: 20px; background: linear-gradient(135deg, var(--color-primary-600), var(--color-purple-600)); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white; font-size: 10px; font-weight: bold; }
+    .window-title { font-size: var(--font-size-sm); color: var(--color-gray-300); font-weight: var(--font-weight-medium); }
+    .titlebar-right { display: flex; -webkit-app-region: no-drag; }
+    .window-btn { width: 48px; height: 40px; border: none; background: transparent; color: var(--color-gray-400); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: var(--font-size-lg); }
+    .window-btn:hover { background: var(--color-gray-700); color: var(--color-gray-200); }
+    .window-btn.close:hover { background: var(--color-error-600); color: white; }
+    
+    /* App Layout */
+    .app-layout { flex: 1; display: flex; overflow: hidden; }
+    
+    /* Sidebar */
+    .sidebar { width: 280px; background: white; border-right: 1px solid var(--color-gray-200); display: flex; flex-direction: column; }
+    .sidebar-header { padding: var(--space-6); border-bottom: 1px solid var(--color-gray-100); }
+    .sidebar-logo { display: flex; align-items: center; gap: var(--space-3); }
+    .sidebar-logo-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--color-primary-600), var(--color-purple-600)); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: var(--font-size-xl); }
+    .sidebar-title { font-size: var(--font-size-xl); font-weight: var(--font-weight-bold); }
+    .sidebar-nav { flex: 1; padding: var(--space-4); overflow-y: auto; }
+    .nav-section { margin-bottom: var(--space-6); }
+    .nav-section-title { font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-gray-500); margin-bottom: var(--space-3); padding-left: var(--space-3); }
+    .nav-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-lg); color: var(--color-gray-600); text-decoration: none; font-size: var(--font-size-base); transition: var(--transition-fast); cursor: pointer; }
+    .nav-item:hover { background: var(--color-gray-100); color: var(--color-gray-900); }
+    .nav-item.active { background: var(--color-primary-50); color: var(--color-primary-600); }
+    .nav-item-icon { width: 24px; text-align: center; font-size: var(--font-size-xl); }
+    .sidebar-footer { padding: var(--space-4); border-top: 1px solid var(--color-gray-100); }
+    .sync-status { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-3); background: var(--color-success-50); border-radius: var(--radius-lg); color: var(--color-success-700); font-size: var(--font-size-sm); }
+    
+    /* Main Content */
+    .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .top-header { background: white; border-bottom: 1px solid var(--color-gray-200); padding: var(--space-4) var(--space-6); display: flex; align-items: center; justify-content: space-between; }
+    .header-left { display: flex; align-items: center; gap: var(--space-4); }
+    .offline-badge { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); background: var(--color-warning-100); color: var(--color-warning-700); border-radius: var(--radius-lg); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); }
+    .header-actions { display: flex; align-items: center; gap: var(--space-3); }
+    .icon-btn { width: 40px; height: 40px; border-radius: var(--radius-lg); border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--color-gray-600); font-size: var(--font-size-lg); }
+    .icon-btn:hover { background: var(--color-gray-100); }
+    .exam-mode-btn { padding: var(--space-3) var(--space-5); background: var(--color-primary-600); color: white; border: none; border-radius: var(--radius-lg); font-weight: var(--font-weight-semibold); cursor: pointer; display: flex; align-items: center; gap: var(--space-2); }
+    .exam-mode-btn:hover { background: var(--color-primary-700); }
+    
+    /* Dashboard Content */
+    .dashboard-content { padding: var(--space-6); overflow-y: auto; flex: 1; }
+    .welcome-section { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-8); }
+    .welcome-left h1 { font-size: var(--font-size-3xl); margin-bottom: var(--space-2); }
+    .welcome-left p { color: var(--color-gray-600); font-size: var(--font-size-lg); }
+    .quick-actions { display: flex; gap: var(--space-3); }
+    .quick-btn { padding: var(--space-4) var(--space-6); background: white; border: 1px solid var(--color-gray-200); border-radius: var(--radius-xl); display: flex; align-items: center; gap: var(--space-3); cursor: pointer; font-weight: var(--font-weight-medium); }
+    .quick-btn:hover { border-color: var(--color-primary-300); background: var(--color-primary-50); }
+    
+    /* Stats Grid */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); margin-bottom: var(--space-8); }
+    .stat-card { background: white; padding: var(--space-6); border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); border: 1px solid var(--color-gray-200); }
+    .stat-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4); }
+    .stat-icon { width: 56px; height: 56px; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; font-size: var(--font-size-2xl); }
+    .stat-icon.blue { background: var(--color-primary-100); }
+    .stat-icon.green { background: var(--color-success-100); }
+    .stat-icon.purple { background: #F3E8FF; }
+    .stat-icon.orange { background: var(--color-warning-100); }
+    .stat-value { font-size: var(--font-size-3xl); font-weight: bold; color: var(--color-gray-900); margin-bottom: var(--space-1); }
+    .stat-label { font-size: var(--font-size-base); color: var(--color-gray-500); }
+    
+    /* Content Grid */
+    .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-6); }
+    .card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-sm); }
+    .card-header { padding: var(--space-6); border-bottom: 1px solid var(--color-gray-100); display: flex; align-items: center; justify-content: space-between; }
+    .card-title { font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); }
+    .card-body { padding: var(--space-6); }
+    
+    /* Module Grid */
+    .modules-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+    .module-card { padding: var(--space-6); border-radius: var(--radius-xl); border: 2px solid var(--color-gray-200); cursor: pointer; transition: var(--transition-fast); }
+    .module-card:hover { border-color: var(--color-primary-300); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .module-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: var(--space-4); }
+    .module-icon { width: 56px; height: 56px; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; font-size: var(--font-size-2xl); }
+    .module-status { padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-size: var(--font-size-xs); font-weight: var(--font-weight-semibold); }
+    .module-status.synced { background: var(--color-success-100); color: var(--color-success-700); }
+    .module-card h3 { font-size: var(--font-size-lg); margin-bottom: var(--space-2); }
+    .module-card p { font-size: var(--font-size-sm); color: var(--color-gray-600); margin-bottom: var(--space-4); }
+    .module-meta { display: flex; align-items: center; justify-content: space-between; font-size: var(--font-size-sm); color: var(--color-gray-500); }
+    
+    /* Downloads Panel */
+    .download-item { display: flex; align-items: center; gap: var(--space-4); padding: var(--space-4); border-bottom: 1px solid var(--color-gray-100); }
+    .download-item:last-child { border-bottom: none; }
+    .download-icon { width: 48px; height: 48px; border-radius: var(--radius-lg); background: var(--color-gray-100); display: flex; align-items: center; justify-content: center; font-size: var(--font-size-xl); flex-shrink: 0; }
+    .download-info { flex: 1; }
+    .download-name { font-weight: var(--font-weight-medium); margin-bottom: var(--space-1); }
+    .download-meta { font-size: var(--font-size-xs); color: var(--color-gray-500); }
+    .download-progress { margin-top: var(--space-2); }
+    .progress-track { height: 4px; background: var(--color-gray-200); border-radius: var(--radius-full); overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--color-primary-600); border-radius: var(--radius-full); }
+    .download-status { font-size: var(--font-size-xs); color: var(--color-primary-600); font-weight: var(--font-weight-medium); }
+    
+    /* Keyboard Shortcuts Overlay */
+    .shortcuts-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 1000; }
+    .shortcuts-overlay.show { display: flex; }
+    .shortcuts-modal { background: white; border-radius: var(--radius-2xl); padding: var(--space-8); max-width: 600px; width: 90%; }
+    .shortcuts-title { font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); margin-bottom: var(--space-6); }
+    .shortcuts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+    .shortcut-item { display: flex; align-items: center; justify-content: space-between; padding: var(--space-3); background: var(--color-gray-50); border-radius: var(--radius-lg); }
+    .shortcut-key { padding: var(--space-1) var(--space-3); background: var(--color-gray-200); border-radius: var(--radius-md); font-family: var(--font-family-mono); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); }
+    
+    @media (max-width: 1200px) {
+      .sidebar { width: 80px; }
+      .sidebar-header, .nav-section-title, .nav-item span:last-child, .sync-status span { display: none; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .content-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="window-frame">
+    <!-- Title Bar -->
+    <div class="titlebar">
+      <div class="titlebar-left">
+        <div class="window-icon">ir</div>
+        <span class="window-title">irStudy Desktop</span>
+      </div>
+      <div class="titlebar-right">
+        <button class="window-btn">−</button>
+        <button class="window-btn">□</button>
+        <button class="window-btn close">×</button>
+      </div>
+    </div>
+
+    <div class="app-layout">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-logo">
+            <div class="sidebar-logo-icon">ir</div>
+            <span class="sidebar-title">irStudy</span>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <div class="nav-section">
+            <div class="nav-section-title">Main</div>
+            <a href="index.html" class="nav-item active"><span class="nav-item-icon">🏠</span> Dashboard</a>
+            <a href="exam-mode.html" class="nav-item"><span class="nav-item-icon">📚</span> MCQ Practice</a>
+            <a href="exam-mode.html" class="nav-item"><span class="nav-item-icon">🎯</span> OSCE Scenarios</a>
+            <a href="exam-mode.html" class="nav-item"><span class="nav-item-icon">🏥</span> EMR Simulation</a>
+          </div>
+          <div class="nav-section">
+            <div class="nav-section-title">Tools</div>
+            <a href="#" class="nav-item"><span class="nav-item-icon">📊</span> Progress</a>
+            <a href="#" class="nav-item"><span class="nav-item-icon">💾</span> Downloads</a>
+            <a href="#" class="nav-item" onclick="toggleShortcuts()"><span class="nav-item-icon">⌨️</span> Shortcuts</a>
+          </div>
+        </nav>
+        <div class="sidebar-footer">
+          <div class="sync-status">
+            <span>✓</span>
+            <span>Synced - Offline Ready</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header class="top-header">
+          <div class="header-left">
+            <div class="offline-badge">
+              <span>📡</span>
+              <span>Offline Mode</span>
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="icon-btn" title="Search">🔍</button>
+            <button class="icon-btn" title="Settings">⚙️</button>
+            <button class="icon-btn" title="Notifications">🔔</button>
+            <div style="width: 40px; height: 40px; background: var(--color-primary-100); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: var(--color-primary-600); font-weight: var(--font-weight-semibold);">JD</div>
+          </div>
+        </header>
+
+        <div class="dashboard-content">
+          <div class="welcome-section">
+            <div class="welcome-left">
+              <h1>Welcome back, Dr. Doe! 👋</h1>
+              <p>You have 3 downloaded packs ready for offline study.</p>
+            </div>
+            <div class="quick-actions">
+              <button class="exam-mode-btn" onclick="location.href='exam-mode.html'">
+                <span>▶</span> Start Mock Exam
+              </button>
+              <button class="quick-btn">
+                <span>📥</span> Download More
+              </button>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon blue">📚</div>
+              </div>
+              <div class="stat-value">1,247</div>
+              <div class="stat-label">MCQs Completed</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon green">🎯</div>
+              </div>
+              <div class="stat-value">86</div>
+              <div class="stat-label">OSCE Scenarios</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon purple">🏥</div>
+              </div>
+              <div class="stat-value">24</div>
+              <div class="stat-label">EMR Patients</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon orange">⏱️</div>
+              </div>
+              <div class="stat-value">47h</div>
+              <div class="stat-label">Study Time</div>
+            </div>
+          </div>
+
+          <div class="content-grid">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Offline Content Packs</h3>
+                <a href="#" style="color: var(--color-primary-600); text-decoration: none;">Manage All</a>
+              </div>
+              <div class="card-body">
+                <div class="modules-grid">
+                  <div class="module-card" onclick="location.href='exam-mode.html'">
+                    <div class="module-header">
+                      <div class="module-icon" style="background: var(--color-primary-100);">📚</div>
+                      <span class="module-status synced">✓ Synced</span>
+                    </div>
+                    <h3>MCQ Complete Pack</h3>
+                    <p>18,000+ questions • 2.4 GB</p>
+                    <div class="module-meta">
+                      <span>Last sync: 2 hours ago</span>
+                      <span>✓ Ready</span>
+                    </div>
+                  </div>
+                  <div class="module-card" onclick="location.href='exam-mode.html'">
+                    <div class="module-header">
+                      <div class="module-icon" style="background: var(--color-success-100);">🎯</div>
+                      <span class="module-status synced">✓ Synced</span>
+                    </div>
+                    <h3>OSCE Scenario Pack</h3>
+                    <p>3,000+ scenarios • 1.8 GB</p>
+                    <div class="module-meta">
+                      <span>Last sync: 5 hours ago</span>
+                      <span>✓ Ready</span>
+                    </div>
+                  </div>
+                  <div class="module-card">
+                    <div class="module-header">
+                      <div class="module-icon" style="background: var(--color-purple-100);">🏥</div>
+                      <span class="module-status synced">✓ Synced</span>
+                    </div>
+                    <h3>EMR Patient Pack</h3>
+                    <p>200+ cases • 890 MB</p>
+                    <div class="module-meta">
+                      <span>Last sync: 1 day ago</span>
+                      <span>✓ Ready</span>
+                    </div>
+                  </div>
+                  <div class="module-card">
+                    <div class="module-header">
+                      <div class="module-icon" style="background: var(--color-warning-100);">🤖</div>
+                      <span class="module-status" style="background: var(--color-gray-100); color: var(--color-gray-600);">⏳ Queued</span>
+                    </div>
+                    <h3>AI OSCE Pack</h3>
+                    <p>500 AI scenarios • 3.2 GB</p>
+                    <div class="module-meta">
+                      <span>Waiting for WiFi</span>
+                      <span>⏳ Pending</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Download Queue</h3>
+                <span style="font-size: var(--font-size-sm); color: var(--color-gray-500);">3 items</span>
+              </div>
+              <div class="card-body" style="padding: 0;">
+                <div class="download-item">
+                  <div class="download-icon" style="background: var(--color-primary-100);">📚</div>
+                  <div class="download-info">
+                    <div class="download-name">Cardiology Question Bank</div>
+                    <div class="download-meta">250 MB • 2,500 questions</div>
+                    <div class="download-progress">
+                      <div class="progress-track"><div class="progress-fill" style="width: 75%;"></div></div>
+                    </div>
+                  </div>
+                  <span class="download-status">75%</span>
+                </div>
+                <div class="download-item">
+                  <div class="download-icon" style="background: var(--color-success-100);">🎯</div>
+                  <div class="download-info">
+                    <div class="download-name">Respiratory OSCE Pack</div>
+                    <div class="download-meta">180 MB • 150 scenarios</div>
+                    <div class="download-progress">
+                      <div class="progress-track"><div class="progress-fill" style="width: 32%;"></div></div>
+                    </div>
+                  </div>
+                  <span class="download-status">32%</span>
+                </div>
+                <div class="download-item">
+                  <div class="download-icon" style="background: var(--color-purple-100);">🏥</div>
+                  <div class="download-info">
+                    <div class="download-name">Emergency Cases</div>
+                    <div class="download-meta">120 MB • 50 patients</div>
+                    <div class="download-progress">
+                      <div class="progress-track"><div class="progress-fill" style="width: 0%;"></div></div>
+                    </div>
+                  </div>
+                  <span class="download-status" style="color: var(--color-gray-500);">Queued</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Keyboard Shortcuts Modal -->
+  <div class="shortcuts-overlay" id="shortcutsOverlay">
+    <div class="shortcuts-modal">
+      <h3 class="shortcuts-title">⌨️ Keyboard Shortcuts</h3>
+      <div class="shortcuts-grid">
+        <div class="shortcut-item"><span>Open MCQ Practice</span><span class="shortcut-key">Ctrl+M</span></div>
+        <div class="shortcut-item"><span>Open OSCE</span><span class="shortcut-key">Ctrl+O</span></div>
+        <div class="shortcut-item"><span>Open EMR</span><span class="shortcut-key">Ctrl+E</span></div>
+        <div class="shortcut-item"><span>Start Exam Mode</span><span class="shortcut-key">Ctrl+Shift+E</span></div>
+        <div class="shortcut-item"><span>Search</span><span class="shortcut-key">Ctrl+F</span></div>
+        <div class="shortcut-item"><span>Settings</span><span class="shortcut-key">Ctrl+,</span></div>
+        <div class="shortcut-item"><span>Sync Now</span><span class="shortcut-key">Ctrl+R</span></div>
+        <div class="shortcut-item"><span>Help</span><span class="shortcut-key">F1</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleShortcuts() {
+      document.getElementById('shortcutsOverlay').classList.toggle('show');
+    }
+    
+    document.getElementById('shortcutsOverlay').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) toggleShortcuts();
+    });
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') document.getElementById('shortcutsOverlay').classList.remove('show');
+      if (e.key === '?' && !e.ctrlKey && !e.metaKey) toggleShortcuts();
+    });
+  </script>
+</body>
+</html>

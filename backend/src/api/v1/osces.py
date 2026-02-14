@@ -22,18 +22,72 @@ from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
-from db.base import get_db
-from db.models import User, OSCE, MedicalSpecialty, OSCEType
-from schemas.osce import OSCECreate, OSCEUpdate, OSCEPublic, OSCEWithRubric
-from auth.dependencies import get_current_active_user, require_educator
+from src.db.base import get_db
+from src.db.models import User, OSCE, OSCEAttempt, UserProgress, MedicalSpecialty, OSCEType
+from src.schemas.osce import (
+    OSCECreate,
+    OSCEUpdate,
+    OSCEPublic,
+    OSCEWithRubric,
+    OSCEAttemptCreate,
+    OSCEAttemptResponse,
+)
+from src.auth.dependencies import get_current_active_user, require_educator
 
 
 router = APIRouter(prefix="/osces", tags=["osces"])
 
 
 # ============================================================================
+# GET RANDOM OSCE
+# ============================================================================
+
+
+@router.get("/random", response_model=OSCEPublic)
+async def get_random_osce(
+    specialty: Optional[MedicalSpecialty] = None,
+    osce_type: Optional[OSCEType] = None,
+    current_user: User = Depends(get_current_active_user),
+    db: Session = Depends(get_db),
+):
+    """
+    Get random OSCE station with optional filtering.
+
+    Query parameters:
+    - specialty: Filter by medical specialty
+    - osce_type: Filter by station type (history_taking, physical_exam, etc.)
+
+    Returns:
+    - Random OSCE station matching filters
+    - Excludes rubric (for practice mode)
+
+    Raises:
+    - 404: No OSCEs found matching filters
+    """
+    import random
+
+    query = db.query(OSCE).filter(OSCE.is_published == True)
+
+    # Apply filters
+    if specialty:
+        query = query.filter(OSCE.specialty == specialty)
+
+    if osce_type:
+        query = query.filter(OSCE.station_type == osce_type)
+
+    total = query.count()
+    if total == 0:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No OSCEs found matching filters")
+
+    # Get random OSCE
+    offset = random.randint(0, total - 1)
+    return query.offset(offset).first()
+
+
+# ============================================================================
 # LIST OSCEs
 # ============================================================================
+
 
 @router.get("/", response_model=List[OSCEPublic])
 async def list_osces(
@@ -43,7 +97,7 @@ async def list_osces(
     skip: int = 0,
     limit: int = 50,
     current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """
     List OSCEs with optional filtering.
@@ -84,11 +138,12 @@ async def list_osces(
 # GET SINGLE OSCE
 # ============================================================================
 
+
 @router.get("/{osce_id}", response_model=OSCEPublic)
 async def get_osce(
     osce_id: int,
     current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """
     Get single OSCE by ID.
@@ -100,16 +155,10 @@ async def get_osce(
     - OSCE station details without rubric
     - Use /osces/{osce_id}/rubric to get marking criteria
     """
-    osce = db.query(OSCE).filter(
-        OSCE.id == osce_id,
-        OSCE.is_published == True
-    ).first()
+    osce = db.query(OSCE).filter(OSCE.id == osce_id, OSCE.is_published == True).first()
 
     if not osce:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="OSCE not found"
-        )
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="OSCE not found")
 
     return osce
 
@@ -118,11 +167,12 @@ async def get_osce(
 # GET OSCE RUBRIC
 # ============================================================================
 
+
 @router.get("/{osce_id}/rubric", response_model=OSCEWithRubric)
 async def get_osce_rubric(
     osce_id: int,
     current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """
     Get OSCE station with marking rubric.
@@ -142,16 +192,10 @@ async def get_osce_rubric(
       - Professionalism: 0-3 marks
       - Total: 0-15 marks
     """
-    osce = db.query(OSCE).filter(
-        OSCE.id == osce_id,
-        OSCE.is_published == True
-    ).first()
+    osce = db.query(OSCE).filter(OSCE.id == osce_id, OSCE.is_published == True).first()
 
     if not osce:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="OSCE not found"
-        )
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="OSCE not found")
 
     return osce
 
@@ -160,11 +204,12 @@ async def get_osce_rubric(
 # CREATE OSCE (Educator/Admin only)
 # ============================================================================
 
+
 @router.post("/", response_model=OSCEWithRubric, status_code=status.HTTP_201_CREATED)
 async def create_osce(
     osce_data: OSCECreate,
     current_user: User = Depends(require_educator),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """
     Create new OSCE station (educator/admin only).
@@ -205,20 +250,20 @@ async def create_osce(
     if existing_osce:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"OSCE with osce_id '{osce_data.osce_id}' already exists"
+            detail=f"OSCE with osce_id '{osce_data.osce_id}' already exists",
         )
 
     # Validate rubric structure (should have 5 categories totaling 15 marks)
     if isinstance(osce_data.rubric, dict):
         total_marks = sum(
-            category.get('marks', 0)
+            category.get("marks", 0)
             for category in osce_data.rubric.values()
             if isinstance(category, dict)
         )
         if total_marks != 15:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail=f"Rubric must total 15 marks (AMC format), got {total_marks} marks"
+                detail=f"Rubric must total 15 marks (AMC format), got {total_marks} marks",
             )
 
     # Create new OSCE
@@ -236,7 +281,7 @@ async def create_osce(
         red_flags=osce_data.red_flags,
         australian_guidelines=osce_data.australian_guidelines,
         tags=osce_data.tags,
-        is_published=False  # Requires review before publishing
+        is_published=False,  # Requires review before publishing
     )
 
     db.add(new_osce)
@@ -250,12 +295,13 @@ async def create_osce(
 # UPDATE OSCE (Educator/Admin only)
 # ============================================================================
 
+
 @router.put("/{osce_id}", response_model=OSCEWithRubric)
 async def update_osce(
     osce_id: int,
     osce_update: OSCEUpdate,
     current_user: User = Depends(require_educator),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """
     Update existing OSCE (educator/admin only).
@@ -274,25 +320,22 @@ async def update_osce(
     osce = db.query(OSCE).filter(OSCE.id == osce_id).first()
 
     if not osce:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="OSCE not found"
-        )
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="OSCE not found")
 
     # Update fields
     update_data = osce_update.dict(exclude_unset=True)
 
     # Validate rubric if provided
-    if 'rubric' in update_data and update_data['rubric']:
+    if "rubric" in update_data and update_data["rubric"]:
         total_marks = sum(
-            category.get('marks', 0)
-            for category in update_data['rubric'].values()
+            category.get("marks", 0)
+            for category in update_data["rubric"].values()
             if isinstance(category, dict)
         )
         if total_marks != 15:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail=f"Rubric must total 15 marks (AMC format), got {total_marks} marks"
+                detail=f"Rubric must total 15 marks (AMC format), got {total_marks} marks",
             )
 
     for field, value in update_data.items():
@@ -308,11 +351,10 @@ async def update_osce(
 # DELETE OSCE (Admin only)
 # ============================================================================
 
+
 @router.delete("/{osce_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_osce(
-    osce_id: int,
-    current_user: User = Depends(require_educator),
-    db: Session = Depends(get_db)
+    osce_id: int, current_user: User = Depends(require_educator), db: Session = Depends(get_db)
 ):
     """
     Delete OSCE (soft delete for audit trail).
@@ -327,15 +369,142 @@ async def delete_osce(
     osce = db.query(OSCE).filter(OSCE.id == osce_id).first()
 
     if not osce:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="OSCE not found"
-        )
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="OSCE not found")
 
     # Soft delete
     from datetime import datetime
+
     osce.deleted_at = datetime.now(datetime.now().astimezone().tzinfo)
 
     db.commit()
 
     return None
+
+
+# ============================================================================
+# COMPLETE OSCE STATION
+# ============================================================================
+
+
+@router.post("/{osce_id}/complete-station", response_model=OSCEAttemptResponse)
+async def complete_osce_station(
+    osce_id: int,
+    attempt_data: OSCEAttemptCreate,
+    current_user: User = Depends(get_current_active_user),
+    db: Session = Depends(get_db),
+):
+    """
+    Complete OSCE station and record attempt.
+
+    Args:
+    - osce_id: OSCE database ID
+    - attempt_data: Scores for 5 categories (0-3 each), time taken, self-reflection
+
+    Returns:
+    - total_score: Sum of all category scores (max 15)
+    - passed: Boolean (True if score >= 9)
+    - scores: Category breakdown
+    - areas_for_improvement: Categories where score < 2
+    - rubric: Complete rubric for self-review
+    - attempt_number: User's attempt count for this OSCE
+
+    Side effects:
+    - Creates OSCEAttempt record (audit trail)
+    - Updates UserProgress analytics
+    - Updates OSCE statistics
+    """
+    # Verify OSCE exists
+    if attempt_data.osce_id != osce_id:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="OSCE ID mismatch")
+
+    osce = db.query(OSCE).filter(OSCE.id == osce_id, OSCE.is_published == True).first()
+
+    if not osce:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="OSCE not found")
+
+    # Calculate total score
+    total_score = sum(attempt_data.scores.values())
+
+    # Determine if passed (9/15 = 60%)
+    passed = total_score >= 9
+
+    # Identify weak areas (score < 2)
+    weak_areas = [category for category, score in attempt_data.scores.items() if score < 2]
+
+    # Check previous attempts
+    previous_attempts = (
+        db.query(OSCEAttempt)
+        .filter(OSCEAttempt.user_id == current_user.id, OSCEAttempt.osce_id == osce_id)
+        .count()
+    )
+
+    # Create attempt record
+    new_attempt = OSCEAttempt(
+        user_id=current_user.id,
+        osce_id=osce_id,
+        scores=attempt_data.scores,
+        total_score=total_score,
+        passed=passed,
+        time_taken_seconds=attempt_data.time_taken_seconds,
+        self_reflection=attempt_data.self_reflection,
+        areas_for_improvement=weak_areas if weak_areas else None,
+        attempt_number=previous_attempts + 1,
+    )
+
+    db.add(new_attempt)
+
+    # Update OSCE statistics
+    osce.times_practiced += 1
+    if osce.average_score == 0.0:
+        osce.average_score = float(total_score)
+    else:
+        # Running average
+        osce.average_score = (osce.average_score * (osce.times_practiced - 1) + total_score) / osce.times_practiced
+
+    # Update user progress
+    progress = (
+        db.query(UserProgress)
+        .filter(UserProgress.user_id == current_user.id, UserProgress.specialty == osce.specialty)
+        .first()
+    )
+
+    if not progress:
+        # Create new progress record
+        progress = UserProgress(
+            user_id=current_user.id,
+            specialty=osce.specialty,
+            total_osces_practiced=1,
+            average_osce_score=float(total_score),
+            total_study_time_minutes=attempt_data.time_taken_seconds // 60,
+            current_streak_days=0,
+            longest_streak_days=0,
+        )
+        db.add(progress)
+    else:
+        # Update existing progress
+        progress.total_osces_practiced += 1
+        if progress.average_osce_score == 0.0:
+            progress.average_osce_score = float(total_score)
+        else:
+            # Running average
+            progress.average_osce_score = (
+                progress.average_osce_score * (progress.total_osces_practiced - 1) + total_score
+            ) / progress.total_osces_practiced
+        progress.total_study_time_minutes += attempt_data.time_taken_seconds // 60
+        progress.last_activity_date = datetime.now(datetime.now().astimezone().tzinfo)
+
+    db.commit()
+    db.refresh(new_attempt)
+
+    # Return result with rubric for self-review
+    return OSCEAttemptResponse(
+        id=new_attempt.id,
+        total_score=total_score,
+        passed=passed,
+        scores=attempt_data.scores,
+        time_taken_seconds=attempt_data.time_taken_seconds,
+        attempt_number=new_attempt.attempt_number,
+        areas_for_improvement=weak_areas if weak_areas else None,
+        rubric=osce.rubric,
+        examiner_instructions=osce.examiner_instructions,
+    )

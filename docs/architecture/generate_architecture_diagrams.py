@@ -50,7 +50,7 @@ def generate_c4_context_diagram():
         outformat="png",
         show=False,
         direction="TB",
-        graph_attr=graph_attr
+        graph_attr=graph_attr,
     ):
         # External Users
         medical_student = Client("Medical Students\n& IMGs")
@@ -59,7 +59,9 @@ def generate_c4_context_diagram():
 
         # Main System
         with Cluster("Medical Expert System"):
-            system = Server("AI-Powered Medical\nEducation Platform\n\n• 10 Specialist Agents\n• MCQ/OSCE Generation\n• Clinical Decision Support")
+            system = Server(
+                "AI-Powered Medical\nEducation Platform\n\n• 10 Specialist Agents\n• MCQ/OSCE Generation\n• Clinical Decision Support"
+            )
 
         # External Systems
         with Cluster("External Medical Knowledge Sources"):
@@ -108,7 +110,7 @@ def generate_c4_container_diagram():
         outformat="png",
         show=False,
         direction="LR",
-        graph_attr=graph_attr
+        graph_attr=graph_attr,
     ):
         user = Client("Users\n(Web Browser)")
 
@@ -124,7 +126,9 @@ def generate_c4_container_diagram():
 
         with Cluster("AI/ML Integration Layer"):
             local_models = Server("Local Models\n(Ollama)\n\n• Meditron 7B\n• Llama 3.1 8B")
-            api_clients = Server("API Clients\n(Python)\n\n• OpenAI Client\n• Anthropic Client\n• Google Client")
+            api_clients = Server(
+                "API Clients\n(Python)\n\n• OpenAI Client\n• Anthropic Client\n• Google Client"
+            )
             usage_tracker = Redis("Usage Tracker\n(Redis)\n\nCost monitoring\nBudget alerts")
 
         with Cluster("Knowledge & Data Layer"):
@@ -177,7 +181,7 @@ def generate_component_diagram():
         outformat="png",
         show=False,
         direction="TB",
-        graph_attr=graph_attr
+        graph_attr=graph_attr,
     ):
         with Cluster("BaseMedicalExpert (Abstract Base Class)"):
             with Cluster("Core Components"):
@@ -197,7 +201,9 @@ def generate_component_diagram():
             with Cluster("Knowledge Integration"):
                 rag_client = Python("RAG Client\n\nQuery vector DB")
                 citation_tracker = Python("Citation Tracker\n\nPage/section numbers")
-                australian_validator = Python("Australian Standards\nValidator\n\nTerminology, units,\nemergency numbers")
+                australian_validator = Python(
+                    "Australian Standards\nValidator\n\nTerminology, units,\nemergency numbers"
+                )
 
         # Component relationships
         task_executor >> Edge(label="registers") >> tool_registry
@@ -236,7 +242,7 @@ def generate_deployment_diagram():
         outformat="png",
         show=False,
         direction="TB",
-        graph_attr=graph_attr
+        graph_attr=graph_attr,
     ):
         with Cluster("User Devices"):
             laptop = Client("Laptop/Desktop\n(Web Browser)")
@@ -252,7 +258,7 @@ def generate_deployment_diagram():
                         Python("MED-001"),
                         Python("MED-002"),
                         Python("..."),
-                        Python("MED-010")
+                        Python("MED-010"),
                     ]
 
             with Cluster("Local ML Models\n(Ollama)"):
@@ -262,7 +268,9 @@ def generate_deployment_diagram():
             with Cluster("Data Storage"):
                 qdrant = PostgreSQL("Qdrant Vector DB\nPort: 6333\n\n375 MB\n9,672 chunks")
                 sqlite = SQL("SQLite\n(Resource Metadata)")
-                file_storage = Storage("File System\n\n/mnt/data/medical_resources\n(External Drive)")
+                file_storage = Storage(
+                    "File System\n\n/mnt/data/medical_resources\n(External Drive)"
+                )
 
         with Cluster("Cloud AI Services"):
             openai_api = Sagemaker("OpenAI API\n\nGPT-4o Vision\n$0.005/image")
@@ -314,18 +322,26 @@ def generate_data_flow_diagram():
         outformat="png",
         show=False,
         direction="LR",
-        graph_attr=graph_attr
+        graph_attr=graph_attr,
     ):
         user_request = Client("User Request\n\n'Generate MCQ on\nacute coronary\nsyndrome'")
 
         with Cluster("Processing Pipeline"):
-            step1 = Python("1. Task Creation\n\nAgentTask(\n  topic='ACS',\n  difficulty='medium'\n)")
+            step1 = Python(
+                "1. Task Creation\n\nAgentTask(\n  topic='ACS',\n  difficulty='medium'\n)"
+            )
             step2 = Python("2. RAG Query\n\nSearch eTG for\n'acute coronary\nsyndrome'")
-            step3 = PostgreSQL("3. Vector Search\n\nQdrant finds\nrelevant chunks\n(confidence > 0.65)")
+            step3 = PostgreSQL(
+                "3. Vector Search\n\nQdrant finds\nrelevant chunks\n(confidence > 0.65)"
+            )
             step4 = Python("4. Content Generation\n\nLLM generates MCQ\nwith retrieved context")
             step5 = Python("5. Citation Extraction\n\nExtract page/section\nfrom RAG results")
-            step6 = Python("6. Australian Validation\n\nCheck:\n• paracetamol ✓\n• mmol/L ✓\n• 000 ✓")
-            step7 = Python("7. Output Formatting\n\nJSON with:\n• question\n• options\n• answer\n• explanation\n• citations")
+            step6 = Python(
+                "6. Australian Validation\n\nCheck:\n• paracetamol ✓\n• mmol/L ✓\n• 000 ✓"
+            )
+            step7 = Python(
+                "7. Output Formatting\n\nJSON with:\n• question\n• options\n• answer\n• explanation\n• citations"
+            )
 
         response = Document("MCQ Response\n\nValidated MCQ\nwith eTG citations\n(Section 5.2.1)")
 
@@ -362,10 +378,10 @@ def generate_all_diagrams():
     generate_data_flow_diagram()
     print("✓ Data Flow Diagram generated")
 
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("All architecture diagrams generated successfully!")
     print(f"Output location: {Path(__file__).parent / 'images'}")
-    print("="*60)
+    print("=" * 60)
 
 
 if __name__ == "__main__":

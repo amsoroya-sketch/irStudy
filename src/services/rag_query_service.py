@@ -21,6 +21,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class RAGVerificationResult:
     """Result of a RAG verification query"""
+
     verified: bool
     confidence: float
     should_correct: bool
@@ -36,6 +37,7 @@ class RAGVerificationResult:
 @dataclass
 class RAGMatch:
     """Individual RAG search match"""
+
     score: float
     text: str
     source: str
@@ -58,15 +60,15 @@ class RAGQueryService:
 
     # Australian sources get 2x score boost
     AUSTRALIAN_SOURCES = {
-        'murtagh': 2.0,
-        'amc': 2.0,
-        'talley': 2.0,
-        'etg': 2.0,
-        'therapeutic': 2.0,
-        'kemh': 2.0,
-        'australian': 2.0,
-        'nsw': 2.0,
-        'ahpra': 2.0,
+        "murtagh": 2.0,
+        "amc": 2.0,
+        "talley": 2.0,
+        "etg": 2.0,
+        "therapeutic": 2.0,
+        "kemh": 2.0,
+        "australian": 2.0,
+        "nsw": 2.0,
+        "ahpra": 2.0,
     }
 
     # Confidence threshold for auto-correction
@@ -79,7 +81,7 @@ class RAGQueryService:
         self,
         qdrant_url: str = "http://localhost:6333",
         collection_name: str = "medical_knowledge",
-        model_name: str = "pritamdeka/S-PubMedBert-MS-MARCO"
+        model_name: str = "pritamdeka/S-PubMedBert-MS-MARCO",
     ):
         """Initialize RAG Query Service"""
         self.client = QdrantClient(url=qdrant_url)
@@ -100,25 +102,25 @@ class RAGQueryService:
         boosted_matches = []
 
         for result in results:
-            is_aus = self.is_australian_source(result.payload.get('source', ''))
+            is_aus = self.is_australian_source(result.payload.get("source", ""))
             original_score = result.score
 
             # Apply boost if Australian
             if is_aus:
                 for aus_keyword in self.AUSTRALIAN_SOURCES:
-                    if aus_keyword in result.payload.get('source', '').lower():
+                    if aus_keyword in result.payload.get("source", "").lower():
                         multiplier = self.AUSTRALIAN_SOURCES[aus_keyword]
                         result.score *= multiplier
                         break
 
             match = RAGMatch(
                 score=result.score,
-                text=result.payload.get('text', ''),
-                source=result.payload.get('source', ''),
-                page=result.payload.get('page', 0),
+                text=result.payload.get("text", ""),
+                source=result.payload.get("source", ""),
+                page=result.payload.get("page", 0),
                 is_australian=is_aus,
-                source_category=result.payload.get('source_category', 'other'),
-                exam_type=result.payload.get('exam_type', 'unknown')
+                source_category=result.payload.get("source_category", "other"),
+                exam_type=result.payload.get("exam_type", "unknown"),
             )
             boosted_matches.append(match)
 
@@ -132,7 +134,7 @@ class RAGQueryService:
         query: str,
         limit: int = 5,
         filters: Optional[Dict[str, Any]] = None,
-        boost_australian: bool = True
+        boost_australian: bool = True,
     ) -> List[RAGMatch]:
         """
         Search RAG system with Australian source boosting.
@@ -163,7 +165,7 @@ class RAGQueryService:
             collection_name=self.collection_name,
             query_vector=query_vector,
             limit=limit * 2 if boost_australian else limit,  # Get more for boosting
-            query_filter=qdrant_filter
+            query_filter=qdrant_filter,
         )
 
         # Boost Australian sources and re-rank
@@ -174,20 +176,18 @@ class RAGQueryService:
             return [
                 RAGMatch(
                     score=r.score,
-                    text=r.payload.get('text', ''),
-                    source=r.payload.get('source', ''),
-                    page=r.payload.get('page', 0),
-                    is_australian=self.is_australian_source(r.payload.get('source', '')),
-                    source_category=r.payload.get('source_category', 'other'),
-                    exam_type=r.payload.get('exam_type', 'unknown')
+                    text=r.payload.get("text", ""),
+                    source=r.payload.get("source", ""),
+                    page=r.payload.get("page", 0),
+                    is_australian=self.is_australian_source(r.payload.get("source", "")),
+                    source_category=r.payload.get("source_category", "other"),
+                    exam_type=r.payload.get("exam_type", "unknown"),
                 )
                 for r in results[:limit]
             ]
 
     def verify_claim_with_correction(
-        self,
-        claim: str,
-        context: Optional[Dict[str, str]] = None
+        self, claim: str, context: Optional[Dict[str, str]] = None
     ) -> RAGVerificationResult:
         """
         Verify a medical claim against RAG knowledge base.
@@ -202,18 +202,18 @@ class RAGQueryService:
         # Search RAG
         filters = {}
         if context:
-            if 'specialty' in context:
+            if "specialty" in context:
                 # Map specialty to source_category
                 specialty_map = {
-                    'medicine': 'core_medicine',
-                    'surgery': 'surgery',
-                    'psychiatry': 'psychiatry',
-                    'obgyn': 'obgyn',
-                    'paediatrics': 'pediatrics',
-                    'gp': 'gp_primary_care'
+                    "medicine": "core_medicine",
+                    "surgery": "surgery",
+                    "psychiatry": "psychiatry",
+                    "obgyn": "obgyn",
+                    "paediatrics": "pediatrics",
+                    "gp": "gp_primary_care",
                 }
-                if context['specialty'].lower() in specialty_map:
-                    filters['source_category'] = specialty_map[context['specialty'].lower()]
+                if context["specialty"].lower() in specialty_map:
+                    filters["source_category"] = specialty_map[context["specialty"].lower()]
 
         matches = self.search(claim, limit=5, filters=filters if filters else None)
 
@@ -223,7 +223,7 @@ class RAGQueryService:
                 confidence=0.0,
                 should_correct=False,
                 original=claim,
-                reasoning="No matching evidence found in RAG knowledge base"
+                reasoning="No matching evidence found in RAG knowledge base",
             )
 
         # Get top match
@@ -260,24 +260,24 @@ class RAGQueryService:
             should_correct=should_correct,
             original=claim,
             corrected=corrected,
-            sources=[{
-                'source': m.source,
-                'page': m.page,
-                'score': m.score,
-                'is_australian': m.is_australian,
-                'text_preview': m.text[:200] + '...' if len(m.text) > 200 else m.text
-            } for m in matches],
+            sources=[
+                {
+                    "source": m.source,
+                    "page": m.page,
+                    "score": m.score,
+                    "is_australian": m.is_australian,
+                    "text_preview": m.text[:200] + "..." if len(m.text) > 200 else m.text,
+                }
+                for m in matches
+            ],
             citation=citation,
             evidence=evidence,
             australian_sources_used=aus_sources,
-            reasoning=reasoning
+            reasoning=reasoning,
         )
 
     def find_correct_dosage(
-        self,
-        drug_name: str,
-        indication: str,
-        age_group: str = 'adult'
+        self, drug_name: str, indication: str, age_group: str = "adult"
     ) -> RAGVerificationResult:
         """
         Find correct Australian drug dosage.
@@ -287,13 +287,13 @@ class RAGQueryService:
         query = f"{drug_name} dosage {indication} {age_group} Australian"
 
         # Prioritize Australian guidelines
-        filters = {'source_category': 'australian_guidelines'}
+        filters = {"source_category": "australian_guidelines"}
 
         matches = self.search(query, limit=5, filters=filters)
 
         # Fallback to GP sources if no guidelines found
         if not matches or matches[0].score < 0.7:
-            filters = {'source_category': 'gp_primary_care'}
+            filters = {"source_category": "gp_primary_care"}
             matches = self.search(query, limit=5, filters=filters)
 
         if not matches:
@@ -302,7 +302,7 @@ class RAGQueryService:
                 confidence=0.0,
                 should_correct=False,
                 original=f"{drug_name} for {indication}",
-                reasoning=f"No Australian dosing guidance found for {drug_name}"
+                reasoning=f"No Australian dosing guidance found for {drug_name}",
             )
 
         top_match = matches[0]
@@ -313,24 +313,21 @@ class RAGQueryService:
             confidence=top_match.score,
             should_correct=top_match.score >= self.AUTO_CORRECT_THRESHOLD,
             original=f"{drug_name} for {indication}",
-            corrected=self._extract_dosage(top_match.text, drug_name) if top_match.score >= 0.85 else None,
-            sources=[{
-                'source': m.source,
-                'page': m.page,
-                'score': m.score,
-                'text_preview': m.text[:300]
-            } for m in matches[:3]],
+            corrected=self._extract_dosage(top_match.text, drug_name)
+            if top_match.score >= 0.85
+            else None,
+            sources=[
+                {"source": m.source, "page": m.page, "score": m.score, "text_preview": m.text[:300]}
+                for m in matches[:3]
+            ],
             citation=citation,
             evidence=[m.text for m in matches[:3]],
             australian_sources_used=sum(1 for m in matches if m.is_australian),
-            reasoning=f"Dosing from {top_match.source} p.{top_match.page}"
+            reasoning=f"Dosing from {top_match.source} p.{top_match.page}",
         )
 
     def verify_differential(
-        self,
-        presentation: str,
-        differential: str,
-        rank: int = 1
+        self, presentation: str, differential: str, rank: int = 1
     ) -> RAGVerificationResult:
         """
         Verify if a differential diagnosis is appropriate.
@@ -351,7 +348,7 @@ class RAGQueryService:
                 confidence=0.0,
                 should_correct=False,
                 original=f"{differential} for {presentation}",
-                reasoning="No evidence found in textbooks"
+                reasoning="No evidence found in textbooks",
             )
 
         top_match = matches[0]
@@ -362,22 +359,14 @@ class RAGQueryService:
             confidence=top_match.score,
             should_correct=False,  # Differential ranking requires expert judgment
             original=f"{differential} for {presentation} (rank {rank})",
-            sources=[{
-                'source': m.source,
-                'page': m.page,
-                'score': m.score
-            } for m in matches[:3]],
+            sources=[{"source": m.source, "page": m.page, "score": m.score} for m in matches[:3]],
             citation=citation,
             evidence=[m.text for m in matches[:3]],
             australian_sources_used=sum(1 for m in matches if m.is_australian),
-            reasoning=f"Differential supported by {top_match.source}"
+            reasoning=f"Differential supported by {top_match.source}",
         )
 
-    def verify_examination_technique(
-        self,
-        system: str,
-        technique: str
-    ) -> RAGVerificationResult:
+    def verify_examination_technique(self, system: str, technique: str) -> RAGVerificationResult:
         """
         Cross-check examination technique against Talley & O'Connor.
 
@@ -388,11 +377,11 @@ class RAGQueryService:
         query = f"{system} physical examination {technique} systematic"
 
         # Prioritize Talley & O'Connor
-        matches_talley = self.search(query, limit=5, filters={'source': 'Talley'})
+        matches_talley = self.search(query, limit=5, filters={"source": "Talley"})
 
         # Fallback to all clinical skills sources
         if not matches_talley or matches_talley[0].score < 0.7:
-            matches = self.search(query, limit=5, filters={'source_category': 'clinical_skills'})
+            matches = self.search(query, limit=5, filters={"source_category": "clinical_skills"})
         else:
             matches = matches_talley
 
@@ -402,7 +391,7 @@ class RAGQueryService:
                 confidence=0.0,
                 should_correct=False,
                 original=f"{technique} for {system} examination",
-                reasoning="No examination technique guidance found"
+                reasoning="No examination technique guidance found",
             )
 
         top_match = matches[0]
@@ -414,16 +403,14 @@ class RAGQueryService:
             should_correct=top_match.score >= 0.88,  # Higher threshold for exam techniques
             original=f"{technique} for {system} examination",
             corrected=top_match.text if top_match.score >= 0.88 else None,
-            sources=[{
-                'source': m.source,
-                'page': m.page,
-                'score': m.score,
-                'text_preview': m.text[:250]
-            } for m in matches[:3]],
+            sources=[
+                {"source": m.source, "page": m.page, "score": m.score, "text_preview": m.text[:250]}
+                for m in matches[:3]
+            ],
             citation=citation,
             evidence=[m.text for m in matches[:3]],
             australian_sources_used=sum(1 for m in matches if m.is_australian),
-            reasoning=f"Technique per {top_match.source} p.{top_match.page}"
+            reasoning=f"Technique per {top_match.source} p.{top_match.page}",
         )
 
     def _generate_citation(self, matches: List[RAGMatch]) -> str:
@@ -433,7 +420,7 @@ class RAGQueryService:
 
         citations = []
         for match in matches[:2]:  # Top 2 sources
-            source = match.source.replace('.pdf', '').replace('_', ' ')
+            source = match.source.replace(".pdf", "").replace("_", " ")
             page = f"p.{match.page}" if match.page > 0 else ""
             citations.append(f"{source} {page}".strip())
 
@@ -449,9 +436,9 @@ class RAGQueryService:
         citation = f"{match.source.replace('.pdf', '')} p.{match.page}"
 
         # Check if original already has citation
-        if '(' in original and ')' in original:
+        if "(" in original and ")" in original:
             # Replace existing citation
-            corrected = re.sub(r'\([^)]*\)', f'({citation})', original)
+            corrected = re.sub(r"\([^)]*\)", f"({citation})", original)
         else:
             # Add citation
             corrected = f"{original} ({citation})"
@@ -468,7 +455,7 @@ class RAGQueryService:
         - "1g twice daily"
         """
         # Simple regex for dosage extraction
-        dosage_pattern = r'\d+[-–]?\d*\s?(?:mg|g|mcg|mL|units?)\s+(?:once\s+)?(?:daily|BD|TDS|QID|twice|three|four times)'
+        dosage_pattern = r"\d+[-–]?\d*\s?(?:mg|g|mcg|mL|units?)\s+(?:once\s+)?(?:daily|BD|TDS|QID|twice|three|four times)"
 
         matches = re.findall(dosage_pattern, text, re.IGNORECASE)
 
@@ -482,18 +469,18 @@ class RAGQueryService:
         try:
             collection_info = self.client.get_collection(collection_name=self.collection_name)
             return {
-                'collection': self.collection_name,
-                'total_chunks': collection_info.points_count,
-                'vector_size': collection_info.config.params.vectors.size,
-                'distance_metric': collection_info.config.params.vectors.distance.name,
-                'australian_boost_active': True,
-                'boost_multiplier': '2.0x',
-                'auto_correct_threshold': self.AUTO_CORRECT_THRESHOLD,
-                'verification_threshold': self.VERIFICATION_THRESHOLD
+                "collection": self.collection_name,
+                "total_chunks": collection_info.points_count,
+                "vector_size": collection_info.config.params.vectors.size,
+                "distance_metric": collection_info.config.params.vectors.distance.name,
+                "australian_boost_active": True,
+                "boost_multiplier": "2.0x",
+                "auto_correct_threshold": self.AUTO_CORRECT_THRESHOLD,
+                "verification_threshold": self.VERIFICATION_THRESHOLD,
             }
         except Exception as e:
             logger.error(f"Error getting statistics: {e}")
-            return {'error': str(e)}
+            return {"error": str(e)}
 
 
 # Example usage

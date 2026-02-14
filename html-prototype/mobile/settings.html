@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Settings - Mobile</title>
+  <link rel="stylesheet" href="../css/design-system.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body { font-family: var(--font-family-sans); background: var(--color-gray-50); min-height: 100vh; padding-bottom: 80px; }
+    
+    @supports (padding-bottom: env(safe-area-inset-bottom)) {
+      body { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+    }
+    
+    /* Header */
+    .mobile-header { background: white; padding: var(--space-4); border-bottom: 1px solid var(--color-gray-200); display: flex; align-items: center; gap: var(--space-3); }
+    .back-btn { width: 40px; height: 40px; border-radius: var(--radius-full); border: none; background: var(--color-gray-100); display: flex; align-items: center; justify-content: center; font-size: var(--font-size-lg); }
+    .header-title { font-weight: var(--font-weight-semibold); font-size: var(--font-size-lg); }
+    
+    /* Content */
+    .settings-content { padding: var(--space-4); }
+    
+    /* Profile Card */
+    .profile-card { background: white; border-radius: var(--radius-xl); padding: var(--space-6); margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-4); }
+    .profile-avatar { width: 72px; height: 72px; border-radius: var(--radius-full); background: linear-gradient(135deg, var(--color-primary-600), var(--color-purple-600)); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--font-size-2xl); font-weight: bold; }
+    .profile-info { flex: 1; }
+    .profile-name { font-weight: var(--font-weight-semibold); font-size: var(--font-size-lg); margin-bottom: var(--space-1); }
+    .profile-email { font-size: var(--font-size-sm); color: var(--color-gray-500); margin-bottom: var(--space-2); }
+    .profile-badge { display: inline-flex; align-items: center; gap: var(--space-1); padding: var(--space-1) var(--space-3); background: var(--color-primary-100); color: var(--color-primary-700); border-radius: var(--radius-full); font-size: var(--font-size-xs); font-weight: var(--font-weight-medium); }
+    
+    /* Settings Sections */
+    .settings-section { background: white; border-radius: var(--radius-xl); margin-bottom: var(--space-4); overflow: hidden; }
+    .section-header { padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--color-gray-100); }
+    .section-title { font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); color: var(--color-gray-500); text-transform: uppercase; letter-spacing: 0.5px; }
+    .settings-item { display: flex; align-items: center; padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--color-gray-100); }
+    .settings-item:last-child { border-bottom: none; }
+    .settings-icon { width: 32px; height: 32px; border-radius: var(--radius-lg); background: var(--color-gray-100); display: flex; align-items: center; justify-content: center; margin-right: var(--space-3); font-size: var(--font-size-lg); }
+    .settings-label { flex: 1; font-size: var(--font-size-base); }
+    .settings-value { font-size: var(--font-size-sm); color: var(--color-gray-500); margin-right: var(--space-2); }
+    .settings-arrow { color: var(--color-gray-400); font-size: var(--font-size-lg); }
+    
+    /* Toggle Switch */
+    .toggle { width: 52px; height: 28px; background: var(--color-gray-300); border-radius: var(--radius-full); position: relative; cursor: pointer; transition: var(--transition-fast); }
+    .toggle.active { background: var(--color-primary-600); }
+    .toggle-knob { width: 24px; height: 24px; background: white; border-radius: var(--radius-full); position: absolute; top: 2px; left: 2px; transition: var(--transition-fast); box-shadow: var(--shadow-sm); }
+    .toggle.active .toggle-knob { left: 26px; }
+    
+    /* Storage Bar */
+    .storage-item { padding: var(--space-5); }
+    .storage-header { display: flex; justify-content: space-between; margin-bottom: var(--space-3); }
+    .storage-label { font-size: var(--font-size-sm); color: var(--color-gray-600); }
+    .storage-value { font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); }
+    .storage-bar { height: 8px; background: var(--color-gray-200); border-radius: var(--radius-full); overflow: hidden; }
+    .storage-fill { height: 100%; background: var(--color-primary-600); border-radius: var(--radius-full); width: 65%; }
+    
+    /* Danger Zone */
+    .danger-item { color: var(--color-error-600); }
+    .danger-icon { background: var(--color-error-100) !important; }
+    
+    /* Bottom Nav */
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid var(--color-gray-200); display: flex; justify-content: space-around; padding: var(--space-2) 0 calc(var(--space-2) + env(safe-area-inset-bottom)); z-index: 1000; }
+    .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: var(--space-2) var(--space-4); text-decoration: none; color: var(--color-gray-500); font-size: var(--font-size-xs); }
+    .nav-item.active { color: var(--color-primary-600); }
+    .nav-item-icon { font-size: var(--font-size-xl); }
+    
+    .settings-item, .nav-item, .back-btn { min-height: 44px; }
+  </style>
+</head>
+<body>
+  <header class="mobile-header">
+    <button class="back-btn" onclick="location.href='index.html'">←</button>
+    <span class="header-title">Settings</span>
+  </header>
+
+  <div class="settings-content">
+    <!-- Profile -->
+    <div class="profile-card">
+      <div class="profile-avatar">JD</div>
+      <div class="profile-info">
+        <div class="profile-name">Dr. John Doe</div>
+        <div class="profile-email">john.doe@email.com</div>
+        <span class="profile-badge">⭐ Pro Plan</span>
+      </div>
+      <span style="color: var(--color-gray-400);">›</span>
+    </div>
+
+    <!-- Account -->
+    <div class="settings-section">
+      <div class="section-header">
+        <span class="section-title">Account</span>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon" style="background: var(--color-primary-100);">👤</div>
+        <span class="settings-label">Edit Profile</span>
+        <span class="settings-arrow">›</span>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon" style="background: var(--color-success-100);">💳</div>
+        <span class="settings-label">Subscription</span>
+        <span class="settings-value">Pro</span>
+        <span class="settings-arrow">›</span>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon" style="background: var(--color-warning-100);">🔔</div>
+        <span class="settings-label">Notifications</span>
+        <span class="settings-arrow">›</span>
+      </div>
+    </div>
+
+    <!-- Preferences -->
+    <div class="settings-section">
+      <div class="section-header">
+        <span class="section-title">Study Preferences</span>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon" style="background: var(--color-purple-100);">🎯</div>
+        <span class="settings-label">Daily Goal</span>
+        <span class="settings-value">25 questions</span>
+        <span class="settings-arrow">›</span>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon" style="background: var(--color-primary-100);">⏱️</div>
+        <span class="settings-label">Exam Date</span>
+        <span class="settings-value">Mar 15, 2026</span>
+        <span class="settings-arrow">›</span>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon" style="background: var(--color-success-100);">🔊</div>
+        <span class="settings-label">Sound Effects</span>
+        <div class="toggle active" onclick="this.classList.toggle('active')"><div class="toggle-knob"></div></div>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon" style="background: var(--color-warning-100);">🌙</div>
+        <span class="settings-label">Dark Mode</span>
+        <div class="toggle" onclick="this.classList.toggle('active')"><div class="toggle-knob"></div></div>
+      </div>
+    </div>
+
+    <!-- Storage -->
+    <div class="settings-section">
+      <div class="section-header">
+        <span class="section-title">Storage</span>
+      </div>
+      <div class="storage-item">
+        <div class="storage-header">
+          <span class="storage-label">Offline Content</span>
+          <span class="storage-value">1.6 GB / 2.5 GB</span>
+        </div>
+        <div class="storage-bar"><div class="storage-fill"></div></div>
+        <p style="font-size: var(--font-size-xs); color: var(--color-gray-500); margin-top: var(--space-2);">MCQ Pack, Cardiology, OSCE Basics</p>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon">💾</div>
+        <span class="settings-label">Manage Downloads</span>
+        <span class="settings-arrow">›</span>
+      </div>
+    </div>
+
+    <!-- Support -->
+    <div class="settings-section">
+      <div class="section-header">
+        <span class="section-title">Support</span>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon" style="background: var(--color-primary-100);">❓</div>
+        <span class="settings-label">Help Center</span>
+        <span class="settings-arrow">›</span>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon" style="background: var(--color-success-100);">💬</div>
+        <span class="settings-label">Contact Support</span>
+        <span class="settings-arrow">›</span>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon" style="background: var(--color-purple-100);">⭐</div>
+        <span class="settings-label">Rate App</span>
+        <span class="settings-arrow">›</span>
+      </div>
+    </div>
+
+    <!-- About -->
+    <div class="settings-section">
+      <div class="section-header">
+        <span class="section-title">About</span>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon">📋</div>
+        <span class="settings-label">Terms of Service</span>
+        <span class="settings-arrow">›</span>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon">🔒</div>
+        <span class="settings-label">Privacy Policy</span>
+        <span class="settings-arrow">›</span>
+      </div>
+      <div class="settings-item">
+        <div class="settings-icon">ℹ️</div>
+        <span class="settings-label">Version</span>
+        <span class="settings-value">2.4.1</span>
+      </div>
+    </div>
+
+    <!-- Logout -->
+    <div class="settings-section">
+      <div class="settings-item danger-item">
+        <div class="settings-icon danger-icon">🚪</div>
+        <span class="settings-label">Log Out</span>
+      </div>
+    </div>
+
+    <p style="text-align: center; color: var(--color-gray-400); font-size: var(--font-size-xs); padding: var(--space-6);">
+      © 2026 irStudy. All rights reserved.
+    </p>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-item">
+      <span class="nav-item-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="mcq.html" class="nav-item">
+      <span class="nav-item-icon">📚</span>
+      <span>MCQs</span>
+    </a>
+    <a href="osce.html" class="nav-item">
+      <span class="nav-item-icon">🎯</span>
+      <span>OSCE</span>
+    </a>
+    <a href="emr.html" class="nav-item">
+      <span class="nav-item-icon">🏥</span>
+      <span>EMR</span>
+    </a>
+    <a href="settings.html" class="nav-item active">
+      <span class="nav-item-icon">👤</span>
+      <span>Profile</span>
+    </a>
+  </nav>
+</body>
+</html>

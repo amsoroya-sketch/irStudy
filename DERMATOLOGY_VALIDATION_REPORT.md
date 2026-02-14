@@ -9,7 +9,7 @@
 ## Files Validated
 
 1. ✅ ICRP_OSCE_Preparation/Medicine/13_Dermatology_History_Examination.md (2,229 lines)
-2. ✅ ICRP_OSCE_Preparation/Medicine/13_Dermatology_History_Examination.html  
+2. ✅ ICRP_OSCE_Preparation/Medicine/13_Dermatology_History_Examination.html
 3. ✅ ICRP_OSCE_Preparation/Mock_Stations/14_Dermatology_Cases_Collection.md (829 lines)
 4. ✅ ICRP_OSCE_Preparation/Mock_Stations/14_Dermatology_Cases_Collection.html
 
