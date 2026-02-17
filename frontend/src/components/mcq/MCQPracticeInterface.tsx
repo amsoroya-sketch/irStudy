@@ -106,6 +106,7 @@ export const MCQPracticeInterface: React.FC<MCQPracticeInterfaceProps> = ({
   const [timeRemaining, setTimeRemaining] = useState(totalTime);
   const [startTime] = useState(() => Date.now()); // Use function initializer for Date.now()
   const [swipeHint, setSwipeHint] = useState<string | null>(null);
+  const [focusedOptionIndex, setFocusedOptionIndex] = useState<number>(0);
 
   // Reset state when MCQ changes (different ID)
   if (mcqKey !== currentMcqId && mcqKey !== 0) {
@@ -113,6 +114,7 @@ export const MCQPracticeInterface: React.FC<MCQPracticeInterfaceProps> = ({
     setSelectedAnswer(null);
     setIsSubmitted(false);
     setTimeRemaining(totalTime);
+    setFocusedOptionIndex(0);
   }
 
   // Handle answer selection
@@ -153,6 +155,49 @@ export const MCQPracticeInterface: React.FC<MCQPracticeInterfaceProps> = ({
   // Handle time update
   const handleTimeUpdate = (time: number) => {
     setTimeRemaining(time);
+  };
+
+  // Handle keyboard navigation and shortcuts
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    // Don't handle keyboard events if submitted
+    const answerOptions: AnswerOption[] = ['A', 'B', 'C', 'D', 'E'];
+
+    // Number keys 1-5 to select answers A-E
+    if (event.key >= '1' && event.key <= '5' && !isSubmitted) {
+      const index = parseInt(event.key) - 1;
+      if (mcq?.options[answerOptions[index]]) {
+        setSelectedAnswer(answerOptions[index]);
+        event.preventDefault();
+      }
+    }
+
+    // Arrow keys to navigate options
+    else if (event.key === 'ArrowDown' && !isSubmitted) {
+      event.preventDefault();
+      setFocusedOptionIndex((prev) => {
+        const next = prev + 1;
+        const maxIndex = answerOptions.filter((opt) => mcq?.options[opt]).length - 1;
+        return next > maxIndex ? 0 : next;
+      });
+    } else if (event.key === 'ArrowUp' && !isSubmitted) {
+      event.preventDefault();
+      setFocusedOptionIndex((prev) => {
+        const maxIndex = answerOptions.filter((opt) => mcq?.options[opt]).length - 1;
+        return prev - 1 < 0 ? maxIndex : prev - 1;
+      });
+    }
+
+    // Enter key to submit
+    else if (event.key === 'Enter' && selectedAnswer && !isSubmitted && !isSubmitting) {
+      handleSubmit();
+      event.preventDefault();
+    }
+
+    // N key to go to next question (after submission)
+    else if (event.key.toLowerCase() === 'n' && isSubmitted) {
+      handleNextQuestion();
+      event.preventDefault();
+    }
   };
 
   // Touch gesture handlers (mobile only)
@@ -228,11 +273,18 @@ export const MCQPracticeInterface: React.FC<MCQPracticeInterfaceProps> = ({
     <>
       <Card
         {...(isMobile ? swipeHandlers : {})}
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
         sx={{
           maxWidth: 900,
           margin: '0 auto',
           boxShadow: { xs: 1, md: 3 },
           position: 'relative',
+          '&:focus': {
+            outline: '2px solid',
+            outlineColor: 'primary.main',
+            outlineOffset: '2px',
+          },
         }}
         role="region"
         aria-label="MCQ practice interface"
@@ -367,7 +419,12 @@ export const MCQPracticeInterface: React.FC<MCQPracticeInterfaceProps> = ({
                 >
                   <FormControlLabel
                     value={option}
-                    control={<Radio disabled={isSubmitted} />}
+                    control={
+                      <Radio
+                        disabled={isSubmitted}
+                        inputProps={{ 'aria-label': `Option ${option}` }}
+                      />
+                    }
                     label={
                       <Stack direction="row" spacing={1} alignItems="centre" sx={{ py: 1 }}>
                         <Typography variant="body1" sx={{ fontWeight: 500 }}>
