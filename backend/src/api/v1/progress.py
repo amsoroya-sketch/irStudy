@@ -29,7 +29,7 @@ PERFORMANCE:
 from typing import List, Dict, Optional
 from datetime import datetime, timedelta
 
-from fastapi import APIRouter, Depends, HTTPException, status, Query
+from fastapi import APIRouter, Depends, HTTPException, Request, status, Query
 from sqlalchemy import func, case
 from sqlalchemy.orm import Session
 from slowapi import Limiter
@@ -75,7 +75,7 @@ router = APIRouter(prefix="/progress", tags=["progress"])
 @router.get("/dashboard", response_model=DashboardResponse)
 @limiter.limit("60/minute")
 async def get_dashboard(
-    request: None = None,  # Required for rate limiter
+    request: Request,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_active_user),
 ):
@@ -153,7 +153,7 @@ async def get_dashboard(
 @limiter.limit("60/minute")
 async def get_specialty_detail(
     specialty_name: str,
-    request: None = None,  # Required for rate limiter
+    request: Request,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_active_user),
 ):
@@ -222,9 +222,9 @@ async def get_specialty_detail(
 @router.get("/weak-areas", response_model=WeakAreasResponse)
 @limiter.limit("60/minute")
 async def get_weak_areas(
+    request: Request,
     threshold: float = Query(70.0, ge=0, le=100, description="Accuracy threshold percentage"),
     min_attempts: int = Query(5, ge=1, le=50, description="Minimum attempts required"),
-    request: None = None,  # Required for rate limiter
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_active_user),
 ):
@@ -285,8 +285,8 @@ async def get_weak_areas(
 @router.get("/trends/weekly", response_model=WeeklyTrendsResponse)
 @limiter.limit("60/minute")
 async def get_weekly_trends(
+    request: Request,
     weeks: int = Query(4, ge=1, le=12, description="Number of weeks (max 12)"),
-    request: None = None,  # Required for rate limiter
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_active_user),
 ):
