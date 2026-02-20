@@ -1,0 +1,89 @@
+# OSCE Pipeline Configuration
+# Used by all pipeline scripts
+
+# ============================================================
+# Python Virtual Environments
+# ============================================================
+whisper_venv: "/home/dev/.venvs/whisper"
+msdev_venv: "/home/dev/Development/MSDev/Archive/docs/ai-agents/diagrams/venv"
+
+# ============================================================
+# Paths
+# ============================================================
+pipeline_dir: "/home/dev/Development/irStudy/osce-pipeline"
+output_dir: "/home/dev/Development/irStudy/osce-pipeline/output"
+scripts_dir: "/home/dev/Development/irStudy/osce-pipeline/scripts"
+templates_dir: "/home/dev/Development/irStudy/osce-pipeline/templates"
+urls_file: "/home/dev/Development/irStudy/osce-pipeline/urls.txt"
+
+# ============================================================
+# Whisper Settings
+# ============================================================
+whisper_model: "base"          # base (139MB), small, medium, large
+audio_sample_rate: 16000       # Hz, required by Whisper
+audio_channels: 1              # mono
+
+# ============================================================
+# Screenshot Settings
+# ============================================================
+screenshot_interval_short: 30   # seconds (video < 5 min)
+screenshot_interval_medium: 60  # seconds (video 5-15 min)
+screenshot_interval_long: 90    # seconds (video > 15 min)
+short_video_threshold: 300      # seconds (5 min)
+long_video_threshold: 900       # seconds (15 min)
+
+# ============================================================
+# yt-dlp Settings
+# ============================================================
+video_format: "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]"
+video_quality: "best"
+slug_max_length: 60
+
+# ============================================================
+# Diagram Settings
+# ============================================================
+diagram_dpi: 150               # PNG resolution
+diagram_figsize_wide: [14, 8]  # inches (landscape)
+diagram_figsize_square: [10, 10] # inches (square)
+diagram_min_count: 6           # minimum diagrams per station
+diagram_max_count: 12          # maximum diagrams per station (soft limit)
+
+# Colour palette (consistent across all diagrams)
+colors:
+  primary:    "#2C3E50"    # dark blue
+  secondary:  "#3498DB"    # bright blue
+  success:    "#27AE60"    # green
+  warning:    "#F39C12"    # orange
+  danger:     "#E74C3C"    # red
+  info:       "#8E44AD"    # purple
+  neutral:    "#95A5A6"    # grey
+  background: "#ECF0F1"    # light grey
+
+# ============================================================
+# Expert Agent Settings
+# ============================================================
+# Station type → subagent type mapping
+expert_agents:
+  history_taking: "history-taking-expert"
+  physical_examination: "physical-examination-expert"
+  communication: "clinical-documentation-expert"
+
+# Clinical context
+clinical_context: "AMC Clinical Examination"
+clinical_standards: "Australian Medical Council"
+do_not_reference: ["ICRP", "UK GMC", "USMLE", "video", "recording", "missing"]
+
+# ============================================================
+# Pipeline Control
+# ============================================================
+retry_failed: true
+retry_max_attempts: 2
+continue_on_error: true      # don't halt entire batch on single failure
+log_level: "INFO"            # DEBUG, INFO, WARNING, ERROR
+
+# ============================================================
+# Report Settings
+# ============================================================
+html_min_size_kb: 100        # minimum acceptable HTML report size
+md_min_size_kb: 5            # minimum acceptable Markdown report size
+embed_diagrams_base64: true  # embed as base64 (self-contained HTML)

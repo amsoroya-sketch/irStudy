@@ -103,7 +103,6 @@ describe('PerformanceDashboard', () => {
   });
 
   it('renders dashboard title', async () => {
-    // Mock successful data loading
     vi.mocked(dashboardHooks.useDashboard).mockReturnValue({
       data: mockDashboardData,
       isLoading: false,
@@ -122,7 +121,6 @@ describe('PerformanceDashboard', () => {
 
     renderWithQueryClient(<PerformanceDashboard />);
 
-    // Check for dashboard title
     expect(screen.getByText('Performance Dashboard')).toBeInTheDocument();
   });
 
@@ -145,26 +143,25 @@ describe('PerformanceDashboard', () => {
 
     renderWithQueryClient(<PerformanceDashboard />);
 
-    // Check MCQ stat card
+    // MCQ stat card
     expect(screen.getByText('MCQ Attempts')).toBeInTheDocument();
     expect(screen.getByText('152')).toBeInTheDocument();
     expect(screen.getByText('73.7% accuracy')).toBeInTheDocument();
 
-    // Check OSCE stat card
-    expect(screen.getByText('OSCE Completions')).toBeInTheDocument();
+    // OSCE stat card — text also appears in ExamReadinessGauge factor breakdown
+    expect(screen.getAllByText('OSCE Completions').length).toBeGreaterThanOrEqual(1);
     expect(screen.getByText('8')).toBeInTheDocument();
 
-    // Check Study Cards stat card
+    // Study Cards stat card
     expect(screen.getByText('Study Cards')).toBeInTheDocument();
     expect(screen.getByText('64')).toBeInTheDocument();
 
-    // Check Weak Areas stat card
-    expect(screen.getByText('Weak Areas')).toBeInTheDocument();
+    // Weak Areas stat card — text also appears in ExamReadinessGauge factor breakdown
+    expect(screen.getAllByText('Weak Areas').length).toBeGreaterThanOrEqual(1);
     expect(screen.getByText('1')).toBeInTheDocument();
   });
 
   it('shows loading state initially', async () => {
-    // Mock loading state
     vi.mocked(dashboardHooks.useDashboard).mockReturnValue({
       data: undefined,
       isLoading: true,
@@ -183,7 +180,6 @@ describe('PerformanceDashboard', () => {
 
     renderWithQueryClient(<PerformanceDashboard />);
 
-    // Check for loading indicator
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
   });
 
@@ -206,7 +202,6 @@ describe('PerformanceDashboard', () => {
 
     renderWithQueryClient(<PerformanceDashboard />);
 
-    // Check for chart titles
     expect(screen.getByText('Weekly Performance Trends')).toBeInTheDocument();
     expect(screen.getByText('Performance by Specialty')).toBeInTheDocument();
   });
@@ -230,13 +225,11 @@ describe('PerformanceDashboard', () => {
 
     renderWithQueryClient(<PerformanceDashboard />);
 
-    // Check weak areas panel
     expect(screen.getByText('Areas for Improvement')).toBeInTheDocument();
     expect(screen.getByText('Neurology')).toBeInTheDocument();
   });
 
   it('shows error state on API failure', async () => {
-    // Mock error state
     vi.mocked(dashboardHooks.useDashboard).mockReturnValue({
       data: undefined,
       isLoading: false,
@@ -255,7 +248,6 @@ describe('PerformanceDashboard', () => {
 
     renderWithQueryClient(<PerformanceDashboard />);
 
-    // Check error message
     await waitFor(() => {
       expect(screen.getByText(/failed to load dashboard data/i)).toBeInTheDocument();
     });
@@ -285,7 +277,6 @@ describe('PerformanceDashboard', () => {
 
     renderWithQueryClient(<PerformanceDashboard />);
 
-    // Check for success message in weak areas panel
     expect(screen.getByText(/great work/i)).toBeInTheDocument();
     expect(screen.getByText(/no weak areas identified/i)).toBeInTheDocument();
   });
@@ -314,7 +305,29 @@ describe('PerformanceDashboard', () => {
 
     renderWithQueryClient(<PerformanceDashboard />);
 
-    // Check for info message about trends
     expect(screen.getByText(/no trend data available yet/i)).toBeInTheDocument();
+  });
+
+  it('renders ExamReadinessGauge when data is loaded', async () => {
+    vi.mocked(dashboardHooks.useDashboard).mockReturnValue({
+      data: mockDashboardData,
+      isLoading: false,
+      error: null,
+      isError: false,
+      refetch: vi.fn(),
+    } as ReturnType<typeof dashboardHooks.useDashboard>);
+
+    vi.mocked(dashboardHooks.useWeeklyTrends).mockReturnValue({
+      data: mockTrendsData,
+      isLoading: false,
+      error: null,
+      isError: false,
+      refetch: vi.fn(),
+    } as ReturnType<typeof dashboardHooks.useWeeklyTrends>);
+
+    renderWithQueryClient(<PerformanceDashboard />);
+
+    expect(screen.getByRole('region', { name: /Exam Readiness Gauge/i })).toBeInTheDocument();
+    expect(screen.getByText('AMC Exam Readiness')).toBeInTheDocument();
   });
 });

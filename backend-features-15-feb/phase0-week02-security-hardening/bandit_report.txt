@@ -1,0 +1,83 @@
+Run started:2026-02-15 03:40:26.467886
+
+Test results:
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random
+   Location: /home/dev/Development/irStudy/backend/src/api/v1/mcqs.py:87:13
+86	    # Get random MCQ
+87	    offset = random.randint(0, total - 1)
+88	    return query.offset(offset).first()
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random
+   Location: /home/dev/Development/irStudy/backend/src/api/v1/osces.py:83:13
+82	    # Get random OSCE
+83	    offset = random.randint(0, total - 1)
+84	    return query.offset(offset).first()
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: '/run/secrets/jwt_secret'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b105_hardcoded_password_string.html
+   Location: /home/dev/Development/irStudy/backend/src/auth/security.py:33:18
+32	    # Try Docker secret first
+33	    secret_path = "/run/secrets/jwt_secret"
+34	    if os.path.exists(secret_path):
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: '/run/secrets/db_password'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b105_hardcoded_password_string.html
+   Location: /home/dev/Development/irStudy/backend/src/db/base.py:41:18
+40	    # Try to read password from Docker secret
+41	    secret_path = "/run/secrets/db_password"
+42	    if os.path.exists(secret_path):
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b104_hardcoded_bind_all_interfaces.html
+   Location: /home/dev/Development/irStudy/backend/src/main.py:356:39
+355	        "src.main:app",
+356	        host=os.getenv("UVICORN_HOST", "0.0.0.0"),
+357	        port=int(os.getenv("UVICORN_PORT", 8000)),
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html
+   Location: /home/dev/Development/irStudy/backend/src/security/events.py:276:12
+275	                existing_events = secret['data']['data'].get('events', [])
+276	            except Exception:
+277	                # Path doesn't exist yet - create it
+278	                pass
+279	            
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 7856
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 5
+		Medium: 1
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 3
+		High: 3
+Files skipped (0):

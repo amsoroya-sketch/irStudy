@@ -73,12 +73,12 @@ services:
     security_opt:
       - no-new-privileges:true
 
-    # Security: Resource limits
+    # Security: Resource limits (Updated for 2.5 GB allocation)
     deploy:
       resources:
         limits:
           cpus: '2'
-          memory: 2G
+          memory: 3G            # 2.5 GB data + 500 MB overhead
         reservations:
           cpus: '0.5'
           memory: 512M
@@ -88,18 +88,14 @@ services:
 
     command: >
       sh -c "
-        redis-server
+        redis-server /usr/local/etc/redis/redis.conf
         --requirepass $$(cat /run/secrets/redis_password)
-        --maxmemory 1gb
-        --maxmemory-policy allkeys-lru
-        --save 900 1
-        --save 300 10
-        --save 60 10000
-        --appendonly yes
       "
 
     volumes:
+      - ./backend/infrastructure/redis.conf:/usr/local/etc/redis/redis.conf:ro
       - redis_data:/data
+      - redis_logs:/var/log/redis
 
     ports:
       - "6380:6379"  # Changed from 6379 to avoid conflict with skillbridge-redis
@@ -598,6 +594,8 @@ volumes:
   postgres_tmp:
     driver: local
   redis_data:
+    driver: local
+  redis_logs:
     driver: local
   qdrant_data:
     driver: local

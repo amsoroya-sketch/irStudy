@@ -23,7 +23,11 @@ from sqlalchemy.orm import Session
 
 from src.db.base import get_db
 from src.db.models import User
-from src.schemas.user import UserPrivate, UserAdmin, UserUpdate, PasswordChange
+from src.schemas.user import (
+    UserPrivate, UserAdmin, UserUpdate, PasswordChange,
+    EmailVerificationRequest, EmailVerificationResponse,
+    PasswordResetRequest, PasswordResetResponse, PasswordResetConfirm
+)
 from src.auth.dependencies import get_current_user, get_current_active_user, require_admin
 from src.auth.security import verify_password, hash_password
 

@@ -7,6 +7,14 @@ venv/
 venv_*/
 env/
 .venv/
+lib/
+lib64
+bin/
+pyvenv.cfg
+include/
+
+# Node modules
+node_modules/
 
 # Python cache
 __pycache__/
@@ -26,6 +34,24 @@ docker/qdrant_storage/
 
 # Data files (PDFs too large for git)
 data/pdfs/
+
+# Large data/embedding files (exceed GitHub 100MB limit)
+data/embeddings/
+data/chunks*.json
+
+# OSCE pipeline large media outputs
+osce-pipeline/output/**/video.mp4
+osce-pipeline/output/**/audio.wav
+osce-pipeline/output/**/screenshots/
+osce-pipeline/output/**/diagrams/*.png
+
+# Processed audio windows
+processed_window_*/
+
+# Playwright test artifacts (videos, reports with binary data)
+testing/playwright/test-results/
+testing/playwright/reports/
+testing/playwright/node_modules/
 
 # Scripts (keep specific ones, ignore test scripts)
 scripts/test_*.py

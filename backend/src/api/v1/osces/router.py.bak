@@ -1,0 +1,186 @@
+"""
+OSCE API endpoints for irStudy Medical Education Platform
+
+AMC CLINICAL EXAM FORMAT:
+- 16 stations × 8 minutes each
+- Rubric-based scoring (15 marks per station, 9/15 to pass)
+- Station types: History taking, physical exam, communication, procedures
+
+AUSTRALIAN CONTEXT:
+- Patient scenarios reflect Australian demographics and cultural norms
+- Management plans follow Australian guidelines (eTG, NSW Health protocols)
+- Communication adjusted for Australian healthcare system
+
+ENDPOINTS:
+- GET /osces/random - Get random OSCE station
+- GET /osces/{id} - Get specific OSCE station
+- POST /osces/{id}/complete - Submit OSCE completion and receive feedback
+- GET /osces/{id}/rubric - Get scoring rubric for station
+"""
+
+from fastapi import APIRouter, Depends, HTTPException, Query, status
+from sqlalchemy.orm import Session
+from typing import Optional, List
+import random
+
+from src.db.base import get_db
+from src.db.models import OSCE, OSCEAttempt, OSCEType, MedicalSpecialty, DifficultyLevel
+from src.api.v1.osces import schemas
+
+router = APIRouter(prefix="/osces", tags=["OSCE Practice"])
+
+
+@router.get("/random", response_model=schemas.OSCEResponse)
+async def get_random_osce(
+    station_type: Optional[OSCEType] = Query(None, description="Filter by station type"),
+    specialty: Optional[MedicalSpecialty] = Query(None, description="Filter by specialty"),
+    difficulty: Optional[DifficultyLevel] = Query(None, description="Filter by difficulty"),
+    db: Session = Depends(get_db)
+):
+    """
+    Get a random OSCE station.
+
+    **AMC Clinical Exam Format:**
+    - 8 minutes per station
+    - 15-mark rubric (9/15 to pass)
+    - Types: History taking, examination, communication, counselling, procedures
+
+    **Australian Context:**
+    - All stations use Australian medical terminology
+    - Management plans follow eTG and NSW Health protocols
+    """
+    query = db.query(OSCE)
+
+    if station_type:
+        query = query.filter(OSCE.station_type == station_type)
+    if specialty:
+        query = query.filter(OSCE.specialty == specialty)
+    if difficulty:
+        query = query.filter(OSCE.difficulty == difficulty)
+
+    osces = query.all()
+
+    if not osces:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="No OSCE stations found matching criteria"
+        )
+
+    selected_osce = random.choice(osces)
+
+    return schemas.OSCEResponse.from_orm(selected_osce)
+
+
+@router.get("/{osce_id}", response_model=schemas.OSCEResponse)
+async def get_osce(
+    osce_id: str,
+    db: Session = Depends(get_db)
+):
+    """
+    Get specific OSCE station by osce_id.
+
+    **Example:** GET /osces/OSCE-CARD-001
+    """
+    osce = db.query(OSCE).filter(OSCE.osce_id == osce_id).first()
+
+    if not osce:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"OSCE station with ID {osce_id} not found"
+        )
+
+    return schemas.OSCEResponse.from_orm(osce)
+
+
+@router.post("/{osce_id}/complete", response_model=schemas.OSCECompletionResponse)
+async def complete_osce(
+    osce_id: str,
+    completion: schemas.OSCECompletion,
+    db: Session = Depends(get_db)
+):
+    """
+    Submit OSCE station completion and receive feedback.
+
+    **Returns:**
+    - score: Total marks achieved (out of 15)
+    - passed: Whether candidate passed station (≥9/15)
+    - feedback: Detailed feedback by rubric category
+    - learning_objectives: Educational objectives
+    """
+    osce = db.query(OSCE).filter(OSCE.osce_id == osce_id).first()
+
+    if not osce:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"OSCE station with ID {osce_id} not found"
+        )
+
+    # Calculate score from rubric
+    # In production, this would use AI scoring or examiner input
+    # For MVP, we accept score from frontend
+    score = completion.score if completion.score is not None else 0
+    passed = score >= 9  # AMC Clinical Exam pass mark: 9/15
+
+    # Record attempt (if user_id provided)
+    if completion.user_id:
+        attempt = OSCEAttempt(
+            user_id=completion.user_id,
+            osce_id=osce.id,
+            score_achieved=score,
+            time_taken_seconds=completion.time_spent_seconds,
+            notes=completion.notes
+        )
+        db.add(attempt)
+        db.commit()
+
+    return schemas.OSCECompletionResponse(
+        score=score,
+        max_score=15,
+        passed=passed,
+        feedback=completion.feedback if completion.feedback else {},
+        learning_objectives=osce.learning_objectives,
+        pass_mark=9
+    )
+
+
+@router.get("/{osce_id}/rubric", response_model=schemas.OSCERubric)
+async def get_osce_rubric(
+    osce_id: str,
+    db: Session = Depends(get_db)
+):
+    """
+    Get scoring rubric for OSCE station.
+
+    **AMC Clinical Exam Rubric:**
+    - Total: 15 marks
+    - Pass mark: 9/15 (60%)
+    - Categories: Introduction, history/exam, diagnosis, management, communication
+
+    **Example Rubric:**
+    ```json
+    {
+        "introduction": {"max_marks": 1, "criteria": "Introduces self, confirms identity"},
+        "history_taking": {"max_marks": 5, "criteria": "Systematic history using SOCRATES"},
+        "examination": {"max_marks": 4, "criteria": "Correct technique, patient comfort"},
+        "diagnosis": {"max_marks": 3, "criteria": "Appropriate differential diagnosis"},
+        "management": {"max_marks": 2, "criteria": "Evidence-based management plan"}
+    }
+    ```
+    """
+    osce = db.query(OSCE).filter(OSCE.osce_id == osce_id).first()
+
+    if not osce:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"OSCE station with ID {osce_id} not found"
+        )
+
+    return schemas.OSCERubric(
+        osce_id=osce.osce_id,
+        station_title=osce.station_title,
+        station_type=osce.station_type,
+        rubric=osce.rubric,
+        max_marks=15,
+        pass_mark=9,
+        time_limit_minutes=osce.time_limit_minutes
+    )

@@ -90,21 +90,21 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         }
       );
 
-      const { accessToken, refreshToken } = response.data;
+      const { access_token, refresh_token } = response.data;
 
       // Fetch user data
       const userResponse = await axiosInstance.get<User>(
         '/users/me',
         {
-          headers: { Authorization: `Bearer ${accessToken}` },
+          headers: { Authorization: `Bearer ${access_token}` },
         }
       );
 
       const user = userResponse.data;
 
       // Store tokens and user info
-      localStorage.setItem('accessToken', accessToken);
-      localStorage.setItem('refreshToken', refreshToken);
+      localStorage.setItem('accessToken', access_token);
+      localStorage.setItem('refreshToken', refresh_token);
       localStorage.setItem('user', JSON.stringify(user));
 
       // Remember me functionality
@@ -115,8 +115,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setAuthState({
         user,
         isAuthenticated: true,
-        token: accessToken,
-        refreshToken,
+        token: access_token,
+        refreshToken: refresh_token,
         isLoading: false,
         error: null,
       });

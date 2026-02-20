@@ -3,7 +3,7 @@
 **Version**: 1.0
 **Date**: 2026-02-02
 **Product**: EMR Practice System - Epic EHR Simulation
-**Target Users**: Medical students preparing for ICRP in Australian hospitals
+**Target Users**: Medical students preparing for AMC Clinical Examination (Australian Medical Council Clinical Examination) in Australian hospitals
 
 ---
 
@@ -46,6 +46,496 @@ Epic is used in major Australian hospitals including:
 | **Layout** | Sidebar + main content | Icon bar + workspace panels |
 | **Branding** | Professional dark | Modern purple |
 | **Workflow** | Tab-based sections | Activity-based workspace |
+
+---
+
+## Australian Medical Standards & Context
+
+### Australian Medical Terminology Validation
+
+The Epic EHR simulation enforces Australian medical terminology standards to prepare students for AMC Clinical Examination and AHPRA-compliant clinical practice.
+
+**Terminology Validation Rules:**
+
+| **American Term** | **Australian Term** | **Validation Level** | **UI Feedback** |
+|-------------------|---------------------|----------------------|-----------------|
+| Acetaminophen | Paracetamol | Error (blocks submission) | Red underline + warning modal |
+| Epinephrine | Adrenaline | Error (blocks submission) | Red underline + warning modal |
+| Albuterol | Salbutamol | Error (blocks submission) | Red underline + warning modal |
+| Norepinephrine | Noradrenaline | Error (blocks submission) | Red underline + warning modal |
+| Primary care physician | GP (General Practitioner) | Warning (allows submission) | Yellow highlight + suggestion |
+| Operating room | Operating theatre | Warning (allows submission) | Yellow highlight + suggestion |
+| ER | ED (Emergency Department) | Warning (allows submission) | Yellow highlight + suggestion |
+| Anesthesia | Anaesthesia | Warning (allows submission) | Yellow highlight + suggestion |
+
+**Implementation Example:**
+
+```typescript
+// components/epic/validators/AustralianTerminologyValidator.tsx
+interface TerminologyRule {
+  americanTerm: string;
+  australianTerm: string;
+  severity: 'error' | 'warning';
+  message: string;
+}
+
+const australianTerminologyRules: TerminologyRule[] = [
+  {
+    americanTerm: 'acetaminophen',
+    australianTerm: 'paracetamol',
+    severity: 'error',
+    message: 'Use Australian terminology: "paracetamol" instead of "acetaminophen"'
+  },
+  {
+    americanTerm: 'epinephrine',
+    australianTerm: 'adrenaline',
+    severity: 'error',
+    message: 'Use Australian terminology: "adrenaline" instead of "epinephrine"'
+  },
+  // ... more rules
+];
+
+export const validateAustralianTerminology = (text: string): ValidationResult => {
+  const errors: TerminologyError[] = [];
+  const warnings: TerminologyWarning[] = [];
+
+  australianTerminologyRules.forEach(rule => {
+    const regex = new RegExp(`\\b${rule.americanTerm}\\b`, 'gi');
+    const matches = text.match(regex);
+
+    if (matches) {
+      const violation = {
+        term: rule.americanTerm,
+        suggestedTerm: rule.australianTerm,
+        message: rule.message,
+        positions: findPositions(text, rule.americanTerm)
+      };
+
+      if (rule.severity === 'error') {
+        errors.push(violation);
+      } else {
+        warnings.push(violation);
+      }
+    }
+  });
+
+  return {
+    isValid: errors.length === 0,
+    errors,
+    warnings,
+    canSubmit: errors.length === 0
+  };
+};
+```
+
+### Australian Hospital Context Examples
+
+The Epic EHR simulation includes authentic Australian hospital context to prepare students for real-world clinical practice.
+
+#### 1. **Patient Demographics (Australian-Specific Fields)**
+
+```typescript
+// models/AustralianPatient.ts
+interface AustralianPatientDemographics {
+  // Standard fields
+  firstName: string;
+  lastName: string;
+  dateOfBirth: Date;
+  gender: 'Male' | 'Female' | 'Other' | 'Prefer not to say';
+  mrn: string;  // Medical Record Number
+
+  // Australian-specific fields
+  aboriginalTorresStraitIslander: {
+    status: 'Aboriginal' | 'Torres Strait Islander' | 'Both' | 'Neither' | 'Prefer not to say';
+    required: true;  // Mandatory field in Australian EMRs
+    displayProminent: true;  // Show in patient banner
+  };
+
+  medicareNumber: {
+    number: string;  // Format: 1234 56789 0
+    reference: string;  // 1-7
+    expiryDate: Date;
+    cardColor: 'Green' | 'Blue' | 'Yellow';  // Green = standard, Blue = interim, Yellow = reciprocal
+  };
+
+  dvaBenefits: {
+    hasCard: boolean;
+    cardType: 'Gold' | 'White' | 'Orange';  // Different entitlements
+    fileNumber: string;
+  };
+
+  concessionCard: {
+    type: 'Health Care Card' | 'Pensioner Concession Card' | 'Commonwealth Seniors Health Card' | 'None';
+    number: string;
+    expiryDate: Date;
+  };
+
+  // Contact details
+  address: {
+    street: string;
+    suburb: string;
+    state: 'NSW' | 'VIC' | 'QLD' | 'SA' | 'WA' | 'TAS' | 'NT' | 'ACT';
+    postcode: string;
+  };
+
+  nextOfKin: {
+    name: string;
+    relationship: string;
+    phone: string;
+    contactPreference: 'Always' | 'Emergency only' | 'Do not contact';
+  };
+}
+```
+
+#### 2. **Australian SOAP Note Format in Epic UI**
+
+```typescript
+// components/epic/SOAPNoteEditor.tsx
+export const AustralianSOAPNoteEditor: React.FC = () => {
+  return (
+    <div className="epic-soap-editor">
+      {/* Subjective Section */}
+      <div className="soap-section">
+        <h3 className="epic-heading-md text-purple-700">Subjective</h3>
+        <p className="text-sm text-gray-600 mb-2">
+          Patient's complaint in their own words, HPI, relevant PMHx, medications, allergies
+        </p>
+        <Textarea
+          placeholder="e.g., 'I've had chest pain for 2 hours. Started suddenly while at rest. 8/10 severity, crushing sensation, radiating to left arm. Patient has PMHx of hypertension, takes amlodipine 10mg daily. NKDA.'"
+          minLength={50}
+          className="australian-soap-field"
+          onChange={(e) => validateAustralianTerminology(e.target.value)}
+        />
+        <CharacterCount min={50} current={subjectiveText.length} />
+      </div>
+
+      {/* Objective Section */}
+      <div className="soap-section">
+        <h3 className="epic-heading-md text-purple-700">Objective</h3>
+        <p className="text-sm text-gray-600 mb-2">
+          Vital signs (must include BP, HR, RR, Temp, SpO2), examination findings, investigation results
+        </p>
+
+        {/* Vital Signs (Australian Format) */}
+        <div className="vitals-grid bg-purple-50 p-4 rounded-lg mb-3">
+          <VitalSignInput label="BP" unit="mmHg" placeholder="120/80" required />
+          <VitalSignInput label="HR" unit="bpm" placeholder="75" required />
+          <VitalSignInput label="RR" unit="/min" placeholder="16" required />
+          <VitalSignInput label="Temp" unit="°C" placeholder="37.0" required />
+          <VitalSignInput label="SpO2" unit="%" placeholder="98" required />
+        </div>
+
+        <Textarea
+          placeholder="e.g., 'Alert and oriented. Appears distressed. Cardiovascular: Central chest wall tenderness. HS dual, no murmur. Respiratory: AEBE, no added sounds. Abdo: soft, non-tender. ECG: ST elevation in V2-V4.'"
+          minLength={50}
+          className="australian-soap-field"
+        />
+      </div>
+
+      {/* Assessment Section */}
+      <div className="soap-section">
+        <h3 className="epic-heading-md text-purple-700">Assessment</h3>
+        <p className="text-sm text-gray-600 mb-2">
+          Primary diagnosis, differential diagnoses (DDx), problem list
+        </p>
+        <Textarea
+          placeholder="e.g., 'Working diagnosis: Acute Coronary Syndrome (STEMI). Differential diagnoses: Aortic dissection (less likely - no pulse deficit), pulmonary embolism (less likely - no risk factors).'"
+          minLength={30}
+          className="australian-soap-field"
+        />
+        <div className="mt-2">
+          <label className="text-sm font-medium text-gray-700">Primary Diagnosis (ICD-10-AM):</label>
+          <ICD10SearchInput
+            placeholder="Search ICD-10-AM codes..."
+            australianEdition={true}
+          />
+        </div>
+      </div>
+
+      {/* Plan Section */}
+      <div className="soap-section">
+        <h3 className="epic-heading-md text-purple-700">Plan</h3>
+        <p className="text-sm text-gray-600 mb-2">
+          Investigations (with MBS item numbers), medications (PBS-compliant), referrals, follow-up, safety netting
+        </p>
+
+        <Textarea
+          placeholder="e.g., 'Investigations: Troponin (MBS 66512), FBC (MBS 65070), UEC (MBS 66512), CXR (MBS 58912). Medications: Aspirin 300mg PO stat, GTN spray 400mcg SL PRN (PBS listed). Management: Urgent cardiology review, admit to CCU. Safety netting: If chest pain worsens or new symptoms develop, call for assistance immediately.'"
+          minLength={30}
+          className="australian-soap-field"
+        />
+
+        {/* PBS/MBS Quick Links */}
+        <div className="flex gap-2 mt-3">
+          <button className="btn-outline-purple text-sm">
+            <FileText className="w-4 h-4 mr-1" />
+            Add PBS Medication
+          </button>
+          <button className="btn-outline-purple text-sm">
+            <FlaskConical className="w-4 h-4 mr-1" />
+            Add MBS Investigation
+          </button>
+        </div>
+      </div>
+
+      {/* Australian Compliance Checklist */}
+      <div className="compliance-checklist bg-green-50 border border-green-200 rounded-lg p-4 mt-4">
+        <h4 className="font-semibold text-green-900 mb-2">AHPRA Documentation Checklist</h4>
+        <ul className="space-y-1 text-sm">
+          <li className={checklistItem.vitals ? 'text-green-700' : 'text-gray-500'}>
+            {checklistItem.vitals ? '✓' : '○'} All vital signs documented
+          </li>
+          <li className={checklistItem.terminology ? 'text-green-700' : 'text-gray-500'}>
+            {checklistItem.terminology ? '✓' : '○'} Australian terminology used
+          </li>
+          <li className={checklistItem.diagnosis ? 'text-green-700' : 'text-gray-500'}>
+            {checklistItem.diagnosis ? '✓' : '○'} Clear diagnosis stated
+          </li>
+          <li className={checklistItem.safetyNetting ? 'text-green-700' : 'text-gray-500'}>
+            {checklistItem.safetyNetting ? '✓' : '○'} Safety netting included
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+```
+
+#### 3. **PBS Medication Ordering (Australian Context)**
+
+```typescript
+// components/epic/PBSMedicationSearch.tsx
+interface PBSMedication {
+  genericName: string;
+  brandNames: string[];
+  pbsListed: boolean;
+  streamlinedAuthority: boolean;
+  authorityRequired: boolean;
+  restrictions: string[];
+  commonDoses: {
+    indication: string;
+    dose: string;
+    frequency: string;
+    maxQuantity: number;
+  }[];
+}
+
+export const PBSMedicationSearchEpic: React.FC = () => {
+  return (
+    <div className="epic-medication-panel">
+      <div className="search-header bg-purple-600 text-white p-3">
+        <h3 className="font-semibold">PBS Medication Search</h3>
+        <p className="text-xs opacity-90">Australian Pharmaceutical Benefits Scheme</p>
+      </div>
+
+      <div className="p-4">
+        <SearchInput
+          placeholder="Search by generic name (e.g., paracetamol, amoxicillin)"
+          icon={<Search />}
+          onChange={handlePBSSearch}
+        />
+
+        {/* Example result */}
+        <div className="medication-result border border-purple-200 rounded-lg p-3 mt-3">
+          <div className="flex items-start justify-between">
+            <div>
+              <h4 className="font-semibold text-purple-900">Paracetamol</h4>
+              <p className="text-sm text-gray-600">Generic name (Panadol, Panamax)</p>
+            </div>
+            <span className="px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded">
+              PBS Listed
+            </span>
+          </div>
+
+          <div className="mt-3 space-y-2">
+            <div className="text-sm">
+              <span className="font-medium">Common Dose:</span> 500mg-1g PO QID
+            </div>
+            <div className="text-sm">
+              <span className="font-medium">Max Quantity:</span> 100 tablets (no repeats required for unrestricted)
+            </div>
+            <div className="text-sm">
+              <span className="font-medium">Indication:</span> Pain relief, fever
+            </div>
+          </div>
+
+          <button className="btn-purple w-full mt-3">
+            Add to Medication List
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+```
+
+### OSCE Integration UI
+
+The Epic EHR simulation includes OSCE (Objective Structured Clinical Examination) integration for AMC Clinical Examination preparation.
+
+#### OSCE Station Banner Component
+
+```typescript
+// components/epic/OSCEStationBanner.tsx
+interface OSCEStationBannerProps {
+  stationTitle: string;
+  stationInstructions: string;
+  durationMinutes: number;
+  requiredTasks: ('soap_note' | 'prescription' | 'pathology')[];
+  onTimeExpired: () => void;
+}
+
+export const OSCEStationBannerEpic: React.FC<OSCEStationBannerProps> = ({
+  stationTitle,
+  stationInstructions,
+  durationMinutes,
+  requiredTasks,
+  onTimeExpired
+}) => {
+  const [timeRemaining, setTimeRemaining] = useState(durationMinutes * 60);
+  const [showWarning, setShowWarning] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeRemaining(prev => {
+        if (prev <= 0) {
+          clearInterval(interval);
+          onTimeExpired();
+          return 0;
+        }
+        if (prev === 60) setShowWarning(true);  // 1 minute warning
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const minutes = Math.floor(timeRemaining / 60);
+  const seconds = timeRemaining % 60;
+  const timeColor = timeRemaining <= 60 ? 'text-red-600' : timeRemaining <= 180 ? 'text-orange-600' : 'text-white';
+
+  return (
+    <div className="osce-banner bg-gradient-to-r from-purple-700 to-purple-900 text-white shadow-lg">
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
+          {/* Station Info */}
+          <div className="flex-1">
+            <div className="flex items-center gap-3">
+              <div className="bg-white/20 rounded-full p-2">
+                <ClipboardList className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-xl font-bold">{stationTitle}</h2>
+                <p className="text-sm opacity-90 mt-1">{stationInstructions}</p>
+              </div>
+            </div>
+
+            {/* Required Tasks */}
+            <div className="flex gap-2 mt-3">
+              {requiredTasks.map(task => (
+                <span key={task} className="px-3 py-1 bg-white/10 rounded-full text-xs font-medium">
+                  {task === 'soap_note' && '📋 SOAP Note Required'}
+                  {task === 'prescription' && '💊 Prescription Required'}
+                  {task === 'pathology' && '🧪 Pathology Orders Required'}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Timer */}
+          <div className="text-right ml-6">
+            <div className={`text-5xl font-mono font-bold ${timeColor} transition-colors duration-300`}>
+              {minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
+            </div>
+            <div className="text-xs opacity-90 mt-1">TIME REMAINING</div>
+            {showWarning && timeRemaining > 0 && (
+              <div className="mt-2 text-xs bg-red-600 px-3 py-1 rounded-full animate-pulse">
+                ⚠️ Final Minute
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+```
+
+#### OSCE Mode Epic Interface
+
+```typescript
+// components/epic/EpicOSCEMode.tsx
+export const EpicOSCEMode: React.FC<{ station: OSCEStation }> = ({ station }) => {
+  const [documentation, setDocumentation] = useState<EMRDocumentation>({});
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async () => {
+    setSubmitting(true);
+
+    // Validate documentation
+    const validation = validateDocumentation(documentation, station.required_tasks);
+
+    if (!validation.isComplete) {
+      showIncompleteWarning(validation.missing);
+      setSubmitting(false);
+      return;
+    }
+
+    // Submit to OSCE platform
+    await submitOSCEDocumentation(station.id, documentation);
+
+    // Show success and scores
+    showOSCEResults();
+  };
+
+  return (
+    <div className="osce-mode-container">
+      {/* OSCE Banner */}
+      <OSCEStationBannerEpic
+        stationTitle={station.title}
+        stationInstructions={station.instructions}
+        durationMinutes={station.duration_minutes}
+        requiredTasks={station.required_tasks}
+        onTimeExpired={handleSubmit}
+      />
+
+      {/* Epic EMR Interface */}
+      <div className="epic-interface-osce">
+        <EpicIconBar activeView="chart" />
+
+        <div className="epic-workspace">
+          {/* Patient Banner */}
+          <PatientBannerEpic patient={station.patient_scenario} />
+
+          {/* SOAP Note Editor */}
+          <AustralianSOAPNoteEditor
+            onChange={(note) => setDocumentation({ ...documentation, soapNote: note })}
+          />
+
+          {/* Medication Orders (if required) */}
+          {station.required_tasks.includes('prescription') && (
+            <PBSMedicationSearchEpic
+              onChange={(meds) => setDocumentation({ ...documentation, prescriptions: meds })}
+            />
+          )}
+
+          {/* Submit Button */}
+          <div className="fixed bottom-6 right-6">
+            <button
+              onClick={handleSubmit}
+              disabled={submitting}
+              className="btn-lg bg-purple-600 hover:bg-purple-700 text-white shadow-xl"
+            >
+              {submitting ? 'Submitting...' : 'Submit OSCE Documentation'}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+```
 
 ---
 

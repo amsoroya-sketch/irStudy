@@ -7,6 +7,11 @@
     "test:ui": "playwright test --ui",
     "test:headed": "playwright test --headed",
     "test:debug": "playwright test --debug",
+    "test:seed": "ts-node setup/seed-test-data.ts",
+    "test:all": "npm run test:seed && npm run test:ui",
+    "test:integration": "playwright test tests/integration --ui",
+    "test:osce": "playwright test tests/integration/osce --ui",
+    "test:osce:video": "playwright test tests/integration/osce/osce-video-resources.spec.ts --ui",
     "test:auth": "playwright test tests/auth",
     "test:rbac": "playwright test tests/rbac",
     "test:mcq": "playwright test tests/mcq",
@@ -33,8 +38,10 @@
     "@axe-core/playwright": "^4.10.0",
     "@faker-js/faker": "^9.4.0",
     "@playwright/test": "^1.48.0",
+    "@types/node": "^20.10.0",
     "dotenv": "^16.4.7",
     "msw": "^2.12.9",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },
   "engines": {

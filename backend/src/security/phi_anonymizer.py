@@ -92,3 +92,36 @@ class PHIAnonymizer:
         """
         full_hash = hashlib.sha256(f"{salt}{identifier}".encode()).hexdigest()
         return full_hash[:12]  # 12 chars = 48 bits entropy (collision unlikely)
+
+
+def anonymize_for_claude(text, patient_data: Optional[dict] = None):
+    """
+    Module-level convenience function for anonymizing text before sending to Claude API.
+
+    Wraps PHIAnonymizer.anonymize and additionally replaces any known patient
+    identifiers supplied via patient_data (name, MRN, DOB, email).
+
+    Args:
+        text: Raw clinical text — either a str or a dict (e.g. SOAP note dict).
+              If a dict, each string value is anonymized in place.
+        patient_data: Optional dict with known PHI keys:
+                      full_name, mrn, dob, email
+
+    Returns:
+        Anonymized version of text (same type as input: str or dict)
+    """
+    def _anonymize_str(s: str) -> str:
+        result = PHIAnonymizer.anonymize(s)
+        if patient_data:
+            if patient_data.get("full_name"):
+                result = result.replace(patient_data["full_name"], "[PATIENT]")
+            if patient_data.get("mrn"):
+                result = result.replace(patient_data["mrn"], "[MRN_REDACTED]")
+            if patient_data.get("email"):
+                result = re.sub(re.escape(patient_data["email"]), "[EMAIL_REDACTED]", result)
+        return result
+
+    if isinstance(text, dict):
+        return {k: _anonymize_str(v) if isinstance(v, str) else v for k, v in text.items()}
+
+    return _anonymize_str(str(text))

@@ -12,6 +12,7 @@ import { CircularProgress, Box } from "@mui/material";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import theme from "./theme/theme";
+import MobileBottomNav from "./components/layout/MobileBottomNav";
 
 // Lazy-loaded routes for code splitting
 import {
@@ -100,6 +101,8 @@ function App() {
                 <Route path="/" element={<Navigate to="/dashboard" replace />} />
                 <Route path="*" element={<Navigate to="/login" replace />} />
               </Routes>
+              {/* Mobile Bottom Navigation - shown only on mobile (<768px) */}
+              <MobileBottomNav />
             </Suspense>
           </AuthProvider>
         </BrowserRouter>

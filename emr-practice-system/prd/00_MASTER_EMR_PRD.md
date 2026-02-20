@@ -1,8 +1,8 @@
 # EMR Practice Simulation System - Master PRD
 
-**Product:** Hospital EMR Practice System for ICRP Preparation
-**Version:** 1.0
-**Date:** 2026-02-02
+**Product:** Hospital EMR Practice System for AMC Clinical Examination Preparation
+**Version:** 2.0
+**Date:** 2026-02-15
 **Owner:** Product Team
 **Status:** Planning Phase
 
@@ -11,27 +11,112 @@
 ## Executive Summary
 
 ### Vision
-Create a realistic hospital Electronic Medical Record (EMR) simulation system that allows medical students preparing for ICRP (Intern Clinical Readiness Program) to practice clinical documentation, prescription writing, and pathology ordering in authentic Cerner PowerChart and Epic EHR interfaces, with AI-powered validation providing immediate feedback on Australian medical standards compliance.
+Create a realistic hospital Electronic Medical Record (EMR) simulation system that allows medical students preparing for the AMC Clinical Examination (Australian Medical Council Clinical Examination) to practice clinical documentation, prescription writing, and pathology ordering in authentic Cerner PowerChart and Epic EHR interfaces, with AI-powered validation providing immediate feedback on Australian medical standards compliance and AHPRA clinical competency requirements.
 
 ### Problem Statement
-Medical graduates entering ICRP lack practical experience with hospital EMR systems, leading to:
-- Slow documentation speed (20+ minutes for progress notes vs. 5-10 min target)
+Medical graduates preparing for the AMC Clinical Examination lack practical experience with hospital EMR systems used in Australian teaching hospitals, leading to:
+- Slow documentation speed (20+ minutes for progress notes vs. 5-10 min target expected in clinical practice)
 - Medication ordering errors (dosing, PBS compliance, drug interactions)
-- Incomplete SOAP notes (missing critical elements)
-- Unfamiliarity with Australian medical terminology (paracetamol vs. acetaminophen)
+- Incomplete SOAP notes (missing critical elements required in Australian clinical documentation)
+- Unfamiliarity with Australian medical terminology (paracetamol vs. acetaminophen, adrenaline vs. epinephrine)
 - Poor typing skills in medical context (< 30 WPM)
+- Lack of familiarity with AHPRA documentation standards and NSW Health EMR protocols
 
 ### Target Users
-1. **Primary:** International Medical Graduates (IMGs) preparing for ICRP in Australian hospitals
-2. **Secondary:** Medical students preparing for AMC Clinical Examination
-3. **Tertiary:** Junior doctors upskilling in EMR documentation
+1. **Primary:** Medical students preparing for AMC Clinical Examination (Australian Medical Council Clinical Examination)
+2. **Secondary:** International Medical Graduates (IMGs) preparing for clinical practice in Australian hospitals
+3. **Tertiary:** Junior doctors upskilling in EMR documentation and AHPRA-compliant clinical records
 
-### Success Metrics
-- **Speed:** Users complete SOAP notes in < 10 minutes (vs. 20+ minutes initially)
-- **Accuracy:** 90%+ compliance with Australian medical documentation standards
-- **Engagement:** 80%+ users practice at least 3 sessions per week
-- **Validation:** AI feedback accuracy 85%+ vs. human clinical educator review
-- **Pass Rate:** Users show 30%+ improvement in documentation quality after 20 sessions
+### Success Metrics (World-Class Standards)
+- **Speed:** Users complete SOAP notes in < 8 minutes after 20 sessions (vs. 20+ minutes initially)
+- **AHPRA Compliance:** 95%+ compliance with AHPRA clinical documentation standards
+- **Australian Standards:** 95%+ compliance with Australian medical terminology and NSW Health EMR protocols
+- **Engagement:** 90%+ users practice at least 3 sessions per week
+- **AI Validation Accuracy:** 90%+ accuracy vs. human clinical educator review (BCBA-level validation)
+- **Clinical Accuracy:** 90%+ accuracy in diagnosis, prescription safety, and pathology appropriateness
+- **Pass Rate Improvement:** Users show 40%+ improvement in documentation quality after 20 sessions
+- **User Satisfaction:** 85%+ users rate the system as "very helpful" for AMC Clinical Examination preparation
+- **Safety:** Zero critical medication errors (allergy violations, contraindications) after 10 practice sessions
+
+---
+
+## Australian Clinical Standards Compliance
+
+### AHPRA Clinical Documentation Standards
+
+This EMR Practice System is designed to meet AHPRA (Australian Health Practitioner Regulation Agency) clinical documentation standards, ensuring all users develop competency in:
+
+1. **Accurate and Complete Documentation**
+   - Patient identification details (full name, DOB, MRN, UR number)
+   - Date and time of clinical encounter
+   - Clinician identification and signature
+   - Clear and legible documentation (typed entries)
+
+2. **Clinical Content Requirements**
+   - Comprehensive history taking (HPC, PMHx, medications, allergies, social/family history)
+   - Systematic physical examination findings
+   - Appropriate differential diagnoses
+   - Evidence-based management plans
+   - Safety netting and follow-up arrangements
+
+3. **Professional Standards**
+   - Respectful and non-judgmental language
+   - Patient privacy and confidentiality
+   - Informed consent documentation
+   - Cultural safety (Aboriginal and Torres Strait Islander health context)
+
+### NSW Health EMR Protocols
+
+The system simulates NSW Health EMR protocols used in major teaching hospitals:
+
+1. **Australian SOAP Note Format**
+   - **S (Subjective):** Patient's complaint in their own words, HPI details, relevant history
+   - **O (Objective):** Vital signs, physical examination findings, investigation results
+   - **A (Assessment):** Primary diagnosis, differential diagnoses, problem list
+   - **P (Plan):** Investigations, medications (PBS-compliant), referrals, follow-up, safety netting
+
+2. **Medication Documentation**
+   - Generic drug names (as per PBS)
+   - Australian terminology (paracetamol, not acetaminophen)
+   - Complete prescribing information (dose, route, frequency, duration)
+   - Indication for each medication
+   - PBS streamlined authority requirements noted
+
+3. **Investigation Ordering**
+   - MBS item numbers where applicable
+   - Clear clinical indication
+   - Urgency level (routine, urgent, emergency)
+   - Relevant clinical information for pathologist/radiologist
+
+### Australian Medical Terminology Compliance
+
+The system enforces Australian medical terminology standards:
+
+| **American Term** | **Australian Term** | **Validation** |
+|-------------------|---------------------|----------------|
+| Acetaminophen | Paracetamol | Required |
+| Epinephrine | Adrenaline | Required |
+| Albuterol | Salbutamol | Required |
+| Norepinephrine | Noradrenaline | Required |
+| Acetylsalicylic acid | Aspirin | Preferred |
+| Primary care physician | GP (General Practitioner) | Required |
+| Operating room | Operating theatre | Preferred |
+| ER | ED (Emergency Department) | Required |
+
+### PBS and MBS Integration
+
+1. **PBS (Pharmaceutical Benefits Scheme)**
+   - 4,000+ PBS-listed medications
+   - Streamlined authority requirements flagged
+   - Generic vs. brand name guidance
+   - Dosing ranges and restrictions
+   - Special patient groups (concession card holders, children, elderly)
+
+2. **MBS (Medicare Benefits Schedule)**
+   - Common pathology item numbers (FBC: 65070, UEC: 66512, LFT: 66524, etc.)
+   - Imaging item numbers
+   - Indication requirements
+   - Bulk billing information
 
 ---
 
@@ -75,7 +160,7 @@ Medical graduates entering ICRP lack practical experience with hospital EMR syst
   - 10 medical specialties
   - Varied complexity (simple to complex)
   - Australian demographic data
-  - Realistic clinical scenarios from ICRP settings
+  - Realistic clinical scenarios from Australian hospital settings and AMC Clinical Examination contexts
 
 - **Patient Demographics**
   - Name, age, gender, MRN
@@ -133,6 +218,205 @@ Medical graduates entering ICRP lack practical experience with hospital EMR syst
   - Validation scores trend
   - Weak areas identification
   - Specialty-specific performance
+
+#### 7. **OSCE Station Integration**
+
+The EMR Practice System integrates seamlessly with OSCE (Objective Structured Clinical Examination) stations to provide authentic clinical examination preparation for the AMC Clinical Examination.
+
+**Integration Features:**
+
+1. **EMR-Required OSCE Stations**
+   - Students encounter OSCE stations that explicitly require EMR documentation
+   - Example: "Complete a SOAP note in the hospital EMR system based on this patient encounter"
+   - Simulates real clinical examination conditions where EMR proficiency is assessed
+
+2. **Dual-Interface Display**
+   - OSCE station instructions displayed in a banner (non-intrusive)
+   - Full EMR interface (Cerner or Epic) below for documentation
+   - Timer visible showing remaining time for station
+   - Patient scenario details accessible throughout
+
+3. **Real-Time EMR Documentation During OSCE**
+   - Students practice documenting while managing time pressure
+   - Realistic workflow: gather information → document in EMR → submit
+   - Typing speed and accuracy tracked under examination conditions
+
+4. **Integrated Scoring System**
+   - **OSCE Score (60%):** Clinical examination skills, communication, examination technique
+   - **EMR Documentation Score (40%):** SOAP note quality, Australian terminology, PBS/MBS compliance
+   - **Combined Score:** Provides holistic assessment of clinical and documentation skills
+
+5. **Technical Architecture**
+
+```typescript
+// components/osce/OSCEStationWithEMR.tsx
+interface OSCEStation {
+  id: string;
+  title: string;
+  instructions: string;
+  duration_minutes: number;
+  patient_scenario_id: string;
+  emr_system: 'cerner' | 'epic';
+  required_documentation: ('soap_note' | 'prescription' | 'pathology')[];
+  scoring_weights: {
+    osce_clinical_skills: number;  // 0.6
+    emr_documentation: number;      // 0.4
+  };
+}
+
+export const OSCEStationWithEMR: React.FC<{ station: OSCEStation }> = ({ station }) => {
+  const [timeRemaining, setTimeRemaining] = useState(station.duration_minutes * 60);
+  const [documentationStarted, setDocumentationStarted] = useState(false);
+
+  return (
+    <div className="osce-station-container">
+      {/* OSCE Instructions Banner */}
+      <div className="osce-banner bg-blue-900 text-white p-4">
+        <div className="flex justify-between items-center">
+          <div>
+            <h2 className="text-xl font-bold">{station.title}</h2>
+            <p className="text-sm">{station.instructions}</p>
+          </div>
+          <div className="text-right">
+            <div className="text-3xl font-mono font-bold">
+              {Math.floor(timeRemaining / 60)}:{(timeRemaining % 60).toString().padStart(2, '0')}
+            </div>
+            <div className="text-xs">Time Remaining</div>
+          </div>
+        </div>
+      </div>
+
+      {/* EMR Interface */}
+      <div className="emr-interface">
+        {station.emr_system === 'cerner' ? (
+          <CernerSimulation
+            patientScenarioId={station.patient_scenario_id}
+            osceMode={true}
+            onDocumentationStart={() => setDocumentationStarted(true)}
+          />
+        ) : (
+          <EpicSimulation
+            patientScenarioId={station.patient_scenario_id}
+            osceMode={true}
+            onDocumentationStart={() => setDocumentationStarted(true)}
+          />
+        )}
+      </div>
+    </div>
+  );
+};
+```
+
+6. **Database Schema: OSCE-EMR Integration**
+
+```sql
+-- Table: osce_emr_sessions
+CREATE TABLE osce_emr_sessions (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID NOT NULL REFERENCES users(id),
+  osce_station_id UUID NOT NULL,
+  emr_session_id UUID NOT NULL REFERENCES emr_sessions(id),
+
+  -- OSCE Details
+  station_title VARCHAR(255) NOT NULL,
+  duration_minutes INT NOT NULL,
+  started_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  completed_at TIMESTAMP,
+
+  -- Scoring
+  osce_clinical_score DECIMAL(5,2),  -- 0-100 (manual scoring by examiner)
+  emr_documentation_score DECIMAL(5,2),  -- 0-100 (AI validation)
+  combined_score DECIMAL(5,2),  -- Weighted average
+
+  -- Metadata
+  documentation_time_seconds INT,
+  typing_speed_wpm DECIMAL(5,2),
+
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Table: osce_stations (predefined OSCE scenarios)
+CREATE TABLE osce_stations (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title VARCHAR(255) NOT NULL,
+  instructions TEXT NOT NULL,
+  duration_minutes INT NOT NULL DEFAULT 10,
+  patient_scenario_id UUID NOT NULL REFERENCES patient_scenarios(id),
+  emr_system VARCHAR(20) NOT NULL CHECK (emr_system IN ('cerner', 'epic')),
+  required_documentation JSONB NOT NULL,  -- ['soap_note', 'prescription']
+  scoring_weights JSONB NOT NULL,  -- {"osce_clinical_skills": 0.6, "emr_documentation": 0.4}
+
+  -- AMC Clinical Examination Context
+  specialty VARCHAR(100),
+  difficulty_level VARCHAR(20) CHECK (difficulty_level IN ('beginner', 'intermediate', 'advanced')),
+
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW()
+);
+```
+
+7. **API Endpoints: OSCE Integration**
+
+```python
+# backend/api/routes/osce_integration.py
+from fastapi import APIRouter, Depends
+from typing import List
+
+router = APIRouter()
+
+@router.post("/osce/sessions/start")
+async def start_osce_emr_session(
+    osce_station_id: str,
+    user_id: str = Depends(get_current_user)
+) -> OSCEEMRSession:
+    """
+    Start a new OSCE station with EMR documentation requirement.
+    Returns session ID, patient scenario, and timer settings.
+    """
+    pass
+
+@router.post("/osce/sessions/{session_id}/submit")
+async def submit_osce_emr_documentation(
+    session_id: str,
+    documentation: EMRDocumentation,
+    user_id: str = Depends(get_current_user)
+) -> OSCESubmissionResult:
+    """
+    Submit EMR documentation for OSCE station.
+    Triggers AI validation and calculates EMR documentation score.
+    """
+    pass
+
+@router.get("/osce/sessions/{session_id}/score")
+async def get_osce_emr_score(
+    session_id: str,
+    user_id: str = Depends(get_current_user)
+) -> OSCEScore:
+    """
+    Get combined OSCE + EMR score.
+    Returns breakdown: clinical skills score, EMR documentation score, combined score.
+    """
+    pass
+
+@router.get("/osce/stations")
+async def list_osce_stations(
+    specialty: Optional[str] = None,
+    difficulty: Optional[str] = None
+) -> List[OSCEStation]:
+    """
+    List available OSCE stations with EMR documentation requirements.
+    Can filter by specialty and difficulty level.
+    """
+    pass
+```
+
+8. **Success Metrics: OSCE Integration**
+   - **Station Completion Rate:** 95%+ of users complete EMR documentation within time limit
+   - **Combined Score:** Average combined score (OSCE + EMR) of 75%+
+   - **Documentation Quality:** 90%+ of OSCE EMR submissions meet AHPRA standards
+   - **Time Management:** 85%+ of users complete documentation with ≥2 minutes remaining
+   - **Realistic Preparation:** 90%+ of users report feeling "well-prepared" for AMC Clinical Examination EMR components
 
 ---
 
@@ -482,7 +766,7 @@ class SOAPNoteValidator:
             top_k=5
         )
 
-        prompt = f"""You are an experienced Australian clinical educator reviewing a medical student's SOAP note for an ICRP assessment.
+        prompt = f"""You are an experienced Australian clinical educator reviewing a medical student's SOAP note for AMC Clinical Examination preparation.
 
 PATIENT SCENARIO:
 {patient.clinical_scenario}
@@ -547,7 +831,7 @@ Evaluate this SOAP note using Australian medical standards. Provide feedback in 
   "overall_feedback": "2-3 sentences of constructive feedback"
 }}
 
-Be specific, constructive, and educational. Focus on ICRP readiness."""
+Be specific, constructive, and educational. Focus on AMC Clinical Examination readiness and AHPRA clinical competency standards."""
 
         response = await self.client.messages.create(
             model="claude-3-5-sonnet-20241022",

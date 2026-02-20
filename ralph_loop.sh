@@ -346,8 +346,8 @@ should_exit_gracefully() {
         return 0
     fi
     
-    # 3. Strong completion indicators
-    if [[ $recent_completion_indicators -ge 2 ]]; then
+    # 3. Strong completion indicators (increased threshold to allow progress reports)
+    if [[ $recent_completion_indicators -ge 10 ]]; then
         log_status "WARN" "Exit condition: Strong completion indicators ($recent_completion_indicators)"
         echo "project_complete"
         return 0

@@ -16,12 +16,15 @@ import {
   Cell,
 } from 'recharts';
 import type { SpecialtyPerformance } from '../../types/dashboard';
+import { useResponsive } from '../../hooks/useResponsive';
 
 interface SpecialtyBreakdownProps {
   specialties: SpecialtyPerformance[];
 }
 
 const SpecialtyBreakdown: React.FC<SpecialtyBreakdownProps> = ({ specialties }) => {
+  const { isMobile } = useResponsive();
+
   // Sort by accuracy (lowest to highest) for visibility
   const sortedData = [...specialties].sort(
     (a, b) => a.accuracy_rate - b.accuracy_rate
@@ -44,22 +47,23 @@ const SpecialtyBreakdown: React.FC<SpecialtyBreakdownProps> = ({ specialties }) 
     return '#f44336'; // red
   };
 
+  const chartHeight = isMobile ? 280 : 400;
+
+  const chartMargin = isMobile
+    ? { top: 5, right: 5, left: -10, bottom: 80 }
+    : { top: 5, right: 30, left: 20, bottom: 100 };
+
   return (
     <Card>
       <CardContent>
         <Typography variant="h6" gutterBottom>
           Performance by Specialty
         </Typography>
-        <Box sx={{ width: '100%', height: 400, mt: 2 }}>
+        <Box sx={{ width: '100%', height: chartHeight, mt: 2 }}>
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
               data={chartData}
-              margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 100,
-              }}
+              margin={chartMargin}
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis
@@ -68,7 +72,7 @@ const SpecialtyBreakdown: React.FC<SpecialtyBreakdownProps> = ({ specialties }) 
                 textAnchor="end"
                 height={100}
                 interval={0}
-                tick={{ fontSize: 12 }}
+                tick={{ fontSize: isMobile ? 9 : 12 }}
               />
               <YAxis
                 label={{ value: 'Accuracy (%)', angle: -90, position: 'insideLeft' }}

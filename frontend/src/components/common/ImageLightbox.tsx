@@ -19,6 +19,7 @@ import {
   ImageListItem,
 } from '@mui/material';
 import { Close as CloseIcon, ZoomIn as ZoomInIcon } from '@mui/icons-material';
+import { useResponsive } from '../../hooks/useResponsive';
 
 export interface ImageLightboxProps {
   /** Array of image URLs */
@@ -41,6 +42,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
   altPrefix = 'Medical image',
 }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const { isMobile } = useResponsive();
 
   const handleOpen = (imageUrl: string) => {
     setSelectedImage(imageUrl);
@@ -56,7 +58,9 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
   }
 
   // Determine grid columns based on number of images
-  const cols = images.length === 1 ? 1 : images.length === 2 ? 2 : 3;
+  // On mobile, use at most 2 columns to avoid cramped display
+  const maxCols = isMobile ? 2 : 3;
+  const cols = images.length === 1 ? 1 : images.length <= 2 ? 2 : maxCols;
 
   return (
     <>
@@ -110,8 +114,8 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
                 borderRadius: '50%',
                 padding: 1,
                 display: 'flex',
-                alignItems: 'centre',
-                justifyContent: 'centre',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
               aria-hidden="true"
             >
@@ -140,8 +144,8 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
             position: 'relative',
             padding: 2,
             display: 'flex',
-            alignItems: 'centre',
-            justifyContent: 'centre',
+            alignItems: 'center',
+            justifyContent: 'center',
             minHeight: 400,
           }}
         >

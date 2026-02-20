@@ -37,9 +37,9 @@ const Dashboard: React.FC = () => {
   }
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
+    <Container maxWidth="lg" sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
       {/* Welcome Header */}
-      <Paper elevation={0} sx={{ p: 3, mb: 4, bgcolor: 'primary.main', color: 'white' }}>
+      <Paper elevation={0} sx={{ p: { xs: 2, sm: 3 }, mb: { xs: 2, sm: 3, md: 4 }, bgcolor: 'primary.main', color: 'white' }}>
         <Typography variant="h4" gutterBottom>
           Welcome to AMC Clinical Exam Simulation
         </Typography>
@@ -56,10 +56,10 @@ const Dashboard: React.FC = () => {
         Quick Actions
       </Typography>
 
-      <Grid container spacing={3}>
+      <Grid container spacing={{ xs: 2, sm: 3 }}>
         {/* MCQ Practice - Available to all with MCQ_VIEW */}
         <PermissionGuard permission={Permissions.MCQ_VIEW}>
-          <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+          <Grid size={{ xs: 12, sm: 6, md: 6, lg: 4 }}>
             <Card>
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -80,7 +80,7 @@ const Dashboard: React.FC = () => {
 
         {/* OSCE Practice - Available to all with OSCE_VIEW */}
         <PermissionGuard permission={Permissions.OSCE_VIEW}>
-          <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+          <Grid size={{ xs: 12, sm: 6, md: 6, lg: 4 }}>
             <Card>
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -101,7 +101,7 @@ const Dashboard: React.FC = () => {
 
         {/* Progress Tracking - Available to all with PROGRESS_VIEW_OWN */}
         <PermissionGuard permission={Permissions.PROGRESS_VIEW_OWN}>
-          <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+          <Grid size={{ xs: 12, sm: 6, md: 6, lg: 4 }}>
             <Card>
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -122,7 +122,7 @@ const Dashboard: React.FC = () => {
 
         {/* Create Content - Educators and Admins only */}
         <PermissionGuard anyOf={[Permissions.MCQ_CREATE, Permissions.OSCE_CREATE]}>
-          <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+          <Grid size={{ xs: 12, sm: 6, md: 6, lg: 4 }}>
             <Card sx={{ border: '2px solid', borderColor: 'primary.main' }}>
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -150,7 +150,7 @@ const Dashboard: React.FC = () => {
 
         {/* Admin Panel - Admins only */}
         <PermissionGuard permission={Permissions.ADMIN_PANEL}>
-          <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+          <Grid size={{ xs: 12, sm: 6, md: 6, lg: 4 }}>
             <Card sx={{ border: '2px solid', borderColor: 'error.main' }}>
               <CardContent>
                 <Typography variant="h6" gutterBottom color="error">
@@ -171,7 +171,7 @@ const Dashboard: React.FC = () => {
 
         {/* View All Progress - Educators and Admins */}
         <PermissionGuard permission={Permissions.PROGRESS_VIEW_ALL}>
-          <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+          <Grid size={{ xs: 12, sm: 6, md: 6, lg: 4 }}>
             <Card>
               <CardContent>
                 <Typography variant="h6" gutterBottom>

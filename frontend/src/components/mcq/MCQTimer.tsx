@@ -55,9 +55,16 @@ export const MCQTimer: React.FC<MCQTimerProps> = ({
   totalTime = 120,
 }) => {
   const [displayTime, setDisplayTime] = useState(timeRemaining);
+  const [announced30s, setAnnounced30s] = useState(false);
+  const [announced10s, setAnnounced10s] = useState(false);
 
   useEffect(() => {
     setDisplayTime(timeRemaining);
+    // Reset announcements when time resets
+    if (timeRemaining > 30) {
+      setAnnounced30s(false);
+      setAnnounced10s(false);
+    }
   }, [timeRemaining]);
 
   useEffect(() => {
@@ -79,22 +86,60 @@ export const MCQTimer: React.FC<MCQTimerProps> = ({
   const colour = getColour(displayTime, totalTime);
   const progressPercentage = (displayTime / totalTime) * 100;
 
+  // Determine if we should announce warnings
+  const shouldAnnounce30s = displayTime === 30 && !announced30s && !isPaused;
+  const shouldAnnounce10s = displayTime === 10 && !announced10s && !isPaused;
+
+  // Mark announcements as done
+  useEffect(() => {
+    if (shouldAnnounce30s) setAnnounced30s(true);
+    if (shouldAnnounce10s) setAnnounced10s(true);
+  }, [shouldAnnounce30s, shouldAnnounce10s]);
+
   return (
     <Box
       role="timer"
       aria-label={`Time remaining: ${formatTime(displayTime)}`}
       sx={{ width: '100%' }}
     >
+      {/* Screen reader announcements for time warnings */}
+      <Box
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        sx={{
+          position: 'absolute',
+          left: '-10000px',
+          width: '1px',
+          height: '1px',
+          overflow: 'hidden',
+        }}
+      >
+        {shouldAnnounce30s && 'Warning: 30 seconds remaining'}
+        {shouldAnnounce10s && 'Warning: 10 seconds remaining'}
+      </Box>
+
       <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
         <TimerIcon
           color={colour}
           aria-hidden="true"
-          sx={{ fontSize: 20 }}
+          sx={{
+            fontSize: 20,
+            animation: displayTime < 10 && !isPaused ? 'pulse 1s infinite' : 'none',
+            '@keyframes pulse': {
+              '0%, 100%': { opacity: 1 },
+              '50%': { opacity: 0.5 },
+            },
+          }}
         />
         <Typography
           variant="body2"
           color={colour === 'error' ? 'error' : colour === 'warning' ? 'warning.main' : 'success.main'}
-          sx={{ fontWeight: 600, minWidth: 50 }}
+          sx={{
+            fontWeight: 600,
+            minWidth: 50,
+            animation: displayTime < 10 && !isPaused ? 'pulse 1s infinite' : 'none',
+          }}
         >
           {formatTime(displayTime)}
         </Typography>

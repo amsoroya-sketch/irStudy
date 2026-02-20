@@ -19,6 +19,7 @@ import StatCard from '../components/dashboard/StatCard';
 import PerformanceChart from '../components/dashboard/PerformanceChart';
 import SpecialtyBreakdown from '../components/dashboard/SpecialtyBreakdown';
 import WeakAreasPanel from '../components/dashboard/WeakAreasPanel';
+import ExamReadinessGauge from '../components/dashboard/ExamReadinessGauge';
 
 const PerformanceDashboard: React.FC = () => {
   // Responsive hook
@@ -48,7 +49,7 @@ const PerformanceDashboard: React.FC = () => {
     return (
       <Container maxWidth="lg" sx={{ py: 8 }}>
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 400 }}>
-          <CircularProgress />
+          <CircularProgress aria-label="Loading dashboard data" />
         </Box>
       </Container>
     );
@@ -83,10 +84,23 @@ const PerformanceDashboard: React.FC = () => {
     );
   }
 
+  // Build exam readiness factors from dashboard data
+  const examReadinessFactors = {
+    mcqAccuracyRate: dashboardData.mcq_accuracy_rate,
+    osceCompletions: dashboardData.total_osce_completions,
+    studyCardRetentionRate: dashboardData.study_card_retention_rate,
+    weakAreaCount: dashboardData.weak_areas.length,
+    studyStreakDays: 0, // Future: add from backend
+  };
+
   return (
     <Container maxWidth="lg" sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
       {/* Page Header */}
-      <Paper elevation={0} sx={{ p: { xs: 2, sm: 3 }, mb: { xs: 2, sm: 3, md: 4 }, bgcolor: 'primary.main', color: 'white' }}>
+      <Paper
+        elevation={0}
+        sx={{ p: { xs: 2, sm: 3 }, mb: { xs: 2, sm: 3, md: 4 }, bgcolor: 'primary.main', color: 'white' }}
+        role="banner"
+      >
         <Typography variant="h4" gutterBottom sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>
           Performance Dashboard
         </Typography>
@@ -131,21 +145,28 @@ const PerformanceDashboard: React.FC = () => {
         </Grid>
       </Grid>
 
-      {/* Charts and Weak Areas */}
+      {/* Exam Readiness Gauge + Weak Areas */}
       <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ mb: { xs: 2, sm: 3, md: 4 } }}>
-        <Grid size={{ xs: 12, md: 8 }}>
+        <Grid size={{ xs: 12, md: 5 }}>
+          <ExamReadinessGauge factors={examReadinessFactors} />
+        </Grid>
+        <Grid size={{ xs: 12, md: 7 }}>
+          <WeakAreasPanel weakAreas={dashboardData.weak_areas} />
+        </Grid>
+      </Grid>
+
+      {/* Weekly Trends Chart */}
+      <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ mb: { xs: 2, sm: 3, md: 4 } }}>
+        <Grid size={{ xs: 12 }}>
           {trendsData.trends.length > 0 ? (
             <PerformanceChart trends={trendsData.trends} />
           ) : (
             <Alert severity="info">
               <Typography variant="body2">
-                No trend data available yet. Start practicing MCQs to see your progress over time.
+                No trend data available yet. Start practising MCQs to see your progress over time.
               </Typography>
             </Alert>
           )}
-        </Grid>
-        <Grid size={{ xs: 12, md: 4 }}>
-          <WeakAreasPanel weakAreas={dashboardData.weak_areas} />
         </Grid>
       </Grid>
 
@@ -157,7 +178,7 @@ const PerformanceDashboard: React.FC = () => {
           ) : (
             <Alert severity="info">
               <Typography variant="body2">
-                No specialty data available yet. Start practicing MCQs across different specialties
+                No specialty data available yet. Start practising MCQs across different specialties
                 to see your performance breakdown.
               </Typography>
             </Alert>
