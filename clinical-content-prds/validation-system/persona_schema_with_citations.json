@@ -1,0 +1,790 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Patient Persona with RAG Citation Tracking",
+  "description": "Complete JSON schema for medical patient personas with granular RAG source tracking for every clinical claim. Ensures 100% traceability to 9,950+ medical knowledge chunks in Qdrant vector database.",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "age",
+    "gender",
+    "specialty",
+    "difficulty",
+    "chief_complaint",
+    "opening_statement",
+    "emotional_baseline",
+    "symptoms",
+    "past_medical_history",
+    "medications",
+    "allergies",
+    "family_history",
+    "social_history",
+    "examination_findings",
+    "expected_diagnosis",
+    "expected_management",
+    "critical_errors",
+    "fracp_reviews",
+    "learning_objectives",
+    "created_by",
+    "created_at",
+    "version"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier format: {specialty}_{sequence}_{diagnosis}_{gender}_{age}",
+      "pattern": "^[a-z_]+_[0-9]{3}_[a-z_]+_(male|female)_[0-9]{1,3}$",
+      "examples": [
+        "emergency_001_anaphylaxis_female_28",
+        "cardiology_005_stemi_male_58"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Patient's full name (synthetic, culturally diverse)",
+      "minLength": 3,
+      "maxLength": 100,
+      "examples": ["Sarah Chen", "Mohammed Al-Rashid", "Priya Sharma"]
+    },
+    "age": {
+      "type": "integer",
+      "description": "Patient age in years",
+      "minimum": 0,
+      "maximum": 120
+    },
+    "gender": {
+      "type": "string",
+      "description": "Patient gender",
+      "enum": ["Male", "Female", "Non-binary", "Prefer not to say"]
+    },
+    "specialty": {
+      "type": "string",
+      "description": "Primary medical specialty for this case",
+      "enum": [
+        "Emergency",
+        "Cardiology",
+        "Respiratory",
+        "Neurology",
+        "Psychiatry",
+        "Obstetrics & Gynecology",
+        "Pediatrics",
+        "Surgery",
+        "Infectious Diseases",
+        "General Practice"
+      ]
+    },
+    "difficulty": {
+      "type": "string",
+      "description": "Clinical difficulty level for assessment purposes",
+      "enum": ["Easy", "Medium", "Hard"]
+    },
+    "chief_complaint": {
+      "type": "string",
+      "description": "Brief presenting complaint (1-2 sentences)",
+      "minLength": 10,
+      "maxLength": 200
+    },
+    "opening_statement": {
+      "type": "string",
+      "description": "Patient's opening statement in first person (simulated patient voice)",
+      "minLength": 20,
+      "maxLength": 500
+    },
+    "emotional_baseline": {
+      "type": "string",
+      "description": "Patient's emotional state and presentation",
+      "minLength": 5,
+      "maxLength": 200
+    },
+    "symptoms": {
+      "type": "array",
+      "description": "Array of symptoms with complete SOCRATES framework and RAG citations",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/symptom"
+      }
+    },
+    "past_medical_history": {
+      "type": "array",
+      "description": "Array of past medical conditions (RAG citations required for relevant comorbidities)",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string",
+            "description": "Simple past medical history item (no citation required)"
+          },
+          {
+            "$ref": "#/definitions/pmh_with_citation"
+          }
+        ]
+      }
+    },
+    "medications": {
+      "type": "array",
+      "description": "Array of current medications with RAG citations for each drug",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string",
+            "description": "Simple medication string (legacy format, use with_citation preferred)"
+          },
+          {
+            "$ref": "#/definitions/medication_with_citation"
+          }
+        ]
+      }
+    },
+    "allergies": {
+      "type": "string",
+      "description": "Known allergies or 'No known drug allergies (NKDA)'",
+      "minLength": 3
+    },
+    "family_history": {
+      "type": "string",
+      "description": "Relevant family medical history",
+      "minLength": 3
+    },
+    "social_history": {
+      "type": "object",
+      "description": "Social history details",
+      "required": ["smoking", "alcohol", "occupation", "exercise", "living_situation"],
+      "properties": {
+        "smoking": {
+          "type": "string",
+          "examples": ["Never smoked", "Ex-smoker (quit 5 years ago)", "Current smoker - 20 pack-years"]
+        },
+        "alcohol": {
+          "type": "string",
+          "examples": ["Non-drinker", "Social drinker (2-3 standard drinks per week)", "Heavy drinker (40+ units/week)"]
+        },
+        "occupation": {
+          "type": "string",
+          "examples": ["Primary school teacher", "Construction worker", "Retired accountant"]
+        },
+        "exercise": {
+          "type": "string",
+          "examples": ["Sedentary", "Moderate (walks 3x/week)", "Active (gym 5x/week)"]
+        },
+        "living_situation": {
+          "type": "string",
+          "examples": ["Lives alone", "Lives with partner and 2 children", "Nursing home resident"]
+        }
+      }
+    },
+    "examination_findings": {
+      "type": "object",
+      "description": "Physical examination findings with RAG citations for critical signs",
+      "additionalProperties": true
+    },
+    "expected_diagnosis": {
+      "$ref": "#/definitions/diagnosis_with_citations",
+      "description": "Primary diagnosis with 2-4 RAG citations (minimum confidence 0.75)"
+    },
+    "expected_management": {
+      "type": "array",
+      "description": "Array of management steps, each with RAG citation (minimum confidence 0.75)",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {
+            "type": "string",
+            "description": "Simple management step string (legacy format, use with_citation preferred)"
+          },
+          {
+            "$ref": "#/definitions/management_step_with_citation"
+          }
+        ]
+      }
+    },
+    "critical_errors": {
+      "type": "array",
+      "description": "Array of critical errors with RAG citations (minimum confidence 0.80)",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/critical_error"
+      }
+    },
+    "fracp_reviews": {
+      "type": "array",
+      "description": "Peer reviews from FRACP-equivalent clinicians (minimum 2 required)",
+      "minItems": 2,
+      "items": {
+        "$ref": "#/definitions/fracp_review"
+      }
+    },
+    "learning_objectives": {
+      "type": "array",
+      "description": "Educational learning objectives for this case",
+      "minItems": 3,
+      "items": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 200
+      }
+    },
+    "created_by": {
+      "type": "string",
+      "description": "System or agent that created this persona",
+      "examples": ["MED-002 (Emergency Persona Creator)", "batch1_persona_generator.py v1.0"]
+    },
+    "created_at": {
+      "type": "string",
+      "description": "ISO 8601 datetime of creation",
+      "format": "date-time"
+    },
+    "version": {
+      "type": "string",
+      "description": "Persona version (semantic versioning)",
+      "pattern": "^[0-9]+\\.[0-9]+$",
+      "examples": ["1.0", "2.1"]
+    }
+  },
+  "definitions": {
+    "rag_citation": {
+      "type": "object",
+      "description": "Complete RAG citation with full traceability to Qdrant vector database",
+      "required": [
+        "title",
+        "author",
+        "year",
+        "page",
+        "content",
+        "rag_confidence",
+        "source_type",
+        "source_category",
+        "qdrant_point_id",
+        "retrieved_at"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Full title of source document (MUST NOT be 'Unknown' or empty)",
+          "minLength": 5,
+          "maxLength": 200,
+          "not": {
+            "enum": ["Unknown", "unknown", "", "N/A", "n/a"]
+          },
+          "examples": [
+            "John Murtagh General Practice",
+            "Talley and O'Connor's Clinical Examination",
+            "Oxford Handbook Emergency Medicine",
+            "AMC Handbook of Clinical Assessment"
+          ]
+        },
+        "author": {
+          "type": "string",
+          "description": "Primary author(s) of source document",
+          "minLength": 2,
+          "maxLength": 200,
+          "examples": [
+            "John Murtagh",
+            "Nicholas J Talley, Simon O'Connor",
+            "Jonathan P Wyatt et al"
+          ]
+        },
+        "year": {
+          "type": "integer",
+          "description": "Publication year (must be 1990-2026 for medical content validity)",
+          "minimum": 1990,
+          "maximum": 2026
+        },
+        "page": {
+          "type": "integer",
+          "description": "Page number in source document (must be >0)",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "section": {
+          "type": "string",
+          "description": "Section or chapter heading within source (optional but recommended)",
+          "minLength": 3,
+          "maxLength": 300,
+          "examples": [
+            "Chapter 56: Knee Pain",
+            "Chapter 78: Anaphylaxis - Clinical Features",
+            "Section 5.1.2: Acute Coronary Syndrome"
+          ]
+        },
+        "content": {
+          "type": "string",
+          "description": "Actual text excerpt from medical source (150-250 characters required for context)",
+          "minLength": 150,
+          "maxLength": 250,
+          "examples": [
+            "Anaphylaxis presents with respiratory symptoms including bronchospasm, wheeze, stridor, and upper airway oedema within minutes of allergen exposure requiring immediate adrenaline administration."
+          ]
+        },
+        "rag_confidence": {
+          "type": "number",
+          "description": "RAG semantic similarity score from Qdrant (MUST be ≥0.65, stricter thresholds apply per section)",
+          "minimum": 0.65,
+          "maximum": 1.0,
+          "examples": [0.8945, 0.7727, 0.7823]
+        },
+        "source_type": {
+          "type": "string",
+          "description": "Type of medical source",
+          "enum": ["textbook", "guideline", "journal", "protocol"]
+        },
+        "source_category": {
+          "type": "string",
+          "description": "Category filter matching RAG system classification",
+          "enum": [
+            "gp_primary_care",
+            "clinical_skills",
+            "core_medicine",
+            "australian_guidelines",
+            "emergency_medicine",
+            "specialty_specific",
+            "evidence_based",
+            "other"
+          ]
+        },
+        "qdrant_point_id": {
+          "type": "string",
+          "description": "UUID of chunk in Qdrant vector database (REQUIRED for traceability)",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "examples": [
+            "7f3a2b1c-4d5e-6f7a-8b9c-0d1e2f3a4b5c",
+            "2c3d4e5f-6a7b-8c9d-0e1f-2a3b4c5d6e7f"
+          ]
+        },
+        "query_used": {
+          "type": "string",
+          "description": "RAG query that retrieved this chunk (optional, for reproducibility)",
+          "minLength": 3,
+          "maxLength": 200,
+          "examples": [
+            "anaphylaxis respiratory bronchospasm wheeze",
+            "bilateral wheeze examination auscultation"
+          ]
+        },
+        "retrieved_at": {
+          "type": "string",
+          "description": "ISO 8601 datetime when citation was retrieved from RAG system",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    },
+    "symptom": {
+      "type": "object",
+      "description": "Symptom with complete SOCRATES framework and RAG citations (minimum 1 citation, confidence ≥0.65)",
+      "required": ["symptom", "rag_citations"],
+      "properties": {
+        "symptom": {
+          "type": "string",
+          "description": "Brief symptom description",
+          "minLength": 3,
+          "maxLength": 200
+        },
+        "onset": {
+          "type": "string",
+          "description": "When symptom started (SOCRATES: Onset)",
+          "minLength": 3
+        },
+        "duration": {
+          "type": "string",
+          "description": "How long symptom has lasted",
+          "minLength": 3
+        },
+        "severity": {
+          "type": "string",
+          "description": "Severity assessment (SOCRATES: Severity)",
+          "minLength": 3
+        },
+        "character": {
+          "type": "string",
+          "description": "Character/quality of symptom (SOCRATES: Character)",
+          "minLength": 3
+        },
+        "socrates": {
+          "type": "object",
+          "description": "Complete SOCRATES framework (optional if individual fields provided)",
+          "properties": {
+            "site": {"type": "string"},
+            "onset": {"type": "string"},
+            "character": {"type": "string"},
+            "radiation": {"type": "string"},
+            "associated": {"type": "string"},
+            "timing": {"type": "string"},
+            "exacerbating": {"type": "string"},
+            "relieving": {"type": "string"},
+            "severity": {"type": "string"}
+          }
+        },
+        "rag_citations": {
+          "type": "array",
+          "description": "RAG citations for this symptom (minimum 1, maximum 3 recommended)",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "$ref": "#/definitions/rag_citation"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "pmh_with_citation": {
+      "type": "object",
+      "description": "Past medical history item with RAG citation (for relevant comorbidities)",
+      "required": ["condition", "rag_citations"],
+      "properties": {
+        "condition": {
+          "type": "string",
+          "description": "Past medical condition",
+          "minLength": 3
+        },
+        "relevance": {
+          "type": "string",
+          "description": "Why this PMH is relevant to current presentation",
+          "minLength": 10
+        },
+        "rag_citations": {
+          "type": "array",
+          "description": "RAG citations for comorbidity relationship (minimum 1, confidence ≥0.65)",
+          "minItems": 1,
+          "maxItems": 2,
+          "items": {
+            "$ref": "#/definitions/rag_citation"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "medication_with_citation": {
+      "type": "object",
+      "description": "Medication with RAG citation for dosing/indication",
+      "required": ["medication", "rag_citations"],
+      "properties": {
+        "medication": {
+          "type": "string",
+          "description": "Medication name, dose, frequency",
+          "minLength": 5
+        },
+        "indication": {
+          "type": "string",
+          "description": "Why patient is taking this medication",
+          "minLength": 3
+        },
+        "rag_citations": {
+          "type": "array",
+          "description": "RAG citations for medication (minimum 1, confidence ≥0.70)",
+          "minItems": 1,
+          "maxItems": 2,
+          "items": {
+            "$ref": "#/definitions/rag_citation"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "diagnosis_with_citations": {
+      "type": "object",
+      "description": "Primary diagnosis with 2-4 RAG citations (minimum confidence 0.75)",
+      "required": ["diagnosis", "rag_citations"],
+      "properties": {
+        "diagnosis": {
+          "type": "string",
+          "description": "Primary diagnosis with specificity",
+          "minLength": 5,
+          "maxLength": 200
+        },
+        "differential_diagnoses": {
+          "type": "array",
+          "description": "Alternative diagnoses considered",
+          "items": {
+            "type": "string"
+          }
+        },
+        "diagnostic_criteria": {
+          "type": "string",
+          "description": "Criteria used for diagnosis (e.g., DSM-5, ICD-11, clinical guidelines)",
+          "minLength": 10
+        },
+        "rag_citations": {
+          "type": "array",
+          "description": "RAG citations for diagnosis (minimum 2, maximum 4, confidence ≥0.75)",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": {
+            "$ref": "#/definitions/rag_citation"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "management_step_with_citation": {
+      "type": "object",
+      "description": "Management step with RAG citation (minimum confidence 0.75)",
+      "required": ["step", "rag_citations"],
+      "properties": {
+        "step": {
+          "type": "string",
+          "description": "Management action (e.g., medication, investigation, referral)",
+          "minLength": 10
+        },
+        "priority": {
+          "type": "string",
+          "description": "Priority level (e.g., IMMEDIATE, URGENT, ROUTINE)",
+          "enum": ["IMMEDIATE", "URGENT", "ROUTINE", "FOLLOW-UP"]
+        },
+        "rationale": {
+          "type": "string",
+          "description": "Clinical reasoning for this management step",
+          "minLength": 10
+        },
+        "rag_citations": {
+          "type": "array",
+          "description": "RAG citations for management step (minimum 1, confidence ≥0.75)",
+          "minItems": 1,
+          "maxItems": 2,
+          "items": {
+            "$ref": "#/definitions/rag_citation"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "critical_error": {
+      "type": "object",
+      "description": "Critical error with RAG citation (minimum confidence 0.80)",
+      "required": ["error", "severity", "auto_fail", "explanation", "rag_citations"],
+      "properties": {
+        "error": {
+          "type": "string",
+          "description": "Description of critical error",
+          "minLength": 10
+        },
+        "severity": {
+          "type": "string",
+          "description": "Severity level of error",
+          "enum": ["CRITICAL", "MAJOR", "MINOR"]
+        },
+        "auto_fail": {
+          "type": "boolean",
+          "description": "Whether this error causes automatic failure"
+        },
+        "explanation": {
+          "type": "string",
+          "description": "Why this is a critical error (clinical reasoning)",
+          "minLength": 20
+        },
+        "rag_citations": {
+          "type": "array",
+          "description": "RAG citations for critical error evidence (minimum 1, confidence ≥0.80)",
+          "minItems": 1,
+          "maxItems": 2,
+          "items": {
+            "$ref": "#/definitions/rag_citation"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "fracp_review": {
+      "type": "object",
+      "description": "Peer review from FRACP-equivalent clinician",
+      "required": [
+        "reviewer_name",
+        "reviewer_credentials",
+        "approved",
+        "clinical_accuracy",
+        "difficulty_appropriate",
+        "rag_citations_correct",
+        "feedback"
+      ],
+      "properties": {
+        "reviewer_name": {
+          "type": "string",
+          "description": "Reviewer's full name (e.g., Dr Emma Roberts)",
+          "minLength": 5
+        },
+        "reviewer_credentials": {
+          "type": "string",
+          "description": "Reviewer's credentials and experience (e.g., FACEM, 16 years post-fellowship)",
+          "minLength": 5
+        },
+        "approved": {
+          "type": "boolean",
+          "description": "Whether reviewer approves this persona for use"
+        },
+        "clinical_accuracy": {
+          "type": "string",
+          "description": "Assessment of clinical accuracy",
+          "minLength": 10
+        },
+        "difficulty_appropriate": {
+          "type": "string",
+          "description": "Whether difficulty level matches content",
+          "minLength": 3
+        },
+        "rag_citations_correct": {
+          "type": "string",
+          "description": "Assessment of RAG citation quality and accuracy",
+          "minLength": 3
+        },
+        "feedback": {
+          "type": "string",
+          "description": "Detailed reviewer feedback",
+          "minLength": 20
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "examples": [
+    {
+      "id": "emergency_001_anaphylaxis_female_28",
+      "name": "Sarah Chen",
+      "age": 28,
+      "gender": "Female",
+      "specialty": "Emergency",
+      "difficulty": "Medium",
+      "chief_complaint": "Difficulty breathing and facial swelling after eating cashew nuts",
+      "opening_statement": "I was eating at a restaurant about 15 minutes ago and had some cashew nuts. Within a few minutes my lips started tingling, then my face swelled up. Now I'm having trouble breathing and I feel dizzy.",
+      "emotional_baseline": "Anxious, frightened, struggling to breathe",
+      "symptoms": [
+        {
+          "symptom": "Difficulty breathing with wheeze",
+          "onset": "Within 5 minutes of ingestion",
+          "duration": "10 minutes",
+          "severity": "Severe",
+          "character": "Tight chest with audible wheeze",
+          "rag_citations": [
+            {
+              "title": "John Murtagh General Practice",
+              "author": "John Murtagh",
+              "year": 2020,
+              "page": 1823,
+              "section": "Chapter 78: Anaphylaxis",
+              "content": "Anaphylaxis presents with respiratory symptoms including bronchospasm, wheeze, stridor, and upper airway oedema within minutes of allergen exposure requiring immediate adrenaline.",
+              "rag_confidence": 0.8945,
+              "source_type": "textbook",
+              "source_category": "gp_primary_care",
+              "qdrant_point_id": "7f3a2b1c-4d5e-6f7a-8b9c-0d1e2f3a4b5c",
+              "query_used": "anaphylaxis respiratory bronchospasm wheeze",
+              "retrieved_at": "2026-03-16T10:45:23Z"
+            }
+          ]
+        }
+      ],
+      "past_medical_history": [
+        "Known cashew nut allergy (diagnosed age 12)",
+        "Asthma (well-controlled on inhaled corticosteroid)"
+      ],
+      "medications": [
+        "Fluticasone/salmeterol 125/25mcg 2 puffs BD"
+      ],
+      "allergies": "Cashew nuts (known)",
+      "family_history": "Mother has allergic rhinitis",
+      "social_history": {
+        "smoking": "Never smoked",
+        "alcohol": "Social drinker (2-3 drinks/week)",
+        "occupation": "Primary school teacher",
+        "exercise": "Regular - yoga 3x/week",
+        "living_situation": "Lives with partner"
+      },
+      "examination_findings": {
+        "vitals": {
+          "hr": "130 bpm",
+          "bp": "85/50 mmHg",
+          "rr": "32/min",
+          "spo2": "88% room air",
+          "temperature": "36.8°C"
+        }
+      },
+      "expected_diagnosis": {
+        "diagnosis": "Anaphylaxis (IgE-mediated cashew nut allergy)",
+        "rag_citations": [
+          {
+            "title": "John Murtagh General Practice",
+            "author": "John Murtagh",
+            "year": 2020,
+            "page": 1823,
+            "section": "Chapter 78: Anaphylaxis",
+            "content": "Anaphylaxis presents with respiratory symptoms including bronchospasm, wheeze, stridor, and upper airway oedema within minutes of allergen exposure requiring immediate adrenaline.",
+            "rag_confidence": 0.8945,
+            "source_type": "textbook",
+            "source_category": "gp_primary_care",
+            "qdrant_point_id": "7f3a2b1c-4d5e-6f7a-8b9c-0d1e2f3a4b5c",
+            "query_used": "anaphylaxis diagnostic criteria",
+            "retrieved_at": "2026-03-16T10:45:23Z"
+          },
+          {
+            "title": "Talley and O'Connor's Clinical Examination",
+            "author": "Nicholas J Talley, Simon O'Connor",
+            "year": 2017,
+            "page": 89,
+            "section": "Respiratory Examination",
+            "content": "Bilateral expiratory wheeze indicates bronchospasm and may be heard in asthma, anaphylaxis, or acute bronchitis requiring urgent intervention and assessment of airway compromise.",
+            "rag_confidence": 0.7823,
+            "source_type": "textbook",
+            "source_category": "clinical_skills",
+            "qdrant_point_id": "2c3d4e5f-6a7b-8c9d-0e1f-2a3b4c5d6e7f",
+            "query_used": "bilateral wheeze anaphylaxis",
+            "retrieved_at": "2026-03-16T10:45:24Z"
+          }
+        ]
+      },
+      "expected_management": [
+        "IMMEDIATE: Adrenaline 1:1000 (1mg/mL) 0.5mg (0.5mL) IM anterolateral thigh STAT",
+        "High-flow oxygen 15L/min via non-rebreather mask",
+        "IV access - two large-bore cannulas",
+        "Rapid IV fluid resuscitation - 1L 0.9% NaCl bolus"
+      ],
+      "critical_errors": [
+        {
+          "error": "Delayed adrenaline administration (not given within first 5 minutes)",
+          "severity": "CRITICAL",
+          "auto_fail": true,
+          "explanation": "Adrenaline is the ONLY first-line treatment for anaphylaxis - delays increase mortality risk",
+          "rag_citations": [
+            {
+              "title": "John Murtagh General Practice",
+              "author": "John Murtagh",
+              "year": 2020,
+              "page": 1823,
+              "section": "Chapter 78: Anaphylaxis Management",
+              "content": "Immediate intramuscular adrenaline is the first-line treatment for anaphylaxis and must be administered within 5 minutes of diagnosis to prevent cardiovascular collapse and death.",
+              "rag_confidence": 0.9123,
+              "source_type": "textbook",
+              "source_category": "gp_primary_care",
+              "qdrant_point_id": "8a4b5c6d-7e8f-9a0b-1c2d-3e4f5a6b7c8d",
+              "query_used": "adrenaline first-line anaphylaxis timing",
+              "retrieved_at": "2026-03-16T10:45:25Z"
+            }
+          ]
+        }
+      ],
+      "fracp_reviews": [
+        {
+          "reviewer_name": "Dr Emma Roberts",
+          "reviewer_credentials": "FACEM, 16 years post-fellowship",
+          "approved": true,
+          "clinical_accuracy": "Excellent - classic anaphylaxis presentation",
+          "difficulty_appropriate": "Yes - Medium difficulty appropriate",
+          "rag_citations_correct": "Yes - all citations verified",
+          "feedback": "Excellent emergency persona. Good emphasis on IM adrenaline route."
+        },
+        {
+          "reviewer_name": "Dr Michael Zhang",
+          "reviewer_credentials": "FACEM, Clinical Toxicologist, 14 years post-fellowship",
+          "approved": true,
+          "clinical_accuracy": "Accurate anaphylaxis management",
+          "difficulty_appropriate": "Yes - well-calibrated",
+          "rag_citations_correct": "Yes - all citations correct",
+          "feedback": "Good persona. Management sequence correct."
+        }
+      ],
+      "learning_objectives": [
+        "Recognize anaphylaxis presentation (urticaria + respiratory/cardiovascular compromise)",
+        "Administer adrenaline 0.5mg IM as FIRST-LINE treatment (within 5 minutes)",
+        "Understand critical error: IM not IV adrenaline (unless cardiac arrest)"
+      ],
+      "created_by": "batch1_persona_generator.py v1.0",
+      "created_at": "2026-03-16T14:30:00Z",
+      "version": "1.0"
+    }
+  ]
+}

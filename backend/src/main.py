@@ -40,6 +40,7 @@ from prometheus_client import Counter, Histogram, make_asgi_app
 
 # Import routers
 from src.api.v1.router import api_router
+from src.websocket.router import router as websocket_router
 
 # Import database
 # from src.db.session import engine, SessionLocal
@@ -323,6 +324,9 @@ app.mount("/metrics", metrics_app)
 
 # Include API routers
 app.include_router(api_router, prefix="/api")
+
+# Include WebSocket router for AI OSCE real-time sessions
+app.include_router(websocket_router, tags=["WebSocket"])
 
 
 # ============================================================================

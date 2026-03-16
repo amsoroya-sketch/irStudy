@@ -1,0 +1,189 @@
+{
+  "unified_session_start": "2026-02-28T00:00:00+11:00",
+  "parallel_execution": true,
+  "systems": {
+    "emr": {
+      "current_phase": "Week 2: Critical Security",
+      "current_prd": null,
+      "current_task": "Start Phase 1: Critical Security (8 hours)",
+      "status": "ready_to_start",
+      "ralph_loop_script": "scripts/ralph-emr-loop.sh",
+      "state_file": ".ralph-emr-state.json",
+      "tmux_session": "ralph-emr",
+      "prd_queue": [
+        "16-feb-ralph-prds/backend/PRD_BACKEND_001_EMR_DATABASE_MIGRATION.md",
+        "16-feb-ralph-prds/backend/PRD_BACKEND_002_EMR_SESSION_API.md",
+        "16-feb-ralph-prds/backend/PRD_BACKEND_003_EMR_VALIDATION_API.md",
+        "16-feb-ralph-prds/backend/PRD_BACKEND_005_DASHBOARD_ANALYTICS_API.md",
+        "16-feb-ralph-prds/frontend/PRD_FRONTEND_001_EPIC_UI_MIGRATION.md",
+        "16-feb-ralph-prds/frontend/PRD_FRONTEND_002_CERNER_UI_COMPONENTS.md",
+        "16-feb-ralph-prds/frontend/PRD_FRONTEND_003_EMR_DASHBOARD_INTEGRATION.md",
+        "16-feb-ralph-prds/frontend/PRD_FRONTEND_004_EMR_VALIDATION_DISPLAY.md"
+      ],
+      "completed_prds": [],
+      "total_prds": 8,
+      "timeline": "Week 2-4 (3 weeks)",
+      "effort_hours": "67.5-73.5",
+      "quality_gates": {
+        "total_tests": 328,
+        "tests_passing": 0,
+        "performance_targets": {
+          "submit_endpoint": "<500ms p95",
+          "dashboard_load": "<1s p95",
+          "auto_save": "<200ms p95"
+        },
+        "security": {
+          "hardcoded_credentials": 0,
+          "phi_encrypted": false,
+          "https_enforced": true,
+          "wcag_tests_passing": 0,
+          "wcag_tests_total": 56
+        }
+      }
+    },
+    "ai_osce": {
+      "current_phase": "Week 2: AI OSCE Implementation",
+      "current_prd": "ai-osce-ralph-prds/PRD_AI_OSCE_002_AI_INTEGRATION.md",
+      "current_task": "Start PRD_002: AI Integration (AI Patient + Examiner + RAG)",
+      "status": "prd_001_complete",
+      "ralph_loop_script": "scripts/ralph-week2-loop.sh",
+      "state_file": ".ralph-loop-state.json",
+      "tmux_session": "ralph-week2",
+      "prd_queue": [
+        "ai-osce-ralph-prds/PRD_AI_OSCE_002_AI_INTEGRATION.md",
+        "ai-osce-ralph-prds/PRD_AI_OSCE_003_WEBSOCKET_INFRASTRUCTURE.md",
+        "ai-osce-ralph-prds/PRD_AI_OSCE_004_SCORING_SYSTEM.md",
+        "ai-osce-ralph-prds/PRD_AI_OSCE_005_FRONTEND_IMPLEMENTATION.md"
+      ],
+      "completed_prds": [
+        "SHARED_INFRASTRUCTURE_SPEC.md",
+        "ai-osce-ralph-prds/PRD_AI_OSCE_001_DATABASE_AND_APIS.md (100% - 31/31 tests)"
+      ],
+      "total_prds": 4,
+      "timeline": "Week 3-8 (4-6 weeks)",
+      "effort_hours": "192-236",
+      "quality_gates": {
+        "prd_001_complete": true,
+        "api_endpoints": "6/6",
+        "integration_tests": "31/31 passing",
+        "test_pass_rate": "100%",
+        "code_coverage": "75%+"
+      }
+    }
+  },
+  "shared_infrastructure": {
+    "status": "complete",
+    "week_1_deliverables": {
+      "vault_operational": true,
+      "redis_operational": true,
+      "redis_namespaces": {
+        "emr": "emr:*",
+        "ai_osce": "osce:*"
+      },
+      "security_tests_baseline": 15,
+      "security_tests_target": 35,
+      "https_enforced": true,
+      "jwt_configured": true
+    }
+  },
+  "coordination_points": {
+    "user_progress_migration": {
+      "status": "coordination_required",
+      "note": "Both systems extend user_progress table - need combined Alembic migration",
+      "emr_columns": ["emr_sessions_completed", "avg_soap_score", "last_emr_activity"],
+      "ai_osce_columns": ["osce_attempts_count", "avg_osce_score", "last_osce_activity", "mock_exams_completed"]
+    },
+    "claude_api_rate_limit": {
+      "status": "monitoring_required",
+      "shared_limit": "90 req/min total",
+      "priority": "AI Patient > AI Examiner > EMR validator",
+      "fallback": {
+        "emr": "Rule-based validator (70% accuracy)",
+        "ai_osce": "Kimi API (70% quality)"
+      }
+    },
+    "security_tests": {
+      "status": "coordination_required",
+      "emr_tests": 15,
+      "ai_osce_tests": 20,
+      "total_target": 35,
+      "test_file": "backend/tests/test_security/test_security_comprehensive.py"
+    }
+  },
+  "timeline_integration": {
+    "week_1": {
+      "phase": "Shared Infrastructure",
+      "status": "complete",
+      "deliverables": "Vault, Redis, HTTPS, JWT, security test foundation"
+    },
+    "week_2": {
+      "phase": "Parallel Implementation Start",
+      "status": "ready",
+      "emr": "Phase 1-2 (Critical Security + Reliability) - 13 hours",
+      "ai_osce": "PRD_002 (AI Integration) - 20-24 hours"
+    },
+    "week_3": {
+      "phase": "Parallel Implementation Continue",
+      "emr": "Phase 3-4 (Performance + Security Hardening) - 7.5 hours",
+      "ai_osce": "PRD_003 (WebSocket Infrastructure) - 18-20 hours"
+    },
+    "week_4": {
+      "phase": "EMR Completion",
+      "emr": "Phase 5-6 (Testing + Integration) - 34 hours",
+      "ai_osce": "Continue PRD_003-004"
+    },
+    "week_5_8": {
+      "phase": "AI OSCE Completion",
+      "emr": "Complete, monitoring",
+      "ai_osce": "PRD_004-005, Mock Exam Mode, Testing"
+    }
+  },
+  "next_actions": {
+    "emr": [
+      "1. Execute: scripts/ralph-emr-loop.sh",
+      "2. OR copy prompt and send to Claude",
+      "3. PM monitors: watch -n 5 'cat .ralph-emr-state.json | jq .'"
+    ],
+    "ai_osce": [
+      "1. Execute: scripts/ralph-continue-prds.sh",
+      "2. OR continue from PRD_002 Phase 1",
+      "3. PM monitors: watch -n 5 'cat .ralph-loop-state.json | jq .'"
+    ],
+    "coordination": [
+      "1. Monitor Claude API rate limits (90 req/min shared)",
+      "2. Coordinate user_progress migration (combined Alembic file)",
+      "3. Ensure security tests don't duplicate (35 total, not 35 + 35)"
+    ]
+  },
+  "monitoring_commands": {
+    "emr_state": "cat .ralph-emr-state.json | jq .",
+    "ai_osce_state": "cat .ralph-loop-state.json | jq .",
+    "unified_state": "cat .ralph-unified-state.json | jq .",
+    "tmux_emr": "tmux attach -t ralph-emr",
+    "tmux_ai_osce": "tmux attach -t ralph-week2",
+    "logs": {
+      "emr": "tail -f ralph-emr.log",
+      "ai_osce": "tail -f ralph-week2.log"
+    }
+  },
+  "success_criteria": {
+    "emr": {
+      "tests_passing": "328/328 (100%)",
+      "performance": "Submit <500ms, Dashboard <1s, Auto-save <200ms",
+      "security": "0 hardcoded creds, PHI encrypted, 56 WCAG tests pass",
+      "ai_accuracy": "≥85% vs expert SOAP notes"
+    },
+    "ai_osce": {
+      "tests_passing": "≥70% coverage, 100% pass rate",
+      "performance": "AI response <3s, API <500ms, DB <100ms",
+      "content": "360 personas validated by ≥2 clinicians",
+      "scoring_accuracy": "±2 marks vs human examiner"
+    },
+    "platform": {
+      "total_tests": "500+ passing",
+      "uptime": "99.5%+",
+      "monthly_cost": "<$200",
+      "wcag_compliance": "WCAG 2.2 AA across all UIs"
+    }
+  }
+}

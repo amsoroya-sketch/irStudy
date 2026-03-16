@@ -80,7 +80,7 @@ export class ErrorBoundary extends Component<Props, State> {
     });
 
     // TODO: Send to error monitoring service
-    // if (process.env.NODE_ENV === 'production') {
+    // if (import.meta.env.MODE === 'production') {
     //   Sentry.captureException(error, { extra: errorInfo });
     // }
   }
@@ -181,7 +181,7 @@ export class ErrorBoundary extends Component<Props, State> {
             </Box>
 
             {/* Developer Info (Dev Mode Only) */}
-            {process.env.NODE_ENV === 'development' && errorInfo && (
+            {import.meta.env.MODE === 'development' && errorInfo && (
               <Box
                 sx={{
                   mt: 4,

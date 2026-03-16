@@ -20,13 +20,13 @@ import {
   CardContent,
   Typography,
   Chip,
-  Grid,
   LinearProgress,
   Divider,
   List,
   ListItem,
   ListItemText,
 } from '@mui/material';
+import Grid from '@mui/material/GridLegacy';
 import {
   CheckCircle as CheckCircleIcon,
   Cancel as CancelIcon,
@@ -161,7 +161,7 @@ export const AMCRubricDisplay: React.FC<AMCRubricDisplayProps> = ({
             icon={isPassed ? <CheckCircleIcon /> : <CancelIcon />}
             label={isPassed ? 'Pass' : 'Fail'}
             color={isPassed ? 'success' : 'error'}
-            size="large"
+            size="medium"
             aria-label={isPassed ? 'Passed' : 'Failed'}
           />
         </Box>

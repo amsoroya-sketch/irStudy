@@ -1,0 +1,108 @@
+{
+  "id": "string (specialty_###_condition_gender_age)",
+  "name": "string",
+  "age": "number",
+  "gender": "string (Male/Female)",
+  "specialty": "string",
+  "difficulty": "string (Easy/Medium/Hard)",
+  "chief_complaint": "string",
+  "opening_statement": "string (patient's opening words)",
+  "emotional_baseline": "string (baseline demeanor)",
+  "symptoms": [
+    {
+      "name": "string",
+      "onset": "string",
+      "duration": "string",
+      "severity": "string (1-10 or description)",
+      "location": "string (if applicable)",
+      "character": "string",
+      "radiation": "string (if applicable)",
+      "associated_symptoms": [
+        "string"
+      ],
+      "aggravating_factors": [
+        "string"
+      ],
+      "relieving_factors": [
+        "string"
+      ],
+      "etg_citation": {
+        "source": "eTG complete",
+        "reference": "string (specific section)",
+        "confidence": "number (0.0-1.0)",
+        "url": "string (if applicable)"
+      }
+    }
+  ],
+  "past_medical_history": [
+    {
+      "condition": "string",
+      "year_diagnosed": "number",
+      "treatment": "string",
+      "current_status": "string"
+    }
+  ],
+  "medications": [
+    {
+      "name": "string",
+      "dose": "string",
+      "frequency": "string",
+      "indication": "string",
+      "pbs_restriction": "string (if applicable)"
+    }
+  ],
+  "allergies": "string (NKDA or list)",
+  "family_history": "string",
+  "social_history": {
+    "occupation": "string",
+    "smoking": "string",
+    "alcohol": "string",
+    "exercise": "string",
+    "living_situation": "string"
+  },
+  "examination_findings": {
+    "general": "string",
+    "cardiovascular": "string",
+    "respiratory": "string",
+    "abdominal": "string",
+    "neurological": "string (if relevant)"
+  },
+  "investigations": {
+    "ecg": "string",
+    "troponin": "string",
+    "other_bloods": "string",
+    "imaging": "string",
+    "mbs_items": [
+      "string (e.g., 11700 - ECG)"
+    ]
+  },
+  "expected_diagnosis": "string",
+  "expected_management": [
+    {
+      "category": "string (Immediate/Short-term/Long-term)",
+      "intervention": "string",
+      "rationale": "string"
+    }
+  ],
+  "critical_errors": [
+    {
+      "error": "string",
+      "severity": "string (CRITICAL/MAJOR/MINOR)",
+      "consequence": "string"
+    }
+  ],
+  "fracp_reviews": [
+    {
+      "reviewer": "string (FRACP Cardiology, FRACP General Medicine, etc.)",
+      "approved": "boolean",
+      "comments": "string",
+      "reviewed_at": "ISO 8601 timestamp"
+    }
+  ],
+  "learning_objectives": [
+    "string"
+  ],
+  "created_by": "string",
+  "created_at": "ISO 8601 timestamp",
+  "version": "string"
+}

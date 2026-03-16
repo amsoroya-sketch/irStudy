@@ -106,7 +106,7 @@ export const MCQPracticeInterface: React.FC<MCQPracticeInterfaceProps> = ({
   const [timeRemaining, setTimeRemaining] = useState(totalTime);
   const [startTime] = useState(() => Date.now()); // Use function initializer for Date.now()
   const [swipeHint, setSwipeHint] = useState<string | null>(null);
-  const [focusedOptionIndex, setFocusedOptionIndex] = useState<number>(0);
+  const [_focusedOptionIndex, setFocusedOptionIndex] = useState<number>(0);
 
   // Reset state when MCQ changes (different ID)
   if (mcqKey !== currentMcqId && mcqKey !== 0) {

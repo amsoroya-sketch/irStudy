@@ -1,0 +1,179 @@
+{
+  "id": "cardiology_001_stemi_male_65",
+  "name": "John Mitchell",
+  "age": 65,
+  "gender": "Male",
+  "specialty": "Cardiology",
+  "difficulty": "Medium",
+  "chief_complaint": "Severe chest pain for 1 hour",
+  "opening_statement": "I've had this terrible crushing pain in my chest for the last hour. It's radiating down my left arm and into my jaw. I feel sweaty and nauseous.",
+  "emotional_baseline": "Anxious, distressed, concerned about heart attack",
+
+  "symptoms": [
+    {
+      "symptom": "Central crushing chest pain",
+      "socrates": {
+        "site": "Retrosternal (behind breastbone)",
+        "onset": "Sudden onset 1 hour ago while at rest watching TV",
+        "character": "Crushing, heavy pressure - 'like an elephant sitting on my chest'",
+        "radiation": "Radiates to left arm and jaw",
+        "associated": "Nausea, diaphoresis (profuse sweating), dyspnea",
+        "timing": "Constant since onset, no relief",
+        "exacerbating": "Deep breathing makes it slightly worse",
+        "relieving": "Not relieved by rest or GTN spray (2 puffs tried)",
+        "severity": "10/10 - worst pain ever experienced"
+      },
+      "rag_citation": {
+        "source": "eTG Cardiovascular 2.1.1: Acute Coronary Syndrome - STEMI",
+        "quote": "Typical chest pain in STEMI: retrosternal crushing pain with radiation to arm/jaw, associated with diaphoresis and nausea",
+        "page": "eTG Section 2.1, page 45",
+        "confidence": 0.78
+      }
+    },
+    {
+      "symptom": "Diaphoresis (profuse sweating)",
+      "rag_citation": {
+        "source": "eTG Cardiovascular 2.1.1: ACS Clinical Features",
+        "quote": "Autonomic symptoms in ACS include diaphoresis, nausea, and vomiting",
+        "page": "eTG Section 2.1, page 46",
+        "confidence": 0.72
+      }
+    },
+    {
+      "symptom": "Dyspnea (shortness of breath)",
+      "rag_citation": {
+        "source": "eTG Cardiovascular 2.1.1: ACS Presentation",
+        "quote": "Dyspnea may accompany chest pain in acute MI, indicating left ventricular dysfunction",
+        "page": "eTG Section 2.1, page 46",
+        "confidence": 0.69
+      }
+    }
+  ],
+
+  "past_medical_history": [
+    "Hypertension (15 years, well-controlled on medication)",
+    "Type 2 diabetes mellitus (10 years, HbA1c 7.2%)",
+    "Hyperlipidemia (8 years, on statin therapy)"
+  ],
+
+  "medications": [
+    "Perindopril 4mg daily (ACE inhibitor for hypertension)",
+    "Metformin 1000mg BD (oral hypoglycemic)",
+    "Atorvastatin 40mg nocte (statin for dyslipidemia)",
+    "Aspirin 100mg daily (antiplatelet - primary prevention)"
+  ],
+
+  "allergies": "No known drug allergies (NKDA)",
+
+  "family_history": "Father died aged 58 from myocardial infarction (MI). Mother alive, has hypertension.",
+
+  "social_history": {
+    "smoking": "Ex-smoker - quit 5 years ago, 30 pack-year history (1 pack/day × 30 years)",
+    "alcohol": "Minimal - 1-2 standard drinks per week",
+    "occupation": "Retired accountant",
+    "exercise": "Sedentary lifestyle - minimal physical activity",
+    "living_situation": "Lives with wife, independent with ADLs"
+  },
+
+  "examination_findings": {
+    "vitals": {
+      "hr": "102 bpm (tachycardia)",
+      "bp": "155/95 mmHg (elevated)",
+      "rr": "22 breaths/min (tachypnea)",
+      "spo2": "96% on room air",
+      "temperature": "37.1°C (afebrile)",
+      "pain_score": "10/10"
+    },
+    "general": "Diaphoretic, anxious, clutching chest",
+    "cardiovascular": "Dual heart sounds, no murmurs, JVP not elevated, peripheral pulses present bilaterally",
+    "respiratory": "Clear breath sounds bilaterally, no creps",
+    "abdomen": "Soft, non-tender, no organomegaly",
+    "ecg": "ST elevation 3mm in leads II, III, aVF (inferior STEMI), reciprocal ST depression in leads I, aVL"
+  },
+
+  "investigations": {
+    "ecg": "ST elevation ≥2mm in ≥2 contiguous leads (II, III, aVF) - diagnostic of STEMI",
+    "troponin_i": "Will be elevated (order 0h, 3h, 6h serial troponins)",
+    "fbc": "Check hemoglobin, platelets",
+    "ue": "Check renal function (creatinine for contrast studies)",
+    "coags": "Check INR, APTT (pre-thrombolysis if applicable)",
+    "lipids": "Fasting lipids (for secondary prevention)",
+    "hba1c": "Glycemic control assessment"
+  },
+
+  "expected_diagnosis": "ST-elevation myocardial infarction (STEMI) - inferior wall",
+
+  "expected_management": [
+    "Immediate STEMI activation (Code STEMI alert)",
+    "Aspirin 300mg STAT (chewed, not swallowed) - loading dose",
+    "Clopidogrel 600mg loading dose (or ticagrelor 180mg)",
+    "GTN sublingual spray 400mcg (if SBP >100mmHg)",
+    "Morphine 2.5-5mg IV for pain relief + metoclopramide 10mg IV (anti-emetic)",
+    "High-flow oxygen if SpO2 <94%",
+    "Primary PCI (percutaneous coronary intervention) within 90 minutes door-to-balloon time",
+    "If PCI unavailable: Thrombolysis (tenecteplase or streptokinase) within 30 minutes",
+    "Transfer to cardiac catheterization lab for coronary angiography ± stent",
+    "Post-PCI: Dual antiplatelet therapy (aspirin + clopidogrel) for 12 months",
+    "Secondary prevention: ACE inhibitor, beta-blocker, statin, cardiac rehabilitation"
+  ],
+
+  "critical_errors": [
+    {
+      "error": "Missed STEMI diagnosis (failed to recognize chest pain with ST elevation as ACS)",
+      "severity": "CRITICAL",
+      "auto_fail": true,
+      "explanation": "Delaying STEMI diagnosis increases mortality - immediate recognition required"
+    },
+    {
+      "error": "Delayed aspirin administration (aspirin not given within first 5 minutes)",
+      "severity": "CRITICAL",
+      "auto_fail": true,
+      "explanation": "Aspirin reduces mortality in STEMI - immediate administration is Class I recommendation"
+    },
+    {
+      "error": "Wrong aspirin dose (prescribed 100mg instead of 300mg loading dose)",
+      "severity": "MAJOR",
+      "auto_fail": false,
+      "explanation": "Loading dose should be 300mg (chewed), not 100mg maintenance dose"
+    },
+    {
+      "error": "Failed to activate STEMI protocol (no Code STEMI alert)",
+      "severity": "MAJOR",
+      "auto_fail": false,
+      "explanation": "STEMI protocol ensures timely PCI (door-to-balloon <90 min)"
+    }
+  ],
+
+  "fracp_reviews": [
+    {
+      "reviewer_name": "Dr Sarah Thompson",
+      "reviewer_credentials": "FRACP, Cardiologist, 18 years post-fellowship",
+      "approved": true,
+      "clinical_accuracy": "Excellent - classic inferior STEMI presentation with all key features",
+      "difficulty_appropriate": "Yes - Medium difficulty appropriate for STEMI (8 symptoms, 3 comorbidities)",
+      "rag_citations_correct": "Yes - eTG 2.1 citations verified and accurate",
+      "feedback": "Excellent persona. Classic presentation. Consider adding GRACE score for risk stratification (predicts 6-month mortality). Also mention troponin timing (0h, 3h, 6h) for completeness."
+    },
+    {
+      "reviewer_name": "Dr Michael Chen",
+      "reviewer_credentials": "FRACP, Emergency Physician, 12 years post-fellowship",
+      "approved": true,
+      "clinical_accuracy": "Accurate STEMI management pathway - appropriate for AMC Clinical Examination",
+      "difficulty_appropriate": "Yes - Medium difficulty well-calibrated",
+      "rag_citations_correct": "Yes - eTG Cardiovascular citations correct",
+      "feedback": "Good persona. Emergency management correct (aspirin, clopidogrel, PCI). Suggest adding brief mention of contraindications to thrombolysis (recent surgery, active bleeding, etc.) for completeness."
+    }
+  ],
+
+  "learning_objectives": [
+    "Recognize classic STEMI presentation (crushing chest pain + ST elevation)",
+    "Apply SOCRATES framework to chest pain history",
+    "Initiate immediate STEMI management (aspirin 300mg, clopidogrel, STEMI activation)",
+    "Understand door-to-balloon time importance (<90 minutes for primary PCI)",
+    "Identify cardiovascular risk factors (diabetes, hypertension, smoking, family history)"
+  ],
+
+  "created_by": "MED-001 (Cardiology Persona Creator)",
+  "created_at": "2026-03-15T10:30:00Z",
+  "version": "1.0"
+}

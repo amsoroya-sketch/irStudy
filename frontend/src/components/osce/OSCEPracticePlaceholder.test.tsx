@@ -37,7 +37,7 @@ describe('OSCEPracticePlaceholder', () => {
     });
 
     it('displays tooltip explaining backend requirement', async () => {
-      const { container } = render(<OSCEPracticePlaceholder />);
+      render(<OSCEPracticePlaceholder />);
 
       // Button should be wrapped in Tooltip component
       // Check for presence of disabled button (which indicates tooltip is needed)

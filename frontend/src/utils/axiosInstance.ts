@@ -4,7 +4,7 @@
  */
 
 import axios, { AxiosInstance, AxiosError, InternalAxiosRequestConfig } from 'axios';
-import { LoginResponse, RefreshTokenResponse } from '../types/auth';
+import { RefreshTokenResponse } from '../types/auth';
 
 // API base URL from environment variable
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
@@ -67,14 +67,14 @@ axiosInstance.interceptors.response.use(
           { refreshToken }
         );
 
-        const { accessToken, refreshToken: newRefreshToken } = response.data;
+        const { access_token, refresh_token } = response.data;
 
         // Update tokens in localStorage
-        localStorage.setItem('accessToken', accessToken);
-        localStorage.setItem('refreshToken', newRefreshToken);
+        localStorage.setItem('accessToken', access_token);
+        localStorage.setItem('refreshToken', refresh_token);
 
         // Update authorization header and retry original request
-        originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+        originalRequest.headers.Authorization = `Bearer ${access_token}`;
         return axiosInstance(originalRequest);
       } catch (refreshError) {
         // Refresh token failed, redirect to login

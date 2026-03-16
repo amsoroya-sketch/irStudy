@@ -191,6 +191,10 @@ class User(Base):
     )
     study_cards = relationship("StudyCard", back_populates="user", cascade="all, delete-orphan")
 
+    # AI OSCE relationships (PRD_AI_OSCE_001)
+    osce_attempts_ai = relationship("OSCEAttemptAI", back_populates="user", cascade="all, delete-orphan")
+    mock_exams = relationship("MockExam", back_populates="user", cascade="all, delete-orphan")
+
     def __repr__(self):
         return f"<User(id={self.id}, email={self.email}, role={self.role})>"
 
@@ -435,6 +439,299 @@ class OSCE(Base):
 
 
 # ============================================================================
+# AI OSCE MODELS (PRD_AI_OSCE_001)
+# ============================================================================
+
+
+class PatientPersona(Base):
+    """
+    AI Patient persona for OSCE simulation system.
+
+    AMC CLINICAL EXAM CONTEXT:
+    - 360 unique patient personas (specialties × difficulty levels)
+    - Progressive disclosure: Information revealed based on student questions
+    - Emotional intelligence: Patient state changes based on student interaction
+    - RAG integration: Hints for AI Patient to query medical knowledge
+
+    AUSTRALIAN CONTEXT:
+    - Demographics reflect Australian population diversity
+    - Cultural backgrounds appropriate for Australian medical practice
+    - References to Australian healthcare system (Medicare, PBS, etc.)
+
+    FIELDS:
+    - persona_id: UUID primary key
+    - persona_code: Unique code (e.g., "CARD-001-CHEST-PAIN")
+    - name, age, gender, occupation, cultural_background, preferred_language
+    - specialty: Medical specialty (cardiology, respiratory, etc.)
+    - chief_complaint: Patient's main concern
+    - opening_statement: First thing patient says
+    - symptoms: JSONB progressive disclosure structure
+    - medical_history: JSONB medical background
+    - emotional_profile: JSONB emotional intelligence config
+    - rag_query_hints: Array of search terms for RAG
+    - key_differentials: Expected differential diagnoses
+    - critical_actions: Must-do actions (e.g., "ECG within 10 minutes")
+    - difficulty_level: foundation, intermediate, advanced
+    - amc_blueprint_area: AMC curriculum alignment
+    """
+
+    __tablename__ = "patient_personas"
+
+    # Primary key
+    persona_id = Column(String, primary_key=True)  # UUID stored as string
+    persona_code = Column(String(20), unique=True, nullable=False, index=True)
+
+    # Demographics
+    name = Column(String(100), nullable=False)
+    age = Column(Integer, nullable=False)
+    gender = Column(String(20), nullable=False)
+    occupation = Column(String(100), nullable=True)
+    cultural_background = Column(String(100), nullable=True)
+    preferred_language = Column(String(50), default="English")
+
+    # Clinical Presentation
+    specialty = Column(String(50), nullable=False, index=True)
+    chief_complaint = Column(Text, nullable=False)
+    opening_statement = Column(Text, nullable=False)
+
+    # Progressive Disclosure (JSONB)
+    symptoms = Column(JSON, nullable=False)
+    medical_history = Column(JSON, nullable=False)
+    emotional_profile = Column(JSON, nullable=False)
+
+    # RAG Integration
+    rag_query_hints = Column(JSON, nullable=True)  # TEXT[] stored as JSON
+    key_differentials = Column(JSON, nullable=True)  # TEXT[] stored as JSON
+    critical_actions = Column(JSON, nullable=True)  # TEXT[] stored as JSON
+
+    # Metadata
+    difficulty_level = Column(String(20), nullable=False, index=True)
+    estimated_pass_rate = Column(Float, nullable=True)
+    amc_blueprint_area = Column(String(100), nullable=True)
+    amc_competencies = Column(JSON, nullable=True)  # TEXT[] stored as JSON
+
+    # Audit Fields
+    created_by = Column(String, ForeignKey("users.id"), nullable=True)
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    validated_by = Column(String, ForeignKey("users.id"), nullable=True)
+    validated_at = Column(DateTime(timezone=True), nullable=True)
+    is_active = Column(Boolean, default=True, nullable=False)
+    version = Column(Integer, default=1, nullable=False)
+
+    # Relationships
+    attempts = relationship("OSCEAttemptAI", back_populates="persona")
+
+    def __repr__(self):
+        return f"<PatientPersona(code={self.persona_code}, specialty={self.specialty}, difficulty={self.difficulty_level})>"
+
+
+class MockExam(Base):
+    """
+    Mock OSCE exam orchestration (16 stations).
+
+    AMC CLINICAL EXAM FORMAT:
+    - 16 stations × 8 minutes each = 128 minutes
+    - 2-minute breaks between stations
+    - Total duration: ~150 minutes (2.5 hours)
+    - Pass criteria: ≥9/15 on each station, overall competence demonstrated
+
+    FIELDS:
+    - exam_id: UUID primary key
+    - user_id: Foreign key to User
+    - stations_config: JSONB array of 16 persona_ids
+    - exam_state: IN_PROGRESS, COMPLETED, ABANDONED
+    - current_station_number: 1-16
+    - started_at, completed_at, total_duration_minutes
+    - total_score: Sum of all station scores (max 240)
+    - stations_passed: Count of stations with ≥9/15
+    - overall_pass: Boolean pass/fail
+    """
+
+    __tablename__ = "mock_exams"
+
+    # Primary key
+    exam_id = Column(String, primary_key=True)  # UUID stored as string
+    user_id = Column(String, ForeignKey("users.id"), nullable=False, index=True)
+
+    # Exam Configuration
+    stations_config = Column(JSON, nullable=False)  # Array of 16 persona_ids
+    exam_name = Column(String(200), nullable=True)
+
+    # Progress Tracking
+    exam_state = Column(String(20), default="IN_PROGRESS", nullable=False)
+    current_station_number = Column(Integer, default=1, nullable=False)
+
+    # Timing
+    started_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    completed_at = Column(DateTime(timezone=True), nullable=True)
+    total_duration_minutes = Column(Integer, nullable=True)
+
+    # Overall Performance
+    total_score = Column(Integer, default=0, nullable=False)
+    stations_passed = Column(Integer, default=0, nullable=False)
+    overall_pass = Column(Boolean, nullable=True)
+
+    # Relationships
+    user = relationship("User", back_populates="mock_exams")
+    attempts = relationship("OSCEAttemptAI", back_populates="mock_exam")
+
+    def __repr__(self):
+        return f"<MockExam(exam_id={self.exam_id}, user_id={self.user_id}, state={self.exam_state}, station={self.current_station_number}/16)>"
+
+
+class OSCEAttemptAI(Base):
+    """
+    Individual AI OSCE session attempt.
+
+    SESSION TYPES:
+    - individual: Practice single persona (8 minutes)
+    - mock_exam: Part of 16-station exam
+
+    STATE MACHINE:
+    initialized → conversation → finalized → scoring → complete
+
+    CONVERSATION ARCHIVE:
+    - conversation_history: JSONB array of messages
+    - emotional_state_transitions: JSONB tracking patient emotional state
+    - student_actions: JSONB log of student actions (questions asked, exams ordered, etc.)
+
+    FIELDS:
+    - attempt_id: UUID primary key
+    - user_id: Foreign key to User
+    - persona_id: Foreign key to PatientPersona
+    - mock_exam_id: Foreign key to MockExam (null for individual practice)
+    - session_type: individual or mock_exam
+    - station_number: 1-16 for mock exams, null for individual
+    - started_at, ended_at, duration_seconds
+    - conversation_history: JSONB conversation archive
+    - emotional_state_transitions: JSONB emotional tracking
+    - student_actions: JSONB action log
+    - was_completed: Boolean completion status
+    """
+
+    __tablename__ = "ai_osce_attempts"
+
+    # Primary key
+    attempt_id = Column(String, primary_key=True)  # UUID stored as string
+
+    # Foreign keys
+    user_id = Column(String, ForeignKey("users.id"), nullable=False, index=True)
+    persona_id = Column(String, ForeignKey("patient_personas.persona_id"), nullable=False, index=True)
+    mock_exam_id = Column(String, ForeignKey("mock_exams.exam_id"), nullable=True, index=True)
+
+    # Session Metadata
+    session_type = Column(String(20), nullable=False)  # individual, mock_exam
+    station_number = Column(Integer, nullable=True)  # 1-16 for mock exams
+
+    # Timing
+    started_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    ended_at = Column(DateTime(timezone=True), nullable=True)
+    duration_seconds = Column(Integer, nullable=True)
+
+    # Conversation Archive
+    conversation_history = Column(JSON, default=list, nullable=False)
+    emotional_state_transitions = Column(JSON, default=list, nullable=False)
+    student_actions = Column(JSON, default=list, nullable=False)
+
+    # Metadata
+    was_completed = Column(Boolean, default=False, nullable=False)
+    abandonment_reason = Column(Text, nullable=True)
+    session_state = Column(String(20), nullable=False, default='initialized')
+
+    # Relationships
+    user = relationship("User", back_populates="osce_attempts_ai")
+    persona = relationship("PatientPersona", back_populates="attempts")
+    mock_exam = relationship("MockExam", back_populates="attempts")
+    score = relationship("OSCEScoreAI", back_populates="attempt", uselist=False)
+
+    def __repr__(self):
+        return f"<OSCEAttemptAI(attempt_id={self.attempt_id}, user_id={self.user_id}, persona_id={self.persona_id}, type={self.session_type})>"
+
+
+class OSCEScoreAI(Base):
+    """
+    AI Examiner scoring for OSCE attempt.
+
+    AMC 15-MARK RUBRIC:
+    - Communication: 0-3 marks
+    - Clinical Reasoning: 0-4 marks
+    - Information Gathering: 0-4 marks
+    - Management: 0-2 marks
+    - Professionalism: 0-2 marks
+    - Total: 15 marks (9/15 to pass)
+
+    GENERATED COLUMNS (PostgreSQL):
+    - total_score: Computed sum of 5 domains
+    - pass_fail: PASS if ≥9/15, FAIL otherwise
+
+    FIELDS:
+    - score_id: UUID primary key
+    - attempt_id: Foreign key to OSCEAttemptAI (unique - one score per attempt)
+    - communication_score: 0-3
+    - clinical_reasoning_score: 0-4
+    - information_gathering_score: 0-4
+    - management_score: 0-2
+    - professionalism_score: 0-2
+    - total_score: GENERATED COLUMN (sum of above)
+    - pass_fail: GENERATED COLUMN (PASS/FAIL)
+    - ai_examiner_feedback: JSONB structured feedback
+    - strengths: TEXT[] array of strengths
+    - areas_for_improvement: TEXT[] array of improvement areas
+    - critical_errors: TEXT[] array of critical errors
+    - scored_at: Timestamp of scoring
+    - scoring_model_version: AI model version used
+    """
+
+    __tablename__ = "ai_osce_scores"
+
+    # Primary key
+    score_id = Column(String, primary_key=True)  # UUID stored as string
+    attempt_id = Column(String, ForeignKey("ai_osce_attempts.attempt_id"), unique=True, nullable=False, index=True)
+
+    # AMC 15-Mark Rubric
+    communication_score = Column(Integer, nullable=True)  # 0-3
+    clinical_reasoning_score = Column(Integer, nullable=True)  # 0-4
+    information_gathering_score = Column(Integer, nullable=True)  # 0-4
+    management_score = Column(Integer, nullable=True)  # 0-2
+    professionalism_score = Column(Integer, nullable=True)  # 0-2
+
+    # Note: total_score and pass_fail are GENERATED columns in PostgreSQL
+    # They are NOT defined in the SQLAlchemy model as they are computed by the database
+
+    # Feedback
+    ai_examiner_feedback = Column(JSON, nullable=True)
+    strengths = Column(JSON, nullable=True)  # TEXT[] stored as JSON
+    areas_for_improvement = Column(JSON, nullable=True)  # TEXT[] stored as JSON
+    critical_errors = Column(JSON, nullable=True)  # TEXT[] stored as JSON
+
+    # Audit
+    scored_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    scoring_model_version = Column(String(50), nullable=True)
+
+    # Relationships
+    attempt = relationship("OSCEAttemptAI", back_populates="score")
+
+    def __repr__(self):
+        return f"<OSCEScoreAI(score_id={self.score_id}, attempt_id={self.attempt_id})>"
+
+    @property
+    def calculated_total_score(self) -> int:
+        """Calculate total score from components (for use when GENERATED column not available)"""
+        return (
+            (self.communication_score or 0) +
+            (self.clinical_reasoning_score or 0) +
+            (self.information_gathering_score or 0) +
+            (self.management_score or 0) +
+            (self.professionalism_score or 0)
+        )
+
+    @property
+    def calculated_pass_fail(self) -> str:
+        """Calculate pass/fail status (for use when GENERATED column not available)"""
+        return "PASS" if self.calculated_total_score >= 9 else "FAIL"
+
+
+# ============================================================================
 # MCQ ATTEMPT MODEL
 # ============================================================================
 
@@ -614,6 +911,13 @@ class UserProgress(Base):
 
     # Mastery level
     mastery_percentage = Column(Float, default=0.0, nullable=False)  # Overall mastery in specialty
+
+    # AI OSCE progress tracking (PRD_AI_OSCE_001)
+    ai_osces_attempted = Column(Integer, default=0, nullable=True)
+    ai_osces_passed = Column(Integer, default=0, nullable=True)
+    ai_osce_avg_score = Column(Float, default=0.0, nullable=True)  # Average total score
+    mock_exams_completed = Column(Integer, default=0, nullable=True)
+    last_ai_osce_at = Column(DateTime(timezone=True), nullable=True)
 
     # Email verification (Task 3.1)
     verification_token = Column(String(255), nullable=True, unique=True)

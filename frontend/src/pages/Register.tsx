@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link as RouterLink } from "react-router-dom";
 import { Container, TextField, Button, Card, CardContent, Typography, Box, Alert, CircularProgress, FormControlLabel, Checkbox, Link, LinearProgress } from "@mui/material";
 import { useAuth } from "../context/AuthContext";
-import { validateEmail, validatePassword, validatePasswordMatch, validateFullName, validateAcceptTerms, getPasswordStrength } from "../utils/validation";
+import { validateEmail, validatePassword, validatePasswordMatch, validateFullName, getPasswordStrength } from "../utils/validation";
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
@@ -86,7 +86,7 @@ const Register: React.FC = () => {
 
               <TextField fullWidth label="Password" name="password" type="password" value={formData.password} onChange={handleChange} onBlur={handleBlur} error={touched.password && !!formErrors.password} helperText={touched.password && formErrors.password} margin="normal" disabled={isLoading} />
 
-              {formData.password && <Box sx={{ marginTop: 1, marginBottom: 2 }}><Typography variant="caption">Password Strength: {passwordStrength.label}</Typography><LinearProgress variant="determinate" value={passwordStrength.score * 16.67} color={passwordStrength.color} /></Box>}
+              {formData.password && <Box sx={{ marginTop: 1, marginBottom: 2 }}><Typography variant="caption">Password Strength: {passwordStrength.label}</Typography><LinearProgress variant="determinate" value={passwordStrength.score * 16.67} color={passwordStrength.color as any} /></Box>}
 
               <TextField fullWidth label="Confirm Password" name="confirmPassword" type="password" value={formData.confirmPassword} onChange={handleChange} onBlur={handleBlur} error={touched.confirmPassword && !!formErrors.confirmPassword} helperText={touched.confirmPassword && formErrors.confirmPassword} margin="normal" disabled={isLoading} />
 

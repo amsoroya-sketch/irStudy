@@ -45,6 +45,7 @@ class RAGMatch:
     is_australian: bool
     source_category: str
     exam_type: str
+    point_id: Optional[str] = None  # Qdrant point ID for traceability
 
 
 class RAGQueryService:
@@ -121,6 +122,7 @@ class RAGQueryService:
                 is_australian=is_aus,
                 source_category=result.payload.get("source_category", "other"),
                 exam_type=result.payload.get("exam_type", "unknown"),
+                point_id=str(result.id) if hasattr(result, 'id') else None,
             )
             boosted_matches.append(match)
 
@@ -160,13 +162,16 @@ class RAGQueryService:
             if conditions:
                 qdrant_filter = Filter(must=conditions)
 
-        # Execute search
-        results = self.client.search(
+        # Execute search using query_points (Qdrant API v1.16+)
+        response = self.client.query_points(
             collection_name=self.collection_name,
-            query_vector=query_vector,
+            query=query_vector,
             limit=limit * 2 if boost_australian else limit,  # Get more for boosting
             query_filter=qdrant_filter,
         )
+
+        # Extract points from response
+        results = response.points if hasattr(response, 'points') else []
 
         # Boost Australian sources and re-rank
         if boost_australian:
@@ -182,6 +187,7 @@ class RAGQueryService:
                     is_australian=self.is_australian_source(r.payload.get("source", "")),
                     source_category=r.payload.get("source_category", "other"),
                     exam_type=r.payload.get("exam_type", "unknown"),
+                    point_id=str(r.id) if hasattr(r, 'id') else None,
                 )
                 for r in results[:limit]
             ]

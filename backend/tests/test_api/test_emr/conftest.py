@@ -22,7 +22,7 @@ from sqlalchemy.orm import sessionmaker, Session
 from src.main import app
 from src.db.base import Base, get_db
 from src.db.models import User, UserRole
-from src.auth.security import get_password_hash
+from src.auth.security import hash_password
 
 
 # ============================================================================
@@ -82,7 +82,7 @@ def test_user(db_session):
     """Create test student user"""
     user = User(
         email="student@test.com",
-        password_hash=get_password_hash("TestPassword123"),
+        password_hash=hash_password("TestPassword123"),
         full_name="Test Student",
         role=UserRole.STUDENT,
         is_active=True,
@@ -99,7 +99,7 @@ def test_educator(db_session):
     """Create test educator user"""
     user = User(
         email="educator@test.com",
-        password_hash=get_password_hash("EducatorPass123"),
+        password_hash=hash_password("EducatorPass123"),
         full_name="Test Educator",
         role=UserRole.EDUCATOR,
         is_active=True,
@@ -116,7 +116,7 @@ def other_user(db_session):
     """Create another test user (for testing authorization)"""
     user = User(
         email="other@test.com",
-        password_hash=get_password_hash("OtherPass123"),
+        password_hash=hash_password("OtherPass123"),
         full_name="Other Student",
         role=UserRole.STUDENT,
         is_active=True,

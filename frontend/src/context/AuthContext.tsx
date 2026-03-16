@@ -141,7 +141,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       setAuthState((prev) => ({ ...prev, isLoading: true, error: null }));
 
-      const response = await axiosInstance.post<RegisterResponse>(
+      await axiosInstance.post<RegisterResponse>(
         '/auth/register',
         {
           email: data.email,
@@ -149,15 +149,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           full_name: data.fullName,
         }
       );
-
-      const newUser: User = {
-        id: response.data.id,
-        email: response.data.email,
-        fullName: response.data.fullName,
-        role: (response.data.role as 'student' | 'instructor' | 'admin') || 'student',
-        createdAt: response.data.createdAt,
-        updatedAt: response.data.updatedAt,
-      };
 
       setAuthState((prev) => ({
         ...prev,

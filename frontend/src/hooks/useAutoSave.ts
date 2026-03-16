@@ -37,7 +37,7 @@
 
 import { useCallback, useRef, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
-import { axiosInstance } from '../api/axiosInstance';
+import axiosInstance from '../utils/axiosInstance';
 
 // Save Status Types
 export type SaveStatus = 'idle' | 'saving' | 'saved' | 'error';

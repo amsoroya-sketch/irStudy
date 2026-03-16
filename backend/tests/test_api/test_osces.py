@@ -33,7 +33,7 @@ from src.db.models import (
     DifficultyLevel,
     UserRole,
 )
-from src.auth.security import get_password_hash
+from src.auth.security import hash_password
 
 
 # ============================================================================
@@ -82,7 +82,7 @@ def test_user(db_session):
     """Create test user"""
     user = User(
         email="test@example.com",
-        password_hash=get_password_hash("testpass123"),
+        password_hash=hash_password("testpass123"),
         full_name="Test User",
         role=UserRole.STUDENT,
         is_active=True,

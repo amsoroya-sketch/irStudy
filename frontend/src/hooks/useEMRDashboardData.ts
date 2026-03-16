@@ -36,7 +36,7 @@
  */
 
 import { useQueries } from '@tanstack/react-query';
-import { axiosInstance } from '../api/axiosInstance';
+import axiosInstance from '../utils/axiosInstance';
 
 // Type Definitions
 interface EMRMetrics {
