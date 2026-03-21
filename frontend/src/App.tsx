@@ -23,6 +23,7 @@ import {
   MCQAttempt,
   PerformanceDashboard,
   OSCEPractice,
+  OSCESession,
 } from "./routes";
 
 // Create React Query client
@@ -102,6 +103,14 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <OSCEPractice />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/osce/session/:attemptId"
+                  element={
+                    <ProtectedRoute>
+                      <OSCESession />
                     </ProtectedRoute>
                   }
                 />

@@ -8,3 +8,6 @@ export type { OSCEPracticePlaceholderProps } from './OSCEPracticePlaceholder';
 
 export { AMCRubricDisplay } from './AMCRubricDisplay';
 export type { AMCRubricDisplayProps } from './AMCRubricDisplay';
+
+export { WebSocketChat } from './WebSocketChat';
+export type { WebSocketChatProps, ChatMessage } from './WebSocketChat';

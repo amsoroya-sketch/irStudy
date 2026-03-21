@@ -10,7 +10,8 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Container,
@@ -26,10 +27,14 @@ import {
   Alert,
   Divider,
   Chip,
+  Button,
 } from '@mui/material';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { getPersonas, getPersonaDetail, PersonaListParams } from '../api/personas';
+import { createOSCESession } from '../api/osce';
 
 const OSCEPractice: React.FC = () => {
+  const navigate = useNavigate();
   const [filters, setFilters] = useState<PersonaListParams>({
     specialty: undefined,
     difficulty: undefined,
@@ -42,6 +47,29 @@ const OSCEPractice: React.FC = () => {
   useEffect(() => {
     document.title = 'OSCE Practice - AMC Clinical Exam';
   }, []);
+
+  // Mutation for creating OSCE session
+  const createSessionMutation = useMutation({
+    mutationFn: (personaId: string) => createOSCESession(personaId),
+    onSuccess: (data) => {
+      // Navigate to session page with attempt_id
+      console.log('[OSCEPractice] Session created:', data.attempt_id);
+      navigate(`/osce/session/${data.attempt_id}`);
+    },
+    onError: (error: unknown) => {
+      console.error('[OSCEPractice] Failed to create session:', error);
+      alert('Failed to start OSCE session. Please try again.');
+    },
+  });
+
+  /**
+   * Handle Start Session button click
+   */
+  const handleStartSession = () => {
+    if (selectedPersonaId) {
+      createSessionMutation.mutate(selectedPersonaId);
+    }
+  };
 
   // Fetch personas list with filters
   const {
@@ -66,24 +94,24 @@ const OSCEPractice: React.FC = () => {
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
-  const handleSpecialtyChange = (event: any) => {
+  const handleSpecialtyChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setFilters((prev) => ({
       ...prev,
-      specialty: event.target.value || undefined,
+      specialty: (event.target.value as string) || undefined,
     }));
     setSelectedPersonaId(''); // Clear selection when filters change
   };
 
-  const handleDifficultyChange = (event: any) => {
+  const handleDifficultyChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setFilters((prev) => ({
       ...prev,
-      difficulty: event.target.value || undefined,
+      difficulty: (event.target.value as string) || undefined,
     }));
     setSelectedPersonaId(''); // Clear selection when filters change
   };
 
-  const handlePersonaChange = (event: any) => {
-    setSelectedPersonaId(event.target.value);
+  const handlePersonaChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setSelectedPersonaId(event.target.value as string);
   };
 
   const getDifficultyColor = (
@@ -236,9 +264,29 @@ const OSCEPractice: React.FC = () => {
           {/* Detail Content */}
           {!detailLoading && !detailError && personaDetail && (
             <Box>
-              <Typography variant="h5" component="h2" gutterBottom>
-                Patient Details
-              </Typography>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  mb: 3,
+                }}
+              >
+                <Typography variant="h5" component="h2">
+                  Patient Details
+                </Typography>
+                <Button
+                  variant="contained"
+                  size="large"
+                  color="primary"
+                  startIcon={<PlayArrowIcon />}
+                  onClick={handleStartSession}
+                  disabled={createSessionMutation.isPending}
+                  sx={{ minWidth: '200px' }}
+                >
+                  {createSessionMutation.isPending ? 'Starting...' : 'Start Session'}
+                </Button>
+              </Box>
 
               <Grid container spacing={3}>
                 {/* Patient Demographics */}

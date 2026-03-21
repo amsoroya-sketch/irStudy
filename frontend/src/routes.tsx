@@ -11,6 +11,7 @@ export const MCQBrowser = lazy(() => import('./pages/MCQBrowser'));
 export const MCQAttempt = lazy(() => import('./pages/MCQAttempt'));
 export const PerformanceDashboard = lazy(() => import('./pages/PerformanceDashboard'));
 export const OSCEPractice = lazy(() => import('./pages/OSCEPractice'));
+export const OSCESession = lazy(() => import('./pages/OSCESession'));
 
 // Auth pages are loaded eagerly (small files, needed immediately)
 export { default as Login } from './pages/Login';
