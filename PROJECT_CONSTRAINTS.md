@@ -30,6 +30,7 @@ This file provides a quick reference. For detailed requirements, see individual 
 | 9 | **No PHI in logs** | Hash/truncate patient identifiers - NEVER log MRN, DOB, email | [constraints/3-security.md](constraints/3-security.md) |
 | 10 | **Australian drug names** | paracetamol, salbutamol, adrenaline (NOT acetaminophen, albuterol, epinephrine) | [constraints/1-medical-accuracy.md](constraints/1-medical-accuracy.md) |
 | 11 | **Ralph PROMPT.md Directives** | Use "EXECUTE NOW", NOT "Would you like..." - Prevents premature Ralph exits | [constraints/13-ralph-execution.md](constraints/13-ralph-execution.md) |
+| 12 | **Medical Content Quality Gates** | ALL medical content MUST pass 13-gate QA + FRACP validation, 100% RAG citations | [constraints/14-ralph-medical-content-standards.md](constraints/14-ralph-medical-content-standards.md) |
 
 ---
 
@@ -141,6 +142,39 @@ This file provides a quick reference. For detailed requirements, see individual 
 - 13.4: Success Criteria with Verification
 - 13.5: PRD Template Structure
 - 13.6: Quality Checks Before Running Ralph
+
+### 14. Ralph Medical Content Quality Standards ⚠️ NEW
+**File**: [constraints/14-ralph-medical-content-standards.md](constraints/14-ralph-medical-content-standards.md)
+**Status**: **MANDATORY** - Auto-enforced in all medical content PRDs
+**Last Updated**: 2026-03-21
+
+**Critical Rules**:
+- ✅ ALWAYS: Use clinical expert agents (clinical-documentation-expert, history-taking-expert, physical-examination-expert)
+- ✅ ALWAYS: Include 3 required skills (rag-citation-verification, australian-medical-terminology, fracp-clinical-validation)
+- ✅ ALWAYS: Include 5 required validations (QA 13-gate, FRACP clinical, security scan, RAG coverage, database)
+- ❌ NEVER: Generate medical content without RAG citations (100% coverage required)
+- ❌ NEVER: Use placeholder content ("Clinical scenario for...", "Option A/B/C/D")
+- 📊 Quality Gates: 13-gate QA validation + FRACP clinical validation (≥8.0/10)
+
+**Problem Solved**: Prevents medical content generation without proper quality gates
+
+**Sections**:
+- 14.1: Overview - Automatic Quality Enforcement
+- 14.2: Mandatory PRD Components for Medical Content
+- 14.3: Quality Gate Enforcement Flow
+- 14.4: RAG System Requirements
+- 14.5: 13-Gate QA Validation System
+- 14.6: FRACP Clinical Validation
+- 14.7: Auto-Fix Common Errors
+- 14.8: Enforcement Checklist for PRD Authors
+- 14.9: Example Medical Content PRD Template
+- 14.10: Monitoring and Metrics
+
+**Current Metrics (Batch 1 - 207 Personas)**:
+- ✅ 100% RAG citation coverage (3,726 citations with qdrant_point_id)
+- ✅ 96.5% deployment readiness (200/207 approved)
+- ✅ 0 hallucinated citations (100% verified)
+- ✅ 66.1% Australian sources (exceeds 60% target)
 
 ---
 
