@@ -1,0 +1,182 @@
+{
+  "audit_date": "2026-03-21T23:35:06.031331",
+  "audit_version": "PRD-PHASE7-003",
+  "overall_status": "NEEDS_REMEDIATION",
+  "critical_violations": 2,
+  "high_priority": 5,
+  "medium_priority": 3,
+  "low_priority": 2,
+  "security_headers": {
+    "status": "PARTIAL",
+    "required_present": 3,
+    "required_total": 3,
+    "optional_present": 1,
+    "optional_total": 6,
+    "details": {
+      "X-Content-Type-Options": "PASS - nosniff present",
+      "X-Frame-Options": "PASS - DENY present",
+      "X-XSS-Protection": "PASS - 1; mode=block present",
+      "Strict-Transport-Security": "PARTIAL - production only",
+      "Content-Security-Policy": "MISSING - add via middleware or proxy",
+      "Referrer-Policy": "MISSING - should be strict-origin",
+      "Permissions-Policy": "MISSING - restrict browser features",
+      "Cross-Origin-Opener-Policy": "MISSING - prevents Spectre attacks",
+      "Cross-Origin-Resource-Policy": "MISSING - prevents cross-origin loading"
+    }
+  },
+  "credential_scan": {
+    "status": "VIOLATIONS_FOUND",
+    "hardcoded_credentials": 0,
+    "hardcoded_api_keys": 2,
+    "weak_secrets": 0,
+    "violations": [
+      {
+        "severity": "HIGH",
+        "type": "API_KEY_REFERENCE",
+        "file": "backend/tests/test_ai/test_ai_integration.py",
+        "line": 294,
+        "description": "Test contains sk-ant- string reference (verify not actual key)",
+        "remediation": "Replace with mock key pattern or remove test assertion"
+      },
+      {
+        "severity": "HIGH",
+        "type": "API_KEY_REFERENCE",
+        "file": "backend/tests/test_ai/test_ai_integration.py",
+        "line": 305,
+        "description": "Test contains sk-ant- string reference (verify not actual key)",
+        "remediation": "Replace with mock key pattern or remove test assertion"
+      }
+    ]
+  },
+  "encryption_standards": {
+    "status": "VIOLATIONS_FOUND",
+    "argon2_password_hashing": "NOT_DETECTED",
+    "weak_hashing_found": 1,
+    "violations": [
+      {
+        "severity": "MEDIUM",
+        "type": "WEAK_HASHING",
+        "file": "backend/src/ai/rag_service.py",
+        "line": 141,
+        "description": "MD5 used for mock embedding generation",
+        "remediation": "Replace with SHA-256 or use proper embedding model (MD5 acceptable for non-security mock only)",
+        "notes": "Currently used in mock embedding function for testing. NOT used for security purposes."
+      }
+    ]
+  },
+  "australian_compliance": {
+    "status": "VIOLATIONS_FOUND",
+    "american_drug_names": 5,
+    "american_emergency_number": 2,
+    "violations": [
+      {
+        "severity": "HIGH",
+        "type": "AMERICAN_DRUG_NAME",
+        "file": "backend/src/ai/scoring/critical_errors.py",
+        "line": 186,
+        "description": "epinephrine used instead of adrenaline",
+        "remediation": "Replace with Australian terminology: adrenaline"
+      },
+      {
+        "severity": "HIGH",
+        "type": "AMERICAN_EMERGENCY_NUMBER",
+        "file": "backend/src/api/v1/emr/validation.py",
+        "lines": [
+          115,
+          116
+        ],
+        "description": "911 used instead of 000",
+        "remediation": "Replace with Australian emergency number: 000"
+      }
+    ]
+  },
+  "phi_protection": {
+    "status": "PASS",
+    "phi_in_logs": 0,
+    "anonymization_implemented": true,
+    "details": "PHI anonymizer module exists and implemented correctly"
+  },
+  "penetration_tests": {
+    "status": "NOT_RUN",
+    "sql_injection": "PENDING",
+    "xss_protection": "PENDING",
+    "csrf_protection": "PENDING",
+    "header_injection": "PENDING",
+    "notes": "Comprehensive test suite created but requires running FastAPI server"
+  },
+  "owasp_zap_scan": {
+    "status": "NOT_RUN",
+    "script_created": true,
+    "script_path": "scripts/run_owasp_zap.sh",
+    "notes": "Docker-based OWASP ZAP scan script created. Run manually with backend running."
+  },
+  "recommendations": [
+    {
+      "priority": "P0_CRITICAL",
+      "title": "Fix American terminology violations",
+      "description": "Replace epinephrine with adrenaline, 911 with 000",
+      "files": [
+        "backend/src/ai/scoring/critical_errors.py:186",
+        "backend/src/api/v1/emr/validation.py:115-116"
+      ],
+      "estimated_time": "15 minutes"
+    },
+    {
+      "priority": "P0_CRITICAL",
+      "title": "Add missing security headers",
+      "description": "Implement CSP, Referrer-Policy, Permissions-Policy via middleware",
+      "files": [
+        "backend/src/main.py"
+      ],
+      "estimated_time": "30 minutes"
+    },
+    {
+      "priority": "P1_HIGH",
+      "title": "Remove API key test references",
+      "description": "Replace sk-ant- string checks in tests with mock patterns",
+      "files": [
+        "backend/tests/test_ai/test_ai_integration.py:294,305"
+      ],
+      "estimated_time": "10 minutes"
+    },
+    {
+      "priority": "P2_MEDIUM",
+      "title": "Replace MD5 in mock embedding",
+      "description": "Use SHA-256 or proper embedding model",
+      "files": [
+        "backend/src/ai/rag_service.py:141"
+      ],
+      "estimated_time": "5 minutes",
+      "notes": "Currently acceptable as non-security mock, but best practice to avoid MD5"
+    },
+    {
+      "priority": "P2_MEDIUM",
+      "title": "Run OWASP ZAP scan",
+      "description": "Execute ./scripts/run_owasp_zap.sh with backend running",
+      "estimated_time": "10 minutes"
+    },
+    {
+      "priority": "P2_MEDIUM",
+      "title": "Run penetration tests",
+      "description": "Execute pytest backend/tests/security/test_headers.py",
+      "estimated_time": "5 minutes"
+    }
+  ],
+  "summary": {
+    "deployment_ready": false,
+    "blocker_count": 2,
+    "blockers": [
+      "American medical terminology (5 violations)",
+      "Missing 6 optional security headers"
+    ],
+    "time_to_remediate": "1-2 hours",
+    "next_steps": [
+      "1. Fix P0 violations (American terminology + security headers)",
+      "2. Remove API key test references (P1)",
+      "3. Run OWASP ZAP scan (P2)",
+      "4. Run penetration test suite (P2)",
+      "5. Re-run comprehensive security audit",
+      "6. Mark PRD-PHASE7-003 as COMPLETE"
+    ]
+  }
+}

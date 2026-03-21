@@ -22,6 +22,7 @@ import {
   MCQBrowser,
   MCQAttempt,
   PerformanceDashboard,
+  OSCEPractice,
 } from "./routes";
 
 // Create React Query client
@@ -93,6 +94,14 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <MCQAttempt />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/osce-practice"
+                  element={
+                    <ProtectedRoute>
+                      <OSCEPractice />
                     </ProtectedRoute>
                   }
                 />
