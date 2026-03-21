@@ -95,12 +95,65 @@ export const getOSCESessions = async (userId?: string): Promise<OSCEAttempt[]> =
 };
 
 /**
+ * Pause OSCE session
+ *
+ * @param attemptId - OSCE attempt UUID
+ * @returns Updated OSCE attempt with paused status
+ *
+ * Throws:
+ * - 404: Session not found
+ * - 403: Unauthorized (user doesn't own session)
+ * - 400: Session cannot be paused (already ended or paused)
+ */
+export const pauseOSCESession = async (attemptId: string): Promise<void> => {
+  // Validate UUID format
+  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  if (!uuidRegex.test(attemptId)) {
+    throw new Error('Invalid attempt ID format');
+  }
+
+  await axiosInstance.put(`/osce/sessions/${attemptId}/pause`);
+};
+
+/**
+ * Resume OSCE session
+ *
+ * @param attemptId - OSCE attempt UUID
+ * @returns Updated OSCE attempt with active status
+ *
+ * Throws:
+ * - 404: Session not found
+ * - 403: Unauthorized (user doesn't own session)
+ * - 400: Session cannot be resumed (not paused)
+ */
+export const resumeOSCESession = async (attemptId: string): Promise<void> => {
+  // Validate UUID format
+  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  if (!uuidRegex.test(attemptId)) {
+    throw new Error('Invalid attempt ID format');
+  }
+
+  await axiosInstance.put(`/osce/sessions/${attemptId}/resume`);
+};
+
+/**
  * End OSCE session
  *
  * @param attemptId - OSCE attempt UUID
  * @returns Final score and feedback
+ *
+ * Throws:
+ * - 404: Session not found
+ * - 403: Unauthorized (user doesn't own session)
+ * - 400: Session already ended
  */
 export const endOSCESession = async (attemptId: string): Promise<OSCEAttempt> => {
+  // Validate UUID format
+  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  if (!uuidRegex.test(attemptId)) {
+    throw new Error('Invalid attempt ID format');
+  }
+
   const response = await axiosInstance.post<OSCEAttempt>(`/osce/sessions/${attemptId}/end`);
   return response.data;
 };

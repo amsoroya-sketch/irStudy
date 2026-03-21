@@ -35,6 +35,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import TimerIcon from '@mui/icons-material/Timer';
 import { useWebSocket, WebSocketMessage } from '../../hooks/useWebSocket';
+import { EmotionalStateIndicator, EmotionalState } from './EmotionalStateIndicator';
 
 /**
  * Message interface for chat display
@@ -44,7 +45,7 @@ export interface ChatMessage {
   sender: 'student' | 'patient';
   content: string;
   timestamp: string;
-  emotionalState?: 'COOPERATIVE' | 'ANXIOUS_GUARDED' | 'RESISTANT' | 'EMOTIONAL_DISTRESS' | 'CRISIS';
+  emotionalState?: EmotionalState;
 }
 
 /**
@@ -238,7 +239,7 @@ export function WebSocketChat({
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isAITyping, setIsAITyping] = useState(false);
-  const [currentEmotionalState, setCurrentEmotionalState] = useState<string>('COOPERATIVE');
+  const [currentEmotionalState, setCurrentEmotionalState] = useState<EmotionalState>('COOPERATIVE');
   const [remainingTime, setRemainingTime] = useState<number | null>(null);
   const [sessionEnded, setSessionEnded] = useState(false);
 
@@ -467,6 +468,13 @@ export function WebSocketChat({
         <Alert severity="info" sx={{ m: 2, mb: 0 }}>
           OSCE session has ended. Your performance will be evaluated.
         </Alert>
+      )}
+
+      {/* Emotional State Indicator */}
+      {!sessionEnded && connectionState === 'connected' && (
+        <Box sx={{ mx: 2 }}>
+          <EmotionalStateIndicator currentState={currentEmotionalState} />
+        </Box>
       )}
 
       {/* Message List */}

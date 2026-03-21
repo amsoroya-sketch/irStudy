@@ -11,3 +11,6 @@ export type { AMCRubricDisplayProps } from './AMCRubricDisplay';
 
 export { WebSocketChat } from './WebSocketChat';
 export type { WebSocketChatProps, ChatMessage } from './WebSocketChat';
+
+export { EmotionalStateIndicator } from './EmotionalStateIndicator';
+export type { EmotionalStateIndicatorProps, EmotionalState } from './EmotionalStateIndicator';

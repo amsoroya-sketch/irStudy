@@ -13,7 +13,7 @@
  * - High contrast mode
  */
 
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
   Container,
@@ -25,7 +25,6 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogContentText,
   DialogActions,
   Card,
   CardContent,
@@ -36,8 +35,10 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import { useQuery } from '@tanstack/react-query';
 import { WebSocketChat } from '../components/osce/WebSocketChat';
+import { SessionTimer } from '../components/osce/SessionTimer';
+import { SessionControls } from '../components/osce/SessionControls';
 import { useAuth } from '../context/AuthContext';
-import { getOSCESession, endOSCESession } from '../api/osce';
+import { getOSCESession, endOSCESession, pauseOSCESession, resumeOSCESession } from '../api/osce';
 import { getPersonaDetail } from '../api/personas';
 
 /**
@@ -63,8 +64,8 @@ const OSCESession: React.FC = () => {
   // State
   const [sessionScore, setSessionScore] = useState<SessionScore | null>(null);
   const [showScoreDialog, setShowScoreDialog] = useState(false);
-  const [showEndConfirmDialog, setShowEndConfirmDialog] = useState(false);
-  const [endingSession, setEndingSession] = useState(false);
+  const [pausedAt, setPausedAt] = useState<string | undefined>(undefined);
+  const [manualStatus, setManualStatus] = useState<'active' | 'paused' | 'ended' | null>(null);
 
   // Set page title
   useEffect(() => {
@@ -100,6 +101,34 @@ const OSCESession: React.FC = () => {
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
+  // Derive session state from backend data and manual overrides
+  const sessionState = useMemo(() => {
+    // If manually set, use that
+    if (manualStatus) {
+      return {
+        status: manualStatus,
+        startedAt: sessionData?.started_at || new Date().toISOString(),
+        pausedAt,
+      };
+    }
+
+    // Otherwise derive from backend data
+    if (sessionData) {
+      return {
+        status: sessionData.status === 'completed' ? ('ended' as const) : ('active' as const),
+        startedAt: sessionData.started_at,
+        pausedAt: undefined,
+      };
+    }
+
+    // Fallback
+    return {
+      status: 'active' as const,
+      startedAt: new Date().toISOString(),
+      pausedAt: undefined,
+    };
+  }, [sessionData, manualStatus, pausedAt]);
+
   /**
    * Validate session ownership
    */
@@ -111,10 +140,76 @@ const OSCESession: React.FC = () => {
   }, [sessionData, user, navigate]);
 
   /**
+   * Handle pause session
+   */
+  const handlePause = useCallback(async () => {
+    if (!attemptId) return;
+
+    try {
+      await pauseOSCESession(attemptId);
+      setManualStatus('paused');
+      setPausedAt(new Date().toISOString());
+      console.log('[OSCESession] Session paused');
+    } catch (error) {
+      console.error('[OSCESession] Failed to pause session:', error);
+      throw error;
+    }
+  }, [attemptId]);
+
+  /**
+   * Handle resume session
+   */
+  const handleResume = useCallback(async () => {
+    if (!attemptId) return;
+
+    try {
+      await resumeOSCESession(attemptId);
+      setManualStatus('active');
+      setPausedAt(undefined);
+      console.log('[OSCESession] Session resumed');
+    } catch (error) {
+      console.error('[OSCESession] Failed to resume session:', error);
+      throw error;
+    }
+  }, [attemptId]);
+
+  /**
+   * Handle time up (auto-end session)
+   */
+  const handleTimeUp = useCallback(async () => {
+    if (!attemptId) return;
+
+    console.log('[OSCESession] Time up - auto-ending session');
+    setManualStatus('ended');
+
+    try {
+      const result = await endOSCESession(attemptId);
+      console.log('[OSCESession] Session auto-ended with score:', result.score);
+
+      // Show score if available
+      if (result.score !== null) {
+        setSessionScore({
+          overall: result.score,
+          communication: result.score,
+          clinical_reasoning: result.score,
+          professionalism: result.score,
+        });
+        setShowScoreDialog(true);
+      } else {
+        navigate('/osce-practice');
+      }
+    } catch (error) {
+      console.error('[OSCESession] Failed to auto-end session:', error);
+      navigate('/osce-practice');
+    }
+  }, [attemptId, navigate]);
+
+  /**
    * Handle session end from WebSocket
    */
   const handleSessionEnd = useCallback((score: SessionScore) => {
     console.log('[OSCESession] Session ended with score:', score);
+    setManualStatus('ended');
     setSessionScore(score);
     setShowScoreDialog(true);
   }, []);
@@ -122,11 +217,10 @@ const OSCESession: React.FC = () => {
   /**
    * Handle manual session end
    */
-  const handleEndSession = async () => {
+  const handleEndSession = useCallback(async () => {
     if (!attemptId) return;
 
-    setEndingSession(true);
-    setShowEndConfirmDialog(false);
+    setManualStatus('ended');
 
     try {
       const result = await endOSCESession(attemptId);
@@ -150,10 +244,8 @@ const OSCESession: React.FC = () => {
       console.error('[OSCESession] Failed to end session:', error);
       // Still navigate back on error
       navigate('/osce-practice');
-    } finally {
-      setEndingSession(false);
     }
-  };
+  }, [attemptId, navigate]);
 
   /**
    * Handle score dialog close
@@ -280,16 +372,14 @@ const OSCESession: React.FC = () => {
             </Box>
           </Box>
 
-          <Box sx={{ display: 'flex', gap: 1 }}>
-            <Button
-              variant="outlined"
-              startIcon={<ArrowBackIcon />}
-              onClick={() => setShowEndConfirmDialog(true)}
-              disabled={endingSession}
-            >
-              End Session
-            </Button>
-          </Box>
+          <Button
+            variant="outlined"
+            startIcon={<ArrowBackIcon />}
+            onClick={() => navigate('/osce-practice')}
+            sx={{ alignSelf: 'flex-start' }}
+          >
+            Back to OSCE Practice
+          </Button>
         </Box>
 
         {/* Patient Info Card */}
@@ -313,6 +403,32 @@ const OSCESession: React.FC = () => {
         </Card>
       </Box>
 
+      {/* Session Timer and Controls */}
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          mb: 2,
+          flexWrap: 'wrap',
+          gap: 2,
+        }}
+      >
+        <SessionTimer
+          startedAt={sessionState.startedAt}
+          pausedAt={sessionState.pausedAt}
+          sessionStatus={sessionState.status}
+          onTimeUp={handleTimeUp}
+        />
+
+        <SessionControls
+          sessionStatus={sessionState.status}
+          onPause={handlePause}
+          onResume={handleResume}
+          onEnd={handleEndSession}
+        />
+      </Box>
+
       {/* WebSocket Chat Interface */}
       {token && (
         <WebSocketChat
@@ -322,35 +438,6 @@ const OSCESession: React.FC = () => {
           onSessionEnd={handleSessionEnd}
         />
       )}
-
-      {/* End Session Confirmation Dialog */}
-      <Dialog
-        open={showEndConfirmDialog}
-        onClose={() => setShowEndConfirmDialog(false)}
-        aria-labelledby="end-session-dialog-title"
-      >
-        <DialogTitle id="end-session-dialog-title">End OSCE Session?</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Are you sure you want to end this OSCE session? Your conversation will be saved
-            and evaluated.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setShowEndConfirmDialog(false)} disabled={endingSession}>
-            Cancel
-          </Button>
-          <Button
-            onClick={handleEndSession}
-            color="primary"
-            variant="contained"
-            disabled={endingSession}
-            autoFocus
-          >
-            {endingSession ? 'Ending...' : 'End Session'}
-          </Button>
-        </DialogActions>
-      </Dialog>
 
       {/* Score Dialog */}
       <Dialog
