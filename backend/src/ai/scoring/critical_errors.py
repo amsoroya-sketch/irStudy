@@ -183,7 +183,7 @@ class CriticalErrorDetector:
         # CE003: Anaphylaxis without treatment
         if rule.rule_id == "CE003":
             has_anaphylaxis = any(kw in patient_lower for kw in ["difficulty breathing", "throat closing", "throat swelling", "widespread rash"])
-            treated_anaphylaxis = any(kw in student_lower for kw in ["adrenaline", "epinephrine", "epipen", "anaphylaxis"])
+            treated_anaphylaxis = any(kw in student_lower for kw in ["adrenaline", "epipen", "anaphylaxis"])
             return has_anaphylaxis and not treated_anaphylaxis
 
         # CE005: Ectopic pregnancy not considered
