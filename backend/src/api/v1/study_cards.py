@@ -5,6 +5,7 @@ Routes:
 - GET /api/v1/study-cards/due-cards - Get cards due for review today
 - POST /api/v1/study-cards/review - Submit review and update SM-2 schedule
 - GET /api/v1/study-cards/statistics - Get study card statistics
+- POST /api/v1/study-cards/generate-from-osce - Generate cards from OSCE session (PRD-P1-005)
 
 AUSTRALIAN MEDICAL CONTEXT:
 - All study cards validated for Australian medical terminology
@@ -20,6 +21,7 @@ SM-2 ALGORITHM:
 
 from typing import List, Optional
 from datetime import datetime, date
+import logging
 
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy import func, and_
@@ -35,10 +37,17 @@ from src.schemas.study_card import (
     StudyCardReviewResponse,
     StudyCardsDueResponse,
     StudyCardStatistics,
+    GenerateCardsRequest,
+    GenerateCardsResponse,
+    GeneratedStudyCardResponse,
 )
 from src.auth.dependencies import get_current_active_user
 from src.services.sm2_algorithm import SM2Algorithm
+from src.ai.study_card_generator import StudyCardGenerator
+from src.ai.rag_service import RAGService
 
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/study-cards", tags=["study-cards"])
 
@@ -247,6 +256,198 @@ async def submit_review(
         message=message,
         quality_description=quality_desc,
     )
+
+
+# ============================================================================
+# GENERATE FROM OSCE SESSION (PRD-P1-005 Phase 4)
+# ============================================================================
+
+
+@router.post(
+    "/generate-from-osce",
+    response_model=GenerateCardsResponse,
+    status_code=status.HTTP_201_CREATED,
+    summary="Generate study cards from OSCE session",
+    description=(
+        "Automatically generate 3-5 study cards from OSCE feedback using Claude AI "
+        "with RAG-enhanced citations. Returns existing cards if already generated (idempotent). "
+        "\n\n**AUTHENTICATION**: JWT required. "
+        "\n**AUTHORIZATION**: User must own the OSCE session. "
+        "\n**IDEMPOTENCY**: Returns 409 Conflict if cards already exist for session."
+    ),
+)
+async def generate_cards_from_osce(
+    request: GenerateCardsRequest,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user),
+) -> GenerateCardsResponse:
+    """
+    Generate study cards from OSCE session feedback (PRD-P1-005).
+
+    **Request Body**:
+    ```json
+    {
+        "session_id": "550e8400-e29b-41d4-a716-446655440000"
+    }
+    ```
+
+    **Response** (201 Created):
+    ```json
+    {
+        "cards": [
+            {
+                "id": 123,
+                "question": "What is SOCRATES framework?",
+                "answer": "Pain assessment framework...",
+                "citations": [...],
+                "ease_factor": 2.5,
+                "interval_days": 1,
+                "repetitions": 0,
+                "next_review_date": "2026-03-24T12:00:00Z"
+            }
+        ],
+        "count": 3,
+        "session_id": "550e8400-...",
+        "message": "Study cards generated successfully"
+    }
+    ```
+
+    **Errors**:
+    - 401: Unauthorized (no JWT)
+    - 403: Forbidden (user doesn't own session)
+    - 404: Session not found
+    - 409: Cards already exist for session
+    - 422: Invalid UUID format
+    - 500: Internal server error
+
+    **Performance**:
+    - Target: <8 seconds for 3 cards
+    - Uses async Claude API calls
+    - RAG citations with confidence ≥0.65
+
+    **Security**:
+    - API key from Vault (no hardcoded credentials)
+    - User authorization validated
+    - Input validation (UUID format)
+    """
+    try:
+        # Step 1: Idempotency check - return existing cards if found
+        existing_cards = (
+            db.query(StudyCard)
+            .filter(
+                StudyCard.session_id == request.session_id,
+                StudyCard.is_active == True,
+                StudyCard.deleted_at.is_(None)
+            )
+            .all()
+        )
+
+        if existing_cards:
+            # Cards already exist - return 409 Conflict
+            logger.info(
+                f"Study cards already exist for session {request.session_id} "
+                f"(found {len(existing_cards)} cards)"
+            )
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT,
+                detail={
+                    "message": f"Study cards already exist for session {request.session_id}",
+                    "existing_count": len(existing_cards),
+                    "session_id": request.session_id,
+                },
+            )
+
+        # Step 2: Initialize dependencies
+        logger.info(f"Generating study cards for session {request.session_id}, user {current_user.id}")
+
+        rag_service = RAGService()
+        generator = StudyCardGenerator(rag_service=rag_service)
+
+        # Step 3: Generate cards (full pipeline)
+        # This calls generate_cards_from_session which:
+        # - Validates session ownership (raises ValueError if unauthorized)
+        # - Extracts learning points from feedback
+        # - Generates Q&A pairs with Claude API
+        # - Enriches with RAG citations
+        # - Creates StudyCard objects with SM-2 initialization
+        # - Batch inserts to database
+        cards = await generator.generate_cards_from_session(
+            session_id=request.session_id,
+            user_id=current_user.id,
+            db=db,
+        )
+
+        # Step 4: Convert to response schema
+        card_responses = [
+            GeneratedStudyCardResponse(
+                id=card.id,
+                user_id=card.user_id,
+                session_id=card.session_id,
+                card_id=card.card_id,
+                specialty=card.specialty,
+                topic=card.topic,
+                subtopic=card.subtopic,
+                question=card.question,
+                answer=card.answer,
+                explanation=card.explanation,
+                citations=card.citations,
+                difficulty=card.difficulty,
+                tags=card.tags or [],
+                card_type=card.card_type,
+                ease_factor=card.ease_factor,
+                interval_days=card.interval_days,
+                repetitions=card.repetitions,
+                next_review_date=card.next_review_date,
+                created_at=card.created_at,
+                updated_at=card.updated_at,
+            )
+            for card in cards
+        ]
+
+        logger.info(f"Successfully generated {len(card_responses)} study cards for session {request.session_id}")
+
+        return GenerateCardsResponse(
+            cards=card_responses,
+            count=len(card_responses),
+            session_id=request.session_id,
+            message=f"Generated {len(card_responses)} study cards successfully",
+        )
+
+    except HTTPException:
+        # Re-raise HTTPExceptions (401, 403, 404, 409)
+        raise
+
+    except ValueError as e:
+        # ValueError from study_card_generator (session not found, permission denied)
+        error_msg = str(e).lower()
+        logger.error(f"Validation error generating cards for session {request.session_id}: {e}")
+
+        if "not found" in error_msg or "does not exist" in error_msg:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=str(e),
+            )
+        elif "permission" in error_msg or "ownership" in error_msg or "does not own" in error_msg:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=str(e),
+            )
+        else:
+            raise HTTPException(
+                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                detail=str(e),
+            )
+
+    except Exception as e:
+        # Catch-all for unexpected errors
+        logger.error(
+            f"Unexpected error generating cards for session {request.session_id}: {e}",
+            exc_info=True,
+        )
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="An unexpected error occurred while generating study cards",
+        )
 
 
 # ============================================================================

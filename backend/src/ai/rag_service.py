@@ -141,16 +141,99 @@ class RAGService:
         hash_val = int(hashlib.md5(query.encode()).hexdigest()[:8], 16)
         return [float((hash_val >> i) & 1) for i in range(768)]  # Mock 768-dim vector
     
+    def search_similar(
+        self,
+        query_text: str,
+        limit: int = 5,
+        confidence_threshold: float = 0.65
+    ) -> List[Dict[str, Any]]:
+        """
+        Search for similar content in Qdrant with confidence filtering.
+
+        Args:
+            query_text: Text to search for
+            limit: Maximum number of results (default: 5)
+            confidence_threshold: Minimum confidence score (default: 0.65)
+
+        Returns:
+            List of dicts with structure:
+            [
+                {
+                    "source": "eTG Cardiovascular",
+                    "qdrant_point_id": "550e8400-e29b-41d4-a716-446655440000",
+                    "score": 0.85,
+                    "content": "Clinical guideline text...",
+                    "page": 42,
+                    "title": "Therapeutic Guidelines",
+                    "author": "eTG Complete",
+                    "year": "2023"
+                },
+                ...
+            ]
+
+        Note:
+            - Filters results by confidence_threshold (≥0.65 per constraints/11)
+            - Returns qdrant_point_id as UUID string
+            - Australian sources prioritized in future enhancement
+        """
+        if not self.client:
+            logger.warning("⚠️  Qdrant client not initialized, returning empty results")
+            return []
+
+        try:
+            # Convert query to embedding vector
+            query_vector = self._embed_query(query_text)
+
+            # Search Qdrant collection
+            results = self.client.search(
+                collection_name=self.collection_name,
+                query_vector=query_vector,
+                limit=limit,
+                score_threshold=confidence_threshold
+            )
+
+            # Format results with complete metadata
+            formatted_results = []
+
+            for hit in results:
+                # Ensure minimum confidence threshold
+                if hit.score < confidence_threshold:
+                    continue
+
+                # Extract payload with complete bibliographic metadata
+                payload = hit.payload
+
+                formatted_results.append({
+                    "source": payload.get("source", "Unknown"),
+                    "qdrant_point_id": str(hit.id),  # UUID as string
+                    "score": float(hit.score),
+                    "content": payload.get("text", ""),
+                    "page": payload.get("page", 0),
+                    "title": payload.get("title", ""),
+                    "author": payload.get("author", ""),
+                    "year": payload.get("year", "")
+                })
+
+            logger.info(
+                f"✅ RAG search: {len(formatted_results)} results with confidence ≥{confidence_threshold}"
+            )
+
+            return formatted_results
+
+        except Exception as e:
+            logger.error(f"❌ RAG search failed: {e}")
+            return []
+
     def health_check(self) -> bool:
         """
         Check Qdrant connection health.
-        
+
         Returns:
             True if Qdrant reachable, False otherwise
         """
         if not self.client:
             return False
-        
+
         try:
             # Attempt to get collection info
             self.client.get_collection(self.collection_name)

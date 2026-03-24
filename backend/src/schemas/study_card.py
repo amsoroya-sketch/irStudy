@@ -213,3 +213,73 @@ class StudyCardStatistics(BaseModel):
     reviews_today: int
     average_quality: float
     retention_rate: float  # Percentage of quality >= 3 reviews
+
+
+# ============================================================================
+# GENERATE FROM OSCE SCHEMAS (PRD-P1-005 Phase 4)
+# ============================================================================
+
+
+class GenerateCardsRequest(BaseModel):
+    """Request to generate study cards from OSCE session (PRD-P1-005)"""
+
+    session_id: str = Field(
+        ...,
+        description="OSCE session UUID",
+        example="550e8400-e29b-41d4-a716-446655440000",
+        min_length=36,
+        max_length=36,
+    )
+
+    @validator("session_id")
+    def validate_uuid_format(cls, v):
+        """Validate session_id is proper UUID format"""
+        import re
+        uuid_pattern = r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+        if not re.match(uuid_pattern, v.lower()):
+            raise ValueError(f"Invalid UUID format: {v}")
+        return v
+
+
+class GeneratedStudyCardResponse(BaseModel):
+    """Individual study card in generation response"""
+
+    id: int
+    user_id: int
+    session_id: str
+    card_id: str
+    specialty: str
+    topic: str
+    subtopic: Optional[str]
+    question: str
+    answer: str
+    explanation: Optional[str]
+    citations: List[Dict]
+    difficulty: str
+    tags: List[str]
+    card_type: str
+
+    # SM-2 parameters
+    ease_factor: float
+    interval_days: int
+    repetitions: int
+    next_review_date: datetime
+
+    # Timestamps
+    created_at: datetime
+    updated_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class GenerateCardsResponse(BaseModel):
+    """Response after generating study cards from OSCE session"""
+
+    cards: List[GeneratedStudyCardResponse]
+    count: int = Field(..., description="Number of cards generated")
+    session_id: str
+    message: str = Field(
+        default="Study cards generated successfully",
+        description="Success message",
+    )

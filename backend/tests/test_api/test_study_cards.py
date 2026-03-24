@@ -698,3 +698,306 @@ def test_performance_get_statistics(db_session, auth_headers, sample_study_cards
 
     assert response.status_code == 200
     assert elapsed_time < 200, f"Response time {elapsed_time:.2f}ms exceeds 200ms target"
+
+
+# ============================================================================
+# GENERATE FROM OSCE SESSION TESTS (PRD-P1-005 Phase 4)
+# ============================================================================
+
+
+@pytest.fixture
+def sample_osce_session(db_session, test_user):
+    """Create sample OSCE session with feedback for testing"""
+    from src.db.models import OSCEAttemptAI
+    from uuid import uuid4
+
+    session_id = str(uuid4())
+
+    # Create OSCE session with AI feedback
+    osce_session = OSCEAttemptAI(
+        attempt_id=session_id,
+        user_id=test_user.id,
+        persona_code="CARD-001",
+        status="completed",
+        ai_feedback={
+            "overall_score": 75,
+            "feedback_text": (
+                "Good history taking. You used SOCRATES framework effectively for chest pain assessment. "
+                "Red flags were identified appropriately (sudden onset, radiation to jaw). "
+                "Consider asking about risk factors more systematically."
+            ),
+            "strengths": [
+                "Used SOCRATES framework for pain assessment",
+                "Identified cardiac red flags (radiation, diaphoresis)",
+            ],
+            "areas_for_improvement": [
+                "Could explore cardiovascular risk factors more thoroughly",
+            ],
+        },
+        created_at=datetime.utcnow(),
+        updated_at=datetime.utcnow(),
+    )
+
+    db_session.add(osce_session)
+    db_session.commit()
+    db_session.refresh(osce_session)
+
+    return osce_session
+
+
+def test_generate_cards_from_osce_session_success(
+    db_session, auth_headers, sample_osce_session, monkeypatch
+):
+    """Test POST /study-cards/generate-from-osce - Happy path (201 Created)"""
+    from src.ai.study_card_generator import StudyCardGenerator
+    from src.db.models import StudyCard
+
+    # Mock the generator to avoid actual Claude API calls in tests
+    async def mock_generate_cards(self, session_id, user_id, db):
+        """Mock implementation that creates study cards without API calls"""
+        # Create 3 sample study cards
+        cards = [
+            StudyCard(
+                user_id=user_id,
+                session_id=session_id,
+                card_id=f"CARD-TEST-{i:04d}",
+                specialty="cardiology",
+                topic="History Taking",
+                subtopic="SOCRATES Framework",
+                question=f"Test question {i}",
+                answer=f"Test answer {i}",
+                explanation="Test explanation",
+                citations=[{"title": "eTG - Chest Pain", "confidence": 0.85}],
+                difficulty="medium",
+                tags=["history-taking", "socrates"],
+                card_type="concept",
+                ease_factor=2.5,
+                interval_days=1,
+                repetitions=0,
+                next_review_date=datetime.utcnow(),
+                is_active=True,
+                created_at=datetime.utcnow(),
+                updated_at=datetime.utcnow(),
+            )
+            for i in range(1, 4)
+        ]
+
+        # Save to database
+        for card in cards:
+            db.add(card)
+        db.commit()
+
+        for card in cards:
+            db.refresh(card)
+
+        return cards
+
+    # Apply mock
+    monkeypatch.setattr(
+        StudyCardGenerator,
+        "generate_cards_from_session",
+        mock_generate_cards
+    )
+
+    # Act: Call API endpoint
+    response = client.post(
+        "/api/v1/study-cards/generate-from-osce",
+        headers=auth_headers,
+        json={"session_id": sample_osce_session.attempt_id},
+    )
+
+    # Assert: Verify response
+    assert response.status_code == 201
+    data = response.json()
+
+    assert data["count"] == 3
+    assert data["session_id"] == sample_osce_session.attempt_id
+    assert "successfully" in data["message"].lower()
+    assert len(data["cards"]) == 3
+
+    # Verify SM-2 initialization
+    for card in data["cards"]:
+        assert card["ease_factor"] == 2.5
+        assert card["interval_days"] == 1
+        assert card["repetitions"] == 0
+        assert "next_review_date" in card
+
+    # Verify database persistence
+    saved_cards = db_session.query(StudyCard).filter(
+        StudyCard.session_id == sample_osce_session.attempt_id
+    ).all()
+    assert len(saved_cards) == 3
+
+
+def test_generate_cards_idempotency_returns_409(
+    db_session, auth_headers, sample_osce_session, monkeypatch
+):
+    """Test idempotency: calling generate twice returns 409 Conflict on second call"""
+    from src.ai.study_card_generator import StudyCardGenerator
+    from src.db.models import StudyCard
+
+    # Mock generator (same as above)
+    async def mock_generate_cards(self, session_id, user_id, db):
+        cards = [
+            StudyCard(
+                user_id=user_id,
+                session_id=session_id,
+                card_id=f"CARD-TEST-{i:04d}",
+                specialty="cardiology",
+                topic="Test",
+                question=f"Q{i}",
+                answer=f"A{i}",
+                citations=[{"title": "Test"}],
+                difficulty="medium",
+                ease_factor=2.5,
+                interval_days=1,
+                repetitions=0,
+                next_review_date=datetime.utcnow(),
+                is_active=True,
+                created_at=datetime.utcnow(),
+                updated_at=datetime.utcnow(),
+            )
+            for i in range(3)
+        ]
+        for card in cards:
+            db.add(card)
+        db.commit()
+        return cards
+
+    monkeypatch.setattr(
+        StudyCardGenerator,
+        "generate_cards_from_session",
+        mock_generate_cards
+    )
+
+    # Act: Call API twice
+    response1 = client.post(
+        "/api/v1/study-cards/generate-from-osce",
+        headers=auth_headers,
+        json={"session_id": sample_osce_session.attempt_id},
+    )
+    response2 = client.post(
+        "/api/v1/study-cards/generate-from-osce",
+        headers=auth_headers,
+        json={"session_id": sample_osce_session.attempt_id},
+    )
+
+    # Assert: First call succeeds, second returns 409
+    assert response1.status_code == 201
+    assert response2.status_code == 409
+
+    data2 = response2.json()
+    assert "already exist" in data2["detail"]["message"]
+    assert data2["detail"]["existing_count"] == 3
+
+
+def test_generate_cards_requires_authentication(sample_osce_session):
+    """Test POST /study-cards/generate-from-osce requires JWT authentication"""
+    # Act: Call without authentication
+    response = client.post(
+        "/api/v1/study-cards/generate-from-osce",
+        json={"session_id": sample_osce_session.attempt_id},
+    )
+
+    # Assert: Returns 401 Unauthorized
+    assert response.status_code == 401
+
+
+def test_generate_cards_session_not_found(db_session, auth_headers, monkeypatch):
+    """Test POST /study-cards/generate-from-osce with non-existent session returns 404"""
+    from src.ai.study_card_generator import StudyCardGenerator
+    from uuid import uuid4
+
+    # Mock generator to raise ValueError for session not found
+    async def mock_generate_cards(self, session_id, user_id, db):
+        raise ValueError(f"OSCE session {session_id} does not exist")
+
+    monkeypatch.setattr(
+        StudyCardGenerator,
+        "generate_cards_from_session",
+        mock_generate_cards
+    )
+
+    fake_session_id = str(uuid4())
+
+    # Act
+    response = client.post(
+        "/api/v1/study-cards/generate-from-osce",
+        headers=auth_headers,
+        json={"session_id": fake_session_id},
+    )
+
+    # Assert: Returns 404
+    assert response.status_code == 404
+    assert "does not exist" in response.json()["detail"]
+
+
+def test_generate_cards_requires_session_ownership(
+    db_session, auth_headers, sample_osce_session, monkeypatch
+):
+    """Test POST /study-cards/generate-from-osce validates user owns the session (403)"""
+    from src.ai.study_card_generator import StudyCardGenerator
+
+    # Mock generator to raise ValueError for ownership issue
+    async def mock_generate_cards(self, session_id, user_id, db):
+        raise ValueError(f"User {user_id} does not own session {session_id}")
+
+    monkeypatch.setattr(
+        StudyCardGenerator,
+        "generate_cards_from_session",
+        mock_generate_cards
+    )
+
+    # Act
+    response = client.post(
+        "/api/v1/study-cards/generate-from-osce",
+        headers=auth_headers,
+        json={"session_id": sample_osce_session.attempt_id},
+    )
+
+    # Assert: Returns 403 Forbidden
+    assert response.status_code == 403
+    assert "does not own" in response.json()["detail"]
+
+
+def test_generate_cards_invalid_uuid_format(auth_headers):
+    """Test POST /study-cards/generate-from-osce with malformed UUID returns 422"""
+    # Act: Send invalid UUID format
+    response = client.post(
+        "/api/v1/study-cards/generate-from-osce",
+        headers=auth_headers,
+        json={"session_id": "not-a-valid-uuid"},
+    )
+
+    # Assert: Returns 422 Unprocessable Entity
+    assert response.status_code == 422
+    # Pydantic validation error for invalid UUID format
+
+
+def test_generate_cards_internal_error_returns_500(
+    db_session, auth_headers, sample_osce_session, monkeypatch
+):
+    """Test POST /study-cards/generate-from-osce handles unexpected errors (500)"""
+    from src.ai.study_card_generator import StudyCardGenerator
+
+    # Mock generator to raise unexpected exception
+    async def mock_generate_cards(self, session_id, user_id, db):
+        raise RuntimeError("Unexpected database error")
+
+    monkeypatch.setattr(
+        StudyCardGenerator,
+        "generate_cards_from_session",
+        mock_generate_cards
+    )
+
+    # Act
+    response = client.post(
+        "/api/v1/study-cards/generate-from-osce",
+        headers=auth_headers,
+        json={"session_id": sample_osce_session.attempt_id},
+    )
+
+    # Assert: Returns 500 with generic error message
+    assert response.status_code == 500
+    assert "unexpected error" in response.json()["detail"].lower()
+    # Should NOT expose internal error details (security)
