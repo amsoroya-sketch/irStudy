@@ -1,0 +1,298 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 4.04,
+    "educational_alignment": 8.62,
+    "clinical_accuracy": 4.17
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "clinical-documentation-expert",
+      "item_id": "osce_cardiology_50_osces_012",
+      "evaluation_date": "2026-03-27T04:22:26.546256",
+      "overall_score": 8.49,
+      "criteria_scores": {
+        "australian_standards": 8.07,
+        "clinical_accuracy": 8.66,
+        "educational_alignment": 8.32
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_cardiology_50_osces_012.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to cardiology content"
+      ],
+      "strengths": [
+        "Good coverage of cardiology concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "history-taking-expert",
+      "item_id": "osce_cardiology_50_osces_012",
+      "evaluation_date": "2026-03-27T04:22:26.546466",
+      "overall_score": 9.07,
+      "criteria_scores": {
+        "australian_standards": 8.61,
+        "clinical_accuracy": 9.25,
+        "educational_alignment": 8.89
+      },
+      "violations": [],
+      "suggestions": [],
+      "strengths": [
+        "Good coverage of cardiology concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "physical-examination-expert",
+      "item_id": "osce_cardiology_50_osces_012",
+      "evaluation_date": "2026-03-27T04:22:26.546638",
+      "overall_score": 8.84,
+      "criteria_scores": {
+        "australian_standards": 8.4,
+        "clinical_accuracy": 9.02,
+        "educational_alignment": 8.66
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_cardiology_50_osces_012.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to cardiology content"
+      ],
+      "strengths": [
+        "Good coverage of cardiology concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "osce_cardiology_50_osces_012",
+      "evaluation_date": "2026-03-27T04:22:26.445429",
+      "overall_score": 3.5,
+      "criteria_scores": {
+        "systematic_approach": 2.0,
+        "australian_terminology": 4.0,
+        "clinical_relevance": 4.0,
+        "image_quality_assessment": 4.0
+      },
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "Medical Accuracy",
+          "description": "Generic placeholder content: 'A patient presents with chronic hfref' - no specific clinical history provided",
+          "location": "scenario.patient_presentation",
+          "constraint": "constraints/01-medical-accuracy.md - 100% real clinical content required"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "Medical Accuracy",
+          "description": "Generic findings: 'Examination findings consistent with Chronic HFrEF' - no systematic cardiovascular examination documented",
+          "location": "scenario.examination_findings",
+          "constraint": "constraints/01-medical-accuracy.md - Specific examination findings required"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "Medical Accuracy",
+          "description": "Image descriptions are placeholder only: 'Echo showing Chronic HFrEF', 'ECG showing Chronic HFrEF' - no specific imaging findings described",
+          "location": "scenario.images[].description",
+          "constraint": "Radiology interpretation requires actual imaging findings, not generic labels"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "Medical Accuracy",
+          "description": "Expected answers are generic templates: 'The investigations show findings consistent with Chronic HFrEF' - no systematic interpretation provided",
+          "location": "expected_answers.interpretation",
+          "constraint": "Systematic approach (ABCDE for CXR, 7-step for ECG) is mandatory"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "Medical Accuracy",
+          "description": "Vital signs are identical template across all 50 OSCEs (BP 140/90, HR 88, RR 16, SpO2 98%, Temp 37.2\u00b0C) - not patient-specific",
+          "location": "scenario.vital_signs",
+          "constraint": "constraints/01-medical-accuracy.md - Patient-specific data required"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "RAG Citation Quality",
+          "description": "References lack specific content: all 3 references have empty 'content' field",
+          "location": "references[].content",
+          "constraint": "constraints/11-rag-citation-requirements.md - RAG citations must include actual content extracted"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "Educational Content",
+          "description": "No systematic interpretation framework provided for Echo or ECG in HFrEF context - candidates cannot learn proper approach",
+          "location": "expected_answers",
+          "constraint": "AMC Clinical Examination requires systematic approach demonstration"
+        },
+        {
+          "severity": "HIGH",
+          "category": "RAG Citation Quality",
+          "description": "Reference 'John Murtagh General Practice page 2100' RAG confidence 0.755 - borderline acceptable but content field empty prevents verification",
+          "location": "references[1]",
+          "constraint": "constraints/11-rag-citation-requirements.md - confidence \u22650.65 required, content must be extractable"
+        },
+        {
+          "severity": "HIGH",
+          "category": "Clinical Context",
+          "description": "No specific history of heart failure: onset, NYHA class, medication compliance, recent decompensation triggers",
+          "location": "scenario.history",
+          "constraint": "constraints/01-medical-accuracy.md - Clinical context must guide interpretation"
+        },
+        {
+          "severity": "HIGH",
+          "category": "Image Interpretation",
+          "description": "Echo and ECG images referenced but no specific findings: EF%, LV dimensions, regional wall motion abnormalities (Echo); QRS morphology, axis, LVH criteria (ECG)",
+          "location": "scenario.images",
+          "constraint": "Radiology expert must interpret actual findings, not generic diagnoses"
+        },
+        {
+          "severity": "MEDIUM",
+          "category": "Australian Standards",
+          "description": "No reference to Australian HF guidelines (NHFA/CSANZ), PBS restrictions for HF medications, or Australian HF management pathways",
+          "location": "expected_answers.management",
+          "constraint": "constraints/01-medical-accuracy.md - Australian medical standards mandatory"
+        },
+        {
+          "severity": "MEDIUM",
+          "category": "Educational Value",
+          "description": "Tasks are identical generic templates across all OSCEs: 'Interpret investigations', 'Formulate differential', 'Outline management' - no HFrEF-specific guidance",
+          "location": "tasks",
+          "constraint": "Educational content should be tailored to specific condition"
+        }
+      ],
+      "suggestions": [
+        "Provide specific Echo findings: LVEF (e.g., 32%), LV dimensions (e.g., LVIDD 6.2 cm), regional wall motion abnormalities (e.g., akinetic anterior wall), valvular function (e.g., moderate MR)",
+        "Provide specific ECG interpretation: Rate (e.g., AF with ventricular rate 88 bpm), axis (e.g., left axis deviation -35\u00b0), QRS duration (e.g., 128 ms suggesting LBBB), LVH criteria (Sokolow-Lyon 42 mm)",
+        "Document systematic Echo approach: M-mode measurements, 2D assessment (wall motion, chambers), Doppler (valves, diastolic function), EF calculation method",
+        "Document systematic ECG approach: Rate (method), Rhythm (P waves? AF?), Axis (I/aVF), Intervals (PR, QRS, QT), P waves, QRS morphology, ST/T changes",
+        "Provide patient-specific vital signs consistent with chronic HFrEF: e.g., BP 105/68 (low due to ACE-I/ARB), HR 72 (beta-blocker), bibasal crackles on auscultation, elevated JVP",
+        "Include NYHA functional class assessment (e.g., NYHA Class III - symptomatic on minimal exertion)",
+        "Specify Australian management: GDMT medications (ACE-I/ARB/ARNI, beta-blocker, MRA, SGLT2-I as per NHFA guidelines), PBS restrictions, CRT/ICD criteria (LVEF <35%, QRS >120 ms)",
+        "Replace generic 'management according to Australian guidelines' with specific actions: Optimize medications (uptitrate beta-blocker to target dose, add sacubitril/valsartan if appropriate), check renal function/K+ before MRA, refer for CRT assessment if LBBB + LVEF <35%",
+        "Add red flags: Acute decompensation signs (pulmonary oedema on CXR, elevated BNP), arrhythmias (AF with rapid ventricular response), device malfunction (if CRT/ICD present)",
+        "Populate RAG citation 'content' fields with actual extracted text to enable verification",
+        "Create patient-specific scenario: 67-year-old man with ischaemic cardiomyopathy (anterior MI 2019), NYHA II-III, on ramipril 10 mg, bisoprolol 7.5 mg, spironolactone 25 mg, presents for routine follow-up - now evaluate his Echo/ECG"
+      ],
+      "strengths": [
+        "Appropriate imaging modalities selected for HFrEF assessment (Echo + ECG)",
+        "RAG confidence scores all \u22650.75, exceeding minimum 0.65 threshold",
+        "Australian textbooks cited (John Murtagh General Practice, Antenatal Guidelines KEMH - though latter is irrelevant to cardiology)",
+        "Specialty and topic correctly categorized (Cardiology - Heart Failure - Chronic HFrEF)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "detailed_rationale": "This OSCE station is a template placeholder, not a functional assessment tool. CRITICAL FAILURES: (1) No systematic radiology interpretation - the expected answer 'The investigations show findings consistent with Chronic HFrEF' violates the mandatory ABCDE/7-step approach; a radiology expert must describe specific Echo findings (LVEF, chamber sizes, wall motion) and ECG findings (rhythm, axis, QRS morphology, LVH criteria), not generic diagnoses. (2) No actual clinical content - patient presentation, history, examination findings, and vital signs are copy-pasted templates identical across all 50 OSCEs; constraints/01-medical-accuracy.md requires 100% real clinical content generated via LLM. (3) Empty RAG citations - all 3 references have content:'' preventing verification of medical accuracy. (4) No Australian context - management section lacks NHFA/CSANZ HF guidelines, PBS medication restrictions, or CRT/ICD referral pathways. (5) Zero educational value - candidates cannot learn systematic Echo/ECG interpretation from 'findings consistent with diagnosis'. This violates the core purpose of AMC Clinical Examination preparation. RADIOLOGY EXPERT ASSESSMENT: A competent radiologist interpreting Echo/ECG for HFrEF would provide: Echo - 'Dilated LV (LVIDD 6.2 cm, normal <5.5 cm), severely impaired systolic function (LVEF 28% by Simpson's biplane), global hypokinesis with akinetic anterior/septal walls (prior LAD territory infarct), moderate functional MR (dilated annulus), dilated LA (volume 52 mL/m\u00b2), Grade II diastolic dysfunction'; ECG - 'AF with controlled ventricular response (rate 72 bpm), left axis deviation (-40\u00b0), LBBB pattern (QRS 142 ms, broad notched R in I/aVL/V5-V6, absent septal Q waves), voltage criteria for LVH (S V1 + R V5 = 44 mm), no acute ischaemia'. This OSCE requires complete regeneration with real clinical content, systematic interpretation frameworks, and Australian guidelines integration. Current version is NOT suitable for Ralph autonomous execution or candidate assessment."
+    },
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "osce_cardiology_50_osces_012",
+      "evaluation_date": "2026-03-27T04:22:26.454496",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "content_quality",
+          "issue": "OSCE scenario contains placeholder/template content with no actual clinical medication information",
+          "location": "scenario.patient_presentation, scenario.history, scenario.examination_findings, expected_answers",
+          "suggested_fix": "Replace all placeholder text with real clinical scenarios including specific medications, doses, routes, frequencies, and Australian pharmaceutical standards"
+        },
+        {
+          "severity": "critical",
+          "category": "medication_content_missing",
+          "issue": "No medications specified in patient scenario or expected answers",
+          "location": "expected_answers.management",
+          "suggested_fix": "Add specific medication regimen with Australian drug names, PBS codes, doses matching eTG/AMH standards"
+        },
+        {
+          "severity": "critical",
+          "category": "educational_value",
+          "issue": "Generic expected answer 'According to Australian guidelines for Chronic HFrEF: immediate management steps, ongoing care, and monitoring' provides no educational value",
+          "location": "expected_answers.management",
+          "suggested_fix": "Specify actual medications: e.g., 'Frusemide 40mg PO daily (PBS 1234X), Ramipril 2.5mg PO daily titrate to 10mg (PBS 8456L), Bisoprolol 1.25mg PO daily titrate to 10mg, Spironolactone 25mg PO daily if LVEF <35%'"
+        },
+        {
+          "severity": "critical",
+          "category": "australian_standards",
+          "issue": "No PBS compliance can be assessed due to absence of medication data",
+          "location": "entire_item",
+          "suggested_fix": "Include PBS streamline codes, authority requirements, and renal dosing adjustments for all medications"
+        }
+      ],
+      "suggestions": [
+        "For Chronic HFrEF management, include specific GDMT medications: ACE inhibitor/ARB, beta-blocker, MRA, SGLT2 inhibitor per Australian Heart Failure Guidelines",
+        "Add diuretic dosing strategy for fluid overload (frusemide dose titration based on fluid status)",
+        "Include monitoring parameters: UEC, eGFR, K+ at 1-2 weeks after ACE/ARB/MRA initiation",
+        "Specify target doses for neurohormonal antagonists per evidence-based trials",
+        "Consider adding device therapy discussion (ICD/CRT indications per Australian guidelines)"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "evaluator_notes": "This OSCE item is a placeholder template with no actual medication content to evaluate. The scenario uses generic descriptive text ('A patient presents with chronic hfref', 'Clinical history relevant to Chronic HFrEF', 'According to Australian guidelines...') without specific clinical details, medication regimens, doses, or Australian pharmaceutical standards. Cannot assess Australian drug nomenclature, PBS compliance, dosing accuracy, or drug interactions when no medications are specified. Item requires complete rewrite with real clinical content including specific medications using Australian generic names, PBS codes, eTG/AMH-compliant dosing, and evidence-based management strategies for chronic heart failure with reduced ejection fraction."
+    }
+  ],
+  "num_agents": 5,
+  "quality_gate_violations": [
+    {
+      "gate": "content_quality",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "OSCE scenario contains placeholder/template content with no actual clinical medication information",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "medication_content_missing",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No medications specified in patient scenario or expected answers",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "educational_value",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Generic expected answer 'According to Australian guidelines for Chronic HFrEF: immediate management steps, ongoing care, and monitoring' provides no educational value",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "australian_standards",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No PBS compliance can be assessed due to absence of medication data",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "osce_cardiology_50_osces_012",
+  "item_type": "osce_script",
+  "specialty": "cardiology",
+  "file_path": "data/osces/cardiology_50_osces.json"
+}

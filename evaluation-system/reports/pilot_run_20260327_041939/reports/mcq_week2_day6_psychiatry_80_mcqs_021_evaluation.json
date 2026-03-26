@@ -1,0 +1,132 @@
+{
+  "overall_score": 5.64,
+  "criterion_scores": {
+    "australian_standards": 9.2,
+    "clinical_accuracy": 8.54,
+    "cultural_safety": 7.83
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week2_day6_psychiatry_80_mcqs_021",
+      "evaluation_date": "2026-03-27T05:00:12.847219",
+      "overall_score": 9.2,
+      "criteria_scores": {
+        "australian_drug_names": 10.0,
+        "pbs_compliance": 9.0,
+        "dosing_accuracy": 9.5,
+        "drug_interactions": 9.0,
+        "polypharmacy_management": 8.5
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "pbs_compliance",
+          "issue": "PBS streamline codes not provided for psychiatric medications",
+          "location": "mcqs[].explanation.key_points",
+          "suggested_fix": "Add PBS authority requirements: SSRIs (sertraline, escitalopram) are PBS-listed without authority for depression/anxiety. Lithium requires authority for bipolar disorder. Clozapine requires authority and CPMS registration."
+        },
+        {
+          "severity": "suggestion",
+          "category": "dosing_accuracy",
+          "issue": "Benzodiazepine dosing could specify 'symptom-triggered' protocol more explicitly",
+          "location": "mcqs[PSY-ANX-20260125-002].options.A",
+          "suggested_fix": "Clarify that alprazolam should be avoided due to dependence risk per eTG. Diazepam preferred for symptom-triggered regimen."
+        },
+        {
+          "severity": "suggestion",
+          "category": "drug_interactions",
+          "issue": "Lithium + diuretic interaction noted but monitoring frequency not specified",
+          "location": "expert_agent_content.section_2",
+          "suggested_fix": "Add specific recommendation: Check lithium level 3-5 days after starting/changing diuretics, then weekly until stable"
+        }
+      ],
+      "suggestions": [
+        "Consider adding PBS authority requirements for all psychotropic medications (lithium, valproate, clozapine require authority)",
+        "Specify TGA-approved formulations for clozapine (Clozaril, Clopine) to aid prescribers",
+        "Add renal dosing adjustments for lithium in elderly (initial dose 250mg BD if age >65)",
+        "Include therapeutic drug monitoring frequency for valproate (trough level 50-100 mg/L)",
+        "Add note about valproate pregnancy prevention program (mandatory in Australia for women of childbearing age)"
+      ],
+      "strengths": [
+        "Perfect use of Australian drug nomenclature throughout all 80 MCQs (paracetamol, adrenaline, salbutamol, lignocaine)",
+        "Comprehensive coverage of Australian psychiatric prescribing standards (RANZCP guidelines, eTG Psychiatry)",
+        "Correct medication dosing aligned with Australian practice (sertraline 50mg, escitalopram 10mg, olanzapine 10mg IM for acute mania)",
+        "Appropriate emphasis on avoiding benzodiazepines in anxiety disorders per Australian guidelines",
+        "Excellent coverage of clozapine monitoring requirements (FBC weekly x18 weeks, then monthly - Australian protocol)",
+        "Strong focus on medication safety: lithium monitoring, warfarin interactions, renal dosing, polypharmacy management",
+        "Correct Australian frequency notation (BD, TDS, QID, nocte) used consistently",
+        "Drug interactions appropriately flagged (warfarin + NSAIDs, lithium + diuretics, SSRIs + NSAIDs)",
+        "Deprescribing frameworks align with Australian standards (STOPP/START criteria, gradual benzodiazepine taper)",
+        "Therapeutic drug monitoring protocols match Australian practice (lithium 0.6-1.0 mmol/L, digoxin 0.8-2.0 nanomol/L)"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false,
+      "australian_compliance_verified": true
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week2_day6_psychiatry_80_mcqs_021",
+      "evaluation_date": "2026-03-27T05:00:14.765133",
+      "overall_score": 7.83,
+      "criteria_scores": {
+        "australian_standards": 7.43,
+        "clinical_accuracy": 7.98,
+        "educational_alignment": 7.67
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in mcq",
+          "location": "mcq_week2_day6_psychiatry_80_mcqs_021.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to psychiatry content"
+      ],
+      "strengths": [
+        "Good coverage of psychiatry concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "mcq_week2_day6_psychiatry_80_mcqs_021",
+      "evaluation_date": "2026-03-27T05:00:17.894748",
+      "overall_score": 8.26,
+      "criteria_scores": {
+        "australian_standards": 7.85,
+        "clinical_accuracy": 8.43,
+        "educational_alignment": 8.1
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in mcq",
+          "location": "mcq_week2_day6_psychiatry_80_mcqs_021.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to psychiatry content"
+      ],
+      "strengths": [
+        "Good coverage of psychiatry concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    }
+  ],
+  "num_agents": 3,
+  "status": "REJECTED",
+  "item_id": "mcq_week2_day6_psychiatry_80_mcqs_021",
+  "item_type": "mcq",
+  "specialty": "psychiatry",
+  "file_path": "data/mcqs/week2_day6_psychiatry_80_mcqs.json"
+}

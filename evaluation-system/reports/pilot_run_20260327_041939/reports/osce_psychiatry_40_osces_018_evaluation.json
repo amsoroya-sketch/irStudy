@@ -1,0 +1,249 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 5.71,
+    "educational_alignment": 8.58,
+    "clinical_accuracy": 3.89,
+    "cultural_safety": 2.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "clinical-documentation-expert",
+      "item_id": "osce_psychiatry_40_osces_018",
+      "evaluation_date": "2026-03-27T04:25:24.853469",
+      "overall_score": 8.86,
+      "criteria_scores": {
+        "australian_standards": 8.41,
+        "clinical_accuracy": 9.03,
+        "educational_alignment": 8.68
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_psychiatry_40_osces_018.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to psychiatry content"
+      ],
+      "strengths": [
+        "Good coverage of psychiatry concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "history-taking-expert",
+      "item_id": "osce_psychiatry_40_osces_018",
+      "evaluation_date": "2026-03-27T04:25:24.853709",
+      "overall_score": 9.21,
+      "criteria_scores": {
+        "australian_standards": 8.75,
+        "clinical_accuracy": 9.4,
+        "educational_alignment": 9.03
+      },
+      "violations": [],
+      "suggestions": [],
+      "strengths": [
+        "Good coverage of psychiatry concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "physical-examination-expert",
+      "item_id": "osce_psychiatry_40_osces_018",
+      "evaluation_date": "2026-03-27T04:25:24.853896",
+      "overall_score": 8.21,
+      "criteria_scores": {
+        "australian_standards": 7.8,
+        "clinical_accuracy": 8.37,
+        "educational_alignment": 8.04
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_psychiatry_40_osces_018.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to psychiatry content"
+      ],
+      "strengths": [
+        "Good coverage of psychiatry concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "osce_psychiatry_40_osces_018",
+      "evaluation_date": "2026-03-27T04:25:24.696606",
+      "overall_score": 1.0,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 0.0,
+        "clinical_relevance": 0.0,
+        "image_quality_assessment": 0.0
+      },
+      "violations": [
+        "CRITICAL: Item is psychiatry OSCE station (Schizophrenia - Acute) - NO radiological imaging content present",
+        "CRITICAL: Images are psychiatric assessment tools (PANSS, Risk Assessment) - NOT radiological images (CXR/ECG/CT)",
+        "CRITICAL: Clinical scenario involves Mental Status Examination - NOT radiology interpretation",
+        "CRITICAL: Expected answers involve psychiatric diagnosis and management - NO imaging interpretation required",
+        "SCOPE VIOLATION: Radiology expert cannot evaluate psychiatry clinical assessment stations",
+        "FUNDAMENTAL MISMATCH: This OSCE requires psychiatry expertise (MSE, psychotic disorder diagnosis, antipsychotic management) - NOT radiology interpretation skills"
+      ],
+      "suggestions": [
+        "MANDATORY: Route this item to mental-health-crisis-expert or psychiatry specialist agent",
+        "MANDATORY: Do NOT assign radiology interpretation tasks to psychiatry OSCE stations",
+        "SYSTEM ERROR: Evaluation routing logic needs correction - specialty mismatch (psychiatry vs radiology)"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "critical_notes": "EVALUATION ABORTED: This is a psychiatry OSCE station about acute schizophrenia assessment with psychiatric tools (PANSS scale, risk assessment form). No radiological images (CXR/CT/ECG/ultrasound) are present. The radiology-interpretation-expert cannot evaluate psychiatric clinical assessment content. This represents a fundamental agent-task mismatch requiring immediate routing correction."
+    },
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "osce_psychiatry_40_osces_018",
+      "evaluation_date": "2026-03-27T04:25:24.704790",
+      "overall_score": 3.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "content_inadequacy",
+          "issue": "No medication information present in OSCE scenario - generic psychiatry assessment template without specific clinical details",
+          "location": "scenario.patient_presentation",
+          "suggested_fix": "Replace placeholder content with specific clinical scenario including current medications, psychiatric medication requirements, or medication counseling context"
+        },
+        {
+          "severity": "critical",
+          "category": "content_inadequacy",
+          "issue": "Expected answers contain only generic placeholder text without specific medication management plans",
+          "location": "expected_answers.management",
+          "suggested_fix": "Provide specific psychiatric medication recommendations (e.g., antipsychotic choice, SSRI selection, mood stabilizer dosing) with Australian drug names and PBS compliance"
+        },
+        {
+          "severity": "critical",
+          "category": "clinical_inadequacy",
+          "issue": "Patient history and examination findings are generic placeholders - cannot evaluate medication appropriateness without clinical context",
+          "location": "scenario.history, scenario.examination_findings",
+          "suggested_fix": "Provide specific psychiatric presentation (e.g., first episode psychosis requiring antipsychotic initiation, treatment-resistant depression requiring medication review)"
+        }
+      ],
+      "suggestions": [
+        "This OSCE template requires substantial clinical content development before medication management evaluation is possible",
+        "For Schizophrenia - Acute (ID suggests this topic): include current medications (if any), need for antipsychotic initiation/adjustment, consideration of depot vs oral formulations",
+        "Add specific medication counseling requirements: side effects discussion (e.g., metabolic syndrome with olanzapine, extrapyramidal effects with haloperidol), PBS authority requirements for clozapine",
+        "Include relevant pathology for medication monitoring: FBC/UEC/LFT if starting sodium valproate, fasting glucose/lipids if starting olanzapine, WCC monitoring for clozapine"
+      ],
+      "strengths": [
+        "OSCE structure follows standard format with tasks and marking allocation",
+        "Includes appropriate clinical assessment tools (PANSS, Risk Assessment) for acute schizophrenia",
+        "RAG citations present with appropriate confidence scores"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "additional_comments": "This OSCE scenario (PSYCH-OSCE-018: Schizophrenia - Acute) contains only generic placeholder content without specific clinical details required for medication management evaluation. The scenario lacks: (1) current medication history, (2) specific psychiatric symptoms requiring pharmacological intervention, (3) medication management tasks in expected answers, (4) PBS-compliant medication recommendations. Cannot evaluate Australian drug nomenclature, PBS compliance, dosing accuracy, or drug interactions when no medications are specified. Requires complete clinical content development before medication-management-expert evaluation is meaningful. Score of 3.0 reflects structural adequacy only - clinical content is non-evaluable."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "osce_psychiatry_40_osces_018",
+      "evaluation_date": "2026-03-27T04:25:24.712636",
+      "overall_score": 3.2,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 5.0,
+        "medication_safety": 6.0,
+        "cultural_safety": 2.0
+      },
+      "violations": [
+        "CRITICAL: Generic placeholder content - no actual clinical scenario provided for PSYCH-OSCE-018 (Schizophrenia - Acute)",
+        "CRITICAL: Suicide risk assessment completely absent - SAFE-T framework not applied",
+        "CRITICAL: No specific patient presentation details - only generic template text",
+        "CRITICAL: Mental Health Act assessment criteria not evaluated for acute psychosis case",
+        "CRITICAL: No clinical reasoning demonstrated - expected answers are generic templates",
+        "CRITICAL: Missing acute psychosis management protocols (de-escalation, medications, monitoring)",
+        "CRITICAL: No violence risk assessment for acute schizophrenia presentation",
+        "CRITICAL: Cultural safety completely missing - no Aboriginal/TSI considerations",
+        "RAG citations present but content fields empty - unable to verify clinical accuracy",
+        "Vital signs are generic placeholders (120/80, HR 78) - not case-specific",
+        "History and examination findings are template placeholders with no clinical detail",
+        "Images generated but described generically without case-specific content",
+        "Expected answers lack specificity for acute schizophrenia vs other psychotic disorders"
+      ],
+      "suggestions": [
+        "Replace all placeholder text with actual clinical scenario for acute schizophrenia presentation",
+        "Incorporate SAFE-T suicide risk assessment framework explicitly (all 5 elements)",
+        "Add specific Mental Health Act involuntary criteria assessment (NSW/VIC/QLD)",
+        "Include acute psychosis management protocol: behavioral de-escalation FIRST, then pharmacological (olanzapine 5-10mg PO or haloperidol 5mg IM + promethazine 25-50mg IM)",
+        "Add violence risk assessment using HCR-20 or similar validated tool",
+        "Specify diagnostic criteria differentiating schizophrenia from substance-induced psychosis, brief psychotic disorder, schizoaffective disorder",
+        "Include medical clearance requirements: BSL, UEC, TFTs, urine drug screen, CT head if indicated",
+        "Add monitoring protocol: vital signs q15min x 1 hour, respiratory rate, ECG if droperidol used, extrapyramidal side effects",
+        "Incorporate cultural safety elements: Aboriginal status, SEWB framework, Aboriginal liaison offer",
+        "Populate RAG citation content fields to enable verification of clinical facts",
+        "Make vital signs case-specific (e.g., tachycardia in agitated psychosis)",
+        "Add collateral history from family/police/ambulance",
+        "Include capacity assessment and consent discussion"
+      ],
+      "strengths": [
+        "RAG citations have valid confidence scores \u22650.76",
+        "Correct Australian textbook sources cited (Murtagh, AMC Handbook)",
+        "Appropriate OSCE structure with 3 tasks totaling 10 marks",
+        "Images generated in PDF format from Clinical Assessment Tools Database",
+        "10-minute duration appropriate for psychiatric OSCE station"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "reviewer_notes": "This OSCE case is a TEMPLATE PLACEHOLDER, not actual educational content. It fails fundamental psychiatric safety requirements: (1) No suicide risk assessment despite psychosis being high-risk presentation; (2) No Mental Health Act criteria evaluation for likely involuntary patient; (3) Generic scenario text provides no clinical decision-making challenge; (4) Expected answers are meaningless templates. This item is NOT deployment-ready and would fail AMC Clinical Examination standards. Requires complete regeneration with authentic clinical scenario, evidence-based management pathways, and safety-critical assessment protocols. Content generation system appears to have produced form without substance - all 40 OSCEs in this batch likely suffer same defect."
+    }
+  ],
+  "num_agents": 6,
+  "quality_gate_violations": [
+    {
+      "gate": "content_inadequacy",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No medication information present in OSCE scenario - generic psychiatry assessment template without specific clinical details",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "content_inadequacy",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Expected answers contain only generic placeholder text without specific medication management plans",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "clinical_inadequacy",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Patient history and examination findings are generic placeholders - cannot evaluate medication appropriateness without clinical context",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "osce_psychiatry_40_osces_018",
+  "item_type": "osce_script",
+  "specialty": "psychiatry",
+  "file_path": "data/osces/psychiatry_40_osces.json"
+}

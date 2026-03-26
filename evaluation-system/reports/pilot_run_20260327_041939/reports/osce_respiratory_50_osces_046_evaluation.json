@@ -1,0 +1,287 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 6.02,
+    "educational_alignment": 8.49,
+    "clinical_accuracy": 4.19,
+    "cultural_safety": 0.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "clinical-documentation-expert",
+      "item_id": "osce_respiratory_50_osces_046",
+      "evaluation_date": "2026-03-27T04:25:24.890663",
+      "overall_score": 8.46,
+      "criteria_scores": {
+        "australian_standards": 8.04,
+        "clinical_accuracy": 8.63,
+        "educational_alignment": 8.3
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_respiratory_50_osces_046.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to respiratory content"
+      ],
+      "strengths": [
+        "Good coverage of respiratory concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "history-taking-expert",
+      "item_id": "osce_respiratory_50_osces_046",
+      "evaluation_date": "2026-03-27T04:25:24.901241",
+      "overall_score": 8.44,
+      "criteria_scores": {
+        "australian_standards": 8.01,
+        "clinical_accuracy": 8.61,
+        "educational_alignment": 8.27
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_respiratory_50_osces_046.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to respiratory content"
+      ],
+      "strengths": [
+        "Good coverage of respiratory concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "physical-examination-expert",
+      "item_id": "osce_respiratory_50_osces_046",
+      "evaluation_date": "2026-03-27T04:25:24.911842",
+      "overall_score": 9.07,
+      "criteria_scores": {
+        "australian_standards": 8.62,
+        "clinical_accuracy": 9.25,
+        "educational_alignment": 8.89
+      },
+      "violations": [],
+      "suggestions": [],
+      "strengths": [
+        "Good coverage of respiratory concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "osce_respiratory_50_osces_046",
+      "evaluation_date": "2026-03-27T04:25:24.821622",
+      "overall_score": 3.5,
+      "criteria_scores": {
+        "systematic_approach": 2.0,
+        "australian_terminology": 4.0,
+        "clinical_relevance": 4.0,
+        "image_quality_assessment": 4.0
+      },
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "content_specificity",
+          "description": "OSCE-046 Pneumothorax: Expected answers are completely generic placeholders ('The investigations show findings consistent with Pneumothorax', 'Primary diagnosis: Pneumothorax. Differential diagnoses based on presentation.'). No actual radiological interpretation provided.",
+          "location": "expected_answers section",
+          "recommendation": "Replace with specific CXR interpretation using ABCDE systematic approach: (A) Trachea midline, (B) Visceral pleural line visible, no lung markings peripheral to line, size estimation (cm at apex), tension features present/absent, (C) Mediastinal shift assessment, (D) Hemidiaphragm position, (E) Subcutaneous emphysema. Management: Size-based BTS/Australian guidelines (observe <2cm vs chest drain >2cm)."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "content_specificity",
+          "description": "No systematic ABCDE approach demonstrated in expected answers - this is mandatory for AMC Clinical Examination CXR interpretation.",
+          "location": "expected_answers.interpretation",
+          "recommendation": "Provide step-by-step ABCDE interpretation with specific findings at each step, not generic statements."
+        },
+        {
+          "severity": "MAJOR",
+          "category": "differential_diagnosis",
+          "description": "Differential diagnosis is placeholder text only ('Differential diagnoses based on presentation'). Should include: Primary spontaneous pneumothorax, Secondary pneumothorax (underlying lung disease - COPD, asthma, cystic fibrosis), Traumatic pneumothorax, Iatrogenic pneumothorax (post-procedure).",
+          "location": "expected_answers.differential",
+          "recommendation": "List specific differential diagnoses with clinical context distinguishing features (age, smoking history, underlying lung disease, trauma history)."
+        },
+        {
+          "severity": "MAJOR",
+          "category": "management_specificity",
+          "description": "Management is generic placeholder ('immediate management steps, ongoing care, and monitoring'). Should specify: Size-based BTS criteria (<2cm observe with repeat CXR 4h vs >2cm chest drain), high-flow oxygen (except COPD), analgesia, admission criteria, discharge advice for primary pneumothorax (avoid flying 1 week, no diving until reviewed).",
+          "location": "expected_answers.management",
+          "recommendation": "Provide specific size-based management algorithm following Australian/BTS guidelines with numerical thresholds and procedural details."
+        },
+        {
+          "severity": "MAJOR",
+          "category": "image_quality",
+          "description": "No mention of image quality assessment (rotation, inspiration, penetration) which is mandatory first step in CXR interpretation.",
+          "location": "expected_answers.interpretation",
+          "recommendation": "Add technical assessment: 'CXR - PA/AP projection, adequate rotation (clavicular heads equidistant), inspiration (6 anterior ribs visible), adequate penetration (vertebrae just visible behind heart)' before ABCDE findings."
+        },
+        {
+          "severity": "MAJOR",
+          "category": "red_flags",
+          "description": "No explicit assessment for tension pneumothorax features which is life-threatening and requires immediate needle decompression before imaging confirmation.",
+          "location": "expected_answers.interpretation and management",
+          "recommendation": "Must explicitly state tension vs simple pneumothorax assessment: 'No tension features (no mediastinal shift away, no tracheal deviation, no hemidiaphragm flattening, clinically stable)' OR 'Tension pneumothorax present - requires immediate needle decompression 2nd intercostal space mid-clavicular line BEFORE chest drain'."
+        },
+        {
+          "severity": "MINOR",
+          "category": "australian_context",
+          "description": "Generic vital signs provided (130/80 mmHg, 90 bpm, RR 24/min, SpO2 92%) do not reflect typical pneumothorax presentation. SpO2 92% would suggest moderate-large pneumothorax requiring intervention, not observation.",
+          "location": "scenario.vital_signs",
+          "recommendation": "Adjust vital signs to match clinical scenario severity OR add clinical context explaining why SpO2 92% (underlying lung disease, large pneumothorax)."
+        },
+        {
+          "severity": "MINOR",
+          "category": "rag_validation",
+          "description": "RAG citations have adequate confidence (0.77-0.77) but generic textbook references (Murtagh, AMC Handbook) without specific page content validation for pneumothorax-specific management.",
+          "location": "references section",
+          "recommendation": "Validate that cited pages actually contain pneumothorax-specific BTS/Australian guidelines, size criteria, and chest drain indications."
+        }
+      ],
+      "suggestions": [
+        "Add specific CXR findings using ABCDE systematic approach with measurements (e.g., '3cm pneumothorax at apex, no tension features')",
+        "Include BTS/Australian pneumothorax size criteria (<2cm vs >2cm at hilum level on erect CXR)",
+        "Specify chest drain insertion technique (Seldinger vs blunt dissection), location (safe triangle), and complications to monitor",
+        "Add patient education for primary spontaneous pneumothorax (20-50% recurrence risk, avoid flying/diving advice)",
+        "Include image quality assessment before systematic interpretation (rotation, inspiration, penetration)",
+        "Distinguish primary (young, tall, thin male, smoker) vs secondary pneumothorax (older, underlying COPD/ILD) as management differs",
+        "Add tension pneumothorax clinical features (hypotension, tachycardia, distended neck veins, tracheal deviation) as exclusion criteria before imaging",
+        "Specify observation protocol if <2cm pneumothorax: high-flow oxygen (unless COPD), repeat CXR at 4 hours, discharge if stable with 1-2 week outpatient review"
+      ],
+      "strengths": [
+        "Australian terminology used correctly ('pneumothorax' not 'collapsed lung')",
+        "Appropriate imaging modality (CXR) for pneumothorax diagnosis",
+        "Correct specialty (Respiratory Medicine) for OSCE station",
+        "RAG citations present with adequate confidence scores (>0.76)",
+        "Emergency presentation scenario type appropriate for acute pneumothorax"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "review_notes": "This OSCE script fails fundamental radiology interpretation standards due to completely generic placeholder content instead of specific systematic CXR interpretation. Expected answers provide no actual radiological findings, no ABCDE approach, no size quantification, and no evidence-based management thresholds. This would NOT prepare AMC candidates for clinical examination imaging stations where systematic approach and specific measurements are mandatory for passing. Requires complete rewrite with specific CXR findings, ABCDE systematic interpretation, BTS size criteria, and tension pneumothorax exclusion. Current content score 3.5/10 reflects placeholder nature rendering OSCE non-functional for assessment purposes."
+    },
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "osce_respiratory_50_osces_046",
+      "evaluation_date": "2026-03-27T04:25:24.837492",
+      "overall_score": 4.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 5.0,
+        "dosing_accuracy": 6.0,
+        "drug_interactions": 7.0,
+        "polypharmacy_management": 6.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "australian_drug_names",
+          "issue": "No specific medications listed in OSCE content - scenario is generic template without actual drug prescribing",
+          "location": "expected_answers.management",
+          "suggested_fix": "Add specific Australian medication management plan with drug names (e.g., paracetamol, salbutamol, prednisolone for pneumothorax management)"
+        },
+        {
+          "severity": "critical",
+          "category": "dosing_accuracy",
+          "issue": "Management section lacks specific drug doses, frequencies, routes",
+          "location": "expected_answers.management",
+          "suggested_fix": "Specify: oxygen therapy parameters, analgesia (paracetamol 1g QID PO), intercostal catheter size (14-16Fr), referral criteria"
+        },
+        {
+          "severity": "warning",
+          "category": "pbs_compliance",
+          "issue": "No PBS codes or authority requirements mentioned",
+          "location": "expected_answers.management",
+          "suggested_fix": "Add PBS details if medications prescribed (e.g., morphine for pleuritic pain would require documentation)"
+        },
+        {
+          "severity": "warning",
+          "category": "content_completeness",
+          "issue": "Generic template response - no pneumothorax-specific medication guidance",
+          "location": "expected_answers.management",
+          "suggested_fix": "Add: analgesia protocol, oxygen therapy contraindications (avoid high-flow in spontaneous pneumothorax), when to give prophylactic antibiotics (post-ICC insertion)"
+        }
+      ],
+      "suggestions": [
+        "For pneumothorax management, specify: 1) Analgesia: paracetamol 1g QID PO \u00b1 oxycodone 5-10mg PO PRN (avoid NSAIDs if considering intercostal catheter due to bleeding risk), 2) Oxygen: high-flow if hypoxic AND not tension pneumothorax, 3) Post-ICC insertion: consider cephazolin 2g IV (if no penicillin allergy) as prophylaxis",
+        "Add clinical decision criteria: primary spontaneous pneumothorax <2cm + asymptomatic = conservative management (no medications needed), >2cm or symptomatic = ICC insertion",
+        "Include monitoring parameters: SpO2 target >94%, respiratory rate, pain score (aim <3/10), repeat CXR timing (4-6 hours post-ICC insertion)",
+        "Specify discharge medications if applicable: paracetamol 1g QID for 3-5 days, return precautions (sudden dyspnea, chest pain worsening)",
+        "Add Australian Therapeutic Guidelines reference: eTG Respiratory section on pneumothorax management"
+      ],
+      "strengths": [
+        "Vital signs are realistic for pneumothorax presentation (tachypnea RR 24/min, mild hypoxia SpO2 92%)",
+        "Scenario type correctly identified as 'Emergency Presentation'",
+        "Investigation choice appropriate (CXR is first-line for pneumothorax diagnosis)",
+        "Reference sources are Australian (John Murtagh General Practice, AMC Handbook)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "detailed_feedback": "This OSCE case is a generic template without specific medication management content. The 'expected_answers.management' section states 'According to Australian guidelines for Pneumothorax: immediate management steps, ongoing care, and monitoring' but provides NO actual medications, doses, or PBS-compliant prescribing details. For a medication management expert evaluation, this is critically deficient. A pneumothorax OSCE should specify: (1) Analgesia regimen using Australian drug names (paracetamol, NOT acetaminophen), (2) Oxygen therapy parameters, (3) Post-procedural antibiotics if ICC inserted (cephazolin 2g IV, PBS code if applicable), (4) Discharge medications. The current content is placeholder text unsuitable for clinical education or examination purposes. RECOMMENDATION: Reject this item and request regeneration with complete medication management plan following eTG Respiratory guidelines."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "osce_respiratory_50_osces_046",
+      "evaluation_date": "2026-03-27T04:25:24.850093",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 0.0,
+        "medication_safety": 0.0,
+        "cultural_safety": 0.0
+      },
+      "violations": [
+        "CRITICAL: This OSCE is about Pneumothorax (Respiratory Medicine), NOT mental health crisis",
+        "CRITICAL: No suicide risk assessment required for respiratory emergency",
+        "CRITICAL: Mental Health Act not applicable to pneumothorax case",
+        "CRITICAL: Wrong specialty - this is a respiratory medicine OSCE, not psychiatry"
+      ],
+      "suggestions": [
+        "This OSCE should be evaluated by radiology-interpretation-expert or physical-examination-expert",
+        "Content focuses on CXR interpretation, differential diagnosis, and emergency management of pneumothorax",
+        "No mental health component present in this case"
+      ],
+      "strengths": [],
+      "pass_fail": "NOT_APPLICABLE",
+      "requires_manual_review": true,
+      "review_reason": "Wrong expert agent assigned - respiratory medicine case sent to mental health crisis expert"
+    }
+  ],
+  "num_agents": 6,
+  "quality_gate_violations": [
+    {
+      "gate": "australian_drug_names",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No specific medications listed in OSCE content - scenario is generic template without actual drug prescribing",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "dosing_accuracy",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Management section lacks specific drug doses, frequencies, routes",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "osce_respiratory_50_osces_046",
+  "item_type": "osce_script",
+  "specialty": "respiratory",
+  "file_path": "data/osces/respiratory_50_osces.json"
+}

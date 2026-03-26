@@ -1,0 +1,404 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 6.13,
+    "educational_alignment": 8.56,
+    "clinical_accuracy": 3.89,
+    "cultural_safety": 0.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "clinical-documentation-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_003",
+      "evaluation_date": "2026-03-27T08:06:11.855826",
+      "overall_score": 9.23,
+      "criteria_scores": {
+        "australian_standards": 8.77,
+        "clinical_accuracy": 9.41,
+        "educational_alignment": 9.04
+      },
+      "violations": [],
+      "suggestions": [],
+      "strengths": [
+        "Good coverage of Endocrinology concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "history-taking-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_003",
+      "evaluation_date": "2026-03-27T08:06:11.860239",
+      "overall_score": 8.58,
+      "criteria_scores": {
+        "australian_standards": 8.15,
+        "clinical_accuracy": 8.75,
+        "educational_alignment": 8.4
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_missing_topics_comprehensive_osces_003.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to Endocrinology content"
+      ],
+      "strengths": [
+        "Good coverage of Endocrinology concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "physical-examination-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_003",
+      "evaluation_date": "2026-03-27T08:06:11.863576",
+      "overall_score": 8.4,
+      "criteria_scores": {
+        "australian_standards": 7.98,
+        "clinical_accuracy": 8.57,
+        "educational_alignment": 8.23
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_missing_topics_comprehensive_osces_003.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to Endocrinology content"
+      ],
+      "strengths": [
+        "Good coverage of Endocrinology concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_003",
+      "evaluation_date": "2026-03-27T08:06:11.766602",
+      "overall_score": 3.5,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 5.0,
+        "clinical_relevance": 4.0,
+        "image_quality_assessment": 5.0
+      },
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "WRONG_SPECIALTY_CONTENT",
+          "description": "This OSCE collection contains 52 scenarios but NONE require radiology interpretation expertise. All scenarios are clinical assessment stations (history taking, physical examination, management), not imaging interpretation stations.",
+          "location": "All 52 OSCEs (ENDO-OSCE-0001 to NEUR-OSCE-0052)",
+          "recommendation": "This content should be evaluated by clinical experts (history-taking-expert, physical-examination-expert, clinical-documentation-expert), NOT radiology-interpretation-expert."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "PLACEHOLDER_IMAGES",
+          "description": "All 'clinical_images' are placeholders with non-existent file paths (data/images/...). No actual radiological images provided for interpretation. File paths like 'data/images/endocrinology/hyperthyroidism_osce.jpg' do not exist and cannot be evaluated for systematic interpretation, image quality, or technical adequacy.",
+          "location": "clinical_images field in all 52 OSCEs",
+          "recommendation": "If radiology interpretation is intended, replace placeholders with actual imaging files (DICOM, JPG of real CXRs/ECGs/CTs). Currently 0/52 stations have interpretable images."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "MISMATCHED_IMAGE_TYPES",
+          "description": "Many listed 'image types' are not radiological investigations: 'Thyroid_Function_Tests' (laboratory), 'ABG_Glucose' (laboratory), 'Glucose_Chart' (clinical data), 'Neurological_Exam' (physical examination), 'Assessment_Form' (clinical documentation), 'Bristol_Stool_Chart' (clinical tool), 'Dix_Hallpike' (clinical maneuver). These are NOT imaging modalities.",
+          "location": "15/52 OSCEs have non-radiological 'image types'",
+          "recommendation": "Remove non-imaging content from radiology evaluation. Laboratory results, physical examination findings, and clinical assessment forms are outside radiology scope."
+        },
+        {
+          "severity": "MAJOR",
+          "category": "NO_SYSTEMATIC_APPROACH",
+          "description": "OSCE scenarios provide NO radiological images to interpret systematically. Cannot apply ABCDE (CXR), 7-step ECG, or ABC (CT) methods when no images exist. Scenarios are clinical vignettes ('Patient presenting with Hyperthyroidism... Assess and manage'), not imaging interpretation tasks.",
+          "location": "All 52 OSCEs - scenario.task field",
+          "recommendation": "For radiology OSCE stations, task must be 'Interpret this CXR/ECG/CT' with actual image provided, NOT 'Assess and manage [condition]'."
+        },
+        {
+          "severity": "MAJOR",
+          "category": "MISSING_RADIOLOGY_CONTEXT",
+          "description": "No technical imaging details provided: projection (PA/AP for CXR), window settings (brain/bone for CT), calibration (10mm/mV for ECG), patient positioning, clinical indication for imaging. Cannot assess image quality without these parameters.",
+          "location": "All OSCEs with radiological image types (37/52)",
+          "recommendation": "Add: 1) Technical parameters (kVp, mAs for X-ray; slice thickness for CT; ECG calibration); 2) Clinical indication ('72-year-old with sudden-onset chest pain - rule out MI'); 3) Previous imaging for comparison."
+        },
+        {
+          "severity": "MODERATE",
+          "category": "INADEQUATE_RAG_REFERENCES",
+          "description": "References are general textbooks (John Murtagh General Practice, Churchill's Differential Diagnosis) with no page content provided (all 'content' fields empty). For radiology stations, need specific imaging atlases (e.g., 'Felson's Principles of Chest Roentgenology', 'ECG Made Easy Australia/NZ edition', 'RANZCR CT Head Interpretation Guidelines').",
+          "location": "references field in all 52 OSCEs",
+          "recommendation": "Use radiology-specific sources: RANZCR curricula, Australian imaging pathways (www.imagingpathways.health.wa.gov.au), RCH Clinical Practice Guidelines (Radiology), radiology teaching files."
+        },
+        {
+          "severity": "MODERATE",
+          "category": "TIME_ALLOCATION_INAPPROPRIATE",
+          "description": "All stations allocated 8 minutes. For imaging interpretation OSCEs: CXR systematic review requires 5-6 minutes, ECG 12-lead analysis 4-5 minutes, CT head 6-7 minutes. If clinical management also required (as scenarios suggest), 8 minutes is insufficient.",
+          "location": "scenario.time_limit in all 52 OSCEs",
+          "recommendation": "Separate imaging interpretation (6 min) from clinical management (8 min) into distinct OSCE stations, OR extend combined stations to 12-15 minutes."
+        }
+      ],
+      "suggestions": [
+        "Clarify station intent: Are these (A) Clinical assessment stations (history/examination/management) requiring clinical experts, OR (B) Imaging interpretation stations requiring actual radiological images?",
+        "If radiology interpretation intended: Replace all placeholder images with real radiological files (anonymized DICOM or high-resolution JPG/PNG). Example: ENDO-OSCE-0001 'Hyperthyroidism' could show thyroid ultrasound with heterogeneous echotexture + increased vascularity (Graves' disease), NOT 'Thyroid_Function_Tests' (laboratory).",
+        "For ECG stations (CARD-OSCE-0009 Syncope, CARD-OSCE-0012 Bradycardia, CARD-OSCE-0013 Long QT, CARD-OSCE-0019 Silent MI, GAST-OSCE-0041/0042 Hypo/Hyperkalemia): Provide actual 12-lead ECG images with calibration markers visible. Include clinical vignette (age, sex, presenting complaint) for correlation.",
+        "For CXR stations (CARD-OSCE-0018 Pulmonary Edema, GENE-OSCE-0027 Post-op SOB, GENE-OSCE-0028 Lung Cancer): Specify projection (PA/AP), inspiration (count anterior ribs visible), rotation (clavicular heads vs spinous processes), penetration (vertebrae visible behind heart).",
+        "For CT stations (GENE-OSCE-0028 Lung Cancer - CT Chest, GAST-OSCE-0035 Pancreatitis - CT Abdomen, NEUR-OSCE-0048 Headache - CT Brain, NEUR-OSCE-0049 Stroke - CT Brain): Provide axial slice images with window/level settings documented. Include scout image for anatomical orientation.",
+        "Add Australian radiological terminology glossary to OSCE instructions: 'consolidation' (not 'opacity'), 'pulmonary oedema' (not 'edema'), 'theatre' (not 'OR'), 'cannula' (not 'IV line').",
+        "Reference RANZCR curriculum (2023) for imaging appropriateness: Example - ENDO-OSCE-0003 DKA should NOT routinely have imaging (clinical + laboratory diagnosis); if imaging ordered, explain justification (? aspiration pneumonia, ? cerebral oedema).",
+        "For ultrasound stations (CARD-OSCE-0017 Upper Limb DVT, ENDO-OSCE-0006 Thyroid Nodules): Specify ultrasound technique (compression for DVT, Doppler for thyroid vascularity). Provide video clips or serial images, not single static frame.",
+        "Separate laboratory results from imaging: 'Thyroid_Function_Tests', 'ABG_Glucose', 'Cortisol_Tests', 'Hormone_Levels', 'ESR_CRP', 'Blood_Film', 'Blood_Culture', 'Electrolyte_Panel', 'Calcium_Level' are pathology (not radiology). Assign to pathology-interpretation-expert.",
+        "For 'clinical images' that are examination findings (ENDO-OSCE-0005 'Neurological_Exam', GENE-OSCE-0021 'Dermatological_Photo', CARD-OSCE-0010 'Assessment_Form'), assign to physical-examination-expert or clinical-documentation-expert.",
+        "If retaining as radiology stations, add structured reporting templates: CXR template (Indication, Technique [PA/AP, portable], Comparison, Findings [ABCDE], Impression), ECG template (Rate, Rhythm, Axis, Intervals, ST/T, Impression), CT template (Indication, Technique [contrast Y/N, slice thickness], Findings [ABC], Impression).",
+        "Include critical results notification protocol (ACSQHC National Safety and Quality Health Service Standards): Which findings require immediate phone call to referrer? (e.g., tension pneumothorax, free intraperitoneal air, STEMI on ECG, acute intracranial hemorrhage on CT)."
+      ],
+      "strengths": [
+        "Comprehensive topic coverage across multiple specialties (Endocrinology, Cardiology, Gastroenterology, Neurology) - 52 OSCEs spanning common clinical presentations.",
+        "RAG validation passed with confidence scores >0.65 for all references (metadata indicates 'rag_validation: PASSED').",
+        "Australian textbook sources included (John Murtagh General Practice - Australian GP standard text, AMC Handbook of Clinical Assessment).",
+        "Metadata well-structured with generation_date, total_osces, categories documented.",
+        "Time limit (8 minutes) appropriate for AMC Clinical Examination OSCE format."
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "manual_review_reason": "CRITICAL SPECIALTY MISMATCH: This content is NOT radiology interpretation material. All 52 OSCEs are clinical assessment stations (history/examination/management) without actual radiological images to interpret. Contains placeholder image paths that do not exist, and 15/52 'image types' are non-radiological (laboratory tests, physical examination findings, clinical assessment forms). Cannot evaluate systematic radiology interpretation, image quality, or technical adequacy when no images provided. Recommend: (1) Assign to appropriate clinical experts (history-taking-expert, physical-examination-expert, clinical-documentation-expert, pathology-interpretation-expert); (2) If radiology interpretation intended, replace all placeholders with actual anonymized imaging files (DICOM/JPG of CXRs, ECGs, CTs) with technical parameters documented; (3) Clarify station objectives - currently ambiguous whether imaging interpretation or clinical management is being assessed."
+    },
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_003",
+      "evaluation_date": "2026-03-27T08:06:11.772812",
+      "overall_score": 3.5,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "content_completeness",
+          "issue": "No medication management content present in any OSCE scenarios",
+          "location": "osces[*].scenario",
+          "suggested_fix": "Add detailed medication management scenarios including: 1) Prescribing tasks with specific medications (drug name, dose, frequency, route, duration), 2) Medication reconciliation scenarios, 3) Adverse drug reaction management, 4) Drug interaction cases, 5) Therapeutic drug monitoring tasks"
+        },
+        {
+          "severity": "critical",
+          "category": "content_completeness",
+          "issue": "DKA scenario lacks insulin management protocol",
+          "location": "osces[2] (ENDO-OSCE-0003)",
+          "suggested_fix": "Add insulin sliding scale protocol: Regular insulin IV infusion 0.1 unit/kg/hour, potassium replacement protocol (add KCl 40 mmol/L to IV fluids when K+ 3.3-5.3 mmol/L), fluid resuscitation (0.9% sodium chloride 1L over 1 hour, then adjust based on BP/urine output)"
+        },
+        {
+          "severity": "critical",
+          "category": "australian_drug_names",
+          "issue": "No medications specified - cannot verify Australian nomenclature compliance",
+          "location": "osces[*]",
+          "suggested_fix": "When medications are added, ensure ALL use Australian names: paracetamol (NOT acetaminophen), adrenaline (NOT epinephrine), salbutamol (NOT albuterol), lignocaine (NOT lidocaine), GTN (NOT nitroglycerin)"
+        },
+        {
+          "severity": "critical",
+          "category": "pbs_compliance",
+          "issue": "No PBS codes or authority requirements documented",
+          "location": "osces[*]",
+          "suggested_fix": "Add PBS compliance details for all prescriptions: PBS streamline codes, authority requirements (e.g., 'PBS authority required for >3 months continuous use'), specialist restrictions where applicable"
+        },
+        {
+          "severity": "critical",
+          "category": "dosing_accuracy",
+          "issue": "Hypoglycemia scenario lacks specific glucose management protocol",
+          "location": "osces[3] (ENDO-OSCE-0004)",
+          "suggested_fix": "Add: If conscious - 15g quick-acting carbohydrate (6 jelly beans OR 150mL fruit juice OR 3 glucose tablets), recheck BSL in 15 min. If unconscious - glucagon 1mg IM OR 10% dextrose 150-200mL IV (NOT 50% dextrose - tissue necrosis risk)"
+        },
+        {
+          "severity": "critical",
+          "category": "dosing_accuracy",
+          "issue": "Hyperthyroidism scenario lacks carbimazole dosing",
+          "location": "osces[0] (ENDO-OSCE-0001)",
+          "suggested_fix": "Add: Carbimazole 15-40mg daily PO (initial), then 5-15mg daily (maintenance). Beta-blocker for symptom control: Propranolol 40mg TDS PO OR metoprolol 50mg BD PO. Monitor: TFTs every 4-6 weeks until euthyroid, then 3-monthly. PBS authority required for carbimazole >6 months"
+        },
+        {
+          "severity": "critical",
+          "category": "dosing_accuracy",
+          "issue": "Hypothyroidism scenario lacks levothyroxine dosing protocol",
+          "location": "osces[1] (ENDO-OSCE-0002)",
+          "suggested_fix": "Add: Levothyroxine starting dose: 50-100 microgram daily PO (healthy adults), 25 microgram daily (elderly/cardiac disease). Take 30 min before breakfast. Titrate every 6-8 weeks based on TSH. Target TSH: 0.5-2.0 mIU/L. PBS unrestricted. Drug interactions: Iron, calcium, PPI reduce absorption (separate by 4 hours)"
+        },
+        {
+          "severity": "critical",
+          "category": "drug_interactions",
+          "issue": "Warfarin management scenarios absent despite AF/VTE topics",
+          "location": "osces[*]",
+          "suggested_fix": "Add warfarin scenario for AF (CARD-OSCE series): Target INR 2-3, drug interactions (warfarin + NSAIDs = contraindicated, warfarin + clarithromycin = \u2191 INR, check INR 3-5 days after antibiotic), reversal protocol (INR >9: stop warfarin, vitamin K 1-2mg PO, recheck next day)"
+        },
+        {
+          "severity": "critical",
+          "category": "polypharmacy_management",
+          "issue": "No elderly polypharmacy scenarios despite Fall Assessment OSCE",
+          "location": "osces[9] (CARD-OSCE-0010)",
+          "suggested_fix": "Add medication review task: Identify fall-risk medications (benzodiazepines, anticholinergics, antihypertensives causing postural hypotension), apply STOPP criteria (benzodiazepines \u22654 weeks in elderly = STOP), deprescribing plan"
+        },
+        {
+          "severity": "warning",
+          "category": "dosing_accuracy",
+          "issue": "Shingles scenario lacks antiviral dosing",
+          "location": "osces[21] (GENE-OSCE-0021)",
+          "suggested_fix": "Add: Valaciclovir 1g TDS PO for 7 days (start within 72 hours of rash onset). Renal adjustment: eGFR 30-50 = 1g BD, eGFR 10-30 = 500mg BD. Analgesia: Paracetamol 1g QID + gabapentin 300mg nocte (titrate for neuropathic pain). PBS unrestricted if immunocompromised or age >50"
+        },
+        {
+          "severity": "warning",
+          "category": "dosing_accuracy",
+          "issue": "Temporal Arteritis scenario lacks corticosteroid dosing",
+          "location": "osces[23] (GENE-OSCE-0023)",
+          "suggested_fix": "Add: Prednisolone 50-60mg daily PO (standard dose for GCA, higher if visual symptoms). Start IMMEDIATELY (do not wait for biopsy). Taper slowly over 12-18 months. Add: PPI for gastric protection (esomeprazole 20mg daily), calcium + vitamin D (osteoporosis prevention), bone density scan at baseline"
+        },
+        {
+          "severity": "warning",
+          "category": "drug_interactions",
+          "issue": "Iron deficiency anemia scenario lacks oral iron preparation details",
+          "location": "osces[24] (GENE-OSCE-0024)",
+          "suggested_fix": "Add: Ferrous sulfate 325mg (105mg elemental iron) daily-BD PO. Take on empty stomach with vitamin C (enhances absorption). Side effects: Constipation, nausea, black stools. Recheck FBC + ferritin in 3 months. If intolerant: Ferrous fumarate OR IV iron (Ferinject 500-1000mg) if malabsorption/intolerance. Drug interaction: Iron + levothyroxine (separate by 4 hours)"
+        },
+        {
+          "severity": "warning",
+          "category": "australian_drug_names",
+          "issue": "OSA scenario should reference CPAP therapy, not medication, but ensure PAP terminology correct",
+          "location": "osces[22] (GENE-OSCE-0022)",
+          "suggested_fix": "Confirm Australian terminology: CPAP (continuous positive airway pressure), NOT 'BiPAP' (use 'bilevel PAP' in Australian practice). If pharmacotherapy discussed, use: Modafinil 100-200mg daily (excessive daytime sleepiness, PBS authority required)"
+        }
+      ],
+      "suggestions": [
+        "Add comprehensive medication management stations covering: 1) Prescribing (anticoagulation, antibiotics, analgesia), 2) Medication reconciliation (admission/discharge), 3) Adverse drug reactions (penicillin allergy, statin myopathy), 4) Therapeutic drug monitoring (digoxin, lithium, gentamicin), 5) Deprescribing (elderly polypharmacy)",
+        "Include renal dosing scenarios: Gentamicin dosing (weight-based + renal adjustment), metformin contraindication (eGFR <30), digoxin toxicity (elderly + renal impairment)",
+        "Add drug interaction stations: Warfarin + clarithromycin (\u2191 INR), ACE inhibitor + spironolactone + NSAID (triple whammy AKI), lithium + thiazide (\u2191 lithium levels)",
+        "Include paediatric dosing stations: Paracetamol 15mg/kg, adrenaline 0.01mg/kg IM (anaphylaxis), gentamicin 4-5mg/kg (neonatal sepsis)",
+        "Add PBS compliance tasks: Authority prescription form completion, streamline code documentation, private prescription justification",
+        "Include high-risk medication monitoring: Warfarin INR checks, lithium levels (0.6-1.2 mmol/L), digoxin levels (0.8-2.0 nanomol/L), vancomycin trough (15-20 mg/L)",
+        "Add medication counseling scenarios: Warfarin + dietary vitamin K, bisphosphonates (take 30 min before breakfast, remain upright 30 min), insulin technique",
+        "Include Australian medication safety: NIMC (National Inpatient Medication Chart), dangerous abbreviations (IU, U, \u00b5g), allergy documentation (type + severity)",
+        "Add endocrine-specific medication scenarios: Insulin sliding scale (T1DM), metformin + SGLT2i (T2DM), hydrocortisone stress dosing (adrenal insufficiency), levothyroxine dose adjustment (hypothyroidism)",
+        "Include cardiovascular medication scenarios: STEMI management (aspirin 300mg loading + clopidogrel 300mg loading + atorvastatin 80mg), heart failure optimization (ACE-i + beta-blocker + spironolactone), hypertension stepped approach (eTG guidelines)"
+      ],
+      "strengths": [
+        "Good range of clinical scenarios (52 OSCEs) covering multiple specialties suitable for medication management integration",
+        "RAG validation passed (100% citations with qdrant_point_id) - infrastructure ready for medication content addition",
+        "Australian sources prioritized (AMC Handbook, Murtagh's General Practice, Therapeutic Guidelines) - correct foundational references",
+        "Appropriate time limits (8 minutes per station) - realistic for medication prescribing + counseling tasks",
+        "Clinical images specified - opportunity to add drug charts, PBS prescription forms, medication reconciliation forms"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "reviewer_notes": "This JSON file contains OSCE scenario metadata only - no actual medication management content is present to evaluate. The scenarios are structured appropriately (52 OSCEs across Endocrinology, Cardiology, General Medicine, Gastroenterology, Neurology) but lack detailed clinical content including medication prescribing, dosing, drug interactions, or PBS compliance information. This appears to be a TEMPLATE or OUTLINE file requiring content generation. To achieve medication-management-expert compliance: 1) Add specific medication tasks to each relevant OSCE (prescribing, monitoring, counseling), 2) Ensure 100% Australian drug nomenclature (paracetamol, adrenaline, salbutamol), 3) Include PBS codes and authority requirements, 4) Add renal/hepatic dosing adjustments where applicable, 5) Document drug interactions and contraindications, 6) Include therapeutic drug monitoring protocols for high-risk medications. Current state: Infrastructure ready, medical content absent. Recommendation: Generate full OSCE scripts with embedded medication management tasks using RAG system (citations already validated), then re-submit for medication-management-expert evaluation."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_003",
+      "evaluation_date": "2026-03-27T08:06:11.778754",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 0.0,
+        "medication_safety": 0.0,
+        "cultural_safety": 0.0
+      },
+      "violations": [
+        "CRITICAL: Wrong specialty - Content is Endocrinology/Cardiology/GI/Neurology OSCE cases, NOT mental health crisis scenarios",
+        "CRITICAL: No suicide risk assessment present in any OSCE (SAFE-T framework not applicable)",
+        "CRITICAL: No Mental Health Act scenarios present (all cases are medical conditions: DKA, syncope, pancreatitis, etc.)",
+        "CRITICAL: No psychiatric medication content (antipsychotics, mood stabilizers, etc.)",
+        "CRITICAL: No mental health crisis presentations (no depression, psychosis, agitation, self-harm cases)",
+        "SCOPE VIOLATION: Mental health crisis expert should NOT evaluate endocrinology/cardiology/gastroenterology/neurology content"
+      ],
+      "suggestions": [
+        "This content requires evaluation by appropriate specialists: endocrinology-expert, cardiology-expert, gastroenterology-expert, neurology-expert",
+        "If mental health crisis OSCEs are needed, create separate cases for: acute psychosis, suicide risk assessment, Mental Health Act application, depression with self-harm",
+        "Mental health crisis expert can only evaluate psychiatric emergency scenarios, NOT general medical conditions"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "manual_review_reason": "Content specialty mismatch - mental-health-crisis-expert assigned to evaluate non-psychiatric medical OSCE cases (endocrinology, cardiology, gastroenterology, neurology). This is outside scope of psychiatric emergency expertise. Content should be routed to appropriate medical specialty experts."
+    }
+  ],
+  "num_agents": 6,
+  "quality_gate_violations": [
+    {
+      "gate": "content_completeness",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No medication management content present in any OSCE scenarios",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "content_completeness",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "DKA scenario lacks insulin management protocol",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "australian_drug_names",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No medications specified - cannot verify Australian nomenclature compliance",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "pbs_compliance",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No PBS codes or authority requirements documented",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "dosing_accuracy",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Hypoglycemia scenario lacks specific glucose management protocol",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "dosing_accuracy",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Hyperthyroidism scenario lacks carbimazole dosing",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "dosing_accuracy",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Hypothyroidism scenario lacks levothyroxine dosing protocol",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "drug_interactions",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Warfarin management scenarios absent despite AF/VTE topics",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "polypharmacy_management",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No elderly polypharmacy scenarios despite Fall Assessment OSCE",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "osce_missing_topics_comprehensive_osces_003",
+  "item_type": "osce_script",
+  "specialty": "Endocrinology",
+  "file_path": "data/osces/missing_topics_comprehensive_osces.json"
+}

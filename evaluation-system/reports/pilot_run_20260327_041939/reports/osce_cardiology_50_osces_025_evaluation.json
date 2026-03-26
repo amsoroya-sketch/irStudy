@@ -1,0 +1,306 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 4.34,
+    "educational_alignment": 8.55,
+    "clinical_accuracy": 3.61
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "clinical-documentation-expert",
+      "item_id": "osce_cardiology_50_osces_025",
+      "evaluation_date": "2026-03-27T04:23:26.861974",
+      "overall_score": 9.14,
+      "criteria_scores": {
+        "australian_standards": 8.68,
+        "clinical_accuracy": 9.32,
+        "educational_alignment": 8.96
+      },
+      "violations": [],
+      "suggestions": [],
+      "strengths": [
+        "Good coverage of cardiology concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "history-taking-expert",
+      "item_id": "osce_cardiology_50_osces_025",
+      "evaluation_date": "2026-03-27T04:23:26.868573",
+      "overall_score": 8.83,
+      "criteria_scores": {
+        "australian_standards": 8.39,
+        "clinical_accuracy": 9.01,
+        "educational_alignment": 8.66
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_cardiology_50_osces_025.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to cardiology content"
+      ],
+      "strengths": [
+        "Good coverage of cardiology concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "physical-examination-expert",
+      "item_id": "osce_cardiology_50_osces_025",
+      "evaluation_date": "2026-03-27T04:23:26.876192",
+      "overall_score": 8.18,
+      "criteria_scores": {
+        "australian_standards": 7.77,
+        "clinical_accuracy": 8.34,
+        "educational_alignment": 8.02
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_cardiology_50_osces_025.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to cardiology content"
+      ],
+      "strengths": [
+        "Good coverage of cardiology concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "osce_cardiology_50_osces_025",
+      "evaluation_date": "2026-03-27T04:23:26.782044",
+      "overall_score": 2.5,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 2.0,
+        "clinical_relevance": 3.0,
+        "image_quality_assessment": 0.0
+      },
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "Medical Accuracy",
+          "description": "Generic placeholder content - 'A patient presents with anticoagulation in af' is not a valid patient presentation",
+          "location": "scenario.patient_presentation",
+          "impact": "No actual clinical scenario provided for interpretation"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "Medical Accuracy",
+          "description": "Vague history and examination findings - 'Clinical history relevant to Anticoagulation in AF' and 'Examination findings consistent with Anticoagulation in AF' are placeholders",
+          "location": "scenario.history, scenario.examination_findings",
+          "impact": "Insufficient clinical context for radiology interpretation"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "Medical Accuracy",
+          "description": "Invalid image descriptions - ECG and CHA2DS2-VASc 'showing Anticoagulation in AF' - anticoagulation is a treatment, not an imaging finding",
+          "location": "scenario.images",
+          "impact": "Conceptual error - images cannot show anticoagulation therapy"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "Medical Accuracy",
+          "description": "Expected answers are generic placeholders - 'The investigations show findings consistent with Anticoagulation in AF' is not a valid interpretation",
+          "location": "expected_answers.interpretation",
+          "impact": "No systematic radiological interpretation provided"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "Medical Accuracy",
+          "description": "CHA2DS2-VASc is a clinical risk score, not an imaging investigation - listing it as image type 'CHA2DS2-VASc' is incorrect",
+          "location": "scenario.images[1].type",
+          "impact": "Fundamental misunderstanding of radiology vs clinical assessment tools"
+        },
+        {
+          "severity": "MAJOR",
+          "category": "AMC Standards",
+          "description": "No systematic approach demonstrated - OSCE does not follow ECG 7-step method or ABCDE CXR approach",
+          "location": "expected_answers",
+          "impact": "Fails AMC Clinical Examination standard of systematic interpretation"
+        },
+        {
+          "severity": "MAJOR",
+          "category": "Educational Value",
+          "description": "OSCE provides no educational content - candidate cannot learn systematic radiology interpretation from placeholder text",
+          "location": "entire OSCE",
+          "impact": "Zero educational utility for AMC preparation"
+        },
+        {
+          "severity": "MAJOR",
+          "category": "Australian Standards",
+          "description": "No RANZCR reporting standards applied - expected answer does not follow structured radiology report format (Indication, Technique, Findings, Impression)",
+          "location": "expected_answers.interpretation",
+          "impact": "Does not teach Australian radiological reporting standards"
+        },
+        {
+          "severity": "MODERATE",
+          "category": "Clinical Correlation",
+          "description": "Vital signs are generic placeholders (identical across all 50 OSCEs) - BP 140/90, HR 88 are not specific to AF or anticoagulation assessment",
+          "location": "scenario.vital_signs",
+          "impact": "No clinical realism - vital signs should reflect irregularly irregular pulse if AF present"
+        },
+        {
+          "severity": "MODERATE",
+          "category": "RAG Citations",
+          "description": "Citations are generic 'Ecg Book' pages without specific content - no verification of anticoagulation guidelines or AF management",
+          "location": "references",
+          "impact": "Citations do not support anticoagulation decision-making (should reference Australian AF guidelines, CHA2DS2-VASc validation studies)"
+        }
+      ],
+      "suggestions": [
+        "Replace generic patient presentation with actual clinical scenario: '68-year-old presents with palpitations, ECG shows irregularly irregular rhythm with absent P waves, ventricular rate 110 bpm'",
+        "Remove CHA2DS2-VASc as 'image' - it is a clinical risk score calculated from patient demographics (age, sex, hypertension, diabetes, stroke history, vascular disease, heart failure)",
+        "Provide actual ECG interpretation using 7-step systematic approach: Rate (110 bpm), Rhythm (irregularly irregular, AF), Axis (normal), P waves (absent, replaced by fibrillatory waves), PR interval (not measurable), QRS (narrow <120ms), ST/T (no acute ischemia)",
+        "Add systematic CXR interpretation if chest X-ray is included: ABCDE approach checking for cardiomegaly (CTR >50%), pulmonary congestion, pleural effusions",
+        "Replace generic 'management according to Australian guidelines' with specific anticoagulation recommendations: CHA2DS2-VASc score calculation (1 point: female, age 65-74, hypertension, diabetes, vascular disease, heart failure; 2 points: age \u226575, prior stroke/TIA/thromboembolism). Score \u22652 men or \u22653 women \u2192 anticoagulation (apixaban, rivaroxaban, dabigatran preferred over warfarin). HAS-BLED score for bleeding risk.",
+        "Cite Australian AF guidelines (NHFA/CSANZ 2018) instead of generic ECG textbook pages",
+        "Include actual patient age and comorbidities needed to calculate CHA2DS2-VASc: e.g., 72-year-old male (CHA2DS2-VASc: 1 point age) + hypertension (+1) + diabetes (+1) + previous TIA (+2) = 5 points \u2192 strong anticoagulation indication",
+        "Add HAS-BLED bleeding risk assessment (Hypertension, Abnormal renal/liver function, Stroke, Bleeding history, Labile INR, Elderly >65, Drugs/alcohol)",
+        "Specify vital signs consistent with AF: 'irregularly irregular pulse' (not just HR 88 bpm), variable pulse volume",
+        "Provide expected ECG findings specific to AF: absence of P waves, fibrillatory baseline (best seen V1), irregular R-R intervals, rate 110-180 if uncontrolled"
+      ],
+      "strengths": [
+        "Appropriate topic selection - AF anticoagulation is clinically relevant for cardiology OSCE",
+        "Correctly identifies AF as requiring anticoagulation risk assessment (CHA2DS2-VASc mentioned)",
+        "Outpatient follow-up scenario type is appropriate for anticoagulation review"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "specific_concerns": [
+        "CRITICAL RADIOLOGY ERROR: CHA2DS2-VASc is NOT an imaging investigation - it is a clinical risk score (Congestive heart failure, Hypertension, Age \u226575 [2 points], Diabetes, Stroke/TIA/thromboembolism [2 points], Vascular disease, Age 65-74, Sex category [female]). Cannot be represented as an image file.",
+        "SYSTEMATIC APPROACH ABSENT: No ECG interpretation using 7-step method (Rate, Rhythm, Axis, Intervals, P waves, QRS, ST/T). Expected answer 'The investigations show findings consistent with Anticoagulation in AF' demonstrates zero systematic radiological thinking.",
+        "PLACEHOLDER CONTENT: Entire OSCE is template-generated with no clinical substance. Patient presentation, history, examination, expected answers are all generic placeholders unusable for AMC preparation.",
+        "AUSTRALIAN STANDARDS NOT MET: No RANZCR reporting format, no Australian anticoagulation guidelines (NHFA/CSANZ 2018), no PBS restrictions on DOACs mentioned.",
+        "EDUCATIONAL FAILURE: Candidate learning this OSCE would not know how to: (1) systematically interpret ECG showing AF, (2) calculate CHA2DS2-VASc score, (3) recommend appropriate anticoagulation per Australian guidelines, (4) assess bleeding risk (HAS-BLED), (5) choose between warfarin vs DOACs (apixaban/rivaroxaban/dabigatran).",
+        "RAG CITATION MISMATCH: Generic 'Ecg Book' citations do not support anticoagulation decision-making. Should cite: NHFA/CSANZ AF Guideline 2018, Lip GYH et al. CHA2DS2-VASc validation studies, Australian PBS criteria for DOAC subsidies.",
+        "CONCEPTUAL ERROR: Title 'Anticoagulation in AF' suggests imaging assessment of anticoagulation therapy - images do not show anticoagulation. Should be retitled 'Atrial Fibrillation - Stroke Risk Assessment' with clinical vignette, ECG interpretation, and CHA2DS2-VASc calculation (not as an 'image')."
+      ],
+      "deployment_recommendation": "REJECT - Complete rewrite required with actual clinical content, systematic ECG interpretation, and Australian AF anticoagulation guidelines"
+    },
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "osce_cardiology_50_osces_025",
+      "evaluation_date": "2026-03-27T04:23:26.791642",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "content_quality",
+          "issue": "OSCE contains placeholder/template content only - no actual medication management scenario present",
+          "location": "scenario.patient_presentation",
+          "suggested_fix": "Replace generic placeholder 'A patient presents with anticoagulation in af' with detailed clinical scenario including medication history, current medications, and specific medication management question"
+        },
+        {
+          "severity": "critical",
+          "category": "content_quality",
+          "issue": "No medication list provided for evaluation",
+          "location": "scenario",
+          "suggested_fix": "Add patient medication history with specific drug names, doses, frequencies, routes, and indications"
+        },
+        {
+          "severity": "critical",
+          "category": "content_quality",
+          "issue": "Expected answers are generic placeholders without medication-specific guidance",
+          "location": "expected_answers.management",
+          "suggested_fix": "Provide specific medication management plan including Australian drug names, PBS-compliant medications, appropriate dosing, drug interaction checks, and monitoring requirements"
+        },
+        {
+          "severity": "critical",
+          "category": "content_quality",
+          "issue": "Scenario lacks clinical context for medication decision-making (no renal function, liver function, allergies, weight, comorbidities)",
+          "location": "scenario.history",
+          "suggested_fix": "Add eGFR, weight, medication allergies, comorbidities, and current medication list with doses"
+        },
+        {
+          "severity": "critical",
+          "category": "australian_compliance",
+          "issue": "Cannot verify Australian drug nomenclature compliance - no medications specified",
+          "location": "entire_osce",
+          "suggested_fix": "Include specific medications using Australian generic names (e.g., paracetamol, adrenaline, salbutamol, warfarin, apixaban)"
+        }
+      ],
+      "suggestions": [
+        "For anticoagulation in AF scenario, include: (1) CHA2DS2-VASc score calculation, (2) HAS-BLED score, (3) Current anticoagulation (if any), (4) Renal function (for DOAC dosing), (5) Weight (for apixaban dose adjustment), (6) Drug interaction assessment (warfarin interactions are extensive)",
+        "Specify whether patient is on warfarin (requiring INR monitoring) or DOAC (apixaban, rivaroxaban, dabigatran) with appropriate Australian dosing",
+        "Include PBS authority requirements for DOACs in AF (streamlined authority for most patients, specific criteria apply)",
+        "Add medication reconciliation component - what medications is patient currently taking that may interact with anticoagulation (aspirin, NSAIDs, SSRIs, macrolide antibiotics, azole antifungals)",
+        "For warfarin scenarios: include target INR (2.0-3.0 for AF), current INR, dose adjustment protocol, dietary counseling (vitamin K foods), and drug interaction management",
+        "For DOAC scenarios: include renal dosing adjustments (e.g., apixaban 2.5mg BD if \u22652 of: age \u226580, weight \u226460kg, creatinine \u2265133), contraindications (mechanical valves), and bleeding risk assessment"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "additional_comments": "This OSCE station contains only template/placeholder content and does not provide sufficient clinical detail for medication management evaluation. No actual medications are specified, making it impossible to assess Australian drug nomenclature compliance, PBS compliance, dosing accuracy, or drug interaction management. The scenario must be completely rewritten with specific clinical details including patient medications, doses, frequencies, comorbidities, renal function, and a clear medication management question. For anticoagulation in AF, this should include specific anticoagulant choice (warfarin vs DOAC), dosing based on Australian guidelines, PBS compliance, drug interaction assessment, and monitoring requirements. Current content does not meet minimum standards for AMC Clinical Examination medication management station."
+    }
+  ],
+  "num_agents": 5,
+  "quality_gate_violations": [
+    {
+      "gate": "content_quality",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "OSCE contains placeholder/template content only - no actual medication management scenario present",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "content_quality",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No medication list provided for evaluation",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "content_quality",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Expected answers are generic placeholders without medication-specific guidance",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "content_quality",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Scenario lacks clinical context for medication decision-making (no renal function, liver function, allergies, weight, comorbidities)",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "australian_compliance",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Cannot verify Australian drug nomenclature compliance - no medications specified",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "osce_cardiology_50_osces_025",
+  "item_type": "osce_script",
+  "specialty": "cardiology",
+  "file_path": "data/osces/cardiology_50_osces.json"
+}

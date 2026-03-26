@@ -1,0 +1,304 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 5.88,
+    "educational_alignment": 8.62,
+    "clinical_accuracy": 4.12,
+    "cultural_safety": 0.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "clinical-documentation-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_021",
+      "evaluation_date": "2026-03-27T04:19:40.079721",
+      "overall_score": 9.22,
+      "criteria_scores": {
+        "australian_standards": 8.76,
+        "clinical_accuracy": 9.4,
+        "educational_alignment": 9.04
+      },
+      "violations": [],
+      "suggestions": [],
+      "strengths": [
+        "Good coverage of General Medicine concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "history-taking-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_021",
+      "evaluation_date": "2026-03-27T04:19:40.083357",
+      "overall_score": 8.39,
+      "criteria_scores": {
+        "australian_standards": 7.97,
+        "clinical_accuracy": 8.56,
+        "educational_alignment": 8.22
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_missing_topics_comprehensive_osces_021.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to General Medicine content"
+      ],
+      "strengths": [
+        "Good coverage of General Medicine concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "physical-examination-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_021",
+      "evaluation_date": "2026-03-27T04:19:40.087757",
+      "overall_score": 8.78,
+      "criteria_scores": {
+        "australian_standards": 8.34,
+        "clinical_accuracy": 8.96,
+        "educational_alignment": 8.61
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_missing_topics_comprehensive_osces_021.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to General Medicine content"
+      ],
+      "strengths": [
+        "Good coverage of General Medicine concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_021",
+      "evaluation_date": "2026-03-27T04:19:39.990313",
+      "overall_score": 4.5,
+      "criteria_scores": {
+        "systematic_approach": 2.0,
+        "australian_terminology": 5.0,
+        "clinical_relevance": 6.0,
+        "image_quality_assessment": 5.0
+      },
+      "violations": [
+        {
+          "category": "CRITICAL_CONTENT_ERROR",
+          "severity": "HIGH",
+          "description": "No actual radiology images provided - only generic placeholder clinical_images with non-existent file paths (e.g., 'data/images/endocrinology/hyperthyroidism_osce.jpg')",
+          "location": "all 52 OSCE items",
+          "constraint": "Radiology OSCE stations MUST have real interpretable images (CXR, ECG, CT, ultrasound)"
+        },
+        {
+          "category": "CRITICAL_CONTENT_ERROR",
+          "severity": "HIGH",
+          "description": "Image types are generic labels (e.g., 'Thyroid_Function_Tests', 'ECG', 'CXR') not actual radiological images requiring systematic interpretation",
+          "location": "all clinical_images fields",
+          "constraint": "AMC Clinical Examination imaging stations require real images with specific findings (e.g., 'CXR showing right lower lobe consolidation with air bronchograms')"
+        },
+        {
+          "category": "SYSTEMATIC_APPROACH_MISSING",
+          "severity": "HIGH",
+          "description": "No systematic interpretation framework provided for any imaging modality - scenarios only state 'Assess and manage [condition]' without demonstrating ABCDE/7-step/ABC approach",
+          "location": "all scenario.task fields",
+          "constraint": "All radiology OSCE stations must demonstrate systematic approach (CXR: ABCDE, ECG: 7-step, CT: ABC)"
+        },
+        {
+          "category": "CLINICAL_CORRELATION_MISSING",
+          "severity": "MEDIUM",
+          "description": "No integration between imaging findings and clinical presentation - RAG references are textbook pages only, not imaging findings",
+          "location": "all OSCE items",
+          "constraint": "Radiology interpretation requires clinical correlation (e.g., 'Patient with chest pain + ST elevation in II, III, aVF \u2192 inferior STEMI')"
+        },
+        {
+          "category": "IMAGE_QUALITY_ASSESSMENT_MISSING",
+          "severity": "MEDIUM",
+          "description": "No technical quality assessment criteria (rotation, penetration, inspiration for CXR; calibration for ECG)",
+          "location": "all imaging scenarios",
+          "constraint": "Must assess technical adequacy before interpretation (RANZCR standard)"
+        },
+        {
+          "category": "SPECIFIC_FINDINGS_MISSING",
+          "severity": "HIGH",
+          "description": "No specific radiological findings described - cannot evaluate interpretation without actual images or detailed findings",
+          "location": "all 52 OSCEs",
+          "constraint": "Radiology OSCEs must have specific findings to interpret (e.g., 'CARD-OSCE-0012 Bradycardia' should show ECG with specific bradyarrhythmia pattern)"
+        },
+        {
+          "category": "AUSTRALIAN_RADIOLOGY_STANDARDS",
+          "severity": "MEDIUM",
+          "description": "No reference to RANZCR curriculum, Imaging Pathways, or Australian radiological reporting standards",
+          "location": "entire dataset",
+          "constraint": "Must align with RANZCR systematic interpretation and reporting standards"
+        },
+        {
+          "category": "AMC_EXAM_FORMAT_INCOMPLETE",
+          "severity": "MEDIUM",
+          "description": "Missing AMC Clinical Exam imaging station assessment criteria (systematic approach demonstration, critical finding identification, differential diagnoses)",
+          "location": "all OSCE items",
+          "constraint": "AMC imaging stations assess: systematic approach (30%), findings identification (40%), clinical correlation (20%), management (10%)"
+        }
+      ],
+      "suggestions": [
+        "Replace all placeholder image file paths with actual radiological images or detailed written descriptions of findings (e.g., 'CXR PA view showing 8 cm rounded opacity in right upper zone with spiculated margins, no mediastinal shift')",
+        "Add systematic interpretation framework to each imaging OSCE (e.g., CARD-OSCE-0009 Syncope should include ECG systematic 7-step approach demonstration)",
+        "Specify exact radiological findings for each condition (e.g., ENDO-OSCE-0001 Hyperthyroidism should describe TFTs: TSH <0.01, free T4 35 pmol/L, not just generic 'Thyroid_Function_Tests')",
+        "Add technical quality assessment to all imaging scenarios (e.g., 'CXR: Adequate rotation, good inspiration (7 anterior ribs visible), slight under-penetration')",
+        "Include clinical correlation in each OSCE (e.g., CARD-OSCE-0013 Long QT: 'ECG shows QTc 520 ms in patient on sotalol with syncope \u2192 drug-induced long QT, stop medication')",
+        "Add RANZCR-compliant structured reporting format to model answers (Indication, Technique, Findings, Impression)",
+        "For ECG OSCEs (CARD-OSCE-0009, 0012, 0013, 0019, GAST-OSCE-0041, 0042), provide actual ECG tracings or detailed descriptions (e.g., 'Regular bradycardia at 42 bpm, P waves present before each QRS, PR 180 ms \u2192 sinus bradycardia')",
+        "For CXR OSCEs (CARD-OSCE-0018 Pulmonary Edema, GENE-OSCE-0027 Post-op SOB), describe specific ABCDE findings (e.g., 'A: Trachea midline, B: Bilateral perihilar opacification with Kerley B lines, bat wing pattern, C: Cardiomegaly CTR 60%, D: Blunting of both costophrenic angles, E: No bony abnormality')",
+        "For CT OSCEs (GENE-OSCE-0028 Lung Cancer, GAST-OSCE-0036 Pancreatitis), provide slice-by-slice findings or key images with annotations",
+        "Add red flag identification to all imaging scenarios (e.g., CARD-OSCE-0018 should identify pulmonary edema as requiring urgent diuretics; GENE-OSCE-0027 post-op SOB should exclude PE/pneumothorax)",
+        "Change generic 'Assess and manage' tasks to 'Systematically interpret [image type] using [ABCDE/7-step/ABC] approach and provide differential diagnoses'",
+        "Add AMC Clinical Exam pass criteria: 70% overall + systematic approach demonstrated + critical findings identified within 8 minutes"
+      ],
+      "strengths": [
+        "Comprehensive coverage of 52 OSCE topics across 5 clinical categories (Endocrine, Cardiology, General Medicine, Gastroenterology, Neurology)",
+        "Appropriate specialty assignments (Cardiology for syncope/ECG, Neurology for stroke/CT head)",
+        "Correct 8-minute time limit for AMC Clinical Examination OSCE stations",
+        "RAG validation passed with confidence scores >0.75 for all references",
+        "Australian textbook sources used (John Murtagh General Practice, AMC Handbook, Talley & O'Connor)",
+        "Mix of imaging modalities represented (ECG, CXR, CT, ultrasound, blood tests)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "reviewer_notes": "This dataset is a conceptual framework for OSCE stations, NOT actual radiology interpretation content. Major deficiencies: (1) No real images or detailed findings to interpret, (2) No systematic approach demonstrated, (3) Generic placeholders instead of specific radiological findings, (4) Cannot assess radiology interpretation competency without actual images. Recommend complete redesign: replace each OSCE with real radiology case (actual image or detailed written findings) + systematic interpretation demonstration + differential diagnoses + management. Current format is unusable for radiology teaching or AMC Clinical Exam preparation."
+    },
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_021",
+      "evaluation_date": "2026-03-27T04:19:39.996608",
+      "overall_score": 3.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "content_structure",
+          "issue": "OSCE script contains NO medication management content - only metadata and scenario descriptions without actual medication prescriptions, drug interactions, or therapeutic management details",
+          "location": "osces[20] (GENE-OSCE-0021 - Shingles)",
+          "suggested_fix": "Add comprehensive medication management for Shingles including: antiviral therapy (aciclovir 800mg 5 times daily PO for 7 days, PBS code 1234X), analgesia (paracetamol 1g QID, consider gabapentin 300mg TDS if neuropathic pain), topical calamine lotion. Include PBS authority requirements for antiviral >7 days, renal dosing adjustments for aciclovir (reduce to TDS if eGFR 10-25), and drug interactions (aciclovir + mycophenolate increases both drug levels)"
+        },
+        {
+          "severity": "critical",
+          "category": "content_structure",
+          "issue": "All 52 OSCE scenarios lack specific medication prescriptions - only generic task descriptions present",
+          "location": "osces[0-51]",
+          "suggested_fix": "Each OSCE must include: (1) Specific medications with Australian generic names, (2) PBS codes and authority requirements, (3) Dosing (dose/frequency/route/duration), (4) Renal/hepatic adjustments if applicable, (5) Drug interaction warnings, (6) Monitoring requirements (TDM if applicable), (7) Patient counselling points"
+        },
+        {
+          "severity": "critical",
+          "category": "australian_compliance",
+          "issue": "Cannot verify Australian drug nomenclature compliance - no medications specified in any OSCE",
+          "location": "entire_dataset",
+          "suggested_fix": "Replace generic tasks ('Assess and manage Shingles') with specific medication management scenarios including Australian drug names, eTG/AMH-aligned dosing, and PBS compliance"
+        },
+        {
+          "severity": "critical",
+          "category": "clinical_safety",
+          "issue": "No drug interaction assessments possible - medication lists absent from all OSCEs",
+          "location": "entire_dataset",
+          "suggested_fix": "Add polypharmacy scenarios (e.g., elderly patient with DKA on warfarin + metformin - requires insulin initiation with warfarin dose adjustment monitoring, metformin cessation if eGFR <30, hyperkalemia risk from DKA)"
+        }
+      ],
+      "suggestions": [
+        "Example medication-rich OSCE for GENE-OSCE-0021 (Shingles): '68-year-old presents with painful unilateral vesicular rash in T10 dermatome for 48 hours. Current medications: warfarin 5mg daily (INR 2.5), metformin 1g BD, atorvastatin 40mg nocte. Task: Prescribe antiviral therapy (aciclovir 800mg 5 times daily PO for 7 days, PBS code 8220K - authority required if immunocompromised), analgesia (paracetamol 1g QID initially, escalate to gabapentin 300mg TDS if PHN develops - PBS authority required for neuropathic pain indication), advise NO dose adjustment for warfarin (aciclovir does not interact), monitor INR in 1 week (routine), counsel patient on shingles vaccine eligibility post-recovery (Shingrix PBS-funded age \u226565)'",
+        "For DKA OSCE (ENDO-OSCE-0003): Include insulin infusion protocol (actrapid 0.1 units/kg/hr IV via syringe driver, titrate to BSL 10-15 mmol/L initially), fluid resuscitation (0.9% NaCl 1L over 1 hour, then 4L over 24 hours), potassium replacement (KCl 40 mmol/L in fluids if K+ <5.5 mmol/L - NEVER bolus IV), cease metformin if on chronic therapy (lactic acidosis risk), monitor BSL hourly + VBG 2-4 hourly",
+        "For Drug Toxicity OSCE (GENE-OSCE-0031): Specify toxidrome (e.g., paracetamol overdose 15g at 6 hours - requires N-acetylcysteine 150mg/kg IV over 1 hour loading, then 50mg/kg over 4 hours, then 100mg/kg over 16 hours; check paracetamol level at 4 hours post-ingestion, calculate using Rumack-Matthew nomagram; activate charcoal if <1 hour post-ingestion and conscious; monitor LFTs, INR, creatinine for hepatotoxicity)"
+      ],
+      "strengths": [
+        "RAG citations present with qdrant_point_id for all 52 OSCEs (100% traceability to source material)",
+        "Australian medical textbooks prioritized (John Murtagh General Practice, AMC Handbook, Talley & O'Connor) - 66%+ Australian sources",
+        "Topic coverage spans high-yield AMC Clinical Exam domains (endocrine, cardiology, GI, neurology) relevant to medication management"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "additional_notes": "CRITICAL EVALUATION LIMITATION: This dataset is a metadata-only OSCE outline (52 scenarios with titles, specialties, generic tasks). NO actual medication management content exists to evaluate against Australian pharmacology standards. The JSON structure contains scenario descriptions ('Patient presenting with Shingles', 'Assess and manage Shingles') but ZERO specific medications, doses, PBS codes, or therapeutic plans. This is analogous to evaluating a table of contents instead of a textbook chapter. RECOMMENDATION: Dataset requires complete rewrite by clinical pharmacologist to add: (1) Specific Australian medication regimens for each condition, (2) PBS compliance (codes, authorities, restrictions), (3) Dosing aligned to eTG/AMH, (4) Drug interaction warnings, (5) Renal/hepatic dosing, (6) TDM protocols where applicable (digoxin, lithium, gentamicin, vancomycin), (7) Australian-specific considerations (PBS restrictions, TGA alerts, NPS guidelines). CURRENT STATE: Unusable for medication management training without substantial content development. SCORE RATIONALE: 3.0/10 awarded for correct structural elements (Australian textbook citations, AMC-relevant topics) but cannot award points for medication-specific criteria (Australian drug names, PBS compliance, dosing accuracy, drug interactions, polypharmacy) as no medications are specified in the content."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_021",
+      "evaluation_date": "2026-03-27T04:19:40.002608",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 0.0,
+        "medication_safety": 0.0,
+        "cultural_safety": 0.0
+      },
+      "violations": [
+        "CRITICAL: Wrong specialty - This is a mental health crisis expert being asked to evaluate endocrine/cardiology/gastroenterology/neurology OSCE cases",
+        "CRITICAL: No mental health content - All 52 OSCEs are non-psychiatric medical conditions (hyperthyroidism, syncope, GORD, stroke, etc.)",
+        "CRITICAL: No suicide risk assessment applicable - Content does not contain any psychiatric presentations",
+        "CRITICAL: No Mental Health Act scenarios - Content is entirely somatic medicine",
+        "CRITICAL: Agent-task mismatch - Mental health crisis expert cannot evaluate general medicine OSCEs"
+      ],
+      "suggestions": [
+        "Route this evaluation to appropriate specialty experts: endocrinology-expert, cardiology-expert, gastroenterology-expert, neurology-expert",
+        "Mental health crisis expert should only evaluate psychiatric emergencies: suicidal ideation, acute psychosis, agitation, Mental Health Act applications",
+        "If psychiatric comorbidity evaluation needed (e.g., depression in chronic disease), specify which OSCE requires psychiatric assessment"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "reviewer_notes": "This evaluation task is fundamentally mismatched. The content contains 52 OSCE scenarios across Endocrinology (8), Cardiology (10), General Medicine (12), Gastroenterology (15), and Neurology (6). None of these are psychiatric presentations requiring SAFE-T suicide risk assessment, Mental Health Act application, or crisis psychiatry expertise. This appears to be a routing error where a mental health expert was assigned to evaluate somatic medicine content. The correct approach would be to assign specialty-matched experts (e.g., cardiology-expert for syncope/bradycardia OSCEs, neurology-expert for stroke/seizure OSCEs)."
+    }
+  ],
+  "num_agents": 6,
+  "quality_gate_violations": [
+    {
+      "gate": "content_structure",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "OSCE script contains NO medication management content - only metadata and scenario descriptions without actual medication prescriptions, drug interactions, or therapeutic management details",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "content_structure",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "All 52 OSCE scenarios lack specific medication prescriptions - only generic task descriptions present",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "australian_compliance",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Cannot verify Australian drug nomenclature compliance - no medications specified in any OSCE",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "clinical_safety",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No drug interaction assessments possible - medication lists absent from all OSCEs",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "osce_missing_topics_comprehensive_osces_021",
+  "item_type": "osce_script",
+  "specialty": "General Medicine",
+  "file_path": "data/osces/missing_topics_comprehensive_osces.json"
+}

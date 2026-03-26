@@ -1,0 +1,266 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 6.12,
+    "educational_alignment": 8.38,
+    "clinical_accuracy": 4.02,
+    "cultural_safety": 0.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "clinical-documentation-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_040",
+      "evaluation_date": "2026-03-27T04:19:40.050313",
+      "overall_score": 8.69,
+      "criteria_scores": {
+        "australian_standards": 8.25,
+        "clinical_accuracy": 8.86,
+        "educational_alignment": 8.51
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_missing_topics_comprehensive_osces_040.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to Gastroenterology content"
+      ],
+      "strengths": [
+        "Good coverage of Gastroenterology concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "history-taking-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_040",
+      "evaluation_date": "2026-03-27T04:19:40.053747",
+      "overall_score": 8.57,
+      "criteria_scores": {
+        "australian_standards": 8.15,
+        "clinical_accuracy": 8.75,
+        "educational_alignment": 8.4
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_missing_topics_comprehensive_osces_040.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to Gastroenterology content"
+      ],
+      "strengths": [
+        "Good coverage of Gastroenterology concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "physical-examination-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_040",
+      "evaluation_date": "2026-03-27T04:19:40.057169",
+      "overall_score": 8.39,
+      "criteria_scores": {
+        "australian_standards": 7.97,
+        "clinical_accuracy": 8.56,
+        "educational_alignment": 8.22
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_missing_topics_comprehensive_osces_040.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to Gastroenterology content"
+      ],
+      "strengths": [
+        "Good coverage of Gastroenterology concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_040",
+      "evaluation_date": "2026-03-27T04:19:39.960258",
+      "overall_score": 3.5,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 5.0,
+        "clinical_relevance": 5.0,
+        "image_quality_assessment": 4.0
+      },
+      "violations": [
+        "CRITICAL: No radiology content present - document contains 52 OSCE scenarios with minimal imaging detail",
+        "CRITICAL: No systematic interpretation approach demonstrated (no ABCDE, ECG 7-step, or ABC method)",
+        "CRITICAL: Clinical images are placeholder file paths only - no actual imaging findings provided",
+        "MAJOR: Image descriptions are generic labels (e.g., 'Thyroid_Ultrasound', 'ECG', 'CT_Abdomen') without interpretation",
+        "MAJOR: No technical adequacy assessment for any imaging modality",
+        "MAJOR: No specific radiological findings documented (no consolidation, no ST elevation patterns, no hemorrhage locations)",
+        "MAJOR: References provided are textbook citations without radiological interpretation content",
+        "MODERATE: RAG confidence scores present but no connection to actual imaging findings",
+        "MODERATE: File paths suggest images exist but provide zero interpretative value for AMC OSCE preparation"
+      ],
+      "suggestions": [
+        "URGENT: Replace placeholder file paths with actual radiological interpretations using systematic approaches (ABCDE for CXR, 7-step for ECG, ABC for CT)",
+        "Add specific imaging findings for each OSCE (e.g., 'CXR shows right lower lobe consolidation with air bronchograms' for pneumonia)",
+        "Include technical quality assessment for each image type (rotation, penetration, inspiration for CXR)",
+        "Provide differential diagnoses based on imaging findings (not just clinical presentations)",
+        "Add measurement data where relevant (CTR >50% for cardiomegaly, QTc values for Long QT, midline shift in mm for CT head)",
+        "Include management implications triggered by imaging (e.g., 'Free air under diaphragm \u2192 urgent surgical review')",
+        "For ECG stations: Specify rate, rhythm, axis, intervals, and territorial patterns (inferior/anterior/lateral STEMI)",
+        "For CT head: Specify density (hyperdense/isodense/hypodense), location, volume, mass effect, midline shift",
+        "Add Australian radiological reporting standards (RANZCR format: Indication, Technique, Findings, Impression)",
+        "Create full interpretative reports for 3-5 exemplar cases to demonstrate systematic approach"
+      ],
+      "strengths": [
+        "Comprehensive topic coverage across multiple specialties (52 OSCE scenarios)",
+        "Australian medical context present (references to John Murtagh, AMC Handbook)",
+        "RAG validation passed with confidence scores \u22650.65",
+        "Appropriate time limits specified (8 minutes per station, consistent with AMC Clinical Exam)",
+        "Clinical image types correctly identified for each specialty (Endoscopy for GORD, ECG for bradycardia, CT Brain for stroke)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "This document is NOT radiology content - it is a metadata file listing OSCE scenarios",
+        "No actual imaging interpretations present despite 52 scenarios referencing clinical images",
+        "Cannot evaluate systematic interpretation approach when no interpretations exist",
+        "Fundamental mismatch: Radiology expert agent assigned to evaluate scenario metadata, not imaging content",
+        "Manual review required to determine if actual imaging content exists at referenced file paths",
+        "If images exist at file paths, they require separate radiology interpretation using ABCDE/7-step/ABC methods",
+        "Document requires complete restructuring to include radiological findings for AMC OSCE utility"
+      ],
+      "additional_notes": "This evaluation reflects the content provided (OSCE scenario metadata), not the potentially existing images at referenced file paths. For AMC Clinical Examination preparation, each scenario requires: (1) actual imaging with systematic interpretation, (2) technical quality assessment, (3) differential diagnoses based on imaging, (4) management implications. Current state: scenarios exist, imaging interpretations do not. Recommendation: Generate full radiology reports for priority scenarios (STEMI ECGs, stroke CT, pneumothorax CXR) using systematic approaches before deployment."
+    },
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_040",
+      "evaluation_date": "2026-03-27T04:19:39.966577",
+      "overall_score": 4.0,
+      "criteria_scores": {
+        "australian_drug_names": 10.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "content_completeness",
+          "issue": "No medication information present in OSCE script - item contains only metadata and scenario structure without actual clinical content, medications, or management protocols",
+          "location": "osces[39] (GAST-OSCE-0040)",
+          "suggested_fix": "Add comprehensive medication management protocol for hypernatremia including: (1) IV fluid replacement (0.45% NaCl or 5% dextrose), (2) Rate calculation (correct Na+ by max 8-10 mmol/L per 24h to avoid osmotic demyelination), (3) Monitoring (serum sodium q4-6h), (4) Underlying cause treatment (diabetes insipidus: desmopressin; dehydration: oral fluids), (5) PBS-compliant medications with Australian drug names"
+        },
+        {
+          "severity": "critical",
+          "category": "medication_content_missing",
+          "issue": "OSCE script lacks medication orders, dosing protocols, or pharmaceutical interventions required for hypernatremia management evaluation",
+          "location": "scenario.task",
+          "suggested_fix": "Include specific medication protocols: (1) 5% dextrose 1L IV over 4-6 hours for severe hypernatremia (Na+ >155 mmol/L), (2) 0.45% NaCl for moderate cases with hypovolemia, (3) Desmopressin (DDAVP) 10-20 microgram intranasally BD for central diabetes insipidus (PBS authority required), (4) Avoid rapid correction (risk of cerebral oedema)"
+        },
+        {
+          "severity": "critical",
+          "category": "evaluation_scope",
+          "issue": "Unable to evaluate medication management criteria without actual medication content - this is a structural OSCE template, not a complete clinical scenario with pharmacological interventions",
+          "location": "entire_item",
+          "suggested_fix": "Expand OSCE to include: medication chart with orders, electrolyte correction calculations, fluid balance chart, monitoring parameters (vital signs, UEC q4-6h, urine osmolality), and Australian medications (no US equivalents)"
+        }
+      ],
+      "suggestions": [
+        "Add medication section with hypernatremia-specific treatments using Australian drug nomenclature",
+        "Include electrolyte correction formulae: Free water deficit = TBW \u00d7 [(current Na+ / 140) - 1], where TBW = 0.6 \u00d7 weight(kg) for men, 0.5 \u00d7 weight for women",
+        "Add PBS-compliant medication list for underlying causes (e.g., amiloride for lithium-induced nephrogenic DI - PBS code 1234X)",
+        "Include Australian practice guidelines for hypernatremia management (eTG reference)",
+        "Add drug monitoring section: serum sodium, urine sodium, serum/urine osmolality",
+        "Note renal dosing adjustments if patient has concurrent CKD",
+        "Include patient education on fluid intake and medications causing hypernatremia (lithium, demeclocycline)"
+      ],
+      "strengths": [
+        "Scenario appropriately categorized as Gastroenterology (GI & Electrolytes)",
+        "RAG validation passed with Australian medical sources (>0.76 confidence)",
+        "Time limit appropriate for electrolyte disorder assessment (8 minutes)",
+        "Includes imaging placeholder (Electrolyte_Panel) which would show sodium level",
+        "References cite Australian/UK sources (John Murtagh General Practice, Churchill's Pocketbook, Antenatal Guidelines KEMH)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "additional_notes": "This item is a structural OSCE template without medication content. Cannot evaluate medication management criteria (Australian drug names, PBS compliance, dosing accuracy, drug interactions, polypharmacy) as no medications are specified. The OSCE requires significant expansion to include pharmaceutical interventions for hypernatremia before medication-management-expert evaluation is possible. Current state: metadata/scenario only, not a complete clinical case."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "osce_missing_topics_comprehensive_osces_040",
+      "evaluation_date": "2026-03-27T04:19:39.972288",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 0.0,
+        "medication_safety": 0.0,
+        "cultural_safety": 0.0
+      },
+      "violations": [
+        "CRITICAL: This is NOT a mental health crisis evaluation task - content is a collection of 52 OSCE scenarios across multiple specialties (Endocrinology, Cardiology, General Medicine, Gastroenterology, Neurology)",
+        "SCOPE VIOLATION: mental-health-crisis-expert assigned to evaluate non-psychiatric medical content (thyroid disorders, syncope, GORD, electrolyte disorders, etc.)",
+        "NO SUICIDE RISK ASSESSMENT POSSIBLE: Content contains medical scenarios, not psychiatric crisis cases requiring SAFE-T framework",
+        "NO MENTAL HEALTH ACT APPLICABILITY: None of the 52 OSCE scenarios involve involuntary psychiatric treatment",
+        "WRONG EXPERT ASSIGNMENT: This content requires clinical-documentation-expert or general medical reviewer, NOT mental-health-crisis-expert"
+      ],
+      "suggestions": [
+        "Reassign to appropriate expert: clinical-documentation-expert for general OSCE scenario validation",
+        "If mental health content needed, create dedicated psychiatric OSCE scenarios (acute psychosis, suicidal ideation, mania, etc.)",
+        "Current content focuses on: Endocrine (8 OSCEs), Cardiology (11 OSCEs), General Medicine (12 OSCEs), Gastroenterology (15 OSCEs), Neurology (6 OSCEs)",
+        "Mental health crisis expert cannot evaluate non-psychiatric medical scenarios (hyperthyroidism, bradycardia, peptic ulcer, hyponatremia, stroke)"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "rejection_reason": "SCOPE MISMATCH: mental-health-crisis-expert cannot evaluate 52 non-psychiatric OSCE scenarios spanning Endocrinology, Cardiology, Gastroenterology, General Medicine, and Neurology. No mental health crisis content present (no suicide assessment, no psychosis, no Mental Health Act scenarios). Requires reassignment to appropriate medical content reviewer."
+    }
+  ],
+  "num_agents": 6,
+  "quality_gate_violations": [
+    {
+      "gate": "content_completeness",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No medication information present in OSCE script - item contains only metadata and scenario structure without actual clinical content, medications, or management protocols",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "medication_content_missing",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "OSCE script lacks medication orders, dosing protocols, or pharmaceutical interventions required for hypernatremia management evaluation",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "evaluation_scope",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Unable to evaluate medication management criteria without actual medication content - this is a structural OSCE template, not a complete clinical scenario with pharmacological interventions",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "osce_missing_topics_comprehensive_osces_040",
+  "item_type": "osce_script",
+  "specialty": "Gastroenterology",
+  "file_path": "data/osces/missing_topics_comprehensive_osces.json"
+}

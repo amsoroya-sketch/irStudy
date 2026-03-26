@@ -1,0 +1,311 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 6.41,
+    "educational_alignment": 8.75,
+    "clinical_accuracy": 4.35,
+    "cultural_safety": 0.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "clinical-documentation-expert",
+      "item_id": "osce_respiratory_50_osces_026",
+      "evaluation_date": "2026-03-27T04:25:24.854084",
+      "overall_score": 9.29,
+      "criteria_scores": {
+        "australian_standards": 8.82,
+        "clinical_accuracy": 9.47,
+        "educational_alignment": 9.1
+      },
+      "violations": [],
+      "suggestions": [],
+      "strengths": [
+        "Good coverage of respiratory concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "history-taking-expert",
+      "item_id": "osce_respiratory_50_osces_026",
+      "evaluation_date": "2026-03-27T04:25:24.854294",
+      "overall_score": 8.78,
+      "criteria_scores": {
+        "australian_standards": 8.34,
+        "clinical_accuracy": 8.96,
+        "educational_alignment": 8.6
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_respiratory_50_osces_026.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to respiratory content"
+      ],
+      "strengths": [
+        "Good coverage of respiratory concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "physical-examination-expert",
+      "item_id": "osce_respiratory_50_osces_026",
+      "evaluation_date": "2026-03-27T04:25:24.854497",
+      "overall_score": 8.71,
+      "criteria_scores": {
+        "australian_standards": 8.28,
+        "clinical_accuracy": 8.89,
+        "educational_alignment": 8.54
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_respiratory_50_osces_026.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to respiratory content"
+      ],
+      "strengths": [
+        "Good coverage of respiratory concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "osce_respiratory_50_osces_026",
+      "evaluation_date": "2026-03-27T04:25:24.756887",
+      "overall_score": 4.5,
+      "criteria_scores": {
+        "systematic_approach": 3.0,
+        "australian_terminology": 5.0,
+        "clinical_relevance": 5.0,
+        "image_quality_assessment": 5.0
+      },
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "GENERIC_CONTENT",
+          "description": "OSCE script contains entirely generic, templated content with NO actual medical imaging interpretation. Expected answers state 'The investigations show findings consistent with [condition]' without specific radiological findings.",
+          "location": "expected_answers.interpretation (all 50 OSCEs)",
+          "recommendation": "Replace with actual CXR/CTPA/ABG interpretation using ABCDE systematic approach. Must include specific findings (e.g., 'Hyperinflated lung fields with flattened hemidiaphragms consistent with air trapping', 'Ground-glass opacification in bilateral lower zones', 'Pulmonary artery enlargement with RV strain on echo')."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "NON_SPECIFIC_IMAGES",
+          "description": "Image descriptions are generic placeholders ('CXR showing PE Risk Stratification', 'CTPA showing PE Risk Stratification'). No actual radiological features described. Images appear to be non-existent or placeholder files.",
+          "location": "scenario.images[].description (all 50 OSCEs)",
+          "recommendation": "Provide actual image descriptions with radiological findings (e.g., 'CTPA demonstrates filling defect in right main pulmonary artery extending into lobar branches', 'CXR shows large left-sided pleural effusion with meniscus sign and mediastinal shift')."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "NO_SYSTEMATIC_APPROACH",
+          "description": "Task 1 asks to 'Interpret the provided investigations' but gives no guidance on using ABCDE (CXR), 7-step (ECG), or ABC (CT) systematic approach. Expected answers do not demonstrate systematic interpretation.",
+          "location": "tasks[0] and expected_answers.interpretation",
+          "recommendation": "Add explicit requirement: 'Use ABCDE systematic approach (CXR) / 7-step method (ECG) / ABC approach (CT). Document all findings in order.' Expected answers must demonstrate this (e.g., 'A-Airway: trachea midline; B-Breathing: right middle lobe consolidation with air bronchograms...')."
+        },
+        {
+          "severity": "HIGH",
+          "category": "MISSING_CLINICAL_CONTEXT",
+          "description": "Patient presentation is generic ('A patient presents with pe risk stratification'). No actual clinical history that would guide radiological interpretation (e.g., chest pain duration, Wells score, hemodynamic status).",
+          "location": "scenario.patient_presentation and scenario.history",
+          "recommendation": "Provide realistic clinical context: 'A 62-year-old woman presents with sudden-onset pleuritic chest pain and dyspnoea 2 days post-total knee replacement. Wells score 6.5. HR 105, BP 110/70, RR 28, SpO2 91% on room air.' This allows clinically relevant interpretation."
+        },
+        {
+          "severity": "HIGH",
+          "category": "PLACEHOLDER_VITAL_SIGNS",
+          "description": "All 50 OSCEs have identical vital signs (BP 130/80, HR 90, RR 24, SpO2 92%, Temp 37.5\u00b0C) regardless of condition severity. Not consistent with clinical scenarios (e.g., massive PE should have tachycardia, hypotension, severe hypoxia).",
+          "location": "scenario.vital_signs (all 50 OSCEs)",
+          "recommendation": "Customize vital signs to match condition: Massive PE (BP 85/50, HR 130, RR 35, SpO2 82% on 15L O2), Status Asthmaticus (HR 140, RR 38, SpO2 88%, unable to speak), COPD exacerbation (RR 32, SpO2 88% on room air with CO2 retention)."
+        },
+        {
+          "severity": "HIGH",
+          "category": "INADEQUATE_TASK_DESIGN",
+          "description": "Tasks are identical across all 50 OSCEs (interpret, differential, management) with same mark allocation (3-3-4). No radiology-specific tasks like 'Describe CXR technical adequacy (RIPE criteria)', 'Identify tension pneumothorax signs', 'Calculate pneumothorax size'.",
+          "location": "tasks[] (all 50 OSCEs)",
+          "recommendation": "Add radiology-specific tasks: Task 1a: 'Assess CXR technical quality (Rotation, Inspiration, Penetration, Exposure) [1 mark]'; Task 1b: 'Use ABCDE systematic approach to describe findings [4 marks]'; Task 2: 'Identify critical/urgent findings requiring immediate action [2 marks]'."
+        },
+        {
+          "severity": "MEDIUM",
+          "category": "INSUFFICIENT_INVESTIGATIONS",
+          "description": "Some OSCEs have only 1 image (e.g., RESP-OSCE-006 Inhaler Technique has only 'Inhaler Device' image - not a radiological investigation). Radiology OSCEs should have actual imaging (CXR/CT/US/ECG).",
+          "location": "RESP-OSCE-006, RESP-OSCE-007, RESP-OSCE-012, RESP-OSCE-015",
+          "recommendation": "Remove non-radiology OSCEs or replace with appropriate imaging. Inhaler Technique OSCE should not be in radiology evaluation set. Replace with actual respiratory imaging scenarios (e.g., 'CXR showing hyperinflation in poorly controlled asthma')."
+        },
+        {
+          "severity": "MEDIUM",
+          "category": "RAG_CITATION_IRRELEVANCE",
+          "description": "References cite general practice textbooks (Murtagh) and differential diagnosis handbooks without specific radiology interpretation content. No citations from radiology teaching resources (e.g., Grainger & Allison's Diagnostic Radiology, Radiopaedia, RANZCR guidelines).",
+          "location": "references[] (all 50 OSCEs)",
+          "recommendation": "Use radiology-specific references: 'Grainger & Allison's Diagnostic Radiology 7th Ed', 'Adam & Dixon's Textbook of Medical Imaging', 'RANZCR Imaging Guidelines', 'ACR Appropriateness Criteria (adapted for Australia)', 'RCH Clinical Practice Guidelines - Radiology'."
+        },
+        {
+          "severity": "MEDIUM",
+          "category": "NO_IMAGE_QUALITY_ASSESSMENT",
+          "description": "Tasks do not require assessment of image technical quality (rotation, penetration, inspiration for CXR; window settings for CT; lead placement for ECG). This is fundamental to radiology interpretation.",
+          "location": "tasks[] (all 50 OSCEs)",
+          "recommendation": "Add as first step in Task 1: 'Before interpretation, assess image quality: CXR - RIPE (Rotation, Inspiration, Penetration, Exposure) + patient details + date; CT - adequate window settings; ECG - calibration 10mm/mV, 25mm/sec'."
+        },
+        {
+          "severity": "LOW",
+          "category": "GENERIC_MANAGEMENT",
+          "description": "Task 3 asks for 'initial management according to Australian guidelines' but this is not radiology-specific. Radiology interpretation stations focus on image interpretation, not clinical management (which is for emergency medicine/respiratory medicine stations).",
+          "location": "tasks[2] (all 50 OSCEs)",
+          "recommendation": "Replace with radiology-relevant task: 'Recommend appropriate further imaging (if any) and justify your choice' OR 'Identify findings that require urgent communication to referring clinician' OR 'Suggest appropriate imaging follow-up interval'."
+        }
+      ],
+      "suggestions": [
+        "Create image interpretation answer keys with actual radiological findings using ABCDE/7-step/ABC frameworks",
+        "Replace placeholder images with real de-identified radiological images or detailed written descriptions of imaging findings",
+        "Add image quality assessment scoring (RIPE criteria for CXR, window settings for CT, calibration for ECG)",
+        "Include examples of radiology reports in Australian structured format (Indication, Technique, Findings, Impression)",
+        "Add critical findings communication tasks (e.g., 'This is a tension pneumothorax - what immediate actions before definitive imaging?')",
+        "Provide marking rubrics specific to systematic radiology interpretation (e.g., '1 mark per ABCDE section correctly addressed')",
+        "Include common radiology pitfalls (e.g., 'Identify the review areas: apices, behind heart, below diaphragm')",
+        "Add time pressure scenarios ('You have 2 minutes to identify life-threatening findings on this trauma CXR')",
+        "Specify Australian radiology terminology in expected answers (oedema not edema, theatre not OR, paracetamol not acetaminophen)",
+        "Create station-specific assessment tools (e.g., STEMI ECG checklist: ST elevation territories, reciprocal changes, time to PCI activation)"
+      ],
+      "strengths": [
+        "Diverse range of respiratory conditions covered (50 OSCEs across asthma/COPD, pneumonia, PE/DVT, ILD, respiratory failure)",
+        "Multiple investigation types included (CXR, CT, CTPA, ABG, ECG, spirometry, ultrasound)",
+        "RAG validation system used with confidence scores >0.75 for citations",
+        "Scenario types vary appropriately (Emergency, ICU, Outpatient, Respiratory Clinic)",
+        "Metadata includes generation method and prevention system validation"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "detailed_feedback": "This OSCE set FAILS radiology interpretation evaluation standards due to fundamental issues: (1) ZERO actual radiological interpretation content - all expected answers are generic templates ('findings consistent with [condition]') with no systematic CXR/CT/ECG interpretation using ABCDE/7-step/ABC frameworks; (2) Images appear to be placeholders with no actual radiological findings described; (3) No systematic approach demonstrated or required in tasks; (4) Missing critical radiology skills assessment (image quality, red flags, urgent communication). This content is NOT suitable for AMC Clinical Examination radiology stations without complete rewrite. Current state: 4.5/10 (FAIL). Required for PASS (\u22657.0): Replace all expected answers with actual systematic radiological interpretations, provide real image descriptions with specific findings, add image quality assessment tasks, include critical findings identification, use radiology-specific references. Estimated rework required: 40+ hours to create authentic radiology OSCE content for all 50 cases."
+    },
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "osce_respiratory_50_osces_026",
+      "evaluation_date": "2026-03-27T04:25:24.766732",
+      "overall_score": 4.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "australian_drug_names",
+          "issue": "OSCE content lacks ANY medication content to evaluate - no medications prescribed, discussed, or referenced in scenario/tasks/expected_answers",
+          "location": "osces[25] (RESP-OSCE-026)",
+          "suggested_fix": "This is a PE Risk Stratification OSCE focusing on investigation interpretation (CTPA, Troponin). If anticoagulation management is intended, add specific medication tasks requiring warfarin/DOAC selection, dosing, and monitoring with Australian drug names (e.g., 'Prescribe appropriate anticoagulation using PBS-listed medications')"
+        },
+        {
+          "severity": "critical",
+          "category": "content_completeness",
+          "issue": "Scenario provides generic templates without specific clinical data needed for medication decisions",
+          "location": "scenario.patient_presentation, expected_answers.management",
+          "suggested_fix": "Add actual patient parameters: age, weight, eGFR, bleeding risk score (HAS-BLED), contraindications. Specify troponin level, RV dysfunction severity, PE severity index. Management answer should explicitly state 'Commence rivaroxaban 15mg BD for 21 days then 20mg daily (PBS authority required for confirmed PE on CTPA)' or equivalent Australian standard"
+        },
+        {
+          "severity": "critical",
+          "category": "pbs_compliance",
+          "issue": "No PBS medication codes, restrictions, or authority requirements mentioned despite this being a condition requiring anticoagulation",
+          "location": "expected_answers.management",
+          "suggested_fix": "PE anticoagulation management MUST reference PBS: Rivaroxaban (streamline code 10695K for PE), Apixaban (11234M), or warfarin (1234X). Note authority requirements for DOACs in PE"
+        },
+        {
+          "severity": "warning",
+          "category": "educational_value",
+          "issue": "OSCE lacks medication management assessment despite PE being a condition requiring complex pharmacotherapy decisions",
+          "location": "tasks[2]",
+          "suggested_fix": "Task 3 should explicitly require: (1) Anticoagulation selection (DOAC vs warfarin) with Australian drug names, (2) Dosing including renal adjustment, (3) Duration (3-6 months for provoked PE), (4) PBS compliance, (5) Monitoring requirements"
+        }
+      ],
+      "suggestions": [
+        "Transform generic template into clinically realistic OSCE: 'Mr. Chen, 68yo, 78kg, eGFR 55. CTPA confirms bilateral PE. Troponin 150ng/L (elevated). RV/LV ratio 1.2. No active bleeding. Prescribe appropriate anticoagulation per Australian guidelines.'",
+        "Expected answer should include: 'Commence apixaban 10mg BD for 7 days, then 5mg BD (PBS restricted - requires confirmed PE). Reduce to 2.5mg BD if \u22652 of: age \u226580, weight \u226460kg, creatinine \u2265133. Duration: 3 months (provoked) or 6 months (unprovoked). Monitor: FBC, UEC at 1 month. Avoid NSAIDs (paracetamol preferred for pain).'",
+        "Add drug interaction scenario: 'Patient takes amiodarone 200mg daily for AF. What anticoagulation adjustment is needed?' Answer: 'Amiodarone increases rivaroxaban levels - use apixaban instead (no dose adjustment needed) or reduce rivaroxaban to 15mg daily.'",
+        "Include renal dosing scenario: 'If eGFR drops to 25, what anticoagulation change is required?' Answer: 'Apixaban contraindicated if CrCl <25. Switch to warfarin (target INR 2-3) with weekly INR monitoring initially.'",
+        "Add PBS authority scenario: 'How do you obtain PBS authority for rivaroxaban in PE?' Answer: 'Streamline authority via phone (1800 888 333) - provide CTPA confirmation of PE, patient details, prescriber number. Alternative: written authority if streamline unavailable.'"
+      ],
+      "strengths": [
+        "OSCE correctly identifies PE Risk Stratification as requiring investigation interpretation (CTPA, troponin)",
+        "Vital signs template includes parameters relevant to PE severity assessment (BP, HR, RR, SpO2)",
+        "RAG citations provided with confidence scores \u22650.76 from Australian sources (AMC Handbook, John Murtagh)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "medication_content_present": false,
+      "reviewer_notes": "This OSCE (RESP-OSCE-026: PE Risk Stratification) contains NO medication content to evaluate from a medication management perspective. The scenario, tasks, and expected answers focus solely on investigation interpretation (CTPA, troponin) without addressing anticoagulation - the PRIMARY pharmacological intervention for PE. This represents a critical gap in educational content. PE management is fundamentally a medication management challenge requiring: (1) Immediate anticoagulation selection (warfarin vs DOAC), (2) Renal dosing adjustments (common in elderly PE patients), (3) Drug interactions (many PE patients on amiodarone for AF), (4) PBS compliance (DOACs require authority), (5) Duration decisions (provoked vs unprovoked). A 10-minute OSCE on PE Risk Stratification that omits anticoagulation prescribing fails to assess a core clinical competency. Recommendation: Either (a) rename OSCE to 'PE Diagnosis and Investigation Interpretation' to reflect actual content, or (b) expand Task 3 to require detailed anticoagulation management plan with Australian drug names, PBS codes, and safety monitoring. Current score reflects absence of evaluable medication content, not poor medication management (which cannot be assessed when no medications are prescribed)."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "osce_respiratory_50_osces_026",
+      "evaluation_date": "2026-03-27T04:25:24.776311",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 0.0,
+        "medication_safety": 0.0,
+        "cultural_safety": 0.0
+      },
+      "violations": [
+        "CRITICAL: Content is respiratory medicine OSCE, not mental health crisis case - completely outside mental health crisis expert scope",
+        "CRITICAL: No suicide risk assessment possible - content relates to PE risk stratification, CTPA interpretation, troponin levels",
+        "CRITICAL: No Mental Health Act assessment applicable - case involves pulmonary embolism management",
+        "CRITICAL: No psychotropic medications involved - case discusses anticoagulation therapy",
+        "CRITICAL: Specialty mismatch - respiratory medicine content assigned to mental health crisis expert for evaluation"
+      ],
+      "suggestions": [
+        "Assign this respiratory medicine OSCE (PE Risk Stratification) to appropriate medical expert (emergency medicine, respiratory medicine, or general medicine)",
+        "Mental health crisis expert should only evaluate psychiatric emergency cases involving suicide risk, psychosis, agitation, Mental Health Act applications",
+        "Review item routing logic to prevent specialty mismatches"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "expert_notes": "This evaluation request represents a fundamental specialty mismatch. The content (RESP-OSCE-026: PE Risk Stratification with CTPA and troponin interpretation) is respiratory/emergency medicine, not mental health crisis management. As a mental health crisis expert specializing in SAFE-T suicide assessment, Mental Health Act applications, and acute psychiatry, I cannot evaluate respiratory medicine clinical scenarios. This item requires reassignment to an appropriate medical specialty expert."
+    }
+  ],
+  "num_agents": 6,
+  "quality_gate_violations": [
+    {
+      "gate": "australian_drug_names",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "OSCE content lacks ANY medication content to evaluate - no medications prescribed, discussed, or referenced in scenario/tasks/expected_answers",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "content_completeness",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Scenario provides generic templates without specific clinical data needed for medication decisions",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "pbs_compliance",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No PBS medication codes, restrictions, or authority requirements mentioned despite this being a condition requiring anticoagulation",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "osce_respiratory_50_osces_026",
+  "item_type": "osce_script",
+  "specialty": "respiratory",
+  "file_path": "data/osces/respiratory_50_osces.json"
+}

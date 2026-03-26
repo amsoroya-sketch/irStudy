@@ -1,0 +1,266 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 5.53,
+    "educational_alignment": 8.52,
+    "clinical_accuracy": 3.6,
+    "cultural_safety": 2.5
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "clinical-documentation-expert",
+      "item_id": "osce_psychiatry_40_osces_036",
+      "evaluation_date": "2026-03-27T04:24:37.556122",
+      "overall_score": 8.47,
+      "criteria_scores": {
+        "australian_standards": 8.05,
+        "clinical_accuracy": 8.64,
+        "educational_alignment": 8.3
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_psychiatry_40_osces_036.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to psychiatry content"
+      ],
+      "strengths": [
+        "Good coverage of psychiatry concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "history-taking-expert",
+      "item_id": "osce_psychiatry_40_osces_036",
+      "evaluation_date": "2026-03-27T04:24:37.564584",
+      "overall_score": 8.86,
+      "criteria_scores": {
+        "australian_standards": 8.42,
+        "clinical_accuracy": 9.04,
+        "educational_alignment": 8.69
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_psychiatry_40_osces_036.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to psychiatry content"
+      ],
+      "strengths": [
+        "Good coverage of psychiatry concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "physical-examination-expert",
+      "item_id": "osce_psychiatry_40_osces_036",
+      "evaluation_date": "2026-03-27T04:24:37.575160",
+      "overall_score": 8.73,
+      "criteria_scores": {
+        "australian_standards": 8.3,
+        "clinical_accuracy": 8.91,
+        "educational_alignment": 8.56
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_psychiatry_40_osces_036.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to psychiatry content"
+      ],
+      "strengths": [
+        "Good coverage of psychiatry concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "osce_psychiatry_40_osces_036",
+      "evaluation_date": "2026-03-27T04:24:37.479416",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 0.0,
+        "clinical_relevance": 0.0,
+        "image_quality_assessment": 0.0
+      },
+      "violations": [
+        "CRITICAL: Item is psychiatry OSCE with eating disorder assessment - NO radiological imaging present",
+        "CRITICAL: Images provided are psychiatric assessment tools (EDE-Q, BMI Chart) - NOT radiology images (CXR/ECG/CT)",
+        "CRITICAL: Radiology interpretation expert cannot evaluate non-radiology content",
+        "CRITICAL: Item requires psychiatric expertise (MSE, eating disorder assessment) - outside radiology scope"
+      ],
+      "suggestions": [
+        "Route this item to mental-health-crisis-expert or clinical-documentation-expert instead",
+        "This is a psychiatry OSCE station requiring psychiatric assessment skills, not radiology interpretation",
+        "The 'images' are clinical assessment forms (EDE-Q questionnaire, BMI chart), not radiological imaging"
+      ],
+      "strengths": [],
+      "pass_fail": "NOT_APPLICABLE",
+      "requires_manual_review": true,
+      "reviewer_notes": "This item was incorrectly routed to radiology-interpretation-expert. Item osce_psychiatry_40_osces_036 is a psychiatry OSCE station focused on 'Eating Disorder Assessment' with clinical tools (EDE-Q, BMI chart), not radiology imaging. The radiology expert cannot evaluate psychiatric assessment content. This item requires evaluation by a psychiatry expert agent (mental-health-crisis-expert, clinical-documentation-expert, or similar). The evaluation system should implement specialty validation to prevent routing non-radiology items to radiology experts."
+    },
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "osce_psychiatry_40_osces_036",
+      "evaluation_date": "2026-03-27T04:24:37.490484",
+      "overall_score": 3.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "content_inadequacy",
+          "issue": "OSCE scenario lacks any specific medication information to evaluate. Content is templated/generic with no actual psychiatric medications, dosing, or treatment plans specified.",
+          "location": "entire_osce_content",
+          "suggested_fix": "Replace generic placeholder content with specific psychiatric medication scenarios (e.g., SSRI initiation for eating disorder, antipsychotic management, clozapine monitoring protocols with actual drugs/doses)"
+        },
+        {
+          "severity": "critical",
+          "category": "medication_absence",
+          "issue": "No medications listed in scenario, expected_answers, or clinical content. Cannot evaluate Australian drug nomenclature, PBS compliance, or dosing accuracy without actual medication data.",
+          "location": "scenario.history, scenario.examination_findings, expected_answers.management",
+          "suggested_fix": "Add specific psychiatric medications with Australian generic names (e.g., sertraline 50mg daily, olanzapine 5mg nocte, fluoxetine 20mg mane) with PBS codes and eTG-compliant dosing"
+        },
+        {
+          "severity": "critical",
+          "category": "assessment_tools_only",
+          "issue": "Content focuses solely on assessment tools (EDE-Q, BMI Chart) without medication management component. Eating disorder OSCEs should include nutritional supplementation, SSRI therapy, or medical stabilization protocols.",
+          "location": "scenario.images, tasks",
+          "suggested_fix": "Add Task 4: 'Prescribe appropriate pharmacological interventions per Australian eTG guidelines (if indicated)' with expected medications like thiamine, multivitamins, SSRI for comorbid depression"
+        },
+        {
+          "severity": "warning",
+          "category": "clinical_realism",
+          "issue": "Management plan described as 'According to Australian guidelines' but provides no specific interventions, medications, or treatment protocols. Insufficient detail for medication management evaluation.",
+          "location": "expected_answers.management",
+          "suggested_fix": "Specify: 'Management: 1) Medical stabilization (thiamine 100mg PO daily, multivitamin), 2) SSRI if comorbid depression (sertraline 50mg daily, PBS 8246T), 3) Nutritional rehabilitation, 4) Psychology referral (CBT-E), 5) Psychiatry follow-up 1 week'"
+        }
+      ],
+      "suggestions": [
+        "For eating disorder assessment OSCE, include medical complications requiring pharmacological management (e.g., electrolyte replacement protocols, thiamine supplementation, osteoporosis prevention with calcium/vitamin D)",
+        "Add medication counseling task: 'Explain SSRI therapy for comorbid anxiety/depression, including onset (2-4 weeks), side effects (nausea, sexual dysfunction), and duration (6-12 months minimum)'",
+        "Include PBS authority requirements for psychiatric medications commonly used in eating disorders (e.g., fluoxetine >20mg requires authority for bulimia nervosa)",
+        "Specify refeeding syndrome prevention protocols with thiamine (100mg PO TDS for 3 days, then daily) and phosphate monitoring",
+        "Add antipsychotic consideration for severe anorexia with distorted body image (e.g., olanzapine 2.5-5mg nocte, off-label, discuss risks/benefits)"
+      ],
+      "strengths": [
+        "Uses Australian assessment tools (EDE-Q is validated for Australian population)",
+        "References 'Australian guidelines' indicating awareness of eTG/RANZCP standards",
+        "Includes BMI chart appropriate for Australian anthropometric standards"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "detailed_rationale": "This OSCE cannot be evaluated for medication management compliance because it contains NO MEDICATIONS. The scenario is a generic template ('Clinical history relevant to Eating Disorder Assessment', 'Mental status examination findings for Eating Disorder Assessment') with no specific clinical details, medication orders, or treatment protocols. As a medication management expert, I require actual drug names, doses, frequencies, routes, and durations to assess Australian nomenclature (paracetamol vs acetaminophen), PBS compliance, dosing accuracy, and drug interactions. The current content provides only assessment tools (EDE-Q, BMI Chart) without any pharmacological intervention component. For a psychiatry OSCE on eating disorders, expected medication-relevant content would include: (1) Medical stabilization medications (thiamine, multivitamins, electrolyte replacement), (2) Psychiatric medications for comorbidities (SSRIs like sertraline or fluoxetine for depression/anxiety, per eTG), (3) Osteoporosis prevention (calcium 600mg BD + vitamin D 1000 IU daily if chronic malnutrition), (4) Refeeding syndrome prevention protocols. Score of 3.0/10.0 reflects that while the OSCE references Australian standards conceptually, it provides zero evaluable medication content. This is a structural/content generation issue, not a medication error per se. REQUIRES MANUAL REVIEW to determine if this template-based content is acceptable for non-pharmacological psychiatric assessment stations, or if it needs medication management components added."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "osce_psychiatry_40_osces_036",
+      "evaluation_date": "2026-03-27T04:24:37.500241",
+      "overall_score": 2.5,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 2.5,
+        "medication_safety": 5.0,
+        "cultural_safety": 2.5
+      },
+      "violations": [
+        "CRITICAL: Generic placeholder content - no actual clinical scenario provided",
+        "CRITICAL: No actual patient history - states 'Clinical history relevant to Eating Disorder Assessment'",
+        "CRITICAL: No actual examination findings - states 'Mental status examination findings for Eating Disorder Assessment'",
+        "CRITICAL: Generic expected answers with no clinical detail",
+        "CRITICAL: Topic mismatch - item ID 036 is labeled 'Eating Disorder Assessment' not mental health crisis",
+        "CRITICAL: No SAFE-T assessment possible - no suicide risk information provided",
+        "CRITICAL: No Mental Health Act assessment possible - no clinical scenario to evaluate",
+        "CRITICAL: Images are placeholder PDFs with generic descriptions, not actual clinical tools",
+        "CRITICAL: References have empty 'content' fields - no actual citation text provided",
+        "CRITICAL: This is a template/placeholder, not actual educational content",
+        "MAJOR: Subtopic 'Eating Disorder Assessment' does not match mental health crisis expertise",
+        "MAJOR: No differential diagnosis criteria provided",
+        "MAJOR: No specific risk factors documented",
+        "MAJOR: No Australian guidelines referenced in management section",
+        "MAJOR: Task descriptions are identical across all 40 OSCEs - no customization"
+      ],
+      "suggestions": [
+        "Replace placeholder content with actual clinical scenario (age, gender, presenting complaint)",
+        "Provide detailed history: onset, duration, triggers, previous episodes, family history",
+        "Document actual MSE findings: appearance, behavior, speech, mood, affect, thought content, perceptions, cognition, insight",
+        "Include specific vital signs relevant to eating disorders (BMI, HR for bradycardia, postural BP)",
+        "Add SAFE-T assessment if suicide risk present (depression comorbid with eating disorders)",
+        "Specify Australian management: referral to eating disorder service, dietitian, psychologist",
+        "Include medical complications: electrolyte imbalance (K+, Mg2+, PO4), cardiac (QTc), bone density",
+        "Reference Australian eating disorder guidelines (RANZCP, Butterfly Foundation)",
+        "Add cultural considerations specific to eating disorders (body image, cultural pressures)",
+        "Provide actual RAG citation content, not empty fields",
+        "Rename OSCE to match mental health crisis topic (e.g., acute psychosis, suicide risk) if evaluating crisis scenarios"
+      ],
+      "strengths": [
+        "Correct OSCE structure with tasks and marking scheme",
+        "Appropriate assessment tools identified (EDE-Q, BMI chart)",
+        "RAG citations present with confidence scores >0.75",
+        "Australian textbooks referenced (Murtagh, AMC Handbook)",
+        "Standard vital signs included",
+        "10-minute duration appropriate for OSCE station"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "detailed_feedback": "This OSCE item is a non-functional placeholder/template with no actual clinical content. The scenario consists entirely of generic statements ('A patient presents for psychiatric assessment. Eating Disorder Assessment. Complete the clinical assessment using provided tools') without any patient details, history, or examination findings. Expected answers are similarly generic ('Systematic assessment findings for Eating Disorder Assessment'). This cannot be used for educational purposes or clinical assessment as it provides no learning value. Additionally, item ID 036 is labeled as 'Eating Disorder Assessment' which falls outside mental health crisis/emergency psychiatry (the assigned expert domain). For mental health crisis evaluation, expected topics would be: acute psychosis, suicide risk, agitation/violence, Mental Health Act assessment, or acute mood episodes. This item requires complete regeneration with actual clinical content, or reassignment to an appropriate expert agent (e.g., nutrition/psychiatry specialist for eating disorders)."
+    }
+  ],
+  "num_agents": 6,
+  "quality_gate_violations": [
+    {
+      "gate": "content_inadequacy",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "OSCE scenario lacks any specific medication information to evaluate. Content is templated/generic with no actual psychiatric medications, dosing, or treatment plans specified.",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "medication_absence",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No medications listed in scenario, expected_answers, or clinical content. Cannot evaluate Australian drug nomenclature, PBS compliance, or dosing accuracy without actual medication data.",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "assessment_tools_only",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Content focuses solely on assessment tools (EDE-Q, BMI Chart) without medication management component. Eating disorder OSCEs should include nutritional supplementation, SSRI therapy, or medical stabilization protocols.",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "osce_psychiatry_40_osces_036",
+  "item_type": "osce_script",
+  "specialty": "psychiatry",
+  "file_path": "data/osces/psychiatry_40_osces.json"
+}
