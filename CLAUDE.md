@@ -44,6 +44,36 @@
 
 ---
 
+## Ralph PRD Standards (CRITICAL - ALWAYS FOLLOW)
+
+**Master Location**: `/home/dev/Development/ralph-dashboard/docs/specifications/prd-standards/`
+
+**ALWAYS Read Standards First Before Creating PRDs**:
+- Read: `ralph-dashboard/docs/specifications/prd-standards/PRD_STANDARDS_V2_T-RALPH.md`
+- Read: `ralph-dashboard/docs/specifications/prd-standards/README.md`
+- Follow T-RALPH structure (Test-First Development)
+
+**Structure**: T-RALPH v2.1 (MANDATORY for NEW PRDs)
+- **T** - TESTS: ALL test code BEFORE implementation (embedded in PRD, not separate files)
+- **R** - REQUEST: User story, problem statement, success criteria
+- **A** - ARCHITECTURE: System design, database schema, API endpoints
+- **L** - LOOP: Iterative development with TDD workflow (RED → GREEN → REFACTOR per phase)
+- **P** - PLAN: File-by-file implementation with full code examples
+- **H** - HANDOFF: Test results summary, coverage reports, validation
+
+**Version**: 2.1 (includes PROJECT_CONSTRAINTS.md integration - MANDATORY)
+**Date**: 2026-03-29
+
+**Key Requirements**:
+- All agents MUST read `/home/dev/Development/irStudy/PROJECT_CONSTRAINTS.md` BEFORE starting work
+- All agents MUST read T section tests BEFORE implementation
+- TDD workflow enforced: RED (tests fail) → GREEN (tests pass) → REFACTOR (maintain 100% pass rate)
+- Validation checklist required in L section for each phase
+
+**Legacy PRDs**: PRD-P1-004, PRD-P1-006, PRD-P1-007 use R-A-L-P-H format (pre-v2.1) - kept for historical reference
+
+---
+
 ## Project-Specific Rules
 
 - Always use Agent OS expert agents with all constraints and framework
