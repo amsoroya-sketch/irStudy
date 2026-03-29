@@ -5,7 +5,8 @@
 **Priority**: P0-Critical (BLOCKS seeing OSCE results)
 **Estimated Effort**: 4-6 hours
 **Dependencies**: P1-1 (WebSocket Infrastructure), P1-2 (Session Controls), P1-3 (Emotional State)
-**Status**: Not Started
+**Status**: Ready for Implementation
+**Standards**: T-RALPH V2.1 (Updated 2026-03-29)
 **Assigned Agent**: `python-backend-developer` + `react-frontend-developer`
 
 ---
@@ -2388,7 +2389,24 @@ psql -U postgres -d irstudy_medical -c "
 
 ### Agent: python-backend-developer
 
-**CRITICAL - Read Before Starting**:
+**CRITICAL - Read These Files FIRST** (T-RALPH v2.1):
+1. **Global Constraints (ALL projects)**: `/home/dev/Development/ralph-dashboard/docs/specifications/prd-standards/RALPH_GLOBAL_CONSTRAINTS.md`
+   - Section 4: Quality Gates (compilation, tests, security - zero tolerance)
+   - Section 6: Security Standards (no hardcoded credentials - zero tolerance)
+2. **PROJECT_CONSTRAINTS.md**: `/home/dev/Development/irStudy/PROJECT_CONSTRAINTS.md`
+   - Section 1: Medical Accuracy (Australian standards, eTG, PBS, AHPRA)
+   - Section 3: Security (NEVER hardcode API keys)
+   - Section 4: LLM Integration (Claude API usage)
+   - Section 6: Testing (100% pass rate mandatory)
+3. **Existing Code**: Search for similar implementations before creating new code
+
+**Validation Checklist** (Complete before returning):
+- [ ] Read PROJECT_CONSTRAINTS.md sections 1, 3, 4, 6
+- [ ] Followed existing patterns (provide file:line references)
+- [ ] `pytest tests/test_api/test_osce_finalize.py -v` → 10/10 passed (100% pass rate)
+- [ ] `grep -r "sk-ant-\|ANTHROPIC_API_KEY\s*=" src/` → 0 matches (zero tolerance)
+- [ ] `flake8 src/api/v1/osce_sessions.py` → 0 errors
+- [ ] Performance: Scoring completes in <5s (measured with real Claude API)
 
 **1. Existing Code Integration (MUST FOLLOW)**:
 - **DO NOT recreate AI Examiner logic** - Use existing `src/ai/ai_examiner.py` service
@@ -2403,27 +2421,37 @@ psql -U postgres -d irstudy_medical -c "
 - Emergency number: 000 (not 911)
 - SI units (mmol/L not mg/dL)
 
-**3. Security Requirements (MUST MEET)**:
-- NO hardcoded API keys - Use Vault secrets
+**3. Security Requirements (MUST MEET)** (See Global Constraints Section 6):
+- NO hardcoded API keys - Use Vault secrets (zero tolerance)
 - Parameterized SQL queries only (prevent injection)
 - JWT validation on all endpoints
 - Rate limiting: 10 requests/minute per user
 
-**4. Performance Requirements (MUST ACHIEVE)**:
+**4. Performance Requirements (MUST ACHIEVE)** (See Global Constraints Section 8):
 - Total response time: <5 seconds (p95)
 - Database queries: <50ms
 - Claude API call: <3 seconds
 
-**5. Validation Checklist (Complete Before Returning)**:
-- [ ] `pytest tests/test_api/test_osce_finalize.py -v` → 10/10 passed
-- [ ] `grep -r "sk-ant-\|ANTHROPIC_API_KEY.*=" src/` → 0 matches
-- [ ] `flake8 src/api/v1/osce_sessions.py` → 0 errors
-- [ ] Scoring completes in <5s (test with real Claude API)
-- [ ] Idempotency works (finalize twice returns cached result)
-
 ### Agent: react-frontend-developer
 
-**CRITICAL - Read Before Starting**:
+**CRITICAL - Read These Files FIRST** (T-RALPH v2.1):
+1. **Global Constraints (ALL projects)**: `/home/dev/Development/ralph-dashboard/docs/specifications/prd-standards/RALPH_GLOBAL_CONSTRAINTS.md`
+   - Section 4: Quality Gates (TypeScript, tests, linting - zero tolerance)
+   - Section 6: Security Standards (no hardcoded API keys)
+   - Section 7: Documentation Standards (code comments, JSDoc)
+2. **PROJECT_CONSTRAINTS.md**: `/home/dev/Development/irStudy/PROJECT_CONSTRAINTS.md`
+   - Section 2: Code Architecture (React patterns, component structure)
+   - Section 6: Testing (100% pass rate mandatory)
+3. **Existing Code**: See `frontend/src/components/osce/WebSocketChat.tsx` for patterns
+
+**Validation Checklist** (Complete before returning):
+- [ ] Read PROJECT_CONSTRAINTS.md sections 2, 6
+- [ ] Followed existing patterns: WebSocketChat.tsx (provide line references)
+- [ ] `npx tsc --noEmit` → 0 errors (zero tolerance)
+- [ ] `npm test -- OSCEResults.test.tsx` → 15/15 passed (100% pass rate)
+- [ ] `npm run lint` → 0 errors
+- [ ] `npm run build` → Build succeeds
+- [ ] Accessibility: Color contrast ≥4.5:1, keyboard navigation works
 
 **1. Material-UI Patterns (MUST FOLLOW)**:
 - Use Material-UI 7 components (`@mui/material`)
@@ -2437,24 +2465,17 @@ psql -U postgres -d irstudy_medical -c "
 - Proper interface definitions for all props
 - Component file naming: PascalCase (`OSCEResults.tsx`)
 
-**3. Accessibility Requirements (MUST MEET)**:
+**3. Accessibility Requirements (MUST MEET)** (See Global Constraints Section 7):
 - WCAG 2.2 AA compliance
 - All interactive elements have `aria-label`
 - Color contrast ≥4.5:1
 - Keyboard navigation works (Tab, Enter)
 - Screen reader announces score changes
 
-**4. Performance Requirements (MUST ACHIEVE)**:
+**4. Performance Requirements (MUST ACHIEVE)** (See Global Constraints Section 8):
 - Component render time: <100ms
 - Smooth animations: 60fps
 - No layout shift when scores load
-
-**5. Validation Checklist (Complete Before Returning)**:
-- [ ] `npx tsc --noEmit` → 0 errors
-- [ ] `npm test -- OSCEResults.test.tsx` → 15/15 passed
-- [ ] `npm run build` → Build succeeds
-- [ ] Color contrast check → All text ≥4.5:1
-- [ ] Keyboard navigation → All actions accessible via Tab+Enter
 
 ---
 
