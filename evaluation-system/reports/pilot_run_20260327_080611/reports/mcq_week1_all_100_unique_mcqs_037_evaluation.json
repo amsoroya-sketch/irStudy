@@ -1,0 +1,135 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 0.0,
+    "clinical_accuracy": 3.6,
+    "cultural_safety": 7.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_037",
+      "evaluation_date": "2026-03-27T08:40:12.458441",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "item_identification",
+          "issue": "Item ID mcq_week1_all_100_unique_mcqs_037 does not exist in provided dataset",
+          "location": "metadata",
+          "suggested_fix": "Verify correct item_id. Available IDs start from PSY-DEP-20260125-345, PSY-DEP-20260125-602, etc."
+        }
+      ],
+      "suggestions": [
+        "Confirm item_id corresponds to actual MCQ in dataset",
+        "Re-run evaluation with valid item_id from the mcqs array"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "evaluation_notes": "Cannot evaluate medications: requested item_id not found in dataset. Dataset contains 100 MCQs with IDs ranging from PSY-DEP-20260125-345 to PSY-FINAL-20260125-2064. No item with id 'mcq_week1_all_100_unique_mcqs_037' exists."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_037",
+      "evaluation_date": "2026-03-27T08:40:12.468660",
+      "overall_score": 7.2,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 6.5,
+        "mental_health_act": 8.0,
+        "medication_safety": 7.5,
+        "cultural_safety": 7.0
+      },
+      "violations": [
+        "SAFE-T framework not explicitly applied in depression MCQs (PSY-DEP items)",
+        "Suicide risk assessment incomplete - no access to means evaluation in PSY-DEP-20260125-345",
+        "Multiple MCQs lack protective factors assessment",
+        "Mental Health Act state not specified in several suicide risk MCQs",
+        "No Aboriginal/TSI cultural safety considerations in any MCQ",
+        "References lack specificity - 'Unknown' title with no qdrant_point_id",
+        "RAG confidence scores present but no qdrant_point_id (violates citation requirements)",
+        "Key points repetitive across MCQs - copy-paste error",
+        "Incorrect explanations in why_incorrect fields - just states 'Incorrect -' without reasoning",
+        "Postpartum depression MCQ (PSY-DEP-20260125-201) missing infant risk assessment",
+        "Wernicke encephalopathy MCQ lacks urgency language (MEDICAL EMERGENCY)",
+        "Clozapine monitoring schedule correct but missing CPMS (Clozapine Patient Monitoring Service) reference",
+        "NMS management incomplete - missing dantrolene as alternative to bromocriptine",
+        "Alcohol withdrawal MCQ missing CIWA-Ar scale mention in management",
+        "Multiple template-generated MCQs (ID 2000+) have empty key_points arrays",
+        "Template MCQs lack clinical depth - formulaic scenarios"
+      ],
+      "suggestions": [
+        "Add explicit SAFE-T framework assessment to all depression/suicide MCQs",
+        "Include 'access to means' evaluation in PSY-DEP scenarios",
+        "Add protective factors assessment to suicide risk MCQs",
+        "Specify NSW/VIC/QLD in Mental Health Act questions",
+        "Add Aboriginal/TSI cultural considerations (at least 10% of psychiatry MCQs)",
+        "Replace 'Unknown' references with actual textbook citations or remove",
+        "Add qdrant_point_id to all references or set rag_confidence to 0.0",
+        "Differentiate key_points per MCQ topic (not copy-paste)",
+        "Complete why_incorrect explanations with clinical reasoning",
+        "Add infant safety assessment to postpartum depression MCQ",
+        "Emphasize MEDICAL EMERGENCY in Wernicke encephalopathy scenario",
+        "Reference CPMS in clozapine monitoring MCQ",
+        "Add dantrolene as NMS treatment alternative",
+        "Include CIWA-Ar scale in alcohol withdrawal management",
+        "Remove template-generated MCQs (ID 2000-2064) - low quality/repetitive",
+        "Increase clinical complexity in scenarios (multi-morbidity, medication interactions)"
+      ],
+      "strengths": [
+        "Correct SSRI first-line for depression (sertraline, escitalopram)",
+        "Appropriate low-dose antipsychotic recommendation for first-episode psychosis",
+        "Accurate clozapine monitoring schedule (weekly 18wk \u2192 fortnightly 52wk \u2192 monthly)",
+        "Correct identification of refeeding syndrome as critical risk in anorexia",
+        "Thiamine BEFORE glucose emphasized in Wernicke/alcohol withdrawal",
+        "Mental Health Act criteria correctly outlined (NSW)",
+        "Correct dystonia emergency management (benztropine IM)",
+        "Accurate metabolic risk ranking for antipsychotics",
+        "DBT correctly identified as first-line for borderline personality disorder",
+        "Appropriate benzodiazepine avoidance in long-term anxiety management"
+      ],
+      "pass_fail": "CONDITIONAL_PASS",
+      "requires_manual_review": true,
+      "detailed_feedback": {
+        "safe_t_assessment": "INCOMPLETE - Depression MCQs lack systematic SAFE-T evaluation. PSY-DEP-20260125-345 mentions 'denies suicidal ideation' but does not assess: (S) specific plan, (A) access to means, (F) feelings of hopelessness, (E) earlier attempts, (T) threat level. This is a critical omission given depression is highest suicide risk diagnosis.",
+        "mental_health_act_compliance": "ADEQUATE - NSW MHA criteria correctly stated in PSY-SUICIDE-MHA-20260125-967, but state not specified in several MCQs. Victorian/Queensland MHA differences not addressed. Emergency detention procedures correct.",
+        "medication_safety": "GOOD - Australian drug names used correctly (sertraline, olanzapine, quetiapine). Clozapine monitoring accurate. Minor omission: CPMS (Clozapine Patient Monitoring Service) not mentioned. NMS management incomplete (bromocriptine mentioned, dantrolene omitted).",
+        "cultural_safety": "POOR - Zero Aboriginal/TSI considerations in 100 MCQs. No SEWB framework. No historical trauma context. No Aboriginal liaison mentioned. This violates Australian medical education standards (minimum 10% Indigenous health content).",
+        "rag_citation_quality": "FAIL - All references show 'Unknown' title with no qdrant_point_id despite having rag_confidence scores. This violates constraint 11 (RAG citation requirements). Citations are non-traceable and potentially hallucinated.",
+        "template_mcq_quality": "POOR - MCQs ID 2000-2064 are low-quality template generations with: (1) Empty key_points arrays, (2) Repetitive scenarios, (3) Formulaic stems, (4) Incomplete explanations. These should be removed or regenerated.",
+        "clinical_realism": "MODERATE - Scenarios are clinically plausible but lack complexity. Real AMC cases involve: (1) Multi-morbidity, (2) Medication interactions, (3) Socioeconomic factors, (4) Cultural considerations. Current MCQs are single-diagnosis focused.",
+        "explanation_quality": "POOR - 'why_incorrect' fields incomplete. Example from PSY-DEP-20260125-345: 'Incorrect - Adjustment disorder with depressed mood' without explaining WHY (e.g., 'Adjustment disorder requires identifiable stressor within 3 months, duration <6 months'). This reduces educational value."
+      },
+      "critical_issues": [
+        "SAFETY: Depression MCQs do not systematically assess suicide risk - potential patient safety issue",
+        "COMPLIANCE: Zero Indigenous health content violates Australian medical education standards",
+        "QUALITY: 64 template-generated MCQs (64% of dataset) are repetitive and low-quality",
+        "VALIDITY: All references non-traceable (no qdrant_point_id) - potential hallucinations"
+      ],
+      "recommendation": "CONDITIONAL_PASS pending: (1) Add SAFE-T assessment to all depression MCQs, (2) Remove template MCQs ID 2000-2064, (3) Add Aboriginal/TSI content (10 MCQs minimum), (4) Fix RAG citations or remove qdrant references. Current state acceptable for pilot testing but NOT for production deployment."
+    }
+  ],
+  "num_agents": 2,
+  "quality_gate_violations": [
+    {
+      "gate": "item_identification",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Item ID mcq_week1_all_100_unique_mcqs_037 does not exist in provided dataset",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "mcq_week1_all_100_unique_mcqs_037",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week1_all_100_unique_mcqs.json"
+}

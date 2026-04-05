@@ -1,0 +1,103 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 0.0,
+    "clinical_accuracy": 2.1,
+    "cultural_safety": 4.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_001",
+      "evaluation_date": "2026-03-27T17:22:28.068461",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "out_of_scope",
+          "issue": "Content is psychiatry MCQs, not medication management requiring Australian drug name verification",
+          "location": "entire_item",
+          "suggested_fix": "This item should be evaluated by psychiatry expert, not medication-management-expert"
+        }
+      ],
+      "suggestions": [
+        "Route this MCQ set to psychiatry clinical expert for psychiatric diagnosis and treatment evaluation",
+        "Medication-management-expert should focus on polypharmacy, drug interactions, PBS compliance in medication-specific content"
+      ],
+      "strengths": [],
+      "pass_fail": "NOT_APPLICABLE",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "notes": "This evaluation agent (medication-management-expert) is designed for medication dosing, PBS compliance, and Australian drug nomenclature validation. The provided content is a set of 100 psychiatry MCQs covering depression, anxiety, bipolar disorder, psychosis, suicide risk, and mental health topics. While some MCQs mention medications (SSRIs, antipsychotics, lithium), the primary focus is psychiatric diagnosis and management, not medication-specific pharmacy evaluation. This content should be routed to a psychiatry clinical expert or mental health specialist for appropriate evaluation of clinical accuracy, diagnostic criteria, and treatment protocols."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_001",
+      "evaluation_date": "2026-03-27T17:22:28.079662",
+      "overall_score": 4.2,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 2.0,
+        "mental_health_act": 5.5,
+        "medication_safety": 6.0,
+        "cultural_safety": 4.0
+      },
+      "violations": [
+        "CRITICAL: SAFE-T protocol NOT applied systematically across depression/suicide MCQs",
+        "PSY-DEP-20260125-345: Major depression diagnosis - no suicide risk assessment documented",
+        "PSY-SUICIDE-MHA-20260125-334: SAD PERSONS scale used instead of SAFE-T (Australian standard)",
+        "PSY-SUICIDE-MHA-20260125-2004/2012/2020/2028/2036/2044/2052/2060: Acute suicide risk MCQs lack SAFE-T breakdown",
+        "Multiple MCQs: 'Unknown' references with 0.0 RAG confidence (PSY-ANX-BIP-20260125-2000 onwards)",
+        "PSY-FINAL-20260125-2022/2030/2038/2046/2054/2062: Alcohol withdrawal - thiamine dose should be 300mg TDS (not single dose)",
+        "Cultural safety: Zero Aboriginal/TSI mental health considerations across 100 MCQs",
+        "Mental Health Act: No state-specific differentiation (NSW/VIC/QLD) in involuntary admission MCQs"
+      ],
+      "suggestions": [
+        "URGENT: Replace SAD PERSONS with SAFE-T framework (RANZCP/Beyond Blue standard)",
+        "Add SAFE-T checklist to ALL depression MCQs: Specific plan, Access to means, Feelings, Earlier attempts, Threat",
+        "Depression MCQs must include: 'Assess suicide risk using SAFE-T protocol' in key points",
+        "Suicide risk MCQs: Stratify as High/Medium/Low with SAFE-T score breakdown",
+        "Add Aboriginal/TSI cultural safety MCQ (e.g., SEWB framework, historical trauma)",
+        "Mental Health Act MCQs: Specify state (NSW MHA 2007 vs VIC MHA 2014 vs QLD MHA 2016)",
+        "References: Replace 'Unknown' with actual Australian sources (RANZCP CPG, eTG Psychiatry)",
+        "Alcohol withdrawal: Correct to thiamine 300mg IV TDS for 3 days (not single dose)",
+        "Add protective factors assessment to suicide risk MCQs",
+        "Include crisis contacts: Lifeline 13 11 14, Beyond Blue 1300 224 636, Aboriginal crisis line"
+      ],
+      "strengths": [
+        "Comprehensive coverage: Depression, anxiety, bipolar, psychosis, suicide risk, substance use",
+        "Correct first-line treatments: SSRIs for depression/anxiety, antipsychotics for psychosis",
+        "Mental Health Act involuntary criteria correctly identified (4 criteria)",
+        "Benzodiazepines for alcohol withdrawal correctly specified",
+        "Refeeding syndrome risk correctly identified in anorexia nervosa",
+        "Clozapine monitoring schedule accurate (weekly \u2192 fortnightly \u2192 monthly FBC)",
+        "Australian medication names used: sertraline, quetiapine, olanzapine",
+        "De-escalation techniques in acute psychosis MCQs"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "detailed_feedback": "CRITICAL SAFETY FAILURE: SAFE-T protocol (Australian standard for suicide risk assessment) NOT systematically applied. SAD PERSONS scale used in PSY-SUICIDE-MHA-20260125-334 instead of SAFE-T. Depression MCQs (PSY-DEP series) lack suicide risk assessment despite being VERY HIGH AMC frequency. This is a ZERO-TOLERANCE violation - suicide risk MUST be assessed in ALL depression/psychosis presentations. Second major issue: 48 MCQs (PSY-ANX-BIP-20260125-2000 onwards) have 'Unknown' references with 0.0 RAG confidence, indicating placeholder content not replaced with actual Australian sources. Third issue: ZERO cultural safety content for Aboriginal/TSI mental health (10% of evaluation criteria). Mental Health Act MCQs do not differentiate state-specific legislation. RECOMMENDATION: DO NOT deploy this content until SAFE-T protocol integrated, references verified, and cultural safety MCQs added. Estimated remediation effort: 40-60 hours to add SAFE-T assessments, replace unknown references, and create 10-15 Aboriginal/TSI mental health MCQs."
+    }
+  ],
+  "num_agents": 2,
+  "quality_gate_violations": [
+    {
+      "gate": "out_of_scope",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Content is psychiatry MCQs, not medication management requiring Australian drug name verification",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "mcq_week1_all_100_unique_mcqs_001",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week1_all_100_unique_mcqs.json"
+}

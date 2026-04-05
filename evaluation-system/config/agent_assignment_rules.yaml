@@ -136,21 +136,27 @@ assignment_rules:
 
   # MCQs (Multiple Choice Questions)
   mcq:
-    primary_agents:
-      - medication-management-expert  # Australian drug names, PBS compliance
+    # NOTE: Do NOT assign medication-management-expert as primary for ALL MCQs
+    # It should only evaluate pharmacology/medication-specific MCQs
+    # Diagnostic MCQs should be evaluated by specialty-specific experts only
+    primary_agents: []  # No universal primary agent for MCQs
 
     secondary_agents_by_specialty:
       cardiology:
         - radiology-interpretation-expert  # ECG questions
+        - medication-management-expert  # Only if MCQ tests cardiac medications
 
       respiratory:
         - radiology-interpretation-expert  # CXR questions
+        - medication-management-expert  # Only if MCQ tests respiratory medications
 
       psychiatry:
-        - mental-health-crisis-expert
+        - mental-health-crisis-expert  # Primary for psychiatry MCQs (diagnosis, treatment, suicide risk)
+        - medication-management-expert  # Only if MCQ tests psychiatric medication dosing/interactions
 
       paediatrics:
         - pediatric-emergency-expert
+        - medication-management-expert  # Only if MCQ tests paediatric medication dosing
 
       pathology:
         - pathology-interpretation-expert  # FBC/UEC/LFT interpretation
@@ -159,15 +165,16 @@ assignment_rules:
         - radiology-interpretation-expert
 
       pharmacology:
-        - medication-management-expert
+        - medication-management-expert  # Primary for pure pharmacology MCQs
 
       infectious_diseases:
         - infection-control-expert
+        - medication-management-expert  # Only if MCQ tests antimicrobial selection/dosing
 
       surgery:
         - surgical-skills-expert
 
-    minimum_agents: 2
+    minimum_agents: 1  # Changed from 2 - specialty-specific expert is sufficient
 
   # OSCE Scripts (clinical exam scenarios)
   osce_script:

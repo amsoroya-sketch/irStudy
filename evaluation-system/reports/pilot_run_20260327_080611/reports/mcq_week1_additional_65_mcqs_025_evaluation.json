@@ -1,0 +1,167 @@
+{
+  "overall_score": 3.85,
+  "criterion_scores": {
+    "australian_standards": 10.0,
+    "clinical_accuracy": 4.5,
+    "cultural_safety": 0.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_025",
+      "evaluation_date": "2026-03-27T08:37:37.953899",
+      "overall_score": 10.0,
+      "criteria_scores": {
+        "australian_drug_names": 10.0,
+        "pbs_compliance": 10.0,
+        "dosing_accuracy": 10.0,
+        "drug_interactions": 10.0,
+        "polypharmacy_management": 10.0
+      },
+      "violations": [],
+      "suggestions": [],
+      "strengths": [
+        "All psychiatric medications referenced use appropriate Australian terminology",
+        "Management recommendations align with Australian Mental Health Act and eTG psychiatry guidelines",
+        "Appropriate recognition of refeeding syndrome risk with thiamine supplementation protocol",
+        "Benzodiazepine management for alcohol withdrawal follows Australian protocol (diazepam/oxazepam with IV thiamine)",
+        "Correct low-dose antipsychotic approach for first-episode psychosis (Australian early intervention standards)",
+        "DBT recommended for borderline personality disorder aligns with Australian psychological intervention guidelines",
+        "No American drug nomenclature detected across all 41 MCQ items reviewed"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false,
+      "australian_compliance_verified": true,
+      "additional_notes": "This MCQ set focuses on psychiatric diagnoses and management rather than specific medication prescribing. All pharmacological references (SSRIs, antipsychotics, benzodiazepines, thiamine) are appropriate for Australian practice. No medication dosing details provided in questions, which is appropriate for diagnostic MCQs. The correct answers emphasize evidence-based Australian mental health management including MHA criteria, eTG first-line treatments, and Australian specialist referral pathways."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_025",
+      "evaluation_date": "2026-03-27T08:37:37.960877",
+      "overall_score": 3.5,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 0.0,
+        "medication_safety": 0.0,
+        "cultural_safety": 0.0
+      },
+      "violations": [
+        "CRITICAL: No SAFE-T suicide risk assessment in high-risk suicide case (PSY-SUICIDE-MHA-20260125-2004, 2012, 2020, 2028, 2036, 2044, 2052, 2060)",
+        "CRITICAL: Mental Health Act criteria not detailed (only mentions 'involuntary admission' without documenting all 4 criteria)",
+        "CRITICAL: Missing RAG citations (all references show 'Unknown' title, rag_confidence: 0.0 - violates 100% citation requirement)",
+        "CRITICAL: Zero Australian source citations (violates \u226560% Australian sources requirement)",
+        "CRITICAL: No qdrant_point_id for any citation (violates RAG verification requirement)",
+        "MAJOR: Explanations lack clinical depth (why_incorrect entries say only 'Incorrect - [option]' without rationale)",
+        "MAJOR: No SAFE-T framework elements documented (Specific plan, Access to means, Feelings, Earlier attempts, Threat)",
+        "MAJOR: Missing protective factors assessment in suicide cases",
+        "MAJOR: No Mental State Examination documented in psychosis cases",
+        "MAJOR: Medication dosing missing context (olanzapine dose given without monitoring requirements)",
+        "MAJOR: No Cultural Safety considerations (Aboriginal/TSI, LGBTQIA+, CALD not mentioned)",
+        "MODERATE: Anorexia case shows correct answer 'A' but both 'A' and 'B' are clinically urgent (refeeding syndrome vs cardiac arrhythmia - both require immediate monitoring)",
+        "MODERATE: Alcohol withdrawal management incomplete (missing CIWA-Ar score monitoring detail)",
+        "MODERATE: No state-specific Mental Health Act differentiation (NSW vs VIC vs QLD)",
+        "MODERATE: Missing crisis contact numbers (Lifeline 13 11 14, Beyond Blue 1300 224 636)",
+        "MODERATE: No de-escalation techniques documented in agitation/psychosis cases",
+        "MODERATE: Key_points arrays empty in all explanations",
+        "MODERATE: Template-based repetition (same questions repeated 8 times - PSY-ANX-BIP-20260125-2000, 2008, 2016, 2024, 2032, 2040, 2048, 2056)",
+        "MODERATE: No Australian terminology validation (uses 'prime minister' which is correct, but lacks PBS/MBS context)",
+        "MINOR: Missing Australian crisis team referral pathways"
+      ],
+      "suggestions": [
+        "URGENT: Add complete SAFE-T assessment for ALL suicide risk cases (Specific plan, Access to means, Feelings of hopelessness, Earlier attempts, Threat of harm)",
+        "URGENT: Add RAG citations with qdrant_point_id for 100% of clinical facts",
+        "URGENT: Replace 'Unknown' references with actual Australian sources (\u226560%): RANZCP guidelines, Mental Health Act (NSW/VIC/QLD), Black Dog Institute, Lifeline",
+        "Add detailed Mental Health Act criteria documentation (4 elements: mental illness, risk, refuses treatment, no alternative)",
+        "Add protective factors assessment (family support, religious beliefs, future plans)",
+        "Add Mental State Examination for psychosis cases (appearance, behavior, speech, mood, affect, thought form, thought content, perceptions, cognition, insight, judgment)",
+        "Add medication monitoring requirements (QTc for antipsychotics, lithium levels, FBC for clozapine)",
+        "Add Cultural Safety section (Aboriginal/TSI SEWB framework, LGBTQIA+ affirming care, CALD interpreter services)",
+        "Expand why_incorrect explanations with clinical rationale (not just 'Incorrect - [option]')",
+        "Add Australian crisis contacts in all suicide/crisis cases (Lifeline 13 11 14, Beyond Blue 1300 224 636, state crisis teams)",
+        "Add de-escalation techniques in psychosis/agitation cases (VERBAL: calm tone, empathy, space, time)",
+        "Differentiate Mental Health Act by state (NSW 2007 vs VIC 2014 vs QLD 2016)",
+        "Populate key_points arrays with 3-5 critical learning points per question",
+        "Remove duplicate questions (8 identical GAD questions is excessive)",
+        "Add PBS/MBS context where relevant (e.g., lithium monitoring under MBS item 66650)",
+        "Add refeeding protocol details for anorexia case (start 20-30 kcal/kg/day, monitor phosphate/magnesium/potassium daily, thiamine 300mg IV before feeding)"
+      ],
+      "strengths": [
+        "Correct identification of high suicide risk factors (plan, means, recent loss, living alone, male gender, refuses help)",
+        "Appropriate selection of involuntary admission for high-risk suicide cases",
+        "Correct first-line treatment for first-episode psychosis (low-dose second-generation antipsychotic)",
+        "Appropriate acute mania management (involuntary admission + antipsychotic)",
+        "Correct identification of refeeding syndrome as critical risk in severe anorexia",
+        "Appropriate alcohol withdrawal management (benzodiazepines + thiamine)",
+        "Correct long-term management for borderline personality disorder (DBT)",
+        "Australian terminology used correctly ('prime minister' not 'president')",
+        "Medication names use generic names (olanzapine, risperidone, diazepam)",
+        "Scenarios clinically realistic and appropriate for AMC Clinical Examination"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "detailed_analysis": {
+        "rag_citation_failures": {
+          "total_references": 130,
+          "unknown_sources": 130,
+          "zero_confidence": 130,
+          "missing_qdrant_id": 130,
+          "australian_sources": 0,
+          "australian_percentage": 0.0
+        },
+        "suicide_risk_assessment_failures": {
+          "total_suicide_cases": 8,
+          "safe_t_complete": 0,
+          "protective_factors_documented": 0,
+          "risk_stratification_adequate": 8,
+          "means_restriction_discussed": 0
+        },
+        "mental_health_act_failures": {
+          "total_involuntary_cases": 9,
+          "criteria_fully_documented": 0,
+          "state_specified": 0,
+          "less_restrictive_alternatives_considered": 0
+        },
+        "cultural_safety_failures": {
+          "aboriginal_tsi_considerations": 0,
+          "lgbtqia_affirming": 0,
+          "cald_interpreter_offered": 0,
+          "sewb_framework_mentioned": 0
+        }
+      },
+      "critical_failure_reason": "ZERO RAG citations with qdrant_point_id (violates 100% citation requirement). All 130 references show 'Unknown' title and rag_confidence 0.0, indicating complete absence of RAG system integration. Additionally, SAFE-T suicide risk assessment completely absent in 8 high-risk suicide cases, creating potential patient safety risk. Content appears to be template-generated without RAG validation or clinical expert review."
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_025",
+      "evaluation_date": "2026-03-27T08:37:37.967563",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 0.0,
+        "clinical_relevance": 0.0,
+        "image_quality_assessment": 0.0
+      },
+      "violations": [
+        "CRITICAL: Content specialty mismatch - Item is Psychiatry content, not Radiology/Imaging",
+        "CRITICAL: No imaging content present (no CXR, CT, ECG, ultrasound)",
+        "CRITICAL: Radiology expert cannot evaluate psychiatric MCQs",
+        "Agent domain violation: Psychiatric anxiety disorders, bipolar mania, psychosis are outside radiology scope"
+      ],
+      "suggestions": [
+        "Route to mental-health-crisis-expert or psychiatry specialist agent",
+        "Item PSY-ANX-BIP-20260125-2025 contains panic disorder with palpitations - could require ECG interpretation, but primary content is psychiatric diagnosis",
+        "If imaging interpretation needed for psychiatric patients, extract only imaging-specific questions"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "notes": "This item contains 65 psychiatry MCQs (generalized anxiety disorder, panic disorder, bipolar mania, first episode psychosis, suicide risk, anorexia nervosa, alcohol withdrawal, borderline personality disorder). None involve radiology interpretation (CXR, CT, ECG, ultrasound). The radiology-interpretation-expert agent specializes in diagnostic imaging, not psychiatric diagnosis. This represents a fundamental agent-task mismatch and should be rejected at task allocation stage."
+    }
+  ],
+  "num_agents": 3,
+  "status": "REJECTED",
+  "item_id": "mcq_week1_additional_65_mcqs_025",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week1_additional_65_mcqs.json"
+}

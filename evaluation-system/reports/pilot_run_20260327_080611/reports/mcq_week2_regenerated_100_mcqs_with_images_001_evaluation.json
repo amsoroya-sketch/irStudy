@@ -1,0 +1,189 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 0.0,
+    "clinical_accuracy": 1.67,
+    "cultural_safety": 0.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week2_regenerated_100_mcqs_with_images_001",
+      "evaluation_date": "2026-03-27T08:37:02.630315",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "australian_drug_names",
+          "issue": "MCQ contains placeholder content with no actual medication information to evaluate",
+          "location": "question/options/explanation",
+          "suggested_fix": "Replace placeholder 'Option A/B/C/D' with actual clinical medication management content using Australian drug names"
+        },
+        {
+          "severity": "critical",
+          "category": "content_completeness",
+          "issue": "Question lacks specific clinical scenario with medication details",
+          "location": "question",
+          "suggested_fix": "Provide specific patient scenario with medications, doses, frequencies, and clinical context"
+        },
+        {
+          "severity": "critical",
+          "category": "content_completeness",
+          "issue": "Explanation contains only generic placeholder text without medication-specific guidance",
+          "location": "explanation",
+          "suggested_fix": "Provide detailed explanation of medication management according to Australian guidelines including specific drug names, doses, PBS requirements, and eTG/AMH references"
+        },
+        {
+          "severity": "critical",
+          "category": "educational_value",
+          "issue": "Item provides no educational value for medication management - cannot assess Australian drug nomenclature, PBS compliance, or dosing accuracy with placeholder content",
+          "location": "entire_item",
+          "suggested_fix": "Regenerate with complete clinical scenario including specific medications (e.g., 'Patient with GAD prescribed sertraline 50mg daily vs escitalopram 10mg daily vs venlafaxine XR 75mg daily - which is first-line per eTG?')"
+        }
+      ],
+      "suggestions": [
+        "For anxiety disorders MCQs, include common medication scenarios: SSRI selection (sertraline vs escitalopram), benzodiazepine risks (STOPP criteria for elderly), pregabalin dosing (renal adjustment required)",
+        "Include PBS authority requirements for pregabalin (authority required for GAD, streamline code needed)",
+        "Add drug interaction scenarios (e.g., SSRI + NSAID = GI bleeding risk, warfarin + sertraline = increased INR)",
+        "Specify Australian dosing: sertraline 50mg daily (initial), escitalopram 10mg daily (NOT 5mg like US), venlafaxine XR 75-225mg daily",
+        "Include STOPP criteria for benzodiazepines: avoid >4 weeks in elderly, avoid in dementia, avoid with opioids (respiratory depression)"
+      ],
+      "strengths": [
+        "Topic (Generalized Anxiety Disorder) is appropriate for medication management evaluation",
+        "RAG citations present with confidence scores >0.76",
+        "Australian sources referenced (John Murtagh General Practice, AMC Handbook)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "detailed_feedback": "This MCQ item is a placeholder template with no actual medication content to evaluate. All options are generic 'Option A/B/C/D' without specific medication names, doses, frequencies, routes, or clinical scenarios. Cannot assess Australian drug nomenclature compliance (no drug names present), PBS compliance (no medications specified), dosing accuracy (no doses given), or drug interactions (no medication combinations present). This item requires complete regeneration with specific clinical content before medication management evaluation is possible. For GAD management MCQs, should include specific scenarios like: 'First-line pharmacotherapy per Australian eTG: A) Sertraline 50mg PO daily, B) Alprazolam 0.5mg PO TDS, C) Pregabalin 75mg PO BD, D) Venlafaxine XR 37.5mg PO daily' with detailed explanation of SSRI preference, benzodiazepine risks, PBS requirements, and Australian dosing standards."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week2_regenerated_100_mcqs_with_images_001",
+      "evaluation_date": "2026-03-27T08:37:02.641411",
+      "overall_score": 3.0,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 0.0,
+        "medication_safety": 0.0,
+        "cultural_safety": 0.0
+      },
+      "violations": [
+        "CRITICAL: MCQ content completely missing - all questions show placeholder 'Option A/B/C/D' with no actual clinical content",
+        "CRITICAL: No suicide risk assessment possible - questions lack clinical scenarios",
+        "CRITICAL: No Mental Health Act content - questions contain no involuntary treatment scenarios",
+        "CRITICAL: No medication details - explanations are generic templates without drug names or doses",
+        "CRITICAL: RAG citations appear valid but questions are non-functional placeholders",
+        "CRITICAL: All 100 MCQs follow identical placeholder pattern - suggests generation failure",
+        "FATAL: Questions cannot assess psychiatry knowledge - no clinical decision-making required",
+        "Educational value: ZERO - students cannot learn from 'Option A' placeholder answers"
+      ],
+      "suggestions": [
+        "URGENT: Regenerate ALL 100 MCQs with actual clinical content",
+        "Include specific psychiatric scenarios (e.g., '52yo man, low mood 6 weeks, not eating, suicidal ideation with plan to overdose')",
+        "Add specific options (e.g., 'A: Admit involuntarily under Mental Health Act', 'B: Safety plan + outpatient review', etc.)",
+        "Include medication names and doses in options (e.g., 'Sertraline 50mg daily', 'Olanzapine 10mg nocte')",
+        "Add Mental Health Act scenarios requiring involuntary treatment decisions",
+        "Include SAFE-T framework elements in depression/suicide cases",
+        "Verify RAG citations match actual question content (currently mismatched)",
+        "Quality gate FAILED - do not deploy until content regenerated"
+      ],
+      "strengths": [
+        "Metadata structure correct (100 MCQs, topic distribution documented)",
+        "RAG citations present with qdrant_point_id and confidence >0.65",
+        "Medical images added (2 per MCQ, 200 total)",
+        "Australian sources cited (Murtagh, AMC Handbook)",
+        "Prevention system enabled (pre-flight validation passed)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "clinical_safety_concern": true,
+      "deployment_recommendation": "REJECT - Complete regeneration required before deployment. Current content has ZERO educational/clinical value.",
+      "fracp_reviewer_notes": "As a senior psychiatrist, I cannot validate these MCQs. The placeholder content ('Option A/B/C/D') makes clinical assessment impossible. This batch appears to be a template generation error where RAG retrieval succeeded but question formulation failed catastrophically. All 100 items require regeneration with actual psychiatric scenarios, management options, and evidence-based explanations. DO NOT present to students in current form."
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "mcq_week2_regenerated_100_mcqs_with_images_001",
+      "evaluation_date": "2026-03-27T08:37:02.653313",
+      "overall_score": 2.0,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 2.0,
+        "clinical_relevance": 3.0,
+        "image_quality_assessment": 0.0
+      },
+      "violations": [
+        "CRITICAL: No radiology content present - this is a psychiatry MCQ about Generalized Anxiety Disorder",
+        "CRITICAL: Medical images listed (GAD7 screening tool, MSE findings) are psychiatric assessment tools, not radiological images",
+        "CRITICAL: Images are described as PDF format - GAD7 and MSE are clinical questionnaires/rating scales, not CXR/CT/ECG/ultrasound",
+        "CRITICAL: Question content is completely unrelated to radiology interpretation",
+        "CRITICAL: Options are placeholder text ('Option A/B/C/D') with no actual content",
+        "CRITICAL: Specialty field is 'Psychiatry' not 'Radiology'",
+        "CRITICAL: Topic is 'Anxiety Disorders' with no imaging component",
+        "CRITICAL: No systematic interpretation approach applicable - no radiological images to interpret",
+        "CRITICAL: References are general practice textbooks, not radiology-specific sources",
+        "CRITICAL: Explanation is generic placeholder text with no radiological content"
+      ],
+      "suggestions": [
+        "This item requires complete regeneration with actual radiological content",
+        "Replace psychiatric screening tools with genuine medical imaging (CXR, CT, ECG, or ultrasound)",
+        "Create question requiring systematic radiological interpretation (ABCDE for CXR, 7-step for ECG, ABC for CT)",
+        "Ensure options contain specific radiological findings or management decisions based on imaging",
+        "Add references from RANZCR guidelines, Imaging Pathways, or radiology textbooks",
+        "Change specialty field to 'Radiology' or relevant clinical specialty requiring imaging interpretation"
+      ],
+      "strengths": [
+        "Item has structured metadata and references",
+        "Citation confidence scores are within acceptable range (>0.65)",
+        "Generation method is documented"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "additional_comments": "This item is fundamentally misclassified. It is a psychiatry MCQ with psychiatric assessment tools, not a radiology interpretation item. The 'radiology-interpretation-expert' agent cannot evaluate psychiatric content. This represents a critical data categorization error requiring immediate correction before any radiological evaluation can occur."
+    }
+  ],
+  "num_agents": 3,
+  "quality_gate_violations": [
+    {
+      "gate": "australian_drug_names",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "MCQ contains placeholder content with no actual medication information to evaluate",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "content_completeness",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Question lacks specific clinical scenario with medication details",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "content_completeness",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Explanation contains only generic placeholder text without medication-specific guidance",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "educational_value",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Item provides no educational value for medication management - cannot assess Australian drug nomenclature, PBS compliance, or dosing accuracy with placeholder content",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "mcq_week2_regenerated_100_mcqs_with_images_001",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week2_regenerated_100_mcqs_with_images.json"
+}

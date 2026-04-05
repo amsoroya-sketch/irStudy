@@ -1,0 +1,2186 @@
+{
+  "metadata": {
+    "specialty": "Cardiology",
+    "generation_date": "2026-03-30T17:17:55.851991",
+    "generator": "regenerate_cardiology_osces.py + Claude CLI",
+    "total_osces": 17,
+    "source_file": "data/osces/cardiology_50_osces.json",
+    "regeneration_status": "PARTIAL",
+    "last_completion_date": "2026-04-03T09:17:52.574117"
+  },
+  "osces": [
+    {
+      "id": "CARD-OSCE-UNSTABLE-ANG-20260330",
+      "station_number": "CARD-004",
+      "station_type": "Clinical Assessment / Risk Stratification",
+      "specialty": "Cardiology",
+      "topic": "Acute Coronary Syndrome",
+      "subtopic": "Unstable Angina",
+      "time_limit": 8,
+      "difficulty": "intermediate",
+      "candidate_instructions": "Mrs Chen, a 64-year-old retired accountant, presents to ED with 6 hours of intermittent central chest tightness. She describes episodes lasting 10-15 minutes, occurring at rest and with minimal exertion. Pain rates 6/10, associated with mild shortness of breath and sweating. No radiation to arms or jaw. Known diabetes (HbA1c 8.2%), hypertension, and hyperlipidemia. Takes metformin, perindopril, and rosuvastatin. No previous cardiac events. Family history of father having MI at 58. Please assess and manage this patient.",
+      "actor_instructions": "You are Mrs Linda Chen, 64 years old, retired accountant from Sydney. You came to hospital because you've had several episodes of tight, squeezing chest pain today starting 6 hours ago. The pain comes and goes - lasting 10-15 minutes each time. It happened while you were sitting watching TV, then again when you walked to the bathroom. The pain feels like a heavy weight on your chest, rates about 6 out of 10. You feel a bit short of breath and sweaty with the pain. It doesn't go down your arms or to your jaw. You have diabetes for 8 years (your sugars aren't well controlled - last HbA1c was 8.2%), high blood pressure for 12 years, and high cholesterol. You take metformin 1000mg twice daily, perindopril 8mg daily, and rosuvastatin 20mg at night. You've never had heart problems before. Your father died of a heart attack at 58. You're worried this might be your heart. You don't smoke but you're about 15kg overweight and don't exercise much. The pain hasn't happened in the last hour but you're still worried.",
+      "examiner_instructions": "Observe candidate's approach to unstable angina assessment. Key points: rapid triage and recognition of ACS, appropriate history taking using SOCRATES framework, focused cardiovascular examination, ECG interpretation (looking for dynamic changes), troponin ordering, GRACE score calculation, and initiation of appropriate medical therapy. Candidate should distinguish unstable angina from STEMI/NSTEMI and implement appropriate risk stratification and management pathway.",
+      "marking_criteria": {
+        "introduction_assessment": {
+          "marks": 1,
+          "criteria": "Professional introduction, recognizes potential ACS, ensures continuous monitoring"
+        },
+        "focused_history": {
+          "marks": 2,
+          "criteria": "SOCRATES pain assessment, identifies rest pain and crescendo pattern, elicits cardiac risk factors (diabetes, hypertension, family history)"
+        },
+        "cardiovascular_examination": {
+          "marks": 2,
+          "criteria": "Vital signs, cardiac auscultation, peripheral pulses, signs of heart failure, checks for murmurs"
+        },
+        "ecg_interpretation": {
+          "marks": 2,
+          "criteria": "Correctly interprets ECG showing T-wave flattening in V4-V6, recognizes need for serial ECGs"
+        },
+        "risk_stratification": {
+          "marks": 2,
+          "criteria": "Calculates GRACE score (intermediate risk ~140), discusses TIMI score, identifies high-risk features"
+        },
+        "immediate_management": {
+          "marks": 3,
+          "criteria": "Aspirin 300mg stat, ticagrelor loading, fondaparinux, nitrates PRN, oxygen if hypoxic, serial troponins"
+        },
+        "investigations": {
+          "marks": 1,
+          "criteria": "Troponin (serial), FBC, UEC, HbA1c, lipids, CXR, echocardiogram"
+        },
+        "ongoing_management": {
+          "marks": 1,
+          "criteria": "Dual antiplatelet therapy, statin optimization, ACE inhibitor, beta-blocker, diabetes control"
+        },
+        "communication": {
+          "marks": 1,
+          "criteria": "Explains unstable angina diagnosis, discusses prognosis and need for possible angiography"
+        },
+        "total": 15
+      },
+      "sample_answer": {
+        "history_summary": "64-year-old female with 6-hour history of intermittent central chest tightness (6/10 severity). Episodes lasting 10-15 minutes, occurring at rest and with minimal exertion. Associated mild dyspnea and diaphoresis. No radiation. Risk factors: diabetes mellitus (HbA1c 8.2%), hypertension, dyslipidemia, obesity (BMI ~30), family history (father MI at 58), sedentary lifestyle. Medications: metformin 1000mg BD, perindopril 8mg daily, rosuvastatin 20mg nocte. No prior cardiac events.",
+        "examination_findings": "Alert, comfortable at rest. BP 145/88, HR 82 regular, SpO2 98% room air, temp 36.8\u00b0C. JVP not elevated at 45 degrees. Heart sounds: dual, no murmurs or added sounds. Chest clear bilaterally. Peripheral pulses present and equal. No peripheral edema. BMI approximately 30.",
+        "ecg_findings": "Sinus rhythm 82bpm. Normal axis. T-wave flattening in leads V4-V6. No ST elevation or depression. No Q waves. QT interval normal (QTc 420ms).",
+        "provisional_diagnosis": "Unstable angina (high probability ACS with troponin-negative status)",
+        "differential_diagnosis": [
+          "NSTEMI (await troponin results)",
+          "Stable angina with recent deterioration",
+          "Gastroesophageal reflux disease (atypical presentation)",
+          "Anxiety/panic disorder (but multiple risk factors favor ACS)"
+        ],
+        "grace_score_calculation": "Age 64 (28 points) + SBP 145 (18 points) + HR 82 (14 points) + Creatinine normal (1 point) + No heart failure (0 points) + No cardiac arrest (0 points) + No ST deviation (0 points) + Normal troponin (0 points) = 61 points. Estimated in-hospital mortality <1%, 6-month mortality 3%. Intermediate risk category.",
+        "immediate_management": [
+          "Continuous cardiac monitoring, IV access",
+          "Aspirin 300mg PO stat (chewed), then 100mg daily, PBS 1215Y",
+          "Ticagrelor 180mg PO loading dose, then 90mg BD, PBS 8721K",
+          "Fondaparinux 2.5mg SC daily (anticoagulation), PBS 8858P",
+          "Metoprolol 25mg BD (beta-blockade if no contraindications), PBS 2933K",
+          "GTN 300mcg sublingual PRN chest pain",
+          "Serial troponin at 0, 3, 6 hours (high-sensitivity troponin)",
+          "Serial ECGs every 6 hours or with recurrent pain",
+          "Oxygen only if SpO2 <94% (target 94-98%)"
+        ],
+        "investigations": [
+          "High-sensitivity troponin I (serial at 0, 3, 6 hours)",
+          "FBC, UEC, LFT, coagulation studies",
+          "HbA1c (diabetes control), fasting lipids",
+          "CXR (rule out other causes)",
+          "Echocardiogram within 24 hours (assess LV function)",
+          "Consider CT coronary angiography if low-intermediate risk and troponin negative"
+        ],
+        "ongoing_management": [
+          "Dual antiplatelet therapy: Continue aspirin + ticagrelor for 12 months",
+          "High-intensity statin: Increase rosuvastatin to 40mg nocte (target LDL <1.8), PBS 8086M",
+          "ACE inhibitor: Continue perindopril 8mg daily",
+          "Diabetes optimization: Consider SGLT2 inhibitor (empagliflozin 10mg daily), PBS 10825H",
+          "Risk stratification: Stress testing or coronary angiography within 72 hours if intermediate-high risk",
+          "Lifestyle: Cardiac rehabilitation referral, dietary counseling, exercise prescription",
+          "Follow-up: Cardiology review within 1 week, GP review in 2 weeks"
+        ],
+        "angiography_indications": [
+          "If troponin becomes positive (NSTEMI)",
+          "Recurrent chest pain despite medical therapy",
+          "Dynamic ECG changes",
+          "High GRACE score (>140) or high TIMI score",
+          "Consider within 24 hours given diabetes and multiple risk factors"
+        ]
+      },
+      "learning_points": [
+        "Unstable angina: Rest pain or crescendo pattern with normal troponin and no ST elevation",
+        "GRACE score >140 indicates high risk requiring early invasive strategy (<24 hours)",
+        "Diabetes is CAD equivalent - threshold for angiography should be lower",
+        "Serial troponins essential: High-sensitivity assay at 0, 3, 6 hours minimum",
+        "Dual antiplatelet contraindicated if high bleeding risk (HAS-BLED score \u22653)",
+        "SGLT2 inhibitors provide cardiovascular benefit in diabetes with established CAD"
+      ],
+      "australian_context": true,
+      "australian_guidelines": [
+        "National Heart Foundation: Acute Coronary Syndromes Guidelines 2022",
+        "Cardiac Society of Australia and New Zealand: NSTEACS Management",
+        "Therapeutic Guidelines: Cardiovascular - Unstable angina management",
+        "Australian Diabetes Society: Cardiovascular risk management in diabetes"
+      ],
+      "metadata": {
+        "generated_date": "2026-03-30T16:24:45.635700",
+        "generator": "regenerate_cardiology_osces.py + Claude CLI",
+        "constraint_applied": "Cardiology OSCE Requirements"
+      }
+    },
+    {
+      "id": "CARD-OSCE-ACS-SECONDARY-20260330",
+      "station_number": "CARD-047",
+      "station_type": "Clinical Assessment / Secondary Prevention Counselling",
+      "specialty": "Cardiology",
+      "topic": "Acute Coronary Syndrome",
+      "subtopic": "Secondary Prevention",
+      "time_limit": 8,
+      "difficulty": "intermediate",
+      "candidate_instructions": "Mrs Janet Thompson, a 62-year-old retired teacher, had an anterior STEMI 6 weeks ago treated with primary PCI to the LAD. She returns for follow-up. Her current medications are aspirin 100mg daily, ticagrelor 90mg BD, atorvastatin 40mg nocte, ramipril 5mg daily, and metoprolol 50mg BD. She has questions about her medications and lifestyle modifications. Please conduct a consultation focusing on secondary prevention strategies.",
+      "actor_instructions": "You are Janet Thompson, a 62-year-old retired primary school teacher. Six weeks ago you had a heart attack and received a stent to your main heart artery (LAD). You're feeling much better now but are anxious about having another heart attack. You have many questions: Do I really need all these medications? Can I stop the blood thinners - they make me bruise easily? I've heard statins cause muscle problems. Can I return to my morning walks? What about my diet? You live alone since your husband died 2 years ago. You don't smoke but used to enjoy a glass of wine with dinner. You're worried about the cost of medications on your pension.",
+      "examiner_instructions": "Assess the candidate's ability to provide comprehensive secondary prevention counselling post-MI. Look for: medication compliance discussion, lifestyle modification advice, cardiac rehabilitation referral, risk factor modification, appropriate follow-up planning, and empathetic communication addressing patient concerns.",
+      "marking_criteria": {
+        "introduction_rapport": {
+          "marks": 1,
+          "criteria": "Professional introduction, establishes rapport, explores patient's concerns and current understanding"
+        },
+        "medication_review": {
+          "marks": 3,
+          "criteria": "Reviews current medications, explains rationale for dual antiplatelet therapy duration (12 months), discusses statin benefits/side effects, addresses compliance issues"
+        },
+        "lifestyle_counselling": {
+          "marks": 2,
+          "criteria": "Dietary advice (Mediterranean diet, sodium restriction), exercise prescription (cardiac rehab referral), alcohol moderation"
+        },
+        "risk_factor_modification": {
+          "marks": 2,
+          "criteria": "Blood pressure targets (<130/80), lipid targets (LDL <1.8), diabetes screening, weight management"
+        },
+        "cardiac_rehabilitation": {
+          "marks": 1,
+          "criteria": "Explains benefits of cardiac rehab, arranges referral (MBS 81110), discusses graduated exercise program"
+        },
+        "follow_up_monitoring": {
+          "marks": 2,
+          "criteria": "Schedules appropriate follow-up (2-4 weeks), arranges echo at 3 months, lipid recheck in 6 weeks"
+        },
+        "safety_netting": {
+          "marks": 2,
+          "criteria": "Warning signs to seek urgent care (chest pain, breathlessness), when to call ambulance, medication interactions to avoid"
+        },
+        "communication_empathy": {
+          "marks": 2,
+          "criteria": "Addresses patient anxieties, provides written information, checks understanding, empathetic approach"
+        },
+        "total": 15
+      },
+      "sample_answer": {
+        "history_summary": "62-year-old retired teacher, 6 weeks post anterior STEMI with primary PCI to LAD. Current medications: aspirin 100mg daily, ticagrelor 90mg BD, atorvastatin 40mg nocte, ramipril 5mg daily, metoprolol 50mg BD. Lives alone, non-smoker, concerned about medication side effects and lifestyle modifications. Financial concerns about medication costs on pension.",
+        "examination_findings": "Well-appearing woman, comfortable at rest. BP 125/75, HR 65 regular, BMI 28. JVP not elevated. Heart sounds dual, no murmurs or gallop. Chest clear. No peripheral edema. Surgical scar over left radial artery (PCI access site) healing well.",
+        "current_medications_review": "Aspirin 100mg daily (antiplatelet) - continue indefinitely. Ticagrelor 90mg BD (P2Y12 inhibitor) - continue for 12 months total, then reassess. Atorvastatin 40mg nocte - increase to 80mg for high-intensity therapy post-MI. Ramipril 5mg daily - good dose, continue. Metoprolol 50mg BD - consider uptitration to 100mg BD if tolerated.",
+        "secondary_prevention_plan": [
+          "Dual antiplatelet therapy: Continue aspirin + ticagrelor for 12 months total (reduces recurrent MI by 20%)",
+          "High-intensity statin: Increase atorvastatin to 80mg nocte, target LDL <1.8 mmol/L (current likely 2.1), PBS 8086M",
+          "ACE inhibitor: Continue ramipril 5mg daily, improves survival post-MI, monitor renal function",
+          "Beta-blocker: Consider uptitrating metoprolol to 100mg BD if BP and HR tolerate",
+          "Blood pressure target: <130/80 mmHg (currently well controlled at 125/75)",
+          "Weight management: Target BMI 18.5-25, current BMI 28 - aim to lose 8-10kg through diet and exercise"
+        ],
+        "lifestyle_modifications": [
+          "Diet: Mediterranean diet pattern - olive oil, fish 2x/week, nuts, vegetables, wholegrains",
+          "Sodium restriction: <2g/day (avoid processed foods, don't add salt at table)",
+          "Alcohol: Maximum 1 standard drink/day for women (current wine with dinner acceptable)",
+          "Exercise: Cardiac rehabilitation program referral (MBS 81110) - supervised exercise 2x/week for 6-8 weeks",
+          "Home exercise: Start with 10-15 minutes walking daily, increase by 5 minutes weekly to 30 minutes",
+          "Target: 150 minutes moderate exercise weekly (brisk walking, swimming, cycling)"
+        ],
+        "medication_counselling": [
+          "Ticagrelor bruising: Normal side effect, report excessive bleeding to GP",
+          "Statin muscle pain: Rare (<5%), benefits far outweigh risks, cease only if severe myositis",
+          "Cost concerns: PBS subsidies available, discuss with pharmacist about generic options",
+          "Compliance aids: Webster pack or dose administration aid if helpful",
+          "Drug interactions: Avoid NSAIDs (ibuprofen), proton pump inhibitors if possible"
+        ],
+        "monitoring_follow_up": [
+          "GP review in 2 weeks: Check BP, heart rate, medication tolerance",
+          "Lipids recheck in 6 weeks: Aim LDL <1.8 mmol/L with increased statin dose",
+          "Echocardiogram in 3 months: Assess LV function recovery post-MI (MBS 55111)",
+          "Cardiology review in 3 months: Medication optimization, symptom assessment",
+          "Annual review: Coronary risk assessment, medication review, lifestyle reinforcement"
+        ],
+        "safety_netting": [
+          "Seek immediate medical attention for: Severe chest pain >10 minutes, severe breathlessness at rest",
+          "Call ambulance (000) for: Chest pain not relieved by GTN, collapse, severe breathlessness",
+          "Contact GP for: New ankle swelling, increasing fatigue, palpitations, medication concerns",
+          "Emergency medication: GTN spray prescribed - 1-2 sprays for chest tightness, if no relief in 5 minutes call ambulance"
+        ]
+      },
+      "learning_points": [
+        "Dual antiplatelet therapy duration: 12 months minimum post-STEMI (aspirin lifelong, P2Y12 inhibitor 12 months)",
+        "High-intensity statin therapy: Atorvastatin 80mg or rosuvastatin 40mg, target LDL <1.8 mmol/L post-MI",
+        "Cardiac rehabilitation: Improves mortality by 13%, quality of life, and reduces rehospitalization",
+        "Blood pressure targets post-MI: <130/80 mmHg (tighter control than general population)",
+        "Exercise prescription: Start low intensity, gradual progression, supervised program preferred initially",
+        "Mediterranean diet: Reduces cardiovascular events by 30% in high-risk patients"
+      ],
+      "australian_context": true,
+      "australian_guidelines": [
+        "National Heart Foundation: Secondary Prevention Guidelines 2022",
+        "CSANZ: Post-MI Management Guidelines",
+        "Therapeutic Guidelines: Cardiovascular - Secondary prevention"
+      ],
+      "metadata": {
+        "generated_date": "2026-03-30T16:27:32.746704",
+        "generator": "regenerate_cardiology_osces.py + Claude CLI",
+        "constraint_applied": "Cardiology OSCE Requirements"
+      }
+    },
+    {
+      "id": "CARD-OSCE-COCAINE-MI-20260330",
+      "station_number": "CARD-015",
+      "station_type": "Emergency Assessment / Acute Management",
+      "specialty": "Cardiology",
+      "topic": "Acute Coronary Syndrome",
+      "subtopic": "Cocaine-Induced MI",
+      "time_limit": 8,
+      "difficulty": "intermediate",
+      "candidate_instructions": "A 34-year-old construction worker presents to ED with 90 minutes of severe central chest pain. He appears agitated and is sweating profusely. His pulse is 120bpm and blood pressure is 185/105mmHg. He admits to cocaine use 2 hours ago. Assess and manage this patient.",
+      "actor_instructions": "You are Jake, a 34-year-old construction worker. You used cocaine at a party 2 hours ago and developed severe crushing chest pain 30 minutes later. The pain is 9/10, central, radiating to both arms. You are scared and agitated. You initially denied drug use but will admit to cocaine if asked directly. You've used cocaine recreationally for 5 years, usually weekends. You smoke 15 cigarettes daily. No other medical history. You are worried you're having a heart attack and that your wife will find out about the cocaine use.",
+      "examiner_instructions": "Assess candidate's ability to: 1) Obtain drug history sensitively, 2) Recognize cocaine-induced ACS pathophysiology, 3) Avoid contraindicated medications (beta-blockers), 4) Implement appropriate treatment with benzodiazepines and calcium channel blockers, 5) Discuss complications and monitoring requirements.",
+      "marking_criteria": {
+        "introduction_assessment": {
+          "marks": 1,
+          "criteria": "Professional introduction, recognizes emergency, ensures privacy for sensitive history"
+        },
+        "drug_history": {
+          "marks": 2,
+          "criteria": "Sensitively elicits cocaine use history - timing, route, frequency, last use"
+        },
+        "chest_pain_assessment": {
+          "marks": 1,
+          "criteria": "SOCRATES assessment of chest pain, excludes other causes (aortic dissection, PE)"
+        },
+        "examination": {
+          "marks": 1,
+          "criteria": "Vital signs (hypertension, tachycardia), cardiovascular examination, neurological assessment"
+        },
+        "ecg_interpretation": {
+          "marks": 2,
+          "criteria": "Correctly identifies anterior STEMI pattern, recognizes cocaine-induced coronary spasm/thrombosis"
+        },
+        "contraindicated_medications": {
+          "marks": 2,
+          "criteria": "Avoids beta-blockers (propranolol contraindicated - unopposed alpha stimulation), recognizes mechanism"
+        },
+        "appropriate_management": {
+          "marks": 3,
+          "criteria": "Benzodiazepines (diazepam 10mg IV), aspirin, calcium channel blocker (diltiazem), nitrates, considers thrombolysis vs PCI"
+        },
+        "complications_monitoring": {
+          "marks": 2,
+          "criteria": "Monitors for arrhythmias, hypertensive crisis, seizures, hyperthermia, rhabdomyolysis"
+        },
+        "communication": {
+          "marks": 1,
+          "criteria": "Non-judgmental approach, addresses drug use sensitively, explains treatment plan"
+        },
+        "total": 15
+      },
+      "sample_answer": {
+        "history_summary": "34-year-old construction worker with cocaine use 2 hours prior to presentation. Developed crushing central chest pain 9/10 severity 90 minutes ago, radiating bilaterally to arms. Pain constant, not relieved by position. Admits to recreational cocaine use weekends for 5 years, last use 2 hours ago (snorted approximately 0.5g). Smokes 15 cigarettes daily. No previous cardiac history, no family history of early MI. Currently agitated, diaphoretic.",
+        "examination_findings": "Agitated, diaphoretic, appears distressed. BP 185/105mmHg, HR 120bpm regular, RR 22, SpO2 98% room air, temp 37.8\u00b0C. JVP elevated 6cm. Heart sounds: S1, S2, no murmurs. Chest clear bilaterally. Pupils dilated 5mm, reactive. No focal neurological deficit. Skin warm, sweaty.",
+        "ecg_findings": "Sinus tachycardia 120bpm. ST elevation 4mm in leads V1-V4 (anterior STEMI pattern). T wave inversions in V1-V2. No Q waves yet (hyperacute pattern).",
+        "laboratory_findings": "Troponin I 12.5 \u03bcg/L (elevated), CK-MB 85 U/L, CK 450 U/L. Cocaine metabolite (benzoylecgonine) positive in urine. FBC: WCC 12.5, Hb 145. UEC: Na 138, K 3.2, Cr 95. Glucose 8.2mmol/L.",
+        "provisional_diagnosis": "Cocaine-induced anterior STEMI secondary to coronary artery spasm and/or thrombosis",
+        "differential_diagnosis": [
+          "Type A aortic dissection (but chest pain pattern and ECG changes favor ACS)",
+          "Cocaine-induced cardiomyopathy (but acute ST changes suggest acute coronary event)",
+          "Hypertensive emergency with demand ischemia (but troponin elevation suggests true MI)"
+        ],
+        "immediate_management": [
+          "IV access x2, continuous cardiac monitoring, oxygen if SpO2 <94%",
+          "AVOID beta-blockers (propranolol contraindicated - causes unopposed alpha-adrenergic stimulation, coronary vasoconstriction)",
+          "Diazepam 10mg IV (reduces sympathetic stimulation, anxiety, potential seizures)",
+          "Aspirin 300mg PO (chewed) - antiplatelet effect",
+          "Sublingual GTN 600mcg (coronary vasodilation, counters cocaine-induced spasm)",
+          "Diltiazem 60mg PO or 0.25mg/kg IV (calcium channel blocker - coronary vasodilation, anti-spasm)",
+          "Morphine 2.5mg IV + metoclopramide 10mg IV for pain/nausea",
+          "Correct hypokalemia: KCl 20mmol IV over 2 hours",
+          "Consider phentolamine 1-5mg IV if severe hypertension (alpha-blocker)",
+          "Urgent cardiology consult for primary PCI vs thrombolysis decision"
+        ],
+        "reperfusion_strategy": [
+          "Primary PCI preferred if available within 90 minutes (removes cocaine-induced thrombus)",
+          "Thrombolysis acceptable alternative: Tenecteplase 30-50mg IV (weight-based dosing)",
+          "Consider delayed PCI (6-24 hours) due to cocaine's proarrhythmic effects",
+          "Ensure adequate sedation before procedures (diazepam/midazolam)"
+        ],
+        "ongoing_management": [
+          "Continuous monitoring for 48 hours minimum (arrhythmias, seizures, hyperthermia)",
+          "Observe for complications: VT/VF, heart block, cardiogenic shock, aortic dissection",
+          "Temperature control if hyperthermia: cooling blankets, avoid antipyretics",
+          "Monitor CK levels (rhabdomyolysis risk), urine output, renal function",
+          "Dual antiplatelet: Aspirin 100mg daily + clopidogrel 75mg daily",
+          "ACE inhibitor: Perindopril 4mg daily (start when normotensive)",
+          "Statin: Atorvastatin 80mg nocte",
+          "Smoking cessation counseling and nicotine replacement therapy",
+          "Drug rehabilitation referral: Community mental health, addiction services",
+          "Echocardiogram to assess LV function post-MI",
+          "Psychiatric assessment if indicated (depression, anxiety, substance abuse)"
+        ],
+        "monitoring_requirements": [
+          "Continuous ECG monitoring for 48-72 hours (arrhythmia risk)",
+          "Hourly vital signs for first 12 hours, then 4-hourly",
+          "Neurological observations (GCS, pupils, seizure activity)",
+          "Core temperature monitoring (hyperthermia risk)",
+          "Urine output monitoring (rhabdomyolysis, acute kidney injury)",
+          "Serial troponin levels (peak typically 12-24 hours)",
+          "Electrolytes 6-hourly (hypokalemia, hyponatremia common)",
+          "CK levels daily for 3 days (rhabdomyolysis screening)"
+        ]
+      },
+      "learning_points": [
+        "Beta-blockers absolutely contraindicated in cocaine-induced ACS (unopposed alpha stimulation worsens coronary spasm)",
+        "Benzodiazepines first-line: reduce sympathetic stimulation, prevent seizures, control agitation",
+        "Calcium channel blockers (diltiazem/verapamil) counteract cocaine-induced coronary spasm",
+        "Cocaine blocks sodium channels causing local anesthetic effect and arrhythmias",
+        "Cocaine increases catecholamine levels causing coronary spasm, thrombosis, accelerated atherosclerosis",
+        "Young patients with MI should trigger drug screen - 25% of MI in <45 years associated with cocaine",
+        "Complications: arrhythmias (VT/VF), seizures, hyperthermia, rhabdomyolysis, aortic dissection",
+        "Non-judgmental drug history essential - patients often initially deny use due to legal/social concerns"
+      ],
+      "complications": [
+        "Ventricular arrhythmias (VT/VF) - most common cause of death",
+        "Complete heart block (sodium channel blockade)",
+        "Cardiogenic shock (massive MI, cardiomyopathy)",
+        "Aortic dissection (hypertensive crisis)",
+        "Seizures (sodium channel blockade, hyperthermia)",
+        "Hyperthermia (>41\u00b0C) - poor prognosis",
+        "Rhabdomyolysis leading to acute kidney injury",
+        "Intracerebral hemorrhage (hypertensive crisis)",
+        "Sudden cardiac death (arrhythmias, coronary spasm)"
+      ],
+      "australian_context": true,
+      "australian_guidelines": [
+        "National Heart Foundation: Acute Coronary Syndromes Guidelines",
+        "CSANZ: Cocaine-Associated Cardiovascular Complications",
+        "Therapeutic Guidelines: Cardiovascular - Drug-induced cardiac conditions",
+        "Australian Drug Information Network: Cocaine toxicity management",
+        "NSW Health: Substance Use Acute Management Guidelines"
+      ],
+      "pbs_medications": [
+        "Diazepam 10mg IV - PBS 8249G (anxiety, sedation)",
+        "Aspirin 100mg daily - PBS 8609F (antiplatelet)",
+        "Clopidogrel 75mg daily - PBS 8700B (dual antiplatelet)",
+        "Diltiazem 60mg BD - PBS 2934L (calcium channel blocker)",
+        "Perindopril 4mg daily - PBS 8625L (ACE inhibitor)",
+        "Atorvastatin 80mg nocte - PBS 8086M (high-intensity statin)"
+      ],
+      "red_flags": [
+        "Chest pain in young adult (<40 years) - consider drug-induced",
+        "Hypertensive crisis with chest pain - exclude aortic dissection",
+        "Agitation with cardiac symptoms - consider sympathomimetic toxicity",
+        "Hyperthermia >39\u00b0C - cocaine toxicity complication",
+        "Wide QRS >120ms - sodium channel blockade, risk of VT"
+      ],
+      "metadata": {
+        "generated_date": "2026-03-30T16:34:54.886825",
+        "generator": "regenerate_cardiology_osces.py + Claude CLI",
+        "constraint_applied": "Cardiology OSCE Requirements"
+      }
+    },
+    {
+      "id": "CARD-OSCE-HF-HFPEF-20260330",
+      "station_number": "CARD-014",
+      "station_type": "Clinical Assessment / Chronic Disease Management",
+      "specialty": "Cardiology",
+      "topic": "Heart Failure",
+      "subtopic": "HFpEF",
+      "time_limit": 8,
+      "difficulty": "intermediate",
+      "candidate_instructions": "Mrs Margaret Chen, a 72-year-old retired teacher, presents to your clinic with a 6-month history of progressively worsening shortness of breath on exertion and ankle swelling. She can now only walk 50 meters before becoming breathless and has difficulty climbing one flight of stairs. She sleeps with 3 pillows due to breathlessness when lying flat. Known hypertension for 15 years, type 2 diabetes for 8 years, and atrial fibrillation diagnosed 2 years ago. Recent echocardiogram shows normal left ventricular ejection fraction (60%) but evidence of diastolic dysfunction.",
+      "actor_instructions": "You are Mrs Margaret Chen, 72 years old, retired primary school teacher. Over the past 6 months, you have noticed increasing shortness of breath when walking. Previously you could walk to the shops (400m) without problems, but now you get breathless after 50 meters. You need to stop and rest when climbing stairs to your bedroom. You sleep with 3 pillows because you feel breathless when lying flat. Your ankles have been swollen for 3 months, worse in the evenings. You have gained 4kg in the past 2 months. You take metformin for diabetes, amlodipine and irbesartan for blood pressure, and warfarin for atrial fibrillation. You are worried about your heart getting worse and whether you will end up in a wheelchair.",
+      "examiner_instructions": "Assess the candidate's ability to: recognize HFpEF based on symptoms with preserved ejection fraction, differentiate from HFrEF, understand the pathophysiology of diastolic heart failure, provide appropriate management including diuretics and comorbidity optimization, discuss prognosis and lifestyle modifications, demonstrate understanding of Australian Heart Foundation HFpEF guidelines.",
+      "marking_criteria": {
+        "introduction_assessment": {
+          "marks": 1,
+          "criteria": "Appropriate introduction, establishes rapport, recognizes chronic heart failure presentation"
+        },
+        "focused_history": {
+          "marks": 2,
+          "criteria": "NYHA functional class assessment, orthopnea/PND, weight gain, exercise tolerance quantification, medication compliance"
+        },
+        "examination": {
+          "marks": 2,
+          "criteria": "Cardiovascular examination: JVP, heart sounds (S3/S4), lung bases, ankle edema, weight measurement"
+        },
+        "hfpef_recognition": {
+          "marks": 3,
+          "criteria": "Correctly identifies HFpEF: heart failure symptoms + preserved EF (\u226550%) + evidence of diastolic dysfunction, distinguishes from HFrEF"
+        },
+        "investigation_interpretation": {
+          "marks": 2,
+          "criteria": "Understands echocardiogram findings, discusses BNP significance, orders appropriate investigations (BNP, renal function, HbA1c)"
+        },
+        "acute_management": {
+          "marks": 2,
+          "criteria": "Initiates diuretic therapy (furosemide), fluid restriction, daily weights, monitors renal function"
+        },
+        "comorbidity_optimization": {
+          "marks": 2,
+          "criteria": "Optimizes BP control, diabetes management, AF anticoagulation, discusses medication review"
+        },
+        "lifestyle_counseling": {
+          "marks": 1,
+          "criteria": "Exercise prescription, dietary advice (sodium restriction), weight management, vaccination recommendations"
+        },
+        "total": 15
+      },
+      "sample_answer": {
+        "history_summary": "72-year-old woman with 6-month progressive dyspnea on exertion (NYHA Class III - can walk 50m before breathless), orthopnea (sleeps with 3 pillows), bilateral ankle edema for 3 months, 4kg weight gain in 2 months. Exercise tolerance declined from 400m to 50m. Comorbidities: hypertension 15 years (amlodipine 10mg, irbesartan 300mg), type 2 diabetes 8 years (metformin 1000mg BD), atrial fibrillation 2 years (warfarin, INR target 2.0-3.0). Recent echo: EF 60%, grade II diastolic dysfunction, enlarged left atrium.",
+        "examination_findings": "Alert, comfortable at rest. Weight 78kg (4kg increase from baseline 74kg). BP 145/85, HR 88 irregularly irregular (AF), SpO2 96% room air. JVP elevated 6cm above sternal angle. Heart sounds: irregularly irregular rhythm, soft S4 gallop, no murmurs. Lung examination: fine bibasilar crackles. Bilateral pitting ankle edema to mid-shin level. No hepatomegaly.",
+        "investigation_results": "Recent echocardiogram: LVEF 60%, grade II diastolic dysfunction (E/e' ratio 15, deceleration time 160ms), left atrial enlargement (volume index 42mL/m\u00b2), normal wall motion. BNP 285 pg/mL (elevated, consistent with heart failure). Baseline creatinine 85 \u03bcmol/L, eGFR 68 mL/min/1.73m\u00b2. HbA1c 7.2% (diabetes suboptimally controlled).",
+        "provisional_diagnosis": "Heart Failure with preserved Ejection Fraction (HFpEF) NYHA Class III",
+        "differential_diagnosis": [
+          "HFrEF (excluded by normal ejection fraction 60%)",
+          "Pulmonary embolism (but chronic progressive course makes less likely)",
+          "Chronic kidney disease with fluid overload (but eGFR 68 not severe enough)",
+          "Medication-induced edema (amlodipine can cause ankle swelling)"
+        ],
+        "immediate_management": [
+          "Initiate diuretic therapy: Furosemide 40mg PO daily, PBS 1381H",
+          "Fluid restriction to 1.5L per day",
+          "Daily weight monitoring (target loss 0.5-1kg per day until dry weight achieved)",
+          "Monitor renal function and electrolytes in 48-72 hours",
+          "Continue warfarin for AF (check INR this week, target 2.0-3.0)",
+          "Blood pressure optimization: increase irbesartan to maximum dose 300mg daily (current), consider adding SGLT2 inhibitor"
+        ],
+        "ongoing_management": [
+          "Comorbidity optimization:",
+          "- Hypertension: Target <130/80 mmHg, consider dapagliflozin 10mg daily (SGLT2 inhibitor improves HF outcomes + diabetes control) PBS 11489N",
+          "- Diabetes: HbA1c target <7%, metformin optimization, consider GLP-1 agonist if BMI >30",
+          "- Atrial fibrillation: Continue anticoagulation, consider rate control if HR >100",
+          "Lifestyle modifications:",
+          "- Cardiac rehabilitation referral (MBS 81110) - exercise training improves exercise capacity in HFpEF",
+          "- Dietary consultation: sodium restriction <2g/day (5g salt), Mediterranean diet pattern",
+          "- Weight management if BMI >25 (current BMI 28)",
+          "Follow-up schedule:",
+          "- Review in 1 week (diuretic response, weight, symptoms)",
+          "- Cardiology referral for HFpEF specialist management",
+          "- 6-monthly echocardiograms to monitor diastolic function",
+          "- Annual influenza vaccination, 5-yearly pneumococcal (MBS 23600)"
+        ],
+        "prognosis_discussion": "HFpEF has similar mortality to HFrEF (5-year survival ~60%). Focus on symptom management and quality of life. Unlike HFrEF, no proven mortality-reducing medications, but symptom improvement possible with diuretics and exercise training. Importance of comorbidity control (BP, diabetes, AF) to slow progression."
+      },
+      "learning_points": [
+        "HFpEF diagnosis: Heart failure symptoms + EF \u226550% + evidence of diastolic dysfunction (E/e' >15, elevated BNP)",
+        "HFpEF vs HFrEF: No proven mortality-reducing medications for HFpEF, focus on symptom management and comorbidity optimization",
+        "SGLT2 inhibitors (dapagliflozin) reduce HF hospitalizations in HFpEF regardless of diabetes status (DELIVER trial)",
+        "Exercise training is cornerstone therapy - improves exercise capacity and quality of life in HFpEF",
+        "Comorbidity burden higher in HFpEF: hypertension (90%), diabetes (50%), AF (40%) - aggressive optimization essential",
+        "Diuretics for volume management but careful monitoring - HFpEF patients preload-sensitive, can become hypotensive easily"
+      ],
+      "australian_context": true,
+      "australian_guidelines": [
+        "National Heart Foundation: Guidelines for the Prevention, Detection and Management of Chronic Heart Failure",
+        "Cardiac Society of Australia and New Zealand (CSANZ): Heart Failure Guidelines",
+        "Therapeutic Guidelines: Cardiovascular - Chronic heart failure",
+        "NHFA/CSANZ Heart Failure Guidelines 2018 Update: Recommendations for HFpEF management"
+      ],
+      "metadata": {
+        "generated_date": "2026-03-30T16:37:46.692251",
+        "generator": "regenerate_cardiology_osces.py + Claude CLI",
+        "constraint_applied": "Cardiology OSCE Requirements"
+      }
+    },
+    {
+      "id": "CARD-OSCE-HEART-FAIL-RENAL-20260330",
+      "station_number": "CARD-018",
+      "station_type": "Clinical Assessment / Chronic Disease Management",
+      "specialty": "Cardiology",
+      "topic": "Heart Failure",
+      "subtopic": "Heart Failure in Renal Disease",
+      "time_limit": 8,
+      "difficulty": "intermediate",
+      "candidate_instructions": "Mrs Eleanor Chen, a 67-year-old retired librarian, presents to your clinic for review of her heart failure. She has chronic kidney disease stage 3b (eGFR 35 mL/min/1.73m\u00b2) and was diagnosed with heart failure with reduced ejection fraction 6 months ago following an anterior STEMI. She reports increasing shortness of breath over the past 2 weeks, now breathless walking to her letterbox (20 meters). She has gained 3kg in the last week. Her current medications include ramipril 2.5mg daily, metoprolol 25mg BD, and furosemide 40mg daily. Take a focused history, examine appropriately, and discuss management including medication optimization in the context of her renal impairment.",
+      "actor_instructions": "You are Mrs Eleanor Chen, a 67-year-old retired librarian. You live alone in a ground-floor unit. Six months ago you had a heart attack and were told you have heart failure. You understand this means your heart is weak. Over the past 2 weeks, you've become increasingly short of breath. You used to be able to walk to the shops (200m) but now you're breathless just walking to your letterbox. You've been waking up at night gasping for air and need 3 pillows to sleep. You've gained 3kg in a week despite eating less. Your ankles are swollen by evening. You take ramipril 2.5mg in the morning, metoprolol 25mg twice daily, and furosemide 40mg in the morning. You're worried about your kidneys as the cardiologist mentioned they're not working as well as they should. You sometimes forget the evening metoprolol. You're anxious about the fluid restriction - you love your tea and find 1.5L very restrictive.",
+      "examiner_instructions": "Observe the candidate's approach to heart failure management in chronic kidney disease. Key areas: recognition of decompensated heart failure, appropriate examination technique, understanding of medication optimization with renal impairment, fluid management strategies, and patient education. Look for discussion of ACE inhibitor optimization vs renal function, diuretic adjustment, and consideration of mineralocorticoid receptor antagonist. Candidate should demonstrate understanding of heart failure staging and prognosis in CKD patients.",
+      "marking_criteria": {
+        "introduction_assessment": {
+          "marks": 1,
+          "criteria": "Professional introduction, establishes rapport, identifies key comorbidities (HFrEF + CKD3b)"
+        },
+        "focused_history": {
+          "marks": 2,
+          "criteria": "NYHA class assessment, recent symptom progression (orthopnea, PND, exercise tolerance), weight gain, medication adherence"
+        },
+        "examination": {
+          "marks": 2,
+          "criteria": "Cardiovascular examination: JVP, heart sounds (S3 gallop), lung bases (crepitations), peripheral edema, pulse character"
+        },
+        "investigation_interpretation": {
+          "marks": 1,
+          "criteria": "Requests appropriate tests: BNP/NT-proBNP, UEC (creatinine/eGFR), echocardiogram, discusses baseline renal function"
+        },
+        "medication_optimization": {
+          "marks": 3,
+          "criteria": "ACE inhibitor optimization (discusses ramipril increase vs renal function monitoring), beta-blocker titration (metoprolol to 50mg BD), considers spironolactone addition (25mg daily with K+ monitoring)"
+        },
+        "diuretic_management": {
+          "marks": 2,
+          "criteria": "Furosemide dose adjustment (increase to 80mg daily), discusses fluid restriction (1.5L/day), daily weights monitoring, discusses loop diuretic resistance"
+        },
+        "renal_considerations": {
+          "marks": 2,
+          "criteria": "Discusses cardio-renal syndrome, ACE inhibitor monitoring (acceptable creatinine rise <30%), potassium monitoring, avoids nephrotoxic drugs"
+        },
+        "patient_education": {
+          "marks": 1,
+          "criteria": "Explains fluid restriction rationale, daily weight monitoring, when to seek help (weight gain >2kg in 2 days)"
+        },
+        "follow_up_safety": {
+          "marks": 1,
+          "criteria": "Arranges renal function monitoring in 1 week, heart failure clinic referral, discusses prognosis and cardiac rehabilitation"
+        },
+        "total": 15
+      },
+      "sample_answer": {
+        "history_summary": "67-year-old woman with HFrEF (EF 30% post-anterior STEMI 6 months ago) and CKD stage 3b (eGFR 35). Progressive dyspnea over 2 weeks, now NYHA class III (breathless at 20m vs previous 200m). Orthopnea (3 pillows), paroxysmal nocturnal dyspnea, 3kg weight gain in 1 week. Ankle swelling worse by evening. Current medications: ramipril 2.5mg daily, metoprolol 25mg BD (poor evening adherence), furosemide 40mg daily. Lives independently, anxious about fluid restriction.",
+        "examination_findings": "Appears comfortable at rest. BP 125/78, HR 88 regular, SpO2 96% room air. JVP elevated to 6cm above sternal angle. Heart sounds: S1, S2, S3 gallop heard at apex. Bilateral fine crepitations to mid-zones. Peripheral edema: pitting to mid-calf bilaterally, worse right side. No ascites. Weight 68kg (baseline 65kg).",
+        "investigation_results": "NT-proBNP: 3800 pg/mL (elevated, indicates volume overload). UEC: Creatinine 135 \u03bcmol/L (stable from 130), eGFR 35 mL/min/1.73m\u00b2 (stable). Potassium 4.2 mmol/L. Echocardiogram: LV EF 30% (unchanged), moderate LV dilatation, mild functional MR.",
+        "provisional_diagnosis": "Acute decompensated heart failure (ADHF) on background of chronic HFrEF with CKD stage 3b",
+        "differential_diagnosis": [
+          "Medication non-adherence (missed beta-blocker doses)",
+          "Progression of underlying CAD (silent ischemia)",
+          "Renal artery stenosis (sudden decline in renal function)",
+          "Thyroid dysfunction (can precipitate heart failure)"
+        ],
+        "immediate_management": [
+          "Increase furosemide to 80mg daily (double current dose for acute decompensation)",
+          "Strict fluid restriction 1.5L/day including soups, ice cream",
+          "Daily weights at same time, same clothes, empty bladder",
+          "Continue ramipril 2.5mg daily (monitor renal function closely)",
+          "Optimize metoprolol: increase to 50mg BD if tolerated (HR >60, BP >100 systolic)",
+          "Consider adding spironolactone 25mg daily (improves mortality in HFrEF)",
+          "Monitor: UEC in 48-72 hours (acceptable creatinine rise <30% or <265 \u03bcmol/L)",
+          "Potassium monitoring with spironolactone (target 4.0-5.0 mmol/L)"
+        ],
+        "ongoing_management": [
+          "ACE inhibitor optimization: Aim ramipril 10mg daily (titrate by 2.5mg weekly if eGFR stable)",
+          "Beta-blocker titration: Target metoprolol 100mg BD (evidence-based mortality benefit)",
+          "MRA therapy: Spironolactone 25mg daily if K+ <4.5 and eGFR >30 (RALES trial benefit)",
+          "Cardiac rehabilitation referral (MBS 81110) - supervised exercise improves outcomes",
+          "Heart failure clinic: Nurse-led monitoring, medication optimization, education",
+          "Dietary sodium restriction <2g/day (6g salt), dietitian referral",
+          "Influenza and pneumococcal vaccination (reduce hospitalization risk)",
+          "Consider ICD if EF remains \u226435% after 3 months optimal medical therapy (MADIT-II criteria)",
+          "Advance care planning discussion given CKD progression risk"
+        ]
+      },
+      "learning_points": [
+        "Cardio-renal syndrome: Heart failure and CKD mutually accelerate progression",
+        "ACE inhibitor in CKD: Continue if creatinine rise <30% and K+ <5.5 (mortality benefit outweighs risk)",
+        "Diuretic resistance: Common in CKD, may need combination therapy (furosemide + metolazone)",
+        "Spironolactone in CKD: Use if eGFR >30, K+ <4.5, with close monitoring (reduces mortality 30%)",
+        "NT-proBNP levels: Higher baseline in CKD, use trends rather than absolute values",
+        "Fluid management: 1.5L restriction includes all fluids, daily weights most sensitive marker"
+      ],
+      "australian_context": true,
+      "australian_guidelines": [
+        "National Heart Foundation: Chronic Heart Failure Guidelines",
+        "CSANZ: Heart Failure Guidelines 2023",
+        "Therapeutic Guidelines: Cardiovascular - Heart failure",
+        "KDIGO: Clinical Practice Guideline for CKD",
+        "Heart Foundation: Position Statement on Heart Failure and Chronic Kidney Disease"
+      ],
+      "pbs_items": [
+        "Ramipril 2.5mg, 5mg, 10mg tablets - PBS 8624K (Authority required >5mg daily)",
+        "Metoprolol 25mg, 50mg, 100mg tablets - PBS 2933K",
+        "Furosemide 40mg tablets - PBS 2933K",
+        "Spironolactone 25mg tablets - PBS 2933K (Authority required in heart failure)",
+        "NT-proBNP test - MBS 66551 (Medicare rebate for heart failure monitoring)"
+      ],
+      "metadata": {
+        "generated_date": "2026-03-30T16:42:53.383298",
+        "generator": "regenerate_cardiology_osces.py + Claude CLI",
+        "constraint_applied": "Cardiology OSCE Requirements"
+      }
+    },
+    {
+      "id": "CARD-OSCE-ARRHYTHMIA-SVT-20260330",
+      "station_number": "CARD-022",
+      "station_type": "Clinical Assessment / Emergency Management",
+      "specialty": "Cardiology",
+      "topic": "Arrhythmias",
+      "subtopic": "Supraventricular Tachycardia",
+      "time_limit": 8,
+      "difficulty": "intermediate",
+      "candidate_instructions": "A 24-year-old female university student presents to emergency department with sudden onset of rapid palpitations that began 45 minutes ago while studying for exams. She describes her heart as 'racing' and feels dizzy when standing. She has been drinking multiple energy drinks and has had minimal sleep over the past week. No previous cardiac history. Vital signs: BP 110/70, HR 180 regular, SpO2 98% room air, temp 37.1\u00b0C. She appears anxious but alert.",
+      "actor_instructions": "You are a 24-year-old law student. You were studying in the library when suddenly your heart started 'racing' about 45 minutes ago. It came on very suddenly - one moment normal, the next your heart was pounding. You feel dizzy when you stand up and slightly nauseous. You've been very stressed with upcoming exams and have been drinking 4-5 energy drinks daily for the past week, sleeping only 3-4 hours per night. You've never had this before. You're worried something is seriously wrong with your heart. You don't take any medications and have no known medical conditions. You don't smoke or use recreational drugs but admit to excessive caffeine intake.",
+      "examiner_instructions": "Observe the candidate's ability to: rapidly assess a stable patient with SVT, obtain focused history including triggers, perform appropriate examination, interpret ECG showing narrow-complex tachycardia, attempt vagal maneuvers first, consider adenosine if vagal maneuvers fail, provide appropriate discharge advice and follow-up. Key teaching points: SVT is often triggered by caffeine/stress in young patients, vagal maneuvers first-line, adenosine if unsuccessful, lifestyle modification crucial.",
+      "marking_criteria": {
+        "introduction_assessment": {
+          "marks": 1,
+          "criteria": "Professional introduction, rapid assessment of hemodynamic stability"
+        },
+        "focused_history": {
+          "marks": 2,
+          "criteria": "Onset/duration, triggers (caffeine, stress, sleep deprivation), symptoms, past episodes, medications"
+        },
+        "examination": {
+          "marks": 1,
+          "criteria": "Vital signs, cardiovascular examination, signs of hemodynamic compromise"
+        },
+        "ecg_interpretation": {
+          "marks": 2,
+          "criteria": "Correctly identifies narrow-complex tachycardia at 180bpm, regular rhythm, probable AVNRT"
+        },
+        "vagal_maneuvers": {
+          "marks": 3,
+          "criteria": "Attempts Valsalva maneuver or carotid sinus massage (after checking for bruits), explains technique to patient"
+        },
+        "pharmacological_management": {
+          "marks": 2,
+          "criteria": "Discusses adenosine 6mg IV push if vagal maneuvers fail, followed by 12mg if needed"
+        },
+        "investigations": {
+          "marks": 1,
+          "criteria": "Troponin, UEC, TFTs, consider echocardiogram if recurrent"
+        },
+        "discharge_planning": {
+          "marks": 2,
+          "criteria": "Lifestyle modification (reduce caffeine, stress management, adequate sleep), safety netting, cardiology referral if recurrent"
+        },
+        "communication": {
+          "marks": 1,
+          "criteria": "Reassures patient about benign nature, explains condition clearly, addresses concerns"
+        },
+        "total": 15
+      },
+      "sample_answer": {
+        "history_summary": "24-year-old female law student with sudden onset palpitations 45 minutes ago. Heart rate 180bpm, regular rhythm. Precipitating factors: excessive caffeine intake (4-5 energy drinks daily), exam stress, sleep deprivation (3-4 hours nightly for past week). No chest pain, shortness of breath at rest. Feels dizzy on standing, mild nausea. No previous episodes, no medications, no family history of arrhythmias or sudden cardiac death.",
+        "examination_findings": "Alert, anxious but hemodynamically stable. BP 110/70, HR 180 regular, SpO2 98% room air, afebrile. JVP not elevated. Heart sounds: very rapid but regular, no murmurs or gallops. Chest clear bilaterally. No peripheral edema. Mild postural dizziness, no syncope. Carotid pulse regular, no bruits palpated.",
+        "ecg_findings": "Regular narrow-complex tachycardia at 180bpm. QRS width <120ms. No visible P waves (buried in QRS complexes). Rate exactly 180bpm suggests AVNRT (AV nodal reentrant tachycardia). No ST segment changes or signs of ischemia.",
+        "provisional_diagnosis": "AV nodal reentrant tachycardia (AVNRT) - most common type of SVT",
+        "differential_diagnosis": [
+          "AVRT (AV reentrant tachycardia) - less likely without delta waves on prior ECG",
+          "Atrial tachycardia - would expect visible P waves",
+          "Sinus tachycardia - rate >180 unusual for sinus, would have visible P waves"
+        ],
+        "immediate_management": [
+          "Continuous cardiac monitoring, IV access",
+          "Vagal maneuvers first-line (patient hemodynamically stable):",
+          "- Valsalva maneuver: blow into 10mL syringe for 15 seconds",
+          "- Modified Valsalva: legs elevated during strain phase",
+          "- Carotid sinus massage (after confirming no carotid bruits): 5-10 seconds right side first",
+          "If vagal maneuvers fail:",
+          "- Adenosine 6mg IV push via large antecubital vein, followed immediately by 20mL saline flush",
+          "- If no response after 1-2 minutes: Adenosine 12mg IV push",
+          "- If still no response: Adenosine 18mg IV push",
+          "- Warn patient of brief chest discomfort/sense of impending doom",
+          "Monitor for conversion to sinus rhythm"
+        ],
+        "ongoing_management": [
+          "Post-conversion: Observe for 2 hours for recurrence",
+          "Investigations: UEC, TFTs (exclude hyperthyroidism), troponin (if chest pain)",
+          "Lifestyle modifications (key for prevention):",
+          "- Eliminate/drastically reduce caffeine intake (<100mg daily)",
+          "- Stress management techniques, adequate sleep (7-8 hours nightly)",
+          "- Avoid energy drinks, limit coffee to 1 cup daily",
+          "- Consider magnesium supplementation 300mg daily",
+          "Patient education: Valsalva technique for future episodes",
+          "Safety netting: Return if episodes recur, last >30 minutes, or associated with chest pain/syncope",
+          "Cardiology referral if: Recurrent episodes despite lifestyle changes, structural heart disease suspected",
+          "Consider 24-hour Holter monitor if symptoms between episodes"
+        ]
+      },
+      "learning_points": [
+        "SVT in young adults: Often triggered by caffeine, stress, sleep deprivation, alcohol",
+        "AVNRT vs AVRT: AVNRT has no visible P waves, AVRT may show retrograde P waves",
+        "Vagal maneuvers: 25% success rate, try modified Valsalva (supine with leg elevation) first",
+        "Adenosine: Half-life 6 seconds, give via large vein with rapid saline flush",
+        "Prevention key: Caffeine reduction most effective intervention in young patients",
+        "Red flags: Irregular rhythm (AF), wide complex (VT), hemodynamic instability (cardioversion)"
+      ],
+      "australian_context": true,
+      "australian_guidelines": [
+        "CSANZ: Management of Supraventricular Tachycardia Guidelines",
+        "Therapeutic Guidelines: Cardiovascular - Arrhythmias",
+        "National Heart Foundation: Arrhythmia Management"
+      ],
+      "metadata": {
+        "generated_date": "2026-03-30T16:47:37.813099",
+        "generator": "regenerate_cardiology_osces.py + Claude CLI",
+        "constraint_applied": "Cardiology OSCE Requirements"
+      }
+    },
+    {
+      "id": "CARD-OSCE-ARRHYTHMIA-BRADY-20260330",
+      "station_number": "CARD-024",
+      "station_type": "Clinical Assessment / Emergency Management",
+      "specialty": "Cardiology",
+      "topic": "Arrhythmias",
+      "subtopic": "Bradycardia",
+      "time_limit": 8,
+      "difficulty": "intermediate",
+      "candidate_instructions": "A 72-year-old retired teacher presents to ED with a 3-day history of increasing fatigue, dizziness, and near-fainting episodes. She reports feeling 'sluggish' and has had two episodes where she nearly collapsed while standing up from a chair. No chest pain or shortness of breath. Known hypertension treated with amlodipine and metoprolol. Please assess and manage this patient.",
+      "actor_instructions": "You are Margaret Chen, a 72-year-old retired primary school teacher. Over the past 3 days you have felt increasingly tired and 'woozy'. Yesterday you nearly fainted twice when standing up from your chair - you felt dizzy and your vision went grey for a few seconds. You managed to sit back down both times. You feel like your heart is beating very slowly. You have been taking your blood pressure tablets as usual (amlodipine 10mg daily and metoprolol 100mg twice daily for 5 years). You have not started any new medications. You are worried something is seriously wrong with your heart. You live alone but your daughter visits daily. You have been able to eat and drink normally but feel too tired to do your usual gardening.",
+      "examiner_instructions": "Observe the candidate's approach to bradycardia assessment. Key areas: recognition of symptomatic bradycardia, identification of beta-blocker as likely cause, appropriate ECG interpretation, immediate management decisions (IV access, atropine availability, pacing considerations), and medication review. Look for systematic approach to secondary causes and appropriate disposition planning.",
+      "marking_criteria": {
+        "introduction_assessment": {
+          "marks": 1,
+          "criteria": "Professional introduction, recognizes potential cardiac emergency, obtains focused history"
+        },
+        "focused_history": {
+          "marks": 2,
+          "criteria": "Identifies timeline of symptoms, medication history (especially beta-blockers), associated symptoms, functional impact"
+        },
+        "examination": {
+          "marks": 2,
+          "criteria": "Vital signs including accurate pulse assessment, cardiovascular examination, signs of heart failure or hypoperfusion"
+        },
+        "ecg_interpretation": {
+          "marks": 3,
+          "criteria": "Correctly identifies bradycardia, determines rhythm (sinus bradycardia vs AV blocks), assesses for ischemic changes"
+        },
+        "immediate_management": {
+          "marks": 2,
+          "criteria": "IV access, continuous monitoring, atropine available, considers temporary pacing if unstable"
+        },
+        "medication_review": {
+          "marks": 2,
+          "criteria": "Identifies beta-blocker as likely cause, discusses cessation/dose reduction, reviews other bradycardic medications"
+        },
+        "investigations": {
+          "marks": 1,
+          "criteria": "Appropriate tests: troponin, TFTs, electrolytes, drug levels if indicated"
+        },
+        "disposition": {
+          "marks": 1,
+          "criteria": "Appropriate monitoring level, cardiology consultation, discharge planning with medication changes"
+        },
+        "communication": {
+          "marks": 1,
+          "criteria": "Explains condition clearly, reassures appropriately, discusses medication changes"
+        },
+        "total": 15
+      },
+      "sample_answer": {
+        "history_summary": "72-year-old woman with 3-day history of progressive fatigue, dizziness, and presyncope. Two episodes of near-collapse when standing, described as vision going grey. No chest pain, dyspnea, or palpitations. Longstanding hypertension treated with amlodipine 10mg daily and metoprolol 100mg BD for 5 years. No recent medication changes. Lives independently, usually active with gardening.",
+        "examination_findings": "Alert but appears tired. BP 110/70 (usual 140/80 per patient), HR 38 regular, SpO2 98% room air, temp 36.8\u00b0C. JVP not visible. Heart sounds: slow regular dual sounds, no murmurs. Chest clear to auscultation. No peripheral edema. Capillary refill <2 seconds. Neurologically intact.",
+        "ecg_findings": "Sinus bradycardia 38 bpm. Regular P waves with normal PR interval 160ms. QRS width 90ms, normal axis. No ST changes or T wave inversions. No heart block.",
+        "provisional_diagnosis": "Symptomatic sinus bradycardia secondary to beta-blocker therapy",
+        "differential_diagnosis": [
+          "Beta-blocker induced bradycardia (most likely given medication history)",
+          "Sick sinus syndrome (consider if persists after beta-blocker cessation)",
+          "Hypothyroidism (can cause bradycardia and fatigue)",
+          "Second or third degree heart block (but ECG shows normal AV conduction)",
+          "Acute coronary syndrome (but no chest pain, normal ECG)"
+        ],
+        "immediate_management": [
+          "IV access 18G, continuous cardiac monitoring",
+          "Atropine 600mcg IV available bedside (for HR <40 with symptoms)",
+          "Hold metoprolol immediately - do not give next dose",
+          "Consider temporary transcutaneous pacing pads if unstable (not required currently as stable BP)",
+          "Bloods: Troponin I, UEC, TFTs, FBC, Mg, PO4",
+          "Repeat ECG in 1 hour and with any symptom change",
+          "Hourly observations including postural BP",
+          "Cease metoprolol, continue amlodipine 10mg daily (monotherapy for hypertension)"
+        ],
+        "ongoing_management": [
+          "Monitor in ED for 4-6 hours, expect gradual HR improvement as metoprolol metabolized (half-life 3-7 hours)",
+          "Cardiology consultation for permanent pacemaker assessment if bradycardia persists >24 hours post beta-blocker cessation",
+          "Discharge home if HR >50 and asymptomatic after 6 hours observation",
+          "Follow-up with GP in 48 hours to check HR and BP control",
+          "Consider alternative antihypertensive if amlodipine monotherapy insufficient (ACE inhibitor preferred)",
+          "Patient education: Signs of bradycardia to watch for, when to seek urgent care",
+          "Avoid beta-blockers unless absolutely indicated (post-MI, heart failure with reduced EF)",
+          "Review in 1 week - may need cardiology outpatient review if recurrent symptoms"
+        ]
+      },
+      "learning_points": [
+        "Symptomatic bradycardia: HR <50 with dizziness, fatigue, presyncope, or syncope requires immediate assessment",
+        "Beta-blockers are common cause of bradycardia, especially in elderly with dose accumulation",
+        "Atropine 600mcg IV first-line for symptomatic bradycardia (can repeat up to 3mg total)",
+        "Transcutaneous pacing indicated for unstable bradycardia unresponsive to atropine",
+        "Permanent pacemaker consideration: symptomatic sinus bradycardia <40bpm, second/third degree heart block",
+        "CSANZ guidelines: Class I indication for pacemaker in symptomatic bradycardia with documented pauses >3 seconds"
+      ],
+      "australian_context": true,
+      "australian_guidelines": [
+        "Cardiac Society of Australia and New Zealand: Bradyarrhythmia Guidelines",
+        "National Heart Foundation: Arrhythmia Management",
+        "Therapeutic Guidelines: Cardiovascular - Arrhythmias"
+      ],
+      "metadata": {
+        "generated_date": "2026-03-30T16:50:20.176132",
+        "generator": "regenerate_cardiology_osces.py + Claude CLI",
+        "constraint_applied": "Cardiology OSCE Requirements"
+      }
+    },
+    {
+      "id": "CARD-OSCE-ARRHYTHMIA-AF-ANTICOAG-20260330",
+      "station_number": "CARD-026",
+      "station_type": "Clinical Assessment / Management Planning",
+      "specialty": "Cardiology",
+      "topic": "Arrhythmias",
+      "time_limit": 8,
+      "difficulty": "intermediate",
+      "candidate_instructions": "A 72-year-old retired teacher presents to your clinic with a 6-week history of palpitations and fatigue. Her daughter is concerned about her increasing shortness of breath on exertion. She has a history of hypertension and type 2 diabetes. Please assess her condition and discuss management options.",
+      "actor_instructions": "You are Mrs. Margaret Chen, a 72-year-old retired primary school teacher. For the past 6 weeks, you've been experiencing irregular heartbeats that feel like 'butterflies in your chest' or 'skipped beats'. You feel tired most of the time and get breathless walking up one flight of stairs, which is new for you. You used to walk 30 minutes daily but now feel too tired. You have high blood pressure (diagnosed 8 years ago) and diabetes (diagnosed 4 years ago). Your medications are amlodipine 10mg daily, metformin 1000mg twice daily, and gliclazide 80mg daily. Your father had a stroke at age 75. You're worried about having a heart attack or stroke. You don't smoke and have 1-2 glasses of wine weekly. You live independently and want to continue doing so.",
+      "examiner_instructions": "Assess the candidate's ability to diagnose atrial fibrillation, calculate stroke risk scores (CHA2DS2-VASc), assess bleeding risk (HASBLED), and appropriately recommend anticoagulation. Look for discussion of rate vs rhythm control strategies and appropriate follow-up planning.",
+      "marking_criteria": {
+        "introduction_assessment": {
+          "marks": 1,
+          "criteria": "Professional introduction, establishes rapport, obtains consent for examination"
+        },
+        "focused_history": {
+          "marks": 2,
+          "criteria": "Palpitation characteristics, functional capacity (NYHA), risk factors for AF, stroke risk assessment, current medications"
+        },
+        "cardiovascular_examination": {
+          "marks": 2,
+          "criteria": "Pulse assessment (irregular, rate), BP, JVP, heart sounds, chest examination, peripheral edema assessment"
+        },
+        "ecg_interpretation": {
+          "marks": 2,
+          "criteria": "Correctly identifies atrial fibrillation (irregularly irregular rhythm, absent P waves, variable R-R intervals)"
+        },
+        "risk_stratification": {
+          "marks": 3,
+          "criteria": "Calculates CHA2DS2-VASc score (4 points: age\u226575, hypertension, diabetes, female), discusses HASBLED score, recommends anticoagulation"
+        },
+        "anticoagulation_discussion": {
+          "marks": 3,
+          "criteria": "Recommends NOAC (apixaban/rivaroxaban), discusses benefits vs risks, addresses PBS requirements, monitoring"
+        },
+        "rate_rhythm_control": {
+          "marks": 1,
+          "criteria": "Discusses rate control vs rhythm control options, appropriate for persistent AF"
+        },
+        "follow_up_planning": {
+          "marks": 1,
+          "criteria": "Echocardiogram, thyroid function, follow-up appointments, lifestyle advice"
+        },
+        "total": 15
+      },
+      "sample_answer": {
+        "history_summary": "72-year-old woman with 6-week history of palpitations ('butterflies', irregular heartbeats) and progressive dyspnea on exertion (NYHA Class II - breathless climbing one flight). Reduced exercise tolerance from 30-minute daily walks to minimal activity. Risk factors: hypertension (8 years), type 2 diabetes (4 years), age >65, female gender. Family history: paternal stroke age 75. Medications: amlodipine 10mg daily, metformin 1g BD, gliclazide 80mg daily. No alcohol excess, non-smoker.",
+        "examination_findings": "Alert, comfortable at rest. Pulse: irregularly irregular, rate 85-110 bpm. BP 145/88 mmHg. JVP not elevated. Heart sounds: irregularly irregular rhythm, no murmurs, gallop rhythm present. Chest: clear to auscultation bilaterally. No peripheral edema. BMI 28.",
+        "ecg_findings": "Atrial fibrillation with controlled ventricular response (rate 85-110 bpm). Irregularly irregular R-R intervals. Absent P waves. No acute ST changes. QRS width normal (85ms).",
+        "provisional_diagnosis": "Atrial fibrillation (persistent, likely >7 days duration) with controlled ventricular response",
+        "differential_diagnosis": [
+          "Atrial flutter with variable block (but saw-tooth pattern not present)",
+          "Multifocal atrial tachycardia (but P waves absent, not multiple morphologies)",
+          "Frequent atrial/ventricular ectopy (but completely irregular rhythm makes AF most likely)"
+        ],
+        "risk_stratification": {
+          "cha2ds2_vasc_score": {
+            "total": 4,
+            "components": "C(CHF): 0, H(Hypertension): 1, A2(Age\u226575): 1, D(Diabetes): 1, S2(Stroke/TIA): 0, V(Vascular disease): 0, A(Age 65-74): 0, S(Sex-female): 1",
+            "stroke_risk": "4.0% per year (high risk - anticoagulation strongly recommended)"
+          },
+          "hasbled_score": {
+            "total": 2,
+            "components": "H(Hypertension): 1, A(Abnormal renal/liver): 0, S(Stroke): 0, B(Bleeding history): 0, L(Labile INR): 0, E(Elderly>65): 1, D(Drugs/alcohol): 0",
+            "bleeding_risk": "1.88% per year (moderate risk, anticoagulation benefit outweighs risk)"
+          }
+        },
+        "immediate_management": [
+          "Continue current antihypertensive and diabetes medications",
+          "Initiate anticoagulation - NOAC preferred over warfarin",
+          "Rate control assessment - current rate acceptable (85-110 bpm at rest)",
+          "Echocardiogram to assess left atrial size, LV function, valve disease",
+          "Thyroid function tests (TSH, fT4) to exclude hyperthyroidism",
+          "Full blood count, renal function (eGFR for NOAC dosing)",
+          "Consider 24-hour Holter monitor if paroxysmal episodes suspected"
+        ],
+        "anticoagulation_recommendation": {
+          "first_choice": "Apixaban 5mg BD (PBS 11652E - requires CHA2DS2-VASc \u22652)",
+          "alternative": "Rivaroxaban 20mg daily with food (PBS 11301Y)",
+          "rationale": "CHA2DS2-VASc score 4 = high stroke risk (4% annually), HASBLED score 2 = moderate bleeding risk (1.88% annually). Net clinical benefit strongly favours anticoagulation",
+          "monitoring": "No routine INR monitoring required. Annual review: renal function, bleeding events, adherence. Advise dental/surgical procedures require temporary cessation"
+        },
+        "rate_vs_rhythm_control": {
+          "rate_control": "First-line approach for persistent AF in elderly patient with minimal symptoms. Target heart rate <110 bpm at rest (lenient control). Continue current therapy if rate controlled",
+          "rhythm_control": "Not first-line given age, persistent AF >7 days, minimal symptoms. Consider if symptoms persist despite optimal rate control",
+          "medications": "If rate control needed: metoprolol 25mg BD (avoid if asthma), or diltiazem 120mg daily. Avoid digoxin unless heart failure present"
+        },
+        "ongoing_management": [
+          "Anticoagulation: Apixaban 5mg BD indefinitely (PBS requires annual authority renewal)",
+          "Rate control: Monitor response, optimize if heart rate >110 bpm at rest or symptomatic",
+          "Cardiovascular risk modification: Optimize BP control (target <130/80), diabetes management (HbA1c <7%)",
+          "Lifestyle: Weight reduction if BMI >25, regular moderate exercise, limit alcohol <2 standard drinks/day",
+          "Follow-up: 4-6 weeks (assess symptoms, anticoagulation tolerance), then 3-6 monthly",
+          "Annual echocardiogram if structural heart disease, otherwise clinical indication",
+          "Consider cardiology referral if: difficult rate control, symptomatic despite therapy, or rhythm control consideration"
+        ]
+      },
+      "learning_points": [
+        "CHA2DS2-VASc score \u22652 in males or \u22653 in females requires anticoagulation for stroke prevention",
+        "HASBLED score helps assess bleeding risk but score \u22653 doesn't contraindicate anticoagulation if stroke risk high",
+        "NOACs preferred over warfarin: no routine monitoring, fewer drug interactions, lower ICH risk",
+        "PBS requirements: NOACs require CHA2DS2-VASc \u22652 for subsidy, annual authority renewal needed",
+        "Rate control (<110 bpm) vs rhythm control: rate control first-line for most patients with persistent AF",
+        "Anticoagulation should continue indefinitely unless bleeding complications or patient preference changes"
+      ],
+      "australian_context": true,
+      "australian_guidelines": [
+        "National Heart Foundation: Guideline for the diagnosis and management of atrial fibrillation",
+        "CSANZ: Australian Clinical Guidelines for Atrial Fibrillation",
+        "Therapeutic Guidelines: Cardiovascular - Atrial fibrillation",
+        "PBS restrictions: NOACs require CHA2DS2-VASc score \u22652 for government subsidy"
+      ],
+      "metadata": {
+        "generated_date": "2026-03-30T16:52:12.805370",
+        "generator": "regenerate_cardiology_osces.py + Claude CLI",
+        "constraint_applied": "Cardiology OSCE Requirements"
+      }
+    },
+    {
+      "id": "CARD-OSCE-ARRHYTHMIA-ABLATION-20260330",
+      "station_number": "CARD-027",
+      "station_type": "Clinical Assessment / Procedural Discussion",
+      "specialty": "Cardiology",
+      "topic": "Arrhythmias",
+      "subtopic": "Catheter Ablation",
+      "time_limit": 8,
+      "difficulty": "intermediate",
+      "candidate_instructions": "45-year-old female lawyer presents to cardiology clinic for consideration of catheter ablation. She has recurrent episodes of rapid palpitations lasting 30 minutes to 2 hours, occurring 2-3 times per week. Episodes start and stop suddenly, associated with chest tightness and dizziness. She has tried flecainide 100mg BD and metoprolol 50mg BD with limited success. Recent Holter monitor confirmed episodes of SVT with heart rates 180-200bpm. Echocardiogram shows structurally normal heart with normal LV function. She is requesting definitive treatment as episodes are affecting her work performance and quality of life.",
+      "actor_instructions": "You are Sarah Mitchell, a 45-year-old commercial lawyer. For the past 18 months, you have been experiencing episodes of rapid heart palpitations that start suddenly without warning. During episodes, your heart races at what feels like 200 beats per minute, you feel dizzy and short of breath, and have chest tightness. Episodes last 30 minutes to 2 hours and stop as suddenly as they start. This happens 2-3 times per week, often during stressful court appearances or late work nights. You've tried flecainide and beta-blockers but they only reduced episode frequency slightly. The cardiologist mentioned catheter ablation as a potential cure. You're eager to pursue this as episodes are significantly impacting your career - you've had to excuse yourself from important meetings and court cases. You're worried about the procedure but desperate for a permanent solution. Ask about success rates, risks, and recovery time.",
+      "examiner_instructions": "Assess candidate's ability to: 1) Confirm diagnosis of AVNRT/AVRT based on clinical features, 2) Explain catheter ablation procedure appropriately for patient's educational level, 3) Discuss success rates (>95% for AVNRT), complications (<1% AV block risk), and recovery, 4) Address patient's concerns about work impact and timing, 5) Obtain informed consent discussion including alternative treatments, 6) Demonstrate knowledge of Australian guidelines for SVT ablation indications.",
+      "marking_criteria": {
+        "history_assessment": {
+          "marks": 2,
+          "criteria": "Confirms SVT features: sudden onset/offset, regular rapid rate 180-200bpm, triggers, failed medical therapy"
+        },
+        "examination_review": {
+          "marks": 1,
+          "criteria": "Reviews normal echo, confirms structurally normal heart, assesses baseline rhythm"
+        },
+        "diagnosis_explanation": {
+          "marks": 2,
+          "criteria": "Explains likely AVNRT (atrioventricular nodal re-entrant tachycardia) based on clinical features and Holter findings"
+        },
+        "ablation_procedure": {
+          "marks": 3,
+          "criteria": "Clearly explains catheter ablation: femoral vein access, mapping catheters, radiofrequency energy delivery to slow pathway, procedure time 1-2 hours"
+        },
+        "success_rates_risks": {
+          "marks": 3,
+          "criteria": "States success rate >95% for AVNRT, <1% risk AV block requiring pacemaker, <1% vascular complications, rare cardiac perforation"
+        },
+        "recovery_planning": {
+          "marks": 1,
+          "criteria": "Discusses day procedure or overnight stay, return to work in 2-3 days, avoid heavy lifting 1 week"
+        },
+        "alternative_options": {
+          "marks": 1,
+          "criteria": "Mentions continued medical therapy (class IC or III antiarrhythmics) or pill-in-pocket approach"
+        },
+        "consent_communication": {
+          "marks": 2,
+          "criteria": "Addresses patient's work concerns, timing preferences, obtains understanding of risks/benefits, answers questions appropriately"
+        },
+        "total": 15
+      },
+      "sample_answer": {
+        "history_summary": "45-year-old professional woman with 18-month history of recurrent SVT episodes. Sudden onset palpitations with heart rates 180-200bpm lasting 30 minutes to 2 hours, frequency 2-3 times per week. Associated chest tightness, dizziness, dyspnea. Triggers include stress and fatigue. Failed adequate trials of flecainide 100mg BD and metoprolol 50mg BD. Holter monitor confirmed SVT episodes. Structurally normal heart on echocardiogram. Significant quality of life impact affecting professional performance.",
+        "examination_findings": "Well-appearing woman, comfortable at rest. Vital signs: BP 125/78, HR 68 regular, SpO2 98%. JVP not elevated. Heart sounds: dual, no murmurs, gallops or rubs. Chest clear. No peripheral edema. ECG shows normal sinus rhythm, normal PR interval, no delta waves (excludes WPW).",
+        "investigations_review": "Holter monitor: Multiple episodes SVT 180-200bpm, sudden onset/termination, regular RR intervals consistent with AVNRT. Echocardiogram: Normal LV size and function (EF 60%), normal valves, no structural abnormalities. Thyroid function tests normal.",
+        "provisional_diagnosis": "Symptomatic AVNRT (atrioventricular nodal re-entrant tachycardia) refractory to medical therapy",
+        "differential_diagnosis": [
+          "AVRT (atrioventricular re-entrant tachycardia via accessory pathway) - less likely without delta waves",
+          "Atrial flutter with 2:1 conduction - would show flutter waves on ECG",
+          "Inappropriate sinus tachycardia - gradual onset/offset, rate variation"
+        ],
+        "catheter_ablation_explanation": [
+          "Procedure performed in cardiac catheterization laboratory under conscious sedation",
+          "Femoral vein access (right groin) using local anesthetic and ultrasound guidance",
+          "Multiple electrode catheters advanced to heart to map electrical pathways",
+          "Programmed electrical stimulation to induce SVT and identify re-entry circuit",
+          "AVNRT typically involves dual AV nodal pathways (fast and slow)",
+          "Radiofrequency energy (heat) delivered to slow pathway to eliminate re-entry",
+          "Temperature-controlled ablation lesions created over 30-60 seconds per site",
+          "Testing performed to ensure SVT no longer inducible",
+          "Procedure duration typically 1-2 hours, day procedure or overnight stay"
+        ],
+        "success_rates_complications": [
+          "Success rate >95% for AVNRT ablation (single procedure)",
+          "Recurrence rate <5%, usually within 3 months",
+          "Major complications <1%: Complete heart block requiring permanent pacemaker",
+          "Vascular complications <1%: Bleeding, hematoma, arteriovenous fistula",
+          "Cardiac perforation/tamponade: <0.1% (extremely rare)",
+          "Stroke/systemic embolism: <0.1%",
+          "Death: <0.01% (exceptionally rare for SVT ablation)"
+        ],
+        "post_procedure_care": [
+          "Bed rest 4-6 hours post-procedure with leg straight",
+          "Continuous monitoring overnight if admitted",
+          "Resume normal activities in 2-3 days",
+          "Avoid heavy lifting >10kg for 1 week",
+          "Return to work typically 2-3 days (office work), longer for manual labor",
+          "Follow-up appointment 6-8 weeks",
+          "Holter monitor at 3 months if symptoms recur",
+          "Discontinue antiarrhythmic medications if procedure successful"
+        ],
+        "alternative_management": [
+          "Continue current medical therapy with dose optimization",
+          "Add class III antiarrhythmic (sotalol 80mg BD, requires monitoring PBS 2502B)",
+          "Pill-in-pocket approach: Flecainide 200mg single dose for episodes",
+          "Calcium channel blockers: Verapamil 120mg daily (if beta-blockers contraindicated)",
+          "Lifestyle modifications: Avoid caffeine, alcohol, stress management techniques"
+        ]
+      },
+      "learning_points": [
+        "AVNRT most common SVT in adults, accounts for 60% of paroxysmal SVT cases",
+        "Ablation indicated for symptomatic SVT refractory to medical therapy or patient preference",
+        "Slow pathway ablation preferred approach - preserves normal AV conduction",
+        "Success rate >95% for AVNRT, much higher than medical therapy long-term success",
+        "Risk of complete heart block <1% with modern techniques and anatomical guidance",
+        "Quality of life improvement is primary indication - episodes significantly impact daily activities"
+      ],
+      "australian_context": true,
+      "australian_guidelines": [
+        "Cardiac Society of Australia and New Zealand: Guidelines for catheter ablation of arrhythmias",
+        "National Heart Foundation: Management of supraventricular tachycardia",
+        "Therapeutic Guidelines: Cardiovascular - Arrhythmias and ablation indications",
+        "CSANZ: Electrophysiology and ablation procedural standards"
+      ],
+      "pbs_medications": [
+        "Flecainide 100mg tablets PBS 2927H - Authority required for SVT",
+        "Metoprolol 50mg tablets PBS 2933K - General benefit",
+        "Sotalol 80mg tablets PBS 2502B - Authority required for arrhythmias"
+      ],
+      "mbs_items": [
+        "MBS 38353 - Cardiac electrophysiology study with ablation (single chamber)",
+        "MBS 38356 - Complex cardiac ablation (multiple chambers or pathways)",
+        "MBS 11700 - Consultation with specialist (initial)",
+        "MBS 11706 - Consultation with specialist (subsequent)"
+      ],
+      "metadata": {
+        "generated_date": "2026-03-30T16:53:05.946709",
+        "generator": "regenerate_cardiology_osces.py + Claude CLI",
+        "constraint_applied": "Cardiology OSCE Requirements"
+      }
+    },
+    {
+      "id": "CARD-OSCE-HYPERTENSI-20260330-001",
+      "station_number": "CARD-028",
+      "station_type": "Emergency Management / Critical Care",
+      "specialty": "Cardiology",
+      "topic": "Hypertension",
+      "subtopic": "Hypertensive Emergency",
+      "time_limit": 8,
+      "difficulty": "intermediate",
+      "candidate_instructions": "A 45-year-old construction worker presents to ED with sudden onset severe headache, blurred vision, and nausea for the past 3 hours. His workmates brought him in after he became confused and complained of 'the worst headache of his life'. He has a history of poorly controlled hypertension and admits to not taking his medications regularly. Initial vital signs: BP 220/125 mmHg, HR 110 bpm, RR 22/min, SpO2 97% RA, temp 37.2\u00b0C. You are the emergency registrar - assess and manage this patient.",
+      "actor_instructions": "You are Mark, a 45-year-old construction foreman. Three hours ago you developed sudden, severe headache (10/10) with visual blurring and nausea. You've vomited twice. You feel confused and scared. You've had high blood pressure for 5 years but often forget your medications (amlodipine and irbesartan). You drink 6-8 beers daily, smoke 25 cigarettes per day for 20 years. Your father had a stroke at 55. You're worried you're having a stroke. You work long hours and eat takeaway food regularly. You haven't seen a doctor for 2 years.",
+      "examiner_instructions": "Assess candidate's recognition of hypertensive emergency, appropriate initial assessment including neurological examination, correct blood pressure management (avoid precipitous drops), investigation ordering, and understanding of target organ damage. Look for systematic approach to hypertensive crisis and appropriate disposition planning.",
+      "marking_criteria": {
+        "introduction_assessment": {
+          "marks": 1,
+          "criteria": "Professional introduction, recognizes severity, rapid triage assessment"
+        },
+        "focused_history": {
+          "marks": 2,
+          "criteria": "Timeline of symptoms, medication compliance, cardiovascular risk factors, family history"
+        },
+        "examination": {
+          "marks": 2,
+          "criteria": "Complete vital signs, cardiovascular examination, focused neurological examination, fundoscopy"
+        },
+        "recognition_diagnosis": {
+          "marks": 2,
+          "criteria": "Correctly identifies hypertensive emergency with end-organ damage (encephalopathy)"
+        },
+        "immediate_management": {
+          "marks": 3,
+          "criteria": "Controlled BP reduction (10-15% in first hour, max 25% in 24hr), IV access, continuous monitoring, avoid sublingual nifedipine"
+        },
+        "investigations": {
+          "marks": 2,
+          "criteria": "Bloods (UEC, FBC, troponin), urinalysis, ECG, CXR, CT brain, echocardiogram"
+        },
+        "antihypertensive_therapy": {
+          "marks": 2,
+          "criteria": "Appropriate IV antihypertensive (labetalol/hydralazine/nicardipine), dose titration, avoid precipitous drops"
+        },
+        "ongoing_care": {
+          "marks": 1,
+          "criteria": "ICU/HDU admission, neurological monitoring, long-term BP management plan"
+        },
+        "total": 15
+      },
+      "sample_answer": {
+        "history_summary": "45-year-old construction worker with 3-hour history of sudden severe headache (10/10), blurred vision, nausea, vomiting x2, and confusion. Known hypertension for 5 years, poor medication adherence (amlodipine 5mg, irbesartan 150mg). Risk factors: 25 pack-year smoker, alcohol 48 units/week, poor diet, sedentary lifestyle outside work. Family history: father stroke at 55 years.",
+        "examination_findings": "Distressed, confused, alert but disorientated. BP 220/125 mmHg (multiple readings), HR 110 regular, RR 22, SpO2 97% RA, temp 37.2\u00b0C. Cardiovascular: JVP elevated 6cm, S4 gallop, no murmurs. Chest clear bilaterally. Neurological: GCS 14 (E4V4M6), pupils equal reactive 3mm, mild confusion, no focal neurology, mild neck stiffness. Fundoscopy: flame-shaped haemorrhages, cotton wool spots, papilloedema grade II.",
+        "investigations_results": "UEC: Creatinine 145 (baseline unknown), eGFR 48. FBC: normal. Troponin: mildly elevated 0.08 (upper limit 0.04). Urinalysis: protein 3+, RBC 2+. ECG: sinus tachycardia, LVH (Sokolow-Lyon criteria), strain pattern. CXR: cardiomegaly, no pulmonary edema. CT brain: no hemorrhage, mild cerebral edema.",
+        "provisional_diagnosis": "Hypertensive emergency with hypertensive encephalopathy",
+        "differential_diagnosis": [
+          "Malignant hypertension with acute kidney injury",
+          "Intracerebral hemorrhage (excluded on CT)",
+          "Subarachnoid hemorrhage (excluded on CT, but mild neck stiffness noted)",
+          "Acute coronary syndrome (troponin mildly elevated)",
+          "Hypertensive nephrosclerosis (proteinuria, reduced eGFR)"
+        ],
+        "immediate_management": [
+          "High dependency unit admission for continuous monitoring",
+          "Large bore IV access x2, continuous BP monitoring (arterial line if available)",
+          "Neurological observations hourly (GCS, pupils, limbs)",
+          "Target BP reduction: 10-15% in first hour (target ~190/110), max 25% reduction in 24 hours",
+          "Labetalol 20mg IV bolus, then 20-80mg every 10 minutes (max 300mg) PBS 8467L",
+          "Alternative: Hydralazine 10-20mg IV every 4-6 hours PBS 8089Q",
+          "Avoid: Sublingual nifedipine (risk of precipitous BP drop and stroke)",
+          "Continuous cardiac monitoring, pulse oximetry",
+          "Urinary catheter (hourly urine output monitoring)",
+          "Head of bed elevated 30 degrees",
+          "IV normal saline at maintenance rate (avoid fluid overload)"
+        ],
+        "ongoing_management": [
+          "Gradual BP reduction over 24-48 hours to <160/100 mmHg",
+          "Transition to oral antihypertensives when stable:",
+          "ACE inhibitor: Perindopril 4mg daily, titrate to 8mg PBS 8069E",
+          "Calcium channel blocker: Amlodipine 5mg daily, increase to 10mg PBS 8070F",
+          "Diuretic: Indapamide 2.5mg daily PBS 8071G",
+          "Beta-blocker: Metoprolol 50mg BD if no contraindications PBS 2933K",
+          "Repeat bloods in 24 hours (UEC, FBC, troponin trend)",
+          "Echocardiogram to assess LV function and hypertrophy",
+          "Ophthalmology review for grade of hypertensive retinopathy",
+          "Smoking cessation counseling + nicotine replacement PBS 4220K",
+          "Alcohol reduction counseling, dietitian referral",
+          "Discharge planning: GP follow-up within 1 week, cardiology outpatient",
+          "Home BP monitoring, medication compliance education"
+        ]
+      },
+      "learning_points": [
+        "Hypertensive emergency: Severe hypertension (>180/120) with acute end-organ damage",
+        "Target BP reduction: 10-15% in first hour, avoid precipitous drops (risk of watershed infarction)",
+        "Hypertensive encephalopathy: Cerebral autoregulation failure, reversible with BP control",
+        "Fundoscopy essential: Grade III-IV retinopathy indicates malignant hypertension",
+        "IV labetalol first-line: Alpha and beta blockade, predictable BP reduction",
+        "Avoid sublingual nifedipine: Unpredictable, precipitous BP drops causing stroke/MI",
+        "Long-term management: Combination therapy required (ACE-I + CCB + thiazide diuretic)"
+      ],
+      "australian_context": true,
+      "australian_guidelines": [
+        "National Heart Foundation: Hypertension Guidelines 2016",
+        "Therapeutic Guidelines: Cardiovascular - Hypertensive Crisis",
+        "Royal Australian College of General Practitioners: Hypertension Management"
+      ],
+      "metadata": {
+        "generated_date": "2026-03-30T16:53:48.272811",
+        "generator": "regenerate_cardiology_osces.py + Claude CLI",
+        "constraint_applied": "Cardiology OSCE Requirements"
+      }
+    },
+    {
+      "id": "CARD-OSCE-SECOHYPER-20260330",
+      "station_number": "CARD-030",
+      "station_type": "Clinical Assessment / Management",
+      "specialty": "Cardiology",
+      "topic": "Hypertension",
+      "subtopic": "Secondary Hypertension",
+      "time_limit": 8,
+      "difficulty": "intermediate",
+      "candidate_instructions": "42-year-old female teacher presents for routine review. BP consistently elevated at 165/105 mmHg over 3 visits despite optimal doses of amlodipine 10mg daily and perindopril 8mg daily for 6 months. She reports intermittent palpitations, sweating episodes, and severe headaches. BMI 23, non-smoker, minimal alcohol. Family history of thyroid disease. Take a focused history, examine as appropriate, and discuss your assessment and management plan.",
+      "actor_instructions": "You are Sarah Chen, a 42-year-old high school mathematics teacher. You've had high blood pressure for 2 years, initially well-controlled on one medication, but recently your GP has had to add a second medication and increase doses. Despite taking your tablets religiously every morning (amlodipine 10mg and perindopril 8mg), your blood pressure readings at home are still high (160-170/100-110). You're frustrated because you eat well, exercise 3 times weekly, don't smoke, and only drink wine on weekends. Over the past 4 months, you've had episodes 2-3 times weekly of sudden palpitations, sweating, severe headache, and feeling anxious - these last 10-15 minutes then resolve completely. During episodes, you feel like your heart is 'pounding out of your chest'. Your mother had thyroid problems and your aunt had some 'adrenal tumor removed' 10 years ago. You're worried something serious is wrong because the episodes are getting more frequent. You work full-time but episodes have started occurring at work, which is embarrassing. You take no other medications, no supplements. Menarche age 13, regular periods, no pregnancies.",
+      "examiner_instructions": "Observe the candidate's systematic approach to investigating resistant/secondary hypertension. Key elements: Recognition of resistant hypertension (optimal doses of 2 medications), focused history for secondary causes (pheochromocytoma symptoms, family history), appropriate physical examination (including abdominal examination for renal bruits, signs of Cushing's), discussion of investigations (24-hour urine catecholamines, plasma metanephrines, renal doppler), and referral pathways. Look for recognition of classic pheochromocytoma triad: headache, sweating, palpitations.",
+      "marking_criteria": {
+        "introduction_assessment": {
+          "marks": 1,
+          "criteria": "Professional introduction, establishes rapport, clarifies presenting complaint"
+        },
+        "resistant_hypertension_recognition": {
+          "marks": 2,
+          "criteria": "Recognizes resistant hypertension (BP >140/90 despite optimal doses of 2+ antihypertensives), reviews medication adherence and technique"
+        },
+        "secondary_hypertension_history": {
+          "marks": 3,
+          "criteria": "Systematic questioning for secondary causes: pheochromocytoma (headache/sweating/palpitations triad), renal disease, sleep apnea, endocrine disorders, drug-induced"
+        },
+        "family_history": {
+          "marks": 1,
+          "criteria": "Explores family history of hypertension, endocrine disorders (thyroid, adrenal), early cardiovascular disease"
+        },
+        "physical_examination": {
+          "marks": 2,
+          "criteria": "Appropriate BP measurement technique, cardiovascular examination, abdominal examination (renal bruits, masses), features of secondary causes"
+        },
+        "investigation_plan": {
+          "marks": 3,
+          "criteria": "Appropriate screening: 24-hour urine catecholamines/VMA, plasma metanephrines, renal function, electrolytes, renal doppler, consider CT abdomen"
+        },
+        "pheochromocytoma_recognition": {
+          "marks": 2,
+          "criteria": "Recognizes classic triad (headache, sweating, palpitations), discusses pheochromocytoma as leading differential, mentions family history significance"
+        },
+        "management_plan": {
+          "marks": 2,
+          "criteria": "Discusses urgent endocrinology referral, alpha-blockade if confirmed, explains need for specialist management, safety netting"
+        },
+        "communication": {
+          "marks": 1,
+          "criteria": "Clear explanation of findings, addresses patient concerns, appropriate reassurance while emphasizing need for investigation"
+        },
+        "total": 17
+      },
+      "sample_answer": {
+        "history_summary": "42-year-old female teacher with resistant hypertension (BP 165/105 despite optimal doses amlodipine 10mg + perindopril 8mg for 6 months). Excellent medication adherence. Episodic symptoms over 4 months: sudden-onset severe headaches, palpitations, diaphoresis, anxiety lasting 10-15 minutes, occurring 2-3 times weekly and increasing in frequency. Episodes interfere with work. Family history significant for maternal thyroid disease, paternal aunt with surgically-removed adrenal tumor. Non-smoker, minimal alcohol, BMI 23, regular exercise. No other medications or supplements.",
+        "examination_findings": "Alert, well-appearing female. BP 168/104 (repeated 170/106), HR 88 regular, afebrile. No cushingoid features. Thyroid normal size, no nodules. Cardiovascular: JVP normal, heart sounds dual, no murmurs or added sounds. Chest clear. Abdominal examination: soft, non-tender, no masses palpable, no renal bruits audible. Peripheral pulses present, no ankle swelling. Fundoscopy: grade 2 hypertensive retinopathy (AV nicking, silver wire arterioles). No cafe-au-lait spots or neurofibromas.",
+        "provisional_diagnosis": "Resistant hypertension secondary to probable pheochromocytoma",
+        "differential_diagnosis": [
+          "Pheochromocytoma (classic triad + family history + resistant HTN)",
+          "Primary hyperaldosteronism (Conn's syndrome)",
+          "Renal artery stenosis (young female, resistant HTN)",
+          "Drug-induced hypertension (but no medications reported)",
+          "White coat hypertension (but home readings elevated)",
+          "Sleep apnea (but no reported symptoms)"
+        ],
+        "immediate_management": [
+          "Confirm BP measurements with appropriate technique (rest 5 minutes, correct cuff size)",
+          "24-hour ambulatory BP monitoring to exclude white coat hypertension",
+          "Urgent endocrinology referral (within 2 weeks given symptomatic episodes)",
+          "Patient education: avoid triggers (exercise, tyramine-rich foods), seek immediate medical attention for severe episodes",
+          "Continue current antihypertensives, do not add beta-blockers until pheochromocytoma excluded"
+        ],
+        "investigation_plan": [
+          "First-line biochemical screening:",
+          "- 24-hour urine catecholamines and vanillylmandelic acid (VMA)",
+          "- Plasma metanephrines (more sensitive, can be done fasting)",
+          "- 24-hour urine metanephrines and normetanephrines",
+          "Supporting investigations:",
+          "- UEC, eGFR (baseline renal function)",
+          "- Serum aldosterone:renin ratio (exclude primary hyperaldosteronism)",
+          "- TSH, free T4 (family history of thyroid disease)",
+          "- Fasting glucose (exclude diabetes)",
+          "- Lipid profile (cardiovascular risk assessment)",
+          "- Renal doppler ultrasound (exclude renal artery stenosis)",
+          "If biochemistry positive:",
+          "- CT abdomen with contrast (locate tumor)",
+          "- Consider MIBG scan or FDG-PET if CT negative",
+          "- Genetic counseling (familial pheochromocytoma, MEN2, VHL syndrome)"
+        ],
+        "ongoing_management": [
+          "If pheochromocytoma confirmed:",
+          "- Alpha-blockade first: phenoxybenzamine 10mg BD, titrate to effect (PBS 8234H)",
+          "- Beta-blockade only after adequate alpha-blockade (prevent hypertensive crisis)",
+          "- Pre-operative optimization: adequate alpha-blockade for 2-3 weeks",
+          "- Surgical resection (laparoscopic adrenalectomy preferred)",
+          "- Intraoperative monitoring for hypertensive crises",
+          "Long-term follow-up:",
+          "- Annual biochemical screening for recurrence (10% risk)",
+          "- Family screening if genetic syndrome identified",
+          "- Cardiovascular risk management post-operatively",
+          "- BP monitoring - may normalize after successful surgery"
+        ]
+      },
+      "learning_points": [
+        "Resistant hypertension definition: BP >140/90 despite optimal doses of 3+ antihypertensives (including diuretic)",
+        "Pheochromocytoma classic triad: headache, sweating, palpitations (present in <50% but high specificity when all present)",
+        "Family history significance: 10% of pheochromocytomas are familial (MEN2, VHL, neurofibromatosis, paraganglioma syndromes)",
+        "Investigation: Plasma metanephrines most sensitive (95% sensitivity), 24-hour urine less convenient but specific",
+        "Management: Alpha-blockade MUST precede beta-blockade (prevent unopposed alpha stimulation and hypertensive crisis)",
+        "Surgery: Laparoscopic adrenalectomy preferred, requires expert anesthetic management for intraoperative hypertensive episodes"
+      ],
+      "australian_context": true,
+      "australian_guidelines": [
+        "National Heart Foundation: Hypertension Guidelines 2016",
+        "Royal Australian College of General Practitioners: Hypertension Management",
+        "Therapeutic Guidelines: Cardiovascular - Secondary hypertension",
+        "Endocrine Society of Australia: Pheochromocytoma Guidelines"
+      ],
+      "red_flags": [
+        "Hypertensive crisis during episodes (BP >180/120 with end-organ damage)",
+        "Severe hypertension in young adults (<30 years) - investigate secondary causes",
+        "Resistant hypertension despite optimal medical therapy - screen for secondary causes",
+        "Episodic severe headaches with hypertension - consider pheochromocytoma",
+        "Family history of early cardiovascular death or endocrine tumors"
+      ],
+      "metadata": {
+        "generated_date": "2026-03-30T16:55:48.080598",
+        "generator": "regenerate_cardiology_osces.py + Claude CLI",
+        "constraint_applied": "Cardiology OSCE Requirements"
+      }
+    },
+    {
+      "id": "CARD-OSCE-HTN-CKD-20260330",
+      "station_number": "CARD-033",
+      "station_type": "Clinical Assessment / Chronic Disease Management",
+      "specialty": "Cardiology",
+      "topic": "Hypertension",
+      "subtopic": "Hypertension in CKD",
+      "time_limit": 8,
+      "difficulty": "intermediate",
+      "candidate_instructions": "You are seeing Margaret Chen, a 67-year-old retired teacher in your cardiology clinic. She has stage 3 chronic kidney disease (eGFR 45 mL/min/1.73m\u00b2) and poorly controlled hypertension despite being on multiple medications. Her recent home blood pressure readings average 165/95 mmHg. She was referred by her GP for optimization of antihypertensive therapy. Take a focused history, examine her cardiovascular system, and discuss management options.",
+      "actor_instructions": "You are Margaret Chen, a 67-year-old retired high school mathematics teacher. You have had high blood pressure for 15 years and kidney problems for the past 5 years. Your GP told you that your kidney function is getting worse (creatinine now 120, was 95 two years ago). You take amlodipine 10mg daily, irbesartan 300mg daily, and hydrochlorothiazide 25mg daily. Despite this, your home BP readings are still high (usually 160-170/90-100). You check your BP twice daily with an automatic cuff. You're worried about dialysis and having a stroke like your mother did. You follow a low-salt diet and walk 30 minutes daily. You don't smoke and drink wine occasionally. You're frustrated that the medications aren't working and concerned about taking 'too many pills'.",
+      "examiner_instructions": "Assess the candidate's approach to hypertension management in chronic kidney disease. Look for: recognition of target BP <130/80 in CKD, understanding of ACE inhibitor nephroprotection vs hyperkalemia risk, appropriate medication adjustments, and patient education about CKD progression monitoring.",
+      "marking_criteria": {
+        "introduction_assessment": {
+          "marks": 1,
+          "criteria": "Professional introduction, establishes rapport, explains station purpose"
+        },
+        "focused_history": {
+          "marks": 2,
+          "criteria": "Current medications, home BP readings, symptoms of target organ damage, family history, lifestyle factors, concerns about kidney disease"
+        },
+        "examination": {
+          "marks": 2,
+          "criteria": "Vital signs including proper BP technique, cardiovascular examination (heart sounds, peripheral pulses, signs of heart failure), fundoscopy mention"
+        },
+        "interpretation": {
+          "marks": 2,
+          "criteria": "Recognizes inadequately controlled HTN in CKD stage 3, understands target BP <130/80, identifies medication optimization needs"
+        },
+        "medication_optimization": {
+          "marks": 4,
+          "criteria": "Adds spironolactone (K+ monitoring), considers amlodipine dose increase, discusses ACE inhibitor nephroprotection vs ARB, addresses thiazide vs thiazide-like diuretic choice"
+        },
+        "monitoring_plan": {
+          "marks": 2,
+          "criteria": "eGFR and electrolyte monitoring schedule, home BP monitoring technique, proteinuria assessment"
+        },
+        "patient_education": {
+          "marks": 2,
+          "criteria": "Explains CKD-HTN relationship, lifestyle modifications, importance of medication adherence, when to seek medical attention"
+        },
+        "total": 15
+      },
+      "sample_answer": {
+        "history_summary": "67-year-old woman with 15-year history of essential hypertension and 5-year history of CKD stage 3 (current eGFR 45, creatinine 120 vs baseline 95 two years ago). Currently on triple therapy: amlodipine 10mg daily, irbesartan 300mg daily, hydrochlorothiazide 25mg daily. Home BP readings average 165/95 mmHg (range 160-170/90-100) taken twice daily with validated automatic device. No symptoms of heart failure, chest pain, or visual changes. Family history of maternal stroke. Non-smoker, minimal alcohol, follows low-sodium diet, exercises regularly.",
+        "examination_findings": "Alert, comfortable. BP 168/94 mmHg (repeated: 162/92), HR 76 regular, BMI 28. Cardiovascular: JVP not elevated, apex beat not displaced, S1 S2 normal, no murmurs or added sounds. Peripheral pulses present bilaterally, no peripheral edema. Chest clear. Fundoscopy: mild arteriovenous nipping, no papilledema or hemorrhages.",
+        "current_medications": [
+          "Amlodipine 10mg daily (maximum dose)",
+          "Irbesartan 300mg daily (maximum dose)",
+          "Hydrochlorothiazide 25mg daily"
+        ],
+        "blood_pressure_readings": "Home monitoring: Morning 168/96, Evening 162/94 (average over 2 weeks)",
+        "provisional_diagnosis": "Resistant hypertension in the setting of CKD stage 3 (eGFR 45 mL/min/1.73m\u00b2)",
+        "target_blood_pressure": "<130/80 mmHg (KDIGO guidelines for CKD patients)",
+        "medication_optimization": [
+          "Add spironolactone 25mg daily (PBS 8257L) - check K+ and creatinine in 1-2 weeks",
+          "Switch hydrochlorothiazide to indapamide SR 1.5mg daily (more effective in CKD, fewer metabolic effects)",
+          "Continue irbesartan 300mg daily (nephroprotective, proven cardiovascular benefit)",
+          "Continue amlodipine 10mg daily (already at maximum dose)",
+          "Monitor for hyperkalemia (target K+ <5.5 mmol/L with spironolactone)",
+          "Consider medication timing optimization (evening dosing for better nocturnal BP control)"
+        ],
+        "investigations": [
+          "UEC including eGFR and potassium (baseline before spironolactone)",
+          "Urine ACR (albuminuria assessment for CKD progression risk)",
+          "ECG (left ventricular hypertrophy assessment)",
+          "24-hour ambulatory BP monitoring if resistant HTN persists",
+          "HbA1c and lipids (cardiovascular risk assessment)",
+          "TSH (secondary hypertension screen if not done recently)"
+        ],
+        "monitoring_plan": [
+          "Home BP monitoring: Continue twice daily, different times, validated device",
+          "Follow-up in 4 weeks: Review BP response, check UEC/K+ post-spironolactone",
+          "eGFR and proteinuria monitoring every 3-6 months",
+          "Annual cardiovascular risk assessment",
+          "Ophthalmology review annually for hypertensive retinopathy"
+        ],
+        "lifestyle_modifications": [
+          "Dietary: DASH diet principles, sodium restriction <2g daily (already doing)",
+          "Weight management: Target BMI <25 (current 28)",
+          "Exercise: Continue current regimen, aim for 150 min/week moderate activity",
+          "Alcohol: Maximum 2 standard drinks/day (currently minimal)",
+          "Smoking cessation: Not applicable (non-smoker)"
+        ],
+        "patient_education": [
+          "CKD-hypertension cycle: High BP damages kidneys, damaged kidneys worsen BP",
+          "Importance of BP control in preventing CKD progression and cardiovascular events",
+          "Spironolactone benefits: Proven to reduce cardiovascular mortality, may slow CKD progression",
+          "Hyperkalemia warning signs: Muscle weakness, irregular heartbeat - check potassium levels",
+          "When to contact clinic: BP >180/110, symptoms of hyperkalemia, sudden weight gain >2kg",
+          "Medication adherence: Critical for preventing stroke, heart attack, kidney failure"
+        ]
+      },
+      "learning_points": [
+        "BP target in CKD: <130/80 mmHg (KDIGO guidelines) vs <140/90 general population",
+        "Spironolactone: Fourth-line agent in resistant HTN, proven mortality benefit (RALES trial)",
+        "Thiazide-like diuretics (indapamide, chlorthalidone) preferred over HCTZ in CKD",
+        "ACE inhibitors/ARBs: Nephroprotective but monitor for hyperkalemia and acute kidney injury",
+        "Home BP monitoring: More accurate than clinic readings, target <135/85 at home",
+        "CKD progression monitoring: eGFR decline >5 mL/min/year or >10 mL/min/5 years is concerning"
+      ],
+      "complications_to_discuss": [
+        "Hyperkalemia risk with spironolactone (especially in CKD): Monitor K+ closely",
+        "Acute kidney injury: Can occur with any antihypertensive, especially during illness",
+        "Cardiovascular events: Stroke, MI risk increased with both HTN and CKD",
+        "CKD progression: Poorly controlled HTN accelerates decline to end-stage renal disease"
+      ],
+      "red_flags": [
+        "Sudden severe hypertension (>180/110) - hypertensive emergency",
+        "New neurological symptoms - possible stroke or hypertensive encephalopathy",
+        "Chest pain - acute coronary syndrome",
+        "Acute kidney injury - creatinine rise >25% from baseline",
+        "Severe hyperkalemia (K+ >6.0) - cardiac arrhythmia risk"
+      ],
+      "australian_context": true,
+      "australian_guidelines": [
+        "Heart Foundation: Guideline for the diagnosis and management of hypertension in adults",
+        "KDIGO Clinical Practice Guideline for the Management of Blood Pressure in CKD",
+        "Therapeutic Guidelines: Cardiovascular - Hypertension",
+        "Kidney Health Australia: CKD Management Guidelines"
+      ],
+      "pbs_items": [
+        "Spironolactone 25mg - PBS 8257L (authority required for resistant hypertension)",
+        "Indapamide SR 1.5mg - PBS 8344Y",
+        "Irbesartan 300mg - PBS 8432B",
+        "Amlodipine 10mg - PBS 8268F"
+      ],
+      "mbs_items": [
+        "Chronic Disease Management Plan - MBS 721",
+        "24-hour ambulatory BP monitoring - MBS 11506",
+        "Ophthalmology review - MBS 104"
+      ],
+      "metadata": {
+        "generated_date": "2026-03-30T16:58:53.897611",
+        "generator": "regenerate_cardiology_osces.py + Claude CLI",
+        "constraint_applied": "Cardiology OSCE Requirements"
+      }
+    },
+    {
+      "id": "CARD-OSCE-VALVULAR-AS-20260330",
+      "station_number": "CARD-034",
+      "station_type": "Clinical Assessment / Management",
+      "specialty": "Cardiology",
+      "topic": "Valvular Heart Disease",
+      "subtopic": "Aortic Stenosis",
+      "time_limit": 8,
+      "difficulty": "intermediate",
+      "candidate_instructions": "Ms Margaret Chen, a 72-year-old retired teacher, presents to your clinic with a 6-month history of progressive breathlessness on exertion and episodes of dizziness when climbing stairs. She mentions feeling 'winded' after walking one block, whereas previously she could walk several kilometers. She has also experienced two episodes of near-fainting while gardening. No chest pain. She has a history of rheumatic fever as a child and takes no regular medications.",
+      "actor_instructions": "You are Margaret Chen, a 72-year-old retired primary school teacher. Over the past 6 months, you have noticed increasing shortness of breath when walking. You used to walk 3-4 km daily but now feel breathless after one block. You have had two scary episodes of nearly fainting - once while bending to weed the garden, and once climbing stairs to your bedroom. You feel dizzy and have to stop and hold onto something. You are worried about your heart because your sister had heart surgery last year. You had rheumatic fever when you were 8 years old and remember being in bed for months. You live alone but your daughter visits daily. You are independent with activities of daily living but avoid stairs when possible.",
+      "examiner_instructions": "Candidate should recognize classic aortic stenosis triad (dyspnea, syncope, chest pain - though this patient has no angina). Key examination finding is harsh systolic murmur at aortic area radiating to carotids. Must discuss echocardiogram for valve area assessment and surgical vs transcatheter intervention based on symptoms and valve severity.",
+      "marking_criteria": {
+        "introduction_assessment": {
+          "marks": 1,
+          "criteria": "Professional introduction, establishes rapport, identifies presenting symptoms"
+        },
+        "focused_history": {
+          "marks": 2,
+          "criteria": "NYHA functional class assessment, syncope characterization, rheumatic fever history, medication review"
+        },
+        "cardiovascular_examination": {
+          "marks": 2,
+          "criteria": "Auscultation identifies harsh systolic murmur at aortic area, carotid pulse character, signs of heart failure"
+        },
+        "symptom_assessment": {
+          "marks": 2,
+          "criteria": "Recognizes classic aortic stenosis triad (dyspnea + syncope), assesses functional limitation (NYHA Class II-III)"
+        },
+        "investigation_planning": {
+          "marks": 2,
+          "criteria": "Orders appropriate investigations: echocardiogram (valve area, gradient), ECG, CXR, BNP"
+        },
+        "diagnosis_formulation": {
+          "marks": 2,
+          "criteria": "Correctly identifies symptomatic aortic stenosis, discusses severity assessment"
+        },
+        "management_discussion": {
+          "marks": 3,
+          "criteria": "Discusses valve replacement options (surgical vs TAVI), heart team referral, symptom monitoring"
+        },
+        "communication": {
+          "marks": 1,
+          "criteria": "Explains condition clearly, addresses patient concerns, discusses prognosis"
+        },
+        "total": 15
+      },
+      "sample_answer": {
+        "history_summary": "72-year-old woman with 6-month progressive exertional dyspnea (NYHA Class II-III), two episodes of exertional presyncope. Previously active (walked 3-4km daily), now limited to one block. No chest pain. Significant past history of rheumatic fever age 8. Lives independently, no medications.",
+        "examination_findings": "Well-appearing elderly woman. BP 135/85, HR 68 regular, SpO2 98% room air. JVP 6cm (normal). Precordium: harsh grade 3/6 systolic murmur loudest at 2nd right intercostal space radiating to carotids bilaterally. Slow-rising carotid pulse with delayed peak (pulsus tardus). No signs of heart failure - chest clear, no peripheral edema. No hepatomegaly.",
+        "investigation_results": "ECG: Sinus rhythm, left ventricular hypertrophy (Sokolow-Lyon criteria), no acute changes. CXR: Normal heart size, clear lung fields. BNP: 285 pg/mL (mildly elevated). Echocardiogram pending - will assess aortic valve area, peak/mean gradients, left ventricular function.",
+        "provisional_diagnosis": "Symptomatic severe aortic stenosis (rheumatic etiology)",
+        "differential_diagnosis": [
+          "Severe aortic stenosis with NYHA Class II-III symptoms (most likely)",
+          "Hypertrophic cardiomyopathy with outflow obstruction",
+          "Mitral stenosis (less likely given murmur characteristics)",
+          "Pulmonary stenosis (murmur location makes aortic more likely)"
+        ],
+        "immediate_management": [
+          "Urgent cardiology referral for comprehensive assessment",
+          "Transthoracic echocardiogram: assess aortic valve area, peak/mean gradient, LV function, MBS 55111",
+          "BNP and troponin levels",
+          "Activity restriction: avoid strenuous exercise until cardiologist review",
+          "Safety advice: sit/lie down if dizzy, avoid sudden position changes",
+          "Family education: recognize red flag symptoms (chest pain, severe SOB, fainting)"
+        ],
+        "definitive_management": [
+          "Heart Team assessment (cardiothoracic surgeon + interventional cardiologist)",
+          "Aortic valve replacement if severe AS (valve area <1.0cm\u00b2, mean gradient >40mmHg)",
+          "TAVI vs SAVR decision based on: age, frailty, comorbidities, life expectancy",
+          "TAVI preferred if: age >75, high surgical risk (EuroSCORE >8%), frailty",
+          "SAVR considered if: younger, low surgical risk, concurrent coronary disease needing CABG",
+          "Pre-operative assessment: coronary angiography (rule out CAD), respiratory function",
+          "Post-procedure: dual antiplatelet therapy 3-6 months (TAVI), warfarin (mechanical SAVR)",
+          "Endocarditis prophylaxis: dental procedures require antibiotics (amoxicillin 2g PO 1 hour pre)"
+        ],
+        "ongoing_monitoring": [
+          "Cardiology follow-up: 6-monthly if asymptomatic, sooner if symptoms develop",
+          "Annual echocardiogram to monitor valve function and ventricular remodeling",
+          "Heart failure management if develops: ACE inhibitor, beta-blocker, diuretics",
+          "Cardiac rehabilitation post-procedure (MBS 81110-81115)",
+          "Medication review: avoid afterload reducers (ACE inhibitors) in severe AS pre-intervention",
+          "Lifestyle: gradual return to activities post-procedure, travel precautions (endocarditis risk)"
+        ]
+      },
+      "learning_points": [
+        "Aortic stenosis triad: dyspnea (most common), syncope, chest pain - any symptoms indicate severe disease",
+        "Rheumatic AS: bicuspid/unicuspid valve with commissural fusion vs degenerative calcific AS",
+        "Physical examination: harsh systolic murmur radiating to carotids, slow-rising pulse, narrow pulse pressure",
+        "Severe AS criteria: valve area <1.0cm\u00b2, peak velocity >4m/s, mean gradient >40mmHg",
+        "TAVI indications: symptomatic severe AS with intermediate-high surgical risk (class I recommendation)",
+        "Avoid ACE inhibitors in symptomatic severe AS pre-intervention (can cause hypotension)"
+      ],
+      "australian_context": true,
+      "australian_guidelines": [
+        "CSANZ: Valvular Heart Disease Guidelines 2017",
+        "National Heart Foundation: Valve Disease Position Statement",
+        "Therapeutic Guidelines: Cardiovascular - Valvular heart disease",
+        "Royal Australian College of Surgeons: Cardiac Surgery Guidelines"
+      ],
+      "metadata": {
+        "generated_date": "2026-03-30T16:59:39.560818",
+        "generator": "regenerate_cardiology_osces.py + Claude CLI",
+        "constraint_applied": "Cardiology OSCE Requirements"
+      }
+    },
+    {
+      "id": "osce_cardiology_hf_intermediate_001",
+      "title": "Heart Failure Assessment and Management",
+      "difficulty": "intermediate",
+      "specialty": "Cardiology",
+      "duration_minutes": 15,
+      "scenario": {
+        "setting": "Emergency Department, Royal Brisbane Hospital",
+        "patient_demographics": {
+          "age": 67,
+          "gender": "Male",
+          "name": "Robert Chen",
+          "occupation": "Retired electrician"
+        },
+        "presenting_complaint": "Mr Chen presents with a 3-week history of progressive shortness of breath and ankle swelling. He reports orthopnoea requiring 3 pillows to sleep, paroxysmal nocturnal dyspnoea twice this week, and reduced exercise tolerance - previously walked 2km daily, now becomes breathless after 200m on flat ground.",
+        "clinical_context": "Patient has a background of anterior STEMI 2 years ago treated with primary PCI to LAD. He admits to poor medication compliance and has not attended cardiology follow-up for 8 months. His wife reports he has been increasingly tired and has gained 4kg over the past month.",
+        "vital_signs": {
+          "temperature": "36.8\u00b0C",
+          "heart_rate": "110 bpm irregular",
+          "blood_pressure": "95/65 mmHg",
+          "respiratory_rate": "24 breaths/min",
+          "oxygen_saturation": "92% on room air",
+          "weight": "87kg (usual weight 83kg)"
+        }
+      },
+      "examination_findings": {
+        "general_appearance": "Comfortable at rest but becomes dyspnoeic when sitting forward. Mild peripheral cyanosis noted.",
+        "cardiovascular": {
+          "inspection": "Visible jugular venous distension to angle of jaw when sitting at 45 degrees",
+          "palpation": "Apex beat displaced laterally to 6th intercostal space, anterior axillary line. Weak pulse volume.",
+          "auscultation": "Irregularly irregular rhythm, S1 soft, S2 normal, prominent S3 gallop, grade 2/6 pansystolic murmur at apex radiating to axilla"
+        },
+        "respiratory": "Bilateral fine crackles to mid-zones, reduced air entry at both bases",
+        "abdominal": "Soft, mild hepatomegaly 2cm below costal margin, non-tender",
+        "peripheral": "Bilateral pitting oedema to mid-shin level, cool peripheries, capillary refill 4 seconds"
+      },
+      "investigations": {
+        "ecg": {
+          "rhythm": "Atrial fibrillation with ventricular rate 110 bpm",
+          "axis": "Normal axis",
+          "intervals": "PR interval not measurable due to AF, QRS 110ms, QTc 445ms",
+          "specific_findings": "Poor R wave progression V1-V4 consistent with previous anterior MI, no acute ST changes, left atrial enlargement evidenced by broad P waves in lead II (when visible)"
+        },
+        "chest_xray": "Cardiomegaly with cardiothoracic ratio 0.65, bilateral perihilar congestion, small bilateral pleural effusions, upper lobe venous diversion",
+        "blood_tests": {
+          "nt_probnp": "3450 pg/mL (normal <125 pg/mL)",
+          "troponin_i": "0.08 ng/mL (normal <0.04 ng/mL) - chronic elevation",
+          "urea": "12.5 mmol/L",
+          "creatinine": "145 \u03bcmol/L (baseline 110 \u03bcmol/L)",
+          "egfr": "42 mL/min/1.73m\u00b2",
+          "sodium": "134 mmol/L",
+          "potassium": "4.8 mmol/L",
+          "haemoglobin": "115 g/L"
+        },
+        "echocardiogram": "Severe LV systolic dysfunction with LVEF 25%, regional wall motion abnormalities in LAD territory, moderate mitral regurgitation, moderate left atrial enlargement"
+      },
+      "diagnosis": {
+        "primary": "Acute decompensated heart failure with reduced ejection fraction (HFrEF)",
+        "secondary": [
+          "Atrial fibrillation with rapid ventricular response",
+          "Functional mitral regurgitation",
+          "Chronic kidney disease stage 3b",
+          "Previous anterior STEMI with residual LV dysfunction"
+        ]
+      },
+      "learning_objectives": [
+        "Recognise clinical signs and symptoms of acute heart failure decompensation",
+        "Interpret investigations including NT-proBNP, ECG changes in heart failure",
+        "Apply National Heart Foundation guidelines for heart failure management",
+        "Calculate appropriate medication dosing considering renal function",
+        "Understand PBS restrictions and requirements for heart failure medications",
+        "Manage atrial fibrillation in the context of acute heart failure"
+      ],
+      "management_plan": {
+        "immediate": {
+          "monitoring": "Continuous cardiac monitoring, strict fluid balance chart, daily weights",
+          "oxygen": "Oxygen therapy targeting SpO2 94-98%",
+          "position": "Sit upright to reduce preload"
+        },
+        "medications": [
+          {
+            "drug": "Furosemide",
+            "dose": "40mg IV stat, then 40mg BD IV",
+            "rationale": "Loop diuretic for fluid removal",
+            "pbs_code": "8456B",
+            "monitoring": "Daily weight, electrolytes, creatinine"
+          },
+          {
+            "drug": "Metoprolol",
+            "dose": "25mg BD PO (start low due to decompensation)",
+            "rationale": "Rate control for AF and prognostic benefit in HFrEF",
+            "pbs_code": "8123C",
+            "monitoring": "Heart rate, blood pressure, signs of bronchospasm"
+          },
+          {
+            "drug": "Ramipril",
+            "dose": "1.25mg daily PO (start low due to renal impairment)",
+            "rationale": "ACE inhibitor for HFrEF - mortality benefit",
+            "pbs_code": "8567D",
+            "monitoring": "Creatinine, potassium, blood pressure",
+            "pbs_requirements": "Authority required for doses >2.5mg daily"
+          },
+          {
+            "drug": "Spironolactone",
+            "dose": "25mg daily PO",
+            "rationale": "Aldosterone antagonist for severe HFrEF",
+            "pbs_code": "8234F",
+            "monitoring": "Potassium, creatinine - check within 1 week"
+          },
+          {
+            "drug": "Apixaban",
+            "dose": "2.5mg BD PO (reduced dose due to age >65, weight <60kg equivalent, creatinine >133)",
+            "rationale": "Anticoagulation for AF with CHA2DS2-VASc score 4",
+            "pbs_code": "9871K",
+            "monitoring": "Bleeding signs, renal function"
+          }
+        ],
+        "investigations_required": "Repeat echocardiogram in 3 months to assess response, coronary angiogram if not done recently, thyroid function tests",
+        "follow_up": "Cardiology outpatient clinic in 2 weeks, heart failure nurse clinic in 1 week, GP in 3-5 days"
+      },
+      "key_clinical_pearls": [
+        "NT-proBNP >400 pg/mL in emergency setting strongly suggests heart failure",
+        "S3 gallop is highly specific for heart failure with reduced ejection fraction",
+        "Start ACE inhibitor and beta-blocker at low doses in decompensated heart failure",
+        "Spironolactone indicated when LVEF \u226435% despite optimal ACE inhibitor and beta-blocker",
+        "CHA2DS2-VASc score guides anticoagulation decision in atrial fibrillation"
+      ],
+      "common_mistakes": [
+        "Starting full-dose ACE inhibitor in acute decompensation without considering renal function",
+        "Withholding beta-blocker completely in acute heart failure",
+        "Not recognising atrial fibrillation on irregular ECG rhythm",
+        "Inadequate diuresis leading to persistent congestion",
+        "Missing functional mitral regurgitation as contributor to symptoms"
+      ],
+      "assessment_rubric": {
+        "history_taking": {
+          "excellent": "Systematically explores breathlessness, orthopnoea, PND, exercise tolerance, medication compliance",
+          "satisfactory": "Covers main heart failure symptoms but misses some key details",
+          "needs_improvement": "Limited questioning about heart failure symptoms"
+        },
+        "physical_examination": {
+          "excellent": "Correctly identifies JVP, displaced apex, S3 gallop, murmur, peripheral oedema, lung crackles",
+          "satisfactory": "Identifies most key signs but may miss subtle findings",
+          "needs_improvement": "Misses major signs of heart failure or performs incomplete examination"
+        },
+        "investigation_interpretation": {
+          "excellent": "Correctly interprets NT-proBNP, ECG (AF, previous MI), CXR findings, echo results",
+          "satisfactory": "Interprets most investigations correctly with minor omissions",
+          "needs_improvement": "Significant errors in investigation interpretation"
+        },
+        "management": {
+          "excellent": "Appropriate medication choices, correct dosing for renal function, PBS considerations",
+          "satisfactory": "Generally appropriate management with minor dose adjustments needed",
+          "needs_improvement": "Significant errors in medication choice or dosing"
+        }
+      },
+      "australian_guidelines_reference": "National Heart Foundation of Australia and Cardiac Society of Australia and New Zealand: Guidelines for the Prevention, Detection and Management of Heart Failure in Australia 2018",
+      "related_conditions": [
+        "Acute coronary syndrome",
+        "Pulmonary oedema",
+        "Chronic obstructive pulmonary disease",
+        "Pulmonary embolism",
+        "Valve disease"
+      ]
+    },
+    {
+      "id": "cardiology-hf-intermediate-001",
+      "title": "Heart Failure with Reduced Ejection Fraction Assessment",
+      "difficulty": "intermediate",
+      "specialty": "cardiology",
+      "duration": 8,
+      "scenario": {
+        "setting": "Emergency Department",
+        "patient_demographics": {
+          "age": 67,
+          "gender": "male",
+          "occupation": "retired truck driver"
+        },
+        "presentation": "A 67-year-old male presents with 3-day history of progressive shortness of breath, orthopnoea, and bilateral ankle swelling. He has a background of ischaemic heart disease with anterior STEMI 2 years ago treated with PCI to LAD. He reports sleeping on 3 pillows and waking up breathless at night. He has been compliant with his medications until last week when he ran out of his 'water tablets'.",
+        "vital_signs": {
+          "blood_pressure": "95/65 mmHg",
+          "heart_rate": "110 bpm regular",
+          "respiratory_rate": "24 breaths/min",
+          "oxygen_saturation": "92% on room air",
+          "temperature": "36.8\u00b0C"
+        },
+        "clinical_findings": "Patient appears dyspnoeic at rest, using accessory muscles. JVP elevated at 8cm above sternal angle. Heart sounds: S1 S2 with S3 gallop, no murmurs. Lung examination reveals bilateral fine inspiratory crackles to mid-zones. Bilateral pitting oedema to mid-shins. Hepatomegaly 3cm below costal margin."
+      },
+      "investigations": {
+        "ecg": {
+          "rhythm": "Sinus tachycardia",
+          "rate": "110 bpm",
+          "axis": "Normal axis",
+          "intervals": "PR 180ms, QRS 100ms, QT 420ms",
+          "specific_findings": "Poor R wave progression V1-V4 consistent with old anterior MI. No acute ischaemic changes. No evidence of arrhythmia.",
+          "interpretation": "Sinus tachycardia with evidence of old anterior myocardial infarction"
+        },
+        "chest_xray": "Cardiomegaly with cardiothoracic ratio 0.65. Bilateral perihilar haziness consistent with pulmonary oedema. Upper lobe blood diversion. Kerley B lines visible at lung bases.",
+        "blood_tests": {
+          "fbc": "Hb 125 g/L, WCC 8.5, Platelets 280",
+          "uec": "Na 135 mmol/L, K 4.8 mmol/L, Cl 102 mmol/L, HCO3 22 mmol/L, Urea 12.5 mmol/L, Creatinine 145 \u00b5mol/L, eGFR 42 mL/min/1.73m\u00b2",
+          "lfts": "Normal",
+          "bnp": "NT-proBNP 4500 pg/mL (normal <125 pg/mL)",
+          "troponin": "Troponin I 0.04 \u00b5g/L (normal <0.04 \u00b5g/L)"
+        },
+        "echocardiogram": "Moderate left ventricular systolic impairment with LVEF 30%. Regional wall motion abnormality in LAD territory - akinetic anterior and septal walls. Moderate mitral regurgitation secondary to LV dysfunction. No significant valvular disease. LVEDV 180mL, LVESV 126mL."
+      },
+      "tasks": [
+        {
+          "task": "Take a focused history relevant to heart failure",
+          "key_points": [
+            "Onset and progression of dyspnoea (NYHA class progression from II to IV)",
+            "Orthopnoea and paroxysmal nocturnal dyspnoea",
+            "Exercise tolerance - now dyspnoeic at rest",
+            "Medication compliance - stopped diuretics 1 week ago",
+            "Previous cardiac history - anterior STEMI 2 years ago, PCI to LAD",
+            "Risk factors - smoking history, diabetes, hypertension",
+            "Precipitating factors - medication non-compliance, dietary indiscretion",
+            "Review of systems - chest pain, palpitations, syncope"
+          ],
+          "scoring": {
+            "excellent": "Identifies acute decompensated heart failure, explores precipitating factors including medication non-compliance",
+            "good": "Takes adequate heart failure history but misses some precipitating factors",
+            "satisfactory": "Basic heart failure history taken",
+            "needs_improvement": "Incomplete or unfocused history"
+          }
+        },
+        {
+          "task": "Perform cardiovascular examination",
+          "key_points": [
+            "General inspection - dyspnoea at rest, peripheral oedema",
+            "Pulse assessment - rate 110 bpm, regular rhythm, character",
+            "Blood pressure - hypotensive at 95/65 mmHg",
+            "JVP assessment - elevated at 8cm, hepatojugular reflux",
+            "Precordial examination - apex displaced, S3 gallop",
+            "Peripheral examination - bilateral pitting oedema, hepatomegaly",
+            "Lung examination - bilateral fine crackles",
+            "Assessment of fluid status and perfusion"
+          ],
+          "scoring": {
+            "excellent": "Systematic examination identifying all key signs of acute heart failure",
+            "good": "Good examination technique identifying most key findings",
+            "satisfactory": "Adequate examination with some key findings identified",
+            "needs_improvement": "Poor examination technique or missing key findings"
+          }
+        },
+        {
+          "task": "Interpret investigations and formulate diagnosis",
+          "key_points": [
+            "ECG interpretation - old anterior MI, no acute changes",
+            "CXR findings - cardiomegaly, pulmonary oedema, Kerley B lines",
+            "NT-proBNP significantly elevated (>4000 pg/mL)",
+            "Echocardiogram - LVEF 30%, regional wall motion abnormality",
+            "Renal impairment - eGFR 42, cardiorenal syndrome",
+            "Primary diagnosis: Acute decompensated heart failure with reduced ejection fraction (HFrEF)",
+            "Secondary to ischaemic cardiomyopathy",
+            "Precipitated by medication non-compliance"
+          ],
+          "scoring": {
+            "excellent": "Correct interpretation of all investigations and accurate diagnosis with precipitating factors",
+            "good": "Good interpretation with minor omissions",
+            "satisfactory": "Basic interpretation with correct primary diagnosis",
+            "needs_improvement": "Poor interpretation or incorrect diagnosis"
+          }
+        },
+        {
+          "task": "Develop acute management plan with specific medications",
+          "key_points": [
+            "Oxygen therapy - target SpO2 >95%",
+            "IV furosemide 40mg stat, then 40mg BD - PBS 2572B",
+            "Continue ACE inhibitor at reduced dose - perindopril 2mg daily - PBS 8601K",
+            "Continue beta-blocker at current dose - metoprolol 25mg BD - PBS 2722B",
+            "Spironolactone 25mg daily (if eGFR >30) - PBS 8703M",
+            "Aspirin 100mg daily - PBS 1215Y",
+            "Atorvastatin 40mg nocte - PBS 8637Q",
+            "Fluid restriction 1.5L/day",
+            "Daily weights and fluid balance chart",
+            "Monitor renal function and electrolytes"
+          ],
+          "scoring": {
+            "excellent": "Comprehensive acute management with appropriate medications, doses and PBS codes",
+            "good": "Good management plan with minor omissions",
+            "satisfactory": "Basic management addressing key issues",
+            "needs_improvement": "Inappropriate or incomplete management"
+          }
+        },
+        {
+          "task": "Address long-term heart failure management and follow-up",
+          "key_points": [
+            "Heart failure nurse consultation and education",
+            "Medication compliance education and Webster pack",
+            "Dietary advice - sodium restriction <2g/day",
+            "Exercise rehabilitation referral when stable",
+            "Heart failure clinic follow-up in 1-2 weeks",
+            "GP follow-up in 1 week",
+            "Advance care planning discussion",
+            "Consider CRT-D if optimal medical therapy and QRS >120ms",
+            "Annual influenza and 5-yearly pneumococcal vaccination",
+            "Patient education on when to seek help (weight gain >2kg in 2 days)"
+          ],
+          "scoring": {
+            "excellent": "Comprehensive long-term management addressing all aspects of chronic heart failure care",
+            "good": "Good planning with minor omissions",
+            "satisfactory": "Basic discharge planning",
+            "needs_improvement": "Inadequate or inappropriate long-term planning"
+          }
+        }
+      ],
+      "learning_objectives": [
+        "Diagnose acute decompensated heart failure using clinical assessment and investigations",
+        "Interpret NT-proBNP levels and echocardiographic findings in heart failure",
+        "Demonstrate systematic cardiovascular examination in acute heart failure",
+        "Prescribe appropriate acute heart failure medications with correct doses and PBS codes",
+        "Develop comprehensive discharge planning for chronic heart failure management",
+        "Understand precipitating factors for heart failure decompensation"
+      ],
+      "assessment_criteria": {
+        "history_taking": {
+          "weight": 20,
+          "components": [
+            "symptom assessment",
+            "precipitating factors",
+            "medication history",
+            "functional status"
+          ]
+        },
+        "physical_examination": {
+          "weight": 25,
+          "components": [
+            "cardiovascular examination",
+            "fluid status assessment",
+            "respiratory examination"
+          ]
+        },
+        "investigation_interpretation": {
+          "weight": 20,
+          "components": [
+            "ECG interpretation",
+            "chest X-ray",
+            "echocardiogram",
+            "blood results"
+          ]
+        },
+        "acute_management": {
+          "weight": 20,
+          "components": [
+            "medication prescribing",
+            "supportive care",
+            "monitoring plan"
+          ]
+        },
+        "long_term_planning": {
+          "weight": 15,
+          "components": [
+            "discharge planning",
+            "follow-up arrangements",
+            "patient education"
+          ]
+        }
+      },
+      "australian_guidelines": {
+        "primary": "National Heart Foundation of Australia and Cardiac Society of Australia and New Zealand: Guidelines for the Prevention, Detection and Management of Heart Failure in Australia 2018",
+        "secondary": [
+          "eTG: Cardiovascular - Heart Failure",
+          "CSANZ Guidelines for Device Therapy in Heart Failure",
+          "National Heart Foundation Position Statement on Lipid Management"
+        ]
+      },
+      "key_medications": [
+        {
+          "medication": "Furosemide",
+          "dose": "40mg IV stat, then 40mg BD PO",
+          "pbs_code": "2572B",
+          "indication": "Acute pulmonary oedema and fluid overload"
+        },
+        {
+          "medication": "Perindopril",
+          "dose": "2mg daily PO (reduced dose due to hypotension)",
+          "pbs_code": "8601K",
+          "indication": "ACE inhibitor for heart failure with reduced ejection fraction"
+        },
+        {
+          "medication": "Metoprolol",
+          "dose": "25mg BD PO",
+          "pbs_code": "2722B",
+          "indication": "Beta-blocker for heart failure with reduced ejection fraction"
+        },
+        {
+          "medication": "Spironolactone",
+          "dose": "25mg daily PO",
+          "pbs_code": "8703M",
+          "indication": "Aldosterone receptor antagonist for severe heart failure"
+        }
+      ],
+      "common_errors": [
+        "Not recognizing signs of fluid overload",
+        "Inappropriate use of IV fluids in heart failure",
+        "Over-diuresis leading to renal impairment",
+        "Not addressing medication compliance",
+        "Missing precipitating factors",
+        "Inappropriate beta-blocker cessation in acute setting"
+      ],
+      "red_flags": [
+        "Cardiogenic shock (SBP <90 mmHg with signs of hypoperfusion)",
+        "Acute coronary syndrome (new chest pain with ECG changes)",
+        "Severe renal impairment (eGFR <30 mL/min/1.73m\u00b2)",
+        "Hyperkalemia >5.5 mmol/L",
+        "Evidence of cardiac tamponade or mechanical complications"
+      ]
+    },
+    {
+      "id": "CARD-OSCE-ECG-PE-20260330",
+      "station_number": "CARD-045",
+      "station_type": "Clinical Assessment / Emergency Management",
+      "specialty": "Cardiology",
+      "topic": "ECG Interpretation",
+      "subtopic": "Pulmonary Embolism",
+      "time_limit": 8,
+      "difficulty": "intermediate",
+      "candidate_instructions": "42-year-old woman presents to ED with 3-hour history of sudden-onset right-sided pleuritic chest pain and shortness of breath. She returned from a 14-hour flight from London 2 days ago. She takes the oral contraceptive pill and is a smoker. Vitals: BP 110/70, HR 115, RR 24, SpO2 92% room air, afebrile. Please assess and manage this patient.",
+      "actor_instructions": "You are a 42-year-old marketing manager who just returned from a business trip to London 2 days ago (14-hour flight). You developed sudden sharp right-sided chest pain 3 hours ago while at work, along with shortness of breath. The pain is worse when you take a deep breath. You feel anxious and have been coughing occasionally. You smoke 15 cigarettes daily for 20 years and take Microgynon 30 (combined OCP). You had a similar but milder episode yesterday but thought it was just tiredness from travel. You're worried something serious is wrong. You have no family history of clots but your mother had varicose veins.",
+      "examiner_instructions": "Observe the candidate's systematic approach to suspected pulmonary embolism. Key areas: recognizes clinical features suggestive of PE, interprets ECG findings (sinus tachycardia, possible S1Q3T3 pattern), calculates Wells score, initiates appropriate anticoagulation, orders CT pulmonary angiogram. Look for understanding of risk factors (recent long-haul flight, OCP, smoking) and knowledge of PE management protocols including NOAC vs LMWH options.",
+      "marking_criteria": {
+        "introduction_assessment": {
+          "marks": 1,
+          "criteria": "Professional introduction, recognizes potential emergency, systematic approach"
+        },
+        "focused_history": {
+          "marks": 2,
+          "criteria": "Pain characteristics (pleuritic), timing, recent travel, risk factors (OCP, smoking), previous episodes"
+        },
+        "examination": {
+          "marks": 1,
+          "criteria": "Focused cardiorespiratory exam, checks for DVT signs, oxygen saturation"
+        },
+        "ecg_interpretation": {
+          "marks": 2,
+          "criteria": "Identifies sinus tachycardia 115bpm, recognizes S1Q3T3 pattern (deep S in lead I, Q wave and T inversion in lead III), considers right heart strain"
+        },
+        "risk_stratification": {
+          "marks": 2,
+          "criteria": "Calculates Wells score (\u22654 points: recent travel, tachycardia, no alternative diagnosis), considers PE as likely diagnosis"
+        },
+        "immediate_management": {
+          "marks": 3,
+          "criteria": "Oxygen therapy, IV access, initiates anticoagulation (rivaroxaban 15mg BD or enoxaparin 1.5mg/kg), orders urgent CT pulmonary angiogram"
+        },
+        "investigations": {
+          "marks": 2,
+          "criteria": "D-dimer (if Wells <4), ABG, FBC, UEC, coagulation, CXR, CT pulmonary angiogram, considers echocardiogram for right heart strain"
+        },
+        "ongoing_management": {
+          "marks": 1,
+          "criteria": "Discusses anticoagulation duration (minimum 3 months), OCP cessation, smoking cessation, follow-up arrangements"
+        },
+        "communication": {
+          "marks": 1,
+          "criteria": "Explains suspected diagnosis clearly, discusses treatment plan, addresses patient concerns about flying"
+        },
+        "total": 15
+      },
+      "sample_answer": {
+        "history_summary": "42-year-old woman with sudden-onset right-sided pleuritic chest pain and dyspnea 3 hours post-onset. Recent long-haul flight (London-Australia, 14 hours) 2 days ago. Risk factors: combined oral contraceptive pill (Microgynon 30), smoking 15/day for 20 years. Previous similar but milder episode yesterday. No family history of thromboembolism.",
+        "examination_findings": "Anxious, mildly tachypneic. BP 110/70, HR 115 regular, RR 24, SpO2 92% room air, afebrile. JVP mildly elevated. Heart sounds: dual, no murmurs, loud P2. Chest: reduced air entry right base, no wheeze or crackles. Right calf slightly swollen compared to left, no tenderness or warmth. No peripheral cyanosis.",
+        "ecg_findings": "Sinus tachycardia 115bpm. S1Q3T3 pattern present: deep S wave in lead I (4mm), Q wave in lead III (2mm), T wave inversion in lead III. Right axis deviation. No acute ST changes. Suggests acute right heart strain.",
+        "provisional_diagnosis": "Acute pulmonary embolism with right heart strain",
+        "differential_diagnosis": [
+          "Pneumothorax (but no sudden pleuritic pain pattern, normal CXR)",
+          "Pneumonia (but afebrile, no productive cough)",
+          "Musculoskeletal pain (but sudden onset, associated dyspnea)",
+          "Anxiety/panic attack (but objective findings of tachycardia, hypoxia)"
+        ],
+        "wells_score_calculation": [
+          "Clinical signs of DVT: 3 points (right calf swelling)",
+          "PE more likely than alternative diagnosis: 3 points",
+          "Heart rate >100: 1.5 points",
+          "Previous PE or DVT: 0 points (none)",
+          "Hemoptysis: 0 points (none)",
+          "Malignancy: 0 points (none)",
+          "Surgery/immobilization: 1.5 points (recent long flight >3 hours)",
+          "Total Wells Score: 9 points (high probability, >6 points = PE likely)"
+        ],
+        "immediate_management": [
+          "High-flow oxygen via Hudson mask (target SpO2 94-98%)",
+          "IV access x2, continuous ECG monitoring",
+          "Immediate anticoagulation: Rivaroxaban 15mg BD PO (preferred NOAC) PBS 11051X, OR Enoxaparin 1.5mg/kg SC BD if NOAC contraindicated",
+          "Urgent CT pulmonary angiogram (CTPA) - do not delay anticoagulation",
+          "D-dimer not required (Wells score >4, high clinical probability)",
+          "ABG: likely to show Type 1 respiratory failure, increased A-a gradient",
+          "FBC, UEC, LFTs, coagulation studies, troponin (exclude right heart strain)",
+          "CXR: may show wedge-shaped opacity, raised hemidiaphragm, or normal",
+          "Consider bedside echo if massive PE suspected (RV dilatation, McConnell's sign)",
+          "Analgesia: paracetamol 1g QID, avoid NSAIDs (bleeding risk with anticoagulation)"
+        ],
+        "ongoing_management": [
+          "Continue rivaroxaban 15mg BD for 21 days, then 20mg daily for minimum 3 months",
+          "If enoxaparin used: transition to warfarin (target INR 2.0-3.0) or NOAC after 5-7 days",
+          "Cease combined oral contraceptive pill immediately (major risk factor)",
+          "Alternative contraception: progesterone-only pill, Mirena IUD, barrier methods",
+          "Smoking cessation counseling + nicotine replacement therapy (PBS 4220K)",
+          "Graduated compression stockings 30-40mmHg for 2 years (prevent post-thrombotic syndrome)",
+          "Follow-up: GP in 1 week, respiratory/hematology clinic in 4-6 weeks",
+          "Repeat imaging at 3 months to assess clot resolution",
+          "Travel advice: avoid long flights >4 hours for 3 months, use compression stockings when flying",
+          "Thrombophilia screen if unprovoked PE or family history (protein C/S, antithrombin III, factor V Leiden)"
+        ]
+      },
+      "learning_points": [
+        "Wells score >4: high probability PE, start anticoagulation immediately before imaging",
+        "S1Q3T3 pattern: classic but only present in 20% of PE cases, indicates right heart strain",
+        "NOAC preferred over warfarin: rivaroxaban 15mg BD x21 days, then 20mg daily (PBS 11051X)",
+        "Combined OCP major risk factor: 3-6x increased VTE risk, must cease immediately",
+        "Recent long-haul flight: >4 hours increases VTE risk 2-4x, peaks at 1-2 weeks post-travel",
+        "CT pulmonary angiogram gold standard: 95% sensitivity, can detect subsegmental PE",
+        "Anticoagulation duration: minimum 3 months, consider extended if unprovoked or recurrent"
+      ],
+      "australian_context": true,
+      "australian_guidelines": [
+        "National Health and Medical Research Council: Venous Thromboembolism Prevention Guidelines",
+        "Therapeutic Guidelines: Cardiovascular - Venous thromboembolism",
+        "Australian and New Zealand Working Party on Blood Disorders: Anticoagulation Guidelines",
+        "Royal Australian College of General Practitioners: Pulmonary Embolism Management"
+      ],
+      "metadata": {
+        "generated_date": "2026-03-30T17:11:12.758716",
+        "generator": "regenerate_cardiology_osces.py + Claude CLI",
+        "constraint_applied": "Cardiology OSCE Requirements"
+      }
+    },
+    {
+      "id": "CARD-OSCE-OTHER-CARD-20260330-050",
+      "station_number": "CARD-050",
+      "station_type": "Clinical Assessment",
+      "specialty": "Cardiology",
+      "topic": "Other Cardiology",
+      "subtopic": "Heart Murmur",
+      "time_limit": 8,
+      "difficulty": "intermediate",
+      "candidate_instructions": "Mrs Margaret Chen, a 72-year-old retired teacher, presents to the cardiology clinic for evaluation of a heart murmur detected by her GP during a routine health check. She reports mild shortness of breath when climbing two flights of stairs and occasional fatigue. No chest pain or syncope. Conduct a focused cardiovascular assessment and advise on management.",
+      "actor_instructions": "You are Margaret Chen, a 72-year-old retired high school English teacher. You are generally healthy and active, walking your dog daily and doing tai chi twice weekly. Three weeks ago, your GP heard a heart murmur during your annual health check and referred you to cardiology. You've noticed mild shortness of breath when climbing the stairs to your second-floor bedroom, which you didn't have 6 months ago. You sometimes feel tired in the afternoons but thought this was normal aging. You have no chest pain, palpitations, dizziness or fainting. You take only amlodipine 5mg daily for mild hypertension diagnosed 3 years ago. Your mother had 'heart problems' and died at age 78. You're anxious about what the murmur means and whether you need surgery.",
+      "examiner_instructions": "Candidate should perform systematic cardiovascular examination, correctly identify aortic stenosis murmur characteristics, assess functional status, and discuss appropriate investigations and management. Look for recognition of moderate aortic stenosis requiring surveillance and symptom monitoring.",
+      "marking_criteria": {
+        "introduction_assessment": {
+          "marks": 1,
+          "criteria": "Professional introduction, explains examination, obtains consent"
+        },
+        "focused_history": {
+          "marks": 2,
+          "criteria": "Assesses exercise tolerance (NYHA class), chest pain, syncope, palpitations, family history, medications"
+        },
+        "inspection": {
+          "marks": 1,
+          "criteria": "General appearance, signs of heart failure, cyanosis, peripheral pulses"
+        },
+        "pulse_bp_assessment": {
+          "marks": 1,
+          "criteria": "Pulse character (slow-rising in AS), blood pressure, pulse pressure"
+        },
+        "cardiac_auscultation": {
+          "marks": 3,
+          "criteria": "Identifies systolic ejection murmur at aortic area, radiation to carotids, intensity grading (3/6), timing in systole"
+        },
+        "dynamic_maneuvers": {
+          "marks": 2,
+          "criteria": "Performs Valsalva or standing/squatting to differentiate murmur (AS decreases with preload reduction)"
+        },
+        "investigations": {
+          "marks": 2,
+          "criteria": "Discusses echocardiography (assess valve area, gradients), ECG, considers BNP if heart failure suspected"
+        },
+        "management_plan": {
+          "marks": 2,
+          "criteria": "Surveillance strategy, exercise advice, symptom monitoring, when to seek urgent review"
+        },
+        "communication": {
+          "marks": 1,
+          "criteria": "Explains findings clearly, addresses patient concerns, reassures appropriately"
+        },
+        "total": 15
+      },
+      "sample_answer": {
+        "history_summary": "72-year-old woman with newly detected heart murmur, mild exertional dyspnea (NYHA Class II), and fatigue. No chest pain, syncope, or palpitations. Background hypertension on amlodipine. Family history of cardiac disease. Previously active with good exercise tolerance.",
+        "examination_findings": "Alert, comfortable at rest, no cyanosis or pallor. Peripheral pulses present and equal. Carotid pulse slow-rising with delayed peak. BP 145/85, HR 72 regular. JVP not elevated. Cardiac inspection: no visible pulsations or deformity. Palpation: apex beat 5th intercostal space, midclavicular line, not displaced. No heaves or thrills. Auscultation: 3/6 harsh systolic ejection murmur loudest at right sternal edge 2nd intercostal space, radiating to both carotids. S2 present but soft A2 component. No diastolic murmur or gallop. Lung fields clear to auscultation. No peripheral edema.",
+        "provisional_diagnosis": "Moderate aortic stenosis (based on murmur characteristics and mild symptoms)",
+        "differential_diagnosis": [
+          "Aortic sclerosis (murmur without significant stenosis)",
+          "Hypertrophic cardiomyopathy (but murmur increases with Valsalva in HCM)",
+          "Pulmonary stenosis (but murmur location and radiation favor aortic)"
+        ],
+        "investigations": [
+          "Transthoracic echocardiography (assess aortic valve area, peak/mean gradients, left ventricular function) - MBS 55111",
+          "12-lead ECG (assess for left ventricular hypertrophy, conduction abnormalities)",
+          "BNP if heart failure suspected based on echo findings",
+          "Consider stress testing if asymptomatic severe AS to unmask symptoms"
+        ],
+        "immediate_management": [
+          "Reassure patient - murmur detected early, many people live normal lives with AS",
+          "Continue current medications (amlodipine appropriate for hypertension)",
+          "Avoid vigorous isometric exercise until echo assessment completed",
+          "Maintain regular light-moderate aerobic activity (walking, tai chi)",
+          "Advise on symptom monitoring: chest pain, shortness of breath, dizziness/fainting"
+        ],
+        "ongoing_management": [
+          "Echo results will guide management strategy:",
+          "Mild AS (valve area >1.5cm\u00b2, gradient <25mmHg): Echo surveillance every 3-5 years",
+          "Moderate AS (valve area 1.0-1.5cm\u00b2, gradient 25-40mmHg): Echo every 1-2 years",
+          "Severe AS (valve area <1.0cm\u00b2, gradient >40mmHg): Echo every 6 months, consider surgery if symptomatic",
+          "Blood pressure management: Target <140/90, ACE inhibitors safe in AS",
+          "Antibiotic prophylaxis NOT required for dental procedures (current guidelines)",
+          "Annual cardiology review, earlier if symptoms develop",
+          "Symptom education: Seek urgent medical attention for chest pain, syncope, or worsening dyspnea",
+          "Surgical referral if severe symptomatic AS (SAVR or TAVI depending on risk profile)"
+        ]
+      },
+      "learning_points": [
+        "Aortic stenosis murmur: Harsh systolic ejection murmur, right sternal edge, radiating to carotids",
+        "Pulse character in AS: Slow-rising (pulsus tardus) with delayed peak and reduced amplitude",
+        "AS severity grading: Valve area (mild >1.5, moderate 1.0-1.5, severe <1.0 cm\u00b2)",
+        "Dynamic maneuvers: AS murmur decreases with reduced preload (Valsalva, standing)",
+        "Surveillance intervals: Mild AS every 3-5 years, moderate every 1-2 years, severe every 6 months",
+        "Surgery indicated for: Severe symptomatic AS, severe AS with LVEF <50%, or undergoing other cardiac surgery"
+      ],
+      "australian_context": true,
+      "australian_guidelines": [
+        "National Heart Foundation: Valvular Heart Disease Guidelines",
+        "Cardiac Society of Australia and New Zealand (CSANZ): Aortic Stenosis Position Statement",
+        "Therapeutic Guidelines: Cardiovascular - Valvular heart disease"
+      ],
+      "metadata": {
+        "generated_date": "2026-03-30T17:17:55.851944",
+        "generator": "regenerate_cardiology_osces.py + Claude CLI",
+        "constraint_applied": "Cardiology OSCE Requirements"
+      }
+    }
+  ]
+}

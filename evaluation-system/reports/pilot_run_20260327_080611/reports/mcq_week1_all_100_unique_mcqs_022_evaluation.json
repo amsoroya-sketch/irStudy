@@ -1,0 +1,123 @@
+{
+  "overall_score": 5.03,
+  "criterion_scores": {
+    "australian_standards": 8.5,
+    "clinical_accuracy": 7.5,
+    "cultural_safety": 6.5
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_022",
+      "evaluation_date": "2026-03-27T08:41:40.113061",
+      "overall_score": 8.5,
+      "criteria_scores": {
+        "australian_drug_names": 10.0,
+        "pbs_compliance": 8.0,
+        "dosing_accuracy": 9.0,
+        "drug_interactions": 8.0,
+        "polypharmacy_management": 8.0
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "pbs_compliance",
+          "issue": "Sertraline lacks PBS streamline code and authority requirements",
+          "location": "explanation.key_points[0]",
+          "suggested_fix": "Add PBS authority requirement note: 'PBS-listed for depression, authority required for doses >100mg or treatment >6 months (streamline code: 8256M)'"
+        },
+        {
+          "severity": "warning",
+          "category": "dosing_accuracy",
+          "issue": "Missing renal dosing caution for sertraline in elderly",
+          "location": "explanation.key_points[1]",
+          "suggested_fix": "Add note: 'In elderly or renal impairment (eGFR <30), start at 25mg and titrate slowly'"
+        },
+        {
+          "severity": "suggestion",
+          "category": "dosing_accuracy",
+          "issue": "Frequency notation could be more consistent with Australian practice",
+          "location": "question.options.B",
+          "suggested_fix": "Consider changing 'Sertraline 50mg daily' to 'Sertraline 50mg mane (morning)' for clearer Australian prescribing practice"
+        }
+      ],
+      "suggestions": [
+        "Consider adding TGA approval context for sertraline in depression",
+        "Add monitoring requirements: 'Monitor for suicidality in first 2 weeks, review at 2 weeks, 4 weeks, then 3-monthly'",
+        "Specify that sertraline is preferred SSRI in Australia due to PBS listing and safety profile",
+        "Consider adding drug interaction note: 'Avoid NSAIDs (bleeding risk), warfarin (monitor INR), tramadol (serotonin syndrome risk)'"
+      ],
+      "strengths": [
+        "All drug names use correct Australian terminology (sertraline, escitalopram, venlafaxine, mirtazapine)",
+        "Appropriate first-line SSRI choice (sertraline) aligns with Therapeutic Guidelines",
+        "Correct recognition that SSRIs are first-line pharmacological treatment",
+        "Appropriate emphasis on combination therapy (medication + CBT)",
+        "Correct suicidality monitoring timeframe (first 2 weeks)",
+        "Rejects inappropriate options (TCAs, SNRIs as first-line, herbal medicines)",
+        "No American drug names detected (zero tolerance maintained)"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false,
+      "australian_compliance_verified": true
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_022",
+      "evaluation_date": "2026-03-27T08:41:40.123650",
+      "overall_score": 6.5,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 5.0,
+        "mental_health_act": 7.5,
+        "medication_safety": 7.0,
+        "cultural_safety": 6.5
+      },
+      "violations": [
+        "CRITICAL: Insufficient SAFE-T framework application - multiple MCQs lack comprehensive suicide risk assessment across all 5 elements (Specific plan, Access to means, Feelings, Earlier attempts, Threat)",
+        "CRITICAL: MCQ PSY-SUICIDE-MHA-20260125-334 uses SAD PERSONS scale instead of SAFE-T - Australian guidelines prefer SAFE-T or C-SSRS",
+        "Incomplete Mental State Examination documentation in psychosis MCQs - should systematically assess Appearance, Behavior, Speech, Mood, Affect, Thought (form/content), Perception, Cognition, Insight, Judgment",
+        "Multiple MCQs missing state-specific Mental Health Act references - should specify NSW/VIC/QLD legislation",
+        "Cultural safety considerations absent in all 64 MCQs - no Aboriginal/TSI SEWB framework, no cultural liaison mentions",
+        "Medication dosing lacks Australian context in some MCQs - should reference PBS restrictions where applicable",
+        "MCQ explanations use generic crisis contacts - should specify state-based services (e.g., NSW Mental Health Line 1800 011 511)",
+        "Missing acute dystonia management detail in MCQ PSY-PSYCHOSIS-20260125-814 - should specify benztropine dose (2mg IM/IV) as first-line per Australian guidelines",
+        "Clozapine monitoring schedule in MCQ PSY-PSYCHOSIS-20260125-052 correct but missing CPMS (Clozapine Patient Monitoring Service) registry requirement",
+        "Refeeding syndrome risk in anorexia MCQs correct but should specify Australian guidelines (RANZCP, ANZAED) for phosphate monitoring protocols"
+      ],
+      "suggestions": [
+        "Revise all depression/suicide MCQs to explicitly demonstrate SAFE-T framework: (S) Specific plan details, (A) Access to lethal means assessment, (F) Feelings of hopelessness/burden, (E) Earlier suicide attempts with method/lethality, (T) Threat level stratification",
+        "Replace SAD PERSONS references with C-SSRS (Columbia Suicide Severity Rating Scale) - preferred tool in Australian emergency departments",
+        "Add state-specific Mental Health Act criteria to all involuntary admission MCQs: NSW MHA 2007 (Schedule 1), VIC MHA 2014 (Assessment Order), QLD MHA 2016 (Recommendation for Assessment)",
+        "Include cultural safety prompts: 'Has Aboriginal or Torres Strait Islander status been respectfully asked?', 'Has Aboriginal Liaison Officer been offered?', 'Are SEWB considerations documented?'",
+        "Specify Australian crisis contacts by state: Lifeline 13 11 14 (national), Beyond Blue 1300 224 636, NSW Mental Health Line 1800 011 511, VIC NURSE-ON-CALL 1300 606 024, QLD 13 HEALTH (13 43 25 84)",
+        "Add PBS authority requirements for medications where applicable (e.g., clozapine requires treatment-resistant schizophrenia documentation, lithium requires bipolar disorder diagnosis)",
+        "Enhance antipsychotic MCQs with Australian monitoring requirements: baseline ECG (QTc), fasting glucose/lipids, weight/BMI, AIMS (Abnormal Involuntary Movement Scale) every 6 months",
+        "Include least restrictive alternative assessment in all Mental Health Act MCQs: 'Community Treatment Order considered?', 'Crisis team capacity assessed?', 'Family/carer support available?'",
+        "Addde-escalation techniques to agitation MCQs before pharmacological intervention: BETSI framework (Body language, Eye contact, Tone, Space, Information)",
+        "Specify Australian therapeutic drug monitoring for lithium: levels at 5-7 days post-dose change, then weekly until stable (0.6-1.0 mmol/L), then 3-monthly; UEC + TFTs 6-monthly",
+        "Include mandatory reporting considerations: NSW/VIC/QLD child protection notification thresholds, forensic mental health referral criteria for violence risk",
+        "Add Indigenous-specific mental health services: Aboriginal Medical Services (AMS), Headspace Indigenous services, Gayaa Dhuwi (Proud Spirit) Australia"
+      ],
+      "strengths": [
+        "Comprehensive coverage of psychiatry topics: depression, anxiety, bipolar, psychosis, suicide risk, Mental Health Act, substance use disorders",
+        "Correct first-line pharmacological treatments: SSRIs for depression/anxiety, antipsychotics + mood stabilizers for acute mania, benzodiazepines + thiamine for alcohol withdrawal",
+        "Accurate clozapine monitoring schedule: Weekly FBC (18 weeks) \u2192 Fortnightly (to 52 weeks) \u2192 Monthly lifelong",
+        "Appropriate involuntary admission criteria in suicide risk scenarios: High risk (plan + means + intent + refuses help) correctly triggers Mental Health Act application",
+        "Correct identification of neuroleptic malignant syndrome (NMS) features: Fever + rigidity + autonomic instability + altered mental state + elevated CK",
+        "Accurate refeeding syndrome risk stratification: BMI <15.5 + medical instability requires slow refeeding (1000-1500 kcal/day) with phosphate monitoring",
+        "Evidence-based psychotherapy recommendations: CBT for anxiety/depression, DBT for borderline personality disorder, trauma-focused CBT for PTSD",
+        "Correct metabolic risk ranking for antipsychotics: Aripiprazole < Risperidone < Quetiapine < Olanzapine/Clozapine",
+        "Appropriate early intervention psychosis management: Urgent psychiatric referral + low-dose second-generation antipsychotic (risperidone 1-2mg, NOT high-dose haloperidol)",
+        "Accurate extrapyramidal side effects (EPS) timeline: Acute dystonia (hours-days) \u2192 Akathisia (days-weeks) \u2192 Parkinsonism (weeks) \u2192 Tardive dyskinesia (months-years)"
+      ],
+      "pass_fail": "CONDITIONAL PASS - REQUIRES REVISION",
+      "requires_manual_review": true,
+      "detailed_feedback": "This MCQ set demonstrates solid psychiatric clinical knowledge with correct first-line treatments, medication safety, and Mental Health Act principles. However, CRITICAL GAPS exist in suicide risk assessment methodology (SAFE-T framework insufficiently applied), cultural safety (zero Aboriginal/TSI considerations across 64 MCQs), and state-specific Mental Health Act references. The use of SAD PERSONS scale instead of C-SSRS/SAFE-T is outdated for Australian emergency psychiatry. RECOMMENDATION: (1) Revise all suicide-related MCQs to explicitly demonstrate SAFE-T elements, (2) Add cultural safety prompts to at least 10% of MCQs, (3) Specify NSW/VIC/QLD Mental Health Act legislation, (4) Include state-based crisis contacts. With these revisions, this would achieve 8.5-9.0/10.0 rating suitable for AMC Clinical Examination preparation."
+    }
+  ],
+  "num_agents": 2,
+  "status": "REJECTED",
+  "item_id": "mcq_week1_all_100_unique_mcqs_022",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week1_all_100_unique_mcqs.json"
+}

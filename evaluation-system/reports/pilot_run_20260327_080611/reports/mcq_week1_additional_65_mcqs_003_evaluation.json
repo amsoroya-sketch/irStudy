@@ -1,0 +1,144 @@
+{
+  "overall_score": 4.02,
+  "criterion_scores": {
+    "australian_standards": 10.0,
+    "clinical_accuracy": 4.4,
+    "cultural_safety": 2.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_003",
+      "evaluation_date": "2026-03-27T08:41:00.926016",
+      "overall_score": 10.0,
+      "criteria_scores": {
+        "australian_drug_names": 10.0,
+        "pbs_compliance": 10.0,
+        "dosing_accuracy": 10.0,
+        "drug_interactions": 10.0,
+        "polypharmacy_management": 10.0
+      },
+      "violations": [],
+      "suggestions": [],
+      "strengths": [
+        "No medications prescribed in this MCQ - purely diagnostic/psychiatric management question",
+        "Management options correctly specify Australian psychiatric medications (olanzapine, risperidone) with appropriate Australian dosing (1-2mg risperidone, not US dosing)",
+        "Correct Australian terminology: 'diazepam' (not Valium brand), 'thiamine' dosing in mg (300mg IV) matches Australian eTG",
+        "All psychiatric medication references use generic names per Australian AMH standards",
+        "Appropriate Australian psychiatric practice: involuntary admission under Mental Health Act, DBT as first-line for borderline personality disorder per RANZCP guidelines"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false,
+      "australian_compliance_verified": true,
+      "medication_specific_notes": "This MCQ set focuses on psychiatric diagnosis and management rather than detailed pharmacotherapy. Where medications are mentioned (SSRIs, antipsychotics, benzodiazepines, lithium), they use correct Australian generic names and dosing conventions. Diazepam 10mg PO + IV thiamine 300mg for alcohol withdrawal matches eTG precisely. Olanzapine/quetiapine for acute mania, risperidone 1-2mg for first-episode psychosis - all align with Australian Medicines Handbook and RANZCP Clinical Practice Guidelines."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_003",
+      "evaluation_date": "2026-03-27T08:41:00.933409",
+      "overall_score": 3.2,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 5.0,
+        "medication_safety": 6.0,
+        "cultural_safety": 2.0
+      },
+      "violations": [
+        "CRITICAL: Zero RAG citations (all rag_confidence: 0.0) - violates medical content quality standards",
+        "CRITICAL: References show 'Unknown' title - no source verification",
+        "CRITICAL: Duplicate MCQ content (IDs 2000-2064 repeat same 8 questions)",
+        "CRITICAL: No SAFE-T assessment in suicide risk MCQ (PSY-SUICIDE-MHA questions)",
+        "CRITICAL: Incomplete 'why_incorrect' explanations (just labels, no rationale)",
+        "CRITICAL: Missing key_points array (empty in all MCQs)",
+        "Mental Health Act: State not specified (NSW/VIC/QLD) in MHA questions",
+        "Medication: Missing QTc monitoring mention for olanzapine/haloperidol",
+        "Cultural safety: No Aboriginal/TSI considerations in any MCQ",
+        "Quality: No educational value - same 8 MCQs repeated 8 times",
+        "Anorexia MCQ: Correct answer arguably B (cardiac arrhythmia) more immediate than refeeding syndrome risk",
+        "First-episode psychosis: Missing medical clearance step (UEC, TFTs, urine drug screen)",
+        "Alcohol withdrawal: IV thiamine dose should be 100mg TDS (not single 300mg dose)"
+      ],
+      "suggestions": [
+        "URGENT: Regenerate with RAG citations (qdrant_point_id, confidence \u22650.65)",
+        "URGENT: Remove duplicate MCQs - should have 65 unique questions, not 8 repeated",
+        "Add SAFE-T framework assessment in suicide risk questions",
+        "Specify Mental Health Act state (NSW/VIC/QLD) in involuntary admission MCQs",
+        "Complete 'why_incorrect' with clinical reasoning (not just labels)",
+        "Populate key_points with 3-5 teaching points per MCQ",
+        "Add cultural safety distractors (e.g., Aboriginal liaison, SEWB framework)",
+        "Anorexia MCQ: Consider cardiac arrhythmia as correct answer (immediate life threat)",
+        "First-episode psychosis: Add medical clearance as Step 1 before antipsychotic",
+        "Alcohol withdrawal: Correct thiamine dosing to 100mg IV TDS for 3 days",
+        "Add QTc monitoring to antipsychotic medication MCQs",
+        "Include Australian crisis contacts (Lifeline 13 11 14) in suicide MCQs"
+      ],
+      "strengths": [
+        "Australian terminology used (olanzapine, quetiapine, diazepam)",
+        "Mental Health Act referenced (involuntary admission criteria)",
+        "DBT correctly identified as first-line for borderline personality disorder",
+        "Benzodiazepines + thiamine correct for alcohol withdrawal",
+        "Low-dose antipsychotic approach for first-episode psychosis",
+        "Refeeding syndrome recognized as critical risk in anorexia"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "detailed_feedback": {
+        "critical_issues": [
+          "ZERO RAG CITATIONS: All 65 MCQs have rag_confidence: 0.0 and 'Unknown' references - violates constraint 11-rag-citation-requirements.md (zero tolerance for hallucinations)",
+          "DUPLICATE CONTENT: Questions PSY-ANX-BIP-2000 through PSY-ANX-BIP-2064 are the same 8 MCQs repeated 8 times - no educational value",
+          "INCOMPLETE EXPLANATIONS: 'why_incorrect' fields only contain labels ('Incorrect - Panic disorder') without clinical reasoning"
+        ],
+        "australian_context_gaps": [
+          "Mental Health Act state not specified (NSW Mental Health Act 2007 vs VIC 2014 vs QLD 2016 have different criteria)",
+          "No Aboriginal/TSI mental health considerations (SEWB framework, historical trauma)",
+          "Missing Australian crisis contacts (Lifeline 13 11 14, Beyond Blue 1300 224 636)"
+        ],
+        "clinical_accuracy_concerns": [
+          "Anorexia MCQ: Refeeding syndrome is important but cardiac arrhythmia (Option B) is MORE immediate - bradycardia 45bpm already present",
+          "Alcohol withdrawal: Thiamine 300mg IV single dose incorrect - should be 100mg IV TDS for 3 days (Australian eTG)",
+          "First-episode psychosis: Missing medical clearance (UEC, TFTs, urine drug screen, CT if indicated) before antipsychotic"
+        ],
+        "educational_quality": [
+          "key_points array empty in all MCQs - no teaching value",
+          "Difficulty marked 'medium' for all - no progression from basic to advanced",
+          "No clinical reasoning in distractors - just labeled 'Incorrect'"
+        ]
+      },
+      "deployment_readiness": "NOT READY - Requires complete regeneration with RAG citations, unique content, complete explanations"
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_003",
+      "evaluation_date": "2026-03-27T08:41:00.939863",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 0.0,
+        "clinical_relevance": 0.0,
+        "image_quality_assessment": 0.0
+      },
+      "violations": [
+        "CRITICAL SCOPE VIOLATION: Radiology Interpretation Expert assigned to evaluate Psychiatry MCQ content",
+        "Item specialty is 'Psychiatry' - requires mental-health-crisis-expert or aba-clinical-expert",
+        "No radiology imaging content present (no CXR, ECG, CT, ultrasound)",
+        "Content contains psychiatric clinical scenarios (GAD, panic disorder, bipolar mania, psychosis, suicide risk, anorexia, alcohol withdrawal, borderline personality)",
+        "Radiology expert cannot validate psychiatric diagnostic criteria, Mental Health Act applications, or psychopharmacology"
+      ],
+      "suggestions": [
+        "Re-route evaluation to mental-health-crisis-expert for suicide risk, Mental Health Act, and acute psychiatric presentations",
+        "Use aba-clinical-expert for eating disorders (anorexia nervosa) and personality disorders (borderline PD)",
+        "Ensure evaluation system matches agent expertise to item specialty before delegation"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "critical_notes": "This is a COMPLETE DOMAIN MISMATCH. A radiology interpretation expert cannot evaluate psychiatry MCQs. This evaluation should be rejected and re-delegated to appropriate psychiatric expert agents. The content requires expertise in: DSM-5 psychiatric diagnosis, Mental Health Act legislation, psychopharmacology (SSRIs, antipsychotics, benzodiazepines, lithium), suicide risk assessment, dialectical behavior therapy (DBT), and Australian psychiatric emergency protocols. None of these fall within radiology scope of practice."
+    }
+  ],
+  "num_agents": 3,
+  "status": "REJECTED",
+  "item_id": "mcq_week1_additional_65_mcqs_003",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week1_additional_65_mcqs.json"
+}

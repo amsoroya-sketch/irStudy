@@ -25,115 +25,157 @@
       "valid_citations": 150,
       "invalid_citations": 0,
       "validation_failures": []
-    }
+    },
+    "last_completion_date": "2026-04-04T00:06:45.662427",
+    "regeneration_status": "PARTIAL"
   },
   "osces": [
     {
-      "id": "RESP-OSCE-001",
-      "specialty": "Respiratory Medicine",
-      "topic": "Asthma/COPD",
-      "subtopic": "Acute Asthma Exacerbation",
-      "scenario_type": "Emergency Presentation",
-      "scenario": {
-        "patient_presentation": "A patient presents with acute asthma exacerbation. Examination and investigations are shown in the provided images.",
-        "images": [
-          {
-            "type": "CXR",
-            "topic": "Acute Asthma Exacerbation",
-            "file_path": "data/images/respiratory/acute_asthma_exacerbation_cxr.jpg",
-            "description": "CXR showing Acute Asthma Exacerbation",
-            "source": "Medical Image Database",
-            "quality": "high_resolution",
-            "format": "JPEG",
-            "generated_at": "2026-01-25T20:41:37.747418"
-          },
-          {
-            "type": "ABG",
-            "topic": "Acute Asthma Exacerbation",
-            "file_path": "data/images/respiratory/acute_asthma_exacerbation_abg.jpg",
-            "description": "ABG showing Acute Asthma Exacerbation",
-            "source": "Medical Image Database",
-            "quality": "high_resolution",
-            "format": "JPEG",
-            "generated_at": "2026-01-25T20:41:37.747432"
-          },
-          {
-            "type": "Peak Flow",
-            "topic": "Acute Asthma Exacerbation",
-            "file_path": "data/images/respiratory/acute_asthma_exacerbation_peak flow.jpg",
-            "description": "Peak Flow showing Acute Asthma Exacerbation",
-            "source": "Medical Image Database",
-            "quality": "high_resolution",
-            "format": "JPEG",
-            "generated_at": "2026-01-25T20:41:37.747436"
-          }
-        ],
-        "vital_signs": {
-          "BP": "130/80 mmHg",
-          "HR": "90 bpm",
-          "RR": "24/min",
-          "SpO2": "92% on room air",
-          "Temp": "37.5°C"
-        },
-        "history": "Clinical history relevant to Acute Asthma Exacerbation",
-        "examination_findings": "Examination findings consistent with Acute Asthma Exacerbation"
-      },
-      "tasks": [
-        {
-          "task_number": 1,
-          "description": "Interpret the provided investigations",
-          "marks": 3
-        },
-        {
-          "task_number": 2,
-          "description": "Formulate a differential diagnosis",
-          "marks": 3
-        },
-        {
-          "task_number": 3,
-          "description": "Outline initial management according to Australian guidelines",
-          "marks": 4
-        }
-      ],
-      "total_marks": 10,
-      "expected_answers": {
-        "interpretation": "The investigations show findings consistent with Acute Asthma Exacerbation",
-        "differential": "Primary diagnosis: Acute Asthma Exacerbation. Differential diagnoses based on presentation.",
-        "management": "According to Australian guidelines for Acute Asthma Exacerbation: immediate management steps, ongoing care, and monitoring."
-      },
-      "references": [
-        {
-          "title": "John Murtagh General Practice",
-          "author": "John",
-          "year": "2020",
-          "page": 2062,
-          "content": "",
-          "rag_confidence": 0.7727877,
-          "source_type": "textbook"
-        },
-        {
-          "title": "Churchills Pocketbook Of Differential Diagnosis (1)",
-          "author": "Unknown Author",
-          "year": "2020",
-          "page": 532,
-          "content": "",
-          "rag_confidence": 0.7694362,
-          "source_type": "textbook"
-        },
-        {
-          "title": "John Murtagh General Practice",
-          "author": "John",
-          "year": "2020",
-          "page": 942,
-          "content": "",
-          "rag_confidence": 0.7687874,
-          "source_type": "textbook"
-        }
-      ],
+      "id": "resp-osce-asthma-copd-003",
+      "title": "Chronic Obstructive Pulmonary Disease - Exacerbation Management",
       "difficulty": "intermediate",
+      "specialty": "respiratory",
       "duration_minutes": 10,
-      "generated_at": "2026-01-25T20:41:37.747443",
-      "generation_method": "rag_validated_with_images"
+      "learning_objectives": [
+        "Assess severity of COPD exacerbation using clinical parameters",
+        "Interpret spirometry results showing severe obstructive pattern",
+        "Prescribe appropriate bronchodilator therapy with correct devices",
+        "Demonstrate proper inhaler technique for multiple devices",
+        "Apply oxygen therapy targets specific to COPD patients",
+        "Formulate management plan following COPD-X Guidelines"
+      ],
+      "scenario": {
+        "setting": "Emergency Department",
+        "patient_age": 68,
+        "patient_gender": "Male",
+        "presenting_complaint": "Mr. Johnson presents with worsening shortness of breath over 3 days, increased sputum production (now yellow-green), and reduced exercise tolerance. He has a 45 pack-year smoking history and known COPD diagnosed 5 years ago.",
+        "background": "Known severe COPD, previous admissions for exacerbations, currently on tiotropium and salbutamol PRN. Lives alone, stopped smoking 2 years ago. Usually walks 200m on flat ground before dyspnoea.",
+        "vital_signs": {
+          "blood_pressure": "145/85 mmHg",
+          "heart_rate": "102 bpm",
+          "respiratory_rate": "24 breaths/min",
+          "oxygen_saturation": "86% on room air",
+          "temperature": "37.8\u00b0C"
+        }
+      },
+      "physical_examination": {
+        "general": "Appears dyspnoeic at rest, using accessory muscles, sitting forward, pursed lip breathing",
+        "inspection": "Barrel chest, increased AP diameter, digital clubbing absent, peripheral cyanosis noted",
+        "palpation": "Reduced chest expansion bilaterally, no lymphadenopathy",
+        "percussion": "Hyperresonant throughout both lung fields",
+        "auscultation": "Widespread expiratory wheeze, prolonged expiratory phase, reduced air entry bilaterally, no crackles"
+      },
+      "investigations": {
+        "spirometry": {
+          "values": "FEV1 0.95L (28% predicted), FVC 2.8L (58% predicted), FEV1/FVC 0.34",
+          "interpretation": "Severe obstructive pattern consistent with advanced COPD, significant reduction from baseline FEV1 1.2L",
+          "post_bronchodilator": "FEV1 1.05L (31% predicted) - minimal reversibility"
+        },
+        "arterial_blood_gas": "pH 7.32, pCO2 58 mmHg, pO2 52 mmHg, HCO3 28 mmol/L (compensated respiratory acidosis)",
+        "chest_xray": "Hyperinflated lungs, flattened hemidiaphragms, no consolidation or pneumothorax",
+        "full_blood_count": "WBC 12.5 x10^9/L (neutrophil predominance), Hb 145 g/L, platelets normal"
+      },
+      "questions": [
+        {
+          "question": "What oxygen saturation target would you set for this COPD patient and why?",
+          "model_answer": "Target SpO2 88-92% for this COPD patient. COPD patients often have chronic CO2 retention and rely on hypoxic drive for respiratory stimulation. Higher oxygen targets (94-98%) risk suppressing respiratory drive, leading to further CO2 retention and respiratory acidosis. The COPD-X Guidelines specifically recommend 88-92% to balance adequate oxygenation while avoiding CO2 narcosis.",
+          "marking_criteria": [
+            "Identifies 88-92% target (2 marks)",
+            "Explains hypoxic drive mechanism (2 marks)",
+            "References CO2 retention risk (2 marks)",
+            "Mentions COPD-X Guidelines (1 mark)"
+          ]
+        },
+        {
+          "question": "Interpret the spirometry results and explain the pattern shown.",
+          "model_answer": "The spirometry shows a severe obstructive pattern: FEV1 0.95L (28% predicted) is severely reduced, FVC 2.8L (58% predicted) is moderately reduced, and FEV1/FVC ratio of 0.34 is well below 0.70 confirming obstruction. The FEV1 <30% predicted indicates GOLD Stage 4 (very severe) COPD. Post-bronchodilator testing shows minimal reversibility (10.5% improvement), typical of COPD rather than asthma.",
+          "marking_criteria": [
+            "Identifies severe obstructive pattern (2 marks)",
+            "Correctly interprets FEV1/FVC ratio <0.70 (2 marks)",
+            "Recognises GOLD Stage 4 classification (2 marks)",
+            "Comments on minimal reversibility (1 mark)"
+          ]
+        },
+        {
+          "question": "Prescribe appropriate bronchodilator therapy including device and PBS code.",
+          "model_answer": "1. Salbutamol 100mcg MDI + spacer, 4 puffs QID initially then 2 puffs PRN - PBS 8333L. 2. Tiotropium 18mcg HandiHaler, 1 capsule daily - PBS 8723K. 3. Consider adding formoterol/budesonide 12/400mcg Turbuhaler, 1 puff BD - PBS 8541M if frequent exacerbations. The spacer is essential for MDI delivery, especially during acute exacerbation when coordination may be impaired.",
+          "marking_criteria": [
+            "Prescribes salbutamol with correct dose and device (2 marks)",
+            "Includes correct PBS code for salbutamol (1 mark)",
+            "Prescribes tiotropium with HandiHaler device (2 marks)",
+            "Includes correct PBS code for tiotropium (1 mark)",
+            "Mentions importance of spacer device (1 mark)"
+          ]
+        },
+        {
+          "question": "Demonstrate the correct technique for using a HandiHaler device.",
+          "model_answer": "1. Remove dust cap and open mouthpiece. 2. Open piercing chamber and place tiotropium capsule in center well. 3. Close chamber firmly until you hear a click - this pierces the capsule. 4. Hold device upright, exhale fully away from device. 5. Place lips around mouthpiece creating good seal. 6. Breathe in deeply and forcefully to hear capsule rattle. 7. Hold breath for 10 seconds. 8. Exhale away from device. 9. Check capsule is empty - if powder remains, repeat inhalation. 10. Close device and replace dust cap.",
+          "marking_criteria": [
+            "Demonstrates capsule insertion technique (2 marks)",
+            "Shows proper piercing mechanism (2 marks)",
+            "Demonstrates correct breathing technique (2 marks)",
+            "Checks capsule is empty (1 mark)",
+            "Mentions cleaning/storage (1 mark)"
+          ]
+        },
+        {
+          "question": "What are the key management principles for this COPD exacerbation according to Australian guidelines?",
+          "model_answer": "Following COPD-X Guidelines: 1. Controlled oxygen therapy (88-92% SpO2). 2. Bronchodilators: increased frequency of SABA and continue LAMA. 3. Corticosteroids: prednisolone 25-50mg daily for 5 days. 4. Antibiotics if purulent sputum (amoxicillin + clavulanate 875/125mg BD for 5 days). 5. Consider NIV if pH 7.25-7.35. 6. Smoking cessation counselling and vaccination review. 7. Pulmonary rehabilitation referral post-discharge. 8. Action plan education and follow-up with respiratory physician.",
+          "marking_criteria": [
+            "Mentions controlled oxygen therapy (2 marks)",
+            "Prescribes appropriate corticosteroids (2 marks)",
+            "Considers antibiotics for purulent sputum (2 marks)",
+            "Discusses discharge planning and follow-up (1 mark)"
+          ]
+        }
+      ],
+      "practical_skills": [
+        {
+          "skill": "Inhaler technique demonstration",
+          "description": "Demonstrate correct technique for MDI + spacer and HandiHaler device",
+          "key_points": [
+            "MDI: Remove cap, shake, attach spacer, exhale, actuate once, slow deep breath, hold 10 seconds",
+            "HandiHaler: Insert capsule, pierce, create seal, deep forceful breath until rattle heard",
+            "Check understanding by having patient demonstrate back",
+            "Emphasize importance of regular cleaning"
+          ]
+        },
+        {
+          "skill": "Oxygen therapy prescription",
+          "description": "Prescribe appropriate oxygen therapy with specific targets",
+          "key_points": [
+            "Target SpO2 88-92% for COPD patients",
+            "Start with 1-2L/min via nasal prongs",
+            "Titrate to maintain target while monitoring for CO2 retention",
+            "Document clearly on drug chart"
+          ]
+        }
+      ],
+      "key_teaching_points": [
+        "COPD oxygen targets (88-92%) differ from standard targets due to chronic CO2 retention",
+        "Spirometry classification: GOLD Stage 4 (FEV1 <30% predicted) indicates very severe disease",
+        "HandiHaler requires forceful inspiration to mobilize powder from capsule",
+        "COPD-X Guidelines provide Australian-specific management recommendations",
+        "Exacerbation triggers include infection, pollution, medication non-compliance",
+        "Pulmonary rehabilitation improves exercise capacity and quality of life"
+      ],
+      "common_mistakes": [
+        "Using 94-98% oxygen targets in COPD patients (risk of CO2 narcosis)",
+        "Prescribing salbutamol without spacer device during acute exacerbation",
+        "Not checking if HandiHaler capsule is empty after inhalation",
+        "Failing to address smoking cessation in current/recent ex-smokers",
+        "Not recognizing severe obstructive pattern on spirometry"
+      ],
+      "australian_context": {
+        "guidelines": "COPD-X Guidelines (Lung Foundation Australia), National Asthma Council Australia",
+        "pbs_items": [
+          "Salbutamol MDI - PBS 8333L",
+          "Tiotropium HandiHaler - PBS 8723K",
+          "Prednisolone tablets - PBS 8501K"
+        ],
+        "referral_pathways": "Respiratory physician, pulmonary rehabilitation programs, COPD support groups",
+        "indigenous_considerations": "Higher COPD prevalence in Aboriginal and Torres Strait Islander populations, consider social determinants"
+      }
     },
     {
       "id": "RESP-OSCE-002",
@@ -170,7 +212,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Severe Asthma",
         "examination_findings": "Examination findings consistent with Severe Asthma"
@@ -267,7 +309,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to COPD Exacerbation",
         "examination_findings": "Examination findings consistent with COPD Exacerbation"
@@ -364,7 +406,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Asthma Control Assessment",
         "examination_findings": "Examination findings consistent with Asthma Control Assessment"
@@ -461,7 +503,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to COPD Management",
         "examination_findings": "Examination findings consistent with COPD Management"
@@ -548,7 +590,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Inhaler Technique",
         "examination_findings": "Examination findings consistent with Inhaler Technique"
@@ -635,7 +677,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Asthma Action Plan",
         "examination_findings": "Examination findings consistent with Asthma Action Plan"
@@ -732,7 +774,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to COPD Oxygen Therapy",
         "examination_findings": "Examination findings consistent with COPD Oxygen Therapy"
@@ -839,7 +881,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Status Asthmaticus",
         "examination_findings": "Examination findings consistent with Status Asthmaticus"
@@ -926,7 +968,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Chronic Asthma",
         "examination_findings": "Examination findings consistent with Chronic Asthma"
@@ -1023,7 +1065,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to COPD Pulmonary Rehab",
         "examination_findings": "Examination findings consistent with COPD Pulmonary Rehab"
@@ -1110,7 +1152,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Asthma in Pregnancy",
         "examination_findings": "Examination findings consistent with Asthma in Pregnancy"
@@ -1207,7 +1249,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Community-Acquired Pneumonia",
         "examination_findings": "Examination findings consistent with Community-Acquired Pneumonia"
@@ -1304,7 +1346,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Hospital-Acquired Pneumonia",
         "examination_findings": "Examination findings consistent with Hospital-Acquired Pneumonia"
@@ -1391,7 +1433,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Aspiration Pneumonia",
         "examination_findings": "Examination findings consistent with Aspiration Pneumonia"
@@ -1488,7 +1530,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Pneumocystis Pneumonia",
         "examination_findings": "Examination findings consistent with Pneumocystis Pneumonia"
@@ -1585,7 +1627,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Viral Pneumonia",
         "examination_findings": "Examination findings consistent with Viral Pneumonia"
@@ -1692,7 +1734,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Empyema",
         "examination_findings": "Examination findings consistent with Empyema"
@@ -1789,7 +1831,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to CURB-65 Score",
         "examination_findings": "Examination findings consistent with CURB-65 Score"
@@ -1886,7 +1928,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Severe CAP",
         "examination_findings": "Examination findings consistent with Severe CAP"
@@ -1983,7 +2025,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Atypical Pneumonia",
         "examination_findings": "Examination findings consistent with Atypical Pneumonia"
@@ -2080,7 +2122,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Pneumonia Complications",
         "examination_findings": "Examination findings consistent with Pneumonia Complications"
@@ -2187,7 +2229,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Pulmonary Embolism",
         "examination_findings": "Examination findings consistent with Pulmonary Embolism"
@@ -2294,7 +2336,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Massive PE",
         "examination_findings": "Examination findings consistent with Massive PE"
@@ -2381,7 +2423,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to DVT Diagnosis",
         "examination_findings": "Examination findings consistent with DVT Diagnosis"
@@ -2478,7 +2520,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to PE Risk Stratification",
         "examination_findings": "Examination findings consistent with PE Risk Stratification"
@@ -2575,7 +2617,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Anticoagulation",
         "examination_findings": "Examination findings consistent with Anticoagulation"
@@ -2662,7 +2704,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to VTE Prophylaxis",
         "examination_findings": "Examination findings consistent with VTE Prophylaxis"
@@ -2759,7 +2801,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Recurrent PE",
         "examination_findings": "Examination findings consistent with Recurrent PE"
@@ -2856,7 +2898,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Post-PE Syndrome",
         "examination_findings": "Examination findings consistent with Post-PE Syndrome"
@@ -2953,7 +2995,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Idiopathic Pulmonary Fibrosis",
         "examination_findings": "Examination findings consistent with Idiopathic Pulmonary Fibrosis"
@@ -3050,7 +3092,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Sarcoidosis",
         "examination_findings": "Examination findings consistent with Sarcoidosis"
@@ -3147,7 +3189,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Hypersensitivity Pneumonitis",
         "examination_findings": "Examination findings consistent with Hypersensitivity Pneumonitis"
@@ -3234,7 +3276,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Drug-Induced ILD",
         "examination_findings": "Examination findings consistent with Drug-Induced ILD"
@@ -3331,7 +3373,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Connective Tissue ILD",
         "examination_findings": "Examination findings consistent with Connective Tissue ILD"
@@ -3428,7 +3470,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Acute ILD",
         "examination_findings": "Examination findings consistent with Acute ILD"
@@ -3525,7 +3567,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Type 1 Respiratory Failure",
         "examination_findings": "Examination findings consistent with Type 1 Respiratory Failure"
@@ -3622,7 +3664,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Type 2 Respiratory Failure",
         "examination_findings": "Examination findings consistent with Type 2 Respiratory Failure"
@@ -3719,7 +3761,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to NIV Indication",
         "examination_findings": "Examination findings consistent with NIV Indication"
@@ -3816,7 +3858,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Mechanical Ventilation",
         "examination_findings": "Examination findings consistent with Mechanical Ventilation"
@@ -3913,7 +3955,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to ARDS",
         "examination_findings": "Examination findings consistent with ARDS"
@@ -4010,7 +4052,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Weaning from Ventilation",
         "examination_findings": "Examination findings consistent with Weaning from Ventilation"
@@ -4107,7 +4149,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Bronchiectasis",
         "examination_findings": "Examination findings consistent with Bronchiectasis"
@@ -4204,7 +4246,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Lung Cancer",
         "examination_findings": "Examination findings consistent with Lung Cancer"
@@ -4301,7 +4343,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Pleural Effusion",
         "examination_findings": "Examination findings consistent with Pleural Effusion"
@@ -4388,7 +4430,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Pneumothorax",
         "examination_findings": "Examination findings consistent with Pneumothorax"
@@ -4485,7 +4527,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Sleep Apnea",
         "examination_findings": "Examination findings consistent with Sleep Apnea"
@@ -4582,7 +4624,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Pulmonary Hypertension",
         "examination_findings": "Examination findings consistent with Pulmonary Hypertension"
@@ -4679,7 +4721,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Tuberculosis",
         "examination_findings": "Examination findings consistent with Tuberculosis"
@@ -4776,7 +4818,7 @@
           "HR": "90 bpm",
           "RR": "24/min",
           "SpO2": "92% on room air",
-          "Temp": "37.5°C"
+          "Temp": "37.5\u00b0C"
         },
         "history": "Clinical history relevant to Cystic Fibrosis",
         "examination_findings": "Examination findings consistent with Cystic Fibrosis"

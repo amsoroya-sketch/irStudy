@@ -1,0 +1,165 @@
+{
+  "overall_score": 3.85,
+  "criterion_scores": {
+    "australian_standards": 10.0,
+    "clinical_accuracy": 4.5,
+    "cultural_safety": 0.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_048",
+      "evaluation_date": "2026-03-27T08:37:37.935506",
+      "overall_score": 10.0,
+      "criteria_scores": {
+        "australian_drug_names": 10.0,
+        "pbs_compliance": 10.0,
+        "dosing_accuracy": 10.0,
+        "drug_interactions": 10.0,
+        "polypharmacy_management": 10.0
+      },
+      "violations": [],
+      "suggestions": [],
+      "strengths": [
+        "All psychiatric medications correctly named using Australian terminology (olanzapine, quetiapine, risperidone)",
+        "Correct first-line treatment approach for GAD (SSRI + CBT) aligns with Australian eTG guidelines",
+        "Appropriate low-dose antipsychotic initiation (risperidone 1-2mg) for first-episode psychosis - Australian best practice",
+        "Correct benzodiazepine selection for alcohol withdrawal (diazepam) with thiamine - matches eTG recommendations",
+        "Accurate refeeding syndrome identification in anorexia nervosa with thiamine supplementation noted",
+        "DBT correctly identified as evidence-based first-line for BPD - Australian mental health guidelines",
+        "Appropriate involuntary admission criteria under Mental Health Act for acute mania and suicide risk",
+        "Medications avoid American nomenclature throughout all 65 MCQs"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false,
+      "australian_compliance_verified": true,
+      "detailed_analysis": {
+        "medications_reviewed": [
+          {
+            "medication": "SSRI (sertraline, escitalopram implied)",
+            "context": "GAD first-line treatment",
+            "compliance": "Correct - PBS-listed, eTG first-line"
+          },
+          {
+            "medication": "olanzapine",
+            "context": "Acute mania management",
+            "compliance": "Correct - Australian generic name, PBS authority required for bipolar disorder"
+          },
+          {
+            "medication": "risperidone",
+            "context": "First-episode psychosis (1-2mg)",
+            "compliance": "Correct - Low-dose initiation per Australian early psychosis guidelines"
+          },
+          {
+            "medication": "diazepam",
+            "context": "Alcohol withdrawal (10mg PO)",
+            "compliance": "Correct - eTG first-line benzodiazepine, appropriate dose"
+          },
+          {
+            "medication": "thiamine",
+            "context": "Alcohol withdrawal (IV 300mg) and refeeding syndrome",
+            "compliance": "Correct - Australian practice standard (thiamine BEFORE glucose)"
+          },
+          {
+            "medication": "haloperidol",
+            "context": "Explicitly avoided in favor of second-generation antipsychotics",
+            "compliance": "Correct - Australian guidelines prefer SGAs for first-episode psychosis"
+          }
+        ],
+        "australian_terminology_compliance": "100% - No American drug names detected across all 65 MCQs",
+        "pbs_notes": "Psychiatric medications appropriately PBS-listed. Authority requirements correctly implied (lithium monitoring, clozapine registration).",
+        "mental_health_act_compliance": "Correct application of MHA criteria for involuntary admission (mania with psychotic features, acute suicide risk)",
+        "etg_alignment": "All treatment recommendations align with Therapeutic Guidelines: Psychotropic (v8, 2023)"
+      }
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_048",
+      "evaluation_date": "2026-03-27T08:37:37.941541",
+      "overall_score": 3.5,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 0.0,
+        "medication_safety": 5.0,
+        "cultural_safety": 0.0
+      },
+      "violations": [
+        "CRITICAL: Zero RAG citations (all rag_confidence 0.0) - 100% hallucinated content",
+        "CRITICAL: No references with valid sources (all 'Unknown' title)",
+        "Question topic mismatch: ID PSY-ANX-BIP-20260125-2048 is GAD (anxiety), not mental health crisis/suicide risk",
+        "No SAFE-T assessment present in content",
+        "No Mental Health Act criteria discussed",
+        "No suicide risk stratification",
+        "No crisis contacts (Lifeline 13 11 14, Beyond Blue 1300 224 636)",
+        "No involuntary admission criteria assessed",
+        "Missing Aboriginal/TSI cultural safety considerations",
+        "Empty key_points arrays (no educational value)",
+        "Incomplete explanations (all incorrect options say 'Incorrect - [option]' without explanation)",
+        "qa_validated: false (content not quality assured)",
+        "australian_context: true claimed but no Australian-specific elements present"
+      ],
+      "suggestions": [
+        "MANDATORY: Replace all content with RAG-verified sources (qdrant_point_id required)",
+        "Add SAFE-T framework assessment questions (Specific plan, Access, Feelings, Earlier attempts, Threat)",
+        "Include Mental Health Act scenarios (NSW/VIC/QLD involuntary criteria)",
+        "Add suicide risk stratification questions (high/medium/low with management)",
+        "Include Australian crisis contacts in all suicide-related content",
+        "Add Aboriginal/TSI mental health considerations (SEWB framework)",
+        "Complete explanation.why_incorrect fields with clinical reasoning",
+        "Populate key_points arrays with educational content",
+        "Add de-escalation technique questions",
+        "Include acute psychosis management scenarios",
+        "Add medication safety questions (QTc monitoring, lithium levels, NMS)",
+        "Ensure all references have valid titles, pages, years from RAG system"
+      ],
+      "strengths": [
+        "Correct answer (B - GAD) clinically accurate for this specific GAD question",
+        "Australian drug naming conventions used (where applicable)",
+        "Specialty correctly identified as Psychiatry"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "detailed_analysis": {
+        "rag_citation_failure": "CRITICAL FAILURE: All 2 references per MCQ have rag_confidence 0.0 and title 'Unknown'. This indicates 100% hallucinated content with zero verification against authoritative sources. Medical content MUST have traceable citations to prevent dangerous misinformation.",
+        "scope_mismatch": "Item PSY-ANX-BIP-20260125-2048 is a standard GAD diagnostic question, NOT a mental health crisis scenario requiring SAFE-T assessment. However, the batch contains 65 MCQs where many ARE crisis scenarios (bipolar mania, acute suicide risk, first-episode psychosis, alcohol withdrawal, anorexia with medical instability) that DO require mental-health-crisis-expert evaluation. This specific item (048) is mismatched to crisis evaluation criteria.",
+        "content_quality": "Explanations are incomplete stubs ('Incorrect - [option]' without clinical reasoning). Key_points arrays are empty, providing no educational value. This suggests automated template generation without human expert review or RAG system integration.",
+        "safety_concerns": "For genuine crisis scenarios in this batch (e.g., PSY-SUICIDE-MHA items), the absence of SAFE-T framework, Mental Health Act criteria, and crisis contacts represents a patient safety risk. Medical students relying on this content would be unprepared for real-world psychiatric emergencies."
+      }
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_048",
+      "evaluation_date": "2026-03-27T08:37:37.947508",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 0.0,
+        "clinical_relevance": 0.0,
+        "image_quality_assessment": 0.0
+      },
+      "violations": [
+        "CRITICAL: Specialty mismatch - Item specialty 'Psychiatry' does not match radiology-interpretation-expert domain (Diagnostic Radiology, Medical Imaging)",
+        "Content is entirely psychiatric (GAD, panic disorder, bipolar mania, psychosis, suicide risk, anorexia, alcohol withdrawal, BPD)",
+        "No radiological content present - no CXR, CT, ECG, or medical imaging interpretation",
+        "Question format is psychiatric clinical vignettes, not imaging interpretation",
+        "No systematic radiological approach applicable (ABCDE/ECG 7-step/ABC)",
+        "References show rag_confidence 0.0 and 'Unknown' titles - indicates lack of radiology source material"
+      ],
+      "suggestions": [
+        "Reassign to mental-health-crisis-expert or psychiatry specialist agent",
+        "This MCQ set requires psychiatric clinical expertise, not radiology interpretation",
+        "If imaging were required for psychiatric presentations (e.g., CT head to exclude organic causes), it should be explicitly stated in the scenario"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "additional_comments": "Agent-content mismatch: radiology-interpretation-expert cannot evaluate psychiatry MCQs. No diagnostic imaging content present in any of the 65 MCQs reviewed (all are psychiatric clinical scenarios: anxiety disorders, bipolar mania, psychosis, suicide risk, eating disorders, substance withdrawal, personality disorders). This evaluation task should be delegated to a psychiatry-specialized clinical expert agent."
+    }
+  ],
+  "num_agents": 3,
+  "status": "REJECTED",
+  "item_id": "mcq_week1_additional_65_mcqs_048",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week1_additional_65_mcqs.json"
+}

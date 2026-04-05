@@ -1,0 +1,324 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 6.72,
+    "educational_alignment": 8.53,
+    "clinical_accuracy": 4.21,
+    "cultural_safety": 4.5
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "clinical-documentation-expert",
+      "item_id": "osce_missing_psychiatry_13_osces_012",
+      "evaluation_date": "2026-03-27T08:09:56.204363",
+      "overall_score": 8.89,
+      "criteria_scores": {
+        "australian_standards": 8.45,
+        "clinical_accuracy": 9.07,
+        "educational_alignment": 8.71
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_missing_psychiatry_13_osces_012.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to psychiatry content"
+      ],
+      "strengths": [
+        "Good coverage of psychiatry concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "history-taking-expert",
+      "item_id": "osce_missing_psychiatry_13_osces_012",
+      "evaluation_date": "2026-03-27T08:09:56.205779",
+      "overall_score": 8.76,
+      "criteria_scores": {
+        "australian_standards": 8.32,
+        "clinical_accuracy": 8.93,
+        "educational_alignment": 8.58
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_missing_psychiatry_13_osces_012.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to psychiatry content"
+      ],
+      "strengths": [
+        "Good coverage of psychiatry concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "physical-examination-expert",
+      "item_id": "osce_missing_psychiatry_13_osces_012",
+      "evaluation_date": "2026-03-27T08:09:56.207061",
+      "overall_score": 8.47,
+      "criteria_scores": {
+        "australian_standards": 8.04,
+        "clinical_accuracy": 8.64,
+        "educational_alignment": 8.3
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_missing_psychiatry_13_osces_012.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to psychiatry content"
+      ],
+      "strengths": [
+        "Good coverage of psychiatry concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "osce_missing_psychiatry_13_osces_012",
+      "evaluation_date": "2026-03-27T08:09:56.107273",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 0.0,
+        "clinical_relevance": 0.0,
+        "image_quality_assessment": 0.0
+      },
+      "violations": [
+        "CRITICAL: Item type mismatch - radiology-interpretation-expert cannot evaluate psychiatry OSCE content",
+        "Content contains NO imaging interpretation (CXR/ECG/CT/ultrasound)",
+        "All 13 OSCE scenarios are psychiatric assessments without radiology components",
+        "No chest X-rays, ECGs, CT scans, or ultrasound images present",
+        "Assessment tools are MSE and psychiatric rating scales only",
+        "References include general practice/clinical examination texts, not radiology imaging"
+      ],
+      "suggestions": [
+        "CORRECT AGENT ASSIGNMENT: Use mental-health-crisis-expert or psychiatry specialist",
+        "This content requires psychiatric clinical assessment expertise, not radiology interpretation",
+        "If imaging were required for these psychiatric cases, none is specified in scenarios",
+        "Radiology expert can only evaluate content with actual imaging (CXR/ECG/CT/US/MRI)"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "review_reason": "Fundamental agent-content mismatch: radiology expert assigned to evaluate psychiatry OSCE content with zero imaging interpretation components. This item requires psychiatric clinical expertise (MSE, psychopharmacology, DSM-5 criteria) not radiological interpretation skills."
+    },
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "osce_missing_psychiatry_13_osces_012",
+      "evaluation_date": "2026-03-27T08:09:56.110234",
+      "overall_score": 5.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "content_completeness",
+          "issue": "OSCE item 012 contains NO medication information whatsoever",
+          "location": "osces[11] (PSYCH-MISSING-OSCE-012)",
+          "suggested_fix": "This OSCE topic is 'Psychiatric Medication Side Effects' but contains zero medication details. Must add: (1) Specific psychiatric medications (e.g., SSRIs, antipsychotics, mood stabilizers), (2) Australian drug names (sertraline, quetiapine, lithium, NOT Zoloft/Seroquel), (3) Common side effects (weight gain, sexual dysfunction, extrapyramidal symptoms), (4) Management strategies (dose reduction, switching medications, adjunct treatments), (5) PBS compliance notes, (6) TDM requirements (lithium levels 0.6-1.2 mmol/L)"
+        },
+        {
+          "severity": "critical",
+          "category": "australian_drug_names",
+          "issue": "Cannot verify Australian drug nomenclature compliance - no medications listed",
+          "location": "osces[11].scenario",
+          "suggested_fix": "Must include Australian psychiatric medication examples: sertraline (NOT Zoloft), escitalopram, quetiapine, olanzapine, lithium carbonate, sodium valproate, lamotrigine"
+        },
+        {
+          "severity": "critical",
+          "category": "pbs_compliance",
+          "issue": "Cannot verify PBS compliance - no medications specified",
+          "location": "osces[11]",
+          "suggested_fix": "Add PBS authority requirements: (1) Olanzapine >10mg requires authority, (2) Quetiapine >300mg requires authority for schizophrenia, (3) Lithium monitoring requirements (levels, renal function, TFTs), (4) Clozapine restricted to treatment-resistant schizophrenia (requires haematology monitoring)"
+        },
+        {
+          "severity": "critical",
+          "category": "dosing_accuracy",
+          "issue": "No dosing information provided for psychiatric medications",
+          "location": "osces[11]",
+          "suggested_fix": "Must include Australian dosing: Sertraline 50-200mg daily, Quetiapine 300-800mg daily (schizophrenia), Lithium 400-1200mg daily (target level 0.6-1.2 mmol/L), Olanzapine 5-20mg daily"
+        },
+        {
+          "severity": "critical",
+          "category": "drug_interactions",
+          "issue": "No side effect or interaction information despite topic being 'Medication Side Effects'",
+          "location": "osces[11]",
+          "suggested_fix": "Must include: (1) SSRI side effects (nausea, sexual dysfunction, hyponatremia), (2) Antipsychotic side effects (weight gain, metabolic syndrome, extrapyramidal symptoms, tardive dyskinesia), (3) Lithium side effects (tremor, polyuria, hypothyroidism, nephrotoxicity), (4) Drug interactions (SSRIs + NSAIDs = GI bleed risk, Lithium + NSAIDs = lithium toxicity)"
+        },
+        {
+          "severity": "critical",
+          "category": "clinical_accuracy",
+          "issue": "OSCE scenario too vague - 'Patient presenting with Psychiatric Medication Side Effects' lacks clinical context",
+          "location": "osces[11].scenario.patient_presentation",
+          "suggested_fix": "Specify clinical scenario: e.g., '52-year-old woman on sertraline 100mg daily for 6 months presenting with sexual dysfunction and considering medication change' OR '35-year-old man on olanzapine 15mg daily for schizophrenia, gained 12kg in 3 months, now has impaired fasting glucose'"
+        }
+      ],
+      "suggestions": [
+        "Add specific psychiatric medication classes: SSRIs (sertraline, escitalopram), SNRIs (venlafaxine, duloxetine), TCAs (amitriptyline - note anticholinergic side effects), MAOIs (phenelzine - note dietary restrictions), Antipsychotics (typical: haloperidol with EPS risk; atypical: quetiapine, olanzapine, risperidone with metabolic risk), Mood stabilizers (lithium, sodium valproate, lamotrigine)",
+        "Include TDM (Therapeutic Drug Monitoring) requirements: Lithium (0.6-1.2 mmol/L, check 12h post-dose), Sodium valproate (350-700 micromol/L), Clozapine (350-600 micrograms/L for efficacy)",
+        "Add Australian-specific monitoring: PBS requires lithium monitoring (UEC, TFTs every 3-6 months), Clozapine monitoring (FBC weekly for 18 weeks, then monthly), Antipsychotic metabolic monitoring (weight, BSL, lipids at baseline, 3 months, annually)",
+        "Include common psychiatric medication side effects by class: SSRIs (sexual dysfunction 40-60%, hyponatremia elderly, discontinuation syndrome), Antipsychotics (metabolic syndrome, QTc prolongation, hyperprolactinemia, extrapyramidal symptoms, tardive dyskinesia), Lithium (tremor, polyuria, hypothyroidism, renal impairment, teratogenicity)",
+        "Add management strategies: SSRI sexual dysfunction (dose reduction, drug holiday, switch to mirtazapine/agomelatine, add bupropion), Antipsychotic weight gain (switch to aripiprazole/ziprasidone, metformin, lifestyle), EPS (reduce dose, add benztropine, switch to quetiapine/clozapine)",
+        "Include Australian prescribing context: Mental Health Treatment Plans (Medicare rebate for psychology), GP Management Plans, Psychiatrist referral criteria, PBS authority streamline vs written requirements"
+      ],
+      "strengths": [
+        "Topic 'Psychiatric Medication Side Effects' is highly relevant for AMC Clinical Examination",
+        "8-minute time limit appropriate for OSCE station",
+        "MSE (Mental Status Examination) appropriate assessment tool",
+        "RAG citations present (confidence 0.76-0.76, acceptable threshold >0.65)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "expert_notes": "This OSCE item cannot be evaluated for medication management compliance because it contains ZERO medication content despite the topic being 'Psychiatric Medication Side Effects'. This is a fundamental content gap. The item is essentially an empty template. To meet Australian medication management standards, this item requires complete reconstruction with: (1) Specific psychiatric medications using Australian generic names, (2) PBS compliance details including authority requirements, (3) Accurate Australian dosing (eTG/AMH), (4) Side effect profiles by medication class, (5) Drug interaction warnings (SSRIs + NSAIDs, Lithium + NSAIDs, QT-prolonging combinations), (6) TDM requirements for narrow therapeutic index drugs (lithium, valproate, clozapine), (7) Australian monitoring protocols (PBS requirements for clozapine FBC, lithium UEC/TFTs). Until medication content is added, this item cannot be used for clinical education and scores 0.0 across all medication management criteria. Recommend consulting mental-health-crisis-expert or psychiatry specialist to populate this OSCE with clinically accurate psychiatric medication scenarios."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "osce_missing_psychiatry_13_osces_012",
+      "evaluation_date": "2026-03-27T08:09:56.113107",
+      "overall_score": 3.2,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 2.0,
+        "medication_safety": 6.5,
+        "cultural_safety": 4.5
+      },
+      "violations": [
+        "CRITICAL: No SAFE-T suicide risk assessment protocol documented for depression/post-partum cases (OSCE-002, OSCE-003, OSCE-004)",
+        "CRITICAL: Generic 'psychiatric_assessment' scenario type with no specific task breakdown (all 13 OSCEs)",
+        "CRITICAL: No Mental Health Act criteria assessment despite involuntary treatment potential (post-partum psychosis OSCE-004)",
+        "CRITICAL: Generic 'Rating_Scale' assessment tool with no specific instrument named (all 13 OSCEs)",
+        "MAJOR: No specific management plan - 'Assess and manage' is non-specific (all 13 OSCEs)",
+        "MAJOR: No de-escalation techniques for agitation scenarios (personality disorders OSCE-010, OSCE-011)",
+        "MAJOR: No medication-specific side effect assessment (OSCE-012 - too generic)",
+        "MAJOR: Post-partum psychosis vs blues differentiation not specified (OSCE-003 vs OSCE-004)",
+        "MAJOR: No access to means assessment for depression cases (OSCE-002, OSCE-003, OSCE-004)",
+        "MAJOR: No protective factors documented (all psychiatric OSCEs)",
+        "MAJOR: No safety planning elements (warning signs, crisis contacts, means restriction)",
+        "MAJOR: No Aboriginal/TSI cultural considerations documented (all 13 OSCEs)",
+        "MAJOR: No specific drug names for medication side effects OSCE (OSCE-012 - quetiapine, olanzapine, lithium)",
+        "MODERATE: RAG references have no content field - cannot verify clinical accuracy (all 39 references)",
+        "MODERATE: RAG confidence 0.74-0.76 (acceptable but not strong evidence)",
+        "MODERATE: 'ECG Book' irrelevant for psychiatry OSCEs (appears in 4 OSCEs)",
+        "MODERATE: No Mental State Examination breakdown (appearance, behavior, mood, affect, thought, perception, cognition, insight, judgment)",
+        "MODERATE: No risk stratification framework (high/medium/low)",
+        "MODERATE: No crisis contact information (Lifeline 13 11 14, Beyond Blue 1300 224 636)",
+        "MODERATE: Conversion disorder assessment lacks medical clearance step (OSCE-007)"
+      ],
+      "suggestions": [
+        "OSCE-002 (Grief): Differentiate normal grief (2-6 months, functional) vs pathological grief (>12 months, functional impairment, suicidal ideation) - add SAFE-T assessment checklist",
+        "OSCE-003 (Post-partum Blues): Specify 'Edinburgh Postnatal Depression Scale (EPDS)' instead of generic rating scale - occurs day 3-10, self-limiting",
+        "OSCE-004 (Post-partum Depression): Add Mental Health Act criteria checklist (psychosis with infanticidal thoughts = involuntary admission) - specify EPDS score >13 threshold",
+        "OSCE-005 (Agoraphobia): Add Panic Disorder screening (85% comorbidity) - specify exposure hierarchy for CBT",
+        "OSCE-007 (Conversion Disorder): Add 'rule out organic causes' (CT head, neurology consult) before diagnosis - La belle indiff\u00e9rence sign",
+        "OSCE-008 (Somatization): Specify 'Patient Health Questionnaire-15 (PHQ-15)' - manage with regular scheduled appointments, avoid excessive investigations",
+        "OSCE-010 (Antisocial PD): Add risk assessment for violence to others - forensic history, substance use comorbidity (70%)",
+        "OSCE-012 (Medication Side Effects): Specify drugs - 'Assess patient on olanzapine for metabolic syndrome (weight gain, diabetes, lipids)', 'Assess lithium toxicity (tremor, ataxia, confusion)', 'Assess quetiapine for QTc prolongation (ECG)'",
+        "OSCE-013 (Eating Disorders): Specify 'Anorexia nervosa vs bulimia nervosa' - add SCOFF questionnaire, medical complications assessment (bradycardia, electrolytes, osteoporosis)",
+        "ALL OSCEs: Add Mental State Examination structured template (9 domains)",
+        "ALL OSCEs: Add 'Safety Plan' section - warning signs, coping strategies, social contacts, professional contacts, crisis numbers (Lifeline 13 11 14)",
+        "ALL OSCEs: Add Aboriginal/TSI considerations - 'Ask: Do you identify as Aboriginal or Torres Strait Islander?' - offer Aboriginal liaison",
+        "ALL OSCEs: Add specific state Mental Health Act criteria (NSW/VIC/QLD) for involuntary cases",
+        "ALL OSCEs: Replace generic 'Rating_Scale' with specific validated instruments (EPDS, GAD-7, PHQ-9, AUDIT, CAGE)"
+      ],
+      "strengths": [
+        "Covers uncommon psychiatric presentations (post-partum blues, conversion disorder, somatization) - good diversity",
+        "8-minute time limit appropriate for AMC Clinical Examination OSCE format",
+        "RAG validation passed with confidence >0.65 for all references (meets minimum threshold)",
+        "Australian textbook sources (Murtagh, Talley & O'Connor) - appropriate context",
+        "Includes personality disorders (antisocial, histrionic) - often overlooked in curricula",
+        "Post-partum spectrum covered (blues vs depression vs psychosis differentiation potential)",
+        "Medication side effects as dedicated OSCE (OSCE-012) - important practical skill"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "clinical_safety_concerns": [
+        "CRITICAL SAFETY ISSUE: No suicide risk assessment protocol for depression cases (OSCE-002, OSCE-003, OSCE-004) - post-partum depression has 20x suicide risk",
+        "CRITICAL SAFETY ISSUE: Post-partum psychosis (OSCE-004) has 4% infanticide risk and 5% maternal suicide risk - no risk assessment documented",
+        "CRITICAL SAFETY ISSUE: No access to means restriction discussed (firearms, medications, heights) for depressed/suicidal patients",
+        "SAFETY CONCERN: Conversion disorder (OSCE-007) requires organic cause exclusion (stroke, MS, brain tumor) before psychiatric diagnosis - not documented",
+        "SAFETY CONCERN: Eating disorders (OSCE-013) can have life-threatening complications (bradycardia <40, QTc >450, electrolyte imbalance) - no medical assessment protocol"
+      ],
+      "educational_value": 5.5,
+      "deployment_recommendation": "REJECT - Requires major revision",
+      "revision_priority": "URGENT - Add SAFE-T suicide assessment to all mood disorder OSCEs before deployment"
+    }
+  ],
+  "num_agents": 6,
+  "quality_gate_violations": [
+    {
+      "gate": "content_completeness",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "OSCE item 012 contains NO medication information whatsoever",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "australian_drug_names",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Cannot verify Australian drug nomenclature compliance - no medications listed",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "pbs_compliance",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Cannot verify PBS compliance - no medications specified",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "dosing_accuracy",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No dosing information provided for psychiatric medications",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "drug_interactions",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No side effect or interaction information despite topic being 'Medication Side Effects'",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "clinical_accuracy",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "OSCE scenario too vague - 'Patient presenting with Psychiatric Medication Side Effects' lacks clinical context",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "osce_missing_psychiatry_13_osces_012",
+  "item_type": "osce_script",
+  "specialty": "psychiatry",
+  "file_path": "data/osces/missing_psychiatry_13_osces.json"
+}

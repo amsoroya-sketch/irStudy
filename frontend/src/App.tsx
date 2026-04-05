@@ -24,6 +24,13 @@ import {
   PerformanceDashboard,
   OSCEPractice,
   OSCESession,
+  StartEMRSessionPage,
+  EMRSelectSystemPage,
+  EpicEMRPage,
+  CernerEMRPage,
+  MockExamStart,
+  MockExamStation,
+  MockExamResults,
 } from "./routes";
 
 // Create React Query client
@@ -111,6 +118,66 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <OSCESession />
+                    </ProtectedRoute>
+                  }
+                />
+
+                {/* EMR Routes */}
+                <Route
+                  path="/emr/start"
+                  element={
+                    <ProtectedRoute>
+                      <StartEMRSessionPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/emr/select/:sessionId"
+                  element={
+                    <ProtectedRoute>
+                      <EMRSelectSystemPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/emr/epic/:sessionId"
+                  element={
+                    <ProtectedRoute>
+                      <EpicEMRPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/emr/cerner/:sessionId"
+                  element={
+                    <ProtectedRoute>
+                      <CernerEMRPage />
+                    </ProtectedRoute>
+                  }
+                />
+
+                {/* Mock Exam Routes */}
+                <Route
+                  path="/osce/mock-exam/start"
+                  element={
+                    <ProtectedRoute>
+                      <MockExamStart />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/osce/mock-exam/:examId/station/:stationNumber"
+                  element={
+                    <ProtectedRoute>
+                      <MockExamStation />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/osce/mock-exam/:examId/results"
+                  element={
+                    <ProtectedRoute>
+                      <MockExamResults />
                     </ProtectedRoute>
                   }
                 />

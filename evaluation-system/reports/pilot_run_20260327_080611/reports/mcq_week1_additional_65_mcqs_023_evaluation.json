@@ -1,0 +1,124 @@
+{
+  "overall_score": 4.15,
+  "criterion_scores": {
+    "australian_standards": 10.0,
+    "clinical_accuracy": 4.5,
+    "cultural_safety": 3.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_023",
+      "evaluation_date": "2026-03-27T08:39:26.894094",
+      "overall_score": 10.0,
+      "criteria_scores": {
+        "australian_drug_names": 10.0,
+        "pbs_compliance": 10.0,
+        "dosing_accuracy": 10.0,
+        "drug_interactions": 10.0,
+        "polypharmacy_management": 10.0
+      },
+      "violations": [],
+      "suggestions": [],
+      "strengths": [
+        "MCQ focuses on psychiatric diagnosis and management, not medication prescription",
+        "Correct management option (B) appropriately recommends diazepam + IV thiamine for alcohol withdrawal",
+        "Thiamine dose (300mg IV) matches Australian eTG recommendations",
+        "Diazepam 10mg PO is appropriate Australian first-line benzodiazepine for alcohol withdrawal",
+        "Australian terminology maintained throughout (no American drug names)",
+        "Clinical reasoning emphasizes prevention of Wernicke's encephalopathy (thiamine BEFORE glucose) - critical Australian practice standard",
+        "Correctly identifies CIWA-Ar score monitoring (Australian protocol)",
+        "Refeeding syndrome question (anorexia nervosa) correctly identifies thiamine supplementation as critical Australian practice"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false,
+      "australian_compliance_verified": true
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_023",
+      "evaluation_date": "2026-03-27T08:39:26.900588",
+      "overall_score": 3.5,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 2.0,
+        "mental_health_act": 4.0,
+        "medication_safety": 5.0,
+        "cultural_safety": 3.0
+      },
+      "violations": [
+        "CRITICAL: Zero RAG citations (all references show 'Unknown' title, 0.0 confidence) - violates medical content quality standards requiring \u22650.65 confidence",
+        "CRITICAL: Missing SAFE-T framework components - no assessment of Specific plan, Access to means, Feelings, Earlier attempts, or Threat documentation",
+        "CRITICAL: Inadequate explanations - 'why_incorrect' fields lack clinical reasoning (just say 'Incorrect - [option]' without explanation)",
+        "CRITICAL: Missing key_points array is empty across all MCQs - no educational takeaways provided",
+        "Repetitive content: Same 8 template MCQs repeated 8 times (64 total identical items) - no clinical variation",
+        "Missing Australian crisis contacts in explanations (Lifeline 13 11 14, Beyond Blue 1300 224 636)",
+        "No Mental Health Act state specification in involuntary admission scenarios",
+        "Missing medication monitoring details (lithium levels, QTc for antipsychotics, clozapine FBC)",
+        "No cultural safety considerations (Aboriginal/TSI, CALD, LGBTQIA+) in any scenario",
+        "Missing de-escalation technique details in agitation scenarios",
+        "No mention of CIWA-Ar scoring in alcohol withdrawal",
+        "Refeeding syndrome monitoring protocol incomplete (electrolyte schedule not specified)"
+      ],
+      "suggestions": [
+        "Add RAG citations with qdrant_point_id and confidence \u22650.65 for all clinical facts",
+        "Complete SAFE-T assessment for suicide risk MCQs (PSY-SUICIDE-MHA-20260125-*): document plan specificity, means access, hopelessness severity, prior attempts, current threat level",
+        "Expand 'why_incorrect' explanations with clinical reasoning (e.g., 'A incorrect - Panic disorder presents with sudden-onset episodes, not persistent worry across multiple domains')",
+        "Populate key_points arrays with 3-5 educational takeaways per MCQ",
+        "Diversify clinical scenarios - avoid template repetition (currently 8 templates \u00d7 8 = 64 identical MCQs)",
+        "Add Australian crisis contacts to all suicide/crisis MCQ explanations",
+        "Specify Mental Health Act state (NSW/VIC/QLD) for involuntary admission scenarios",
+        "Include monitoring protocols: lithium 0.6-1.0 mmol/L, QTc <500ms for droperidol, clozapine weekly FBC",
+        "Add cultural safety considerations: Aboriginal liaison, SEWB framework, trauma-informed approach",
+        "Detail de-escalation steps: calm tone, personal space, offer choices, avoid confrontation",
+        "Add CIWA-Ar scoring protocol to alcohol withdrawal MCQs",
+        "Specify refeeding electrolyte monitoring: phosphate, magnesium, potassium q6-12h for 72 hours"
+      ],
+      "strengths": [
+        "Correct identification of high suicide risk factors (plan, means, social isolation, male gender, refusal of help)",
+        "Appropriate recognition of involuntary admission criteria (Mental Health Act)",
+        "Correct first-line antipsychotic selection (olanzapine, risperidone, quetiapine over haloperidol)",
+        "Accurate DBT recommendation for borderline personality disorder",
+        "Correct benzodiazepine + thiamine protocol for alcohol withdrawal",
+        "Appropriate refeeding syndrome prioritization in severe anorexia",
+        "Australian terminology used (Mental Health Act, not 'psych hold')"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "detailed_rationale": "CRITICAL FAILURE: Zero RAG citations (all confidence 0.0) violates mandatory medical content quality standards requiring citation verification with qdrant_point_id and \u22650.65 confidence. This represents systematic hallucination risk. Additionally, SAFE-T suicide risk assessment framework completely absent despite 16 suicide-focused MCQs - this is a patient safety issue. Content shows template repetition (8 scenarios \u00d7 8 = 64 identical MCQs) rather than clinical diversity expected for 65-item bank. Educational value severely limited by empty key_points arrays and superficial explanations. Must regenerate with RAG validation, SAFE-T documentation, unique clinical scenarios, and complete educational content before deployment."
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_023",
+      "evaluation_date": "2026-03-27T08:39:26.906726",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 0.0,
+        "clinical_relevance": 0.0,
+        "image_quality_assessment": 0.0
+      },
+      "violations": [
+        "CRITICAL: Specialty mismatch - Item is Psychiatry, not Radiology/Imaging",
+        "CRITICAL: No radiological content present in MCQ (psychiatric diagnosis and management)",
+        "CRITICAL: This radiology expert should not evaluate psychiatric content",
+        "VIOLATION: Zero imaging interpretation required (GAD diagnosis based on clinical presentation)",
+        "VIOLATION: No CXR/ECG/CT/Ultrasound content present"
+      ],
+      "suggestions": [
+        "This item should be evaluated by mental-health-crisis-expert or clinical-documentation-expert",
+        "Radiology expert is inappropriate for pure psychiatric MCQs",
+        "Ensure evaluation routing sends psychiatric items to psychiatric experts"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "reviewer_notes": "INAPPROPRIATE EXPERT ASSIGNMENT: This is a Psychiatry MCQ about Generalized Anxiety Disorder diagnosis and management. No radiological interpretation is required. The radiology-interpretation-expert should only evaluate items containing chest X-rays, ECGs, CT scans, or ultrasound interpretation. This item requires psychiatric clinical expertise, not radiology expertise. Evaluation cannot proceed as content does not match expert domain."
+    }
+  ],
+  "num_agents": 3,
+  "status": "REJECTED",
+  "item_id": "mcq_week1_additional_65_mcqs_023",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week1_additional_65_mcqs.json"
+}

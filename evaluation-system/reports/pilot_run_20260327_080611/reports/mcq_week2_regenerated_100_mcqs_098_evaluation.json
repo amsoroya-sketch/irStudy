@@ -1,0 +1,202 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 0.0,
+    "clinical_accuracy": 0.0,
+    "cultural_safety": 0.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week2_regenerated_100_mcqs_098",
+      "evaluation_date": "2026-03-27T08:41:23.152847",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "content_completeness",
+          "issue": "MCQ is placeholder only - no actual clinical content present",
+          "location": "mcqs[97] (WEEK2-REGEN-098)",
+          "suggested_fix": "Complete regeneration required - question, options, and explanation all contain placeholder text"
+        },
+        {
+          "severity": "critical",
+          "category": "regeneration_failed",
+          "issue": "Item marked as 'regeneration_failed: true' - content generation incomplete",
+          "location": "mcqs[97].regeneration_failed",
+          "suggested_fix": "Re-run content generation process with proper RAG validation"
+        },
+        {
+          "severity": "critical",
+          "category": "clinical_content",
+          "issue": "No medication management content to evaluate - question is generic template",
+          "location": "mcqs[97].question",
+          "suggested_fix": "Question must specify actual clinical scenario (e.g., 'A 68-year-old patient with atrial fibrillation presents...')"
+        },
+        {
+          "severity": "critical",
+          "category": "options",
+          "issue": "All options are placeholders ('Option A', 'Option B', etc.) - no actual medication choices",
+          "location": "mcqs[97].options",
+          "suggested_fix": "Provide specific medication options with Australian drug names, doses, and PBS compliance"
+        },
+        {
+          "severity": "critical",
+          "category": "explanation",
+          "issue": "Explanation is incomplete template text",
+          "location": "mcqs[97].explanation",
+          "suggested_fix": "Provide detailed rationale including Australian guidelines (eTG/AMH), PBS restrictions, dosing, and safety considerations"
+        }
+      ],
+      "suggestions": [
+        "This MCQ requires complete regeneration - current content is unusable for clinical education",
+        "Ensure RAG citations (qdrant_point_id) link to actual Australian medication guidelines (eTG, AMH, PBS)",
+        "Topic 'Neuroleptic Malignant Syndrome' should include: antipsychotic medications (Australian names), management protocol (dantrolene, bromocriptine), monitoring requirements",
+        "All medication options must use Australian terminology (e.g., 'paracetamol' not 'acetaminophen', 'adrenaline' not 'epinephrine')"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "additional_notes": "CRITICAL FAILURE: This MCQ is a placeholder template with no evaluable clinical content. The item is marked 'regeneration_failed: true' indicating content generation process did not complete. Cannot assess Australian drug nomenclature, PBS compliance, or dosing accuracy as no actual medications are specified. This item must be excluded from deployment and fully regenerated before clinical use. RAG citations present but content field is empty, suggesting RAG retrieval succeeded but LLM generation failed. Specialty 'Psychiatry' and subtopic 'Neuroleptic Malignant Syndrome' are appropriate, but require actual antipsychotic medication content (e.g., haloperidol, olanzapine, clozapine - all Australian names) with management protocols per Australian guidelines."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week2_regenerated_100_mcqs_098",
+      "evaluation_date": "2026-03-27T08:41:00.957017",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 0.0,
+        "medication_safety": 0.0,
+        "cultural_safety": 0.0
+      },
+      "violations": [
+        "CRITICAL: ALL 100 MCQs have regeneration_failed: true - no actual clinical content generated",
+        "CRITICAL: All questions are generic placeholders ('A patient presents with...') - not clinically valid",
+        "CRITICAL: All options are 'Option A/B/C/D' - no actual clinical scenarios",
+        "CRITICAL: All explanations are incomplete placeholders",
+        "CRITICAL: References have empty content fields - no actual source material validated",
+        "CRITICAL: This is a FAILED content generation batch - all 100 items are non-functional placeholders",
+        "ZERO clinical accuracy - no real psychiatric scenarios present",
+        "ZERO suicide risk assessment - no SAFE-T framework implementation possible with placeholder content",
+        "ZERO Mental Health Act compliance - no involuntary treatment scenarios present",
+        "ZERO medication safety - no drug names, doses, or monitoring present",
+        "ZERO cultural safety - no Aboriginal/TSI considerations in placeholder content"
+      ],
+      "suggestions": [
+        "URGENT: This entire batch (mcq_week2_regenerated_100_mcqs) must be REGENERATED - all 100 items failed",
+        "System-level issue: RAG-validated regeneration process failed - investigate LLM generation pipeline",
+        "All MCQs show 'regeneration_failed: true' - indicates systematic generation failure",
+        "Content validation gate should have BLOCKED these placeholder MCQs from reaching evaluation",
+        "Implement pre-evaluation filter: reject items with regeneration_failed: true",
+        "Re-run content generation with functional LLM endpoint (deepseek-r1:14b / llama3.1:70b appear non-functional)",
+        "Verify RAG confidence scores are from actual content matches (currently 0.75-0.78 on empty content)",
+        "Do NOT deploy this batch to production - 0% clinical validity"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "deployment_ready": false,
+      "critical_safety_issues": [
+        "Deploying these placeholder MCQs would provide ZERO educational value",
+        "Students cannot practice suicide risk assessment with 'Option A/B/C/D' placeholders",
+        "No Mental Health Act scenarios present for clinical decision-making practice",
+        "Generic questions ('What is the most appropriate management...') without clinical context are worthless",
+        "This represents a complete system failure in content generation - entire batch is non-functional"
+      ],
+      "recommendation": "REJECT entire batch mcq_week2_regenerated_100_mcqs (all 100 items). Investigate and fix RAG-validated regeneration pipeline before re-attempting content generation."
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "mcq_week2_regenerated_100_mcqs_098",
+      "evaluation_date": "2026-03-27T08:41:00.965552",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 0.0,
+        "clinical_relevance": 0.0,
+        "image_quality_assessment": 0.0
+      },
+      "violations": [
+        "CRITICAL: Item WEEK2-REGEN-098 marked as regeneration_failed: true - content is placeholder",
+        "CRITICAL: Question is generic placeholder: 'A patient presents with neuroleptic malignant syndrome. What is the most appropriate management approach...'",
+        "CRITICAL: Options are placeholder: 'Option A', 'Option B', 'Option C', 'Option D' - no real clinical content",
+        "CRITICAL: Explanation is placeholder template, not real clinical content",
+        "CRITICAL: Empty 'content' field in all 3 references - no actual RAG source text retrieved",
+        "CRITICAL: Item is PSYCHIATRY specialty, NOT radiology/imaging - wrong expert agent assigned",
+        "CRITICAL: Neuroleptic Malignant Syndrome is psychiatric emergency (antipsychotic side effect), not radiology interpretation",
+        "CRITICAL: No imaging findings, no CXR/CT/ECG data to interpret - nothing for radiology expert to evaluate",
+        "DEPLOYMENT BLOCKER: This is a failed regeneration MCQ with no real content - cannot be deployed"
+      ],
+      "suggestions": [
+        "URGENT: This MCQ must be regenerated with real clinical content using psychiatric expert agent (mental-health-crisis-expert or medication-management-expert)",
+        "Neuroleptic Malignant Syndrome MCQ should include: fever, rigidity, altered mental status, autonomic instability, elevated CK",
+        "Management options should include: stop antipsychotic, supportive care (cooling, IV fluids), dantrolene/bromocriptine, ICU admission",
+        "References need actual content from eTG/AMH on NMS emergency management",
+        "This item should NOT be sent to radiology expert - wrong specialty domain"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "critical_issues": [
+        "Wrong expert agent assigned (radiology expert cannot evaluate psychiatry MCQ)",
+        "Placeholder content throughout (regeneration_failed: true)",
+        "No real clinical content to evaluate",
+        "Empty RAG reference content fields",
+        "NOT SUITABLE FOR DEPLOYMENT - must be regenerated"
+      ],
+      "expert_notes": "As a radiology interpretation expert, I cannot evaluate this item because: (1) It is a psychiatry question about Neuroleptic Malignant Syndrome, not radiology. (2) The item is marked regeneration_failed: true with placeholder content only. (3) There are no imaging findings (CXR/CT/ECG) to interpret. (4) This requires psychiatric expert evaluation (mental-health-crisis-expert) after proper regeneration with real clinical content. RECOMMENDATION: Do not deploy this item - regenerate with correct specialty expert and real LLM-generated content including clinical scenario, evidence-based management options, and complete RAG citations."
+    }
+  ],
+  "num_agents": 3,
+  "quality_gate_violations": [
+    {
+      "gate": "content_completeness",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "MCQ is placeholder only - no actual clinical content present",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "regeneration_failed",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Item marked as 'regeneration_failed: true' - content generation incomplete",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "clinical_content",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No medication management content to evaluate - question is generic template",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "options",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "All options are placeholders ('Option A', 'Option B', etc.) - no actual medication choices",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "explanation",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Explanation is incomplete template text",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "mcq_week2_regenerated_100_mcqs_098",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week2_regenerated_100_mcqs.json"
+}

@@ -1,0 +1,130 @@
+{
+  "overall_score": 5.88,
+  "criterion_scores": {
+    "australian_standards": 9.5,
+    "clinical_accuracy": 8.85,
+    "cultural_safety": 8.5
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_006",
+      "evaluation_date": "2026-03-27T17:36:49.101630",
+      "overall_score": 9.5,
+      "criteria_scores": {
+        "australian_drug_names": 10.0,
+        "pbs_compliance": 10.0,
+        "dosing_accuracy": 9.5,
+        "drug_interactions": 9.0,
+        "polypharmacy_management": 9.0
+      },
+      "violations": [],
+      "suggestions": [
+        "Consider adding specific SSRI dose titration guidance (e.g., sertraline 25mg start in elderly, increase to 50mg after 1 week)",
+        "For treatment-resistant depression question, could specify lithium augmentation dose range (400-800mg daily, aim for level 0.6-1.0 mmol/L)",
+        "Postpartum depression question could note that sertraline infant exposure via breast milk is <2% of maternal dose (reassurance for breastfeeding mothers)"
+      ],
+      "strengths": [
+        "All psychiatric medications use correct Australian generic names (sertraline, escitalopram, venlafaxine, mirtazapine, lithium, valproate, quetiapine, olanzapine, risperidone, aripiprazole, haloperidol, diazepam, benztropine)",
+        "Dosing recommendations align with eTG Psychiatry and RANZCP guidelines (sertraline 50mg, escitalopram 20mg, venlafaxine 75mg, quetiapine starting doses)",
+        "Appropriate drug selection for clinical scenarios (SSRIs first-line for depression, antipsychotics for acute mania, benzodiazepines for alcohol withdrawal)",
+        "Correct identification of high-risk medications in elderly (amitriptyline, doxepin - anticholinergic burden)",
+        "Accurate monitoring requirements (lithium levels 3-monthly, UEC/TFTs 6-monthly, clozapine FBC schedule)",
+        "Australian context maintained throughout (RANZCP, eTG Psychiatry, Mental Health Act NSW 2007, PBS restrictions)",
+        "Appropriate safety warnings (valproate contraindicated in women of childbearing potential, benzodiazepine dependence, NMS management)",
+        "Correct drug interaction management (warfarin + NSAIDs, lithium + NSAIDs/diuretics, digoxin + amiodarone)"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false,
+      "australian_compliance_verified": true
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_006",
+      "evaluation_date": "2026-03-27T17:36:49.111140",
+      "overall_score": 8.2,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 8.0,
+        "mental_health_act": 8.5,
+        "medication_safety": 8.0,
+        "cultural_safety": 8.5
+      },
+      "violations": [
+        {
+          "severity": "moderate",
+          "category": "suicide_risk_assessment",
+          "description": "MCQ PSY-ANX-BIP-20260125-476 (GAD): Scenario does not include suicide risk assessment despite psychiatric presentation",
+          "location": "PSY-ANX-BIP-20260125-476"
+        },
+        {
+          "severity": "moderate",
+          "category": "suicide_risk_assessment",
+          "description": "MCQ PSY-SUICIDE-MHA-20260125-334 uses SAD PERSONS scale - outdated tool, should use SAFE-T or C-SSRS per current Australian guidelines",
+          "location": "PSY-SUICIDE-MHA-20260125-334"
+        },
+        {
+          "severity": "low",
+          "category": "medication_safety",
+          "description": "Multiple MCQs lack specific monitoring parameters for psychotropics (lithium levels, QTc, FBC for clozapine)",
+          "location": "PSY-PSYCHOSIS-20260125-2051 and similar"
+        },
+        {
+          "severity": "low",
+          "category": "cultural_safety",
+          "description": "No MCQs address Aboriginal/TSI mental health considerations or SEWB framework",
+          "location": "All MCQs"
+        },
+        {
+          "severity": "moderate",
+          "category": "mental_health_act",
+          "description": "MCQs reference Mental Health Act but do not specify which state (NSW/VIC/QLD) - criteria differ between states",
+          "location": "PSY-SUICIDE-MHA-20260125-2012 and similar"
+        },
+        {
+          "severity": "low",
+          "category": "clinical_accuracy",
+          "description": "MCQ PSY-FINAL-20260125-610 (alcohol withdrawal): Thiamine dose should be 300mg IV TDS for 3 days (Wernicke prevention), not single dose",
+          "location": "PSY-FINAL-20260125-610"
+        },
+        {
+          "severity": "moderate",
+          "category": "template_duplication",
+          "description": "Extensive duplication: Same MCQs repeated 8 times (IDs 2000-2063 are duplicates of earlier items)",
+          "location": "IDs PSY-ANX-BIP-20260125-2000 through PSY-FINAL-20260125-2063"
+        }
+      ],
+      "suggestions": [
+        "Include SAFE-T assessment framework explicitly in suicide risk MCQs (not just SAD PERSONS)",
+        "Add state-specific Mental Health Act criteria (NSW 2007, VIC 2014, QLD 2016) to involuntary admission MCQs",
+        "Include Aboriginal/TSI mental health scenarios with SEWB framework and cultural safety considerations",
+        "Add monitoring parameters for psychotropics: lithium levels (0.6-1.0 mmol/L), QTc monitoring for antipsychotics, weekly FBC for clozapine",
+        "Specify thiamine dosing: 300mg IV TDS for 3 days (not single dose) for Wernicke prevention",
+        "Remove duplicate MCQs (IDs 2000-2063) - these are exact copies reducing content variety",
+        "Add crisis contacts: Lifeline 13 11 14, Beyond Blue 1300 224 636, Suicide Call Back Service 1300 659 467",
+        "Include Mental State Examination structure in psychosis MCQs",
+        "Add de-escalation techniques for agitation management before pharmacological intervention",
+        "Include capacity assessment framework for involuntary treatment decisions"
+      ],
+      "strengths": [
+        "Comprehensive coverage of core psychiatry topics: depression, anxiety, bipolar, psychosis, suicide risk, substance use",
+        "Correct emphasis on SSRIs as first-line for depression/anxiety",
+        "Appropriate use of benzodiazepines for alcohol withdrawal with thiamine",
+        "Recognition of refeeding syndrome risk in anorexia nervosa",
+        "Correct identification of high suicide risk requiring involuntary admission",
+        "Evidence-based treatment recommendations (DBT for borderline personality disorder, OST for opioid use disorder)",
+        "Appropriate low-dose antipsychotic approach for first-episode psychosis",
+        "Recognition of clozapine monitoring requirements",
+        "Correct identification of NMS as psychiatric emergency"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": true,
+      "reviewer_notes": "Content quality is good overall with appropriate clinical reasoning and Australian context. However, significant issues include: (1) Extensive duplication (64 duplicate MCQs out of 100 total), (2) Use of outdated SAD PERSONS scale instead of SAFE-T/C-SSRS, (3) Missing state-specific Mental Health Act criteria, (4) No Aboriginal/TSI cultural safety content. Recommend removing duplicates and updating suicide risk assessment tools to current Australian standards. Manual review required to verify clinical accuracy of all unique MCQs and ensure compliance with RANZCP guidelines."
+    }
+  ],
+  "num_agents": 2,
+  "status": "REJECTED",
+  "item_id": "mcq_week1_all_100_unique_mcqs_006",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week1_all_100_unique_mcqs.json"
+}

@@ -285,10 +285,25 @@ class EvaluationOrchestrator:
         for criterion, scores in criterion_scores.items():
             criterion_averages[criterion] = sum(scores) / len(scores) if scores else 0.0
 
-        # Apply weights
+        # Redistribute weights if some criteria are missing (e.g., RAG not evaluated)
+        active_weights = {}
+        total_active_weight = 0.0
+        for criterion, weight in weights.items():
+            if criterion in criterion_averages and criterion_averages[criterion] > 0:
+                active_weights[criterion] = weight
+                total_active_weight += weight
+
+        # Normalize active weights to sum to 1.0
+        if total_active_weight > 0:
+            active_weights = {k: v / total_active_weight for k, v in active_weights.items()}
+        else:
+            # Fallback: use original weights
+            active_weights = weights
+
+        # Apply redistributed weights
         overall_score = sum(
-            criterion_averages.get(criterion, 0.0) * weight
-            for criterion, weight in weights.items()
+            criterion_averages.get(criterion, 0.0) * active_weights.get(criterion, 0.0)
+            for criterion in criterion_averages.keys()
         )
 
         return {

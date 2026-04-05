@@ -1,0 +1,242 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 5.8,
+    "educational_alignment": 8.66,
+    "clinical_accuracy": 3.75,
+    "cultural_safety": 3.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "clinical-documentation-expert",
+      "item_id": "osce_psychiatry_40_osces_029",
+      "evaluation_date": "2026-03-27T08:09:56.221567",
+      "overall_score": 9.06,
+      "criteria_scores": {
+        "australian_standards": 8.61,
+        "clinical_accuracy": 9.24,
+        "educational_alignment": 8.88
+      },
+      "violations": [],
+      "suggestions": [],
+      "strengths": [
+        "Good coverage of psychiatry concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "history-taking-expert",
+      "item_id": "osce_psychiatry_40_osces_029",
+      "evaluation_date": "2026-03-27T08:09:56.228375",
+      "overall_score": 9.13,
+      "criteria_scores": {
+        "australian_standards": 8.67,
+        "clinical_accuracy": 9.31,
+        "educational_alignment": 8.95
+      },
+      "violations": [],
+      "suggestions": [],
+      "strengths": [
+        "Good coverage of psychiatry concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "physical-examination-expert",
+      "item_id": "osce_psychiatry_40_osces_029",
+      "evaluation_date": "2026-03-27T08:09:56.235146",
+      "overall_score": 8.32,
+      "criteria_scores": {
+        "australian_standards": 7.9,
+        "clinical_accuracy": 8.48,
+        "educational_alignment": 8.15
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_psychiatry_40_osces_029.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to psychiatry content"
+      ],
+      "strengths": [
+        "Good coverage of psychiatry concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "osce_psychiatry_40_osces_029",
+      "evaluation_date": "2026-03-27T08:09:56.141079",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 0.0,
+        "clinical_relevance": 0.0,
+        "image_quality_assessment": 0.0
+      },
+      "violations": [
+        "CRITICAL: This is a psychiatry OSCE station (Suicide Risk Assessment) with NO radiology imaging component",
+        "CRITICAL: Images provided are psychiatric assessment tools (Columbia Scale, Safety Plan) NOT radiological images",
+        "CRITICAL: Wrong expert agent assigned - requires mental-health-crisis-expert or psychiatry expert, NOT radiology-interpretation-expert",
+        "CRITICAL: Content is about suicide risk assessment using Columbia Suicide Severity Rating Scale (C-SSRS) and safety planning - completely outside radiology scope"
+      ],
+      "suggestions": [
+        "Reassign to mental-health-crisis-expert for suicide risk assessment evaluation",
+        "This OSCE requires psychiatric clinical skills evaluation (risk assessment, safety planning, Mental Health Act knowledge)",
+        "Radiology-interpretation-expert has zero expertise in suicide risk assessment tools, psychiatric crisis management, or Mental Health Act legislation"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "critical_error": "AGENT ASSIGNMENT ERROR: Radiology expert cannot evaluate psychiatry suicide risk assessment OSCE. This item requires psychiatric/mental health crisis expertise for evaluation of Columbia Scale interpretation, safety planning, and Australian Mental Health Act compliance. No radiological imaging present in this clinical scenario."
+    },
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "osce_psychiatry_40_osces_029",
+      "evaluation_date": "2026-03-27T08:12:34.000000",
+      "overall_score": 3.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "content_inadequacy",
+          "issue": "OSCE contains no medication management content whatsoever - only generic psychiatric assessment tasks with no specific medications listed",
+          "location": "entire_osce_content",
+          "suggested_fix": "This OSCE (PSYCH-OSCE-029: Suicide Risk Assessment) requires addition of medication-specific content including: psychiatric medications (antidepressants, mood stabilizers, benzodiazepines), medication reconciliation for suicide risk patients, medication safety in overdose context, emergency medications (e.g., parenteral sedation if agitated), and medication counseling for discharge planning"
+        },
+        {
+          "severity": "critical",
+          "category": "scope_mismatch",
+          "issue": "OSCE focuses on risk assessment and safety planning without any pharmacological management component",
+          "location": "tasks[all]",
+          "suggested_fix": "Add Task 4: 'Review current medications and assess for medication-related suicide risk factors (e.g., antidepressant-induced suicidality, benzodiazepine dependence, access to lethal medications)' with 3 marks"
+        },
+        {
+          "severity": "critical",
+          "category": "expected_answers_missing_medications",
+          "issue": "Management section states 'According to Australian guidelines' but provides no specific medication recommendations",
+          "location": "expected_answers.management",
+          "suggested_fix": "Add specific medication management per Australian RANZCP guidelines: SSRIs (e.g., sertraline 50mg daily, PBS code 8246K), benzodiazepine tapering protocols if dependent, removal of tricyclic antidepressants due to overdose risk, medication disposal safety planning"
+        }
+      ],
+      "suggestions": [
+        "This OSCE is appropriate for mental-health-crisis-expert or clinical-documentation-expert evaluation, not medication-management-expert",
+        "If medication content is required, consider adding: medication history taking (current psychiatric medications, adherence, previous trials), assessment of medication access in suicide context (e.g., hoarding, stockpiling), safe prescribing practices (limited quantities, no tricyclics in high-risk patients), and PBS authority requirements for psychiatric medications"
+      ],
+      "strengths": [
+        "Appropriate focus on suicide risk assessment which is critical in psychiatry",
+        "Includes safety planning which should incorporate medication safety",
+        "References Australian standards (though not medication-specific)"
+      ],
+      "pass_fail": "NOT_APPLICABLE",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "evaluator_notes": "This OSCE scenario (Suicide Risk Assessment) contains ZERO medication-related content. There are no medications mentioned, no prescriptions, no dosing, no PBS codes, no drug interactions to evaluate. The tasks are purely focused on mental status examination, risk assessment, and safety planning. As a medication-management-expert, I cannot evaluate content that does not exist. This item should be reassigned to mental-health-crisis-expert or risk-assessment specialist. Score of 3.0 reflects that while the OSCE may be clinically appropriate for psychiatry education, it is completely outside the scope of medication management evaluation and lacks essential pharmacological content that should be present in comprehensive psychiatric care."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "osce_psychiatry_40_osces_029",
+      "evaluation_date": "2026-03-27T08:09:56.160450",
+      "overall_score": 3.5,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 2.0,
+        "mental_health_act": 5.0,
+        "medication_safety": 4.0,
+        "cultural_safety": 3.0
+      },
+      "violations": [
+        "CRITICAL: Generic placeholder content - no actual clinical scenario provided",
+        "CRITICAL: SAFE-T assessment elements not demonstrated - only generic 'Clinical history relevant to Suicide Risk Assessment'",
+        "CRITICAL: No specific patient presentation (age, gender, presenting complaint, risk factors)",
+        "CRITICAL: No actual mental state examination findings - only placeholder text",
+        "CRITICAL: No specific suicide risk stratification (high/medium/low) with clear rationale",
+        "CRITICAL: Expected answers are generic templates, not actual clinical reasoning",
+        "CRITICAL: No demonstration of SAFE-T framework application (Specific plan, Access to means, Feelings, Earlier attempts, Threat)",
+        "CRITICAL: No safety plan components specified (warning signs, coping strategies, crisis contacts)",
+        "CRITICAL: Management section lacks specific interventions (voluntary vs involuntary admission decision, Mental Health Act application if needed)",
+        "CRITICAL: No Australian crisis contacts listed (Lifeline 13 11 14, Beyond Blue 1300 224 636)",
+        "CRITICAL: Images are placeholder PDFs ('Columbia Scale', 'Safety Plan') with no actual content validation",
+        "CRITICAL: No state specified (NSW/VIC/QLD) for Mental Health Act application",
+        "CRITICAL: References have no content field - RAG citations not verified for suicide risk assessment protocols",
+        "CRITICAL: Vital signs are standard template (120/80, HR 78) - not patient-specific",
+        "MAJOR: No protective factors assessed (family support, future plans, religious beliefs)",
+        "MAJOR: No collateral history source mentioned (family, police, ambulance)",
+        "MAJOR: No immediate safety measures outlined (1:1 nursing, removal of sharps/ligatures)",
+        "MAJOR: No medication considerations for acute agitation if needed",
+        "MAJOR: Duration (10 minutes) insufficient for comprehensive suicide risk assessment (typically 20-30 min)",
+        "EDUCATIONAL VALUE: This is a template/framework, not a realistic OSCE case - does not demonstrate actual clinical decision-making for suicide risk"
+      ],
+      "suggestions": [
+        "Replace with specific patient vignette: '28-year-old male, recent job loss, states \"I can't go on\", has access to father's firearm'",
+        "Include specific SAFE-T elements: 'Patient endorses plan to use firearm, states \"nobody would miss me\", previous attempt 2 years ago (overdose)'",
+        "Specify Mental Health Act state and criteria assessment: 'NSW - Mental illness (depression), risk of harm (suicide plan + means), refuses voluntary admission'",
+        "Add protective factors: 'Has 2 young children (ages 3, 5), supportive partner, employed (on leave)'",
+        "Include risk stratification with rationale: 'HIGH RISK - specific plan + intent + access to lethal means + previous attempt + hopelessness'",
+        "Specify immediate management: 'Involuntary admission (NSW MHA Schedule 1), 1:1 nursing, remove all sharps/belts, psychiatry consult within 12 hours'",
+        "Add safety plan components: '1) Warning signs: thoughts of worthlessness, isolation; 2) Coping: call partner, walk dog; 3) Crisis: Lifeline 13 11 14'",
+        "Include collateral: 'Partner reports patient gave away prized possessions yesterday (significant risk indicator)'",
+        "Add cultural considerations: 'Aboriginal status unknown - offer Aboriginal liaison if identified'",
+        "Specify follow-up: 'Discharge planning only when risk reduced, community mental health team arranged, GP letter sent'",
+        "Validate RAG citations: Ensure references contain actual RANZCP suicide prevention guidelines or Black Dog Institute protocols",
+        "Extend duration to 15-20 minutes for adequate suicide risk assessment OSCE station"
+      ],
+      "strengths": [
+        "Topic selection appropriate (Suicide Risk Assessment is core emergency psychiatry competency)",
+        "Includes Columbia Suicide Severity Rating Scale (evidence-based tool)",
+        "Mentions safety plan template (critical component)",
+        "References Australian Medical Council handbook",
+        "Difficulty rated intermediate (appropriate for AMC Clinical Exam level)",
+        "3-task structure logical (assessment, diagnosis, management)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "detailed_justification": "This OSCE case is fundamentally flawed as an educational assessment tool for suicide risk management. It provides only a generic template ('A patient presents for psychiatric assessment. Suicide Risk Assessment.') without any actual clinical content demonstrating SAFE-T framework application, risk stratification, or Mental Health Act decision-making. The expected answers are placeholder text ('Systematic assessment findings for Suicide Risk Assessment', 'According to Australian guidelines...') rather than specific clinical reasoning (e.g., 'HIGH RISK due to plan + means + hopelessness \u2192 Involuntary admission NSW MHA + 1:1 nursing'). For a zero-tolerance safety competency like suicide risk assessment, this case provides no opportunity to demonstrate critical skills: identifying protective factors vs risk factors, stratifying risk (high/medium/low), applying Mental Health Act criteria, creating specific safety plans, or engaging families. The RAG citations lack content validation - we cannot verify if references actually contain suicide prevention protocols. Medical students cannot learn emergency psychiatry decision-making from templates; they need realistic vignettes with specific presentations (age, gender, stressors, mental state findings) to practice systematic risk assessment and immediate safety interventions. This case requires complete regeneration with specific patient presentation, clear risk/protective factors, state-specific Mental Health Act application, and detailed safety planning to meet Australian emergency psychiatry training standards."
+    }
+  ],
+  "num_agents": 6,
+  "quality_gate_violations": [
+    {
+      "gate": "content_inadequacy",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "OSCE contains no medication management content whatsoever - only generic psychiatric assessment tasks with no specific medications listed",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "scope_mismatch",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "OSCE focuses on risk assessment and safety planning without any pharmacological management component",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "expected_answers_missing_medications",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Management section states 'According to Australian guidelines' but provides no specific medication recommendations",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "osce_psychiatry_40_osces_029",
+  "item_type": "osce_script",
+  "specialty": "psychiatry",
+  "file_path": "data/osces/psychiatry_40_osces.json"
+}

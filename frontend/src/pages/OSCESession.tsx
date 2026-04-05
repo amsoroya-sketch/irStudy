@@ -33,10 +33,12 @@ import {
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import AssessmentIcon from '@mui/icons-material/Assessment';
+import DescriptionIcon from '@mui/icons-material/Description';
 import { useQuery } from '@tanstack/react-query';
 import { WebSocketChat } from '../components/osce/WebSocketChat';
 import { SessionTimer } from '../components/osce/SessionTimer';
 import { SessionControls } from '../components/osce/SessionControls';
+import { OSCEToEMRModal } from '../components/integration/OSCEToEMRModal';
 import { useAuth } from '../context/AuthContext';
 import { getOSCESession, endOSCESession, pauseOSCESession, resumeOSCESession } from '../api/osce';
 import { getPersonaDetail } from '../api/personas';
@@ -64,6 +66,7 @@ const OSCESession: React.FC = () => {
   // State
   const [sessionScore, setSessionScore] = useState<SessionScore | null>(null);
   const [showScoreDialog, setShowScoreDialog] = useState(false);
+  const [showConversionModal, setShowConversionModal] = useState(false);
   const [pausedAt, setPausedAt] = useState<string | undefined>(undefined);
   const [manualStatus, setManualStatus] = useState<'active' | 'paused' | 'ended' | null>(null);
 
@@ -517,12 +520,39 @@ const OSCESession: React.FC = () => {
             </Box>
           )}
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleScoreDialogClose} variant="contained" color="primary">
+        <DialogActions sx={{ flexDirection: 'column', alignItems: 'stretch', gap: 2, p: 3 }}>
+          {/* Convert to EMR Button */}
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => setShowConversionModal(true)}
+              startIcon={<DescriptionIcon />}
+              fullWidth
+              aria-label="Convert OSCE to EMR practice session"
+            >
+              Convert to EMR Practice
+            </Button>
+            <Typography variant="caption" color="text.secondary" textAlign="center">
+              Transform this conversation into a pre-filled SOAP note for documentation practice
+            </Typography>
+          </Box>
+
+          {/* Back Button */}
+          <Button onClick={handleScoreDialogClose} variant="outlined" color="primary" fullWidth>
             Back to OSCE Practice
           </Button>
         </DialogActions>
       </Dialog>
+
+      {/* OSCE-to-EMR Conversion Modal */}
+      {attemptId && (
+        <OSCEToEMRModal
+          open={showConversionModal}
+          onClose={() => setShowConversionModal(false)}
+          osceAttemptId={attemptId}
+        />
+      )}
     </Container>
   );
 };

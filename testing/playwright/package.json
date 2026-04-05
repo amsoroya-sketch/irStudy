@@ -23,7 +23,9 @@
     "test:report": "playwright show-report",
     "test:codegen": "playwright codegen http://localhost:5173",
     "test:ci": "playwright test --reporter=html,json",
-    "install:browsers": "playwright install --with-deps"
+    "install:browsers": "playwright install --with-deps",
+    "mcp:server": "ts-node mcp-server/playwright-mcp-server.ts",
+    "test:autonomous": "echo 'Use Claude Desktop with MCP to run autonomous tests. See autonomous-testing-agent.md for instructions.'"
   },
   "keywords": [
     "playwright",
@@ -37,6 +39,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.10.0",
     "@faker-js/faker": "^9.4.0",
+    "@modelcontextprotocol/sdk": "^1.0.0",
     "@playwright/test": "^1.48.0",
     "@types/node": "^20.10.0",
     "dotenv": "^16.4.7",

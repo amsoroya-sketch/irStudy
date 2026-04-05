@@ -1,0 +1,104 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 0.0,
+    "clinical_accuracy": 3.25,
+    "cultural_safety": 7.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_052",
+      "evaluation_date": "2026-03-27T08:39:26.878600",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "australian_drug_names",
+          "issue": "Item mcq_week1_all_100_unique_mcqs_052 not found in provided content. Cannot evaluate medication management aspects as no relevant MCQ content present for this specific ID.",
+          "location": "mcqs array",
+          "suggested_fix": "Verify item_id matches content. Provided JSON contains 64 MCQs but none with id 'mcq_week1_all_100_unique_mcqs_052'. Available IDs start at PSY-DEP-20260125-345 through PSY-ANX-BIP-20260125-2064."
+        }
+      ],
+      "suggestions": [
+        "Confirm correct item_id for evaluation",
+        "Re-submit evaluation request with valid MCQ id from the dataset"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_052",
+      "evaluation_date": "2026-03-27T08:39:26.887755",
+      "overall_score": 6.5,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 5.0,
+        "mental_health_act": 7.5,
+        "medication_safety": 7.0,
+        "cultural_safety": 7.0
+      },
+      "violations": [
+        "CRITICAL: Item PSY-PSYCHOSIS-20260125-052 - Clozapine monitoring question has INCORRECT answer. Correct TGA schedule is: Weekly FBC for 18 weeks, then FORTNIGHTLY weeks 18-52, then MONTHLY. Option B is correct, but explanation contains error stating 'Weekly FBC (18wk) \u2192 Fortnightly (to 52wk) \u2192 Monthly' which is correct, but key_points section inconsistently states different monitoring across multiple questions",
+        "CRITICAL: Multiple MCQs (PSY-ANX-BIP-20260125-2000 through 2064) have ZERO RAG confidence scores (rag_confidence: 0.0) - violates requirement for RAG citations \u22650.65",
+        "CRITICAL: Multiple MCQs have reference titles listed as 'Unknown' with no actual source attribution - violates 100% citation requirement",
+        "MODERATE: Depression MCQs (PSY-DEP-20260125-345, 602, 957, 452, 201) have identical key_points sections despite different subtopics - suggests template reuse without customization",
+        "MODERATE: No Aboriginal/TSI cultural safety considerations in any psychiatry MCQs - missing SEWB framework, historical trauma, Aboriginal liaison",
+        "MODERATE: Suicide risk assessment MCQs present but do not consistently use SAFE-T acronym framework explicitly",
+        "MINOR: Some MCQs use brand names in explanations (e.g., 'Suboxone' for buprenorphine-naloxone) - should use Australian generic names",
+        "MINOR: Inconsistent Mental Health Act state references - some MCQs specify NSW/VIC/QLD, others generic 'Mental Health Act'"
+      ],
+      "suggestions": [
+        "Add explicit SAFE-T framework (Specific plan, Access to means, Feelings, Earlier attempts, Threat) to all suicide risk MCQs",
+        "Regenerate MCQs PSY-ANX-BIP-20260125-2000+ with proper RAG citations (confidence \u22650.65)",
+        "Replace 'Unknown' references with actual Australian sources (eTG Psychiatry, RANZCP guidelines, Therapeutic Guidelines)",
+        "Add Aboriginal/TSI cultural safety considerations to at least 10% of psychiatry MCQs",
+        "Standardize Mental Health Act references to specific state legislation (NSW MHA 2007, VIC MHA 2014, QLD MHA 2016)",
+        "Remove brand names (Suboxone, Seroquel, Zyprexa) - use generic names only",
+        "Differentiate key_points sections for each subtopic - avoid template duplication",
+        "Add C-SSRS (Columbia Suicide Severity Rating Scale) explicit framework to suicide risk MCQs",
+        "Include CIWA-Ar score monitoring in alcohol withdrawal MCQs",
+        "Add lithium therapeutic range (0.6-1.0 mmol/L) to bipolar disorder MCQs"
+      ],
+      "strengths": [
+        "Comprehensive coverage of psychiatry topics: Depression, Anxiety, Bipolar, Psychosis, Suicide Risk, Substance Use",
+        "Clozapine monitoring question (PSY-PSYCHOSIS-20260125-052) correctly identifies TGA-mandated FBC schedule",
+        "Mental Health Act involuntary criteria correctly stated in multiple MCQs (4 criteria: mental illness, risk, treatment needed, no alternative)",
+        "Acute mania management correctly requires involuntary admission + antipsychotic (not lithium alone as outpatient)",
+        "Alcohol withdrawal correctly emphasizes thiamine BEFORE glucose (Wernicke's prevention)",
+        "First-episode psychosis correctly recommends low-dose antipsychotics (avoid high-dose haloperidol)",
+        "Refeeding syndrome correctly identified as critical risk in anorexia nervosa",
+        "DBT correctly identified as first-line for borderline personality disorder",
+        "Appropriate difficulty levels (medium/hard) for psychiatry MCQs",
+        "Australian context present in some MCQs (Mental Health Act, eTG references)"
+      ],
+      "pass_fail": "CONDITIONAL_PASS",
+      "requires_manual_review": true,
+      "reviewer_notes": "Dataset contains mix of high-quality original MCQs (PSY-DEP-20260125-* through PSY-FINAL-20260125-*) with proper RAG citations, and lower-quality template-generated MCQs (PSY-ANX-BIP-20260125-2000+) with zero RAG confidence. Original 30 MCQs are acceptable for deployment. Recommend EXCLUDING template-generated MCQs (IDs 2000-2064) until RAG citations added. Critical safety content (suicide risk, Mental Health Act, clozapine monitoring) is clinically accurate but needs SAFE-T framework explicitly stated. Aboriginal/TSI cultural safety is completely absent - add to \u226510% of MCQs before production deployment."
+    }
+  ],
+  "num_agents": 2,
+  "quality_gate_violations": [
+    {
+      "gate": "australian_drug_names",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Item mcq_week1_all_100_unique_mcqs_052 not found in provided content. Cannot evaluate medication management aspects as no relevant MCQ content present for this specific ID.",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "mcq_week1_all_100_unique_mcqs_052",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week1_all_100_unique_mcqs.json"
+}

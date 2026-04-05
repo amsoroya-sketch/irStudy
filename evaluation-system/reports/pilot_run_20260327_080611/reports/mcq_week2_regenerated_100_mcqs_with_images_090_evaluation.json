@@ -1,0 +1,214 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 0.0,
+    "clinical_accuracy": 1.67,
+    "cultural_safety": 0.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week2_regenerated_100_mcqs_with_images_090",
+      "evaluation_date": "2026-03-27T08:36:03.895565",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "australian_drug_names",
+          "issue": "Multiple items contain placeholder content ('Option A', 'Option B', 'Option C', 'Option D') instead of actual medication names or clinical content",
+          "location": "mcqs[*].options",
+          "suggested_fix": "Replace all placeholder options with actual clinical content using Australian drug nomenclature"
+        },
+        {
+          "severity": "critical",
+          "category": "content_completeness",
+          "issue": "All 100 MCQs have identical placeholder options structure with no actual medication or clinical management information",
+          "location": "mcqs[0-99].options",
+          "suggested_fix": "Generate complete clinical scenarios with specific medications, doses, and management approaches using Australian standards"
+        },
+        {
+          "severity": "critical",
+          "category": "dosing_accuracy",
+          "issue": "No actual dosing information present - all options are placeholders",
+          "location": "mcqs[*].options",
+          "suggested_fix": "Include specific doses matching eTG/AMH recommendations with Australian frequency notation (BD/TDS/QID)"
+        },
+        {
+          "severity": "critical",
+          "category": "pbs_compliance",
+          "issue": "No PBS information present - cannot evaluate compliance",
+          "location": "mcqs[*]",
+          "suggested_fix": "Add PBS-listed medications with streamline codes and authority requirements where applicable"
+        }
+      ],
+      "suggestions": [
+        "For Anxiety Disorders (MCQs 1-20): Include specific SSRI/SNRI medications with Australian names (e.g., sertraline, escitalopram) with correct PBS dosing",
+        "For Substance Use Disorders (MCQs 21-35): Ensure buprenorphine/naltrexone options use Australian prescribing guidelines and PBS authority requirements",
+        "For Mood Disorders (MCQs 36-55): Include lithium monitoring protocols with Australian therapeutic ranges (0.6-1.2 mmol/L)",
+        "For Psychotic Disorders (MCQs 56-70): Use Australian antipsychotic names and dosing (e.g., olanzapine, risperidone, quetiapine)",
+        "All MCQs: Replace generic placeholders with specific clinical scenarios containing actual medication management decisions"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "evaluator_notes": "CRITICAL FAILURE: This content cannot be evaluated for medication management compliance as it contains only placeholder text ('Option A/B/C/D') without actual clinical content. No medications are specified, no doses are provided, and no management approaches are detailed. This represents incomplete content generation rather than medication management errors. All 100 MCQs require complete regeneration with actual clinical scenarios before medication management evaluation can be performed."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week2_regenerated_100_mcqs_with_images_090",
+      "evaluation_date": "2026-03-27T08:36:03.904972",
+      "overall_score": 2.0,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 0.0,
+        "medication_safety": 0.0,
+        "cultural_safety": 0.0
+      },
+      "violations": [
+        "CRITICAL: All 100 MCQs contain placeholder content only ('Option A', 'Option B', etc.) with no actual clinical content",
+        "CRITICAL: Questions are generic templates without specific clinical scenarios",
+        "CRITICAL: Explanations are incomplete ('According to Australian guidelines... the most appropriate approach is...' with no actual content)",
+        "CRITICAL: No SAFE-T suicide risk assessment possible - no clinical details provided",
+        "CRITICAL: No Mental Health Act criteria can be evaluated - no patient scenarios",
+        "CRITICAL: No medication names or dosages provided - only generic references",
+        "CRITICAL: No patient demographics or cultural context provided",
+        "CRITICAL: References show RAG confidence scores (0.75-0.78) but content field is empty for all citations",
+        "CRITICAL: Medical images are generic placeholders (GAD7, MSE, PANSS) not specific to individual questions",
+        "CRITICAL: Same 2 images repeated for multiple unrelated questions (e.g., GAD7 for panic disorder, social anxiety, phobias)",
+        "SEVERE: Educational value = 0 - Students cannot learn clinical decision-making from placeholder content",
+        "SEVERE: Assessment validity = 0 - Cannot test knowledge with 'Option A/B/C/D' choices",
+        "SEVERE: This entire dataset fails basic quality standards for medical education",
+        "Zero clinical content despite 300 citations - citations not integrated into questions/explanations"
+      ],
+      "suggestions": [
+        "URGENT: Regenerate all 100 MCQs with actual clinical scenarios (age, gender, presenting symptoms, vital signs, mental state examination findings)",
+        "URGENT: Replace all 'Option A/B/C/D' placeholders with specific clinical choices (e.g., medication doses, diagnostic criteria, management steps)",
+        "URGENT: Complete all explanations with actual Australian guideline recommendations (RANZCP, Mental Health Acts, eTG)",
+        "URGENT: Populate empty 'content' fields in references with actual excerpts from cited sources",
+        "URGENT: Match medical images to specific questions (not generic GAD7 for all anxiety disorders)",
+        "Include specific SAFE-T elements in depression/suicide risk questions",
+        "Include Mental Health Act criteria (NSW/VIC/QLD) in psychosis/involuntary treatment questions",
+        "Include Australian medication names and doses in pharmacotherapy questions",
+        "Include cultural safety elements (Aboriginal/TSI, CALD) in relevant scenarios",
+        "Add patient age, gender, mental state exam findings to create realistic clinical vignettes"
+      ],
+      "strengths": [
+        "Comprehensive topic coverage across 6 psychiatry domains (Anxiety, Substance Use, Mood, Psychotic, Trauma, Other)",
+        "Appropriate topic distribution (20 MCQs anxiety, 20 mood disorders, etc.)",
+        "RAG citation framework in place (300 citations with confidence scores 0.75-0.78)",
+        "Medical image integration attempted (200 images, 2 per MCQ)",
+        "Australian source prioritization (John Murtagh, AMC Handbook, Antenatal Guidelines)",
+        "Metadata structure sound (generation date, validation flags, statistics tracking)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "manual_review_reasons": [
+        "ENTIRE DATASET IS PLACEHOLDER CONTENT - Cannot evaluate clinical accuracy when no clinical content exists",
+        "This represents a catastrophic system failure in content generation pipeline",
+        "All 100 MCQs require complete regeneration before clinical review is possible",
+        "Current state: 0% usable for medical education or AMC Clinical Exam preparation",
+        "Recommend: Halt use of this dataset immediately, investigate root cause of generation failure, regenerate with actual clinical content"
+      ],
+      "additional_comments": "This evaluation reveals a systematic failure in the MCQ generation process. Despite having RAG citations with adequate confidence scores (0.75-0.78), the actual clinical content was never populated. The questions are templates ('A patient presents with [condition]'), options are placeholders ('Option A/B/C/D'), and explanations are incomplete ('the most appropriate approach is...'). This is NOT a medical content quality issue - it is a generation pipeline failure. No psychiatric expert can evaluate placeholder content for SAFE-T compliance, Mental Health Act accuracy, or medication safety. The entire batch of 100 MCQs must be regenerated with actual clinical scenarios before any meaningful clinical review is possible. Current status: UNUSABLE for medical education."
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "mcq_week2_regenerated_100_mcqs_with_images_090",
+      "evaluation_date": "2026-03-27T08:36:03.914656",
+      "overall_score": 3.0,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 5.0,
+        "clinical_relevance": 3.0,
+        "image_quality_assessment": 0.0
+      },
+      "violations": [
+        "CRITICAL: No radiology interpretation content present - item contains psychiatric assessment tools (GAD-7, MSE) instead of medical imaging",
+        "CRITICAL: Question content is generic psychiatric management with placeholder options - not imaging interpretation",
+        "CRITICAL: No systematic radiological interpretation approach used",
+        "CRITICAL: No imaging findings reported (CXR, ECG, CT, ultrasound)",
+        "CRITICAL: Images listed are psychiatric screening tools (GAD7, MSE, PANSS, rating scales) not diagnostic imaging",
+        "SEVERE: Item specialty is 'Psychiatry' not radiology/imaging - complete specialty mismatch",
+        "SEVERE: All 100 MCQs follow same invalid pattern - generic psychiatric questions with non-imaging images",
+        "SEVERE: No correlation between question content and radiology expertise",
+        "SEVERE: File paths reference anxiety/mood/substance use disorder images, not radiological images",
+        "MAJOR: No ABCDE (CXR), 7-step (ECG), or ABC (CT) systematic approach",
+        "MAJOR: No technical adequacy assessment (rotation, penetration, inspiration)",
+        "MAJOR: No radiological differential diagnosis provided",
+        "MAJOR: Question format inappropriate for radiology OSCE (should present imaging findings and ask for interpretation)"
+      ],
+      "suggestions": [
+        "URGENT: Replace all content with actual radiology interpretation scenarios",
+        "URGENT: Include actual medical imaging (CXR, ECG, CT, ultrasound images) not psychiatric screening tools",
+        "Create proper radiology MCQs: 'A 52-year-old presents with chest pain. CXR shows [findings]. What is the most likely diagnosis?'",
+        "Use systematic interpretation frameworks: ABCDE for CXR, 7-step for ECG, ABC for CT",
+        "Provide actual imaging findings in question stem (e.g., 'widened mediastinum', 'ST elevation in leads II, III, aVF')",
+        "Include technical details: 'AP vs PA film', 'adequate inspiration', 'rotation assessment'",
+        "Add Australian radiological terminology throughout",
+        "Include RANZCR-appropriate reporting standards",
+        "Provide clinical correlation between imaging findings and presentation",
+        "Add image quality assessment requirements to answer options"
+      ],
+      "strengths": [
+        "RAG citations present with confidence scores >0.75",
+        "Australian medical sources referenced (Murtagh, AMC Handbook)",
+        "Metadata structure technically valid"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "critical_issues": [
+        "Complete content mismatch: Psychiatry content evaluated by Radiology expert",
+        "Zero radiology interpretation content in any of 100 MCQs",
+        "Images are psychiatric screening tools (GAD7, PANSS, MSE) not diagnostic imaging",
+        "Questions are generic psychiatric management, not imaging interpretation",
+        "No systematic radiological approach demonstrated",
+        "Content cannot be salvaged - requires complete regeneration with radiology focus"
+      ],
+      "deployment_recommendation": "REJECT - Complete content regeneration required. This batch contains psychiatric assessment content, not radiology interpretation scenarios. All 100 MCQs must be replaced with actual imaging interpretation questions with genuine medical images (CXR, ECG, CT, ultrasound)."
+    }
+  ],
+  "num_agents": 3,
+  "quality_gate_violations": [
+    {
+      "gate": "australian_drug_names",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Multiple items contain placeholder content ('Option A', 'Option B', 'Option C', 'Option D') instead of actual medication names or clinical content",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "content_completeness",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "All 100 MCQs have identical placeholder options structure with no actual medication or clinical management information",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "dosing_accuracy",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No actual dosing information present - all options are placeholders",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "pbs_compliance",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No PBS information present - cannot evaluate compliance",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "mcq_week2_regenerated_100_mcqs_with_images_090",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week2_regenerated_100_mcqs_with_images.json"
+}

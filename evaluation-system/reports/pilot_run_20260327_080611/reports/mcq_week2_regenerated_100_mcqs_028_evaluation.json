@@ -1,0 +1,243 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 0.0,
+    "clinical_accuracy": 0.0,
+    "cultural_safety": 0.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week2_regenerated_100_mcqs_028",
+      "evaluation_date": "2026-03-27T08:41:40.090345",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "content_quality",
+          "issue": "MCQ contains placeholder content only - no actual clinical question, options, or explanation",
+          "location": "mcqs[27] (WEEK2-REGEN-028)",
+          "suggested_fix": "Regenerate MCQ with complete clinical content including specific tobacco cessation management options (nicotine replacement therapy, varenicline, bupropion) with Australian PBS restrictions and eTG guidelines"
+        },
+        {
+          "severity": "critical",
+          "category": "content_quality",
+          "issue": "All options are generic placeholders ('Option A', 'Option B', 'Option C', 'Option D') - no pharmacological content to evaluate",
+          "location": "mcqs[27].options",
+          "suggested_fix": "Replace with specific medication options: A) Nicotine replacement therapy (patches + gum), B) Varenicline (PBS authority required), C) Bupropion SR 150mg BD, D) Brief intervention only"
+        },
+        {
+          "severity": "critical",
+          "category": "content_quality",
+          "issue": "Explanation is incomplete placeholder text with no medication management details",
+          "location": "mcqs[27].explanation",
+          "suggested_fix": "Add comprehensive explanation covering: Australian guidelines (RACGP, eTG), first-line therapies (combination NRT + counselling), PBS restrictions for varenicline (authority required), contraindications, and follow-up protocols"
+        },
+        {
+          "severity": "critical",
+          "category": "australian_drug_names",
+          "issue": "Cannot verify Australian drug nomenclature compliance - no medications mentioned in placeholder content",
+          "location": "mcqs[27].question + options + explanation",
+          "suggested_fix": "When regenerating, ensure all medications use Australian names: bupropion (NOT Zyban/Wellbutrin), varenicline (NOT Champix - use generic), nicotine (NOT brand names)"
+        },
+        {
+          "severity": "critical",
+          "category": "pbs_compliance",
+          "issue": "No PBS information provided for tobacco cessation pharmacotherapy",
+          "location": "mcqs[27]",
+          "suggested_fix": "Include PBS details: Varenicline requires PBS authority (streamlined), NRT subsidised under certain criteria, bupropion SR PBS-listed for smoking cessation with authority"
+        },
+        {
+          "severity": "critical",
+          "category": "dosing_accuracy",
+          "issue": "No dosing information for any tobacco cessation medications",
+          "location": "mcqs[27]",
+          "suggested_fix": "Add Australian standard dosing: Varenicline 0.5mg daily (days 1-3) \u2192 0.5mg BD (days 4-7) \u2192 1mg BD (week 2-12); Bupropion SR 150mg daily (days 1-6) \u2192 150mg BD (ongoing); NRT patch (21mg, 14mg, 7mg step-down); gum (2mg or 4mg PRN)"
+        },
+        {
+          "severity": "critical",
+          "category": "regeneration_status",
+          "issue": "MCQ flagged as 'regeneration_failed: true' - indicates systematic content generation failure",
+          "location": "mcqs[27].regeneration_failed",
+          "suggested_fix": "Re-run content generation with stricter validation gates: (1) Verify clinical scenario completeness, (2) Validate medication-specific options, (3) Ensure Australian context (PBS, eTG, RACGP), (4) Check drug nomenclature before approval"
+        }
+      ],
+      "suggestions": [
+        "When regenerating, include specific clinical scenario (e.g., '52-year-old smoker, 30 pack-years, motivated to quit, previous failed attempt with NRT patches alone')",
+        "Add contraindications in explanation (varenicline - psychiatric history screening; bupropion - seizure disorders, eating disorders)",
+        "Include combination therapy evidence (NRT patch + gum superior to monotherapy)",
+        "Mention Quitline referral (Australian standard - 13 7848) and MBS item numbers for GP counselling (2, 23, 36, 44 with smoking cessation time-based billing)",
+        "Specify duration of therapy (varenicline 12 weeks, can extend to 24 weeks; bupropion 7-12 weeks; NRT 8-12 weeks minimum)",
+        "Add adverse effects monitoring (varenicline - nausea, neuropsychiatric effects; bupropion - insomnia, dry mouth; NRT - local irritation)"
+      ],
+      "strengths": [
+        "RAG citations present with acceptable confidence scores (0.754-0.753)",
+        "Topic correctly identified as substance use disorder - tobacco cessation",
+        "Specialty correctly categorised as Psychiatry (dual diagnosis approach appropriate)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "critical_issues": [
+        "PLACEHOLDER CONTENT - No clinical question to evaluate",
+        "REGENERATION FAILED FLAG - Systematic content generation error",
+        "ZERO PHARMACOLOGICAL CONTENT - Cannot assess medication management expertise",
+        "NO AUSTRALIAN DRUG NAMES - Cannot verify compliance (content missing)",
+        "NO PBS INFORMATION - Critical for Australian practice context",
+        "NO DOSING DATA - Cannot validate against eTG/AMH standards"
+      ],
+      "recommendation": "REJECT and REGENERATE with complete clinical content. Current MCQ is not evaluable as medication management content is entirely absent. Regeneration must include: (1) Specific patient scenario with smoking history, (2) Four distinct pharmacotherapy options with Australian drug names, (3) PBS-compliant medication choices, (4) Correct dosing per eTG, (5) Comprehensive explanation covering RACGP guidelines, combination therapy evidence, contraindications, and monitoring requirements.",
+      "regeneration_priority": "HIGH - This is 1 of 100 MCQs in batch that failed regeneration. Systematic review of content generation pipeline recommended to prevent similar failures."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week2_regenerated_100_mcqs_028",
+      "evaluation_date": "2026-03-27T08:41:40.097478",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 0.0,
+        "medication_safety": 0.0,
+        "cultural_safety": 0.0
+      },
+      "violations": [
+        "CRITICAL: All 100 MCQs marked as 'regeneration_failed: true' - no valid medical content",
+        "CRITICAL: All questions are placeholder templates ('A patient presents with [topic]')",
+        "CRITICAL: All options are generic placeholders ('Option A', 'Option B', etc.) - no clinical content",
+        "CRITICAL: All explanations are incomplete templates with no actual Australian guidelines",
+        "CRITICAL: RAG citations present but no 'content' field - cannot verify if citations support placeholder questions",
+        "CRITICAL: Zero clinical assessment content - no SAFE-T framework, no Mental Health Act criteria, no medication details",
+        "CRITICAL: Questions like 'A patient presents with tobacco cessation' and 'A patient presents with relaxation techniques' are not valid psychiatric emergency scenarios",
+        "CRITICAL: No Australian context in any question - generic templates do not reflect NSW/VIC/QLD Mental Health Act differences",
+        "CRITICAL: Subtopic 'SSRI/SNRI for Anxiety' - question is 'A patient presents with ssri/snri for anxiety' (nonsensical - patient doesn't 'present with' a medication class)",
+        "CRITICAL: Multiple questions appear to be treatment modalities presented as patient presentations (e.g., 'presents with exposure therapy', 'presents with motivational interviewing')",
+        "ZERO TOLERANCE FAILURE: No suicide risk assessment possible - all content is placeholder templates"
+      ],
+      "suggestions": [
+        "URGENT: Regenerate all 100 MCQs with actual clinical vignettes (age, gender, symptoms, history)",
+        "URGENT: Replace placeholder options with clinically plausible distractors based on Australian guidelines",
+        "URGENT: Complete all explanations with specific Australian guidelines (RANZCP, Mental Health Act NSW/VIC/QLD)",
+        "URGENT: Verify RAG citations - add 'content' field excerpts to validate relevance",
+        "URGENT: For suicide risk questions: Include SAFE-T elements (plan, access to means, feelings, earlier attempts, threat)",
+        "URGENT: For psychosis questions: Include Mental Health Act criteria assessment",
+        "URGENT: For medication questions: Use Australian drug names (quetiapine NOT Seroquel, etc.)",
+        "URGENT: Add cultural safety elements (Aboriginal/TSI, CALD, LGBTQIA+ considerations)",
+        "URGENT: Ensure questions assess clinical decision-making, not just recall of topics",
+        "CRITICAL: This batch requires complete regeneration - none of the 100 MCQs are deployment-ready"
+      ],
+      "strengths": [
+        "RAG citations present with confidence scores >0.65",
+        "Topic distribution covers breadth of Week 2 psychiatry curriculum (Anxiety, Substance Use, Mood, Psychotic, Trauma)",
+        "Australian textbook sources prioritized (John Murtagh, AMC Handbook)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": false,
+      "deployment_ready": false,
+      "clinical_safety_risk": "CRITICAL",
+      "detailed_analysis": {
+        "content_quality": "0% - All MCQs are placeholder templates with no actual clinical content",
+        "australian_context": "0% - No state-specific Mental Health Act content, no Australian drug names, no PBS/MBS references",
+        "educational_value": "0% - Cannot assess clinical reasoning with placeholder questions",
+        "rag_citation_validation": "Unable to validate - citations lack 'content' field to verify relevance to placeholder questions",
+        "regeneration_status": "100/100 MCQs marked 'regeneration_failed: true' - entire batch requires regeneration"
+      },
+      "recommendation": "REJECT ENTIRE BATCH - Do not deploy any of these 100 MCQs. All require complete regeneration with actual clinical vignettes, specific Australian guidelines, and validated RAG citations. This is not a minor revision issue - this is a complete content generation failure requiring full LLM regeneration pipeline restart."
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "mcq_week2_regenerated_100_mcqs_028",
+      "evaluation_date": "2026-03-27T08:41:40.104356",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 0.0,
+        "clinical_relevance": 0.0,
+        "image_quality_assessment": 0.0
+      },
+      "violations": [
+        "CRITICAL: Item is NOT radiology/imaging content - specialty is Psychiatry (Substance Use Disorders/Tobacco Cessation)",
+        "CRITICAL: No chest X-ray, ECG, CT, or ultrasound imaging content present",
+        "CRITICAL: MCQ is placeholder content (regeneration_failed: true, options are 'Option A/B/C/D')",
+        "CRITICAL: Question is generic template ('A patient presents with tobacco cessation. What is the most appropriate management approach according to Australian guidelines?')",
+        "CRITICAL: No imaging interpretation required - this is a psychiatry management question",
+        "MAJOR: Empty RAG citation content (all 3 citations have empty 'content' field)",
+        "MAJOR: Generic explanation with no specific clinical details",
+        "SCOPE_VIOLATION: Radiology expert cannot evaluate non-imaging psychiatry content"
+      ],
+      "suggestions": [
+        "This item should be evaluated by mental-health-crisis-expert or psychiatry specialist",
+        "Tobacco cessation is a psychiatry/addiction medicine topic, not radiology",
+        "Item requires regeneration with actual clinical content (currently placeholder)",
+        "RAG citations need actual content extraction from source documents"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "additional_comments": "SCOPE ERROR: This item (mcq_week2_regenerated_100_mcqs_028) is a Psychiatry MCQ about tobacco cessation management, not a radiology interpretation question. As a radiology-interpretation-expert (CXR/ECG/CT/ultrasound specialist), I cannot evaluate psychiatry management content. The item also appears to be placeholder content (regeneration_failed: true) with generic options and empty RAG citations. This requires: (1) Evaluation by appropriate psychiatry expert agent, (2) Content regeneration to replace placeholder template."
+    }
+  ],
+  "num_agents": 3,
+  "quality_gate_violations": [
+    {
+      "gate": "content_quality",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "MCQ contains placeholder content only - no actual clinical question, options, or explanation",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "content_quality",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "All options are generic placeholders ('Option A', 'Option B', 'Option C', 'Option D') - no pharmacological content to evaluate",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "content_quality",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Explanation is incomplete placeholder text with no medication management details",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "australian_drug_names",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Cannot verify Australian drug nomenclature compliance - no medications mentioned in placeholder content",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "pbs_compliance",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No PBS information provided for tobacco cessation pharmacotherapy",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "dosing_accuracy",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No dosing information for any tobacco cessation medications",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "regeneration_status",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "MCQ flagged as 'regeneration_failed: true' - indicates systematic content generation failure",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "mcq_week2_regenerated_100_mcqs_028",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week2_regenerated_100_mcqs.json"
+}

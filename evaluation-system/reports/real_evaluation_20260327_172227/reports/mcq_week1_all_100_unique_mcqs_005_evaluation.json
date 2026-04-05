@@ -1,0 +1,102 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 0.0,
+    "clinical_accuracy": 1.75,
+    "cultural_safety": 3.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_005",
+      "evaluation_date": "2026-03-27T17:30:32.336750",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "out_of_scope",
+          "issue": "This is a psychiatry MCQ testing diagnostic/treatment knowledge, not medication management dosing/safety",
+          "location": "entire_item",
+          "suggested_fix": "This item should be evaluated by psychiatric expert, not medication management expert. Content focuses on depression diagnosis (DSM-5 criteria), SSRI selection, treatment-resistant depression, elderly dosing principles, postpartum depression - not specific medication dosing, PBS compliance, or drug interactions requiring pharmacology expertise."
+        }
+      ],
+      "suggestions": [
+        "Route to psychiatry expert or clinical-documentation-expert for evaluation",
+        "If medication-specific evaluation needed, extract only medication-related content (e.g., 'sertraline 50mg daily' from options) and evaluate that in isolation"
+      ],
+      "strengths": [
+        "MCQ uses Australian medication names (sertraline, escitalopram, mirtazapine, venlafaxine) consistently",
+        "References Australian guidelines (eTG Psychiatry, RANZCP)",
+        "Mentions appropriate SSRI dosing principles for elderly (start low, titrate slowly)"
+      ],
+      "pass_fail": "NOT_APPLICABLE",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "notes": "This MCQ tests psychiatric diagnosis and treatment selection, not medication management. While it mentions SSRIs and dosing principles, the core competency being assessed is psychiatric diagnosis (major depressive disorder criteria) and first-line treatment selection. A psychiatry expert would be better suited to evaluate clinical accuracy of depression management. Medication management expert would only evaluate if the question specifically tested PBS compliance, renal dosing calculations, drug interactions, or polypharmacy management - which this item does not."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_005",
+      "evaluation_date": "2026-03-27T17:30:32.345785",
+      "overall_score": 3.5,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 5.0,
+        "medication_safety": 6.0,
+        "cultural_safety": 3.0
+      },
+      "violations": [
+        "CRITICAL: No suicide risk assessment using SAFE-T framework in any MCQ",
+        "CRITICAL: Multiple MCQs reference suicide/depression without SAFE-T documentation",
+        "Major: Mental Health Act MCQs do not specify NSW/VIC/QLD state-specific legislation",
+        "Major: No Aboriginal/TSI cultural safety considerations in any MCQ",
+        "Moderate: Some MCQs use generic medication references without Australian context",
+        "Moderate: No Columbia Suicide Severity Rating Scale (C-SSRS) validation in suicide MCQs",
+        "Minor: Protective factors mentioned but not systematically assessed",
+        "Minor: Crisis contacts given (Lifeline 13 11 14) but safety planning incomplete"
+      ],
+      "suggestions": [
+        "URGENT: Add SAFE-T framework assessment to all suicide/depression MCQs (Specific plan, Access to means, Feelings, Earlier attempts, Threat)",
+        "Add state-specific Mental Health Act references (NSW 2007 vs VIC 2014 vs QLD 2016)",
+        "Include Aboriginal/TSI cultural safety considerations in at least 10% of psychiatry MCQs",
+        "Add C-SSRS category classification to suicide risk MCQs",
+        "Include least restrictive alternative principle in all involuntary admission scenarios",
+        "Add Aboriginal Mental Health Liaison Officer offer in appropriate cases",
+        "Specify risk stratification (high/medium/low) with clear criteria",
+        "Add safety planning components (warning signs, coping strategies, crisis contacts)"
+      ],
+      "strengths": [
+        "Australian crisis contacts provided (Lifeline 13 11 14, Beyond Blue 1300 224 636)",
+        "Medication management includes some Australian guidelines (eTG references)",
+        "Some MCQs mention protective factors in suicide assessment",
+        "Clozapine monitoring requirements correctly stated (weekly FBC 18 weeks)",
+        "Mental Health Act involuntary criteria partially covered (mental illness, risk, treatment needed)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "review_reason": "CRITICAL SAFETY ISSUE: Suicide risk assessment (SAFE-T framework) completely absent from all MCQs involving depression, suicidal ideation, and mental health crisis. This is a zero-tolerance violation for emergency psychiatry content. Manual expert review required before deployment."
+    }
+  ],
+  "num_agents": 2,
+  "quality_gate_violations": [
+    {
+      "gate": "out_of_scope",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "This is a psychiatry MCQ testing diagnostic/treatment knowledge, not medication management dosing/safety",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "mcq_week1_all_100_unique_mcqs_005",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week1_all_100_unique_mcqs.json"
+}

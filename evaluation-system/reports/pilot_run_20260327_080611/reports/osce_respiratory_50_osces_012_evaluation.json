@@ -1,0 +1,327 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 5.58,
+    "educational_alignment": 8.26,
+    "clinical_accuracy": 3.98,
+    "cultural_safety": 0.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "clinical-documentation-expert",
+      "item_id": "osce_respiratory_50_osces_012",
+      "evaluation_date": "2026-03-27T08:11:59.071840",
+      "overall_score": 8.6,
+      "criteria_scores": {
+        "australian_standards": 8.17,
+        "clinical_accuracy": 8.77,
+        "educational_alignment": 8.42
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_respiratory_50_osces_012.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to respiratory content"
+      ],
+      "strengths": [
+        "Good coverage of respiratory concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "history-taking-expert",
+      "item_id": "osce_respiratory_50_osces_012",
+      "evaluation_date": "2026-03-27T08:11:59.072196",
+      "overall_score": 8.43,
+      "criteria_scores": {
+        "australian_standards": 8.01,
+        "clinical_accuracy": 8.6,
+        "educational_alignment": 8.26
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_respiratory_50_osces_012.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to respiratory content"
+      ],
+      "strengths": [
+        "Good coverage of respiratory concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "physical-examination-expert",
+      "item_id": "osce_respiratory_50_osces_012",
+      "evaluation_date": "2026-03-27T08:11:59.079216",
+      "overall_score": 8.28,
+      "criteria_scores": {
+        "australian_standards": 7.86,
+        "clinical_accuracy": 8.44,
+        "educational_alignment": 8.11
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_respiratory_50_osces_012.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to respiratory content"
+      ],
+      "strengths": [
+        "Good coverage of respiratory concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "osce_respiratory_50_osces_012",
+      "evaluation_date": "2026-03-27T08:11:58.985953",
+      "overall_score": 4.5,
+      "criteria_scores": {
+        "systematic_approach": 3.0,
+        "australian_terminology": 5.0,
+        "clinical_relevance": 5.0,
+        "image_quality_assessment": 5.0
+      },
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "Content Quality",
+          "description": "Generic placeholder content with no specific imaging findings",
+          "location": "All 50 OSCE cases",
+          "recommendation": "Replace all generic text with actual systematic radiological interpretation for each specific condition"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "Systematic Approach",
+          "description": "No evidence of ABCDE (CXR), 7-step (ECG), or ABC (CT) systematic interpretation demonstrated",
+          "location": "expected_answers.interpretation field across all cases",
+          "recommendation": "Provide full systematic interpretation for each image type with step-by-step findings"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "Image Authenticity",
+          "description": "All images appear to be placeholder references (data/images/respiratory/*.jpg) with no verification of actual imaging findings",
+          "location": "scenario.images field across all 50 cases",
+          "recommendation": "Either provide real medical images with verified findings OR explicitly state these are simulated/teaching cases"
+        },
+        {
+          "severity": "HIGH",
+          "category": "Clinical Relevance",
+          "description": "Expected answers are generic templates without specific radiological findings (e.g., 'The investigations show findings consistent with [condition]')",
+          "location": "expected_answers sections",
+          "recommendation": "Replace with specific findings (e.g., for pneumonia: 'Right lower lobe consolidation with air bronchograms, no pleural effusion')"
+        },
+        {
+          "severity": "HIGH",
+          "category": "Educational Value",
+          "description": "Cases lack teaching points for systematic interpretation - candidates cannot learn from these generic descriptions",
+          "location": "All OSCE cases",
+          "recommendation": "Add detailed systematic interpretation demonstrating ABCDE/7-step/ABC approach with specific findings"
+        },
+        {
+          "severity": "MEDIUM",
+          "category": "Image Quality Assessment",
+          "description": "No technical quality assessment provided (rotation, penetration, inspiration for CXR; calibration for ECG)",
+          "location": "scenario sections",
+          "recommendation": "Add image quality comments for each case (e.g., 'Adequate inspiration with 7 anterior ribs visible, no rotation')"
+        },
+        {
+          "severity": "MEDIUM",
+          "category": "Australian Context",
+          "description": "Generic vital signs identical across all 50 cases (BP 130/80, HR 90, RR 24, SpO2 92%, Temp 37.5\u00b0C) - not clinically realistic",
+          "location": "scenario.vital_signs across all cases",
+          "recommendation": "Customize vital signs to match each specific condition (e.g., acute asthma should show RR >30, SpO2 <90%)"
+        },
+        {
+          "severity": "LOW",
+          "category": "Specificity",
+          "description": "Multiple cases with vague subtopics (e.g., 'COPD Management', 'Asthma Control Assessment') without specific radiological findings to interpret",
+          "location": "Cases RESP-OSCE-004, RESP-OSCE-005, RESP-OSCE-006, etc.",
+          "recommendation": "Either remove non-imaging cases OR clarify that these are clinical management stations (not radiology interpretation)"
+        }
+      ],
+      "suggestions": [
+        "RESP-OSCE-001 (Acute Asthma): Add specific CXR findings (e.g., 'Hyperinflated lung fields, flattened hemidiaphragms, no focal consolidation') and ABG interpretation (e.g., 'pH 7.32, pCO2 52 mmHg, pO2 68 mmHg - Type 2 respiratory failure')",
+        "RESP-OSCE-003 (COPD Exacerbation): Describe CXR findings systematically using ABCDE - A: Trachea midline; B: Hyperinflation, increased AP diameter, flattened hemidiaphragms, bullae in upper zones; C: Normal heart size; D: Hemidiaphragms at 11th posterior rib; E: No pneumothorax",
+        "RESP-OSCE-013 (Community-Acquired Pneumonia): Provide specific lobar localization (e.g., 'Right middle lobe consolidation with loss of right heart border (positive silhouette sign), air bronchograms present, no pleural effusion')",
+        "RESP-OSCE-023 (Pulmonary Embolism): Describe CTPA findings (e.g., 'Filling defect in right main pulmonary artery extending to lobar branches, RV/LV ratio 1.2, no signs of right heart strain on echo')",
+        "RESP-OSCE-037 (Type 1 RF): Provide ABG systematic interpretation - pH, pCO2, pO2, HCO3, base excess, A-a gradient calculation, then classify (Type 1: pO2 <60 mmHg, pCO2 normal/low)",
+        "All ECG cases: Add 7-step systematic interpretation (Rate: X bpm, Rhythm: sinus/AF, Axis: normal/LAD/RAD, Intervals: PR X ms QRS X ms QTc X ms, P waves: morphology, QRS: findings, ST/T: changes)",
+        "All CT cases: Use ABC systematic approach (Asymmetry/mass effect, Blood/intracranial hemorrhage, CSF spaces/ventricles)",
+        "Add comparison to previous imaging where relevant (e.g., 'Compared to CXR from 3 months ago, there is interval development of...')",
+        "Include critical results communication statements for urgent findings (e.g., 'Tension pneumothorax identified - phoned referring team at 14:30, 27/03/2026')",
+        "Standardize reporting format: Clinical Indication \u2192 Technique \u2192 Findings (systematic) \u2192 Impression \u2192 Recommendations"
+      ],
+      "strengths": [
+        "Australian terminology consistently used (CXR, pulmonary oedema, theatre)",
+        "Comprehensive coverage of respiratory conditions (50 cases spanning asthma/COPD, pneumonia, PE/DVT, ILD, respiratory failure)",
+        "Appropriate image modalities selected for each condition (CXR for pneumonia, CTPA for PE, CT chest for ILD, spirometry for COPD)",
+        "RAG citations provided with confidence scores \u22650.75 from Australian sources (Murtagh, Talley & O'Connor, AMC Handbook)",
+        "Multiple image types per case where clinically appropriate (e.g., PE cases include CXR + CTPA + D-dimer)",
+        "Appropriate difficulty level (intermediate) for AMC Clinical Examination respiratory medicine stations",
+        "10-minute duration per station is realistic for OSCE format",
+        "Task structure aligns with AMC Clinical Exam format (interpret investigations, differential diagnosis, management)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "detailed_feedback": "This OSCE script collection requires substantial revision before deployment. While the structure, Australian terminology, and citation quality are appropriate, the core content lacks specific radiological interpretations. All 50 cases use identical generic placeholder text ('The investigations show findings consistent with [condition]') rather than demonstrating systematic image interpretation. For radiology OSCE stations, candidates must be assessed on their ability to use systematic approaches (ABCDE for CXR, 7-step for ECG, ABC for CT), identify specific findings, and correlate with clinical context. The current content does not achieve this educational objective. Priority actions: (1) Replace all generic interpretation text with specific, systematic findings for each case; (2) Verify actual image content matches described findings OR clearly label as simulated teaching cases; (3) Customize vital signs to match each condition's clinical presentation; (4) Add image quality assessment statements; (5) Include critical results communication where appropriate. Once revised, this collection could serve as an excellent AMC Clinical Examination respiratory radiology teaching resource.",
+      "recommended_actions": [
+        {
+          "priority": "CRITICAL",
+          "action": "Engage radiology expert to write specific systematic interpretations for all 50 cases following RANZCR reporting standards",
+          "timeline": "Before any deployment"
+        },
+        {
+          "priority": "CRITICAL",
+          "action": "Verify all referenced image files exist and contain authentic findings matching the described conditions, OR relabel as simulated cases",
+          "timeline": "Before any deployment"
+        },
+        {
+          "priority": "HIGH",
+          "action": "Customize vital signs and clinical presentations to match each specific respiratory condition (not identical across all 50 cases)",
+          "timeline": "Before deployment"
+        },
+        {
+          "priority": "HIGH",
+          "action": "Add model answers demonstrating full systematic interpretation approach for each image type (ABCDE/7-step/ABC)",
+          "timeline": "Before deployment"
+        },
+        {
+          "priority": "MEDIUM",
+          "action": "Pilot test 5-10 revised cases with AMC candidates or junior doctors to validate educational effectiveness",
+          "timeline": "After revision, before full deployment"
+        }
+      ]
+    },
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "osce_respiratory_50_osces_012",
+      "evaluation_date": "2026-03-27T08:11:58.996223",
+      "overall_score": 3.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "content_missing",
+          "issue": "No medication information present in OSCE scenario to evaluate",
+          "location": "scenario.medications",
+          "suggested_fix": "OSCE content does not contain medication prescribing or management component. This is a clinical presentation case requiring interpretation of investigations, differential diagnosis, and management planning. Medication management evaluation not applicable to this OSCE format."
+        },
+        {
+          "severity": "critical",
+          "category": "scenario_structure",
+          "issue": "OSCE-012 (Asthma in Pregnancy) contains only scenario description, images, tasks, and expected answers - no specific medication details to audit",
+          "location": "osce_respiratory_50_osces_012.scenario",
+          "suggested_fix": "If medication evaluation is required, the OSCE must include specific prescriptions in 'expected_answers.management' section with drug names, doses, frequencies, routes, and PBS codes"
+        },
+        {
+          "severity": "critical",
+          "category": "evaluation_scope",
+          "issue": "Expected answers section provides only generic guidance ('According to Australian guidelines for Asthma in Pregnancy: immediate management steps, ongoing care, and monitoring') without concrete medication details",
+          "location": "expected_answers.management",
+          "suggested_fix": "Replace generic guidance with specific medication prescriptions including: salbutamol inhaler (dose, frequency), oral corticosteroids if required (dose, duration), safety considerations for pregnancy category B medications"
+        }
+      ],
+      "suggestions": [
+        "This OSCE appears to be an image-interpretation and management-planning station rather than a medication-prescribing station",
+        "If medication management evaluation is intended, request revised OSCE content with explicit prescriptions in expected answers",
+        "Current OSCE format (RESP-OSCE-012) is suitable for clinical reasoning assessment but not for medication management auditing"
+      ],
+      "strengths": [
+        "OSCE includes Australian guideline reference in expected answers",
+        "Peak flow investigation image appropriate for asthma assessment",
+        "Scenario context (Asthma in Pregnancy, Antenatal Clinic) is clinically appropriate"
+      ],
+      "pass_fail": "NOT_APPLICABLE",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "evaluation_notes": "This OSCE (osce_respiratory_50_osces_012) does not contain medication prescriptions or specific drug therapy details to evaluate against Australian medication management standards. The content consists of clinical scenario, images, tasks, and generic expected answers without concrete medication names, doses, or PBS information. Medication management expert evaluation requires explicit prescribing content to audit Australian drug nomenclature, PBS compliance, and dosing accuracy. Current OSCE format is NOT suitable for this agent's evaluation criteria."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "osce_respiratory_50_osces_012",
+      "evaluation_date": "2026-03-27T08:11:59.007205",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 0.0,
+        "medication_safety": 0.0,
+        "cultural_safety": 0.0
+      },
+      "violations": [
+        "CRITICAL: Content mismatch - Mental Health Crisis Expert assigned to evaluate respiratory medicine OSCE (Asthma in Pregnancy)",
+        "CRITICAL: No mental health content present in OSCE script - contains only respiratory clinical scenarios",
+        "CRITICAL: SAFE-T suicide risk assessment not applicable to respiratory medicine cases",
+        "CRITICAL: Mental Health Act assessment not applicable to respiratory medicine cases",
+        "CRITICAL: Psychotropic medication assessment not applicable to respiratory medicine cases"
+      ],
+      "suggestions": [
+        "Reassign evaluation to respiratory medicine expert agent",
+        "Route respiratory OSCEs (asthma, COPD, pneumonia, PE/DVT, ILD, respiratory failure) to appropriate clinical domain expert",
+        "Reserve mental health crisis expert for psychiatric emergency presentations (suicide risk, acute psychosis, Mental Health Act applications)"
+      ],
+      "strengths": [],
+      "pass_fail": "NOT_APPLICABLE",
+      "requires_manual_review": true,
+      "review_reason": "Agent-content mismatch: Mental health crisis expert cannot evaluate respiratory medicine OSCE. This OSCE contains 50 respiratory medicine scenarios (asthma, COPD, pneumonia, PE/DVT, ILD, respiratory failure) with zero mental health content. Item osce_respiratory_50_osces_012 is 'Asthma in Pregnancy' requiring obstetric/respiratory medicine expertise, not psychiatric crisis assessment."
+    }
+  ],
+  "num_agents": 6,
+  "quality_gate_violations": [
+    {
+      "gate": "content_missing",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No medication information present in OSCE scenario to evaluate",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "scenario_structure",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "OSCE-012 (Asthma in Pregnancy) contains only scenario description, images, tasks, and expected answers - no specific medication details to audit",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "evaluation_scope",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Expected answers section provides only generic guidance ('According to Australian guidelines for Asthma in Pregnancy: immediate management steps, ongoing care, and monitoring') without concrete medication details",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "osce_respiratory_50_osces_012",
+  "item_type": "osce_script",
+  "specialty": "respiratory",
+  "file_path": "data/osces/respiratory_50_osces.json"
+}

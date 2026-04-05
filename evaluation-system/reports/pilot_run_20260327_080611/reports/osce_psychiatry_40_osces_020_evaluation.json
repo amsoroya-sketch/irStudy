@@ -1,0 +1,268 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 5.46,
+    "educational_alignment": 8.5,
+    "clinical_accuracy": 3.82,
+    "cultural_safety": 0.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "clinical-documentation-expert",
+      "item_id": "osce_psychiatry_40_osces_020",
+      "evaluation_date": "2026-03-27T08:11:59.071341",
+      "overall_score": 8.33,
+      "criteria_scores": {
+        "australian_standards": 7.91,
+        "clinical_accuracy": 8.5,
+        "educational_alignment": 8.16
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_psychiatry_40_osces_020.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to psychiatry content"
+      ],
+      "strengths": [
+        "Good coverage of psychiatry concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "history-taking-expert",
+      "item_id": "osce_psychiatry_40_osces_020",
+      "evaluation_date": "2026-03-27T08:11:59.071544",
+      "overall_score": 9.1,
+      "criteria_scores": {
+        "australian_standards": 8.65,
+        "clinical_accuracy": 9.28,
+        "educational_alignment": 8.92
+      },
+      "violations": [],
+      "suggestions": [],
+      "strengths": [
+        "Good coverage of psychiatry concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "physical-examination-expert",
+      "item_id": "osce_psychiatry_40_osces_020",
+      "evaluation_date": "2026-03-27T08:11:59.071699",
+      "overall_score": 8.59,
+      "criteria_scores": {
+        "australian_standards": 8.16,
+        "clinical_accuracy": 8.77,
+        "educational_alignment": 8.42
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_psychiatry_40_osces_020.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to psychiatry content"
+      ],
+      "strengths": [
+        "Good coverage of psychiatry concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "osce_psychiatry_40_osces_020",
+      "evaluation_date": "2026-03-27T08:11:58.937194",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 0.0,
+        "clinical_relevance": 0.0,
+        "image_quality_assessment": 0.0
+      },
+      "violations": [
+        "CRITICAL: This is a psychiatry OSCE (Schizoaffective Disorder) - no radiological imaging content present",
+        "CRITICAL: Item contains psychiatric assessment tools (PANSS, Mood Scale) - not radiology images (CXR/ECG/CT)",
+        "CRITICAL: Images are PDF psychiatric assessment forms, not diagnostic imaging studies",
+        "CRITICAL: Specialty mismatch - radiology-interpretation-expert cannot evaluate psychiatry mental status examinations"
+      ],
+      "suggestions": [
+        "Route this item to mental-health-crisis-expert or appropriate psychiatry specialist agent",
+        "This OSCE requires psychiatric MSE interpretation, not radiological image interpretation",
+        "No imaging interpretation criteria applicable to this content type"
+      ],
+      "strengths": [],
+      "pass_fail": "NOT_APPLICABLE",
+      "requires_manual_review": true,
+      "reviewer_notes": "Agent-task mismatch detected. This is a psychiatry OSCE station (Schizoaffective Disorder with PANSS and Mood Scale assessment tools). Radiology-interpretation-expert specializes in CXR/ECG/CT/ultrasound interpretation using ABCDE/7-step/ABC systematic approaches. The item contains NO radiological imaging content. Requires evaluation by psychiatry specialist agent familiar with DSM-5 criteria, mental status examination, psychopharmacology, and Australian Mental Health Act standards."
+    },
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "osce_psychiatry_40_osces_020",
+      "evaluation_date": "2026-03-27T08:11:58.944844",
+      "overall_score": 3.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "content_completeness",
+          "issue": "OSCE scenario contains no medication prescriptions or medication management content to evaluate",
+          "location": "scenario.management",
+          "suggested_fix": "This OSCE (PSYCH-OSCE-020: Schizoaffective Disorder) requires medication counseling content including antipsychotic medications (e.g., olanzapine, quetiapine, risperidone) and mood stabilizers (e.g., sodium valproate, lithium) with Australian drug names, PBS codes, dosing, and monitoring requirements"
+        },
+        {
+          "severity": "critical",
+          "category": "content_completeness",
+          "issue": "Expected answers section provides only generic placeholder text without specific medication recommendations",
+          "location": "expected_answers.management",
+          "suggested_fix": "Add specific psychotropic medication recommendations: e.g., 'Olanzapine 10mg nocte (PBS 8721K, authority required for >6 months), lithium carbonate 250mg BD (therapeutic drug monitoring required, target 0.6-1.2 mmol/L), consider clozapine if treatment-resistant (mandatory CPMS registration, weekly FBC for 18 weeks)'"
+        },
+        {
+          "severity": "critical",
+          "category": "australian_compliance",
+          "issue": "No PBS compliance can be assessed - no medications specified",
+          "location": "entire_item",
+          "suggested_fix": "Include PBS authority requirements for long-term antipsychotics, clozapine CPMS registration, TDM requirements for lithium/sodium valproate"
+        },
+        {
+          "severity": "critical",
+          "category": "clinical_safety",
+          "issue": "Missing critical medication safety information for schizoaffective disorder management",
+          "location": "expected_answers",
+          "suggested_fix": "Must include: metabolic monitoring (weight, lipids, HbA1c every 3 months on atypical antipsychotics), EPSE monitoring, prolactin monitoring, lithium TDM protocol, clozapine neutropenia monitoring"
+        }
+      ],
+      "suggestions": [
+        "Add first-line medication: Atypical antipsychotic (olanzapine 10-20mg nocte, quetiapine 300-800mg daily in divided doses, or risperidone 2-6mg daily) - all PBS-listed with authority for maintenance",
+        "Add mood stabilizer: Lithium carbonate (dose adjusted to levels 0.6-1.2 mmol/L) OR sodium valproate 500-1500mg daily - requires therapeutic drug monitoring",
+        "Include clozapine pathway if treatment-resistant: Mandatory CPMS registration, baseline FBC/troponin/ECG, weekly FBC for 18 weeks then fortnightly, PBS authority required",
+        "Specify Australian monitoring requirements: Baseline metabolic profile (weight, BMI, waist, BP, fasting glucose, lipids), repeat at 1 month then 3-monthly",
+        "Note drug interactions: Antipsychotics + lithium (neurotoxicity risk), antipsychotics + sodium valproate (\u2191 sedation), avoid benzodiazepines + antipsychotics (respiratory depression)",
+        "Include depot antipsychotic options for non-adherence: Paliperidone palmiate (Invega Sustenna) 150mg IM monthly, zuclopenthixol decanoate 200mg IM 2-weekly"
+      ],
+      "strengths": [
+        "OSCE structure follows Australian AMC Clinical Examination format (10-minute station, 10 marks total)",
+        "Includes appropriate clinical assessment tools (PANSS, Mood Scale) for schizoaffective disorder evaluation",
+        "References Australian sources (John Murtagh General Practice, AMC Handbook)",
+        "Scenario type appropriate (Psychiatry Clinic for chronic condition management)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "reviewer_notes": "This OSCE scenario is a template/placeholder without actual medication management content. As a medication-management-expert, I cannot evaluate medication prescribing accuracy, Australian drug nomenclature, PBS compliance, or dosing when NO medications are specified. The scenario requires complete rewrite to include: (1) Specific antipsychotic medication recommendations with Australian generic names, (2) PBS codes and authority requirements, (3) Dosing schedules matching eTG Psychotropic guidelines, (4) Therapeutic drug monitoring protocols (lithium, sodium valproate), (5) Metabolic monitoring requirements per RANZCP guidelines, (6) Clozapine CPMS pathway if applicable. Current content is educationally inadequate for AMC Clinical Examination preparation - candidates would have no medication counseling guidance. CRITICAL: Must be regenerated with full pharmacotherapy content before deployment."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "osce_psychiatry_40_osces_020",
+      "evaluation_date": "2026-03-27T08:11:58.952410",
+      "overall_score": 3.5,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 0.0,
+        "medication_safety": 0.0,
+        "cultural_safety": 0.0
+      },
+      "violations": [
+        "CRITICAL: Generic OSCE template without actual clinical content - no patient case provided",
+        "CRITICAL: No SAFE-T suicide risk assessment framework present",
+        "CRITICAL: No Mental Health Act criteria assessment",
+        "CRITICAL: No specific psychiatric diagnosis - only generic 'Schizoaffective Disorder' label",
+        "CRITICAL: No medication management plan - generic 'Australian guidelines' placeholder",
+        "CRITICAL: No mental state examination findings - only placeholder text",
+        "CRITICAL: No risk stratification (high/medium/low)",
+        "CRITICAL: No cultural safety assessment",
+        "CRITICAL: Patient presentation is template boilerplate ('A patient presents for psychiatric assessment. Schizoaffective Disorder. Complete the clinical assessment using provided tools.')",
+        "CRITICAL: Expected answers are generic templates without clinical specificity",
+        "CRITICAL: No actual clinical scenario - vital signs are identical placeholders across all OSCEs",
+        "CRITICAL: History and examination findings are template text, not clinical content",
+        "CRITICAL: References lack content field (empty strings) - no actual citation text provided",
+        "MAJOR: Images are generic 'PANSS' and 'Mood Scale' without clinical context",
+        "MAJOR: No differential diagnosis specifics",
+        "MAJOR: No immediate management plan for acute psychiatric presentation",
+        "MAJOR: No safety planning documentation",
+        "MAJOR: Tasks are identical generic templates across all 40 OSCEs"
+      ],
+      "suggestions": [
+        "Replace template with actual clinical case: 32-year-old patient with 2-week history of auditory hallucinations AND depressed mood",
+        "Add complete SAFE-T assessment: Specific plan? Access to means? Feelings of hopelessness? Earlier attempts? Threat assessment?",
+        "Include Mental Health Act criteria: Mental illness (schizoaffective disorder), risk of harm (command hallucinations to self-harm), refuses voluntary admission, no less restrictive alternative available \u2192 Schedule 1 Medical Certificate (NSW MHA 2007)",
+        "Add specific MSE findings: Appearance (disheveled, poor self-care), Behavior (psychomotor agitation), Speech (pressured, circumstantial), Mood (depressed subjectively), Affect (labile, incongruent), Thought form (tangential), Thought content (persecutory delusions, suicidal ideation with plan), Perceptions (auditory hallucinations - derogatory voices), Cognition (oriented x3, poor concentration), Insight (nil - denies illness), Judgment (impaired)",
+        "Add medication plan: Olanzapine 10 mg PO nocte (antipsychotic for mood + psychosis), Sodium valproate 500 mg BD (mood stabilizer), Promethazine 25 mg PRN (agitation). Monitor: QTc (baseline ECG), FBC, UEC, LFTs, glucose, lipids",
+        "Add risk stratification: HIGH RISK - suicidal ideation with plan (jump from height), access to means (lives near bridge), command hallucinations ('kill yourself'), poor insight, refuses treatment \u2192 Involuntary admission under Mental Health Act",
+        "Add Mental Health Act documentation: Schedule 1 Medical Certificate completed, criteria met (mental illness, risk to self, refuses voluntary), ambulance transport arranged, psychiatric registrar review within 12 hours",
+        "Add cultural safety: Ask 'Do you identify as Aboriginal or Torres Strait Islander?' Offer Aboriginal liaison. Consider SEWB framework (connection to culture, family, community). Historical trauma awareness (Stolen Generations impact on mental health trust)",
+        "Add safety plan: Remove means (no access to heights, sharps, medications), 1:1 nursing observation, psychiatric unit admission, family contacted (collateral history + support), crisis contacts (Lifeline 13 11 14, Beyond Blue 1300 224 636)",
+        "Add differential diagnosis: Schizoaffective disorder (bipolar type) vs Bipolar I disorder with psychotic features vs Schizophrenia with comorbid depression vs Substance-induced psychosis (amphetamines - order urine drug screen)",
+        "Populate reference content fields with actual clinical text from John Murtagh General Practice p.1992 (schizoaffective disorder management)",
+        "Create unique clinical scenarios for each OSCE - currently all 40 use identical template structure"
+      ],
+      "strengths": [
+        "Correct specialty identified (Psychiatry)",
+        "Appropriate topic (Schizoaffective Disorder requires both psychosis and mood assessment)",
+        "Correct clinical tools referenced (PANSS for psychosis severity, Mood Scale for affective symptoms)",
+        "RAG citations present with confidence scores \u22650.75",
+        "Australian sources cited (John Murtagh General Practice, AMC Handbook)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "detailed_rationale": "This OSCE fails fundamental clinical content requirements. It is a TEMPLATE, not an actual clinical case. Zero-tolerance violations: (1) No SAFE-T suicide risk assessment in a schizoaffective disorder case (high suicide risk condition - 10-15% lifetime risk), (2) No Mental Health Act criteria despite 'Emergency Presentation' scenario type suggesting involuntary treatment may be needed, (3) No actual mental state examination findings - only placeholder text 'Mental status examination findings for Schizoaffective Disorder', (4) No medication plan beyond generic 'Australian guidelines' text, (5) No cultural safety assessment. The patient presentation is boilerplate ('A patient presents for psychiatric assessment. Schizoaffective Disorder.') without age, gender, presenting complaint, timeline, or clinical context. Expected answers are templates ('Systematic assessment findings for...') rather than clinical specifics. All 40 OSCEs in this batch appear to use identical template structure with only topic names swapped - this is educationally invalid. A schizoaffective disorder OSCE must include: specific psychotic symptoms (hallucinations, delusions), mood episode (depressed/manic), suicide risk SAFE-T assessment, Mental Health Act criteria if high risk, antipsychotic + mood stabilizer medication plan, cultural safety (Aboriginal/TSI considerations), and safety planning. None of these are present. This requires complete regeneration with actual clinical content, not template text."
+    }
+  ],
+  "num_agents": 6,
+  "quality_gate_violations": [
+    {
+      "gate": "content_completeness",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "OSCE scenario contains no medication prescriptions or medication management content to evaluate",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "content_completeness",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Expected answers section provides only generic placeholder text without specific medication recommendations",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "australian_compliance",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No PBS compliance can be assessed - no medications specified",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "clinical_safety",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Missing critical medication safety information for schizoaffective disorder management",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "osce_psychiatry_40_osces_020",
+  "item_type": "osce_script",
+  "specialty": "psychiatry",
+  "file_path": "data/osces/psychiatry_40_osces.json"
+}

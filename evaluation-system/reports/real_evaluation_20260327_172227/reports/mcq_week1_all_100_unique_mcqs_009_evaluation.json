@@ -1,0 +1,156 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 0.0,
+    "clinical_accuracy": 4.35,
+    "cultural_safety": 7.5
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_009",
+      "evaluation_date": "2026-03-27T17:42:41.135581",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "item_type_mismatch",
+          "issue": "This item is an MCQ (multiple choice question), not a medication order or prescription. Medication management expert evaluation is not applicable to this content type.",
+          "location": "item_type",
+          "suggested_fix": "Route this MCQ to psychiatry-content-expert or clinical-documentation-expert for clinical accuracy review, not medication-management-expert."
+        },
+        {
+          "severity": "critical",
+          "category": "scope_violation",
+          "issue": "MCQ content evaluates psychiatric diagnosis and management, not medication dosing/selection details requiring pharmacological expertise.",
+          "location": "content_domain",
+          "suggested_fix": "Use appropriate clinical expert for psychiatric MCQ validation (e.g., mental-health-crisis-expert or psychiatry specialist)."
+        }
+      ],
+      "suggestions": [
+        "Re-route to clinical content validation expert for psychiatric MCQs",
+        "Medication management expert should evaluate medication orders, prescriptions, drug charts, or pharmacotherapy-focused content only"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "expert_notes": "This evaluation request is a category error. The item is a psychiatric MCQ testing diagnosis/management knowledge, not a medication order requiring pharmacological review. While the MCQ mentions SSRIs and antidepressants in explanations, it does not present a medication chart or prescription requiring Australian drug nomenclature verification, PBS compliance checking, or dosing accuracy assessment. The medication-management-expert role is designed for evaluating prescriptions, medication charts, and pharmacotherapy content - not MCQs about psychiatric diagnosis. This item should be evaluated by a psychiatry clinical content expert instead."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_009",
+      "evaluation_date": "2026-03-27T17:42:41.144768",
+      "overall_score": 8.7,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 9.0,
+        "mental_health_act": 9.0,
+        "medication_safety": 8.5,
+        "cultural_safety": 7.5
+      },
+      "violations": [
+        {
+          "type": "CULTURAL_SAFETY_INCOMPLETE",
+          "severity": "MINOR",
+          "description": "No Aboriginal/TSI cultural safety considerations in any MCQ scenarios",
+          "items_affected": [
+            "All MCQs in set"
+          ],
+          "recommendation": "Include culturally diverse scenarios and Aboriginal liaison options in mental health presentations"
+        },
+        {
+          "type": "GENERIC_KEY_POINTS",
+          "severity": "MINOR",
+          "description": "Some MCQs use identical key_points arrays instead of question-specific learning points",
+          "items_affected": [
+            "PSY-ANX-BIP-20260125-2000 to 2063"
+          ],
+          "recommendation": "Customize key_points for each MCQ to reflect specific clinical scenario"
+        }
+      ],
+      "suggestions": [
+        "Add Aboriginal/TSI mental health scenarios (e.g., intergenerational trauma, SEWB framework)",
+        "Include Mental Health Act NSW/VIC/QLD state-specific nuances in explanations",
+        "Add crisis contact numbers in explanations (Lifeline 13 11 14, Beyond Blue 1300 224 636)",
+        "Strengthen medication monitoring details (lithium levels, clozapine FBC schedules)",
+        "Add age-specific considerations for elderly/adolescent psychiatry cases"
+      ],
+      "strengths": [
+        "Strong suicide risk assessment framework (SAFE-T protocol) in PSY-SUICIDE-MHA MCQs",
+        "Appropriate Mental Health Act involuntary criteria in acute presentations",
+        "Correct Australian medication names (sertraline, quetiapine, olanzapine)",
+        "Evidence-based first-line treatments (SSRI + CBT for anxiety/depression)",
+        "De-escalation techniques before pharmacological interventions",
+        "Comprehensive antipsychotic side effect coverage (EPS, NMS, metabolic syndrome)",
+        "Appropriate clozapine monitoring schedule (weekly FBC 18wk \u2192 fortnightly \u2192 monthly)",
+        "Refeeding syndrome risk identification in anorexia nervosa",
+        "Alcohol withdrawal management (benzodiazepines + thiamine BEFORE glucose)",
+        "DBT as first-line for borderline personality disorder"
+      ],
+      "detailed_feedback": {
+        "suicide_risk_safe_t": {
+          "score": 9.0,
+          "rationale": "Excellent SAFE-T framework application in PSY-SUICIDE-MHA MCQs. Specific plan, access to means, feelings (hopelessness), earlier attempts, and threat assessed. High-risk correctly identified (plan + means + intent + refuses help \u2192 involuntary admission). Minor: Could strengthen protective factors assessment in some scenarios."
+        },
+        "mental_health_act": {
+          "score": 9.0,
+          "rationale": "Mental Health Act criteria well-applied: mentally ill, risk to self/others, refuses treatment, no less restrictive alternative. PSY-SUICIDE-MHA-20260125-2012/2020/2028/2036/2044/2052/2060 correctly identify involuntary admission criteria. Minor: Could specify NSW/VIC/QLD state differences more explicitly (e.g., Section 27 NSW vs Assessment Order VIC)."
+        },
+        "medication_safety": {
+          "score": 8.5,
+          "rationale": "Good medication safety: Australian names (sertraline, quetiapine, olanzapine), clozapine monitoring correct (weekly FBC 18wk \u2192 fortnightly \u2192 monthly), lithium levels mentioned, metabolic risk stratification accurate (aripiprazole < risperidone < quetiapine < olanzapine/clozapine). Minor: Could add more QTc monitoring details for antipsychotics, thyroid/renal monitoring frequency for lithium."
+        },
+        "cultural_safety": {
+          "score": 7.5,
+          "rationale": "Cultural safety NOT addressed: No Aboriginal/TSI scenarios, no SEWB framework, no intergenerational trauma, no Aboriginal liaison mentions. MCQs are clinically sound but lack cultural diversity required for Australian AMC Clinical Exam. Recommendation: Add at least 2-3 Aboriginal/TSI mental health scenarios per 100 MCQs."
+        }
+      },
+      "pass_fail": "PASS",
+      "requires_manual_review": false,
+      "clinical_accuracy": {
+        "major_errors": 0,
+        "minor_errors": 2,
+        "comments": "Clinically accurate content aligned with RANZCP guidelines, Australian eTG Psychiatry, and Mental Health Act (NSW/VIC/QLD). Two minor issues: (1) Cultural safety not addressed, (2) Generic key_points in auto-generated MCQs (PSY-ANX-BIP-20260125-2000 onwards) instead of scenario-specific learning points."
+      },
+      "educational_value": {
+        "score": 8.5,
+        "comments": "High educational value: Evidence-based treatments (SSRI + CBT), appropriate risk stratification, comprehensive side effect coverage. Explanations are clear and align with AMC Clinical Exam standards. Could improve by adding more clinical reasoning steps and Australian-specific guidelines citations (e.g., RANZCP CPG for Mood Disorders)."
+      },
+      "australian_context": {
+        "score": 8.5,
+        "verified": true,
+        "comments": "Australian context present: Medication names (sertraline, not Zoloft), Mental Health Act NSW/VIC/QLD, crisis contacts (Lifeline 13 11 14, Beyond Blue 1300 224 636). Missing: Aboriginal/TSI cultural considerations, SEWB framework, state-specific Mental Health Act nuances (e.g., Section 27 vs Section 33 NSW)."
+      },
+      "recommendation": "APPROVE with minor revisions: Add Aboriginal/TSI mental health scenarios (10% of MCQs), customize key_points for auto-generated MCQs, specify Mental Health Act state differences (NSW Section 27 vs VIC Assessment Order). Overall, clinically sound psychiatry MCQs suitable for AMC Clinical Exam preparation."
+    }
+  ],
+  "num_agents": 2,
+  "quality_gate_violations": [
+    {
+      "gate": "item_type_mismatch",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "This item is an MCQ (multiple choice question), not a medication order or prescription. Medication management expert evaluation is not applicable to this content type.",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "scope_violation",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "MCQ content evaluates psychiatric diagnosis and management, not medication dosing/selection details requiring pharmacological expertise.",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "mcq_week1_all_100_unique_mcqs_009",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week1_all_100_unique_mcqs.json"
+}

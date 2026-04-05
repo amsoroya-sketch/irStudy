@@ -1,0 +1,130 @@
+{
+  "overall_score": 3.75,
+  "criterion_scores": {
+    "australian_standards": 10.0,
+    "clinical_accuracy": 4.17,
+    "cultural_safety": 0.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_033",
+      "evaluation_date": "2026-03-27T08:36:03.947475",
+      "overall_score": 10.0,
+      "criteria_scores": {
+        "australian_drug_names": 10.0,
+        "pbs_compliance": 10.0,
+        "dosing_accuracy": 10.0,
+        "drug_interactions": 10.0,
+        "polypharmacy_management": 10.0
+      },
+      "violations": [],
+      "suggestions": [],
+      "strengths": [
+        "All psychiatric medications appropriately referenced using Australian terminology and generic names",
+        "Correct first-line pharmacotherapy mentioned (SSRI, benzodiazepines, antipsychotics) aligning with Australian eTG psychiatry guidelines",
+        "Appropriate medication management for alcohol withdrawal (diazepam/oxazepam + thiamine) follows Australian protocols",
+        "Correct dosing ranges provided for antipsychotics (risperidone 1-2mg, olanzapine) matching AMH recommendations",
+        "Evidence-based medication choices for psychiatric conditions (DBT + short-term SSRI for BPD, avoiding long-term benzodiazepines)",
+        "Appropriate thiamine dosing for alcohol withdrawal (300mg IV) and refeeding syndrome prevention",
+        "Correct lithium and olanzapine references for acute mania management",
+        "No American drug names detected (all terminology Australian-appropriate)",
+        "MCQs correctly emphasize non-pharmacological management as first-line where appropriate (DBT, CBT)",
+        "Appropriate cautions regarding medication risks (EPS with high-dose haloperidol, refeeding syndrome hypophosphatemia)"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false,
+      "australian_compliance_verified": true
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_033",
+      "evaluation_date": "2026-03-27T08:36:03.954435",
+      "overall_score": 2.5,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 0.0,
+        "medication_safety": 5.0,
+        "cultural_safety": 0.0
+      },
+      "violations": [
+        "CRITICAL: Zero RAG citations - all references show rag_confidence: 0.0 (ZERO TOLERANCE VIOLATION)",
+        "CRITICAL: References contain 'Unknown' title instead of actual Australian sources (Talley & O'Connor, RANZCP guidelines)",
+        "CRITICAL: MCQ ID PSY-ANX-BIP-20260125-2033 (panic disorder) - Insufficient differential diagnosis teaching (should include hyperthyroidism, cardiac causes requiring ECG/TFTs)",
+        "Explanation fields use generic 'why_incorrect' without specific clinical reasoning for each distractor",
+        "No SAFE-T suicide risk assessment despite multiple depression/suicidality cases in dataset",
+        "No Mental Health Act state specification (NSW/VIC/QLD) despite involuntary admission questions",
+        "No cultural safety considerations (Aboriginal/TSI, CALD, LGBTQIA+)",
+        "Multiple duplicate MCQs (PSY-ANX-BIP-20260125-2000 repeated 8 times, PSY-PSYCHOSIS-20260125-2003 repeated 8 times)",
+        "Missing key_points array is empty in all MCQ explanations",
+        "Anorexia MCQ (PSY-FINAL-20260125-2005) asks 'most critical immediate risk' but doesn't explain refeeding syndrome pathophysiology (hypophosphatemia \u2192 cardiac arrest)",
+        "Alcohol withdrawal MCQ (PSY-FINAL-20260125-2006) correct answer missing CIWA-Ar scoring protocol",
+        "Bipolar mania MCQ (PSY-ANX-BIP-20260125-2002) doesn't specify which Mental Health Act state (NSW Schedule 1, VIC Assessment Order, QLD RFA)",
+        "First-episode psychosis MCQ (PSY-PSYCHOSIS-20260125-2003) recommends 'risperidone 1-2mg' but doesn't mention metabolic monitoring (weight, BSL, lipids) requirement for antipsychotics",
+        "Suicide risk MCQ (PSY-SUICIDE-MHA-20260125-2004) doesn't assess ALL SAFE-T elements (only mentions plan, means, recent loss - missing Earlier attempts, Feelings of burden)",
+        "Borderline personality MCQ (PSY-FINAL-20260125-2007) recommends DBT but doesn't mention 12-month duration or structured crisis plan components"
+      ],
+      "suggestions": [
+        "MANDATORY: Replace ALL 'Unknown' references with actual RAG-verified Australian sources (eTG, RANZCP Clinical Practice Guidelines, Black Dog Institute, Therapeutic Guidelines)",
+        "MANDATORY: Re-generate ALL MCQs with unique qdrant_point_id citations (\u22650.65 confidence)",
+        "Add SAFE-T suicide risk framework to ALL depression/psychosis MCQs (Specific plan, Access to means, Feelings, Earlier attempts, Threat)",
+        "Specify Mental Health Act state in ALL involuntary admission questions (NSW MHA 2007, VIC MHA 2014, QLD MHA 2016)",
+        "Add cultural safety considerations: 'Offer Aboriginal liaison' for ATSI patients, 'SEWB framework' for holistic care",
+        "Populate key_points array with 3-5 clinical pearls per MCQ (e.g., 'GAD: \u22656 months + \u22653 symptoms', 'First-line: SSRI + CBT', 'Screen for comorbid depression 60%')",
+        "Remove all duplicate MCQs - 65 MCQs should have 65 UNIQUE IDs",
+        "Add detailed pathophysiology to explanations (e.g., Refeeding syndrome: Insulin surge \u2192 phosphate/magnesium shift into cells \u2192 hypophosphatemia \u2192 cardiac arrhythmia/respiratory failure)",
+        "Add monitoring requirements: Lithium levels (0.6-1.0 mmol/L), Clozapine FBC (weekly for 18 weeks), Antipsychotic metabolic screen (baseline + 3-monthly)",
+        "Add Australian crisis contacts to suicide MCQs: Lifeline 13 11 14, Beyond Blue 1300 224 636, Kids Helpline 1800 55 1800",
+        "Add red flags to depression MCQs: Psychotic symptoms, bipolar screen (previous mania/hypomania), substance use (cannabis-induced psychosis)",
+        "Specify benzodiazepine choice for alcohol withdrawal: Diazepam (long-acting, preferred) vs Oxazepam (short-acting, liver disease)",
+        "Add EPS management to first-episode psychosis: Benztropine 1-2mg IM for dystonia, propranolol for akathisia, reduce dose for parkinsonism",
+        "Add safety planning components to suicide MCQs: Warning signs, internal coping, social contacts, professional contacts, crisis contacts, means restriction"
+      ],
+      "strengths": [
+        "Covers high-yield AMC topics (GAD, panic disorder, bipolar mania, first-episode psychosis, suicide risk, anorexia, alcohol withdrawal, borderline personality)",
+        "Correct answers align with Australian guidelines (DBT for BPD, benzodiazepines for alcohol withdrawal, involuntary admission for high suicide risk)",
+        "Medication recommendations use second-generation antipsychotics (olanzapine, risperidone, quetiapine) over first-generation (haloperidol) - aligns with RANZCP guidelines",
+        "Recognizes refeeding syndrome as most critical risk in severe anorexia (BMI <15.5) - clinically accurate",
+        "Correctly identifies involuntary admission criteria for acute mania with psychotic features + risk behavior",
+        "Alcohol withdrawal management includes thiamine BEFORE glucose (prevents Wernicke's encephalopathy) - critical safety point"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "detailed_feedback": "This MCQ set has CRITICAL QUALITY VIOLATIONS that prevent deployment: (1) ZERO RAG citations - all 65 MCQs show rag_confidence: 0.0 with 'Unknown' titles, violating MANDATORY 100% citation requirement. This is a ZERO-TOLERANCE violation per constraints/11-rag-citation-requirements.md. (2) Extensive duplication - PSY-ANX-BIP-20260125-2000 (GAD) appears 8 times, PSY-ANX-BIP-20260125-2001 (panic) 8 times, etc. Only 8 unique MCQs in 65-item dataset. (3) Missing clinical depth - key_points arrays are empty, explanations lack pathophysiology (e.g., refeeding syndrome mechanism not explained), monitoring protocols absent (CIWA-Ar for alcohol withdrawal, metabolic screening for antipsychotics). (4) No SAFE-T suicide assessment despite 8 suicide risk MCQs - violates psychiatric safety standards. (5) No Mental Health Act state specification (NSW/VIC/QLD differ significantly). (6) Zero cultural safety considerations (Aboriginal/TSI, CALD). RECOMMENDATION: DO NOT DEPLOY. Regenerate entire dataset with: (a) 65 UNIQUE MCQs with RAG-verified citations (qdrant_point_id, \u22650.65 confidence), (b) SAFE-T framework in ALL depression/psychosis cases, (c) Mental Health Act state specified, (d) Populated key_points arrays, (e) Cultural safety questions, (f) Australian crisis contacts. Current dataset fails Gate 2 (RAG Citations) catastrophically."
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_033",
+      "evaluation_date": "2026-03-27T08:36:03.961024",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 0.0,
+        "clinical_relevance": 0.0,
+        "image_quality_assessment": 0.0
+      },
+      "violations": [
+        "CRITICAL: Radiology expert assigned to evaluate PSYCHIATRY MCQ",
+        "Item specialty is 'Psychiatry' - no radiological imaging content present",
+        "All MCQs in this file are psychiatry topics (GAD, panic disorder, bipolar mania, psychosis, suicide risk, anorexia, alcohol withdrawal, borderline personality disorder)",
+        "No CXR/ECG/CT/ultrasound interpretation required",
+        "Agent specialty mismatch - should be evaluated by mental-health-crisis-expert or psychiatry specialist"
+      ],
+      "suggestions": [
+        "Reassign to mental-health-crisis-expert agent",
+        "Verify item routing logic - psychiatry items should not be sent to radiology expert",
+        "Review evaluation system dispatcher to prevent future specialty mismatches"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "notes": "This is a psychiatry MCQ file with 65 questions on anxiety disorders, bipolar disorder, psychosis, suicide risk assessment, eating disorders, alcohol withdrawal, and personality disorders. No radiological imaging interpretation is involved. The radiology-interpretation-expert is not qualified to evaluate psychiatric clinical scenarios. This represents a critical routing error in the evaluation system."
+    }
+  ],
+  "num_agents": 3,
+  "status": "REJECTED",
+  "item_id": "mcq_week1_additional_65_mcqs_033",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week1_additional_65_mcqs.json"
+}

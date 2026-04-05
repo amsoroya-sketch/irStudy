@@ -1,0 +1,200 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 0.0,
+    "clinical_accuracy": 0.33,
+    "cultural_safety": 0.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week2_regenerated_100_mcqs_003",
+      "evaluation_date": "2026-03-27T08:36:03.923049",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "content_quality",
+          "issue": "MCQ is placeholder content with no actual clinical question or medication management scenario",
+          "location": "mcqs[2]",
+          "suggested_fix": "Regenerate MCQ with complete clinical scenario including medication management options"
+        },
+        {
+          "severity": "critical",
+          "category": "content_quality",
+          "issue": "All options labeled as 'Option A/B/C/D' with no actual medication choices provided",
+          "location": "mcqs[2].options",
+          "suggested_fix": "Provide specific medication management options with Australian drug names, doses, and routes"
+        },
+        {
+          "severity": "critical",
+          "category": "content_quality",
+          "issue": "Explanation is generic placeholder text with no medication-specific guidance",
+          "location": "mcqs[2].explanation",
+          "suggested_fix": "Provide detailed rationale for medication choice including Australian guidelines (eTG/AMH), PBS considerations, and safety"
+        },
+        {
+          "severity": "critical",
+          "category": "rag_validation",
+          "issue": "RAG citations have no content field - unable to verify medication recommendations against source material",
+          "location": "mcqs[2].references[*].content",
+          "suggested_fix": "Populate content field with actual excerpts from source materials showing medication recommendations"
+        },
+        {
+          "severity": "critical",
+          "category": "regeneration_status",
+          "issue": "MCQ marked as 'regeneration_failed: true' - incomplete content generation",
+          "location": "mcqs[2].regeneration_failed",
+          "suggested_fix": "Successfully complete regeneration process with full clinical scenario and medication options"
+        }
+      ],
+      "suggestions": [
+        "For Social Anxiety Disorder, typical Australian first-line pharmacotherapy includes SSRIs (e.g., sertraline 50mg daily, escitalopram 10mg daily) per eTG guidelines",
+        "Consider including CBT as first-line non-pharmacological option per Australian clinical practice guidelines",
+        "PBS restrictions for psychiatry medications should be noted (e.g., authority required for some SSRIs beyond initial script)",
+        "Include contraindications and common drug interactions relevant to anxiety medications (e.g., SSRIs + NSAIDs = GI bleeding risk)",
+        "Specify monitoring requirements (e.g., review at 2-4 weeks for SSRI response, suicide risk assessment in first month)"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "additional_comments": "This MCQ is placeholder content that failed regeneration. No medication management scenario is present to evaluate. The question stem mentions 'Social Anxiety Disorder' but provides no clinical details, no medication options, and no evidence-based recommendations. Cannot assess Australian drug nomenclature, PBS compliance, or dosing accuracy without actual medication content. RAG citations exist but lack content verification. This item must be completely regenerated with proper clinical scenario, medication options using Australian drug names (e.g., sertraline NOT Zoloft, escitalopram NOT Lexapro brand names), PBS compliance notes, and eTG/AMH-aligned recommendations before medication management evaluation is possible."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week2_regenerated_100_mcqs_003",
+      "evaluation_date": "2026-03-27T08:36:03.931880",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 0.0,
+        "medication_safety": 0.0,
+        "cultural_safety": 0.0
+      },
+      "violations": [
+        "CRITICAL: All 100 MCQs marked as 'regeneration_failed: true' - zero valid clinical content",
+        "CRITICAL: All questions are identical generic placeholders ('What is the most appropriate management approach according to Australian guidelines?')",
+        "CRITICAL: All answer options are placeholders ('Option A', 'Option B', 'Option C', 'Option D') - no actual clinical content",
+        "CRITICAL: All explanations are incomplete templates ('According to Australian guidelines for [topic], the most appropriate approach is...')",
+        "CRITICAL: RAG citations lack actual content - all 'content' fields are empty strings",
+        "CRITICAL: Zero psychiatric clinical content - no SAFE-T assessments, no Mental Health Act criteria, no medication management",
+        "CRITICAL: Subtopics are conceptual placeholders, not actual clinical scenarios (e.g., 'Generalized Anxiety Disorder (GAD)' with no GAD-specific question)",
+        "CRITICAL: No suicide risk assessment in any MCQ despite covering mood disorders, psychosis, trauma",
+        "CRITICAL: No Mental Health Act NSW/VIC/QLD content despite topic 'Mental Health Act' listed",
+        "CRITICAL: No Australian medication names (SSRIs, antipsychotics, mood stabilizers) - all content missing",
+        "Gate 1 FAIL: JSON structure present but all educational content missing (17 required fields present but empty/placeholder)",
+        "Gate 2 FAIL: RAG citations have confidence scores but zero actual content (all 'content' fields empty)",
+        "Gate 13 FAIL: Zero educational alignment - no 9-step history, no SOCRATES, no red flags, no clinical reasoning"
+      ],
+      "suggestions": [
+        "CRITICAL ACTION REQUIRED: Regenerate entire batch - current content is 100% placeholder data unsuitable for educational use",
+        "All 100 MCQs must be rewritten with actual clinical scenarios (e.g., '52-year-old male presents with 3 weeks low mood, anhedonia, sleep disturbance. PHQ-9 score 18. What is the most appropriate first-line management?')",
+        "RAG citations must include actual textbook excerpts in 'content' field (currently all empty strings)",
+        "Suicide risk assessment (SAFE-T) must be explicitly tested in depression/psychosis MCQs",
+        "Mental Health Act MCQs must specify state (NSW/VIC/QLD) and include criteria (mental illness + risk + refuses treatment + no alternative)",
+        "Medication MCQs must use Australian generic names (quetiapine, venlafaxine, lithium) with specific doses and monitoring requirements",
+        "Cultural safety MCQs must include Aboriginal/TSI mental health scenarios with SEWB framework",
+        "Each MCQ must have 4 distinct, plausible answer options (not 'Option A/B/C/D')",
+        "Explanations must be complete clinical reasoning (not templates ending with '...')",
+        "Verify all 300 RAG citations extract actual content from Qdrant database (zero hallucinations tolerance)"
+      ],
+      "strengths": [
+        "Metadata correctly identifies 100 MCQs marked as regeneration failures",
+        "RAG validation system correctly flagged placeholder content (prevention_system.zero_tolerance: ENFORCED)",
+        "Topic distribution covers key psychiatry domains (Anxiety 20, Mood 20, Psychosis 15, Trauma 15, Substance 15, Other 15)",
+        "Specialty correctly identified as Psychiatry",
+        "All MCQs have 3 RAG citations with confidence \u22650.65 (structure correct, content missing)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": false,
+      "additional_comments": "DEPLOYMENT READINESS: 0% - This batch represents a catastrophic content generation failure. All 100 MCQs are identical placeholders with zero clinical content. The 'regeneration_failed: true' flag correctly identifies the issue. This content is completely unusable for medical education and poses patient safety risks if deployed. IMMEDIATE ACTION: Halt deployment, investigate RAG content extraction pipeline (all 'content' fields empty despite valid qdrant_point_ids), regenerate entire batch with actual clinical scenarios, psychiatric assessment frameworks (SAFE-T, Mental State Exam), Australian medication protocols, and Mental Health Act NSW/VIC/QLD criteria. Current state violates all 13 quality gates. Zero tolerance for placeholder content in production medical education platform."
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "mcq_week2_regenerated_100_mcqs_003",
+      "evaluation_date": "2026-03-27T08:36:03.940200",
+      "overall_score": 1.0,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 0.0,
+        "clinical_relevance": 0.0,
+        "image_quality_assessment": 0.0
+      },
+      "violations": [
+        "CRITICAL: Item is NOT radiology content - this is a Psychiatry MCQ (Social Anxiety Disorder)",
+        "CRITICAL: No imaging interpretation required - questions are about psychiatric management approaches",
+        "CRITICAL: All 100 MCQs are placeholder content with 'Option A/B/C/D' and generic explanations",
+        "CRITICAL: All MCQs flagged as 'regeneration_failed: true' - content generation failed",
+        "CRITICAL: Zero actual clinical content - all questions follow template 'A patient presents with [condition]. What is the most appropriate management approach according to Australian guidelines?'",
+        "CRITICAL: Citations have empty 'content' field - no actual source material extracted",
+        "CRITICAL: This batch should be rejected entirely and regenerated with proper psychiatric content by psychiatry expert agent",
+        "OUT OF SCOPE: Radiology interpretation expert cannot evaluate psychiatry MCQs (wrong specialty)"
+      ],
+      "suggestions": [
+        "Delegate to mental-health-crisis-expert or palliative-care-expert for psychiatry content evaluation",
+        "Regenerate entire batch with LLM-generated full clinical content (not placeholders)",
+        "Ensure RAG system extracts actual content from citations (currently all empty)",
+        "Follow PRD-QA-003 13-gate validation before deployment"
+      ],
+      "strengths": [
+        "RAG citations present with valid qdrant confidence scores \u22650.65",
+        "Correct specialty classification (Psychiatry)",
+        "Topic distribution documented (Anxiety 20, Substance Use 15, Mood 20, Psychotic 15, Trauma 15, Other 15)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "critical_notes": "This evaluation request is inappropriate for radiology-interpretation-expert. Item mcq_week2_regenerated_100_mcqs_003 is a Psychiatry MCQ about Social Anxiety Disorder with placeholder content. ALL 100 MCQs in this batch have failed regeneration and contain no actual clinical questions or answers (only 'Option A/B/C/D' templates). This batch requires complete regeneration by appropriate psychiatric content expert, NOT radiology review. Radiology interpretation expert can only evaluate CXR, CT, ultrasound, and ECG interpretation content."
+    }
+  ],
+  "num_agents": 3,
+  "quality_gate_violations": [
+    {
+      "gate": "content_quality",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "MCQ is placeholder content with no actual clinical question or medication management scenario",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "content_quality",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "All options labeled as 'Option A/B/C/D' with no actual medication choices provided",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "content_quality",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Explanation is generic placeholder text with no medication-specific guidance",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "rag_validation",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "RAG citations have no content field - unable to verify medication recommendations against source material",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "regeneration_status",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "MCQ marked as 'regeneration_failed: true' - incomplete content generation",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "mcq_week2_regenerated_100_mcqs_003",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week2_regenerated_100_mcqs.json"
+}

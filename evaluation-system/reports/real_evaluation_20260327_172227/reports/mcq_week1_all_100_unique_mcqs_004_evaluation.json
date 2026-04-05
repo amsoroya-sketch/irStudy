@@ -1,0 +1,117 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 0.0,
+    "clinical_accuracy": 3.25,
+    "cultural_safety": 7.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_004",
+      "evaluation_date": "2026-03-27T17:30:32.319309",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "wrong_specialty",
+          "issue": "Medication management expert evaluating psychiatry MCQs without medication focus",
+          "location": "entire_item",
+          "suggested_fix": "This item should be evaluated by psychiatry expert, not medication management expert"
+        },
+        {
+          "severity": "critical",
+          "category": "australian_drug_names",
+          "issue": "No medications requiring Australian nomenclature review - MCQ focuses on psychiatric diagnosis and treatment selection, not medication dosing/naming",
+          "location": "all_mcqs",
+          "suggested_fix": "Route to appropriate psychiatric expert for evaluation"
+        }
+      ],
+      "suggestions": [
+        "This evaluation task is outside medication management expert scope",
+        "Psychiatry MCQs focusing on diagnosis/treatment selection should be evaluated by psychiatry expert",
+        "Medication management expert should evaluate items with specific drug dosing, PBS compliance, drug interactions, or polypharmacy issues"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "expert_mismatch_note": "CRITICAL: This item contains 64 psychiatry MCQs focusing on psychiatric diagnosis, treatment selection, and Mental Health Act - not medication management. The expert agent (medication-management-expert) is mismatched to content type. While some questions mention medications (SSRIs, antipsychotics), they focus on treatment selection/management rather than dosing accuracy, PBS compliance, drug interactions, or Australian drug nomenclature verification. Recommend routing to psychiatry-expert or mental-health-crisis-expert instead."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_004",
+      "evaluation_date": "2026-03-27T17:30:32.328310",
+      "overall_score": 6.5,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 5.0,
+        "mental_health_act": 7.5,
+        "medication_safety": 7.0,
+        "cultural_safety": 7.0
+      },
+      "violations": [
+        "PSY-DEP-20260125-345: Depression MCQ lacks suicide risk assessment (SAFE-T framework not applied)",
+        "PSY-DEP-20260125-602: Antidepressant selection lacks discussion of suicide monitoring in first 2 weeks",
+        "PSY-PSYCHOSIS-20260125-015: Schizophrenia diagnosis lacks explicit suicide risk assessment",
+        "PSY-SUICIDE-MHA-20260125-334: SAD PERSONS scale used instead of SAFE-T protocol (Australian best practice)",
+        "Multiple MCQs: Generic 'monitor for suicidality' in key points without specific SAFE-T assessment steps",
+        "PSY-FINAL-20260125-2005: Anorexia nervosa bradycardia - missing mental state examination for depression/suicidality",
+        "Cultural safety: No Aboriginal/TSI considerations in any MCQ despite Australian context",
+        "Medication names: Consistent Australian terminology BUT missing QTc monitoring emphasis for antipsychotics",
+        "Mental Health Act: Good coverage but lacks least restrictive principle discussion in several scenarios"
+      ],
+      "suggestions": [
+        "Add explicit SAFE-T assessment to all depression/psychosis MCQs (Specific plan, Access to means, Feelings, Earlier attempts, Threat)",
+        "Replace SAD PERSONS references with SAFE-T protocol (Australian RANZCP standard)",
+        "Include Aboriginal/TSI cultural safety considerations (SEWB framework, historical trauma, liaison services)",
+        "Add QTc monitoring requirements for all antipsychotic MCQs (especially olanzapine, quetiapine)",
+        "Expand Mental Health Act MCQs to include least restrictive principle decision-making",
+        "Add suicide risk stratification (high/medium/low) with specific management for each tier",
+        "Include NSW/VIC/QLD-specific Mental Health Act variations where relevant",
+        "Add crisis contacts (Lifeline 13 11 14, Beyond Blue 1300 224 636) to safety planning MCQs"
+      ],
+      "strengths": [
+        "Consistent Australian medication terminology (quetiapine, olanzapine, sertraline)",
+        "Good Mental Health Act criteria coverage (mentally ill, risk, treatment needed, no alternative)",
+        "Accurate de-escalation techniques and verbal intervention strategies",
+        "Correct clozapine monitoring schedules (weekly FBC 18 weeks, fortnightly to 52 weeks, then monthly)",
+        "Appropriate emphasis on benzodiazepines + thiamine for alcohol withdrawal",
+        "Comprehensive coverage of extrapyramidal side effects (acute dystonia, akathisia, tardive dyskinesia, NMS)",
+        "Good differentiation between delirium and dementia",
+        "Accurate first-episode psychosis management (low-dose antipsychotic, urgent EPIS referral)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "detailed_feedback": "CRITICAL SAFETY ISSUE: This MCQ set fails to consistently apply SAFE-T suicide risk assessment framework across depression, psychosis, and mental health crisis scenarios. While MCQ PSY-SUICIDE-MHA-20260125-334 addresses suicide risk, it uses SAD PERSONS scale instead of SAFE-T protocol (Australian RANZCP best practice). Multiple depression MCQs (PSY-DEP-20260125-345, PSY-DEP-20260125-602) mention 'monitor for suicidality' in key points but lack structured SAFE-T assessment (Specific plan, Access to means, Feelings of hopelessness, Earlier attempts, Threat of harm). This is a zero-tolerance violation for mental health crisis expert evaluation. Additionally, NO MCQs include Aboriginal/TSI cultural safety considerations despite Australian context. Requires immediate revision before deployment."
+    }
+  ],
+  "num_agents": 2,
+  "quality_gate_violations": [
+    {
+      "gate": "wrong_specialty",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Medication management expert evaluating psychiatry MCQs without medication focus",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "australian_drug_names",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No medications requiring Australian nomenclature review - MCQ focuses on psychiatric diagnosis and treatment selection, not medication dosing/naming",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "mcq_week1_all_100_unique_mcqs_004",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week1_all_100_unique_mcqs.json"
+}

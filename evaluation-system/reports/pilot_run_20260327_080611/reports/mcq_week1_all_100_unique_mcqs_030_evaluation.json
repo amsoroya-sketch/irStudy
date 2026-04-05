@@ -1,0 +1,143 @@
+{
+  "overall_score": 5.96,
+  "criterion_scores": {
+    "australian_standards": 9.5,
+    "clinical_accuracy": 9.1,
+    "cultural_safety": 8.5
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_030",
+      "evaluation_date": "2026-03-27T08:38:30.151998",
+      "overall_score": 9.5,
+      "criteria_scores": {
+        "australian_drug_names": 10.0,
+        "pbs_compliance": 9.0,
+        "dosing_accuracy": 10.0,
+        "drug_interactions": 9.0,
+        "polypharmacy_management": 10.0
+      },
+      "violations": [],
+      "suggestions": [
+        "Consider adding PBS authority requirements for sertraline continuation beyond 6 months in some jurisdictions",
+        "Could add note about monitoring for serotonin syndrome when combining SSRIs with other serotonergic medications",
+        "Excellent use of Australian terminology throughout - sertraline, escitalopram all correct"
+      ],
+      "strengths": [
+        "All medication names use correct Australian terminology (sertraline, escitalopram, amitriptyline, mirtazapine, venlafaxine)",
+        "Appropriate SSRI first-line recommendations per eTG Psychiatry guidelines",
+        "Correct dosing for all antidepressants mentioned (sertraline 50mg, escitalopram 20mg appropriate)",
+        "Appropriate warnings about tricyclic antidepressants (amitriptyline) side effects in elderly",
+        "Correct identification of treatment-resistant depression management (SNRI switch/augmentation)",
+        "Age-appropriate dosing guidance for elderly patients (start at half dose)",
+        "Appropriate breastfeeding-compatible medication selection (sertraline/escitalopram)",
+        "Clinical accuracy in distinguishing medication classes and indications",
+        "No American drug names used (no acetaminophen, epinephrine, albuterol, etc.)",
+        "Appropriate discussion of St John's Wort as complementary medicine with interaction risks"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false,
+      "australian_compliance_verified": true,
+      "medication_safety_notes": [
+        "All antidepressant dosing appropriate for Australian practice",
+        "SSRI first-line approach aligns with RANZCP and eTG Psychiatry guidelines",
+        "Appropriate caution regarding TCAs in elderly (anticholinergic burden)",
+        "Correct sequential approach to treatment-resistant depression (2 SSRI trials \u2192 SNRI/augmentation)",
+        "Postpartum depression management appropriately considers breastfeeding compatibility"
+      ],
+      "pbs_notes": [
+        "Sertraline, escitalopram, venlafaxine, mirtazapine all PBS-listed for depression",
+        "Authority prescriptions may be required for continuation beyond initial period depending on jurisdiction",
+        "Amitriptyline PBS-listed but typically not first-line due to safety profile"
+      ]
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week1_all_100_unique_mcqs_030",
+      "evaluation_date": "2026-03-27T08:38:30.161102",
+      "overall_score": 8.7,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 8.5,
+        "mental_health_act": 9.0,
+        "medication_safety": 8.8,
+        "cultural_safety": 8.5
+      },
+      "violations": [
+        {
+          "gate": "Gate 1 - SAFE-T Assessment",
+          "severity": "MINOR",
+          "description": "MCQ PSY-SUICIDE-MHA-20260125-334 uses SAD PERSONS scale instead of SAFE-T framework (Australian preference for SAFE-T in emergency psychiatry)"
+        },
+        {
+          "gate": "Gate 4 - Cultural Safety",
+          "severity": "MINOR",
+          "description": "No cultural safety considerations mentioned in any MCQs (Aboriginal/TSI mental health, SEWB framework)"
+        },
+        {
+          "gate": "Gate 2 - Mental Health Act",
+          "severity": "MINOR",
+          "description": "MCQ PSY-SUICIDE-MHA-20260125-2012 and duplicates lack specific state identification (NSW/VIC/QLD) for Mental Health Act application"
+        }
+      ],
+      "suggestions": [
+        "Replace SAD PERSONS references with SAFE-T framework (S=Specific plan, A=Access to means, F=Feelings, E=Earlier attempts, T=Threat) - Australian emergency psychiatry standard",
+        "Add cultural safety MCQs: Aboriginal/TSI mental health, historical trauma, SEWB framework, Aboriginal liaison services",
+        "Specify state for Mental Health Act scenarios (e.g., 'NSW Mental Health Act 2007' vs generic 'Mental Health Act')",
+        "Add MCQs on rural/remote mental health access (RFDS mental health retrievals, telehealth psychiatry)",
+        "Include perinatal mental health MCQs beyond postpartum depression (pregnancy psychosis, mother-baby units)",
+        "Add Australian crisis contacts to all suicide risk MCQs: Lifeline 13 11 14, Beyond Blue 1300 224 636, Suicide Call Back Service 1300 659 467"
+      ],
+      "strengths": [
+        "Comprehensive coverage of core psychiatry topics: depression, anxiety, bipolar, psychosis, substance use, eating disorders, personality disorders",
+        "Correct Mental Health Act involuntary criteria consistently applied (mentally ill, risk, refuses treatment, no alternative)",
+        "Australian medication names used correctly (sertraline, escitalopram, olanzapine, quetiapine, lithium, valproate)",
+        "Excellent antipsychotic safety coverage: metabolic monitoring, clozapine FBC monitoring (weekly\u2192fortnightly\u2192monthly), EPS management, NMS recognition",
+        "Strong suicide risk stratification across multiple MCQs with appropriate management (involuntary admission for high risk, safety planning)",
+        "Correct first-line treatments: SSRIs for depression/anxiety, CBT+medication, mood stabilizer+antipsychotic for mania",
+        "Critical safety warnings: valproate contraindicated in women of childbearing age (TGA 2018), thiamine BEFORE glucose (Wernicke's), refeeding syndrome risk",
+        "Appropriate recognition of psychiatric emergencies: NMS (rigidity+fever+autonomic instability), acute dystonia (benztropine IM), delirium vs dementia differentiation"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false,
+      "detailed_analysis": {
+        "suicide_risk_safe_t_assessment": {
+          "score": 8.5,
+          "findings": "Suicide risk assessment present in relevant MCQs (PSY-SUICIDE-MHA series). However, uses SAD PERSONS scale (PSY-SUICIDE-MHA-20260125-334) instead of SAFE-T framework. SAFE-T is preferred in Australian emergency psychiatry (RANZCP guidelines). Columbia Scale (C-SSRS) correctly used in PSY-SUICIDE-MHA-20260125-562. High risk correctly identified: plan+means+recent loss\u2192involuntary admission. Protective factors appropriately discussed (PSY-SUICIDE-MHA-20260125-731) but correctly stated they 'reduce but don't eliminate risk'.",
+          "recommendations": "Update SAD PERSONS MCQ to SAFE-T framework. Add MCQs on safety planning (warning signs, coping strategies, crisis contacts, means restriction)."
+        },
+        "mental_health_act_compliance": {
+          "score": 9.0,
+          "findings": "Mental Health Act criteria consistently correct across MCQs: (1) mentally ill, (2) risk of harm, (3) refuses treatment, (4) no less restrictive alternative. Involuntary admission correctly applied for high suicide risk (PSY-SUICIDE-MHA-20260125-2012, 2020, 2028, 2036, 2044, 2052, 2060). Acute mania with psychosis correctly identified as requiring involuntary admission (PSY-ANX-BIP-20260125-2002, 2010, 2018, 2026, 2034, 2042, 2050, 2058). Community Treatment Order (CTO) appropriately used for recurrent non-adherence (PSY-SUICIDE-MHA-20260125-080). Emergency detention correctly described (PSY-SUICIDE-MHA-20260125-889). Capacity vs MHA differentiated (PSY-SUICIDE-MHA-20260125-300). Least restrictive principle applied (PSY-SUICIDE-MHA-20260125-058).",
+          "recommendations": "Specify state in Mental Health Act scenarios (NSW Mental Health Act 2007 vs generic). Add MCQs on state-specific differences (e.g., VIC Assessment Order vs NSW Section 27)."
+        },
+        "medication_safety": {
+          "score": 8.8,
+          "findings": "Australian medication names correct throughout: sertraline, escitalopram (NOT Lexapro), olanzapine, quetiapine, risperidone, haloperidol, lithium, valproate, diazepam, lorazepam. Antipsychotic metabolic risk ranking correct: Aripiprazole<Risperidone<Quetiapine<Olanzapine/Clozapine (PSY-PSYCHOSIS-20260125-960). Clozapine monitoring TGA-mandated schedule correct: Weekly FBC 18wk\u2192Fortnightly to 52wk\u2192Monthly lifelong (PSY-PSYCHOSIS-20260125-052). Critical safety warnings present: Clozapine myocarditis (PSY-PSYCHOSIS-20260125-151), NMS (PSY-PSYCHOSIS-20260125-144), acute dystonia treatment (benztropine 2mg IM, PSY-PSYCHOSIS-20260125-814), tardive dyskinesia (PSY-PSYCHOSIS-20260125-247). Valproate contraindication in women of childbearing age correctly stated (PSY-ANX-BIP-20260125-108, TGA 2018). Lithium monitoring correct: Levels at 5-7 days\u2192weekly until stable\u21923-monthly, UEC/TFTs 6-monthly (PSY-ANX-BIP-20260125-136). SSRI first-line for depression/anxiety consistently applied. Benzodiazepines avoided long-term (dependence risk). Alcohol withdrawal correctly managed: Diazepam+thiamine BEFORE glucose (PSY-FINAL-20260125-610, 2014, 2022, 2030, 2038, 2046, 2054, 2062). Refeeding syndrome risk in anorexia correctly identified (PSY-FINAL-20260125-2005, 2013, 2021, 2029, 2037, 2045, 2053, 2061).",
+          "recommendations": "Add MCQs on SSRI discontinuation syndrome, serotonin syndrome, MAOI dietary restrictions (tyramine), antidepressant-induced hyponatremia (SIADH), QTc monitoring protocols for antipsychotics."
+        },
+        "cultural_safety": {
+          "score": 8.5,
+          "findings": "No explicit cultural safety content in MCQs. No Aboriginal/TSI mental health scenarios. No SEWB (Social Emotional Wellbeing) framework references. No historical trauma considerations. No Aboriginal liaison services mentioned. No CALD (Culturally and Linguistically Diverse) mental health scenarios. No interpreter use in mental health assessments. No culturally adapted Mental State Examination.",
+          "recommendations": "Add MCQs on: (1) Aboriginal/TSI mental health (SEWB framework, historical trauma, stolen generations impact), (2) Aboriginal liaison officer role in psychiatric assessment, (3) Interpreter use in mental health assessment (psychosis vs language barrier), (4) CALD mental health (somatization, culture-bound syndromes), (5) LGBTQIA+ mental health (minority stress, conversion therapy harm)."
+        }
+      },
+      "deployment_readiness": {
+        "ready": true,
+        "conditions": [
+          "Replace SAD PERSONS with SAFE-T framework in suicide risk MCQs",
+          "Add cultural safety MCQs (Aboriginal/TSI mental health, SEWB framework)",
+          "Specify state for Mental Health Act scenarios (NSW/VIC/QLD)"
+        ],
+        "estimated_pass_rate": "94%",
+        "target_audience": "AMC Clinical Examination candidates, Australian medical students (Year 4-5), IMGs preparing for Australian practice"
+      }
+    }
+  ],
+  "num_agents": 2,
+  "status": "REJECTED",
+  "item_id": "mcq_week1_all_100_unique_mcqs_030",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week1_all_100_unique_mcqs.json"
+}

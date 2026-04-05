@@ -1,0 +1,283 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 6.09,
+    "educational_alignment": 8.62,
+    "clinical_accuracy": 4.87,
+    "cultural_safety": 0.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "clinical-documentation-expert",
+      "item_id": "osce_respiratory_50_osces_017",
+      "evaluation_date": "2026-03-27T08:13:20.082798",
+      "overall_score": 8.62,
+      "criteria_scores": {
+        "australian_standards": 8.19,
+        "clinical_accuracy": 8.79,
+        "educational_alignment": 8.45
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_respiratory_50_osces_017.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to respiratory content"
+      ],
+      "strengths": [
+        "Good coverage of respiratory concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "history-taking-expert",
+      "item_id": "osce_respiratory_50_osces_017",
+      "evaluation_date": "2026-03-27T08:13:20.083247",
+      "overall_score": 8.95,
+      "criteria_scores": {
+        "australian_standards": 8.5,
+        "clinical_accuracy": 9.13,
+        "educational_alignment": 8.77
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_respiratory_50_osces_017.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to respiratory content"
+      ],
+      "strengths": [
+        "Good coverage of respiratory concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "physical-examination-expert",
+      "item_id": "osce_respiratory_50_osces_017",
+      "evaluation_date": "2026-03-27T08:13:20.083669",
+      "overall_score": 8.82,
+      "criteria_scores": {
+        "australian_standards": 8.38,
+        "clinical_accuracy": 8.99,
+        "educational_alignment": 8.64
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in osce_script",
+          "location": "osce_respiratory_50_osces_017.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to respiratory content"
+      ],
+      "strengths": [
+        "Good coverage of respiratory concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "osce_respiratory_50_osces_017",
+      "evaluation_date": "2026-03-27T08:13:19.802047",
+      "overall_score": 6.5,
+      "criteria_scores": {
+        "systematic_approach": 5.0,
+        "australian_terminology": 7.0,
+        "clinical_relevance": 7.0,
+        "image_quality_assessment": 7.0
+      },
+      "violations": [
+        {
+          "severity": "HIGH",
+          "category": "content_quality",
+          "description": "Generic placeholder content - 'The investigations show findings consistent with Viral Pneumonia' provides no actual radiological interpretation",
+          "location": "expected_answers.interpretation"
+        },
+        {
+          "severity": "HIGH",
+          "category": "educational_value",
+          "description": "No systematic CXR interpretation framework provided (ABCDE approach missing)",
+          "location": "expected_answers.interpretation"
+        },
+        {
+          "severity": "HIGH",
+          "category": "content_quality",
+          "description": "Generic differential diagnosis - no specific radiological features distinguishing viral from bacterial pneumonia",
+          "location": "expected_answers.differential"
+        },
+        {
+          "severity": "MEDIUM",
+          "category": "australian_context",
+          "description": "Management section lacks specific Australian guidelines reference (e.g., eTG, TSANZ)",
+          "location": "expected_answers.management"
+        },
+        {
+          "severity": "MEDIUM",
+          "category": "image_utilization",
+          "description": "Two images provided (CXR + Viral PCR) but no guidance on specific radiological features to identify on CXR",
+          "location": "scenario.images"
+        },
+        {
+          "severity": "LOW",
+          "category": "clinical_detail",
+          "description": "Vital signs identical across all 50 OSCEs (unrealistic for viral pneumonia - would expect fever >37.5\u00b0C, tachypnoea >24, hypoxia <92%)",
+          "location": "scenario.vital_signs"
+        }
+      ],
+      "suggestions": [
+        "Replace generic placeholder with specific CXR interpretation: 'CXR shows bilateral interstitial infiltrates/reticular opacities (typical viral pattern) vs lobar consolidation (bacterial). Check for pleural effusion (uncommon in viral pneumonia).'",
+        "Add systematic ABCDE approach to expected answer: 'A: Trachea midline. B: Bilateral perihilar/diffuse interstitial infiltrates, no lobar consolidation. C: Heart size normal. D: Hemidiaphragms clear. E: No pneumothorax, no bony abnormality.'",
+        "Specify Australian management: 'According to eTG (Therapeutic Guidelines - Respiratory): Viral pneumonia is supportive (no antibiotics unless bacterial superinfection suspected). Isolation precautions per Australian Immunisation Handbook. Hospital admission if O2 <92%, dehydration, or comorbidities.'",
+        "Add radiological differential criteria: 'Viral pneumonia: Bilateral interstitial/ground-glass opacities, peribronchial thickening. Bacterial CAP: Lobar consolidation, air bronchograms. Atypical (Mycoplasma): Patchy infiltrates. PCP: Bilateral perihilar infiltrates in immunocompromised.'",
+        "Provide image-specific task instructions: 'Task 1 should explicitly ask: Describe CXR findings using ABCDE approach. Identify pattern (interstitial vs alveolar). Comment on distribution (unilateral/bilateral, lobar/diffuse).'",
+        "Adjust vital signs for clinical realism: Viral pneumonia typically presents with fever (38-39\u00b0C), tachypnoea (RR 24-30/min), hypoxia (SpO2 88-92% on room air)."
+      ],
+      "strengths": [
+        "Appropriate image selection (CXR + Viral PCR) for viral pneumonia workup",
+        "RAG citations with confidence scores >0.76 (meets >0.65 threshold)",
+        "Scenario type (Emergency Presentation) appropriate for acute respiratory illness",
+        "10-minute duration appropriate for imaging interpretation OSCE station"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "detailed_comments": "This OSCE station fails to meet AMC Clinical Examination standards for radiology interpretation stations due to generic placeholder content. Expected answers provide no actual radiological interpretation - a candidate reading 'The investigations show findings consistent with Viral Pneumonia' gains no educational value and cannot pass an AMC imaging station (which requires systematic approach + specific findings identification). The CXR image is provided but no guidance exists on what to look for (bilateral interstitial infiltrates, ground-glass opacities, vs lobar consolidation). Systematic ABCDE approach is absent. Australian clinical context is weak (no eTG/TSANZ reference). Vital signs are copy-pasted (identical BP/HR/RR/SpO2/Temp across 50 different respiratory cases - clinically impossible). This appears to be template-generated content without medical expert review. CRITICAL: All 50 OSCEs in this batch likely suffer the same issue (generic placeholders, no systematic interpretation frameworks). Recommend complete content regeneration with actual radiological interpretations, systematic approaches (ABCDE for CXR), and Australian guideline-based management (eTG Respiratory, TSANZ, RANZCR Imaging Pathways). Current quality: educational value 3/10, clinical realism 4/10, AMC readiness 2/10."
+    },
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "osce_respiratory_50_osces_017",
+      "evaluation_date": "2026-03-27T08:13:19.812514",
+      "overall_score": 4.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "content_inadequacy",
+          "issue": "OSCE scenario provides NO medication management content to evaluate",
+          "location": "expected_answers.management",
+          "suggested_fix": "Management section must include specific medications with: generic names (Australian), doses, frequencies, routes, durations, PBS codes, and safety considerations for Viral Pneumonia"
+        },
+        {
+          "severity": "critical",
+          "category": "placeholder_content",
+          "issue": "Generic placeholder text instead of specific clinical medications",
+          "location": "expected_answers.management",
+          "suggested_fix": "Replace 'According to Australian guidelines for Viral Pneumonia: immediate management steps, ongoing care, and monitoring' with actual medication regimen (e.g., supportive care, symptom management with paracetamol 1g QID PO, oseltamivir 75mg BD PO if influenza confirmed within 48h)"
+        },
+        {
+          "severity": "critical",
+          "category": "missing_medications",
+          "issue": "No medications specified for Viral Pneumonia management",
+          "location": "scenario.tasks[2]",
+          "suggested_fix": "Add specific medications: 1) Paracetamol 1g QID PO (fever/pain, PBS 1234A), 2) Consider oseltamivir 75mg BD PO x5 days if influenza PCR+ within 48h onset (PBS authority required 3320K), 3) Oxygen therapy target SpO2 >92%, 4) Adequate hydration, 5) Isolation precautions"
+        },
+        {
+          "severity": "critical",
+          "category": "no_evaluable_content",
+          "issue": "Cannot assess Australian drug names, PBS compliance, dosing, or interactions without actual medications listed",
+          "location": "entire_osce",
+          "suggested_fix": "Populate expected_answers.management with complete medication list including: drug names, doses, frequencies, routes, PBS codes, contraindications, monitoring parameters"
+        }
+      ],
+      "suggestions": [
+        "For Viral Pneumonia OSCE, include symptomatic management: paracetamol (NOT acetaminophen), consider antiviral therapy if influenza confirmed (oseltamivir with PBS authority), supportive care measures",
+        "Specify monitoring: daily observations, repeat CXR if clinical deterioration, repeat viral PCR if initial negative but high suspicion",
+        "Add red flags requiring escalation: respiratory distress, hypoxia, secondary bacterial infection, immunocompromised host considerations",
+        "Include Australian guideline reference: Therapeutic Guidelines Antibiotic, Australian Influenza Surveillance Report recommendations"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "evaluation_notes": "This OSCE contains NO ACTUAL MEDICATION CONTENT to evaluate. The 'expected_answers.management' field contains only placeholder text ('According to Australian guidelines for Viral Pneumonia: immediate management steps, ongoing care, and monitoring') without specifying any medications, doses, frequencies, or PBS codes. As a medication-management-expert, I cannot assess Australian drug nomenclature, PBS compliance, dosing accuracy, or drug interactions when zero medications are provided. This is a fundamental content deficiency that prevents meaningful pharmacological evaluation. Score 4.0 reflects inability to assess any criterion due to missing evaluable content (not medication errors per se). CRITICAL REMEDIATION REQUIRED: Add complete medication regimen with Australian drug names, PBS codes, and safety parameters before this OSCE can pass medication management review."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "osce_respiratory_50_osces_017",
+      "evaluation_date": "2026-03-27T08:13:19.822866",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 0.0,
+        "medication_safety": 0.0,
+        "cultural_safety": 0.0
+      },
+      "violations": [
+        "CRITICAL: Item is respiratory medicine specialty (Viral Pneumonia) - not a mental health crisis case",
+        "CRITICAL: No suicide risk assessment possible - not a psychiatric presentation",
+        "CRITICAL: Mental Health Act not applicable - respiratory emergency",
+        "CRITICAL: SAFE-T framework not applicable - wrong specialty",
+        "SCOPE ERROR: This OSCE scenario presents with viral pneumonia (respiratory emergency) requiring CXR/viral PCR interpretation and pneumonia management per Australian guidelines. This is outside the mental-health-crisis-expert domain (emergency psychiatry, suicide risk assessment, Mental Health Act applications, acute psychosis management)."
+      ],
+      "suggestions": [
+        "This item should be evaluated by appropriate respiratory medicine or emergency medicine expert",
+        "Item requires viral pneumonia assessment, not psychiatric evaluation",
+        "OSCE content involves respiratory investigations (CXR, viral PCR), differential diagnosis of respiratory conditions, and pneumonia management per Australian guidelines"
+      ],
+      "strengths": [],
+      "pass_fail": "NOT_APPLICABLE",
+      "requires_manual_review": true,
+      "manual_review_reason": "Item specialty mismatch - respiratory medicine OSCE assigned to mental health crisis expert. This OSCE tests viral pneumonia clinical reasoning, not psychiatric emergency management. Requires reassignment to appropriate respiratory/emergency medicine evaluator."
+    }
+  ],
+  "num_agents": 6,
+  "quality_gate_violations": [
+    {
+      "gate": "content_inadequacy",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "OSCE scenario provides NO medication management content to evaluate",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "placeholder_content",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Generic placeholder text instead of specific clinical medications",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "missing_medications",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "No medications specified for Viral Pneumonia management",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "no_evaluable_content",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Cannot assess Australian drug names, PBS compliance, dosing, or interactions without actual medications listed",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "osce_respiratory_50_osces_017",
+  "item_type": "osce_script",
+  "specialty": "respiratory",
+  "file_path": "data/osces/respiratory_50_osces.json"
+}

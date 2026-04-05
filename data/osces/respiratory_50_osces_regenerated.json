@@ -1,0 +1,724 @@
+{
+  "metadata": {
+    "specialty": "Respiratory",
+    "generation_date": "2026-03-29T19:24:47.635592",
+    "generator": "regenerate_respiratory_osces.py + Claude CLI",
+    "total_osces": 4,
+    "source_file": "data/osces/respiratory_50_osces.json",
+    "regeneration_status": "PARTIAL",
+    "last_completion_date": "2026-04-03T08:41:12.700366"
+  },
+  "osces": [
+    {
+      "id": "resp_osce_asthma_copd_intermediate",
+      "title": "Asthma/COPD Management and Spirometry Interpretation",
+      "difficulty": "intermediate",
+      "duration_minutes": 20,
+      "specialty": "respiratory",
+      "learning_objectives": [
+        "Interpret obstructive spirometry patterns with specific values",
+        "Differentiate between asthma and COPD management approaches",
+        "Demonstrate inhaler device techniques with Australian PBS medications",
+        "Apply appropriate oxygen saturation targets for COPD patients",
+        "Utilise COPD-X Guidelines and National Asthma Council recommendations"
+      ],
+      "scenario": {
+        "setting": "Respiratory outpatient clinic",
+        "patient_age": 58,
+        "patient_gender": "male",
+        "presenting_complaint": "Worsening breathlessness and cough over 6 months",
+        "clinical_context": "Current smoker (40 pack-years) with previous diagnosis of COPD, presenting for review of symptoms and spirometry results. Patient reports increased dyspnoea on exertion, morning cough with white sputum, and reduced exercise tolerance. He currently uses salbutamol PRN but struggles with technique.",
+        "background": "Known COPD diagnosed 2 years ago following spirometry. Continues smoking 15 cigarettes daily. Previous hospital admission 12 months ago with acute exacerbation. Lives independently, works as a truck driver. No known allergies."
+      },
+      "clinical_findings": {
+        "vital_signs": {
+          "blood_pressure": "145/85 mmHg",
+          "heart_rate": "92 bpm regular",
+          "respiratory_rate": "22 breaths/min",
+          "oxygen_saturation": "89% on room air",
+          "temperature": "36.8\u00b0C"
+        },
+        "examination": {
+          "general": "Alert, conversational dyspnoea, barrel-shaped chest",
+          "respiratory": "Reduced chest expansion, hyperresonant percussion, diminished breath sounds bilaterally, expiratory wheeze",
+          "cardiovascular": "Regular rhythm, no murmurs, no peripheral oedema",
+          "other": "Clubbing absent, accessory muscle use at rest"
+        },
+        "investigations": {
+          "spirometry": {
+            "fev1": "1.8L (45% predicted)",
+            "fvc": "3.2L (65% predicted)",
+            "fev1_fvc_ratio": "0.56",
+            "interpretation": "Severe obstructive pattern consistent with COPD exacerbation",
+            "bronchodilator_response": "FEV1 improved to 2.0L (50% predicted) post-bronchodilator"
+          },
+          "chest_xray": "Hyperinflation, flattened diaphragms, no acute consolidation",
+          "arterial_blood_gas": "pH 7.38, PaCO2 48 mmHg, PaO2 58 mmHg, HCO3 28 mmol/L (chronic retention pattern)"
+        }
+      },
+      "tasks": [
+        {
+          "task_number": 1,
+          "instruction": "Interpret the spirometry results and explain the findings to the patient",
+          "time_allocation": "4 minutes",
+          "key_points": [
+            "FEV1 1.8L (45% predicted) indicates severe obstruction",
+            "FEV1/FVC ratio 0.56 confirms obstructive pattern",
+            "Bronchodilator response shows partial reversibility",
+            "Results consistent with COPD with some asthmatic features"
+          ]
+        },
+        {
+          "task_number": 2,
+          "instruction": "Demonstrate correct inhaler technique for prescribed medications",
+          "time_allocation": "6 minutes",
+          "key_points": [
+            "Salbutamol 100mcg MDI + spacer technique demonstration",
+            "Tiotropium HandiHaler device technique",
+            "Common errors in inhaler use and correction",
+            "Patient practice with feedback"
+          ]
+        },
+        {
+          "task_number": 3,
+          "instruction": "Discuss oxygen therapy targets and monitoring",
+          "time_allocation": "4 minutes",
+          "key_points": [
+            "COPD oxygen target 88-92% SpO2 (avoid oxygen toxicity)",
+            "Risk of CO2 retention with excessive oxygen",
+            "When to use supplemental oxygen therapy",
+            "Home oxygen therapy criteria"
+          ]
+        },
+        {
+          "task_number": 4,
+          "instruction": "Provide management plan following COPD-X Guidelines",
+          "time_allocation": "6 minutes",
+          "key_points": [
+            "Smoking cessation counselling priority",
+            "Pulmonary rehabilitation referral",
+            "Vaccination recommendations (influenza, pneumococcal)",
+            "Exacerbation action plan development"
+          ]
+        }
+      ],
+      "management_plan": {
+        "immediate": [
+          "Commence tiotropium 18mcg HandiHaler once daily",
+          "Continue salbutamol 100mcg MDI + spacer PRN",
+          "Smoking cessation counselling and NRT prescription",
+          "Patient education on device techniques"
+        ],
+        "medications": [
+          {
+            "medication": "Salbutamol 100mcg MDI + spacer",
+            "dosage": "2 puffs PRN for breathlessness",
+            "pbs_code": "PBS 8333L",
+            "device_technique": "Shake inhaler, exhale fully, seal lips around spacer, actuate once, inhale slowly and deeply, hold breath 10 seconds"
+          },
+          {
+            "medication": "Tiotropium 18mcg HandiHaler",
+            "dosage": "1 capsule daily via HandiHaler device",
+            "pbs_code": "PBS 8723K",
+            "device_technique": "Insert capsule into chamber, press button fully to pierce, inhale deeply and rapidly twice, check capsule is empty"
+          },
+          {
+            "medication": "Nicotine replacement therapy patches",
+            "dosage": "21mg/24hr patch daily",
+            "pbs_code": "PBS 8635B",
+            "duration": "8-12 weeks with step-down protocol"
+          }
+        ],
+        "monitoring": [
+          "Oxygen saturation target 88-92%",
+          "Peak flow monitoring twice daily",
+          "Symptoms diary with action plan",
+          "3-monthly spirometry review"
+        ],
+        "referrals": [
+          "Pulmonary rehabilitation program",
+          "Smoking cessation clinic",
+          "Respiratory physician if inadequate control"
+        ]
+      },
+      "assessment_criteria": {
+        "spirometry_interpretation": {
+          "marks": 25,
+          "criteria": [
+            "Correctly identifies obstructive pattern (5 marks)",
+            "States specific FEV1 and FVC values with percentages (5 marks)",
+            "Explains FEV1/FVC ratio significance (5 marks)",
+            "Discusses bronchodilator response appropriately (5 marks)",
+            "Links findings to clinical presentation (5 marks)"
+          ]
+        },
+        "inhaler_technique": {
+          "marks": 25,
+          "criteria": [
+            "Demonstrates MDI + spacer technique correctly (10 marks)",
+            "Shows HandiHaler technique accurately (10 marks)",
+            "Identifies common errors and corrections (5 marks)"
+          ]
+        },
+        "oxygen_management": {
+          "marks": 20,
+          "criteria": [
+            "States correct SpO2 target for COPD (88-92%) (10 marks)",
+            "Explains rationale for controlled oxygen therapy (5 marks)",
+            "Discusses risks of excessive oxygen (5 marks)"
+          ]
+        },
+        "management_planning": {
+          "marks": 30,
+          "criteria": [
+            "Addresses smoking cessation as priority (10 marks)",
+            "Prescribes appropriate medications with PBS codes (10 marks)",
+            "Discusses pulmonary rehabilitation and vaccinations (5 marks)",
+            "Develops realistic exacerbation action plan (5 marks)"
+          ]
+        }
+      },
+      "examiner_notes": {
+        "key_teaching_points": [
+          "COPD oxygen targets differ from asthma (88-92% vs 94-98%)",
+          "Device technique is crucial for medication efficacy",
+          "Smoking cessation remains the most effective intervention",
+          "COPD-X Guidelines emphasise comprehensive management approach"
+        ],
+        "common_mistakes": [
+          "Applying standard oxygen targets (94-98%) to COPD patients",
+          "Focusing only on medications without addressing smoking",
+          "Inadequate inhaler technique demonstration",
+          "Missing the importance of pulmonary rehabilitation"
+        ],
+        "time_management": [
+          "Spirometry interpretation: 4 minutes",
+          "Inhaler demonstration: 6 minutes",
+          "Oxygen discussion: 4 minutes",
+          "Management planning: 6 minutes"
+        ]
+      },
+      "australian_guidelines": [
+        "COPD-X Guidelines (Lung Foundation Australia)",
+        "National Asthma Council Australia - COPD Management",
+        "TSANZ COPD Guidelines",
+        "Australian Medicines Handbook - Respiratory medications",
+        "PBS Guidelines for respiratory medications"
+      ],
+      "learning_resources": [
+        "COPD-X concise guide for primary care",
+        "National Asthma Council inhaler technique videos",
+        "Lung Foundation Australia patient education materials",
+        "TSANZ spirometry interpretation guidelines"
+      ]
+    },
+    {
+      "scenario_type": "respiratory_osce",
+      "title": "Asthma/COPD Management and Spirometry Interpretation",
+      "difficulty": "intermediate",
+      "duration_minutes": 15,
+      "specialty": "respiratory",
+      "learning_objectives": [
+        "Interpret spirometry findings in obstructive lung disease",
+        "Differentiate between asthma and COPD based on clinical features",
+        "Demonstrate appropriate inhaler technique with device selection",
+        "Apply appropriate oxygen therapy targets",
+        "Formulate evidence-based management plan using Australian guidelines"
+      ],
+      "scenario_description": "Mrs Jennifer Chen, a 58-year-old Chinese-Australian woman, presents to your respiratory clinic with increasing breathlessness over the past 3 months. She has a 30 pack-year smoking history (quit 5 years ago) and works as a high school chemistry teacher. She reports morning cough with clear sputum, wheeze on exertion, and difficulty climbing stairs. Her GP has referred her following spirometry results. You need to interpret her lung function tests, assess her symptoms, and formulate an appropriate management plan.",
+      "patient_demographics": {
+        "name": "Mrs Jennifer Chen",
+        "age": 58,
+        "gender": "Female",
+        "occupation": "High school chemistry teacher",
+        "background": "Chinese-Australian"
+      },
+      "presenting_complaint": "Progressive dyspnoea on exertion with morning cough over 3 months",
+      "history_of_presenting_illness": "Mrs Chen reports gradual onset of breathlessness when climbing stairs or walking uphill over the past 3 months. She experiences a productive cough most mornings with small amounts of clear sputum. Occasionally hears wheeze during physical activity. No chest pain or haemoptysis. Symptoms are worse on cold mornings and during school term when exposed to chemical fumes in the laboratory. She uses her reliever inhaler 3-4 times per week, increased from once weekly 6 months ago.",
+      "past_medical_history": [
+        "Childhood asthma (well-controlled until recent deterioration)",
+        "Hypertension (well-controlled on ACE inhibitor)",
+        "Osteoporosis (post-menopausal, on calcium and vitamin D)"
+      ],
+      "medications": [
+        "Salbutamol 100mcg MDI PRN (current use 3-4 times weekly)",
+        "Perindopril 5mg daily",
+        "Calcium carbonate 600mg + Cholecalciferol 1000IU daily"
+      ],
+      "allergies": "NKDA (No Known Drug Allergies)",
+      "social_history": {
+        "smoking": "30 pack-year history, quit 5 years ago",
+        "alcohol": "1-2 glasses wine per week",
+        "occupation": "High school chemistry teacher (potential occupational exposures)",
+        "exercise": "Previously walked 5km daily, now limited by breathlessness"
+      },
+      "family_history": "Father had emphysema (heavy smoker), mother with late-onset asthma",
+      "examination_findings": {
+        "general": "Comfortable at rest, no accessory muscle use",
+        "vital_signs": {
+          "pulse": "88 bpm regular",
+          "blood_pressure": "135/82 mmHg",
+          "respiratory_rate": "16/min",
+          "oxygen_saturation": "95% on room air",
+          "temperature": "36.7\u00b0C"
+        },
+        "respiratory": {
+          "inspection": "Barrel chest shape, pursed lip breathing on exertion demonstration",
+          "palpation": "Reduced chest expansion bilaterally",
+          "percussion": "Hyperresonant throughout both lung fields",
+          "auscultation": "Reduced air entry bilaterally, expiratory wheeze on forced expiration, no crackles"
+        },
+        "cardiovascular": "Dual heart sounds, no murmurs, JVP not elevated",
+        "other": "No finger clubbing, no peripheral oedema"
+      },
+      "investigations": {
+        "spirometry": {
+          "pre_bronchodilator": {
+            "fev1": "1.8L (45% predicted)",
+            "fvc": "3.2L (65% predicted)",
+            "fev1_fvc_ratio": "0.56",
+            "pattern": "Obstructive pattern with moderate severity"
+          },
+          "post_bronchodilator": {
+            "fev1": "2.1L (53% predicted)",
+            "fvc": "3.4L (68% predicted)",
+            "fev1_fvc_ratio": "0.62",
+            "reversibility": "FEV1 improvement 17% (300mL), consistent with significant reversibility"
+          }
+        },
+        "chest_xray": "Hyperinflated lung fields, flattened diaphragms, no focal consolidation",
+        "full_blood_count": "Hb 138 g/L, WCC 7.2 x10^9/L, Eosinophils 0.15 x10^9/L (normal)",
+        "ige_total": "245 IU/mL (elevated, normal <100)",
+        "specific_ige": "House dust mite RAST class 3, cat dander RAST class 2"
+      },
+      "key_clinical_features": [
+        "Significant smoking history with obstructive spirometry pattern",
+        "Substantial reversibility on post-bronchodilator testing (17%)",
+        "Elevated total IgE with specific environmental allergen sensitisation",
+        "Occupational chemical exposure history",
+        "Mixed features of asthma and COPD (Asthma-COPD Overlap - ACO)"
+      ],
+      "differential_diagnosis": [
+        {
+          "diagnosis": "Asthma-COPD Overlap (ACO)",
+          "likelihood": "Most likely",
+          "supporting_features": [
+            "Significant smoking history",
+            "Obstructive spirometry with substantial reversibility",
+            "Allergic sensitisation",
+            "Childhood asthma history",
+            "Occupational triggers"
+          ]
+        },
+        {
+          "diagnosis": "COPD with reversible component",
+          "likelihood": "Possible",
+          "supporting_features": [
+            "Smoking history",
+            "Morning cough with sputum",
+            "Hyperinflation on examination and CXR"
+          ]
+        },
+        {
+          "diagnosis": "Occupational asthma",
+          "likelihood": "Contributing factor",
+          "supporting_features": [
+            "Chemistry teacher with chemical exposures",
+            "Symptoms worse during term time"
+          ]
+        }
+      ],
+      "management_plan": {
+        "immediate": [
+          "Assess current inhaler technique with salbutamol MDI",
+          "Oxygen saturation monitoring - target 94-98% (asthma component predominant)",
+          "Peak flow monitoring diary for 2 weeks"
+        ],
+        "pharmacological": [
+          {
+            "medication": "Salbutamol 100mcg MDI + spacer",
+            "dosing": "2 puffs PRN for symptoms",
+            "pbs_code": "PBS 8333L",
+            "device_technique": "Demonstrate slow, deep inhalation with spacer device, hold for 10 seconds"
+          },
+          {
+            "medication": "Budesonide/Formoterol 200/6mcg Turbuhaler",
+            "dosing": "2 puffs twice daily",
+            "pbs_code": "PBS 8270F",
+            "device_technique": "Load dose, breathe out, forceful deep inhalation, hold breath 10 seconds"
+          },
+          {
+            "medication": "Tiotropium 18mcg HandiHaler",
+            "dosing": "1 capsule inhaled daily",
+            "pbs_code": "PBS 8723K",
+            "device_technique": "Pierce capsule, inhale deeply twice from same capsule, ensure capsule rattles"
+          }
+        ],
+        "non_pharmacological": [
+          "Smoking cessation reinforcement and support",
+          "Allergen avoidance strategies (house dust mite, pets)",
+          "Occupational health assessment regarding chemical exposures",
+          "Pulmonary rehabilitation referral",
+          "Asthma action plan development"
+        ],
+        "monitoring": [
+          "Spirometry review in 3 months post-treatment initiation",
+          "Asthma Control Test (ACT) score at each visit",
+          "Annual influenza vaccination",
+          "Pneumococcal vaccination (23-valent)",
+          "Bone density monitoring due to ICS therapy"
+        ]
+      },
+      "red_flags": [
+        {
+          "flag": "Rapidly declining lung function",
+          "action": "Consider alpha-1 antitrypsin deficiency, urgent respiratory referral"
+        },
+        {
+          "flag": "Haemoptysis",
+          "action": "Urgent chest CT and respiratory referral to exclude malignancy"
+        },
+        {
+          "flag": "Severe exacerbation with type 2 respiratory failure",
+          "action": "Controlled oxygen therapy 88-92% if COPD features predominant, BiPAP consideration"
+        }
+      ],
+      "guidelines_referenced": [
+        "National Asthma Council Australia - Australian Asthma Handbook",
+        "COPD-X Guidelines (Lung Foundation Australia)",
+        "TSANZ Position Statement on ACO (Asthma-COPD Overlap)",
+        "Global Initiative for Asthma (GINA) 2023"
+      ],
+      "learning_points": [
+        "ACO represents patients with features of both asthma and COPD requiring dual therapy approaches",
+        "Significant reversibility (>12% and >200mL FEV1 improvement) suggests asthmatic component",
+        "Occupational exposures can trigger both asthma and COPD exacerbations",
+        "Triple therapy (ICS/LABA/LAMA) is first-line for ACO patients",
+        "Oxygen targets depend on predominant phenotype - 94-98% for asthma, 88-92% for COPD"
+      ],
+      "assessment_criteria": {
+        "history_taking": [
+          "Explores symptom progression and triggers",
+          "Identifies occupational and environmental exposures",
+          "Clarifies smoking history and cessation",
+          "Reviews previous asthma history and control"
+        ],
+        "examination_skills": [
+          "Systematic respiratory examination",
+          "Recognises signs of hyperinflation",
+          "Assesses for complications of COPD"
+        ],
+        "investigation_interpretation": [
+          "Correctly interprets spirometry values and pattern",
+          "Recognises significance of reversibility testing",
+          "Integrates imaging findings with clinical picture"
+        ],
+        "management_planning": [
+          "Demonstrates appropriate inhaler technique for different devices",
+          "Selects evidence-based pharmacotherapy",
+          "Incorporates non-pharmacological interventions",
+          "Applies appropriate oxygen therapy targets"
+        ],
+        "communication": [
+          "Explains diagnosis using appropriate language",
+          "Discusses treatment rationale and expectations",
+          "Addresses patient concerns about prognosis"
+        ]
+      },
+      "common_mistakes": [
+        "Incorrectly targeting 88-92% oxygen saturation when asthmatic component predominates",
+        "Poor inhaler technique demonstration, especially with HandiHaler capsule system",
+        "Failure to recognise ACO as distinct from pure asthma or COPD",
+        "Not addressing occupational triggers in management plan",
+        "Inadequate smoking cessation counselling and support"
+      ],
+      "extensions": [
+        "Discuss indications for home oxygen therapy",
+        "Explain criteria for pulmonary rehabilitation referral",
+        "Review vaccination recommendations for COPD patients",
+        "Describe when to consider bronchoscopy or high-resolution CT"
+      ]
+    },
+    {
+      "scenario": {
+        "setting": "Respiratory medicine clinic",
+        "patient_background": "Margaret Chen, a 58-year-old former coal miner presenting with progressive breathlessness and chronic cough. She has a 40 pack-year smoking history, quit 5 years ago. Recently hospitalized for respiratory exacerbation requiring antibiotics and prednisolone.",
+        "chief_complaint": "Worsening shortness of breath over the past 6 months, particularly on exertion",
+        "context": "Patient referred by GP for specialist assessment and optimization of respiratory management. Recent spirometry and chest X-ray available."
+      },
+      "task_description": "Conduct a focused respiratory consultation including history taking, clinical examination, spirometry interpretation, and management planning for this patient with suspected COPD exacerbation.",
+      "time_limit": "20 minutes",
+      "learning_objectives": [
+        "Demonstrate systematic approach to respiratory history taking including occupational exposure assessment",
+        "Perform focused respiratory examination with attention to signs of airflow obstruction",
+        "Interpret spirometry results and classify severity of obstruction",
+        "Formulate appropriate management plan including inhaler therapy optimization",
+        "Demonstrate proper inhaler technique and patient education",
+        "Apply Australian COPD-X guidelines for management recommendations"
+      ],
+      "assessment_criteria": [
+        "History taking: Comprehensive respiratory history including smoking history, occupational exposures, and symptom progression (25%)",
+        "Physical examination: Systematic respiratory examination with correct technique and identification of relevant signs (25%)",
+        "Clinical reasoning: Accurate interpretation of investigations and formulation of differential diagnosis (20%)",
+        "Management planning: Appropriate therapeutic recommendations based on COPD-X guidelines (20%)",
+        "Communication: Clear explanation of diagnosis and treatment plan to patient (10%)"
+      ],
+      "patient_presentation": {
+        "appearance": "Well-groomed woman appearing her stated age, sitting upright, mild pursed-lip breathing at rest",
+        "vital_signs": {
+          "temperature": "37.1\u00b0C",
+          "heart_rate": "88 bpm regular",
+          "blood_pressure": "142/86 mmHg",
+          "respiratory_rate": "22 breaths/min",
+          "oxygen_saturation": "89% on room air",
+          "bmi": "28.5 kg/m\u00b2"
+        },
+        "history": {
+          "presenting_complaint": "Progressive dyspnea on exertion over 6 months, now SOB climbing one flight of stairs. Daily productive cough with white-yellow sputum, worse mornings. Two respiratory 'flare-ups' requiring antibiotics in past year.",
+          "past_medical_history": "Hypertension, osteoporosis, previous pneumonia 2018. No previous formal COPD diagnosis.",
+          "medications": "Amlodipine 5mg daily, alendronate 70mg weekly, ventolin MDI PRN (uses 2-3 times daily)",
+          "social_history": "40 pack-year smoking history (quit 2019), worked in coal mine for 25 years (1985-2010), lives with husband in single-story home, retired cleaner",
+          "family_history": "Father died of 'lung problems', mother had asthma"
+        },
+        "examination_findings": {
+          "general": "Alert, cooperative, mild respiratory distress, no clubbing or cyanosis",
+          "respiratory": "Barrel chest configuration, reduced chest expansion bilaterally, hyperresonant percussion throughout, diminished breath sounds bilaterally with expiratory wheeze, prolonged expiratory phase",
+          "cardiovascular": "Regular rhythm, no murmurs, elevated JVP 6cm, mild peripheral edema",
+          "other": "No lymphadenopathy, normal neurological examination"
+        }
+      },
+      "investigations": {
+        "spirometry": {
+          "fev1": "1.8L (45% predicted)",
+          "fvc": "3.2L (65% predicted)",
+          "fev1_fvc_ratio": "0.56",
+          "interpretation": "Severe obstructive pattern consistent with COPD. Post-bronchodilator FEV1 improvement 8% (below significant reversibility threshold).",
+          "severity": "GOLD Stage 3 (severe airflow limitation)"
+        },
+        "chest_xray": "Hyperinflation with flattened diaphragms, increased retrosternal air space, no consolidation or masses",
+        "arterial_blood_gas": "pH 7.38, pCO2 48 mmHg, pO2 58 mmHg, HCO3 28 mmol/L on room air",
+        "full_blood_count": "Hemoglobin 148 g/L, WCC 7.2 x10\u2079/L, platelets 245 x10\u2079/L"
+      },
+      "diagnosis": "COPD GOLD Stage 3 with features of chronic bronchitis, likely occupational component (pneumoconiosis). Current mild exacerbation.",
+      "management_plan": {
+        "immediate": [
+          "Optimize bronchodilator therapy with dual long-acting bronchodilators",
+          "Target oxygen saturation 88-92% given COPD and CO2 retention risk",
+          "Inhaler technique assessment and education",
+          "Smoking cessation counseling and support (Quitline referral)"
+        ],
+        "medications": [
+          {
+            "medication": "Tiotropium 18mcg HandiHaler",
+            "dosage": "1 capsule inhaled daily",
+            "pbs_code": "PBS 8723K",
+            "indication": "Long-acting bronchodilator for COPD maintenance",
+            "technique": "Demonstrate HandiHaler use: pierce capsule, inhale deeply and slowly, hold breath 10 seconds"
+          },
+          {
+            "medication": "Salbutamol 100mcg MDI + spacer",
+            "dosage": "2 puffs every 4-6 hours PRN",
+            "pbs_code": "PBS 8333L",
+            "indication": "Short-acting bronchodilator for symptom relief",
+            "technique": "Shake inhaler, exhale fully, actuate into spacer, inhale slowly and deeply, hold breath 10 seconds"
+          },
+          {
+            "medication": "Formoterol/Budesonide 12/400mcg DPI",
+            "dosage": "1 inhalation twice daily",
+            "pbs_code": "PBS 8801T",
+            "indication": "Combination LABA/ICS for severe COPD with exacerbation history",
+            "technique": "Load dose, exhale away from device, inhale forcefully and deeply through mouthpiece"
+          },
+          {
+            "medication": "Prednisolone 25mg",
+            "dosage": "Daily for 5 days",
+            "indication": "Short course for current mild exacerbation",
+            "monitoring": "Monitor blood glucose if diabetic, review after course completion"
+          }
+        ],
+        "non_pharmacological": [
+          "Pulmonary rehabilitation referral - 6-8 week supervised program",
+          "Annual influenza vaccination and pneumococcal vaccination",
+          "Home oxygen assessment if symptoms persist despite optimal therapy",
+          "COPD action plan education for early exacerbation recognition"
+        ],
+        "follow_up": "Review in 4-6 weeks post medication optimization, earlier if symptoms worsen"
+      },
+      "key_teaching_points": [
+        "COPD diagnosis requires post-bronchodilator FEV1/FVC <0.70 with appropriate clinical context",
+        "Occupational history crucial - coal mining is significant risk factor for pneumoconiosis and COPD",
+        "Oxygen target 88-92% in COPD patients due to CO2 retention risk",
+        "Dual bronchodilator therapy (LAMA + LABA) first-line for GOLD Stage 3",
+        "ICS/LABA combination indicated for frequent exacerbators (\u22652 per year or \u22651 requiring hospitalization)",
+        "Proper inhaler technique essential - up to 90% of patients use inhalers incorrectly",
+        "Pulmonary rehabilitation improves exercise capacity and quality of life in COPD"
+      ],
+      "common_mistakes": [
+        "Failing to identify occupational exposure history",
+        "Incorrect oxygen saturation targets (using 94-98% instead of 88-92%)",
+        "Not demonstrating proper inhaler technique",
+        "Prescribing ICS monotherapy instead of combination bronchodilators",
+        "Missing signs of cor pulmonale (elevated JVP, peripheral edema)",
+        "Inadequate assessment of exacerbation triggers and action plan education"
+      ],
+      "examiner_notes": {
+        "key_history_points": [
+          "Smoking history quantification (pack-years)",
+          "Occupational exposure assessment (coal mining)",
+          "Exacerbation frequency and triggers",
+          "Current medication use and technique",
+          "Exercise tolerance and functional limitation"
+        ],
+        "examination_focus": [
+          "Inspection for barrel chest and breathing pattern",
+          "Palpation for chest expansion and tactile fremitus",
+          "Percussion for hyperresonance",
+          "Auscultation for wheeze and prolonged expiration",
+          "Assessment for signs of right heart strain"
+        ],
+        "expected_management": [
+          "Recognition of severe COPD based on spirometry",
+          "Appropriate bronchodilator escalation",
+          "Correct oxygen saturation targets",
+          "Inhaler technique demonstration",
+          "Pulmonary rehabilitation referral",
+          "Exacerbation action plan discussion"
+        ]
+      },
+      "difficulty_level": "intermediate",
+      "specialty": "respiratory",
+      "keywords": [
+        "COPD",
+        "spirometry",
+        "bronchodilators",
+        "inhaler technique",
+        "occupational lung disease",
+        "COPD-X guidelines",
+        "pulmonary rehabilitation"
+      ]
+    },
+    {
+      "scenario": "Mrs. Patricia Chen, 58-year-old office worker, presents to your clinic with worsening breathlessness and morning cough. She has a 30 pack-year smoking history (quit 2 years ago) and reports increased wheeze over the past month. Current medications include salbutamol MDI 'as needed'. Recent spirometry shows FEV1 1.8L (45% predicted), FVC 3.2L (65% predicted), FEV1/FVC 0.56.",
+      "patient_presentation": {
+        "chief_complaint": "Worsening breathlessness and morning cough over past month",
+        "history_of_presenting_illness": "Mrs. Chen reports progressive dyspnoea on exertion, particularly climbing stairs to her second-floor office. Morning cough productive of clear sputum, worse on waking. Increased wheeze audible to herself. Uses salbutamol 3-4 times daily (previously once weekly). No fever, chest pain, or haemoptysis. Sleep disturbed by cough twice weekly.",
+        "past_medical_history": "Hypertension (well-controlled on perindopril), osteoarthritis knees. No previous hospital admissions for respiratory illness.",
+        "medications": "Salbutamol 100mcg MDI PRN, perindopril 5mg daily, paracetamol PRN",
+        "social_history": "30 pack-year smoking history, ceased 2 years ago. Works in accounting, minimal occupational dust exposure. Lives with husband in two-storey home. Independent with ADLs.",
+        "family_history": "Mother had 'emphysema', father died of myocardial infarction age 72"
+      },
+      "physical_examination": {
+        "general_appearance": "Comfortable at rest, no acute distress. Able to speak in full sentences.",
+        "vital_signs": {
+          "heart_rate": "88 bpm",
+          "blood_pressure": "134/82 mmHg",
+          "respiratory_rate": "18/min",
+          "oxygen_saturation": "94% room air",
+          "temperature": "36.7\u00b0C"
+        },
+        "respiratory_examination": {
+          "inspection": "Mild use of accessory muscles on deep inspiration. No finger clubbing. Chest wall symmetrical.",
+          "palpation": "Reduced chest expansion bilaterally. Vocal fremitus normal.",
+          "percussion": "Hyper-resonant throughout both lung fields",
+          "auscultation": "Widespread wheeze on expiration, reduced air entry bibasally. Prolonged expiratory phase."
+        },
+        "cardiovascular_examination": "Heart sounds dual, no murmurs. No peripheral oedema. JVP not elevated.",
+        "other_systems": "Abdomen soft, non-tender. No hepatosplenomegaly. Neurological examination deferred."
+      },
+      "investigations": {
+        "spirometry": {
+          "fev1": "1.8L (45% predicted)",
+          "fvc": "3.2L (65% predicted)",
+          "fev1_fvc_ratio": "0.56",
+          "interpretation": "Moderate obstructive pattern consistent with COPD. Post-bronchodilator FEV1 improvement 180ml (reversibility 10%)"
+        },
+        "chest_xray": "Hyperinflated lung fields. Flattened diaphragms. No consolidation or pleural effusion.",
+        "full_blood_count": "Hb 128 g/L, WCC 6.8 x10^9/L, platelets 285 x10^9/L",
+        "arterial_blood_gas": "pH 7.41, pCO2 42 mmHg, pO2 68 mmHg, HCO3 26 mmol/L (room air)"
+      },
+      "diagnosis": {
+        "primary": "Chronic Obstructive Pulmonary Disease (COPD), moderate severity with exacerbation",
+        "secondary": "Smoking-related lung disease",
+        "differential": [
+          "Asthma-COPD overlap syndrome",
+          "Chronic bronchitis component",
+          "Alpha-1 antitrypsin deficiency (consider testing)"
+        ]
+      },
+      "management_plan": {
+        "immediate": [
+          "Oxygen therapy to maintain SpO2 88-92% (COPD-specific target to avoid CO2 retention)",
+          "Bronchodilator therapy optimisation",
+          "Assess need for oral corticosteroids"
+        ],
+        "medications": [
+          {
+            "medication": "Salbutamol 100mcg MDI + spacer device",
+            "dose": "2 puffs every 4-6 hours PRN breathlessness",
+            "pbs_code": "PBS 8333L",
+            "instructions": "Demonstrate MDI + spacer technique: shake inhaler, breathe out, seal lips around spacer, press canister once, breathe in slowly and deeply, hold breath 10 seconds"
+          },
+          {
+            "medication": "Tiotropium bromide 18mcg HandiHaler",
+            "dose": "1 capsule inhaled daily (morning)",
+            "pbs_code": "PBS 8723K",
+            "instructions": "Demonstrate HandiHaler technique: open capsule chamber, insert capsule, close, press green button to pierce, breathe out, seal lips around mouthpiece, breathe in rapidly and deeply"
+          },
+          {
+            "medication": "Prednisolone",
+            "dose": "37.5mg daily for 5 days (exacerbation management)",
+            "pbs_code": "PBS 8074E",
+            "instructions": "Take with food, complete full course even if feeling better"
+          }
+        ],
+        "non_pharmacological": [
+          "Smoking cessation counselling (maintain abstinence)",
+          "Pulmonary rehabilitation referral",
+          "Influenza and pneumococcal vaccination",
+          "Action plan development for exacerbation management"
+        ],
+        "follow_up": [
+          "Review in 1 week to assess response to treatment",
+          "Annual spirometry monitoring",
+          "COPD Assessment Test (CAT) score baseline and monitoring"
+        ]
+      },
+      "key_teaching_points": [
+        "COPD oxygen targets are 88-92% SpO2 to prevent hypercapnic respiratory failure",
+        "Long-acting bronchodilators (LABA/LAMA) are first-line maintenance therapy per COPD-X Guidelines",
+        "Inhaler device technique is crucial - patients require demonstration and regular review",
+        "COPD exacerbations often triggered by viral infections - early recognition and treatment important",
+        "Pulmonary rehabilitation improves exercise capacity and quality of life in COPD"
+      ],
+      "examiner_notes": [
+        "Assess candidate's ability to interpret spirometry and recognise obstructive pattern",
+        "Observe inhaler technique demonstration - common examination focus",
+        "Test knowledge of COPD-specific oxygen saturation targets",
+        "Evaluate understanding of stepwise COPD management per Australian guidelines",
+        "Look for appreciation of smoking cessation as key intervention"
+      ],
+      "australian_guidelines_referenced": [
+        "COPD-X Guidelines (Lung Foundation Australia/Thoracic Society of Australia and New Zealand)",
+        "National Asthma Council Australia - COPD management",
+        "Therapeutic Guidelines: Respiratory (eTG complete)",
+        "Royal Australian College of General Practitioners - COPD"
+      ],
+      "learning_objectives": [
+        "Interpret spirometry results and classify COPD severity",
+        "Demonstrate correct inhaler techniques for MDI + spacer and dry powder devices",
+        "Apply appropriate oxygen saturation targets for COPD patients",
+        "Develop comprehensive COPD management plan including exacerbation treatment",
+        "Counsel patients on smoking cessation and non-pharmacological interventions"
+      ],
+      "difficulty_level": "intermediate",
+      "estimated_duration": "20 minutes",
+      "specialty_focus": "respiratory_medicine",
+      "red_flags": [
+        "SpO2 < 88% on room air requiring immediate oxygen therapy",
+        "Signs of respiratory failure: confusion, exhaustion, paradoxical breathing",
+        "Pneumothorax: sudden chest pain with absent breath sounds",
+        "Pneumonia: fever, consolidation on examination, purulent sputum"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 0.0,
+    "clinical_accuracy": 5.32,
+    "cultural_safety": 7.79
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week3_respiratory_200_mcqs_with_images_024",
+      "evaluation_date": "2026-03-27T09:13:48.361521",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "australian_standards": 0.0,
+        "clinical_accuracy": 0.0,
+        "educational_alignment": 0.0
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in mcq",
+          "location": "mcq_week3_respiratory_200_mcqs_with_images_024.content",
+          "suggested_fix": "Review Australian medical terminology"
+        },
+        {
+          "severity": "critical",
+          "category": "australian_drug_names",
+          "issue": "American drug name detected (e.g., 'acetaminophen' instead of 'paracetamol')",
+          "location": "mcq_week3_respiratory_200_mcqs_with_images_024.medications[0].generic_name",
+          "suggested_fix": "Replace 'acetaminophen' with 'paracetamol'"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to respiratory content"
+      ],
+      "strengths": [
+        "Good coverage of respiratory concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week3_respiratory_200_mcqs_with_images_024",
+      "evaluation_date": "2026-03-27T09:13:51.615756",
+      "overall_score": 7.79,
+      "criteria_scores": {
+        "australian_standards": 7.4,
+        "clinical_accuracy": 7.95,
+        "educational_alignment": 7.64
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in mcq",
+          "location": "mcq_week3_respiratory_200_mcqs_with_images_024.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to respiratory content"
+      ],
+      "strengths": [
+        "Good coverage of respiratory concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "mcq_week3_respiratory_200_mcqs_with_images_024",
+      "evaluation_date": "2026-03-27T09:13:52.163049",
+      "overall_score": 7.87,
+      "criteria_scores": {
+        "australian_standards": 7.47,
+        "clinical_accuracy": 8.02,
+        "educational_alignment": 7.71
+      },
+      "violations": [
+        {
+          "severity": "warning",
+          "category": "australian_standards",
+          "issue": "Minor improvement needed in mcq",
+          "location": "mcq_week3_respiratory_200_mcqs_with_images_024.content",
+          "suggested_fix": "Review Australian medical terminology"
+        }
+      ],
+      "suggestions": [
+        "Consider adding more detail to respiratory content"
+      ],
+      "strengths": [
+        "Good coverage of respiratory concepts",
+        "Clear and well-structured content"
+      ],
+      "pass_fail": "PASS",
+      "requires_manual_review": false
+    }
+  ],
+  "num_agents": 3,
+  "quality_gate_violations": [
+    {
+      "gate": "australian_drug_names",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "American drug name detected (e.g., 'acetaminophen' instead of 'paracetamol')",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "mcq_week3_respiratory_200_mcqs_with_images_024",
+  "item_type": "mcq",
+  "specialty": "respiratory",
+  "file_path": "data/mcqs/week3_respiratory_200_mcqs_with_images.json"
+}

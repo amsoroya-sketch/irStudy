@@ -1,0 +1,173 @@
+/**
+ * Cerner EMR Session Page
+ *
+ * Full Cerner EMR interface for clinical documentation practice.
+ *
+ * Features:
+ * - Cerner theme (dark mode with blue accents)
+ * - SOAP note editor with auto-save
+ * - Patient banner, sidebar, app bar
+ * - Prescription and pathology panels
+ * - Real-time validation
+ * - Auto-save every 5 seconds
+ */
+
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { ThemeProvider } from '@mui/material/styles';
+import { Box, CircularProgress, Alert, Container } from '@mui/material';
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { cernerTheme } from '../../themes/cernerTheme';
+import {
+  CernerAppBar,
+  CernerSidebar,
+  CernerPatientBanner,
+  CernerSOAPEditor,
+  CernerPrescriptionPanel,
+  CernerPathologyPanel,
+} from '../../components/emr/cerner';
+import { useAutoSave } from '../../hooks/useAutoSave';
+import axiosInstance from '../../utils/axiosInstance';
+import { EMRSession, SOAPNoteDraft } from '../../types/emr';
+
+const CernerEMRPage: React.FC = () => {
+  const { sessionId } = useParams<{ sessionId: string }>();
+  const navigate = useNavigate();
+
+  const [sessionData, setSessionData] = useState<SOAPNoteDraft>({
+    subjective: '',
+    objective: '',
+    assessment: '',
+    plan: '',
+    prescriptions: [],
+    pathology_orders: [],
+    imaging_orders: [],
+  });
+
+  // Fetch session data
+  const {
+    data: session,
+    isLoading,
+    error,
+  } = useQuery<EMRSession>({
+    queryKey: ['emr-session', sessionId],
+    queryFn: async () => {
+      const response = await axiosInstance.get(`/api/v1/emr/sessions/${sessionId}`);
+      return response.data;
+    },
+    enabled: !!sessionId,
+  });
+
+  // Load existing session data
+  useEffect(() => {
+    if (session?.session_data) {
+      setSessionData(session.session_data);
+    }
+  }, [session]);
+
+  // Auto-save hook (debounced, 5s delay)
+  const { debouncedSave, saveStatus } = useAutoSave({
+    sessionId: sessionId || '',
+    debounceMs: 5000,
+    maxWaitMs: 30000,
+  });
+
+  // Update session data and trigger auto-save
+  const handleDataChange = (updates: Partial<SOAPNoteDraft>) => {
+    const newData = { ...sessionData, ...updates };
+    setSessionData(newData);
+    debouncedSave(newData);
+  };
+
+  // Submit session mutation
+  const submitMutation = useMutation({
+    mutationFn: async () => {
+      const response = await axiosInstance.post(
+        `/api/v1/emr/sessions/${sessionId}/submit`,
+        { session_data: sessionData }
+      );
+      return response.data;
+    },
+    onSuccess: () => {
+      navigate(`/emr/validation/${sessionId}`);
+    },
+  });
+
+  if (isLoading) {
+    return (
+      <ThemeProvider theme={cernerTheme}>
+        <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+          <CircularProgress />
+        </Container>
+      </ThemeProvider>
+    );
+  }
+
+  if (error) {
+    return (
+      <ThemeProvider theme={cernerTheme}>
+        <Container sx={{ py: 4 }}>
+          <Alert severity="error">Failed to load EMR session: {(error as Error).message}</Alert>
+        </Container>
+      </ThemeProvider>
+    );
+  }
+
+  if (!session) {
+    return null;
+  }
+
+  return (
+    <ThemeProvider theme={cernerTheme}>
+      <Box sx={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
+        {/* Sidebar */}
+        <CernerSidebar />
+
+        {/* Main Content Area */}
+        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+          {/* App Bar */}
+          <CernerAppBar
+            sessionId={sessionId || ''}
+            saveStatus={saveStatus}
+            onSubmit={() => submitMutation.mutate()}
+          />
+
+          {/* Patient Banner */}
+          <CernerPatientBanner patientId={session.patient_id} />
+
+          {/* Scrollable Content */}
+          <Box sx={{ flex: 1, overflow: 'auto', p: 2 }}>
+            {/* SOAP Note Editor */}
+            <CernerSOAPEditor data={sessionData} onChange={handleDataChange} />
+
+            {/* Prescription Panel */}
+            <Box sx={{ mt: 2 }}>
+              <CernerPrescriptionPanel
+                prescriptions={sessionData.prescriptions}
+                onChange={(prescriptions) =>
+                  handleDataChange({ prescriptions })
+                }
+              />
+            </Box>
+
+            {/* Pathology Panel */}
+            <Box sx={{ mt: 2 }}>
+              <CernerPathologyPanel
+                pathologyOrders={sessionData.pathology_orders}
+                imagingOrders={sessionData.imaging_orders}
+                onPathologyChange={(pathology_orders) =>
+                  handleDataChange({ pathology_orders })
+                }
+                onImagingChange={(imaging_orders) =>
+                  handleDataChange({ imaging_orders })
+                }
+              />
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </ThemeProvider>
+  );
+};
+
+export default CernerEMRPage;

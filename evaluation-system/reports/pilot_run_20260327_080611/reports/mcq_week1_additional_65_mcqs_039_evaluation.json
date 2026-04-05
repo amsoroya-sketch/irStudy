@@ -1,0 +1,172 @@
+{
+  "overall_score": 0.0,
+  "criterion_scores": {
+    "australian_standards": 0.0,
+    "clinical_accuracy": 0.67,
+    "cultural_safety": 0.0
+  },
+  "agent_evaluations": [
+    {
+      "agent_name": "medication-management-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_039",
+      "evaluation_date": "2026-03-27T08:37:37.917822",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "australian_drug_names": 0.0,
+        "pbs_compliance": 0.0,
+        "dosing_accuracy": 0.0,
+        "drug_interactions": 0.0,
+        "polypharmacy_management": 0.0
+      },
+      "violations": [
+        {
+          "severity": "critical",
+          "category": "item_identification_error",
+          "issue": "Item ID mcq_week1_additional_65_mcqs_039 does not exist in provided dataset",
+          "location": "metadata.mcqs",
+          "suggested_fix": "Verify correct item ID - dataset contains IDs PSY-ANX-BIP-20260125-2000 through PSY-FINAL-20260125-2064"
+        },
+        {
+          "severity": "critical",
+          "category": "evaluation_scope_error",
+          "issue": "Cannot evaluate medication management - content is psychiatry MCQs without medication-specific questions",
+          "location": "mcqs[].question",
+          "suggested_fix": "This content requires psychiatric medication expert evaluation (SSRIs, antipsychotics, lithium, benzodiazepines in psychiatric context)"
+        },
+        {
+          "severity": "critical",
+          "category": "domain_mismatch",
+          "issue": "All 65 MCQs are psychiatry diagnosis/management questions, not medication management questions requiring PBS/TGA validation",
+          "location": "mcqs[].specialty",
+          "suggested_fix": "Refer to mental-health-crisis-expert or psychiatric medication specialist for psychiatric pharmacotherapy evaluation"
+        }
+      ],
+      "suggestions": [
+        "For psychiatric medication evaluation in these MCQs, assess: SSRI selection (sertraline, escitalopram), antipsychotic choice (olanzapine, risperidone, quetiapine), lithium monitoring (0.6-1.2 mmol/L therapeutic range), benzodiazepine appropriateness (diazepam vs oxazepam in alcohol withdrawal)",
+        "Verify Australian psychiatric drug nomenclature if medications appear: quetiapine (NOT Seroquel by trade name only), olanzapine (NOT Zyprexa), risperidone (NOT Risperdal)"
+      ],
+      "strengths": [],
+      "pass_fail": "CANNOT_EVALUATE",
+      "requires_manual_review": true,
+      "australian_compliance_verified": false,
+      "notes": "Item ID mcq_week1_additional_65_mcqs_039 not found in provided dataset (contains PSY-ANX-BIP-20260125-2000 through PSY-FINAL-20260125-2064). Content is psychiatry MCQs focusing on diagnosis/management, not medication-specific questions requiring medication-management-expert evaluation. Recommend psychiatric pharmacotherapy specialist for psychiatric medication assessment."
+    },
+    {
+      "agent_name": "mental-health-crisis-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_039",
+      "evaluation_date": "2026-03-27T08:37:37.923876",
+      "overall_score": 2.0,
+      "criteria_scores": {
+        "suicide_risk_safe_t": 0.0,
+        "mental_health_act": 0.0,
+        "medication_safety": 0.0,
+        "cultural_safety": 0.0
+      },
+      "violations": [
+        "CRITICAL: No RAG citations - all references show 'Unknown' title, page 1-2, rag_confidence 0.0",
+        "CRITICAL: qa_validated = false - content not validated",
+        "CRITICAL: Incomplete explanations - 'why_incorrect' shows generic 'Incorrect - [option]' with no clinical reasoning",
+        "CRITICAL: Missing key_points array (empty [])",
+        "CRITICAL: GAD question (PSY-ANX-BIP-20260125-2039) is identical duplicate (appears 9 times in file)",
+        "CRITICAL: Panic disorder question (PSY-ANX-BIP-20260125-2041) is identical duplicate (appears 9 times)",
+        "CRITICAL: Bipolar mania question (PSY-ANX-BIP-20260125-2042) is identical duplicate (appears 9 times)",
+        "CRITICAL: First-episode psychosis question (PSY-PSYCHOSIS-20260125-2043) is identical duplicate (appears 9 times)",
+        "CRITICAL: Acute suicide risk question (PSY-SUICIDE-MHA-20260125-2044) is identical duplicate (appears 9 times)",
+        "CRITICAL: Anorexia nervosa question (PSY-FINAL-20260125-2045) is identical duplicate (appears 9 times)",
+        "CRITICAL: Alcohol withdrawal question (PSY-FINAL-20260125-2046) is identical duplicate (appears 9 times)",
+        "CRITICAL: Borderline personality question (PSY-FINAL-20260125-2047) is identical duplicate (appears 9 times)",
+        "CRITICAL: No Australian context verification - claims australian_context: true but no MBS/PBS/Australian crisis contacts in content",
+        "CRITICAL: Missing SAFE-T protocol detail in suicide risk questions",
+        "CRITICAL: Mental Health Act questions missing state specification (NSW/VIC/QLD)",
+        "CRITICAL: No cultural safety elements (Aboriginal/TSI, CALD considerations)",
+        "CRITICAL: Template-generated content without clinical depth - 'template_variant' metadata suggests automated generation without expert review",
+        "CRITICAL: Explanation quality inadequate - single sentence explanations for complex psychiatric presentations",
+        "VIOLATION: Content does not meet 13-gate QA validation standard",
+        "VIOLATION: Zero citation traceability - cannot verify clinical facts against source documents",
+        "VIOLATION: Educational alignment missing - no reference to AMC Clinical Examination standards"
+      ],
+      "suggestions": [
+        "URGENT: Generate proper RAG citations with qdrant_point_id, confidence \u22650.65, real source documents",
+        "URGENT: Complete clinical reasoning for all 'why_incorrect' options (not just 'Incorrect - [option]')",
+        "URGENT: Add key_points array with 3-5 teaching points per question",
+        "URGENT: Remove duplicate questions - ensure all 65 MCQs are unique",
+        "URGENT: Add SAFE-T protocol breakdown in suicide risk questions (Specific plan, Access to means, Feelings, Earlier attempts, Threat)",
+        "URGENT: Specify Mental Health Act state (NSW/VIC/QLD) and cite specific sections",
+        "URGENT: Add Australian crisis contacts (Lifeline 13 11 14, Beyond Blue 1300 224 636) in relevant questions",
+        "URGENT: Include cultural safety considerations (Aboriginal/TSI, CALD, LGBTQIA+)",
+        "URGENT: Expand explanations to 3-4 sentences with clinical reasoning",
+        "URGENT: Add medication monitoring requirements (lithium levels, QTc, FBC for clozapine)",
+        "URGENT: Validate all content through 13-gate QA system before deployment",
+        "URGENT: Replace template-generated content with clinician-reviewed content",
+        "URGENT: Add AMC Clinical Examination alignment (OSCE station context)",
+        "Complete Pre-Task Checklist: Mental state examination format, risk assessment documentation",
+        "Complete Post-Task Validation: Australian drug names verified, monitoring plans documented"
+      ],
+      "strengths": [
+        "Question format structurally sound (scenario, stem, 5 options, correct answer)",
+        "Covers core psychiatry topics (GAD, panic disorder, bipolar mania, psychosis, suicide risk, eating disorders, substance withdrawal, personality disorders)",
+        "Difficulty and AMC frequency metadata present",
+        "Australian context flag present (though not implemented)"
+      ],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "detailed_feedback": "This MCQ set has CRITICAL systematic failures across all 65 questions that make it unsuitable for AMC Clinical Examination preparation without complete regeneration. The most severe issues: (1) ZERO RAG citations - all 65 questions show 'Unknown' sources with rag_confidence 0.0, violating the zero-hallucination requirement. Every clinical fact must be traceable to Qdrant database with confidence \u22650.65. (2) MASSIVE duplication - 8 unique questions repeated 9 times each (72 duplicates out of 65 questions). (3) Incomplete educational content - 'why_incorrect' explanations are placeholder text ('Incorrect - [option]'), key_points arrays are empty, and single-sentence explanations lack clinical depth. (4) Missing Australian clinical standards - no SAFE-T protocol detail, no Mental Health Act state specification, no Australian crisis contacts (Lifeline/Beyond Blue), no cultural safety elements. (5) No QA validation - qa_validated: false means content bypassed the mandatory 13-gate quality system. This appears to be template-generated content (metadata shows 'template_variant') that was never reviewed by a clinical expert. To meet production standards: regenerate all content with RAG system enabled, ensure 65 unique questions, complete all explanation fields with clinical reasoning, add SAFE-T/Mental Health Act detail, include Australian context (MBS/PBS/crisis contacts), and pass 13-gate QA validation. Current state: 2.0/10 (catastrophic failure). Target: \u22658.0/10 with 100% citation coverage and zero duplicates."
+    },
+    {
+      "agent_name": "radiology-interpretation-expert",
+      "item_id": "mcq_week1_additional_65_mcqs_039",
+      "evaluation_date": "2026-03-27T08:37:37.929619",
+      "overall_score": 0.0,
+      "criteria_scores": {
+        "systematic_approach": 0.0,
+        "australian_terminology": 0.0,
+        "clinical_relevance": 0.0,
+        "image_quality_assessment": 0.0
+      },
+      "violations": [
+        "CRITICAL: Item PSY-FINAL-20260125-2039 is PSYCHIATRY content, NOT radiology/imaging",
+        "AGENT MISMATCH: Radiology interpretation expert assigned to evaluate borderline personality disorder MCQ",
+        "NO IMAGING CONTENT: Question involves psychiatric diagnosis and management (DBT for BPD), no CXR/ECG/CT/ultrasound involved",
+        "INCORRECT EVALUATION REQUEST: This item should be evaluated by mental-health-crisis-expert or psychiatry specialist, NOT radiology expert"
+      ],
+      "suggestions": [
+        "Route this item to mental-health-crisis-expert or appropriate psychiatry specialist",
+        "Update evaluation routing logic to match content specialty with appropriate expert agent",
+        "Verify item metadata: Item ID suggests week1_additional_65_mcqs_039, specialty field shows 'Psychiatry', but was routed to radiology agent"
+      ],
+      "strengths": [],
+      "pass_fail": "FAIL",
+      "requires_manual_review": true,
+      "review_reason": "Agent-content mismatch: Radiology expert cannot evaluate psychiatry MCQ. This is a borderline personality disorder question (psychotherapy management) with no imaging interpretation component. Requires re-routing to appropriate psychiatric specialist for evaluation."
+    }
+  ],
+  "num_agents": 3,
+  "quality_gate_violations": [
+    {
+      "gate": "item_identification_error",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Item ID mcq_week1_additional_65_mcqs_039 does not exist in provided dataset",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "evaluation_scope_error",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "Cannot evaluate medication management - content is psychiatry MCQs without medication-specific questions",
+      "agent": "medication-management-expert"
+    },
+    {
+      "gate": "domain_mismatch",
+      "severity": "CRITICAL",
+      "action": "AUTO_REJECT",
+      "issue": "All 65 MCQs are psychiatry diagnosis/management questions, not medication management questions requiring PBS/TGA validation",
+      "agent": "medication-management-expert"
+    }
+  ],
+  "status": "REJECTED",
+  "item_id": "mcq_week1_additional_65_mcqs_039",
+  "item_type": "mcq",
+  "specialty": "Psychiatry",
+  "file_path": "data/mcqs/week1_additional_65_mcqs.json"
+}

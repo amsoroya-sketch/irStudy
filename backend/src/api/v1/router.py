@@ -25,6 +25,9 @@ from src.api.v1 import (
     study_cards_optimized,
     patient_personas,
     osce_sessions,
+    health,
+    emr_sessions,
+    mock_exams,
 )
 from src.api.v1.emr import router as emr_router
 
@@ -44,4 +47,7 @@ api_router.include_router(study_cards.router)  # Task 3: Study Card System with 
 api_router.include_router(study_cards_optimized.router)  # Task 5: Spaced Repetition Engine Optimization
 api_router.include_router(patient_personas.router)  # PRD AI OSCE 001: Patient Personas API
 api_router.include_router(osce_sessions.router)  # PRD AI OSCE 001: OSCE Sessions API
-api_router.include_router(emr_router)  # PRD GAP 002: EMR API Endpoints
+api_router.include_router(mock_exams.router)  # PRD AI OSCE 006: Mock Exam Mode (16-station exams)
+api_router.include_router(emr_router)  # PRD GAP 002: EMR API Endpoints (existing)
+api_router.include_router(emr_sessions.router)  # PRD BACKEND 002: EMR Session Management (new)
+api_router.include_router(health.router)  # Health check endpoints (Kubernetes probes)
