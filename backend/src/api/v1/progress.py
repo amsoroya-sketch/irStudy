@@ -56,6 +56,11 @@ from src.schemas.progress import (
     SpecialtyPerformance,
     WeakArea,
     WeeklyTrend,
+    EMRDashboardMetricsResponse,
+    UnifiedWeeklyTrendsResponse,
+    UnifiedWeeklyTrend,
+    EMRWeakAreasResponse,
+    EMRWeakArea,
 )
 from src.auth.dependencies import get_current_active_user
 from src.services.progress_analytics import ProgressAnalytics
@@ -332,3 +337,175 @@ async def get_weekly_trends(
     trends = [WeeklyTrend(**item) for item in trends_raw]
 
     return WeeklyTrendsResponse(weeks=weeks, trends=trends)
+
+
+# ============================================================================
+# GET EMR DASHBOARD METRICS
+# ============================================================================
+
+
+@router.get("/dashboard/emr", response_model=EMRDashboardMetricsResponse)
+@limiter.limit("60/minute")
+async def get_emr_dashboard_metrics(
+    request: Request,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user),
+):
+    """
+    Get EMR dashboard metrics for current user.
+
+    FEATURES:
+    - Total EMR sessions (all statuses)
+    - Completed sessions (status='validated')
+    - Average validation score
+    - Pass rate (sessions with score ≥70%)
+
+    Returns:
+    - EMRDashboardMetricsResponse: EMR metrics
+
+    Privacy:
+    - All data filtered by current_user.id
+    - Never exposes other users' data
+
+    Performance:
+    - Response time: <200ms
+    - Uses database aggregations
+    - No N+1 queries
+
+    Example Response:
+    {
+        "total_sessions": 12,
+        "completed_sessions": 10,
+        "average_score": 78.5,
+        "pass_rate": 80.0
+    }
+    """
+    metrics = ProgressAnalytics.get_emr_dashboard_metrics(db, current_user.id)
+    return EMRDashboardMetricsResponse(**metrics)
+
+
+# ============================================================================
+# GET UNIFIED WEEKLY TRENDS (MCQ + OSCE + EMR)
+# ============================================================================
+
+
+@router.get("/weekly-trends/unified", response_model=UnifiedWeeklyTrendsResponse)
+@limiter.limit("60/minute")
+async def get_unified_weekly_trends(
+    request: Request,
+    weeks: int = Query(4, ge=1, le=12, description="Number of weeks (max 12)"),
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user),
+):
+    """
+    Get unified weekly progress trends (MCQ + OSCE + EMR).
+
+    Query Parameters:
+    - weeks: Number of weeks to retrieve (1-12, default 4)
+
+    Returns:
+    - UnifiedWeeklyTrendsResponse: Unified weekly trend data
+        - weeks: Number of weeks
+        - trends: List of weekly data (most recent first)
+            - week_start: Start date of the week (Monday)
+            - mcq_attempts: MCQ attempts during this week
+            - osce_attempts: OSCE attempts during this week
+            - emr_sessions: EMR sessions during this week
+            - accuracy_rate: MCQ success percentage for this week
+
+    Privacy:
+    - All data filtered by current_user.id
+
+    Performance:
+    - Response time: <200ms
+    - Uses database aggregations
+
+    Example Response:
+    {
+        "weeks": 4,
+        "trends": [
+            {
+                "week_start": "2026-02-10T00:00:00Z",
+                "mcq_attempts": 28,
+                "osce_attempts": 3,
+                "emr_sessions": 5,
+                "accuracy_rate": 75.00
+            },
+            {
+                "week_start": "2026-02-03T00:00:00Z",
+                "mcq_attempts": 35,
+                "osce_attempts": 2,
+                "emr_sessions": 4,
+                "accuracy_rate": 71.43
+            }
+        ]
+    }
+    """
+    trends_raw = ProgressAnalytics.get_unified_weekly_trends(db, current_user.id, weeks=weeks)
+    trends = [UnifiedWeeklyTrend(**item) for item in trends_raw]
+    return UnifiedWeeklyTrendsResponse(weeks=weeks, trends=trends)
+
+
+# ============================================================================
+# GET EMR WEAK AREAS
+# ============================================================================
+
+
+@router.get("/weak-areas/emr", response_model=EMRWeakAreasResponse)
+@limiter.limit("60/minute")
+async def get_emr_weak_areas(
+    request: Request,
+    threshold: float = Query(70.0, ge=0, le=100, description="Score threshold percentage"),
+    min_attempts: int = Query(5, ge=1, le=50, description="Minimum sessions required"),
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user),
+):
+    """
+    Identify EMR specialties needing improvement.
+
+    CRITERIA:
+    - Average score below threshold (default 70%)
+    - Minimum sessions >= min_attempts (default 5)
+
+    Query Parameters:
+    - threshold: Score threshold percentage (0-100, default 70.0)
+    - min_attempts: Minimum sessions required (1-50, default 5)
+
+    Returns:
+    - EMRWeakAreasResponse: Weak EMR specialties
+        - threshold: Threshold used
+        - min_attempts: Minimum attempts used
+        - weak_areas: List of weak specialties
+            - specialty: Specialty name
+            - average_score: Average validation score
+            - total_sessions: Total validated sessions
+            - pass_rate: % of sessions with score ≥70
+
+    Privacy:
+    - All data filtered by current_user.id
+
+    Performance:
+    - Response time: <200ms
+    - Uses database GROUP BY aggregations
+
+    Example Response:
+    {
+        "threshold": 70.0,
+        "min_attempts": 5,
+        "weak_areas": [
+            {
+                "specialty": "neurology",
+                "average_score": 62.5,
+                "total_sessions": 8,
+                "pass_rate": 50.0
+            }
+        ]
+    }
+    """
+    weak_areas_raw = ProgressAnalytics.get_emr_weak_areas(
+        db, current_user.id, threshold=threshold, min_attempts=min_attempts
+    )
+    weak_areas = [EMRWeakArea(**item) for item in weak_areas_raw]
+    return EMRWeakAreasResponse(
+        threshold=threshold, min_attempts=min_attempts, weak_areas=weak_areas
+    )

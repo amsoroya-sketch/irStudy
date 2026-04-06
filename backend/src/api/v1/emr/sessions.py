@@ -11,13 +11,21 @@ SECURITY:
 - User can only access their own sessions
 """
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.orm import Session
 from uuid import UUID
 from datetime import datetime
+from typing import List, Optional
 
 from src.db.base import get_db
-from src.db.models import User
+from src.db.models import (
+    User,
+    MockPatient,
+    EMRSession,
+    EMRSOAPNote,
+    EMRPrescription,
+    EMRPathologyOrder,
+)
 from src.auth.dependencies import get_current_user
 from .schemas import (
     CreateSessionRequest,
@@ -27,76 +35,11 @@ from .schemas import (
     MockPatientResponse,
     ValidationResult,
     ValidationLayerResult,
+    SessionHistoryResponse,
+    SessionHistoryItem,
+    PaginationInfo,
 )
 from .validation import validate_soap_note
-
-# Import database models
-# Note: These models exist based on migration 20260215_1200_008_add_emr_tables.py
-# We need to check if they're defined in src/db/models.py
-from sqlalchemy import Column, String, Integer, Float, DateTime, ForeignKey, Text, Boolean, JSON
-from sqlalchemy.dialects.postgresql import UUID as PGUUID
-from src.db.base import Base
-import uuid
-
-
-# Temporary model definitions (if not in models.py)
-class MockPatient(Base):
-    __tablename__ = "mock_patients"
-    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    mrn = Column(String(20))
-    name = Column(String(100))
-    age = Column(Integer)
-    gender = Column(String(20))
-    presenting_complaint = Column(Text)
-    vital_signs = Column(JSON)
-    medical_history = Column(JSON)
-    specialty = Column(String(50))
-    difficulty = Column(String(20))
-
-
-class EMRSession(Base):
-    __tablename__ = "emr_sessions"
-    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(Integer, ForeignKey("users.id"))
-    patient_id = Column(PGUUID(as_uuid=True), ForeignKey("mock_patients.id"))
-    specialty = Column(String(50))
-    difficulty = Column(String(20))
-    started_at = Column(DateTime, default=datetime.utcnow)
-    submitted_at = Column(DateTime, nullable=True)
-    elapsed_time_seconds = Column(Integer, nullable=True)
-    validation_score = Column(Float, nullable=True)
-    score_breakdown = Column(JSON, nullable=True)
-    status = Column(String(20), default="in_progress")
-
-
-class EMRSOAPNote(Base):
-    __tablename__ = "emr_soap_notes"
-    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    session_id = Column(PGUUID(as_uuid=True), ForeignKey("emr_sessions.id"))
-    subjective = Column(Text)
-    objective = Column(Text)
-    assessment = Column(Text)
-    plan = Column(Text)
-    is_final_submission = Column(Boolean, default=False)
-
-
-class EMRPrescription(Base):
-    __tablename__ = "emr_prescriptions"
-    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    session_id = Column(PGUUID(as_uuid=True), ForeignKey("emr_sessions.id"))
-    medication_name = Column(String(200))
-    dose = Column(String(50))
-    frequency = Column(String(50))
-    route = Column(String(20))
-
-
-class EMRPathologyOrder(Base):
-    __tablename__ = "emr_pathology_orders"
-    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    session_id = Column(PGUUID(as_uuid=True), ForeignKey("emr_sessions.id"))
-    test_name = Column(String(200))
-    urgency = Column(String(20))
-    indication = Column(Text)
 
 
 router = APIRouter()
@@ -170,7 +113,100 @@ async def create_session(
 
 
 # ============================================================================
-# ENDPOINT 2: GET SESSION
+# ENDPOINT 2: LIST SESSIONS
+# ============================================================================
+
+
+@router.get("/sessions", response_model=SessionHistoryResponse)
+async def list_sessions(
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+    limit: int = Query(20, ge=1, le=100, description="Number of sessions per page"),
+    offset: int = Query(0, ge=0, description="Offset from start"),
+    sort_by: str = Query("started_at", description="Field to sort by (started_at, submitted_at)"),
+    sort_order: str = Query("desc", description="Sort order (asc, desc)"),
+):
+    """
+    List user's EMR sessions with pagination and sorting
+
+    AUTHORIZATION:
+    - User can only access their own sessions
+
+    SORTING:
+    - sort_by: started_at (default), submitted_at
+    - sort_order: desc (newest first, default), asc (oldest first)
+
+    SQL INJECTION PROTECTION:
+    - Whitelist validation for sort_by parameter
+    - Enum validation for sort_order parameter
+    """
+    # SQL injection protection: Whitelist valid sort fields
+    valid_sort_fields = {"started_at", "submitted_at"}
+    if sort_by not in valid_sort_fields:
+        sort_by = "started_at"  # Fallback to default
+
+    # SQL injection protection: Validate sort order
+    if sort_order.lower() not in {"asc", "desc"}:
+        sort_order = "desc"  # Fallback to default
+
+    # Build base query
+    query = (
+        db.query(EMRSession, MockPatient)
+        .join(MockPatient, EMRSession.patient_id == MockPatient.id)
+        .filter(EMRSession.user_id == current_user.id)
+    )
+
+    # Get total count
+    total_count = query.count()
+
+    # Apply sorting
+    sort_column = getattr(EMRSession, sort_by)
+    if sort_order.lower() == "desc":
+        query = query.order_by(sort_column.desc())
+    else:
+        query = query.order_by(sort_column.asc())
+
+    # Apply pagination
+    query = query.limit(limit).offset(offset)
+
+    # Execute query
+    results = query.all()
+
+    # Build session history items
+    sessions = []
+    for emr_session, mock_patient in results:
+        # Calculate time taken if session is submitted
+        time_taken_minutes = None
+        if emr_session.submitted_at and emr_session.started_at:
+            time_delta = emr_session.submitted_at - emr_session.started_at
+            time_taken_minutes = round(time_delta.total_seconds() / 60, 2)
+
+        sessions.append(
+            SessionHistoryItem(
+                session_id=emr_session.id,
+                mock_patient_name=mock_patient.name,
+                specialty=emr_session.specialty,
+                chief_complaint=mock_patient.presenting_complaint or "Not specified",
+                submitted_at=emr_session.submitted_at,
+                score=emr_session.validation_score,
+                pass_fail="pass" if emr_session.validation_score and emr_session.validation_score >= 70 else "fail" if emr_session.validation_score else None,
+                time_taken_minutes=time_taken_minutes,
+            )
+        )
+
+    return SessionHistoryResponse(
+        total_count=total_count,
+        sessions=sessions,
+        pagination=PaginationInfo(
+            limit=limit,
+            offset=offset,
+            has_more=(offset + limit) < total_count,
+        ),
+    )
+
+
+# ============================================================================
+# ENDPOINT 3: GET SESSION
 # ============================================================================
 
 

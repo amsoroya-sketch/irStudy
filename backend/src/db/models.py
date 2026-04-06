@@ -34,9 +34,11 @@ from sqlalchemy import (
     Table,
     UniqueConstraint,
 )
+from sqlalchemy.dialects.postgresql import UUID as PGUUID
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from datetime import datetime
+from uuid import uuid4
 import enum
 
 from .base import Base
@@ -1145,6 +1147,128 @@ class StudyCardReview(Base):
 
     def __repr__(self):
         return f"<StudyCardReview(user_id={self.user_id}, card_id={self.card_id}, quality={self.quality})>"
+
+
+# ============================================================================
+# EMR (Electronic Medical Record) MODELS
+# ============================================================================
+# Models for Epic/Cerner EMR practice simulation
+# Migrated from inline definitions in src/api/v1/emr/sessions.py
+# Migration file: 20260215_1200_008_add_emr_tables.py
+
+
+class MockPatient(Base):
+    """
+    Simulated Patient for EMR Practice
+
+    Represents realistic patient scenarios for clinical documentation training.
+    """
+    __tablename__ = "mock_patients"
+
+    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    mrn = Column(String(20), unique=True)
+    name = Column(String(100))
+    age = Column(Integer)
+    gender = Column(String(20))
+    presenting_complaint = Column(Text)
+    vital_signs = Column(JSON)
+    medical_history = Column(JSON)
+    specialty = Column(String(50), index=True)
+    difficulty = Column(String(20))
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+
+class EMRSession(Base):
+    """
+    EMR Practice Session
+
+    Tracks a single EMR documentation session (Epic or Cerner).
+    """
+    __tablename__ = "emr_sessions"
+
+    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    user_id = Column(Integer, ForeignKey("users.id"), index=True)
+    patient_id = Column(PGUUID(as_uuid=True), ForeignKey("mock_patients.id"), index=True)
+    emr_system = Column(String(20))  # "epic" or "cerner"
+    specialty = Column(String(50), index=True)
+    difficulty = Column(String(20))
+    started_at = Column(DateTime, default=datetime.utcnow, index=True)
+    submitted_at = Column(DateTime, nullable=True)
+    elapsed_time_seconds = Column(Integer, nullable=True)
+    validation_score = Column(Float, nullable=True)
+    score_breakdown = Column(JSON, nullable=True)
+    status = Column(String(20), default="in_progress")
+
+
+class EMRSOAPNote(Base):
+    """
+    SOAP Note (Subjective-Objective-Assessment-Plan)
+
+    Clinical documentation following Australian medical standards.
+    """
+    __tablename__ = "emr_soap_notes"
+
+    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    session_id = Column(PGUUID(as_uuid=True), ForeignKey("emr_sessions.id"), index=True)
+    subjective = Column(Text, nullable=True)
+    objective = Column(Text, nullable=True)
+    assessment = Column(Text, nullable=True)
+    plan = Column(Text, nullable=True)
+    typing_wpm = Column(Float, nullable=True)
+    completion_time_seconds = Column(Integer, nullable=True)
+    is_final_submission = Column(Boolean, default=False)
+
+
+class EMRPrescription(Base):
+    """
+    EMR Prescription (PBS-Compliant)
+
+    Australian PBS (Pharmaceutical Benefits Scheme) compliance enforced.
+    """
+    __tablename__ = "emr_prescriptions"
+
+    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    session_id = Column(PGUUID(as_uuid=True), ForeignKey("emr_sessions.id"), index=True)
+    medication_name = Column(String(200))
+    dose = Column(String(100))
+    frequency = Column(String(50))
+    route = Column(String(50))
+
+
+class EMRPathologyOrder(Base):
+    """
+    Pathology Order (MBS-Compliant)
+
+    Australian MBS (Medicare Benefits Schedule) compliance.
+    """
+    __tablename__ = "emr_pathology_orders"
+
+    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    session_id = Column(PGUUID(as_uuid=True), ForeignKey("emr_sessions.id"), index=True)
+    test_name = Column(String(200))
+    urgency = Column(String(20))
+    indication = Column(Text)
+
+
+class EMRValidationResult(Base):
+    """
+    EMR Session Validation Result (3-Layer Validation)
+
+    Validation Layers:
+    1. Rule-Based: Checks for required fields, red flags
+    2. AI Validation: Claude analyzes clinical reasoning
+    3. Specialist Review: FRACP specialist provides score
+    """
+    __tablename__ = "emr_validation_results"
+
+    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    session_id = Column(PGUUID(as_uuid=True), ForeignKey("emr_sessions.id"), unique=True, index=True)
+    rule_based_score = Column(Float)
+    ai_validation_score = Column(Float, nullable=True)
+    specialist_score = Column(Float, nullable=True)
+    final_score = Column(Float)
+    pass_fail = Column(Boolean)
+    validated_at = Column(DateTime, default=datetime.utcnow)
 
 
 # Import sqlalchemy for unique constraint
