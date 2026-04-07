@@ -280,3 +280,94 @@ pytest tests/test_emr*.py -v
 **Implementation Status**: ✅ **PRODUCTION READY**
 
 All implemented endpoints are fully tested, secured, and ready for frontend integration.
+
+---
+
+## ⚠️ **IMPORTANT: Database Migration Required**
+
+### Issue Discovered During Manual Testing
+
+When testing the live endpoints, we discovered that the **database schema is out of sync** with the code:
+
+**Error**: `column emr_sessions.emr_system does not exist`
+
+**Root Cause**: 
+- The EMR model definitions in code have been updated (Phase 1)
+- The actual PostgreSQL database schema has NOT been migrated yet
+- Need to run Alembic migrations to sync database with models
+
+### Test Results Summary
+
+| Endpoint | Status | Notes |
+|----------|--------|-------|
+| `GET /progress/dashboard/emr` | ✅ Works | Returns null values (no data yet) |
+| `GET /progress/weekly-trends/unified` | ⚠️ Schema Error | Needs migration: `emr_system` column missing |
+| `GET /progress/weak-areas/emr` | ✅ Works | Returns empty weak_areas array |
+| `GET /emr/sessions` | ⚠️ Schema Error | Needs migration: `emr_system` column missing |
+
+### Required Migration Steps
+
+**Before EMR endpoints work in production, you MUST run:**
+
+```bash
+cd /home/dev/Development/irStudy/backend
+source venv/bin/activate
+
+# Set database environment variables
+export DATABASE_HOST=localhost
+export DATABASE_PORT=5432  # or your port
+export DATABASE_NAME=irstudy_medical
+export DATABASE_USER=postgres
+export DATABASE_PASSWORD=<your-password>
+
+# Generate migration for EMR models
+alembic revision --autogenerate -m "Add EMR session models (Phase 1)"
+
+# Review the generated migration in alembic/versions/
+# Then apply the migration
+alembic upgrade head
+
+# Verify migration
+psql -h localhost -U postgres -d irstudy_medical -c "\d emr_sessions"
+# Should show emr_system column
+```
+
+### Alternative: Fresh Database Setup
+
+If this is a development environment, you can recreate the database:
+
+```bash
+# Drop and recreate tables (DEVELOPMENT ONLY!)
+cd /home/dev/Development/irStudy/backend
+source venv/bin/activate
+python -c "from src.db.base import engine, Base; from src.db.models import *; Base.metadata.drop_all(bind=engine); Base.metadata.create_all(bind=engine)"
+```
+
+### Testing Status
+
+**Code Quality**: ✅ All 27 tests pass (in-memory SQLite test database)  
+**Production Database**: ⚠️ **Migration required before endpoints work**
+
+**Recommendation**: Run Alembic migrations BEFORE deploying to production or staging.
+
+---
+
+## 📝 Updated Deployment Checklist
+
+Before considering EMR backend "production ready", complete these steps:
+
+- [x] Code implementation (Phases 1, 2, 3, 5)
+- [x] Unit tests (27/27 passing)
+- [x] TypeScript compilation (0 errors)
+- [x] Backend server starts
+- [x] Git commits and documentation
+- [ ] **Database migration** (Alembic migration for EMR models) ⚠️ **REQUIRED**
+- [ ] Frontend integration
+- [ ] E2E tests (Playwright)
+- [ ] Performance testing (<300ms p95)
+
+---
+
+**Updated Status**: ✅ **CODE COMPLETE** | ⚠️ **MIGRATION PENDING**
+
+All code is production-ready, but database migration must be run before EMR endpoints work with real PostgreSQL database.
