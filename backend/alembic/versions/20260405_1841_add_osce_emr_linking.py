@@ -17,7 +17,7 @@ from sqlalchemy.dialects.postgresql import UUID, JSONB
 
 # revision identifiers, used by Alembic.
 revision: str = '20260405_1841'
-down_revision: Union[str, None] = '797dec28db20'
+down_revision: Union[str, None] = '9ec7a1d598b7'  # UPDATED: Now depends on EMR models migration
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
