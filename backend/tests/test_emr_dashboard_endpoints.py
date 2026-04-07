@@ -147,7 +147,9 @@ def test_get_unified_weekly_trends(db_session):
     db_session.commit()
 
     # Create data for this week
-    now = datetime.utcnow()
+    # Use timedelta to ensure data falls in the LAST week (most recent week)
+    # This matches the service's logic which queries from (today - weeks) to today
+    now = datetime.utcnow() - timedelta(days=1)  # Yesterday (within current week)
 
     # 2 MCQ attempts
     for i in range(2):

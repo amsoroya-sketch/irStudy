@@ -23,7 +23,7 @@ export interface PermissionCheckResponse {
  */
 export const getMyPermissions = async (): Promise<UserPermissionsResponse> => {
   const response = await axiosInstance.get<UserPermissionsResponse>(
-    '/api/v1/permissions/me'
+    '/permissions/me'
   );
   return response.data;
 };
@@ -36,7 +36,7 @@ export const checkPermission = async (
   permission: string
 ): Promise<PermissionCheckResponse> => {
   const response = await axiosInstance.get<PermissionCheckResponse>(
-    `/api/v1/permissions/check/${permission}`
+    `/permissions/check/${permission}`
   );
   return response.data;
 };
@@ -45,7 +45,7 @@ export const checkPermission = async (
  * Get all available permissions in the system
  */
 export const getAllPermissions = async (): Promise<string[]> => {
-  const response = await axiosInstance.get<string[]>('/api/v1/permissions/all');
+  const response = await axiosInstance.get<string[]>('/permissions/all');
   return response.data;
 };
 

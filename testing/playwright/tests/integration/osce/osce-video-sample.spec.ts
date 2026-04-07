@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+import { TEST_USERS } from '../../../utils/test-data/users';
+import { login } from '../../../utils/helpers/login';
 
 /**
  * Sample OSCE Video Resources Test for Autonomous Testing
@@ -15,6 +17,9 @@ import { test, expect } from '@playwright/test';
 
 test.describe('OSCE Video Resources - Autonomous Testing Sample', () => {
   test.beforeEach(async ({ page }) => {
+    // Login as student
+    await login(page, TEST_USERS.STUDENT);
+
     // Navigate to OSCE page (adjust URL based on your routing)
     await page.goto('/osces/OSCE-MED-CARDIO-001');
 

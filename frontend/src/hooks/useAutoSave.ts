@@ -86,7 +86,7 @@ export const useAutoSave = ({
   const saveMutation = useMutation({
     mutationFn: async (data: Record<string, any>) => {
       const response = await axiosInstance.put(
-        `/api/v1/emr/sessions/${sessionId}`,
+        `/emr/sessions/${sessionId}`,
         {
           session_data: data,
         }

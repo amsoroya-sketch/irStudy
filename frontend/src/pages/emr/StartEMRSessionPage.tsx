@@ -35,7 +35,7 @@ const StartEMRSessionPage: React.FC = () => {
   // Start session mutation
   const startSessionMutation = useMutation({
     mutationFn: async () => {
-      const response = await axiosInstance.post('/api/v1/emr/sessions/start');
+      const response = await axiosInstance.post('/emr/sessions/start');
       return response.data;
     },
     onSuccess: (data) => {

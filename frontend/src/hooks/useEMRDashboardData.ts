@@ -115,7 +115,7 @@ export const useEMRDashboardData = (userId: string): DashboardQueryResult => {
         queryKey: ['emr', 'dashboard', 'metrics', userId],
         queryFn: async () => {
           const response = await axiosInstance.get<EMRMetrics>(
-            '/api/v1/progress/dashboard/emr'
+            '/progress/dashboard/emr'
           );
           return response.data;
         },
@@ -129,7 +129,7 @@ export const useEMRDashboardData = (userId: string): DashboardQueryResult => {
         queryKey: ['emr', 'sessions', 'recent', userId],
         queryFn: async () => {
           const response = await axiosInstance.get<{ sessions: RecentSession[] }>(
-            '/api/v1/emr/sessions',
+            '/emr/sessions',
             {
               params: {
                 limit: 10,
@@ -150,7 +150,7 @@ export const useEMRDashboardData = (userId: string): DashboardQueryResult => {
         queryKey: ['progress', 'weekly-trends', 'unified', userId],
         queryFn: async () => {
           const response = await axiosInstance.get<{ trends: WeeklyTrend[] }>(
-            '/api/v1/progress/weekly-trends/unified',
+            '/progress/weekly-trends/unified',
             {
               params: {
                 weeks: 12, // Last 12 weeks
@@ -169,7 +169,7 @@ export const useEMRDashboardData = (userId: string): DashboardQueryResult => {
         queryKey: ['progress', 'weak-areas', 'emr', userId],
         queryFn: async () => {
           const response = await axiosInstance.get<{ weak_areas: WeakArea[] }>(
-            '/api/v1/progress/weak-areas/emr',
+            '/progress/weak-areas/emr',
             {
               params: {
                 limit: 5, // Top 5 weak areas

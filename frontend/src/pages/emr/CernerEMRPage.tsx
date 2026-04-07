@@ -56,7 +56,7 @@ const CernerEMRPage: React.FC = () => {
   } = useQuery<EMRSession>({
     queryKey: ['emr-session', sessionId],
     queryFn: async () => {
-      const response = await axiosInstance.get(`/api/v1/emr/sessions/${sessionId}`);
+      const response = await axiosInstance.get(`/emr/sessions/${sessionId}`);
       return response.data;
     },
     enabled: !!sessionId,
@@ -66,7 +66,7 @@ const CernerEMRPage: React.FC = () => {
   const { data: patient } = useQuery<MockPatient>({
     queryKey: ['patient', session?.patient_id],
     queryFn: async () => {
-      const res = await axiosInstance.get(`/api/v1/patients/${session?.patient_id}`);
+      const res = await axiosInstance.get(`/patients/${session?.patient_id}`);
       return res.data;
     },
     enabled: !!session?.patient_id,
@@ -111,7 +111,7 @@ const CernerEMRPage: React.FC = () => {
   const submitMutation = useMutation({
     mutationFn: async () => {
       const response = await axiosInstance.post(
-        `/api/v1/emr/sessions/${sessionId}/submit`,
+        `/emr/sessions/${sessionId}/submit`,
         { session_data: sessionData }
       );
       return response.data;
