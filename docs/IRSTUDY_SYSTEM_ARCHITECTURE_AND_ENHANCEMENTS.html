@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>irStudy Platform: Complete System Architecture & Enhancement Roadmap</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #7c3aed;
+            --success: #059669;
+            --warning: #d97706;
+            --danger: #dc2626;
+            --bg-light: #f8fafc;
+            --bg-dark: #1e293b;
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .nav {
+            background: var(--bg-light);
+            padding: 1rem 2rem;
+            border-bottom: 2px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            overflow-x: auto;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav a:hover {
+            color: var(--secondary);
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin: 2rem 0 1rem;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid;
+        }
+
+        .alert-danger {
+            background: #fef2f2;
+            border-color: var(--danger);
+            color: #991b1b;
+        }
+
+        .alert-warning {
+            background: #fffbeb;
+            border-color: var(--warning);
+            color: #92400e;
+        }
+
+        .alert-success {
+            background: #f0fdf4;
+            border-color: var(--success);
+            color: #065f46;
+        }
+
+        .alert-info {
+            background: #eff6ff;
+            border-color: var(--primary);
+            color: #1e40af;
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .component-card {
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            background: var(--bg-light);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .component-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .component-card h4 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-implemented {
+            background: var(--success);
+            color: white;
+        }
+
+        .status-partial {
+            background: var(--warning);
+            color: white;
+        }
+
+        .status-planned {
+            background: var(--primary);
+            color: white;
+        }
+
+        .status-missing {
+            background: var(--danger);
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: var(--bg-light);
+        }
+
+        .mermaid {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .metric-card .value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+
+        .metric-card .label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .enhancement-card {
+            background: white;
+            border: 2px solid var(--success);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .enhancement-card h4 {
+            color: var(--success);
+            margin-top: 0;
+        }
+
+        .code-inline {
+            background: #f1f5f9;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.75rem;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .component-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏥 irStudy Platform</h1>
+            <p>Complete System Architecture, Current State & Enhancement Roadmap</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Medical Education Platform: MCQ + OSCE + AI OSCE + EMR Practice</p>
+            <p style="font-size: 0.85rem;">Last Updated: April 19, 2026 | Version: 2.0 | Status: Architecture Review</p>
+        </header>
+
+        <nav class="nav">
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#backend">Backend</a></li>
+                <li><a href="#frontend">Frontend</a></li>
+                <li><a href="#infrastructure">Infrastructure</a></li>
+                <li><a href="#medical-content">Medical Content</a></li>
+                <li><a href="#rag-system">RAG System</a></li>
+                <li><a href="#enhancements">Enhancements</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <!-- OVERVIEW -->
+            <section id="overview">
+                <h2>📊 Platform Overview</h2>
+
+                <div class="alert alert-info">
+                    <h4>irStudy: Australian Medical Education Platform</h4>
+                    <p><strong>Mission:</strong> Prepare medical students and IMGs for Australian clinical practice through evidence-based simulation and practice.</p>
+                    <p><strong>Systems:</strong> 4 integrated learning modules sharing common infrastructure</p>
+                </div>
+
+                <h3>System Architecture (High-Level)</h3>
+                <div class="mermaid">
+graph TB
+    subgraph Frontend["Frontend Layer (React + TypeScript)"]
+        UI[React Application<br/>94 Components]
+        MCQ_UI[MCQ Interface]
+        OSCE_UI[OSCE Browser]
+        AI_OSCE_UI[AI OSCE Chat<br/>WebSocket]
+        EMR_UI[EMR Documentation<br/>Epic/Cerner Themes]
+    end
+
+    subgraph Backend["Backend Layer (FastAPI + Python)"]
+        API[API Gateway<br/>16 Routers]
+        Auth[JWT Authentication]
+        Services[Business Logic<br/>3 Services]
+    end
+
+    subgraph AI["AI/LLM Layer"]
+        Claude[Claude 3.5 Sonnet<br/>Primary]
+        Kimi[Kimi 2.5<br/>FREE Fallback]
+        RAG[RAG System<br/>42,647 Chunks]
+    end
+
+    subgraph Data["Data Layer"]
+        Postgres[(PostgreSQL<br/>19 Tables)]
+        Redis[(Redis 2.5GB<br/>Caching + Sessions)]
+        Qdrant[(Qdrant<br/>Vector DB)]
+        Vault[(HashiCorp Vault<br/>Secrets)]
+    end
+
+    UI --> API
+    MCQ_UI --> API
+    OSCE_UI --> API
+    AI_OSCE_UI --> API
+    EMR_UI --> API
+
+    API --> Auth
+    API --> Services
+    Services --> Claude
+    Services --> Kimi
+    Services --> RAG
+
+    Claude --> RAG
+    RAG --> Qdrant
+
+    Services --> Postgres
+    Services --> Redis
+    Auth --> Vault
+
+    style Frontend fill:#3b82f6,stroke:#1e40af,color:#fff
+    style Backend fill:#8b5cf6,stroke:#6d28d9,color:#fff
+    style AI fill:#059669,stroke:#065f46,color:#fff
+    style Data fill:#d97706,stroke:#92400e,color:#fff
+                </div>
+
+                <h3>Current Implementation Status</h3>
+                <div class="component-grid">
+                    <div class="metric-card">
+                        <div class="label">Database Tables</div>
+                        <div class="value">19</div>
+                        <div class="label">Fully Designed</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">API Routers</div>
+                        <div class="value">16</div>
+                        <div class="label">Partial Implementation</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Medical Content</div>
+                        <div class="value">207</div>
+                        <div class="label">Patient Personas (96.5% Quality)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">RAG Chunks</div>
+                        <div class="value">42,647</div>
+                        <div class="label">Australian Medical Sources</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">PRD Documentation</div>
+                        <div class="value">200+</div>
+                        <div class="label">System Specifications</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Test Files</div>
+                        <div class="value">27</div>
+                        <div class="label">100% Pass Rate (EMR: 27/27)</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BACKEND COMPONENTS -->
+            <section id="backend">
+                <h2>⚙️ Backend Components</h2>
+
+                <h3>1.1 API Endpoints (FastAPI)</h3>
+                <p><strong>Location:</strong> <code class="code-inline">/backend/src/api/v1/</code></p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Router</th>
+                            <th>Purpose</th>
+                            <th>Status</th>
+                            <th>Enhancements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>auth.py</strong></td>
+                            <td>JWT authentication, login/logout</td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                            <td>Add OAuth2, MFA support</td>
+                        </tr>
+                        <tr>
+                            <td><strong>users.py</strong></td>
+                            <td>User CRUD, profile management</td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                            <td>Add profile analytics</td>
+                        </tr>
+                        <tr>
+                            <td><strong>mcqs.py</strong></td>
+                            <td>MCQ question bank, attempts</td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                            <td>Add adaptive difficulty</td>
+                        </tr>
+                        <tr>
+                            <td><strong>osces.py</strong></td>
+                            <td>Static OSCE scenarios</td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>osce_sessions.py</strong></td>
+                            <td>AI OSCE session management</td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                            <td>WebSocket integration (PRD-001)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>patient_personas.py</strong></td>
+                            <td>360 AI patient personas</td>
+                            <td><span class="status-badge status-partial">Partial</span></td>
+                            <td>CRUD complete, scoring missing</td>
+                        </tr>
+                        <tr>
+                            <td><strong>progress.py</strong></td>
+                            <td>Unified progress tracking</td>
+                            <td><span class="status-badge status-partial">Partial</span></td>
+                            <td>MCQ+OSCE complete, EMR missing</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ai_validation_router.py</strong></td>
+                            <td>AI validation (Kimi/Claude)</td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                            <td>Add streaming responses</td>
+                        </tr>
+                        <tr>
+                            <td><strong>EMR endpoints</strong></td>
+                            <td>SOAP validation, dashboard</td>
+                            <td><span class="status-badge status-missing">Missing</span></td>
+                            <td>18 critical fixes needed (PRD-002, PRD-003)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>study_cards.py</strong></td>
+                            <td>Spaced repetition cards</td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                            <td>Add ML-based scheduling</td>
+                        </tr>
+                        <tr>
+                            <td><strong>mock_exams.py</strong></td>
+                            <td>16-station mock exam orchestration</td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                            <td>Full implementation (PRD-006)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>1.2 Database Models (SQLAlchemy)</h3>
+                <p><strong>Location:</strong> <code class="code-inline">/backend/src/db/models.py</code></p>
+
+                <div class="component-grid">
+                    <div class="component-card">
+                        <h4>Core Models <span class="status-badge status-implemented">Implemented</span></h4>
+                        <ul>
+                            <li><strong>User</strong> - HIPAA-compliant user accounts</li>
+                            <li><strong>UserProgress</strong> - Extended by EMR + OSCE systems</li>
+                        </ul>
+                        <p><strong>Enhancement:</strong> Add user activity tracking, learning preferences</p>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>MCQ System <span class="status-badge status-implemented">Implemented</span></h4>
+                        <ul>
+                            <li><strong>MCQ</strong> - Questions with Australian context</li>
+                            <li><strong>MCQAttempt</strong> - Attempt records with audit trail</li>
+                        </ul>
+                        <p><strong>Enhancement:</strong> Add question difficulty calibration, A/B testing</p>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>OSCE System <span class="status-badge status-partial">Partial</span></h4>
+                        <ul>
+                            <li><strong>OSCE</strong> - Static scenarios ✅</li>
+                            <li><strong>PatientPersona</strong> - 360 AI personas ✅</li>
+                            <li><strong>OSCEAttemptAI</strong> - Session records ⏳</li>
+                            <li><strong>OSCEScoreAI</strong> - AMC scoring ⏳</li>
+                            <li><strong>MockExam</strong> - 16-station exams ⏳</li>
+                        </ul>
+                        <p><strong>Enhancement:</strong> Full AI OSCE implementation (192-236 hours)</p>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>EMR System <span class="status-badge status-partial">Partial</span></h4>
+                        <ul>
+                            <li><strong>MockPatient</strong> - 500+ practice patients ✅</li>
+                            <li><strong>EMRSession</strong> - Practice attempts ✅</li>
+                            <li><strong>EMRSOAPNote</strong> - Submitted notes ✅</li>
+                            <li><strong>EMRPrescription</strong> - Prescriptions ✅</li>
+                            <li><strong>EMRPathologyOrder</strong> - Orders ✅</li>
+                            <li><strong>EMRValidationResult</strong> - AI feedback ✅</li>
+                        </ul>
+                        <p><strong>Enhancement:</strong> Complete EMR API endpoints, 18 critical fixes</p>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>Study Cards <span class="status-badge status-implemented">Implemented</span></h4>
+                        <ul>
+                            <li><strong>StudyCard</strong> - Spaced repetition cards</li>
+                            <li><strong>StudyCardReview</strong> - SM-2 algorithm reviews</li>
+                        </ul>
+                        <p><strong>Enhancement:</strong> Auto-generate from mistakes, ML scheduling</p>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning">
+                    <h4>⚠️ Database Migration Status</h4>
+                    <p><strong>Alembic Migrations:</strong> 16 migrations completed</p>
+                    <p><strong>Recent Fix:</strong> EMR <code class="code-inline">emr_system</code> column added (April 7, 2026)</p>
+                    <p><strong>Known Issue:</strong> user_progress table extended by both EMR + OSCE systems (coordination needed)</p>
+                </div>
+
+                <h3>1.3 Services</h3>
+                <p><strong>Location:</strong> <code class="code-inline">/backend/src/services/</code></p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Purpose</th>
+                            <th>Status</th>
+                            <th>Enhancements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>progress_analytics.py</strong></td>
+                            <td>Progress calculations (MCQ+OSCE+EMR)</td>
+                            <td><span class="status-badge status-partial">Partial</span></td>
+                            <td>Add EMR methods, correlation analysis</td>
+                        </tr>
+                        <tr>
+                            <td><strong>sm2_algorithm.py</strong></td>
+                            <td>Spaced repetition (SM-2)</td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                            <td>Upgrade to SM-18, add ML predictions</td>
+                        </tr>
+                        <tr>
+                            <td><strong>review_queue_service.py</strong></td>
+                            <td>Study card queue management</td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                            <td>Add priority weighting</td>
+                        </tr>
+                        <tr>
+                            <td><strong>mock_exam/orchestrator.py</strong></td>
+                            <td>16-station exam orchestration</td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                            <td>Full implementation (PRD-006)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>emr_dashboard_service</strong></td>
+                            <td>EMR analytics</td>
+                            <td><span class="status-badge status-missing">Missing</span></td>
+                            <td>Implement dashboard metrics (PRD-003)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>osce_to_emr_converter</strong></td>
+                            <td>OSCE → EMR integration</td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                            <td>NLP extraction (PRD-INTEGRATION-004)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>1.4 AI/LLM Integration</h3>
+                <p><strong>Location:</strong> <code class="code-inline">/backend/src/ai/</code></p>
+
+                <div class="alert alert-info">
+                    <h4>AI Provider Strategy</h4>
+                    <p><strong>Primary:</strong> Claude 3.5 Sonnet (PAID - $3/MTok input, $15/MTok output)</p>
+                    <p><strong>Fallback:</strong> Kimi 2.5 (FREE - $3,888/year savings)</p>
+                    <p><strong>Cost at Scale:</strong> $66-153/month (1000-2000 users with 60% Kimi fallback)</p>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Purpose</th>
+                            <th>Status</th>
+                            <th>Enhancements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>kimi_adapter.py</strong></td>
+                            <td>Kimi API adapter (FREE fallback)</td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                            <td>Add response caching</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ai_patient.py</strong></td>
+                            <td>AI Patient simulation (OSCE)</td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                            <td>6-state emotional model (PRD-002)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ai_examiner.py</strong></td>
+                            <td>AI Examiner scoring (AMC rubric)</td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                            <td>±2 marks accuracy (PRD-004)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>rag_service.py</strong></td>
+                            <td>RAG integration with Qdrant</td>
+                            <td><span class="status-badge status-partial">Partial</span></td>
+                            <td><strong>CRITICAL:</strong> Replace mock embeddings (see RAG section)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>emotional_state.py</strong></td>
+                            <td>6-state emotional model</td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                            <td>Neutral→Anxious→Frustrated→Calm→Engaged→Trusting</td>
+                        </tr>
+                        <tr>
+                            <td><strong>study_card_generator.py</strong></td>
+                            <td>Auto-generate study cards</td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                            <td>Generate from OSCE mistakes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>scoring/critical_errors.py</strong></td>
+                            <td>Auto-fail conditions (20+ rules)</td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                            <td>Medical errors, safety violations</td>
+                        </tr>
+                        <tr>
+                            <td><strong>scoring/feedback_generator.py</strong></td>
+                            <td>Feedback generation</td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                            <td>Personalized, actionable feedback</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>1.5 Authentication & Security</h3>
+                <p><strong>Location:</strong> <code class="code-inline">/backend/src/auth/</code> + <code class="code-inline">/backend/src/security/</code></p>
+
+                <div class="component-grid">
+                    <div class="component-card">
+                        <h4>Authentication <span class="status-badge status-implemented">Implemented</span></h4>
+                        <ul>
+                            <li>JWT authentication with rotation</li>
+                            <li>bcrypt password hashing</li>
+                            <li>Role-based access control (RBAC)</li>
+                        </ul>
+                        <p><strong>Enhancement:</strong> Add OAuth2, MFA, SSO</p>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>Security Features <span class="status-badge status-implemented">Implemented</span></h4>
+                        <ul>
+                            <li>HashiCorp Vault integration</li>
+                            <li>9 security headers (HTTPS, CSP, HSTS)</li>
+                            <li>Security event logging (Redis + Vault)</li>
+                            <li>PHI anonymization</li>
+                        </ul>
+                        <p><strong>Enhancement:</strong> Vault HA, secrets rotation, anomaly detection</p>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>Prompt Security <span class="status-badge status-implemented">Implemented</span></h4>
+                        <ul>
+                            <li>Prompt injection prevention</li>
+                            <li>LLM input sanitization</li>
+                            <li>PHI anonymization for LLM calls</li>
+                        </ul>
+                        <p><strong>Enhancement:</strong> Add adversarial prompt detection</p>
+                    </div>
+                </div>
+
+                <h3>1.6 WebSocket Infrastructure</h3>
+                <p><strong>Location:</strong> <code class="code-inline">/backend/src/websocket/</code></p>
+
+                <div class="alert alert-success">
+                    <h4>✅ Architecture Complete</h4>
+                    <p>WebSocket infrastructure fully designed for 8-minute AI OSCE conversations</p>
+                    <p><strong>Document:</strong> <code class="code-inline">backend/TASK_2_1_ARCHITECTURE.md</code></p>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Module</th>
+                            <th>Purpose</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>authenticator.py</strong></td>
+                            <td>JWT WebSocket authentication</td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>session_manager.py</strong></td>
+                            <td>Active session management (Redis)</td>
+                            <td><span class="status-badge status-partial">Partial</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>timer.py</strong></td>
+                            <td>8-minute OSCE timer</td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>rate_limiter.py</strong></td>
+                            <td>Connection rate limiting (5/min)</td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>connection_tracker.py</strong></td>
+                            <td>Connection tracking (max 3/user)</td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>handler.py</strong></td>
+                            <td>Message handling</td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- FRONTEND COMPONENTS -->
+            <section id="frontend">
+                <h2>🖥️ Frontend Components</h2>
+
+                <div class="alert alert-info">
+                    <h4>React Application</h4>
+                    <p><strong>Location:</strong> <code class="code-inline">/frontend</code></p>
+                    <p><strong>Tech Stack:</strong> React 18 + TypeScript + Material-UI v5</p>
+                    <p><strong>Files:</strong> 94 TypeScript/JSX component files</p>
+                </div>
+
+                <h3>Key Features (from PRDs)</h3>
+                <div class="component-grid">
+                    <div class="component-card">
+                        <h4>MCQ Practice <span class="status-badge status-implemented">Implemented</span></h4>
+                        <ul>
+                            <li>Question display with Australian context</li>
+                            <li>Answer selection and submission</li>
+                            <li>Instant feedback with explanations</li>
+                            <li>Progress tracking</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>OSCE Browser <span class="status-badge status-implemented">Implemented</span></h4>
+                        <ul>
+                            <li>Browse 360 patient personas</li>
+                            <li>Filter by specialty, difficulty</li>
+                            <li>View patient details</li>
+                            <li>Launch AI OSCE sessions</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>AI OSCE Chat <span class="status-badge status-planned">Planned</span></h4>
+                        <ul>
+                            <li>WebSocket-based real-time chat</li>
+                            <li>8-minute timer with warnings</li>
+                            <li>Emotional state indicators</li>
+                            <li>Transcript capture</li>
+                        </ul>
+                        <p><strong>PRD:</strong> PRD-005 (Frontend Implementation)</p>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>EMR Documentation <span class="status-badge status-partial">Partial</span></h4>
+                        <ul>
+                            <li>Epic/Cerner UI themes (light/dark)</li>
+                            <li>SOAP note editor with templates</li>
+                            <li>Auto-save with debounce</li>
+                            <li>AI validation feedback</li>
+                        </ul>
+                        <p><strong>PRD:</strong> PRD-FRONTEND-001, PRD-FRONTEND-002</p>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>Unified Dashboard <span class="status-badge status-partial">Partial</span></h4>
+                        <ul>
+                            <li>MCQ progress ✅</li>
+                            <li>OSCE progress ✅</li>
+                            <li>EMR progress ⏳</li>
+                            <li>Correlation analysis ⏳</li>
+                        </ul>
+                        <p><strong>PRD:</strong> PRD-INTEGRATION-005</p>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>Study Cards <span class="status-badge status-implemented">Implemented</span></h4>
+                        <ul>
+                            <li>Spaced repetition interface</li>
+                            <li>Card flip animation</li>
+                            <li>SM-2 algorithm scheduling</li>
+                            <li>Progress visualization</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>Mock Exam Mode <span class="status-badge status-planned">Planned</span></h4>
+                        <ul>
+                            <li>16-station exam interface</li>
+                            <li>Station timer and navigation</li>
+                            <li>Results display (AMC rubric)</li>
+                            <li>PDF report generation</li>
+                        </ul>
+                        <p><strong>PRD:</strong> PRD-006 (Mock Exam Mode)</p>
+                    </div>
+                </div>
+
+                <h3>Accessibility Compliance</h3>
+                <div class="alert alert-success">
+                    <h4>WCAG 2.2 AA Compliance</h4>
+                    <ul>
+                        <li>Keyboard navigation support</li>
+                        <li>Screen reader compatibility (ARIA labels)</li>
+                        <li>Color contrast ratios ≥4.5:1</li>
+                        <li>Focus indicators</li>
+                        <li>axe-core automated testing (56 tests target)</li>
+                    </ul>
+                </div>
+
+                <h3>Testing Status</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Test Type</th>
+                            <th>Tool</th>
+                            <th>Status</th>
+                            <th>Coverage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Unit Tests</td>
+                            <td>Jest + React Testing Library</td>
+                            <td><span class="status-badge status-partial">Partial</span></td>
+                            <td>~40% (target: 70%)</td>
+                        </tr>
+                        <tr>
+                            <td>E2E Tests</td>
+                            <td>Playwright</td>
+                            <td><span class="status-badge status-partial">Partial</span></td>
+                            <td>Key flows covered</td>
+                        </tr>
+                        <tr>
+                            <td>Accessibility</td>
+                            <td>axe-core</td>
+                            <td><span class="status-badge status-partial">Partial</span></td>
+                            <td>0 violations (target: 56 tests)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- INFRASTRUCTURE -->
+            <section id="infrastructure">
+                <h2>🏗️ Infrastructure Components</h2>
+
+                <h3>System Infrastructure Overview</h3>
+                <div class="mermaid">
+graph LR
+    subgraph Docker["Docker Compose (Development)"]
+        Backend[FastAPI Backend<br/>Port 8001]
+        Frontend[React Frontend<br/>Port 3000]
+    end
+
+    subgraph Data["Data Stores"]
+        Postgres[(PostgreSQL<br/>Port 5433<br/>19 Tables)]
+        Redis[(Redis<br/>Port 6380<br/>2.5 GB)]
+        Qdrant[(Qdrant<br/>Port 6333<br/>42,647 vectors)]
+        Vault[(HashiCorp Vault<br/>Port 8200<br/>Secrets)]
+    end
+
+    Backend --> Postgres
+    Backend --> Redis
+    Backend --> Qdrant
+    Backend --> Vault
+    Frontend --> Backend
+
+    style Backend fill:#3b82f6,stroke:#1e40af,color:#fff
+    style Data fill:#d97706,stroke:#92400e,color:#fff
+                </div>
+
+                <h3>3.1 Redis Architecture</h3>
+                <p><strong>Document:</strong> <code class="code-inline">backend/infrastructure/REDIS_ARCHITECTURE.md</code></p>
+
+                <div class="alert alert-success">
+                    <h4>✅ Redis Architecture Complete</h4>
+                    <p><strong>Total Allocation:</strong> 2.5 GB (512 MB EMR + 2 GB OSCE)</p>
+                    <p><strong>Eviction Policy:</strong> allkeys-lru (for cacheable data)</p>
+                    <p><strong>Persistence:</strong> RDB snapshots (5 min) + AOF (append-only file)</p>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Namespace</th>
+                            <th>Purpose</th>
+                            <th>TTL</th>
+                            <th>Size Estimate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #fef3c7;">
+                            <td colspan="4"><strong>EMR System (512 MB)</strong></td>
+                        </tr>
+                        <tr>
+                            <td><code>emr:dashboard:user:{user_id}</code></td>
+                            <td>Dashboard analytics cache</td>
+                            <td>5 min</td>
+                            <td>~50 KB/user</td>
+                        </tr>
+                        <tr>
+                            <td><code>emr:ratelimit:{ip_address}</code></td>
+                            <td>API rate limiting</td>
+                            <td>1 min</td>
+                            <td>~1 KB/IP</td>
+                        </tr>
+                        <tr>
+                            <td><code>emr:session:{session_id}:autosave</code></td>
+                            <td>Auto-save buffer</td>
+                            <td>1 hour</td>
+                            <td>~10 KB/session</td>
+                        </tr>
+                        <tr>
+                            <td><code>emr:template:cache:{template_id}</code></td>
+                            <td>SOAP templates</td>
+                            <td>24 hours</td>
+                            <td>~5 KB/template</td>
+                        </tr>
+                        <tr>
+                            <td><code>emr:validation:queue:{user_id}</code></td>
+                            <td>Claude API validation queue</td>
+                            <td>None</td>
+                            <td>~20 KB/user</td>
+                        </tr>
+                        <tr style="background: #dbeafe;">
+                            <td colspan="4"><strong>AI OSCE System (2 GB)</strong></td>
+                        </tr>
+                        <tr>
+                            <td><code>osce:session:{session_id}:state</code></td>
+                            <td>Active session state</td>
+                            <td>None*</td>
+                            <td>~5 KB/session</td>
+                        </tr>
+                        <tr>
+                            <td><code>osce:session:{session_id}:transcript</code></td>
+                            <td>Real-time conversation</td>
+                            <td>None*</td>
+                            <td>~100 KB/session</td>
+                        </tr>
+                        <tr>
+                            <td><code>osce:session:{session_id}:emotional</code></td>
+                            <td>6-state emotional model</td>
+                            <td>None*</td>
+                            <td>~2 KB/session</td>
+                        </tr>
+                        <tr>
+                            <td><code>osce:session:{session_id}:timer</code></td>
+                            <td>8-minute countdown</td>
+                            <td>480s</td>
+                            <td>~500 bytes/session</td>
+                        </tr>
+                        <tr>
+                            <td><code>osce:ratelimit:claude:{user_id}</code></td>
+                            <td>Claude API rate limiting</td>
+                            <td>1 min</td>
+                            <td>~1 KB/user</td>
+                        </tr>
+                        <tr>
+                            <td><code>osce:persona:cache:{persona_id}</code></td>
+                            <td>Cached patient personas</td>
+                            <td>1 hour</td>
+                            <td>~50 KB/persona</td>
+                        </tr>
+                        <tr style="background: #f0fdf4;">
+                            <td colspan="4"><strong>Shared Namespaces</strong></td>
+                        </tr>
+                        <tr>
+                            <td><code>shared:ratelimit:global:claude</code></td>
+                            <td>Global Claude API rate limit</td>
+                            <td>1 min</td>
+                            <td>10 KB</td>
+                        </tr>
+                        <tr>
+                            <td><code>shared:session:{session_id}:lock</code></td>
+                            <td>Distributed locks</td>
+                            <td>30s</td>
+                            <td>1 KB/lock</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><em>* TTL is None until session completes (8 min max), then deleted or moved to PostgreSQL</em></p>
+
+                <div class="alert alert-warning">
+                    <h4>⚠️ Monitoring Requirements</h4>
+                    <p><strong>Prometheus Alerts:</strong></p>
+                    <ul>
+                        <li>Memory usage >80% (warning), >90% (critical)</li>
+                        <li>Fragmentation ratio >1.5 (consider restart)</li>
+                        <li>Connection count >9000 (warning)</li>
+                        <li>Slow queries >10/min</li>
+                    </ul>
+                </div>
+
+                <h3>3.2 HashiCorp Vault</h3>
+                <p><strong>Document:</strong> <code class="code-inline">docs/VAULT_INTEGRATION.md</code></p>
+
+                <div class="mermaid">
+graph TD
+    A[Vault Key Hierarchy] --> B[secret/database/]
+    A --> C[secret/emr/]
+    A --> D[secret/ai-osce/]
+    A --> E[secret/shared/]
+    A --> F[audit/security_events/]
+
+    B --> B1[postgres-irstudy-password]
+    B --> B2[postgres-connection-string]
+
+    C --> C1[claude-api-key]
+    C --> C2[session-encryption-key]
+    C --> C3[template-signing-key]
+
+    D --> D1[claude-api-key shared]
+    D --> D2[kimi-api-key FREE]
+    D --> D3[redis-password]
+    D --> D4[websocket-secret]
+
+    E --> E1[jwt-secret]
+    E --> E2[https-tls-cert]
+    E --> E3[https-tls-key]
+
+    F --> F1[YYYY-MM-DD audit logs]
+
+    style A fill:#d97706,stroke:#92400e,color:#fff
+    style F fill:#dc2626,stroke:#991b1b,color:#fff
+                </div>
+
+                <h3>3.3 Qdrant Vector Database</h3>
+                <p><strong>RAG System for Medical Knowledge</strong></p>
+
+                <div class="component-grid">
+                    <div class="metric-card">
+                        <div class="label">Medical Chunks</div>
+                        <div class="value">42,647</div>
+                        <div class="label">Text Embeddings</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Australian Sources</div>
+                        <div class="value">66%</div>
+                        <div class="label">eTG, AMH, AMC Handbook</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Query Latency</div>
+                        <div class="value">50-200ms</div>
+                        <div class="label">p95</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Confidence Threshold</div>
+                        <div class="value">0.65</div>
+                        <div class="label">Minimum for Citations</div>
+                    </div>
+                </div>
+
+                <div class="alert alert-danger">
+                    <h4>🔴 CRITICAL: RAG System Issue</h4>
+                    <p><strong>Problem:</strong> Mock embeddings (MD5 hash) in <code class="code-inline">backend/src/ai/rag_service.py:140-142</code></p>
+                    <p><strong>Impact:</strong> Citations are essentially random, no semantic understanding</p>
+                    <p><strong>Solution:</strong> See RAG System section below for upgrade plan</p>
+                </div>
+
+                <h3>3.4 PostgreSQL Database</h3>
+                <div class="component-grid">
+                    <div class="metric-card">
+                        <div class="label">Tables</div>
+                        <div class="value">19</div>
+                        <div class="label">Fully Designed</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Migrations</div>
+                        <div class="value">16</div>
+                        <div class="label">Alembic Complete</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Port</div>
+                        <div class="value">5433</div>
+                        <div class="label">irstudy-postgres</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Encryption</div>
+                        <div class="value">At Rest</div>
+                        <div class="label">PHI Protected</div>
+                    </div>
+                </div>
+
+                <h3>3.5 Docker/Kubernetes</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Status</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Docker Compose</strong></td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                            <td>Development environment, all services</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Health Checks</strong></td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                            <td>/health endpoint for Kubernetes probes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kubernetes YAML</strong></td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                            <td>Production deployment configuration needed</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- RAG SYSTEM -->
+            <section id="rag-system">
+                <h2>🔍 RAG System: Current State & Upgrade Plan</h2>
+
+                <div class="alert alert-danger">
+                    <h4>🔴 CRITICAL ISSUE: RAG System Broken</h4>
+                    <p><strong>File:</strong> <code class="code-inline">backend/src/ai/rag_service.py</code> lines 140-142</p>
+                    <p><strong>Problem:</strong> Mock embeddings using MD5 hash provide no semantic understanding</p>
+                    <p><strong>Impact:</strong> Medical content citations are essentially random</p>
+                    <p><strong>Status:</strong> 207 patient personas generated with potentially unreliable citations</p>
+                </div>
+
+                <h3>Current RAG System (Naive RAG - Broken)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Current State</th>
+                            <th>Issue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Embeddings</strong></td>
+                            <td>MD5 hash (768-dim mock)</td>
+                            <td>❌ No semantic meaning</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Search</strong></td>
+                            <td>Dense-only Qdrant search</td>
+                            <td>❌ No keyword matching</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Re-ranking</strong></td>
+                            <td>None</td>
+                            <td>❌ No precision improvement</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Australian Priority</strong></td>
+                            <td>None</td>
+                            <td>❌ No source boosting</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Duplicate Filtering</strong></td>
+                            <td>Basic text dedup</td>
+                            <td>❌ No semantic diversity</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Relevance</strong></td>
+                            <td>~65% (random)</td>
+                            <td>❌ Below 85% target</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AU Sources</strong></td>
+                            <td>~50%</td>
+                            <td>❌ Below 70% target</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Duplicates</strong></td>
+                            <td>~10%</td>
+                            <td>❌ Above 2% target</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Proposed RAG System (Modular RAG)</h3>
+                <p><strong>Full Details:</strong> See <code class="code-inline">docs/RAG_ARCHITECTURE_UPGRADE.html</code></p>
+
+                <div class="mermaid">
+graph LR
+    A[User Query] --> B[Stage 1:<br/>Query Processing]
+    B --> C[Stage 2:<br/>Hybrid Retrieval]
+    C --> D[Stage 3:<br/>Re-ranking]
+    D --> E[Stage 4:<br/>Citation Formatting]
+    E --> F[Claude API<br/>Content Generation]
+
+    B1[PubMedBERT Embedding] --> B
+    B2[HyDE Expansion] --> B
+    B3[Keyword Extraction] --> B
+
+    C1[Dense Search Top 50] --> C
+    C2[Sparse BM25 Top 50] --> C
+    C3[RRF Fusion] --> C
+
+    D1[Cross-Encoder] --> D
+    D2[AU Source Boost +30%] --> D
+    D3[MMR Diversity λ=0.5] --> D
+
+    E1[qdrant_point_id] --> E
+    E2[Page Verification] --> E
+    E3[Australian Format] --> E
+
+    style B fill:#3b82f6,stroke:#1e40af,color:#fff
+    style C fill:#8b5cf6,stroke:#6d28d9,color:#fff
+    style D fill:#059669,stroke:#065f46,color:#fff
+    style E fill:#d97706,stroke:#92400e,color:#fff
+                </div>
+
+                <h3>Expected Improvements</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Current (Broken)</th>
+                            <th>After Phase 1</th>
+                            <th>After Phase 2</th>
+                            <th>After Phase 3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Relevance</strong></td>
+                            <td>~65%</td>
+                            <td>80%</td>
+                            <td>85%</td>
+                            <td>85%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AU Sources</strong></td>
+                            <td>~50%</td>
+                            <td>50%</td>
+                            <td>70%</td>
+                            <td>70%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Duplicates</strong></td>
+                            <td>~10%</td>
+                            <td>10%</td>
+                            <td><2%</td>
+                            <td><2%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Avg Confidence</strong></td>
+                            <td>N/A (meaningless)</td>
+                            <td>0.75</td>
+                            <td>0.82</td>
+                            <td>0.85</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Query Latency</strong></td>
+                            <td>150ms</td>
+                            <td>350ms</td>
+                            <td>550ms</td>
+                            <td>450ms</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Implementation Plan</h3>
+                <div class="component-grid">
+                    <div class="component-card">
+                        <h4>Phase 1: Foundation (12 days)</h4>
+                        <ul>
+                            <li>Replace mock embeddings with PubMedBERT</li>
+                            <li>Add hybrid search (dense + BM25 sparse)</li>
+                            <li>Implement QueryProcessor class</li>
+                            <li>Integration testing</li>
+                        </ul>
+                        <p><strong>Result:</strong> 80% relevance (20% improvement)</p>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>Phase 2: Re-ranking (10 days)</h4>
+                        <ul>
+                            <li>Add cross-encoder re-ranking</li>
+                            <li>Implement Australian source boosting (+30%)</li>
+                            <li>Add MMR diversity filtering</li>
+                            <li>Integration testing</li>
+                        </ul>
+                        <p><strong>Result:</strong> 85% relevance, 70% AU sources, <2% duplicates</p>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>Phase 3: Polish (10 days)</h4>
+                        <ul>
+                            <li>Add HyDE query expansion (Claude API)</li>
+                            <li>Implement monitoring & logging</li>
+                            <li>Performance optimization (caching, batching)</li>
+                            <li>Final validation & documentation</li>
+                        </ul>
+                        <p><strong>Result:</strong> 85% relevance, 0.85 avg confidence, <450ms latency</p>
+                    </div>
+                </div>
+
+                <h3>Budget Analysis</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Annual Cost</th>
+                            <th>Performance</th>
+                            <th>Recommendation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #f0fdf4;">
+                            <td><strong>Self-Hosted</strong></td>
+                            <td>$3/year</td>
+                            <td>Excellent (local GPU)</td>
+                            <td><span class="status-badge status-success">RECOMMENDED</span></td>
+                        </tr>
+                        <tr>
+                            <td>Cloud-Hosted</td>
+                            <td>$303/year</td>
+                            <td>Good (AWS t3.medium)</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Premium API</td>
+                            <td>$1,003/year</td>
+                            <td>Excellent (OpenAI embeddings)</td>
+                            <td>-</td>
+                        </tr>
+                        <tr style="background: #fef2f2;">
+                            <td><strong>Manual Review (avoided)</strong></td>
+                            <td><strong>$15,750/year</strong></td>
+                            <td>Perfect (human verification)</td>
+                            <td><span class="status-badge status-missing">AVOIDED</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>ROI:</strong> $15,747/year savings (5,250x return on investment)</p>
+            </section>
+
+            <!-- MEDICAL CONTENT SYSTEMS -->
+            <section id="medical-content">
+                <h2>🏥 Medical Content Systems</h2>
+
+                <h3>4.1 Patient Persona Generation</h3>
+                <p><strong>Document:</strong> <code class="code-inline">clinical-content-prds/PRD_003_BATCH_1_PRODUCTION.md</code></p>
+
+                <div class="alert alert-success">
+                    <h4>✅ Batch 1 Production Complete</h4>
+                    <p><strong>207 Patient Personas Generated</strong> (96.5% deployment readiness)</p>
+                </div>
+
+                <div class="component-grid">
+                    <div class="metric-card">
+                        <div class="label">Total Personas</div>
+                        <div class="value">207</div>
+                        <div class="label">Batch 1 Complete</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Deployment Ready</div>
+                        <div class="value">96.5%</div>
+                        <div class="label">200/207 Approved</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">RAG Citations</div>
+                        <div class="value">3,726</div>
+                        <div class="label">100% Coverage</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Australian Sources</div>
+                        <div class="value">66.1%</div>
+                        <div class="label">Exceeds 60% Target</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Hallucinated Citations</div>
+                        <div class="value">0</div>
+                        <div class="label">Zero Tolerance</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">FRACP Score</div>
+                        <div class="value">8.5/10</div>
+                        <div class="label">Clinical Validation</div>
+                    </div>
+                </div>
+
+                <h3>Specialty Breakdown (Batch 1)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Specialty</th>
+                            <th>Personas</th>
+                            <th>Deployment Ready</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cardiology</td>
+                            <td>45</td>
+                            <td>43 (95.6%)</td>
+                            <td><span class="status-badge status-implemented">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td>Emergency Medicine</td>
+                            <td>45</td>
+                            <td>44 (97.8%)</td>
+                            <td><span class="status-badge status-implemented">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td>General Practice</td>
+                            <td>54</td>
+                            <td>52 (96.3%)</td>
+                            <td><span class="status-badge status-implemented">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td>Pediatrics</td>
+                            <td>36</td>
+                            <td>35 (97.2%)</td>
+                            <td><span class="status-badge status-implemented">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td>Respiratory</td>
+                            <td>27</td>
+                            <td>26 (96.3%)</td>
+                            <td><span class="status-badge status-implemented">Complete</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>13-Gate QA Validation System</h3>
+                <div class="component-grid">
+                    <div class="component-card">
+                        <h4>Gate 1-2: Technical Compliance</h4>
+                        <ul>
+                            <li>JSON schema validation (17 required fields)</li>
+                            <li>RAG citations >0.65 confidence</li>
+                            <li>Zero hallucinated citations</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>Gate 3-5: Clinical Quality</h4>
+                        <ul>
+                            <li>FRACP review ≥8.0/10</li>
+                            <li>Clinical accuracy (medications, dosing, red flags)</li>
+                            <li>Australian context (paracetamol, MBS/PBS, 000)</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>Gate 6-7: Metadata Validation</h4>
+                        <ul>
+                            <li>Difficulty level valid (easy/medium/hard)</li>
+                            <li>Specialty valid (11 specialties)</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>Gate 8-10: Cultural Safety</h4>
+                        <ul>
+                            <li>Aboriginal/TSI representation (3.3% achieved)</li>
+                            <li>LGBTQIA+ representation</li>
+                            <li>CALD representation</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>Gate 11-12: Security</h4>
+                        <ul>
+                            <li>Zero hardcoded credentials</li>
+                            <li>Zero PHI in personas</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-card">
+                        <h4>Gate 13: Educational Alignment</h4>
+                        <ul>
+                            <li>9-step history taking</li>
+                            <li>SOCRATES pain assessment</li>
+                            <li>Red flags identification</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Content Generation Tools</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tool</th>
+                            <th>Purpose</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Ralph Loop</strong></td>
+                            <td>Autonomous PRD execution</td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>qa_validator.py</strong></td>
+                            <td>13-gate validation</td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>claude_validator.py</strong></td>
+                            <td>FRACP clinical validation</td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>batch_qa_validator.py</strong></td>
+                            <td>Batch processing (100s of personas)</td>
+                            <td><span class="status-badge status-implemented">Implemented</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- ENHANCEMENTS -->
+            <section id="enhancements">
+                <h2>🚀 Enhancement Opportunities</h2>
+
+                <div class="alert alert-info">
+                    <h4>Enhancement Philosophy</h4>
+                    <p>All enhancements aligned with the Modular RAG upgrade approach: systematic, measurable, production-ready</p>
+                </div>
+
+                <h3>6.1 RAG System Enhancements</h3>
+                <div class="enhancement-card">
+                    <h4>Multimodal RAG</h4>
+                    <p><strong>Current:</strong> Text-only embeddings (42,647 chunks)</p>
+                    <p><strong>Enhancement:</strong> Add image/diagram indexing for ECG interpretation, CXR analysis, dermatology images</p>
+                    <p><strong>Tech:</strong> CLIP embeddings for multimodal search</p>
+                    <p><strong>ROI:</strong> 30% more comprehensive medical content coverage</p>
+                </div>
+
+                <div class="enhancement-card">
+                    <h4>Knowledge Graph Integration</h4>
+                    <p><strong>Current:</strong> Vector-only RAG</p>
+                    <p><strong>Enhancement:</strong> Neo4j knowledge graph for medical entity relationships (drug-drug interactions, contraindications)</p>
+                    <p><strong>Tech:</strong> GraphRAG (combines vector search + graph traversal)</p>
+                    <p><strong>ROI:</strong> 40% better complex query answering ("What are alternatives to X for patients with Y?")</p>
+                </div>
+
+                <div class="enhancement-card">
+                    <h4>Dynamic Confidence Tuning</h4>
+                    <p><strong>Current:</strong> Fixed 0.65 threshold for all content</p>
+                    <p><strong>Enhancement:</strong> Adjust threshold by content type (prescriptions: 0.85, general: 0.65)</p>
+                    <p><strong>Tech:</strong> ML-based threshold optimization</p>
+                    <p><strong>ROI:</strong> 15% reduction in false positives</p>
+                </div>
+
+                <h3>6.2 AI/LLM Optimization</h3>
+                <div class="enhancement-card">
+                    <h4>Local Model Integration</h4>
+                    <p><strong>Current:</strong> Claude primary, Kimi fallback (cloud-only)</p>
+                    <p><strong>Enhancement:</strong> Add Meditron 7B for simple validations (local GPU)</p>
+                    <p><strong>Tech:</strong> Model routing based on complexity (simple→local, complex→Claude)</p>
+                    <p><strong>ROI:</strong> 50% cost savings for simple queries ($33-76/month → $16-38/month)</p>
+                </div>
+
+                <div class="enhancement-card">
+                    <h4>Streaming Responses</h4>
+                    <p><strong>Current:</strong> Batch AI responses (3-5s latency)</p>
+                    <p><strong>Enhancement:</strong> Real-time WebSocket streaming for AI Patient responses</p>
+                    <p><strong>Tech:</strong> Claude streaming API + WebSocket forwarding</p>
+                    <p><strong>ROI:</strong> 60% perceived latency reduction (user sees first token in 500ms)</p>
+                </div>
+
+                <div class="enhancement-card">
+                    <h4>Multi-Model Ensemble</h4>
+                    <p><strong>Current:</strong> Single model scoring (Claude or Kimi)</p>
+                    <p><strong>Enhancement:</strong> Combine 3 models for consensus scoring (Claude + Kimi + Meditron)</p>
+                    <p><strong>Tech:</strong> Weighted voting with confidence intervals</p>
+                    <p><strong>ROI:</strong> 25% higher scoring accuracy (±1.5 marks vs ±2 marks)</p>
+                </div>
+
+                <h3>6.3 Performance Optimization</h3>
+                <div class="enhancement-card">
+                    <h4>Database Query Optimization</h4>
+                    <p><strong>Current:</strong> Some queries >100ms (user_progress, osce_attempts)</p>
+                    <p><strong>Enhancement:</strong> Add composite indexes, query result caching</p>
+                    <p><strong>Tech:</strong> PostgreSQL EXPLAIN ANALYZE + index tuning</p>
+                    <p><strong>ROI:</strong> 70% query time reduction (100ms → 30ms p95)</p>
+                </div>
+
+                <div class="enhancement-card">
+                    <h4>CDN for Static Content</h4>
+                    <p><strong>Current:</strong> Serve persona images, PDFs from backend</p>
+                    <p><strong>Enhancement:</strong> CloudFront/Cloudflare CDN for static assets</p>
+                    <p><strong>Tech:</strong> S3 + CloudFront with edge caching</p>
+                    <p><strong>ROI:</strong> 80% faster asset loading (500ms → 100ms), $20/month cost</p>
+                </div>
+
+                <div class="enhancement-card">
+                    <h4>Background Job Processing</h4>
+                    <p><strong>Current:</strong> Synchronous scoring, report generation</p>
+                    <p><strong>Enhancement:</strong> Celery async task queue for long-running jobs</p>
+                    <p><strong>Tech:</strong> Celery + Redis broker</p>
+                    <p><strong>ROI:</strong> 90% API response time improvement (5s → 500ms), better UX</p>
+                </div>
+
+                <h3>6.4 Security Enhancements</h3>
+                <div class="enhancement-card">
+                    <h4>Vault High Availability</h4>
+                    <p><strong>Current:</strong> Single Vault instance (development)</p>
+                    <p><strong>Enhancement:</strong> 3-node Vault cluster with automatic failover</p>
+                    <p><strong>Tech:</strong> Vault HA with Raft storage</p>
+                    <p><strong>ROI:</strong> 99.9% uptime (vs 99.5% single instance)</p>
+                </div>
+
+                <div class="enhancement-card">
+                    <h4>Automated Secrets Rotation</h4>
+                    <p><strong>Current:</strong> Manual key rotation</p>
+                    <p><strong>Enhancement:</strong> 90-day automatic rotation for JWT, API keys, database passwords</p>
+                    <p><strong>Tech:</strong> Vault dynamic secrets + rotation policies</p>
+                    <p><strong>ROI:</strong> 80% reduction in security incidents from compromised credentials</p>
+                </div>
+
+                <div class="enhancement-card">
+                    <h4>ML-based Anomaly Detection</h4>
+                    <p><strong>Current:</strong> Rule-based security alerts</p>
+                    <p><strong>Enhancement:</strong> ML model to detect abnormal user behavior (login patterns, usage spikes)</p>
+                    <p><strong>Tech:</strong> Isolation Forest algorithm on security event logs</p>
+                    <p><strong>ROI:</strong> 60% faster threat detection (hours → minutes)</p>
+                </div>
+
+                <h3>6.5 User Experience</h3>
+                <div class="enhancement-card">
+                    <h4>Progressive Web App (PWA)</h4>
+                    <p><strong>Current:</strong> Web-only application</p>
+                    <p><strong>Enhancement:</strong> PWA with offline mode for study cards, cached personas</p>
+                    <p><strong>Tech:</strong> Service workers + IndexedDB</p>
+                    <p><strong>ROI:</strong> 40% increase in mobile usage, works without internet</p>
+                </div>
+
+                <div class="enhancement-card">
+                    <h4>Adaptive Learning</h4>
+                    <p><strong>Current:</strong> Static difficulty levels</p>
+                    <p><strong>Enhancement:</strong> ML-based difficulty adjustment based on performance</p>
+                    <p><strong>Tech:</strong> Item Response Theory (IRT) algorithm</p>
+                    <p><strong>ROI:</strong> 30% faster skill acquisition, personalized learning path</p>
+                </div>
+
+                <div class="enhancement-card">
+                    <h4>Gamification</h4>
+                    <p><strong>Current:</strong> Basic progress tracking</p>
+                    <p><strong>Enhancement:</strong> Badges, leaderboards, streak tracking, challenges</p>
+                    <p><strong>Tech:</strong> Achievement system + social features</p>
+                    <p><strong>ROI:</strong> 50% increase in daily active users, 2x retention</p>
+                </div>
+
+                <h3>6.6 Analytics & Monitoring</h3>
+                <div class="enhancement-card">
+                    <h4>Unified Grafana Dashboards</h4>
+                    <p><strong>Current:</strong> Partial Prometheus metrics</p>
+                    <p><strong>Enhancement:</strong> Comprehensive Grafana dashboards for all services</p>
+                    <p><strong>Tech:</strong> Grafana + Prometheus + Loki (logs)</p>
+                    <p><strong>ROI:</strong> 70% faster incident response, proactive issue detection</p>
+                </div>
+
+                <div class="enhancement-card">
+                    <h4>Real-time Cost Tracking</h4>
+                    <p><strong>Current:</strong> Manual cost estimation</p>
+                    <p><strong>Enhancement:</strong> Real-time Claude API cost monitoring per user/feature</p>
+                    <p><strong>Tech:</strong> Custom metrics + cost allocation tags</p>
+                    <p><strong>ROI:</strong> 25% cost savings through usage optimization</p>
+                </div>
+
+                <div class="enhancement-card">
+                    <h4>Predictive Analytics</h4>
+                    <p><strong>Current:</strong> Historical performance reports</p>
+                    <p><strong>Enhancement:</strong> ML model to predict exam performance based on practice patterns</p>
+                    <p><strong>Tech:</strong> Gradient boosting on user activity data</p>
+                    <p><strong>ROI:</strong> 85% prediction accuracy, personalized study recommendations</p>
+                </div>
+            </section>
+
+            <!-- IMPLEMENTATION ROADMAP -->
+            <section id="roadmap">
+                <h2>📅 Implementation Roadmap</h2>
+
+                <div class="alert alert-info">
+                    <h4>Master Plan</h4>
+                    <p><strong>Document:</strong> <code class="code-inline">COMPREHENSIVE_PLATFORM_IMPLEMENTATION_MASTER.md</code></p>
+                    <p><strong>Timeline:</strong> 6-8 weeks (with parallel work)</p>
+                    <p><strong>Total Effort:</strong> 306.5-378.5 agent hours</p>
+                </div>
+
+                <h3>Week-by-Week Breakdown</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Week</th>
+                            <th>Phase</th>
+                            <th>Deliverables</th>
+                            <th>Hours</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #f0fdf4;">
+                            <td><strong>Week 1</strong></td>
+                            <td>Shared Infrastructure (BLOCKS everything)</td>
+                            <td>
+                                • Vault integration<br/>
+                                • Redis architecture<br/>
+                                • Security test suite (35 tests)<br/>
+                                • HTTPS/JWT configuration
+                            </td>
+                            <td>15h</td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Week 2-4</strong></td>
+                            <td>EMR System</td>
+                            <td>
+                                • 18 critical backend fixes<br/>
+                                • 14 frontend fixes<br/>
+                                • Dashboard analytics<br/>
+                                • Security infrastructure<br/>
+                                • Testing (328 tests target)
+                            </td>
+                            <td>67.5-73.5h</td>
+                            <td><span class="status-badge status-partial">Partial</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Week 3-5</strong></td>
+                            <td>AI OSCE Phase 1</td>
+                            <td>
+                                • Database + WebSocket<br/>
+                                • Content Phase 1 (personas)<br/>
+                                • Real-time communication
+                            </td>
+                            <td>59-70h</td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Week 5-6</strong></td>
+                            <td>AI OSCE Phase 2</td>
+                            <td>
+                                • AI Integration (Patient + Examiner)<br/>
+                                • Content Phase 2 (360 personas)<br/>
+                                • Emotional state machine
+                            </td>
+                            <td>45-54h</td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Week 6-7</strong></td>
+                            <td>AI OSCE Phase 3</td>
+                            <td>
+                                • Scoring system (AMC rubric)<br/>
+                                • Frontend (chat interface)<br/>
+                                • Content Phase 3 (testing)
+                            </td>
+                            <td>64-82h</td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Week 7-8</strong></td>
+                            <td>AI OSCE Phase 4 + Integration</td>
+                            <td>
+                                • Mock exam mode (16 stations)<br/>
+                                • OSCE-to-EMR converter<br/>
+                                • Unified dashboard<br/>
+                                • Cross-system E2E tests
+                            </td>
+                            <td>88-108h</td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                        </tr>
+                        <tr style="background: #fffbeb;">
+                            <td><strong>Week 9</strong></td>
+                            <td>Final Validation & Deployment</td>
+                            <td>
+                                • All 500+ tests passing<br/>
+                                • Security audit complete<br/>
+                                • Performance benchmarks met<br/>
+                                • Production deployment
+                            </td>
+                            <td>TBD</td>
+                            <td><span class="status-badge status-planned">Planned</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>RAG Upgrade Timeline (Parallel Track)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Phase</th>
+                            <th>Duration</th>
+                            <th>Deliverables</th>
+                            <th>Metrics</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Phase 1: Foundation</strong></td>
+                            <td>12 days</td>
+                            <td>
+                                • Replace mock embeddings (PubMedBERT)<br/>
+                                • Add hybrid search (dense + BM25)<br/>
+                                • Implement QueryProcessor<br/>
+                                • Integration testing
+                            </td>
+                            <td>80% relevance</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Phase 2: Re-ranking</strong></td>
+                            <td>10 days</td>
+                            <td>
+                                • Cross-encoder re-ranking<br/>
+                                • Australian source boosting (+30%)<br/>
+                                • MMR diversity filtering<br/>
+                                • Integration testing
+                            </td>
+                            <td>85% relevance, 70% AU sources, <2% duplicates</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Phase 3: Polish</strong></td>
+                            <td>10 days</td>
+                            <td>
+                                • HyDE query expansion<br/>
+                                • Monitoring & logging<br/>
+                                • Performance optimization<br/>
+                                • Final validation
+                            </td>
+                            <td>0.85 avg confidence, <450ms latency</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Success Metrics</h3>
+                <div class="component-grid">
+                    <div class="metric-card">
+                        <div class="label">Test Pass Rate</div>
+                        <div class="value">100%</div>
+                        <div class="label">500+ Tests (Mandatory)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Test Coverage</div>
+                        <div class="value">≥70%</div>
+                        <div class="label">Unit + Integration</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Security Audit</div>
+                        <div class="value">0</div>
+                        <div class="label">HIGH/CRITICAL Findings</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Platform Uptime</div>
+                        <div class="value">99.5%+</div>
+                        <div class="label">Reliability Target</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">API Latency</div>
+                        <div class="value"><500ms</div>
+                        <div class="label">p95 Performance</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Monthly Cost</div>
+                        <div class="value"><$200</div>
+                        <div class="label">At 1000 Users</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SUMMARY -->
+            <section id="summary">
+                <h2>📊 Executive Summary</h2>
+
+                <div class="alert alert-success">
+                    <h4>✅ Strong Foundation</h4>
+                    <ul>
+                        <li>Database schema complete (19 tables, 16 migrations)</li>
+                        <li>Authentication & security infrastructure operational</li>
+                        <li>RAG system operational (42,647 chunks) - needs embeddings upgrade</li>
+                        <li>Medical content generation system validated (96.5% quality, 207 personas)</li>
+                        <li>Comprehensive documentation (200+ PRDs, 476 KB AI OSCE specs)</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-warning">
+                    <h4>⚠️ Partial Implementation</h4>
+                    <ul>
+                        <li>API endpoints (structure exists, many endpoints incomplete)</li>
+                        <li>WebSocket infrastructure (architecture complete, partial implementation)</li>
+                        <li>Frontend (94 components, key features missing: AI OSCE chat, EMR validation display)</li>
+                        <li>Progress analytics (MCQ+OSCE complete, EMR methods missing)</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-danger">
+                    <h4>❌ Critical Gaps</h4>
+                    <ul>
+                        <li><strong>RAG System:</strong> Mock embeddings (MD5 hash) provide no semantic understanding - IMMEDIATE FIX REQUIRED</li>
+                        <li><strong>EMR System:</strong> 18 critical API fixes needed, dashboard analytics missing</li>
+                        <li><strong>AI OSCE:</strong> 8 PRDs fully specified (476 KB), implementation not started (192-236 hours)</li>
+                        <li><strong>Integration:</strong> OSCE-to-EMR converter, unified dashboard not implemented</li>
+                        <li><strong>Testing:</strong> E2E tests frameworks ready, comprehensive tests missing</li>
+                    </ul>
+                </div>
+
+                <h3>Key Priorities</h3>
+                <ol>
+                    <li><strong>RAG Embeddings Fix</strong> (CRITICAL): Replace mock embeddings with PubMedBERT (32 days, $3/year cost)</li>
+                    <li><strong>Shared Infrastructure</strong> (BLOCKS everything): Complete Week 1 tasks (Vault, Redis, security tests - 15 hours)</li>
+                    <li><strong>EMR System</strong>: 18 critical fixes + dashboard analytics (67.5-73.5 hours)</li>
+                    <li><strong>AI OSCE System</strong>: Full implementation (192-236 hours, 4 phases)</li>
+                    <li><strong>Integration Layer</strong>: OSCE-to-EMR converter + unified dashboard (36-48 hours)</li>
+                </ol>
+
+                <h3>Timeline & Budget</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Timeline</th>
+                            <th>Effort</th>
+                            <th>Monthly Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Complete Platform Implementation</td>
+                            <td>6-8 weeks</td>
+                            <td>306-378 agent hours</td>
+                            <td>$66-153 (1000-2000 users)</td>
+                        </tr>
+                        <tr>
+                            <td>RAG System Upgrade</td>
+                            <td>4-6 weeks (parallel)</td>
+                            <td>32 days (3 phases)</td>
+                            <td>$3/year (self-hosted)</td>
+                        </tr>
+                        <tr>
+                            <td>Enhancements (Phase 2)</td>
+                            <td>3-6 months</td>
+                            <td>TBD</td>
+                            <td>+$20-50 (CDN, monitoring)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Expected Outcomes</h3>
+                <ul>
+                    <li><strong>Platform:</strong> 4 integrated learning systems (MCQ + Static OSCE + AI OSCE + EMR)</li>
+                    <li><strong>Content:</strong> 360 AI patient personas (all specialties), 500+ practice patients (EMR)</li>
+                    <li><strong>Quality:</strong> 100% test pass rate, ≥70% coverage, 0 security findings</li>
+                    <li><strong>Performance:</strong> <500ms API latency, <3s AI responses, <1s dashboard load</li>
+                    <li><strong>Accuracy:</strong> RAG 85% relevance, EMR ≥85% validation accuracy, OSCE ±2 marks</li>
+                    <li><strong>Cost:</strong> $66-153/month at scale (vs $15,750/year manual review avoided)</li>
+                </ul>
+
+                <div class="alert alert-info">
+                    <h4>Next Steps</h4>
+                    <ol>
+                        <li>Review and approve RAG upgrade plan (see <code class="code-inline">docs/RAG_ARCHITECTURE_UPGRADE.html</code>)</li>
+                        <li>Prioritize implementation: RAG fix + Shared Infrastructure (Week 1) → EMR → AI OSCE → Integration</li>
+                        <li>Allocate resources: 306-378 agent hours over 6-8 weeks</li>
+                        <li>Monitor progress: Weekly checkpoints against quality gates</li>
+                        <li>Plan Phase 2 enhancements after core platform complete</li>
+                    </ol>
+                </div>
+            </section>
+        </div>
+
+        <footer style="background: var(--bg-dark); color: white; padding: 2rem; text-align: center;">
+            <p><strong>irStudy Platform: Complete System Architecture & Enhancement Roadmap</strong></p>
+            <p>Generated: April 19, 2026 | Version: 2.0 | Status: Architecture Review</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                Related Documents:
+                <a href="RAG_ARCHITECTURE_UPGRADE.html" style="color: #60a5fa;">RAG Upgrade</a> |
+                <a href="../COMPREHENSIVE_PLATFORM_IMPLEMENTATION_MASTER.md" style="color: #60a5fa;">Master Plan</a> |
+                <a href="../COMPREHENSIVE_EMR_IMPLEMENTATION_SUMMARY.md" style="color: #60a5fa;">EMR Summary</a> |
+                <a href="../ai-osce-ralph-prds/IMPLEMENTATION_STATUS.md" style="color: #60a5fa;">AI OSCE Status</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            sequence: {
+                useMaxWidth: true,
+                wrap: true
+            }
+        });
+    </script>
+</body>
+</html>
