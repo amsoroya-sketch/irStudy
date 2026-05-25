@@ -26,6 +26,32 @@
 
 ## T - TESTS (Write Tests FIRST)
 
+### TDD Workflow (MANDATORY)
+
+**Phase 1: RED - Write Failing Tests**
+1. Write test code for each integration scenario BEFORE implementation
+2. Run tests and confirm they FAIL (expected behavior)
+3. Document failure reasons (e.g., "Function not implemented", "Module not connected")
+
+**Phase 2: GREEN - Implement Minimum Code**
+1. Implement ONLY enough code to make tests pass
+2. Run tests after each implementation
+3. Verify tests turn GREEN (passing)
+
+**Phase 3: REFACTOR - Improve Code Quality**
+1. Refactor implementation while maintaining GREEN status
+2. Re-run tests after each refactor
+3. Ensure 100% test pass rate throughout
+
+**Validation Checklist (Per Phase)**:
+- [ ] All tests written BEFORE implementation code
+- [ ] Tests confirmed FAILING before implementation (RED phase)
+- [ ] Tests confirmed PASSING after implementation (GREEN phase)
+- [ ] Code refactored without breaking tests (REFACTOR phase)
+- [ ] 100% test pass rate maintained at all times
+
+---
+
 ### Test Framework Setup
 
 **Test Categories**:
@@ -2223,6 +2249,39 @@ if __name__ == "__main__":
 ---
 
 ## H - HANDOFF (Completion Criteria & Next Steps)
+
+### Test Results Summary
+
+**Test Execution Status**: ✅ COMPLETE / ⏳ IN PROGRESS / ❌ BLOCKED
+
+**Test Suite Results**:
+```
+Total Tests: 46
+Passing: __/46 (___%)
+Failing: __/46
+Skipped: __/46
+
+Test Coverage: ___% (Target: ≥85%)
+Performance: p95 < 200ms (Target: ✅ MET / ❌ MISSED)
+Security: All tests passing (✅ YES / ❌ NO)
+```
+
+**Critical Findings**:
+- [ ] No P0 blocker issues identified
+- [ ] Performance targets met for all endpoints
+- [ ] Security vulnerabilities: NONE / [List any found]
+- [ ] Cross-module integration: WORKING / BLOCKED
+
+**Known Issues**:
+- Issue #1: [Description] - Severity: [P0/P1/P2] - Status: [OPEN/RESOLVED]
+- Issue #2: [Description] - Severity: [P0/P1/P2] - Status: [OPEN/RESOLVED]
+
+**Test Report Location**:
+- HTML Report: `/home/dev/Development/irStudy/backend/test_report.html`
+- Coverage Report: `/home/dev/Development/irStudy/backend/htmlcov/index.html`
+- Performance Logs: `/home/dev/Development/irStudy/backend/logs/performance_test.log`
+
+---
 
 ### Acceptance Criteria
 
