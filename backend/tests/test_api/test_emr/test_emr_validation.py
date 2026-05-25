@@ -34,23 +34,21 @@ def test_validate_soap_note_success_high_score(
     mock_session_in_progress,
     valid_soap_note,
     mock_patient_cardiology,
-    mock_claude_response_high_score,
-    monkeypatch
+    mock_claude_api
 ):
     """Test SOAP note validation with high score (12.5/15)"""
-    
-    # Mock Claude AI response
-    def mock_claude_create(*args, **kwargs):
-        return mock_claude_response_high_score
-    
-    # NOTE: Actual implementation will mock Claude client
-    # monkeypatch.setattr("src.agents.soap_validator.Anthropic.messages.create", mock_claude_create)
-    
+
     response = client.post(
         "/api/v1/emr/validation/soap-note",
         json={
             "session_id": mock_session_in_progress["id"],
-            "soap_note": valid_soap_note
+            "soap_note": valid_soap_note,
+            "patient_context": {
+                "age": mock_patient_cardiology["age"],
+                "sex": mock_patient_cardiology["gender"],
+                "presenting_complaint": mock_patient_cardiology["presenting_complaint"],
+                "specialty": mock_patient_cardiology["specialty"]
+            }
         },
         headers=auth_headers
     )
@@ -79,9 +77,11 @@ def test_validate_soap_note_success_high_score(
     # Verify Australian compliance
     assert "australian_compliance" in data
     compliance = data["australian_compliance"]
-    assert "terminology" in compliance
-    assert "emergency_number" in compliance
-    assert "etg_alignment" in compliance
+    assert "terminology_correct" in compliance
+    assert "etg_compliant" in compliance
+    assert "pbs_aware" in compliance
+    assert compliance["terminology_correct"] == True
+    assert compliance["etg_compliant"] == True
 
 
 def test_validate_soap_note_low_score_fail(
@@ -89,15 +89,27 @@ def test_validate_soap_note_low_score_fail(
     auth_headers,
     mock_session_in_progress,
     incomplete_soap_note,
-    mock_claude_response_low_score
+    mock_claude_api
 ):
     """Test SOAP note validation with low score (6.0/15 - fail)"""
-    
+
+    # Configure mock to return low score
+    from unittest.mock import Mock
+    low_score_response = Mock()
+    low_score_response.content = [Mock(text='{"overall_score": 6.0, "category_scores": {"history_examination": 1.0, "clinical_reasoning": 1.0, "communication": 2.0, "patient_safety": 1.0, "professionalism": 1.0}, "strengths": ["Basic vitals documented"], "improvements": ["SOCRATES incomplete", "No differential diagnosis", "Missing management plan"], "red_flags": ["STEMI not recognized"], "australian_compliance": {"terminology": "⚠ Mixed", "emergency_number": "✗ Did not mention 000", "etg_alignment": "✗ Does not follow eTG"}}')]
+    mock_claude_api.messages.create.return_value = low_score_response
+
     response = client.post(
         "/api/v1/emr/validation/soap-note",
         json={
             "session_id": mock_session_in_progress["id"],
-            "soap_note": incomplete_soap_note
+            "soap_note": incomplete_soap_note,
+            "patient_context": {
+                "age": 58,
+                "sex": "M",
+                "presenting_complaint": "Chest pain",
+                "specialty": "cardiology"
+            }
         },
         headers=auth_headers
     )
@@ -119,17 +131,24 @@ def test_validate_soap_note_latency_within_target(
     client,
     auth_headers,
     mock_session_in_progress,
-    valid_soap_note
+    valid_soap_note,
+    mock_claude_api
 ):
     """Test SOAP validation completes within 3-5 second target (Claude AI)"""
-    
+
     start_time = time.time()
-    
+
     response = client.post(
         "/api/v1/emr/validation/soap-note",
         json={
             "session_id": mock_session_in_progress["id"],
-            "soap_note": valid_soap_note
+            "soap_note": valid_soap_note,
+            "patient_context": {
+                "age": 58,
+                "sex": "M",
+                "presenting_complaint": "Chest pain",
+                "specialty": "cardiology"
+            }
         },
         headers=auth_headers
     )
@@ -147,10 +166,11 @@ def test_validate_soap_note_rate_limiting(
     client,
     auth_headers,
     mock_session_in_progress,
-    valid_soap_note
+    valid_soap_note,
+    mock_claude_api
 ):
     """Test rate limiting (20 requests/minute for Claude API)"""
-    
+
     # Send 21 validation requests rapidly
     responses = []
     for i in range(21):
@@ -158,7 +178,13 @@ def test_validate_soap_note_rate_limiting(
             "/api/v1/emr/validation/soap-note",
             json={
                 "session_id": mock_session_in_progress["id"],
-                "soap_note": valid_soap_note
+                "soap_note": valid_soap_note,
+                "patient_context": {
+                    "age": 58,
+                    "sex": "M",
+                    "presenting_complaint": "Chest pain",
+                    "specialty": "cardiology"
+                }
             },
             headers=auth_headers
         )
@@ -171,18 +197,18 @@ def test_validate_soap_note_rate_limiting(
 
 
 def test_validate_soap_note_missing_session_id(client, auth_headers, valid_soap_note):
-    """Test validation without session_id (400 Bad Request)"""
-    
+    """Test validation without session_id (422 Unprocessable Entity)"""
+
     response = client.post(
         "/api/v1/emr/validation/soap-note",
         json={
             "soap_note": valid_soap_note
-            # Missing session_id
+            # Missing session_id - Pydantic validation error
         },
         headers=auth_headers
     )
-    
-    assert response.status_code == 400
+
+    assert response.status_code == 422  # FastAPI/Pydantic validation error
 
 
 def test_validate_soap_note_unauthorized(client, valid_soap_note):
@@ -207,13 +233,13 @@ def test_validate_soap_note_unauthorized(client, valid_soap_note):
 def test_validate_prescription_success_pbs_compliant(
     client,
     auth_headers,
-    valid_prescription
+    valid_prescription_validation
 ):
     """Test prescription validation - PBS compliant"""
-    
+
     response = client.post(
         "/api/v1/emr/validation/prescription",
-        json=valid_prescription,
+        json=valid_prescription_validation,
         headers=auth_headers
     )
     
@@ -253,7 +279,7 @@ def test_validate_prescription_exceeds_max_repeats(
 
 def test_validate_prescription_australian_drug_name(client, auth_headers):
     """Test prescription validation recognizes Australian drug names"""
-    
+
     # Australian name (paracetamol)
     response_au = client.post(
         "/api/v1/emr/validation/prescription",
@@ -267,10 +293,10 @@ def test_validate_prescription_australian_drug_name(client, auth_headers):
         },
         headers=auth_headers
     )
-    
+
     assert response_au.status_code == 200
     assert response_au.json()["is_valid"] == True
-    
+
     # US name (acetaminophen) - should warn
     response_us = client.post(
         "/api/v1/emr/validation/prescription",
@@ -284,17 +310,17 @@ def test_validate_prescription_australian_drug_name(client, auth_headers):
         },
         headers=auth_headers
     )
-    
+
     assert response_us.status_code == 200
     data_us = response_us.json()
-    
+
     # Should warn to use Australian terminology
     assert any("australian" in w.lower() or "paracetamol" in w.lower() for w in data_us["warnings"])
 
 
 def test_validate_prescription_authority_required(client, auth_headers):
     """Test prescription validation for authority-required medications"""
-    
+
     response = client.post(
         "/api/v1/emr/validation/prescription",
         json={
@@ -303,22 +329,22 @@ def test_validate_prescription_authority_required(client, auth_headers):
             "frequency": "fortnightly",
             "route": "SC",
             "repeats": 5,
-            "indication": "Rheumatoid arthritis",
+            "indication": "Rheumatoid arthritis - inadequate response to methotrexate",
             "authority_required": True
         },
         headers=auth_headers
     )
-    
+
     assert response.status_code == 200
     data = response.json()
-    
+
     # Should flag that PBS authority is required
     assert data["authority_required"] == True
 
 
 def test_validate_prescription_not_pbs_listed(client, auth_headers):
     """Test prescription validation for non-PBS listed medication"""
-    
+
     response = client.post(
         "/api/v1/emr/validation/prescription",
         json={
@@ -331,10 +357,10 @@ def test_validate_prescription_not_pbs_listed(client, auth_headers):
         },
         headers=auth_headers
     )
-    
+
     assert response.status_code == 200
     data = response.json()
-    
+
     assert data["pbs_listed"] == False
     # Should warn that medication is not PBS subsidized
     assert any("not pbs" in w.lower() or "private" in w.lower() for w in data["warnings"])
@@ -348,13 +374,13 @@ def test_validate_prescription_not_pbs_listed(client, auth_headers):
 def test_validate_pathology_order_success_appropriate(
     client,
     auth_headers,
-    valid_pathology_order
+    valid_pathology_order_validation
 ):
     """Test pathology order validation - appropriate and MBS compliant"""
-    
+
     response = client.post(
         "/api/v1/emr/validation/pathology",
-        json=valid_pathology_order,
+        json=valid_pathology_order_validation,
         headers=auth_headers
     )
     
@@ -393,74 +419,90 @@ def test_validate_pathology_order_inappropriate_investigation(
 
 
 def test_validate_pathology_order_urgency_validation(client, auth_headers):
-    """Test pathology urgency validation (routine, urgent, emergency)"""
-    
-    # Emergency urgency (appropriate for STEMI)
-    response_emergency = client.post(
+    """Test pathology urgency validation (routine, urgent, stat)"""
+
+    # Stat urgency (appropriate for STEMI)
+    response_stat = client.post(
         "/api/v1/emr/validation/pathology",
         json={
-            "test_name": "Troponin I",
-            "mbs_item_number": "66800",
-            "urgency": "emergency",
-            "indication": "Suspected STEMI - ST elevation on ECG"
+            "tests_ordered": ["Troponin I"],
+            "indication": "Suspected STEMI - ST elevation on ECG",
+            "patient_context": {
+                "age": 58,
+                "presenting_complaint": "Chest pain",
+                "risk_factors": ["Smoking", "Hypertension", "Diabetes"]
+            },
+            "urgency": "stat"  # Valid: routine, urgent, stat
         },
         headers=auth_headers
     )
-    
-    assert response_emergency.status_code == 200
-    assert response_emergency.json()["appropriate"] == True
-    
+
+    assert response_stat.status_code == 200
+    assert response_stat.json()["appropriate"] == True
+
     # Invalid urgency
     response_invalid = client.post(
         "/api/v1/emr/validation/pathology",
         json={
-            "test_name": "Troponin I",
-            "urgency": "super_urgent",  # Not valid (routine, urgent, emergency)
-            "indication": "Chest pain"
+            "tests_ordered": ["Troponin I"],
+            "indication": "Chest pain",
+            "patient_context": {
+                "age": 58,
+                "presenting_complaint": "Chest pain"
+            },
+            "urgency": "super_urgent"  # Not valid (routine, urgent, stat)
         },
         headers=auth_headers
     )
-    
-    assert response_invalid.status_code == 400  # Validation error
+
+    assert response_invalid.status_code == 422  # Pydantic validation error
 
 
 def test_validate_pathology_order_mbs_item_number_lookup(client, auth_headers):
     """Test MBS item number lookup and validation"""
-    
+
     response = client.post(
         "/api/v1/emr/validation/pathology",
         json={
-            "test_name": "Full Blood Count",
-            "mbs_item_number": "65070",  # Valid MBS item for FBC
-            "urgency": "routine",
-            "indication": "Routine blood work"
+            "tests_ordered": ["Full Blood Count", "UEC"],
+            "indication": "Routine pre-operative blood work",
+            "patient_context": {
+                "age": 45,
+                "presenting_complaint": "Pre-op assessment for elective surgery"
+            },
+            "urgency": "routine"
         },
         headers=auth_headers
     )
-    
+
     assert response.status_code == 200
     data = response.json()
-    
-    # Should validate MBS item number is correct for test
+
+    # Should validate MBS item numbers are correct for tests
     assert data["mbs_compliant"] == True
+    assert len(data["mbs_items"]) > 0
 
 
 def test_validate_pathology_order_overuse_warning(client, auth_headers):
     """Test pathology validation warns against overuse"""
-    
+
     response = client.post(
         "/api/v1/emr/validation/pathology",
         json={
-            "test_name": "CT Whole Body",  # Overuse - not indicated for simple chest pain
-            "urgency": "routine",
-            "indication": "Chest pain investigation"
+            "tests_ordered": ["CT Whole Body", "Full body MRI"],  # Overuse - not indicated
+            "indication": "Chest pain investigation",
+            "patient_context": {
+                "age": 35,
+                "presenting_complaint": "Mild chest pain for 1 day"
+            },
+            "urgency": "routine"
         },
         headers=auth_headers
     )
-    
+
     assert response.status_code == 200
     data = response.json()
-    
+
     # Should warn about unnecessary investigation
     assert data["appropriate"] == False
     feedback = data["feedback"]
@@ -469,15 +511,19 @@ def test_validate_pathology_order_overuse_warning(client, auth_headers):
 
 def test_validate_pathology_order_missing_indication(client, auth_headers):
     """Test pathology validation requires clinical indication"""
-    
+
     response = client.post(
         "/api/v1/emr/validation/pathology",
         json={
-            "test_name": "Troponin I",
-            "urgency": "emergency"
-            # Missing indication
+            "tests_ordered": ["Troponin I"],
+            "patient_context": {
+                "age": 58,
+                "presenting_complaint": "Chest pain"
+            },
+            "urgency": "stat"
+            # Missing indication - required field
         },
         headers=auth_headers
     )
-    
-    assert response.status_code == 400  # Validation error - indication required
+
+    assert response.status_code == 422  # Pydantic validation error - indication required

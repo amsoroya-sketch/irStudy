@@ -25,91 +25,6 @@ from src.services.mock_exam import MockExamOrchestrator
 from src.schemas.mock_exam import MockExamCreateResponse, MockExamStatusResponse
 
 
-# ============================================================================
-# FIXTURES
-# ============================================================================
-
-
-@pytest.fixture
-def test_user(db_session: Session):
-    """Create test user"""
-    user = User(
-        id=str(uuid4()),
-        email="test_mock_exam@example.com",
-        hashed_password="hashed_password_placeholder",
-        full_name="Test Mock Exam User",
-        is_active=True
-    )
-    db_session.add(user)
-    db_session.commit()
-    db_session.refresh(user)
-    return user
-
-
-@pytest.fixture
-def test_personas(db_session: Session):
-    """
-    Create 32 test personas (2 per specialty × 8 specialties × 2 difficulty levels)
-
-    Distribution:
-    - Cardiology: 2 intermediate, 2 advanced
-    - Respiratory: 2 intermediate, 2 advanced
-    - ... (8 specialties total)
-    """
-    specialties = [
-        'Cardiology',
-        'Respiratory',
-        'Neurology',
-        'Gastroenterology',
-        'Psychiatry',
-        'Paediatrics',
-        'Obstetrics & Gynaecology',
-        'Emergency Medicine'
-    ]
-
-    personas = []
-
-    for specialty in specialties:
-        # Create 2 intermediate
-        for i in range(2):
-            persona = PatientPersona(
-                persona_id=str(uuid4()),
-                persona_code=f"{specialty[:4].upper()}-{i+1:03d}-TEST-INT",
-                name=f"Test Patient {specialty} Int {i+1}",
-                age=50 + i,
-                gender="male" if i % 2 == 0 else "female",
-                specialty=specialty,
-                chief_complaint=f"Test complaint for {specialty}",
-                difficulty_level="intermediate",
-                is_active=True
-            )
-            personas.append(persona)
-            db_session.add(persona)
-
-        # Create 2 advanced
-        for i in range(2):
-            persona = PatientPersona(
-                persona_id=str(uuid4()),
-                persona_code=f"{specialty[:4].upper()}-{i+100:03d}-TEST-ADV",
-                name=f"Test Patient {specialty} Adv {i+1}",
-                age=60 + i,
-                gender="male" if i % 2 == 0 else "female",
-                specialty=specialty,
-                chief_complaint=f"Complex complaint for {specialty}",
-                difficulty_level="advanced",
-                is_active=True
-            )
-            personas.append(persona)
-            db_session.add(persona)
-
-    db_session.commit()
-
-    for persona in personas:
-        db_session.refresh(persona)
-
-    return personas
-
-
 @pytest.fixture
 def orchestrator(db_session: Session):
     """Create MockExamOrchestrator instance"""
@@ -124,7 +39,7 @@ def orchestrator(db_session: Session):
 @pytest.mark.asyncio
 async def test_auto_select_personas_returns_16(orchestrator, test_user, test_personas):
     """Test that auto_select_personas returns exactly 16 personas"""
-    persona_ids = await orchestrator.auto_select_personas(test_user.id)
+    persona_ids = await orchestrator.auto_select_personas(str(test_user.id))
 
     assert len(persona_ids) == 16
     assert all(isinstance(pid, str) for pid in persona_ids)
@@ -133,7 +48,7 @@ async def test_auto_select_personas_returns_16(orchestrator, test_user, test_per
 @pytest.mark.asyncio
 async def test_auto_select_personas_balanced_distribution(orchestrator, test_user, test_personas):
     """Test that personas are balanced across specialties"""
-    persona_ids = await orchestrator.auto_select_personas(test_user.id)
+    persona_ids = await orchestrator.auto_select_personas(str(test_user.id))
 
     # Get specialties of selected personas
     personas = orchestrator.db.query(PatientPersona)\
@@ -156,7 +71,7 @@ async def test_auto_select_personas_balanced_distribution(orchestrator, test_use
 @pytest.mark.asyncio
 async def test_auto_select_personas_difficulty_mix(orchestrator, test_user, test_personas):
     """Test that personas include both intermediate and advanced difficulty"""
-    persona_ids = await orchestrator.auto_select_personas(test_user.id)
+    persona_ids = await orchestrator.auto_select_personas(str(test_user.id))
 
     personas = orchestrator.db.query(PatientPersona)\
         .filter(PatientPersona.persona_id.in_(persona_ids))\
@@ -178,7 +93,7 @@ async def test_auto_select_personas_difficulty_mix(orchestrator, test_user, test
 @pytest.mark.asyncio
 async def test_auto_select_personas_no_duplicates(orchestrator, test_user, test_personas):
     """Test that no duplicate personas are selected"""
-    persona_ids = await orchestrator.auto_select_personas(test_user.id)
+    persona_ids = await orchestrator.auto_select_personas(str(test_user.id))
 
     assert len(persona_ids) == len(set(persona_ids)), "Duplicate personas found"
 
@@ -195,7 +110,11 @@ async def test_auto_select_personas_insufficient_personas(orchestrator, test_use
             age=50,
             gender="male",
             specialty="Cardiology",
-            chief_complaint="Test",
+            chief_complaint="Test complaint",
+            opening_statement="I have a problem",
+            symptoms={},
+            medical_history={},
+            emotional_profile={},
             difficulty_level="intermediate",
             is_active=True
         )
@@ -205,7 +124,7 @@ async def test_auto_select_personas_insufficient_personas(orchestrator, test_use
 
     # Should raise ValueError
     with pytest.raises(ValueError, match="Insufficient personas"):
-        await orchestrator.auto_select_personas(test_user.id)
+        await orchestrator.auto_select_personas(str(test_user.id))
 
 
 # ============================================================================
@@ -217,7 +136,7 @@ async def test_auto_select_personas_insufficient_personas(orchestrator, test_use
 async def test_create_exam_success(orchestrator, test_user, test_personas):
     """Test successful exam creation"""
     exam = await orchestrator.create_exam(
-        user_id=test_user.id,
+        user_id=str(test_user.id),
         exam_name="Test Mock Exam"
     )
 
@@ -233,7 +152,7 @@ async def test_create_exam_success(orchestrator, test_user, test_personas):
         .first()
 
     assert db_exam is not None
-    assert db_exam.user_id == test_user.id
+    assert db_exam.user_id == str(test_user.id)
     assert db_exam.exam_state == 'IN_PROGRESS'
     assert db_exam.current_station_number == 1
     assert db_exam.total_score == 0
@@ -245,7 +164,7 @@ async def test_create_exam_custom_name(orchestrator, test_user, test_personas):
     custom_name = "AMC Practice Exam #1"
 
     exam = await orchestrator.create_exam(
-        user_id=test_user.id,
+        user_id=str(test_user.id),
         exam_name=custom_name
     )
 
@@ -259,9 +178,12 @@ async def test_create_exam_custom_name(orchestrator, test_user, test_personas):
 @pytest.mark.asyncio
 async def test_create_exam_invalid_user(orchestrator, test_personas):
     """Test exam creation with invalid user ID"""
+    # Use valid UUID format but non-existent user
+    invalid_user_id = str(uuid4())
+
     with pytest.raises(ValueError, match="User.*not found"):
         await orchestrator.create_exam(
-            user_id="invalid-user-id-12345",
+            user_id=invalid_user_id,
             exam_name="Test"
         )
 
@@ -275,10 +197,10 @@ async def test_create_exam_invalid_user(orchestrator, test_personas):
 async def test_get_exam_status_in_progress(orchestrator, test_user, test_personas):
     """Test getting status of in-progress exam"""
     # Create exam
-    exam = await orchestrator.create_exam(test_user.id)
+    exam = await orchestrator.create_exam(str(test_user.id))
 
     # Get status
-    status = await orchestrator.get_exam_status(exam.exam_id, test_user.id)
+    status = await orchestrator.get_exam_status(exam.exam_id, str(test_user.id))
 
     assert isinstance(status, MockExamStatusResponse)
     assert status.exam_id == exam.exam_id
@@ -295,22 +217,24 @@ async def test_get_exam_status_in_progress(orchestrator, test_user, test_persona
 async def test_get_exam_status_not_found(orchestrator, test_user):
     """Test getting status of non-existent exam"""
     with pytest.raises(ValueError, match="not found"):
-        await orchestrator.get_exam_status("invalid-exam-id", test_user.id)
+        await orchestrator.get_exam_status("invalid-exam-id", str(test_user.id))
 
 
 @pytest.mark.asyncio
 async def test_get_exam_status_unauthorized(orchestrator, test_user, test_personas, db_session):
     """Test getting status with different user (authorization check)"""
+    from src.auth.security import hash_password
+
     # Create exam with test_user
-    exam = await orchestrator.create_exam(test_user.id)
+    exam = await orchestrator.create_exam(str(test_user.id))
 
     # Create another user
     other_user = User(
-        id=str(uuid4()),
         email="other_user@example.com",
-        hashed_password="hash",
+        password_hash=hash_password("TestPassword123!"),
         full_name="Other User",
-        is_active=True
+        is_active=True,
+        is_verified=True
     )
     db_session.add(other_user)
     db_session.commit()
@@ -318,7 +242,7 @@ async def test_get_exam_status_unauthorized(orchestrator, test_user, test_person
 
     # Try to access exam with other user
     with pytest.raises(ValueError, match="not authorized"):
-        await orchestrator.get_exam_status(exam.exam_id, other_user.id)
+        await orchestrator.get_exam_status(exam.exam_id, str(other_user.id))
 
 
 # ============================================================================
@@ -330,7 +254,7 @@ async def test_get_exam_status_unauthorized(orchestrator, test_user, test_person
 async def test_advance_station_success(orchestrator, test_user, test_personas):
     """Test advancing from station 1 to station 2"""
     # Create exam
-    exam = await orchestrator.create_exam(test_user.id)
+    exam = await orchestrator.create_exam(str(test_user.id))
 
     # Complete station 1
     result = await orchestrator.advance_station(
@@ -338,7 +262,7 @@ async def test_advance_station_success(orchestrator, test_user, test_personas):
         station_number=1,
         station_score=12,
         pass_fail='PASS',
-        user_id=test_user.id
+        user_id=str(test_user.id)
     )
 
     assert result.next_station_number == 2
@@ -360,14 +284,14 @@ async def test_advance_station_success(orchestrator, test_user, test_personas):
 @pytest.mark.asyncio
 async def test_advance_station_fail(orchestrator, test_user, test_personas):
     """Test advancing station with FAIL status"""
-    exam = await orchestrator.create_exam(test_user.id)
+    exam = await orchestrator.create_exam(str(test_user.id))
 
     result = await orchestrator.advance_station(
         exam_id=exam.exam_id,
         station_number=1,
         station_score=6,
         pass_fail='FAIL',
-        user_id=test_user.id
+        user_id=str(test_user.id)
     )
 
     assert result.next_station_number == 2
@@ -386,7 +310,7 @@ async def test_advance_station_fail(orchestrator, test_user, test_personas):
 async def test_advance_station_complete_exam(orchestrator, test_user, test_personas):
     """Test completing station 16 (exam completion)"""
     # Create exam
-    exam = await orchestrator.create_exam(test_user.id)
+    exam = await orchestrator.create_exam(str(test_user.id))
 
     # Fast-forward to station 16
     db_exam = orchestrator.db.query(MockExam)\
@@ -403,7 +327,7 @@ async def test_advance_station_complete_exam(orchestrator, test_user, test_perso
         station_number=16,
         station_score=12,
         pass_fail='PASS',
-        user_id=test_user.id
+        user_id=str(test_user.id)
     )
 
     assert result.next_station_number is None
@@ -425,7 +349,7 @@ async def test_advance_station_complete_exam(orchestrator, test_user, test_perso
 @pytest.mark.asyncio
 async def test_advance_station_exam_fail(orchestrator, test_user, test_personas):
     """Test exam completion with failing score"""
-    exam = await orchestrator.create_exam(test_user.id)
+    exam = await orchestrator.create_exam(str(test_user.id))
 
     # Fast-forward to station 16 with low score
     db_exam = orchestrator.db.query(MockExam)\
@@ -442,7 +366,7 @@ async def test_advance_station_exam_fail(orchestrator, test_user, test_personas)
         station_number=16,
         station_score=10,
         pass_fail='PASS',
-        user_id=test_user.id
+        user_id=str(test_user.id)
     )
 
     assert result.exam_complete is True
@@ -459,7 +383,7 @@ async def test_advance_station_exam_fail(orchestrator, test_user, test_personas)
 @pytest.mark.asyncio
 async def test_advance_station_wrong_state(orchestrator, test_user, test_personas):
     """Test advancing station on completed exam (invalid state)"""
-    exam = await orchestrator.create_exam(test_user.id)
+    exam = await orchestrator.create_exam(str(test_user.id))
 
     # Mark exam as completed
     db_exam = orchestrator.db.query(MockExam)\
@@ -475,7 +399,7 @@ async def test_advance_station_wrong_state(orchestrator, test_user, test_persona
             station_number=1,
             station_score=12,
             pass_fail='PASS',
-            user_id=test_user.id
+            user_id=str(test_user.id)
         )
 
 
@@ -487,17 +411,17 @@ async def test_advance_station_wrong_state(orchestrator, test_user, test_persona
 @pytest.mark.asyncio
 async def test_get_exam_results_not_completed(orchestrator, test_user, test_personas):
     """Test getting results of incomplete exam"""
-    exam = await orchestrator.create_exam(test_user.id)
+    exam = await orchestrator.create_exam(str(test_user.id))
 
     with pytest.raises(ValueError, match="not completed"):
-        await orchestrator.get_exam_results(exam.exam_id, test_user.id)
+        await orchestrator.get_exam_results(exam.exam_id, str(test_user.id))
 
 
 @pytest.mark.asyncio
 async def test_get_exam_results_success(orchestrator, test_user, test_personas, db_session):
     """Test getting comprehensive exam results after completion"""
     # Create exam
-    exam = await orchestrator.create_exam(test_user.id)
+    exam = await orchestrator.create_exam(str(test_user.id))
 
     # Create 16 mock attempts and scores
     persona_ids = exam.stations_config
@@ -506,7 +430,7 @@ async def test_get_exam_results_success(orchestrator, test_user, test_personas, 
     for i in range(16):
         attempt = OSCEAttemptAI(
             attempt_id=str(uuid4()),
-            user_id=test_user.id,
+            user_id=str(test_user.id),
             persona_id=persona_ids[i].persona_id,
             mock_exam_id=exam.exam_id,
             session_type='mock_exam',
@@ -519,14 +443,27 @@ async def test_get_exam_results_success(orchestrator, test_user, test_personas, 
         db_session.flush()
 
         # Create score (alternating PASS/FAIL for variety)
-        station_score = 12 if i % 2 == 0 else 10
+        # Station score should be 12 or 10 - distribute across 5 domains
+        if i % 2 == 0:
+            # 12 total: 3+3+3+2+1 = 12
+            comm, clin, info, mgmt, prof = 3, 3, 3, 2, 1
+            station_score = 12
+        else:
+            # 10 total: 3+3+2+1+1 = 10
+            comm, clin, info, mgmt, prof = 3, 3, 2, 1, 1
+            station_score = 10
+
         total_score += station_score
 
         score = OSCEScoreAI(
             score_id=str(uuid4()),
             attempt_id=attempt.attempt_id,
-            total_score=station_score,
-            pass_fail='PASS' if station_score >= 9 else 'FAIL'
+            communication_score=comm,
+            clinical_reasoning_score=clin,
+            information_gathering_score=info,
+            management_score=mgmt,
+            professionalism_score=prof
+            # total_score and pass_fail are GENERATED columns
         )
         db_session.add(score)
 
@@ -544,7 +481,7 @@ async def test_get_exam_results_success(orchestrator, test_user, test_personas, 
     db_session.commit()
 
     # Get results
-    results = await orchestrator.get_exam_results(exam.exam_id, test_user.id)
+    results = await orchestrator.get_exam_results(exam.exam_id, str(test_user.id))
 
     assert results.exam_id == exam.exam_id
     assert results.overall_score == total_score
@@ -563,7 +500,7 @@ async def test_get_exam_results_success(orchestrator, test_user, test_personas, 
 @pytest.mark.asyncio
 async def test_score_aggregation_multiple_stations(orchestrator, test_user, test_personas):
     """Test that scores aggregate correctly across multiple stations"""
-    exam = await orchestrator.create_exam(test_user.id)
+    exam = await orchestrator.create_exam(str(test_user.id))
 
     # Complete 5 stations with different scores
     scores = [12, 10, 13, 9, 14]
@@ -574,7 +511,7 @@ async def test_score_aggregation_multiple_stations(orchestrator, test_user, test
             station_number=i + 1,
             station_score=score,
             pass_fail='PASS' if score >= 9 else 'FAIL',
-            user_id=test_user.id
+            user_id=str(test_user.id)
         )
 
     # Verify total score
@@ -586,20 +523,3 @@ async def test_score_aggregation_multiple_stations(orchestrator, test_user, test
     assert db_exam.stations_passed == 5  # All passed (≥9)
 
 
-# ============================================================================
-# CONFTEST FIXTURES (if not in conftest.py)
-# ============================================================================
-
-
-@pytest.fixture
-def db_session(mocker):
-    """
-    Mock database session for testing
-
-    NOTE: This is a placeholder. In real tests, use a test database
-    or pytest-postgresql with actual SQLAlchemy session.
-    """
-    # This would normally be provided by conftest.py with actual DB
-    # For now, we'll assume it exists
-    from unittest.mock import MagicMock
-    return MagicMock(spec=Session)

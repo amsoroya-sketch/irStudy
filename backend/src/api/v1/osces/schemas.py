@@ -31,16 +31,21 @@ REQUIRED_AUSTRALIAN_SOURCES = ["etg", "pbs", "amh", "ahpra", "therapeutic guidel
 class OSCEResponse(BaseModel):
     """Response model for OSCE station (candidate view)"""
 
+    id: int = Field(..., description="Database ID")
     osce_id: str = Field(..., description="Unique station ID (e.g., OSCE-CARD-001)")
     station_title: str = Field(..., description="Station title")
     station_type: OSCEType = Field(..., description="Station type (history, exam, etc.)")
+    patient_instructions: str = Field(..., description="Instructions for simulated patient")
     candidate_instructions: str = Field(..., description="Instructions for candidate")
     time_limit_minutes: int = Field(..., description="Time limit in minutes (default: 8)")
     specialty: MedicalSpecialty = Field(..., description="Medical specialty")
     difficulty: DifficultyLevel = Field(..., description="Difficulty level")
     tags: Optional[List[str]] = Field(None, description="Topic tags")
+    learning_objectives: Optional[List[str]] = Field(None, description="Learning objectives")
+    red_flags: Optional[List[str]] = Field(None, description="Red flag symptoms to identify")
+    created_at: datetime = Field(..., description="Creation timestamp")
 
-    @field_validator("candidate_instructions")
+    @field_validator("candidate_instructions", "patient_instructions")
     @classmethod
     def validate_australian_terminology(cls, value):
         """Ensure no American terminology in instructions"""
@@ -86,6 +91,7 @@ class OSCERubric(BaseModel):
     station_title: str = Field(..., description="Station title")
     station_type: OSCEType = Field(..., description="Station type")
     rubric: Dict[str, Dict[str, Any]] = Field(..., description="Scoring rubric")
+    examiner_instructions: Optional[str] = Field(None, description="Instructions for examiner")
     max_marks: int = Field(15, description="Maximum marks (AMC format)")
     pass_mark: int = Field(9, description="Pass mark (60%)")
     time_limit_minutes: int = Field(8, description="Time limit in minutes")
@@ -95,7 +101,7 @@ class OSCERubric(BaseModel):
     def validate_rubric_total(cls, value):
         """Ensure rubric categories sum to 15 marks"""
         total_marks = sum(
-            category.get("max_marks", 0)
+            category.get("max_marks", category.get("marks", 0))
             for category in value.values()
         )
 

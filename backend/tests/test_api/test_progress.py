@@ -41,65 +41,34 @@ from src.db.models import (
     StudyCardReview,
     MedicalSpecialty,
     DifficultyLevel,
-    UserRole,
 )
-from src.auth.security import create_access_token
 
 
 # ============================================================================
 # FIXTURES
+# Note: client, db_session, test_user, auth_headers from global conftest
 # ============================================================================
 
 
 @pytest.fixture
-def client():
-    """Test client"""
-    return TestClient(app)
-
-
-@pytest.fixture
-def test_user(db: Session):
-    """Create test user"""
-    user = User(
-        email="test@example.com",
-        password_hash="$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewY5GyDKVb0fD6Wm",  # "password123"
-        full_name="Test User",
-        role=UserRole.STUDENT,
-        is_active=True,
-        is_verified=True,
-    )
-    db.add(user)
-    db.commit()
-    db.refresh(user)
-    return user
-
-
-@pytest.fixture
-def other_user(db: Session):
+def other_user(db_session: Session):
     """Create another user for privacy tests"""
     user = User(
         email="other@example.com",
         password_hash="$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewY5GyDKVb0fD6Wm",
         full_name="Other User",
-        role=UserRole.STUDENT,
+        role="student",  # Match global conftest format
         is_active=True,
         is_verified=True,
     )
-    db.add(user)
-    db.commit()
-    db.refresh(user)
+    db_session.add(user)
+    db_session.commit()
+    db_session.refresh(user)
     return user
 
 
 @pytest.fixture
-def auth_headers(test_user):
-    """Authentication headers"""
-    token = create_access_token(data={"sub": test_user.email, "user_id": test_user.id})
-    return {"Authorization": f"Bearer {token}"}
-
-
-@pytest.fixture
-def test_mcqs(db: Session):
+def test_mcqs(db_session: Session):
     """Create test MCQs"""
     mcqs = []
     for i, specialty in enumerate(
@@ -116,16 +85,16 @@ def test_mcqs(db: Session):
             difficulty=DifficultyLevel.MEDIUM,
             is_published=True,
         )
-        db.add(mcq)
+        db_session.add(mcq)
         mcqs.append(mcq)
-    db.commit()
+    db_session.commit()
     for mcq in mcqs:
-        db.refresh(mcq)
+        db_session.refresh(mcq)
     return mcqs
 
 
 @pytest.fixture
-def test_attempts(db: Session, test_user, test_mcqs):
+def test_attempts(db_session: Session, test_user, test_mcqs):
     """Create test MCQ attempts"""
     attempts = []
 
@@ -140,7 +109,7 @@ def test_attempts(db: Session, test_user, test_mcqs):
             confidence_level=4,
             attempt_number=i + 1,
         )
-        db.add(attempt)
+        db_session.add(attempt)
         attempts.append(attempt)
 
     # Respiratory: 5 attempts, 4 correct (80% accuracy)
@@ -154,7 +123,7 @@ def test_attempts(db: Session, test_user, test_mcqs):
             confidence_level=5,
             attempt_number=i + 1,
         )
-        db.add(attempt)
+        db_session.add(attempt)
         attempts.append(attempt)
 
     # Neurology: 12 attempts, 7 correct (58.33% accuracy) - WEAK AREA
@@ -168,15 +137,15 @@ def test_attempts(db: Session, test_user, test_mcqs):
             confidence_level=2,
             attempt_number=i + 1,
         )
-        db.add(attempt)
+        db_session.add(attempt)
         attempts.append(attempt)
 
-    db.commit()
+    db_session.commit()
     return attempts
 
 
 @pytest.fixture
-def test_osce(db: Session):
+def test_osce(db_session: Session):
     """Create test OSCE"""
     osce = OSCE(
         osce_id="OSCE-TEST-001",
@@ -189,14 +158,14 @@ def test_osce(db: Session):
         difficulty=DifficultyLevel.MEDIUM,
         is_published=True,
     )
-    db.add(osce)
-    db.commit()
-    db.refresh(osce)
+    db_session.add(osce)
+    db_session.commit()
+    db_session.refresh(osce)
     return osce
 
 
 @pytest.fixture
-def test_osce_attempts(db: Session, test_user, test_osce):
+def test_osce_attempts(db_session: Session, test_user, test_osce):
     """Create test OSCE attempts"""
     attempts = []
     for i in range(3):
@@ -209,14 +178,14 @@ def test_osce_attempts(db: Session, test_user, test_osce):
             time_taken_seconds=480,
             attempt_number=i + 1,
         )
-        db.add(attempt)
+        db_session.add(attempt)
         attempts.append(attempt)
-    db.commit()
+    db_session.commit()
     return attempts
 
 
 @pytest.fixture
-def test_study_cards(db: Session):
+def test_study_cards(db_session: Session):
     """Create test study cards"""
     cards = []
     for i in range(5):
@@ -230,16 +199,16 @@ def test_study_cards(db: Session):
             difficulty=DifficultyLevel.MEDIUM,
             is_active=True,
         )
-        db.add(card)
+        db_session.add(card)
         cards.append(card)
-    db.commit()
+    db_session.commit()
     for card in cards:
-        db.refresh(card)
+        db_session.refresh(card)
     return cards
 
 
 @pytest.fixture
-def test_study_card_reviews(db: Session, test_user, test_study_cards):
+def test_study_card_reviews(db_session: Session, test_user, test_study_cards):
     """Create test study card reviews"""
     reviews = []
     for i, card in enumerate(test_study_cards):
@@ -255,9 +224,9 @@ def test_study_card_reviews(db: Session, test_user, test_study_cards):
             repetitions_after=1,
             next_review_date_after=datetime.utcnow() + timedelta(days=1),
         )
-        db.add(review)
+        db_session.add(review)
         reviews.append(review)
-    db.commit()
+    db_session.commit()
     return reviews
 
 
@@ -476,7 +445,7 @@ def test_get_weekly_trends_invalid_weeks(client, auth_headers):
 
 
 def test_dashboard_privacy(
-    client, auth_headers, test_user, other_user, test_attempts, db: Session
+    client, auth_headers, test_user, other_user, test_attempts, db_session: Session
 ):
     """Test dashboard only shows current user's data"""
     # Create attempts for other user
@@ -491,9 +460,9 @@ def test_dashboard_privacy(
         difficulty=DifficultyLevel.MEDIUM,
         is_published=True,
     )
-    db.add(other_mcq)
-    db.commit()
-    db.refresh(other_mcq)
+    db_session.add(other_mcq)
+    db_session.commit()
+    db_session.refresh(other_mcq)
 
     other_attempt = MCQAttempt(
         user_id=other_user.id,
@@ -503,8 +472,8 @@ def test_dashboard_privacy(
         time_taken_seconds=60,
         attempt_number=1,
     )
-    db.add(other_attempt)
-    db.commit()
+    db_session.add(other_attempt)
+    db_session.commit()
 
     # Get dashboard for test_user
     response = client.get("/api/v1/progress/dashboard", headers=auth_headers)

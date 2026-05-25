@@ -116,7 +116,7 @@ class TestEmailVerification:
         ).first()
         
         assert user is not None
-        token_age = datetime.now(timezone.utc) - user.verification_token_created_at
+        token_age = datetime.now(timezone.utc) - user.verification_token_created_at.replace(tzinfo=timezone.utc)
         assert token_age > timedelta(hours=24)
     
     def test_verify_email_already_verified(self, db_session, test_user):
@@ -243,7 +243,7 @@ class TestPasswordReset:
         ).first()
         
         assert user is not None
-        token_age = datetime.now(timezone.utc) - user.reset_token_created_at
+        token_age = datetime.now(timezone.utc) - user.reset_token_created_at.replace(tzinfo=timezone.utc)
         assert token_age > timedelta(hours=1)
     
     def test_reset_password_weak_password(self):

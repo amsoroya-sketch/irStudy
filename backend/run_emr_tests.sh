@@ -13,4 +13,4 @@ export VAULT_ADDR="http://localhost:8200"
 export VAULT_ROOT_TOKEN="dev-only-token"
 
 # Run tests
-venv/bin/pytest tests/test_api/test_emr_api.py -v --tb=short "$@"
+venv/bin/pytest tests/test_api/test_emr/test_emr_sessions.py -v --tb=short "$@"

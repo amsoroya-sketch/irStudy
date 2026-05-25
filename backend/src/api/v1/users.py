@@ -17,8 +17,9 @@ SECURITY:
 
 from typing import List
 from datetime import datetime
+import re
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.orm import Session
 
 from src.db.base import get_db
@@ -33,6 +34,49 @@ from src.auth.security import verify_password, hash_password
 
 
 router = APIRouter(prefix="/users", tags=["users"])
+
+
+# ============================================================================
+# USER SEARCH
+# ============================================================================
+
+
+@router.get("/search")
+async def search_users(
+    query: str = Query(..., min_length=1, max_length=100, description="Search query (name or email)"),
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """
+    Search users by name or email.
+
+    Security:
+    - SQLAlchemy ORM prevents SQL injection (parameterized queries)
+    - Input sanitization removes special characters
+    - Returns empty list for invalid queries (no 422 errors)
+    - Limit 10 results (prevents data enumeration)
+    """
+    # Sanitize query: allow only alphanumeric + space + @ + .
+    sanitized = re.sub(r'[^a-zA-Z0-9\s@.]', '', query)
+
+    if not sanitized or len(sanitized) < 2:
+        return []  # Empty results for invalid/short queries
+
+    # SQLAlchemy ORM query (parameterized - SQL injection safe)
+    results = db.query(User).filter(
+        (User.full_name.ilike(f"%{sanitized}%")) |
+        (User.email.ilike(f"%{sanitized}%"))
+    ).limit(10).all()
+
+    # Return minimal data (no password hashes, roles, etc.)
+    return [
+        {
+            "id": str(user.id),
+            "name": user.full_name,
+            "email": user.email,
+        }
+        for user in results
+    ]
 
 
 # ============================================================================

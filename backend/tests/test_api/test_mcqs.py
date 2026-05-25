@@ -18,87 +18,15 @@ AUSTRALIAN MEDICAL CONTEXT:
 
 import pytest
 from fastapi.testclient import TestClient
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 import time
 
-from src.main import app
-from src.db.base import Base, get_db
 from src.db.models import User, MCQ, MCQAttempt, MedicalSpecialty, DifficultyLevel, UserRole
-from src.auth.security import hash_password
-
-
-# ============================================================================
-# TEST DATABASE SETUP
-# ============================================================================
-
-# Use in-memory SQLite for tests
-SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
-
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
-)
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-
-def override_get_db():
-    """Override database dependency for tests"""
-    try:
-        db = TestingSessionLocal()
-        yield db
-    finally:
-        db.close()
-
-
-app.dependency_overrides[get_db] = override_get_db
-
-client = TestClient(app)
 
 
 # ============================================================================
 # PYTEST FIXTURES
 # ============================================================================
-
-
-@pytest.fixture(scope="function")
-def db_session():
-    """Create fresh database for each test"""
-    Base.metadata.create_all(bind=engine)
-    db = TestingSessionLocal()
-    yield db
-    db.close()
-    Base.metadata.drop_all(bind=engine)
-
-
-@pytest.fixture
-def test_user(db_session):
-    """Create test user"""
-    user = User(
-        email="test@example.com",
-        password_hash=hash_password("testpass123"),
-        full_name="Test User",
-        role=UserRole.STUDENT,
-        is_active=True,
-        is_verified=True,
-    )
-    db_session.add(user)
-    db_session.commit()
-    db_session.refresh(user)
-    return user
-
-
-@pytest.fixture
-def auth_headers(test_user):
-    """Get authentication headers"""
-    # Login to get access token
-    response = client.post(
-        "/api/v1/auth/login",
-        json={"email": "test@example.com", "password": "testpass123"},
-    )
-    assert response.status_code == 200
-    token = response.json()["access_token"]
-    return {"Authorization": f"Bearer {token}"}
 
 
 @pytest.fixture
@@ -162,7 +90,7 @@ def multiple_mcqs(db_session):
 # ============================================================================
 
 
-def test_get_random_mcq_success(sample_mcq, auth_headers):
+def test_get_random_mcq_success(db_session, client, sample_mcq, auth_headers):
     """Test GET /api/v1/mcqs/random returns MCQ without answer"""
     start_time = time.time()
     response = client.get("/api/v1/mcqs/random", headers=auth_headers)
@@ -189,7 +117,7 @@ def test_get_random_mcq_success(sample_mcq, auth_headers):
     assert elapsed_ms < 200, f"Response time {elapsed_ms}ms exceeds 200ms threshold"
 
 
-def test_get_random_mcq_with_specialty_filter(multiple_mcqs, auth_headers):
+def test_get_random_mcq_with_specialty_filter(db_session, client, multiple_mcqs, auth_headers):
     """Test GET /api/v1/mcqs/random with specialty filter"""
     response = client.get(
         "/api/v1/mcqs/random?specialty=cardiology", headers=auth_headers
@@ -200,7 +128,7 @@ def test_get_random_mcq_with_specialty_filter(multiple_mcqs, auth_headers):
     assert data["specialty"] == "cardiology"
 
 
-def test_get_random_mcq_with_difficulty_filter(multiple_mcqs, auth_headers):
+def test_get_random_mcq_with_difficulty_filter(db_session, client, multiple_mcqs, auth_headers):
     """Test GET /api/v1/mcqs/random with difficulty filter"""
     response = client.get(
         "/api/v1/mcqs/random?difficulty=easy", headers=auth_headers
@@ -211,7 +139,7 @@ def test_get_random_mcq_with_difficulty_filter(multiple_mcqs, auth_headers):
     assert data["difficulty"] == "easy"
 
 
-def test_get_random_mcq_no_results(auth_headers):
+def test_get_random_mcq_no_results(db_session, client, auth_headers):
     """Test GET /api/v1/mcqs/random returns 404 when no MCQs match"""
     response = client.get(
         "/api/v1/mcqs/random?specialty=cardiology", headers=auth_headers
@@ -221,7 +149,7 @@ def test_get_random_mcq_no_results(auth_headers):
     assert "No MCQs found" in response.json()["detail"]
 
 
-def test_get_mcq_by_id_success(sample_mcq, auth_headers):
+def test_get_mcq_by_id_success(db_session, client, sample_mcq, auth_headers):
     """Test GET /api/v1/mcqs/{id} returns specific MCQ"""
     start_time = time.time()
     response = client.get(f"/api/v1/mcqs/{sample_mcq.id}", headers=auth_headers)
@@ -242,7 +170,7 @@ def test_get_mcq_by_id_success(sample_mcq, auth_headers):
     assert elapsed_ms < 200, f"Response time {elapsed_ms}ms exceeds 200ms threshold"
 
 
-def test_get_mcq_by_id_not_found(auth_headers):
+def test_get_mcq_by_id_not_found(db_session, client, auth_headers):
     """Test GET /api/v1/mcqs/{id} returns 404 for invalid ID"""
     response = client.get("/api/v1/mcqs/99999", headers=auth_headers)
 
@@ -250,7 +178,7 @@ def test_get_mcq_by_id_not_found(auth_headers):
     assert "not found" in response.json()["detail"].lower()
 
 
-def test_submit_mcq_attempt_correct_answer(sample_mcq, auth_headers):
+def test_submit_mcq_attempt_correct_answer(db_session, client, sample_mcq, auth_headers):
     """Test POST /api/v1/mcqs/{id}/attempt with correct answer"""
     attempt_data = {
         "mcq_id": sample_mcq.id,
@@ -287,7 +215,7 @@ def test_submit_mcq_attempt_correct_answer(sample_mcq, auth_headers):
     assert elapsed_ms < 200, f"Response time {elapsed_ms}ms exceeds 200ms threshold"
 
 
-def test_submit_mcq_attempt_incorrect_answer(sample_mcq, auth_headers):
+def test_submit_mcq_attempt_incorrect_answer(db_session, client, sample_mcq, auth_headers):
     """Test POST /api/v1/mcqs/{id}/attempt with incorrect answer"""
     attempt_data = {
         "mcq_id": sample_mcq.id,
@@ -311,7 +239,7 @@ def test_submit_mcq_attempt_incorrect_answer(sample_mcq, auth_headers):
     assert "explanation" in data
 
 
-def test_submit_mcq_attempt_multiple_times(sample_mcq, auth_headers):
+def test_submit_mcq_attempt_multiple_times(db_session, client, sample_mcq, auth_headers):
     """Test multiple attempts increment attempt_number"""
     attempt_data = {
         "mcq_id": sample_mcq.id,
@@ -336,7 +264,7 @@ def test_submit_mcq_attempt_multiple_times(sample_mcq, auth_headers):
     assert response2.json()["attempt_number"] == 2
 
 
-def test_submit_mcq_attempt_id_mismatch(sample_mcq, auth_headers):
+def test_submit_mcq_attempt_id_mismatch(db_session, client, sample_mcq, auth_headers):
     """Test POST /api/v1/mcqs/{id}/attempt fails with ID mismatch"""
     attempt_data = {
         "mcq_id": 999,  # Mismatched ID
@@ -354,7 +282,7 @@ def test_submit_mcq_attempt_id_mismatch(sample_mcq, auth_headers):
     assert "mismatch" in response.json()["detail"].lower()
 
 
-def test_list_mcqs_success(multiple_mcqs, auth_headers):
+def test_list_mcqs_success(db_session, client, multiple_mcqs, auth_headers):
     """Test GET /api/v1/mcqs lists MCQs with pagination"""
     response = client.get("/api/v1/mcqs?limit=3", headers=auth_headers)
 
@@ -366,7 +294,7 @@ def test_list_mcqs_success(multiple_mcqs, auth_headers):
     assert all("question_id" in mcq for mcq in data)
 
 
-def test_list_mcqs_with_filters(multiple_mcqs, auth_headers):
+def test_list_mcqs_with_filters(db_session, client, multiple_mcqs, auth_headers):
     """Test GET /api/v1/mcqs with specialty and difficulty filters"""
     response = client.get(
         "/api/v1/mcqs?specialty=cardiology&difficulty=easy", headers=auth_headers
@@ -433,14 +361,14 @@ def test_australian_citation_validation():
     assert "australian" in error_message.lower()
 
 
-def test_unauthenticated_request_fails():
+def test_unauthenticated_request_fails(db_session, client):
     """Test that requests without auth token fail"""
     response = client.get("/api/v1/mcqs/random")
 
     assert response.status_code == 401
 
 
-def test_mcq_statistics_endpoint(sample_mcq, auth_headers):
+def test_mcq_statistics_endpoint(db_session, client, sample_mcq, auth_headers):
     """Test GET /api/v1/mcqs/statistics returns platform statistics"""
     response = client.get("/api/v1/mcqs/statistics", headers=auth_headers)
 
@@ -461,7 +389,7 @@ def test_mcq_statistics_endpoint(sample_mcq, auth_headers):
 # ============================================================================
 
 
-def test_mcq_random_response_time(sample_mcq, auth_headers):
+def test_mcq_random_response_time(db_session, client, sample_mcq, auth_headers):
     """Test that GET /random responds in < 200ms (95th percentile)"""
     response_times = []
 
@@ -480,7 +408,7 @@ def test_mcq_random_response_time(sample_mcq, auth_headers):
     assert p95 < 200, f"95th percentile response time {p95}ms exceeds 200ms threshold"
 
 
-def test_mcq_attempt_response_time(sample_mcq, auth_headers):
+def test_mcq_attempt_response_time(db_session, client, sample_mcq, auth_headers):
     """Test that POST /attempt responds in < 200ms (95th percentile)"""
     response_times = []
     attempt_data = {

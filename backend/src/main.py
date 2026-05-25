@@ -40,6 +40,8 @@ from prometheus_client import Counter, Histogram, make_asgi_app
 
 # Import routers
 from src.api.v1.router import api_router
+from src.api.v1 import admin as admin_router
+from src.api.v1 import dashboard as dashboard_router
 from src.websocket.router import router as websocket_router
 
 # Import database
@@ -227,9 +229,7 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException):
 
     return JSONResponse(
         status_code=exc.status_code,
-        content={
-            "error": {"code": exc.status_code, "message": exc.detail, "path": request.url.path}
-        },
+        content={"detail": exc.detail}
     )
 
 
@@ -238,13 +238,27 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
     """Handle validation errors with detailed field-level errors"""
     logger.warning(f"Validation error | " f"Path: {request.url.path} | " f"Errors: {exc.errors()}")
 
+    # Convert errors to JSON-serializable format
+    errors = []
+    for error in exc.errors():
+        error_dict = {
+            "type": error.get("type"),
+            "loc": error.get("loc"),
+            "msg": error.get("msg"),
+            "input": error.get("input"),
+        }
+        # Convert ctx ValueError to string
+        if "ctx" in error and "error" in error["ctx"]:
+            error_dict["ctx"] = {"error": str(error["ctx"]["error"])}
+        errors.append(error_dict)
+
     return JSONResponse(
         status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
         content={
             "error": {
                 "code": 422,
                 "message": "Validation error",
-                "details": exc.errors(),
+                "details": errors,
                 "path": request.url.path,
             }
         },
@@ -344,9 +358,28 @@ app.mount("/metrics", metrics_app)
 
 # Include API routers
 app.include_router(api_router, prefix="/api")
+app.include_router(admin_router.router, prefix="/api/v1")
+app.include_router(dashboard_router.router, prefix="/api/v1")
 
 # Include WebSocket router for AI OSCE real-time sessions
 app.include_router(websocket_router, tags=["WebSocket"])
+
+
+# ============================================================================
+# CONTENT TYPE VALIDATION MIDDLEWARE (XXE PREVENTION)
+# ============================================================================
+
+@app.middleware("http")
+async def validate_content_type(request: Request, call_next):
+    """Reject XML content to prevent XXE attacks"""
+    if request.method in ["POST", "PUT", "PATCH"]:
+        content_type = request.headers.get("content-type", "")
+        if "xml" in content_type.lower():
+            return JSONResponse(
+                status_code=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
+                content={"error": "XML content not supported - use JSON"}
+            )
+    return await call_next(request)
 
 
 # ============================================================================

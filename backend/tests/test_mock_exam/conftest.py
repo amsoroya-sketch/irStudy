@@ -16,6 +16,7 @@ import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.pool import StaticPool
 from datetime import datetime, timezone
 from uuid import uuid4
 
@@ -23,28 +24,15 @@ from src.main import app
 from src.db.base import Base, get_db
 from src.db.models import User, UserRole, PatientPersona
 
-# SQLite in-memory database for tests
-SQLALCHEMY_DATABASE_URL = "sqlite:///./test_mock_exam.db"
+# SQLite in-memory database for tests (CHANGED: :memory: for isolation)
+SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL,
     connect_args={"check_same_thread": False},
+    poolclass=StaticPool  # ADDED: Prevent connection pool issues
 )
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-
-def override_get_db():
-    """Override DB dependency for tests"""
-    db = TestingSessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
-
-# Install override at module level
-app.dependency_overrides[get_db] = override_get_db
-test_client = TestClient(app)
 
 
 @pytest.fixture(scope="function")
@@ -62,20 +50,34 @@ def db_session():
 @pytest.fixture
 def client(db_session):
     """FastAPI test client with test database"""
-    return test_client
+    # FIXED: Move dependency override into fixture to prevent pollution
+    def override_get_db():
+        try:
+            yield db_session
+        finally:
+            pass
+
+    app.dependency_overrides[get_db] = override_get_db
+    test_client = TestClient(app)
+
+    yield test_client
+
+    # CRITICAL: Clear overrides after each test
+    app.dependency_overrides.clear()
 
 
 @pytest.fixture
 def test_user(db_session):
     """Create authenticated test user"""
+    from src.auth.security import hash_password
+    
     user = User(
-        id=str(uuid4()),
         email="mock_exam_test@example.com",
-        hashed_password="hashed_password_placeholder",
+        password_hash=hash_password("TestPassword123!"),
         full_name="Mock Exam Test User",
         is_active=True,
         role=UserRole.STUDENT,
-        created_at=datetime.now(timezone.utc)
+        is_verified=True
     )
     db_session.add(user)
     db_session.commit()
@@ -95,7 +97,7 @@ def auth_headers(test_user, db_session):
 
     token = create_access_token(
         data={
-            "user_id": test_user.id,
+            "user_id": str(test_user.id),
             "email": test_user.email,
             "sub": test_user.email
         }
@@ -142,9 +144,11 @@ def test_personas(db_session):
                 gender="male" if i % 2 == 0 else "female",
                 specialty=specialty,
                 chief_complaint=f"Test complaint for {specialty} (intermediate)",
-                difficulty_level="intermediate",
-                is_active=True,
-                created_at=datetime.now(timezone.utc)
+                opening_statement=f"I've been having this problem for a few weeks now.",
+                symptoms={},
+                medical_history={},
+                emotional_profile={},
+                difficulty_level="intermediate"
             )
             personas.append(persona)
             db_session.add(persona)
@@ -159,9 +163,11 @@ def test_personas(db_session):
                 gender="female" if i % 2 == 0 else "male",
                 specialty=specialty,
                 chief_complaint=f"Complex complaint for {specialty} (advanced)",
-                difficulty_level="advanced",
-                is_active=True,
-                created_at=datetime.now(timezone.utc)
+                opening_statement=f"I'm very concerned about my symptoms.",
+                symptoms={},
+                medical_history={},
+                emotional_profile={},
+                difficulty_level="advanced"
             )
             personas.append(persona)
             db_session.add(persona)

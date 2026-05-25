@@ -14,7 +14,7 @@ SECURITY:
 - All timestamps in UTC with timezone
 """
 
-from pydantic import BaseModel, Field, field_validator, UUID4
+from pydantic import BaseModel, Field, field_validator, ConfigDict
 from typing import List, Optional, Literal, Dict, Any
 from datetime import datetime
 import uuid
@@ -27,6 +27,19 @@ import uuid
 
 class PersonaInfo(BaseModel):
     """Persona information for mock exam station"""
+
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "persona_id": "550e8400-e29b-41d4-a716-446655440000",
+                "persona_code": "CARD-001-CHEST-PAIN",
+                "name": "John Smith",
+                "specialty": "Cardiology",
+                "chief_complaint": "Chest pain for 2 hours",
+                "difficulty_level": "intermediate"
+            }
+        }
+    )
 
     persona_id: str = Field(..., description="UUID of patient persona")
     persona_code: str = Field(..., pattern=r"^[A-Z]+-\d{3}-.+$", description="Unique persona code")
@@ -48,18 +61,6 @@ class PersonaInfo(BaseModel):
         except ValueError:
             raise ValueError(f"persona_id must be a valid UUID, got: {v}")
 
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "persona_id": "550e8400-e29b-41d4-a716-446655440000",
-                "persona_code": "CARD-001-CHEST-PAIN",
-                "name": "John Smith",
-                "specialty": "Cardiology",
-                "chief_complaint": "Chest pain for 2 hours",
-                "difficulty_level": "intermediate"
-            }
-        }
-
 
 # ============================================================================
 # MOCK EXAM CREATION
@@ -69,6 +70,14 @@ class PersonaInfo(BaseModel):
 class MockExamCreateRequest(BaseModel):
     """Request to create a new mock exam (optional customization)"""
 
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "exam_name": "AMC Clinical Practice Exam #1"
+            }
+        }
+    )
+
     exam_name: Optional[str] = Field(
         None,
         min_length=3,
@@ -76,16 +85,30 @@ class MockExamCreateRequest(BaseModel):
         description="Optional custom exam name"
     )
 
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "exam_name": "AMC Clinical Practice Exam #1"
-            }
-        }
-
 
 class MockExamCreateResponse(BaseModel):
     """Response after creating mock exam"""
+
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "exam_id": "660e8400-e29b-41d4-a716-446655440001",
+                "stations_config": [
+                    {
+                        "persona_id": "550e8400-e29b-41d4-a716-446655440000",
+                        "persona_code": "CARD-001-CHEST-PAIN",
+                        "name": "John Smith",
+                        "specialty": "Cardiology",
+                        "chief_complaint": "Chest pain for 2 hours",
+                        "difficulty_level": "intermediate"
+                    }
+                ],
+                "estimated_duration_minutes": 150,
+                "start_url": "/api/v1/osce/session/660e8400-e29b-41d4-a716-446655440001/station/1",
+                "created_at": "2026-04-05T10:00:00Z"
+            }
+        }
+    )
 
     exam_id: str = Field(..., description="UUID of created exam")
     stations_config: List[PersonaInfo] = Field(
@@ -111,26 +134,6 @@ class MockExamCreateResponse(BaseModel):
         except ValueError:
             raise ValueError(f"exam_id must be a valid UUID, got: {v}")
 
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "exam_id": "660e8400-e29b-41d4-a716-446655440001",
-                "stations_config": [
-                    {
-                        "persona_id": "550e8400-e29b-41d4-a716-446655440000",
-                        "persona_code": "CARD-001-CHEST-PAIN",
-                        "name": "John Smith",
-                        "specialty": "Cardiology",
-                        "chief_complaint": "Chest pain for 2 hours",
-                        "difficulty_level": "intermediate"
-                    }
-                ],
-                "estimated_duration_minutes": 150,
-                "start_url": "/api/v1/osce/session/660e8400-e29b-41d4-a716-446655440001/station/1",
-                "created_at": "2026-04-05T10:00:00Z"
-            }
-        }
-
 
 # ============================================================================
 # MOCK EXAM STATUS
@@ -139,6 +142,23 @@ class MockExamCreateResponse(BaseModel):
 
 class MockExamStatusResponse(BaseModel):
     """Current exam status and progress"""
+
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "exam_id": "660e8400-e29b-41d4-a716-446655440001",
+                "exam_state": "IN_PROGRESS",
+                "current_station_number": 5,
+                "stations_completed": 4,
+                "total_score": 48,
+                "max_possible_score": 240,
+                "time_elapsed_minutes": 42,
+                "started_at": "2026-04-05T10:00:00Z",
+                "completed_at": None,
+                "exam_name": "AMC Clinical Practice Exam #1"
+            }
+        }
+    )
 
     exam_id: str = Field(..., description="UUID of exam")
     exam_state: Literal['IN_PROGRESS', 'COMPLETED', 'ABANDONED'] = Field(
@@ -183,22 +203,6 @@ class MockExamStatusResponse(BaseModel):
         except ValueError:
             raise ValueError(f"exam_id must be a valid UUID, got: {v}")
 
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "exam_id": "660e8400-e29b-41d4-a716-446655440001",
-                "exam_state": "IN_PROGRESS",
-                "current_station_number": 5,
-                "stations_completed": 4,
-                "total_score": 48,
-                "max_possible_score": 240,
-                "time_elapsed_minutes": 42,
-                "started_at": "2026-04-05T10:00:00Z",
-                "completed_at": None,
-                "exam_name": "AMC Clinical Practice Exam #1"
-            }
-        }
-
 
 # ============================================================================
 # STATION COMPLETION
@@ -207,6 +211,16 @@ class MockExamStatusResponse(BaseModel):
 
 class StationCompleteRequest(BaseModel):
     """Request to mark station as complete"""
+
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "attempt_id": "770e8400-e29b-41d4-a716-446655440002",
+                "station_score": 12,
+                "pass_fail": "PASS"
+            }
+        }
+    )
 
     attempt_id: str = Field(..., description="UUID of OSCE attempt")
     station_score: int = Field(..., ge=0, le=15, description="Station score (0-15)")
@@ -222,18 +236,21 @@ class StationCompleteRequest(BaseModel):
         except ValueError:
             raise ValueError(f"attempt_id must be a valid UUID, got: {v}")
 
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "attempt_id": "770e8400-e29b-41d4-a716-446655440002",
-                "station_score": 12,
-                "pass_fail": "PASS"
-            }
-        }
-
 
 class StationCompleteResponse(BaseModel):
     """Response after completing station"""
+
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "next_station_number": 6,
+                "station_score": 12,
+                "overall_progress": 0.3125,
+                "exam_complete": False,
+                "total_score": 60
+            }
+        }
+    )
 
     next_station_number: Optional[int] = Field(
         None,
@@ -251,17 +268,6 @@ class StationCompleteResponse(BaseModel):
     exam_complete: bool = Field(..., description="Whether exam is now complete")
     total_score: int = Field(..., ge=0, le=240, description="Running total score")
 
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "next_station_number": 6,
-                "station_score": 12,
-                "overall_progress": 0.3125,
-                "exam_complete": False,
-                "total_score": 60
-            }
-        }
-
 
 # ============================================================================
 # EXAM RESULTS
@@ -271,15 +277,8 @@ class StationCompleteResponse(BaseModel):
 class StationResult(BaseModel):
     """Individual station result"""
 
-    station_number: int = Field(..., ge=1, le=16, description="Station number")
-    persona_name: str = Field(..., description="Patient persona name")
-    specialty: str = Field(..., description="Medical specialty")
-    score: int = Field(..., ge=0, le=15, description="Station score (0-15)")
-    pass_fail: Literal['PASS', 'FAIL'] = Field(..., description="Station outcome")
-    duration_minutes: int = Field(default=8, description="Station duration")
-
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "station_number": 1,
                 "persona_name": "John Smith",
@@ -289,10 +288,36 @@ class StationResult(BaseModel):
                 "duration_minutes": 8
             }
         }
+    )
+
+    station_number: int = Field(..., ge=1, le=16, description="Station number")
+    persona_name: str = Field(..., description="Patient persona name")
+    specialty: str = Field(..., description="Medical specialty")
+    score: int = Field(..., ge=0, le=15, description="Station score (0-15)")
+    pass_fail: Literal['PASS', 'FAIL'] = Field(..., description="Station outcome")
+    duration_minutes: int = Field(default=8, description="Station duration")
 
 
 class SummaryStatistics(BaseModel):
     """Summary statistics for exam performance"""
+
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "stations_passed": 14,
+                "stations_failed": 2,
+                "average_score_per_station": 12.375,
+                "percentage": 82.5,
+                "performance_by_specialty": {
+                    "Cardiology": {
+                        "stations": 2,
+                        "average_score": 13.0,
+                        "passed": 2
+                    }
+                }
+            }
+        }
+    )
 
     stations_passed: int = Field(..., ge=0, le=16, description="Number of stations passed")
     stations_failed: int = Field(..., ge=0, le=16, description="Number of stations failed")
@@ -308,26 +333,33 @@ class SummaryStatistics(BaseModel):
         description="Performance breakdown by specialty"
     )
 
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "stations_passed": 14,
-                "stations_failed": 2,
-                "average_score_per_station": 12.375,
-                "percentage": 82.5,
-                "performance_by_specialty": {
-                    "Cardiology": {
-                        "stations": 2,
-                        "average_score": 13.0,
-                        "passed": 2
-                    }
-                }
-            }
-        }
-
 
 class MockExamResultsResponse(BaseModel):
     """Comprehensive exam results"""
+
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "exam_id": "660e8400-e29b-41d4-a716-446655440001",
+                "overall_score": 198,
+                "max_score": 240,
+                "percentage": 82.5,
+                "overall_pass_fail": "PASS",
+                "stations": [],
+                "summary_statistics": {
+                    "stations_passed": 14,
+                    "stations_failed": 2,
+                    "average_score_per_station": 12.375,
+                    "percentage": 82.5,
+                    "performance_by_specialty": {}
+                },
+                "total_duration_minutes": 148,
+                "completed_at": "2026-04-05T12:30:00Z",
+                "exam_name": "AMC Clinical Practice Exam #1",
+                "report_pdf_url": None
+            }
+        }
+    )
 
     exam_id: str = Field(..., description="UUID of exam")
     overall_score: int = Field(..., ge=0, le=240, description="Total score (0-240)")
@@ -355,26 +387,3 @@ class MockExamResultsResponse(BaseModel):
             return v
         except ValueError:
             raise ValueError(f"exam_id must be a valid UUID, got: {v}")
-
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "exam_id": "660e8400-e29b-41d4-a716-446655440001",
-                "overall_score": 198,
-                "max_score": 240,
-                "percentage": 82.5,
-                "overall_pass_fail": "PASS",
-                "stations": [],
-                "summary_statistics": {
-                    "stations_passed": 14,
-                    "stations_failed": 2,
-                    "average_score_per_station": 12.375,
-                    "percentage": 82.5,
-                    "performance_by_specialty": {}
-                },
-                "total_duration_minutes": 148,
-                "completed_at": "2026-04-05T12:30:00Z",
-                "exam_name": "AMC Clinical Practice Exam #1",
-                "report_pdf_url": None
-            }
-        }

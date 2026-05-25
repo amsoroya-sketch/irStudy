@@ -288,10 +288,14 @@ class MockExamOrchestrator:
         # Calculate time elapsed
         time_elapsed_minutes = None
         if exam.started_at:
+            # Ensure timezone-aware datetimes (SQLite may return naive datetimes)
+            started_at = exam.started_at if exam.started_at.tzinfo else exam.started_at.replace(tzinfo=timezone.utc)
+            completed_at = None
             if exam.completed_at:
-                time_elapsed = (exam.completed_at - exam.started_at).total_seconds() / 60
+                completed_at = exam.completed_at if exam.completed_at.tzinfo else exam.completed_at.replace(tzinfo=timezone.utc)
+                time_elapsed = (completed_at - started_at).total_seconds() / 60
             else:
-                time_elapsed = (datetime.now(timezone.utc) - exam.started_at).total_seconds() / 60
+                time_elapsed = (datetime.now(timezone.utc) - started_at).total_seconds() / 60
             time_elapsed_minutes = int(time_elapsed)
 
         # Count completed stations
@@ -379,7 +383,10 @@ class MockExamOrchestrator:
 
             # Calculate total duration
             if exam.started_at and exam.completed_at:
-                duration_seconds = (exam.completed_at - exam.started_at).total_seconds()
+                # Ensure timezone-aware datetimes (SQLite may return naive datetimes)
+                started_at = exam.started_at if exam.started_at.tzinfo else exam.started_at.replace(tzinfo=timezone.utc)
+                completed_at = exam.completed_at if exam.completed_at.tzinfo else exam.completed_at.replace(tzinfo=timezone.utc)
+                duration_seconds = (completed_at - started_at).total_seconds()
                 exam.total_duration_minutes = int(duration_seconds / 60)
 
             # Calculate overall pass/fail (≥198/240 = 82.5%)
@@ -471,8 +478,26 @@ class MockExamOrchestrator:
                 .filter(OSCEScoreAI.attempt_id == attempt.attempt_id)\
                 .first()
 
-            total_score = score_record.total_score if score_record else 0
-            pass_fail_status = score_record.pass_fail if score_record else 'FAIL'
+            # Calculate total_score manually (SQLite doesn't support GENERATED columns)
+            if score_record:
+                # Try to get total_score (exists in PostgreSQL), else calculate it
+                if hasattr(score_record, 'total_score') and score_record.total_score is not None:
+                    total_score = score_record.total_score
+                else:
+                    # Calculate from individual components
+                    total_score = (
+                        (score_record.communication_score or 0) +
+                        (score_record.clinical_reasoning_score or 0) +
+                        (score_record.information_gathering_score or 0) +
+                        (score_record.management_score or 0) +
+                        (score_record.professionalism_score or 0)
+                    )
+
+                # Calculate pass_fail (≥9 to pass)
+                pass_fail_status = 'PASS' if total_score >= 9 else 'FAIL'
+            else:
+                total_score = 0
+                pass_fail_status = 'FAIL'
 
             # Get persona details
             persona = self.db.query(PatientPersona)\

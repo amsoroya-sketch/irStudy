@@ -5,7 +5,7 @@ Implements the SuperMemo-2 (SM-2) algorithm for optimal study card scheduling.
 
 ALGORITHM:
 - Initial ease factor: 2.5
-- Ease factor range: 1.3 - 2.5
+- Ease factor range: 1.3 - 2.6
 - Quality ratings: 0 (complete blackout) to 5 (perfect response)
 - Interval calculation: I(n) = I(n-1) × EF
 
@@ -37,14 +37,14 @@ class SM2Algorithm:
     SuperMemo-2 algorithm for spaced repetition.
 
     CONSTRAINTS:
-    - Ease factor must be between 1.3 and 2.5
+    - Ease factor must be between 1.3 and 2.6
     - Quality ratings must be 0-5
     - Intervals increase with successful reviews
     - Failed reviews (quality < 3) reset progress
     """
 
     MIN_EASE_FACTOR = 1.3
-    MAX_EASE_FACTOR = 2.5
+    MAX_EASE_FACTOR = 2.6  # Allow growth beyond initial 2.5 for perfect responses
     DEFAULT_EASE_FACTOR = 2.5
 
     @staticmethod
@@ -59,7 +59,7 @@ class SM2Algorithm:
 
         Args:
             quality: Quality rating 0-5 (0=complete blackout, 5=perfect recall)
-            current_ease_factor: Current ease factor (1.3-2.5)
+            current_ease_factor: Current ease factor (1.3-2.6)
             current_interval: Current interval in days
             repetitions: Number of successful reviews
 
@@ -93,7 +93,7 @@ class SM2Algorithm:
         # Formula: EF' = EF + (0.1 - (5-q) × (0.08 + (5-q) × 0.02))
         new_ease_factor = current_ease_factor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02))
 
-        # Clamp ease factor to valid range (1.3 - 2.5)
+        # Clamp ease factor to valid range (1.3 - 2.6)
         new_ease_factor = max(SM2Algorithm.MIN_EASE_FACTOR, min(SM2Algorithm.MAX_EASE_FACTOR, new_ease_factor))
 
         # Determine interval and repetitions based on quality

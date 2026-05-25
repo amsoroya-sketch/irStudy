@@ -1,61 +1,18 @@
 """
 Pytest fixtures for MCQ API testing
+
+NOTE: This conftest only provides MCQ-specific fixtures.
+Database setup (db_session, client, test_user, auth_headers) comes from global conftest.
 """
 
 import pytest
-from fastapi.testclient import TestClient
-from sqlalchemy import create_engine, event
-from sqlalchemy.orm import sessionmaker, Session
-from sqlalchemy.pool import StaticPool
+from sqlalchemy.orm import Session
 
-from src.main import app
-from src.db.base import Base, get_db
 from src.db.models import MCQ, MedicalSpecialty, DifficultyLevel
 
-SQLALCHEMY_DATABASE_URL = "sqlite://"
-
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL,
-    connect_args={"check_same_thread": False},
-    poolclass=StaticPool
-)
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-# Create all tables once when module loads
-Base.metadata.create_all(bind=engine)
-
-
-@pytest.fixture(scope="function")
-def db():
-    """Create fresh database session for each test"""
-    connection = engine.connect()
-    transaction = connection.begin()
-    session = TestingSessionLocal(bind=connection)
-    
-    yield session
-    
-    session.close()
-    transaction.rollback()
-    connection.close()
-
 
 @pytest.fixture
-def client(db):
-    """FastAPI test client with db dependency override"""
-    def override_get_db():
-        try:
-            yield db
-        finally:
-            pass
-    
-    app.dependency_overrides[get_db] = override_get_db
-    with TestClient(app) as test_client:
-        yield test_client
-    app.dependency_overrides.clear()
-
-
-@pytest.fixture
-def sample_mcq(db: Session):
+def sample_mcq(db_session: Session):
     """Create sample MCQ for testing"""
     mcq = MCQ(
         question_id="MCQ-CARD-001",
@@ -74,7 +31,7 @@ def sample_mcq(db: Session):
         difficulty=DifficultyLevel.MEDIUM,
         learning_points=["STEMI diagnosis criteria", "Primary PCI vs thrombolysis", "Dual antiplatelet therapy"]
     )
-    db.add(mcq)
-    db.commit()
-    db.refresh(mcq)
+    db_session.add(mcq)
+    db_session.commit()
+    db_session.refresh(mcq)
     return mcq

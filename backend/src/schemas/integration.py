@@ -134,7 +134,10 @@ class SOAPNoteDraft(BaseModel):
     @classmethod
     def validate_australian_terminology(cls, v: str) -> str:
         """Ensure Australian medical terminology in treatment plan"""
+        import re
+
         # Check for common US terms that should be Australian
+        # Use word boundaries to avoid false positives (e.g., "consider" containing "er")
         us_terms = {
             'acetaminophen': 'paracetamol',
             'albuterol': 'salbutamol',
@@ -144,7 +147,10 @@ class SOAPNoteDraft(BaseModel):
         }
 
         for us_term, au_term in us_terms.items():
-            if us_term.lower() in v.lower():
+            # Use word boundary matching to avoid false positives
+            # \b matches word boundaries (space, punctuation, start/end of string)
+            pattern = r'\b' + re.escape(us_term) + r'\b'
+            if re.search(pattern, v, re.IGNORECASE):
                 raise ValueError(
                     f"Use Australian terminology: '{au_term}' instead of '{us_term}'"
                 )
@@ -261,5 +267,6 @@ class ClaudeExtractionResponse(BaseModel):
     plan: str = Field(..., min_length=50)
     extraction_confidence: float = Field(..., ge=0.0, le=1.0)
     missing_elements: List[str] = Field(default_factory=list)
+    tokens_used: int = Field(default=0, ge=0, description="Total tokens used (input + output)")
 
     model_config = ConfigDict(populate_by_name=True)

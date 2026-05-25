@@ -16,14 +16,8 @@ AMC CLINICAL EXAM CONTEXT:
 """
 
 import pytest
-from fastapi.testclient import TestClient
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from datetime import datetime
 import time
 
-from src.main import app
-from src.db.base import Base, get_db
 from src.db.models import (
     User,
     OSCE,
@@ -37,29 +31,9 @@ from src.auth.security import hash_password
 
 
 # ============================================================================
-# TEST DATABASE SETUP
+# NOTE: Database fixtures (db_session, client, auth_headers) provided by
+# tests/test_api/conftest.py
 # ============================================================================
-
-SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
-
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
-)
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-
-def override_get_db():
-    """Override database dependency for tests"""
-    try:
-        db = TestingSessionLocal()
-        yield db
-    finally:
-        db.close()
-
-
-app.dependency_overrides[get_db] = override_get_db
-
-client = TestClient(app)
 
 
 # ============================================================================
@@ -67,23 +41,13 @@ client = TestClient(app)
 # ============================================================================
 
 
-@pytest.fixture(scope="function")
-def db_session():
-    """Create fresh database for each test"""
-    Base.metadata.create_all(bind=engine)
-    db = TestingSessionLocal()
-    yield db
-    db.close()
-    Base.metadata.drop_all(bind=engine)
-
-
 @pytest.fixture
 def test_user(db_session):
-    """Create test user"""
+    """Create test user for OSCE tests"""
     user = User(
-        email="test@example.com",
+        email="osce_test@example.com",
         password_hash=hash_password("testpass123"),
-        full_name="Test User",
+        full_name="OSCE Test User",
         role=UserRole.STUDENT,
         is_active=True,
         is_verified=True,
@@ -92,18 +56,6 @@ def test_user(db_session):
     db_session.commit()
     db_session.refresh(user)
     return user
-
-
-@pytest.fixture
-def auth_headers(test_user):
-    """Get authentication headers"""
-    response = client.post(
-        "/api/v1/auth/login",
-        json={"email": "test@example.com", "password": "testpass123"},
-    )
-    assert response.status_code == 200
-    token = response.json()["access_token"]
-    return {"Authorization": f"Bearer {token}"}
 
 
 @pytest.fixture
@@ -211,7 +163,7 @@ def multiple_osces(db_session):
 # ============================================================================
 
 
-def test_get_random_osce_success(sample_osce, auth_headers):
+def test_get_random_osce_success(client, sample_osce, auth_headers):
     """Test GET /api/v1/osces/random returns OSCE without rubric"""
     start_time = time.time()
     response = client.get("/api/v1/osces/random", headers=auth_headers)
@@ -238,7 +190,7 @@ def test_get_random_osce_success(sample_osce, auth_headers):
     assert elapsed_ms < 200, f"Response time {elapsed_ms}ms exceeds 200ms threshold"
 
 
-def test_get_random_osce_with_specialty_filter(multiple_osces, auth_headers):
+def test_get_random_osce_with_specialty_filter(client, multiple_osces, auth_headers):
     """Test GET /api/v1/osces/random with specialty filter"""
     response = client.get(
         "/api/v1/osces/random?specialty=cardiology", headers=auth_headers
@@ -249,7 +201,7 @@ def test_get_random_osce_with_specialty_filter(multiple_osces, auth_headers):
     assert data["specialty"] == "cardiology"
 
 
-def test_get_random_osce_with_type_filter(multiple_osces, auth_headers):
+def test_get_random_osce_with_type_filter(client, multiple_osces, auth_headers):
     """Test GET /api/v1/osces/random with station type filter"""
     response = client.get(
         "/api/v1/osces/random?osce_type=history_taking", headers=auth_headers
@@ -260,17 +212,17 @@ def test_get_random_osce_with_type_filter(multiple_osces, auth_headers):
     assert data["station_type"] == "history_taking"
 
 
-def test_get_random_osce_no_results(auth_headers):
+def test_get_random_osce_no_results(client, auth_headers):
     """Test GET /api/v1/osces/random returns 404 when no OSCEs match"""
     response = client.get(
         "/api/v1/osces/random?specialty=cardiology", headers=auth_headers
     )
 
     assert response.status_code == 404
-    assert "No OSCEs found" in response.json()["detail"]
+    assert "No OSCE stations found" in response.json()["detail"]
 
 
-def test_get_osce_by_id_success(sample_osce, auth_headers):
+def test_get_osce_by_id_success(client, sample_osce, auth_headers):
     """Test GET /api/v1/osces/{id} returns specific OSCE"""
     start_time = time.time()
     response = client.get(f"/api/v1/osces/{sample_osce.id}", headers=auth_headers)
@@ -290,7 +242,7 @@ def test_get_osce_by_id_success(sample_osce, auth_headers):
     assert elapsed_ms < 200, f"Response time {elapsed_ms}ms exceeds 200ms threshold"
 
 
-def test_get_osce_by_id_not_found(auth_headers):
+def test_get_osce_by_id_not_found(client, auth_headers):
     """Test GET /api/v1/osces/{id} returns 404 for invalid ID"""
     response = client.get("/api/v1/osces/99999", headers=auth_headers)
 
@@ -298,7 +250,7 @@ def test_get_osce_by_id_not_found(auth_headers):
     assert "not found" in response.json()["detail"].lower()
 
 
-def test_get_osce_rubric(sample_osce, auth_headers):
+def test_get_osce_rubric(client, sample_osce, auth_headers):
     """Test GET /api/v1/osces/{id}/rubric returns complete OSCE with rubric"""
     response = client.get(
         f"/api/v1/osces/{sample_osce.id}/rubric", headers=auth_headers
@@ -325,7 +277,7 @@ def test_get_osce_rubric(sample_osce, auth_headers):
         assert "criteria" in details
 
 
-def test_complete_osce_station_passing_score(sample_osce, auth_headers):
+def test_complete_osce_station_passing_score(client, sample_osce, auth_headers):
     """Test POST /api/v1/osces/{id}/complete-station with passing score"""
     # Scores totaling 12/15 (80% - pass)
     completion_data = {
@@ -371,7 +323,7 @@ def test_complete_osce_station_passing_score(sample_osce, auth_headers):
     assert elapsed_ms < 200, f"Response time {elapsed_ms}ms exceeds 200ms threshold"
 
 
-def test_complete_osce_station_failing_score(sample_osce, auth_headers):
+def test_complete_osce_station_failing_score(client, sample_osce, auth_headers):
     """Test POST /api/v1/osces/{id}/complete-station with failing score"""
     # Scores totaling 7/15 (47% - fail)
     completion_data = {
@@ -406,7 +358,7 @@ def test_complete_osce_station_failing_score(sample_osce, auth_headers):
     assert "professionalism" in weak_areas
 
 
-def test_complete_osce_station_multiple_attempts(sample_osce, auth_headers):
+def test_complete_osce_station_multiple_attempts(client, sample_osce, auth_headers):
     """Test multiple attempts increment attempt_number"""
     completion_data = {
         "osce_id": sample_osce.id,
@@ -437,7 +389,7 @@ def test_complete_osce_station_multiple_attempts(sample_osce, auth_headers):
     assert response2.json()["attempt_number"] == 2
 
 
-def test_complete_osce_station_id_mismatch(sample_osce, auth_headers):
+def test_complete_osce_station_id_mismatch(client, sample_osce, auth_headers):
     """Test POST /complete-station fails with ID mismatch"""
     completion_data = {
         "osce_id": 999,  # Mismatched ID
@@ -503,7 +455,7 @@ def test_complete_osce_station_missing_category():
     assert "missing" in error_message.lower() or "required" in error_message.lower()
 
 
-def test_list_osces_success(multiple_osces, auth_headers):
+def test_list_osces_success(client, multiple_osces, auth_headers):
     """Test GET /api/v1/osces lists OSCEs with pagination"""
     response = client.get("/api/v1/osces?limit=3", headers=auth_headers)
 
@@ -515,7 +467,7 @@ def test_list_osces_success(multiple_osces, auth_headers):
     assert all("osce_id" in osce for osce in data)
 
 
-def test_list_osces_with_filters(multiple_osces, auth_headers):
+def test_list_osces_with_filters(client, multiple_osces, auth_headers):
     """Test GET /api/v1/osces with specialty and type filters"""
     response = client.get(
         "/api/v1/osces?specialty=cardiology&osce_type=history_taking",
@@ -529,7 +481,7 @@ def test_list_osces_with_filters(multiple_osces, auth_headers):
     assert all(osce["station_type"] == "history_taking" for osce in data)
 
 
-def test_unauthenticated_request_fails():
+def test_unauthenticated_request_fails(client):
     """Test that requests without auth token fail"""
     response = client.get("/api/v1/osces/random")
 
@@ -595,8 +547,8 @@ def test_amc_rubric_validation_15_marks():
         osce_id="OSCE-TEST-001",
         station_title="Test Station",
         station_type=OSCEType.HISTORY_TAKING,
-        patient_instructions="Test instructions",
-        candidate_instructions="Test instructions",
+        patient_instructions="You are a 45-year-old patient presenting with chest pain. Respond to the candidate's questions appropriately and provide a detailed history when asked about your symptoms.",
+        candidate_instructions="Take a focused cardiovascular history from this patient. You have 8 minutes to complete this station. Ensure you cover all relevant aspects of the presenting complaint.",
         rubric=valid_rubric,
         specialty=MedicalSpecialty.CARDIOLOGY,
     )
@@ -611,8 +563,8 @@ def test_amc_rubric_validation_15_marks():
             osce_id="OSCE-TEST-002",
             station_title="Test Station",
             station_type=OSCEType.HISTORY_TAKING,
-            patient_instructions="Test instructions",
-            candidate_instructions="Test instructions",
+            patient_instructions="You are a 45-year-old patient presenting with chest pain. Respond to the candidate's questions appropriately and provide a detailed history when asked about your symptoms.",
+            candidate_instructions="Take a focused cardiovascular history from this patient. You have 8 minutes to complete this station. Ensure you cover all relevant aspects of the presenting complaint.",
             rubric=invalid_rubric,
             specialty=MedicalSpecialty.CARDIOLOGY,
         )
@@ -626,7 +578,7 @@ def test_amc_rubric_validation_15_marks():
 # ============================================================================
 
 
-def test_osce_random_response_time(sample_osce, auth_headers):
+def test_osce_random_response_time(client, sample_osce, auth_headers):
     """Test that GET /random responds in < 200ms (95th percentile)"""
     response_times = []
 
@@ -645,7 +597,7 @@ def test_osce_random_response_time(sample_osce, auth_headers):
     assert p95 < 200, f"95th percentile response time {p95}ms exceeds 200ms threshold"
 
 
-def test_osce_complete_response_time(sample_osce, auth_headers):
+def test_osce_complete_response_time(client, sample_osce, auth_headers):
     """Test that POST /complete-station responds in < 200ms (95th percentile)"""
     response_times = []
     completion_data = {

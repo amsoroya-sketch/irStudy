@@ -36,7 +36,7 @@ from src.db.models import PatientPersona, OSCEAttemptAI, OSCEScoreAI, User
 # ================================================================
 
 @pytest.fixture
-def sample_personas(db: Session):
+def sample_personas(db_session: Session):
     """Create 3 sample patient personas for testing"""
     personas = [
         PatientPersona(
@@ -114,14 +114,14 @@ def sample_personas(db: Session):
     ]
     
     for persona in personas:
-        db.add(persona)
-    db.commit()
+        db_session.add(persona)
+    db_session.commit()
     
     return personas
 
 
 @pytest.fixture
-def inactive_persona(db: Session):
+def inactive_persona(db_session: Session):
     """Create an inactive persona for testing 404 behavior"""
     persona = PatientPersona(
         persona_id=str(uuid4()),
@@ -138,13 +138,13 @@ def inactive_persona(db: Session):
         difficulty_level="foundation",
         is_active=False,  # INACTIVE
     )
-    db.add(persona)
-    db.commit()
+    db_session.add(persona)
+    db_session.commit()
     return persona
 
 
 @pytest.fixture
-def test_user(db: Session):
+def test_user(db_session: Session):
     """Create test user from auth_headers fixture logic"""
     from src.db.models import UserRole
     
@@ -156,9 +156,9 @@ def test_user(db: Session):
         is_active=True,
         is_verified=True,
     )
-    db.add(user)
-    db.commit()
-    db.refresh(user)
+    db_session.add(user)
+    db_session.commit()
+    db_session.refresh(user)
     return user
 
 
@@ -172,7 +172,7 @@ def test_user_token(test_user: User):
 
 
 @pytest.fixture
-def sample_osce_session(db: Session, test_user: User, sample_personas: list):
+def sample_osce_session(db_session: Session, test_user: User, sample_personas: list):
     """Create sample OSCE session"""
     persona = sample_personas[0]
     
@@ -192,15 +192,15 @@ def sample_osce_session(db: Session, test_user: User, sample_personas: list):
         session_state='in_progress',
     )
     
-    db.add(attempt)
-    db.commit()
-    db.refresh(attempt)
+    db_session.add(attempt)
+    db_session.commit()
+    db_session.refresh(attempt)
     
     return attempt
 
 
 @pytest.fixture
-def completed_osce_session(db: Session, test_user: User, sample_personas: list):
+def completed_osce_session(db_session: Session, test_user: User, sample_personas: list):
     """Create completed OSCE session for scoring tests"""
     persona = sample_personas[0]
     
@@ -222,15 +222,15 @@ def completed_osce_session(db: Session, test_user: User, sample_personas: list):
         session_state='finalized',
     )
     
-    db.add(attempt)
-    db.commit()
-    db.refresh(attempt)
+    db_session.add(attempt)
+    db_session.commit()
+    db_session.refresh(attempt)
     
     return attempt
 
 
 @pytest.fixture
-def sample_score(db: Session, completed_osce_session: OSCEAttemptAI):
+def sample_score(db_session: Session, completed_osce_session: OSCEAttemptAI):
     """Create sample AI Examiner score"""
     score = OSCEScoreAI(
         score_id=str(uuid4()),
@@ -248,15 +248,15 @@ def sample_score(db: Session, completed_osce_session: OSCEAttemptAI):
         scoring_model_version="claude-sonnet-4-5",
     )
     
-    db.add(score)
-    db.commit()
-    db.refresh(score)
+    db_session.add(score)
+    db_session.commit()
+    db_session.refresh(score)
     
     return score
 
 
 @pytest.fixture
-def other_user(db: Session):
+def other_user(db_session: Session):
     """Create another user for authorization testing"""
     from src.db.models import UserRole
     
@@ -268,14 +268,14 @@ def other_user(db: Session):
         is_active=True,
         is_verified=True,
     )
-    db.add(user)
-    db.commit()
-    db.refresh(user)
+    db_session.add(user)
+    db_session.commit()
+    db_session.refresh(user)
     return user
 
 
 @pytest.fixture
-def other_user_session(db: Session, other_user: User, sample_personas: list):
+def other_user_session(db_session: Session, other_user: User, sample_personas: list):
     """Create OSCE session for other user (for authorization tests)"""
     persona = sample_personas[0]
     
@@ -292,9 +292,9 @@ def other_user_session(db: Session, other_user: User, sample_personas: list):
         session_state='initialized',
     )
     
-    db.add(attempt)
-    db.commit()
-    db.refresh(attempt)
+    db_session.add(attempt)
+    db_session.commit()
+    db_session.refresh(attempt)
     
     return attempt
 
@@ -619,7 +619,7 @@ def test_get_osce_transcript(client: TestClient, test_user_token: str, sample_os
     assert len(data["student_actions"]) == 1
 
 
-def test_get_transcript_empty_session(client: TestClient, test_user_token: str, db: Session, test_user: User, sample_personas: list):
+def test_get_transcript_empty_session(client: TestClient, test_user_token: str, db_session: Session, test_user: User, sample_personas: list):
     """Test GET /transcript on newly created session returns empty arrays"""
     persona = sample_personas[0]
     
@@ -636,9 +636,9 @@ def test_get_transcript_empty_session(client: TestClient, test_user_token: str, 
         was_completed=False,
         session_state='initialized',
     )
-    db.add(attempt)
-    db.commit()
-    db.refresh(attempt)
+    db_session.add(attempt)
+    db_session.commit()
+    db_session.refresh(attempt)
     
     response = client.get(
         f"/api/v1/osce-sessions/{attempt.attempt_id}/transcript",
@@ -686,7 +686,7 @@ def test_get_osce_score(client: TestClient, test_user_token: str, sample_score: 
     assert "scoring_model_version" in data
 
 
-def test_get_score_fail_threshold(client: TestClient, test_user_token: str, db: Session, test_user: User, sample_personas: list):
+def test_get_score_fail_threshold(client: TestClient, test_user_token: str, db_session: Session, test_user: User, sample_personas: list):
     """Test GET /score with failing score (< 9/15)"""
     persona = sample_personas[0]
     
@@ -705,9 +705,9 @@ def test_get_score_fail_threshold(client: TestClient, test_user_token: str, db: 
         was_completed=True,
         session_state='finalized',
     )
-    db.add(attempt)
-    db.commit()
-    db.refresh(attempt)
+    db_session.add(attempt)
+    db_session.commit()
+    db_session.refresh(attempt)
     
     # Create failing score (8/15)
     score = OSCEScoreAI(
@@ -725,8 +725,8 @@ def test_get_score_fail_threshold(client: TestClient, test_user_token: str, db: 
         scored_at=datetime.now(timezone.utc),
         scoring_model_version="claude-sonnet-4-5",
     )
-    db.add(score)
-    db.commit()
+    db_session.add(score)
+    db_session.commit()
     
     response = client.get(
         f"/api/v1/osce-sessions/{attempt.attempt_id}/score",

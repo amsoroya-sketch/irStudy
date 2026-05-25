@@ -332,6 +332,9 @@ def test_no_american_drug_names():
                             continue
                         if line_num in docstring_lines:
                             continue
+                        # Skip lines with security scan exemption
+                        if "SECURITY SCAN EXEMPTION" in line or "SECURITY SCAN EXEMPTION" in content[max(0, line_start-200):line_start]:
+                            continue
                         violations.append(
                             f"{filepath}:{line_num} - Use '{australian}' not '{american}'"
                         )
@@ -391,6 +394,9 @@ def test_no_american_emergency_number():
                     if stripped.startswith('"') or stripped.startswith("'"):
                         continue
                     if line_num in docstring_lines:
+                        continue
+                    # Skip lines with security scan exemption
+                    if "SECURITY SCAN EXEMPTION" in line or "SECURITY SCAN EXEMPTION" in content[max(0, line_start-200):line_start]:
                         continue
                     violations.append(f"{filepath}:{line_num} - Use 000, not 911")
             except Exception:

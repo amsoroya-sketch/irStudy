@@ -46,8 +46,8 @@ ANALYTICS_THRESHOLD_MS = 100
 
 
 @pytest.fixture
-def test_user():
-    """Create test user"""
+def mock_user():
+    """Create mock user for unit tests (not persisted to database)"""
     return User(
         id=1,
         email="test@example.com",
@@ -59,7 +59,7 @@ def test_user():
 
 
 @pytest.fixture
-def sample_study_cards(test_user) -> List[StudyCard]:
+def sample_study_cards(mock_user) -> List[StudyCard]:
     """Create sample study cards for testing"""
     cards = []
     now = datetime.utcnow()
@@ -72,7 +72,7 @@ def sample_study_cards(test_user) -> List[StudyCard]:
 
         card = StudyCard(
             id=i + 1,
-            user_id=test_user.id,
+            user_id=mock_user.id,
             card_id=f"TEST-CARD-{i+1:04d}",
             specialty=MedicalSpecialty.CARDIOLOGY if i % 2 == 0 else MedicalSpecialty.RESPIRATORY,
             topic=f"Test Topic {i+1}",
@@ -98,7 +98,7 @@ def sample_study_cards(test_user) -> List[StudyCard]:
 class TestDailyQueuePerformance:
     """Test daily queue query performance"""
 
-    def test_daily_queue_performance(self, test_user, sample_study_cards):
+    def test_daily_queue_performance(self, mock_user, sample_study_cards):
         """
         Test daily queue query meets <100ms target.
 
@@ -125,7 +125,7 @@ class TestDailyQueuePerformance:
         start_time = time.time()
         cards, total_due = ReviewQueueService.get_daily_queue(
             db=mock_db,
-            user_id=test_user.id,
+            user_id=mock_user.id,
             limit=20,
             specialty=None,
             offset=0,
@@ -141,7 +141,7 @@ class TestDailyQueuePerformance:
         if query_time_ms > DAILY_QUEUE_THRESHOLD_MS:
             print(f"⚠️  Warning: Query exceeded {DAILY_QUEUE_THRESHOLD_MS}ms threshold")
 
-    def test_daily_queue_with_specialty_filter(self, test_user, sample_study_cards):
+    def test_daily_queue_with_specialty_filter(self, mock_user, sample_study_cards):
         """Test daily queue with specialty filter"""
         mock_db = MagicMock(spec=Session)
         mock_query = MagicMock()
@@ -155,7 +155,7 @@ class TestDailyQueuePerformance:
 
         cards, total_due = ReviewQueueService.get_daily_queue(
             db=mock_db,
-            user_id=test_user.id,
+            user_id=mock_user.id,
             limit=20,
             specialty=MedicalSpecialty.CARDIOLOGY,
             offset=0,
@@ -164,7 +164,7 @@ class TestDailyQueuePerformance:
         assert len(cards) == 12, "Should return filtered cards"
         assert total_due == 12, "Should report correct count"
 
-    def test_daily_queue_pagination(self, test_user, sample_study_cards):
+    def test_daily_queue_pagination(self, mock_user, sample_study_cards):
         """Test daily queue pagination"""
         mock_db = MagicMock(spec=Session)
         mock_query = MagicMock()
@@ -178,7 +178,7 @@ class TestDailyQueuePerformance:
 
         cards, total_due = ReviewQueueService.get_daily_queue(
             db=mock_db,
-            user_id=test_user.id,
+            user_id=mock_user.id,
             limit=20,
             specialty=None,
             offset=20,
@@ -191,7 +191,7 @@ class TestDailyQueuePerformance:
 class TestOverdueCountPerformance:
     """Test overdue count query performance"""
 
-    def test_overdue_count_performance(self, test_user):
+    def test_overdue_count_performance(self, mock_user):
         """
         Test overdue count query meets <50ms target.
 
@@ -209,7 +209,7 @@ class TestOverdueCountPerformance:
         start_time = time.time()
         count = ReviewQueueService.get_overdue_count(
             db=mock_db,
-            user_id=test_user.id,
+            user_id=mock_user.id,
             specialty=None,
         )
         query_time_ms = (time.time() - start_time) * 1000
@@ -220,7 +220,7 @@ class TestOverdueCountPerformance:
         if query_time_ms > OVERDUE_COUNT_THRESHOLD_MS:
             print(f"⚠️  Warning: Query exceeded {OVERDUE_COUNT_THRESHOLD_MS}ms threshold")
 
-    def test_overdue_count_with_specialty(self, test_user):
+    def test_overdue_count_with_specialty(self, mock_user):
         """Test overdue count with specialty filter"""
         mock_db = MagicMock(spec=Session)
         mock_query = MagicMock()
@@ -230,7 +230,7 @@ class TestOverdueCountPerformance:
 
         count = ReviewQueueService.get_overdue_count(
             db=mock_db,
-            user_id=test_user.id,
+            user_id=mock_user.id,
             specialty=MedicalSpecialty.CARDIOLOGY,
         )
 
@@ -240,7 +240,7 @@ class TestOverdueCountPerformance:
 class TestSchedulePredictionPerformance:
     """Test schedule prediction query performance"""
 
-    def test_schedule_prediction_performance(self, test_user):
+    def test_schedule_prediction_performance(self, mock_user):
         """
         Test schedule prediction meets <200ms target.
 
@@ -268,7 +268,7 @@ class TestSchedulePredictionPerformance:
         start_time = time.time()
         schedule = ReviewQueueService.predict_upcoming_reviews(
             db=mock_db,
-            user_id=test_user.id,
+            user_id=mock_user.id,
             days_ahead=7,
         )
         query_time_ms = (time.time() - start_time) * 1000
@@ -280,7 +280,7 @@ class TestSchedulePredictionPerformance:
         if query_time_ms > SCHEDULE_PREDICTION_THRESHOLD_MS:
             print(f"⚠️  Warning: Query exceeded {SCHEDULE_PREDICTION_THRESHOLD_MS}ms threshold")
 
-    def test_schedule_prediction_validation(self, test_user):
+    def test_schedule_prediction_validation(self, mock_user):
         """Test schedule prediction input validation"""
         mock_db = MagicMock(spec=Session)
 
@@ -288,14 +288,14 @@ class TestSchedulePredictionPerformance:
         with pytest.raises(ValueError):
             ReviewQueueService.predict_upcoming_reviews(
                 db=mock_db,
-                user_id=test_user.id,
+                user_id=mock_user.id,
                 days_ahead=0,  # Invalid: must be >= 1
             )
 
         with pytest.raises(ValueError):
             ReviewQueueService.predict_upcoming_reviews(
                 db=mock_db,
-                user_id=test_user.id,
+                user_id=mock_user.id,
                 days_ahead=31,  # Invalid: must be <= 30
             )
 
@@ -303,7 +303,7 @@ class TestSchedulePredictionPerformance:
 class TestBatchUpdatePerformance:
     """Test batch SM-2 update performance"""
 
-    def test_batch_update_performance(self, test_user, sample_study_cards):
+    def test_batch_update_performance(self, mock_user, sample_study_cards):
         """
         Test batch SM-2 update meets <500ms target for 10 cards.
 
@@ -330,7 +330,7 @@ class TestBatchUpdatePerformance:
         start_time = time.time()
         results = ReviewQueueService.batch_update_sm2(
             db=mock_db,
-            user_id=test_user.id,
+            user_id=mock_user.id,
             reviews=reviews,
         )
         query_time_ms = (time.time() - start_time) * 1000
@@ -341,7 +341,7 @@ class TestBatchUpdatePerformance:
         if query_time_ms > BATCH_UPDATE_THRESHOLD_MS:
             print(f"⚠️  Warning: Query exceeded {BATCH_UPDATE_THRESHOLD_MS}ms threshold")
 
-    def test_batch_update_validation(self, test_user):
+    def test_batch_update_validation(self, mock_user):
         """Test batch update input validation"""
         mock_db = MagicMock(spec=Session)
 
@@ -349,7 +349,7 @@ class TestBatchUpdatePerformance:
         with pytest.raises(ValueError):
             ReviewQueueService.batch_update_sm2(
                 db=mock_db,
-                user_id=test_user.id,
+                user_id=mock_user.id,
                 reviews=[{"card_id": 1, "quality": 6}],  # Invalid: quality must be 0-5
             )
 
@@ -357,11 +357,11 @@ class TestBatchUpdatePerformance:
         with pytest.raises(ValueError):
             ReviewQueueService.batch_update_sm2(
                 db=mock_db,
-                user_id=test_user.id,
+                user_id=mock_user.id,
                 reviews=[{"quality": 5}],  # Missing card_id
             )
 
-    def test_batch_update_missing_cards(self, test_user):
+    def test_batch_update_missing_cards(self, mock_user):
         """Test batch update with missing cards"""
         mock_db = MagicMock(spec=Session)
         mock_query = MagicMock()
@@ -372,7 +372,7 @@ class TestBatchUpdatePerformance:
         with pytest.raises(ValueError, match="Cards not found or unauthorized"):
             ReviewQueueService.batch_update_sm2(
                 db=mock_db,
-                user_id=test_user.id,
+                user_id=mock_user.id,
                 reviews=[{"card_id": 999, "quality": 5}],
             )
 
@@ -443,7 +443,7 @@ class TestDatabaseIndexes:
 class TestAnalyticsPerformance:
     """Test analytics query performance"""
 
-    def test_struggling_cards_performance(self, test_user, sample_study_cards):
+    def test_struggling_cards_performance(self, mock_user, sample_study_cards):
         """
         Test struggling cards query meets <100ms target.
 
@@ -463,7 +463,7 @@ class TestAnalyticsPerformance:
         start_time = time.time()
         cards = ReviewQueueService.get_struggling_cards(
             db=mock_db,
-            user_id=test_user.id,
+            user_id=mock_user.id,
             ease_factor_threshold=1.5,
             limit=20,
         )
@@ -475,7 +475,7 @@ class TestAnalyticsPerformance:
         if query_time_ms > ANALYTICS_THRESHOLD_MS:
             print(f"⚠️  Warning: Query exceeded {ANALYTICS_THRESHOLD_MS}ms threshold")
 
-    def test_mastered_cards_performance(self, test_user, sample_study_cards):
+    def test_mastered_cards_performance(self, mock_user, sample_study_cards):
         """
         Test mastered cards query meets <100ms target.
 
@@ -495,7 +495,7 @@ class TestAnalyticsPerformance:
         start_time = time.time()
         cards = ReviewQueueService.get_mastered_cards(
             db=mock_db,
-            user_id=test_user.id,
+            user_id=mock_user.id,
             repetitions_threshold=3,
             limit=20,
         )

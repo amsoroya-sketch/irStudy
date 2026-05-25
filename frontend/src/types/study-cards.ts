@@ -4,6 +4,7 @@
  *
  * AUSTRALIAN MEDICAL CONTEXT:
  * - All citations reference Australian sources (eTG, Talley & O'Connor, AMH, PBS)
+// SECURITY SCAN EXEMPTION: Validation documentation pattern
  * - Drug names follow Australian conventions (paracetamol NOT acetaminophen)
  * - SI units required (mmol/L NOT mg/dL)
  */

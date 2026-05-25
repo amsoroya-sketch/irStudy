@@ -176,14 +176,14 @@ def create_refresh_token(
 def verify_token(token: str, expected_type: str = "access") -> Optional[Dict[str, Any]]:
     """
     Verify and decode JWT token
-    
+
     Args:
         token: Encoded JWT token
         expected_type: Expected token type ("access" or "refresh")
-    
+
     Returns:
         Token payload if valid, None otherwise
-    
+
     Validation:
         - Signature verification
         - Expiration check
@@ -193,25 +193,35 @@ def verify_token(token: str, expected_type: str = "access") -> Optional[Dict[str
     """
     try:
         secret_key = get_jwt_secret()
-        
+
         # Decode and verify token
+        # Note: python-jose expects audience as string, not list
+        # We verify the audience list manually after decoding
         payload = jwt.decode(
             token,
             secret_key,
             algorithms=[ALGORITHM],
             issuer=ISSUER,
-            # Audience validation only for access tokens
-            audience=AUDIENCE if expected_type == "access" else None
+            # Skip audience verification in jwt.decode (python-jose doesn't support list)
+            options={"verify_aud": False}
         )
-        
+
+        # Manual audience validation for access tokens
+        if expected_type == "access":
+            token_aud = payload.get("aud")
+            # Check if token audience matches our expected audience list
+            if token_aud != AUDIENCE:
+                logger.warning(f"Audience mismatch: expected {AUDIENCE}, got {token_aud}")
+                return None
+
         # Verify token type (for refresh tokens)
         if expected_type == "refresh":
             if payload.get("type") != "refresh":
                 logger.warning("Token type mismatch: expected refresh, got access")
                 return None
-        
+
         return payload
-        
+
     except JWTError as e:
         logger.warning(f"JWT verification failed: {e}")
         return None

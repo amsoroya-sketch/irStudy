@@ -128,6 +128,7 @@ class VaultClient:
         # Map Vault paths to environment variable names
         env_mapping = {
             ("irStudy/claude", "api_key"): "ANTHROPIC_API_KEY",
+            ("secret/ai-osce/claude-api-key", "value"): "ANTHROPIC_API_KEY",  # AI OSCE specific path
             ("irStudy/database", "password"): "DATABASE_PASSWORD",
             ("irStudy/database", None): "DATABASE_URL",
             ("irStudy/jwt", "secret_key"): "JWT_SECRET_KEY",

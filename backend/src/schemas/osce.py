@@ -17,7 +17,8 @@ import html
 from src.schemas.mcq import MedicalSpecialty  # Reuse specialty enum
 from src.db.models import (
     OSCEType,
-)  # Import database enum (6 values: history_taking, physical_examination, counselling, communication, diagnosis_management, emergency_scenario)
+    DifficultyLevel,
+)  # Import database enums
 
 
 # ============================================================================
@@ -99,6 +100,7 @@ class OSCECreate(BaseModel):
     examiner_instructions: Optional[str] = Field(None, max_length=5000)
     rubric: Dict[str, Any] = Field(..., description="15-mark AMC format rubric")
     specialty: MedicalSpecialty
+    difficulty: DifficultyLevel = Field(default=DifficultyLevel.MEDIUM)
     time_limit_minutes: int = Field(default=8, ge=5, le=15)
     learning_objectives: Optional[List[str]] = None
     red_flags: Optional[List[str]] = None
@@ -208,6 +210,7 @@ class OSCEUpdate(BaseModel):
     examiner_instructions: Optional[str] = Field(None, max_length=5000)
     rubric: Optional[Dict[str, Any]] = None
     specialty: Optional[MedicalSpecialty] = None
+    difficulty: Optional[DifficultyLevel] = None
     time_limit_minutes: Optional[int] = Field(None, ge=5, le=15)
     learning_objectives: Optional[List[str]] = None
     red_flags: Optional[List[str]] = None
@@ -230,6 +233,7 @@ class OSCEBase(BaseModel):
     station_title: str
     station_type: OSCEType
     specialty: MedicalSpecialty
+    difficulty: DifficultyLevel
     time_limit_minutes: int
     tags: Optional[List[str]]
     created_at: datetime

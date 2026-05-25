@@ -4,11 +4,15 @@ AMC Clinical Exam Simulation - Vault Integration Tests
 v2.0 Enhanced Architecture - Task 1.2 Testing
 
 Run with: pytest backend/tests/test_vault.py -v
+
+NOTE: These are INTEGRATION tests that require a running Vault instance.
+Tests will skip gracefully if Vault is not available.
 """
 
 import pytest
 import os
 import sys
+import requests
 
 # Add parent directory to path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -18,6 +22,29 @@ try:
     import hvac
 except ImportError as e:
     pytest.skip(f"Required packages not installed: {e}", allow_module_level=True)
+
+
+def is_vault_available(vault_addr="http://localhost:8200"):
+    """Check if Vault is running and accessible"""
+    try:
+        response = requests.get(f"{vault_addr}/v1/sys/health", timeout=1)
+        # Vault returns various status codes when healthy
+        # 200 = initialized, unsealed, active
+        # 429 = unsealed, standby
+        # 472 = data recovery mode replication secondary, active
+        # 473 = performance standby
+        # 501 = not initialized
+        # 503 = sealed
+        return response.status_code in [200, 429, 472, 473, 501, 503]
+    except (requests.exceptions.ConnectionError, requests.exceptions.Timeout):
+        return False
+
+
+# Skip ALL tests in this module if Vault is not available
+pytestmark = pytest.mark.skipif(
+    not is_vault_available(),
+    reason="Vault not available - integration tests require running Vault instance"
+)
 
 
 @pytest.fixture
@@ -34,8 +61,12 @@ def vault_client():
     
     client = hvac.Client(url=vault_addr, token=vault_token)
     
-    if not client.is_authenticated():
-        pytest.skip("Vault not available or not authenticated")
+    # Now safe to check authentication (we know Vault is running due to pytestmark)
+    try:
+        if not client.is_authenticated():
+            pytest.skip("Vault not authenticated - check VAULT_ROOT_TOKEN")
+    except Exception as e:
+        pytest.skip(f"Vault authentication check failed: {e}")
     
     return client
 

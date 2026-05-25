@@ -13,6 +13,7 @@ from sqlalchemy.orm import Session
 from src.websocket.auth import authenticate_websocket, authorize_session_access
 from src.websocket.session_manager import SessionManager
 from src.websocket.timer import SessionTimer
+from src.security.prompt_injection import PromptInjectionProtector
 from src.core.redis_client import get_redis_client
 
 logger = logging.getLogger(__name__)
@@ -39,6 +40,7 @@ class OSCEWebSocketHandler:
         self.user_id: Optional[str] = None
         self.session_manager: Optional[SessionManager] = None
         self.timer: Optional[SessionTimer] = None
+        self.injection_protector = PromptInjectionProtector()
         self.redis_client = get_redis_client()
         self.is_connected = False
     
@@ -203,6 +205,15 @@ class OSCEWebSocketHandler:
             return False
         
         if len(message) > 5000:
+            return False
+
+        # SECURITY: Check for prompt injection attempts
+        is_valid, error_msg = self.injection_protector.validate_student_message(message)
+        if not is_valid:
+            logger.warning(
+                f"🚨 Prompt injection attempt blocked: user={self.user_id}, "
+                f"attempt_id={self.attempt_id}, error={error_msg}"
+            )
             return False
         
         return True

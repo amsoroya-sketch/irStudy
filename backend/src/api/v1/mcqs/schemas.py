@@ -29,6 +29,7 @@ REQUIRED_CITATION_SOURCES = ["etg", "pbs", "amh", "ahpra", "therapeutic guidelin
 class MCQResponse(BaseModel):
     """Response model for MCQ question (without answer)"""
 
+    id: int = Field(..., description="Database ID")
     question_id: str = Field(..., description="Unique question ID (e.g., MCQ-CARD-001)")
     question_text: str = Field(..., description="Clinical vignette")
     options: Dict[str, str] = Field(..., description="Answer options (A-E)")
@@ -36,6 +37,10 @@ class MCQResponse(BaseModel):
     difficulty: DifficultyLevel = Field(..., description="Difficulty level")
     tags: Optional[List[str]] = Field(None, description="Topic tags")
     image_url: Optional[str] = Field(None, description="Clinical image URL")
+    image_caption: Optional[str] = Field(None, description="Image description")
+    times_attempted: int = Field(default=0, description="Number of attempts")
+    success_rate: float = Field(default=0.0, description="Success rate (0-1)")
+    created_at: datetime = Field(..., description="Creation timestamp")
 
     @field_validator("question_text", mode="before")
     def validate_australian_drug_names(cls, value):
@@ -57,9 +62,10 @@ class MCQResponse(BaseModel):
 class MCQSubmit(BaseModel):
     """Request model for submitting MCQ answer"""
 
+    mcq_id: int = Field(..., description="MCQ ID being attempted")
     selected_answer: str = Field(..., description="Selected option (A-E)", pattern="^[A-Ea-e]$")
-    user_id: Optional[int] = Field(None, description="User ID (for progress tracking)")
-    time_spent_seconds: Optional[int] = Field(None, description="Time spent on question", ge=0)
+    time_taken_seconds: Optional[int] = Field(None, description="Time spent on question", ge=0)
+    confidence_level: Optional[int] = Field(None, description="Confidence level (1-5)", ge=1, le=5)
 
     @field_validator("selected_answer")
     def uppercase_answer(cls, value):
@@ -71,10 +77,12 @@ class MCQSubmitResponse(BaseModel):
     """Response model after submitting MCQ answer"""
 
     is_correct: bool = Field(..., description="Whether answer was correct")
+    selected_answer: str = Field(..., description="User's selected answer")
     correct_answer: str = Field(..., description="Correct option letter")
     explanation: str = Field(..., description="Detailed explanation with clinical reasoning")
     citation: str = Field(..., description="Australian guideline reference")
     learning_points: Optional[List[str]] = Field(None, description="Key learning points")
+    attempt_number: int = Field(..., description="Attempt number for this MCQ")
 
     @field_validator("citation", mode="after")
     def validate_australian_citation(cls, value):
@@ -120,3 +128,12 @@ class MCQExplanation(BaseModel):
             )
 
         return value
+
+
+class MCQStatistics(BaseModel):
+    """Platform-wide MCQ statistics"""
+
+    total_mcqs: int = Field(..., description="Total number of published MCQs")
+    by_specialty: Dict[str, int] = Field(..., description="MCQ count by specialty")
+    by_difficulty: Dict[str, int] = Field(..., description="MCQ count by difficulty")
+    average_success_rate: float = Field(..., description="Average success rate across all MCQs")

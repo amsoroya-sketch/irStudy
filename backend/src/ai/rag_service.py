@@ -138,7 +138,9 @@ class RAGService:
         
         # For now, return mock vector for testing
         import hashlib
-        hash_val = int(hashlib.md5(query.encode()).hexdigest()[:8], 16)
+        # SECURITY: Use SHA-256 instead of MD5 (even for mock data)
+        # MD5 is cryptographically broken and fails security scans
+        hash_val = int(hashlib.sha256(query.encode()).hexdigest()[:16], 16)
         return [float((hash_val >> i) & 1) for i in range(768)]  # Mock 768-dim vector
     
     def search_similar(

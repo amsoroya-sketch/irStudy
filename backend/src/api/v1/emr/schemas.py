@@ -7,13 +7,27 @@ AUSTRALIAN MEDICAL CONTEXT:
 """
 
 from pydantic import BaseModel, Field, UUID4
-from typing import Optional, List, Literal
+from typing import Optional, List, Literal, Any
 from datetime import datetime
 
 
 # ============================================================================
 # REQUEST SCHEMAS
 # ============================================================================
+
+
+class StartSessionRequest(BaseModel):
+    """Request schema for starting new EMR session"""
+
+    specialty: Optional[str] = Field(
+        None, description="Medical specialty filter for patient selection"
+    )
+    difficulty: Optional[str] = Field(
+        None, description="Difficulty level filter for patient selection"
+    )
+    patient_id: Optional[UUID4] = Field(
+        None, description="Specific patient ID (overrides specialty/difficulty filters)"
+    )
 
 
 class CreateSessionRequest(BaseModel):
@@ -28,30 +42,37 @@ class CreateSessionRequest(BaseModel):
     )
 
 
+class UpdateSessionRequest(BaseModel):
+    """Request schema for updating session (auto-save)"""
+
+    soap_note: Optional[dict] = Field(None, description="SOAP note content for auto-save")
+    elapsed_time_seconds: Optional[int] = Field(0, description="Elapsed time in seconds since session start")
+
+
 class SOAPNoteSubmit(BaseModel):
     """SOAP note content for submission"""
 
     subjective: str = Field(
         ...,
-        min_length=50,
+        min_length=1,
         max_length=5000,
         description="Subjective: Patient's reported symptoms and history",
     )
     objective: str = Field(
         ...,
-        min_length=50,
+        min_length=1,
         max_length=5000,
         description="Objective: Physical examination findings and vital signs",
     )
     assessment: str = Field(
         ...,
-        min_length=50,
+        min_length=1,
         max_length=5000,
         description="Assessment: Differential diagnosis and clinical reasoning",
     )
     plan: str = Field(
         ...,
-        min_length=50,
+        min_length=1,
         max_length=5000,
         description="Plan: Management plan and follow-up",
     )
@@ -79,9 +100,19 @@ class PathologyOrderSubmit(BaseModel):
 class SubmitSessionRequest(BaseModel):
     """Complete session submission with SOAP note, prescriptions, and pathology"""
 
-    soap_note: SOAPNoteSubmit
+    final_soap_note: Optional[dict] = Field(None, description="Final SOAP note content")
+    soap_note: Optional[dict] = Field(None, description="SOAP note content (alternative field name)")
     prescriptions: List[PrescriptionSubmit] = Field(default_factory=list)
     pathology_orders: List[PathologyOrderSubmit] = Field(default_factory=list)
+    typing_metrics: Optional[dict] = Field(None, description="Typing metrics (WPM, accuracy, etc.)")
+    
+    def model_post_init(self, __context):
+        """Ensure either final_soap_note or soap_note is provided"""
+        if not self.final_soap_note and not self.soap_note:
+            raise ValueError("Either final_soap_note or soap_note must be provided")
+        # Use soap_note as final_soap_note if not provided
+        if not self.final_soap_note and self.soap_note:
+            self.final_soap_note = self.soap_note
 
 
 # ============================================================================
@@ -92,13 +123,14 @@ class SubmitSessionRequest(BaseModel):
 class MockPatientResponse(BaseModel):
     """Mock patient demographic and clinical information"""
 
-    id: UUID4 = Field(..., alias="patient_id", description="Patient UUID")
+    id: UUID4 = Field(..., description="Patient UUID")
     name: str = Field(..., description="Patient name")
     age: int = Field(..., description="Patient age")
     gender: str = Field(..., description="Patient gender")
     presenting_complaint: str = Field(..., description="Chief complaint")
+    specialty: str = Field(..., description="Medical specialty")
     vital_signs: Optional[dict] = Field(None, description="Vital signs")
-    medical_history: Optional[dict] = Field(None, description="Medical history")
+    medical_history: Optional[Any] = Field(None, description="Medical history (list or dict)")
 
     class Config:
         populate_by_name = True
@@ -108,7 +140,8 @@ class MockPatientResponse(BaseModel):
 class ValidationLayerResult(BaseModel):
     """Individual validation layer result"""
 
-    score: float = Field(..., description="Layer score (0-100)")
+    passed: bool = Field(..., description="Whether this layer passed validation")
+    score: Optional[float] = Field(None, description="Layer score (0-100)")
     feedback: Optional[str] = Field(None, description="Layer-specific feedback")
     errors: List[str] = Field(default_factory=list, description="Validation errors")
 
@@ -116,35 +149,49 @@ class ValidationLayerResult(BaseModel):
 class ValidationResult(BaseModel):
     """3-layer validation result"""
 
-    overall_score: float = Field(..., description="Overall score (0-100)")
-    layer_1_rule_based: ValidationLayerResult = Field(
-        ..., description="Layer 1: Rule-based validation"
+    overall_score: float = Field(..., description="Overall score (0-15 AMC rubric)")
+    category_scores: Optional[dict] = Field(None, description="Score breakdown by category")
+    strengths: List[str] = Field(default_factory=list, description="Identified strengths")
+    improvements: List[str] = Field(default_factory=list, description="Areas for improvement")
+    red_flags: List[str] = Field(default_factory=list, description="Critical safety issues")
+    australian_compliance: Optional[dict] = Field(None, description="Australian medical compliance check")
+    layer_1_zod: ValidationLayerResult = Field(
+        ..., description="Layer 1: Zod/Pydantic validation"
     )
-    layer_2_claude_ai: Optional[ValidationLayerResult] = Field(
-        None, description="Layer 2: Claude AI validation (60% of time)"
+    layer_2_python: ValidationLayerResult = Field(
+        ..., description="Layer 2: Python business logic validation"
     )
-    layer_3_specialist: Optional[ValidationLayerResult] = Field(
-        None, description="Layer 3: Specialist review (flagged cases only)"
+    layer_3_ai: Optional[ValidationLayerResult] = Field(
+        None, description="Layer 3: Claude AI clinical reasoning validation"
     )
-    pass_fail: Literal["PASS", "BORDERLINE", "FAIL"] = Field(..., description="Pass/fail status")
-    time_taken_seconds: int = Field(..., description="Time taken to complete session")
+    performance_summary: Optional[dict] = Field(None, description="Performance summary")
+    next_steps: Optional[dict] = Field(None, description="Recommended next steps")
 
 
 class SessionResponse(BaseModel):
     """EMR session response"""
 
     session_id: UUID4 = Field(..., description="Session UUID")
-    mock_patient: MockPatientResponse = Field(..., description="Patient information")
-    emr_system: str = Field(..., description="EMR system theme")
+    validation_id: Optional[UUID4] = Field(None, description="Validation ID (same as session_id for compatibility)")
+    patient: MockPatientResponse = Field(..., description="Patient information")
+    specialty: str = Field(..., description="Medical specialty")
+    difficulty: str = Field(..., description="Difficulty level")
     started_at: datetime = Field(..., description="Session start timestamp")
     submitted_at: Optional[datetime] = Field(None, description="Session submission timestamp")
-    status: Literal["in_progress", "submitted", "validated"] = Field(
-        ..., description="Session status"
+    elapsed_time_seconds: int = Field(default=0, description="Elapsed time in seconds")
+    status: Literal["in_progress", "graded"] = Field(..., description="Session status")
+    auto_save_count: int = Field(default=0, description="Number of auto-saves performed")
+    last_auto_save_at: Optional[datetime] = Field(None, description="Last auto-save timestamp")
+    validation_score: Optional[float] = Field(None, description="Validation score (0-15)")
+    total_amc_score: Optional[float] = Field(None, description="Total AMC score (alias for validation_score)")
+    validation_results: Optional[ValidationResult] = Field(
+        None, description="Validation results (if graded)"
     )
-    soap_note: Optional[dict] = Field(None, description="SOAP note content (if submitted)")
-    validation_result: Optional[ValidationResult] = Field(
-        None, description="Validation result (if validated)"
-    )
+    soap_note: Optional[dict] = Field(None, description="SOAP note content")
+    typing_metrics: Optional[dict] = Field(None, description="Typing metrics")
+    performance_summary: Optional[dict] = Field(None, description="Performance summary")
+    next_steps: Optional[dict] = Field(None, description="Recommended next steps")
+    message: Optional[str] = Field(None, description="Response message")
 
     class Config:
         from_attributes = True

@@ -29,7 +29,7 @@ from uuid import uuid4
 # ============================================================================
 
 
-def test_start_session_success_cardiology(client, auth_headers, mock_patient_cardiology, db_session):
+def test_start_session_success_cardiology(client, auth_headers, mock_patient_cardiology):
     """Test successful EMR session start with cardiology patient"""
     # Mock: Add patient to database (in real implementation this would be in mock_patients table)
     # For now, we'll test the API contract
@@ -59,7 +59,7 @@ def test_start_session_success_cardiology(client, auth_headers, mock_patient_car
     assert "started_at" in data
 
 
-def test_start_session_specific_patient(client, auth_headers, mock_patient_cardiology, db_session):
+def test_start_session_specific_patient(client, auth_headers, mock_patient_cardiology):
     """Test starting session with specific patient ID"""
     patient_id = mock_patient_cardiology["id"]
     
@@ -89,8 +89,8 @@ def test_start_session_no_patients_available(client, auth_headers, empty_db):
     
     assert response.status_code == 404
     error = response.json()
-    assert "error" in error
-    assert "No patients available" in error["error"]["message"]
+    assert "detail" in error
+    assert "No patients available" in error["detail"]
 
 
 def test_start_session_unauthorized(client):
@@ -115,7 +115,8 @@ def test_start_session_invalid_specialty(client, auth_headers):
     
     assert response.status_code == 400
     error = response.json()
-    assert "validation" in error["error"]["message"].lower()
+    assert "detail" in error
+    assert "validation" in error["detail"].lower()
 
 
 def test_start_session_invalid_difficulty(client, auth_headers):
@@ -203,7 +204,8 @@ def test_get_session_forbidden_other_user(client, other_user_headers, mock_sessi
     
     assert response.status_code == 403
     error = response.json()
-    assert "Not authorized" in error["error"]["message"]
+    assert "detail" in error
+    assert "Not authorized" in error["detail"]
 
 
 def test_get_session_educator_can_view_all(client, educator_headers, mock_session_in_progress):
@@ -293,7 +295,8 @@ def test_update_session_cannot_update_submitted(client, auth_headers, mock_sessi
     
     assert response.status_code == 400
     error = response.json()
-    assert "Cannot update submitted session" in error["error"]["message"]
+    assert "detail" in error
+    assert "Cannot update submitted session" in error["detail"]
 
 
 def test_update_session_not_found(client, auth_headers):
@@ -432,7 +435,7 @@ def test_submit_session_incomplete_soap_note(client, auth_headers, mock_session_
 
 
 def test_submit_session_already_submitted(client, auth_headers, mock_session_graded):
-    """Test cannot resubmit already graded session"""
+    """Test resubmitting already graded session returns existing results"""
     session_id = mock_session_graded["id"]
     
     response = client.post(
@@ -444,9 +447,9 @@ def test_submit_session_already_submitted(client, auth_headers, mock_session_gra
         headers=auth_headers
     )
     
-    assert response.status_code == 400
-    error = response.json()
-    assert "already submitted" in error["error"]["message"].lower()
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "graded"
 
 
 def test_submit_session_not_found(client, auth_headers, valid_soap_note):

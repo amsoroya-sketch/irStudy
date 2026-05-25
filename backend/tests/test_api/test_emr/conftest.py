@@ -12,63 +12,21 @@ Provides:
 import pytest
 import json
 from datetime import datetime, timedelta
-from uuid import uuid4
+from uuid import uuid4, UUID
 from typing import Dict, Any
 
-from fastapi.testclient import TestClient
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, Session
-
-from src.main import app
-from src.db.base import Base, get_db
 from src.db.models import User, UserRole
 from src.auth.security import hash_password
 
 
 # ============================================================================
-# TEST DATABASE SETUP
+# NOTE: Database fixtures (db_session, client) now provided by global conftest.py
 # ============================================================================
-
-SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
-
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
-)
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-
-def override_get_db():
-    """Override database dependency for tests"""
-    try:
-        db = TestingSessionLocal()
-        yield db
-    finally:
-        db.close()
-
-
-app.dependency_overrides[get_db] = override_get_db
-
-client = TestClient(app)
-
-
-# ============================================================================
-# DATABASE FIXTURES
-# ============================================================================
-
-
-@pytest.fixture(scope="function")
-def db_session():
-    """Create fresh database for each test"""
-    Base.metadata.create_all(bind=engine)
-    db = TestingSessionLocal()
-    yield db
-    db.close()
-    Base.metadata.drop_all(bind=engine)
 
 
 @pytest.fixture
 def empty_db(db_session):
-    """Empty database for testing edge cases"""
+    """Alias for db_session - provides a fresh empty database."""
     return db_session
 
 
@@ -136,46 +94,34 @@ def other_user(db_session):
 @pytest.fixture
 def auth_headers(test_user):
     """Get JWT authentication headers for test user"""
-    response = client.post(
-        "/api/v1/auth/login",
-        data={
-            "username": "student@test.com",
-            "password": "TestPassword123",
-        },
+    from src.auth.security import create_access_token
+
+    access_token = create_access_token(
+        data={"sub": test_user.email, "user_id": str(test_user.id)}
     )
-    assert response.status_code == 200
-    token = response.json()["access_token"]
-    return {"Authorization": f"Bearer {token}"}
+    return {"Authorization": f"Bearer {access_token}"}
 
 
 @pytest.fixture
 def educator_headers(test_educator):
     """Get JWT authentication headers for educator"""
-    response = client.post(
-        "/api/v1/auth/login",
-        data={
-            "username": "educator@test.com",
-            "password": "EducatorPass123",
-        },
+    from src.auth.security import create_access_token
+
+    access_token = create_access_token(
+        data={"sub": test_educator.email, "user_id": str(test_educator.id)}
     )
-    assert response.status_code == 200
-    token = response.json()["access_token"]
-    return {"Authorization": f"Bearer {token}"}
+    return {"Authorization": f"Bearer {access_token}"}
 
 
 @pytest.fixture
 def other_user_headers(other_user):
     """Get JWT authentication headers for other user"""
-    response = client.post(
-        "/api/v1/auth/login",
-        data={
-            "username": "other@test.com",
-            "password": "OtherPass123",
-        },
+    from src.auth.security import create_access_token
+
+    access_token = create_access_token(
+        data={"sub": other_user.email, "user_id": str(other_user.id)}
     )
-    assert response.status_code == 200
-    token = response.json()["access_token"]
-    return {"Authorization": f"Bearer {token}"}
+    return {"Authorization": f"Bearer {access_token}"}
 
 
 # ============================================================================
@@ -187,12 +133,14 @@ def other_user_headers(other_user):
 def mock_patient_cardiology(db_session) -> Dict[str, Any]:
     """
     Mock cardiology patient - Acute Coronary Syndrome (STEMI)
-    
-    This would normally be a MockPatient database model,
-    but for now we return a dict representation.
+
+    Creates actual database record and returns dict representation.
     """
+    from src.db.models import MockPatient
+
+    patient_id = uuid4()
     patient_data = {
-        "id": str(uuid4()),
+        "id": str(patient_id),
         "mrn": "MRN12345678",
         "medicare_number": "2912345671",
         "name": "John Smith",
@@ -357,6 +305,24 @@ def mock_patient_cardiology(db_session) -> Dict[str, Any]:
             }
         }
     }
+
+    # Create actual database record
+    patient = MockPatient(
+        id=patient_id,
+        mrn=patient_data["mrn"],
+        name=patient_data["name"],
+        age=patient_data["age"],
+        gender=patient_data["gender"],
+        presenting_complaint=patient_data["presenting_complaint"],
+        vital_signs=patient_data["vital_signs"],
+        medical_history=patient_data["medical_history"],
+        specialty=patient_data["specialty"],
+        difficulty=patient_data["difficulty"],
+    )
+    db_session.add(patient)
+    db_session.commit()
+    db_session.refresh(patient)
+
     return patient_data
 
 
@@ -463,55 +429,140 @@ def mock_patient_respiratory(db_session) -> Dict[str, Any]:
 
 @pytest.fixture
 def mock_session_in_progress(db_session, test_user, mock_patient_cardiology) -> Dict[str, Any]:
-    """Mock EMR session in progress"""
-    session_data = {
-        "id": str(uuid4()),
-        "user_id": test_user.id,
-        "patient_id": mock_patient_cardiology["id"],
-        "specialty": "cardiology",
-        "difficulty": "medium",
-        "started_at": datetime.utcnow().isoformat(),
+    """Mock EMR session in progress - creates actual database record"""
+    from src.db.models import EMRSession, MockPatient
+
+    # Check if patient already exists (from mock_patient_cardiology fixture)
+    patient = db_session.query(MockPatient).filter(MockPatient.id == UUID(mock_patient_cardiology["id"])).first()
+    if not patient:
+        # Create mock patient in database
+        patient = MockPatient(
+            id=UUID(mock_patient_cardiology["id"]),
+            mrn=mock_patient_cardiology["mrn"],
+            name=mock_patient_cardiology["name"],
+            age=mock_patient_cardiology["age"],
+            gender=mock_patient_cardiology["gender"],
+            presenting_complaint=mock_patient_cardiology["presenting_complaint"],
+            vital_signs=mock_patient_cardiology["vital_signs"],
+            medical_history=mock_patient_cardiology["medical_history"],
+            specialty=mock_patient_cardiology["specialty"],
+            difficulty=mock_patient_cardiology["difficulty"],
+        )
+        db_session.add(patient)
+
+    # Create session
+    session = EMRSession(
+        user_id=test_user.id,
+        patient_id=UUID(mock_patient_cardiology["id"]),
+        specialty="cardiology",
+        difficulty="medium",
+        started_at=datetime.utcnow(),
+        submitted_at=None,
+        elapsed_time_seconds=900,  # 15 minutes
+        validation_score=None,
+        status="in_progress",
+        auto_save_count=2,
+        last_auto_save_at=(datetime.utcnow() - timedelta(seconds=30))
+    )
+    db_session.add(session)
+    db_session.commit()
+    db_session.refresh(session)
+
+    return {
+        "id": str(session.id),
+        "user_id": session.user_id,
+        "patient_id": str(session.patient_id),
+        "specialty": session.specialty,
+        "difficulty": session.difficulty,
+        "started_at": session.started_at.isoformat(),
         "submitted_at": None,
-        "elapsed_time_seconds": 900,  # 15 minutes
+        "elapsed_time_seconds": session.elapsed_time_seconds,
         "validation_score": None,
-        "status": "in_progress",
-        "auto_save_count": 2,
-        "last_auto_save_at": (datetime.utcnow() - timedelta(seconds=30)).isoformat()
+        "status": session.status,
+        "auto_save_count": session.auto_save_count,
+        "last_auto_save_at": session.last_auto_save_at.isoformat() if session.last_auto_save_at else None
     }
-    return session_data
 
 
 @pytest.fixture
 def mock_session_graded(db_session, test_user, mock_patient_cardiology) -> Dict[str, Any]:
-    """Mock EMR session that has been graded"""
-    session_data = {
-        "id": str(uuid4()),
-        "user_id": test_user.id,
-        "patient_id": mock_patient_cardiology["id"],
-        "specialty": "cardiology",
-        "difficulty": "medium",
-        "started_at": (datetime.utcnow() - timedelta(hours=1)).isoformat(),
-        "submitted_at": (datetime.utcnow() - timedelta(minutes=30)).isoformat(),
-        "elapsed_time_seconds": 1800,  # 30 minutes
-        "validation_score": 12.5,
-        "status": "graded",
-        "auto_save_count": 5,
-        "score_breakdown": {
+    """Mock EMR session that has been graded - creates actual database record"""
+    from src.db.models import EMRSession, MockPatient
+
+    # Check if patient already exists
+    patient = db_session.query(MockPatient).filter(MockPatient.id == UUID(mock_patient_cardiology["id"])).first()
+    if not patient:
+        # Create mock patient in database
+        patient = MockPatient(
+            id=UUID(mock_patient_cardiology["id"]),
+            mrn=mock_patient_cardiology["mrn"],
+            name=mock_patient_cardiology["name"],
+            age=mock_patient_cardiology["age"],
+            gender=mock_patient_cardiology["gender"],
+            presenting_complaint=mock_patient_cardiology["presenting_complaint"],
+            vital_signs=mock_patient_cardiology["vital_signs"],
+            medical_history=mock_patient_cardiology["medical_history"],
+            specialty=mock_patient_cardiology["specialty"],
+            difficulty=mock_patient_cardiology["difficulty"],
+        )
+        db_session.add(patient)
+
+    # Create graded session
+    score_breakdown = {
+        "overall_score": 12.5,
+        "category_scores": {
             "history_examination": 3.0,
             "clinical_reasoning": 2.5,
             "communication": 3.0,
             "patient_safety": 2.0,
             "professionalism": 2.0
         },
-        "typing_metrics": {
+        "strengths": ["Good documentation", "Clear clinical reasoning"],
+        "improvements": ["Add more details"],
+        "red_flags": [],
+        "australian_compliance": {"terminology": "✓ Correct"},
+        "layer_1_zod": {"passed": True, "score": 5.0, "feedback": "All fields complete", "errors": []},
+        "layer_2_python": {"passed": True, "score": 5.0, "feedback": "Australian standards met", "errors": []},
+        "layer_3_ai": {"passed": True, "score": 2.5, "feedback": "Good clinical reasoning", "errors": []},
+    }
+
+    session = EMRSession(
+        user_id=test_user.id,
+        patient_id=UUID(mock_patient_cardiology["id"]),
+        specialty="cardiology",
+        difficulty="medium",
+        started_at=(datetime.utcnow() - timedelta(hours=1)),
+        submitted_at=(datetime.utcnow() - timedelta(minutes=30)),
+        elapsed_time_seconds=1800,  # 30 minutes
+        validation_score=12.5,
+        status="graded",
+        auto_save_count=5,
+        score_breakdown=score_breakdown,
+        typing_metrics={
             "total_words": 450,
             "average_wpm": 35,
             "total_typing_time_seconds": 770,
             "backspace_count": 42,
             "accuracy": 0.92
         }
+    )
+    db_session.add(session)
+    db_session.commit()
+    db_session.refresh(session)
+
+    return {
+        "id": str(session.id),
+        "user_id": session.user_id,
+        "patient_id": str(session.patient_id),
+        "specialty": session.specialty,
+        "difficulty": session.difficulty,
+        "started_at": session.started_at.isoformat(),
+        "submitted_at": session.submitted_at.isoformat() if session.submitted_at else None,
+        "elapsed_time_seconds": session.elapsed_time_seconds,
+        "validation_score": session.validation_score,
+        "status": session.status,
+        "auto_save_count": session.auto_save_count,
     }
-    return session_data
 
 
 # ============================================================================
@@ -579,6 +630,71 @@ def incomplete_soap_note() -> Dict[str, str]:
 # ============================================================================
 # MOCK CLAUDE AI RESPONSE FIXTURES
 # ============================================================================
+
+
+@pytest.fixture
+def mock_claude_api(monkeypatch):
+    """
+    Mock Claude API client for all validation tests.
+
+    Automatically mocks the Anthropic client to prevent real API calls.
+    Also mocks settings.anthropic_api_key to bypass Vault API key retrieval.
+    Returns a mock that can be customized for specific test scenarios.
+    """
+    from unittest.mock import MagicMock, Mock, PropertyMock
+
+    # Mock the settings.anthropic_api_key property to bypass Vault
+    def mock_get_settings():
+        mock_settings = MagicMock()
+        type(mock_settings).anthropic_api_key = PropertyMock(return_value="test-api-key-12345")
+        return mock_settings
+
+    monkeypatch.setattr("src.ai.clinical_validator.get_settings", mock_get_settings)
+
+    # Create mock Claude client
+    mock_client = MagicMock()
+    mock_messages = MagicMock()
+
+    # Default high score response
+    default_response = Mock()
+    default_response.content = [Mock(text=json.dumps({
+        "overall_score": 12.5,
+        "category_scores": {
+            "history_examination": 3.0,
+            "clinical_reasoning": 2.5,
+            "communication": 3.0,
+            "patient_safety": 2.0,
+            "professionalism": 2.0
+        },
+        "strengths": [
+            "Excellent SOCRATES pain assessment",
+            "Comprehensive risk factor documentation",
+            "Appropriate differential diagnosis"
+        ],
+        "improvements": [
+            "Consider asking about radiation to jaw/neck",
+            "Specify exact troponin timing"
+        ],
+        "red_flags": [
+            "STEMI criteria met - URGENT cardiology referral needed"
+        ],
+        "australian_compliance": {
+            "terminology": "✓ Correct",
+            "emergency_number": "✓ Mentioned 000",
+            "etg_alignment": "✓ Follows eTG guidelines"
+        }
+    }))]
+
+    mock_messages.create.return_value = default_response
+    mock_client.messages = mock_messages
+
+    # Mock the Anthropic class constructor
+    def mock_anthropic(*args, **kwargs):
+        return mock_client
+
+    monkeypatch.setattr("src.ai.clinical_validator.Anthropic", mock_anthropic)
+
+    return mock_client
 
 
 @pytest.fixture
@@ -672,7 +788,27 @@ def mock_claude_response_low_score() -> Dict[str, Any]:
 
 @pytest.fixture
 def valid_prescription() -> Dict[str, Any]:
-    """Valid PBS-compliant prescription"""
+    """
+    Valid PBS-compliant prescription matching PrescriptionSubmit schema.
+
+    NOTE: This fixture is used for session submission (POST /sessions/{id}/submit).
+    For validation endpoint tests, use valid_prescription_validation fixture.
+    """
+    return {
+        "medication": "Aspirin",
+        "dose": "100mg",
+        "frequency": "daily",
+        "route": "PO"
+    }
+
+
+@pytest.fixture
+def valid_prescription_validation() -> Dict[str, Any]:
+    """
+    Valid PBS-compliant prescription for validation endpoint tests.
+
+    Used by: POST /api/v1/emr/validation/prescription
+    """
     return {
         "medication_name": "Aspirin",
         "dose": "100mg",
@@ -680,7 +816,6 @@ def valid_prescription() -> Dict[str, Any]:
         "route": "PO",
         "repeats": 5,
         "indication": "Secondary prevention post-STEMI",
-        "pbs_listed": True,
         "authority_required": False
     }
 
@@ -705,13 +840,35 @@ def invalid_prescription_exceeds_repeats() -> Dict[str, Any]:
 
 @pytest.fixture
 def valid_pathology_order() -> Dict[str, Any]:
-    """Valid MBS-compliant pathology order"""
+    """
+    Valid MBS-compliant pathology order matching PathologyOrderSubmit schema.
+
+    NOTE: This fixture is used for session submission (POST /sessions/{id}/submit).
+    For validation endpoint tests, use valid_pathology_order_validation fixture.
+    """
     return {
         "test_name": "Troponin I",
-        "mbs_item_number": "66800",
-        "urgency": "emergency",
+        "urgency": "urgent",
+        "clinical_notes": "Suspected STEMI - serial troponins required"
+    }
+
+
+@pytest.fixture
+def valid_pathology_order_validation() -> Dict[str, Any]:
+    """
+    Valid MBS-compliant pathology order for validation endpoint tests.
+
+    Used by: POST /api/v1/emr/validation/pathology
+    """
+    return {
+        "tests_ordered": ["Troponin I", "FBC", "UEC"],
         "indication": "Suspected STEMI - serial troponins required",
-        "appropriate": True
+        "patient_context": {
+            "age": 58,
+            "presenting_complaint": "Chest pain",
+            "risk_factors": ["Smoking", "Hypertension", "Diabetes"]
+        },
+        "urgency": "stat"  # Changed from "emergency" to valid value
     }
 
 
@@ -719,9 +876,12 @@ def valid_pathology_order() -> Dict[str, Any]:
 def inappropriate_pathology_order() -> Dict[str, Any]:
     """Inappropriate pathology order (overuse)"""
     return {
-        "test_name": "Full body MRI",
-        "mbs_item_number": None,
-        "urgency": "routine",
-        "indication": "Chest pain",  # Inappropriate investigation for ACS
-        "appropriate": False
+        "tests_ordered": ["Full body MRI", "D-dimer"],  # Inappropriate for elderly
+        "indication": "Chest pain screening",  # Vague indication
+        "patient_context": {
+            "age": 75,
+            "presenting_complaint": "Chest pain",
+            "risk_factors": []
+        },
+        "urgency": "routine"
     }

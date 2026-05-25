@@ -22,50 +22,8 @@ import time
 from fastapi.testclient import TestClient
 from src.main import app
 
-# Test fixtures
-@pytest.fixture
-def client():
-    """Test client for API requests"""
-    return TestClient(app)
-
-
-@pytest.fixture
-def auth_headers_user1(client):
-    """Authentication headers for test user 1"""
-    # Login as test user 1
-    response = client.post(
-        "/api/v1/auth/login",
-        json={"email": "student1@test.com", "password": "TestPassword123!@#"}
-    )
-    assert response.status_code == 200
-    token = response.json()["access_token"]
-    return {"Authorization": f"Bearer {token}"}
-
-
-@pytest.fixture
-def auth_headers_user2(client):
-    """Authentication headers for test user 2"""
-    # Login as test user 2
-    response = client.post(
-        "/api/v1/auth/login",
-        json={"email": "student2@test.com", "password": "TestPassword123!@#"}
-    )
-    assert response.status_code == 200
-    token = response.json()["access_token"]
-    return {"Authorization": f"Bearer {token}"}
-
-
-@pytest.fixture
-def session_id(client, auth_headers_user1):
-    """Create test EMR session"""
-    response = client.post(
-        "/api/v1/emr/sessions/start",
-        json={"emr_system": "epic"},
-        headers=auth_headers_user1
-    )
-    assert response.status_code == 200
-    return response.json()["session_id"]
-
+# Note: Authentication fixtures (auth_headers_user1, auth_headers_user2, session_id)
+# are now provided by tests/security/conftest.py
 
 # ============================================================================
 # 1. SQL INJECTION TESTING
@@ -551,14 +509,14 @@ class TestSensitiveDataExposure:
         assert "password_hash" not in user_data
         assert "hashed_password" not in user_data
         
-    def test_jwt_tokens_not_logged(self, client):
+    def test_jwt_tokens_not_logged(self, client, security_test_user1):
         """Test JWT tokens are not logged in server logs"""
         # This is a policy test - ensure JWT logging is disabled
         # Actual log inspection requires log file access
         
         response = client.post(
             "/api/v1/auth/login",
-            json={"email": "student1@test.com", "password": "TestPassword123!@#"}
+            json={"email": security_test_user1.email, "password": "TestPassword123!@#"}
         )
         
         assert response.status_code == 200

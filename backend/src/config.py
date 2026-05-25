@@ -78,7 +78,21 @@ class Settings(BaseSettings):
             Secret value as string
         """
         try:
-            secret = self.vault.secrets.kv.v2.read_secret_version(path=path)
+            # Determine mount point from path
+            # If path starts with 'amc-simulation/', use that as mount_point
+            # Otherwise, use 'secret' as default mount
+            if path.startswith('amc-simulation/'):
+                mount_point = 'amc-simulation'
+                # Remove mount point from path for the API call
+                secret_path = path[len('amc-simulation/'):]
+            else:
+                mount_point = 'secret'
+                secret_path = path
+            
+            secret = self.vault.secrets.kv.v2.read_secret_version(
+                path=secret_path,
+                mount_point=mount_point
+            )
             return secret['data']['data'][key]
         except Exception as e:
             raise ValueError(f"Failed to fetch secret {key} from {path}: {e}")

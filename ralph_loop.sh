@@ -8,38 +8,58 @@ set -euo pipefail  # Exit on error, undefined vars, and pipe failures
 # Source library components
 SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "$SCRIPT_DIR/lib/date_utils.sh"
+source "$SCRIPT_DIR/lib/error_detector.sh"
 source "$SCRIPT_DIR/lib/response_analyzer.sh"
 source "$SCRIPT_DIR/lib/circuit_breaker.sh"
+source "$SCRIPT_DIR/lib/permission_checker.sh"
+source "$SCRIPT_DIR/lib/log_rotation.sh"
+source "$SCRIPT_DIR/lib/dry_run.sh"
+source "$SCRIPT_DIR/lib/config.sh"
+source "$SCRIPT_DIR/lib/github_sync.sh"
+source "$SCRIPT_DIR/lib/tralph_validator.sh"
 
-# Configuration
+# Load configuration from .ralphrc files (hierarchy: defaults -> global -> project -> env)
+if ! load_config; then
+    echo -e "${RED}ERROR: Failed to load configuration${NC}" >&2
+    exit 1
+fi
+
+# Configuration - Load from .ralphrc or use defaults
 PROMPT_FILE="PROMPT.md"
 LOG_DIR="logs"
+LOG_FILE="$LOG_DIR/ralph.log"
 DOCS_DIR="docs/generated"
 STATUS_FILE="status.json"
 PROGRESS_FILE="progress.json"
 CLAUDE_CODE_CMD="claude"
-MAX_CALLS_PER_HOUR=100  # Adjust based on your plan
-VERBOSE_PROGRESS=false  # Default: no verbose progress updates
-CLAUDE_TIMEOUT_MINUTES=15  # Default: 15 minutes timeout for Claude Code execution
 SLEEP_DURATION=3600     # 1 hour in seconds
 CALL_COUNT_FILE=".call_count"
 TIMESTAMP_FILE=".last_reset"
 USE_TMUX=false
 
-# Modern Claude CLI configuration (Phase 1.1)
-CLAUDE_OUTPUT_FORMAT="json"              # Options: json, text
-CLAUDE_ALLOWED_TOOLS="Write,Bash(git *),Read"  # Comma-separated list of allowed tools
-CLAUDE_USE_CONTINUE=true                 # Enable session continuity
-CLAUDE_SESSION_FILE=".claude_session_id" # Session ID persistence file
-CLAUDE_MIN_VERSION="2.0.76"              # Minimum required Claude CLI version
+# Load configuration from .ralphrc files (hierarchy applied in lib/config.sh)
+# These values override defaults but can be overridden by CLI args
+MAX_CALLS_PER_HOUR=$(get_config "limits.max_calls_per_hour")
+VERBOSE_PROGRESS=false  # Default: no verbose progress updates (CLI only)
+CLAUDE_TIMEOUT_MINUTES=15  # Default: 15 minutes timeout (CLI only)
 
-# Session management configuration (Phase 1.2)
-# Note: SESSION_EXPIRATION_SECONDS is defined in lib/response_analyzer.sh (86400 = 24 hours)
-RALPH_SESSION_FILE=".ralph_session"              # Ralph-specific session tracking (lifecycle)
-RALPH_SESSION_HISTORY_FILE=".ralph_session_history"  # Session transition history
-# Session expiration: 24 hours default balances project continuity with fresh context
-# Too short = frequent context loss; Too long = stale context causes unpredictable behavior
-CLAUDE_SESSION_EXPIRY_HOURS=${CLAUDE_SESSION_EXPIRY_HOURS:-24}
+# Log rotation configuration from .ralphrc
+RALPH_LOG_ROTATION="$(get_config "logging.rotation")"
+RALPH_LOG_MAX_SIZE="$(get_config "logging.max_size")"
+RALPH_LOG_MAX_FILES="$(get_config "logging.max_files")"
+RALPH_LOG_COMPRESS="$(get_config "logging.compress")"
+
+# Modern Claude CLI configuration from .ralphrc
+CLAUDE_OUTPUT_FORMAT="$(get_config "output.format")"
+CLAUDE_ALLOWED_TOOLS="$(get_config "execution.allowed_tools")"
+CLAUDE_USE_CONTINUE=$(get_config "execution.continue_session")
+CLAUDE_SESSION_FILE=".claude_session_id"
+CLAUDE_MIN_VERSION="2.0.76"
+
+# Session management configuration from .ralphrc
+RALPH_SESSION_FILE=".ralph_session"
+RALPH_SESSION_HISTORY_FILE=".ralph_session_history"
+CLAUDE_SESSION_EXPIRY_HOURS=$(get_config "session.expiry_hours")
 
 # Valid tool patterns for --allowed-tools validation
 # Tools can be exact matches or pattern matches with wildcards in parentheses
@@ -79,6 +99,16 @@ NC='\033[0m' # No Color
 
 # Project constraints for learning system (TASK-001)
 CONSTRAINTS_CONTENT=""
+
+# GitHub import configuration (Phase 5-001)
+GITHUB_IMPORT_ISSUE=""
+GITHUB_IMPORT_REPO=""
+GITHUB_LABELS=()
+GITHUB_MILESTONE=""
+GITHUB_STATE="open"
+GITHUB_LIMIT="50"
+GITHUB_DRY_RUN=false
+GITHUB_OUTPUT_DIR="specs/tasks"
 
 # Initialize directories
 mkdir -p "$LOG_DIR" "$DOCS_DIR"
@@ -128,22 +158,37 @@ check_tmux_available() {
 setup_tmux_session() {
     local session_name="ralph-$(date +%s)"
     local ralph_home="${RALPH_HOME:-$HOME/.ralph}"
-    
+    local logs_dir="$(pwd)/logs"
+
     log_status "INFO" "Setting up tmux session: $session_name"
-    
+
+    # Ensure logs directory exists
+    mkdir -p "$logs_dir"
+
     # Create new tmux session detached
     tmux new-session -d -s "$session_name" -c "$(pwd)"
-    
-    # Split window vertically to create monitor pane on the right
+
+    # Split window vertically (50% | 50%)
     tmux split-window -h -t "$session_name" -c "$(pwd)"
-    
-    # Start monitor in the right pane
-    if command -v ralph-monitor &> /dev/null; then
-        tmux send-keys -t "$session_name:0.1" "ralph-monitor" Enter
+
+    # Split the right pane horizontally (50% | 25% | 25%)
+    tmux split-window -v -t "$session_name:0.1" -c "$(pwd)"
+
+    # Pane 0 (left 50%): Ralph loop
+    # Pane 1 (top-right 25%): Ralph log tail
+    # Pane 2 (bottom-right 25%): Claude output log viewer
+
+    # Start Ralph log viewer in top-right pane (pane 1)
+    tmux send-keys -t "$session_name:0.1" "echo '📋 Ralph Log (live)' && tail -f logs/ralph.log 2>/dev/null || (echo 'Waiting for ralph.log...' && sleep 2 && tail -f logs/ralph.log)" Enter
+
+    # Start Claude output viewer in bottom-right pane (pane 2)
+    if [[ -f "$ralph_home/lib/claude_log_viewer.sh" ]]; then
+        tmux send-keys -t "$session_name:0.2" "'$ralph_home/lib/claude_log_viewer.sh' logs" Enter
     else
-        tmux send-keys -t "$session_name:0.1" "'$ralph_home/ralph_monitor.sh'" Enter
+        # Fallback to inline viewer
+        tmux send-keys -t "$session_name:0.2" "while true; do LATEST=\$(ls -t logs/claude_output_*.log 2>/dev/null | head -1); if [[ -n \"\$LATEST\" ]]; then clear; echo '🤖 '\$LATEST; jq -r '.result // .error // \"Empty\"' \"\$LATEST\" 2>/dev/null || cat \"\$LATEST\"; fi; sleep 3; done" Enter
     fi
-    
+
     # Start ralph loop in the left pane (exclude tmux flag to avoid recursion)
     local ralph_cmd
     if command -v ralph &> /dev/null; then
@@ -151,29 +196,34 @@ setup_tmux_session() {
     else
         ralph_cmd="'$ralph_home/ralph_loop.sh'"
     fi
-    
+
     if [[ "$MAX_CALLS_PER_HOUR" != "100" ]]; then
         ralph_cmd="$ralph_cmd --calls $MAX_CALLS_PER_HOUR"
     fi
     if [[ "$PROMPT_FILE" != "PROMPT.md" ]]; then
         ralph_cmd="$ralph_cmd --prompt '$PROMPT_FILE'"
     fi
-    
+
     tmux send-keys -t "$session_name:0.0" "$ralph_cmd" Enter
-    
+
     # Focus on left pane (main ralph loop)
     tmux select-pane -t "$session_name:0.0"
-    
+
     # Set window title
-    tmux rename-window -t "$session_name:0" "Ralph: Loop | Monitor"
-    
-    log_status "SUCCESS" "Tmux session created. Attaching to session..."
-    log_status "INFO" "Use Ctrl+B then D to detach from session"
-    log_status "INFO" "Use 'tmux attach -t $session_name' to reattach"
-    
+    tmux rename-window -t "$session_name:0" "Ralph: Loop | Logs | Claude"
+
+    log_status "SUCCESS" "Tmux session created with 3 panes:"
+    log_status "INFO" "  Left:        Ralph Loop (main)"
+    log_status "INFO" "  Top-Right:   Ralph Log (live tail)"
+    log_status "INFO" "  Bottom-Right: Claude Output (live)"
+    log_status "INFO" ""
+    log_status "INFO" "Navigation: Ctrl+B then Arrow Keys"
+    log_status "INFO" "Detach: Ctrl+B then D"
+    log_status "INFO" "Reattach: tmux attach -t $session_name"
+
     # Attach to session (this will block until session ends)
     tmux attach-session -t "$session_name"
-    
+
     exit 0
 }
 
@@ -205,11 +255,117 @@ init_call_tracking() {
     log_status "INFO" "DEBUG: Completed init_call_tracking successfully"
 }
 
+# Reset all Ralph state files (for --clean flag)
+reset_state_files() {
+    local files_removed=()
+
+    # Remove state files if they exist
+    if [[ -f "$EXIT_SIGNALS_FILE" ]]; then
+        rm -f "$EXIT_SIGNALS_FILE"
+        files_removed+=("exit_signals")
+    fi
+
+    if [[ -f "$CALL_COUNT_FILE" ]]; then
+        rm -f "$CALL_COUNT_FILE"
+        files_removed+=("call_count")
+    fi
+
+    if [[ -f ".circuit_breaker_state" ]]; then
+        rm -f ".circuit_breaker_state"
+        files_removed+=("circuit_breaker_state")
+    fi
+
+    if [[ -f ".circuit_breaker_history" ]]; then
+        rm -f ".circuit_breaker_history"
+        files_removed+=("circuit_breaker_history")
+    fi
+
+    # Reset session (uses function from ralph_loop.sh)
+    if declare -f reset_session > /dev/null; then
+        reset_session "manual_clean_flag"
+        files_removed+=("session")
+    fi
+
+    # Reinitialize empty exit signals
+    echo '{"test_only_loops": [], "done_signals": [], "completion_indicators": []}' > "$EXIT_SIGNALS_FILE"
+
+    # Report what was cleaned
+    if [[ ${#files_removed[@]} -gt 0 ]]; then
+        echo -e "${YELLOW}⚠️  Cleaned stale state files: ${files_removed[*]}${NC}"
+        echo -e "${GREEN}✅ Ralph state reset. Starting fresh.${NC}"
+    else
+        echo -e "${GREEN}✅ No stale state files found. State is clean.${NC}"
+    fi
+}
+
+# Validate Ralph is running from a valid project directory
+validate_working_directory() {
+    local has_prompt=false
+    local has_fix_plan=false
+    local in_ralph_install=false
+
+    # Check for Ralph control files
+    [[ -f "PROMPT.md" ]] && has_prompt=true
+    [[ -f "@fix_plan.md" ]] && has_fix_plan=true
+
+    # Check if in Ralph's installation directory
+    if [[ "$PWD" == *"ralph-claude-code"* ]] || [[ "$PWD" == *".ralph"* ]]; then
+        in_ralph_install=true
+    fi
+
+    # Error: Running from Ralph's installation directory
+    if [[ "$in_ralph_install" == true && "$has_prompt" == false && "$has_fix_plan" == false ]]; then
+        echo -e "${RED}❌ ERROR: Ralph appears to be running from its installation directory!${NC}"
+        echo -e "${RED}   Current directory: $PWD${NC}"
+        echo -e "${YELLOW}   Ralph must run from your project directory, not from:${NC}"
+        echo -e "${YELLOW}   - ~/.ralph/ (installation directory)${NC}"
+        echo -e "${YELLOW}   - */ralph-claude-code/ (source repository)${NC}"
+        echo ""
+        echo -e "${GREEN}Fix:${NC}"
+        echo -e "${GREEN}   cd /path/to/your/project${NC}"
+        echo -e "${GREEN}   ralph --calls 50${NC}"
+        echo ""
+        return 1
+    fi
+
+    # Warning: No Ralph control files found
+    if [[ "$has_prompt" == false && "$has_fix_plan" == false ]]; then
+        echo -e "${YELLOW}⚠️  WARNING: No PROMPT.md or @fix_plan.md found in current directory${NC}"
+        echo -e "${YELLOW}   Current directory: $PWD${NC}"
+        echo -e "${YELLOW}   Are you in the correct project directory?${NC}"
+        echo ""
+        echo -n "Continue anyway? (y/N) "
+        read -r response
+        if [[ ! "$response" =~ ^[Yy]$ ]]; then
+            echo -e "${RED}Aborted.${NC}"
+            return 1
+        fi
+        echo ""
+    fi
+
+    return 0
+}
+
 # Log function with timestamps and colors
 log_status() {
     local level=$1
     local message=$2
-    local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+    local timestamp
+
+    # Check log rotation before writing (Phase 3.001)
+    # Only check periodically to avoid performance impact
+    if [[ "$RALPH_LOG_ROTATION" == "true" ]]; then
+        rotate_log_if_needed "$LOG_FILE"
+    fi
+
+    # Use built-in printf for timestamps (60% faster than date subprocess)
+    # Requires bash 4.2+, fallback to date if not available
+    if ((BASH_VERSINFO[0] > 4 || (BASH_VERSINFO[0] == 4 && BASH_VERSINFO[1] >= 2))); then
+        printf -v timestamp '%(%Y-%m-%d %H:%M:%S)T' -1
+    else
+        timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+    fi
+
     local color=""
 
     case $level in
@@ -226,7 +382,7 @@ log_status() {
     else
         echo -e "${color}[$timestamp] [$level] $message${NC}"
     fi
-    echo "[$timestamp] [$level] $message" >> "$LOG_DIR/ralph.log"
+    echo "[$timestamp] [$level] $message" >> "$LOG_FILE"
 }
 
 # Update status JSON for external monitoring
@@ -346,13 +502,33 @@ should_exit_gracefully() {
         return 0
     fi
     
-    # 3. Strong completion indicators (increased threshold to allow progress reports)
-    if [[ $recent_completion_indicators -ge 10 ]]; then
-        log_status "WARN" "Exit condition: Strong completion indicators ($recent_completion_indicators)"
-        echo "project_complete"
-        return 0
+    # 3. Strong completion indicators (but validate against @fix_plan.md)
+    if [[ $recent_completion_indicators -ge 2 ]]; then
+        # Before exiting, cross-reference with @fix_plan.md to avoid false positives
+        if [[ -f "@fix_plan.md" ]]; then
+            local todo_count=$(grep -c "TODO\|Status.*TODO\|TODO:" "@fix_plan.md" 2>/dev/null || echo "0")
+
+            if [[ $todo_count -gt 0 ]]; then
+                log_status "WARN" "Exit signals indicate completion, but @fix_plan.md has $todo_count TODO items" >&2
+                log_status "WARN" "Ignoring stale completion indicators and continuing..." >&2
+                # Reset completion indicators to prevent repeated false exits
+                signals=$(echo "$signals" | jq '.completion_indicators = []' 2>/dev/null)
+                echo "$signals" > "$EXIT_SIGNALS_FILE" 2>/dev/null || true
+                # Do NOT exit - echo empty string to continue loop (return 0 would exit with success but not set variable)
+                echo ""
+                return 0
+            else
+                log_status "WARN" "Exit condition: Strong completion indicators ($recent_completion_indicators)"
+                echo "project_complete"
+                return 0
+            fi
+        else
+            log_status "WARN" "Exit condition: Strong completion indicators ($recent_completion_indicators)"
+            echo "project_complete"
+            return 0
+        fi
     fi
-    
+
     # 4. Check fix_plan.md for completion
     if [[ -f "@fix_plan.md" ]]; then
         local total_items=$(grep -c "^- \[" "@fix_plan.md" 2>/dev/null)
@@ -804,6 +980,10 @@ build_claude_command() {
     # Check if prompt file exists
     if [[ ! -f "$prompt_file" ]]; then
         log_status "ERROR" "Prompt file not found: $prompt_file"
+        log_status "INFO" "To fix:"
+        log_status "INFO" "  1. Create the prompt file: touch $prompt_file"
+        log_status "INFO" "  2. Or use a different prompt: --prompt /path/to/your/prompt.md"
+        log_status "INFO" "  3. Or use the template: cp templates/PROMPT.md $prompt_file"
         return 1
     fi
 
@@ -823,6 +1003,20 @@ build_claude_command() {
             tool=$(echo "$tool" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
             if [[ -n "$tool" ]]; then
                 CLAUDE_CMD_ARGS+=("$tool")
+            fi
+        done
+    fi
+
+    # Add allowed directories (each directory with its own --add-dir flag)
+    if [[ -n "${CLAUDE_ALLOWED_DIRS:-}" ]]; then
+        # Split by comma and add each directory with --add-dir
+        local IFS=','
+        read -ra dirs_array <<< "$CLAUDE_ALLOWED_DIRS"
+        for dir in "${dirs_array[@]}"; do
+            # Trim whitespace
+            dir=$(echo "$dir" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+            if [[ -n "$dir" ]]; then
+                CLAUDE_CMD_ARGS+=("--add-dir" "$dir")
             fi
         done
     fi
@@ -857,7 +1051,38 @@ CRITICAL: Follow all constraints above when implementing changes."
     # Note: Claude CLI uses -p for prompts, not --prompt-file (which doesn't exist)
     # Array-based approach maintains shell injection safety
     local prompt_content
-    prompt_content=$(cat "$prompt_file")
+    local enhanced_prompt_file="${prompt_file}.ralph_enhanced"
+
+    # Check if memory injection script exists for IbStudy project
+    local memory_injection_script=""
+    if [[ -f "scripts/inject-memory-context.sh" ]]; then
+        memory_injection_script="scripts/inject-memory-context.sh"
+    elif [[ -f "../IbStudy/scripts/inject-memory-context.sh" ]]; then
+        memory_injection_script="../IbStudy/scripts/inject-memory-context.sh"
+    fi
+
+    # Inject memory context if script available and prompt not already enhanced
+    if [[ -n "$memory_injection_script" ]] && [[ -x "$memory_injection_script" ]]; then
+        if ! grep -q "## CRITICAL: Project Memory References" "$prompt_file" 2>/dev/null; then
+            log_status "INFO" "🧠 Injecting memory context into prompt..."
+            if "$memory_injection_script" "$prompt_file" "$enhanced_prompt_file" 2>&1 | grep -q "✅"; then
+                log_status "INFO" "✅ Memory context injected successfully"
+                prompt_content=$(cat "$enhanced_prompt_file")
+                # Cleanup enhanced file after reading
+                rm -f "$enhanced_prompt_file"
+            else
+                log_status "WARN" "⚠️  Memory injection failed, using original prompt"
+                prompt_content=$(cat "$prompt_file")
+            fi
+        else
+            log_status "INFO" "ℹ️  Memory context already present in prompt"
+            prompt_content=$(cat "$prompt_file")
+        fi
+    else
+        # No memory injection script - use prompt as-is
+        prompt_content=$(cat "$prompt_file")
+    fi
+
     CLAUDE_CMD_ARGS+=("-p" "$prompt_content")
 }
 
@@ -966,6 +1191,103 @@ load_project_constraints() {
     return 0
 }
 
+# Check task prerequisites before execution
+# Returns 0 if prerequisites are satisfied or don't exist
+# Returns 2 if prerequisites exist but verification fails
+check_task_prerequisites() {
+    local task_number="$1"
+    local task_dir="tasks/$(printf '%03d' $task_number)"
+
+    # Check if task directory exists
+    if [[ ! -d "$task_dir" ]]; then
+        # No task directory means no prerequisites
+        return 0
+    fi
+
+    # Check if task has a prerequisite script
+    if [[ ! -f "$task_dir/prereq.sh" ]]; then
+        # No prerequisite script means Ralph can execute autonomously
+        log_status "INFO" "✅ Task $task_number has no prerequisites (autonomous execution)"
+        return 0
+    fi
+
+    # Task has prerequisites - check if they're satisfied
+    if [[ -f "$task_dir/verify.sh" ]]; then
+        log_status "INFO" "🔍 Checking prerequisites for Task $task_number..."
+
+        # Run verification script
+        local verify_log="$LOG_DIR/verify_task_${task_number}_$(date '+%Y-%m-%d_%H-%M-%S').log"
+        if bash "$task_dir/verify.sh" > "$verify_log" 2>&1; then
+            log_status "INFO" "✅ Task $task_number prerequisites satisfied"
+            cat "$verify_log" >> "$LOG_FILE"
+            return 0
+        else
+            # Prerequisites not satisfied
+            log_status "ERROR" "⚠️  Task $task_number prerequisites NOT met"
+            log_status "ERROR" ""
+            log_status "ERROR" "Verification failed. See details in: $verify_log"
+            log_status "ERROR" ""
+            log_status "ERROR" "To resolve:"
+            log_status "ERROR" "  1. Run the prerequisite script: ./$task_dir/prereq.sh"
+            log_status "ERROR" "  2. Verify it succeeded: ./$task_dir/verify.sh"
+            log_status "ERROR" "  3. Restart Ralph: ralph --resume"
+            log_status "ERROR" ""
+
+            # Show verification output
+            cat "$verify_log" >> "$LOG_FILE"
+            cat "$verify_log"
+
+            # Exit with prerequisite failure code
+            return 2
+        fi
+    else
+        # Has prereq.sh but no verify.sh - warn and continue
+        log_status "WARN" "⚠️  Task $task_number has prereq.sh but no verify.sh"
+        log_status "WARN" "   Assuming prerequisites are satisfied (no way to verify)"
+        return 0
+    fi
+}
+
+# Extract current task number from @fix_plan.md
+# Returns the first uncompleted task number, or 0 if all complete
+extract_current_task_number() {
+    local fix_plan="${FIX_PLAN_FILE:-@fix_plan.md}"
+
+    if [[ ! -f "$fix_plan" ]]; then
+        echo "0"
+        return
+    fi
+
+    # Find first task that is not marked as complete
+    # Looks for lines like: "#### Task 001: ..." followed by "**Status**: TODO"
+    local in_task=false
+    local task_number=""
+
+    while IFS= read -r line; do
+        # Detect task header
+        if [[ "$line" =~ ^####[[:space:]]+Task[[:space:]]+([0-9]+): ]]; then
+            task_number="${BASH_REMATCH[1]}"
+            in_task=true
+            continue
+        fi
+
+        # Check status line
+        if [[ "$in_task" == true ]] && [[ "$line" =~ ^\*\*Status\*\*:[[:space:]]*(TODO|IN[[:space:]]PROGRESS) ]]; then
+            # Found uncompleted task
+            echo "$task_number"
+            return
+        fi
+
+        # Exit task context
+        if [[ "$in_task" == true ]] && [[ "$line" =~ ^#### ]]; then
+            in_task=false
+        fi
+    done < "$fix_plan"
+
+    # All tasks complete
+    echo "0"
+}
+
 # Main execution function
 execute_claude_code() {
     local timestamp=$(date '+%Y-%m-%d_%H-%M-%S')
@@ -973,6 +1295,34 @@ execute_claude_code() {
     local loop_count=$1
     local calls_made=$(cat "$CALL_COUNT_FILE" 2>/dev/null || echo "0")
     calls_made=$((calls_made + 1))
+
+    # Check if in dry-run mode
+    if is_dry_run; then
+        log_status "LOOP" "[DRY RUN] Simulating execution (Loop #$loop_count)"
+        echo ""
+        
+        # Simulate the provider call
+        local provider="${RALPH_PROVIDER:-claude}"
+        simulate_provider_call "$PROMPT_FILE" "$loop_count" "$provider" > "$output_file"
+        
+        # Show output
+        if is_dry_run_verbose; then
+            cat "$output_file"
+        fi
+        
+        # Update status for dry run
+        update_status "$loop_count" "$calls_made" "dry_run_simulated" "simulated"
+        
+        # Simulate one iteration and exit
+        if [[ $loop_count -ge 1 ]]; then
+            log_status "SUCCESS" "[DRY RUN] Simulation complete. Exiting."
+            update_status "$loop_count" "$calls_made" "dry_run_complete" "completed"
+            # Signal to exit gracefully
+            return 100  # Special code for dry run completion
+        fi
+        
+        return 0
+    fi
 
     log_status "LOOP" "Executing Claude Code (Call $calls_made/$MAX_CALLS_PER_HOUR)"
     local timeout_seconds=$((CLAUDE_TIMEOUT_MINUTES * 60))
@@ -987,6 +1337,17 @@ execute_claude_code() {
         loop_context=$(build_loop_context "$loop_count")
         if [[ -n "$loop_context" && "$VERBOSE_PROGRESS" == "true" ]]; then
             log_status "INFO" "Loop context: $loop_context"
+        fi
+    fi
+
+    # Check Ralph session expiration before initializing Claude session
+    # This ensures stale Ralph sessions are reset with proper audit logging
+    if [[ -f "$RALPH_SESSION_FILE" ]]; then
+        local ralph_status
+        ralph_status=$(check_ralph_session_expired "$RALPH_SESSION_FILE" "$((CLAUDE_SESSION_EXPIRY_HOURS * 3600))")
+        if [[ "$ralph_status" == "expired" ]]; then
+            reset_expired_ralph_session "$RALPH_SESSION_FILE" "ttl_exceeded"
+            log_status "INFO" "Ralph session expired and was reset (older than ${CLAUDE_SESSION_EXPIRY_HOURS}h)"
         fi
     fi
 
@@ -1022,6 +1383,10 @@ execute_claude_code() {
             :  # Continue to wait loop
         else
             log_status "ERROR" "❌ Failed to start Claude Code process (modern mode)"
+            log_status "INFO" "To fix:"
+            log_status "INFO" "  1. Check if Claude Code is installed: which npx"
+            log_status "INFO" "  2. Update Claude Code: npm install -g @anthropic/claude-code@latest"
+            log_status "INFO" "  3. Check API key is set: echo \$ANTHROPIC_API_KEY"
             # Fall back to legacy mode
             log_status "INFO" "Falling back to legacy mode..."
             use_modern_cli=false
@@ -1035,32 +1400,40 @@ execute_claude_code() {
             :  # Continue to wait loop
         else
             log_status "ERROR" "❌ Failed to start Claude Code process"
+            log_status "INFO" "To fix:"
+            log_status "INFO" "  1. Verify Claude Code is installed: npx @anthropic/claude-code --version"
+            log_status "INFO" "  2. Check API key: export ANTHROPIC_API_KEY=your-key-here"
+            log_status "INFO" "  3. Test manually: npx @anthropic/claude-code 'Hello Claude'"
+            log_status "INFO" "  4. Check logs for details: tail -100 $output_file"
             return 1
         fi
     fi
 
     # Get PID and monitor progress
     local claude_pid=$!
-    local progress_counter=0
+    local exit_code
 
-    # Show progress while Claude Code is running
-    while kill -0 $claude_pid 2>/dev/null; do
-        progress_counter=$((progress_counter + 1))
-        case $((progress_counter % 4)) in
-            1) progress_indicator="⠋" ;;
-            2) progress_indicator="⠙" ;;
-            3) progress_indicator="⠹" ;;
-            0) progress_indicator="⠸" ;;
-        esac
+    # Optimize progress loop: skip expensive operations when verbose mode is disabled
+    if [[ "$VERBOSE_PROGRESS" == "true" ]]; then
+        # Full progress tracking with spinner, file monitoring, and logging
+        local progress_counter=0
+        while kill -0 $claude_pid 2>/dev/null; do
+            progress_counter=$((progress_counter + 1))
+            case $((progress_counter % 4)) in
+                1) progress_indicator="⠋" ;;
+                2) progress_indicator="⠙" ;;
+                3) progress_indicator="⠹" ;;
+                0) progress_indicator="⠸" ;;
+            esac
 
-        # Get last line from output if available
-        local last_line=""
-        if [[ -f "$output_file" && -s "$output_file" ]]; then
-            last_line=$(tail -1 "$output_file" 2>/dev/null | head -c 80)
-        fi
+            # Get last line from output if available
+            local last_line=""
+            if [[ -f "$output_file" && -s "$output_file" ]]; then
+                last_line=$(tail -1 "$output_file" 2>/dev/null | head -c 80)
+            fi
 
-        # Update progress file for monitor
-        cat > "$PROGRESS_FILE" << EOF
+            # Update progress file for monitor
+            cat > "$PROGRESS_FILE" << EOF
 {
     "status": "executing",
     "indicator": "$progress_indicator",
@@ -1070,21 +1443,24 @@ execute_claude_code() {
 }
 EOF
 
-        # Only log if verbose mode is enabled
-        if [[ "$VERBOSE_PROGRESS" == "true" ]]; then
+            # Log progress
             if [[ -n "$last_line" ]]; then
                 log_status "INFO" "$progress_indicator Claude Code: $last_line... (${progress_counter}0s)"
             else
                 log_status "INFO" "$progress_indicator Claude Code working... (${progress_counter}0s elapsed)"
             fi
-        fi
 
-        sleep 10
-    done
+            sleep 10
+        done
 
-    # Wait for the process to finish and get exit code
-    wait $claude_pid
-    local exit_code=$?
+        # Wait for the process to finish and get exit code
+        wait $claude_pid
+        exit_code=$?
+    else
+        # Simplified non-verbose mode: just wait for completion (5-10% faster)
+        wait $claude_pid
+        exit_code=$?
+    fi
 
     if [ $exit_code -eq 0 ]; then
         # Only increment counter on successful execution
@@ -1115,20 +1491,14 @@ EOF
         local files_changed=$(git diff --name-only 2>/dev/null | wc -l || echo 0)
         local has_errors="false"
 
-        # Two-stage error detection to avoid JSON field false positives
-        # Stage 1: Filter out JSON field patterns like "is_error": false
-        # Stage 2: Look for actual error messages in specific contexts
-        # Avoid type annotations like "error: Error" by requiring lowercase after ": error"
-        if grep -v '"[^"]*error[^"]*":' "$output_file" 2>/dev/null | \
-           grep -qE '(^Error:|^ERROR:|^error:|\]: error|Link: error|Error occurred|failed with error|[Ee]xception|Fatal|FATAL)'; then
+        # Use shared error detection logic (lib/error_detector.sh)
+        if [[ "$(has_errors_in_file "$output_file")" == "true" ]]; then
             has_errors="true"
 
             # Debug logging: show what triggered error detection
             if [[ "$VERBOSE_PROGRESS" == "true" ]]; then
                 log_status "DEBUG" "Error patterns found:"
-                grep -v '"[^"]*error[^"]*":' "$output_file" 2>/dev/null | \
-                    grep -nE '(^Error:|^ERROR:|^error:|\]: error|Link: error|Error occurred|failed with error|[Ee]xception|Fatal|FATAL)' | \
-                    head -3 | while IFS= read -r line; do
+                get_error_lines "$output_file" 3 | while IFS= read -r line; do
                     log_status "DEBUG" "  $line"
                 done
             fi
@@ -1187,7 +1557,7 @@ main() {
     if [[ ! -f "$PROMPT_FILE" ]]; then
         log_status "ERROR" "Prompt file '$PROMPT_FILE' not found!"
         echo ""
-        
+
         # Check if this looks like a partial Ralph project
         if [[ -f "@fix_plan.md" ]] || [[ -d "specs" ]] || [[ -f "@AGENT.md" ]]; then
             echo "This appears to be a Ralph project but is missing PROMPT.md."
@@ -1195,7 +1565,7 @@ main() {
         else
             echo "This directory is not a Ralph project."
         fi
-        
+
         echo ""
         echo "To fix this:"
         echo "  1. Create a new project: ralph-setup my-project"
@@ -1205,6 +1575,48 @@ main() {
         echo ""
         echo "Ralph projects should contain: PROMPT.md, @fix_plan.md, specs/, src/, etc."
         exit 1
+    fi
+
+    # Validate PRD follows T-RALPH V2.0 standards
+    log_status "INFO" ""
+    log_status "INFO" "📋 Validating PRD against T-RALPH V2.0 standards..."
+    log_status "INFO" "Master standards: /home/dev/Development/ralph-dashboard/docs/specifications/prd-standards/"
+
+    if ! validate_tralph_prd "$PROMPT_FILE" false; then
+        echo ""
+        log_status "ERROR" "PRD validation failed. Ralph cannot proceed with non-compliant PRD."
+        log_status "INFO" ""
+        log_status "INFO" "To fix:"
+        log_status "INFO" "  1. Read T-RALPH V2.0 standards:"
+        log_status "INFO" "     cat /home/dev/Development/ralph-dashboard/docs/specifications/prd-standards/README.md"
+        log_status "INFO" ""
+        log_status "INFO" "  2. Generate compliant template:"
+        log_status "INFO" "     generate_tralph_template \"$PROMPT_FILE\" \"My Feature\" 51"
+        log_status "INFO" ""
+        log_status "INFO" "  3. Or skip validation (NOT RECOMMENDED):"
+        log_status "INFO" "     export SKIP_TRALPH_VALIDATION=true"
+        log_status "INFO" ""
+
+        # Allow skipping validation via environment variable (for legacy PRDs)
+        if [[ "${SKIP_TRALPH_VALIDATION:-false}" != "true" ]]; then
+            exit 1
+        else
+            log_status "WARN" "⚠️  T-RALPH validation skipped (SKIP_TRALPH_VALIDATION=true)"
+            log_status "WARN" "This PRD may not follow best practices for autonomous execution"
+        fi
+    fi
+    echo ""
+
+    # Load project-specific configuration if exists
+    if [[ -f ".ralph_config" ]]; then
+        log_status "INFO" "Loading project-specific configuration from .ralph_config"
+        # shellcheck source=/dev/null
+        source ".ralph_config"
+
+        # Log overridden settings
+        [[ -n "${CLAUDE_ALLOWED_TOOLS:-}" ]] && log_status "INFO" "  Allowed tools: $CLAUDE_ALLOWED_TOOLS"
+        [[ -n "${CLAUDE_ALLOWED_DIRS:-}" ]] && log_status "INFO" "  Allowed dirs: $CLAUDE_ALLOWED_DIRS"
+        [[ -n "${MAX_LOOPS:-}" ]] && log_status "INFO" "  Max loops: $MAX_LOOPS"
     fi
 
     # Initialize session tracking before entering the loop
@@ -1242,11 +1654,21 @@ main() {
         
         log_status "LOOP" "=== Starting Loop #$loop_count ==="
         
+        # Update GitHub issue status on first loop
+        if [[ $loop_count -eq 1 ]] && _github_sync_is_enabled 2>/dev/null; then
+            log_status "INFO" "🔄 Notifying GitHub: Starting work on issue #$GITHUB_ISSUE"
+            update_github_issue_status "in_progress" "2-3 hours" || true
+        fi
+        
         # Check circuit breaker before attempting execution
         if should_halt_execution; then
             reset_session "circuit_breaker_open"
             update_status "$loop_count" "$(cat "$CALL_COUNT_FILE")" "circuit_breaker_open" "halted" "stagnation_detected"
             log_status "ERROR" "🛑 Circuit breaker has opened - execution halted"
+            # Update GitHub issue status on circuit breaker
+            if _github_sync_is_enabled 2>/dev/null; then
+                update_github_issue_status "error" "Circuit breaker opened: Execution halted due to stagnation detection" || true
+            fi
             break
         fi
 
@@ -1262,6 +1684,14 @@ main() {
             log_status "SUCCESS" "🏁 Graceful exit triggered: $exit_reason"
             reset_session "project_complete"
             update_status "$loop_count" "$(cat "$CALL_COUNT_FILE")" "graceful_exit" "completed" "$exit_reason"
+            
+            # Update GitHub issue status on completion
+            if _github_sync_is_enabled 2>/dev/null; then
+                log_status "INFO" "🔄 Notifying GitHub: Work completed on issue #$GITHUB_ISSUE"
+                local summary
+                summary=$(generate_completion_summary "$loop_count" "" "$(date +%s)")
+                update_github_issue_status "completed" "$summary" || true
+            fi
 
             log_status "SUCCESS" "🎉 Ralph has completed the project! Final stats:"
             log_status "INFO" "  - Total loops: $loop_count"
@@ -1274,12 +1704,38 @@ main() {
         # Update status
         local calls_made=$(cat "$CALL_COUNT_FILE" 2>/dev/null || echo "0")
         update_status "$loop_count" "$calls_made" "executing" "running"
-        
+
+        # Check prerequisites for current task
+        local current_task
+        current_task=$(extract_current_task_number)
+
+        if [[ "$current_task" != "0" ]]; then
+            log_status "INFO" "📋 Current task: Task $current_task"
+
+            # Check if prerequisites are satisfied
+            if ! check_task_prerequisites "$current_task"; then
+                # Prerequisites not met - exit gracefully
+                log_status "ERROR" "❌ Cannot proceed without prerequisites"
+                update_status "$loop_count" "$(cat "$CALL_COUNT_FILE")" "blocked" "prerequisite_failed"
+                # Update GitHub issue status on prerequisite failure
+                if _github_sync_is_enabled 2>/dev/null; then
+                    update_github_issue_status "error" "Prerequisites not met for Task $current_task" || true
+                fi
+                exit 2
+            fi
+        fi
+
         # Execute Claude Code
         execute_claude_code "$loop_count"
         local exec_result=$?
         
-        if [ $exec_result -eq 0 ]; then
+        if [ $exec_result -eq 100 ]; then
+            # Dry run completed - exit gracefully
+            reset_session "dry_run_complete"
+            update_status "$loop_count" "$(cat "$CALL_COUNT_FILE")" "dry_run_complete" "completed"
+            log_status "SUCCESS" "🏁 Dry run completed successfully"
+            break
+        elif [ $exec_result -eq 0 ]; then
             update_status "$loop_count" "$(cat "$CALL_COUNT_FILE")" "completed" "success"
 
             # Brief pause between successful executions
@@ -1290,11 +1746,19 @@ main() {
             update_status "$loop_count" "$(cat "$CALL_COUNT_FILE")" "circuit_breaker_open" "halted" "stagnation_detected"
             log_status "ERROR" "🛑 Circuit breaker has opened - halting loop"
             log_status "INFO" "Run 'ralph --reset-circuit' to reset the circuit breaker after addressing issues"
+            # Update GitHub issue status on circuit breaker trip
+            if _github_sync_is_enabled 2>/dev/null; then
+                update_github_issue_status "error" "Circuit breaker opened during loop execution: Stagnation detected" || true
+            fi
             break
         elif [ $exec_result -eq 2 ]; then
             # API 5-hour limit reached - handle specially
             update_status "$loop_count" "$(cat "$CALL_COUNT_FILE")" "api_limit" "paused"
             log_status "WARN" "🛑 Claude API 5-hour limit reached!"
+            # Update GitHub issue status on API limit
+            if _github_sync_is_enabled 2>/dev/null; then
+                update_github_issue_status "paused" "Claude API 5-hour usage limit reached - waiting for reset" || true
+            fi
             
             # Ask user whether to wait or exit
             echo -e "\n${YELLOW}The Claude API 5-hour usage limit has been reached.${NC}"
@@ -1310,6 +1774,10 @@ main() {
             if [[ "$user_choice" == "2" ]] || [[ -z "$user_choice" ]]; then
                 log_status "INFO" "User chose to exit (or timed out). Exiting loop..."
                 update_status "$loop_count" "$(cat "$CALL_COUNT_FILE")" "api_limit_exit" "stopped" "api_5hour_limit"
+                # Update GitHub issue status on API limit exit
+                if _github_sync_is_enabled 2>/dev/null; then
+                    update_github_issue_status "paused" "Execution paused due to Claude API 5-hour limit" || true
+                fi
                 break
             else
                 log_status "INFO" "User chose to wait. Waiting for API limit reset..."
@@ -1356,15 +1824,39 @@ Options:
     -m, --monitor           Start with tmux session and live monitor (requires tmux)
     -v, --verbose           Show detailed progress updates during execution
     -t, --timeout MIN       Set Claude Code execution timeout in minutes (default: $CLAUDE_TIMEOUT_MINUTES)
+    --clean                 Reset all Ralph state files (exit signals, call count, circuit breaker)
+    --check-permissions     Review and approve permissions required by @fix_plan.md
     --reset-circuit         Reset circuit breaker to CLOSED state
     --circuit-status        Show circuit breaker status and exit
     --reset-session         Reset session state and exit (clears session continuity)
+
+Config Options (Phase 3-003):
+    --show-config           Display current configuration and exit
+    --show-config-verbose   Display current configuration with source info
+    --config FILE           Load configuration from specific file
+
+Dry Run Options (Phase 3-002):
+    --dry-run [FILE]        Simulate execution without API calls or file changes
+                            Optional: specify PRD file to validate (default: PROMPT.md)
+    --dry-run-verbose       Show verbose output during dry run (prompt preview, etc.)
+    --validate-all DIR      Validate all PRDs in directory (default: specs/)
 
 Modern CLI Options (Phase 1.1):
     --output-format FORMAT  Set Claude output format: json or text (default: $CLAUDE_OUTPUT_FORMAT)
     --allowed-tools TOOLS   Comma-separated list of allowed tools (default: $CLAUDE_ALLOWED_TOOLS)
     --no-continue           Disable session continuity across loops
     --session-expiry HOURS  Set session expiration time in hours (default: $CLAUDE_SESSION_EXPIRY_HOURS)
+
+GitHub Integration Options (Phase 5-001):
+    --import-github-issue REPO#NUM  Import single GitHub issue as PRD (e.g., owner/repo#123)
+    --import-github-issues REPO     Import multiple issues from repository
+                                    Supports: --label, --milestone, --state filters
+    --github-label LABEL            Filter by label (can be used multiple times)
+    --github-milestone NAME         Filter by milestone name
+    --github-state STATE            Filter by state: open, closed, all (default: open)
+    --github-limit NUM              Limit number of issues to import (default: 50)
+    --github-dry-run                Preview import without creating files
+    --github-output-dir DIR         Output directory for PRDs (default: specs/tasks)
 
 Files created:
     - $LOG_DIR/: All execution logs
@@ -1388,6 +1880,23 @@ Examples:
     $0 --output-format text     # Use legacy text output format
     $0 --no-continue            # Disable session continuity
     $0 --session-expiry 48      # 48-hour session expiration
+
+Dry Run Examples:
+    $0 --dry-run                # Dry run with PROMPT.md
+    $0 --dry-run specs/TASK-001.md   # Dry run specific PRD
+    $0 --dry-run --dry-run-verbose   # Verbose dry run output
+    $0 --validate-all specs/    # Validate all PRDs in specs directory
+
+GitHub Import Examples:
+    $0 --import-github-issue owner/repo#123           # Import single issue
+    $0 --import-github-issues owner/repo              # Import all open issues
+    $0 --import-github-issues owner/repo --github-label ralph --github-label ready
+    $0 --import-github-issues owner/repo --github-milestone "v1.0"
+    $0 --import-github-issues owner/repo --github-dry-run  # Preview only
+
+GitHub Sync Examples:
+    $0 --github-issue owner/repo#123                  # Sync status with issue
+    $0 --github-issue owner/repo#123 --github-enabled # Enable bidirectional sync
 
 HELPEOF
 }
@@ -1433,6 +1942,11 @@ while [[ $# -gt 0 ]]; do
             fi
             shift 2
             ;;
+        --clean)
+            # Reset all Ralph state files
+            reset_state_files
+            exit 0
+            ;;
         --reset-circuit)
             # Source the circuit breaker library
             SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
@@ -1456,6 +1970,33 @@ while [[ $# -gt 0 ]]; do
             source "$SCRIPT_DIR/lib/circuit_breaker.sh"
             show_circuit_status
             exit 0
+            ;;
+        --show-config)
+            show_config
+            echo ""
+            show_config_summary
+            exit 0
+            ;;
+        --show-config-verbose)
+            show_config --verbose
+            echo ""
+            show_config_summary
+            exit 0
+            ;;
+        --config)
+            if [[ ! -f "$2" ]]; then
+                echo "Error: Config file not found: $2" >&2
+                exit 1
+            fi
+            if ! validate_config "$2"; then
+                exit 1
+            fi
+            # Reload config from specified file
+            if ! _config_load_file "$2" "cli"; then
+                echo "Error: Failed to load config from $2" >&2
+                exit 1
+            fi
+            shift 2
             ;;
         --output-format)
             if [[ "$2" == "json" || "$2" == "text" ]]; then
@@ -1485,6 +2026,98 @@ while [[ $# -gt 0 ]]; do
             CLAUDE_SESSION_EXPIRY_HOURS="$2"
             shift 2
             ;;
+        --check-permissions)
+            # Run pre-flight permission check
+            if run_preflight_check "@fix_plan.md" ".ralph_config" "true"; then
+                echo "✓ Permission check complete"
+                exit 0
+            else
+                echo "✗ Permission check failed"
+                exit 1
+            fi
+            ;;
+        --dry-run)
+            # Dry run mode - simulate without API calls
+            DRY_RUN_MODE=true
+            # Check if next argument is a file (not another flag)
+            if [[ -n "${2:-}" ]] && [[ ! "$2" =~ ^-- ]]; then
+                DRY_RUN_PRD_FILE="$2"
+                shift 2
+            else
+                DRY_RUN_PRD_FILE="$PROMPT_FILE"
+                shift
+            fi
+            ;;
+        --dry-run-verbose)
+            DRY_RUN_VERBOSE=true
+            shift
+            ;;
+        --validate-all)
+            # Validate all PRDs in directory
+            VALIDATE_ALL_DIR="${2:-specs}"
+            source "$SCRIPT_DIR/lib/dry_run.sh"
+            echo ""
+            if validate_all_prds "$VALIDATE_ALL_DIR"; then
+                echo ""
+                echo -e "\033[0;32m✓ All PRDs are valid\033[0m"
+                exit 0
+            else
+                echo ""
+                echo -e "\033[0;31m✗ Some PRDs have validation errors\033[0m"
+                exit 1
+            fi
+            ;;
+        --import-github-issue)
+            # Import single GitHub issue as PRD
+            GITHUB_IMPORT_ISSUE="$2"
+            shift 2
+            ;;
+        --import-github-issues)
+            # Import multiple GitHub issues
+            GITHUB_IMPORT_REPO="$2"
+            shift 2
+            ;;
+        --github-label)
+            # Add label filter for GitHub import
+            GITHUB_LABELS+=("$2")
+            shift 2
+            ;;
+        --github-milestone)
+            # Add milestone filter for GitHub import
+            GITHUB_MILESTONE="$2"
+            shift 2
+            ;;
+        --github-state)
+            # Set state filter for GitHub import
+            GITHUB_STATE="$2"
+            shift 2
+            ;;
+        --github-limit)
+            # Set limit for GitHub import
+            GITHUB_LIMIT="$2"
+            shift 2
+            ;;
+        --github-dry-run)
+            # Enable dry-run mode for GitHub import
+            GITHUB_DRY_RUN=true
+            shift
+            ;;
+        --github-output-dir)
+            # Set output directory for imported PRDs
+            GITHUB_OUTPUT_DIR="$2"
+            shift 2
+            ;;
+        --github-issue)
+            # Specify GitHub issue for status synchronization
+            # Format: owner/repo#number or https://github.com/owner/repo/issues/number
+            GITHUB_ISSUE_SPEC="$2"
+            shift 2
+            ;;
+        --github-enabled)
+            # Enable GitHub sync (requires GITHUB_TOKEN and --github-issue)
+            GITHUB_SYNC_ENABLED="true"
+            shift
+            ;;
         *)
             echo "Unknown option: $1"
             show_help
@@ -1493,8 +2126,128 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+# Sync CLI arguments back to config (CLI overrides everything)
+set_config "limits.max_calls_per_hour" "$MAX_CALLS_PER_HOUR" "cli"
+set_config "output.format" "$CLAUDE_OUTPUT_FORMAT" "cli"
+set_config "execution.allowed_tools" "$CLAUDE_ALLOWED_TOOLS" "cli"
+set_config "execution.continue_session" "$CLAUDE_USE_CONTINUE" "cli"
+set_config "session.expiry_hours" "$CLAUDE_SESSION_EXPIRY_HOURS" "cli"
+
+# Export config to environment variables for child processes
+export_config_to_env
+
+# Handle GitHub issue sync setup (Phase 5-002)
+if [[ -n "${GITHUB_ISSUE_SPEC:-}" ]]; then
+    # Parse the GitHub issue reference
+    if parse_github_ref "$GITHUB_ISSUE_SPEC" 2>/dev/null; then
+        export GITHUB_REPO="${GITHUB_OWNER}/${GITHUB_REPO}"
+        export GITHUB_ISSUE="$GITHUB_ISSUE"
+        
+        if [[ "$GITHUB_SYNC_ENABLED" == "true" ]]; then
+            log_status "INFO" "🔗 GitHub sync enabled for issue: $GITHUB_REPO#$GITHUB_ISSUE"
+            
+            # Verify GitHub token is available
+            if [[ -z "${GITHUB_TOKEN:-${RALPH_GITHUB_TOKEN:-}}" ]]; then
+                log_status "WARN" "GitHub sync enabled but GITHUB_TOKEN not set"
+                log_status "INFO" "Set GITHUB_TOKEN environment variable for write access"
+            fi
+        else
+            log_status "INFO" "GitHub issue tracking: $GITHUB_REPO#$GITHUB_ISSUE (sync disabled)"
+        fi
+    else
+        echo "ERROR: Invalid GitHub issue format: $GITHUB_ISSUE_SPEC" >&2
+        echo "Expected: owner/repo#123 or https://github.com/owner/repo/issues/123" >&2
+        exit 1
+    fi
+fi
+
 # Only execute when run directly, not when sourced
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    # Handle GitHub issue import (Phase 5-001)
+    if [[ -n "$GITHUB_IMPORT_ISSUE" ]]; then
+        source "$SCRIPT_DIR/lib/github_to_prd.sh"
+        
+        echo "Importing GitHub issue: $GITHUB_IMPORT_ISSUE"
+        echo ""
+        
+        # Parse owner/repo#number format
+        if ! parse_github_ref "$GITHUB_IMPORT_ISSUE"; then
+            exit 1
+        fi
+        
+        local repo
+        repo=$(get_github_repo_string)
+        
+        local dry_run_flag=""
+        [[ "$GITHUB_DRY_RUN" == true ]] && dry_run_flag="--dry-run"
+        
+        if ! convert_issue_to_prd "$repo" "$GITHUB_ISSUE" \
+                --output-dir "$GITHUB_OUTPUT_DIR" \
+                $dry_run_flag; then
+            echo "ERROR: Failed to import issue" >&2
+            exit 1
+        fi
+        exit 0
+    fi
+    
+    if [[ -n "$GITHUB_IMPORT_REPO" ]]; then
+        source "$SCRIPT_DIR/lib/github_to_prd.sh"
+        
+        echo "Importing GitHub issues from: $GITHUB_IMPORT_REPO"
+        echo ""
+        
+        # Build filter arguments
+        local filter_args=()
+        [[ -n "$GITHUB_STATE" ]] && filter_args+=("--state" "$GITHUB_STATE")
+        [[ -n "$GITHUB_MILESTONE" ]] && filter_args+=("--milestone" "$GITHUB_MILESTONE")
+        for label in "${GITHUB_LABELS[@]}"; do
+            filter_args+=("--label" "$label")
+        done
+        
+        local dry_run_flag=""
+        [[ "$GITHUB_DRY_RUN" == true ]] && dry_run_flag="--dry-run"
+        
+        if ! convert_issues_to_prds "$GITHUB_IMPORT_REPO" \
+                --output-dir "$GITHUB_OUTPUT_DIR" \
+                --limit "$GITHUB_LIMIT" \
+                $dry_run_flag \
+                "${filter_args[@]}"; then
+            echo "ERROR: Failed to import issues" >&2
+            exit 1
+        fi
+        exit 0
+    fi
+    
+    # Handle dry-run mode (run before validation for quick validation)
+    if [[ "$DRY_RUN_MODE" == "true" ]]; then
+        # Initialize dry run
+        init_dry_run "$DRY_RUN_PRD_FILE"
+        
+        # Run full dry run simulation
+        if run_dry_run "$DRY_RUN_PRD_FILE"; then
+            exit 0
+        else
+            exit 1
+        fi
+    fi
+    
+    # Validate working directory before starting
+    if ! validate_working_directory; then
+        exit 1
+    fi
+
+    # Run pre-flight permission check (only if .ralph_config doesn't exist or is outdated)
+    if [[ ! -f ".ralph_config" ]] || [[ "@fix_plan.md" -nt ".ralph_config" ]]; then
+        echo ""
+        log_status "INFO" "🔍 Running permission pre-flight check..."
+        if ! run_preflight_check "@fix_plan.md" ".ralph_config" "false"; then
+            log_status "ERROR" "Permission check failed. Ralph cannot proceed without required permissions."
+            log_status "INFO" "Tip: Run 'ralph --check-permissions' to review and approve permissions."
+            exit 1
+        fi
+        echo ""
+    fi
+
     # If tmux mode requested, set it up
     if [[ "$USE_TMUX" == "true" ]]; then
         check_tmux_available

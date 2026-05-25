@@ -1,75 +1,81 @@
 """
 Pytest fixtures for OSCE API testing
+
+NOTE: This conftest imports fixtures from the parent test suite:
+- db_session: Database session from tests/conftest.py
+- client: FastAPI test client from tests/conftest.py
+- auth_headers: JWT authentication headers from tests/conftest.py
+- test_user: Test user fixture from tests/conftest.py
+
+These fixtures are automatically available to all tests in this directory.
 """
 
 import pytest
-from fastapi.testclient import TestClient
-from sqlalchemy import create_engine, event
-from sqlalchemy.orm import sessionmaker, Session
-from sqlalchemy.pool import StaticPool
+from sqlalchemy.orm import Session
 
-from src.main import app
-from src.db.base import Base, get_db
 from src.db.models import OSCE, OSCEType, MedicalSpecialty, DifficultyLevel
 
-SQLALCHEMY_DATABASE_URL = "sqlite://"
 
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL,
-    connect_args={"check_same_thread": False},
-    poolclass=StaticPool
-)
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-# Create all tables once when module loads
-Base.metadata.create_all(bind=engine)
-
-
-@pytest.fixture(scope="function")
-def db():
-    """Create fresh database session for each test"""
-    connection = engine.connect()
-    transaction = connection.begin()
-    session = TestingSessionLocal(bind=connection)
-    
-    yield session
-    
-    session.close()
-    transaction.rollback()
-    connection.close()
+# ============================================================================
+# OSCE FIXTURES
+# ============================================================================
 
 
 @pytest.fixture
-def client(db):
-    """FastAPI test client with db dependency override"""
-    def override_get_db():
-        try:
-            yield db
-        finally:
-            pass
-    
-    app.dependency_overrides[get_db] = override_get_db
-    with TestClient(app) as test_client:
-        yield test_client
-    app.dependency_overrides.clear()
+def sample_osce(db_session: Session):
+    """
+    Create sample OSCE for testing.
 
-
-@pytest.fixture
-def sample_osce(db: Session):
-    """Create sample OSCE for testing"""
+    Uses current schema with correct field names:
+    - patient_instructions (not clinical_scenario)
+    - candidate_instructions (required field)
+    - rubric (not marking_rubric)
+    - is_published=True (required for endpoint access)
+    """
     osce = OSCE(
         osce_id="OSCE-CARD-001",
         station_title="Acute Chest Pain Assessment",
         station_type=OSCEType.HISTORY_TAKING,
-        clinical_scenario="58-year-old male with 2 hours of central chest pain",
-        patient_instructions="You are presenting with crushing central chest pain radiating to left arm",
-        marking_rubric={"introduction": {"max_marks": 1}, "history_taking": {"max_marks": 5}},
+        patient_instructions=(
+            "You are a 58-year-old male presenting with crushing central chest pain "
+            "radiating to your left arm. Started 2 hours ago while watching television. "
+            "You appear anxious and sweaty."
+        ),
+        candidate_instructions=(
+            "You are in the emergency department. "
+            "A 58-year-old male presents with chest pain. "
+            "Take a focused history using the SOCRATES framework. "
+            "You have 8 minutes."
+        ),
+        examiner_instructions=(
+            "Assess the candidate's ability to take a systematic cardiovascular history. "
+            "Award marks for SOCRATES framework, red flag identification, and communication."
+        ),
+        rubric={
+            "history_examination": {"max_marks": 3, "criteria": "Systematic SOCRATES assessment"},
+            "clinical_reasoning": {"max_marks": 3, "criteria": "Identifies ACS as differential"},
+            "communication": {"max_marks": 3, "criteria": "Clear, empathetic communication"},
+            "safety": {"max_marks": 3, "criteria": "Identifies red flags and urgency"},
+            "professionalism": {"max_marks": 3, "criteria": "Professional manner, patient comfort"}
+        },
         specialty=MedicalSpecialty.CARDIOLOGY,
         difficulty=DifficultyLevel.MEDIUM,
         time_limit_minutes=8,
-        learning_objectives=["SOCRATES pain assessment", "Cardiovascular risk factors"]
+        learning_objectives=[
+            "Apply SOCRATES framework for pain history",
+            "Identify red flags for acute coronary syndrome",
+            "Communicate effectively with anxious patient"
+        ],
+        tags=["chest pain", "history taking", "ACS", "emergency"],
+        red_flags=[
+            "Sudden onset severe chest pain",
+            "Radiation to left arm/jaw",
+            "Diaphoresis",
+            "Cardiovascular risk factors"
+        ],
+        is_published=True  # Required for endpoint access
     )
-    db.add(osce)
-    db.commit()
-    db.refresh(osce)
+    db_session.add(osce)
+    db_session.commit()
+    db_session.refresh(osce)
     return osce

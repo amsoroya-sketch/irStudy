@@ -7,6 +7,7 @@ import { lazy } from 'react';
 
 // Lazy load page components for code splitting
 export const Dashboard = lazy(() => import('./pages/Dashboard'));
+export const UnifiedDashboard = lazy(() => import('./pages/UnifiedDashboardPage')); // PRD-MVP-002
 export const MCQBrowser = lazy(() => import('./pages/MCQBrowser'));
 export const MCQAttempt = lazy(() => import('./pages/MCQAttempt'));
 export const PerformanceDashboard = lazy(() => import('./pages/PerformanceDashboard'));

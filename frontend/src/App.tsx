@@ -19,6 +19,7 @@ import {
   Login,
   Register,
   Dashboard,
+  UnifiedDashboard,
   MCQBrowser,
   MCQAttempt,
   PerformanceDashboard,
@@ -77,7 +78,7 @@ function App() {
                   path="/dashboard"
                   element={
                     <ProtectedRoute>
-                      <Dashboard />
+                      <UnifiedDashboard />
                     </ProtectedRoute>
                   }
                 />

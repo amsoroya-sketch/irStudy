@@ -33,15 +33,67 @@ from sqlalchemy import (
     Float,
     Table,
     UniqueConstraint,
+    TypeDecorator,
+    CHAR,
 )
 from sqlalchemy.dialects.postgresql import UUID as PGUUID
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from datetime import datetime
 from uuid import uuid4
+import uuid as uuid_lib
 import enum
 
 from .base import Base
+
+
+# ============================================================================
+# CUSTOM TYPES (PostgreSQL + SQLite compatibility)
+# ============================================================================
+
+
+class UUID(TypeDecorator):
+    """
+    Platform-independent UUID type.
+
+    Uses PostgreSQL's UUID type when available, otherwise uses
+    CHAR(36) to store UUID as a string in SQLite for testing.
+    """
+    impl = CHAR(36)
+    cache_ok = True
+
+    def __init__(self, as_uuid=True):
+        """Initialize UUID type with as_uuid parameter for compatibility."""
+        self.as_uuid = as_uuid
+        super(UUID, self).__init__()
+
+    def load_dialect_impl(self, dialect):
+        if dialect.name == 'postgresql':
+            return dialect.type_descriptor(PGUUID(as_uuid=self.as_uuid))
+        else:
+            return dialect.type_descriptor(CHAR(36))
+
+    def process_bind_param(self, value, dialect):
+        if value is None:
+            return value
+        elif dialect.name == 'postgresql':
+            return value
+        else:
+            if isinstance(value, uuid_lib.UUID):
+                return str(value)
+            else:
+                return str(value)
+
+    def process_result_value(self, value, dialect):
+        if value is None:
+            return value
+        elif not self.as_uuid:
+            return value
+        else:
+            if isinstance(value, uuid_lib.UUID):
+                return value
+            else:
+                return uuid_lib.UUID(value)
 
 
 # ============================================================================
@@ -997,6 +1049,9 @@ class StudyCard(Base):
     # Foreign key (nullable for shared/public cards)
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=True, index=True)
 
+    # OSCE session link (nullable for manually created cards)
+    session_id = Column(String(255), nullable=True, index=True)  # Links to OSCEAttemptAI.attempt_id
+
     # Card identification
     card_id = Column(String(50), unique=True, index=True, nullable=False)  # e.g., "CARDI-CARD-0001"
 
@@ -1165,7 +1220,7 @@ class MockPatient(Base):
     """
     __tablename__ = "mock_patients"
 
-    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     mrn = Column(String(20), unique=True)
     name = Column(String(100))
     age = Column(Integer)
@@ -1186,18 +1241,21 @@ class EMRSession(Base):
     """
     __tablename__ = "emr_sessions"
 
-    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     user_id = Column(Integer, ForeignKey("users.id"), index=True)
-    patient_id = Column(PGUUID(as_uuid=True), ForeignKey("mock_patients.id"), index=True)
+    patient_id = Column(UUID(as_uuid=True), ForeignKey("mock_patients.id"), index=True)
     emr_system = Column(String(20))  # "epic" or "cerner"
     specialty = Column(String(50), index=True)
     difficulty = Column(String(20))
     started_at = Column(DateTime, default=datetime.utcnow, index=True)
     submitted_at = Column(DateTime, nullable=True)
-    elapsed_time_seconds = Column(Integer, nullable=True)
+    elapsed_time_seconds = Column(Integer, default=0)
     validation_score = Column(Float, nullable=True)
     score_breakdown = Column(JSON, nullable=True)
     status = Column(String(20), default="in_progress")
+    auto_save_count = Column(Integer, default=0)
+    last_auto_save_at = Column(DateTime, nullable=True)
+    typing_metrics = Column(JSON, nullable=True)
 
 
 class EMRSOAPNote(Base):
@@ -1208,8 +1266,8 @@ class EMRSOAPNote(Base):
     """
     __tablename__ = "emr_soap_notes"
 
-    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
-    session_id = Column(PGUUID(as_uuid=True), ForeignKey("emr_sessions.id"), index=True)
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    session_id = Column(UUID(as_uuid=True), ForeignKey("emr_sessions.id"), index=True)
     subjective = Column(Text, nullable=True)
     objective = Column(Text, nullable=True)
     assessment = Column(Text, nullable=True)
@@ -1227,8 +1285,8 @@ class EMRPrescription(Base):
     """
     __tablename__ = "emr_prescriptions"
 
-    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
-    session_id = Column(PGUUID(as_uuid=True), ForeignKey("emr_sessions.id"), index=True)
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    session_id = Column(UUID(as_uuid=True), ForeignKey("emr_sessions.id"), index=True)
     medication_name = Column(String(200))
     dose = Column(String(100))
     frequency = Column(String(50))
@@ -1243,8 +1301,8 @@ class EMRPathologyOrder(Base):
     """
     __tablename__ = "emr_pathology_orders"
 
-    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
-    session_id = Column(PGUUID(as_uuid=True), ForeignKey("emr_sessions.id"), index=True)
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    session_id = Column(UUID(as_uuid=True), ForeignKey("emr_sessions.id"), index=True)
     test_name = Column(String(200))
     urgency = Column(String(20))
     indication = Column(Text)
@@ -1261,8 +1319,8 @@ class EMRValidationResult(Base):
     """
     __tablename__ = "emr_validation_results"
 
-    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
-    session_id = Column(PGUUID(as_uuid=True), ForeignKey("emr_sessions.id"), unique=True, index=True)
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    session_id = Column(UUID(as_uuid=True), ForeignKey("emr_sessions.id"), unique=True, index=True)
     rule_based_score = Column(Float)
     ai_validation_score = Column(Float, nullable=True)
     specialist_score = Column(Float, nullable=True)
