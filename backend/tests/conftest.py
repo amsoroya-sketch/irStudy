@@ -214,6 +214,104 @@ def auth_headers(test_user):
     return {"Authorization": f"Bearer {access_token}"}
 
 
+@pytest.fixture
+def db(db_session):
+    """Alias for db_session fixture (integration tests use 'db' parameter)"""
+    return db_session
+
+
+@pytest.fixture
+def user_with_activity(db_session, test_user):
+    """
+    Create test user with activity history for performance tests.
+
+    Adds:
+    - 10 MCQ attempts
+    - 3 OSCE sessions
+    - 5 study card reviews
+
+    Use this for dashboard performance tests that need realistic data.
+    """
+    from src.db.models import (
+        MCQ, MCQAttempt, OSCE, OSCEAttempt,
+        StudyCard, StudyCardReview,
+        MedicalSpecialty, DifficultyLevel
+    )
+    from datetime import datetime, timedelta
+
+    # Create MCQs and attempts
+    for i in range(10):
+        mcq = MCQ(
+            question_id=f"ACTIVITY-MCQ-{i}",
+            question_text=f"Activity test question {i}",
+            options={"A": "A", "B": "B", "C": "C", "D": "D"},
+            correct_answer="A",
+            explanation="Test explanation",
+            citation="Test citation",
+            specialty=MedicalSpecialty.GENERAL_PRACTICE,
+            difficulty=DifficultyLevel.MEDIUM,
+            is_published=True
+        )
+        db_session.add(mcq)
+        db_session.flush()
+
+        attempt = MCQAttempt(
+            user_id=test_user.id,
+            mcq_id=mcq.id,
+            selected_answer="A" if i < 7 else "B",  # 70% correct
+            is_correct=(i < 7),
+            time_taken=30 + i,
+            attempted_at=datetime.utcnow() - timedelta(days=i)
+        )
+        db_session.add(attempt)
+
+    # Create OSCEs and attempts
+    for i in range(3):
+        osce = OSCE(
+            osce_id=f"ACTIVITY-OSCE-{i}",
+            title=f"Activity OSCE {i}",
+            specialty=MedicalSpecialty.CARDIOLOGY,
+            scenario_text=f"Test scenario {i}",
+            patient_demographics={"age": 50, "gender": "Male"},
+            history_taking_rubric=[{"item": "Test", "weight": 1.0}],
+            is_published=True
+        )
+        db_session.add(osce)
+        db_session.flush()
+
+        osce_attempt = OSCEAttempt(
+            user_id=test_user.id,
+            osce_id=osce.osce_id,
+            responses={"history_taking": ["Test"]},
+            score=7.5 + i,
+            completed_at=datetime.utcnow() - timedelta(days=i * 2)
+        )
+        db_session.add(osce_attempt)
+
+    # Create study cards and reviews
+    for i in range(5):
+        card = StudyCard(
+            title=f"Activity Card {i}",
+            front_content=f"Question {i}",
+            back_content=f"Answer {i}",
+            tags=["test"],
+            specialty=MedicalSpecialty.GENERAL_PRACTICE
+        )
+        db_session.add(card)
+        db_session.flush()
+
+        review = StudyCardReview(
+            user_id=test_user.id,
+            card_id=card.id,
+            quality=4,  # "Easy"
+            reviewed_at=datetime.utcnow() - timedelta(days=i)
+        )
+        db_session.add(review)
+
+    db_session.commit()
+    return test_user
+
+
 # ============================================================================
 # PATIENT PERSONA FIXTURES
 # ============================================================================
