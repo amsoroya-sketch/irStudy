@@ -1257,6 +1257,12 @@ class EMRSession(Base):
     last_auto_save_at = Column(DateTime, nullable=True)
     typing_metrics = Column(JSON, nullable=True)
 
+    # OSCE-to-EMR conversion fields
+    patient_data = Column(JSON, nullable=True)
+    session_data = Column(JSON, nullable=True)
+    source_osce_attempt_id = Column(String(255), nullable=True, index=True)
+    conversion_metadata = Column(JSON, nullable=True)
+
 
 class EMRSOAPNote(Base):
     """

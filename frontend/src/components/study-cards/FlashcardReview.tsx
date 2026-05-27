@@ -26,7 +26,7 @@ import {
   Stack,
 } from '@mui/material';
 import { reviewCard } from '../../api/studyCards';
-import { ReviewPerformance } from '../../types/study-cards';
+import { performanceToQuality } from '../../types/study-cards';
 import { useStudyCards } from '../../hooks/useStudyCards';
 
 /**
@@ -56,7 +56,10 @@ export const FlashcardReview: React.FC = () => {
     isError,
     error,
     refetch,
-  } = useStudyCards(true);
+  } = useStudyCards();
+
+  // Compute current card before early returns (undefined during loading/error)
+  const currentCard = cardsData?.cards[currentCardIndex];
 
   // Handle 401 errors - redirect to login
   useEffect(() => {
@@ -67,8 +70,8 @@ export const FlashcardReview: React.FC = () => {
 
   // Review card mutation
   const reviewMutation = useMutation({
-    mutationFn: ({ cardId, performance }: { cardId: string; performance: ReviewPerformance }) =>
-      reviewCard(cardId, { performance }),
+    mutationFn: ({ cardId, quality }: { cardId: number; quality: number }) =>
+      reviewCard(cardId, quality),
     onSuccess: () => {
       // Invalidate cache and refetch cards
       queryClient.invalidateQueries({ queryKey: ['studyCards', 'due'] });
@@ -78,6 +81,72 @@ export const FlashcardReview: React.FC = () => {
       setShowAnswer(false);
     },
   });
+
+  /**
+   * Keyboard shortcuts for flashcard review
+   * Spacebar: flip card
+   * 1: Again (quality 0)
+   * 2: Hard (quality 1)
+   * 3: Good (quality 3)
+   * 4: Easy (quality 5)
+   */
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Prevent shortcuts when mutation is pending
+      if (reviewMutation.isPending) return;
+
+      switch (event.key) {
+        case ' ':
+        case 'Spacebar':
+          event.preventDefault();
+          setShowAnswer((prev) => !prev);
+          break;
+        case '1':
+          if (showAnswer && currentCard) {
+            event.preventDefault();
+            reviewMutation.mutate({
+              cardId: currentCard.id,
+              quality: performanceToQuality.again,
+            });
+          }
+          break;
+        case '2':
+          if (showAnswer && currentCard) {
+            event.preventDefault();
+            reviewMutation.mutate({
+              cardId: currentCard.id,
+              quality: performanceToQuality.hard,
+            });
+          }
+          break;
+        case '3':
+          if (showAnswer && currentCard) {
+            event.preventDefault();
+            reviewMutation.mutate({
+              cardId: currentCard.id,
+              quality: performanceToQuality.good,
+            });
+          }
+          break;
+        case '4':
+          if (showAnswer && currentCard) {
+            event.preventDefault();
+            reviewMutation.mutate({
+              cardId: currentCard.id,
+              quality: performanceToQuality.easy,
+            });
+          }
+          break;
+        default:
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [reviewMutation, showAnswer, currentCard]);
 
   // Handle errors
   if (isError) {
@@ -148,9 +217,6 @@ export const FlashcardReview: React.FC = () => {
     );
   }
 
-  // Get current card
-  const currentCard = cardsData.cards[currentCardIndex];
-
   // All cards reviewed
   if (!currentCard) {
     return (
@@ -168,10 +234,10 @@ export const FlashcardReview: React.FC = () => {
   }
 
   // Handle review button click
-  const handleReview = (performance: ReviewPerformance) => {
+  const handleReview = (quality: number) => {
     reviewMutation.mutate({
-      cardId: currentCard.card_id,
-      performance,
+      cardId: currentCard.id,
+      quality,
     });
   };
 
@@ -179,7 +245,7 @@ export const FlashcardReview: React.FC = () => {
     <Container maxWidth="md" sx={{ mt: 4 }}>
       {/* Progress indicator */}
       <Typography variant="body2" color="text.secondary" align="center" mb={2}>
-        Card {currentCardIndex + 1} of {cardsData.total_count}
+        Card {currentCardIndex + 1} of {cardsData.total_due}
       </Typography>
 
       {/* Flashcard */}
@@ -237,34 +303,34 @@ export const FlashcardReview: React.FC = () => {
                   <Button
                     variant="outlined"
                     color="error"
-                    onClick={() => handleReview('again')}
+                    onClick={() => handleReview(performanceToQuality.again)}
                     disabled={reviewMutation.isPending}
                   >
-                    Again
+                    Again (1)
                   </Button>
                   <Button
                     variant="outlined"
                     color="warning"
-                    onClick={() => handleReview('hard')}
+                    onClick={() => handleReview(performanceToQuality.hard)}
                     disabled={reviewMutation.isPending}
                   >
-                    Hard
+                    Hard (2)
                   </Button>
                   <Button
                     variant="contained"
                     color="success"
-                    onClick={() => handleReview('good')}
+                    onClick={() => handleReview(performanceToQuality.good)}
                     disabled={reviewMutation.isPending}
                   >
-                    Good
+                    Good (3)
                   </Button>
                   <Button
                     variant="contained"
                     color="primary"
-                    onClick={() => handleReview('easy')}
+                    onClick={() => handleReview(performanceToQuality.easy)}
                     disabled={reviewMutation.isPending}
                   >
-                    Easy
+                    Easy (4)
                   </Button>
                 </Stack>
               )}

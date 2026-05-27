@@ -11,36 +11,37 @@
 
 import axiosInstance from './client';
 import {
-  StudyCardsResponse,
-  ReviewCardRequest,
-  ReviewCardResponse,
+  StudyCardsDueResponse,
+  StudyCardReviewResponse,
 } from '../types/study-cards';
 
 /**
  * Get study cards due for review
- * @param due - Filter by cards due for review (default: true)
- * @returns Study cards response with cards and total count
+ * @param limit - Maximum cards to return (default: 20)
+ * @returns Study cards response with cards and total due count
  */
-export const getStudyCards = async (due: boolean = true): Promise<StudyCardsResponse> => {
-  const response = await axiosInstance.get<StudyCardsResponse>('/study-cards', {
-    params: { due },
+export const getStudyCards = async (limit: number = 20): Promise<StudyCardsDueResponse> => {
+  const response = await axiosInstance.get<StudyCardsDueResponse>('/study-cards/due-cards', {
+    params: { limit },
   });
   return response.data;
 };
 
 /**
  * Review a study card (SM-2 algorithm update)
- * @param cardId - Card ID to review
- * @param request - Review performance rating
+ * @param cardId - Numeric card ID to review
+ * @param quality - SM-2 quality rating (0-5)
+ * @param timeTakenSeconds - Time taken to review in seconds
  * @returns Updated SM-2 parameters and next review date
  */
 export const reviewCard = async (
-  cardId: string,
-  request: ReviewCardRequest
-): Promise<ReviewCardResponse> => {
-  const response = await axiosInstance.post<ReviewCardResponse>(
-    `/study-cards/${cardId}/review`,
-    request
+  cardId: number,
+  quality: number,
+  timeTakenSeconds: number = 10
+): Promise<StudyCardReviewResponse> => {
+  const response = await axiosInstance.post<StudyCardReviewResponse>(
+    '/study-cards/review',
+    { card_id: cardId, quality, time_taken_seconds: timeTakenSeconds }
   );
   return response.data;
 };

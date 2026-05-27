@@ -1,0 +1,141 @@
+# irStudy Medical Education Platform - Backend Dependencies
+# Python 3.12+ required
+
+# ============================================================================
+# WEB FRAMEWORK
+# ============================================================================
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+pydantic-settings==2.1.0
+python-multipart==0.0.6
+
+# ============================================================================
+# DATABASE
+# ============================================================================
+# PostgreSQL
+sqlalchemy[asyncio]==2.0.25
+asyncpg==0.29.0
+alembic==1.13.1
+psycopg2-binary==2.9.9
+
+# Redis
+redis==5.0.1
+hiredis==2.3.2
+
+# ============================================================================
+# AUTHENTICATION & SECURITY
+# ============================================================================
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+bcrypt==4.1.2
+
+# HashiCorp Vault client
+hvac==2.1.0
+
+# JWT handling
+PyJWT==2.8.0
+cryptography==42.0.0
+
+# ============================================================================
+# AI/ML & VECTOR DATABASES
+# ============================================================================
+# Qdrant vector database client
+qdrant-client==1.7.3
+
+# Neo4j knowledge graph
+neo4j==5.16.0
+
+# Sentence transformers for embeddings (Python 3.11 compatible - reverted to original versions)
+sentence-transformers==2.3.1
+torch==2.1.2
+transformers==4.37.0
+
+# OpenAI & Anthropic LLMs (langchain-openai requires openai>=1.10.0)
+openai==1.10.0
+anthropic==0.17.0
+
+# LangChain for AI orchestration
+langchain==0.1.4
+langchain-openai==0.0.5
+langchain-anthropic==0.1.1
+langchain-community==0.0.16
+
+# Ollama client (requires httpx<0.26.0)
+ollama==0.1.6
+
+# ============================================================================
+# TASK QUEUE
+# ============================================================================
+celery[redis]==5.3.6
+flower==2.0.1
+
+# ============================================================================
+# MONITORING & OBSERVABILITY
+# ============================================================================
+prometheus-client==0.19.0
+sentry-sdk[fastapi]==1.40.0
+
+# ============================================================================
+# UTILITIES
+# ============================================================================
+# HTTP client (ollama requires httpx<0.26.0)
+httpx==0.25.2
+aiohttp==3.9.1
+
+# Date/time handling
+python-dateutil==2.8.2
+pytz==2024.1
+
+# Email
+fastapi-mail==1.4.1
+
+# File handling
+python-magic==0.4.27
+pillow==10.2.0
+
+# PDF processing
+PyPDF2==3.0.1
+pdfplumber==0.10.4
+
+# Excel/CSV
+pandas==2.2.0
+openpyxl==3.1.2
+
+# Validation
+email-validator==2.1.0.post1
+
+# ============================================================================
+# TESTING & DEVELOPMENT
+# ============================================================================
+pytest==7.4.4
+pytest-asyncio==0.23.3
+pytest-cov==4.1.0
+pytest-mock==3.12.0
+httpx==0.25.2  # Must match main httpx version (ollama compatibility)
+
+# Code quality
+black==24.1.1
+flake8==7.0.0
+mypy==1.8.0
+isort==5.13.2
+
+# ============================================================================
+# MEDICAL DOMAIN SPECIFIC
+# ============================================================================
+# Medical NLP (scispacy requires spacy<3.7.0, using Python 3.11)
+scispacy==0.5.3
+spacy==3.6.1
+
+# Medical knowledge bases (optional)
+# biopython==1.83
+
+# ============================================================================
+# ENVIRONMENT & CONFIGURATION
+# ============================================================================
+python-dotenv==1.0.1
+
+# WebSocket support
+websockets==12.0
+slowapi==0.1.9

@@ -33,8 +33,9 @@ export interface SM2Params {
  * Study Card (single flashcard)
  */
 export interface StudyCard {
+  id: number; // Database primary key
   card_id: string; // Format: "CARD-{session_id}-{index}"
-  user_id: string; // UUID
+  user_id: number | null; // User ID or null for public cards
   session_id: string; // UUID (OSCE session reference)
   question: string; // Clinical question
   answer: string; // Clinical answer with explanation
@@ -54,31 +55,45 @@ export interface StudyCard {
 }
 
 /**
- * Study Cards Response (from GET /api/v1/study-cards)
+ * Study Cards Due Response (from GET /api/v1/study-cards/due-cards)
  */
-export interface StudyCardsResponse {
+export interface StudyCardsDueResponse {
   cards: StudyCard[];
-  total_count: number;
+  total_due: number;
 }
 
 /**
- * Review Performance Rating (SM-2 algorithm)
+ * Performance to SM-2 quality mapping
+ * Maps user-friendly ratings to SM-2 integer quality values (0-5)
  */
-export type ReviewPerformance = 'again' | 'hard' | 'good' | 'easy';
+export const performanceToQuality = {
+  again: 0,
+  hard: 1,
+  good: 3,
+  easy: 5,
+} as const;
+
+export type PerformanceRating = keyof typeof performanceToQuality;
 
 /**
- * Review Request (POST /api/v1/study-cards/{card_id}/review)
+ * Review Request (POST /api/v1/study-cards/review)
  */
 export interface ReviewCardRequest {
-  performance: ReviewPerformance;
+  card_id: number;
+  quality: number; // 0-5
+  time_taken_seconds: number;
 }
 
 /**
  * Review Response
  */
-export interface ReviewCardResponse {
-  card_id: string;
-  sm2_params: SM2Params;
+export interface StudyCardReviewResponse {
+  card_id: number;
+  quality: number;
   next_review_date: string;
+  interval_days: number;
+  ease_factor: number;
+  repetitions: number;
   message: string;
+  quality_description: string;
 }

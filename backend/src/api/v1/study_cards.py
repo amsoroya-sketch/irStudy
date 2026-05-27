@@ -24,7 +24,7 @@ from datetime import datetime, date
 import logging
 
 from fastapi import APIRouter, Depends, HTTPException, status, Query
-from sqlalchemy import func, and_
+from sqlalchemy import func, and_, or_
 from sqlalchemy.orm import Session
 
 from src.db.base import get_db
@@ -86,13 +86,17 @@ async def get_due_cards(
     Raises:
     - 401: User not authenticated
     """
-    # Build query for cards due today
+    # Build query for cards due today (scoped to user or public cards)
     today = datetime.utcnow()
 
     query = db.query(StudyCard).filter(
         StudyCard.is_active == True,
         StudyCard.next_review_date <= today,
-        StudyCard.deleted_at.is_(None)
+        StudyCard.deleted_at.is_(None),
+        or_(
+            StudyCard.user_id == current_user.id,
+            StudyCard.user_id.is_(None)
+        )
     )
 
     # Apply filters if provided
@@ -142,6 +146,67 @@ async def get_due_cards(
 
 
 # ============================================================================
+# LIST STUDY CARDS
+# ============================================================================
+
+
+@router.get("/", response_model=StudyCardsDueResponse)
+async def list_study_cards(
+    skip: int = Query(0, ge=0),
+    limit: int = Query(20, ge=1, le=100),
+    specialty: Optional[MedicalSpecialty] = Query(None),
+    current_user: User = Depends(get_current_active_user),
+    db: Session = Depends(get_db),
+):
+    """List all study cards for the current user (including public cards)."""
+    query = db.query(StudyCard).filter(
+        StudyCard.is_active == True,
+        StudyCard.deleted_at.is_(None),
+        or_(
+            StudyCard.user_id == current_user.id,
+            StudyCard.user_id.is_(None)
+        )
+    )
+
+    if specialty:
+        query = query.filter(StudyCard.specialty == specialty)
+
+    total = query.count()
+    cards = query.order_by(StudyCard.created_at.desc()).offset(skip).limit(limit).all()
+
+    card_responses = [
+        StudyCardResponse(
+            id=card.id,
+            user_id=card.user_id,
+            card_id=card.card_id,
+            specialty=card.specialty,
+            topic=card.topic,
+            subtopic=card.subtopic,
+            question=card.question,
+            answer=card.answer,
+            explanation=card.explanation,
+            citations=card.citations,
+            difficulty=card.difficulty,
+            tags=card.tags or [],
+            card_type=card.card_type,
+            next_review_date=card.next_review_date,
+            interval_days=card.interval_days,
+            ease_factor=card.ease_factor,
+            repetitions=card.repetitions,
+            is_active=card.is_active,
+            created_at=card.created_at,
+            updated_at=card.updated_at,
+        )
+        for card in cards
+    ]
+
+    return StudyCardsDueResponse(
+        total_due=total,
+        cards=card_responses
+    )
+
+
+# ============================================================================
 # SUBMIT REVIEW
 # ============================================================================
 
@@ -182,7 +247,7 @@ async def submit_review(
     - 401: User not authenticated
     - 400: Invalid quality rating (must be 0-5)
     """
-    # Get study card
+    # Get study card (verify ownership or public access)
     card = db.query(StudyCard).filter(
         StudyCard.id == review.card_id,
         StudyCard.is_active == True,
@@ -193,6 +258,13 @@ async def submit_review(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Study card {review.card_id} not found or inactive"
+        )
+
+    # Verify card belongs to user or is public
+    if card.user_id is not None and card.user_id != current_user.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="You do not have permission to review this card"
         )
 
     # Validate quality rating
@@ -483,55 +555,67 @@ async def get_statistics(
     Raises:
     - 401: User not authenticated
     """
-    # Get all active cards
+    # Base filter: scoped to user or public cards
+    user_scope = or_(
+        StudyCard.user_id == current_user.id,
+        StudyCard.user_id.is_(None)
+    )
+
+    # Get all active cards (scoped)
     total_cards = db.query(StudyCard).filter(
         StudyCard.is_active == True,
-        StudyCard.deleted_at.is_(None)
+        StudyCard.deleted_at.is_(None),
+        user_scope
     ).count()
 
-    # Cards by specialty
+    # Cards by specialty (scoped)
     specialty_counts = db.query(
         StudyCard.specialty,
         func.count(StudyCard.id)
     ).filter(
         StudyCard.is_active == True,
-        StudyCard.deleted_at.is_(None)
+        StudyCard.deleted_at.is_(None),
+        user_scope
     ).group_by(StudyCard.specialty).all()
 
     by_specialty = {str(specialty): count for specialty, count in specialty_counts}
 
-    # Cards by difficulty
+    # Cards by difficulty (scoped)
     difficulty_counts = db.query(
         StudyCard.difficulty,
         func.count(StudyCard.id)
     ).filter(
         StudyCard.is_active == True,
-        StudyCard.deleted_at.is_(None)
+        StudyCard.deleted_at.is_(None),
+        user_scope
     ).group_by(StudyCard.difficulty).all()
 
     by_difficulty = {str(difficulty): count for difficulty, count in difficulty_counts}
 
-    # Cards due today
+    # Cards due today (scoped)
     today = datetime.utcnow()
     cards_due_today = db.query(StudyCard).filter(
         StudyCard.is_active == True,
         StudyCard.next_review_date <= today,
-        StudyCard.deleted_at.is_(None)
+        StudyCard.deleted_at.is_(None),
+        user_scope
     ).count()
 
-    # Cards mastered (repetitions >= 3)
+    # Cards mastered (repetitions >= 3) (scoped)
     cards_mastered = db.query(StudyCard).filter(
         StudyCard.is_active == True,
         StudyCard.repetitions >= 3,
-        StudyCard.deleted_at.is_(None)
+        StudyCard.deleted_at.is_(None),
+        user_scope
     ).count()
 
-    # Average ease factor
+    # Average ease factor (scoped)
     avg_ease_factor_result = db.query(
         func.avg(StudyCard.ease_factor)
     ).filter(
         StudyCard.is_active == True,
-        StudyCard.deleted_at.is_(None)
+        StudyCard.deleted_at.is_(None),
+        user_scope
     ).scalar()
 
     average_ease_factor = float(avg_ease_factor_result) if avg_ease_factor_result else 2.5

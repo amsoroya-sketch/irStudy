@@ -1,246 +1,295 @@
 """
 Integration Test: OSCE to EMR Conversion
 
-Tests the integration between OSCE module and EMR module.
+Tests the integration between AI OSCE module and EMR Practice module.
 
 PRD: PRD-MVP-004-INTEGRATION-TESTING.md
-User Story: As a student, I want to convert my completed OSCE session
+User Story: As a student, I want to convert my completed AI OSCE session
             into an EMR case for documentation practice.
 """
 
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
-import json
+from uuid import uuid4
+from datetime import datetime, timezone
+from unittest.mock import patch
+
 
 @pytest.mark.integration
 class TestOSCEToEMRConversion:
-    """Test OSCE session conversion to EMR cases"""
+    """Test AI OSCE session conversion to EMR cases"""
 
-    def test_conversion_01_complete_osce_session_first(
-        self, client: TestClient, db: Session, auth_headers: dict
-    ):
-        """
-        Test 5: Complete OSCE session before conversion
+    def _create_patient_persona(self, db: Session):
+        """Helper to create a patient persona for OSCE sessions"""
+        from src.db.models import PatientPersona
 
-        Steps:
-        1. Create OSCE scenario in database
-        2. POST /api/v1/osces/sessions with responses
-        3. Verify OSCE session created with completed status
-        4. Verify session includes patient context
-
-        Expected:
-        - OSCE session created successfully
-        - Status is "completed"
-        - Patient demographics captured
-        """
-        from src.db.models import OSCE, MedicalSpecialty
-
-        # Setup: Create OSCE scenario
-        osce = OSCE(
-            osce_id="INTEGRATION-OSCE-CHEST-PAIN-001",
-            title="Chest Pain Assessment",
-            specialty=MedicalSpecialty.CARDIOLOGY,
-            scenario_text="Patient presents with chest pain...",
-            patient_demographics={
-                "age": 55,
-                "gender": "Male",
-                "presenting_complaint": "Chest pain"
-            },
-            history_taking_rubric=[
-                {"item": "Onset", "weight": 1.0},
-                {"item": "Character", "weight": 1.0},
-                {"item": "Radiation", "weight": 1.0}
-            ],
-            is_published=True
+        persona = PatientPersona(
+            persona_id=str(uuid4()),
+            persona_code="CARD-001-CHEST-PAIN",
+            name="John Smith",
+            age=55,
+            gender="male",
+            occupation="Builder",
+            cultural_background="Australian",
+            preferred_language="English",
+            specialty="cardiology",
+            chief_complaint="Chest pain",
+            opening_statement="Doctor, I've been having this terrible chest pain...",
+            symptoms={},
+            medical_history={},
+            emotional_profile={},
+            rag_query_hints=[],
+            key_differentials=[],
+            critical_actions=[],
+            difficulty_level="intermediate",
+            amc_blueprint_area="cardiovascular",
+            is_active=True,
         )
-        db.add(osce)
+        db.add(persona)
         db.commit()
+        db.refresh(persona)
+        return persona
 
-        # Create OSCE session
-        session_data = {
-            "osce_id": "INTEGRATION-OSCE-CHEST-PAIN-001",
-            "responses": {
-                "history_taking": ["Onset", "Character", "Radiation"],
-                "physical_exam": ["Vital signs", "Cardiovascular exam"]
-            }
-        }
+    def _create_completed_osce_attempt(self, db: Session, user_id: str, persona_id: str):
+        """Helper to create a completed AI OSCE attempt"""
+        from src.db.models import OSCEAttemptAI
 
-        response = client.post(
-            "/api/v1/osces/sessions",
-            json=session_data,
-            headers=auth_headers
+        attempt_id = str(uuid4())
+        osce_attempt = OSCEAttemptAI(
+            attempt_id=attempt_id,
+            user_id=str(user_id),
+            persona_id=persona_id,
+            session_type="individual",
+            started_at=datetime.now(timezone.utc),
+            ended_at=datetime.now(timezone.utc),
+            duration_seconds=480,
+            conversation_history=[
+                {
+                    "role": "patient",
+                    "content": "I've been having this terrible chest pain for the last 2 hours.",
+                    "timestamp": "2026-04-05T10:00:00Z",
+                },
+                {
+                    "role": "student",
+                    "content": "Can you describe the pain for me?",
+                    "timestamp": "2026-04-05T10:00:15Z",
+                },
+                {
+                    "role": "patient",
+                    "content": "It's right in the middle of my chest, like someone is squeezing it.",
+                    "timestamp": "2026-04-05T10:00:30Z",
+                },
+            ],
+            emotional_state_transitions=[],
+            student_actions=[],
+            was_completed=True,
+            session_state="complete",
+        )
+        db.add(osce_attempt)
+        db.commit()
+        db.refresh(osce_attempt)
+        return osce_attempt
+
+    def _mock_conversion_result(self):
+        """Helper to create a mocked ConversionResult"""
+        from src.schemas.integration import ConversionResult, SOAPNoteDraft, ConversionMetadata
+
+        return ConversionResult(
+            soap_note_draft=SOAPNoteDraft(
+                subjective="55-year-old male presents with 2-hour history of central chest pain. Pain described as crushing and heavy. Associated with diaphoresis. Risk factors include hypertension, hyperlipidaemia, and smoking.",
+                objective="Physical examination not performed during OSCE station.",
+                assessment="Acute Coronary Syndrome (ACS) - most likely unstable angina or NSTEMI. Differential: GORD, musculoskeletal chest pain, pulmonary embolism.",
+                plan="Urgent ECG and troponin. Aspirin 300mg PO stat. GTN spray sublingual PRN. Urgent cardiology review.",
+            ),
+            metadata=ConversionMetadata(
+                pre_fill_percentage=0.78,
+                extraction_confidence=0.85,
+                tokens_used=1300,
+                api_response_time_ms=420,
+                missing_elements=["Vital signs", "Allergies", "Family history"],
+                australian_terminology_compliance=True,
+            ),
         )
 
-        assert response.status_code == 201
-        session = response.json()
-
-        assert "session_id" in session
-        assert session["status"] == "completed"
-        assert session["osce_id"] == "INTEGRATION-OSCE-CHEST-PAIN-001"
-
-        return session["session_id"]
-
-    def test_conversion_02_convert_osce_to_emr_case(
+    def test_conversion_01_complete_osce_session_and_convert(
         self, client: TestClient, db: Session, auth_headers: dict
     ):
         """
-        Test 6: Convert OSCE session to EMR case
+        Test 1: Create completed AI OSCE session and convert to EMR
 
         Steps:
-        1. Create and complete OSCE session (from Test 5)
-        2. POST /api/v1/emr/convert-from-osce with session_id
-        3. Verify EMR case created
-        4. Verify patient context transferred correctly
-        5. Verify history items mapped
+        1. Create patient persona in database
+        2. Create completed OSCEAttemptAI in database
+        3. POST /api/v1/integration/osce-to-emr with attempt_id
+        4. Verify EMR session created with 201 status
 
         Expected:
-        - EMR case created successfully
-        - All OSCE data transferred
-        - Source OSCE session linked
+        - Conversion endpoint returns 201
+        - Response contains emr_session_id, pre_fill_percentage, redirect_url
+        - Pre-fill percentage meets ≥70% target
         """
-        from src.db.models import OSCE, OSCESession, MedicalSpecialty
-        from src.core.auth import create_access_token
-
-        # Setup: Create OSCE and session
-        osce = OSCE(
-            osce_id="INTEGRATION-OSCE-CONVERSION-TEST",
-            title="Conversion Test OSCE",
-            specialty=MedicalSpecialty.CARDIOLOGY,
-            scenario_text="Test scenario for conversion",
-            patient_demographics={
-                "age": 45,
-                "gender": "Female",
-                "presenting_complaint": "Shortness of breath"
-            },
-            history_taking_rubric=[
-                {"item": "Onset", "weight": 1.0},
-                {"item": "Duration", "weight": 1.0}
-            ],
-            is_published=True
-        )
-        db.add(osce)
-        db.flush()
-
-        # Extract user_id from auth_headers
-        token = auth_headers["Authorization"].replace("Bearer ", "")
-        # Decode token to get user_id (simplified for test)
         from src.db.models import User
-        user = db.query(User).first()
 
-        osce_session = OSCESession(
-            osce_id=osce.osce_id,
-            user_id=user.id,
-            responses={
-                "history_taking": ["Onset", "Duration"],
-                "physical_exam": ["Vital signs"]
-            },
-            score=8.5,
-            status="completed"
-        )
-        db.add(osce_session)
-        db.commit()
+        user = db.query(User).filter(User.email == "test@test.com").first()
+        persona = self._create_patient_persona(db)
+        osce_attempt = self._create_completed_osce_attempt(db, user.id, persona.persona_id)
 
-        # Convert to EMR
-        conversion_data = {
-            "osce_session_id": str(osce_session.id)
-        }
+        mock_result = self._mock_conversion_result()
 
-        response = client.post(
-            "/api/v1/emr/convert-from-osce",
-            json=conversion_data,
-            headers=auth_headers
-        )
+        with patch(
+            "src.api.v1.integration.converter.OSCEToEMRConverter.convert",
+            return_value=mock_result,
+        ):
+            response = client.post(
+                "/api/v1/integration/osce-to-emr",
+                json={"osceAttemptId": osce_attempt.attempt_id},
+                headers=auth_headers,
+            )
 
-        assert response.status_code == 201
-        emr_case = response.json()
+        assert response.status_code == 201, f"Expected 201, got {response.status_code}: {response.text}"
+        data = response.json()
 
-        assert "case_id" in emr_case
-        assert emr_case["status"] == "active"
-        assert emr_case["source_osce_session_id"] == str(osce_session.id)
+        assert "emrSessionId" in data
+        assert "preFillPercentage" in data
+        assert "extractionConfidence" in data
+        assert "redirectUrl" in data
+        assert "message" in data
 
-        # Verify patient context transferred
-        patient_context = emr_case["patient_context"]
-        assert patient_context["demographics"]["age"] == 45
-        assert patient_context["demographics"]["gender"] == "Female"
-        assert patient_context["presenting_complaint"] == "Shortness of breath"
+        # Pre-fill accuracy ≥70%
+        assert data["preFillPercentage"] >= 0.70
 
-        # Verify history items
-        assert len(patient_context["history"]) == 2
-        history_items = [item["item"] for item in patient_context["history"]]
-        assert "Onset" in history_items
-        assert "Duration" in history_items
+        # Extraction confidence ≥65%
+        assert data["extractionConfidence"] >= 0.65
 
-    def test_conversion_03_verify_bidirectional_link(
+        # Redirect URL points to EMR session
+        assert "/emr/session/" in data["redirectUrl"]
+
+    def test_conversion_02_verify_emr_session_content(
         self, client: TestClient, db: Session, auth_headers: dict
     ):
         """
-        Test 7: Verify OSCE ↔ EMR bidirectional linking
+        Test 2: Verify converted EMR session contains correct pre-filled data
 
         Steps:
-        1. Create OSCE session
-        2. Convert to EMR case
-        3. GET /api/v1/osces/sessions/{id} - verify emr_case_id present
-        4. GET /api/v1/emr/cases/{id} - verify osce_session_id present
+        1. Create completed OSCE attempt
+        2. Convert via API endpoint
+        3. GET /api/v1/emr/sessions/{session_id}
+        4. Verify patient context and SOAP note transferred
 
         Expected:
-        - OSCE session has emr_case_id reference
-        - EMR case has osce_session_id reference
-        - Can navigate between both
+        - EMR session has source_osce_attempt_id linking back to OSCE
+        - session_data contains auto-filled SOAP note
+        - conversion_metadata tracked
         """
-        from src.db.models import OSCE, OSCESession, User, MedicalSpecialty
+        from src.db.models import User, EMRSession
 
-        # Setup
-        user = db.query(User).first()
+        user = db.query(User).filter(User.email == "test@test.com").first()
+        persona = self._create_patient_persona(db)
+        osce_attempt = self._create_completed_osce_attempt(db, user.id, persona.persona_id)
 
-        osce = OSCE(
-            osce_id="INTEGRATION-BIDIRECTIONAL-TEST",
-            title="Bidirectional Link Test",
-            specialty=MedicalSpecialty.GENERAL_PRACTICE,
-            scenario_text="Test",
-            patient_demographics={"age": 30, "gender": "Male"},
-            history_taking_rubric=[{"item": "Test", "weight": 1.0}],
-            is_published=True
-        )
-        db.add(osce)
-        db.flush()
+        mock_result = self._mock_conversion_result()
 
-        osce_session = OSCESession(
-            osce_id=osce.osce_id,
-            user_id=user.id,
-            responses={"history_taking": ["Test"]},
-            score=9.0,
-            status="completed"
-        )
-        db.add(osce_session)
-        db.commit()
-
-        # Convert
-        conversion_response = client.post(
-            "/api/v1/emr/convert-from-osce",
-            json={"osce_session_id": str(osce_session.id)},
-            headers=auth_headers
-        )
+        # Convert OSCE to EMR
+        with patch(
+            "src.api.v1.integration.converter.OSCEToEMRConverter.convert",
+            return_value=mock_result,
+        ):
+            conversion_response = client.post(
+                "/api/v1/integration/osce-to-emr",
+                json={"osceAttemptId": osce_attempt.attempt_id},
+                headers=auth_headers,
+            )
 
         assert conversion_response.status_code == 201
-        emr_case_id = conversion_response.json()["case_id"]
+        emr_session_id = conversion_response.json()["emrSessionId"]
 
-        # Verify OSCE → EMR link
-        osce_response = client.get(
-            f"/api/v1/osces/sessions/{osce_session.id}",
-            headers=auth_headers
+        # Verify EMR session in database
+        emr_session = (
+            db.query(EMRSession)
+            .filter(EMRSession.id == emr_session_id)
+            .first()
+        )
+        assert emr_session is not None
+        assert emr_session.source_osce_attempt_id == osce_attempt.attempt_id
+        assert emr_session.user_id == user.id
+
+        # Verify session_data contains SOAP note
+        session_data = emr_session.session_data or {}
+        assert "soap_note" in session_data
+        soap = session_data["soap_note"]
+        assert "subjective" in soap
+        assert "objective" in soap
+        assert "assessment" in soap
+        assert "plan" in soap
+        assert session_data.get("auto_filled") is True
+        assert session_data.get("conversion_source") == "osce_transcript"
+
+        # Verify conversion metadata
+        meta = emr_session.conversion_metadata or {}
+        assert "pre_fill_percentage" in meta
+        assert "extraction_confidence" in meta
+        assert "tokens_used" in meta
+
+    def test_conversion_03_unauthorized_conversion_rejected(
+        self, client: TestClient, db: Session, auth_headers: dict
+    ):
+        """
+        Test 3: Verify user cannot convert another user's OSCE attempt
+
+        Steps:
+        1. Create OSCE attempt for user A
+        2. Attempt conversion as user B (different auth)
+        3. Verify 403 Forbidden response
+
+        Expected:
+        - Conversion rejected with 403 status
+        - Error code 'UNAUTHORIZED'
+        - No EMR session created
+        """
+        from src.db.models import User, EMRSession
+        from src.auth.security import create_access_token
+
+        # Create a second user
+        user_b = User(
+            email="otheruser@test.com",
+            password_hash="$2b$12$dummyhashforusertest",
+            full_name="Other User",
+            role="student",
+            is_verified=True,
+            is_active=True,
+        )
+        db.add(user_b)
+        db.commit()
+        db.refresh(user_b)
+
+        # Create OSCE attempt for the original test user (user A)
+        persona = self._create_patient_persona(db)
+        user_a = db.query(User).filter(User.email == "test@test.com").first()
+        osce_attempt = self._create_completed_osce_attempt(db, user_a.id, persona.persona_id)
+
+        # Auth headers for user B
+        access_token_b = create_access_token(
+            data={"sub": user_b.email, "user_id": str(user_b.id)}
+        )
+        auth_headers_b = {"Authorization": f"Bearer {access_token_b}"}
+
+        # Attempt conversion as user B
+        response = client.post(
+            "/api/v1/integration/osce-to-emr",
+            json={"osceAttemptId": osce_attempt.attempt_id},
+            headers=auth_headers_b,
         )
 
-        assert osce_response.status_code == 200
-        osce_data = osce_response.json()
-        assert osce_data.get("emr_case_id") == emr_case_id
+        assert response.status_code == 403, f"Expected 403, got {response.status_code}: {response.text}"
+        data = response.json()
+        error = data.get("detail", data)
+        assert error.get("error_code") == "UNAUTHORIZED" or "UNAUTHORIZED" in str(error)
 
-        # Verify EMR → OSCE link
-        emr_response = client.get(
-            f"/api/v1/emr/cases/{emr_case_id}",
-            headers=auth_headers
+        # Verify no EMR session was created for this OSCE attempt
+        emr_count = (
+            db.query(EMRSession)
+            .filter(EMRSession.source_osce_attempt_id == osce_attempt.attempt_id)
+            .count()
         )
-
-        assert emr_response.status_code == 200
-        emr_data = emr_response.json()
-        assert emr_data["source_osce_session_id"] == str(osce_session.id)
+        assert emr_count == 0

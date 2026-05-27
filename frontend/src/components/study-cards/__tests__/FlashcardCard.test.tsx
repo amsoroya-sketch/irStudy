@@ -17,8 +17,9 @@ import { StudyCard } from '../../../types/study-cards';
 
 describe('FlashcardCard - Flip Animation & Display', () => {
   const mockCard: StudyCard = {
+    id: 1,
     card_id: 'CARD-550e8400-e29b-41d4-a716-446655440000-1',
-    user_id: '123e4567-e89b-12d3-a456-426614174000',
+    user_id: 42,
     session_id: '550e8400-e29b-41d4-a716-446655440000',
     question: 'What is the SOCRATES framework for pain assessment?',
     answer:

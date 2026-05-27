@@ -17,7 +17,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from src.api.v1.auth import get_current_user
-from src.db.database import get_db
+from src.db.base import get_db
 from src.db.models import EMRSession, User
 from src.schemas.integration import (
     ConversionRequest,
@@ -90,7 +90,7 @@ async def convert_osce_to_emr(
     try:
         logger.info(
             f"OSCE-to-EMR conversion requested: "
-            f"OSCE={request.osce_attempt_id}, User={current_user.user_id}"
+            f"OSCE={request.osce_attempt_id}, User={current_user.id}"
         )
 
         # Initialize converter with database session
@@ -99,12 +99,12 @@ async def convert_osce_to_emr(
         # Step 1: Convert OSCE to SOAP note (validates ownership internally)
         conversion_result = await converter.convert(
             osce_attempt_id=request.osce_attempt_id,
-            user_id=current_user.user_id
+            user_id=current_user.id
         )
 
         # Step 2: Create EMR session with pre-filled SOAP note
         emr_session = EMRSession(
-            user_id=current_user.user_id,
+            user_id=current_user.id,
             emr_system="epic",  # Default EMR system
             patient_data={},  # Will be populated from OSCE persona
             session_data={
@@ -117,7 +117,7 @@ async def convert_osce_to_emr(
                 "auto_filled": True,
                 "conversion_source": "osce_transcript"
             },
-            source_osce_attempt_id=request.osce_attempt_id,
+            source_osce_attempt_id=str(request.osce_attempt_id),
             conversion_metadata={
                 "pre_fill_percentage": conversion_result.metadata.pre_fill_percentage,
                 "extraction_confidence": conversion_result.metadata.extraction_confidence,
@@ -134,16 +134,16 @@ async def convert_osce_to_emr(
         db.refresh(emr_session)
 
         logger.info(
-            f"EMR session created: {emr_session.session_id} "
+            f"EMR session created: {emr_session.id} "
             f"(pre-fill: {conversion_result.metadata.pre_fill_percentage:.1%})"
         )
 
         # Step 3: Build response
         response = ConversionResponse(
-            emr_session_id=emr_session.session_id,
+            emr_session_id=emr_session.id,
             pre_fill_percentage=conversion_result.metadata.pre_fill_percentage,
             extraction_confidence=conversion_result.metadata.extraction_confidence,
-            redirect_url=f"/emr/session/{emr_session.session_id}",
+            redirect_url=f"/emr/session/{emr_session.id}",
             message=(
                 f"OSCE successfully converted to EMR session "
                 f"({conversion_result.metadata.pre_fill_percentage:.0%} pre-filled)"

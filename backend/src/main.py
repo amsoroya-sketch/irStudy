@@ -119,7 +119,11 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 # ============================================================================
 
 # CORS Configuration
-allowed_origins = os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
+# Default includes both React (3000) and Vite (5173) dev servers
+allowed_origins = os.getenv(
+    "CORS_ORIGINS",
+    "http://localhost:3000,http://localhost:5173"
+).split(",")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,

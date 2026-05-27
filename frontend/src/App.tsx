@@ -13,12 +13,12 @@ import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import theme from "./theme/theme";
 import MobileBottomNav from "./components/layout/MobileBottomNav";
+import { FlashcardReview } from "./components/study-cards/FlashcardReview";
 
 // Lazy-loaded routes for code splitting
 import {
   Login,
   Register,
-  Dashboard,
   UnifiedDashboard,
   MCQBrowser,
   MCQAttempt,
@@ -111,6 +111,14 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <OSCEPractice />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/study-cards"
+                  element={
+                    <ProtectedRoute>
+                      <FlashcardReview />
                     </ProtectedRoute>
                   }
                 />

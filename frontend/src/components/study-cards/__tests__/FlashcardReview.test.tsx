@@ -33,7 +33,7 @@ describe('FlashcardReview Component', () => {
       defaultOptions: {
         queries: {
           retry: false, // Disable retries for testing
-          cacheTime: 0, // Disable cache for testing
+          gcTime: 0, // Disable cache for testing
         },
       },
     });
@@ -70,7 +70,7 @@ describe('FlashcardReview Component', () => {
     // Mock API to return empty array
     vi.mocked(api.getStudyCards).mockResolvedValueOnce({
       cards: [],
-      total_count: 0,
+      total_due: 0,
     });
 
     render(<FlashcardReview />, { wrapper });
@@ -88,8 +88,9 @@ describe('FlashcardReview Component', () => {
   it('should display first card when cards are fetched successfully', async () => {
     const mockCards: StudyCard[] = [
       {
+        id: 1,
         card_id: 'CARD-550e8400-e29b-41d4-a716-446655440000-1',
-        user_id: '123e4567-e89b-12d3-a456-426614174000',
+        user_id: 42,
         session_id: '550e8400-e29b-41d4-a716-446655440000',
         question: 'What is the SOCRATES framework for pain assessment?',
         answer:
@@ -123,7 +124,7 @@ describe('FlashcardReview Component', () => {
 
     vi.mocked(api.getStudyCards).mockResolvedValueOnce({
       cards: mockCards,
-      total_count: 1,
+      total_due: 1,
     });
 
     render(<FlashcardReview />, { wrapper });
@@ -207,8 +208,9 @@ describe('FlashcardReview Component', () => {
     // Mock API to fail first, then succeed
     const mockCards: StudyCard[] = [
       {
+        id: 1,
         card_id: 'CARD-550e8400-e29b-41d4-a716-446655440000-1',
-        user_id: '123e4567-e89b-12d3-a456-426614174000',
+        user_id: 42,
         session_id: '550e8400-e29b-41d4-a716-446655440000',
         question: 'Test Question',
         answer: 'Test Answer',
@@ -236,7 +238,7 @@ describe('FlashcardReview Component', () => {
       .mockRejectedValueOnce(new Error('Network error'))
       .mockResolvedValueOnce({
         cards: mockCards,
-        total_count: 1,
+        total_due: 1,
       });
 
     render(<FlashcardReview />, { wrapper });
@@ -265,8 +267,9 @@ describe('FlashcardReview Component', () => {
 
     const mockCards: StudyCard[] = [
       {
+        id: 1,
         card_id: 'CARD-550e8400-e29b-41d4-a716-446655440000-1',
-        user_id: '123e4567-e89b-12d3-a456-426614174000',
+        user_id: 42,
         session_id: '550e8400-e29b-41d4-a716-446655440000',
         question: 'Test Question',
         answer: 'Test Answer',
@@ -293,19 +296,19 @@ describe('FlashcardReview Component', () => {
     // Mock initial fetch
     vi.mocked(api.getStudyCards).mockResolvedValue({
       cards: mockCards,
-      total_count: 1,
+      total_due: 1,
     });
 
     // Mock review API
     vi.mocked(api.reviewCard).mockResolvedValueOnce({
-      card_id: 'CARD-550e8400-e29b-41d4-a716-446655440000-1',
-      sm2_params: {
-        ease_factor: 2.6,
-        interval_days: 6,
-        repetitions: 1,
-      },
+      card_id: 1,
+      quality: 3,
+      interval_days: 6,
+      ease_factor: 2.6,
+      repetitions: 1,
       next_review_date: new Date(Date.now() + 6 * 24 * 60 * 60 * 1000).toISOString(),
-      message: 'Card reviewed successfully',
+      message: 'Good work! Next review in 6 day(s). Correct, but difficult.',
+      quality_description: 'Correct, but difficult',
     });
 
     render(<FlashcardReview />, { wrapper });
@@ -330,9 +333,7 @@ describe('FlashcardReview Component', () => {
 
     // Verify review API was called
     await waitFor(() => {
-      expect(api.reviewCard).toHaveBeenCalledWith('CARD-550e8400-e29b-41d4-a716-446655440000-1', {
-        performance: 'good',
-      });
+      expect(api.reviewCard).toHaveBeenCalledWith(1, 3);
     });
 
     // Verify cards were refetched (cache invalidated)

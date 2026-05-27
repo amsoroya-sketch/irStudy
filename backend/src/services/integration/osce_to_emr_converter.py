@@ -200,7 +200,7 @@ class OSCEToEMRConverter:
 
         # Fetch OSCE attempt
         stmt = select(OSCEAttemptAI).where(
-            OSCEAttemptAI.attempt_id == osce_attempt_id
+            OSCEAttemptAI.attempt_id == str(osce_attempt_id)
         )
         result = self.db.execute(stmt)
         osce_attempt = result.scalar_one_or_none()

@@ -23,10 +23,12 @@ class RAGService:
     of clinical guidelines and evidence-based protocols.
     """
     
+    _embedding_model = None
+    
     def __init__(
         self,
         qdrant_url: Optional[str] = None,
-        collection_name: str = "medical_guidelines"
+        collection_name: str = "medical_knowledge"
     ):
         """
         Initialize RAG service with Qdrant client.
@@ -117,6 +119,16 @@ class RAGService:
             logger.error(f"❌ RAG retrieval failed: {e}")
             return []
     
+    @classmethod
+    def _get_embedding_model(cls):
+        """Lazy-load and cache the sentence-transformers model."""
+        if cls._embedding_model is None:
+            from sentence_transformers import SentenceTransformer
+            cls._embedding_model = SentenceTransformer(
+                'microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext'
+            )
+        return cls._embedding_model
+    
     def _embed_query(self, query: str) -> List[float]:
         """
         Convert query text to embedding vector.
@@ -125,23 +137,11 @@ class RAGService:
             query: Text to embed
         
         Returns:
-            Embedding vector (768 dimensions for mock)
-        
-        NOTE: In production, use actual embedding model.
-        For tests, return mock vector.
+            Embedding vector (768 dimensions)
         """
-        # TODO: Implement actual embedding
-        # Options:
-        # 1. OpenAI text-embedding-3-small (1536 dims, $0.00002/1K tokens)
-        # 2. Sentence Transformers (local, free)
-        # 3. Qdrant native embedding
-        
-        # For now, return mock vector for testing
-        import hashlib
-        # SECURITY: Use SHA-256 instead of MD5 (even for mock data)
-        # MD5 is cryptographically broken and fails security scans
-        hash_val = int(hashlib.sha256(query.encode()).hexdigest()[:16], 16)
-        return [float((hash_val >> i) & 1) for i in range(768)]  # Mock 768-dim vector
+        model = self._get_embedding_model()
+        embedding = model.encode(query, convert_to_numpy=True)
+        return embedding.tolist()
     
     def search_similar(
         self,

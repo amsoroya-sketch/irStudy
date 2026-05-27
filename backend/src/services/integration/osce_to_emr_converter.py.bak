@@ -1,0 +1,709 @@
+"""
+OSCE-to-EMR Converter Service
+
+Converts AI OSCE conversation transcripts to pre-filled EMR SOAP notes using Claude API NLP extraction.
+
+CRITICAL REQUIREMENTS:
+- ≥70% pre-fill accuracy
+- <500ms API response time (p95)
+- 100% Australian medical terminology
+- 0 data loss (all OSCE content preserved)
+- Vault-based credential management (NO hardcoded API keys)
+
+WORKFLOW:
+1. Fetch OSCE attempt from PostgreSQL (validate user ownership)
+2. Extract transcript from conversation_history JSONB
+3. Call Claude API for NLP extraction with Australian medical context
+4. Map extracted data to SOAP note template
+5. Create EMR session with pre-filled data
+6. Track conversion metadata (pre-fill %, confidence, tokens)
+
+AUSTRALIAN MEDICAL CONTEXT:
+- Terminology: paracetamol (NOT acetaminophen), salbutamol (NOT albuterol)
+- Emergency: 000 (NOT 911)
+- Guidelines: eTG, AMH, AHPRA
+- Medications: PBS-compliant naming
+- Investigations: MBS-appropriate
+
+SECURITY:
+- Claude API key from Vault (irStudy/claude path)
+- PHI anonymization before API call (names, MRN, phone)
+- User authorization validation (only convert own OSCEs)
+"""
+
+import anthropic
+import json
+import logging
+import time
+from typing import Dict, Any, Optional, List
+from uuid import UUID
+from datetime import datetime
+from sqlalchemy.orm import Session
+from sqlalchemy import select
+
+from src.core.vault import VaultClient
+from src.schemas.integration import (
+    ConversionResult,
+    ConversionMetadata,
+    SOAPNoteDraft,
+    ClaudeExtractionResponse
+)
+from src.db.models import OSCEAttemptAI, EMRSession
+
+logger = logging.getLogger(__name__)
+
+
+class OSCEToEMRConverter:
+    """
+    Convert AI OSCE conversation transcript to EMR SOAP note
+
+    Uses Claude API with Australian medical context for accurate clinical data extraction.
+    """
+
+    # Claude API configuration
+    CLAUDE_MODEL = "claude-3-5-sonnet-20241022"
+    MAX_TOKENS = 4096
+    TEMPERATURE = 0.3  # Lower temperature for consistent clinical extraction
+    VAULT_SECRET_PATH = "irStudy/claude"
+
+    # Australian medical terminology mappings (for validation)
+    AUSTRALIAN_TERMS = {
+        'paracetamol': 'acetaminophen',
+        'salbutamol': 'albuterol',
+        '000': '911',
+        'ED': 'ER',
+        'emergency department': 'emergency room'
+    }
+
+    def __init__(self, db_session: Optional[Session] = None):
+        """
+        Initialize converter
+
+        Args:
+            db_session: SQLAlchemy database session (optional for testing)
+        """
+        self.db = db_session
+        self.vault = VaultClient()
+
+    async def convert(
+        self,
+        osce_attempt_id: UUID,
+        user_id: str
+    ) -> ConversionResult:
+        """
+        Main conversion method: OSCE transcript → EMR SOAP note
+
+        Args:
+            osce_attempt_id: UUID of OSCE attempt to convert
+            user_id: User ID (for authorization check)
+
+        Returns:
+            ConversionResult with SOAP note draft and metadata
+
+        Raises:
+            ValueError: If OSCE not found, user not authorized, or unsuitable OSCE type
+            RuntimeError: If conversion fails critically
+        """
+        start_time = time.time()
+
+        try:
+            # Step 1: Fetch OSCE attempt (validate ownership)
+            osce_attempt = await self._fetch_osce_attempt(osce_attempt_id, user_id)
+
+            # Step 2: Validate OSCE type (only clinical history-taking)
+            self._validate_osce_type(osce_attempt)
+
+            # Step 3: Extract conversation transcript
+            transcript = self._extract_transcript(osce_attempt)
+
+            # Step 4: Get Claude API key from Vault
+            api_key = self._get_claude_api_key()
+
+            # Step 5: Call Claude API for NLP extraction
+            extraction_start = time.time()
+            claude_response = await self._extract_clinical_data_with_claude(
+                transcript=transcript,
+                patient_demographics={},  # Will be extracted from persona relationship if needed
+                api_key=api_key
+            )
+            api_response_time = int((time.time() - extraction_start) * 1000)
+
+            # Step 6: Build SOAP note draft
+            soap_note = SOAPNoteDraft(
+                subjective=claude_response.subjective,
+                objective=claude_response.objective,
+                assessment=claude_response.assessment,
+                plan=claude_response.plan
+            )
+
+            # Step 7: Calculate pre-fill percentage
+            pre_fill_pct = self._calculate_prefill_percentage(claude_response)
+
+            # Step 8: Build conversion metadata
+            metadata = ConversionMetadata(
+                pre_fill_percentage=pre_fill_pct,
+                extraction_confidence=claude_response.extraction_confidence,
+                tokens_used=getattr(claude_response, 'tokens_used', 0),
+                api_response_time_ms=api_response_time,
+                conversion_timestamp=datetime.utcnow(),
+                missing_elements=claude_response.missing_elements,
+                australian_terminology_compliance=self._check_australian_terminology(soap_note)
+            )
+
+            # Step 9: Return result
+            result = ConversionResult(
+                soap_note_draft=soap_note,
+                metadata=metadata
+            )
+
+            total_time = (time.time() - start_time) * 1000
+            logger.info(
+                f"OSCE conversion successful: {osce_attempt_id} → "
+                f"{pre_fill_pct:.1%} pre-fill, {total_time:.0f}ms"
+            )
+
+            return result
+
+        except ValueError as e:
+            # Re-raise authorization/validation errors (don't fallback)
+            error_msg = str(e).lower()
+            if "not authorized" in error_msg or "ownership" in error_msg:
+                logger.error(f"Authorization error for OSCE {osce_attempt_id}: {e}")
+                raise
+            logger.error(f"OSCE conversion failed: {osce_attempt_id} - {e}")
+            return await self._fallback_conversion(osce_attempt_id, user_id, str(e))
+        except Exception as e:
+            logger.error(f"OSCE conversion failed: {osce_attempt_id} - {e}")
+            # Return fallback result (partial pre-fill with warning)
+            return await self._fallback_conversion(osce_attempt_id, user_id, str(e))
+
+    async def _fetch_osce_attempt(
+        self,
+        osce_attempt_id: UUID,
+        user_id: str
+    ) -> OSCEAttemptAI:
+        """
+        Fetch OSCE attempt from database and validate user ownership
+
+        Args:
+            osce_attempt_id: OSCE attempt UUID
+            user_id: Requesting user ID
+
+        Returns:
+            OSCEAttemptAI instance
+
+        Raises:
+            ValueError: If OSCE not found or user not authorized
+        """
+        if not self.db:
+            raise RuntimeError("Database session not available")
+
+        # Fetch OSCE attempt
+        stmt = select(OSCEAttemptAI).where(
+            OSCEAttemptAI.attempt_id == osce_attempt_id
+        )
+        result = self.db.execute(stmt)
+        osce_attempt = result.scalar_one_or_none()
+
+        if not osce_attempt:
+            raise ValueError(f"OSCE attempt not found: {osce_attempt_id}")
+
+        # Validate user ownership
+        if osce_attempt.user_id != user_id:
+            raise ValueError(
+                f"User {user_id} not authorized to convert OSCE {osce_attempt_id} "
+                f"(ownership: user {osce_attempt.user_id})"
+            )
+
+        # Validate OSCE completed
+        if osce_attempt.session_state != "complete":
+            logger.warning(
+                f"OSCE {osce_attempt_id} not completed (state: {osce_attempt.session_state}). "
+                "Conversion may have low pre-fill percentage."
+            )
+
+        return osce_attempt
+
+    def _validate_osce_type(self, osce_attempt: OSCEAttemptAI) -> None:
+        """
+        Validate OSCE type is suitable for SOAP note conversion
+
+        Only clinical history-taking OSCEs can be converted.
+        Communication/counselling OSCEs (e.g., breaking bad news) cannot.
+
+        Args:
+            osce_attempt: OSCE attempt instance
+
+        Raises:
+            ValueError: If OSCE type unsuitable for conversion
+        """
+        # Check station_type if available (from persona relationship)
+        # Note: persona.station_type would be accessed via relationship if needed
+        # For now, we'll allow all OSCEs (validation can be added later)
+        station_type = 'history_taking'  # Default assumption
+
+        unsuitable_types = ['communication', 'counselling', 'breaking_bad_news']
+
+        if station_type in unsuitable_types:
+            raise ValueError(
+                f"OSCE type '{station_type}' cannot be converted to SOAP note. "
+                f"Only clinical history-taking OSCEs are suitable for EMR documentation. "
+                f"Consider creating a reflection log instead."
+            )
+
+    def _extract_transcript(self, osce_attempt: OSCEAttemptAI) -> List[Dict[str, Any]]:
+        """
+        Extract conversation transcript from OSCE attempt
+
+        Args:
+            osce_attempt: OSCE attempt instance
+
+        Returns:
+            List of conversation messages (role, content, timestamp)
+        """
+        conversation_history = osce_attempt.conversation_history or []
+
+        if not conversation_history:
+            logger.warning(f"OSCE {osce_attempt.attempt_id} has no conversation history")
+
+        return conversation_history
+
+    def _get_claude_api_key(self) -> str:
+        """
+        Retrieve Claude API key from Vault
+
+        Returns:
+            Claude API key
+
+        Raises:
+            RuntimeError: If API key not available
+        """
+        try:
+            secret = self.vault.get_secret(self.VAULT_SECRET_PATH)
+
+            if not secret:
+                raise RuntimeError(
+                    f"Claude API key not found in Vault at path: {self.VAULT_SECRET_PATH}"
+                )
+
+            api_key = secret.get("value") or secret.get("api_key")
+
+            if not api_key:
+                raise RuntimeError(
+                    f"Claude API key empty in Vault secret: {self.VAULT_SECRET_PATH}"
+                )
+
+            return api_key
+
+        except Exception as e:
+            logger.error(f"Failed to retrieve Claude API key from Vault: {e}")
+            raise
+
+    async def _extract_clinical_data_with_claude(
+        self,
+        transcript: List[Dict[str, Any]],
+        patient_demographics: Dict[str, Any],
+        api_key: str
+    ) -> ClaudeExtractionResponse:
+        """
+        Extract clinical data from OSCE transcript using Claude API
+
+        Args:
+            transcript: Conversation history (list of messages)
+            patient_demographics: Patient age, gender, etc.
+            api_key: Claude API key
+
+        Returns:
+            ClaudeExtractionResponse with extracted SOAP sections
+
+        Raises:
+            anthropic.APIError: If Claude API call fails
+        """
+        # Build extraction prompt with Australian medical context
+        prompt = self._build_extraction_prompt(transcript, patient_demographics)
+
+        try:
+            # Initialize Claude client
+            client = anthropic.Anthropic(api_key=api_key)
+
+            # Call Claude API
+            message = client.messages.create(
+                model=self.CLAUDE_MODEL,
+                max_tokens=self.MAX_TOKENS,
+                temperature=self.TEMPERATURE,
+                messages=[{
+                    "role": "user",
+                    "content": prompt
+                }]
+            )
+
+            # Parse response
+            response_text = message.content[0].text
+
+            # Extract JSON from response
+            response_data = self._parse_claude_json_response(response_text)
+
+            # Track token usage
+            tokens_used = (
+                message.usage.input_tokens + message.usage.output_tokens
+                if hasattr(message, 'usage') else 0
+            )
+            response_data['tokens_used'] = tokens_used
+
+            # Convert to Pydantic model
+            claude_response = ClaudeExtractionResponse(**response_data)
+
+            logger.info(
+                f"Claude extraction successful: confidence={claude_response.extraction_confidence:.2f}, "
+                f"tokens={tokens_used}"
+            )
+
+            return claude_response
+
+        except anthropic.APIError as e:
+            logger.error(f"Claude API error: {e}")
+            raise
+        except Exception as e:
+            logger.error(f"Claude extraction failed: {e}")
+            raise
+
+    def _build_extraction_prompt(
+        self,
+        transcript: List[Dict[str, Any]],
+        patient_demographics: Dict[str, Any]
+    ) -> str:
+        """
+        Build Claude API prompt for clinical data extraction
+
+        CRITICAL: Prompt enforces Australian medical context and terminology
+
+        Args:
+            transcript: Conversation history
+            patient_demographics: Patient age, gender, etc.
+
+        Returns:
+            Formatted prompt string
+        """
+        # Format transcript as readable conversation
+        conversation_text = self._format_transcript_for_prompt(transcript)
+
+        # Anonymize PHI
+        anonymized_conversation = self._anonymize_phi(conversation_text)
+        anonymized_demographics = self._anonymize_phi(patient_demographics)
+
+        prompt = f"""You are a medical scribe converting an AI OSCE conversation transcript into a SOAP note for EMR documentation practice.
+
+**CRITICAL AUSTRALIAN MEDICAL CONTEXT:**
+- Use ONLY Australian medical terminology:
+  * Paracetamol (NOT acetaminophen)
+  * Salbutamol (NOT albuterol)
+  * Emergency: 000 (NOT 911)
+  * ED or Emergency Department (NOT ER)
+- Reference Australian guidelines:
+  * eTG (Therapeutic Guidelines)
+  * AMH (Australian Medicines Handbook)
+  * PBS (Pharmaceutical Benefits Scheme)
+  * MBS (Medicare Benefits Schedule)
+- Australian medication naming conventions
+- Australian standard investigations and management
+
+**OSCE CONVERSATION TRANSCRIPT:**
+{anonymized_conversation}
+
+**PATIENT DEMOGRAPHICS:**
+{json.dumps(anonymized_demographics, indent=2)}
+
+**YOUR TASK:**
+Extract clinical information from the OSCE transcript and structure it as a complete SOAP note suitable for EMR documentation.
+
+**SOAP NOTE STRUCTURE:**
+
+1. **SUBJECTIVE** (History from patient):
+   - Chief complaint (why patient presented)
+   - History of Presenting Illness (HPI):
+     * Onset, duration, progression
+     * Character and severity
+     * Location and radiation (if applicable)
+     * Aggravating/relieving factors
+     * Associated symptoms
+   - Past Medical History (PMHx)
+   - Medications (current medications with doses if mentioned)
+   - Allergies
+   - Social History (smoking, alcohol, occupation, living situation)
+   - Family History (if relevant)
+
+2. **OBJECTIVE** (Physical examination findings):
+   - Vital signs (if mentioned in OSCE)
+   - General appearance
+   - System examination findings
+   - If NO physical examination was performed during OSCE (common for history-taking stations), state: "Physical examination not performed during this OSCE station (history-taking only)."
+
+3. **ASSESSMENT** (Diagnosis):
+   - Provisional diagnosis (most likely)
+   - Differential diagnoses (at least 2-3 alternatives)
+   - Clinical reasoning for provisional diagnosis
+
+4. **PLAN** (Management):
+   - Investigations needed (blood tests, imaging, etc.)
+   - Treatment plan (medications with Australian names and appropriate doses)
+   - Referrals (if needed)
+   - Follow-up plan
+   - Safety netting advice
+
+**OUTPUT FORMAT:**
+Return ONLY valid JSON (no markdown, no code blocks):
+
+{{
+  "subjective": "string (200-500 words, comprehensive history)",
+  "objective": "string (100-300 words, examination findings or note if not performed)",
+  "assessment": "string (50-150 words, diagnosis with reasoning)",
+  "plan": "string (100-250 words, investigations and management)",
+  "extraction_confidence": 0.85,
+  "missing_elements": ["list of elements not extractable from transcript, e.g., 'Vital signs', 'Allergies', 'Family history'"]
+}}
+
+**IMPORTANT RULES:**
+1. Extract ONLY information present in the transcript - NO hallucinations
+2. If information missing, note in missing_elements list
+3. Use Australian medical terminology consistently
+4. Write in professional medical documentation style
+5. Be specific (include doses, frequencies, durations if mentioned)
+6. extraction_confidence: 0.0-1.0 (how confident you are in extraction quality)
+   - 0.8-1.0: Excellent history with minimal missing elements
+   - 0.6-0.8: Good history with some gaps
+   - 0.4-0.6: Incomplete history
+   - <0.4: Very incomplete (early OSCE termination)
+
+**BEGIN EXTRACTION:**"""
+
+        return prompt
+
+    def _format_transcript_for_prompt(
+        self,
+        transcript: List[Dict[str, Any]]
+    ) -> str:
+        """
+        Format conversation transcript as readable text for Claude
+
+        Args:
+            transcript: List of conversation messages
+
+        Returns:
+            Formatted conversation string
+        """
+        formatted_lines = []
+
+        for message in transcript:
+            role = message.get('role', 'unknown').upper()
+            content = message.get('content', '')
+            timestamp = message.get('timestamp', '')
+
+            formatted_lines.append(f"[{role}]: {content}")
+
+        return "\n".join(formatted_lines)
+
+    def _anonymize_phi(self, data: Any) -> Any:
+        """
+        Remove Protected Health Information (PHI) before Claude API call
+
+        Removes: Names, MRN, phone numbers, addresses, email
+        Keeps: Clinical information, symptoms, diagnoses
+
+        Args:
+            data: Data to anonymize (dict or string)
+
+        Returns:
+            Anonymized data
+        """
+        import re
+
+        if isinstance(data, dict):
+            return {k: self._anonymize_phi(v) for k, v in data.items()}
+        elif isinstance(data, list):
+            return [self._anonymize_phi(item) for item in data]
+        elif isinstance(data, str):
+            text = data
+
+            # Replace names (simplistic - in production use NER)
+            text = re.sub(r'\b[A-Z][a-z]+ [A-Z][a-z]+\b', '[PATIENT_NAME]', text)
+
+            # Replace MRN
+            text = re.sub(r'\bMRN[:\s]*\d{6,10}\b', '[MRN]', text, flags=re.IGNORECASE)
+
+            # Replace Australian phone numbers (04XX XXX XXX format)
+            text = re.sub(r'\b04\d{2}[\s-]?\d{3}[\s-]?\d{3}\b', '[PHONE]', text)
+
+            # Replace email
+            text = re.sub(
+                r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b',
+                '[EMAIL]',
+                text
+            )
+
+            # Replace addresses (basic patterns)
+            text = re.sub(r'\d+\s+[A-Z][a-z]+\s+(Street|St|Road|Rd|Avenue|Ave)', '[ADDRESS]', text)
+
+            return text
+        else:
+            return data
+
+    def _parse_claude_json_response(self, response_text: str) -> Dict[str, Any]:
+        """
+        Parse JSON from Claude API response
+
+        Handles markdown code blocks and malformed JSON
+
+        Args:
+            response_text: Raw Claude API response
+
+        Returns:
+            Parsed JSON dict
+
+        Raises:
+            ValueError: If JSON parsing fails
+        """
+        # Remove markdown code blocks if present
+        text = response_text.strip()
+
+        # Strip markdown ```json ... ``` blocks
+        if text.startswith('```'):
+            lines = text.split('\n')
+            # Remove first line (```json) and last line (```)
+            text = '\n'.join(lines[1:-1])
+
+        # Parse JSON
+        try:
+            data = json.loads(text)
+            return data
+        except json.JSONDecodeError as e:
+            logger.error(f"JSON parsing failed: {e}\nResponse: {text[:500]}")
+            raise ValueError(f"Claude API returned invalid JSON: {e}")
+
+    def _calculate_prefill_percentage(
+        self,
+        claude_response: ClaudeExtractionResponse
+    ) -> float:
+        """
+        Calculate percentage of SOAP note fields auto-filled
+
+        Target: ≥70% for good conversion
+
+        Args:
+            claude_response: Claude extraction response
+
+        Returns:
+            Pre-fill percentage (0.0-1.0)
+        """
+        # Define expected SOAP elements (22 total)
+        expected_elements = [
+            # Subjective (12 elements)
+            'chief_complaint',
+            'hpi_onset',
+            'hpi_duration',
+            'hpi_character',
+            'hpi_severity',
+            'hpi_associated_symptoms',
+            'past_medical_history',
+            'medications',
+            'allergies',
+            'social_history_smoking',
+            'social_history_alcohol',
+            'family_history',
+            # Objective (4 elements)
+            'vital_signs',
+            'general_appearance',
+            'system_examination',
+            'physical_findings',
+            # Assessment (3 elements)
+            'provisional_diagnosis',
+            'differential_diagnosis_1',
+            'differential_diagnosis_2',
+            # Plan (3 elements)
+            'investigations',
+            'treatment',
+            'follow_up'
+        ]
+
+        # Count filled elements (not in missing_elements)
+        missing = set(claude_response.missing_elements)
+        filled_count = sum(1 for elem in expected_elements if elem not in missing)
+
+        pre_fill_pct = filled_count / len(expected_elements)
+
+        return pre_fill_pct
+
+    def _check_australian_terminology(self, soap_note: SOAPNoteDraft) -> bool:
+        """
+        Verify SOAP note uses Australian medical terminology
+
+        Args:
+            soap_note: SOAP note draft
+
+        Returns:
+            True if compliant, False if US terms detected
+        """
+        # Check for US terms in all SOAP sections
+        full_text = (
+            soap_note.subjective + " " +
+            soap_note.objective + " " +
+            soap_note.assessment + " " +
+            soap_note.plan
+        ).lower()
+
+        us_terms = ['acetaminophen', 'albuterol', '911', ' er ', 'emergency room']
+
+        for us_term in us_terms:
+            if us_term in full_text:
+                logger.warning(f"US terminology detected in SOAP note: {us_term}")
+                return False
+
+        return True
+
+    async def _fallback_conversion(
+        self,
+        osce_attempt_id: UUID,
+        user_id: str,
+        error_message: str
+    ) -> ConversionResult:
+        """
+        Fallback conversion when Claude API fails
+
+        Returns minimal pre-fill with warning message
+
+        Args:
+            osce_attempt_id: OSCE attempt UUID
+            user_id: User ID
+            error_message: Error description
+
+        Returns:
+            ConversionResult with minimal pre-fill
+        """
+        logger.warning(
+            f"Fallback conversion for OSCE {osce_attempt_id}: {error_message}"
+        )
+
+        # Create minimal SOAP note
+        soap_note = SOAPNoteDraft(
+            subjective="[Auto-fill unavailable - please complete manually]\n\n"
+                       "The system was unable to automatically extract clinical information "
+                       "from the OSCE transcript. Please review the OSCE conversation history "
+                       "and complete this SOAP note manually.",
+            objective="Physical examination not performed during OSCE station.",
+            assessment="[Provisional diagnosis to be determined based on history]",
+            plan="[Investigation and management plan to be developed]"
+        )
+
+        metadata = ConversionMetadata(
+            pre_fill_percentage=0.0,
+            extraction_confidence=0.0,
+            tokens_used=0,
+            api_response_time_ms=0,
+            conversion_timestamp=datetime.utcnow(),
+            missing_elements=["All elements - conversion failed"],
+            australian_terminology_compliance=True
+        )
+
+        return ConversionResult(
+            soap_note_draft=soap_note,
+            metadata=metadata
+        )

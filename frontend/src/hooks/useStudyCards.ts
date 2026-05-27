@@ -9,18 +9,18 @@
 
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { getStudyCards } from '../api/studyCards';
-import { StudyCardsResponse } from '../types/study-cards';
+import { StudyCardsDueResponse } from '../types/study-cards';
 
 /**
  * Hook to fetch study cards due for review
- * @param due - Filter by cards due for review (default: true)
+ * @param limit - Maximum cards to return (default: 20)
  * @returns React Query result with cards data
  */
 export const useStudyCards = (
-  due: boolean = true
-): UseQueryResult<StudyCardsResponse, Error> => {
+  limit: number = 20
+): UseQueryResult<StudyCardsDueResponse, Error> => {
   return useQuery({
-    queryKey: ['studyCards', due ? 'due' : 'all'],
-    queryFn: () => getStudyCards(due),
+    queryKey: ['studyCards', 'due'],
+    queryFn: () => getStudyCards(limit),
   });
 };

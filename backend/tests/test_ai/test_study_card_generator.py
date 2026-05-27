@@ -562,7 +562,7 @@ class TestRAGCitationEnrichment:
 
     @pytest.mark.asyncio
     async def test_enrich_graceful_degradation_on_rag_failure(self, mock_vault):
-        """Test enrichment handles RAG service failures gracefully"""
+        """Test enrichment handles RAG service failures gracefully with fallback citation"""
         mock_rag = Mock()
         generator = StudyCardGenerator(rag_service=mock_rag)
 
@@ -575,11 +575,12 @@ class TestRAGCitationEnrichment:
         # Mock RAG failure
         mock_rag.search_similar.side_effect = Exception("Qdrant connection error")
 
-        # Should not raise, instead return empty citations
+        # Should not raise, instead return fallback citation
         enriched = await generator._enrich_with_citations(qa_pair)
 
         assert 'citations' in enriched
-        assert enriched['citations'] == []  # Graceful degradation
+        assert len(enriched['citations']) >= 1  # Fallback citation provided
+        assert enriched['citations'][0]['source'] == "ICRP OSCE Preparation Modules"
 
 
 class TestContentValidation:

@@ -29,6 +29,7 @@ from src.api.v1 import (
     mock_exams,
 )
 from src.api.v1.emr import router as emr_router
+from src.api.v1.integration import converter as integration_converter
 
 
 # Create main v1 router
@@ -48,4 +49,5 @@ api_router.include_router(patient_personas.router)  # PRD AI OSCE 001: Patient P
 api_router.include_router(osce_sessions.router)  # PRD AI OSCE 001: OSCE Sessions API
 api_router.include_router(mock_exams.router)  # PRD AI OSCE 006: Mock Exam Mode (16-station exams)
 api_router.include_router(emr_router)  # PRD EMR 001: EMR API Endpoints (comprehensive router)
+api_router.include_router(integration_converter.router)  # OSCE-to-EMR conversion endpoints
 api_router.include_router(health.router)  # Health check endpoints (Kubernetes probes)

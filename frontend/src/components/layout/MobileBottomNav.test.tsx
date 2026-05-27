@@ -57,10 +57,11 @@ describe('MobileBottomNav', () => {
       mockUseResponsive.mockReturnValue({ isMobile: true });
     });
 
-    it('renders all 4 navigation labels', () => {
+    it('renders all 5 navigation labels', () => {
       renderNav();
       expect(screen.getByText('Home')).toBeInTheDocument();
       expect(screen.getByText('Practice')).toBeInTheDocument();
+      expect(screen.getByText('Study')).toBeInTheDocument();
       expect(screen.getByText('Progress')).toBeInTheDocument();
       expect(screen.getByText('Profile')).toBeInTheDocument();
     });
@@ -75,6 +76,12 @@ describe('MobileBottomNav', () => {
       renderNav('/mcqs');
       const practiceAction = screen.getByLabelText('Practice');
       expect(practiceAction).toHaveAttribute('aria-current', 'page');
+    });
+
+    it('marks "Study" as active on /study-cards route', () => {
+      renderNav('/study-cards');
+      const studyAction = screen.getByLabelText('Study');
+      expect(studyAction).toHaveAttribute('aria-current', 'page');
     });
 
     it('marks "Progress" as active on /performance route', () => {
@@ -100,6 +107,12 @@ describe('MobileBottomNav', () => {
       renderNav('/dashboard');
       fireEvent.click(screen.getByText('Practice'));
       expect(mockNavigate).toHaveBeenCalledWith('/mcqs');
+    });
+
+    it('calls navigate with /study-cards when Study is clicked', () => {
+      renderNav('/dashboard');
+      fireEvent.click(screen.getByText('Study'));
+      expect(mockNavigate).toHaveBeenCalledWith('/study-cards');
     });
 
     it('calls navigate with /performance when Progress is clicked', () => {
@@ -135,6 +148,7 @@ describe('MobileBottomNav', () => {
       renderNav();
       expect(screen.getByLabelText('Home')).toBeInTheDocument();
       expect(screen.getByLabelText('Practice')).toBeInTheDocument();
+      expect(screen.getByLabelText('Study')).toBeInTheDocument();
       expect(screen.getByLabelText('Progress')).toBeInTheDocument();
       expect(screen.getByLabelText('Profile')).toBeInTheDocument();
     });

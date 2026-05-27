@@ -20,12 +20,14 @@ import {
   Quiz as QuizIcon,
   BarChart as DashboardIcon,
   Person as PersonIcon,
+  School as SchoolIcon,
 } from '@mui/icons-material';
 import { useResponsive } from '../../hooks/useResponsive';
 
 const NAV_ITEMS = [
   { label: 'Home', value: '/dashboard', icon: <HomeIcon /> },
   { label: 'Practice', value: '/mcqs', icon: <QuizIcon /> },
+  { label: 'Study', value: '/study-cards', icon: <SchoolIcon /> },
   { label: 'Progress', value: '/performance', icon: <DashboardIcon /> },
   { label: 'Profile', value: '/profile', icon: <PersonIcon /> },
 ] as const;
