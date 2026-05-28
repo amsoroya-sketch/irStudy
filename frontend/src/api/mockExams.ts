@@ -176,7 +176,7 @@ export const completeStation = async (
   request: StationCompleteRequest
 ): Promise<StationCompleteResponse> => {
   const response = await axiosInstance.put<StationCompleteResponse>(
-    `/mock-exams/${examId}/station/${stationNumber}/complete/`
+    `/mock-exams/${examId}/station/${stationNumber}/complete/`,
     request
   );
   return response.data;
