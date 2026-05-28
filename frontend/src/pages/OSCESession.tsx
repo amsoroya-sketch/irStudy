@@ -30,6 +30,7 @@ import {
   CardContent,
   Grid,
   Chip,
+  LinearProgress,
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import AssessmentIcon from '@mui/icons-material/Assessment';
@@ -40,17 +41,26 @@ import { SessionTimer } from '../components/osce/SessionTimer';
 import { SessionControls } from '../components/osce/SessionControls';
 import { OSCEToEMRModal } from '../components/integration/OSCEToEMRModal';
 import { useAuth } from '../context/AuthContext';
-import { getOSCESession, endOSCESession, pauseOSCESession, resumeOSCESession } from '../api/osce';
+import { getOSCESession, endOSCESession, pauseOSCESession, resumeOSCESession, getOSCEScore, OSCEExaminerScore } from '../api/osce';
 import { getPersonaDetail } from '../api/personas';
 
 /**
- * Score display interface
+ * Score display interface (matches backend AMC rubric)
  */
 interface SessionScore {
-  overall: number;
-  communication: number;
-  clinical_reasoning: number;
-  professionalism: number;
+  total_score: number;
+  max_score: number;
+  pass_fail: 'PASS' | 'FAIL';
+  breakdown: {
+    communication: { score: number; max: number; feedback: string };
+    clinical_reasoning: { score: number; max: number; feedback: string };
+    information_gathering: { score: number; max: number; feedback: string };
+    management: { score: number; max: number; feedback: string };
+    professionalism: { score: number; max: number; feedback: string };
+  };
+  strengths: string[];
+  areas_for_improvement: string[];
+  overall_feedback: string;
 }
 
 /**
@@ -69,6 +79,7 @@ const OSCESession: React.FC = () => {
   const [showConversionModal, setShowConversionModal] = useState(false);
   const [pausedAt, setPausedAt] = useState<string | undefined>(undefined);
   const [manualStatus, setManualStatus] = useState<'active' | 'paused' | 'ended' | null>(null);
+  const [isScoring, setIsScoring] = useState(false);
 
   // Set page title
   useEffect(() => {
@@ -143,6 +154,62 @@ const OSCESession: React.FC = () => {
   }, [sessionData, user, navigate]);
 
   /**
+   * Poll for AI Examiner score after session ends (fallback if WebSocket disconnects)
+   */
+  useEffect(() => {
+    if (manualStatus !== 'ended' || !attemptId || showScoreDialog) return;
+
+    let intervalId: NodeJS.Timeout;
+    let pollAttempts = 0;
+    const maxPollAttempts = 30; // 30 × 5s = 2.5 minutes max
+
+    const pollScore = async () => {
+      try {
+        const scoreData = await getOSCEScore(attemptId);
+        console.log('[OSCESession] Score received via polling:', scoreData);
+        setIsScoring(false);
+        setSessionScore({
+          total_score: scoreData.total_score,
+          max_score: 15,
+          pass_fail: scoreData.pass_fail,
+          breakdown: {
+            communication: { score: scoreData.scores.communication, max: 3, feedback: '' },
+            clinical_reasoning: { score: scoreData.scores.clinical_reasoning, max: 4, feedback: '' },
+            information_gathering: { score: scoreData.scores.information_gathering, max: 4, feedback: '' },
+            management: { score: scoreData.scores.management, max: 2, feedback: '' },
+            professionalism: { score: scoreData.scores.professionalism, max: 2, feedback: '' },
+          },
+          strengths: scoreData.strengths || [],
+          areas_for_improvement: scoreData.areas_for_improvement || [],
+          overall_feedback: scoreData.ai_examiner_feedback || '',
+        });
+        setShowScoreDialog(true);
+        clearInterval(intervalId);
+      } catch (err: any) {
+        if (err.response?.status === 404) {
+          // Score not ready yet, keep polling
+          pollAttempts++;
+          if (pollAttempts >= maxPollAttempts) {
+            console.error('[OSCESession] Score polling timed out');
+            setIsScoring(false);
+            clearInterval(intervalId);
+          }
+        } else {
+          console.error('[OSCESession] Score polling error:', err);
+          setIsScoring(false);
+          clearInterval(intervalId);
+        }
+      }
+    };
+
+    // Poll immediately, then every 5 seconds
+    pollScore();
+    intervalId = setInterval(pollScore, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [manualStatus, attemptId, showScoreDialog]);
+
+  /**
    * Handle pause session
    */
   const handlePause = useCallback(async () => {
@@ -184,35 +251,25 @@ const OSCESession: React.FC = () => {
 
     console.log('[OSCESession] Time up - auto-ending session');
     setManualStatus('ended');
+    setIsScoring(true);
 
     try {
-      const result = await endOSCESession(attemptId);
-      console.log('[OSCESession] Session auto-ended with score:', result.score);
-
-      // Show score if available
-      if (result.score !== null) {
-        setSessionScore({
-          overall: result.score,
-          communication: result.score,
-          clinical_reasoning: result.score,
-          professionalism: result.score,
-        });
-        setShowScoreDialog(true);
-      } else {
-        navigate('/osce-practice');
-      }
+      await endOSCESession(attemptId);
+      console.log('[OSCESession] Session ended, waiting for AI scoring...');
+      // Don't navigate away — scoring happens in background
+      // Polling effect below will catch the score
     } catch (error) {
       console.error('[OSCESession] Failed to auto-end session:', error);
-      navigate('/osce-practice');
     }
-  }, [attemptId, navigate]);
+  }, [attemptId]);
 
   /**
-   * Handle session end from WebSocket
+   * Handle session end from WebSocket (scoring_complete)
    */
   const handleSessionEnd = useCallback((score: SessionScore) => {
-    console.log('[OSCESession] Session ended with score:', score);
+    console.log('[OSCESession] Scoring complete:', score);
     setManualStatus('ended');
+    setIsScoring(false);
     setSessionScore(score);
     setShowScoreDialog(true);
   }, []);
@@ -224,31 +281,17 @@ const OSCESession: React.FC = () => {
     if (!attemptId) return;
 
     setManualStatus('ended');
+    setIsScoring(true);
 
     try {
-      const result = await endOSCESession(attemptId);
-      console.log('[OSCESession] Session ended manually:', result);
-
-      // Show score if available
-      if (result.score !== null) {
-        // Note: Backend should return detailed scores, using placeholder here
-        setSessionScore({
-          overall: result.score,
-          communication: result.score,
-          clinical_reasoning: result.score,
-          professionalism: result.score,
-        });
-        setShowScoreDialog(true);
-      } else {
-        // No score available, navigate back
-        navigate('/osce-practice');
-      }
+      await endOSCESession(attemptId);
+      console.log('[OSCESession] Session ended manually, waiting for AI scoring...');
+      // Don't navigate away — polling effect below will catch the score
     } catch (error) {
       console.error('[OSCESession] Failed to end session:', error);
-      // Still navigate back on error
-      navigate('/osce-practice');
+      setIsScoring(false);
     }
-  }, [attemptId, navigate]);
+  }, [attemptId]);
 
   /**
    * Handle score dialog close
@@ -442,6 +485,18 @@ const OSCESession: React.FC = () => {
         />
       )}
 
+      {/* Scoring in progress overlay */}
+      {isScoring && (
+        <Alert severity="info" sx={{ mb: 3 }}>
+          <Box display="flex" alignItems="center" gap={2}>
+            <CircularProgress size={20} />
+            <Typography>
+              AI Examiner is analyzing your session... This may take 10-30 seconds.
+            </Typography>
+          </Box>
+        </Alert>
+      )}
+
       {/* Score Dialog */}
       <Dialog
         open={showScoreDialog}
@@ -461,25 +516,34 @@ const OSCESession: React.FC = () => {
         <DialogContent>
           {sessionScore && (
             <Box sx={{ py: 2 }}>
-              <Typography variant="h3" component="div" textAlign="center" gutterBottom>
-                {sessionScore.overall.toFixed(1)}%
-              </Typography>
-              <Typography
-                variant="body1"
-                textAlign="center"
-                color="text.secondary"
-                gutterBottom
-                sx={{ mb: 4 }}
-              >
-                Overall Score
-              </Typography>
+              {/* Overall Score & Pass/Fail */}
+              <Box textAlign="center" sx={{ mb: 3 }}>
+                <Typography variant="h2" component="div" gutterBottom>
+                  {sessionScore.total_score}/{sessionScore.max_score}
+                </Typography>
+                <Chip
+                  label={sessionScore.pass_fail}
+                  color={sessionScore.pass_fail === 'PASS' ? 'success' : 'error'}
+                  size="medium"
+                  sx={{ fontSize: '1.1rem', fontWeight: 700, px: 2, py: 0.5 }}
+                />
+                <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                  {sessionScore.pass_fail === 'PASS'
+                    ? 'Congratulations! You met the AMC passing standard (≥9/15).'
+                    : 'You did not meet the AMC passing standard (≥9/15). Keep practicing!'}
+                </Typography>
+              </Box>
 
-              <Grid container spacing={3}>
-                <Grid size={{ xs: 12, sm: 4 }}>
+              {/* AMC Rubric Breakdown */}
+              <Typography variant="h6" gutterBottom>
+                AMC Rubric Breakdown
+              </Typography>
+              <Grid container spacing={2} sx={{ mb: 3 }}>
+                <Grid size={{ xs: 12, sm: 6, md: 4 }}>
                   <Card variant="outlined">
                     <CardContent sx={{ textAlign: 'center' }}>
                       <Typography variant="h4" color="primary" gutterBottom>
-                        {sessionScore.communication.toFixed(1)}%
+                        {sessionScore.breakdown.communication.score}/{sessionScore.breakdown.communication.max}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
                         Communication
@@ -487,11 +551,11 @@ const OSCESession: React.FC = () => {
                     </CardContent>
                   </Card>
                 </Grid>
-                <Grid size={{ xs: 12, sm: 4 }}>
+                <Grid size={{ xs: 12, sm: 6, md: 4 }}>
                   <Card variant="outlined">
                     <CardContent sx={{ textAlign: 'center' }}>
                       <Typography variant="h4" color="primary" gutterBottom>
-                        {sessionScore.clinical_reasoning.toFixed(1)}%
+                        {sessionScore.breakdown.clinical_reasoning.score}/{sessionScore.breakdown.clinical_reasoning.max}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
                         Clinical Reasoning
@@ -499,11 +563,35 @@ const OSCESession: React.FC = () => {
                     </CardContent>
                   </Card>
                 </Grid>
-                <Grid size={{ xs: 12, sm: 4 }}>
+                <Grid size={{ xs: 12, sm: 6, md: 4 }}>
                   <Card variant="outlined">
                     <CardContent sx={{ textAlign: 'center' }}>
                       <Typography variant="h4" color="primary" gutterBottom>
-                        {sessionScore.professionalism.toFixed(1)}%
+                        {sessionScore.breakdown.information_gathering.score}/{sessionScore.breakdown.information_gathering.max}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Information Gathering
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+                <Grid size={{ xs: 12, sm: 6, md: 6 }}>
+                  <Card variant="outlined">
+                    <CardContent sx={{ textAlign: 'center' }}>
+                      <Typography variant="h4" color="primary" gutterBottom>
+                        {sessionScore.breakdown.management.score}/{sessionScore.breakdown.management.max}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Management
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+                <Grid size={{ xs: 12, sm: 12, md: 6 }}>
+                  <Card variant="outlined">
+                    <CardContent sx={{ textAlign: 'center' }}>
+                      <Typography variant="h4" color="primary" gutterBottom>
+                        {sessionScore.breakdown.professionalism.score}/{sessionScore.breakdown.professionalism.max}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
                         Professionalism
@@ -513,10 +601,45 @@ const OSCESession: React.FC = () => {
                 </Grid>
               </Grid>
 
-              <Alert severity="info" sx={{ mt: 3 }}>
-                Your performance has been evaluated based on AMC Clinical Examination
-                criteria. Review your transcript to identify areas for improvement.
-              </Alert>
+              {/* AI Examiner Feedback */}
+              {sessionScore.overall_feedback && (
+                <>
+                  <Typography variant="h6" gutterBottom>
+                    AI Examiner Feedback
+                  </Typography>
+                  <Alert severity="info" sx={{ mb: 2 }}>
+                    {sessionScore.overall_feedback}
+                  </Alert>
+                </>
+              )}
+
+              {/* Strengths */}
+              {sessionScore.strengths.length > 0 && (
+                <>
+                  <Typography variant="subtitle1" gutterBottom sx={{ mt: 2 }}>
+                    Strengths
+                  </Typography>
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
+                    {sessionScore.strengths.map((s, i) => (
+                      <Chip key={i} label={s} color="success" size="small" />
+                    ))}
+                  </Box>
+                </>
+              )}
+
+              {/* Areas for Improvement */}
+              {sessionScore.areas_for_improvement.length > 0 && (
+                <>
+                  <Typography variant="subtitle1" gutterBottom>
+                    Areas for Improvement
+                  </Typography>
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
+                    {sessionScore.areas_for_improvement.map((a, i) => (
+                      <Chip key={i} label={a} color="warning" size="small" />
+                    ))}
+                  </Box>
+                </>
+              )}
             </Box>
           )}
         </DialogContent>

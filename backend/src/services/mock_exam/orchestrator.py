@@ -94,10 +94,9 @@ class MockExamOrchestrator:
         Auto-select 16 personas with balanced distribution.
 
         Logic:
-        - 8 specialties: Cardiology, Respiratory, Neurology, GI, Psychiatry,
-                         Paediatrics, Obstetrics, Emergency Medicine
-        - 2 personas per specialty (1 intermediate, 1 advanced)
-        - Randomized within constraints (deterministic seed based on user_id + timestamp)
+        - Discover active specialties from database
+        - Attempt 2 personas per specialty (intermediate + advanced, with fallbacks)
+        - If balanced selection yields <16, fill remainder with random active personas
         - Ensures no duplicate personas
 
         Args:
@@ -107,13 +106,27 @@ class MockExamOrchestrator:
             List of 16 persona_ids (as strings)
 
         Raises:
-            ValueError: If insufficient personas available for balanced selection
+            ValueError: If fewer than 16 total active personas exist in the database
         """
         selected_personas = []
+        selected_ids = set()
         random.seed(f"{user_id}-{datetime.utcnow().timestamp()}")
 
-        for specialty in SPECIALTY_DISTRIBUTION:
-            # Get 1 intermediate persona
+        # Discover what specialties actually exist in the database
+        available_specialties = [
+            row[0] for row in self.db.query(PatientPersona.specialty)
+            .filter(PatientPersona.is_active == True)
+            .distinct()
+            .all()
+        ]
+        logger.info(f"Available specialties in DB: {available_specialties}")
+
+        # Phase 1: Try to pick 2 per available specialty (balanced coverage)
+        for specialty in available_specialties:
+            if len(selected_personas) >= 16:
+                break
+
+            # Try intermediate first
             intermediate = self.db.query(PatientPersona)\
                 .filter(
                     PatientPersona.specialty == specialty,
@@ -123,24 +136,27 @@ class MockExamOrchestrator:
                 .order_by(func.random())\
                 .first()
 
-            # Get 1 advanced persona
-            advanced = self.db.query(PatientPersona)\
-                .filter(
-                    PatientPersona.specialty == specialty,
-                    PatientPersona.difficulty_level == 'advanced',
-                    PatientPersona.is_active == True
-                )\
-                .order_by(func.random())\
-                .first()
-
-            if intermediate:
+            if intermediate and str(intermediate.persona_id) not in selected_ids:
                 selected_personas.append(str(intermediate.persona_id))
-            else:
-                logger.warning(
-                    f"No intermediate persona found for {specialty}, "
-                    f"falling back to foundation level"
-                )
-                # Fallback to foundation level
+                selected_ids.add(str(intermediate.persona_id))
+
+            # Try advanced
+            if len(selected_personas) < 16:
+                advanced = self.db.query(PatientPersona)\
+                    .filter(
+                        PatientPersona.specialty == specialty,
+                        PatientPersona.difficulty_level == 'advanced',
+                        PatientPersona.is_active == True
+                    )\
+                    .order_by(func.random())\
+                    .first()
+
+                if advanced and str(advanced.persona_id) not in selected_ids:
+                    selected_personas.append(str(advanced.persona_id))
+                    selected_ids.add(str(advanced.persona_id))
+
+            # Fallback: foundation if we still need one for this specialty
+            if len(selected_personas) < 16:
                 foundation = self.db.query(PatientPersona)\
                     .filter(
                         PatientPersona.specialty == specialty,
@@ -149,35 +165,37 @@ class MockExamOrchestrator:
                     )\
                     .order_by(func.random())\
                     .first()
-                if foundation:
-                    selected_personas.append(str(foundation.persona_id))
 
-            if advanced:
-                selected_personas.append(str(advanced.persona_id))
-            else:
-                logger.warning(
-                    f"No advanced persona found for {specialty}, "
-                    f"using another intermediate"
-                )
-                # Fallback to another intermediate
-                fallback = self.db.query(PatientPersona)\
-                    .filter(
-                        PatientPersona.specialty == specialty,
-                        PatientPersona.difficulty_level == 'intermediate',
-                        PatientPersona.is_active == True,
-                        PatientPersona.persona_id != (intermediate.persona_id if intermediate else None)
-                    )\
-                    .order_by(func.random())\
-                    .first()
-                if fallback:
-                    selected_personas.append(str(fallback.persona_id))
+                if foundation and str(foundation.persona_id) not in selected_ids:
+                    selected_personas.append(str(foundation.persona_id))
+                    selected_ids.add(str(foundation.persona_id))
+
+        # Phase 2: If still <16, fill with any remaining active personas
+        if len(selected_personas) < 16:
+            remaining_needed = 16 - len(selected_personas)
+            logger.info(f"Balanced selection found {len(selected_personas)}, filling {remaining_needed} from all specialties")
+
+            additional = self.db.query(PatientPersona)\
+                .filter(
+                    PatientPersona.is_active == True,
+                    ~PatientPersona.persona_id.in_(list(selected_ids))
+                )\
+                .order_by(func.random())\
+                .limit(remaining_needed)\
+                .all()
+
+            for persona in additional:
+                selected_personas.append(str(persona.persona_id))
+                selected_ids.add(str(persona.persona_id))
 
         # Validate we have 16 personas
         if len(selected_personas) < 16:
+            total_active = self.db.query(PatientPersona).filter(PatientPersona.is_active == True).count()
             raise ValueError(
                 f"Insufficient personas for mock exam. "
                 f"Found {len(selected_personas)}, need 16. "
-                f"Please ensure at least 2 personas per specialty are active."
+                f"Total active personas in database: {total_active}. "
+                f"Please ensure at least 16 active patient personas exist."
             )
 
         # Shuffle to randomize station order (not grouped by specialty)

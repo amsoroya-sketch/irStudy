@@ -55,7 +55,7 @@ class AIPatientService:
         Raises:
             ValueError: If no API key found
         """
-        self.model = "claude-3-5-sonnet-20250219"
+        self.model = "claude-sonnet-4-6"
         self.temperature = 0.7
         self.max_tokens = 500
 
@@ -196,20 +196,23 @@ class AIPatientService:
         """
         Convert persona object to dictionary.
         Handles both dict and object types (including Mock objects in tests).
+        Always normalizes nested fields (especially symptoms) to expected types.
         """
+        # Start with dict if already one, otherwise build from object
         if isinstance(persona, dict):
-            return persona
+            source = persona
+        else:
+            source = {}
+            attrs = [
+                "name", "age", "gender", "occupation", "cultural_background",
+                "chief_complaint", "opening_statement", "symptoms"
+            ]
+            for attr in attrs:
+                source[attr] = _get_attr(persona, attr, None)
 
-        # Convert object attributes to dict
+        # Normalize each field
         persona_dict = {}
-        attrs = [
-            "name", "age", "gender", "occupation", "cultural_background",
-            "chief_complaint", "opening_statement", "symptoms"
-        ]
-
-        for attr in attrs:
-            val = _get_attr(persona, attr, None)
-
+        for attr, val in source.items():
             if val is None:
                 persona_dict[attr] = ""
             elif isinstance(val, dict):
@@ -217,7 +220,6 @@ class AIPatientService:
                 converted_dict = {}
                 for k, v in val.items():
                     if isinstance(v, list):
-                        # Convert list items to strings
                         converted_dict[k] = [str(item) for item in v]
                     else:
                         converted_dict[k] = str(v) if v is not None else ""
@@ -228,6 +230,10 @@ class AIPatientService:
             else:
                 # Convert simple value to string
                 persona_dict[attr] = str(val)
+
+        # Ensure symptoms is a dict (progressive disclosure expects keys like "immediate")
+        if "symptoms" in persona_dict and isinstance(persona_dict["symptoms"], list):
+            persona_dict["symptoms"] = {"immediate": persona_dict["symptoms"]}
 
         return persona_dict
 
@@ -240,6 +246,10 @@ class AIPatientService:
         Map student questions to disclosed symptoms (progressive disclosure).
         """
         disclosed = []
+
+        # Defensive: symptoms may be None or not a dict
+        if not symptoms or not isinstance(symptoms, dict):
+            return disclosed
 
         # Always reveal immediate symptoms
         immediate = symptoms.get("immediate", [])

@@ -21,10 +21,14 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter } from 'react-router-dom';
 import ModuleStatsGrid from '../ModuleStatsGrid';
 import * as dashboardApi from '../../../api/dashboard';
+import * as htmlNotesHooks from '../../../hooks/useHTMLNotes';
 import type { DashboardOverviewResponse } from '../../../types/dashboard';
 
 // Mock dashboard API hook
 vi.mock('../../../api/dashboard');
+
+// Mock HTML notes hooks
+vi.mock('../../../hooks/useHTMLNotes');
 
 // Mock useNavigate from react-router-dom
 const mockNavigate = vi.fn();
@@ -142,23 +146,32 @@ describe('ModuleStatsGrid - PRD-MVP-002 Phase 3', () => {
   });
 
   /**
-   * Test 9: Display all 4 module cards
+   * Test 9: Display all module cards
    *
    * Requirements:
    * - MCQ card: "MCQ Practice", 89 attempts, 75.2% avg score
    * - OSCE card: "OSCE", 34 attempts, 82.1% avg score
    * - EMR card: "EMR Practice", 21 sessions, 79.5% avg score
    * - Mock Exam card: "Mock Exam", 12 exams, 76.8% avg score
+   * - HTML Notes card: "HTML OSCE Notes"
    * - All cards display last activity
    *
    * Success Criteria:
-   * - All 4 module names visible
+   * - All module names visible
    * - All attempt/session counts visible
    * - All average scores visible
    */
-  it('Test 9: should display all 4 module cards', () => {
+  it('Test 9: should display all module cards', () => {
     vi.mocked(dashboardApi.useDashboardOverview).mockReturnValue({
       data: mockDashboardData,
+      isLoading: false,
+      error: null,
+      isError: false,
+      refetch: vi.fn(),
+    } as any);
+
+    vi.mocked(htmlNotesHooks.useHTMLNoteSpecialties).mockReturnValue({
+      data: [],
       isLoading: false,
       error: null,
       isError: false,
@@ -169,9 +182,10 @@ describe('ModuleStatsGrid - PRD-MVP-002 Phase 3', () => {
 
     // Verify all module names
     expect(screen.getByText(/MCQ Practice/i)).toBeInTheDocument();
-    expect(screen.getByText(/OSCE/i)).toBeInTheDocument();
+    expect(screen.getByText(/^OSCE$/i)).toBeInTheDocument();
     expect(screen.getByText(/EMR Practice/i)).toBeInTheDocument();
     expect(screen.getByText(/Mock Exam/i)).toBeInTheDocument();
+    expect(screen.getByText(/HTML OSCE Notes/i)).toBeInTheDocument();
 
     // Verify MCQ stats
     expect(screen.getByText('89')).toBeInTheDocument(); // attempts
@@ -195,9 +209,10 @@ describe('ModuleStatsGrid - PRD-MVP-002 Phase 3', () => {
    *
    * Requirements:
    * - Clicking MCQ card navigates to /mcqs
-   * - Clicking OSCE card navigates to /osces
-   * - Clicking EMR card navigates to /emr
-   * - Clicking Mock Exam card navigates to /mock-exam
+   * - Clicking OSCE card navigates to /osce-practice
+   * - Clicking EMR card navigates to /emr/start
+   * - Clicking Mock Exam card navigates to /osce/mock-exam/start
+   * - Clicking HTML Notes card navigates to /html-notes
    * - Cards use CardActionArea for clickability
    *
    * Success Criteria:
@@ -215,6 +230,14 @@ describe('ModuleStatsGrid - PRD-MVP-002 Phase 3', () => {
       refetch: vi.fn(),
     } as any);
 
+    vi.mocked(htmlNotesHooks.useHTMLNoteSpecialties).mockReturnValue({
+      data: [],
+      isLoading: false,
+      error: null,
+      isError: false,
+      refetch: vi.fn(),
+    } as any);
+
     renderWithProviders(<ModuleStatsGrid />);
 
     // Click MCQ card
@@ -226,24 +249,31 @@ describe('ModuleStatsGrid - PRD-MVP-002 Phase 3', () => {
     });
 
     // Click OSCE card
-    const osceCard = screen.getByText(/OSCE/i).closest('[role="button"]');
+    const osceCard = screen.getByText(/^OSCE$/i).closest('[role="button"]');
     await user.click(osceCard!);
     await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith('/osces');
+      expect(mockNavigate).toHaveBeenCalledWith('/osce-practice');
     });
 
     // Click EMR card
     const emrCard = screen.getByText(/EMR Practice/i).closest('[role="button"]');
     await user.click(emrCard!);
     await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith('/emr');
+      expect(mockNavigate).toHaveBeenCalledWith('/emr/start');
     });
 
     // Click Mock Exam card
     const mockExamCard = screen.getByText(/Mock Exam/i).closest('[role="button"]');
     await user.click(mockExamCard!);
     await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith('/mock-exam');
+      expect(mockNavigate).toHaveBeenCalledWith('/osce/mock-exam/start');
+    });
+
+    // Click HTML Notes card
+    const htmlNotesCard = screen.getByText(/HTML OSCE Notes/i).closest('[role="button"]');
+    await user.click(htmlNotesCard!);
+    await waitFor(() => {
+      expect(mockNavigate).toHaveBeenCalledWith('/html-notes');
     });
   });
 
@@ -269,13 +299,22 @@ describe('ModuleStatsGrid - PRD-MVP-002 Phase 3', () => {
       refetch: vi.fn(),
     } as any);
 
+    vi.mocked(htmlNotesHooks.useHTMLNoteSpecialties).mockReturnValue({
+      data: [],
+      isLoading: false,
+      error: null,
+      isError: false,
+      refetch: vi.fn(),
+    } as any);
+
     renderWithProviders(<ModuleStatsGrid />);
 
     // Verify all module names still displayed
     expect(screen.getByText(/MCQ Practice/i)).toBeInTheDocument();
-    expect(screen.getByText(/OSCE/i)).toBeInTheDocument();
+    expect(screen.getByText(/^OSCE$/i)).toBeInTheDocument();
     expect(screen.getByText(/EMR Practice/i)).toBeInTheDocument();
     expect(screen.getByText(/Mock Exam/i)).toBeInTheDocument();
+    expect(screen.getByText(/HTML OSCE Notes/i)).toBeInTheDocument();
 
     // Verify empty state indicators (should show 0 or "No activity")
     const zeroTexts = screen.getAllByText('0');
@@ -291,12 +330,12 @@ describe('ModuleStatsGrid - PRD-MVP-002 Phase 3', () => {
    *
    * Requirements:
    * - Grid container with spacing
-   * - Grid items: xs=12 (full width on mobile), sm=6 (2 columns on tablet), md=6 (2 columns on desktop)
-   * - 2x2 grid layout on larger screens
+   * - Grid items: xs=12 (full width on mobile), sm=6 (2 columns on tablet), md=4 (3 columns on desktop)
+   * - Responsive grid layout on larger screens
    *
    * Success Criteria:
    * - Grid container exists
-   * - 4 Grid items exist
+   * - 5 Grid items exist (4 modules + HTML Notes)
    * - Container has proper spacing
    */
   it('Test 12: should use responsive grid layout', () => {
@@ -308,16 +347,25 @@ describe('ModuleStatsGrid - PRD-MVP-002 Phase 3', () => {
       refetch: vi.fn(),
     } as any);
 
+    vi.mocked(htmlNotesHooks.useHTMLNoteSpecialties).mockReturnValue({
+      data: [],
+      isLoading: false,
+      error: null,
+      isError: false,
+      refetch: vi.fn(),
+    } as any);
+
     const { container } = renderWithProviders(<ModuleStatsGrid />);
 
-    // Verify 4 module cards are rendered
+    // Verify 5 cards are rendered (4 modules + HTML Notes)
     const cards = container.querySelectorAll('[role="button"]');
-    expect(cards.length).toBe(4);
+    expect(cards.length).toBe(5);
 
-    // Verify all 4 modules are visible
+    // Verify all modules are visible
     expect(screen.getByText(/MCQ Practice/i)).toBeInTheDocument();
-    expect(screen.getByText(/OSCE/i)).toBeInTheDocument();
+    expect(screen.getByText(/^OSCE$/i)).toBeInTheDocument();
     expect(screen.getByText(/EMR Practice/i)).toBeInTheDocument();
     expect(screen.getByText(/Mock Exam/i)).toBeInTheDocument();
+    expect(screen.getByText(/HTML OSCE Notes/i)).toBeInTheDocument();
   });
 });

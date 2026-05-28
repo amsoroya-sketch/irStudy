@@ -74,6 +74,14 @@ export const queryKeys = {
     },
   },
 
+  // HTML OSCE Notes
+  htmlNotes: {
+    all: ['html-notes'] as const,
+    list: (params?: Record<string, unknown>) => ['html-notes', 'list', params] as const,
+    detail: (id: string) => ['html-notes', 'detail', id] as const,
+    specialties: () => ['html-notes', 'specialties'] as const,
+  },
+
   // Authentication
   auth: {
     currentUser: () => ['auth', 'current-user'] as const,

@@ -187,13 +187,37 @@ async def get_osce_session(
         PatientPersona.persona_id == attempt.persona_id
     ).first()
 
+    # Derive status for frontend
+    if attempt.ended_at:
+        status = "completed" if attempt.was_completed else "abandoned"
+    else:
+        status = "in_progress"
+
+    # Get score if available
+    score = db.query(OSCEScoreAI).filter(
+        OSCEScoreAI.attempt_id == attempt.attempt_id
+    ).first()
+
+    score_value = None
+    if score:
+        score_value = (
+            (score.communication_score or 0) +
+            (score.clinical_reasoning_score or 0) +
+            (score.information_gathering_score or 0) +
+            (score.management_score or 0) +
+            (score.professionalism_score or 0)
+        )
+
     return {
         "attempt_id": attempt.attempt_id,
+        "user_id": attempt.user_id,
+        "persona_id": attempt.persona_id,
         "session_type": attempt.session_type,
         "started_at": attempt.started_at.isoformat(),
-        "ended_at": attempt.ended_at.isoformat() if attempt.ended_at else None,
+        "completed_at": attempt.ended_at.isoformat() if attempt.ended_at else None,
         "duration_seconds": attempt.duration_seconds,
-        "was_completed": attempt.was_completed,
+        "status": status,
+        "score": score_value,
         "persona": {
             "persona_code": persona.persona_code if persona else None,
             "name": persona.name if persona else None,
@@ -373,4 +397,247 @@ async def get_osce_score(
         "critical_errors": score.critical_errors or [],
         "scored_at": score.scored_at.isoformat(),
         "scoring_model_version": score.scoring_model_version,
+    }
+
+
+# ============================================================================
+# LIST OSCE SESSIONS
+# ============================================================================
+
+
+@router.get("/")
+async def list_osce_sessions(
+    current_user: User = Depends(get_current_active_user),
+    db: Session = Depends(get_db),
+):
+    """
+    Get all OSCE sessions for the current user.
+
+    Returns:
+    - List of session summaries with status and persona info
+    """
+    attempts = db.query(OSCEAttemptAI).filter(
+        OSCEAttemptAI.user_id == str(current_user.id)
+    ).order_by(OSCEAttemptAI.started_at.desc()).all()
+
+    result = []
+    for attempt in attempts:
+        if attempt.ended_at:
+            status = "completed" if attempt.was_completed else "abandoned"
+        else:
+            status = "in_progress"
+
+        persona = db.query(PatientPersona).filter(
+            PatientPersona.persona_id == attempt.persona_id
+        ).first()
+
+        result.append({
+            "attempt_id": attempt.attempt_id,
+            "user_id": attempt.user_id,
+            "persona_id": attempt.persona_id,
+            "session_type": attempt.session_type,
+            "started_at": attempt.started_at.isoformat(),
+            "completed_at": attempt.ended_at.isoformat() if attempt.ended_at else None,
+            "duration_seconds": attempt.duration_seconds,
+            "status": status,
+            "score": None,
+            "persona": {
+                "persona_code": persona.persona_code if persona else None,
+                "name": persona.name if persona else None,
+                "specialty": persona.specialty if persona else None,
+            }
+        })
+
+    return result
+
+
+# ============================================================================
+# PAUSE OSCE SESSION
+# ============================================================================
+
+
+@router.put("/{attempt_id}/pause")
+async def pause_osce_session(
+    attempt_id: UUID,
+    current_user: User = Depends(get_current_active_user),
+    db: Session = Depends(get_db),
+):
+    """
+    Pause an active OSCE session.
+
+    Args:
+    - attempt_id: UUID of OSCE session
+
+    Returns:
+    - Updated session status
+
+    Raises:
+    - 404: Session not found or unauthorized
+    - 400: Session already ended
+    """
+    attempt = db.query(OSCEAttemptAI).filter(
+        OSCEAttemptAI.attempt_id == str(attempt_id),
+        OSCEAttemptAI.user_id == str(current_user.id)
+    ).first()
+
+    if not attempt:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="OSCE session not found"
+        )
+
+    if attempt.ended_at:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Cannot pause a completed session"
+        )
+
+    attempt.session_state = "paused"
+    db.commit()
+
+    return {"attempt_id": attempt.attempt_id, "status": "paused"}
+
+
+# ============================================================================
+# RESUME OSCE SESSION
+# ============================================================================
+
+
+@router.put("/{attempt_id}/resume")
+async def resume_osce_session(
+    attempt_id: UUID,
+    current_user: User = Depends(get_current_active_user),
+    db: Session = Depends(get_db),
+):
+    """
+    Resume a paused OSCE session.
+
+    Args:
+    - attempt_id: UUID of OSCE session
+
+    Returns:
+    - Updated session status
+
+    Raises:
+    - 404: Session not found or unauthorized
+    - 400: Session not paused or already ended
+    """
+    attempt = db.query(OSCEAttemptAI).filter(
+        OSCEAttemptAI.attempt_id == str(attempt_id),
+        OSCEAttemptAI.user_id == str(current_user.id)
+    ).first()
+
+    if not attempt:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="OSCE session not found"
+        )
+
+    if attempt.ended_at:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Cannot resume a completed session"
+        )
+
+    attempt.session_state = "conversation"
+    db.commit()
+
+    return {"attempt_id": attempt.attempt_id, "status": "in_progress"}
+
+
+# ============================================================================
+# END OSCE SESSION
+# ============================================================================
+
+
+class EndOSCESessionRequest(BaseModel):
+    """Request model for ending an OSCE session"""
+    abandonment_reason: Optional[str] = None
+
+
+@router.post("/{attempt_id}/end")
+async def end_osce_session(
+    attempt_id: UUID,
+    request: Optional[EndOSCESessionRequest] = None,
+    current_user: User = Depends(get_current_active_user),
+    db: Session = Depends(get_db),
+):
+    """
+    End an active OSCE session.
+
+    Args:
+    - attempt_id: UUID of OSCE session
+    - abandonment_reason: Optional reason if session was abandoned
+
+    Returns:
+    - Session summary with score if available
+
+    Raises:
+    - 404: Session not found or unauthorized
+    - 400: Session already ended
+    """
+    attempt = db.query(OSCEAttemptAI).filter(
+        OSCEAttemptAI.attempt_id == str(attempt_id),
+        OSCEAttemptAI.user_id == str(current_user.id)
+    ).first()
+
+    if not attempt:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="OSCE session not found"
+        )
+
+    if attempt.ended_at:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Session already ended"
+        )
+
+    now = datetime.now(timezone.utc)
+    attempt.ended_at = now
+    attempt.duration_seconds = int((now - attempt.started_at).total_seconds())
+    attempt.was_completed = True
+    attempt.session_state = "complete"
+
+    if request and request.abandonment_reason:
+        attempt.abandonment_reason = request.abandonment_reason
+        attempt.was_completed = False
+
+    db.commit()
+    db.refresh(attempt)
+
+    # Get score if available
+    score = db.query(OSCEScoreAI).filter(
+        OSCEScoreAI.attempt_id == attempt.attempt_id
+    ).first()
+
+    score_value = None
+    if score:
+        score_value = (
+            (score.communication_score or 0) +
+            (score.clinical_reasoning_score or 0) +
+            (score.information_gathering_score or 0) +
+            (score.management_score or 0) +
+            (score.professionalism_score or 0)
+        )
+
+    persona = db.query(PatientPersona).filter(
+        PatientPersona.persona_id == attempt.persona_id
+    ).first()
+
+    return {
+        "attempt_id": attempt.attempt_id,
+        "user_id": attempt.user_id,
+        "persona_id": attempt.persona_id,
+        "session_type": attempt.session_type,
+        "started_at": attempt.started_at.isoformat(),
+        "completed_at": attempt.ended_at.isoformat() if attempt.ended_at else None,
+        "duration_seconds": attempt.duration_seconds,
+        "status": "completed" if attempt.was_completed else "abandoned",
+        "score": score_value,
+        "persona": {
+            "persona_code": persona.persona_code if persona else None,
+            "name": persona.name if persona else None,
+            "specialty": persona.specialty if persona else None,
+        }
     }

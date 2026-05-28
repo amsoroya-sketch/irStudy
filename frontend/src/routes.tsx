@@ -20,6 +20,9 @@ export const EMRSelectSystemPage = lazy(() => import('./pages/emr/EMRSelectSyste
 export const EpicEMRPage = lazy(() => import('./pages/emr/EpicEMRPage'));
 export const CernerEMRPage = lazy(() => import('./pages/emr/CernerEMRPage'));
 
+// HTML OSCE Notes page (lazy loaded)
+export const HTMLNotesPage = lazy(() => import('./pages/HTMLNotesPage'));
+
 // Mock Exam pages (lazy loaded)
 export const MockExamStart = lazy(() => import('./pages/osce/MockExamStart'));
 export const MockExamStation = lazy(() => import('./pages/osce/MockExamStation'));

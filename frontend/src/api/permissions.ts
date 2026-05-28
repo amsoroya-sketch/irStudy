@@ -85,6 +85,9 @@ export const Permissions = {
   STUDYCARD_UPDATE: 'studycard.update',
   STUDYCARD_DELETE: 'studycard.delete',
 
+  // HTML OSCE Notes
+  HTML_NOTES_VIEW: 'html_notes.view',
+
   // Administration
   ADMIN_PANEL: 'admin.panel',
   SYSTEM_CONFIG: 'system.config',

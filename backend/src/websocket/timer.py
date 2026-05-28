@@ -39,6 +39,7 @@ class SessionTimer:
     async def start(self):
         """Start the 8-minute countdown timer."""
         self.started_at = datetime.now(timezone.utc)
+        self._task = asyncio.current_task()
         logger.info(f"✅ Timer started for attempt {self.attempt_id}")
         
         try:
@@ -48,8 +49,11 @@ class SessionTimer:
                 self.elapsed_seconds = int((now - self.started_at).total_seconds())
                 remaining_seconds = self.MAX_DURATION - self.elapsed_seconds
                 
-                # Broadcast timer update
-                await self._broadcast_timer_update(self.elapsed_seconds, remaining_seconds)
+                # Broadcast timer update (stop if send fails)
+                success = await self._broadcast_timer_update(self.elapsed_seconds, remaining_seconds)
+                if not success:
+                    logger.info(f"Timer stopping: websocket closed for attempt {self.attempt_id}")
+                    break
                 
                 # Check for 1-minute warning
                 if self.elapsed_seconds >= self.WARNING_AT and not self.warning_sent:
@@ -59,8 +63,9 @@ class SessionTimer:
                 # Wait 1 second
                 await asyncio.sleep(1)
             
-            # Timer expired - finalize session
-            await self._finalize_session()
+            # Timer expired - finalize session (only if still connected)
+            if self.websocket.client_state.name == "CONNECTED":
+                await self._finalize_session()
         
         except asyncio.CancelledError:
             logger.info(f"Timer cancelled for attempt {self.attempt_id}")
@@ -68,27 +73,33 @@ class SessionTimer:
         except Exception as e:
             logger.error(f"❌ Timer error: {e}", exc_info=True)
     
-    async def _broadcast_timer_update(self, elapsed: int, remaining: int):
+    async def _broadcast_timer_update(self, elapsed: int, remaining: int) -> bool:
         """
         Broadcast timer update to client.
         
         Sends every 1 second to keep client synchronized.
+        
+        Returns:
+            True if sent successfully, False if websocket is closed
         """
         try:
             await self.websocket.send_json({
-                "type": "timer_update",
+                "type": "timer",
                 "elapsed_seconds": elapsed,
-                "remaining_seconds": remaining
+                "remaining_seconds": remaining,
+                "timestamp": datetime.now(timezone.utc).isoformat()
             })
+            return True
         except Exception as e:
-            logger.error(f"❌ Failed to broadcast timer update: {e}")
+            # WebSocket closed — silently stop, don't spam logs
+            return False
     
     async def _send_warning(self):
         """Send 1-minute warning at 7:00 elapsed."""
         try:
             await self.websocket.send_json({
-                "type": "timer_warning",
-                "message": "1 minute remaining",
+                "type": "warning",
+                "content": "1 minute remaining",
                 "timestamp": datetime.now(timezone.utc).isoformat()
             })
             
@@ -97,8 +108,9 @@ class SessionTimer:
             
             logger.info(f"⚠️  1-minute warning sent for attempt {self.attempt_id}")
         
-        except Exception as e:
-            logger.error(f"❌ Failed to send warning: {e}")
+        except Exception:
+            # WebSocket closed — silently ignore
+            pass
     
     async def _finalize_session(self):
         """
@@ -123,7 +135,11 @@ class SessionTimer:
                 "attempt_id": self.attempt_id,
                 "timestamp": datetime.now(timezone.utc).isoformat()
             })
-            
+        except Exception:
+            # WebSocket already closed — continue with cleanup
+            pass
+        
+        try:
             # Final sync to PostgreSQL
             await self.session_manager.finalize_session()
             

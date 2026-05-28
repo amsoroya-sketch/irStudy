@@ -36,9 +36,11 @@ import {
   MedicalServices as OSCEIcon,
   HealthAndSafety as EMRIcon,
   Assessment as MockExamIcon,
+  MenuBook as MenuBookIcon,
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { useDashboardOverview } from '../../api/dashboard';
+import { useHTMLNoteSpecialties } from '../../hooks/useHTMLNotes';
 import type { ModuleStats } from '../../types/dashboard';
 
 /**
@@ -88,7 +90,7 @@ const moduleConfigs: ModuleConfig[] = [
     name: 'OSCE',
     icon: <OSCEIcon fontSize="large" />,
     color: '#2e7d32', // Green
-    route: '/osces',
+    route: '/osce-practice',
     countLabel: 'Attempts',
   },
   {
@@ -96,7 +98,7 @@ const moduleConfigs: ModuleConfig[] = [
     name: 'EMR Practice',
     icon: <EMRIcon fontSize="large" />,
     color: '#7b1fa2', // Purple
-    route: '/emr',
+    route: '/emr/start',
     countLabel: 'Sessions',
   },
   {
@@ -104,7 +106,7 @@ const moduleConfigs: ModuleConfig[] = [
     name: 'Mock Exam',
     icon: <MockExamIcon fontSize="large" />,
     color: '#ed6c02', // Orange
-    route: '/mock-exam',
+    route: '/osce/mock-exam/start',
     countLabel: 'Exams',
   },
 ];
@@ -123,6 +125,77 @@ const getModuleCount = (module: ModuleStats, key: string): number => {
     return module.total_exams || 0;
   }
   return 0;
+};
+
+/**
+ * HTML Notes Card Component
+ * Static card without dashboard stats (no user progress tracking for notes yet)
+ */
+const HTMLNotesCard: React.FC<{ onClick: () => void; count: number }> = ({ onClick, count }) => {
+  return (
+    <Card>
+      <CardActionArea onClick={onClick} role="button">
+        <CardContent>
+          {/* Icon and Name */}
+          <Box display="flex" alignItems="center" mb={2}>
+            <Box
+              sx={{
+                color: '#00838f', // Teal
+                mr: 1.5,
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <MenuBookIcon fontSize="large" />
+            </Box>
+            <Typography variant="h6" component="h3">
+              HTML OSCE Notes
+            </Typography>
+          </Box>
+
+          {/* Stats */}
+          <Box>
+            <Box display="flex" justifyContent="space-between" mb={1}>
+              <Typography variant="body2" color="text.secondary">
+                Notes
+              </Typography>
+              <Typography variant="body1" fontWeight="bold">
+                {count}
+              </Typography>
+            </Box>
+
+            <Box display="flex" justifyContent="space-between" mb={1}>
+              <Typography variant="body2" color="text.secondary">
+                Format
+              </Typography>
+              <Typography variant="body1" fontWeight="bold">
+                Dr. Amir
+              </Typography>
+            </Box>
+
+            <Box display="flex" justifyContent="space-between">
+              <Typography variant="body2" color="text.secondary">
+                Status
+              </Typography>
+              <Typography variant="body2">
+                Available
+              </Typography>
+            </Box>
+
+            <Box mt={2}>
+              <Typography
+                variant="caption"
+                color="text.secondary"
+                fontStyle="italic"
+              >
+                Pre-generated notes for offline study
+              </Typography>
+            </Box>
+          </Box>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
 };
 
 /**
@@ -218,6 +291,7 @@ const ModuleCard: React.FC<ModuleCardProps> = ({ config, stats, onClick }) => {
 const ModuleStatsGrid: React.FC = () => {
   const navigate = useNavigate();
   const { data, isLoading } = useDashboardOverview();
+  const { data: specialtiesData } = useHTMLNoteSpecialties();
 
   // Loading state
   if (isLoading || !data) {
@@ -225,6 +299,7 @@ const ModuleStatsGrid: React.FC = () => {
   }
 
   const { modules } = data;
+  const htmlNotesCount = specialtiesData?.reduce((sum, s) => sum + s.count, 0) ?? 0;
 
   return (
     <Box>
@@ -234,7 +309,7 @@ const ModuleStatsGrid: React.FC = () => {
 
       <Grid container spacing={3}>
         {moduleConfigs.map((config) => (
-          <Grid item xs={12} sm={6} md={6} key={config.key}>
+          <Grid item xs={12} sm={6} md={4} key={config.key}>
             <ModuleCard
               config={config}
               stats={modules[config.key]}
@@ -242,6 +317,12 @@ const ModuleStatsGrid: React.FC = () => {
             />
           </Grid>
         ))}
+        <Grid item xs={12} sm={6} md={4}>
+          <HTMLNotesCard
+            count={htmlNotesCount}
+            onClick={() => navigate('/html-notes')}
+          />
+        </Grid>
       </Grid>
     </Box>
   );

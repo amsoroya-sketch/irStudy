@@ -59,13 +59,22 @@ export interface WebSocketChatProps {
 }
 
 /**
- * Score display interface
+ * Score display interface (matches backend scoring_complete payload)
  */
 interface SessionScore {
-  overall: number;
-  communication: number;
-  clinical_reasoning: number;
-  professionalism: number;
+  total_score: number;
+  max_score: number;
+  pass_fail: 'PASS' | 'FAIL';
+  breakdown: {
+    communication: { score: number; max: number; feedback: string };
+    clinical_reasoning: { score: number; max: number; feedback: string };
+    information_gathering: { score: number; max: number; feedback: string };
+    management: { score: number; max: number; feedback: string };
+    professionalism: { score: number; max: number; feedback: string };
+  };
+  strengths: string[];
+  areas_for_improvement: string[];
+  overall_feedback: string;
 }
 
 /**
@@ -291,13 +300,27 @@ export function WebSocketChat({
           break;
 
         case 'session_ended':
-          // Session ended
+          // Session ended — scoring happens in background
+          setSessionEnded(true);
+          setIsAITyping(false);
+          // Don't call onSessionEnd here — score arrives via scoring_complete
+          break;
+
+        case 'scoring_complete':
+          // AI Examiner scoring finished
           setSessionEnded(true);
           setIsAITyping(false);
 
-          // Call session end callback
-          if (onSessionEnd && wsMessage.score) {
-            onSessionEnd(wsMessage.score);
+          if (onSessionEnd && wsMessage.total_score !== undefined) {
+            onSessionEnd({
+              total_score: wsMessage.total_score,
+              max_score: wsMessage.max_score || 15,
+              pass_fail: wsMessage.pass_fail || 'FAIL',
+              breakdown: wsMessage.breakdown || {},
+              strengths: wsMessage.strengths || [],
+              areas_for_improvement: wsMessage.areas_for_improvement || [],
+              overall_feedback: wsMessage.overall_feedback || '',
+            });
           }
           break;
 

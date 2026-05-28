@@ -132,7 +132,7 @@ export const createMockExam = async (
   request: MockExamCreateRequest
 ): Promise<MockExamCreateResponse> => {
   const response = await axiosInstance.post<MockExamCreateResponse>(
-    '/mock-exams',
+    '/mock-exams/',
     request
   );
   return response.data;
@@ -152,7 +152,7 @@ export const getMockExamStatus = async (
   examId: string
 ): Promise<MockExamStatusResponse> => {
   const response = await axiosInstance.get<MockExamStatusResponse>(
-    `/mock-exams/${examId}`
+    `/mock-exams/${examId}/`
   );
   return response.data;
 };
@@ -176,7 +176,7 @@ export const completeStation = async (
   request: StationCompleteRequest
 ): Promise<StationCompleteResponse> => {
   const response = await axiosInstance.put<StationCompleteResponse>(
-    `/mock-exams/${examId}/station/${stationNumber}/complete`,
+    `/mock-exams/${examId}/station/${stationNumber}/complete/`
     request
   );
   return response.data;
@@ -197,7 +197,7 @@ export const getMockExamResults = async (
   examId: string
 ): Promise<MockExamResultsResponse> => {
   const response = await axiosInstance.get<MockExamResultsResponse>(
-    `/mock-exams/${examId}/results`
+    `/mock-exams/${examId}/results/`
   );
   return response.data;
 };

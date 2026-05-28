@@ -61,7 +61,7 @@ describe('MobileBottomNav', () => {
       renderNav();
       expect(screen.getByText('Home')).toBeInTheDocument();
       expect(screen.getByText('Practice')).toBeInTheDocument();
-      expect(screen.getByText('Study')).toBeInTheDocument();
+      expect(screen.getByText('Notes')).toBeInTheDocument();
       expect(screen.getByText('Progress')).toBeInTheDocument();
       expect(screen.getByText('Profile')).toBeInTheDocument();
     });
@@ -78,10 +78,10 @@ describe('MobileBottomNav', () => {
       expect(practiceAction).toHaveAttribute('aria-current', 'page');
     });
 
-    it('marks "Study" as active on /study-cards route', () => {
-      renderNav('/study-cards');
-      const studyAction = screen.getByLabelText('Study');
-      expect(studyAction).toHaveAttribute('aria-current', 'page');
+    it('marks "Notes" as active on /html-notes route', () => {
+      renderNav('/html-notes');
+      const notesAction = screen.getByLabelText('Notes');
+      expect(notesAction).toHaveAttribute('aria-current', 'page');
     });
 
     it('marks "Progress" as active on /performance route', () => {
@@ -109,10 +109,10 @@ describe('MobileBottomNav', () => {
       expect(mockNavigate).toHaveBeenCalledWith('/mcqs');
     });
 
-    it('calls navigate with /study-cards when Study is clicked', () => {
+    it('calls navigate with /html-notes when Notes is clicked', () => {
       renderNav('/dashboard');
-      fireEvent.click(screen.getByText('Study'));
-      expect(mockNavigate).toHaveBeenCalledWith('/study-cards');
+      fireEvent.click(screen.getByText('Notes'));
+      expect(mockNavigate).toHaveBeenCalledWith('/html-notes');
     });
 
     it('calls navigate with /performance when Progress is clicked', () => {
@@ -148,7 +148,7 @@ describe('MobileBottomNav', () => {
       renderNav();
       expect(screen.getByLabelText('Home')).toBeInTheDocument();
       expect(screen.getByLabelText('Practice')).toBeInTheDocument();
-      expect(screen.getByLabelText('Study')).toBeInTheDocument();
+      expect(screen.getByLabelText('Notes')).toBeInTheDocument();
       expect(screen.getByLabelText('Progress')).toBeInTheDocument();
       expect(screen.getByLabelText('Profile')).toBeInTheDocument();
     });

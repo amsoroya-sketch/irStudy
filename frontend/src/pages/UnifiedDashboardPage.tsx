@@ -18,8 +18,9 @@
  */
 
 import React from 'react';
-import { Container, Typography, Box, Grid, IconButton, Tooltip } from '@mui/material';
-import { Refresh as RefreshIcon } from '@mui/icons-material';
+import { Container, Typography, Box, Grid, IconButton, Tooltip, Card, CardContent, Button } from '@mui/material';
+import { Refresh as RefreshIcon, MenuBook as MenuBookIcon } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 import OverallProgressCard from '../components/dashboard/OverallProgressCard';
 import ModuleStatsGrid from '../components/dashboard/ModuleStatsGrid';
 import SpecialtyBreakdownChart from '../components/dashboard/SpecialtyBreakdownChart';
@@ -33,6 +34,7 @@ import { useDashboardOverview } from '../api/dashboard';
  * Main dashboard page showing comprehensive student progress
  */
 const UnifiedDashboardPage: React.FC = () => {
+  const navigate = useNavigate();
   const { refetch, isFetching } = useDashboardOverview();
 
   /**
@@ -68,6 +70,33 @@ const UnifiedDashboardPage: React.FC = () => {
       {/* Module Stats Grid */}
       <Box mb={4}>
         <ModuleStatsGrid />
+      </Box>
+
+      {/* HTML OSCE Notes Promo */}
+      <Box mb={4}>
+        <Card sx={{ bgcolor: 'info.light', border: '2px solid', borderColor: 'info.main' }}>
+          <CardContent>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5 }}>
+              <MenuBookIcon color="info" fontSize="large" />
+              <Typography variant="h6" component="h2">
+                HTML OSCE Notes
+              </Typography>
+            </Box>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Browse 63 pre-generated OSCE notes in Dr. Amir&apos;s format. Covering Medicine,
+              Surgery, Psychiatry, Paediatrics, Obstetrics &amp; Gynaecology, Ethics &amp; Communication,
+              and Mock OSCE Stations.
+            </Typography>
+            <Button
+              variant="contained"
+              color="info"
+              onClick={() => navigate('/html-notes')}
+              startIcon={<MenuBookIcon />}
+            >
+              Browse Notes
+            </Button>
+          </CardContent>
+        </Card>
       </Box>
 
       {/* Two-Column Layout: Chart + Activity Feed */}

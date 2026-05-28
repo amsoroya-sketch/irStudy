@@ -29,6 +29,7 @@ import {
   EMRSelectSystemPage,
   EpicEMRPage,
   CernerEMRPage,
+  HTMLNotesPage,
   MockExamStart,
   MockExamStation,
   MockExamResults,
@@ -119,6 +120,14 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <FlashcardReview />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/html-notes"
+                  element={
+                    <ProtectedRoute>
+                      <HTMLNotesPage />
                     </ProtectedRoute>
                   }
                 />

@@ -48,7 +48,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-router = APIRouter(prefix="/mock-exams", tags=["ai-osce"])
+router = APIRouter(prefix="/mock-exams", tags=["ai-osce"], redirect_slashes=False)
 
 
 @router.post(

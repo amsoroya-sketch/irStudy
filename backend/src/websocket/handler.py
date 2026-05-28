@@ -119,8 +119,13 @@ class OSCEWebSocketHandler:
             current_count = int(current_count) if isinstance(current_count, str) else current_count
             
             if current_count >= 3:
-                logger.warning(f"❌ Rate limit exceeded for user {self.user_id}: {current_count} concurrent connections")
-                return False
+                # Stale counter from crashed connections — reset and allow
+                logger.warning(
+                    f"⚠️ Rate limit at {current_count} for user {self.user_id} — "
+                    f"resetting stale counter (likely from crashed connections)"
+                )
+                self.redis_client.set_osce(rate_limit_key, 1, ttl=1800)
+                return True
             
             # Increment counter
             new_count = current_count + 1
@@ -141,11 +146,9 @@ class OSCEWebSocketHandler:
             emotional_state = self.session_manager.get_emotional_state()
             
             message = {
-                "type": "patient_message",
-                "speaker": "patient",
-                "message": opening_statement,
+                "type": "response",
+                "content": opening_statement,
                 "emotional_state": emotional_state,
-                "emotional_state_changed": False,
                 "timestamp": datetime.now(timezone.utc).isoformat()
             }
             
@@ -180,6 +183,12 @@ class OSCEWebSocketHandler:
             except json.JSONDecodeError:
                 await self._send_error("Invalid JSON")
             
+            except RuntimeError as e:
+                # WebSocket closed or not accepted — break the loop
+                logger.warning(f"WebSocket runtime error in message loop: {e}")
+                self.is_connected = False
+                break
+            
             except Exception as e:
                 logger.error(f"❌ Error in message loop: {e}", exc_info=True)
                 await self._send_error("Internal server error")
@@ -189,17 +198,21 @@ class OSCEWebSocketHandler:
         Validate student message.
         
         Checks:
-        - message_data has "type" and "message" fields
+        - message_data has "type" and "content"/"message" fields
         - message is not empty
         - message length <5000 chars
         """
         if not isinstance(message_data, dict):
             return False
         
-        if message_data.get("type") != "student_message":
+        # Accept both frontend format (type: "message") and legacy (type: "student_message")
+        msg_type = message_data.get("type")
+        if msg_type not in ("message", "student_message"):
             return False
         
-        message = message_data.get("message", "").strip()
+        # Frontend sends "content", legacy sends "message"
+        message = message_data.get("content") or message_data.get("message", "")
+        message = str(message).strip()
         
         if not message:
             return False
@@ -227,7 +240,8 @@ class OSCEWebSocketHandler:
         4. Receive AI response
         5. Broadcast response to WebSocket
         """
-        student_message = message_data.get("message")
+        # Frontend sends "content", legacy sends "message"
+        student_message = message_data.get("content") or message_data.get("message")
         
         # Log to session manager
         await self.session_manager.log_student_message(student_message)
@@ -235,7 +249,8 @@ class OSCEWebSocketHandler:
         # Send thinking indicator
         await self.websocket.send_json({
             "type": "thinking",
-            "message": "Patient is thinking..."
+            "content": "Patient is thinking...",
+            "timestamp": datetime.now(timezone.utc).isoformat()
         })
         
         # Queue AI Patient response (background task)
@@ -258,11 +273,9 @@ class OSCEWebSocketHandler:
             
             # Broadcast to WebSocket
             await self.websocket.send_json({
-                "type": "patient_message",
-                "speaker": "patient",
-                "message": response_data["message"],
+                "type": "response",
+                "content": response_data["message"],
                 "emotional_state": response_data["emotional_state"],
-                "emotional_state_changed": response_data.get("emotional_state_changed", False),
                 "timestamp": datetime.now(timezone.utc).isoformat()
             })
             
@@ -274,24 +287,33 @@ class OSCEWebSocketHandler:
     
     async def _send_error(self, message: str):
         """Send error message to client."""
+        if not self.is_connected:
+            return
         try:
             await self.websocket.send_json({
                 "type": "error",
-                "message": message
+                "error": message,
+                "timestamp": datetime.now(timezone.utc).isoformat()
             })
         except Exception as e:
             logger.error(f"❌ Failed to send error message: {e}")
+            self.is_connected = False
     
     async def _handle_disconnect(self, normal: bool = True):
         """
         Handle WebSocket disconnection.
         
         Steps:
-        1. Sync Redis → PostgreSQL (don't lose data)
-        2. Decrement rate limit counter
-        3. Cleanup (if session expired)
+        1. Cancel timer task
+        2. Sync Redis → PostgreSQL (don't lose data)
+        3. Decrement rate limit counter
+        4. Cleanup (if session expired)
         """
         self.is_connected = False
+        
+        # Cancel timer to prevent it from trying to send on closed socket
+        if self.timer:
+            self.timer.cancel()
         
         try:
             # Sync to PostgreSQL

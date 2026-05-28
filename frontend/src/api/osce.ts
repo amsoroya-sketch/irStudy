@@ -54,7 +54,7 @@ export const createOSCESession = async (personaId: string): Promise<OSCEAttempt>
     throw new Error('Invalid persona ID format');
   }
 
-  const response = await axiosInstance.post<OSCEAttempt>('/osce/sessions', {
+  const response = await axiosInstance.post<OSCEAttempt>('/osce-sessions', {
     persona_id: personaId,
   });
 
@@ -78,7 +78,7 @@ export const getOSCESession = async (attemptId: string): Promise<OSCEAttempt> =>
     throw new Error('Invalid attempt ID format');
   }
 
-  const response = await axiosInstance.get<OSCEAttempt>(`/osce/sessions/${attemptId}`);
+  const response = await axiosInstance.get<OSCEAttempt>(`/osce-sessions/${attemptId}`);
   return response.data;
 };
 
@@ -90,7 +90,7 @@ export const getOSCESession = async (attemptId: string): Promise<OSCEAttempt> =>
  */
 export const getOSCESessions = async (userId?: string): Promise<OSCEAttempt[]> => {
   const params = userId ? { user_id: userId } : {};
-  const response = await axiosInstance.get<OSCEAttempt[]>('/osce/sessions', { params });
+  const response = await axiosInstance.get<OSCEAttempt[]>('/osce-sessions', { params });
   return response.data;
 };
 
@@ -112,7 +112,7 @@ export const pauseOSCESession = async (attemptId: string): Promise<void> => {
     throw new Error('Invalid attempt ID format');
   }
 
-  await axiosInstance.put(`/osce/sessions/${attemptId}/pause`);
+  await axiosInstance.put(`/osce-sessions/${attemptId}/pause`);
 };
 
 /**
@@ -133,7 +133,7 @@ export const resumeOSCESession = async (attemptId: string): Promise<void> => {
     throw new Error('Invalid attempt ID format');
   }
 
-  await axiosInstance.put(`/osce/sessions/${attemptId}/resume`);
+  await axiosInstance.put(`/osce-sessions/${attemptId}/resume`);
 };
 
 /**
@@ -154,6 +154,48 @@ export const endOSCESession = async (attemptId: string): Promise<OSCEAttempt> =>
     throw new Error('Invalid attempt ID format');
   }
 
-  const response = await axiosInstance.post<OSCEAttempt>(`/osce/sessions/${attemptId}/end`);
+  const response = await axiosInstance.post<OSCEAttempt>(`/osce-sessions/${attemptId}/end`);
+  return response.data;
+};
+
+/**
+ * AI Examiner score breakdown for completed OSCE
+ */
+export interface OSCEExaminerScore {
+  attempt_id: string;
+  scores: {
+    communication: number;
+    clinical_reasoning: number;
+    information_gathering: number;
+    management: number;
+    professionalism: number;
+  };
+  total_score: number;
+  pass_fail: 'PASS' | 'FAIL';
+  ai_examiner_feedback: string;
+  strengths: string[];
+  areas_for_improvement: string[];
+  critical_errors: string[];
+  scored_at: string;
+  scoring_model_version: string;
+}
+
+/**
+ * Get AI Examiner score for completed OSCE session
+ *
+ * @param attemptId - OSCE attempt UUID
+ * @returns Detailed AMC rubric score breakdown
+ *
+ * Throws:
+ * - 404: Session not found or score not available yet
+ * - 403: Unauthorized
+ */
+export const getOSCEScore = async (attemptId: string): Promise<OSCEExaminerScore> => {
+  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  if (!uuidRegex.test(attemptId)) {
+    throw new Error('Invalid attempt ID format');
+  }
+
+  const response = await axiosInstance.get<OSCEExaminerScore>(`/osce-sessions/${attemptId}/score`);
   return response.data;
 };

@@ -41,7 +41,7 @@ class AIExaminerService:
         2. Vault: irStudy/claude (fallback)
         3. Environment: ANTHROPIC_API_KEY (fallback)
         """
-        self.model = "claude-3-5-sonnet-20250219"
+        self.model = "claude-sonnet-4-6"
         self.temperature = 0.1  # Consistent scoring
         self.max_tokens = 2000
         

@@ -229,6 +229,35 @@ export interface RegisterResponse {
   message: string;
 }
 
+// ===== HTML OSCE Notes Types =====
+
+export interface HTMLNote {
+  note_id: string;
+  title: string;
+  specialty: string;
+  category: string;
+  file_size_kb: number;
+  estimated_reading_minutes: number;
+  topics: string[];
+  preview_text: string;
+  file_path?: string;
+  related_osce_ids?: string[];
+  created_at?: string;
+}
+
+export interface HTMLNoteListParams {
+  skip?: number;
+  limit?: number;
+  specialty?: string;
+  category?: string;
+  search?: string;
+}
+
+export interface HTMLNoteSpecialty {
+  specialty: string;
+  count: number;
+}
+
 // ===== API Error Response =====
 
 export interface APIError {

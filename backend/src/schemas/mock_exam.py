@@ -42,7 +42,7 @@ class PersonaInfo(BaseModel):
     )
 
     persona_id: str = Field(..., description="UUID of patient persona")
-    persona_code: str = Field(..., pattern=r"^[A-Z]+-\d{3}-.+$", description="Unique persona code")
+    persona_code: str = Field(..., min_length=1, description="Unique persona code")
     name: str = Field(..., min_length=2, max_length=100, description="Patient name")
     specialty: str = Field(..., min_length=3, max_length=50, description="Medical specialty")
     chief_complaint: str = Field(..., min_length=5, max_length=500, description="Presenting complaint")
