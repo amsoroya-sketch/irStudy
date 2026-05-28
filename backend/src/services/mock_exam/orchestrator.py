@@ -300,7 +300,7 @@ class MockExamOrchestrator:
         if not exam:
             raise ValueError(f"Exam {exam_id} not found")
 
-        if exam.user_id != user_id:
+        if str(exam.user_id) != str(user_id):
             raise ValueError(f"User {user_id} not authorized to access exam {exam_id}")
 
         # Calculate time elapsed
@@ -375,7 +375,7 @@ class MockExamOrchestrator:
         if not exam:
             raise ValueError(f"Exam {exam_id} not found")
 
-        if exam.user_id != user_id:
+        if str(exam.user_id) != str(user_id):
             raise ValueError(f"User {user_id} not authorized to access exam {exam_id}")
 
         if exam.exam_state != 'IN_PROGRESS':
@@ -465,7 +465,7 @@ class MockExamOrchestrator:
         if not exam:
             raise ValueError(f"Exam {exam_id} not found")
 
-        if exam.user_id != user_id:
+        if str(exam.user_id) != str(user_id):
             raise ValueError(f"User {user_id} not authorized to access exam {exam_id}")
 
         if exam.exam_state != 'COMPLETED':
