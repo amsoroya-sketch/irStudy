@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sore Eye - Telephone Triage of Orbital Cellulitis - Ophthalmology OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        Ophthalmology<span>›</span>Sore Eye - Telephone Triage of Orbital Cellulitis
+    </div>
+    <h1>Sore Eye - Telephone Triage of Orbital Cellulitis</h1>
+    <p class="source-line">Source: Dr. Amir workshop — Med workshop 2 - 2026
+       / CLASS 3 OPHTHALMOLOGY (Aug 2026 drop) · Specialty: ophthalmology</p>
+
+<section id="scenario"><h2>Scenario</h2>
+<p>Telephone consultation. A young woman (Jane) has booked a phone appointment because she is concerned about her eyes. The stem is deliberately vague - some candidates recall it as pain and swelling of the eye. On entering the room the examiner performs an ID check and leaves; the candidate picks up a phone and takes the history down the line.</p><ul><li>Take a focused history for five minutes.</li><li>Explain your most likely diagnosis and differentials to the patient.</li><li>Outline your management.</li></ul>
+</section>
+
+<section id="differential-diagnosis-of-eye-pain"><h2>Differential Diagnosis of Eye Pain</h2>
+<p><strong>Eyelid causes:</strong></p><ul><li>Blepharitis (lid-margin inflammation)</li><li>Stye (external hordeolum)</li><li>Chalazion (meibomian cyst)</li></ul><p><strong>Ocular / orbital causes:</strong></p><ul><li>Preseptal and orbital cellulitis (same infective process, different anatomical compartment, very different management)</li><li>Endophthalmitis (consider in contact-lens wearers or after penetrating injury)</li><li>Conjunctivitis</li><li>Uveitis (iritis)</li><li>Keratitis (classic version is UV / arc-welding keratitis when eye protection is not used)</li><li>Corneal ulcer (e.g. organic foreign body while gardening)</li></ul>
+</section>
+
+<section id="approach-to-the-telephone-case"><h2>Approach to the Telephone Case</h2>
+<p>Pick up the phone, greet warmly and confirm who you are speaking to. Introduce yourself ("My name is Dr Amir, I am your doctor - who am I speaking to?"). Acknowledge the concern, thank the patient for calling, and signpost that you will ask some questions to work out what is going on.</p>
+</section>
+
+<section id="characterising-the-pain-socrates-siqoora"><h2>Characterising the Pain (SOCRATES / SIQOORA)</h2>
+<ul><li><strong>Site:</strong> one eye or both? In the eyelids or deep in the eyeball?</li><li><strong>Intensity:</strong> rate the pain 1-10.</li><li><strong>Quality:</strong> burning (suggests conjunctivitis) versus a deep dull ache.</li><li><strong>Onset / timing:</strong> when did it start, first episode (consider glaucoma if recurrent)?</li><li><strong>Course:</strong> constant or intermittent, getting worse?</li><li><strong>Radiation:</strong> localised to the eyes or spreading.</li><li><strong>Aggravating / relieving factors.</strong></li></ul><p>Two key aggravating questions: does <em>blinking</em> make it worse (think foreign body or lid lesion rubbing the surface), and does <em>moving the eye</em> make it worse? Pain on eye movement is the pivotal feature separating orbital cellulitis from preseptal cellulitis and should prompt emergency escalation.</p>
+</section>
+
+<section id="systematic-symptom-screen"><h2>Systematic Symptom Screen</h2>
+<p><strong>Eyelid questions:</strong> swelling, redness, discharge (colour, consistency - watery vs thick/sticky/purulent), eyelids stuck together on waking (dried conjunctival discharge), itch.</p><p><strong>Eye questions:</strong> blurred vision, double vision, overall vision, redness, photophobia (a patient wearing sunglasses may be photophobic - or simply hiding a red eye or chalazion, so always ask why), flashes and floaters (important for uveitis), pain on eye movement.</p><p><strong>Systemic questions:</strong> fever and chills (infection), headache (glaucoma, orbital cellulitis), runny nose / flu-like symptoms (viral conjunctivitis; orbital cellulitis is commonly secondary to sinusitis), fatigue, rash (viral conjunctivitis), head and neck lumps (pre-auricular node of epidemic keratoconjunctivitis), nausea and vomiting (acute glaucoma).</p><p><strong>Risk factors:</strong> contact-lens use, occupation (woodwork/drilling - foreign body, UV keratitis), facial or ocular trauma, contact with unwell people, travel (dengue - retro-orbital pain; Zika - red eye), sexual history, past ocular history and family history.</p>
+</section>
+
+<section id="case-findings"><h2>Case Findings</h2>
+<p>The eyes have been painful and red for two days. While gardening the patient was struck above the eyebrow by a tree branch that scratched the face. She feels hot and cold (possible fever), has headache, and marked eyelid swelling that is closing the eye completely. In older versions the patient reports pain on eye movement; in newer versions she may deny it. Because the eye is shut she cannot comment on vision. The branch struck the eyebrow, not the globe, so there is no penetrating ocular injury.</p>
+</section>
+
+<section id="working-diagnosis-orbital-cellulitis"><h2>Working Diagnosis: Orbital Cellulitis</h2>
+<p>The leading diagnosis over the phone is <strong>orbital cellulitis</strong> until proven otherwise. Preseptal (anterior to the orbital septum) predominantly involves the eyelid and can often be managed with oral antibiotics; orbital cellulitis lies behind the septum, involves orbital tissues, and is a sight- and life-threatening emergency. Orbital cellulitis is prioritised because of the traumatic entry point - infections introduced by plant/tree material are dangerous - together with severe swelling shutting the eye, systemic upset and (in older versions) pain on eye movement.</p><p><strong>Differentials offered to the patient:</strong> preseptal cellulitis; endophthalmitis (if the branch had penetrated the globe); corneal ulcer; and the broader eye list - conjunctivitis, uveitis, scleritis/episcleritis, UV keratitis, foreign body, blepharitis, stye, chalazion, glaucoma.</p>
+</section>
+
+<section id="management-telephone"><h2>Management (Telephone)</h2>
+<p>Advise the patient to end the call and go to the Emergency Department now. If someone can drive her, that is fine; if not, call triple zero (000) - she must not drive herself.</p><p>Explain that in hospital they will: perform urgent CT of the orbits/sinuses and brain; take bloods (full blood count, ESR, CRP); and start intravenous antibiotics promptly while awaiting results. They will examine for painful/restricted eye movements - a key sign - and manage accordingly.</p>
+</section>
+
+<section id="figures"><h2>Case Figures</h2>
+<img class="case-image" src="assets/med_workshop_2_2026_1_sore_eye_p1_0.png" alt="Sore Eye - Telephone Triage of Orbital Cellulitis figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_sore_eye_p3_0.png" alt="Sore Eye - Telephone Triage of Orbital Cellulitis figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_sore_eye_p4_0.png" alt="Sore Eye - Telephone Triage of Orbital Cellulitis figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_sore_eye_p6_0.png" alt="Sore Eye - Telephone Triage of Orbital Cellulitis figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_sore_eye_p7_0.png" alt="Sore Eye - Telephone Triage of Orbital Cellulitis figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_sore_eye_p8_0.png" alt="Sore Eye - Telephone Triage of Orbital Cellulitis figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_sore_eye_p12_0.png" alt="Sore Eye - Telephone Triage of Orbital Cellulitis figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_sore_eye_p14_0.png" alt="Sore Eye - Telephone Triage of Orbital Cellulitis figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_sore_eye_p14_1.png" alt="Sore Eye - Telephone Triage of Orbital Cellulitis figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_sore_eye_p21_0.png" alt="Sore Eye - Telephone Triage of Orbital Cellulitis figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_sore_eye_p23_0.png" alt="Sore Eye - Telephone Triage of Orbital Cellulitis figure" loading="lazy">
+</section>
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: physical-examination-expert (Australian clinical educator, ophthalmology focus) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>The notes imply the first step in managing orbital cellulitis is the CT scan (&quot;first step of managing orbital cellulitis is a CT scan&quot;).</strong><br>In suspected orbital cellulitis the first steps are urgent same-time referral to ophthalmology AND ENT, immediate IV antibiotics and analgesia - treatment must NOT be delayed for imaging. CT orbits/sinuses with contrast is obtained urgently to look for a subperiosteal or orbital abscess and sinus source, but antibiotics are started empirically first (per Therapeutic Guidelines, e.g. IV flucloxacillin plus ceftriaxone, or as directed by local sepsis/eTG protocols, with metronidazole if sinus/abscess source).</div><div class="correction">✏️ <strong>The red-flag list for distinguishing orbital from preseptal cellulitis is limited to &#x27;pain on eye movement&#x27; and severe swelling.</strong><br>The orbital-cellulitis red flags that mandate emergency review are: painful AND restricted eye movements (ophthalmoplegia), proptosis, reduced visual acuity, a relative afferent pupillary defect (RAPD), diplopia, chemosis and colour-vision loss. Any of these differentiates orbital from preseptal disease and should be actively screened for (even by phone, ask whether the eye looks pushed forward and whether she can see/read at all).</div><div class="correction">✏️ <strong>OCR artefact: the source repeatedly writes &#x27;perceptual cellulitis&#x27; / &#x27;pre septal&#x27;.</strong><br>The correct term is &#x27;preseptal (periorbital) cellulitis&#x27; - anterior to the orbital septum. Standardise terminology to preseptal vs orbital cellulitis throughout.</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ Emphasise that assessing visual acuity is the single most important thing (Murtagh red-eye golden rule &#x27;always test and record vision&#x27;); even on the phone, ask specifically whether she can read text or see at all, as loss of vision escalates urgency.</div><div class="enhancement">⭐ Add a paediatric teaching point: orbital cellulitis is more common in children (usually secondary to ethmoid sinusitis) and can progress to subperiosteal abscess, cavernous sinus thrombosis and intracranial spread - a true surgical emergency requiring combined ophthalmology/ENT care.</div><div class="enhancement">⭐ Cite the current Australian antibiotic guidance (Therapeutic Guidelines - eye/skin &amp; soft tissue) explicitly for both preseptal (oral, e.g. amoxicillin-clavulanate, with review) and orbital (IV) cellulitis rather than a generic &#x27;IV antibiotics&#x27;.</div><div class="enhancement">⭐ Add explicit safety-netting/tetanus consideration given the penetrating plant-material injury, and document that this is a telephone triage station where correct disposition (000/ED) scores the marks.</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>emergency_scenario</dd><dt>Difficulty</dt><dd>hard</dd><dt>Amc Frequency</dt><dd>medium - eye-pain telephone/triage stations recur in AMC clinical exams and workshops, and orbital vs preseptal cellulitis is a favoured must-not-miss discriminator</dd><dt>Tags</dt><dd>orbital-cellulitis, preseptal-cellulitis, eye-pain, telephone-triage, ophthalmology-emergency, red-eye, history-taking</dd><dt>Related Topics</dt><dd>red eye, conjunctivitis, acute glaucoma, periorbital swelling, sinusitis, emergency escalation and triple zero</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 A red, tender/sore eye is a very common presentation and an accurate history plus examination usually allows a diagnosis; conjunctivitis, styes and serious not-to-be-missed disorders form the diagnostic strategy for the red and tender eye.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.1171 <span class="pid">qdrant:08f33488-1b91-4821-a408-09f75e904bec</span></div><div class="citation">📚 Painful eye differentials include acute glaucoma and iritis/optic neuritis. (Note: this rag chunk is primarily a facial-pain diagnostic table, so it is only tangentially relevant - it is cited to support acute glaucoma and iritis as painful-eye differentials mentioned in the case.)<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.1212 <span class="pid">qdrant:c85ed6ae-f5ce-4923-86de-da37ba28c901</span></div><div class="citation">📚 Peri-orbital oedema and regional lymphadenopathy can accompany infective processes. (Note: this chunk describes EBV/sore throat, so it is only tangential - cited to support the case&#x27;s teaching that periorbital swelling and pre-auricular/head-and-neck lymphadenopathy should be sought.)<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.1809 <span class="pid">qdrant:1e799373-8465-4dc1-b820-29f72901a97f</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

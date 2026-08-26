@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ankle Pain (Gout vs Achilles Tendinopathy) - History and DDx Framework - Musculoskeletal OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        Musculoskeletal<span>›</span>Ankle Pain (Gout vs Achilles Tendinopathy) - History and DDx Framework
+    </div>
+    <h1>Ankle Pain (Gout vs Achilles Tendinopathy) - History and DDx Framework</h1>
+    <p class="source-line">Source: Dr. Amir workshop — Med 5 MSK and urology
+       / 3. Ankle, heel, foot (Aug 2026 drop) · Specialty: musculoskeletal</p>
+
+<section id="content"><h1><a id="_mhgb4d5dw93w"></a><strong>ANKLE PAIN</strong></h1><p>When a patient says “I have foot pain”:</p><ul><li>We divide it into:<br /><ul><li>Pain at the back of the foot<br /></li><li>Pain at the front of the foot<br /></li></ul></li><li>The ankle is connected to the foot, so we do an ankle + foot approach<br /></li></ul><p>We draw an imaginary line:</p><ul><li>Back of the foot → Hindfoot pain<br /></li><li>Front of the foot → Forefoot pain<br /></li></ul><p><strong>Your next patient is a 50 year old man who has presented to you complaining of Foot pain.</strong></p><p>How would you approach this case?</p><h2><a id="_r7s21wm78zj1"></a><strong>Differential Framework for foot and ankle pain</strong></h2><h3><a id="_8lxdpju6u2x2"></a><strong>A. Bone / Joint Problems</strong></h3><ul><li>Osteoarthritis<br /></li><li>Rheumatoid arthritis<br /></li><li>Psoriasis<br /></li><li>Gout<br /></li><li>Reactive arthritis<br /></li><li>IBD related arthritis<br /></li></ul><h3><a id="_47hlc7wdrxd5"></a><strong>B. Soft Tissue Problems</strong></h3><ul><li>Achilles tendonitis<br /></li><li>Bursitis<br /></li><li>Tender heel pad / tender fat pad<br /></li><li>Plantar fasciitis<br /></li><li>Tibial tendonitis<br /></li><li>Peroneal tendonitis<br /></li></ul><h3><a id="_yrlmijj8a66c"></a><strong>C. Neurovascular</strong></h3><p>Vascular</p><ul><li>Peripheral vascular disease<br /></li><li>DVT<br /></li></ul><p>Neurological</p><ul><li>Lumbar radiculopathy<br /></li><li>Tarsal tunnel syndrome<br /></li><li>Sensory neuropathy<br /></li></ul><h3><a id="_88wljmxna2nk"></a><strong>D. Red Flags</strong></h3><ul><li>Malignancy<br /></li><li>Metastasis<br /></li><li>Infection<br /></li></ul><h3><a id="_f3gehh63whd0"></a><strong>E. Trauma</strong></h3><ul><li>Stress fracture<br /></li><li>Other fractures<br /></li><li>Ankle ligament tears<br /></li></ul><p>This list mainly applies to:</p><ul><li>Ankle pain<br /></li><li>Hindfoot pain (back of foot)<br /></li></ul><h2><a id="_5e9s6v8qrdxj"></a><strong>6. Forefoot (Metatarsalgia) Add-Ons</strong></h2><p>When pain is in the front of the foot, add:</p><ul><li>Morton’s neuroma<br /></li><li>Nail problems<br /><ul><li>Ingrown toenail<br /></li><li>Paronychia<br /></li></ul></li><li>Deformities<br /><ul><li>Bunion<br /></li><li>Hallux valgus<br /></li></ul></li><li>Skin lesions<br /><ul><li>Calluses<br /></li><li>Corns<br /></li><li>Warts<br /><br /></li></ul></li></ul><h2><a id="_f977aiuxx6ze"></a><strong>8. Red Flags in History</strong></h2><ul><li>Night pain<br /></li><li>Fever<br /></li><li>Weight loss<br /></li><li>Systemic symptoms<br /></li><li>Burning pain → nerve problem<br /></li></ul><p>AMC case:</p><p>Foot pain with burning quality</p><h2><a id="_6cz0g83caoqx"></a><strong>Sprained Ankle</strong></h2><p>Features:</p><ul><li>Ankle gives way and unstable</li><li>Difficulty bearing weight</li><li>Bruising → severe inj &amp; lig tears</li></ul><p><img src="assets/med_5_msk_and_urology_2_ankle_pain_img1.jpeg" /><br /></p><h3><a id="_mwptet9r7rcw"></a><strong>Achilles Tendonitis / Tendinopathy</strong></h3><ul><li>Acute = tendonitis<br /></li><li>Chronic = tendinosis<br /></li></ul><p>Features:</p><ul><li>Thickened tendon<br /></li><li>Bump at insertion<br /></li><li>Degenerative &amp; inflammatory changes</li></ul><p><img src="assets/med_5_msk_and_urology_2_ankle_pain_img2.jpeg" /><img src="assets/med_5_msk_and_urology_2_ankle_pain_img3.jpeg" /><br /></p><h3><a id="_ogfmxpyku3xy"></a><strong>Achilles Rupture</strong></h3><ul><li>Sudden onset severe pain<br /></li><li>Pain later improves after the acute stage<br /></li><li>Limping<br /></li><li>Especially Difficulty tip-toeing<br /></li></ul><p>Test</p><ul><li>Thompson test → no plantar flexion<br /></li></ul><p><img src="assets/med_5_msk_and_urology_2_ankle_pain_img4.jpeg" /></p><h2><a id="_5sn7n8sa61i4"></a><strong>11. Heel Pad (Tender Fat Pad)</strong></h2><ul><li>Fat pad under heel<br /></li><li>Shock absorber<br /></li><li>Many nerve endings<br /></li><li>Very painful<br /></li></ul><p><img src="assets/med_5_msk_and_urology_2_ankle_pain_img5.jpeg" /></p><h2><a id="_49lrd0ykze23"></a><strong>12. Plantar Fasciitis</strong></h2><p><img src="assets/med_5_msk_and_urology_2_ankle_pain_img6.jpeg" /></p><p>Key features:</p><ul><li>Pain on sole / under the heel<br /></li><li>Worse after rest<br /></li><li>Worst with first steps in morning<br /></li><li>Improves with walking<br /></li><li>Worse again at end of day<br /></li><li>Worse after sitting<br /></li></ul><p>Not related to footwear</p><h2><a id="_hpauhdfpxb3k"></a><strong>13. Osteoarthritis</strong></h2><p>Very commonly involves the first MTP joint</p><ul><li><strong>Hallux rigidus</strong> = osteoarthritis of big toe (1st MTP)<br /><ul><li>Gradual loss of motion in the toe<br /></li><li>Painful &amp; Restricted movement<br /></li></ul></li><li><strong>Hallux valgus</strong> = bunion<br /><ul><li>Deformity in the 1st MTP<br /></li><li>Usually no painful restriction</li><li>Pain can be present if inflamed or shoe pressure</li></ul></li></ul><p><img src="assets/med_5_msk_and_urology_2_ankle_pain_img7.jpeg" /></p><p>Both will give some degree of deformity in the joint</p><h2><a id="_ub3znjxjw4e4"></a><strong>14. Tibial &amp; Peroneal Tendonitis</strong></h2><ul><li><strong>Tibial</strong> → inner ankle → <strong>inversion</strong><br /></li><li><strong>Peroneal</strong> → outer ankle → <strong>eversion</strong><br /></li></ul><p>Pain patterns:</p><ul><li>Peroneal<br /><ul><li>Pain on<strong> passive inversion</strong><br /></li><li>Pain on <strong>resisted eversion</strong><br /></li></ul></li><li>Tibial<br /><ul><li>Pain on <strong>passive eversion</strong><br /></li><li>Pain on <strong>resisted inversion</strong><br /></li></ul></li></ul><h2><a id="_qmo1156to2ac"></a><strong>15. Stress Fracture</strong></h2><ul><li>Can occur with regular exercise or dancing<br /></li><li>Exam and X-ray often normal<br /></li></ul><h2><a id="_6i511n4udgw4"></a><strong>16. Morton’s Neuroma</strong></h2><p><img src="assets/med_5_msk_and_urology_2_ankle_pain_img8.jpeg" /></p><h3><a id="_yhsldhkag1j"></a><strong>Cause</strong></h3><ul><li>Nerve between metatarsals<br /></li><li>Tight shoes compress nerve<br /></li></ul><p>Common sites:</p><ul><li>Between 3rd–4th<br /></li><li>Sometimes 2nd–3rd<br /></li></ul><h3><a id="_bi2gpo19qq8d"></a><strong>Features</strong></h3><ul><li>Burning pain<br /></li><li>Worse on hard surfaces<br /></li><li>Worse with tight shoes<br /></li><li>Better when shoes removed<br /></li><li>Feels like a “pebble in the shoe”<br /></li></ul><h2><a id="_alrzbvon56zc"></a><strong>17. Corns &amp; Calluses</strong></h2><ul><li>Callus → thick epidermis<br /></li><li>Corn → hard keratin core<br /></li></ul><h2><a id="_xic0zmmb89wg"></a><strong>18. Burning Foot Pain</strong></h2><p>Think:</p><ul><li>Neuropathy<br /></li><li>Nerve entrapment&gt; tarsal tunnel sx<br /></li><li>Morton’s neuroma<br /></li><li>Vascular disease&gt; ischemic pain<br /></li><li>Restless leg syndrome</li><li>psychogenic<br /></li></ul><h2><a id="_upy0yl9y5d9m"></a><strong>19. Restless Leg Syndrome</strong></h2><p>Features:</p><ul><li>Electric-shock sensation<br /></li><li>Worse at night<br /></li><li>Improves by moving legs<br /></li><li>Common in iron deficiency<br /></li></ul><h2><a id="_vnpdujlasa5l"></a><strong>20. Chillblains</strong></h2><ul><li>Localized Cold-induced inflammation<br /></li><li>Red, swollen, painful toes<br /></li><li>No fever<br /></li></ul><h2><a id="_87q35ckdb03u"></a><strong>21. AMC Ankle Pain Case</strong></h2><p>Stem&gt; 40 yrs old man C/O ankle pain for 2 days. He was gardening before this started.</p><p>TASK:</p><p>Take Hx for 6 minutes</p><p>PE will appear on screen after 6 minutes</p><p>Explain Dx and DDx</p><p>Request investigations</p><p>40-year-old man, ankle pain for 2 days, after gardening</p><h2><a id="_4o27lis2kbrq"></a><strong>22. History Structure</strong></h2><h3><a id="_pkvsn0dt8yj7"></a><strong>Open Question&gt; how I can help u today? &gt; address concern</strong></h3><p>“How can I help you today?”</p><p>“Tell me more about your ankle pain.”</p><h3><a id="_wz53jxkidb1t"></a><strong>Explore Pain</strong></h3><ul><li>Site (front, back, inner, outer side)<br /></li><li>Severity (1–10)<br /></li><li>Quality (dull, sharp, burning)<br /></li><li>Onset<br /></li><li>Duration<br /></li><li>Constant or intermittent<br /></li><li>Worse or better, is this the first time u r having this pain<br /></li><li>Radiation<br /></li><li>Function (work, daily life)<br /></li></ul><h2><a id="_yalssujymb7"></a><strong>23. Pattern</strong></h2><ul><li>Night pain<br /></li><li>Morning stiffness<br /></li><li>Worse after activity or rest<br /></li><li>Limping<br /></li><li>R u able to bear weight?<br /></li></ul><h2><a id="_5dyl5brveouk"></a><strong>24. General Joint Questions</strong></h2><ul><li>Swelling<br /></li><li>Redness<br /></li><li>Rashes<br /></li><li>Stiffness<br /></li><li>Deformity<br /></li><li>Trauma<br /></li></ul><h2><a id="_4b0io9wmdlor"></a><strong>25. Red Flag Questions</strong></h2><p>Malignancy</p><ul><li>Weight loss<br /></li><li>Appetite<br /></li><li>Lumps<br /></li><li>Fatigue<br /></li><li>Night sweats<br /></li></ul><p>Infection</p><ul><li>Fever<br /></li><li>Chills<br /><br /></li></ul><h2><a id="_3yvlfhd90gjp"></a><strong>26. Three Common Exam Diagnoses</strong></h2><ul><li>Peripheral vascular disease<br /></li><li>Cellulitis<br /></li><li>Gout<br /></li></ul><h1><a id="_61dmjkvruu6r"></a><strong>ANKLE PAIN – OSCE HISTORY TAKING &amp; CASE FRAMEWORK (As Taught in the Video)</strong></h1><h2><a id="_eq770zj5by1o"></a><strong>1. VASCULAR PAIN – PERIPHERAL ARTERIAL DISEASE (PAD)</strong></h2><h3><a id="_dhnuzxnh7p0i"></a><strong>Key History Features</strong></h3><ul><li>Pain starts when the patient walks<br /></li><li>Pain improves immediately when they stop and rest<br /></li><li>Ask about:<br /><ul><li>Pallor / paleness of the foot or leg<br /></li><li>Medications (important in PAD)<br /></li></ul></li></ul><p>Example OSCE dialogue</p><p>“Does the pain start when you walk and improve when you stop?”</p><p>“Have you noticed any paleness in your foot or leg?”</p><p>“Are you on any medications for your circulation?”</p><h2><a id="_h94rkj5mwitd"></a><strong>2. CELLULITIS</strong></h2><h3><a id="_n2j1d9r9ckav"></a><strong>Key History Points</strong></h3><ul><li>Fever and chills (should already be asked)<br /></li><li>Look for an entry point for bacteria:<br /><ul><li>Bite<br /></li><li>Scratch<br /></li><li>Break in the skin<br /></li></ul></li></ul><p>Typical patient story</p><p>“Before this started, I got a scratch on my leg.”</p><h2><a id="_7r4p2myp6ahl"></a><strong>3. GOUT</strong></h2><h3><a id="_nslh4fnmtpjp"></a><strong>Correct Way to Ask</strong></h3><p>“Do you eat red meat and drink alcohol?”</p><p>Correct: does your pain triggered after eating red meat or drinking alcohol</p><p>“Does your pain get triggered after eating red meat or drinking alcohol?”</p><p>“Is your pain related to drinking alcohol or eating red meat or seafood?”</p><p>The goal is to find the triggering relationship, not just exposure.</p><h2><a id="_whkc9ui3eoyk"></a><strong>4. MOVE TO THE ARTHRITIS CLUSTER</strong></h2><h3><a id="_cne9zgqn4eq7"></a><strong>A. Osteoarthritis (OA)</strong></h3><p>Ask about:</p><ul><li>Occupation<br /></li><li>Excessive exercise<br /></li><li>Long standing<br /></li><li>Repetitive movements<br /></li><li>Heavy lifting<br /></li></ul><p>These are triggering pain events</p><h3><a id="_1rpee8eg4j55"></a><strong>B. Rheumatoid Arthritis</strong></h3><p>Already asked:</p><ul><li>Swelling<br /></li><li>Stiffness<br /></li></ul><p>Also ask:</p><ul><li>Family history of RA or joint problems<br /></li><li>Any other joint pain<br /></li></ul><h3><a id="_39arcphfro8c"></a><strong>C. Psoriatic Arthritis</strong></h3><p>Ask:</p><ul><li>Do u have any Rash on elbows or knees<br /></li><li>Make it specific:<br /></li></ul><p>“Do you have any rash on your knees or elbows?”</p><h3><a id="_le8b6v1ox5hs"></a><strong>D. Gout (again if not asked earlier)</strong></h3><h3><a id="_lm231s926981"></a><strong>E. Reactive Arthritis &amp; IBD</strong></h3><p>Ask:</p><ul><li>Recent diarrhea<br /></li><li>Blood in stools<br /></li><li>Penile discharge<br /></li><li>Vaginal discharge<br /></li><li>One sexual history screening question<br /></li></ul><h2><a id="_ejpqpvwn7nbo"></a><strong>5. WHEN GOUT FEATURES ARE POSITIVE → PUSH FURTHER</strong></h2><p>If patient says:</p><ul><li>Pain is swollen<br /></li><li>Red<br /></li><li>Triggered by alcohol or red meat<br /></li></ul><p>Then push into risk factors:</p><p>Ask:</p><ul><li>Seafood triggers pain?<br /></li><li>Sugary drinks truggers pain<br /></li><li>Any Medications u r taking<br /></li></ul><p>Key OSCE clue:</p><p>“I have hypertension and I’m on thiazides.”</p><p>This should make you think:</p><p>“Oh, it’s a gout case.”</p><h2><a id="_jczo1zoqyw5t"></a><strong>6. SOFT TISSUE DIFFERENTIALS</strong></h2><p>Most relate to:</p><ul><li>Exercise<br /></li><li>Long standing<br /></li><li>Repetitive movements<br /></li></ul><h3><a id="_fli8rff8f0df"></a><strong>Ask:</strong></h3><ul><li>“Do you wear comfortable shoes?”<br /></li></ul><h3><a id="_u6av2flxwef4"></a><strong>Ankle ligament injury</strong></h3><p>Even if no trauma: “ Does your ankle give way or unstable?</p><p>“Does your ankle give way?”</p><p>“Is it unstable?”</p><p>This also covers:</p><ul><li>Achilles tendonitis<br /></li></ul><h2><a id="_vjvphfyg3ooz"></a><strong>7. VASCULAR DIFFERENTIALS</strong></h2><p>You already asked PAD questions.</p><p>Now add venous disease:</p><p>Ask:</p><ul><li>Any Bluish discoloration in leg or ankle<br /></li><li>Itchiness of skin<br /></li></ul><h3><a id="_pviby7vfzgon"></a><strong>Important concept</strong></h3><p>When we say PVD, we are mixing:</p><ul><li>PAD (arterial)<br /></li><li>Venous disease<br /></li></ul><p>They are totally different</p><h3><a id="_9qrtpwxreq42"></a><strong>DVT</strong></h3><p>Ask:</p><ul><li>Long travel<br /></li><li>Swelling<br /></li><li>Clotting history (self or family)<br /></li></ul><h2><a id="_5nycpxofu66b"></a><strong>8. NEUROLOGICAL DIFFERENTIALS</strong></h2><p>Includes:</p><ul><li>Tarsal tunnel syndrome<br /></li><li>Common peroneal nerve entrapment<br /></li><li>Lumbar radiculopathy<br /></li></ul><p>Ask:</p><ul><li>Pins and needles in legs and ankle<br /></li><li>Numbness<br /></li><li>Weakness<br /></li><li>Back pain<br /></li></ul><h2><a id="_c4sap1pr1vj3"></a><strong>9. CLOSURE</strong></h2><p>Finish with: SADMA</p><p>“Any other past medical history or family history I should know about?”</p><p>But remember:</p><ul><li>If something is important → ask it earlier specifically<br /></li></ul><h1><a id="_4oz4uh29vnyc"></a><strong>CASE 1 – GOUT</strong></h1><h3><a id="_1yu1pzpjknny"></a><strong>History</strong></h3><p>Patient:</p><ul><li>Left ankle pain<br /></li><li>Few days<br /></li><li>Swollen<br /></li><li>Redness<br /></li><li>No fever<br /></li><li>Worse with alcohol&gt; 4 beers every day</li><li><br /></li></ul><p>You ask:</p><p>“Does it get worse with red meat or alcohol?”</p><p>Patient:</p><p>“Yes, when I drink alcohol.”</p><p>You now push further:</p><ul><li>Seafood<br /></li><li>Sugary drinks<br /></li><li>Medications<br /></li></ul><p>Patient:</p><ul><li>Drinks alcohol<br /></li><li>Worse with red meat and seafood<br /></li><li>Has hypertension<br /></li><li>On BP medications&gt; hydrocholorthiazide<br /></li></ul><h3><a id="_44zdnmarqyp"></a><strong>Provisional diagnosis</strong></h3><p>Gout</p><h2><a id="_t02wn44drox6"></a><strong>Physical Examination</strong></h2><ul><li>Ankle swollen<br /></li><li>Red<br /></li><li>Warm to touch<br /></li><li>Tender on palpation<br /></li><li>Painful movement<br /></li></ul><h3><a id="_c3bt3nsdgihc"></a><strong>Main differential</strong></h3><p>Septic arthritis</p><p>But:</p><ul><li>Temperature is normal<br /></li></ul><h3><a id="_pj4fl2wen58s"></a><strong>Final Diagnosis</strong></h3><p>Gout (gouty arthritis)</p><h2><a id="_8yup8jh0w0m3"></a><strong>Explanation to Patient</strong></h2><p>“Most likely u have a ccondition called Gouty Arthritis. This is an inflammation in your joint caused by some crystals of uric acid which are usually formed after consuming red meat and sea food and alcohol.</p><p>“You most likelyve a conditiogouty arthritisn called gout or gouty arthritis.</p><p>This is inflammation in your joint caused by crystals of uric acid.</p><p>These crystals usually come from red meat, seafood, sugary drinks and alcohol.</p><p>When you take these, they trigger inflammation and pain in the joint.”</p><p>Important teaching:</p><ul><li>Gout is not only in the big toe<br /></li><li>It can be in:<br /><ul><li>Ankle<br /></li><li>Knee<br /></li><li>Any joint<br /></li></ul></li></ul><h2><a id="_qoe1fhfwddsx"></a><strong>Differentials</strong></h2><ul><li>Mention 2–3 with reasons<br /></li><li>Then list the rest<br /></li></ul><h2><a id="_fpllfs7w058n"></a><strong>Investigations for Gout</strong></h2><h3><a id="_xpkmxjfh3odp"></a><strong>Three key tests</strong></h3><ol><li>Joint aspiration<br /><ul><li>Ultrasound guided<br /></li><li>Polarized microscopy for uric acid crystals<br /></li></ul></li><li>Serum uric acid<br /></li><li>Kidney function tests&gt; UEC<br /></li></ol><p>Other tests (optional):</p><ul><li>ESR<br /></li><li>CRP<br /></li><li>FBE<br /></li></ul><p>But focus on key tests</p><h1><a id="_f8vtdnndk91d"></a><strong>CASE 2 – ACHILLES TENDONITIS&gt; SAME STEM LIKE ABOVE</strong></h1><h3><a id="_f3u9loyc11ly"></a><strong>History</strong></h3><ul><li>40-year-old man<br /></li><li>Ankle pain<br /></li><li>3 weeks<br /></li><li>Worse<br /></li><li>Painter<br /></li><li>Long standing<br /></li><li>No injury<br /></li><li>No fever<br /></li><li>No swelling or redness<br /></li></ul><p>History is vague</p><h3><a id="_afiudnbufiqk"></a><strong>Physical Examination</strong></h3><ul><li>Painful dorsiflexion &amp; plantarflexion<br /></li><li>Achilles tendon wider than normal<br /></li><li>Indicates swollen and inflamed<br /></li></ul><h2><a id="_ulua0cytv77g"></a><strong>Provisional Diagnosis</strong></h2><p>Achilles Tendonitis/Tendinopathy</p><p>Achilles tendonitis</p><p>(or tendinopathy</p><p>Localized tender swelling on Achilles tendon</p><h2><a id="_afyisd4hwhih"></a><strong>Explanation to Patient</strong></h2><p>“ Most likely u have a condition called Achilles tendonitis. Achilles tendon is a rope like structure that connects muscle to the bone. In your case this tendon has become inflamed.</p><p>REASONS: Long standing, and rest of the positive findings….</p><p>“You most likely have a condition called Achilles tendonitis.</p><p>The Achilles tendon is a rope-like structure that connects muscle to bone.</p><p>In your case, this tendon has become inflamed.</p><p>This is most likely due to long standing or repetitive movements from your job.”</p><h2><a id="_3hpn254shkto"></a><strong>Second Differential</strong></h2><p>Bursitis</p><p>Because:</p><ul><li>There are many bursae around Achilles tendon<br /></li><li>Very common to get <strong>bursitis </strong>there<br /></li></ul><h2><a id="_rj2ttu9csoo1"></a><strong>Wrap Up</strong></h2><ul><li>Return to full differential list<br /></li><li>Apply the same structure<br /></li><li>Do not chase recalls<br /></li><li>Structure + differentials = pass<br /></li></ul><p>END OF ANKLE PAIN OSCE LECTURE FRAMEWORK</p></section>
+
+<section id="figures"><h2>Case Figures</h2>
+<img class="case-image" src="assets/med_5_msk_and_urology_2_ankle_pain_img1.jpeg" alt="Ankle Pain (Gout vs Achilles Tendinopathy) - History and DDx Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_5_msk_and_urology_2_ankle_pain_img2.jpeg" alt="Ankle Pain (Gout vs Achilles Tendinopathy) - History and DDx Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_5_msk_and_urology_2_ankle_pain_img3.jpeg" alt="Ankle Pain (Gout vs Achilles Tendinopathy) - History and DDx Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_5_msk_and_urology_2_ankle_pain_img4.jpeg" alt="Ankle Pain (Gout vs Achilles Tendinopathy) - History and DDx Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_5_msk_and_urology_2_ankle_pain_img5.jpeg" alt="Ankle Pain (Gout vs Achilles Tendinopathy) - History and DDx Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_5_msk_and_urology_2_ankle_pain_img6.jpeg" alt="Ankle Pain (Gout vs Achilles Tendinopathy) - History and DDx Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_5_msk_and_urology_2_ankle_pain_img7.jpeg" alt="Ankle Pain (Gout vs Achilles Tendinopathy) - History and DDx Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_5_msk_and_urology_2_ankle_pain_img8.jpeg" alt="Ankle Pain (Gout vs Achilles Tendinopathy) - History and DDx Framework figure" loading="lazy">
+</section>
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: surgical-skills-expert (Australian surgical educator, RACS/MSK focus) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>In Case 1 (gout), septic arthritis is dismissed because &#x27;temperature is normal&#x27;.</strong><br>A normal temperature does NOT exclude septic arthritis - a substantial proportion of septic joints are afebrile, especially early or in the immunosuppressed. Any acute hot swollen joint requires urgent joint aspiration (MCS + polarised microscopy) before committing to gout. This should be stated explicitly as the safety point.</div><div class="correction">✏️ <strong>Spelling/terminology: &#x27;hydrocholorthiazide&#x27;, &#x27;tendinosis&#x27; used loosely, and &#x27;Achilles tendonitis (acute) = tendonitis, chronic = tendinosis&#x27;.</strong><br>Correct drug spelling is hydrochlorothiazide (a thiazide diuretic that raises serum urate and is a recognised gout precipitant - a good OSCE clue). Preferred current terminology is &#x27;Achilles tendinopathy&#x27; rather than tendinitis/tendinosis, as histology usually shows degeneration with little true inflammation.</div><div class="correction">✏️ <strong>Gout management is not covered after diagnosis.</strong><br>Add eTG-aligned acute management (NSAID e.g. naproxen OR colchicine OR short oral prednisolone based on renal function/comorbidity) and, once the flare settles and if indicated (recurrent attacks, tophi, urate stones, CKD), urate-lowering therapy with allopurinol titrated to a target serum urate. Review the thiazide.</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ Add the Ottawa Ankle Rules to the trauma/sprain pathway to guide the need for ankle/foot X-ray after the gardening/injury history - a high-yield, evidence-based Australian ED/GP tool absent from the case.</div><div class="enhancement">⭐ Add a concise investigations panel for the gout case that is PBS/eTG appropriate: joint aspiration (MCS + polarised microscopy - the key test), serum urate (deferred), UEC/eGFR (drug dosing), FBE/CRP, and consider ultrasound (double-contour sign) or dual-energy CT if diagnosis unclear.</div><div class="enhancement">⭐ Achilles case: add the Simmonds-Thompson calf-squeeze test to actively exclude Achilles rupture (case only lists it under a separate rupture heading), and add safety-netting/return advice plus eccentric loading + physiotherapy referral for tendinopathy management.</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>history_taking</dd><dt>Difficulty</dt><dd>medium</dd><dt>Amc Frequency</dt><dd>high - ankle/foot pain history with a gout endpoint and a soft-tissue (Achilles) alternative is a common AMC MSK station testing structured DDx and safe septic-joint exclusion.</dd><dt>Tags</dt><dd>ankle pain, gout, achilles tendinopathy, septic arthritis, thiazide, history taking, ottawa ankle rules, soft tissue injury</dd><dt>Related Topics</dt><dd>Foot pain (hallux/gout), Heel pain, Leg pain / PAD, Acute monoarthritis workup</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 The case&#x27;s structured ankle differential (traumatic sprains of lateral ligaments and Achilles rupture; infective pyogenic arthritis; inflammatory rheumatoid arthritis; degenerative osteoarthritis; tenosynovitis) is directly supported by a dedicated ankle-causes list.<br><strong>Churchills_Pocketbook_of_Differential_Diagnosis (1).pdf</strong> p.291 <span class="pid">qdrant:2a9d7328-3904-4f94-aa94-5691c480f856</span></div><div class="citation">📚 Gout characteristically involves the great toe but can affect the ankle, knee and other joints and is prone to recurrence, supporting the case&#x27;s teaching that &#x27;gout is not only in the big toe&#x27;.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.717 <span class="pid">qdrant:a5001587-a334-4ccb-9faa-9963d1d7c0d4</span></div><div class="citation">📚 Osteoarthritis features (hard/bony swelling, crepitus, mild inflammatory signs, restricted movement, pain worse by end of day and relieved by rest, no systemic manifestations) support the case&#x27;s distinction of hallux rigidus (OA) from inflammatory/crystal arthropathy; note the source chunk describes hand OA specifically, applied here by analogy.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.698 <span class="pid">qdrant:05976e12-ccb9-47c6-8ef9-814cd6825380</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physical Examination Findings from Examiner (PEFE) — Structure for Abdominal Pain - Medicine OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        Medicine<span>›</span>Physical Examination Findings from Examiner (PEFE) — Structure for Abdominal Pain
+    </div>
+    <h1>Physical Examination Findings from Examiner (PEFE) — Structure for Abdominal Pain</h1>
+    <p class="source-line">Source: Dr. Amir workshop — GIT 2026
+       / 1. Structure class (Aug 2026 drop) · Specialty: gastroenterology</p>
+
+<section id="transition-after-the-bell"><h2>Transition After the Bell</h2>
+<p>After hearing the bell, signpost the transition to the patient before turning to the examiner: <em>"Thank you Jill, I will be talking to my examiner. I will be back to you."</em></p>
+</section>
+
+<section id="1-general-appearance-priccled"><h2>1. General Appearance — PRICCLED</h2>
+<ul><li><strong>P</strong> — Pallor</li><li><strong>R</strong> — Rash</li><li><strong>I</strong> — Icterus (jaundice)</li><li><strong>C</strong> — Cyanosis</li><li><strong>C</strong> — Clubbing</li><li><strong>L</strong> — Lymphadenopathy (LAD)</li><li><strong>E</strong> — Oedema</li><li><strong>D</strong> — Dehydration</li></ul><p><strong>If the patient presents with abdominal pain, prioritise asking:</strong></p><ol><li>Level of consciousness — alert or drowsy?</li><li>Dehydration</li><li>Pallor</li><li>If RUQ pain — icterus (jaundice)</li></ol><p>If the examiner says "as you can see in the patient", then move on.</p>
+</section>
+
+<section id="2-vital-signs"><h2>2. Vital Signs</h2>
+<ul><li>BP, PR, RR, temperature</li><li>Pulse: rate, rhythm, postural drop (postural/orthostatic hypotension)</li></ul>
+</section>
+
+<section id="3-abdominal-examination"><h2>3. Abdominal Examination</h2>
+<p><strong>Inspection:</strong></p><ul><li>Is the abdomen moving symmetrically with respiration?</li><li>Do I see Cullen sign or Grey Turner sign? (retroperitoneal haemorrhage, e.g. severe pancreatitis)</li><li>Any distension?</li></ul><p><strong>Palpation:</strong></p><ul><li>Tenderness or mass on superficial and deep palpation?</li><li>Guarding</li><li>Rigidity</li><li>Rebound tenderness</li></ul><p><strong>Percussion:</strong></p><ul><li>Any tenderness on percussion?</li></ul><p><strong>Auscultation:</strong></p><ul><li>Bowel sounds absent or present?</li></ul><p><strong>Inguinal area:</strong></p><ul><li>Any lumps or swellings? (hernial orifices)</li></ul><p><strong>DRE (digital rectal examination):</strong> request with consent and chaperone — masses, tenderness, melaena, fresh blood, stool on glove.</p>
+</section>
+
+<section id="4-lower-abdominal-pelvic-examination"><h2>4. Lower Abdominal / Pelvic Examination</h2>
+<p>Ask the examiner: <em>"Examiner, I want to examine my patient with consent and in the presence of a chaperone."</em></p><p><strong>Inspection:</strong></p><ul><li>Skin: redness or rashes</li><li>Lumps or swelling</li><li>Bleeding or discharge</li></ul><p><strong>Speculum examination:</strong></p><ul><li>Cervix: bleeding or discharge</li><li>Vaginal wall</li></ul><p><strong>Bimanual examination:</strong></p><ul><li>Cervical motion tenderness (PID, ectopic pregnancy)</li><li>Uterus: size, tenderness, border</li><li>Adnexa: mass, tenderness</li></ul>
+</section>
+
+<section id="5-testicular-examination"><h2>5. Testicular Examination</h2>
+<p>With consent and a chaperone:</p><ul><li><strong>Inspection:</strong> swelling, redness</li><li><strong>Palpation:</strong> mass or tenderness</li></ul>
+</section>
+
+<section id="6-chest-examination-listed-in-source-as-upper-abdominal-examination"><h2>6. Chest Examination (listed in source as &#x27;Upper Abdominal Examination&#x27;)</h2>
+<p>Screens for referred/extra-abdominal causes (ACS, lower lobe pneumonia):</p><ul><li><strong>CVS:</strong> S1 and S2 normal? Any murmurs?</li><li><strong>Respiratory:</strong> air entry equal? Any added sounds?</li></ul>
+</section>
+
+<section id="7-office-tests"><h2>7. Office Tests</h2>
+<ul><li>Glucometer (BSL)</li><li>Urine dipstick test (UDT)</li><li>Urine pregnancy test (UPT)</li><li>ECG</li><li>Spirometry</li><li>Proctoscopy</li></ul><p><strong>Rules of thumb:</strong></p><ul><li>UDT in all cases</li><li>UPT in women where relevant (see expert correction — all women of reproductive age with abdominal pain)</li><li>BSL if DKA is suspected</li></ul>
+</section>
+
+<section id="figures"><h2>Case Figures</h2>
+<img class="case-image" src="assets/git_2026_pefe_structure_p3_0.png" alt="Physical Examination Findings from Examiner (PEFE) — Structure for Abdominal Pain figure" loading="lazy">
+</section>
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: history-taking-expert (Australian clinical supervisor, teaching hospital, NSW) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>The office-test rule states urine pregnancy test &#x27;in lady if relevant&#x27;, leaving the decision to perceived relevance.</strong><br>In Australian emergency and general practice, a urine pregnancy test is mandatory in ALL women of reproductive age presenting with abdominal pain, regardless of stated LMP or contraception, to exclude ectopic pregnancy — a not-to-miss diagnosis. Framing it as optional risks the classic AMC and medicolegal pitfall of the missed ectopic.</div><div class="correction">✏️ <strong>The source lists the cardiorespiratory screen under the heading &#x27;Upper abd examination&#x27; and abbreviates cardiovascular examination as &#x27;CUS&#x27;.</strong><br>This is a chest (cardiovascular and respiratory) examination screening for extra-abdominal causes of abdominal pain (ACS, lower lobe pneumonia), not part of the abdominal examination proper. The abbreviation should read CVS. The heading has been clarified in the structured sections.</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ The DRE line is left blank in the source. Complete it with specific PEFE requests: perianal inspection, masses, tenderness, melaena or fresh blood, stool colour on the glove — and state consent and chaperone, as for the pelvic and testicular examinations.</div><div class="enhancement">⭐ Add hepatobiliary-specific findings to the abdominal examination: Murphy&#x27;s sign (acute cholecystitis), hepatomegaly/liver edge, splenomegaly, shifting dullness for ascites, and renal angle (costovertebral) tenderness for pyelonephritis/renal colic — all commonly requested in AMC GIT PEFE stations.</div><div class="enhancement">⭐ Add examination signs of peritonism and AAA to inspection/palpation: patient lying still versus writhing (colic), board-like rigidity, and palpation for a pulsatile expansile mass in patients over 50 — ruptured AAA is a not-to-miss cause of abdominal pain.</div><div class="enhancement">⭐ Note for the vitals step that a postural drop plus tachycardia in abdominal pain suggests hypovolaemia (bleeding ectopic, ruptured AAA, GI bleed) and should trigger immediate escalation and calling for senior help (000/rapid response in a community setting) before proceeding with the remaining PEFE.</div><div class="enhancement">⭐ Remove or qualify spirometry in the office tests: it has no role in the acute abdominal pain PEFE; a venous blood gas and ketones (for suspected DKA with SGLT2 inhibitor use, where BGL may be near normal) are the higher-yield bedside additions in Australian practice.</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>physical_examination</dd><dt>Difficulty</dt><dd>medium</dd><dt>Amc Frequency</dt><dd>high — PEFE (asking the examiner for physical examination findings) is a core AMC clinical exam format, and abdominal pain is among the most commonly examined presentations</dd><dt>Tags</dt><dd>pefe, physical examination, abdominal examination, pelvic examination, office tests, gastroenterology, osce structure</dd><dt>Related Topics</dt><dd>Abdominal pain history taking structure, Acute pancreatitis, Ectopic pregnancy, Pelvic inflammatory disease, Testicular torsion, Acute cholecystitis</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 Physical examination signs must be elicited systematically and named specifically when requesting findings from the examiner (the retrieved chunk illustrates named elicited signs — Kernig and Brudzinski — rather than abdominal signs; it is the closest examination-technique chunk available in rag_context for this case).<br><strong>John Murtagh General Practice, 8th Edition</strong> p.495 <span class="pid">qdrant:93198d21-1520-4bb4-9373-f9e9a4a9984b</span></div><div class="citation">📚 Bedside examination manoeuvres are performed and interpreted in a defined sequence with positive/negative criteria, as modelled in on-call assessment protocols (chunk covers examination sign technique generally; no abdominal-specific chunk was retrieved in rag_context for this case).<br><strong>On Call Principles and Protocols</strong> p.166 <span class="pid">qdrant:86d1c322-d2f5-4c07-9ff6-d3f05ab96ea2</span></div><div class="citation">📚 The PEFE structure exists to narrow a broad differential diagnosis (GI, gynaecological, urological, cardiorespiratory causes of abdominal pain) by targeted examination findings — the differential-diagnosis framework is the subject of this reference text (title chunk; most relevant differential-diagnosis source available in rag_context).<br><strong>Churchills_Pocketbook_of_Differential_Diagnosis (1).pdf</strong> p.1 <span class="pid">qdrant:6a6a60b1-3249-4617-82e0-eb597e0a24f5</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

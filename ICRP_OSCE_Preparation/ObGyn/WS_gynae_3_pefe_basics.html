@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gynaecological Pelvic Examination - PEFE Basics - ObGyn OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        ObGyn<span>›</span>Gynaecological Pelvic Examination - PEFE Basics
+    </div>
+    <h1>Gynaecological Pelvic Examination - PEFE Basics</h1>
+    <p class="source-line">Source: Dr. Amir workshop — gynae
+       / 1. period problems (Aug 2026 drop) · Specialty: obstetrics_gynaecology</p>
+
+<section id="content"><p><strong>PEFE BASICS</strong></p><h3><a id="_ua2aswyp3e93"></a><strong>1. GENERAL APPEARANCE</strong></h3><ul><li>Basics.<br /></li><li><strong>Bleeding cases:</strong> pallor.<br /></li><li><strong>Cancer on your list:</strong> cachexia.<br /></li><li><strong>PCOS / hyperandrogenism:</strong> hirsutism, acne, being overweight.<br /></li><li>PCOS appears in many differentials (menorrhagia, amenorrhea, others).<br /></li><li>Check hirsutism, acne, BMI/overweight on general appearance.<br /></li></ul><h3><a id="_dnz6agbv8jm6"></a><strong>2. VITAL SIGNS</strong></h3><ul><li>Do them as a habit.<br /></li><li>Do in all cases.<br /></li><li>Vital signs are part of the examination.<br /></li><li>May tick off key points even when not thinking about them.<br /></li><li>Example: OCP counseling → baseline blood pressure (COCP complication is hypertension).<br /></li><li>Infections are also reasons to do vital signs.<br /></li></ul><h3><a id="_esu0sf8m9lh7"></a><strong>3. PELVIC EXAMINATION</strong></h3><p><strong>Always state:</strong></p><ul><li>I want to do Pelvic examination <strong>with consent<br /></strong></li><li><strong>With chaperone<br /></strong></li></ul><h4><a id="_gv362bwkobw9"></a><strong>Step 1: Inspection</strong></h4><p>Ask about:</p><ul><li><strong>Bleeding and discharge<br /></strong></li><li><strong>Skin:any </strong> redness or rashes<br /></li><li><strong>Any Swelling or lumps / masses<br /></strong></li></ul><p>Relevant across:</p><ul><li>Menorrhagia (bleeding)<br /></li><li>PID / STIs (discharge)<br /></li><li>Redness/rashes cases<br /></li><li>Lumps for Bartholin cases<br /></li></ul><h4><a id="_y2npnwaotfuz"></a><strong>Step 2: examiner, I want to do Speculum Examination. “ what do u want to know?”</strong></h4><p>Habit: I want to assess <strong>cervix</strong> and <strong>vaginal wall</strong></p><p><strong>Cervix</strong></p><ul><li>Bleeding<br /></li><li>Discharge<br /></li><li>Any abnormalities on the cervix:<br /><ul><li>Masses<br /></li><li>Abnormal growths<br /></li><li>Ectropion<br /></li><li>Redness<br /></li><li>Polyps<br /> (depending on the case)<br /></li></ul></li></ul><p><strong>Vaginal Walls</strong></p><ul><li>Expect normal<br /></li><li>Exception: <strong>atrophic vaginitis</strong> → dry, thin, pale<br /></li></ul><h4><a id="_gbik6n4nu2nc"></a><strong>Step 3: Bimanual Examination</strong></h4><p>Always ask 3 questions:</p><ol><li><strong>Cervical motion tenderness<br /></strong></li><li><strong>Uterus<br /></strong><ul><li>Size<br /></li><li>Tenderness<br /></li><li>Border<br /><ul><li>Large uterus significant in gynecology<br /></li><li>Menorrhagia + large uterus → think fibroid<br /></li><li>Check if border is regular or irregular<br /></li><li>Tenderness relevant in PID<br /></li></ul></li></ul></li><li><strong>Adnexa<br /></strong><ul><li>Masses<br /></li><li>Tenderness<br /></li></ul></li></ol><p><strong>Summary</strong></p><ul><li>A basic structure repeated for all cases.<br /></li><li>Same pelvic examination each time.<br /></li><li>Only small additions depending on differentials.</li></ul></section>
+
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: clinical-documentation-expert (Australian clinical supervisor, physical examination) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>American spelling &#x27;gynecology&#x27; used throughout.</strong><br>Australian documentation requires &#x27;gynaecology&#x27; / &#x27;gynaecological&#x27;.</div><div class="correction">✏️ <strong>The consent/chaperone statement is brief (&#x27;with consent, with chaperone&#x27;).</strong><br>Australian medicolegal standard (AHPRA / RANZCOG) for an intimate examination requires: explicit informed consent for the specific examination, a documented offer of a chaperone, recording the chaperone&#x27;s name/role, explanation of what will be done and why, and that the patient may stop at any time. Document all of these, not just that a chaperone was present.</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ Add a documentation template line for intimate examinations (offer of chaperone accepted/declined, chaperone identity, consent obtained, patient able to stop at any time) so trainees record it consistently - this is a frequent AMC and medicolegal mark.</div><div class="enhancement">⭐ Add that inspection should include the external genitalia/vulva and perineum (not only &#x27;skin, bleeding, discharge, lumps&#x27;) and that bimanual findings of cervical motion tenderness plus adnexal tenderness/mass raise PID or ectopic pregnancy - link the exam step to its differential.</div><div class="enhancement">⭐ Add the Australian reasoning for baseline BP before combined hormonal contraception (a genuine COCP contraindication/monitoring point) and that a bulky, irregular, non-tender uterus with menorrhagia suggests fibroids while a tender bulky uterus suggests adenomyosis - explicit sign-to-diagnosis mapping strengthens the exam station.</div><div class="enhancement">⭐ Metadata: note the rag_context returned for this case is largely off-topic (ECG/emergency chapters); recommend re-indexing against a dedicated gynaecological examination source (e.g. Llewellyn-Jones or RANZCOG examination guidance) for future retrieval.</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>physical_examination</dd><dt>Difficulty</dt><dd>easy</dd><dt>Amc Frequency</dt><dd>high - a generic pelvic examination framework underpins almost every AMC gynaecology PEFE station</dd><dt>Tags</dt><dd>pelvic-examination, pefe, speculum, bimanual, chaperone, consent, physical-examination</dd><dt>Related Topics</dt><dd>PEFE amenorrhoea, PEFE menorrhagia, PEFE dysmenorrhoea, PID, cervical screening</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 Structured examination and investigational skills, including intimate examinations performed with consent and communication, are core assessed AMC clinical competencies - general framing citation as this chunk is the AMC Handbook cover/skills list rather than a pelvic-exam-specific passage.<br><strong>AMC Handbook of Clinical Assessment.pdf</strong> p.1 <span class="pid">qdrant:09456b59-2b41-4a7a-adbf-56a3b9ccaa31</span></div><div class="citation">📚 Vital signs are part of the clinical examination and clinical findings guide the probability of significant pathology (e.g. infection/bacteraemia) - supports the case&#x27;s &#x27;do vital signs as a habit&#x27;; this chunk is a general clinical-findings/bacteraemia table, the closest relevant retrieval available.<br><strong>Clinical Examination-Talley &amp; Connor-pdf.pdf</strong> p.1054 <span class="pid">qdrant:4920c213-6835-423a-a9c1-ce946cc4db78</span></div><div class="citation">📚 AMC OSCE performance guidelines expect a systematic, examiner-directed examination sequence - general supporting citation; this retrieved chunk is an AMC Handbook performance-guideline figure header and is only tangentially related to pelvic examination.<br><strong>AMC Handbook of Clinical Assessment.pdf</strong> p.312 <span class="pid">qdrant:eb877189-30dd-4956-894b-20b270593d88</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

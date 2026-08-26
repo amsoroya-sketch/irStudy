@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTG (Cardiotocograph) Interpretation - ObGyn OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        ObGyn<span>›</span>CTG (Cardiotocograph) Interpretation
+    </div>
+    <h1>CTG (Cardiotocograph) Interpretation</h1>
+    <p class="source-line">Source: Dr. Amir workshop — obstetrics
+       / class 9 (Aug 2026 drop) · Specialty: obstetrics_gynaecology</p>
+
+<section id="content"><p><strong>CTG INTERPRETATION</strong></p><h3><a id="_4v3vp1a49ipr"></a><strong>CTG Basics</strong></h3><ul><li>With a CTG, you are checking the <strong>FHR (fetal heart rate)</strong>.<br /></li><li>Usually done <strong>above 28 weeks</strong> if you have any reason to do so.<br /></li><li>There are <strong>two types of CTG</strong>:<br /><ul><li><strong>Non-stress test (NST)<br /></strong></li><li><strong>Contraction stress test (CST)<br /></strong></li></ul></li><li>The difference is in the <strong>N and the C</strong>:<br /><ul><li><strong>No contractions → NST<br /></strong></li><li><strong>Having contractions → CST<br /></strong></li></ul></li></ul><p><strong>Example</strong></p><ul><li>Lady with <strong>no contractions</strong>, baby not moving → <strong>NST<br /></strong></li><li>Lady <strong>in labor</strong> with contractions → <strong>CST<br /></strong></li></ul><h3><a id="_gp7leqxq0ckk"></a><strong>CTG Graph Components</strong></h3><ul><li><strong>Top</strong>: Fetal heart rate<br /></li><li><strong>Bottom</strong>: Contractions<br /><ul><li><strong>NST</strong>: bottom part <strong>flat<br /></strong></li><li><strong>CST</strong>: bottom shows contraction rises<br /></li></ul></li></ul><p>Changes in FHR and decelerations are interpreted <strong>in relation to contractions</strong>.</p><p><img src="assets/obstetrics_1_ctg_interpretation_img1.jpeg" /></p><h2><a id="_xctjp54kcf5x"></a><strong>1. Baseline Fetal Heart Rate</strong></h2><ul><li><strong>Average</strong> fetal heart rate on the CTG.<br /></li><li>Usually <strong>110–160</strong>.<br /></li><li><strong>&gt;160 = tachycardia<br /></strong></li><li><strong>&lt;110 = bradycardia<br /></strong></li><li>Draw an <strong>average line</strong> through the shakiness.<br /></li><li>Minor up/down beats don’t matter—<strong>give the average</strong>.</li></ul><p><img src="assets/obstetrics_1_ctg_interpretation_img2.jpeg" /><br /></p><h2><a id="_jv5a9ru6qc30"></a><strong>2. Variability</strong></h2><p><strong>Baseline variability</strong> is the <strong>minor fluctuation in baseline FHR</strong>. It is assessed by <strong>estimating the difference in bpm between the highest peak and lowest trough of fluctuation</strong> in one minute segments of the trace!.</p><ul><li>Normal variability 6-25 beats per minute</li><li>Reduced variability 3-5 beats per minute</li><li>Absent variability &lt;3 beats per minute</li><li>Increased (salutatory) variability &gt; 25 beats per minute<strong>.</strong></li></ul><p><strong>You must state:</strong></p><ol><li>Baseline number<br /></li><li>Variability: <strong>normal, decreased, or increased<br /></strong></li></ol><p><img src="assets/obstetrics_1_ctg_interpretation_img3.jpeg" /></p><p></p><h2><a id="_1ohxphf3kf52"></a><strong>3. Accelerations</strong></h2><ul><li><strong>Increase</strong> in FHR of <strong>&gt;15 beats</strong> for <strong>&gt;15 seconds<br /></strong></li><li>Not a short-term change<br /></li><li><strong>Anything less than 15</strong> is <strong>not</strong> an acceleration<br /></li><li>If it lasts <strong>more than one block</strong>, it’s already <strong>&gt;15 seconds<br /></strong></li></ul><p><strong>Accelerations</strong> are an <strong>abrupt</strong> <strong>increase</strong> in the <strong>baseline</strong> <strong>fetal</strong> <strong>heart</strong> rate of <strong>greater</strong> <strong>than</strong> <strong>15</strong> <strong>bpm</strong> for <strong>greater</strong> <strong>than</strong> <strong>15</strong> <strong>seconds</strong>.<sup>1</sup></p><p>The presence of accelerations is <strong>reassuring</strong>.</p><p><strong>Accelerations</strong> occurring <strong>alongside</strong> <strong>uterine</strong> <strong>contractions</strong> is a sign of a <strong>healthy</strong> <strong>fetus</strong>.</p><p>The <strong>absence</strong> of <strong>accelerations</strong> with an otherwise <strong>normal</strong> <strong>CTG</strong> is of <strong>uncertain</strong> <strong>significance</strong>.</p><h3><a id="_u5xssx65vfj5"></a><strong>NST Rule</strong></h3><ul><li>In a <strong>normal NST</strong>, you expect <strong>at least 2 proper accelerations in 20 minutes<br /></strong><ul><li>&quot;&gt;15 beats, &gt;15 seconds&quot;<br /></li></ul></li><li>Accelerations are <strong>not related to contractions<br /></strong></li><li>Reason: <strong>baby moves</strong></li></ul><p><strong><img src="assets/obstetrics_1_ctg_interpretation_img5.jpeg" /></strong></p><h2><a id="_yh34ziamxms7"></a><strong>4. Decelerations</strong></h2><ul><li><strong>Drop</strong> in FHR <strong>≥15 beats</strong> for <strong>≥15 seconds<br /></strong></li><li>You must state the <strong>type</strong>:<br /><ul><li><strong>Early<br /></strong></li><li><strong>Late<br /></strong></li><li><strong>Variable<br /></strong></li></ul></li></ul><p>Simply saying “decelerations” is <strong>not enough</strong>.</p><h3><a id="_1d8t5qt1kzul"></a><strong>Early Decelerations</strong></h3><ul><li><strong>Only normal type<br /></strong></li><li>Relation: <strong>mirror image of contraction<br /></strong></li><li><strong>Start of contraction = start of deceleration<br /></strong></li><li>Reason: <strong>head pressed → vagus nerve → bradycardia<br /></strong></li></ul><p><strong>Early decelerations</strong> start when the <strong>uterine contraction begins</strong> and <strong>recover</strong> when <strong>uterine contraction stops</strong>. This is due to increased fetal intracranial pressure causing increased vagal tone. It therefore quickly resolves once the uterine contraction ends and intracranial pressure reduces. This type of deceleration is, therefore, considered to be physiological and not pathological</p><h3><a id="_wdfi6mdgou3u"></a><strong><img src="assets/obstetrics_1_ctg_interpretation_img6.jpeg" /></strong></h3><h3><a id="_7w8drgj0qymi"></a><strong>Late Decelerations</strong></h3><ul><li><strong>Come late<br /></strong></li><li><strong>Slow onset<br /></strong></li><li><strong>Mid to end of contraction<br /></strong></li><li><strong>Finish after</strong> contraction ends<br /></li><li>Suggestive of <strong>hypoxia<br /></strong></li></ul><p><strong>Late decelerations</strong> begin at the <strong>peak of the uterine contraction</strong> and <strong>recover</strong> <strong>after the contraction ends</strong>. This type of deceleration indicates there is insufficient blood flow to the uterus and placenta. As a result, blood flow to the fetus is significantly reduced causing fetal hypoxia and acidosis.</p><p>Causes of <strong>reduced uteroplacental blood flow</strong> include:<sup>1</sup></p><ul><li>Maternal hypotension</li><li>Pre-eclampsia</li><li>Uterine hyperstimulation</li></ul><h3><a id="_fjdf76nh1zck"></a><strong><img src="assets/obstetrics_1_ctg_interpretation_img7.jpeg" /></strong></h3><h3><a id="_kbpwctgrk2vl"></a><strong>Variable Decelerations</strong></h3><ul><li><strong>Variable timing<br /></strong><ul><li>Some early<br /></li><li>Some late<br /></li><li>Some <strong>without contractions<br /></strong></li></ul></li><li>Often <strong>sharp drop</strong>, “V pattern”<br /></li><li>Suggestive of <strong>umbilical cord compression<br /></strong></li></ul><p><strong>Variable decelerations</strong> are observed as a <strong>rapid fall in baseline fetal heart rate</strong> with a <strong>variable recovery phase</strong>.</p><p>They are variable in their duration and may not have any relationship to uterine contractions.</p><p>They are most often seen during labour and in patients’ with reduced amniotic fluid volume.</p><p>All fetuses experience stress during the labour process, as a result of uterine contractions reducing fetal perfusion. Whilst fetal stress is to be expected during labour, the challenge is to pick up pathological fetal distress.</p><p><strong>Variable decelerations</strong> are usually caused by<strong> umbilical cord compression</strong>. The <strong>mechanism</strong> is as follows:<sup>1</sup></p><p><strong>1. </strong>The umbilical vein is often occluded first causing an acceleration of the fetal heart rate in response.</p><p><strong>2. </strong>Then the umbilical artery is occluded causing a subsequent rapid deceleration.</p><p><strong>3. </strong>When pressure on the cord is reduced another acceleration occurs and then the baseline rate returns.</p><p>The <strong>accelerations</strong> <strong>before</strong> and <strong>after</strong> a <strong>variable</strong> <strong>deceleration</strong> are known as the <strong>shoulders of deceleration</strong>. Their presence indicates the fetus is not yet hypoxic and is adapting to the reduced blood flow. Variable decelerations can sometimes resolve if the mother changes position. The presence of persistent variable decelerations indicates the need for close monitoring. Variable decelerations without the shoulders are more worrying, as it suggests the fetus is becoming hypoxic.</p><p><strong><img src="assets/obstetrics_1_ctg_interpretation_img8.jpeg" /></strong></p><h3><a id="_kxsttwe1xx8e"></a><strong>Prolonged Decelerations</strong></h3><ul><li>FHR goes down and <strong>doesn’t come back up<br /></strong></li><li>Not expected in exam<br /></li></ul><p>A <strong>prolonged</strong> <strong>deceleration</strong> is defined as a deceleration that lasts <strong>more than 2 minutes</strong>:</p><ul><li>If it lasts<strong> between 2-3 minutes</strong> it is classed as <strong>non-reassuring</strong>.</li><li>If it lasts<strong> longer than 3 minutes</strong> it is immediately classed as <strong>abnormal</strong>.</li></ul><p><img src="assets/obstetrics_1_ctg_interpretation_img9.jpeg" /></p><h2><a id="_67f0obey5m7c"></a><strong>Mnemonic: BRAVADO</strong></h2><ol><li><strong>BRa = B</strong>aseline <strong>R</strong>ate (FHR)<br /></li><li><strong>V</strong>ariability <br /></li><li><strong>A</strong>ccelerations<br /></li><li><strong>D</strong>ecelerations (<strong>type</strong>: early, late, variable)<br /></li><li><strong>O</strong>verall impression<br /></li></ol><h2><a id="_m49m5i9saehx"></a><strong>Overall impression</strong></h2><h3><a id="_2iyv8f2h7vy0"></a><strong>NST</strong></h3><ul><li><strong>Normal NST</strong>:<br /><ul><li><strong>&gt;2 accelerations in 20 minutes<br /></strong></li></ul></li><li>No need to mention positive/negative<br /></li><li><strong>Abnormal NST</strong>: no accelerations<br /></li></ul><h3><a id="_bk93orv1rf7b"></a><strong>CST</strong></h3><ul><li><strong>Negative CST = Normal<br /></strong><ul><li><strong>No decelerations</strong> or <strong>only early decelerations<br /></strong></li></ul></li><li><strong>Positive CST = Abnormal<br /></strong><ul><li><strong>Late decelerations</strong> in &gt;50% of contractions<br /></li><li><strong>Variable decelerations<br /></strong></li></ul></li></ul><p><strong>Simplified</strong></p><ul><li><strong>Only early decelerations → Normal<br /></strong></li><li><strong>Late or variable → Abnormal</strong></li></ul><p>Once you have assessed all aspects of the CTG you need to determine your <strong>overall</strong> <strong>impression</strong>.</p><p>The overall impression can be described as either <strong>reassuring</strong>, <strong>suspicious</strong> or <strong>abnormal</strong>.<sup>3</sup></p><p>Overall impression is determined by how many of the CTG features were either reassuring, non-reassuring or abnormal. The <strong>NICE</strong> <strong>guidelines</strong> below demonstrate how to decide which category a CTG falls into.<sup>3</sup></p><h3><a id="_c0qcyw8mft7w"></a><strong>Reassuring</strong></h3><h4><a id="_j78zb4ivttgk"></a><strong>Baseline heart rate</strong></h4><ul><li>110 to 160 bpm</li></ul><h4><a id="_rmkcyivd3afi"></a><strong>Baseline variability</strong></h4><ul><li>5 to 25 bpm</li></ul><h4><a id="_7ldaa52pnxdb"></a><strong>Decelerations</strong></h4><ul><li>None or early</li><li>Variable decelerations with no concerning characteristics for less than 90 minutes</li></ul><h3><a id="_vv99gfvcw5ny"></a><strong>Non-reassuring</strong></h3><h4><a id="_nf3e9s2kyb1"></a><strong>Baseline heart rate</strong></h4><p><strong>Either of the below would be classed as non-reassuring:</strong></p><ul><li>100 to 109 bpm</li><li>161 to 180 bpm</li></ul><h4><a id="_1uopi85fd339"></a><strong>Baseline variability</strong></h4><p><strong>Either of the below would be classed as non-reassuring:</strong></p><ul><li>Less than 5 for 30 to 50 minutes</li><li>More than 25 for 15 to 25 minutes</li></ul><h4><a id="_c27ohcomooo"></a><strong>Decelerations</strong></h4><p><strong>Any of the below would be classed as non-reassuring:</strong></p><ul><li>Variable decelerations with no concerning characteristics for 90 minutes or more.</li><li>Variable decelerations with any concerning characteristics in up to 50% of contractions for 30 minutes or more.</li><li>Variable decelerations with any concerning characteristics in over 50% of contractions for less than 30 minutes.</li><li>Late decelerations in over 50% of contractions for less than 30 minutes, with no maternal or fetal clinical risk factors such as vaginal bleeding or significant meconium.</li></ul><h3><a id="_ekh6plu2os4i"></a><strong>Abnormal</strong></h3><h4><a id="_znnvqa9spge"></a><strong>Baseline heart rate</strong></h4><p><strong>Either of the below would be classed as abnormal:</strong></p><ul><li>Below 100 bpm</li><li>Above 180 bpm</li></ul><h4><a id="_2hifyxvab75c"></a><strong>Baseline variability</strong></h4><p><strong>Any of the below would be classed as abnormal:</strong></p><ul><li>Less than 5 for more than 50 minutes</li><li>More than 25 for more than 25 minutes</li><li>Sinusoidal</li></ul><h4><a id="_v1llqt771g03"></a><strong>Decelerations</strong></h4><p><strong>Any of the below would be classed as abnormal:</strong></p><ul><li>Variable decelerations with any concerning characteristics in over 50% of contractions for 30 minutes (or less if any maternal or fetal clinical risk factors – see above).</li><li>Late decelerations for 30 minutes (or less if any maternal or fetal clinical risk factors).</li><li>Acute bradycardia, or a single prolonged deceleration lasting 3 minutes or more.</li></ul><p>Regard the following as <strong>concerning</strong> <strong>characteristics</strong> of <strong>variable</strong> <strong>decelerations:</strong></p><ul><li>Lasting more than 60 seconds</li><li>Reduced baseline variability within the deceleration</li><li>Failure to return to baseline</li><li>Biphasic (W) shape</li><li>No shouldering</li></ul><p><strong><br /></strong></p><h2><a id="_8lc3txpnv317"></a><strong>Practice Points from Lecture</strong></h2><h3><a id="_49m9e9yo3gel"></a><strong>When baseline is confusing</strong></h3><ul><li><strong>Ignore decelerations<br /></strong></li><li>Look <strong>outside</strong> them to find baseline (e.g., 130–140)<br /></li></ul><h3><a id="_v6q6iumjh0ri"></a><strong>Accelerations after decelerations</strong></h3><ul><li>Not accelerations<br /></li><li>Must meet <strong>&gt;15 beats, &gt;15 seconds<br /></strong></li></ul><h3><a id="_16rgfdeg3d9c"></a><strong>NST With Decreased Variability and No Accelerations ( Non reactive NST)</strong></h3><p><img src="assets/obstetrics_1_ctg_interpretation_img10.jpeg" /></p><ul><li><strong>Abnormal NST (non reactive NST)<br /></strong></li><li>Management mentioned:<br /><ul><li>Assume baby sleeping<br /></li><li><strong>Repeat NST for another 20 minutes<br /></strong></li><li>If still no accelerations → problem and investigate further</li></ul></li></ul></section>
+
+<section id="figures"><h2>Case Figures</h2>
+<img class="case-image" src="assets/obstetrics_1_ctg_interpretation_img1.jpeg" alt="CTG (Cardiotocograph) Interpretation figure" loading="lazy">
+<img class="case-image" src="assets/obstetrics_1_ctg_interpretation_img2.jpeg" alt="CTG (Cardiotocograph) Interpretation figure" loading="lazy">
+<img class="case-image" src="assets/obstetrics_1_ctg_interpretation_img3.jpeg" alt="CTG (Cardiotocograph) Interpretation figure" loading="lazy">
+<img class="case-image" src="assets/obstetrics_1_ctg_interpretation_img5.jpeg" alt="CTG (Cardiotocograph) Interpretation figure" loading="lazy">
+<img class="case-image" src="assets/obstetrics_1_ctg_interpretation_img6.jpeg" alt="CTG (Cardiotocograph) Interpretation figure" loading="lazy">
+<img class="case-image" src="assets/obstetrics_1_ctg_interpretation_img7.jpeg" alt="CTG (Cardiotocograph) Interpretation figure" loading="lazy">
+<img class="case-image" src="assets/obstetrics_1_ctg_interpretation_img8.jpeg" alt="CTG (Cardiotocograph) Interpretation figure" loading="lazy">
+<img class="case-image" src="assets/obstetrics_1_ctg_interpretation_img9.jpeg" alt="CTG (Cardiotocograph) Interpretation figure" loading="lazy">
+<img class="case-image" src="assets/obstetrics_1_ctg_interpretation_img10.jpeg" alt="CTG (Cardiotocograph) Interpretation figure" loading="lazy">
+</section>
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: clinical-documentation-expert (Australian clinical supervisor, O&amp;G documentation standards) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>The classification thresholds (reassuring/non-reassuring/abnormal with specific minute-durations) are drawn from the UK NICE intrapartum guideline, explicitly cited as &#x27;NICE guidelines&#x27; in the notes.</strong><br>The Australian standard for intrapartum fetal surveillance is the RANZCOG Intrapartum Fetal Surveillance (IFS) Clinical Guideline (4th edition), which classifies a CTG as &#x27;normal&#x27; or &#x27;abnormal&#x27; based on baseline rate, variability, accelerations and decelerations, and defines its own features. Re-anchor the teaching notes to RANZCOG IFS rather than NICE for AMC-relevant practice.</div><div class="correction">✏️ <strong>The acceleration/deceleration definition (greater than 15 bpm for greater than 15 seconds) is presented as universal.</strong><br>That definition applies to the term fetus. For the preterm fetus (&lt;32 weeks) accelerations of greater than 10 bpm for greater than 10 seconds are accepted as reassuring. Add the preterm criterion, which the notes omit.</div><div class="correction">✏️ <strong>Increased variability is spelled &#x27;salutatory&#x27;.</strong><br>The correct term is &#x27;saltatory&#x27; variability (marked variability &gt;25 bpm). Minor terminology/OCR correction for documentation accuracy.</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ Add the management actions the OSCE expects after interpretation (intrauterine resuscitation): reposition to left lateral, IV fluid bolus, stop/reduce oxytocin, exclude cord prolapse and maternal hypotension, consider tocolysis for hyperstimulation, and escalate to the obstetric team; consider fetal scalp lactate/pH or expedite birth if abnormal.</div><div class="enhancement">⭐ Teach the full &#x27;DR C BRAVADO&#x27; mnemonic (Define Risk, Contractions, Baseline Rate, Variability, Accelerations, Decelerations, Overall impression) rather than BRAVADO alone, so maternal/fetal risk factors are stated first.</div><div class="enhancement">⭐ Add the significance of a sinusoidal trace (fetal anaemia / severe hypoxia) as an abnormal pattern requiring urgent review.</div><div class="enhancement">⭐ Reference the RANZCOG IFS guideline and the Fetal Surveillance Education Program (FSEP) as the Australian training standard in the metadata/teaching notes.</div><div class="enhancement">⭐ Note that CTG is only one component - correlate with clinical picture (meconium, bleeding, gestation) and document the trace interpretation contemporaneously with a time-stamped signature.</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>diagnosis_management</dd><dt>Difficulty</dt><dd>medium</dd><dt>Amc Frequency</dt><dd>high - CTG interpretation and the resulting intrapartum decision is a core, frequently examined obstetric skill</dd><dt>Tags</dt><dd>ctg, cardiotocography, fetal-surveillance, decelerations, variability, ranzcog-ifs, intrapartum, fetal-distress</dd><dt>Related Topics</dt><dd>pprom, postpartum hypertension, placenta praevia, VBAC counselling, intrauterine resuscitation</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 Systematic rhythm/trace interpretation (baseline, then deviations, then overall impression) is the methodology taught - the RAG index returned no CTG-specific chunk; the closest analogue retrieved is the ECG rhythm-interpretation basics module, cited as a tangential methodological parallel only.<br><strong>ECG book.pdf</strong> p.1 <span class="pid">qdrant:1da1df4e-0a0c-4991-946e-8b04748936d1</span></div><div class="citation">📚 Distinguishing normal baseline rhythm from pathological deviations underpins the assessment - supported only tangentially by the ECG-basics reference chunk, flagged because no fetal-monitoring-specific text was indexed.<br><strong>ECG book.pdf</strong> p.11 <span class="pid">qdrant:08c46248-0946-48e6-b5c7-c2c6129f3ccd</span></div><div class="citation">📚 Recognising rate changes (tachycardia/bradycardia analogues) and premature/irregular beats is conceptually parallel to identifying accelerations/decelerations - retrieved ECG sinus-rhythm chunk is tangential and is cited as the best-available RAG match for the rate-interpretation concept.<br><strong>ECG book.pdf</strong> p.61 <span class="pid">qdrant:0c848b4a-85e2-467e-9a6e-fa70ab4b337c</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

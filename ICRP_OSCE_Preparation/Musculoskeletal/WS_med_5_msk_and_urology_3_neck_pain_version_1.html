@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neck Pain - Cervical Radiculopathy (Version 1) - Musculoskeletal OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        Musculoskeletal<span>›</span>Neck Pain - Cervical Radiculopathy (Version 1)
+    </div>
+    <h1>Neck Pain - Cervical Radiculopathy (Version 1)</h1>
+    <p class="source-line">Source: Dr. Amir workshop — Med 5 MSK and urology
+       / 1. MSK Spine (Aug 2026 drop) · Specialty: musculoskeletal</p>
+
+<section id="content"><h1><a id="_ctqrw0oro74l"></a><strong>Neck Pain (Version 1)</strong></h1><h2><a id="_mzmy90u5zjg9"></a><strong>CASE STEM</strong></h2><p><strong>Your next patient is a 40 year old lady who has presented to your General Practice complaining of neck pain for 2 days.</strong></p><p>Task:</p><ul><li>Take history from the patient - you will have a prompt time at 6 minutes</li><li>Physical examination will appear on the screen at 6 minutes</li><li>Explain your diagnosis and differentials to the patient</li><li>(Investigation has been asked in some exams)<br /></li></ul><h2><a id="_11wmx1l45en3"></a><strong>Exam-Focused Differential Framework</strong></h2><p>Four Groups</p><h3><a id="_h9zaez8808oi"></a><strong>1. Spine</strong></h3><ul><li>Mechanical / non-specific neck pain<br />Vertebral dysfunction<br /></li><li>Cervical radiculopathy<br /></li><li>Vertebral fracture<br /></li></ul><h3><a id="_ktvavufoma0p"></a><strong>2. Red Flags</strong></h3><ul><li>Cervical myelopathy<br /></li><li>Malignancy &amp; metastasis<br /></li><li>Infection<br /></li><li>Multiple myeloma (elderly)<br /></li></ul><h3><a id="_c0itru4fqnd8"></a><strong>3. Arthritis</strong></h3><ul><li>Osteoarthritis (cervical spondylosis)<br /></li><li>Rheumatoid arthritis<br /></li><li>Psoriatic arthritis<br /></li><li>Ankylosing spondylitis<br /></li><li>Reactive arthritis<br /></li></ul><h3><a id="_yv3goqpbdr7z"></a><strong>4. Referred Pain</strong></h3><ul><li>Head<br /><ul><li>Meningitis<br /></li><li>Tension headache<br /></li><li>Subarachnoid hemorrhage<br /></li></ul></li><li>Cardiovascular<br /><ul><li>Angina<br /></li><li>MI<br /></li><li>Ischemic heart disease<br /></li></ul></li><li>Shoulder<br /><ul><li>Polymyalgia rheumatica<br /></li><li>Rotator cuff disorders<br /></li></ul></li></ul><h1><a id="_8dwe6crfc874"></a><strong>KEY CONDITION REVISION</strong></h1><h2><a id="_28w8bbu9fozg"></a><strong>Cervical Myelopathy</strong></h2><ul><li>Midline disc herniation<br /></li><li>Compresses entire spinal cord<br /></li><li>Red flag – needs urgent decompression<br /></li><li>Features (in legs)<br /><ul><li>Walking difficulty<br /></li><li>Balance issues<br /></li><li>Leg pain<br /></li><li>Weakness<br /></li><li>Incontinence<br /></li></ul></li></ul><h2><a id="_f92b4ympysf1"></a><strong>Cervical Spondylosis</strong></h2><ul><li>Degenerative disc &amp; joint disease<br /></li><li>Osteophytes<br /></li><li>Same as osteoarthritis<br /></li><li>Worse in morning<br /></li><li>Improves with movement<br /></li><li>Worse with heavy activity<br /></li></ul><h2><a id="_v7n3c9259fmn"></a><strong>Cervical Radiculopathy</strong></h2><ul><li>Nerve root compression<br /></li><li>Causes:<br /><ul><li>Disc prolapse<br /></li><li>Tumor<br /></li><li>Osteophytes (spondylosis)<br /></li></ul></li><li>Key feature: neurological deficit<br /></li></ul><h2><a id="_zachz0jk8jik"></a><strong>Spinal Metastasis</strong></h2><ul><li>Occurs in ~10% of cancer patients<br /></li><li>Cervical spine = 15%<br /></li><li>Most common:<br /><ul><li>Breast<br /></li><li>Prostate<br /></li><li>Lung<br /></li></ul></li></ul><h1><a id="_ghoi5aq4j4sx"></a><strong>HISTORY-TAKING STRUCTURE</strong></h1><h2><a id="_udcjgho9jwz5"></a><strong>Opening</strong></h2><p>Doctor:</p><p>“How can I help you today?”</p><p>Patient:</p><p>“I’ve had neck pain for two days, it’s on the back of my neck, it’s so bad I can’t sleep and I’m worried.”</p><p>Doctor response (communication skill)</p><p>“I understand your concern. You did the right thing coming in. I’ll ask a few questions and examine you to find the cause.”</p><h2><a id="_ic0re760rclw"></a><strong>Block 1 – Explore the Pain</strong></h2><h3><a id="_syy7c8y22a9n"></a><strong>SIQORAA </strong></h3><p>Site</p><ul><li>Front or back of neck?<br /></li></ul><p>Intensity</p><ul><li>“On a scale of 1–10, how bad is the pain?”<br /></li></ul><p>Quality</p><ul><li>Dull / sharp / burning?<br /></li></ul><p>Onset</p><ul><li>When did it start?<br /></li><li>Continuous or on / off?<br /></li><li>Getting worse?<br /></li><li>First episode or previous?<br /></li></ul><p>Radiation</p><ul><li>Does it travel anywhere?<br /></li></ul><p>Alleviating &amp; Aggravating</p><ul><li>What makes it better or worse?<br /></li><li>Coughing or sneezing?<br /></li></ul><p>Activity impact</p><ul><li>Work and daily activities?<br /></li></ul><h3><a id="_ymy71zvh65a4"></a><strong>Pattern</strong></h3><ul><li>Night pain?<br /></li><li>Worse in the morning or end of day?<br /></li><li>Worse after activity or rest?<br /></li></ul><h2><a id="_8c1t791f60hh"></a><strong>Block 2 – General Musculoskeletal</strong></h2><ul><li>Swelling around that area?<br /></li><li>Redness?<br /></li><li>Rashes?<br /></li><li>Stiffness (must ask)<br /></li><li>Recent trauma or injury?<br /></li></ul><h2><a id="_ofch9niqxzch"></a><strong>Block 3 – Red Flags</strong></h2><h3><a id="_aadugs3vo3dh"></a><strong>Cervical Myelopathy</strong></h3><ul><li>Difficulty walking?<br /></li><li>Balance problems?<br /></li><li>Loss of bladder or bowel control?<br /></li><li>Leg weakness, numbness, pain?<br /></li></ul><h3><a id="_kz5z7ma4ptxl"></a><strong>Malignancy</strong></h3><ul><li>Weight loss?<br /></li><li>Loss of appetite?<br /></li><li>Lumps and bumps?<br /></li><li>Have you been feeling tired or Fatigue?<br /></li><li>Previous cancers?<br /></li><li>Long-term cough?<br /></li><li>Previous history of Breast lumps?<br /></li></ul><h3><a id="_my3s783jwup0"></a><strong>Infection</strong></h3><ul><li>Fever?<br /></li><li>Chills?<br /></li></ul><h2><a id="_qksjs0qeb3te"></a><strong>Block 4 – Spine Differentials</strong></h2><h3><a id="_lj2dt5d3u4n0"></a><strong>Mechanical Neck Pain</strong></h3><ul><li>Occupation?<br /></li><li>Does your job involve Repetitive neck movements?<br /></li><li>Any Excessive exercise u have been doing lately?<br /></li></ul><h3><a id="_18gyfsvfcj21"></a><strong>Cervical Radiculopathy</strong></h3><ul><li>Pins and needles in hands?<br /></li><li>Numbness?<br /></li><li>Weakness in moving his arms and legs?<br /></li></ul><h2><a id="_3mi94r1mptsy"></a><strong>Block 5 – Arthritis</strong></h2><h3><a id="_4gjyfmyrb6j9"></a><strong>Osteoarthritis</strong><br /></h3><ul><li>Any grating or cracking sound when u move your neck<br /></li></ul><h3><a id="_1j3toz410qc1"></a><strong>Rheumatoid Arthritis</strong></h3><ul><li>Other joint pain?<br /></li><li>Family history?<br /></li></ul><h3><a id="_usna914k9tqq"></a><strong>Psoriatic</strong></h3><ul><li>Rashes on elbows or knees?<br /></li></ul><h3><a id="_8b5x4xbnhu26"></a><strong>Ankylosing Spondylitis</strong></h3><ul><li>Any Stiffness or Difficulty moving your neck?<br /></li></ul><h3><a id="_6tkqs7mnarwy"></a><strong>Reactive Arthritis / IBD</strong></h3><ul><li>Diarrhea?<br /></li><li>Blood in stool?<br /></li><li>Genital discharge?<br /></li><li>STI?<br /></li></ul><h2><a id="_ibnqea479x1"></a><strong>Block 6 – Referred Pain</strong></h2><h3><a id="_4i9lbb5myf04"></a><strong>Head</strong></h3><ul><li>Headache?<br /></li><li>Neck radiation?<br /></li><li>Stress?<br /></li></ul><h3><a id="_x439n5jf4kcw"></a><strong>Meningitis</strong></h3><ul><li>Are you having any sensitivity to light (Photophobia)?<br /></li><li>Vomiting?<br /></li></ul><h3><a id="_h9juyd4axg7t"></a><strong>Cardiac</strong></h3><ul><li>Chest pain?<br /></li><li>Shortness of breath especially on exercise?<br /></li><li>Do you have any racing of your heart; Palpitations?<br /></li></ul><h3><a id="_bh1u1mwzfg0"></a><strong>Polymyalgia rheumatica</strong></h3><ul><li> any pain or stiffness in shoulder and hips?<br /></li></ul><h2><a id="_p6quaxyv8s7w"></a><strong>Block 7 – Closure</strong></h2><ul><li>Smoking<br /></li><li>Alcohol<br /></li><li>Drugs<br /></li><li>Medications (steroids, cholesterol drugs)<br /></li><li>Allergies<br /></li><li>Past medical history<br /></li><li>Family history<br /></li></ul><h1><a id="_5e8b1m31rrld"></a><strong>HISTORY FINDINGS</strong></h1><ul><li>Pain on the back of the neck </li><li>After painting her house </li><li>Radiates to the right arm</li><li>Also feeling tingling and numbness in her hand</li><li>No redflags<br /></li></ul><p>→ Diagnosis: Cervical radiculopathy</p><h1><a id="_q2snotyolpcl"></a><strong>PHYSICAL EXAMINATION</strong></h1><ul><li>Limitation &amp; restriction of neck movements on rotation and lateral flexion due to pain</li><li>Decreased sensation on thumb and outer forearm</li><li>Weak elbow flexion<br /></li></ul><h3><a id="_wtns806lxd3p"></a><strong>Spurling Test</strong></h3><p><img src="assets/med_5_msk_and_urology_3_neck_pain_version_1_img1.jpeg" /></p><ul><li>Lateral flexion + axial compression<br /></li><li>Reproduces arm pain<br /></li><li>Suggests cervical radiculopathy<br /></li></ul><h1><a id="_gx25dsr9jl3r"></a><strong>DIAGNOSIS EXPLANATION</strong></h1><p>“You most likely have cervical radiculopathy.</p><p>This means a nerve exiting your spine is under pressure, usually from a tear in a cushion-like structure called a disc.</p><p>I think this because:</p><ul><li>Your pain goes into the arm<br /></li><li>You have numbness<br /></li><li>I found weakness and sensory loss on examination.”<br /></li></ul><h1><a id="_ss08rwu4bcp5"></a><strong>INVESTIGATIONS</strong></h1><p>Two key investigations</p><ol><li>Cervical spine MRI<br /></li><li>Cervical spine X-ray<br /></li></ol><p>Other tests for other differentials:</p><ul><li>ESR<br /></li><li>CRP<br /></li><li>Rheumatoid factor<br /></li><li>HLA-B27<br /></li></ul><p>(MRI + X-ray = main scoring investigations)</p></section>
+
+<section id="figures"><h2>Case Figures</h2>
+<img class="case-image" src="assets/med_5_msk_and_urology_3_neck_pain_version_1_img1.jpeg" alt="Neck Pain - Cervical Radiculopathy (Version 1) figure" loading="lazy">
+</section>
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: surgical-skills-expert (Australian surgical educator, RACS/FRACS, MSK focus) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>The case states cervical myelopathy is caused by &#x27;midline disc herniation compressing the entire spinal cord&#x27; and lists only leg symptoms.</strong><br>In adults the commonest cause of cervical myelopathy is degenerative cervical spondylotic myelopathy (multilevel spondylosis/canal stenosis), not primarily acute midline disc herniation. Its hallmarks are UPPER motor neuron signs - hyperreflexia, positive Hoffmann and Babinski signs, clonus - together with loss of hand dexterity (&#x27;clumsy hands&#x27;) and a broad-based unsteady gait, in addition to lower-limb symptoms. Add these to history and examination.</div><div class="correction">✏️ <strong>Spinal metastasis figures are muddled: &#x27;occurs in ~10% of cancer patients / cervical spine = 15%&#x27;.</strong><br>The cervical spine is the LEAST common site of spinal metastasis. Approximately 70% of spinal metastases involve the thoracic spine, ~20% the lumbar spine and only ~10% the cervical spine. Reword so the cervical spine is correctly presented as an uncommon (not 15%) site.</div><div class="correction">✏️ <strong>The Spurling test is described as &#x27;lateral flexion + axial compression&#x27; only.</strong><br>The Spurling manoeuvre is neck EXTENSION plus lateral flexion (and rotation) TOWARD the symptomatic side, then gentle axial compression; reproduction of radicular arm pain is positive. Omitting the extension/ipsilateral component makes the description technically incomplete.</div><div class="correction">✏️ <strong>Investigations state &#x27;Cervical spine MRI + X-ray = main scoring investigations&#x27; for a 2-day history of radiculopathy with no red flags.</strong><br>Per RACGP/eTG, acute cervical radiculopathy without red flags does not require early imaging - most settle within 6-12 weeks with conservative care. Reserve MRI (imaging of choice) for red flags, myelopathy, or progressive/severe or non-resolving neurological deficit after ~6 weeks. Plain X-ray adds little in this setting. Frame imaging as conditional, not routine.</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ Add the cervical myelopathy examination bundle (Hoffmann sign, Babinski, hyperreflexia, clonus, tandem gait, Romberg) and explicit safety-netting: suspected myelopathy is a red flag requiring urgent neurosurgical/spinal referral and MRI, since it is the can&#x27;t-miss diagnosis in this framework.</div><div class="enhancement">⭐ Add carpal tunnel syndrome and thoracic outlet syndrome as differentials for the hand tingling, with bedside tests (Phalen and Tinel) to distinguish a peripheral median-nerve lesion from a C6/C7 nerve-root lesion - directly relevant given the thumb/lateral-forearm symptoms.</div><div class="enhancement">⭐ Add explicit dermatomal/myotomal mapping: thumb and lateral forearm sensory loss with weak elbow flexion (biceps) localises to the C6 root - teaching the candidate to name the root level strengthens the diagnosis-explanation task.</div><div class="enhancement">⭐ Add a management section for cervical radiculopathy (regular NSAID/paracetamol-plus-NSAID analgesia, activity modification, physiotherapy, reassurance about favourable natural history) since the current case stops at diagnosis and investigations.</div><div class="enhancement">⭐ Tag as a randomised multi-version station (Version 1 = radiculopathy) and cross-link to the Version 2 neck-pain case so the platform can present alternate findings on the same history framework.</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>history_taking</dd><dt>Difficulty</dt><dd>medium</dd><dt>Amc Frequency</dt><dd>medium - neck pain and cervical radiculopathy are common GP/AMC presentations testing red-flag screening (myelopathy) and neuro-localisation</dd><dt>Tags</dt><dd>neck-pain, cervical-radiculopathy, cervical-myelopathy, spurling-test, red-flags, history-taking, dermatomes, msk</dd><dt>Related Topics</dt><dd>cervical-spondylosis, carpal-tunnel-syndrome, spinal-metastasis, whiplash, polymyalgia-rheumatica</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 Carpal tunnel syndrome (median nerve compression) is a key differential for hand tingling/numbness that must be distinguished from a cervical (C6) nerve-root lesion in this patient with thumb and lateral-forearm symptoms.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.1519 <span class="pid">qdrant:e5d34dc6-4954-40a2-8b72-0cba38a812dc</span></div><div class="citation">📚 Non-specific/mechanical neck pain includes myofascial trigger-point and widespread (fibromyalgia-type) pain from neck to low back - supporting the case&#x27;s &#x27;mechanical/non-specific neck pain&#x27; category. (This chunk covers myofascial/fibromyalgia pain and is adjacent rather than radiculopathy-specific.)<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.778 <span class="pid">qdrant:37a050bf-f1a3-45b0-9c19-a92ea5dfa23e</span></div><div class="citation">📚 Spinal pain is worked up with a diagnostic-strategy model in which musculoligamentous strain and non-specific vertebral dysfunction are the probability diagnoses while serious disorders are excluded - mirroring the case&#x27;s four-group neck-pain framework. (This chunk is the THORACIC spine strategy table, used here as the analogous framework since no cervical-specific chunk was supplied.)<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.756 <span class="pid">qdrant:db95c8a1-04fe-4baa-b2c4-8599b3641826</span></div><div class="citation">📚 Rheumatological differentials (RA, ankylosing spondylitis, reactive arthritis) and their management are covered in the Australian Therapeutic Guidelines (eTG Rheumatology), supporting the case&#x27;s arthritis differential block and its ESR/CRP/RF/HLA-B27 work-up. (This chunk is a reference/citation list pointing to eTG rather than substantive neck-pain text.)<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.1657 <span class="pid">qdrant:f9f783af-c2d0-47dc-8f65-9bed828745ef</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

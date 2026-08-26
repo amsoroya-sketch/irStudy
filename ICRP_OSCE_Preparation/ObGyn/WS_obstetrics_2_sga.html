@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Small for Gestational Age (SGA) / Fetal Growth Restriction - ObGyn OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        ObGyn<span>›</span>Small for Gestational Age (SGA) / Fetal Growth Restriction
+    </div>
+    <h1>Small for Gestational Age (SGA) / Fetal Growth Restriction</h1>
+    <p class="source-line">Source: Dr. Amir workshop — obstetrics
+       / class 4 (Aug 2026 drop) · Specialty: obstetrics_gynaecology</p>
+
+<section id="content"><h1><a id="_52wunyutc9az"></a><strong>Case 2</strong></h1><p><strong>Your next patient is a 28 year old lady who has come to you for her shared care appointment. Her OB assessment at 30 weeks of gestation was normal and FH was 29cm. Today she has come for her check at 34 weeks of gestation and her FH is 30cm.</strong></p><p>Task:-</p><p>• Take history from the patient</p><p>• Request investigations - You will have 5 minutes for the 2 first tasks</p><p>• Explain results to the patient</p><p>• Explain the diagnosis and outcome</p><h2><a id="_qwhj91oawy8v"></a><strong>1. Core Concept</strong></h2><p>Two core possibilities:</p><ol><li><strong>Small baby → growth restriction (IGR / IUGR / fetal growth restriction)<br /></strong></li><li><strong>Smaller amount of fluid → oligohydramnios<br /></strong></li></ol><h2><a id="_jxfh4yuky97x"></a><strong>2. Differentials for Small for Gestational Age</strong></h2><h3><a id="_k9yta0x9l7b7"></a><strong>Maternal causes&gt; HALES</strong></h3><ul><li>Hypertension</li><li>Antiphospholipid syndrome</li><li>Lupus</li><li>Substance use</li><li>Excessive exercise (“one of the reasons we tell mother not to do heavy exercise”)</li></ul><h3><a id="_ibtlo6ojn76e"></a><strong>Fetal causes</strong></h3><ul><li>Genetic abnormalities (lecture example: “Down syndrome”)</li><li>TORCH infections (cause both LGA &amp; SGA)</li><li>Renal disease / malformations (“child not producing amniotic fluid”)</li></ul><h3><a id="_31d9c8umgu5g"></a><strong>Placental causes</strong></h3><ul><li>Placental insufficiencies</li><li>Placental dysfunctions</li></ul><h3><a id="_ituy8tlfxwwq"></a><strong>Other</strong></h3><ul><li>Constitutional small size (“expect him to catch up”)</li><li>Incorrect dating</li></ul><h2><a id="_7c9op7rbvem5"></a><strong>3. AMC Handbook Details (Lecture Commentary)</strong></h2><ul><li>4 weeks after initial examination: SFH still <strong>29 cm</strong>.</li><li>“Appears reduced amount of liquid” – lecturer notes odd phrasing.</li><li>Mother:<br /><ul><li>No smoking</li><li>No alcohol</li><li>No hypertension</li><li>No previous kidney disease</li><li>No lupus / arthritis / clots (APS feature = clots)</li><li>No contacts with dogs/cats, no raw meat (torch)<br /></li></ul></li><li>Fetal movements present <strong>but if asked: “less than usual.”</strong></li><li>Dates are certain (confirmed by ultrasound).</li><li>No proteinuria.</li><li>No toxoplasmosis results.</li><li>Handbook calls case <strong>IUGR</strong>.<br /></li></ul><h3><a id="_4emamoeq081n"></a><strong>Handbook-listed Causes</strong></h3><ul><li>Genetic/karyotypic abnormalities</li><li>Renal disease / malformations</li><li>Pre-eclampsia</li><li>Congenital infections (TORCH)</li><li>Placental dysfunctions<br /></li></ul><h2><a id="_bw43incijnzh"></a><strong>4. Key Investigations (must mention before 5 minutes)</strong></h2><h3><a id="_6beeozu7wfg1"></a><strong>Essential</strong></h3><ul><li><strong>Ultrasound</strong></li><li><strong>CTG</strong><ul><li>Critical errors if CTG not done.</li></ul></li></ul><h3><a id="_vxscw4arj1y1"></a><strong>Additional investigations mentioned</strong></h3><ul><li>Urea, electrolytes, creatinine</li><li><strong>Antiphospholipid antibodies</strong>:<br /><ul><li>Lupus anticoagulant</li><li>Anticardiolipin antibody<br /></li></ul></li><li>Toxoplasmosis serology</li><li>CMV serology</li><li>If amniocentesis is done → <strong>karyotyping<br /></strong></li></ul><h2><a id="_p4fp13r2gh88"></a><strong>5. What Ultrasound Assesses</strong></h2><ul><li>Size of baby</li><li>Amount of amniotic fluid</li><li>Congenital abnormalities / malformations<br /></li></ul><h2><a id="_we8kpdukwtx"></a><strong>6. What CTG Assesses</strong></h2><ul><li>Well-being of the child<br /></li></ul><h2><a id="_uhzjacvspzwd"></a><strong>7. Growth Scans (Ultrasound parameters)</strong></h2><p><img src="assets/obstetrics_2_sga_img1.jpeg" /></p><h3><a id="_ot2wy5mteh6o"></a><strong>Parameters checked</strong></h3><ul><li>Fetal weight</li><li>Head circumference</li><li>Femur length</li><li>Abdominal circumference<br /></li></ul><h3><a id="_etozbgdym4ac"></a><strong>Nature of growth charts</strong></h3><ul><li>Not one fixed number → <strong>percentiles (5th, 10th, 90th, 95th)</strong></li><li>Based on gestational age</li><li>Similar to growth charts for children<br /></li></ul><h2><a id="_astvr7lzrf0n"></a><strong>8. Diagnosis of IUGR (Lecture Criteria)</strong></h2><ul><li><strong>Weight &lt; 3rd percentile</strong> OR<br /></li><li><strong>Weight &lt; 10th percentile AND abdominal circumference &lt; 10th percentile<br /></strong></li></ul><p>Lecturer’s simplified memory cue:</p><ul><li>“As long as weight AND abdominal circumference are in the lower percentiles (5th/10th), you diagnose IUGR.”<br /></li></ul><h3><a id="_eag6p72vgien"></a><strong>Charts in exam</strong></h3><ul><li>They mark fetal weight and abdominal circumference on chart</li><li>If below 10th percentile → indicates IUGR</li><li>No need to comment on head circumference or femur length for diagnosis<br /></li></ul><h2><a id="_ck9zwmt3xxku"></a><strong>9. Outcomes of Small for Gestational Age / IUGR</strong></h2><h3><a id="_mppc7csguue6"></a><strong>Short-term outcomes</strong></h3><ul><li>Breathing problems</li><li>Higher risk of resuscitation</li><li>Higher risk of hypothermia</li><li>Feeding problems</li><li>Higher risk of hypoglycaemia</li><li>Higher risk of neonatal jaundice<br /></li></ul><h3><a id="_ab2bgtoluxm3"></a><strong>Long-term outcomes (mentioned but advised not to emphasise)</strong></h3><ul><li>Neurodevelopmental issues</li><li>Endocrine/metabolic problems (e.g., obesity)</li><li>Cardiovascular problems</li><li>Reproductive issues (hypospadias, puberty problems)<br /></li></ul><h2><a id="_o9h27ldda97h"></a><strong>10. RACGP Review (Lecture Recap of Differentials)</strong></h2><ul><li>Incorrect dating</li><li>Constitutionally small</li><li>Genetic defects/malformations</li><li>Intrauterine infections (TORCH)</li><li>IUGR</li><li>Maternal vascular disease (“placenta is vascular tissue—if not made properly → growth restriction”)</li><li>Hypertensive disorders</li><li>Autoimmune disorders<br /></li><li>Risk factors:<br /><ul><li>Exercise</li><li>Cocaine</li><li>Smoking</li><li>Diabetes with vascular disease (lecturer “removed it for clarity”)<br /></li></ul></li></ul><h2><a id="_8ntev47vtk8u"></a><strong>11. Notes on Exam Pitfalls / Critical Errors</strong></h2><ul><li><strong>Critical error if no CTG</strong> (many forget this)<br /></li><li>Must mention <strong>ultrasound</strong> + <strong>CTG<br /></strong></li><li>Examiner may ask: <strong>“Outcome of pregnancy?”</strong> (be prepared)</li></ul><h1><a id="_pfdvicqi3e46"></a><strong>HISTORY TAKING STRUCTURE</strong></h1><h3><a id="_hbrdtrahfw"></a><strong>Opening</strong></h3><ul><li>Sit down, good open-ended question.<br /></li><li>Patient concern: “I’m pregnant and they told me my womb is smaller… I’m really worried.”<br /></li><li>Address concern:<br /><ul><li>“I do understand your concern and how stressful this can be, but let me examine you. I’ll ask you a few questions. We’ll find the cause together and I’ll make the best management plan for you.”<br /></li></ul></li></ul><h3><a id="_rwk717r5dwpe"></a><strong>Initial Questions</strong></h3><ul><li>Was this a planned pregnancy? (“Yes, it was.”)<br /></li><li><em>Late pregnancy adjustment:<br /></em><ul><li>Do <strong>not</strong> congratulate a 34-week lady (“too late, too boring”).<br /></li><li>Ask: <strong>“How is the pregnancy going so far? Has everything been okay with your pregnancy so far?”<br /></strong></li></ul></li></ul><h1><a id="_i7rau9gd4fcm"></a><strong>OBSTETRIC (OB) HISTORY STRUCTURE</strong></h1><h3><a id="_dpjp05ra59p5"></a><strong>Routine Pregnancy Assessments</strong></h3><ol><li><strong>Routine blood tests</strong> at beginning of pregnancy – “Was it normal?”</li><li><strong>Dating scan?</strong></li><li><strong>Down syndrome screening?</strong></li><li><strong>Ultrasound at 18–20 weeks? Was everything normal?<br /></strong><ul><li>Morphology + placental scan.<br /></li></ul></li><li><strong>Sweet drink test at 26–28 weeks?<br /></strong><ul><li>Stop here (because she is 34 weeks; no need to ask GBS bug test).<br /></li></ul></li></ol><h3><a id="_2tlavdkkz46g"></a><strong>Late Pregnancy Key Questions</strong></h3><ol><li><strong>Baby kicking as usual?<br /></strong><ul><li>“Very important, many candidates miss this.”<br /></li></ul></li><li><strong>Preeclampsia symptoms:<br /></strong><ul><li>Headache</li><li>Swelling in legs</li><li>(Optional: ↓ urine output or other features)<br /></li></ul></li><li><strong>Previous pregnancies:<br /></strong><ul><li>Is this your first pregnancy?</li><li>Any complications during pregnancy?</li><li>Any complications during delivery?</li><li><strong>Did you deliver a small baby?</strong> (“Even last time they told me my baby is small.”)<br /></li></ul></li></ol><h1><a id="_op89uli1nnio"></a><strong>DIFFERENTIALS – Mnemonic: M DISC</strong></h1><h3><a id="_fwz1xfob42sm"></a><strong>M – Maternal medical conditions</strong>.</h3><p>Ask:</p><ul><li>High blood pressure?</li><li>Kidney disease?</li><li>High blood sugar/diabetes?</li><li>History of clots?</li><li>Joint pain?</li><li>Rash?</li><li>Family history of lupus or arthritis?<br /> (Points toward antiphospholipid/lupus spectrum.)<br /></li></ul><h3><a id="_9yf4x0hexsn9"></a><strong>D – Dates</strong></h3><ul><li>When was your LMP?</li><li>Are you sure about your dates?</li><li>Were your periods regular or irregular?<br /></li></ul><h3><a id="_t1jmgcdi8d24"></a><strong>I – Infections</strong></h3><p>Ask:</p><ul><li>Any rash or fever during pregnancy?</li><li>Sick contacts? (Especially anyone with a rash.)</li><li>Any pets? Any contact with animals?</li><li>Did you eat any raw meat during pregnancy?<br /></li></ul><h3><a id="_jsn60aw6gnp"></a><strong>I – IUGR (assessment question)</strong></h3><p>Only question:</p><ul><li>“Did we monitor your weight gain during pregnancy? If yes, were there any concerns?”<br /></li></ul><h3><a id="_58w9agqwjy5v"></a><strong>S – Substances</strong></h3><ul><li>Do you smoke?</li><li>Do you drink alcohol?</li><li>Do you use drugs? (E.g., cocaine effect mentioned)</li><li>Do you use any medications?</li><li><strong>Exercise</strong> (placed under substances).<br /></li></ul><h3><a id="_twiohbvsej5z"></a><strong>C – Constitutional</strong></h3><ul><li>Family history of small babies?</li><li>“Constitutional is a diagnosis of exclusion.”<br /></li></ul><h1><a id="_3bk8xlhjjym6"></a><strong>Note: if you don't wrap up history taking earlier and ask for investigation before the examiner provides you at 5 minutes. You will fail the exam. Ask for investigation before a 5 minute timer.</strong></h1><h1><a id="_acqswk6k541b"></a><strong>INVESTIGATIONS</strong></h1><h3><a id="_dca4lg34jm0k"></a><strong>Top Two (Do it or fail it)</strong></h3><ol><li><strong>Ultrasound / Growth scan<br /></strong><ul><li>Look at:<br /><ul><li>Amniotic fluid</li><li>Baby’s weight</li><li>Abdominal circumference</li><li>Head circumference</li><li>Malformations<br /></li></ul></li></ul></li><li><strong>CTG<br /></strong><ul><li>“Check fetal heart rate / well-being.”<br /></li></ul></li></ol><h3><a id="_hfnxeni3axxg"></a><strong>Maternal Investigations</strong></h3><ul><li>Kidney function test</li><li>Anti-cardiolipin and lupus anticoagulant antibodies</li><li>Toxoplasmosis or CMV serology</li><li>(Amniocentesis may be mentioned, but not mandatory)<br /></li></ul><h1><a id="_a2pyz7i0ehia"></a><strong>INTERPRETING CHARTS</strong></h1><ul><li>Find fetal weight &amp; abdominal circumference chart only.<br /></li><li>Look at percentiles (5th, 10th, 90th, 95th depending on chart).<br /></li><li>If mark is in lower part of chart → suggests <strong>growth restriction (IUGR)</strong>.<br /></li><li>This <strong>confirms diagnosis</strong>.<br /></li></ul><h1><a id="_xcwrrb6kyc0f"></a><strong>DIAGNOSIS</strong></h1><h3><a id="_2w5x565jgk1p"></a><strong>Diagnosis</strong></h3><ul><li>“Most likely you have a condition called <strong>IUGR</strong>.”<br /></li><li>May start with:<br /><ul><li>“Overall you have a condition called <strong>small for gestational age</strong>, meaning the size of your womb is smaller than expected.”<br /></li></ul></li><li>Most likely due to <strong>intrauterine growth restriction</strong> (newer name: fetal growth restriction).<br /></li><li>Simple explanation:<br /><ul><li>“The baby is not growing and gaining weight as expected.”<br /></li></ul></li></ul><h3><a id="_fltq1gz90njz"></a><strong>Reason for Diagnosis</strong></h3><ul><li>Only reason:<br /><ul><li><strong>Ultrasound charts showed low weight and low abdominal circumference.<br /></strong></li></ul></li></ul><h1><a id="_sl61qj7laahl"></a><strong>DIFFERENTIALS (Explained to Patient)</strong></h1><ul><li><strong>Maternal problems:<br /></strong><ul><li>High blood pressure</li><li>Kidney disease</li><li>Lupus / antiphospholipid syndrome<br /></li></ul></li><li><strong>Wrong dates</strong></li><li><strong>Infections:</strong> toxoplasmosis, CMV</li><li><strong>Substances:</strong> alcohol, drugs, smoking, excessive exercise</li><li><strong>Constitutional</strong> (diagnosis of exclusion) : smaller than usual baby that will catch up to its growth later on, its just little bit delayed.<br /></li></ul><h1><a id="_rrcshcjdh02f"></a><strong>OUTCOMES (If asked)</strong></h1><p>Children with growth restriction have higher risk of:</p><ul><li>Breathing problems → may need resuscitation</li><li>Low body temperature (hypothermia)</li><li>Low blood sugar</li><li>Feeding problems</li><li>Neonatal jaundice<br /></li></ul><h1><a id="_lvt2oadj3d6"></a><strong>Case 2</strong></h1><h1><a id="_achicvcsc3vu"></a><strong>Your next patient is a 34 week pregnant lady who has presented to your general practice for a check up. Her last check was at 26 weeks of GA and she missed her further sessions.</strong></h1><h1><a id="_ghfv0sqwl2ir"></a><strong>Task</strong>:</h1><p>• Take history</p><p>Physical examination findings will be given to you on a card</p><p>• Measure fundal height</p><p>• Explain diagnosis with reasons and causes</p><h3><a id="_aksnusx0iwgq"></a><strong>History Taking (Differences)</strong></h3><ul><li>After OEQ and was it planned pregnancy question, ask this.</li><li>No empathy or congratulations needed.</li><li>Add: <strong>“Why did you miss your previous checkups?”<br /></strong><ul><li>Scored as good communication (approach to patient).<br /></li></ul></li></ul><h3><a id="_5avjdfr52m28"></a><strong>OB Structure Repeated</strong></h3><ul><li>Routine bloods</li><li>Dating scan</li><li>Down syndrome screening</li><li>18–20 week scan</li><li>Sweet drink test (26–28 weeks)</li><li>Are u done with your swab test?</li><li>Baby kicking as usual?</li><li>Preeclampsia questions</li><li>Previous pregnancies: complications + type of delivery<br /></li></ul><h3><a id="_ntfata5ivjnp"></a><strong>Physical Examination Card</strong></h3><ul><li>Findings given EXCEPT <strong>fundal height</strong>.</li><li>Must measure fundal height on mannequin.</li><li>Expect around 29–30 cm (reported by candidates).<br /></li></ul><h3><a id="_8jajz7qa50wd"></a><strong>Diagnosis</strong></h3><ul><li><strong>Diagnosis:</strong> “Small for gestational age.”</li><li><strong>Reason:<br /></strong><ul><li>Fundal height is <strong>way less</strong> than expected (not just ±3 cm).<br /></li></ul></li><li><strong>Causes:</strong> maternal problems, wrong dates, infections/IUGR, substances/exercise, constitutional.<br /></li></ul></section>
+
+<section id="figures"><h2>Case Figures</h2>
+<img class="case-image" src="assets/obstetrics_2_sga_img1.jpeg" alt="Small for Gestational Age (SGA) / Fetal Growth Restriction figure" loading="lazy">
+</section>
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: clinical-documentation-expert (Australian teaching hospital clinical supervisor) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>The case lists &#x27;excessive exercise&#x27; as a cause of SGA and states &#x27;one of the reasons we tell mother not to do heavy exercise&#x27;.</strong><br>This is outdated. Current Australian guidance (RANZCOG; Sports Medicine Australia) recommends regular moderate-intensity physical activity throughout an uncomplicated pregnancy; normal exercise does not cause fetal growth restriction. Only extreme/elite training energy imbalance is a theoretical concern. Advice to avoid exercise should be removed and replaced with encouragement of safe activity.</div><div class="correction">✏️ <strong>IUGR is defined only as &#x27;weight &lt;3rd centile OR weight &lt;10th centile AND abdominal circumference &lt;10th centile&#x27;, and umbilical artery Doppler is not part of the assessment.</strong><br>Terminology should distinguish SGA (EFW or AC &lt;10th centile) from fetal growth restriction (FGR). The Delphi/ISUOG consensus defines FGR by EFW/AC &lt;3rd centile, or &lt;10th centile combined with abnormal umbilical artery / cerebroplacental Doppler or reduced growth velocity. Umbilical artery Doppler (and, near term, MCA / cerebroplacental ratio) is a core surveillance investigation and must be added; its absence is a significant gap.</div><div class="correction">✏️ <strong>Genetic cause of SGA is exemplified as &#x27;Down syndrome&#x27; (trisomy 21).</strong><br>Trisomy 21 is a weaker cause of early severe FGR. The classic aneuploidies producing early symmetric growth restriction are trisomy 18 (Edwards), trisomy 13 and triploidy. Use these as the teaching examples for genetic/karyotypic FGR.</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ Add umbilical artery Doppler (and cerebroplacental ratio near term) to the mandatory investigation list alongside ultrasound growth scan and CTG - it drives timing-of-delivery decisions in FGR.</div><div class="enhancement">⭐ Strengthen reduced-fetal-movements safety-netting: any decrease should trigger immediate presentation to the birth suite (or 000 if acute), with CTG assessment, per RANZCOG Decreased Fetal Movements guidance - FGR markedly raises stillbirth risk.</div><div class="enhancement">⭐ Add smoking-cessation counselling with an explicit Australian resource (Quitline 13 7848 / 13 QUIT) since smoking is a leading modifiable cause of SGA, and note the case&#x27;s &#x27;no smoking&#x27; finding is a key negative to elicit.</div><div class="enhancement">⭐ For prevention counselling in future pregnancies, add low-dose aspirin 150 mg nocte commenced before 16 weeks for women at high risk of pre-eclampsia/placental FGR (eTG / RANZCOG), plus calcium supplementation where dietary intake is low.</div><div class="enhancement">⭐ Add a management/disposition section: obstetrician / maternal-fetal medicine referral, antenatal corticosteroids (betamethasone) if preterm delivery anticipated before ~34-35 weeks, and planned timing of birth based on Doppler and growth velocity.</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>diagnosis_management</dd><dt>Difficulty</dt><dd>medium</dd><dt>Amc Frequency</dt><dd>high - a static/lagging fundal height with SGA/IUGR is a frequently tested AMC obstetrics station combining focused history, investigation selection (US + CTG) and result interpretation</dd><dt>Tags</dt><dd>obstetrics, small-for-gestational-age, iugr, fetal-growth-restriction, oligohydramnios, ctg, umbilical-artery-doppler, antenatal-care</dd><dt>Related Topics</dt><dd>large for gestational age, pre-eclampsia, reduced fetal movements, antenatal screening schedule, smoking cessation in pregnancy, antiphospholipid syndrome in pregnancy</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 Australian third-trimester antenatal care requires increased visit frequency specifically to monitor for complications such as pre-eclampsia and intrauterine growth restriction, with OGTT at 24-28 weeks and the anatomy scan at 20-22 weeks - the surveillance framework this SGA case is built on.<br><strong>Antenatal guidelines kemh.pdf</strong> p.22 <span class="pid">qdrant:b3b90fff-a171-4885-8640-31c2c967e926</span></div><div class="citation">📚 Maternal factors materially affect fetal outcome and stillbirth risk in Australian antenatal practice (e.g. hypertension/pre-eclampsia and metabolic risk raise stillbirth 2-3 fold), supporting the case&#x27;s maternal-cause differentials for growth aberration. (Note: this KEMH chunk specifically addresses obesity in pregnancy and is cited as the closest Australian antenatal-risk reference rather than an SGA-specific passage.)<br><strong>Antenatal guidelines kemh.pdf</strong> p.21 <span class="pid">qdrant:2a4ff0d8-d49c-468d-b7fa-9dd49f24cf11</span></div><div class="citation">📚 A structured diagnostic-strategy model (probability diagnosis / serious disorders not to be missed / pitfalls) supports the case&#x27;s systematic differential approach to a small-for-dates uterus. (Note: this rag chunk is Murtagh&#x27;s cough diagnostic-strategy model and is cited only as a methodological template, not for SGA-specific content.)<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.942 <span class="pid">qdrant:747a38da-3fa0-4f29-b0ff-4e1d6122fcef</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

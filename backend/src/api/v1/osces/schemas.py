@@ -7,6 +7,8 @@ AMC CLINICAL EXAM FORMAT:
 - Australian medical context and terminology
 """
 
+import re
+
 from pydantic import BaseModel, Field, field_validator
 from typing import Any, Optional, List, Dict
 from datetime import datetime
@@ -48,13 +50,19 @@ class OSCEResponse(BaseModel):
     @field_validator("candidate_instructions", "patient_instructions")
     @classmethod
     def validate_australian_terminology(cls, value):
-        """Ensure no American terminology in instructions"""
+        """Ensure no American terminology in instructions.
+
+        Uses whole-word matching so short abbreviations like "ER" do not match
+        inside ordinary words (e.g. "after", "her", "consider"), which would
+        otherwise reject virtually all legitimate free text.
+        """
         content_lower = value.lower()
 
         for forbidden_term in FORBIDDEN_AMERICAN_TERMS:
-            if forbidden_term in content_lower:
+            term = forbidden_term.strip()
+            if re.search(rf"\b{re.escape(term)}\b", content_lower):
                 raise ValueError(
-                    f"American term '{forbidden_term}' not allowed. "
+                    f"American term '{term}' not allowed. "
                     f"Use Australian terminology."
                 )
 

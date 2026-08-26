@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Down Syndrome Screening and NIPT Counselling (including Breaking Bad News) - ObGyn OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        ObGyn<span>›</span>Down Syndrome Screening and NIPT Counselling (including Breaking Bad News)
+    </div>
+    <h1>Down Syndrome Screening and NIPT Counselling (including Breaking Bad News)</h1>
+    <p class="source-line">Source: Dr. Amir workshop — obstetrics
+       / class 1 (Aug 2026 drop) · Specialty: obstetrics_gynaecology</p>
+
+<section id="content"><p><strong>DOWN SYNDROME SCREENING</strong></p><p><strong>Lecture Notes</strong></p><p><strong>1. Introduction / Context</strong></p><ul><li>Down syndrome screening is an important component of antenatal counseling.</li><li>Screening is <strong>offered</strong>, not mandatory.<ul><li>Patient-centered: if mother declines, you accept that.</li></ul></li><li>Some women are <strong>higher risk</strong> (e.g., advanced maternal age); <strong>screening becomes a key point </strong>in their antenatal care. (say you have to do it instead of you can do it)</li></ul><p><strong>2. Why Screen for Down Syndrome?</strong></p><ul><li>Purpose: identify pregnancies where the fetus has trisomy 21.</li><li>If confirmed (after CVS/amniocentesis), parents may consider <strong>termination</strong>.<ul><li>Termination is not done in 3rd trimester; becomes ethically/culturally complex.</li></ul></li><li>Hence screening is usually done <strong>in the first trimester</strong>.</li><li>Sometimes done in <strong>second trimester</strong> if woman presents late (rare in exams).</li></ul><p><strong>3. Types of Down Syndrome Screening Tests</strong></p><p>Two first-trimester options (main exam focus):</p><p><strong>A. Combined First Trimester Screening (“Combined Test”)</strong></p><ul><li>Includes:<ul><li><strong>Blood test</strong> (checks 2 markers):<ul><li><strong>PAPP-A</strong> (Pregnancy-associated plasma protein A)</li><li><strong>β-hCG</strong></li></ul></li><li><strong>Ultrasound</strong>:<ul><li><strong>Nuchal translucency (NT)</strong> measurement<br /> → explained to mother as “thickness of the skin/fold at the back of the baby’s neck.”</li></ul></li></ul></li><li>Results combine blood + NT to estimate <strong>possibility of Down syndrome</strong>.</li></ul><p><strong>B. NIPT – Non-Invasive Prenatal Testing</strong></p><ul><li>Also known previously by brand name <em>Harmony</em> in Australia.</li><li>A newer, more detailed blood-based screening test.</li><li>Discussed in depth later.</li></ul><p><strong>C. Second Trimester Screening (Quadruple Test)</strong></p><p><em>(Rarely asked; lecturer personally has never used it)</em></p><ul><li>Measures 4 markers:<ul><li>AFP, estriol, hCG, inhibin A.</li></ul></li></ul><p><strong>4. Timing of Tests</strong></p><p>Lecturer simplifies to memorizing <strong>single numbers</strong>, not ranges:</p><p><strong>Screening starts at 10 weeks</strong></p><ul><li>Do NOT do Down syndrome screening before 10 weeks.</li></ul><p><strong>Combined Test Timing</strong></p><ul><li><strong>Blood test:</strong> at <strong>10 weeks</strong> (can be done up to 13, but memorize “10 weeks”).</li><li><strong>Ultrasound (NT scan):</strong> at <strong>12 weeks</strong>.<ul><li>Although ranges exist in textbooks, memorize 12 weeks for exam clarity.</li></ul></li></ul><p><strong>Diagnostic Test Timing (if screening = high risk)</strong></p><ul><li><strong>CVS:</strong> <strong>11–14 weeks</strong> (memorize “up to 14 weeks”).</li><li><strong>Amniocentesis:</strong> <strong>&gt;15 weeks</strong> (after 14 weeks).</li></ul><p><strong>5. Interpretation of Screening Results</strong></p><p>Screening does <strong>not</strong> give yes/no answers.</p><p><strong>Results:</strong></p><ul><li><strong>Low risk</strong><ul><li>Taken as a <em>normal</em> result.</li><li>Does NOT mean zero chance of Down syndrome, just a very low chance.</li></ul></li><li><strong>High risk</strong><ul><li>Does NOT confirm Down syndrome.</li><li>Must proceed to <strong>diagnostic testing</strong> (CVS or amniocentesis).</li></ul></li></ul><p><strong>Why not do diagnostic testing on everyone?</strong></p><ul><li>Diagnostic tests carry <strong>complications</strong>.<ul><li>Hence screening → diagnostic confirmation only if high risk.</li></ul></li></ul><p><strong>6. Diagnostic Tests (if high risk)</strong></p><ul><li><strong>CVS</strong> (up to 14 weeks)<ul><li>Through vagina; sample chorionic villi.</li></ul></li><li><strong>Amniocentesis</strong> (&gt;15 weeks)<ul><li>Needle into uterus; sample amniotic fluid.</li></ul></li><li>Both are <strong>diagnostic</strong>: confirm yes/no for Down syndrome.</li></ul><p><strong>7. Detailed Discussion of NIPT</strong></p><p><strong>Why NIPT Is Popular / Advantages</strong></p><ul><li>Checks <strong>trisomy 21</strong> AND <strong>other trisomies</strong> + sex chromosome problems.</li><li>Reported <strong>99% accuracy</strong>, but:<ul><li>“Accuracy” ≠ sensitivity or specificity.</li><li>Still can have <strong>false positives</strong> and <strong>false negatives</strong>.</li></ul></li><li>Simple blood test:<ul><li>Detects fetal genetic material circulating in maternal blood (“fetal fraction”).</li></ul></li><li>Can determine:<ul><li><strong>Sex of baby</strong> early (popular for gender reveal).</li><li>Sometimes <strong>number of fetuses</strong>.</li></ul></li></ul><p><strong>Limitations / Problems</strong></p><ul><li><strong>Cost:</strong> ≈ <strong>$500</strong> (much more expensive than $89 combined test).</li><li><strong>Not diagnostic</strong> → still a <strong>screening</strong> test.<ul><li>High risk still requires CVS or amniocentesis.</li></ul></li><li><strong>5% failure rate</strong> (“test failure”):<ul><li>Due to <strong>insufficient fetal fraction</strong>.</li><li>Results in “inconclusive.”</li><li>Mother may need to repeat test → <strong>another $500</strong>.</li><li>More common in <strong>obese women</strong>.</li></ul></li><li><strong>Accuracy of sex determination</strong> not 100%.<ul><li>Parents sometimes become upset if predicted sex differs at birth.</li></ul></li><li><strong>Medicare does not cover the 12-week ultrasound</strong> even if NIPT is done.<ul><li>Patient must pay:<ul><li>~$500 for NIPT</li><li>~$100 for NT ultrasound (optional but recommended)</li></ul></li></ul></li></ul><p><strong>Clinical / Counseling Points</strong></p><ul><li>NIPT is offered to all women, but combined test is cheaper.</li><li>Even if doing NIPT, clinicians still <strong>like</strong> doing the <strong>12-week NT ultrasound</strong> because:<ul><li>It checks for structural abnormalities, not just NT.</li></ul></li><li>Must inform patient about cost to avoid complaints or medico-legal issues.</li></ul><p><strong>8. NIPT Result Examples</strong></p><p><strong>Normal / Low Risk Result</strong></p><ul><li>Shows:<ul><li>Adequate fetal fraction</li><li>Gestational age</li><li>Listed results for trisomy 21, 18, 13</li><li>Result: <strong>Low probability</strong></li></ul></li><li>Interpreted as normal; fetus female in example.</li></ul><p><strong>Abnormal / High Risk Result</strong></p><ul><li>Shows:<ul><li>High probability for trisomy 21</li></ul></li><li>Requires:<ul><li><strong>Genetic counseling</strong></li><li><strong>CVS or amniocentesis</strong></li></ul></li></ul><p><strong>Clarification for exam</strong></p><ul><li>Don’t stress about “1 in 2000 / 1 in 1000” numerical values.</li><li>Look at the <strong>actual result label</strong> (“low risk” or “high risk”).</li></ul><p><strong>9. Final Key Takeaways from Lecturer</strong></p><ul><li>NIPT = <strong>screening test</strong>, not diagnostic.</li><li>High risk → still need <strong>CVS / amniocentesis</strong>.</li><li>Continue to recommend <strong>12-week ultrasound</strong> even with NIPT.</li><li>Costs must be clearly discussed:<ul><li>NIPT ~$500.</li><li>12-week NT scan ~ $100.</li></ul></li><li>NIPT checks for multiple chromosomal problems and can identify sex early.</li><li>~5% failure/inconclusive rate; more likely in obese women.</li><li>Sex accuracy not 100%.</li><li>Always counsel about limitations, false positives, false negatives.</li></ul><p><strong>Your next patient is a 27 year old lady who is 11 weeks pregnant and has come to your general practice today to discuss about the Non Invasive Prenatal Testing (NIPT) for Down's Syndrome.</strong></p><p>Task:</p><p>• Take history</p><p>• Counsel the patient about the NIPT - you will have 5 minutes for the first two tasks</p><p>• You will be given the results at 5 minutes</p><p>• Explain results to the mother and further management<strong> </strong></p><p><strong>HISTORY TAKING (only 2.5 minutes)</strong></p><p><strong>General Framing</strong></p><ul><li>Lecturer is <em>not</em> focusing on detailed history taking because it is essentially an antenatal counseling history.</li><li>There is already a structure for antenatal history.</li><li>The lecturer asks: <strong>What are the two key questions in this specific case?</strong></li><li>These two questions determine pass/fail.</li></ul><p><strong>Key Questions (Most Important Points)</strong></p><ol><li><strong>Family history / personal history of Down syndrome</strong></li><li><strong>What the patient knows about NIPT and Down syndrome</strong></li></ol><p><strong>Beginning the Interaction (as demonstrated by lecturer)</strong></p><ul><li>Sit down; start with an <strong>open-ended question</strong>.</li><li>Introduce self:<br /> <em>“My name is Amir. I’m your GP today. So how can I help you?”</em></li><li>Patient says she is here for NIPT.</li><li>Respond:<br /> <em>“So Mary, tell me more. What do you want to know about NIPT?”</em></li><li><strong>Let her talk first.</strong></li></ul><p><strong>Opening Communication Skills for Pregnancy</strong></p><ul><li>Ask: <em>“Was it a planned pregnancy?”</em></li><li>Congratulate the patient.</li></ul><p><strong>Defining the Key Questions (as lecturer emphasizes)</strong></p><p><strong>1. Patient’s understanding of the test and condition</strong></p><ul><li>Most important question:<br /> <em>“Can you tell me what you know about NIPT test and Down syndrome?”<br /></em> or<br /> <em>“Tell me, what do you already know?”</em></li><li>Includes the typical counseling case question:<br /> <em>“Do you have any concerns or specific questions you want to ask me before I go through it?”<br /></em> (Used to reveal hidden agendas.)</li><li>Example patient response given by lecturer:<br /> <em>“Yeah doctor, I’ve heard my friend told me that this test does this or that.”</em></li><li>Lecturer restates how to ask:<br /> <em>“Just before we start talking, Mary, I just want to know how much do you know about Down syndrome and tell me what you know about NIPT.”</em></li><li>Follow-up:<br /> <em>“Is there anything you want to know about it specifically or do you have any concerns about it?”</em></li></ul><p><strong>2. Family history of Down syndrome</strong></p><ul><li>Ask:<br /> <em>“Do you have any Down syndrome history in the family?”</em></li><li>Includes:<ul><li>The patient herself</li><li>Her family</li><li>Her children</li><li>Her family’s children (e.g., sister’s children)</li></ul></li></ul><p><strong>Additional Antenatal History Components (Lecturer’s 5 Ps and Related Questions)</strong></p><ul><li><strong>Period</strong><ul><li><em>“When was your last period?”</em></li><li><em>“Are your periods regular or irregular?”</em></li></ul></li><li><strong>Pregnancy symptoms</strong><ul><li><em>“Tell me about the pregnancy symptoms.”</em></li></ul></li><li><strong>Partner</strong><ul><li><em>“Tell me about your partner.”</em></li><li>Assess if relationship is stable and supportive.</li></ul></li><li><strong>Past obstetric history</strong><ul><li><em>“Is this the first pregnancy?”</em></li><li>If not:<ul><li>Ask about <strong>previous pregnancies</strong></li><li>Outcomes</li><li>Particularly if she has <strong>had a Down syndrome baby before</strong></li><li>Also: high blood sugar, high blood pressure, delivery problems</li></ul></li></ul></li><li><strong>Pap smear</strong><ul><li><em>“When was your last pap smear?”</em></li></ul></li><li><strong>Medical conditions</strong><ul><li><em>“Do you have any medical conditions?”</em></li></ul></li><li><strong>Medications</strong><ul><li><em>“Are you using any medications, specifically thyroid problems, diabetes, heart problems?”</em></li></ul></li><li><strong>Family history</strong><ul><li><em>“Tell me any family history problems, family history or genetic problems or medical conditions.”</em></li></ul></li><li><strong>Lifestyle</strong><ul><li><em>“Tell me a little bit more about your lifestyle.”</em></li></ul></li><li><strong>Psychosocial assessment</strong><ul><li><em>“How are you feeling about all of this? How are you coping with your pregnancy?”</em></li></ul></li></ul><p><strong>Contextual Emphasis</strong></p><ul><li>You have boxes and a structure, but <strong>in this case</strong> you are focusing on the <em>specific reason</em> for the visit.</li><li>If the two key questions are not asked:<br /> Lecturer example criticism:<br /> <em>“You just asked about alcohol, coffee, and no.”</em></li></ul><p><strong>Timing and Performance Expectations</strong></p><ul><li>History should be completed in <strong>around 2–2.5 minutes</strong>.</li><li>Candidate must manage their own time allocation.</li><li>Two tasks must be balanced within the 5 minutes.</li><li>If a person spends the whole time on history: inappropriate.</li><li>You don’t have a timer but should feel when it’s taking too long.</li><li>Should be <strong>faster</strong> than the big history done in the previous case.</li></ul><p> </p><p><strong>PATIENT COUNSELLING</strong></p><p><strong>1. Starting the Counselling</strong></p><p><strong>Offer Down Syndrome screening</strong></p><ul><li>Begin with the key statement:<br /> <strong>“We usually offer Down syndrome screening to all pregnant ladies, irrespective of age.”</strong></li></ul><p><strong>2. Brief Explanation of Down Syndrome (Layman terms)</strong></p><ul><li>Keep it simple; don’t talk for too long.</li><li>Key points to explain:<ul><li>Down syndrome is a <strong>genetic disorder</strong>.</li><li>Genes are <strong>packaged into chromosomes</strong> (&quot;packages&quot;).</li><li>Humans have <strong>23 pairs of chromosomes</strong>.</li><li>In Down syndrome:<ul><li>There is <strong>one extra chromosome in the 21st pair</strong>.</li><li>This means <strong>three copies</strong> → called a <strong>trisomy</strong>.</li></ul></li><li>Use the term <strong>“trisomy”</strong> as it helps later when discussing other trisomies.</li></ul></li></ul><p><strong>Example phrasing from lecturer’s model:</strong></p><p>“In Down syndrome, you have one extra chromosome in the 21st pair, meaning you have three chromosomes there. Because it’s three, we call it a trisomy.”</p><p><strong>3. Explain the Two Screening Options</strong></p><p><strong>Option 1: Combined Testing</strong></p><ul><li>A <strong>blood test + ultrasound</strong>.</li><li>Used to calculate the <em>probability</em> of Down syndrome.</li></ul><p><strong>Option 2: NIPT (Non-Invasive Prenatal Testing)</strong></p><ul><li>State the full name <strong>once</strong>:<br /> <strong>“Non-invasive prenatal testing”<br /></strong>(after that, you can say NIPT).</li></ul><p><strong>5. Clarify That Both Are Screening Tests</strong></p><ul><li>Very important explanation:<ul><li>Both are <strong>screening tests</strong>.</li><li>They are <strong>good at ruling out</strong> Down syndrome <strong>with high probability</strong>.</li><li>If negative/low risk → <strong>low possibility</strong> of the condition.</li><li>Must <strong>emphasize</strong> they are <strong>not 100% accurate</strong>.</li></ul></li></ul><p><strong>Suggested phrasing based on lecturer:</strong></p><p>“These tests help rule out the possibility with good probability, but they’re not always 100% accurate.”</p><p><strong>6. Explain the Next Step if Screening Is High Risk</strong></p><ul><li>If the test suggests <strong>high risk</strong>, you must confirm with <strong>diagnostic testing</strong>.</li><li>Two options for diagnostic testing:</li></ul><p><strong>a) Chorionic Villus Sampling (CVS)</strong></p><ul><li>For pregnancies <strong>&lt;14 weeks</strong>.</li><li>Explain simply:<ul><li>“A small sample of the placenta is taken and analyzed.”</li></ul></li></ul><p><strong>b) Amniocentesis</strong></p><ul><li>For pregnancies <strong>&gt;15 weeks</strong>.</li><li>Explain simply:<ul><li>“A sample of the fluid around the baby is taken and analyzed.”</li></ul></li></ul><p><strong>Purpose of counselling:</strong></p><ul><li>These tests have a <strong>small risk of complications</strong>.</li><li>Your role is to explain <strong>the good (accuracy)</strong> and <strong>the bad (risk to fetus)</strong>.</li><li>Mother decides whether to accept the risk.</li></ul><p><strong>7. Explain Why You’re Counselling Before Showing Results</strong></p><ul><li>You're helping the mother understand:<ul><li>What screening means</li><li>What a normal/low-risk result implies</li><li>What will happen if the result shows high risk</li></ul></li></ul><p>This prepares her before the results appear.</p><p><strong>8. Discuss the Good Things (Pros) of NIPT</strong></p><p><strong>Pro #1 — “it Tests for other genetic disorders</strong></p><ul><li>Checks for:<ul><li><strong>Trisomy 21</strong></li><li><strong>Trisomy 13</strong></li><li><strong>Trisomy 18</strong></li><li><strong>Some sex chromosome problems</strong></li></ul></li></ul><p><strong>Pro #2 — More accurate than combined testing</strong></p><ul><li>Which is good becoz it Reduced need for invasive tests like CVS or amniocentesis.</li></ul><p><strong>Pro #3 — Tells the sex of the baby early</strong></p><ul><li>Can determine <strong>baby boy or baby girl</strong> very early in pregnancy.</li></ul><p><strong>9. Discuss the Bad Things (Cons) of NIPT</strong></p><p><strong>Con #1 — Expensive</strong></p><ul><li>Around <strong>$500 or more</strong>.</li><li>Price varies across cities and labs.</li></ul><p><strong>Con #2 —rarely Test may fail to produce a result</strong></p><ul><li>Rare (~5%).</li><li>Fails to gather enough fetal sample → <strong>inconclusive</strong>.</li></ul><p><strong>Con #3 — Difficulty in twin pregnancies</strong></p><ul><li>Hard to interpret results in multiple pregnancies (&quot;hard to know whose is whose&quot;).</li></ul><p><strong>10. What the NIPT Involves</strong></p><ul><li>Simply a <strong>blood sample from the mother</strong>.</li><li>Used to detect the baby<strong>’s genetic material</strong> and analyze for abnormalities.</li></ul><p><strong>EXPLAINING THE NIPT RESULTS AND FURTHER MANAGEMENT</strong></p><p><strong>1. Pre-Result Framework (Before Seeing the Result)</strong></p><p><strong>Key requirement emphasized in the lecture:<br /></strong> Before reading the result aloud, you <strong>must</strong> explain:</p><p><strong>How results are reported</strong></p><ul><li>“Usually the results are reported as <strong>low risk</strong> and <strong>high risk</strong> results.”</li></ul><p><strong>What low-risk means</strong></p><ul><li>It is <strong>reassuring</strong>.</li><li>“We don’t need to do any further testing or take any further action.”</li><li>Emphasize <strong>again</strong>:<ul><li>“This does <strong>not</strong> mean we have ruled it out 100%.”</li><li>“But we have ruled out the possibility of Down syndrome with a <strong>high probability</strong>.”</li></ul></li><li>Avoid saying “normal result” in the exam, but you may reassure the patient by explaining it is “low risk.”</li></ul><p><strong>What high-risk means</strong></p><ul><li>“If it is reported as high risk, we need to proceed to the <strong>accurate diagnostic testing</strong> that I’ve already told you about.”</li></ul><p><strong>Purpose of pre-result explanation (as stressed in the lecture)</strong></p><ul><li>This is <strong>the key part of the case</strong>.</li><li>Must cover:<ul><li><strong>It is a screening test.</strong></li><li><strong>How results come (low/high risk).</strong></li><li><strong>What a positive/high-risk result means and what happens next.</strong></li></ul></li><li>Do this <strong>before</strong> reading the result to avoid panicking and to maintain structured counselling.</li></ul><p><strong>2. Reading a Low-Risk Result (Most common exam scenario)</strong></p><p><strong><img src="assets/obstetrics_4_down_syndrome_screening_img1.jpeg" /></strong></p><p>Use a calm, structured approach as in the video:</p><p><strong>Read the technical parts first</strong></p><ul><li>“I can see that you have one fetus — this confirms no twins or multiple pregnancies.”</li></ul><p><strong>Link back to prior explanations</strong></p><ul><li>“I’ve already told you what trisomy 21 is. This is the Down syndrome we’re talking about.”</li></ul><p><strong>Deliver the result</strong></p><ul><li>“The result is <strong>low risk</strong>. That’s really good.”</li><li>“We don’t need to do anything extra, and we have ruled it out with a high probability.”</li></ul><p><strong>Mention other conditions</strong></p><ul><li>“We’ve also checked trisomy 18, trisomy 13, and sex chromosome problems — all low risk.”</li><li>“That is a good result. We’re going to take it as normal. We don’t need to do anything extra.”</li></ul><p><strong>Optional gender disclosure</strong></p><ul><li>Ask first:<ul><li>“Would you like to know the sex of your baby?”</li></ul></li><li>Warn not to get excited or reveal without permission (joke example in transcript).</li><li>Offer to place it in an envelope if they prefer.</li></ul><p><strong>3. Reading a High-Risk Result (Breaking Bad News Mode)</strong></p><p><strong><img alt="A screenshot of a test results
+
+AI-generated content may be incorrect." src="assets/obstetrics_4_down_syndrome_screening_img2.png" /></strong></p><p><strong>Start by stating the normal findings first</strong></p><ul><li>“Your trisomy 18, trisomy 13 and sex chromosomes are low probability — that’s good.”</li></ul><p><strong>Then transition gently to the abnormal finding</strong></p><ul><li>“But talking about trisomy 21 — your Down syndrome — I need to break bad news today.”</li><li>“Unfortunately, I don’t have good news.”</li></ul><p><strong>Activate breaking-bad-news approach</strong></p><ul><li>Ask: “Do you want anyone to be with you?”</li><li>Deliver sensitively:<ul><li>“The Down syndrome result has come back as <strong>high probability</strong>.”</li></ul></li></ul><p><strong>Key messages to repeat (as emphasized in the video)</strong></p><ul><li>“It is <strong>not confirmed yet</strong>.”</li><li>“We need to arrange for <strong>further, more accurate diagnostic testing</strong>.”</li><li>If distress occurs:<ul><li>Offer <strong>tissue, empathy, water, silence</strong>; reassure: “I’m here to help you, here to support you.”</li></ul></li></ul><p><strong>Discuss false positives</strong></p><ul><li>“Occasionally we have false positive results in NIPT.<br /> The result might be positive here, but the next diagnostic test may come back normal.”</li></ul><p><strong>4. Further Advice (After discussing results)</strong></p><p><strong>General pregnancy advice</strong></p><ul><li>Vaccinations</li><li>Supplementation</li><li>Lifestyle and things to avoid</li></ul><p><strong>Next pregnancy steps</strong></p><ul><li>20-week morphology scan</li><li>Additional routine checks</li><li>Option to still do the <strong>12-week nuchal translucency scan</strong></li></ul><p><strong>Timing note from transcript</strong></p><ul><li>The patient is at “11 weeks” in the example scenario.</li></ul><p><strong>5. Essential OSCE Take-Home Points (Lecture Emphasis)</strong></p><p>You will <strong>not pass</strong> if you fail to clearly explain:</p><ul><li>How results are reported (low/high risk).</li><li>What a positive/high-risk result means.</li><li>What happens next after a high-risk result.</li><li>That this is a <strong>screening test</strong>, not diagnostic.</li></ul><p>These must be completed <strong>before the result appears</strong> on screen.</p></section>
+
+<section id="figures"><h2>Case Figures</h2>
+<img class="case-image" src="assets/obstetrics_4_down_syndrome_screening_img1.jpeg" alt="Down Syndrome Screening and NIPT Counselling (including Breaking Bad News) figure" loading="lazy">
+<img class="case-image" src="assets/obstetrics_4_down_syndrome_screening_img2.png" alt="Down Syndrome Screening and NIPT Counselling (including Breaking Bad News) figure" loading="lazy">
+</section>
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: clinical-documentation-expert (Australian clinical supervisor, O&amp;G/genetics counselling) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>The card states &#x27;Medicare does not cover the 12-week ultrasound even if NIPT is done&#x27;, implying the nuchal translucency ultrasound is entirely out-of-pocket.</strong><br>NIPT itself is NOT Medicare-rebated and is a full out-of-pocket cost (approx $400-500). However, the first-trimester ultrasound (including nuchal translucency/dating) generally DOES attract a Medicare rebate as a diagnostic obstetric ultrasound. The statement conflates the unfunded NIPT blood test with the ultrasound; clarify that the ultrasound usually has a rebate while NIPT does not.</div><div class="correction">✏️ <strong>CVS is described simply as &#x27;through the vagina; sample chorionic villi&#x27;.</strong><br>Chorionic villus sampling is performed either transabdominally or transcervically (not only &#x27;through the vagina&#x27;); route depends on placental position and operator. Both CVS and amniocentesis carry a small procedure-related miscarriage risk (currently quoted at well under 1%, ~0.2%), which should be documented when counselling on risk.</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ Add the current RANZCOG position that combined first-trimester screening also reports risk for trisomy 18 and 13 (not Down syndrome alone), and that NIPT has very high sensitivity/specificity for trisomy 21 but remains a screening (not diagnostic) test - reinforcing why a high-risk NIPT still requires CVS/amniocentesis.</div><div class="enhancement">⭐ Add explicit false-positive counselling and the concept of positive predictive value: NIPT PPV varies with maternal age/prior risk, so a &#x27;high probability&#x27; result is not a diagnosis - important medico-legally and to reduce patient distress before diagnostic confirmation.</div><div class="enhancement">⭐ For the breaking-bad-news component, document a recognised framework (e.g. SPIKES or the RACGP/Murtagh breaking-bad-news approach): warning shot, quiet setting, offer support person, chunk information, allow silence, and arrange genetic counselling and follow-up - and record that consent/decision remains the patient&#x27;s (including the option to continue the pregnancy).</div><div class="enhancement">⭐ Add a note that fetal fraction failure (~5% inconclusive) is more common in obesity and early gestation, and that repeat sampling or proceeding to combined screening/diagnostic testing are options.</div><div class="enhancement">⭐ Metadata to add: cross-link to the AMA/obesity counselling case (which recommends NIPT for advanced maternal age) and tag as a breaking-bad-news station so it surfaces in communication-skills practice sets.</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>counselling</dd><dt>Difficulty</dt><dd>hard</dd><dt>Amc Frequency</dt><dd>high - prenatal screening/NIPT counselling and breaking bad news are high-yield AMC communication and O&amp;G topics.</dd><dt>Tags</dt><dd>down-syndrome, nipt, prenatal-screening, trisomy-21, counselling, breaking-bad-news, cvs-amniocentesis, genetics</dd><dt>Related Topics</dt><dd>Routine antenatal counselling, AMA and obesity antenatal counselling, Antenatal screening guideline review, Breaking bad news, Genetic carrier screening</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 The card asks about family/personal history of Down syndrome and offers screening based on genetic risk; a high-risk result triggers referral for genetic counselling. This is supported by the Murtagh reference to preconception and antenatal carrier screening for genetic conditions and the GP&#x27;s role (Delatycki et al., Aust J Gen Pract 2019).<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.618 <span class="pid">qdrant:5b448027-ab3b-4c76-8aa8-e2dbaa726975</span></div><div class="citation">📚 A confirmed chromosomal/genetic diagnosis mandates referral to a genetic/clinical genetics service. The Murtagh chapter on genetic syndromes (Noonan/Angelman/Progeria) supports &#x27;refer to genetic service&#x27; as management, though it is tangential to trisomy 21 specifically.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.601 <span class="pid">qdrant:51461f1c-dbbe-4765-951d-498760350031</span></div><div class="citation">📚 The counselling sits within routine antenatal screening in Australian shared-care practice. The KEMH Antenatal Shared Care Guidelines for GPs in this case&#x27;s rag_context support the antenatal-care context, though they do not detail NIPT-specific cost/accuracy figures.<br><strong>Antenatal guidelines kemh.pdf</strong> p.1 <span class="pid">qdrant:3d37ff6c-a746-44b2-9443-f7406a6d3446</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

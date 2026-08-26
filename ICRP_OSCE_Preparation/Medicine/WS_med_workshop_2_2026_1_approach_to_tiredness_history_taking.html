@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Approach to Tiredness — History Taking Framework - Medicine OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        Medicine<span>›</span>Approach to Tiredness — History Taking Framework
+    </div>
+    <h1>Approach to Tiredness — History Taking Framework</h1>
+    <p class="source-line">Source: Dr. Amir workshop — Med workshop 2 - 2026
+       / CLASS 4 TIREDNESS (Aug 2026 drop) · Specialty: general_practice</p>
+
+<section id="overview-and-exam-format"><h2>Overview and Exam Format</h2>
+<p>Tiredness/fatigue is a common, deliberately vague AMC cluster presentation. In the current face-to-face format the station usually gives a Physical Examination From Examiner (PEFE) component, so history taking may be compressed to about 4 minutes, with roughly 1 minute for diagnosis and differentials. In the longer 7-minute history version there is time for a good closure. The core task is to systematically rule out the large list of differential diagnoses for tiredness.</p>
+</section>
+
+<section id="differential-diagnosis-groups-hemiadcop2"><h2>Differential Diagnosis Groups (HEMIADCOP2)</h2>
+<p>Common causes include lifestyle/psychosocial factors (depression, anxiety), viral/post-viral infection (long COVID, EBV) and sleep-related disorders (obstructive sleep apnoea). Serious not-to-miss causes are malignancy and infection. Pitfalls include pregnancy (morning sickness, breast tenderness, missed period), early menopause, endocrine causes (Cushing syndrome, hyperaldosteronism) and medications (e.g. sedating antihistamines for hay fever).</p><p>The updated mnemonic <strong>HEMIADCOP2</strong> is used in place of the older HEMIFADOICP:</p><ul><li><strong>H</strong> — Hepatitis, Haemochromatosis</li><li><strong>E</strong> — Endocrine (diabetes mellitus, thyroid)</li><li><strong>M</strong> — Malignancy (leukaemia, lymphoma)</li><li><strong>I</strong> — Infections (viral, and STI e.g. HIV)</li><li><strong>A</strong> — Anaemia; Autoimmune (SLE, RA, PMR)</li><li><strong>D</strong> — Drugs/medications; Depression and psychiatric conditions</li><li><strong>C</strong> — Cardiopulmonary (heart failure, COPD); Coeliac/bowel disease (rule out IBD and bowel cancer)</li><li><strong>O</strong> — OSA; Occupation (night-shift work)</li><li><strong>P</strong> — Period (pregnancy in young women; menopause in older women)</li></ul>
+</section>
+
+<section id="sequence-of-history-taking"><h2>Sequence of History Taking</h2>
+<ol><li>Introduction and open-ended question</li><li>Explore the complaint</li><li>Rule out differentials</li><li>Good closure if a 7-minute history; if only 4 minutes, closure time is limited</li></ol><p>Opening for a 50-year-old with tiredness: ID check by examiner, hand hygiene, sit down, introduce self, then open question (“how can I help you, Marion?”) and “tell me more about your tiredness.” Acknowledge and empathise with concerns (e.g. a patient worried about lymphoma because of an affected cousin), build rapport and reassure while explaining the need to ask further questions.</p>
+</section>
+
+<section id="exploring-the-complaint"><h2>Exploring the Complaint</h2>
+<p>Tiredness is vague — clarify what the patient means before proceeding. Four domains to characterise it:</p><ul><li><strong>Describe:</strong> Low in energy? Sleepy (sleep disorder)? Difficulty concentrating (anxiety)? Tired on walking/exertion (heart failure)? Feverish (infection)?</li><li><strong>Timing:</strong> When did it start? On and off (e.g. morning tiredness in OSA) or constant? Getting worse?</li><li><strong>Alleviating/aggravating factors:</strong> Anything better or worse?</li><li><strong>Effect on life:</strong> Impact on work, family and function (very important — these are chronic presentations).</li></ul>
+</section>
+
+<section id="ruling-out-differentials-screening-and-key-point-questions"><h2>Ruling Out Differentials — Screening and Key-Point Questions</h2>
+<p>Use screening questions to find positive groups, then key-point questions for red flags. Examples:</p><ul><li><strong>Hepatitis:</strong> jaundice, dark urine, pale stool.</li><li><strong>Haemochromatosis:</strong> skin tanning, family history of liver disease.</li><li><strong>Endocrine — thyroid:</strong> weather/temperature preference, cold or heat intolerance, constipation, diarrhoea, dry skin, hair loss. <strong>Diabetes:</strong> polyuria, polydipsia.</li><li><strong>Malignancy:</strong> loss of weight (LOW), loss of appetite (LOA), night sweats, lumps and bumps, family history of cancer; screening (mammogram, bowel cancer screening).</li><li><strong>Infection:</strong> fever/chills, rashes, flu-like symptoms, sore throat; sexual history for STI; recent travel.</li><li><strong>Anaemia:</strong> exertional shortness of breath, palpitations. <strong>Autoimmune:</strong> joint pain, rash (SLE/RA), shoulder/hip girdle pain (PMR), headache (temporal arteritis).</li><li><strong>Drugs/Depression:</strong> medications, smoking, alcohol; mood, stressors (e.g. recent bereavement).</li><li><strong>Coeliac/bowel:</strong> diarrhoea, greasy stool, blood in stool. <strong>Cardiopulmonary:</strong> chest pain, leg swelling, cough.</li><li><strong>OSA:</strong> snoring, witnessed apnoeas. <strong>Occupation:</strong> shift work, driving (for OSA and stress assessment).</li><li><strong>Period:</strong> LMP, menorrhagia (young women); last period, hot flushes, night sweats (older women).</li></ul>
+</section>
+
+<section id="closure"><h2>Closure</h2>
+<p>If time permits (6–7 minutes), complete <strong>SADMA</strong> (smoking, alcohol, drugs/medications, allergies), past medical history and family history (cancer, haemochromatosis, thyroid disorder, autoimmune disease, diabetes).</p>
+</section>
+
+<section id="figures"><h2>Case Figures</h2>
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p1_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p1_1.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p2_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p2_1.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p3_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p4_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p4_1.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p5_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p5_1.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p6_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p6_1.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p7_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p7_1.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p8_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p9_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p10_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p10_1.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p12_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p12_1.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p14_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p15_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p17_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p17_1.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p19_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p20_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p22_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p23_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p24_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p25_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_1_approach_to_tiredness_history_taking_p26_0.png" alt="Approach to Tiredness — History Taking Framework figure" loading="lazy">
+</section>
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: history-taking-expert (Australian clinical supervisor) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>The screening line implies bowel cancer screening becomes relevant at age 50 (“have you done your bowel cancer screening as a 50-year-old”).</strong><br>Since July 2024 the National Bowel Cancer Screening Program (NBCSP) offers free iFOBT from age 45, and people aged 45–49 can opt in; eligibility now runs 45–74. Update the teaching so candidates offer/enquire about screening from age 45.</div><div class="correction">✏️ <strong>Alcohol is listed only as a generic closure question with no quantification.</strong><br>Use Australian NHMRC guidance as the benchmark: no more than 10 standard drinks per week and no more than 4 on any one day. Quantify intake in standard drinks so alcohol as a fatigue cause (and dependence) can be assessed.</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ Add an explicit RED FLAG safety-net list to prompt escalation: unexplained weight loss, drenching night sweats, fixed/hard lymphadenopathy, haemoptysis, PR bleeding, new headache with jaw/scalp symptoms (GCA), and syncope — any of these should trigger urgent investigation rather than routine GP follow-up.</div><div class="enhancement">⭐ Map the mnemonic to Murtagh&#x27;s tiredness/chronic fatigue diagnostic strategy model (probability diagnosis / serious not-to-miss / pitfalls / masquerades) so the structure is anchored to a citable Australian reference rather than a memory aid alone.</div><div class="enhancement">⭐ Add the expected first-line Australian investigation panel for undifferentiated fatigue (FBE, iron studies, ferritin, TSH, fasting glucose/HbA1c, EUC, LFT, CRP/ESR, coeliac serology, and consider vitamin D and B12) to bridge from history to management.</div><div class="enhancement">⭐ Add metadata: red_flags, mnemonic_expansion (HEMIADCOP2), and time_variant (4-min vs 7-min station) so the case can be filtered by exam format.</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>history_taking</dd><dt>Difficulty</dt><dd>medium</dd><dt>Amc Frequency</dt><dd>high — tiredness/fatigue is a recurrent AMC clinical-exam cluster testing structured differential reasoning</dd><dt>Tags</dt><dd>tiredness, fatigue, history-taking, differential-diagnosis, hemiadcop, general-practice, screening</dd><dt>Related Topics</dt><dd>hypothyroidism, obstructive-sleep-apnoea, anaemia, depression, lymphoma, diabetes-mellitus</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 Tiredness/chronic fatigue is structured into probability diagnoses (stress, depression, lifestyle, viral/post-viral, sleep disorders), serious disorders not to miss (cardiac, infection incl. HIV/hepatitis, cancer, anaemia, haemochromatosis) and pitfalls (masked depression, coeliac disease, menopause, pregnancy) — the framework the case&#x27;s HEMIADCOP2 mnemonic operationalises.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.1818 <span class="pid">qdrant:dc07783a-7531-4672-a364-cc0a90301468</span></div><div class="citation">📚 Thyroid disease is a key endocrine differential for fatigue; the case&#x27;s thyroid screening questions (temperature intolerance, bowel change, skin/hair change) map to Murtagh&#x27;s thyrotoxicosis/thyroid signs, though this chunk covers hyperthyroidism specifically rather than the hypothyroidism more typical of tiredness.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.359 <span class="pid">qdrant:0aa76092-fc61-480b-aac8-63425ab1da37</span></div><div class="citation">📚 A thorough fatigue history should cover past medical history, immunisation, medications (prescription and OTC), alcohol/smoking and a systems review — supporting the case&#x27;s SADMA and closure step; this chunk is drawn from an elderly-assessment context so is partially tangential.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.3334 <span class="pid">qdrant:8e9cef8c-f55b-479c-9ca8-bbea992e9d5a</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

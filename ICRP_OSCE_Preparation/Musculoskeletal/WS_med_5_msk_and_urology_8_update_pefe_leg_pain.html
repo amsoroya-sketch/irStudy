@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leg Pain - Structured Physical Examination from Examiner (PEFE) - Musculoskeletal OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        Musculoskeletal<span>›</span>Leg Pain - Structured Physical Examination from Examiner (PEFE)
+    </div>
+    <h1>Leg Pain - Structured Physical Examination from Examiner (PEFE)</h1>
+    <p class="source-line">Source: Dr. Amir workshop — Med 5 MSK and urology
+       / 3. Ankle, heel, foot (Aug 2026 drop) · Specialty: musculoskeletal</p>
+
+<section id="content"><h1><a id="_c7etd6chuodi"></a><strong>PEFE – LEG PAIN</strong></h1><h2><a id="_qz783zlywggb"></a><strong>WHY WE NEED A STRICT PEFE STRUCTURE</strong></h2><ul><li>When asking Physical Examination from Examiner, you must ask specific questions.<br /></li><li>If you don’t:<br /><ul><li>Examiner keeps asking:<br /><br /> “What are you looking for?”<br /></li><li>This wastes time and causes stress.<br /></li></ul></li><li>Time management is critical:<br /><ul><li>If you spend 4 minutes on PEFE and don’t reach differentials,<br /><br /> → you fail the case.<br /></li></ul></li><li>You must be clever:<br /><ul><li>Use a nice structure<br /></li><li>Know the game<br /></li><li>Use the rules of the game against themselves<br /></li><li>Design a clever structure</li></ul></li></ul><h1><a id="_umokcz3yrup"></a><strong>PEFE STRUCTURE – LEG PAIN</strong></h1><h2><a id="_avurqxnfobgl"></a><strong>1. GENERAL APPEARANCE</strong></h2><p>Ask:</p><ul><li>Is the patient in pain or distress?<br /></li><li>Is the patient alert or drowsy?<br /></li></ul><p>Why alert or drowsy?</p><p>Because cellulitis can give sepsis.</p><h2><a id="_clsh868nlvw2"></a><strong>2. VITAL SIGNS</strong></h2><p>Temperature is a must</p><p>But as a habit, always ask:</p><ul><li>Blood pressure<br /></li><li>Pulse rate<br /></li><li>Respiratory rate<br /></li><li>Temperature<br /></li></ul><p>Why blood pressure and pulse?</p><ul><li>Hypertension is a risk factor for PAD<br /></li><li>Many cases do have hypertension<br /></li></ul><p>Always ask four vital signs as a habit.</p><h2><a id="_ei8tsttqf7z6"></a><strong>3. LOWER LIMB – INSPECTION</strong></h2><p>You must ask two main things.</p><h3><a id="_n71ji75nnjw2"></a><strong>A. Look for Cellulitis</strong></h3><p>Ask:</p><ul><li>Do I see any rash or redness?<br /></li></ul><p>If examiner says yes → ask:</p><ul><li>Do I see any discharge?<br /></li></ul><p>(Cellulitis cases usually have discharge)</p><p>Is there any tenderness?</p><h3><a id="_vl00933w6a0s"></a><strong>B. Look for Peripheral Vascular Disease</strong></h3><p>Ask:</p><ul><li>Do I see any ulcers?<br /></li><li>Do I see any hyperpigmentation?<br /></li><li>Do I see pallor?<br /></li></ul><p>Pallor is the most specific for PAD</p><p>Hyperpigmentation is also asked because we think about arterial and venous disease</p><h2><a id="_pyv270lnazh4"></a><strong>4. PALPATION</strong></h2><h3><a id="_eur2zn79ny7b"></a><strong>A. Temperature</strong></h3><p>Ask two separate things:</p><ol><li>Do I have a local rise of temperature?<br /><br /> → for cellulitis<br /></li><li>Do I have cold peripheries?<br /><br /> → for peripheral arterial disease<br /></li></ol><h3><a id="_trbl3fr5gls3"></a><strong>B. Tenderness</strong></h3><p>Ask:</p><ul><li>Is there any tenderness in the ankle, leg, knee or hip?<br /></li></ul><h3><a id="_ibcmcay2roj9"></a><strong>C. Capillary Refill &amp; Pulses</strong></h3><p>Ask:</p><ul><li>Capillary refill time<br /></li></ul><p>Then pulses – you must be specific:</p><p>“I want to check the</p><p>– Dorsalis pedis</p><p>– Posterior tibial</p><p>– Popliteal</p><p>– Femoral artery”</p><p>In PAD:</p><ul><li>Pulses are absent<br /></li><li>Capillary refill may be delayed<br /></li></ul><h2><a id="_yiv05gcrlmhw"></a><strong>5. MOVEMENT</strong></h2><p>Ask:</p><ul><li>Is movement tender?<br /></li><li>What is the range of movement of the joints?</li></ul><p>This is done even if it is cellulitis or PAD</p><h2><a id="_6qiaii5uplo6"></a><strong>6. GAIT &amp; BEARING WEIGHT (Optional but important)</strong></h2><p>You may ask in general appearance:</p><ul><li>Can the patient bear weight?<br /></li><li>Does he have an antalgic gait?</li></ul><p>Bearing weight is more important.</p><h1><a id="_9vakr0tzt5j3"></a><strong>7. SPECIAL TESTS (MOST IMPORTANT PART)</strong></h1><h2><a id="_6wbnmafyvcv0"></a><strong>A. Berger’s Test</strong></h2><p>Ask:</p><p>“I would like to do Berger’s test.”</p><p>Examiner gives positive or negative.</p><p>If positive → go to the next step to check bruits</p><h2><a id="_a3f9kkme8v0f"></a><strong>B. Bruits</strong></h2><p>Ask:</p><ul><li>Femoral bruit<br /></li><li>Carotid bruit<br /></li><li>Aortic or renal artery bruit<br /></li></ul><p>AMC often gives:</p><ul><li>Positive femoral artery bruit<br /></li></ul><p>→ This confirms arterial disease</p><h2><a id="_m7g44ltu7hpa"></a><strong>C. Neurological Examination (for New Case)</strong></h2><p>For neurogenic claudication</p><p>Ask:</p><p>“I would like to do a neurological examination of the lower limb.”</p><p>Focus on:</p><ul><li>Motor<br /></li><li>Sensory<br /></li></ul><p>You are looking for:</p><ul><li>Neurological deficit<br /></li></ul><p>You do NOT need full tone, power, reflexes, coordination.</p><p>Because of time management.</p><h2><a id="_by10ilyfrsgj"></a><strong>D. Straight Leg Raise (SLR)</strong></h2><p>Used for:</p><ul><li>Lumbar radiculopathy causing leg pain<br /></li></ul><h1><a id="_vqf89ksq0vit"></a><strong>8. OFFICE TESTS</strong></h1><p>If:</p><ul><li>Patient is diabetic<br /></li><li>Or you find sensory loss<br /></li></ul><p>→ Ask for:</p><ul><li>Blood sugar level<br /></li></ul><p>If someone asks:</p><ul><li>ECG for PAD → allowed but excessive<br /></li><li>Ankle Brachial Index → unavailable<br /><br /> (AMC considers it an investigation, not office test)<br /></li></ul><h1><a id="_um9ogtc45fb0"></a><strong>FINAL DIAGNOSTIC LOGIC</strong></h1><h2><a id="_f9cn1ptvn2mz"></a><strong>Cellulitis</strong></h2><ul><li>Rash<br /></li><li>Painful<br /></li><li>Discharge<br /></li><li>Febrile<br /></li></ul><h2><a id="_nutd5x7m0whi"></a><strong>PAD + Cellulitis (Mixed Case)</strong></h2><ul><li>Absent pulses<br /></li><li>Delayed capillary refill<br /></li><li>Positive Berger’s test<br /></li><li>Rash with discharge<br /></li><li>Tenderness<br /></li></ul><h2><a id="_eplo5b5qldjr"></a><strong>Neurogenic Claudication</strong></h2><ul><li>Pulses normal<br /></li><li>Berger’s test normal<br /></li><li>No rash<br /></li><li>Neurological deficit<br /><ul><li>Sensory loss<br /></li><li>Motor weakness<br /></li></ul></li></ul></section>
+
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: surgical-skills-expert (Australian surgical educator, RACS/MSK focus) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>The special test is called &#x27;Berger&#x27;s test&#x27; throughout.</strong><br>The correct eponym is Buerger&#x27;s test (leg elevation to ~45 degrees producing pallor, then dependency producing rubor, indicating peripheral arterial insufficiency). &#x27;Berger&#x27; risks confusion with Berger disease (IgA nephropathy). Correct the spelling in the PEFE script.</div><div class="correction">✏️ <strong>The case states Ankle Brachial Index is &#x27;unavailable&#x27; because &#x27;AMC considers it an investigation, not an office test&#x27;.</strong><br>ABI measured with a sphygmomanometer and a handheld Doppler is a validated bedside/office test routinely performed in Australian general practice and is appropriate to request at the examination/office-test stage for suspected PAD. It is reasonable to ask for it as a bedside test; frame formal arterial duplex as the follow-on investigation.</div><div class="correction">✏️ <strong>Office tests for a diabetic/neuropathy limb are limited to &#x27;blood sugar level&#x27;.</strong><br>Add bedside neurovascular office tests: 10 g monofilament and 128 Hz tuning-fork vibration sense (peripheral neuropathy), capillary refill and Doppler pedal signals, and urinalysis; blood glucose/HbA1c and BSL are appropriate but should sit alongside these standard bedside diabetic-foot assessments.</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ Add explicit interpretation thresholds to the PEFE so the trainee closes the loop: ABI &lt; 0.9 = PAD, &lt; 0.4 = critical ischaemia, &gt; 1.3 = calcified/non-compressible vessels; delayed capillary refill (&gt; 2 sec) and absent dorsalis pedis/posterior tibial pulses support PAD.</div><div class="enhancement">⭐ Add a safety/triage layer to &#x27;general appearance and vital signs&#x27;: explicitly screen for sepsis (SIRS/fever + tachycardia + hypotension) in the cellulitis pathway and for critical limb ischaemia, so the structured exam drives an escalation decision, not just a diagnosis.</div><div class="enhancement">⭐ Reframe &#x27;use the rules of the game against themselves&#x27; into professional, patient-centred language for a college marking rubric (RACGP/AMC communication domain) - efficient, hypothesis-driven examination requests rather than &#x27;gaming&#x27; the examiner.</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>physical_examination</dd><dt>Difficulty</dt><dd>medium</dd><dt>Amc Frequency</dt><dd>high - a structured examiner-directed lower-limb examination (PEFE) for leg pain distinguishing PAD, cellulitis and neurogenic claudication is a core recurring AMC clinical-examination skill.</dd><dt>Tags</dt><dd>pefe, leg pain, peripheral arterial disease, cellulitis, neurogenic claudication, buerger test, abi, physical examination</dd><dt>Related Topics</dt><dd>Leg pain / claudication, Venous insufficiency, Diabetic foot exam, Critical limb ischaemia</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 A structured lower-limb inspection/palpation/movement examination (swelling, warmth, tenderness, limitation of movement, deformity) is the standard MSK examination sequence the PEFE script follows; note this chunk describes rheumatoid-arthritis signs and is cited for the general MSK examination framework rather than PAD specifics.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.705 <span class="pid">qdrant:4a11613c-a024-4a9b-b54b-00a390bd2120</span></div><div class="citation">📚 Unilateral leg findings mandate screening for DVT and its association with underlying malignancy, supporting the case&#x27;s inclusion of infection/vascular checks in the leg-pain PEFE; note this chunk is a leg-swelling/DVT caution, relevant to the differential but not to the arterial exam technique.<br><strong>Churchills_Pocketbook_of_Differential_Diagnosis (1).pdf</strong> p.307 <span class="pid">qdrant:d129bdb6-cea3-4818-b7c4-d6572fc12fa5</span></div><div class="citation">📚 General appearance and gait assessment (distress, alertness, mobility) form the opening of a systematic examination; note this chunk is a Parkinson-disease general-features checklist and is tangential, cited to support the case&#x27;s &#x27;general appearance / gait and weight-bearing&#x27; step only as a generic examination principle.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.543 <span class="pid">qdrant:25dbd22b-0013-48d6-9d54-914658829781</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acute Pancreatitis — Version 2 (Results Interpretation) - Medicine OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        Medicine<span>›</span>Acute Pancreatitis — Version 2 (Results Interpretation)
+    </div>
+    <h1>Acute Pancreatitis — Version 2 (Results Interpretation)</h1>
+    <p class="source-line">Source: Dr. Amir workshop — GIT 2026
+       / 2.Abdominal pain case (Aug 2026 drop) · Specialty: gastroenterology</p>
+
+<section id="case-stem"><h2>Case Stem</h2>
+<p>Your next patient is a <strong>25-year-old lady</strong> who has presented to the ED complaining of <strong>upper abdominal pain</strong>. Investigations have already been done:</p><ul><li>WBC 10,000 (raised)</li><li><strong>Lipase 1200 — high</strong></li><li>ECG normal</li><li>UEC normal</li><li>LFTs: raised AST and ALT (mild rise, up to about 2×)</li></ul><p><strong>Tasks:</strong></p><ol><li>History taking</li><li>Explain the results</li><li>Explain the diagnosis and differentials</li></ol>
+</section>
+
+<section id="strategy"><h2>Strategy</h2>
+<p>The high lipase makes the diagnosis obvious from the stem, which makes elegant history taking harder. Because the stem has fixed the diagnosis as pancreatitis, the candidate <strong>passes by ruling out the causes of pancreatitis</strong> (alcohol/binge drinking, gallstones, hypertriglyceridaemia, trauma, medications, infection).</p><ul><li>Stick to the same upper-abdominal structure; after SIQORAA it is reasonable to conclude pancreatitis is most probable and focus on causes.</li><li>Other differentials are still screened if time allows, but they are not the priority — the case tests <strong>knowledge about pancreatitis</strong>.</li></ul>
+</section>
+
+<section id="interpreting-the-mildly-raised-liver-enzymes"><h2>Interpreting the Mildly Raised Liver Enzymes</h2>
+<p>Is a mildly raised AST/ALT acceptable in pancreatitis, or does it mean hepatitis/cholecystitis/cholangitis?</p><ul><li>The pancreas sits against the liver and shares connected ducts, so a slight, mild rise in liver enzymes is common in pancreatitis.</li><li>A true hepatocellular pattern is usually taken as roughly 4–10× (or more) the upper limit of normal. If the exam shows AST/ALT only 2–3× the upper limit (upper limit ~40–50 U/L), do not escalate the diagnosis to hepatitis or claim cholecystitis-induced pancreatitis — simply conclude pancreatitis.</li></ul>
+</section>
+
+<section id="explaining-the-investigations-to-the-patient-keep-it-simple"><h2>Explaining the Investigations to the Patient (Keep It Simple)</h2>
+<p>Use plain language — if the explanation drifts into jargon (e.g. "three cell lines in the blood"), the station is going badly. Explain what each abnormal result is and what it means:</p><ul><li><strong>WBC:</strong> "I can see your white blood cell count is high. White blood cells are part of your immune system; they increase when you have inflammation in your body."</li><li><strong>Lipase:</strong> "Your lipase is high. This is an enzyme produced by your pancreas — an organ in your tummy that helps digest food. When the pancreas is inflamed, the amount of lipase in your blood rises."</li><li><strong>Liver enzymes:</strong> "Your liver enzymes are also slightly high — a slight, mild inflammation in the liver, which is common to see when the pancreas is inflamed."</li><li><strong>Normal tests:</strong> "Your other tests (ECG, kidney tests) are normal, which is good."</li></ul>
+</section>
+
+<section id="explaining-the-diagnosis"><h2>Explaining the Diagnosis</h2>
+<p><strong>Diagnosis:</strong> "Most likely you have pancreatitis. The pancreas is an organ in the upper part of your tummy that helps digest food — it is inflamed."</p><p><strong>Reasons (history findings plus investigations):</strong></p><ul><li>A lot of nausea and vomiting</li><li>Pain better when leaning forward and worse on lying down</li><li>Radiation of the pain to the back</li><li>An episode of heavy alcohol drinking</li><li>The high lipase — which strongly suggests a problem in the pancreas</li></ul>
+</section>
+
+<section id="explaining-the-differentials"><h2>Explaining the Differentials</h2>
+<p>"I was also thinking about:</p><ul><li>Cancers of the pancreas (pancreatic cancer) or of the bile system (cholangiocarcinoma)</li><li>Liver and gallbladder problems — cholecystitis, cholangitis, hepatitis</li><li>Peptic ulcer disease and gastro-oesophageal reflux</li><li>An infection in the lung (pneumonia) causing upper abdominal pain</li><li>A heart problem — acute coronary syndrome / ischaemic heart disease"</li></ul>
+</section>
+
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: history-taking-expert (Australian clinical supervisor) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>The notes state a hepatocellular pattern is called at &#x27;4/5/8 or even &gt;10 times&#x27; the upper limit and that a 2-3x rise can simply be attributed to pancreatitis, without flagging the biliary implication of transaminase rises in pancreatitis.</strong><br>In acute pancreatitis, an ALT greater than about 3 times the upper limit of normal is a strong pointer to a gallstone (biliary) aetiology and should prompt early biliary ultrasound — it should not be dismissed as incidental. A mild rise (&lt;2-3x) is indeed compatible with pancreatitis alone, as the notes say, but the aetiological significance of higher ALT deserves explicit mention because gallstone pancreatitis changes management (cholecystectomy ± ERCP).</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ State the diagnostic criteria for acute pancreatitis explicitly (2 of 3: characteristic epigastric pain; lipase/amylase &gt;3x the upper limit of normal; imaging findings) — the stem&#x27;s lipase of 1200 comfortably exceeds 3x ULN and citing the criterion demonstrates structured reasoning to the examiner.</div><div class="enhancement">⭐ Add a brief management coda for completeness even though it is not a listed task (admission, IV fluid resuscitation, analgesia, antiemetics, nil by mouth initially with early enteral feeding as tolerated, severity monitoring) — AMC examiners frequently ask &#x27;what next?&#x27; after the explanation.</div><div class="enhancement">⭐ Add a units note for the Australian context: report glucose and calcium in mmol/L when requesting the full pancreatitis panel (glucose, calcium, triglycerides, VBG, CRP), consistent with the companion epigastric-pain case.</div><div class="enhancement">⭐ Add a counselling line about alcohol as the identified precipitant: brief intervention, standard-drinks quantification against NHMRC guidelines, and advice that recurrent binges risk recurrent and chronic pancreatitis.</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>diagnosis_management</dd><dt>Difficulty</dt><dd>easy</dd><dt>Amc Frequency</dt><dd>medium — older results-based variant of the recurrent pancreatitis station; the history-led 2025 version is more common</dd><dt>Tags</dt><dd>acute pancreatitis, lipase, results interpretation, liver function tests, patient explanation, upper abdominal pain, amc osce</dd><dt>Related Topics</dt><dd>Epigastric pain (acute pancreatitis, history version), LFT interpretation cases, RUQ pain (biliary colic/cholecystitis/cholangitis), Alcohol brief intervention</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 The Australian therapeutic reference for pancreatitis and gastrointestinal management cited across this bundle is Therapeutic Guidelines (eTG, tg.org.au), as referenced within the general practice text indexed for this case (chunk is a Murtagh references page citing Therapeutic Guidelines Limited, www.tg.org.au — most relevant chunk available in rag_context).<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.1657 <span class="pid">qdrant:f9f783af-c2d0-47dc-8f65-9bed828745ef</span></div><div class="citation">📚 The systematic physical-diagnosis framework underpinning the history and examination approach in this station is Talley &amp; O&#x27;Connor&#x27;s Clinical Examination, the Australian standard text (chunk is the title page — most relevant chunk available in rag_context).<br><strong>Nicholas J Talley, Simon O&#x27;Connor - Talley and O&#x27;Connor&#x27;s Clinical Examination (8th edition)-Elsevier Australia (2017).pdf</strong> p.3 <span class="pid">qdrant:dd6bc5b7-03b5-4b6b-83ba-35759e417012</span></div><div class="citation">📚 The upper-abdominal differential list (pancreatic cancer, cholangiocarcinoma, cholecystitis, cholangitis, hepatitis, PUD/GORD, pneumonia, ACS) follows the grouped differential-diagnosis method of the pocket reference used in AMC preparation (chunk is the book title page — most relevant chunk available in rag_context for this claim).<br><strong>Churchills_Pocketbook_of_Differential_Diagnosis (1).pdf</strong> p.2 <span class="pid">qdrant:d9429721-9f41-454d-872c-a00ad41a8d74</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

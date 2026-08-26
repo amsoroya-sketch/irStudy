@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tremor (Benign Essential Tremor vs Parkinson Disease) - Medicine OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        Medicine<span>›</span>Tremor (Benign Essential Tremor vs Parkinson Disease)
+    </div>
+    <h1>Tremor (Benign Essential Tremor vs Parkinson Disease)</h1>
+    <p class="source-line">Source: Dr. Amir workshop — Med workshop 2 - 2026
+       / CLASS 2 NEUROLOGY (Aug 2026 drop) · Specialty: neurology</p>
+
+<section id="overview"><h2>Overview</h2>
+<p>Tremor appears both as a physical-examination case and as a history-taking case. Whenever a tremor case appears, Parkinson disease must be in the differential list &ndash; omitting it fails the station. In the PE version the relevant tests are the Parkinson tests, because Parkinson disease has no confirmatory scan or blood test; diagnosis rests on a good history and examination. No haemodynamic-stability screen is required.</p>
+</section>
+
+<section id="differential-diagnosis"><h2>Differential Diagnosis</h2>
+<p><strong>Top two differentials:</strong> benign essential tremor (most common in the exam) versus Parkinson disease. Both typically present to the GP with tremor as the first symptom.</p><p><strong>Other causes:</strong></p><ul><li>Anxiety / panic disorder</li><li>Substances: caffeine, alcohol, drugs such as salbutamol (Ventolin)</li></ul><p><strong>Serious disorders not to miss:</strong></p><ul><li>Cerebral (brain) tumour</li><li>Liver failure</li><li>Kidney disease / uraemia</li><li>Respiratory failure with CO2 retention (flapping tremor / asterixis)</li><li>Hyperthyroidism</li><li>Cerebellar disease</li><li>Multiple sclerosis (overlaps with brain tumour)</li><li>Phaeochromocytoma</li><li>Drug withdrawal</li></ul><p>Essential tremor can involve the hands, voice, head, legs and body, so screen for tremor elsewhere and for activities that worsen it. Fatigue and stress worsen it. Assess impact on daily activities, especially in older patients.</p>
+</section>
+
+<section id="history-taking"><h2>History Taking</h2>
+<p>Introduce yourself, use an open-ended question, then respond to the patient concern (often fear of Parkinson disease after seeing a documentary).</p><p><strong>Explore the tremor (timing, pattern, aggravating/alleviating factors, affect):</strong></p><ul><li><strong>Timing:</strong> onset (usually months to years, always chronic), constant or intermittent, progression</li><li><strong>Pattern:</strong> one or both hands, involvement of other body parts (legs, head, voice)</li><li><strong>Resting vs kinetic:</strong> tremor at rest (Parkinson) versus on action such as writing or holding a glass (essential/kinetic tremor)</li><li><strong>Aggravating/alleviating factors</strong></li><li><strong>Affect:</strong> impact on home and work function</li></ul><p><strong>Targeted differential questions:</strong></p><ul><li>Parkinson disease: bradykinesia (movements slower than usual), joint stiffness/rigidity, walking and balance problems (postural instability), reduced sense of smell (an early feature)</li><li>Benign essential tremor: tremor in voice/legs/head, worse with stress, better with alcohol, family history of tremor</li><li>Brain tumour: headache; neurological deficit questions (weakness, numbness, blurred vision) which also screen for multiple sclerosis; weight loss and lumps/bumps</li><li>Cerebellar disease: balance and walking problems</li><li>Thyroid: heat intolerance, diarrhoea (hyperthyroidism)</li><li>Chronic liver disease: jaundice, itch, dark urine, pale stool</li><li>COPD: cough, smoking</li><li>Substances: alcohol, drugs, medications, coffee/tea (caffeine)</li><li>Phaeochromocytoma: headache, flushing, palpitations</li><li>Anxiety: mood and stress at home/work</li><li>CKD/uraemia: reduced urine output (late finding)</li></ul>
+</section>
+
+<section id="distinguishing-essential-tremor-from-parkinson-disease"><h2>Distinguishing Essential Tremor from Parkinson Disease</h2>
+<p><strong>Benign essential tremor</strong> is an action (kinetic) tremor, often with a head tremor and a positive family history, characteristically improved by alcohol and worsened by stress and anxiety; it can involve legs, tongue and chin.</p><p><strong>Parkinson disease</strong> features a resting tremor, bradykinesia (slowness), rigidity (joint stiffness) and postural instability. In history taking, ask specifically about slowness, stiffness, and walking/balance. Micrographia (progressively smaller handwriting) is a supportive feature checked on examination.</p>
+</section>
+
+<section id="geriatric-screening"><h2>Geriatric Screening</h2>
+<p>For elderly patients, or patients over 50 with multiple comorbidities, replace the closing steps with geriatric screening (used by Dr Amir in counselling, syncope and falls cases). Assess impact on function:</p><ul><li>Activities of daily living and independence</li><li>Diet and who cooks (risk of malnutrition)</li><li>Home support</li><li>Falls (shakiness in the legs)</li><li>Memory / cognition (Lewy body dementia = Parkinsonism plus dementia)</li></ul>
+</section>
+
+<section id="version-1-ndash-benign-essential-tremor"><h2>Version 1 &amp;ndash; Benign Essential Tremor</h2>
+<p>Shakiness in both hands and legs, only on action (holding a knife, fork or glass), no resting tremor, father affected, better with alcohol.</p><p><strong>Diagnosis:</strong> benign essential tremor &ndash; a movement disorder causing shakiness in arms, legs, head and voice. Reasons: action/kinetic tremor, improvement with alcohol, involvement of other body parts, and a family history. No features of Parkinson disease (not stiff, not slow, normal gait).</p><p><strong>Management:</strong> reassurance; symptomatic control with propranolol.</p>
+</section>
+
+<section id="case-2025-ndash-parkinson-disease"><h2>Case 2025 &amp;ndash; Parkinson Disease</h2>
+<p>The patient volunteers walking difficulty that is actually slowness (bradykinesia), small handwriting (micrographia), stiffness (rigidity), a resting tremor that improves with activity and is not related to alcohol, and no involvement of other body parts.</p><p><strong>Diagnosis:</strong> Parkinson disease &ndash; low dopamine in the brain causing tremor, slowness and stiffness. Bradykinesia is the main feature. <strong>Treatment:</strong> levodopa to replace the deficient dopamine.</p>
+</section>
+
+<section id="figures"><h2>Case Figures</h2>
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p1_0.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p2_0.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p3_0.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p3_1.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p4_0.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p4_1.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p5_0.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p6_0.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p7_0.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p7_1.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p8_0.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p9_0.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p10_0.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p11_0.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p12_0.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p13_0.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p14_0.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+<img class="case-image" src="assets/med_workshop_2_2026_2_tremor_260406_204151_p15_0.png" alt="Tremor (Benign Essential Tremor vs Parkinson Disease) figure" loading="lazy">
+</section>
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: history-taking-expert (Australian clinical supervisor) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>The notes state COPD gives a flapping tremor and list it alongside true tremors.</strong><br>The flap (asterixis) is a negative myoclonus, not a true tremor. It is seen with CO2 retention (type 2 respiratory failure), hepatic encephalopathy and uraemia, and should be described and demonstrated separately from the fine action/resting tremors that distinguish essential tremor from Parkinson disease.</div><div class="correction">✏️ <strong>The management advises telling patients to drink a normal amount of alcohol to control essential-tremor symptoms.</strong><br>Alcohol responsiveness is a diagnostic clue only and should not be recommended as therapy. First-line pharmacotherapy for essential tremor is propranolol or primidone (both PBS-listed). Note that propranolol is contraindicated in asthma and used with caution in COPD, which is itself a differential in this case, so screen for airways disease before prescribing.</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ Add an explicit drug-induced tremor and drug-induced parkinsonism screen (sodium valproate, lithium, SSRIs, salbutamol, metoclopramide and antipsychotics), as these are common reversible causes.</div><div class="enhancement">⭐ Add first-line investigations to exclude serious mimics: TSH for thyrotoxicosis, and in a younger patient serum copper/caeruloplasmin to exclude Wilson disease.</div><div class="enhancement">⭐ State that Parkinson disease is a clinical diagnosis warranting neurology referral; levodopa/carbidopa is the mainstay for symptomatic older patients, with DaTscan reserved for diagnostic uncertainty.</div><div class="enhancement">⭐ Add falls-risk and functional-safety assessment for elderly tremor patients and reference RACGP/Better Health resources for patient education.</div><div class="enhancement">⭐ Add metadata tags distinguishing resting vs action tremor and note the exam discriminators (family history, alcohol response, bradykinesia, micrographia).</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>history_taking</dd><dt>Difficulty</dt><dd>medium</dd><dt>Amc Frequency</dt><dd>high - tremor is a recurrent AMC station appearing as both history-taking and physical-examination versions, centred on the essential-tremor vs Parkinson distinction</dd><dt>Tags</dt><dd>tremor, benign essential tremor, parkinson disease, bradykinesia, movement disorder, history taking, hyperthyroidism</dd><dt>Related Topics</dt><dd>parkinsonism examination, cerebellar examination, thyroid disease, drug-induced tremor, geriatric assessment</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 Multiple sclerosis and tremor (essential tremor, Parkinson disease) are recognised neurological differentials; the cited Murtagh index chunk lists multiple sclerosis clinical features and cross-references tremor/Parkinson pages, and is only indirectly relevant as an index entry.<br><strong>John Murtagh General Practice, 8th Edition</strong> p.3666 <span class="pid">qdrant:a474e8b0-59a1-4fc0-a862-c88c48ae9437</span></div><div class="citation">📚 Serious causes of tremor/weakness are investigated with CT/MRI head for a central lesion, EMG/nerve conduction studies for neuromuscular disease, and pulmonary function tests for COPD; the cited chunk is a respiratory-acidosis investigations box and is only tangentially matched to the tremor differential.<br><strong>Churchills Pocketbook of Differential Diagnosis</strong> p.529 <span class="pid">qdrant:f3b17738-0010-4d73-a261-45f44e27f298</span></div><div class="citation">📚 Drugs are an important masquerade to consider in an undifferentiated presentation such as tremor; the cited Murtagh chunk sets out the safe diagnostic strategy and flags drugs, but does not specifically address tremor.<br><strong>John Murtagh General Practice, 8th Edition</strong> p.229 <span class="pid">qdrant:c4c0c7c3-11ce-41ad-b015-a13ca14f48ba</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

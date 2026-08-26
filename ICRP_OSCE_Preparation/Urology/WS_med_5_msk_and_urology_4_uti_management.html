@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTI Management (Cystitis in a Man) - Urology OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        Urology<span>›</span>UTI Management (Cystitis in a Man)
+    </div>
+    <h1>UTI Management (Cystitis in a Man)</h1>
+    <p class="source-line">Source: Dr. Amir workshop — Med 5 MSK and urology
+       / 5. urology (Aug 2026 drop) · Specialty: urology</p>
+
+<section id="content"><h2><a id="_cpyvzzgbvk3j"></a><strong>UTI MANAGEMENT</strong></h2><h3><a id="_81gr6xlktjzj"></a><strong>STEM </strong></h3><p><strong>Your next patient is a 40 year old man who has presented to your General Practice complaining of pain on passing urine. He is also complaining of going to the toilet more frequently. The symptoms have started in the last 2 days. He has no fever, penile discharge, abdominal pain or vomiting. He is a healthy adult and has allergy to penicillin.</strong></p><ul><li>On PE: Abdomen examination is normal, DRE is normal.</li><li>On urine dipstick: + blood + Leuc ( WBC) + Nitrates</li></ul><p>Task:</p><ul><li>Explain the diagnosis with reasons to the patient</li><li>Request further investigation</li><li>Discuss your immediate and longterm management</li></ul><h3><a id="_idsg5oa7ymcq"></a><strong>5. DIAGNOSIS</strong></h3><ul><li>Correct terminology: Cystitis<br /></li><li>Avoid using the generic term “UTI”<br /></li><li>Explanation:<br /><ul><li>UTI is a broad term<br /></li><li>Cystitis specifically refers to bladder infection<br /></li></ul></li></ul><h3><a id="_xod6mggiq6oo"></a><strong>6. DISCUSSION OF HEMATURIA IN UTI</strong></h3><ul><li>UTI can cause blood in urine<br /></li><li>In UTI there is spectrum of severity for Hematuria:<br /><ul><li>From anywhere between Microscopic hematuria to Hemorrhagic cystitis<br /></li></ul></li><li>Presence of blood does not mean something else is wrong, it’s because of UTI.<br /></li></ul><h3><a id="_x5g5dga6xxv4"></a><strong>8. KEY TEACHING POINT – DIFFERENTIALS EVEN IF NOT ASKED</strong></h3><ul><li>Even if differentials are not explicitly asked:<br /><ul><li>Briefly mention them<br /></li><li>Often still scored<br /></li></ul></li><li>Differential discussion occurs while justifying diagnosis<br /></li></ul><h3><a id="_qsimcxq6gdc"></a><strong>9. PRE-MANAGEMENT CLARIFICATION QUESTIONS</strong></h3><h4><a id="_qvlk9vraigpj"></a><strong>9.1 Urine MCS – Do We Do It for Everyone?</strong></h4><ul><li>No<br /></li><li>Not required for all suspected UTIs<br /></li></ul><h4><a id="_oqc4zwts279k"></a><strong>9.2 Antibiotics Before Culture?</strong></h4><ul><li>Yes<br /></li><li>Start antibiotics immediately<br /></li><li>Do not wait 72 hours for culture result<br /></li></ul><h3><a id="_dosby9gji3z"></a><strong>10. ANTIBIOTIC CHOICE (AUSTRALIA)</strong></h3><ul><li>First line: Trimethoprim<br /></li><li>Second line: Nitrofurantoin<br /></li><li>Other option: Cephalexin (e.g. pregnancy)<br /></li><li>Penicillin allergy: Does not affect trimethoprim use<br /></li></ul><h3><a id="_7c69hh321dll"></a><strong>11. DURATION OF TREATMENT</strong></h3><ul><li>Women: 3 days<br /></li><li>Men: 7 days (if with prostatitis for 14 days)<br /></li><li>Reason:<br /><ul><li>UTIs common in women<br /></li><li>UTIs uncommon in men<br /></li></ul></li></ul><h3><a id="_gsrsml23ww53"></a><strong>12. INVESTIGATION OF MEN WITH FIRST UTI</strong></h3><ul><li>Handbook: Investigate all men<br /></li><li>Therapeutic Guidelines:<br /><ul><li>Investigate only if:<br /><ul><li>Recurrent UTIs<br /></li><li>Poor response to treatment</li></ul></li></ul></li></ul><h3><a id="_wlre2y6wh40d"></a><strong>13. POST-TREATMENT URINE MCS</strong></h3><ul><li>Do NOT do for everyone<br /></li><li>Only indicated in:<br /><ol><li>Pregnant women<br /></li><li>Men <strong>with prostatitis (do not do it for men without prostatitis and simple UTI)</strong><br /></li></ol></li></ul><h3><a id="_69t55e40ksu"></a><strong>14. WHY UTIs IN MEN ARE SIGNIFICANT</strong></h3><ul><li>Not expected<br /></li><li>Recurrent UTIs → underlying pathology likely<br /></li><li>Possible causes discussed:<br /><ul><li>Stones<br /></li><li>Prostate problems (BPH, cancer)<br /></li><li>Urethral strictures<br /></li><li>TB<br /></li></ul></li></ul><h3><a id="_mus9jjk95m8k"></a><strong>15. POSSIBLE INVESTIGATIONS (HANDBOOK VS GUIDELINES)</strong></h3><ul><li>KUB ultrasound<br /></li><li>CT scan (selective)<br /></li><li>PSA<br /></li><li>UEC<br /></li><li>Referral to urologist for cystoscopy (later, not routine)<br /></li></ul><h3><a id="_o7xrhb2o7g4q"></a><strong>16. DIFFERENTIATING CYSTITIS VS PYELONEPHRITIS</strong></h3><ul><li>Cystitis:<br /><ul><li>Dysuria<br /></li><li>Frequency<br /></li><li>Urgency<br /></li></ul></li><li>Pyelonephritis:<br /><ul><li>Flank pain<br /></li><li>Fever<br /></li><li>Vomiting<br /></li></ul></li></ul><h3><a id="_16pdmwuyly9e"></a><strong>17. WHO NEEDS URINE MCS?</strong></h3><p>Before starting antibiotics to treat cystitis, obtain a urine sample for culture and susceptibility testing from:</p><ul><li>Does not need MCS:<br /><ul><li>Non-pregnant woman<br /></li><li>Non-recurrent uncomplicated cystitis<br /></li></ul></li><li>Needs MCS:<br /><ul><li>Men<br /></li><li>Pregnant women<br /></li><li>Recent antibiotic use<br /></li><li>Recurrent UTIs</li></ul></li></ul><h3><a id="_b2n16hmf9scb"></a><strong>18. UROLOGICAL EVALUATION</strong></h3><ul><li>Required for:<br /><ul><li>Recurrent UTIs in men<br /></li><li>Poor response to treatment<br /></li></ul></li><li>Not required for first uncomplicated episode<br /></li></ul><h3><a id="_w3lpomlhdvlu"></a><strong>19. MANAGEMENT – OVERVIEW</strong></h3><ul><li>Analgesia<br /></li><li>Antibiotics (trimethoprim)<br /></li><li>Hydration<br /></li><li>Increased frequency of voiding<br /></li><li>Red-flag advice<br /></li><li>Consider investigations due to male gender<br /></li></ul><h3><a id="_szumh6cqkwvq"></a><strong>ROLE PLAY STRUCTURE / INTRODUCTION</strong></h3><ul><li>Introduce yourself<br /></li><li>Confirm patient name<br /></li><li>Allow patient to speak first<br /></li><li>Example:<br /><ul><li>“ I have your history and physical exam, and I want to discuss the cause of your symptoms, Is there anything you’d like to tell me before we start?”<br /></li></ul></li></ul><h3><a id="_hfui436ru29"></a><strong>EXPLAINING THE DIAGNOSIS (WITH REASONS)</strong></h3><h4><a id="_hn0mz6xah696"></a><strong>Example Dialogue</strong></h4><p>“Most likely, you have a condition called cystitis. This is a type of urine infection that involves the bladder and causes inflammation in the bladder wall.”</p><p>Reasons given:</p><ul><li>Dysuria<br /></li><li>Frequency<br /></li><li>Positive nitrates<br /></li><li>White blood cells in urine<br /></li><li>Small amount of blood in urine (normal in UTI)<br /></li></ul><h3><a id="_jrcn5l3l5mav"></a><strong>EXPLAINING WHY IT IS NOT OTHER CONDITIONS</strong></h3><h4><a id="_i6mhde76hk9u"></a><strong>U do Not ave features of Pyelonephritis, that is an infection in the kidneys. The reasons are:</strong></h4><ul><li>No fever<br /></li><li>No abdominal pain<br /></li><li>No vomiting<br /></li></ul><h4><a id="_mbuhhs9uq295"></a><strong>U also have No features of Urethritis wich is an infection in the tube that carries urine out of the bladder</strong></h4><ul><li>No discharge<br /></li></ul><h4><a id="_iteohqek08a7"></a><strong>U also do not have any features of Prostatitis</strong></h4><ul><li>Normal DRE<br /></li></ul><h3><a id="_ak7apkldeqxr"></a><strong>INVESTIGATION EXPLANATION</strong></h3><h4><a id="_j2nww9nr80na"></a>I will need another urine sample to do a more accurate test</h4><h4><a id="_q7sv5izeqnnp"></a><strong>Urine MCS</strong></h4><ul><li>I Need a midstream urine sample<br /></li></ul><p>Example explanation:</p><ul><li>I want u to Wash  your hands<br /></li><li>Clean private parts<br /></li><li>Start passing urine<br /></li><li>After passing some amount, start Collecting urine in the jar until its half full. Close the jar.<br /></li><li>Submit it to pathology lab<br /></li></ul><h3><a id="_yhthq0wcboxj"></a><strong>24. FURTHER INVESTIGATIONS (EXPLAINED CAREFULLY)</strong></h3><ul><li>UTIs  are uncommon in men<br /></li><li>And whenever we have Recurrent infections in men, we like to rule out any structural problems in bladder, in the tubes, prostate and kidneys.<br /></li></ul><p>We can consider investigations:</p><ul><li>PSA<br /></li><li>KUB ultrasound that is scan of your kidneys, ureters, bladder, prostate<br /></li><li>CT scan (later, if needed)<br /></li><li>UEC to check kidney functions<br /></li><li>I will Referral to urologist<br /></li></ul><h3><a id="_d2otik7h4v0t"></a><strong>25. KUB ULTRASOUND – KEY POINT</strong></h3><ul><li>Assesses:<br /><ul><li>Kidneys (stones)<br /></li><li>Ureters<br /></li><li>Bladder<br /></li><li>Prostate<br /></li></ul></li><li>Important bladder function:<br /><ul><li>Check for pre and Post-void urine volume: “in ultrasound we will check for urine before passing and urine in your bladder after urination”<br /></li></ul></li></ul><h3><a id="_spl2k9fkoda7"></a><strong>26. IMMEDIATE MANAGEMENT</strong></h3><h4><a id="_fmiqcq14o3r7"></a><strong>Antibiotics</strong></h4><ul><li>Trimethoprim 300 mg (memorise dose)<br /></li><li>One tablet daily<br /></li><li>7 days<br /></li></ul><h4><a id="_vqiczho1l76z"></a><strong>Red Flags</strong></h4><ul><li>If symptoms continue&gt; No improvement<br /></li><li>Fever<br /></li><li>Vomiting<br /></li><li>Abdominal pain<br /><br /> → Return to GP for reassessment<br /></li></ul><h3><a id="_wqid23dklt6x"></a><strong>27. SYMPTOMATIC MANAGEMENT</strong></h3><ul><li>For Pain relief : Paracetamol or ibuprofen<br /></li><li>Urine alkalizing agents that decrease pain and stinging on urination:<br /><ul><li>Ural<br /></li><li>Hiprex<br /></li></ul></li><li>Not strongly supported by guidelines but commonly used<br /></li></ul><h3><a id="_ez0j96kc3vcw"></a><strong>28. GENERAL ADVICE</strong></h3><ul><li>Drink plenty of fluids: it helps to flush out the bugs<br /></li><li>Increase frequency of voiding<br /></li><li>Do not try to hold urine<br /></li></ul><h3><a id="_3ud52bkzfb9c"></a><strong>29. LONG-TERM MANAGEMENT</strong></h3><ul><li>UTIs uncommon in men<br /></li><li>Consider:<br /><ul><li>PSA<br /></li><li>Ultrasound<br /></li><li>Possible CT<br /></li><li>Urologist referral<br /></li></ul></li><li>Cystoscopy not routine<br /></li></ul></section>
+
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: surgical-skills-expert (Australian surgical educator, FRACS) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>Hiprex (hexamine/methenamine hippurate) is grouped with Ural as a &#x27;urine alkalinising agent that decreases pain and stinging&#x27;. This is factually wrong.</strong><br>Hiprex is a urinary antiseptic used for recurrent-UTI prophylaxis, NOT an analgesic alkaliniser, and it actually requires ACIDIC urine to release formaldehyde - so it must not be co-prescribed with urinary alkalinisers (Ural/sodium citrate), which would inactivate it. Ural provides symptomatic relief; Hiprex is prophylaxis with the opposite pH requirement.</div><div class="correction">✏️ <strong>The case teaches that haematuria in this setting is simply &#x27;because of UTI&#x27; and &#x27;does not mean something else is wrong&#x27;.</strong><br>In an adult man, haematuria must not be uncritically attributed to UTI. Persistent visible or non-visible haematuria after appropriate treatment - especially in a man over 40, a smoker, or with recurrent infection - requires investigation (urine cytology, CT urography and cystoscopy) to exclude urothelial/bladder malignancy. Document a plan to recheck urine after treatment.</div><div class="correction">✏️ <strong>Treatment duration states &#x27;Men: 7 days (if with prostatitis 14 days)&#x27;.</strong><br>Acute bacterial prostatitis needs a longer course than 14 days - Therapeutic Guidelines recommends 14-28 days (2-4 weeks) of an agent with good prostatic penetration (e.g. trimethoprim or a fluoroquinolone), not a flat 14 days. Uncomplicated cystitis in men is 7 days as stated.</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ Anchor the antibiotic choice to Therapeutic Guidelines explicitly: first-line trimethoprim 300 mg orally daily; alternatives nitrofurantoin 100 mg (modified-release) BD or cephalexin 500 mg BD. Note nitrofurantoin is contraindicated if eGFR &lt;45 and must NOT be used if pyelonephritis or prostatitis is suspected (inadequate tissue/prostate penetration) - relevant because this is a male patient.</div><div class="enhancement">⭐ Add explicit red-flag safety-netting and structural work-up rationale: because UTI is uncommon in men, a first well-documented episode plus smoking/haematuria should trigger urology referral for cystoscopy and upper-tract imaging rather than being reassured away. Cross-reference the case&#x27;s own &#x27;KUB ultrasound / PSA / UEC&#x27; list to this risk stratification.</div><div class="enhancement">⭐ Metadata to add: capture penicillin-allergy handling (correctly noted that allergy does not affect trimethoprim) and add paracetamol as first-line simple analgesia (Australian spelling/agent) with ibuprofen used cautiously given nephrotoxicity risk in dehydrated/infected patients.</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>diagnosis_management</dd><dt>Difficulty</dt><dd>medium</dd><dt>Amc Frequency</dt><dd>high - explaining and managing lower UTI/cystitis with an antibiotic-choice and investigation rationale is a common AMC GP management station.</dd><dt>Tags</dt><dd>cystitis, uti, trimethoprim, haematuria, male uti, antibiotic stewardship, urine culture</dd><dt>Related Topics</dt><dd>pyelonephritis, prostatitis, benign prostatic hyperplasia, bladder cancer, catheter-associated UTI</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 Haematuria warrants careful evaluation and must not be dismissed - painless frank haematuria (especially with an abdominal mass or in an at-risk adult) is an ominous sign indicating possible malignancy, supporting the correction that UTI-attributed haematuria still needs follow-up.<br><strong>Churchills_Pocketbook_of_Differential_Diagnosis (1).pdf</strong> p.297 <span class="pid">qdrant:4aa4f31a-9df3-4ffc-832a-d8221e721e60</span></div><div class="citation">📚 The management phase of the consultation (explanation/education, prescribing, follow-up and safety-netting) frames how this station&#x27;s diagnosis, investigation and red-flag advice should be structured.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.10 <span class="pid">qdrant:d35333a6-bcbc-4c00-9ccd-be0aca6f6913</span></div><div class="citation">📚 Paracetamol is an appropriate simple analgesic for symptomatic relief (rag chunk is the mittelschmerz management box and is only tangentially related, cited as the closest simple-analgesia reference retrieved for this case).<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.2564 <span class="pid">qdrant:d3f45ca8-ddc0-4c07-ac7b-d21eb6db3206</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

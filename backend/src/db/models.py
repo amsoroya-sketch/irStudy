@@ -131,6 +131,9 @@ class MedicalSpecialty(str, enum.Enum):
     PAEDIATRICS = "paediatrics"
     OBSTETRICS_GYNAECOLOGY = "obstetrics_gynaecology"
     SURGERY = "surgery"
+    OPHTHALMOLOGY = "ophthalmology"
+    UROLOGY = "urology"
+    MUSCULOSKELETAL = "musculoskeletal"
 
 
 class OSCEType(str, enum.Enum):
@@ -460,6 +463,41 @@ class OSCE(Base):
     }
     """
 
+    # Educational Images (Week 1-2 Enhancement)
+    educational_images = Column(JSON, nullable=True)  # Generated educational images metadata
+    """
+    Example educational_images JSON:
+    {
+        "comparison_charts": [{
+            "title": "Gastric vs Duodenal Ulcer: Critical Differences",
+            "image_url": "/static/images/osces/GI-PUD-001_gastric_duodenal_comparison.png",
+            "type": "comparison_table",
+            "generated_at": "2026-05-28T10:30:00Z"
+        }],
+        "decision_trees": [{
+            "title": "Red Flag Assessment Flowchart",
+            "image_url": "/static/images/osces/GI-PUD-001_red_flag_decision_tree.png",
+            "type": "decision_tree"
+        }],
+        "timelines": [{
+            "title": "Pain Timing After Meals",
+            "image_url": "/static/images/osces/GI-PUD-001_pain_timing.png",
+            "type": "timeline"
+        }],
+        "flowcharts": [{
+            "title": "NSAID Cessation Pathway",
+            "image_url": "/static/images/osces/GI-PUD-001_nsaid_cessation.png",
+            "type": "flowchart"
+        }]
+    }
+    """
+    dr_amir_format = Column(Boolean, default=False, nullable=False)
+    """
+    Dr. Amir's 5 Ps Framework flag (724-line enhanced format):
+    - True: Uses comprehensive Dr. Amir pattern (Preparation, Position, Permission, Perform, Present)
+    - False: Standard OSCE format
+    """
+
     # Statistics
     times_practiced = Column(Integer, default=0, nullable=False)
     average_score = Column(Float, default=0.0, nullable=False)
@@ -490,6 +528,138 @@ class OSCE(Base):
 
     def __repr__(self):
         return f"<OSCE(id={self.osce_id}, type={self.station_type}, specialty={self.specialty})>"
+
+
+class OSCEStudyNote(Base):
+    """
+    Study notes linked to OSCE scenarios (from /ICRP_OSCE_Preparation/).
+
+    DR. AMIR'S 5 Ps FRAMEWORK:
+    - Preparation: Assess context and gather materials
+    - Position: Patient positioning for examination
+    - Permission: Explicit consent before touching
+    - Perform: Systematic examination technique
+    - Present: Summarize findings professionally
+
+    CONTENT SOURCE:
+    - 106 study note files from /ICRP_OSCE_Preparation/
+    - Organized by specialty (Medicine, Psychiatry, Surgery, etc.)
+    - Cross-referenced with OSCEs and MCQs
+
+    FIELDS:
+    - note_id: Unique identifier (e.g., "STUDY-CARD-001")
+    - osce_id: Foreign key to linked OSCE (nullable - some notes are standalone)
+    - title: Note title (e.g., "Cardiovascular Examination - Complete Guide")
+    - content_markdown: Full markdown content
+    - word_count: Calculated word count for reading time estimation
+    - reading_time_minutes: Estimated reading time (200 words/minute)
+    - topics: JSONB array of topics (e.g., ["Peptic Ulcer Disease", "Gastroenterology"])
+    - tags: JSONB array of tags (e.g., ["red_flags", "management", "differential_diagnosis"])
+    - amc_relevance: High/Medium/Low relevance to AMC Clinical Exam
+    - specialty: Medical specialty (Medicine, Surgery, Psychiatry, etc.)
+    - related_osce_ids: JSONB array of related OSCE IDs for cross-referencing
+    - related_mcq_ids: JSONB array of related MCQ IDs for cross-referencing
+    - is_published: Publication flag (default: True)
+    """
+
+    __tablename__ = "osce_study_notes"
+
+    # Primary key
+    id = Column(Integer, primary_key=True, index=True)
+
+    # Identification
+    note_id = Column(String(50), unique=True, index=True, nullable=False)
+    osce_id = Column(Integer, ForeignKey("osces.id", ondelete="CASCADE"), nullable=True, index=True)
+
+    # Content
+    title = Column(String(500), nullable=False)
+    content_markdown = Column(Text, nullable=False)
+    word_count = Column(Integer, nullable=True)
+    reading_time_minutes = Column(Integer, nullable=True)
+
+    # Classification
+    topics = Column(JSON, nullable=True)  # ["Peptic Ulcer Disease", "Gastroenterology"]
+    tags = Column(JSON, nullable=True)  # ["red_flags", "management", "differential_diagnosis"]
+    amc_relevance = Column(String(50), nullable=True)  # "high", "medium", "low"
+    specialty = Column(String(100), nullable=True, index=True)  # "Medicine", "Surgery", "Psychiatry"
+
+    # Cross-referencing
+    related_osce_ids = Column(JSON, nullable=True)  # [1, 5, 12] - related OSCE IDs
+    related_mcq_ids = Column(JSON, nullable=True)  # [45, 67, 89] - related MCQ IDs
+
+    # Flags
+    is_published = Column(Boolean, default=True, nullable=False)
+
+    # Audit timestamps
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    updated_at = Column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
+
+    # Relationships
+    osce = relationship("OSCE", backref="study_notes")
+
+    def __repr__(self):
+        return f"<OSCEStudyNote(note_id={self.note_id}, title={self.title[:50]})>"
+
+
+class HTMLOSCENote(Base):
+    """
+    Pre-generated HTML OSCE notes (65 files from /ICRP_OSCE_Preparation/).
+
+    CONTENT SOURCE:
+    - 65 HTML files with embedded CSS and styling
+    - Organized by specialty: Medicine, Surgery, Psychiatry, Paediatrics, ObGyn, Ethics_Communication, Mock_Stations
+    - Uses Dr. Amir's method
+    - Files served as static content, not stored in database
+
+    FIELDS:
+    - note_id: Unique identifier (e.g., "HTML-MED-001")
+    - title: Extracted from HTML title tag
+    - file_path: Relative path from /ICRP_OSCE_Preparation/ (e.g., "Medicine/10_Emergency_Anaphylaxis_Management.html")
+    - specialty: Medical specialty
+    - category: Sub-category (History, Physical Exam, Emergency, etc.)
+    - topics: Extracted topics from content
+    - preview_text: First 200 characters for preview
+    - file_size_kb: File size in KB
+    - estimated_reading_minutes: Reading time estimation
+    - related_osce_ids: Link to related OSCEs in database
+    """
+
+    __tablename__ = "html_osce_notes"
+
+    # Primary key
+    id = Column(Integer, primary_key=True, index=True)
+
+    # Identification
+    note_id = Column(String(50), unique=True, index=True, nullable=False)
+    title = Column(String(500), nullable=False)
+    file_path = Column(String(500), nullable=False)  # Relative from ICRP_OSCE_Preparation/
+
+    # Classification
+    specialty = Column(String(100), nullable=False, index=True)
+    category = Column(String(100), nullable=True, index=True)
+    topics = Column(JSON, nullable=True)
+
+    # Content metadata
+    preview_text = Column(Text, nullable=True)
+    file_size_kb = Column(Integer, nullable=True)
+    estimated_reading_minutes = Column(Integer, nullable=True)
+
+    # Cross-referencing
+    related_osce_ids = Column(JSON, nullable=True)
+
+    # Flags
+    is_published = Column(Boolean, default=True, nullable=False)
+
+    # Audit timestamps
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    updated_at = Column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
+
+    def __repr__(self):
+        return f"<HTMLOSCENote(note_id={self.note_id}, specialty={self.specialty})>"
 
 
 # ============================================================================

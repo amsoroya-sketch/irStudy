@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catheter-Associated UTI with Urosepsis / Septic Shock - Urology OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        Urology<span>›</span>Catheter-Associated UTI with Urosepsis / Septic Shock
+    </div>
+    <h1>Catheter-Associated UTI with Urosepsis / Septic Shock</h1>
+    <p class="source-line">Source: Dr. Amir workshop — Med 5 MSK and urology
+       / 5. urology (Aug 2026 drop) · Specialty: urology</p>
+
+<section id="content"><h2><a id="_nk12hxq6dfqn"></a><strong>Catheter-Induced Urinary Tract Infection </strong></h2><p><br /><strong>Your next patient is a 60 year old man who is a known case of BPH and presented to the Emergency Department with urinary retention and as part of his treatment a urinary catheter was placed for him.</strong></p><p><strong>The catheter was removed yesterday. He has presented to the emergency department today complaining of fatigue and feeling feverish.</strong></p><p><strong>On your examination he has a temp of 39.5 BP 80/50 PR 120 Sat 90%</strong></p><p><strong>The nurse has called you to discuss about this patient</strong>.</p><p>Task:</p><ul><li>Explain the condition to the nurse</li><li>Discuss the required investigation and immediate management</li><li>Discuss your long-term management?</li></ul><h2><a id="_fhiwj0w1pjzv"></a><strong>Diagnosis</strong></h2><h3><a id="_npyshmz52ijd"></a><strong>Primary Diagnosis</strong></h3><ul><li>Catheter-induced urinary tract infection<br /></li></ul><h3><a id="_34wzh1z7x3sb"></a><strong>Associated / Severity Diagnosis</strong></h3><ul><li>Urosepsis<br /></li><li>Possible sepsis or septic shock<br /></li></ul><p>The case deliberately highlights sepsis features:</p><ul><li>Drowsiness<br /></li><li>Hypotension<br /></li><li>Tachycardia<br /></li><li>Fever<br /></li></ul><h2><a id="_jkxydij3oly6"></a><strong>Background Explanation (Why This Happens)</strong></h2><ul><li>Urinary catheter is a foreign body<br /></li><li>Increases risk of UTI, especially in:<br /><ul><li>Patients with prostate problems<br /></li><li>Nursing home patients<br /></li></ul></li><li>Severe UTIs can lead to:<br /><ul><li>Acute mental state changes<br /></li></ul></li></ul><h2><a id="_8734ijq8gtgx"></a><strong>Symptoms of Catheter-Induced UTI (As Mentioned)</strong></h2><ul><li>Fever<br /></li><li>Pelvic discomfort<br /></li><li>Hematuria<br /></li><li>Flank pain<br /></li><li>Acute mental state change<br /></li></ul><h2><a id="_mbxag5wkvejn"></a><strong>Key Principles Before Antibiotics</strong></h2><ul><li>Always obtain samples for:<br /><ul><li>Urine culture and sensitivity (MCS)<br /></li><li>Blood culture<br /></li></ul></li><li>Samples should be taken before antibiotics<br /></li></ul><h2><a id="_6tz5b2oklg49"></a><strong>Catheter Management</strong></h2><ul><li>Preferred approach:<br /><ul><li>Remove the catheter<br /></li></ul></li><li>Options:<br /><ul><li>Remove catheter → take midstream urine<br /></li><li>If catheter must remain → replace and take sample from catheter port<br /></li></ul></li><li>In this case:<br /><ul><li>Catheter already removed → proceed with urine MCS</li></ul></li></ul><h3><a id="_bwwleo748hew"></a><strong>How to Explain Diagnosis to the Nurse (Example Dialogue)</strong></h3><p>“I think this patient has a catheter-induced urinary tract infection, and given his low blood pressure, high pulse rate, fever, and drowsiness, I am also concerned about possible sepsis or even septic shock.”</p><p>REASONS: Triggering event&gt; patient recently catherized, patient has BPH that itself icreases risk of UTI, pt has septic shock features as he is drowsy, his BP is low, PR is high, high temperature.</p><h2><a id="_us6g8nq2zdqv"></a><strong>Immediate Management (Sepsis-Focused)</strong></h2><h3><a id="_z3jd9wkhib6r"></a><strong>Initial Stabilisation</strong></h3><ul><li>I want to Insert two large-bore IV cannulas<br /></li><li>Start my pt normal saline(500ml- 1 liter)<br /></li><li>Oxygen:<br /><ul><li>If saturation &lt;94% → give oxygen<br /></li><li>If normal → monitor closely<br /></li></ul></li></ul><h3><a id="_m7wkd7hwuddh"></a><strong>Immediate Investigations (Before Antibiotics)</strong></h3><ol><li>Urine MCS<br /></li><li>Blood culture<br /></li></ol><p>These two are prioritised before antibiotics</p><p>Other blood tests are not affected by antibiotics</p><h3><a id="_xh0jif8lzdx1"></a><strong>Antibiotic Management</strong></h3><ul><li>I want u to quickly start antibiotics to patient</li><li>Start empirical IV antibiotics<br /></li><li>Given within one hour after samples taken<br /></li><li>Medications used:<br /><ul><li>Gentamicin IV<br /></li><li>Amoxicillin IV<br /></li></ul></li><li>Doses:<br /><ul><li>Let me checkthe dosages in therapeutic guidelines<br /></li></ul></li></ul><p>Example Dialogue</p><p>“I will start the patient on IV gentamicin and IV amoxicillin. I’ll check the exact doses in the therapeutic guidelines and confirm them with you shortly.”</p><h3><a id="_ifznhtamvxsz"></a><strong>Monitoring</strong></h3><ul><li>I want u to Closely monitor :<br /><ul><li>Vital signs<br /></li></ul></li><li>Continue IV fluids as needed<br /></li></ul><h3><a id="_cct1xphhq5ks"></a><strong>Additional Investigations</strong></h3><ul><li>Urea, electrolytes, creatinine<br /></li><li>Full blood examination<br /></li><li>ESR, CRP<br /></li></ul><h2><a id="_xyzzdavo6zd9"></a><strong>Intermediate Management</strong></h2><ul><li>We will follow up urine and blood culture results<br /></li><li>Adjust antibiotics based on:<br /><ul><li>Organism<br /></li><li>Sensitivity<br /></li></ul></li><li>Duration of antibiotics:<br /><ul><li>7 days if good response<br /></li><li>10–14 days if inadequate response<br /></li></ul></li><li>Switch from IV to oral antibiotics:<br /><ul><li>Once patient is stable<br /></li><li>Once oral intake is tolerated<br /></li></ul></li></ul><h2><a id="_hzuo2o51rwte"></a><strong>Long-Term Management (New Task)</strong></h2><h3><a id="_z8v6e8apfpif"></a><strong>Aim</strong></h3><ul><li>Best Prevention of catheter-induced UTI is to:<br /><ul><li>Treat BPH<br /></li><li>Limit catheter use<br /></li></ul></li></ul><h3><a id="_dj9g5t717efx"></a><strong>Pharmacological Management of BPH</strong></h3><ol><li>I want to start Alpha-receptor antagonists<br /><ul><li>Example: Tamsulosin<br /></li><li>Side effect to warn about:<br /><ul><li>Postural hypotension<br /></li></ul></li></ul></li><li>5-alpha reductase inhibitors<br /><ul><li>Example: Finasteride<br /></li></ul></li><li>Combination therapy<br /><ul><li>Tamsulosin + Dutasteride<br /></li><li>Single combination tablet preferred<br /></li></ul></li></ol><h3><a id="_rvc2ufkpe2ah"></a><strong>If Medical Treatment Fails</strong></h3><ul><li>Recurrent urinary retention<br /></li><li>Poor symptom control<br /></li></ul><p>→ Refer to urologist</p><h3><a id="_jgqjbijnf0eq"></a><strong>Surgical Management</strong></h3><ul><li>Gold standard:<br /><ul><li>Transurethral resection of the prostate (TURP)<br /></li></ul></li><li>Explanation:<br /><ul><li>Endoscopic procedure<br /></li><li>Instrument passed through urethra<br /></li><li>Part of prostate shaved to relieve obstruction<br /></li></ul></li></ul><h2><a id="_lf9yivpu9pdf"></a><strong>Important Exam Clarification</strong></h2><ul><li>PSA testing not included coz BPH already confirmed in the stem<br /></li><li>Focus is on management, not diagnosis of BPH</li></ul></section>
+
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: surgical-skills-expert (Australian surgical educator, FRACS) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>Fluid resuscitation is stated as &#x27;normal saline 500 mL - 1 litre&#x27;. For a patient in septic shock (BP 80/50, HR 120, SpO2 90%) this is inadequate.</strong><br>Give a balanced crystalloid bolus targeting 30 mL/kg (approximately 2 L for a 70 kg adult) within the first 3 hours per Surviving Sepsis / Australian sepsis pathways, delivered as repeated 250-500 mL boluses with reassessment after each. Escalate to noradrenaline (vasopressor) if the patient remains hypotensive (MAP &lt;65) after adequate fluid - i.e. this is septic shock, not just sepsis.</div><div class="correction">✏️ <strong>The sepsis work-up omits serum lactate and structured perfusion monitoring.</strong><br>Measure serum lactate immediately (a lactate &gt;2 mmol/L, and especially &gt;4 mmol/L, defines high-risk sepsis and guides resuscitation) and re-measure to assess response. Insert a urinary catheter and monitor hourly urine output as a marker of end-organ perfusion. These are core components of the Sepsis Six / Australian sepsis bundle that the case currently misses.</div><div class="correction">✏️ <strong>IV amoxicillin is started without documenting a check for penicillin allergy.</strong><br>Confirm allergy status before giving amoxicillin/ampicillin. The Australian empirical regimen for urosepsis (amoxicillin or ampicillin 2 g IV 6-hourly PLUS gentamicin IV, dosed to actual body weight and renal function) is appropriate, but penicillin allergy must be excluded first and gentamicin dosing checked against renal function.</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ State the timing bundle explicitly: take blood cultures and urine culture (from a freshly replaced catheter port, or MSU as here) BEFORE antibiotics, then give empirical IV antibiotics within 1 hour of recognising sepsis - the case has the sequence right but should name the &#x27;1-hour&#x27; and &#x27;Sepsis Six&#x27; standard and add early senior/ICU escalation and source control (remove/replace the offending catheter).</div><div class="enhancement">⭐ Add long-term prevention detail: the case correctly targets BPH treatment (tamsulosin, finasteride/dutasteride, TURP) but should add catheter-stewardship measures - avoid unnecessary catheterisation, use the smallest appropriate catheter, aseptic insertion and prompt removal, and consider trial-of-void or intermittent self-catheterisation rather than a long-term indwelling catheter, per the ACSQHC CAUTI-prevention program.</div><div class="enhancement">⭐ Metadata to add: flag this as an emergency communication/escalation station (ISBAR handover to the nurse) and cross-link to the catheterisation procedure (case 1) and BPH/retention (case 7).</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>emergency_scenario</dd><dt>Difficulty</dt><dd>hard</dd><dt>Amc Frequency</dt><dd>high - recognition and initial management of urosepsis/septic shock is a high-yield AMC emergency scenario.</dd><dt>Tags</dt><dd>urosepsis, septic shock, catheter-associated uti, sepsis six, fluid resuscitation, empirical antibiotics, bph</dd><dt>Related Topics</dt><dd>benign prostatic hyperplasia, urinary catheterisation, acute kidney injury, TURP, sepsis recognition</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 When sepsis is suspected, investigate with blood culture, FBE/ESR/CRP, urine culture and chest X-ray - supporting the case&#x27;s &#x27;cultures before antibiotics&#x27; septic work-up (rag chunk is the paediatric sepsis approach but the investigation list is directly applicable).<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.2399 <span class="pid">qdrant:d83c6e68-6a6a-46b3-9b44-50cf28cfd64d</span></div><div class="citation">📚 Empirical antibiotic choice for a urinary source should target Gram-negative uropathogens (E. coli, Klebsiella, Pseudomonas) - options include trimethoprim/sulfamethoxazole, nitrofurantoin (uncomplicated only) and fluoroquinolones, informing the escalation to IV amoxicillin plus gentamicin for the septic patient.<br><strong>On Call Principles and Protocols.pdf</strong> p.510 <span class="pid">qdrant:b8a357d7-4b6e-4c3a-bf9f-c37fa9e7f0d7</span></div><div class="citation">📚 Severe bacterial sepsis/septicaemia (including toxic shock and other bacterial sepsis) is a not-to-be-missed emergency, justifying the case&#x27;s emphasis on recognising hypotension, tachycardia, fever and drowsiness as septic shock.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.213 <span class="pid">qdrant:c28a25e1-b084-4094-92b2-3e3a53305aff</span></div><div class="citation">📚 Haematuria is one listed symptom of the infection and, if it persists, an ominous sign that warrants its own evaluation - relevant to safety-netting after the acute episode resolves (rag chunk is the kidney-swelling haematuria red-flag box).<br><strong>Churchills_Pocketbook_of_Differential_Diagnosis (1).pdf</strong> p.297 <span class="pid">qdrant:4aa4f31a-9df3-4ffc-832a-d8221e721e60</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

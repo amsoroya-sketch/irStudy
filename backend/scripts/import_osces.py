@@ -68,6 +68,20 @@ def load_osce_files(source_dir: Path) -> list[dict]:
         except Exception as e:
             print(f"❌ Error reading {filename}: {e}")
 
+    # Also load any per-station *.osce.json files (Phase 6 workshop stations)
+    for file_path in sorted(source_dir.glob("*.osce.json")):
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            items = data if isinstance(data, list) else [data]
+            osces.extend(items)
+        except Exception as e:
+            print(f"❌ Error reading {file_path.name}: {e}")
+    if source_dir.glob("*.osce.json"):
+        n = sum(1 for _ in source_dir.glob("*.osce.json"))
+        if n:
+            print(f"✓ Loaded {n} workshop station file(s) (*.osce.json)")
+
     return osces
 
 
@@ -88,7 +102,10 @@ def map_specialty(specialty_str: str) -> MedicalSpecialty:
         'obstetrics': MedicalSpecialty.OBSTETRICS_GYNAECOLOGY,
         'gynaecology': MedicalSpecialty.OBSTETRICS_GYNAECOLOGY,
         'obstetrics_gynaecology': MedicalSpecialty.OBSTETRICS_GYNAECOLOGY,
-        'surgery': MedicalSpecialty.SURGERY
+        'surgery': MedicalSpecialty.SURGERY,
+        'ophthalmology': MedicalSpecialty.OPHTHALMOLOGY,
+        'urology': MedicalSpecialty.UROLOGY,
+        'musculoskeletal': MedicalSpecialty.MUSCULOSKELETAL,
     }
 
     specialty_lower = specialty_str.lower().strip()
@@ -113,9 +130,13 @@ def map_osce_type(type_str: str) -> OSCEType:
     type_map = {
         'history_taking': OSCEType.HISTORY_TAKING,
         'physical_examination': OSCEType.PHYSICAL_EXAMINATION,
-        'communication': OSCEType.COMMUNICATION_SKILLS,
-        'procedural': OSCEType.PROCEDURAL_SKILLS,
-        'data_interpretation': OSCEType.DATA_INTERPRETATION
+        'counselling': OSCEType.COUNSELLING,
+        'communication': OSCEType.COMMUNICATION,
+        'diagnosis_management': OSCEType.DIAGNOSIS_MANAGEMENT,
+        'emergency_scenario': OSCEType.EMERGENCY_SCENARIO,
+        # legacy aliases
+        'communication_skills': OSCEType.COMMUNICATION,
+        'procedural': OSCEType.PHYSICAL_EXAMINATION,
     }
 
     type_lower = type_str.lower().strip() if type_str else 'history_taking'
@@ -173,6 +194,11 @@ def import_osces(source_dir: str, dry_run: bool = False, validate: bool = False)
         try:
             # Extract OSCE ID (use existing or generate)
             osce_id = osce_data.get('id') or osce_data.get('osce_id') or str(uuid4())
+            # osce_id column is VARCHAR(50); bound long IDs deterministically
+            if len(osce_id) > 50:
+                import hashlib
+                suffix = hashlib.md5(osce_id.encode()).hexdigest()[:8]
+                osce_id = osce_id[:41] + "-" + suffix
 
             # Check if OSCE already exists
             existing = db.query(OSCE).filter(OSCE.osce_id == osce_id).first()
@@ -218,6 +244,8 @@ def import_osces(source_dir: str, dry_run: bool = False, validate: bool = False)
             red_flags = osce_data.get('red_flags', [])
             tags = osce_data.get('tags', [])
             time_limit = osce_data.get('time_limit_minutes', 8)
+            examiner_instructions = osce_data.get('examiner_instructions')
+            australian_guidelines = osce_data.get('australian_guidelines', [])
 
             # Create OSCE model
             osce = OSCE(
@@ -228,11 +256,13 @@ def import_osces(source_dir: str, dry_run: bool = False, validate: bool = False)
                 difficulty=difficulty,
                 patient_instructions=patient_instructions,
                 candidate_instructions=candidate_instructions,
+                examiner_instructions=examiner_instructions,
                 rubric=rubric,
                 time_limit_minutes=time_limit,
                 learning_objectives=learning_objectives,
                 key_points=key_points,
                 red_flags=red_flags,
+                australian_guidelines=australian_guidelines,
                 tags=tags,
                 is_published=True
             )

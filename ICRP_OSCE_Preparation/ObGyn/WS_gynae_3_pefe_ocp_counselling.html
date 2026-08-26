@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physical Examination from Examiner (PEFE) - OCP Counselling Case - ObGyn OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        ObGyn<span>›</span>Physical Examination from Examiner (PEFE) - OCP Counselling Case
+    </div>
+    <h1>Physical Examination from Examiner (PEFE) - OCP Counselling Case</h1>
+    <p class="source-line">Source: Dr. Amir workshop — gynae
+       / 4. Counselling cases (Aug 2026 drop) · Specialty: obstetrics_gynaecology</p>
+
+<section id="content"><h1><a id="_q0o2eoyzuxmz"></a><strong>Physical Examination From Examiner – OCP Counselling Case </strong></h1><h2><a id="_jiomtamz4lzu"></a><strong>1. General Appearance</strong></h2><ul><li>Look for BMI → obesity important.<br /></li><li>Cachexia may matter because cancers are on the list.<br /></li></ul><h2><a id="_uovsi15nx5h8"></a><strong>2. Vital Signs</strong></h2><ul><li>Blood pressure is super important.<br /></li><li>Can still ask for pulse rate, respiratory rate, temperature.<br /></li></ul><h2><a id="_3bgjw2cyse3c"></a><strong>3. CVS Examination (imp)</strong></h2><ul><li>CVS is super necessary due to contraindications (ischemic, valvular, congenital heart disease).<br /></li><li>Simple approach:<br /><ul><li>S1, S2<br /></li><li>Murmurs or added sounds<br /></li></ul></li><li>Optional additions (time-efficient):<br /><ul><li>Ask for raised JVP<br /></li><li>Ask for displaced apex beat<br /></li><li>Not necessary to do a full detailed exam, but allowed if desired.<br /></li></ul></li></ul><h2><a id="_6hncqd1z62ff"></a><strong>4. Respiratory Examination</strong></h2><ul><li>Because respiratory findings can reflect cardiac problems (heart failure, congenital heart disease).<br /></li><li>Do it short and fast:<br /><ul><li>Air entry equal<br /></li><li>Any added sounds<br /></li></ul></li></ul><h2><a id="_qohx8ksd1j4v"></a><strong>5. Breast Examination (imp)</strong></h2><ul><li>With consent of patient and presence of a chaperone.<br /></li><li>Purpose: look for any breast lumps.<br /></li></ul><h2><a id="_iki8rt2wa27y"></a><strong>6. Abdominal Examination (imp)</strong></h2><ul><li>Ask for:<br /><ul><li>Distension (ascites)<br /></li><li>Masses<br /></li><li>Hepatomegaly<br /></li><li>Splenomegaly<br /></li><li>tenderness<br /></li></ul></li></ul><h2><a id="_ynyqcwol0dbs"></a><strong>7. Pelvic Examination</strong></h2><ul><li>References say routine pelvic exam is not needed for initiating COCP.<br /></li><li>But for AMC OSCE, lecturer will still do it.<br /></li></ul><h3><a id="_g6kbiyk3clib"></a><strong>When to Skip</strong></h3><ul><li>If girl is a virgin → only inspection / looking at hymen.<br /></li><li>If never sexually active or no partner → skip full pelvic exam.<br /></li><li>If concerns exist (heavy periods, discharge, other problems) → do full pelvic examination.<br /></li></ul><h3><a id="_p7fl7rrbv5mj"></a><strong>Pelvic Examination Steps</strong></h3><ul><li>Consent and chaperone<br /></li><li>Inspection<br /><ul><li>Look for bleeding, discharge, rashes, redness, lumps, swelling<br /></li></ul></li><li>Speculum examination<br /><ul><li>Only if she is not a virgin<br /></li><li>Look at cervix<br /></li><li>Look at vaginal walls<br /></li></ul></li><li>Bimanual examination<br /><ul><li>Cervical motion tenderness<br /></li><li>Uterus (size, border, tenderness)<br /></li><li>Adnexal mass and tenderness<br /></li></ul></li></ul><h2><a id="_b8jt635xjk8y"></a><strong>8. Urine Pregnancy Test</strong></h2><ul><li>Last step.<br /></li><li>Depends on history.<br /></li><li>If virgin, not sexually active, zero chance of pregnancy → do not do it.<br /></li><li>If sexually active lady → preferably ensure she is not pregnant before starting contraception.<br /></li></ul><h1><a id="_qhqelbpvr8lr"></a><strong>Key Don’ts / Must-Remembers</strong></h1><ul><li>Don’t forget blood pressure<br /></li><li>Don’t forget obesity<br /></li><li>Don’t forget CVS and liver examination<br /></li><li>Breast examination → yes<br /></li><li>Pelvic examination depends on sexual activity and concerns<br /></li><li>If virgin / never sexually active → no pelvic exam<br /></li><li>If concerns (discharge, bleeding, pain on sex) → do pelvic exam<br /></li></ul></section>
+
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: clinical-documentation-expert (Australian clinical supervisor, O&amp;G / RACGP standards) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>The note acknowledges &#x27;routine pelvic exam is not needed for initiating COCP&#x27; but then instructs to perform pelvic and breast examination anyway &#x27;because the lecturer will do it&#x27;, potentially teaching unnecessary/inappropriate examination.</strong><br>Per current Australian/RACGP evidence, initiating the COCP requires only blood pressure and BMI/weight; routine pelvic (speculum/bimanual) and breast examination are NOT indicated for asymptomatic women starting the pill and should only be performed if the history flags a specific concern (abnormal bleeding, discharge, dyspareunia, palpable lump). The station should reward the candidate for correctly stating these examinations are not routinely required and for gaining consent + chaperone if a targeted exam is justified.</div><div class="correction">✏️ <strong>The note directs speculum examination to be skipped &#x27;only if she is a virgin&#x27; and to &#x27;look at the hymen&#x27;.</strong><br>Decisions about speculum/pelvic examination should be based on clinical indication and the woman&#x27;s comfort/consent, not on virginity status or hymenal inspection, which is not clinically appropriate. Reframe as: offer examination only when clinically indicated, with informed consent and a chaperone, and never as a precondition for prescribing contraception.</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ Add explicit consent and chaperone documentation as a scored step for any intimate (breast/pelvic) examination - an AHPRA/medicolegal expectation that also earns OSCE communication marks.</div><div class="enhancement">⭐ Add that cardiovascular examination should specifically look for signs relevant to COCP contraindications (murmurs suggesting valvular disease, evidence of hypertension) and that a raised BP reading must be repeated/confirmed before withholding or prescribing.</div><div class="enhancement">⭐ Add a structured hand-off line: on completing PEFE the candidate should summarise pertinent positives/negatives (BP, BMI, no murmur, no hepatomegaly, no breast lump) and link them explicitly to the decision to prescribe or defer, improving clinical-reasoning marks.</div><div class="enhancement">⭐ Add related metadata cross-linking to the OCP counselling case and cite the RACGP/Therapeutic Guidelines statement that BP and BMI are the only mandatory pre-COCP assessments.</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>physical_examination</dd><dt>Difficulty</dt><dd>medium</dd><dt>Amc Frequency</dt><dd>medium - PEFE (examiner-provided findings) format is common in AMC OSCEs; the OCP-examination scenario tests appropriate, indication-based examination</dd><dt>Tags</dt><dd>physical-examination, pefe, ocp, contraception, chaperone, consent, blood-pressure, pelvic-examination</dd><dt>Related Topics</dt><dd>OCP counselling, cardiovascular examination, breast examination, abnormal uterine bleeding, informed consent documentation</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 Pelvic examination is indicated when history suggests intra-uterine or cervical pathology (persistent intermenstrual/postcoital bleeding, suspicion of malignancy); non-menstrual bleeding suggests cancer until proven otherwise - supports doing pelvic exam only when a specific concern is present rather than routinely for COCP initiation.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.1088 <span class="pid">qdrant:857df5bc-c1ac-4672-9b63-6aa98172891a</span></div><div class="citation">📚 Where a pelvic mass/uterine pathology (e.g. fibroids) is suspected on abdominal or bimanual examination, transvaginal ultrasound is the appropriate next investigation - supports the abdominal/pelvic examination component of the station.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.1086 <span class="pid">qdrant:380d0559-14e7-4200-855a-6ec6c6169462</span></div><div class="citation">📚 Structured, examiner-guided clinical examination with correct technique and interpretation is a formally assessed AMC competency (chunk is a generic AMC performance-guideline reference and is only tangentially specific to OCP examination).<br><strong>AMC Handbook of Clinical Assessment.pdf</strong> p.684 <span class="pid">qdrant:1a6e92c4-bf81-4e3f-8a5f-20599ce87db5</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

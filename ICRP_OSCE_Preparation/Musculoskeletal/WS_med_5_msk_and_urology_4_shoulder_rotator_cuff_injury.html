@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rotator Cuff Tear - Explaining Ultrasound Results - Musculoskeletal OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        Musculoskeletal<span>›</span>Rotator Cuff Tear - Explaining Ultrasound Results
+    </div>
+    <h1>Rotator Cuff Tear - Explaining Ultrasound Results</h1>
+    <p class="source-line">Source: Dr. Amir workshop — Med 5 MSK and urology
+       / other MSK Cases (Aug 2026 drop) · Specialty: musculoskeletal</p>
+
+<section id="content"><h1><a id="_sy9nqf2jljm7"></a><strong>Shoulder – Rotator Cuff Injury</strong></h1><p><strong>Your next patient has come to your general practice to discuss his ultrasound results. The physiotherapist had referred him for a shoulder ultrasound and the results show:</strong></p><ul><li><strong>Complete tear of the subscapularis</strong></li><li><strong>Partial tear in the supraspinatus and infraspinatus</strong></li><li><strong>Teres minor normal</strong></li><li><strong>No bursitis seen</strong></li></ul><p>Task</p><ul><li>Explain USD to the patient</li><li>Take further history</li></ul><p>Diagnosis: rotator cuff injury<br /></p><ul><li>Candidate will have extra time<br /></li><li>Explanation should be long and detailed<br /></li><li>Aim:<br /><ul><li>Build understanding<br /></li><li>Maintain rapport<br /></li><li>Use time effectively<br /></li></ul></li></ul><h2><a id="_5e0tvq95108j"></a><strong>3. Starting the Station – Opening &amp; Rapport</strong></h2><h3><a id="_9r1z7divc61g"></a><strong>3.1 Opening the Discussion</strong></h3><p>Example Dialogue</p><ul><li>“Hi, my name is Amir, I’ll be your doctor today. I have your results with me, but just before we start, can you tell me what has happened so far?”<br /></li></ul><h3><a id="_ylq9ovktp008"></a><strong>3.2 Patient’s Likely Opening Statement</strong></h3><ul><li>Long-standing shoulder problem<br /></li><li>Seen physiotherapist<br /></li><li>Completed ~2 months of physio<br /></li><li>No improvement<br /></li><li>Sent for ultrasound<br /></li><li>Now attending for results<br /></li></ul><p>Reasoning</p><ul><li>Creates better rapport<br /></li><li>Better flow than immediately explaining results<br /></li></ul><h2><a id="_tcyv101x2nsh"></a><strong>4. Explaining the Ultrasound Results</strong></h2><h3><a id="_2nafmtwpl431"></a><strong>4.1 Building Basic Understanding of the Shoulder</strong></h3><ul><li>The Shoulder joint is a ball and socket joint<br /></li><li>Head of the arm bone acts like a ball that Attaches into the shoulder joint<br /></li><li>This type of joint is:<br /><ul><li>Structurally weak<br /></li><li>Requires muscles around it to remain stable<br /></li></ul></li></ul><h3><a id="_18p35evlvze7"></a><strong>4.2 Introducing the Rotator Cuff</strong></h3><ul><li>There are four muscles around the shoulder which are Responsible for:<br /><ul><li>Movement of the shoulder<br /></li><li>Stability and integrity of the joint<br /></li></ul></li><li>These muscles are called the rotator cuff muscles<br /></li></ul><p>Names of the four muscles</p><ul><li>Supraspinatus<br /></li><li>Infraspinatus<br /></li><li>Teres minor<br /></li><li>Subscapularis<br /></li></ul><h3><a id="_g0pzfl85qcw8"></a><strong>4.3 Explaining the Ultrasound Findings (One by One)</strong></h3><ul><li>“In your scan, I can see that u have full tear in the subscapularis muscle which means the Tear has gone through the entire thickness of the muscle. U have Partial tear in Supraspinatus &amp; Infraspinatus muscle which means Only part of the muscle is torn<br /></li><li>Teres minor muscle is Normal<br /><ul><li>Not torn<br /></li></ul></li></ul><h3><a id="_9fjqdn240ti3"></a><strong>4.4 Explaining Full vs Partial Tears</strong></h3><ul><li>Full tear<br /><ul><li>Muscle torn completely<br /></li></ul></li><li>Partial tear<br /><ul><li>Muscle torn partially<br /></li></ul></li><li>Ultrasound reports commonly use these terms<br /></li><li>Explanation should match exact report wording<br /></li></ul><h2><a id="_tm34myyqtrb9"></a><strong>5. Transition to History Taking</strong></h2><p>Example Dialogue</p><ul><li>“Is it okay if I ask you a few more questions?”<br /></li><li>Patient agrees<br /></li><li>This marks the transition to second task<br /></li></ul><h2><a id="_budgcctf3825"></a><strong>6. Further History Taking</strong></h2><h3><a id="_j1phvioophky"></a><strong>6.1 Opening Question (If Not Already Done)</strong></h3><ul><li>If not done at the beginning, must do it now<br /></li></ul><p>Example</p><ul><li>“Can you tell me a little bit more about your shoulder problem?”<br /></li><li>“What has been going on so far?”<br /></li></ul><h2><a id="_fv94zl89g1ab"></a><strong>7. Pain Assessment</strong></h2><h3><a id="_975lodck5f2i"></a><strong>7.1 Characteristics of Pain (Full SIQORAA)</strong></h3><ul><li>Site – front, side, or back<br /></li><li>Intensity<br /></li><li>Quality<br /></li><li>Onset &amp; duration – on/off, continuous<br />Progression – getting worse<br /></li><li>Radiation<br /></li><li>Alleviating / Aggravating factors<br /></li><li>Affecting life<br /></li></ul><h3><a id="_9uxv2ecupjr2"></a><strong>7.2 Pattern &amp; Functional Impact</strong></h3><ul><li>Pain at night<br /></li><li>Worse in:<br /><ul><li>Morning<br /></li><li>End of the day<br /></li></ul></li><li>Worse with:<br /><ul><li>Activity<br /></li><li>Exercise<br /></li><li>Rest<br /></li></ul></li><li>Most important question:<br /><ul><li>“How is this affecting your life?”<br /></li></ul></li></ul><h2><a id="_4ysie1jeffq9"></a><strong>8. Shoulder-Specific Questions</strong></h2><h3><a id="_ngadao71sle5"></a><strong>8.1 Stiffness &amp; Movement</strong></h3><ul><li>Any stiffness u have?<br /></li><li>Any Difficulty or restriction in movement<br /></li><li>Key emphasis:<br /><ul><li>Any Difficulty with overhead activities<br /></li></ul></li></ul><h3><a id="_pzafjku1t0c1"></a><strong>8.2 Instability</strong></h3><ul><li>“Have you noticed any instability in the shoulder?”<br /></li><li>If no:<br /><ul><li>“Does your shoulder give away or pop out?”<br /></li></ul></li><li>“Giving away” = instability<br /></li></ul><h2><a id="_prccs5ula3ik"></a><strong>9. Occupation &amp; Sports</strong></h2><h3><a id="_1gtkqode0vbb"></a><strong>9.1 Occupation</strong></h3><ul><li>Explore job role<br /></li><li>“Do you perform any overhead activities at job”<br /></li><li>Example:<br /><ul><li>Reaching cupboards<br /></li><li>Lifting overhead<br /></li></ul></li></ul><h3><a id="_7p3ilvrz2bbr"></a><strong>9.2 Sports</strong></h3><ul><li>Ignore non-overhead sports (e.g. running)<br /></li><li>Focus on sports involving overhead movement<br /></li></ul><h2><a id="_ob1zpf35w8bk"></a><strong>10. Previous Injury or Trauma</strong></h2><ul><li>Ask about:<br /><ul><li>Previous shoulder injuries<br /></li><li>Trauma<br /></li></ul></li><li>In this case:<br /><ul><li>Usually no<br /></li></ul></li><li>If yes:<br /><ul><li>Describe incident<br /></li><li>What happened after<br /></li><li>Scans done<br /></li><li>Treatment received<br /></li></ul></li></ul><h2><a id="_hwmftil6hoje"></a><strong>11. Chronic Pain Assessment</strong></h2><ul><li>Ask about mood<br /></li><li>Ask:<br /><ul><li>“How are you coping with the pain?”<br /></li></ul></li><li>Explore:<br /><ul><li>Support at home<br /></li><li>Financial situation<br /></li><li>Relationships at home<br /></li></ul></li></ul><h2><a id="_nh3kij75bgv8"></a><strong>12. Why Candidates Kept Failing This Case</strong></h2><ul><li>Despite full rotator cuff history, candidates failed repeatedly<br /></li><li>Diagnosis was clear<br /></li><li>Issue was case design, not candidate logic<br /></li><li>Examiner expected ruling out other differentials<br /></li></ul><h2><a id="_k1b9ayvmqw7"></a><strong>Additional Mandatory Component – Ruling Out Differentials</strong></h2><p>(This was the key to passing the case)</p><h3><a id="_a9l4w5f61clt"></a><strong>13.1 Polymyalgia Rheumatica</strong></h3><ul><li>Especially in older patient<br /></li><li>Ask about:<br /><ul><li>Hip pain<br /></li><li>Tiredness<br /></li><li>Stiffness<br /></li><li>Headaches<br /></li><li>Blurring of vision<br /></li></ul></li></ul><h3><a id="_t6cw5gtmagjz"></a><strong>13.2 Cervical Radiculopathy (C5)</strong></h3><ul><li>Can present as shoulder pain<br /></li><li>Ask about:<br /><ul><li>Neck pain<br /></li><li>Weakness in arm movement<br /></li><li>Numbness<br /></li><li>Pins and needles<br /></li></ul></li></ul><h3><a id="_ui0ac41ya4pu"></a><strong>13.3 Osteoarthritis</strong></h3><ul><li>Consider:<br /><ul><li>Post-traumatic osteoarthritis<br /></li><li>Joint instability due to multiple muscle tears<br /></li></ul></li><li>Ask about:<br /><ul><li>Cracking sounds<br /></li><li>Popping sounds<br /></li><li>Have u noticed any Locking of the shoulder when u move it?<br /></li></ul></li></ul><h3><a id="_vn6yc22xwfj5"></a><strong>13.4 Rheumatoid Arthritis</strong></h3><ul><li>Ask about:<br /><ul><li>Other joint pains<br /></li><li>Generalized body pains<br /></li><li>Family history of joint disease<br /></li></ul></li></ul><h3><a id="_r0vb6oadzkh9"></a><strong>13.5 Red Flags – Cardiac Cause</strong></h3><ul><li>Especially with left shoulder pain<br /></li><li>Ask about:<br /><ul><li>Chest pain<br /></li><li>Shortness of breath<br /></li></ul></li></ul><h2><a id="_cmmzmak3idm9"></a><strong>14. Final Teaching Point</strong></h2><ul><li>This approach is not logically standard<br /></li><li>Required only because of the way the case is designed<br /></li><li>Extremely annoying, but necessary to pass<br /></li></ul></section>
+
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: surgical-skills-expert (Australian surgical educator, FRACS) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>The case describes the shoulder as &#x27;a ball and socket joint&#x27; and attributes stability solely to the four rotator-cuff muscles. This is anatomically incomplete for patient explanation and reasoning.</strong><br>The glenohumeral joint is a shallow ball-and-socket joint whose stability depends on both dynamic stabilisers (the four rotator-cuff muscles: supraspinatus, infraspinatus, teres minor, subscapularis) and static stabilisers (the glenoid labrum, joint capsule and glenohumeral ligaments). Mentioning the labrum/capsule keeps the explanation accurate and consistent with the instability case (case 3).</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ Add an explicit management pathway (the station tests explanation + history but candidates should be ready to outline it): a symptomatic full-thickness subscapularis tear that has failed ~2 months of physiotherapy warrants referral to an orthopaedic/shoulder surgeon for consideration of surgical repair, whereas partial-thickness supraspinatus/infraspinatus tears are usually managed with continued structured physiotherapy, activity modification, simple analgesia (paracetamol +/- short-course topical NSAID) and a subacromial corticosteroid injection if impingement pain persists. Acute large traumatic cuff tears should be referred early.</div><div class="enhancement">⭐ Formalise the &#x27;ruling out differentials&#x27; teaching into a clear red-flag checklist rather than framing it as an examiner quirk: polymyalgia rheumatica (older patient, girdle stiffness), C5 cervical radiculopathy (neck pain, dermatomal numbness, weakness), referred cardiac pain (left shoulder, exertional chest pain/dyspnoea) and Pancoast tumour are genuine not-to-be-missed causes of shoulder pain.</div><div class="enhancement">⭐ Add metadata: this is a counselling/explaining-results station with a second history-taking task; tag health-literacy communication (plain-language explanation of full vs partial tear matching the exact report wording) as a discriminating scoring domain.</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>counselling</dd><dt>Difficulty</dt><dd>medium</dd><dt>Amc Frequency</dt><dd>medium - explaining an imaging report in plain language plus a focused shoulder history is a recognised communication/counselling station format.</dd><dt>Tags</dt><dd>rotator cuff tear, ultrasound, shoulder, counselling, explaining results, supraspinatus, subscapularis</dd><dt>Related Topics</dt><dd>shoulder instability, polymyalgia rheumatica, cervical radiculopathy, subacromial impingement</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 Rotator cuff tendinopathy with or without a tear is a leading cause of shoulder pain, and the mandated differentials in the case (polymyalgia rheumatica, cervical dysfunction, referred cardiac pain, Pancoast tumour) are captured in the shoulder-pain diagnostic strategy model.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.1477 <span class="pid">qdrant:1ec2943f-4e09-488b-9c98-a9d1eff7c3ef</span></div><div class="citation">📚 Systematically excluding serious mimics before accepting the obvious diagnosis reflects the safe-diagnostic-strategy principle (masquerades and &#x27;is the patient trying to tell me something&#x27;); this chunk supports the case&#x27;s insistence on ruling out other causes, though it is a general clinical-reasoning reference rather than shoulder-specific.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.229 <span class="pid">qdrant:c4c0c7c3-11ce-41ad-b015-a13ca14f48ba</span></div><div class="citation">📚 Simple analgesia such as paracetamol is appropriate first-line pain relief for musculoskeletal pain; this chunk (analgesia for mittelschmerz) is only tangentially related to the shoulder but is the closest analgesia reference available in this case&#x27;s rag_context and supports recommending paracetamol over oral NSAIDs.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.2564 <span class="pid">qdrant:d3f45ca8-ddc0-4c07-ac7b-d21eb6db3206</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

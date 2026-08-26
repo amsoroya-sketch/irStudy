@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Breast Lump - Assessment and Triple Test - ObGyn OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        ObGyn<span>›</span>Breast Lump - Assessment and Triple Test
+    </div>
+    <h1>Breast Lump - Assessment and Triple Test</h1>
+    <p class="source-line">Source: Dr. Amir workshop — gynae
+       / 5. other cases (Aug 2026 drop) · Specialty: obstetrics_gynaecology</p>
+
+<section id="content"><h1><a id="_2ckwoxjmpzo0"></a><strong>BREAST LUMPS </strong></h1><h2><a id="_n3x02ou9ep03"></a><strong>Your next patient is a 40 year old lady who has presented to your clinic concerned of a breast lump.</strong></h2><h2><a id="_lravghz71njx"></a>Task:</h2><h2><a id="_3u0owfi07plu"></a>Take history from the patient</h2><h2><a id="_5t3j7sxaf8l2"></a>Physical examination will appear on the screen</h2><h2><a id="_lr2p66gunidq"></a>Explain your diagnosis and differentials to the patient</h2><h2><a id="_rig54y5qp1p8"></a>(Explain your management plan)</h2><h2><a id="_xaobrodab2rk"></a><strong>2. Australian Guidelines Approach to Breast Lumps</strong></h2><h3><a id="_e17hm7eyqo2y"></a><strong>Triple Test</strong></h3><p>The triple test refers to three diagnostic components:</p><ol><li>medical history and clinical breast examination</li><li>Imaging depends on age:<br /><ul><li>Younger: Ultrasound (dense tissue)<br /></li><li>Older: Mammogram (fatty tissue)<br /></li><li>Age 40–50: specialists often do both.<br /></li></ul></li><li>non-excisional biopsy -core biopsy and/or fine needle aspiration (FNA) cytology.</li></ol><h3><a id="_ehbu53rcon7p"></a><strong>Correct Sequencing</strong></h3><ul><li>Must follow correct order: 1 → 2 → 3.<br /></li><li>Not acceptable to change sequence.<br /></li></ul><h3><a id="_bg05p7c6kru0"></a><strong>Controversial Question</strong></h3><ul><li>25-year-old, no cancer risk factors.<br /></li><li>Exam: typical benign fibroadenoma.<br /></li><li>Ultrasound: typical fibroadenoma.<br /></li><li>Do you biopsy?<br /><br /> – Answer: Yes.<br /></li><li><strong>Because the triple test requires all three tests to be done for a proper diagnosis.</strong><br /></li><li>Managing clinician must correlate cytological/histological results with clinical and imaging findings.<br /></li></ul><h2><a id="_125rs6bv0bt9"></a><strong>3. History Taking – Symptoms of Breast Cancer</strong></h2><p>While the most common presenting symptom of breast cancer is a new breast lump, other presenting symptoms include:</p><ul><li>thickening or ridge</li><li>breast or nipple asymmetry</li><li>skin changes such as dimpling, redness</li><li>nipple changes </li><li>nipple discharge</li><li>unilateral breast pain.<br /> → Must ask these, not only “breast lump”.<br /></li></ul><h3><a id="_4kqei5asffon"></a><strong>Family History</strong></h3><ul><li>Breast cancer<br /></li><li>Ovarian cancer (genes are linked)<br /></li></ul><h3><a id="_qym5whbqgskg"></a><strong>Hormonal Status</strong></h3><ul><li>Menstrual history<br /></li><li>Parity<br /></li><li>Pregnancies<br /></li><li>Breastfeeding<br /></li><li><strong>Follow full 5Ps history.</strong><br /></li></ul><h3><a id="_u8zvt554jeat"></a><strong>Current Medications</strong></h3><ul><li>Hormonal treatments including OCP.<br /></li></ul><h3><a id="_3dds658nirhi"></a><strong>Lifestyle Factors</strong></h3><ul><li>Obesity<br /></li><li>Alcohol<br /></li><li>Physical activity<br /></li><li>Smoking (risk factor for most GYN cancers)<br /></li></ul><h3><a id="_i9mge4olg39q"></a><strong>Previous History</strong></h3><ul><li>Radiation<br /></li><li>Breast surgery<br /></li></ul><h3><a id="_xcrfmvcd6edk"></a><strong>Duration of Symptoms</strong></h3><ul><li>Often not useful as most patients present after noticing lump recently.<br /></li></ul><h3><a id="_rvc348tfvlqg"></a><strong>Relation to Menstrual Cycles</strong></h3><ul><li>Important question: linked to fibrocystic changes (not “cyclical mastalgia”).<br /></li><li>Near periods: pain worsens, size of cyst changes.<br /></li></ul><h3><a id="_igyzzzpbes1i"></a><strong>Associated Symptoms</strong></h3><ul><li>The key symptom questions already mentioned.<br /></li></ul><h2><a id="_w93z7ribpfgl"></a><strong>4. Examination</strong></h2><ul><li>Skipped (covered in physical examination workshop).<br /></li></ul><h2><a id="_lljo2ggk4cir"></a><strong>5. Flow Chart – Triple Test Process</strong></h2><p><img src="assets/gynae_1_breast_lump_case_img1.jpeg" /></p><h3><a id="_1bfgctaj4axg"></a><strong>Step 1: History + Examination</strong></h3><ul><li>If no lump / findings consistent with hormonal changes → fine.<br /></li></ul><h3><a id="_cs8zo4b824uu"></a><strong>If Lump is Felt: Three Branches</strong></h3><ol><li>Malignant-feeling lump<br /><ul><li>Immediate referral + arrange imaging simultaneously.<br /></li><li>Move fast due to concerning exam findings.<br /></li></ul></li><li>Inconclusive lump<br /><br /> → Go to Step 2.<br /></li><li>Benign-feeling lump<br /><br /> → Go to Step 2.<br /></li></ol><h3><a id="_5w89kpm27utf"></a><strong>Step 2: Imaging</strong></h3><ul><li>Ultrasound or mammogram depending on age.<br /></li><li>If no lump → good.<br /></li><li>If malignant lump → flash → core biopsy or FNA cytology.<br /></li></ul><h4><a id="_jj9ku92ds72t"></a><strong>If imaging shows a benign lesion (solid lump)</strong></h4><ul><li>Flash → still need a core biopsy.<br /></li><li>Therefore, even a typical fibroadenoma still requires biopsy.<br /></li></ul><h3><a id="_2s6l2ws5otuh"></a><strong>Cyst Cases</strong></h3><p>(AMC has not used a breast cyst yet; cysts are tricky.)</p><p>Two points to memorise:</p><ol><li>Complex cyst → biopsy.<br /><ul><li>Complex = abnormal appearance, solid components, irregular wall thickness.<br /></li></ul></li><li>Simple cyst → aspirate.<br /></li></ol><p>Red Flags for Cysts</p><ul><li>Bloody fluid → panic.<br /></li><li>Lump remains after complete aspiration → panic.<br /></li><li>Send fluid for cytology (FNA).<br /></li><li>Most of the time, fluid is sent for cytology anyway (FNAC term used).<br /></li></ul><h3><a id="_pp87icie6eyv"></a><strong>Biopsy Types</strong></h3><ul><li>Solid lesions → core biopsy.<br /><ul><li>Thicker needle, takes piece of tissue.<br /></li></ul></li><li>Cystic lesions → fine needle aspiration.<br /><ul><li>Drains fluid.<br /></li></ul></li><li>Techniques similar but conceptually different.<br /></li></ul><h3><a id="_a02l7huaxy1r"></a><strong>Results</strong></h3><ul><li>If benign → fine unless concerning features present (may refer).<br /></li><li>If suspicious / malignant / atypical OR cytology/biopsy inconclusive → refer to breast surgeon.</li></ul><p><br /></p><p><strong>Your next patient is a 40 year old lady who has presented to your clinic concerned of a breast lump.</strong></p><p>Task:</p><ul><li>Take history from the patient</li><li>Physical examination will appear on the screen</li><li>Explain your diagnosis and differentials to the patient</li><li>(Explain your management plan)</li></ul><h2><a id="_nf8be1a6071h"></a><strong>1. Opening / Start of History</strong></h2><ul><li>Start with open-ended question:<br /><br /> “How can I help you today?” or “Tell me more about the breast lump that you found today.”<br /></li><li>Expect concern from patient.<br /></li><li>Reassurance statement:<br /><br /> “I understand your concern, Jane, but let me ask you a few questions. I’ll examine you, try to find the cause, and make the best management plan as always.”<br /></li></ul><h2><a id="_tujkuqwfgxo4"></a><strong>2. Explore the Lump</strong></h2><h3><a id="_e0pdymcmgdxo"></a><strong>Timing</strong></h3><ul><li>“When did you first notice it?”<br /></li><li>“Is this the first time you are having a breast lump?”<br /></li></ul><h3><a id="_oj8yk7mlq276"></a><strong>Number</strong></h3><ul><li>“How many are you feeling? Is it just one or a few?”<br /></li></ul><h3><a id="_z9mvrcxlvn0"></a><strong>Size</strong></h3><h3><a id="_pkyz2hxwgonh"></a><strong> (non-centimetre description)</strong></h3><ul><li>“Can you describe the size for me — pea size or golf ball etc.?”<br /></li></ul><h3><a id="_6cg6daejqfbr"></a><strong>Character — KEY QUESTIONS</strong></h3><ol><li>Pain: “Is the lump painful to touch?”<br /></li><li>Skin changes:<br /><ul><li>Any redness, swelling, or other skin changes?<br /></li><li>Looking for Dimpling / peau d’orange<br /></li></ul></li><li>Consistency: “Does it feel hard or rubbery/soft?”<br /></li><li>Mobility: “Does it move freely or not?”<br /></li></ol><h2><a id="_ej0mujjzx1fw"></a><strong>3. Red Flags — MOST IMPORTANT QUESTIONS</strong></h2><ol><li>Nipple discharge<br /><ul><li>If yes → Ask color (most important)<br /></li></ul></li><li>Nipple changes<br /><ul><li>Any ulcers, rash, redness<br /></li><li>“Does it look different compared to the other side?”<br /></li></ul></li><li>Cancer questions<br /><ul><li>Losing weight<br /></li><li>Appetite<br /></li></ul></li><li>Lumps and bumps (specifically armpit and neck → axillary lymphadenopathy)<br /></li><li>Family history<br /><ul><li>Breast cancer<br /></li><li>Ovarian cancer (specifically ask both)<br /></li></ul></li></ol><h2><a id="_7j6q356apguq"></a><strong>4. Differentials </strong></h2><h3><a id="_qftrjoa3a4vh"></a><strong>Breast Abscess</strong></h3><ul><li>Always ask: “Are you breastfeeding currently?”<br /></li><li>Only if yes:<br /><ul><li>“Do you have any fever?”<br /></li><li>Already asked redness<br /></li><li>Were u taught Proper breastfeeding technique<br /></li><li>Cracked nipple<br /></li></ul></li></ul><h3><a id="_ykgf3m9fkdwn"></a><strong>Fat Necrosis</strong></h3><ul><li>“do u recall any trauma or injury to your breast?”<br /></li></ul><h3><a id="_vm5ny4lq4qk2"></a><strong>Additional cancer risk factors (SADMA)</strong></h3><ul><li>Smoking<br /></li><li>Alcohol<br /></li><li>Certain medications (mentioned briefly)<br /></li><li>Previous history of radiation, imaging, or breast surgery<br /><ul><li>Includes CT scans of chest<br /></li></ul></li></ul><h2><a id="_oux3up4mgqmd"></a><strong>5. Five Ps (linked to breast)</strong></h2><h3><a id="_tzki6enc463a"></a><strong>Period</strong></h3><ul><li>Ask LMP<br /></li><li>Relation of lump to period:<br /><ul><li>“Any pain close to your period?”<br /></li><li>“Any change in the lump size close to your periods?”<br /></li></ul></li></ul><h3><a id="_tomskjv9lwn2"></a><strong>Partner</strong></h3><ul><li>Not important here.<br /></li></ul><h3><a id="_xa2wo9av427"></a><strong>Pregnancy</strong></h3><ul><li>Number of pregnancies<br /></li><li>Previous history of breastfeeding<br /></li><li>Hormonal exposure relevance<br /></li></ul><h3><a id="_3q7jq4977py5"></a><strong>Pills</strong></h3><ul><li>Contraception use<br /></li><li>In menopausal lady → HRT use<br /></li></ul><h3><a id="_z9uve6due608"></a><strong>Pap smear / Screening</strong></h3><ul><li>If premenopausal → cervical screening<br /></li><li>If &gt;50 → “Have you done your regular breast cancer screening with a mammogram?”</li></ul><h1><a id="_940wubarp47"></a><strong>History Findings</strong></h1><ul><li>Suddenly found the lump</li><li>No fever</li><li>No family history of breast cancer</li><li>No red flags</li></ul><h1><a id="_2folv9kub39a"></a><strong>Physical Examination Findings</strong></h1><ul><li>1.5 cm lump, outer upper quadrant<br /></li><li>Hard<br /></li><li>Lobulated (irregular surface and borders)<br /></li><li>Non-tender and Immobile<br /></li><li>No lymphadenopathy<br /></li></ul><h3><a id="_rzag0px9ujow"></a><strong>Main Diagnosis Statement</strong></h3><ul><li>Raise concern appropriately:<br /><br /> “we can have different causes and possibilities but My main concern is making sure this lump is not a breast cancer.”<br /></li></ul><h3><a id="_foh62eevhv3"></a><strong>Differential List (as taught)</strong></h3><ol><li>Breast cancer (top)<br /></li><li>Fibroadenoma<br /></li><li>Fibrocystic changes<br /></li><li>Fat necrosis<br /></li><li>Breast cyst<br /></li><li>Breast abscess (linked to mastitis)<br /></li><li>Lipoma (optional)<br /></li></ol><h1><a id="_va33bw2tifhw"></a><strong>Online Exam Variant (Breastfeeding Version)</strong></h1><h3><a id="_1ud5tr5czgp5"></a><strong>Positive findings</strong></h3><ul><li>Feels a Lump<br /></li><li>Breastfeeding<br /></li><li>Cracked nipples<br /></li><li>Mild pain<br /></li><li>Mild redness<br /></li><li>LMP 10 weeks ago<br /></li><li>Family history of breast cancer</li><li>No fever<br /></li></ul><h3><a id="_rp48zd9x3ptf"></a><strong>Top diagnosis STILL (not breast abscess or lactational mastitis just because there is lump in breastfeeding lady)</strong></h3><ul><li>“My main concern is ruling out breast cancer.”<br /></li><li>Even in breastfeeding → still must consider inflammatory breast cancer<br /></li><li>Add galactocele to list of differentials<br /></li></ul><h1><a id="_rkyrk6xitu8i"></a><strong>MANAGEMENT FRAMEWORK (TRIPLE TEST CASE) — EXACT AS TAUGHT</strong></h1><h2><a id="_lkkpkmp1btph"></a><strong>1. Opening of Counseling Case</strong></h2><ul><li>Start with:<br /><br /> “How are you feeling now?”<br /><br /> OR<br /><br /> “What has happened so far?”<br /><br /> OR<br /><br /> “How can I help you today?”<br /></li></ul><h2><a id="_xvg3idas51la"></a><strong>2. Introduce scan results</strong></h2><ul><li>“I have the scan reports with me. Is it okay if we discuss the results together?”<br /></li><li>Explain purpose of CT after accident: “after your MVA we did some scans on your chest, stomach and lower abdomen to make sure there is no internal injury to the organs in the chest and abdomen.”<br /></li><li>Good news first: there are no organs injured<br /></li></ul><h2><a id="_vwgv0p9fotup"></a><strong>3. Mention breast finding</strong></h2><ul><li>“In the scan of your chest, we saw a lump in one of your breasts.”<br /></li><li>Ask:<br /><ul><li>Past history of breast lumps<br /></li><li>“Are you aware of this lump?” Ans no<br /></li></ul></li></ul><h2><a id="_3rzgwjuip8ur"></a><strong>4. Explain need for Triple Test</strong></h2><ul><li>We Need to find what type of lump u have in your breast as the management is different<br /></li><li>List differentials here again: there r list of poosibilties, it can be:<br /><ul><li>Breast cancer<br /></li><li>Benign lumps: fibroadenoma, fibrocystic changes, breast cyst, fat necrosis<br /></li></ul></li></ul><h1><a id="_d1ciyc3udw4l"></a><strong>TRIPLE TEST (EXACT WORDING &amp; STEPS)&gt; we evaluate any breast lump with 3 tests that we call the triple test.</strong></h1><h2><a id="_pvyzlnaggr8d"></a><strong>For Step 1 — Examination</strong></h2><ul><li>“I will have to examine you. The examination Focuses on characteristics of the lump<br /></li><li>“I will arrange a chaperone.”<br /></li><li>As part of this examination I will Also examine armpit and neck for glands / lymph nodes<br /></li></ul><h2><a id="_ervbx3jz94rm"></a><strong>Step 2 — Imaging</strong></h2><ul><li>CT does not count<br /></li><li>We Need to do another type of imaging:<br /><ul><li>Older patient → mammogram (&gt;50 yo)&gt; on the mammogram, we will look at the character of the lump and make sure there are no concerning  features<br /></li><li>Younger → ultrasound (&lt;40 yo)</li><li>40-50 yo both<br /></li></ul></li><li>Purpose: look at characteristics, ensure no concerning features<br /></li></ul><h2><a id="_itr4nm1j3zcz"></a><strong>For the Step 3 — Sample</strong></h2><ul><li>“for the 3<sup>rd</sup> step, We will take a sample from the lump.”<br /></li><li>If solid → core biopsy<br /></li><li>If cystic → FNA<br /></li><li>This usually happens under the guidance of ultrasound. We will insert a smalll needle into the lump and take a sample and Check the cells under the microscope to ensure there is no cancer.”<br /></li></ul><h1><a id="_pjl1v1hzb2l"></a><strong>End of Counseling</strong></h1><ul><li>Once results are ready we will be able to identify type of lump<br /></li><li>If u have Benign (fibroadenoma, breast cyst): monitor, regular scans<br /></li><li>Malignant: referral to breast surgeon, surgery to remove lump or entire breast</li></ul></section>
+
+<section id="figures"><h2>Case Figures</h2>
+<img class="case-image" src="assets/gynae_1_breast_lump_case_img1.jpeg" alt="Breast Lump - Assessment and Triple Test figure" loading="lazy">
+</section>
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: clinical-documentation-expert (Australian clinical supervisor, O&amp;G / RACGP standards) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>The note states the triple test must be performed in a fixed sequence &#x27;1 -&gt; 2 -&gt; 3&#x27; and that changing the order is &#x27;not acceptable&#x27;.</strong><br>The triple test comprises three components - (1) clinical history + examination, (2) imaging (ultrasound and/or mammography), and (3) non-excisional biopsy (core biopsy and/or FNA cytology) - and it is the concordance of all three, not a rigid temporal order, that matters. In practice imaging and biopsy are frequently done at the same visit, and for a clinically or radiologically suspicious lump imaging and referral proceed in parallel (as the note&#x27;s own flowchart shows). Emphasise &#x27;all three components with concordant results&#x27; rather than a mandatory sequence.</div><div class="correction">✏️ <strong>Imaging-by-age is described loosely (younger = ultrasound, older = mammogram, 40-50 = both) with thresholds stated variably as &lt;40 and &gt;50.</strong><br>Standard Australian practice: ultrasound is the preferred first imaging in women under ~35 (dense breast tissue); mammography +/- ultrasound is used from ~35 and above. For a woman aged 40 both modalities are commonly used. Make the age thresholds consistent and note that a suspicious lump is imaged and biopsied regardless of age.</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ Add explicit red-flag / referral criteria: any positive component of the triple test, an incompletely aspirated or bloodstained cyst, a persistent lump after aspiration, or spontaneous unilateral single-duct bloody/serous discharge mandates urgent referral to a breast surgeon - this operationalises the &#x27;refer if suspicious&#x27; advice.</div><div class="enhancement">⭐ Add family-history risk stratification: ask about age of onset and number of affected first-degree relatives and BRCA1/BRCA2; strong family history warrants referral to a family cancer/genetics service and may change screening (earlier/MRI).</div><div class="enhancement">⭐ Add the breastfeeding-variant safety point already hinted at: inflammatory breast cancer can mimic mastitis, so a presumed lactational mastitis/abscess that does not fully resolve after appropriate antibiotics (or a persistent mass) must be imaged and biopsied - document this explicitly as a safety-net.</div><div class="enhancement">⭐ Add related metadata linking to breast examination and nipple-discharge topics and cite the NBCF/Cancer Australia investigation-of-a-new-breast-symptom pathway as the Australian reference.</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>diagnosis_management</dd><dt>Difficulty</dt><dd>medium</dd><dt>Amc Frequency</dt><dd>high - breast lump assessment with the triple test is a classic, frequently examined AMC diagnosis/management and communication scenario</dd><dt>Tags</dt><dd>breast-lump, triple-test, breast-cancer, fibroadenoma, core-biopsy, fna, mammogram, ultrasound</dd><dt>Related Topics</dt><dd>breast examination, nipple discharge, breast cancer screening, mastitis and breast abscess, family cancer genetics</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 Even a young woman with a clinically and sonographically benign-looking lump warrants completion of the triple test/biopsy, and management must correlate cytology/histology with clinical and imaging findings - the AMC condition on breast biopsy concerns in a 20-year-old with family history directly mirrors the case&#x27;s &#x27;controversial question&#x27;.<br><strong>AMC Handbook of Clinical Assessment.pdf</strong> p.294 <span class="pid">qdrant:b2de12e4-e1de-4a6c-92d1-6ccfab0356f5</span></div><div class="citation">📚 Immediate referral to a breast surgeon is essential for any positive component of the triple test, incomplete cyst aspiration, or spontaneous unilateral bloody/serous single-duct discharge - supports the case&#x27;s referral criteria.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.2523 <span class="pid">qdrant:d2395874-ebaa-4e38-b92e-973a6e8efec0</span></div><div class="citation">📚 Ultrasound is superior to mammography in young women, FNAC distinguishes benign versus malignant and cystic versus solid, and the breasts must always be examined even when the history suggests a benign cause - supports the imaging-by-age and biopsy components.<br><strong>Churchills_Pocketbook_of_Differential_Diagnosis (1).pdf</strong> p.56 <span class="pid">qdrant:e26bd9ae-6ddb-48e4-a9ba-bb1f4fdd6e3c</span></div><div class="citation">📚 Nipple discharge and other &#x27;tell-tale&#x27; breast cancer symptoms require a structured diagnostic strategy, supporting the case&#x27;s red-flag history questions (discharge colour, nipple/skin change, asymmetry).<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.2507 <span class="pid">qdrant:cebe63ce-2afb-4f9d-a96d-a28d3de4050a</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

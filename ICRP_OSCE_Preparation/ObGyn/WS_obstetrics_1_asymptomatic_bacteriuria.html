@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asymptomatic Bacteriuria in Pregnancy - ObGyn OSCE Notes</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* Navigation Breadcrumbs */
+        .breadcrumbs {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .breadcrumbs a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            margin: 0 8px;
+            color: #95a5a6;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .quick-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .quick-nav a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Headers */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bdc3c7;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        /* Paragraphs and Lists */
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code Blocks */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #555;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Medical Alert Boxes */
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid;
+        }
+
+        .alert-red {
+            background: #fee;
+            border-color: #e74c3c;
+            color: #c0392b;
+        }
+
+        .alert-yellow {
+            background: #ffeaa7;
+            border-color: #f39c12;
+            color: #d68910;
+        }
+
+        .alert-green {
+            background: #d5f4e6;
+            border-color: #27ae60;
+            color: #1e8449;
+        }
+
+        .alert-blue {
+            background: #d6eaf8;
+            border-color: #3498db;
+            color: #21618c;
+        }
+
+        /* Links */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Checkboxes */
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .breadcrumbs {
+                display: none;
+            }
+            .quick-nav {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    
+        .expert-review { border: 2px solid #8e44ad; border-radius: 8px;
+            margin-top: 40px; }
+        .expert-review > h2 { background: #8e44ad; color: white; margin: 0;
+            padding: 15px 20px; border-radius: 6px 6px 0 0; }
+        .expert-review .er-body { padding: 20px; }
+        .er-block { margin-bottom: 20px; }
+        .er-block h3 { color: #8e44ad; margin-bottom: 10px; }
+        .correction { background: #fdf2f2; border-left: 4px solid #e74c3c;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .enhancement { background: #f0f9f4; border-left: 4px solid #27ae60;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; }
+        .metadata-grid { display: grid; grid-template-columns: 160px 1fr;
+            gap: 6px 14px; background: #f8f9fa; padding: 15px;
+            border-radius: 4px; }
+        .metadata-grid dt { font-weight: 600; color: #2c3e50; }
+        .citation { background: #eef4fb; border-left: 4px solid #3498db;
+            padding: 10px 15px; margin-bottom: 8px; border-radius: 4px;
+            font-size: 0.95em; }
+        .citation .pid { color: #7f8c8d; font-size: 0.8em; font-family: monospace; }
+        .case-image { max-width: 100%; border: 1px solid #ddd;
+            border-radius: 6px; margin: 12px 0; }
+        .source-line { color: #7f8c8d; font-size: 0.85em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="../START_HERE.html">Home</a><span>›</span>
+        <a href="../00_MASTER_INDEX_AMC_CLINICAL_OSCE.html">Master Index</a><span>›</span>
+        ObGyn<span>›</span>Asymptomatic Bacteriuria in Pregnancy
+    </div>
+    <h1>Asymptomatic Bacteriuria in Pregnancy</h1>
+    <p class="source-line">Source: Dr. Amir workshop — obstetrics
+       / class 2 (Aug 2026 drop) · Specialty: obstetrics_gynaecology</p>
+
+<section id="scenario-and-task"><h2>Scenario and Task</h2>
+<p>A pregnant woman at approximately <strong>13 weeks gestation</strong> has completed her first-trimester antenatal booking investigations. Her results include: syphilis serology <strong>negative</strong>, rubella IgG <strong>positive (immune)</strong>, and a midstream urine (MSU) culture showing significant growth of a single organism at <strong>low colony count risk category</strong> in an otherwise well woman.</p><ul><li>Review and explain the investigation results to the patient.</li><li>Explain the finding of asymptomatic bacteriuria and its significance in pregnancy.</li><li>Outline management and follow-up.</li></ul><p><em>(Reconstructed from an OCR-degraded PDF; clinical content preserved, no new content invented.)</em></p>
+</section>
+
+<section id="focused-history"><h2>Focused History</h2>
+<p>Confirm the patient is genuinely asymptomatic by screening for urinary and systemic symptoms - the presence of any of these would reclassify the picture as symptomatic infection (cystitis or pyelonephritis) rather than asymptomatic bacteriuria:</p><ul><li><strong>Lower urinary tract / cystitis:</strong> dysuria (burning on passing urine), urinary frequency, urgency, suprapubic pain.</li><li><strong>Upper urinary tract / pyelonephritis:</strong> fever/rigors, loin (flank) pain, nausea and vomiting, feeling systemically unwell.</li><li>Brief antenatal context: last menstrual period and gestation, symptoms of pregnancy, past medical history, medications and allergies, and cervical screening status.</li></ul>
+</section>
+
+<section id="interpreting-the-result-what-asymptomatic-bacteriuria-means"><h2>Interpreting the Result - What Asymptomatic Bacteriuria Means</h2>
+<p>Explain in plain language: the urine sample grew a significant amount of a single type of bacteria, but because there are <strong>no symptoms</strong> (no burning, no frequency, no abdominal pain, no fever), this is called <strong>asymptomatic bacteriuria</strong> - "there are some bugs there, but they are not currently causing you any symptoms."</p><p>Emphasise why this matters specifically in pregnancy: untreated asymptomatic bacteriuria in pregnancy carries a substantial risk of progressing to <strong>acute pyelonephritis</strong> (an upper kidney infection), which can require intravenous antibiotics and is associated with pregnancy complications such as preterm birth and low birth weight. This is why - unlike in non-pregnant adults - asymptomatic bacteriuria <strong>is screened for and treated in pregnancy</strong>.</p>
+</section>
+
+<section id="management"><h2>Management</h2>
+<ul><li><strong>Treat with antibiotics guided by the urine culture susceptibilities.</strong> Suitable options in pregnancy include nitrofurantoin, cephalexin, or amoxicillin depending on sensitivities (source notes reference nitrofurantoin / cephalexin, typically a short course of around 5 days).</li><li><strong>Confirm cure:</strong> repeat the MSU culture (test of cure) 1-2 weeks after completing antibiotics to ensure the infection has cleared; periodic re-screening for the remainder of the pregnancy.</li><li>Advise the patient to return promptly if she develops burning, frequency, fever, loin pain or feels unwell (progression to symptomatic UTI/pyelonephritis).</li><li>Continue routine antenatal care, including iodine supplementation and other standard supplements.</li></ul>
+</section>
+
+<section id="group-b-streptococcus-consideration"><h2>Group B Streptococcus Consideration</h2>
+<p>The source notes mention giving antibiotics during labour to protect the baby. Clarify: this applies specifically <strong>if the organism cultured is Group B Streptococcus (GBS)</strong>. GBS bacteriuria in pregnancy is an indication for <strong>intrapartum antibiotic prophylaxis</strong> during labour to prevent early-onset neonatal GBS sepsis. It is not a routine step for every organism causing asymptomatic bacteriuria - it depends on the culture result.</p>
+</section>
+
+
+    <div class="expert-review">
+        <h2>🔬 Expert Review &amp; Enhancements</h2>
+        <div class="er-body">
+            <p><em>Reviewed by: clinical-documentation-expert (Australian clinical supervisor, O&amp;G/antenatal infections) ·
+               fact-checked against the irStudy medical textbook RAG index.</em></p>
+            <div class="er-block"><h3>✏️ Corrections</h3><div class="correction">✏️ <strong>The source notes imply intrapartum (&#x27;during your delivery&#x27;) antibiotics will be given to protect the baby as a general consequence of asymptomatic bacteriuria.</strong><br>Intrapartum antibiotic prophylaxis is indicated only when the organism is Group B Streptococcus (GBS bacteriuria) - not for every organism causing asymptomatic bacteriuria. The immediate treatment of asymptomatic bacteriuria is a susceptibility-guided oral antibiotic course now, with a test-of-cure MSU afterwards; intrapartum prophylaxis is a separate, organism-specific consideration.</div><div class="correction">✏️ <strong>Nitrofurantoin is listed as a treatment option without gestational or safety caveats.</strong><br>Per eTG (Therapeutic Guidelines), nitrofurantoin should be avoided at term (from 36 weeks and during labour) due to the risk of neonatal haemolysis, and is contraindicated in G6PD deficiency. Trimethoprim should be avoided in the first trimester (folate antagonist). Antibiotic choice must be culture-directed and gestation-appropriate.</div></div>
+            <div class="er-block"><h3>⭐ Suggested Enhancements</h3><div class="enhancement">⭐ Add the Australian diagnostic threshold: asymptomatic bacteriuria is defined as significant growth (generally 10^8 CFU/L, i.e. 10^5 CFU/mL) of a single uropathogen on MSU in the absence of symptoms - documenting the numerical threshold aids clinical reasoning.</div><div class="enhancement">⭐ Add an explicit eTG reference for antibiotic selection and the rationale for treatment (prevention of pyelonephritis, preterm birth, low birth weight), and note re-screening because recurrence is common.</div><div class="enhancement">⭐ Add safety-netting with the emergency number 000 / urgent review pathway for signs of pyelonephritis or sepsis (fever, rigors, loin pain, vomiting, feeling very unwell), which is currently only implied.</div><div class="enhancement">⭐ Metadata to add: link to the routine antenatal screening card (MSU is a routine booking investigation) and tag as a results-explanation/management station.</div></div>
+            <div class="er-block"><h3>🏷️ Metadata</h3>
+                <dl class="metadata-grid"><dt>Station Type</dt><dd>diagnosis_management</dd><dt>Difficulty</dt><dd>medium</dd><dt>Amc Frequency</dt><dd>medium - asymptomatic bacteriuria is a well-established antenatal screening/management topic and a recurring MCQ/OSCE theme.</dd><dt>Tags</dt><dd>asymptomatic-bacteriuria, pregnancy, uti, pyelonephritis, antibiotics, gbs, msu-culture, antenatal</dd><dt>Related Topics</dt><dd>Routine antenatal counselling, Group B Streptococcus prophylaxis, Urinary tract infection in pregnancy, Antenatal screening guideline review</dd></dl></div>
+            <div class="er-block"><h3>📚 Reference Citations (RAG)</h3><div class="citation">📚 Antibiotic selection for urinary tract infection includes nitrofurantoin and trimethoprim/sulfamethoxazole with varied sensitivity, supporting culture-directed therapy. This is drawn from the On Call Principles and Protocols UTI antibiotic figure in this case&#x27;s rag_context (a general UTI reference, not pregnancy-specific dosing).<br><strong>On Call Principles and Protocols.pdf</strong> p.510 <span class="pid">qdrant:b8a357d7-4b6e-4c3a-bf9f-c37fa9e7f0d7</span></div><div class="citation">📚 Distinguishing asymptomatic bacteriuria from symptomatic dysuria requires considering the dysuria differential (cystitis, urethritis, vaginitis, and serious causes not to miss). This is supported by the Murtagh dysuria diagnostic strategy chunk, which is relevant to the symptom-screening step of this case.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.1853 <span class="pid">qdrant:09fca551-802c-4865-a19b-98e144c5e33e</span></div><div class="citation">📚 Adequate bladder emptying/free urination is relevant to urinary stasis and infection risk in pregnancy. The Murtagh chunk on allowing free urination is tangential (a fragmentary index/text line) but is the closest urinary-physiology reference in this case&#x27;s rag_context.<br><strong>John Murtagh General Practice, 8th Edition.pdf</strong> p.2740 <span class="pid">qdrant:98aa6758-66d4-4d2f-9161-3ff1bf9b18b6</span></div></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
