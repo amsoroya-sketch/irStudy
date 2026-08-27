@@ -133,11 +133,33 @@ class ClaudeValidator:
         patient_context: Dict[str, Any],
         rule_based_result: Dict[str, Any]
     ) -> str:
-        """Build Claude validation prompt"""
-        prompt = f"""You are a senior Australian physician evaluating a medical student's SOAP note using the AMC Clinical Examination 15-mark rubric.
+        """Build Claude validation prompt.
 
-**Patient Scenario:**
+        When ``patient_context`` carries an answer-key under
+        ``validation_criteria`` (per-case expected S/O/A/P findings,
+        ``critical_errors`` and ``must_not_miss`` lists), the prompt asks Claude
+        to grade the student's note *against that specific answer-key* — did they
+        capture the expected findings, did they commit a critical error — rather
+        than against a generic rubric. See PRD-EMR-PRACTICE-001.
+        """
+        criteria = {}
+        if isinstance(patient_context, dict):
+            criteria = patient_context.get("validation_criteria") or {}
+
+        answer_key_block = json.dumps(criteria, indent=2) if criteria else "(none provided)"
+
+        prompt = f"""You are a senior Australian physician evaluating a medical student's SOAP note for a specific clinical case, using the AMC Clinical Examination 15-mark rubric.
+
+**Patient Scenario / Context:**
 {json.dumps(patient_context, indent=2)}
+
+**Case Answer-Key (expected documentation for THIS case):**
+{answer_key_block}
+
+The answer-key may contain:
+- "expected": the subjective/objective/assessment/plan elements a competent student should capture.
+- "critical_errors": actions that are dangerous — if the note commits ANY of these, list it in "critical_errors_committed".
+- "must_not_miss": elements that must be documented — if ANY is absent, list it in "missing_elements".
 
 **Student's SOAP Note:**
 Subjective: {soap_note.get('subjective', '')}
@@ -148,56 +170,49 @@ Plan: {soap_note.get('plan', '')}
 **Rule-Based Validation Results:**
 {json.dumps(rule_based_result, indent=2)}
 
-**Evaluation Criteria (AMC 15-mark rubric):**
-1. History Taking (3 marks): Completeness, relevance, 9-step approach
-2. Clinical Reasoning (3 marks): Differential diagnosis, red flags identified, logical assessment
-3. Documentation Quality (3 marks): Clarity, structure, Australian terminology
-4. Patient Safety (3 marks): Red flags addressed, appropriate investigations, safety netting
-5. Professional Communication (3 marks): Empathy, respect, cultural sensitivity
+**Your task — grade captured-vs-expected:**
+1. Compare the note against the answer-key's "expected" elements section by section.
+2. Compute a completeness percentage (0-100) for each of subjective, objective, assessment, plan.
+3. List which expected elements were "captured" and which are "missing_elements".
+4. List any "critical_errors_committed" (dangerous actions the note took).
+5. Score the five AMC rubric categories (each 0-3): History_Taking, Clinical_Reasoning,
+   Documentation_Quality, Patient_Safety, Professional_Communication.
 
 **Australian Medical Context:**
-- Use Australian drug names (paracetamol NOT acetaminophen)
-- Reference eTG, PBS, MBS guidelines
-- Consider Aboriginal/TSI health context
-- Use appropriate referral pathways (GP, ED, specialist)
+- Use Australian drug names (paracetamol NOT acetaminophen).
+- Reference eTG, PBS, MBS guidelines; emergency number is 000.
 
-**Response Format (JSON):**
+**Response Format — return ONLY this JSON object:**
 {{
   "overall_score": <float 0-15>,
+  "completeness": {{"subjective": <0-100>, "objective": <0-100>, "assessment": <0-100>, "plan": <0-100>}},
+  "captured": ["<expected element the student documented>"],
+  "missing_elements": ["<expected element the student omitted>"],
+  "critical_errors_committed": ["<critical error the student committed>"],
+  "accuracy_notes": ["<note on factual/clinical accuracy>"],
   "category_scores": {{
-    "History_Taking": {{
-      "score": <float 0-3>,
-      "feedback": "<specific feedback>"
-    }},
-    "Clinical_Reasoning": {{
-      "score": <float 0-3>,
-      "feedback": "<specific feedback>"
-    }},
-    "Documentation_Quality": {{
-      "score": <float 0-3>,
-      "feedback": "<specific feedback>"
-    }},
-    "Patient_Safety": {{
-      "score": <float 0-3>,
-      "feedback": "<specific feedback>"
-    }},
-    "Professional_Communication": {{
-      "score": <float 0-3>,
-      "feedback": "<specific feedback>"
-    }}
+    "History_Taking": <0-3>,
+    "Clinical_Reasoning": <0-3>,
+    "Documentation_Quality": <0-3>,
+    "Patient_Safety": <0-3>,
+    "Professional_Communication": <0-3>
   }},
-  "strengths": ["<strength 1>", "<strength 2>"],
-  "areas_for_improvement": ["<improvement 1>", "<improvement 2>"],
-  "key_insights": ["<insight 1>", "<insight 2>"]
+  "strengths": ["<strength>"],
+  "improvements": ["<area for improvement>"]
 }}
 
-Provide detailed, actionable feedback to help the student improve."""
+Provide detailed, actionable, case-specific feedback."""
 
         return prompt
 
     @classmethod
     def _parse_claude_response(cls, response_text: str) -> Dict[str, Any]:
-        """Parse Claude's JSON response"""
+        """Parse Claude's JSON response into the assessment result contract.
+
+        Passes the answer-key grading fields through (completeness, captured,
+        missing_elements, critical_errors_committed) so the assessment engine can
+        apply the PASS/FAIL rule. See PRD-EMR-PRACTICE-001.
+        """
         try:
             # Extract JSON from response (Claude sometimes adds markdown)
             import re
@@ -207,38 +222,42 @@ Provide detailed, actionable feedback to help the student improve."""
             else:
                 response_data = json.loads(response_text)
 
-            # Convert to validation result format
             return {
-                "layer": 2,
-                "validator": "claude_ai",
-                "score": (response_data["overall_score"] / 15) * 100,  # Convert to percentage
-                "passed": response_data["overall_score"] >= 10,  # 67% pass rate
-                "errors": [],
-                "warnings": response_data.get("areas_for_improvement", []),
-                "insights": response_data.get("key_insights", []),
-                "detailed_feedback": response_data,
-                "australian_compliant": True,  # Claude checks this
-                "latency_ms": 3500  # Typical 3-5s
+                "overall_score": float(response_data.get("overall_score", 0.0)),
+                "completeness": response_data.get("completeness", {}),
+                "captured": response_data.get("captured", []),
+                "missing_elements": response_data.get("missing_elements", []),
+                "critical_errors_committed": response_data.get("critical_errors_committed", []),
+                "accuracy_notes": response_data.get("accuracy_notes", []),
+                "category_scores": response_data.get("category_scores", {}),
+                "strengths": response_data.get("strengths", []),
+                "improvements": response_data.get(
+                    "improvements", response_data.get("areas_for_improvement", [])
+                ),
             }
 
-        except json.JSONDecodeError as e:
+        except (json.JSONDecodeError, ValueError, TypeError) as e:
             logger.error(f"Failed to parse Claude response: {e}")
             return cls._fallback_response()
 
     @classmethod
     def _fallback_response(cls) -> Dict[str, Any]:
-        """Fallback response when Claude unavailable"""
+        """Fallback result when Claude is unavailable.
+
+        Returns the same contract shape (with an ``ai_unavailable`` flag) so
+        callers never crash on a missing key when the AI layer is skipped.
+        """
         return {
-            "layer": 2,
-            "validator": "claude_ai",
-            "score": None,
-            "passed": None,
-            "errors": ["Claude AI validation unavailable - fallback validator will be used"],
-            "warnings": [],
-            "insights": [],
-            "detailed_feedback": None,
-            "australian_compliant": None,
-            "latency_ms": 0
+            "overall_score": 0.0,
+            "completeness": {"subjective": 0, "objective": 0, "assessment": 0, "plan": 0},
+            "captured": [],
+            "missing_elements": [],
+            "critical_errors_committed": [],
+            "accuracy_notes": ["Claude AI validation unavailable - fallback used"],
+            "category_scores": {},
+            "strengths": [],
+            "improvements": [],
+            "ai_unavailable": True,
         }
 
     @classmethod

@@ -1402,6 +1402,17 @@ class MockPatient(Base):
     difficulty = Column(String(20))
     created_at = Column(DateTime, default=datetime.utcnow)
 
+    # Answer-key + clinical detail columns (already present in DB migration 008,
+    # previously unmapped in the ORM). Mapping them lets the assessment engine
+    # read the per-case expected findings. See PRD-EMR-PRACTICE-001.
+    demographics = Column(JSON, nullable=True)
+    medications = Column(JSON, nullable=True)
+    allergies = Column(JSON, nullable=True)
+    physical_exam_findings = Column(JSON, nullable=True)
+    investigation_results = Column(JSON, nullable=True)
+    source_osce_id = Column(Integer, ForeignKey("osces.id"), nullable=True)
+    validation_criteria = Column(JSON, nullable=True)
+
 
 class EMRSession(Base):
     """

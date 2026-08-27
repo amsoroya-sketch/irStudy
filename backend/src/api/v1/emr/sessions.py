@@ -37,7 +37,9 @@ from src.db.models import (
     EMRSOAPNote,
     EMRPrescription,
     EMRPathologyOrder,
+    EMRValidationResult,
 )
+from src.services.emr.assessment_engine import assess_submission_sync, decide_pass_fail
 from src.auth.dependencies import get_current_user
 from .schemas import (
     StartSessionRequest,
@@ -614,81 +616,110 @@ async def submit_session(
         "errors": layer_2_errors,
     }
 
-    # Layer 3: Claude AI Validation (clinical reasoning, safety)
-    # NOTE: This is a MOCK implementation for testing
-    # In production, would call Anthropic API with patient context
+    # Layer 3: Claude AI clinical assessment against THIS case's answer-key.
+    # Replaces the former hardcoded 12.5/15 mock (PRD-EMR-PRACTICE-001): the note
+    # is now graded on captured-vs-expected findings + critical-error detection.
+    mock_patient = db.query(MockPatient).filter(MockPatient.id == emr_session.patient_id).first()
+    validation_criteria = (mock_patient.validation_criteria if mock_patient else None) or {}
+
+    assessment = assess_submission_sync(
+        data.final_soap_note,
+        validation_criteria,
+        {"layer_1": layer_1_result, "layer_2": layer_2_result},
+    )
+
+    overall_score = float(assessment.get("overall_score", 0.0))
+    # assess_submission already applies the rule; recompute defensively if absent.
+    pass_fail = assessment.get("pass_fail")
+    if pass_fail is None:
+        pass_fail = decide_pass_fail(assessment, validation_criteria)
+
+    critical_errors = assessment.get("critical_errors_committed", []) or []
     layer_3_result = {
-        "passed": True,
-        "score": 2.5,
-        "feedback": "Clinical reasoning demonstrates understanding of key concepts",
-        "errors": [],
+        "passed": bool(pass_fail),
+        "score": overall_score,
+        "feedback": (
+            "; ".join(assessment.get("accuracy_notes", []) or [])
+            or "Case-specific clinical assessment completed"
+        ),
+        "errors": critical_errors,
     }
 
-    # Mock Claude response (matches test fixture structure)
-    mock_validation = {
-        "overall_score": 12.5,
-        "category_scores": {
-            "history_examination": 3.0,
-            "clinical_reasoning": 2.5,
-            "communication": 3.0,
-            "patient_safety": 2.0,
-            "professionalism": 2.0,
-        },
-        "strengths": [
-            "Comprehensive history taking with SOCRATES pain assessment",
-            "Appropriate differential diagnosis considered",
-            "Clear documentation structure",
-        ],
-        "improvements": [
-            "Consider more detailed physical examination findings",
-            "Add specific medication dosing protocols",
-        ],
-        "red_flags": [],
-        "australian_compliance": {
-            "terminology": "✓ Correct Australian terminology used",
-            "emergency_number": "✓ Uses 000 for emergency",
-            "etg_alignment": "✓ Follows eTG guidelines",
-        },
+    performance_summary = {
+        "time_taken_minutes": round(
+            (datetime.utcnow() - emr_session.started_at).total_seconds() / 60, 2
+        ),
+        "typing_metrics": data.typing_metrics,
+    }
+    next_steps = {
+        "recommended_practice": f"Continue practicing {emr_session.specialty} cases",
+        "focus_areas": assessment.get("improvements", []) or [],
+    }
+    australian_compliance = {
+        "terminology": (
+            "✓ Correct Australian terminology used"
+            if layer_2_result["passed"]
+            else "⚠ Australian terminology issues detected"
+        ),
+    }
+
+    # Persisted verbatim to score_breakdown; keeps both the assessment contract
+    # (for analytics / the GET read path) and the display fields the response needs.
+    score_breakdown = {
+        "overall_score": overall_score,
+        "pass_fail": bool(pass_fail),
+        "completeness": assessment.get("completeness", {}),
+        "captured": assessment.get("captured", []),
+        "missing_elements": assessment.get("missing_elements", []),
+        "critical_errors_committed": critical_errors,
+        "accuracy_notes": assessment.get("accuracy_notes", []),
+        "category_scores": assessment.get("category_scores", {}),
+        "strengths": assessment.get("strengths", []),
+        "improvements": assessment.get("improvements", []),
+        "red_flags": critical_errors,
+        "australian_compliance": australian_compliance,
         "layer_1_zod": layer_1_result,
         "layer_2_python": layer_2_result,
         "layer_3_ai": layer_3_result,
-        "performance_summary": {
-            "time_taken_minutes": round((datetime.utcnow() - emr_session.started_at).total_seconds() / 60, 2),
-            "typing_metrics": data.typing_metrics,
-        },
-        "next_steps": {
-            "recommended_practice": "Continue practicing cardiology cases",
-            "focus_areas": ["Physical examination documentation", "Medication protocols"],
-        },
+        "performance_summary": performance_summary,
+        "next_steps": next_steps,
     }
 
-    # Update session
+    # Update session with the REAL score
     emr_session.status = "graded"
     emr_session.submitted_at = datetime.utcnow()
     emr_session.elapsed_time_seconds = int((datetime.utcnow() - emr_session.started_at).total_seconds())
-    emr_session.validation_score = mock_validation["overall_score"]
-    emr_session.score_breakdown = mock_validation
+    emr_session.validation_score = overall_score
+    emr_session.score_breakdown = score_breakdown
     emr_session.typing_metrics = data.typing_metrics
+
+    # Persist a validation-result row (one per session)
+    db.add(
+        EMRValidationResult(
+            session_id=session_id,
+            rule_based_score=layer_1_result.get("score"),
+            ai_validation_score=overall_score,
+            final_score=overall_score,
+            pass_fail=bool(pass_fail),
+        )
+    )
 
     db.commit()
     db.refresh(emr_session)
 
-    # Fetch patient for response
-    mock_patient = db.query(MockPatient).filter(MockPatient.id == emr_session.patient_id).first()
-
     # Build validation results
     validation_results = ValidationResult(
-        overall_score=mock_validation["overall_score"],
-        category_scores=mock_validation["category_scores"],
-        strengths=mock_validation["strengths"],
-        improvements=mock_validation["improvements"],
-        red_flags=mock_validation["red_flags"],
-        australian_compliance=mock_validation["australian_compliance"],
+        overall_score=overall_score,
+        category_scores=score_breakdown["category_scores"],
+        strengths=score_breakdown["strengths"],
+        improvements=score_breakdown["improvements"],
+        red_flags=score_breakdown["red_flags"],
+        australian_compliance=australian_compliance,
         layer_1_zod=ValidationLayerResult(**layer_1_result),
         layer_2_python=ValidationLayerResult(**layer_2_result),
         layer_3_ai=ValidationLayerResult(**layer_3_result),
-        performance_summary=mock_validation["performance_summary"],
-        next_steps=mock_validation["next_steps"],
+        performance_summary=performance_summary,
+        next_steps=next_steps,
     )
 
     return SessionResponse(
@@ -717,8 +748,8 @@ async def submit_session(
         validation_results=validation_results,
         soap_note=data.final_soap_note,
         typing_metrics=emr_session.typing_metrics,
-        performance_summary=mock_validation["performance_summary"],
-        next_steps=mock_validation["next_steps"],
+        performance_summary=performance_summary,
+        next_steps=next_steps,
     )
 
 
