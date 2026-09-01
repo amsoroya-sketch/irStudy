@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Page Architecture - Navigation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .nav-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .nav-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #667eea;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .nav-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .nav-card-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+            opacity: 0.2;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .nav-card-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .nav-card-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        .nav-card-desc {
+            color: #666;
+            line-height: 1.5;
+            font-size: 0.95em;
+        }
+
+        .nav-card-meta {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.85em;
+            color: #888;
+        }
+
+        .quick-links {
+            background: #f0f9ff;
+            border: 2px solid #0284c7;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .quick-links h3 {
+            color: #0c4a6e;
+            margin-bottom: 15px;
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .quick-link {
+            background: white;
+            padding: 12px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #0369a1;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: block;
+            text-align: center;
+        }
+
+        .quick-link:hover {
+            background: #0284c7;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .status-banner {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+            border: 2px solid #e53e3e;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .status-icon {
+            font-size: 3em;
+        }
+
+        .status-content h3 {
+            color: #c53030;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 MCQ Page Architecture Documentation</h1>
+            <p>irStudy Platform - Comprehensive Technical Analysis</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">URL: http://localhost:5173/mcqs</p>
+        </div>
+
+        <div class="content">
+            <!-- Status Banner -->
+            <div class="status-banner">
+                <div class="status-icon">❌</div>
+                <div class="status-content">
+                    <h3>Current Status: Authentication Failure</h3>
+                    <p><strong>Issue:</strong> User not logged in (no JWT token in localStorage)</p>
+                    <p><strong>Solution:</strong> Navigate to <code>/login</code> and authenticate to obtain access token</p>
+                </div>
+            </div>
+
+            <!-- Introduction -->
+            <div class="section">
+                <h2 class="section-title">📖 About This Documentation</h2>
+                <p>This comprehensive documentation breaks down the MCQ browser page architecture into digestible sections. Each page focuses on a specific aspect of the system, providing detailed explanations, code examples, and interactive demonstrations.</p>
+
+                <div class="tip" style="margin-top: 20px;">
+                    <strong>💡 Navigation Tip:</strong> Use the cards below to explore different sections. Each section builds upon the previous one, so we recommend reading them in order if you're new to the codebase.
+                </div>
+            </div>
+
+            <!-- Package Explanation Section -->
+            <div class="section">
+                <h2 class="section-title">📦 React Packages & Imports Explained</h2>
+                <p style="margin-bottom: 20px;">Understanding what each package does in <code>App.tsx</code> and why we use them.</p>
+
+                <!-- React -->
+                <div class="component-card">
+                    <div class="component-name">react</div>
+                    <div class="component-location">import { Suspense } from "react"</div>
+                    <div class="component-purpose">Core React library - Foundation of the entire UI</div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">What it does:</div>
+                        <ul>
+                            <li><strong>Suspense</strong>: Component that handles lazy loading fallbacks</li>
+                            <li>Displays loading UI (CircularProgress) while lazy components load</li>
+                            <li>Prevents blank screens during code splitting</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">Why we use it:</div>
+                        <ul>
+                            <li>Improves initial page load time by code splitting</li>
+                            <li>MCQBrowser, Login, and other pages load only when needed</li>
+                            <li>Better user experience with loading indicators</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">Example Usage:</div>
+<div class="code-example">
+<div class="code-header"><span>Usage in App.tsx</span></div>
+<pre>&lt;Suspense fallback={&lt;LoadingFallback /&gt;}&gt;
+  &lt;Routes&gt;
+    {/* Routes load lazily */}
+  &lt;/Routes&gt;
+&lt;/Suspense&gt;</pre>
+</div>
+                    </div>
+                </div>
+
+                <!-- React Router -->
+                <div class="component-card">
+                    <div class="component-name">react-router-dom</div>
+                    <div class="component-location">import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"</div>
+                    <div class="component-purpose">Client-side routing library - Enables navigation without page reloads</div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">What each component does:</div>
+                        <ul>
+                            <li><strong>BrowserRouter</strong>: Root router component using HTML5 history API</li>
+                            <li><strong>Routes</strong>: Container for all route definitions</li>
+                            <li><strong>Route</strong>: Defines a single route mapping (path → component)</li>
+                            <li><strong>Navigate</strong>: Programmatic navigation component for redirects</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">Why we use it:</div>
+                        <ul>
+                            <li>Single Page Application (SPA) navigation</li>
+                            <li>No full page reloads when switching between MCQs, Dashboard, etc.</li>
+                            <li>Preserves application state during navigation</li>
+                            <li>SEO-friendly URLs (e.g., /mcqs, /dashboard)</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">Example Usage:</div>
+<div class="code-example">
+<div class="code-header"><span>Routing Configuration</span></div>
+<pre>&lt;BrowserRouter&gt;
+  &lt;Routes&gt;
+    &lt;Route path="/mcqs" element={&lt;MCQBrowser /&gt;} /&gt;
+    &lt;Route path="/dashboard" element={&lt;Dashboard /&gt;} /&gt;
+    &lt;Route path="/" element={&lt;Navigate to="/dashboard" /&gt;} /&gt;
+  &lt;/Routes&gt;
+&lt;/BrowserRouter&gt;</pre>
+</div>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">Complete Routing Flow & Authentication:</div>
+                        <div style="margin-top: 15px; text-align: center; background: white; padding: 20px; border-radius: 8px; border: 2px solid #ca3e47;">
+                            <img src="react-router-flow-detailed.png" alt="React Router Flow" style="max-width: 100%; height: auto; border-radius: 4px;">
+                            <p style="margin-top: 10px; color: #666; font-size: 0.9em; font-style: italic;">
+                                Complete routing architecture with protected routes, navigation hooks, and route configuration
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TanStack React Query -->
+                <div class="component-card">
+                    <div class="component-name">@tanstack/react-query</div>
+                    <div class="component-location">import { QueryClient, QueryClientProvider } from "@tanstack/react-query"</div>
+                    <div class="component-purpose">Powerful data synchronization library for server state management</div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">What it does:</div>
+                        <ul>
+                            <li><strong>QueryClient</strong>: Manages cache, queries, and mutations</li>
+                            <li><strong>QueryClientProvider</strong>: Makes QueryClient available to all components</li>
+                            <li>Automatic background refetching and cache invalidation</li>
+                            <li>Handles loading, error, and success states automatically</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">Why we use it:</div>
+                        <ul>
+                            <li><strong>Smart caching</strong>: MCQ list fetched once, cached for 5 minutes</li>
+                            <li><strong>Auto-retry</strong>: Retries failed requests automatically</li>
+                            <li><strong>Optimistic updates</strong>: UI updates immediately, syncs later</li>
+                            <li><strong>No Redux needed</strong>: Manages server state without boilerplate</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">Configuration:</div>
+<div class="code-example">
+<div class="code-header"><span>QueryClient Setup</span></div>
+<pre>const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,  // Don't refetch on tab switch
+      retry: 1,                      // Retry once on failure
+      staleTime: 5 * 60 * 1000,     // Consider fresh for 5 min
+    },
+  },
+});</pre>
+</div>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">Real Usage in MCQBrowser:</div>
+<div class="code-example">
+<div class="code-header"><span>Using useQuery Hook</span></div>
+<pre>const { data, isLoading, error } = useQuery({
+  queryKey: ['mcqs', filters],  // Cache key
+  queryFn: () => getMCQs(filters),
+  staleTime: 2 * 60 * 1000,     // 2 min for MCQs
+});</pre>
+</div>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">Complete Data Flow Diagram:</div>
+                        <div style="margin-top: 15px; text-align: center; background: white; padding: 20px; border-radius: 8px; border: 2px solid #0284c7;">
+                            <img src="react-query-flow-detailed.png" alt="React Query Data Flow" style="max-width: 100%; height: auto; border-radius: 4px;">
+                            <p style="margin-top: 10px; color: #666; font-size: 0.9em; font-style: italic;">
+                                Complete React Query lifecycle from component mount to data display with cache management
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Material-UI -->
+                <div class="component-card">
+                    <div class="component-name">@mui/material</div>
+                    <div class="component-location">import { ThemeProvider } from "@mui/material/styles"<br>import CssBaseline from "@mui/material/CssBaseline"<br>import { CircularProgress, Box } from "@mui/material"</div>
+                    <div class="component-purpose">React UI component library implementing Google's Material Design</div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">What each import does:</div>
+                        <ul>
+                            <li><strong>ThemeProvider</strong>: Applies custom theme (colors, fonts) to entire app</li>
+                            <li><strong>CssBaseline</strong>: Normalizes CSS across browsers (like CSS reset)</li>
+                            <li><strong>CircularProgress</strong>: Spinning loader animation</li>
+                            <li><strong>Box</strong>: Flexible container component for layouts</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">Why we use Material-UI:</div>
+                        <ul>
+                            <li><strong>Consistent design</strong>: Professional look without custom CSS</li>
+                            <li><strong>Accessibility</strong>: WCAG 2.2 AA compliant out of the box</li>
+                            <li><strong>Responsive</strong>: Mobile-first components</li>
+                            <li><strong>Rich components</strong>: Cards, Buttons, Dialogs, Forms, etc.</li>
+                            <li><strong>Theming</strong>: Easy to customize colors, spacing, typography</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">Theme Configuration:</div>
+<div class="code-example">
+<div class="code-header"><span>Custom Theme Example</span></div>
+<pre>const theme = createTheme({
+  palette: {
+    primary: { main: '#667eea' },
+    secondary: { main: '#764ba2' },
+  },
+  typography: {
+    fontFamily: 'Segoe UI, Roboto, Arial',
+  },
+});</pre>
+</div>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">Components Used in MCQ Page:</div>
+                        <ul>
+                            <li><strong>Container</strong>: Responsive page container with max-width</li>
+                            <li><strong>Typography</strong>: Text with consistent styling</li>
+                            <li><strong>Card</strong>: MCQ cards in the grid</li>
+                            <li><strong>Button</strong>: Attempt, View, Edit actions</li>
+                            <li><strong>TextField</strong>: Search input</li>
+                            <li><strong>Select/MenuItem</strong>: Category and difficulty dropdowns</li>
+                            <li><strong>Chip</strong>: Difficulty badges and tags</li>
+                            <li><strong>Pagination</strong>: Page navigation</li>
+                            <li><strong>Alert</strong>: Error messages</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">Complete Material-UI Component Architecture:</div>
+                        <div style="margin-top: 15px; text-align: center; background: white; padding: 20px; border-radius: 8px; border: 2px solid #1976d2;">
+                            <img src="material-ui-components-detailed.png" alt="Material-UI Components" style="max-width: 100%; height: auto; border-radius: 4px;">
+                            <p style="margin-top: 10px; color: #666; font-size: 0.9em; font-style: italic;">
+                                Complete Material-UI ecosystem with theme configuration, component usage, styling approaches, and responsive design
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Components & Context -->
+                <div class="component-card">
+                    <div class="component-name">Custom Application Components</div>
+                    <div class="component-location">import { AuthProvider } from "./context/AuthContext"<br>import ProtectedRoute from "./components/ProtectedRoute"<br>import MobileBottomNav from "./components/layout/MobileBottomNav"<br>import { FlashcardReview } from "./components/study-cards/FlashcardReview"</div>
+                    <div class="component-purpose">Project-specific components built for irStudy platform</div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">AuthProvider (Context API):</div>
+                        <ul>
+                            <li><strong>Purpose</strong>: Global authentication state management</li>
+                            <li><strong>Provides</strong>: user, isAuthenticated, login(), logout() functions</li>
+                            <li><strong>Used by</strong>: ProtectedRoute, nav components, API client</li>
+                            <li><strong>Pattern</strong>: React Context API for sharing auth across app</li>
+                        </ul>
+<div class="code-example">
+<div class="code-header"><span>AuthProvider Implementation</span></div>
+<pre>const AuthContext = createContext();
+
+function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // Check localStorage for token on mount
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+      // Decode and validate token
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  return (
+    &lt;AuthContext.Provider value={{ user, isAuthenticated }}&gt;
+      {children}
+    &lt;/AuthContext.Provider&gt;
+  );
+}</pre>
+</div>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">ProtectedRoute (HOC):</div>
+                        <ul>
+                            <li><strong>Purpose</strong>: Guard routes requiring authentication</li>
+                            <li><strong>Behavior</strong>: Redirects to /login if not authenticated</li>
+                            <li><strong>Used on</strong>: /mcqs, /dashboard, /osce-practice, etc.</li>
+                            <li><strong>Pattern</strong>: Higher-Order Component (HOC)</li>
+                        </ul>
+<div class="code-example">
+<div class="code-header"><span>ProtectedRoute Usage</span></div>
+<pre>&lt;Route
+  path="/mcqs"
+  element={
+    &lt;ProtectedRoute&gt;
+      &lt;MCQBrowser /&gt;
+    &lt;/ProtectedRoute&gt;
+  }
+/&gt;</pre>
+</div>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">Complete JWT Authentication & Request Flow:</div>
+                        <div style="margin-top: 15px; text-align: center; background: white; padding: 20px; border-radius: 8px; border: 2px solid #2e7d32;">
+                            <img src="jwt-auth-interceptors-detailed.png" alt="JWT Authentication Flow" style="max-width: 100%; height: auto; border-radius: 4px;">
+                            <p style="margin-top: 10px; color: #666; font-size: 0.9em; font-style: italic;">
+                                Complete authentication lifecycle with JWT token management, Axios interceptors, and backend validation
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">MobileBottomNav:</div>
+                        <ul>
+                            <li><strong>Purpose</strong>: Mobile navigation bar at bottom of screen</li>
+                            <li><strong>Responsive</strong>: Shows only on screens < 768px</li>
+                            <li><strong>Icons</strong>: Home, MCQs, OSCEs, Progress, Profile</li>
+                            <li><strong>Pattern</strong>: Mobile-first responsive design</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">FlashcardReview:</div>
+                        <ul>
+                            <li><strong>Purpose</strong>: Spaced repetition study card system</li>
+                            <li><strong>Algorithm</strong>: SM-2 (SuperMemo 2) for optimal learning</li>
+                            <li><strong>Features</strong>: Flip cards, difficulty rating, progress tracking</li>
+                            <li><strong>Route</strong>: /study-cards</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">Complete Component Hierarchy & Data Flow:</div>
+                        <div style="margin-top: 15px; text-align: center; background: white; padding: 20px; border-radius: 8px; border: 2px solid #7b1fa2;">
+                            <img src="component-hierarchy-detailed.png" alt="Component Hierarchy" style="max-width: 100%; height: auto; border-radius: 4px;">
+                            <p style="margin-top: 10px; color: #666; font-size: 0.9em; font-style: italic;">
+                                Complete component tree from App.tsx through MCQBrowser with props flow, state management, and event handlers
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Theme -->
+                <div class="component-card">
+                    <div class="component-name">theme</div>
+                    <div class="component-location">import theme from "./theme/theme"</div>
+                    <div class="component-purpose">Custom Material-UI theme configuration for irStudy branding</div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">What it contains:</div>
+                        <ul>
+                            <li><strong>Color palette</strong>: Primary (purple), secondary (blue), success, error</li>
+                            <li><strong>Typography</strong>: Font families, sizes, weights</li>
+                            <li><strong>Spacing</strong>: Consistent padding/margin scale</li>
+                            <li><strong>Breakpoints</strong>: Mobile, tablet, desktop sizes</li>
+                            <li><strong>Component overrides</strong>: Custom button styles, card shadows</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-section">
+                        <div class="component-section-title">Theme Structure:</div>
+<div class="code-example">
+<div class="code-header"><span>theme/theme.ts</span></div>
+<pre>const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#667eea',      // Purple for primary actions
+      light: '#a5b4fc',
+      dark: '#4338ca',
+    },
+    secondary: {
+      main: '#764ba2',      // Gradient accent
+    },
+    background: {
+      default: '#f8fafc',   // Light gray background
+      paper: '#ffffff',     // Card backgrounds
+    },
+  },
+  typography: {
+    fontFamily: '"Segoe UI", "Roboto", "Arial", sans-serif',
+    h1: { fontSize: '2.5rem', fontWeight: 700 },
+    h2: { fontSize: '2rem', fontWeight: 600 },
+    button: { textTransform: 'none' }, // No UPPERCASE buttons
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 8,      // Rounded buttons
+          padding: '8px 24px',
+        },
+      },
+    },
+  },
+});</pre>
+</div>
+                    </div>
+                </div>
+
+                <!-- Package Installation -->
+                <div class="component-card" style="background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);">
+                    <h3 style="color: #166534; margin-bottom: 15px;">📥 Installing These Packages</h3>
+                    <p style="margin-bottom: 15px;">All packages are defined in <code>frontend/package.json</code>:</p>
+
+<div class="code-example">
+<div class="code-header"><span>Install Commands</span></div>
+<pre># Install all dependencies
+cd frontend
+npm install
+
+# Or install specific packages individually:
+npm install react react-dom
+npm install react-router-dom
+npm install @tanstack/react-query
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material
+
+# TypeScript types (dev dependencies):
+npm install -D @types/react @types/react-dom</pre>
+</div>
+
+                    <h4 style="color: #166534; margin: 20px 0 10px 0;">Package Versions Used:</h4>
+                    <table>
+                        <tr>
+                            <th>Package</th>
+                            <th>Version</th>
+                            <th>Bundle Size</th>
+                        </tr>
+                        <tr>
+                            <td>react</td>
+                            <td>18.2.0</td>
+                            <td>~6 KB (gzipped)</td>
+                        </tr>
+                        <tr>
+                            <td>react-router-dom</td>
+                            <td>6.20.0</td>
+                            <td>~11 KB</td>
+                        </tr>
+                        <tr>
+                            <td>@tanstack/react-query</td>
+                            <td>4.35.0</td>
+                            <td>~13 KB</td>
+                        </tr>
+                        <tr>
+                            <td>@mui/material</td>
+                            <td>5.14.0</td>
+                            <td>~90 KB (tree-shakeable)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Main Navigation -->
+            <div class="section">
+                <h2 class="section-title">🗺️ Documentation Sections</h2>
+
+                <div class="nav-cards">
+                    <!-- Section 1 -->
+                    <a href="01-overview.html" class="nav-card">
+                        <div class="nav-card-number">01</div>
+                        <div class="nav-card-icon">🏗️</div>
+                        <div class="nav-card-title">Architecture Overview</div>
+                        <div class="nav-card-desc">
+                            High-level system architecture, technology stack, and development environment setup.
+                        </div>
+                        <div class="nav-card-meta">
+                            Topics: React 18, TypeScript, Material-UI, TanStack Query, FastAPI, PostgreSQL
+                        </div>
+                    </a>
+
+                    <!-- Section 2 -->
+                    <a href="02-request-flow.html" class="nav-card">
+                        <div class="nav-card-number">02</div>
+                        <div class="nav-card-icon">🔄</div>
+                        <div class="nav-card-title">Request Flow Analysis</div>
+                        <div class="nav-card-desc">
+                            Step-by-step breakdown of the complete user → server → database → response flow.
+                        </div>
+                        <div class="nav-card-meta">
+                            Topics: React Router, Authentication, API Calls, Database Queries
+                        </div>
+                    </a>
+
+                    <!-- Section 3 -->
+                    <a href="03-frontend-components.html" class="nav-card">
+                        <div class="nav-card-number">03</div>
+                        <div class="nav-card-icon">⚛️</div>
+                        <div class="nav-card-title">Frontend Components</div>
+                        <div class="nav-card-desc">
+                            Detailed component architecture with actual source code from App.tsx, MCQBrowser.tsx, and more.
+                        </div>
+                        <div class="nav-card-meta">
+                            Topics: React Components, Hooks, State Management, UI Implementation
+                        </div>
+                    </a>
+
+                    <!-- Section 4 -->
+                    <a href="04-api-layer.html" class="nav-card">
+                        <div class="nav-card-number">04</div>
+                        <div class="nav-card-icon">🔌</div>
+                        <div class="nav-card-title">API & HTTP Layer</div>
+                        <div class="nav-card-desc">
+                            API client implementation, Axios configuration, interceptors, authentication, and error handling.
+                        </div>
+                        <div class="nav-card-meta">
+                            Topics: Axios, JWT, Token Refresh, Request/Response Interceptors
+                        </div>
+                    </a>
+
+                    <!-- Section 5 -->
+                    <a href="05-backend-api.html" class="nav-card">
+                        <div class="nav-card-number">05</div>
+                        <div class="nav-card-icon">🖥️</div>
+                        <div class="nav-card-title">Backend API</div>
+                        <div class="nav-card-desc">
+                            FastAPI endpoints, authentication dependencies, database queries, and response schemas.
+                        </div>
+                        <div class="nav-card-meta">
+                            Topics: FastAPI, SQLAlchemy, JWT Validation, Database Queries
+                        </div>
+                    </a>
+
+                    <!-- Section 6 -->
+                    <a href="06-issues-troubleshooting.html" class="nav-card">
+                        <div class="nav-card-number">06</div>
+                        <div class="nav-card-icon">🚨</div>
+                        <div class="nav-card-title">Issues & Troubleshooting</div>
+                        <div class="nav-card-desc">
+                            Identified issues, root cause analysis, step-by-step resolution guides, and debugging tips.
+                        </div>
+                        <div class="nav-card-meta">
+                            Topics: Authentication Errors, Debugging, Common Problems, Solutions
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Access Links -->
+            <div class="quick-links">
+                <h3>⚡ Quick Access</h3>
+                <div class="quick-links-grid">
+                    <a href="../mcq_architecture_diagram.png" class="quick-link" target="_blank">📊 Architecture Diagram</a>
+                    <a href="../MCQ_PAGE_DIAGNOSIS_REPORT.md" class="quick-link" target="_blank">📄 Full Report (MD)</a>
+                    <a href="../mcq_architecture_analysis.pdf" class="quick-link" target="_blank">📑 PDF Version</a>
+                    <a href="../../frontend/src/App.tsx" class="quick-link" target="_blank">📁 App.tsx</a>
+                    <a href="../../frontend/src/pages/MCQBrowser.tsx" class="quick-link" target="_blank">📁 MCQBrowser.tsx</a>
+                    <a href="../../backend/src/api/v1/mcqs.py" class="quick-link" target="_blank">📁 mcqs.py</a>
+                </div>
+            </div>
+
+            <!-- File Locations -->
+            <div class="section">
+                <h2 class="section-title">📂 Documentation Files</h2>
+                <table>
+                    <tr>
+                        <th>File</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Size</th>
+                    </tr>
+                    <tr>
+                        <td><code>index.html</code></td>
+                        <td><span class="badge">HTML</span></td>
+                        <td>Navigation hub (this page)</td>
+                        <td>~12 KB</td>
+                    </tr>
+                    <tr>
+                        <td><code>01-overview.html</code></td>
+                        <td><span class="badge">HTML</span></td>
+                        <td>Architecture overview with tech stack</td>
+                        <td>~15 KB</td>
+                    </tr>
+                    <tr>
+                        <td><code>02-request-flow.html</code></td>
+                        <td><span class="badge">HTML</span></td>
+                        <td>Complete request flow breakdown</td>
+                        <td>~18 KB</td>
+                    </tr>
+                    <tr>
+                        <td><code>03-frontend-components.html</code></td>
+                        <td><span class="badge">HTML</span></td>
+                        <td>Frontend component details with code</td>
+                        <td>~25 KB</td>
+                    </tr>
+                    <tr>
+                        <td><code>04-api-layer.html</code></td>
+                        <td><span class="badge">HTML</span></td>
+                        <td>API layer and HTTP client</td>
+                        <td>~20 KB</td>
+                    </tr>
+                    <tr>
+                        <td><code>05-backend-api.html</code></td>
+                        <td><span class="badge">HTML</span></td>
+                        <td>Backend FastAPI endpoints</td>
+                        <td>~22 KB</td>
+                    </tr>
+                    <tr>
+                        <td><code>06-issues-troubleshooting.html</code></td>
+                        <td><span class="badge">HTML</span></td>
+                        <td>Issues and solutions</td>
+                        <td>~20 KB</td>
+                    </tr>
+                    <tr>
+                        <td><code>styles.css</code></td>
+                        <td><span class="badge info">CSS</span></td>
+                        <td>Shared stylesheet</td>
+                        <td>~8 KB</td>
+                    </tr>
+                    <tr>
+                        <td><code>../mcq_architecture_diagram.png</code></td>
+                        <td><span class="badge warning">Image</span></td>
+                        <td>Visual architecture diagram (300 DPI)</td>
+                        <td>1.1 MB</td>
+                    </tr>
+                    <tr>
+                        <td><code>../MCQ_PAGE_DIAGNOSIS_REPORT.md</code></td>
+                        <td><span class="badge success">Markdown</span></td>
+                        <td>Complete technical report (961 lines)</td>
+                        <td>28 KB</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- How to Use -->
+            <div class="section">
+                <h2 class="section-title">🎓 How to Use This Documentation</h2>
+
+                <div class="component-card">
+                    <h3 style="color: #1e3c72; margin-bottom: 15px;">For New Developers</h3>
+                    <ol style="line-height: 2;">
+                        <li>Start with <strong>01 - Architecture Overview</strong> to understand the tech stack</li>
+                        <li>Read <strong>02 - Request Flow</strong> to see how data flows through the system</li>
+                        <li>Study <strong>03 - Frontend Components</strong> to understand UI implementation</li>
+                        <li>Review <strong>04 - API Layer</strong> for HTTP communication patterns</li>
+                        <li>Explore <strong>05 - Backend API</strong> to see server-side logic</li>
+                        <li>Refer to <strong>06 - Troubleshooting</strong> when debugging issues</li>
+                    </ol>
+                </div>
+
+                <div class="component-card">
+                    <h3 style="color: #1e3c72; margin-bottom: 15px;">For Debugging</h3>
+                    <ol style="line-height: 2;">
+                        <li>Go directly to <strong>06 - Issues & Troubleshooting</strong></li>
+                        <li>Check the error symptoms against documented issues</li>
+                        <li>Follow step-by-step resolution guides</li>
+                        <li>Use browser DevTools commands provided in examples</li>
+                        <li>Test API endpoints with curl commands</li>
+                    </ol>
+                </div>
+
+                <div class="component-card">
+                    <h3 style="color: #1e3c72; margin-bottom: 15px;">For Code Review</h3>
+                    <ol style="line-height: 2;">
+                        <li>Focus on <strong>03 - Frontend Components</strong> for UI review</li>
+                        <li>Read <strong>04 - API Layer</strong> for authentication logic</li>
+                        <li>Study <strong>05 - Backend API</strong> for endpoint implementation</li>
+                        <li>Compare actual code files with documented patterns</li>
+                        <li>Use the architecture diagram as a reference</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div style="text-align: center; padding: 30px 0; border-top: 2px solid #e2e8f0; margin-top: 40px;">
+                <p style="color: #666; margin-bottom: 10px;">
+                    <strong>Documentation Generated:</strong> May 26, 2026
+                </p>
+                <p style="color: #888; font-size: 0.9em;">
+                    irStudy Platform - Australian Medical Examination Preparation<br>
+                    Location: <code>/home/dev/Development/irStudy/docs/mcq-architecture/</code>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 - Architecture Overview | MCQ Page Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏗️ Architecture Overview</h1>
+            <p>Technology Stack & System Design</p>
+        </div>
+
+        <div class="nav-breadcrumb">
+            <a href="index.html">← Back to Index</a> | 
+            <a href="02-request-flow.html">Next: Request Flow →</a>
+        </div>
+
+        <div class="content">
+            <!-- Tech Stack -->
+            <div class="section">
+                <h2 class="section-title">🛠️ Technology Stack</h2>
+
+                <div class="stack-grid">
+                    <div class="stack-item">
+                        <strong>Frontend Framework</strong>
+                        React 18.2+ with TypeScript 5.0+
+                    </div>
+                    <div class="stack-item">
+                        <strong>Client-Side Routing</strong>
+                        React Router v6.20+
+                    </div>
+                    <div class="stack-item">
+                        <strong>State Management</strong>
+                        TanStack React Query v4.35+
+                    </div>
+                    <div class="stack-item">
+                        <strong>UI Component Library</strong>
+                        Material-UI (MUI) v5.14+
+                    </div>
+                    <div class="stack-item">
+                        <strong>HTTP Client</strong>
+                        Axios 1.6+ with interceptors
+                    </div>
+                    <div class="stack-item">
+                        <strong>Build Tool</strong>
+                        Vite 5.0+ (ESBuild powered)
+                    </div>
+                    <div class="stack-item">
+                        <strong>Backend Framework</strong>
+                        FastAPI 0.104+ (Python 3.11+)
+                    </div>
+                    <div class="stack-item">
+                        <strong>Database</strong>
+                        PostgreSQL 15+ with SQLAlchemy ORM
+                    </div>
+                    <div class="stack-item">
+                        <strong>Authentication</strong>
+                        JWT (JSON Web Tokens)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Development Environment -->
+            <div class="section">
+                <h2 class="section-title">💻 Development Environment</h2>
+
+                <table>
+                    <tr>
+                        <th>Service</th>
+                        <th>URL</th>
+                        <th>Port</th>
+                        <th>Purpose</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Frontend Dev Server</strong></td>
+                        <td><code>http://localhost:5173</code></td>
+                        <td>5173</td>
+                        <td>Vite dev server with HMR</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Backend API</strong></td>
+                        <td><code>http://localhost:8001</code></td>
+                        <td>8001</td>
+                        <td>FastAPI REST API server</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Database</strong></td>
+                        <td><code>localhost:5433</code></td>
+                        <td>5433</td>
+                        <td>PostgreSQL database</td>
+                    </tr>
+                    <tr>
+                        <td><strong>API Documentation</strong></td>
+                        <td><code>http://localhost:8001/docs</code></td>
+                        <td>8001</td>
+                        <td>Swagger UI (automatic)</td>
+                    </tr>
+                </table>
+
+                <div class="note">
+                    <strong>⚠️ Note:</strong> The backend API runs on port <strong>8001</strong>, not the default 8000. Make sure your environment variables point to the correct port.
+                </div>
+            </div>
+
+            <!-- Project Structure -->
+            <div class="section">
+                <h2 class="section-title">📁 Project Structure</h2>
+
+<div class="code-example">
+<div class="code-header">
+<span>File: Project Directory Tree</span>
+</div>
+<pre>/home/dev/Development/irStudy/
+├── frontend/                          # React TypeScript frontend
+│   ├── src/
+│   │   ├── App.tsx                   # Root component
+│   │   ├── main.tsx                  # Entry point
+│   │   ├── routes.tsx                # Lazy-loaded route exports
+│   │   ├── api/                      # API client layer
+│   │   │   ├── client.ts             # Axios instance with interceptors
+│   │   │   ├── mcqs.ts               # MCQ API functions
+│   │   │   └── auth.ts               # Authentication API
+│   │   ├── components/
+│   │   │   ├── ProtectedRoute.tsx    # Auth guard HOC
+│   │   │   ├── PermissionGuard.tsx   # RBAC component
+│   │   │   └── layout/
+│   │   │       └── MobileBottomNav.tsx
+│   │   ├── pages/
+│   │   │   ├── Login.tsx
+│   │   │   ├── Register.tsx
+│   │   │   ├── MCQBrowser.tsx        # MCQ catalog page
+│   │   │   └── MCQAttempt.tsx
+│   │   ├── context/
+│   │   │   └── AuthContext.tsx       # Authentication context
+│   │   ├── hooks/
+│   │   │   └── useAuth.ts
+│   │   ├── types/
+│   │   │   ├── mcq.ts                # TypeScript interfaces
+│   │   │   └── auth.ts
+│   │   └── theme/
+│   │       └── theme.ts              # Material-UI theme
+│   ├── package.json
+│   └── vite.config.ts
+│
+├── backend/                           # FastAPI Python backend
+│   ├── src/
+│   │   ├── main.py                   # FastAPI app entry
+│   │   ├── config.py                 # Environment config
+│   │   ├── api/
+│   │   │   └── v1/
+│   │   │       ├── router.py         # Main router aggregation
+│   │   │       ├── mcqs.py           # MCQ endpoints
+│   │   │       ├── auth.py           # Auth endpoints
+│   │   │       └── users.py
+│   │   ├── db/
+│   │   │   ├── base.py               # Database session
+│   │   │   └── models.py             # SQLAlchemy models
+│   │   ├── schemas/
+│   │   │   ├── mcq.py                # Pydantic schemas
+│   │   │   └── auth.py
+│   │   └── auth/
+│   │       └── dependencies.py       # JWT validation
+│   ├── requirements.txt
+│   └── alembic/                      # Database migrations
+│
+└── docs/                              # Documentation
+    └── mcq-architecture/
+        └── (you are here)</pre>
+</div>
+            </div>
+
+            <!-- Architecture Diagram -->
+            <div class="section">
+                <h2 class="section-title">🎨 System Architecture</h2>
+
+                <div class="diagram-placeholder">
+                    <img src="../mcq_architecture_diagram.png" alt="MCQ Architecture Diagram">
+                    <p style="margin-top: 15px; color: #666;">
+                        7-Layer Architecture Diagram<br>
+                        <small>Click image to view full size (300 DPI)</small>
+                    </p>
+                </div>
+
+                <h3 style="color: #1e3c72; margin: 30px 0 15px 0;">Layer Breakdown:</h3>
+                <div class="component-card">
+                    <h4 style="color: #667eea;">Layer 1: Browser / Client</h4>
+                    <p>React 18 application running in user's browser. Handles UI rendering, user interactions, and client-side routing.</p>
+                </div>
+
+                <div class="component-card">
+                    <h4 style="color: #667eea;">Layer 2: App Router</h4>
+                    <p>React Router v6 with lazy loading. Manages navigation, route protection, and code splitting.</p>
+                </div>
+
+                <div class="component-card">
+                    <h4 style="color: #667eea;">Layer 3: Protected Route Guard</h4>
+                    <p>Authentication checkpoint. Checks for JWT token in localStorage before allowing access to protected pages.</p>
+                </div>
+
+                <div class="component-card">
+                    <h4 style="color: #667eea;">Layer 4: Page Component</h4>
+                    <p>MCQBrowser.tsx - Manages state, filters, pagination. Uses React Query for server state management.</p>
+                </div>
+
+                <div class="component-card">
+                    <h4 style="color: #667eea;">Layer 5: API Client</h4>
+                    <p>Axios instance with request/response interceptors. Handles authentication headers and token refresh.</p>
+                </div>
+
+                <div class="component-card">
+                    <h4 style="color: #667eea;">Layer 6: Backend API</h4>
+                    <p>FastAPI endpoints with dependency injection. Validates JWT, processes requests, queries database.</p>
+                </div>
+
+                <div class="component-card">
+                    <h4 style="color: #667eea;">Layer 7: Database</h4>
+                    <p>PostgreSQL with SQLAlchemy ORM. Stores MCQs, user data, attempts, and progress.</p>
+                </div>
+            </div>
+
+            <!-- Key Design Patterns -->
+            <div class="section">
+                <h2 class="section-title">🎯 Key Design Patterns</h2>
+
+                <div class="component-card">
+                    <h3 style="color: #1e3c72; margin-bottom: 15px;">1. Higher-Order Component (HOC) Pattern</h3>
+                    <p><strong>Used in:</strong> <code>ProtectedRoute</code></p>
+                    <p><strong>Purpose:</strong> Wrap route components to add authentication checks</p>
+<div class="code-example">
+<div class="code-header">
+<span>Pattern: ProtectedRoute HOC</span>
+</div>
+<pre><span class="code-comment">// Wraps child components with auth check</span>
+<span class="code-keyword">function</span> <span class="code-function">ProtectedRoute</span>({ children }) {
+  <span class="code-keyword">const</span> { isAuthenticated } = <span class="code-function">useAuth</span>();
+  
+  <span class="code-keyword">if</span> (!isAuthenticated) {
+    <span class="code-keyword">return</span> &lt;<span class="code-function">Navigate</span> to=<span class="code-string">"/login"</span> replace /&gt;;
+  }
+  
+  <span class="code-keyword">return</span> children;
+}</pre>
+</div>
+                </div>
+
+                <div class="component-card">
+                    <h3 style="color: #1e3c72; margin-bottom: 15px;">2. Custom Hook Pattern</h3>
+                    <p><strong>Used in:</strong> <code>useAuth</code>, <code>useQuery</code></p>
+                    <p><strong>Purpose:</strong> Encapsulate reusable stateful logic</p>
+<div class="code-example">
+<div class="code-header">
+<span>Pattern: Custom Hook</span>
+</div>
+<pre><span class="code-comment">// Custom hook for authentication</span>
+<span class="code-keyword">function</span> <span class="code-function">useAuth</span>() {
+  <span class="code-keyword">const</span> context = <span class="code-function">useContext</span>(AuthContext);
+  <span class="code-keyword">if</span> (!context) {
+    <span class="code-keyword">throw</span> <span class="code-keyword">new</span> <span class="code-function">Error</span>(<span class="code-string">'useAuth must be used within AuthProvider'</span>);
+  }
+  <span class="code-keyword">return</span> context;
+}</pre>
+</div>
+                </div>
+
+                <div class="component-card">
+                    <h3 style="color: #1e3c72; margin-bottom: 15px;">3. Interceptor Pattern</h3>
+                    <p><strong>Used in:</strong> Axios request/response interceptors</p>
+                    <p><strong>Purpose:</strong> Centralize cross-cutting concerns (auth, error handling)</p>
+<div class="code-example">
+<div class="code-header">
+<span>Pattern: Request Interceptor</span>
+</div>
+<pre><span class="code-comment">// Automatically adds auth header to all requests</span>
+axiosInstance.interceptors.request.<span class="code-function">use</span>(
+  (config) => {
+    <span class="code-keyword">const</span> token = localStorage.<span class="code-function">getItem</span>(<span class="code-string">'accessToken'</span>);
+    <span class="code-keyword">if</span> (token) {
+      config.headers.Authorization = <span class="code-string">`Bearer ${token}`</span>;
+    }
+    <span class="code-keyword">return</span> config;
+  }
+);</pre>
+</div>
+                </div>
+
+                <div class="component-card">
+                    <h3 style="color: #1e3c72; margin-bottom: 15px;">4. Dependency Injection Pattern</h3>
+                    <p><strong>Used in:</strong> FastAPI endpoint dependencies</p>
+                    <p><strong>Purpose:</strong> Decouple authentication from business logic</p>
+<div class="code-example">
+<div class="code-header">
+<span>Pattern: Dependency Injection (FastAPI)</span>
+</div>
+<pre><span class="code-comment"># FastAPI automatically calls get_current_active_user</span>
+<span class="code-keyword">@router</span>.<span class="code-function">get</span>(<span class="code-string">"/"</span>)
+<span class="code-keyword">async def</span> <span class="code-function">list_mcqs</span>(
+    current_user: User = <span class="code-function">Depends</span>(get_current_active_user),
+    db: Session = <span class="code-function">Depends</span>(get_db)
+):
+    <span class="code-comment"># If we reach here, user is authenticated</span>
+    mcqs = db.<span class="code-function">query</span>(MCQ).<span class="code-function">all</span>()
+    <span class="code-keyword">return</span> mcqs</pre>
+</div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div style="text-align: center; padding: 30px 0; border-top: 2px solid #e2e8f0; margin-top: 40px;">
+                <a href="index.html" style="margin: 0 15px; color: #667eea; text-decoration: none; font-weight: bold;">← Back to Index</a>
+                <a href="02-request-flow.html" style="margin: 0 15px; color: #667eea; text-decoration: none; font-weight: bold;">Next: Request Flow →</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

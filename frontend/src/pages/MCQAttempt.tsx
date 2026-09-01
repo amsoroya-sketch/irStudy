@@ -82,7 +82,7 @@ const MCQAttempt: React.FC = () => {
     submitMutation.mutate({
       mcq_id: Number(id),
       selected_answer: selectedAnswer as 'A' | 'B' | 'C' | 'D' | 'E',
-      time_spent_seconds: timeSpentSeconds,
+      time_taken_seconds: timeSpentSeconds,
     });
   };
 
@@ -142,7 +142,7 @@ const MCQAttempt: React.FC = () => {
               MCQ #{mcq.id}
             </Typography>
             <Chip label={mcq.difficulty} color="primary" size="small" />
-            <Chip label={mcq.category} variant="outlined" size="small" />
+            <Chip label={mcq.specialty} variant="outlined" size="small" />
           </Box>
           {mcq.tags && mcq.tags.length > 0 && (
             <Box>
@@ -160,7 +160,7 @@ const MCQAttempt: React.FC = () => {
               Question:
             </Typography>
             <Typography variant="body1" sx={{ whiteSpace: 'pre-wrap', mb: 3 }}>
-              {mcq.question}
+              {mcq.question_text}
             </Typography>
 
             {mcq.image_url && (
@@ -179,33 +179,35 @@ const MCQAttempt: React.FC = () => {
                   <FormControlLabel
                     value="A"
                     control={<Radio />}
-                    label={`A. ${mcq.option_a}`}
+                    label={`A. ${mcq.options?.A || ''}`}
                     sx={{ mb: 1, p: 1, border: '1px solid #e0e0e0', borderRadius: 1 }}
                   />
                   <FormControlLabel
                     value="B"
                     control={<Radio />}
-                    label={`B. ${mcq.option_b}`}
+                    label={`B. ${mcq.options?.B || ''}`}
                     sx={{ mb: 1, p: 1, border: '1px solid #e0e0e0', borderRadius: 1 }}
                   />
                   <FormControlLabel
                     value="C"
                     control={<Radio />}
-                    label={`C. ${mcq.option_c}`}
+                    label={`C. ${mcq.options?.C || ''}`}
                     sx={{ mb: 1, p: 1, border: '1px solid #e0e0e0', borderRadius: 1 }}
                   />
                   <FormControlLabel
                     value="D"
                     control={<Radio />}
-                    label={`D. ${mcq.option_d}`}
+                    label={`D. ${mcq.options?.D || ''}`}
                     sx={{ mb: 1, p: 1, border: '1px solid #e0e0e0', borderRadius: 1 }}
                   />
-                  <FormControlLabel
-                    value="E"
-                    control={<Radio />}
-                    label={`E. ${mcq.option_e}`}
-                    sx={{ mb: 1, p: 1, border: '1px solid #e0e0e0', borderRadius: 1 }}
-                  />
+                  {mcq.options?.E && (
+                    <FormControlLabel
+                      value="E"
+                      control={<Radio />}
+                      label={`E. ${mcq.options.E}`}
+                      sx={{ mb: 1, p: 1, border: '1px solid #e0e0e0', borderRadius: 1 }}
+                    />
+                  )}
                 </RadioGroup>
               </FormControl>
             )}

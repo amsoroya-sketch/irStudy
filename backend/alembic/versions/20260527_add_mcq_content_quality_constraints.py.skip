@@ -1,0 +1,101 @@
+"""Add MCQ content quality constraints
+
+Revision ID: 20260527_mcq_quality
+Revises: 20260407_1615_9ec7a1d598b7
+Create Date: 2026-05-27
+
+DESCRIPTION:
+    Adds database CHECK constraints to prevent placeholder MCQ content:
+    - Reject placeholder question text patterns
+    - Require minimum question length (≥100 chars)
+    - Require real citations (no [Guideline] placeholders)
+    - Require real explanations (≥50 chars, no templates)
+
+INCIDENT:
+    2026-05-27: 1,046/1,613 MCQs (64.8%) were placeholder content
+    Root cause: No database-level content validation
+    Prevention: CHECK constraints enforce quality at schema level
+
+RELATED:
+    - PROJECT_CONSTRAINTS.md Section 15 (MCQ Content Validation)
+    - .claude/skills/medical-content-quality.md
+"""
+from alembic import op
+import sqlalchemy as sa
+
+
+# revision identifiers, used by Alembic.
+revision = '20260527_mcq_quality'
+down_revision = '20260407_1615_9ec7a1d598b7'
+branch_labels = None
+depends_on = None
+
+
+def upgrade():
+    """
+    Add CHECK constraints to mcqs table for content quality.
+
+    CONSTRAINTS:
+    1. check_no_placeholder_question_text: Reject placeholder patterns in question_text
+    2. check_question_min_length: Require minimum 100 characters
+    3. check_real_citation: Require real citation (no placeholders, ≥10 chars)
+    4. check_real_explanation: Require real explanation (no templates, ≥50 chars)
+    """
+
+    # 1. Reject placeholder question text patterns
+    op.create_check_constraint(
+        'check_no_placeholder_question_text',
+        'mcqs',
+        sa.text(
+            "question_text !~* 'Clinical scenario for \\[|Question about \\[|\\[Topic\\]|\\[Condition\\]|Option [A-E]'"
+        )
+    )
+
+    # 2. Require minimum question length (real scenarios are ≥100 chars)
+    op.create_check_constraint(
+        'check_question_min_length',
+        'mcqs',
+        sa.text("char_length(question_text) >= 100")
+    )
+
+    # 3. Require citation with real source (not "[Guideline]", ≥10 chars)
+    op.create_check_constraint(
+        'check_real_citation',
+        'mcqs',
+        sa.text(
+            "citation !~* '\\[Guideline\\]|\\[Reference\\]|\\[Source\\]' AND char_length(citation) >= 10"
+        )
+    )
+
+    # 4. Require explanation with real content (≥50 chars, no templates)
+    op.create_check_constraint(
+        'check_real_explanation',
+        'mcqs',
+        sa.text(
+            "explanation !~* 'Explanation based on.*?\\[|According to \\[' AND char_length(explanation) >= 50"
+        )
+    )
+
+    print("✅ Added 4 CHECK constraints to mcqs table:")
+    print("   1. check_no_placeholder_question_text (reject placeholder patterns)")
+    print("   2. check_question_min_length (≥100 chars)")
+    print("   3. check_real_citation (real sources, ≥10 chars)")
+    print("   4. check_real_explanation (real content, ≥50 chars)")
+
+
+def downgrade():
+    """
+    Remove CHECK constraints from mcqs table.
+
+    WARNING: This will allow placeholder content to be inserted.
+    Only use for rollback in emergency situations.
+    """
+
+    op.drop_constraint('check_no_placeholder_question_text', 'mcqs', type_='check')
+    op.drop_constraint('check_question_min_length', 'mcqs', type_='check')
+    op.drop_constraint('check_real_citation', 'mcqs', type_='check')
+    op.drop_constraint('check_real_explanation', 'mcqs', type_='check')
+
+    print("⚠️  WARNING: Removed MCQ content quality CHECK constraints")
+    print("   Database can now accept placeholder content")
+    print("   This should only be used for emergency rollback")

@@ -183,6 +183,15 @@ class MCQAttemptResponse(BaseModel):
         from_attributes = True
 
 
+class MCQListResponse(BaseModel):
+    """Paginated list of MCQs"""
+
+    items: List[MCQPublic]
+    total: int
+    skip: int
+    limit: int
+
+
 class MCQStatistics(BaseModel):
     """MCQ statistics"""
 

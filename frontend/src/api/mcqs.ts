@@ -81,7 +81,7 @@ export const submitMCQAttempt = async (
   data: CreateMCQAttemptRequest
 ): Promise<CreateMCQAttemptResponse> => {
   const response = await axiosInstance.post<CreateMCQAttemptResponse>(
-    '/progress/mcq-attempts',
+    `/mcqs/${data.mcq_id}/attempt`,
     data
   );
   return response.data;

@@ -6,12 +6,11 @@ import logging
 from typing import Optional, Dict, Any
 from fastapi import WebSocket, status
 from jose import jwt, JWTError
-import os
+
+from src.auth.security import SECRET_KEY
 
 logger = logging.getLogger(__name__)
 
-# JWT Configuration (should match your auth system)
-SECRET_KEY = os.getenv("JWT_SECRET_KEY", "your-secret-key-change-in-production")
 ALGORITHM = "HS256"
 
 

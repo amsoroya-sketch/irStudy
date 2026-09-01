@@ -22,7 +22,7 @@ interface SpecialtyBreakdownProps {
   specialties: SpecialtyPerformance[];
 }
 
-const SpecialtyBreakdown: React.FC<SpecialtyBreakdownProps> = ({ specialties }) => {
+const SpecialtyBreakdown: React.FC<SpecialtyBreakdownProps> = ({ specialties = [] }) => {
   const { isMobile } = useResponsive();
 
   // Sort by accuracy (lowest to highest) for visibility

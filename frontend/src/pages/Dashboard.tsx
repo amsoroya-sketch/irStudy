@@ -61,7 +61,7 @@ const Dashboard: React.FC = () => {
     improvement_percentage: emrData.metrics.improvement_percentage,
     ahpra_compliance_rate: emrData.metrics.ahpra_compliance_rate,
     total_time_spent_minutes: Math.round(emrData.metrics.total_time_spent_seconds / 60),
-    specialty_breakdown: emrData.metrics.specialty_stats.map(stat => ({
+    specialty_breakdown: (emrData.metrics.specialty_stats ?? []).map(stat => ({
       specialty: stat.specialty,
       session_count: stat.session_count,
       average_score: stat.avg_score,
@@ -136,7 +136,7 @@ const Dashboard: React.FC = () => {
               size="large"
               variant="contained"
               color="primary"
-              onClick={() => navigate('/emr/start')}
+              onClick={() => navigate('/emr/cases')}
             >
               Start EMR Session
             </Button>
@@ -308,7 +308,7 @@ const Dashboard: React.FC = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small" color="primary" onClick={() => navigate('/osces')}>
+                <Button size="small" color="primary" onClick={() => navigate('/osce-practice')}>
                   Browse OSCEs
                 </Button>
               </CardActions>
@@ -356,7 +356,7 @@ const Dashboard: React.FC = () => {
                   </Button>
                 </PermissionGuard>
                 <PermissionGuard permission={Permissions.OSCE_CREATE}>
-                  <Button size="small" color="primary" onClick={() => navigate('/osces/create')}>
+                  <Button size="small" color="primary" onClick={() => navigate('/osce-practice')}>
                     New OSCE
                   </Button>
                 </PermissionGuard>

@@ -508,3 +508,90 @@ async def complete_osce_station(
         rubric=osce.rubric,
         examiner_instructions=osce.examiner_instructions,
     )
+
+
+# ============================================================================
+# GET ENHANCED EDUCATIONAL CONTENT (WEEK 3-4)
+# ============================================================================
+
+
+@router.get("/{osce_id}/educational-content", response_model=dict)
+async def get_osce_educational_content(
+    osce_id: str,
+    current_user: User = Depends(get_current_active_user),
+    db: Session = Depends(get_db),
+):
+    """
+    Get enhanced educational content for OSCE including generated images and study notes.
+
+    WEEK 3-4 FEATURE:
+    - Returns educational images (comparison charts, decision trees, timelines, flowcharts)
+    - Returns linked study notes
+    - Returns clinical pearls and key points
+
+    Args:
+        osce_id: OSCE identifier (e.g., "GI-PUD-001")
+
+    Returns:
+        {
+            "osce": {...},  # Basic OSCE data
+            "educational_images": {
+                "comparison_charts": [...],
+                "decision_trees": [...],
+                "timelines": [...],
+                "flowcharts": [...]
+            },
+            "study_notes": [...],  # Linked study notes
+            "clinical_pearls": [...],  # Key points from OSCE
+            "dr_amir_format": bool  # True if enhanced format
+        }
+
+    Raises:
+        404: OSCE not found or not published
+    """
+    from src.db.models import OSCEStudyNote
+
+    # Get OSCE
+    osce = db.query(OSCE).filter(OSCE.osce_id == osce_id, OSCE.is_published == True).first()
+
+    if not osce:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail=f"OSCE {osce_id} not found or not published"
+        )
+
+    # Get linked study notes
+    study_notes = (
+        db.query(OSCEStudyNote).filter(OSCEStudyNote.osce_id == osce.id, OSCEStudyNote.is_published == True).all()
+    )
+
+    # Format study notes
+    study_notes_data = []
+    for note in study_notes:
+        study_notes_data.append(
+            {
+                "note_id": note.note_id,
+                "title": note.title,
+                "content_markdown": note.content_markdown,
+                "word_count": note.word_count,
+                "reading_time_minutes": note.reading_time_minutes,
+                "topics": note.topics,
+                "tags": note.tags,
+                "amc_relevance": note.amc_relevance,
+            }
+        )
+
+    return {
+        "osce": {
+            "osce_id": osce.osce_id,
+            "station_title": osce.station_title,
+            "specialty": osce.specialty.value,
+            "station_type": osce.station_type.value,
+            "difficulty": osce.difficulty.value,
+            "time_limit_minutes": osce.time_limit_minutes,
+        },
+        "educational_images": osce.educational_images or {},
+        "study_notes": study_notes_data,
+        "clinical_pearls": osce.key_points or [],
+        "red_flags": osce.red_flags or [],
+        "dr_amir_format": osce.dr_amir_format,
+    }

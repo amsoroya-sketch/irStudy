@@ -23,6 +23,10 @@ import logging
 from contextlib import asynccontextmanager
 from typing import Dict, Any
 
+# Load environment variables from .env file (if present)
+from dotenv import load_dotenv
+load_dotenv()
+
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
@@ -89,6 +93,14 @@ async def lifespan(app: FastAPI):
     # qdrant_client = QdrantClient()
     # await qdrant_client.health_check()
     # logger.info("✅ RAG system ready")
+
+    # Initialize Redis client for WebSocket sessions
+    try:
+        from src.core.redis_client import init_redis
+        init_redis()
+        logger.info("✅ Redis client initialized")
+    except Exception as e:
+        logger.warning(f"⚠️ Redis initialization failed: {e}")
 
     yield
 

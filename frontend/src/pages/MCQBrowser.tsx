@@ -57,6 +57,10 @@ const MCQBrowser: React.FC = () => {
     staleTime: 2 * 60 * 1000, // 2 minutes
   });
 
+  // Extract data with safe defaults to prevent runtime errors
+  const items = mcqsData?.items ?? [];
+  const total = mcqsData?.total ?? 0;
+
   const handlePageChange = (_event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
     setFilters((prev) => ({
@@ -183,10 +187,10 @@ const MCQBrowser: React.FC = () => {
       )}
 
       {/* MCQ Grid */}
-      {!isLoading && !error && mcqsData && (
+      {!isLoading && !error && (
         <>
           <Grid container spacing={3}>
-            {mcqsData.items.map((mcq) => (
+            {items.map((mcq) => (
               <Grid size={{ xs: 12, sm: 6, md: 4 }} key={mcq.id}>
                 <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                   <CardContent sx={{ flexGrow: 1 }}>
@@ -250,10 +254,10 @@ const MCQBrowser: React.FC = () => {
           </Grid>
 
           {/* Pagination */}
-          {mcqsData.total > (filters.limit || 20) && (
+          {total > (filters.limit || 20) && (
             <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
               <Pagination
-                count={Math.ceil(mcqsData.total / (filters.limit || 20))}
+                count={Math.ceil(total / (filters.limit || 20))}
                 page={page}
                 onChange={handlePageChange}
                 color="primary"
@@ -262,7 +266,7 @@ const MCQBrowser: React.FC = () => {
           )}
 
           {/* Empty State */}
-          {mcqsData.items.length === 0 && (
+          {items.length === 0 && (
             <Box sx={{ textAlign: 'center', py: 8 }}>
               <Typography variant="h6" color="text.secondary" gutterBottom>
                 No MCQs found

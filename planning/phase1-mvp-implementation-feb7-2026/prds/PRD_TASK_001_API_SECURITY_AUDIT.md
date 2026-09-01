@@ -36,6 +36,94 @@ cat security_reports/bandit_report.json | jq '.results[] | select(.issue_severit
 
 ---
 
+## 0 - DISCOVERY
+
+**Ponytail Principle**: Search for existing security configurations before creating new ones.
+
+### Existing Code Search
+
+**Security Configurations**:
+```bash
+find backend -name "*security*.py" -o -name "*auth*.py"
+# Result: Found backend/src/security/ directory with JWT configuration
+```
+
+**Existing Security Tests**:
+```bash
+find backend/tests -name "*security*.py" -o -name "*auth*.py"
+# Result: Found backend/tests/test_security/ with 35 security tests
+```
+
+**GitHub Actions Workflows**:
+```bash
+ls .github/workflows/*security*.yml
+# Result: Found .github/workflows/security-scan.yml (created in Phase 3)
+```
+
+**Dependency Security Tools**:
+```bash
+grep -i "bandit\|safety" backend/requirements*.txt
+# Result: Not found - need to install
+```
+
+### Reuse Decisions
+
+✅ **REUSE: Existing Security Tests (35 tests)**
+- **Location**: `backend/tests/test_security/`
+- **Decision**: Run existing tests to validate current security posture
+- **Justification**: Tests already exist for JWT, headers, CORS
+
+✅ **REUSE: GitHub Actions Security Workflow**
+- **Location**: `.github/workflows/security-scan.yml`
+- **Decision**: Already configured with API key + credentials scanning
+- **Extension Needed**: Add Bandit + Safety scans to workflow
+
+✅ **REUSE: Security Configuration Patterns**
+- **Location**: `backend/src/security/`
+- **Decision**: Extend existing JWT configuration (don't recreate)
+- **Justification**: JWT setup exists, needs hardening (32-char secret, 30min expiry)
+
+❌ **CREATE NEW: Bandit + Safety Integration**
+- **Reason**: New security scanning tools not yet installed
+- **Approach**: Install tools, integrate into CI/CD
+
+### Packages Considered
+
+❌ **bandit: ^1.7.5** (NEW - required for Python security scanning)
+- **Purpose**: Static analysis security testing (SAST)
+- **Decision**: INSTALL (pip install bandit)
+- **Justification**: OWASP Top 10 compliance validation
+
+❌ **safety: ^2.3.5** (NEW - required for dependency scanning)
+- **Purpose**: Known vulnerability detection in dependencies
+- **Decision**: INSTALL (pip install safety)
+- **Justification**: Check for CVEs in installed packages
+
+✅ **pytest: ^8.0.0** (EXISTING - already installed)
+- **Purpose**: Run existing 35 security tests
+- **Decision**: REUSE existing test suite
+
+### Discovery Summary
+
+**Reusable Components**:
+1. Existing security tests (35 tests in `backend/tests/test_security/`)
+2. GitHub Actions security workflow (`.github/workflows/security-scan.yml`)
+3. JWT configuration in `backend/src/security/` (needs hardening)
+4. CORS, CSP, HSTS configurations (already implemented)
+
+**New Components Required**:
+1. Install Bandit + Safety tools
+2. Integrate Bandit/Safety into GitHub Actions workflow
+3. Harden JWT configuration (32-char secret, 30min expiry)
+4. Generate security audit report
+5. Fix HIGH/CRITICAL vulnerabilities found by Bandit
+
+**Security Savings**: ~40% reduction by reusing existing security tests, GitHub Actions workflow, and security configuration patterns instead of building from scratch.
+
+**Critical**: This is an **audit task** - focus on validating and hardening existing security, not recreating infrastructure.
+
+---
+
 ## 🎯 Objectives
 
 1. **Run comprehensive security audit** using Bandit + Safety on all backend code

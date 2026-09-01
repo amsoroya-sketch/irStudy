@@ -84,12 +84,17 @@ const PerformanceDashboard: React.FC = () => {
     );
   }
 
+  // Extract data with safe defaults
+  const weakAreas = dashboardData.weak_areas ?? [];
+  const specialtyBreakdown = dashboardData.specialty_breakdown ?? [];
+  const trends = trendsData.trends ?? [];
+
   // Build exam readiness factors from dashboard data
   const examReadinessFactors = {
     mcqAccuracyRate: dashboardData.mcq_accuracy_rate,
     osceCompletions: dashboardData.total_osce_completions,
     studyCardRetentionRate: dashboardData.study_card_retention_rate,
-    weakAreaCount: dashboardData.weak_areas.length,
+    weakAreaCount: weakAreas.length,
     studyStreakDays: 0, // Future: add from backend
   };
 
@@ -138,9 +143,9 @@ const PerformanceDashboard: React.FC = () => {
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <StatCard
             title="Weak Areas"
-            value={dashboardData.weak_areas.length}
+            value={weakAreas.length}
             subtitle="Specialties needing focus"
-            color={dashboardData.weak_areas.length > 0 ? 'warning' : 'success'}
+            color={weakAreas.length > 0 ? 'warning' : 'success'}
           />
         </Grid>
       </Grid>
@@ -151,15 +156,15 @@ const PerformanceDashboard: React.FC = () => {
           <ExamReadinessGauge factors={examReadinessFactors} />
         </Grid>
         <Grid size={{ xs: 12, md: 7 }}>
-          <WeakAreasPanel weakAreas={dashboardData.weak_areas} />
+          <WeakAreasPanel weakAreas={weakAreas} />
         </Grid>
       </Grid>
 
       {/* Weekly Trends Chart */}
       <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ mb: { xs: 2, sm: 3, md: 4 } }}>
         <Grid size={{ xs: 12 }}>
-          {trendsData.trends.length > 0 ? (
-            <PerformanceChart trends={trendsData.trends} />
+          {trends.length > 0 ? (
+            <PerformanceChart trends={trends} />
           ) : (
             <Alert severity="info">
               <Typography variant="body2">
@@ -173,8 +178,8 @@ const PerformanceDashboard: React.FC = () => {
       {/* Specialty Breakdown */}
       <Grid container spacing={3}>
         <Grid size={{ xs: 12 }}>
-          {dashboardData.specialty_breakdown.length > 0 ? (
-            <SpecialtyBreakdown specialties={dashboardData.specialty_breakdown} />
+          {specialtyBreakdown.length > 0 ? (
+            <SpecialtyBreakdown specialties={specialtyBreakdown} />
           ) : (
             <Alert severity="info">
               <Typography variant="body2">

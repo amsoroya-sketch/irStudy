@@ -31,6 +31,301 @@ This file provides a quick reference. For detailed requirements, see individual 
 | 10 | **Australian drug names** | paracetamol, salbutamol, adrenaline (NOT acetaminophen, albuterol, epinephrine) | [constraints/1-medical-accuracy.md](constraints/1-medical-accuracy.md) |
 | 11 | **Ralph PROMPT.md Directives** | Use "EXECUTE NOW", NOT "Would you like..." - Prevents premature Ralph exits | [constraints/13-ralph-execution.md](constraints/13-ralph-execution.md) |
 | 12 | **Medical Content Quality Gates** | ALL medical content MUST pass 13-gate QA + FRACP validation, 100% RAG citations | [constraints/14-ralph-medical-content-standards.md](constraints/14-ralph-medical-content-standards.md) |
+| 13 | **Ponytail/Code Reuse FIRST** | ALWAYS search for existing code before creating new - See Section 0 Discovery requirements | [.claude/CLAUDE.md](.claude/CLAUDE.md#0---discovery--code-reuse-ponytail-strategy) |
+
+---
+
+## 0 - DISCOVERY & CODE REUSE (Ponytail Strategy)
+
+**Ponytail Principle**: Every line of code that doesn't need to exist saves tokens, time, and errors.
+
+### Section 0 in PRDs (MANDATORY as of 2026-07-01)
+
+All PRDs executed by Ralph MUST include **Section 0: DISCOVERY** that documents:
+- Existing code search results (Python backend, TypeScript frontend, Flutter mobile)
+- Reusable components identified (FastAPI routers, React components, medical content)
+- Python/TypeScript/Flutter packages considered
+- RAG content evaluated (Qdrant search for existing medical content)
+- Decision to reuse vs. create new
+
+**Example Section 0 for irStudy** (Medical Education Platform - EMR + OSCE):
+```markdown
+## 0 - DISCOVERY
+
+### Existing Code Search
+
+**Python/FastAPI Backend**:
+- ✅ FOUND: FastAPI router pattern in `backend/src/api/routers/patient_router.py`
+- ✅ FOUND: SQLAlchemy models in `backend/src/models/`
+- ❌ NOT FOUND: OSCE scenario evaluation logic (new domain)
+
+**TypeScript/React Frontend**:
+- ✅ FOUND: PatientCard component in `frontend/src/components/PatientCard.tsx`
+- ✅ FOUND: usePatient hook in `frontend/src/hooks/usePatient.ts`
+- ❌ NOT FOUND: OSCE timer component (new feature)
+
+**Medical Content/RAG**:
+- ✅ FOUND: Existing peptic ulcer disease content in Qdrant (qdrant_point_id: 550e8400-...)
+- ✅ FOUND: 47 AMC blueprint conditions with 100% citations
+- ❌ NOT FOUND: Communication skills rubrics (new content type)
+
+### Reuse Decisions
+
+1. **FastAPI Router Pattern**: Reuse `patient_router.py` structure
+   - SQLAlchemy + dependency injection + error handling
+   - Reference: `backend/src/api/routers/patient_router.py:12-45`
+
+2. **React Component Pattern**: Reuse `PatientCard.tsx` structure
+   - TypeScript typing + useState/useEffect hooks + error states
+   - Reference: `frontend/src/components/PatientCard.tsx:15-60`
+
+3. **Medical Content**: Extend existing Qdrant content, don't recreate
+   - Search Qdrant FIRST before generating new medical content
+   - Reuse existing citations (eTG, AMH, Talley & O'Connor)
+
+4. **Flutter Mobile**: Check for existing Riverpod providers before creating new
+   - Reference: `mobile/lib/features/*/providers/*_provider.dart`
+
+### Packages Considered
+
+**Python Backend**:
+- `fastapi: ^0.115.0` ✅ ALREADY INSTALLED
+- `sqlalchemy: ^2.0.0` ✅ ALREADY INSTALLED
+- `alembic: ^1.13.0` ✅ ALREADY INSTALLED
+- `anthropic: ^0.39.0` ✅ ALREADY INSTALLED (for medical content generation)
+
+**TypeScript Frontend**:
+- `react: ^18.2.0` ✅ ALREADY INSTALLED
+- `axios: ^1.7.0` ✅ ALREADY INSTALLED
+- `react-router-dom: ^6.26.0` ✅ ALREADY INSTALLED
+
+**Flutter Mobile**:
+- `flutter_riverpod: ^2.6.0` ✅ ALREADY INSTALLED
+- `intl: ^0.19.0` ✅ ALREADY INSTALLED
+```
+
+### Discovery Commands (Run BEFORE Creating Code)
+
+**Python/FastAPI Backend Search**:
+```bash
+# Search for existing routers
+find backend/src/api/routers -name "*.py"
+
+# Search for existing models
+find backend/src/models -name "*.py"
+
+# Check for similar endpoints
+grep -r "@router\." backend/src/api/
+
+# Check for existing Alembic migrations
+ls backend/alembic/versions/*.py | sort
+
+# Check for existing database operations
+grep -r "session.query\|session.add\|session.commit" backend/src/
+
+# Check installed Python packages
+cat backend/requirements.txt | grep [package-name]
+
+# Check for existing medical content processing
+grep -r "qdrant_point_id\|citations" backend/src/
+```
+
+**TypeScript/React Frontend Search**:
+```bash
+# Search for existing components
+find frontend/src/components -name "*.tsx"
+
+# Search for existing hooks
+find frontend/src/hooks -name "*.ts"
+
+# Check for similar API calls
+grep -r "axios.get\|axios.post" frontend/src/
+
+# Check for existing state management
+grep -r "useState\|useContext\|useReducer" frontend/src/
+
+# Check installed npm packages
+cat frontend/package.json | grep [package-name]
+
+# Check for existing types
+find frontend/src/types -name "*.ts"
+```
+
+**Flutter Mobile Search**:
+```bash
+# Search for existing providers
+find mobile/lib -name "*_provider.dart"
+
+# Search for existing repositories
+find mobile/lib -name "*_repository.dart"
+
+# Check for existing FFI calls
+grep -r "ffi\." mobile/lib/
+
+# Check for existing widgets
+find mobile/lib/features -name "*_screen.dart" -o -name "*_widget.dart"
+
+# Check for existing database patterns
+grep -r "databaseConfigProvider" mobile/lib/
+```
+
+**Medical Content/RAG Search** (CRITICAL for irStudy):
+```bash
+# Search Qdrant for existing medical content (prevents duplication)
+curl -X POST "http://localhost:6333/collections/amc_blueprints/points/search" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "vector": [0.1, 0.2, ...],
+    "limit": 10,
+    "with_payload": true
+  }'
+
+# Check existing AMC blueprint conditions
+find backend/data/amc_blueprints -name "*.json" | wc -l
+
+# Check for existing citations (don't recreate)
+grep -r "qdrant_point_id\|citation.*eTG\|citation.*AMH" backend/data/
+
+# Check for similar clinical scenarios
+grep -r "presenting_complaint\|differential_diagnosis" backend/data/
+
+# Search for existing red flags by condition
+grep -r "red_flags" backend/data/amc_blueprints/
+```
+
+### Code Reuse Checklist (Complete BEFORE Creating New Code)
+
+**Python/FastAPI Backend**:
+- [ ] Does this router exist? → Search `backend/src/api/routers/`
+- [ ] Does this model exist? → Search `backend/src/models/`
+- [ ] Does this endpoint exist? → Grep for `@router.get`, `@router.post`
+- [ ] Does this Alembic migration exist? → Check `backend/alembic/versions/`
+- [ ] Is there a Python package? → Check requirements.txt, PyPI
+- [ ] Can I extend existing code? → Prefer extension over duplication
+
+**TypeScript/React Frontend**:
+- [ ] Does this component exist? → Search `frontend/src/components/`
+- [ ] Does this hook exist? → Search `frontend/src/hooks/`
+- [ ] Does this API call exist? → Grep for axios/fetch calls
+- [ ] Does this type exist? → Search `frontend/src/types/`
+- [ ] Is there an npm package? → Check package.json, npmjs.com
+- [ ] Can I reuse existing state management? → Check context/hooks
+
+**Flutter Mobile** (if applicable):
+- [ ] Does this provider exist? → Search `mobile/lib/**/*_provider.dart`
+- [ ] Does this repository exist? → Search `mobile/lib/**/*_repository.dart`
+- [ ] Does this FFI call exist? → Grep for `ffi.` calls
+- [ ] Does this widget exist? → Search `mobile/lib/**/*_screen.dart`
+- [ ] Can I reuse DatabaseConfig pattern? → Grep for `databaseConfigProvider`
+
+**Medical Content/RAG** (CRITICAL - irStudy specific):
+- [ ] Does this clinical scenario exist in Qdrant? → Search RAG database
+- [ ] Does this AMC blueprint condition exist? → Check `backend/data/amc_blueprints/`
+- [ ] Do these citations exist? → Grep for `qdrant_point_id`, eTG/AMH references
+- [ ] Can I extend existing medical content? → Prefer augmentation over recreation
+- [ ] Are red flags already documented? → Check existing condition files
+
+### Anti-Patterns (NEVER DO THIS)
+
+❌ **Creating new FastAPI router without discovery**:
+```python
+# WRONG: Creating new router without checking if similar exists
+@router.post("/my-new-endpoint")
+async def my_endpoint(db: Session = Depends(get_db)):
+    ...
+```
+
+✅ **Correct approach**:
+```bash
+# FIRST: Search for existing routers and endpoints
+find backend/src/api/routers -name "*.py"
+grep -r "@router.post" backend/src/api/
+
+# THEN: Reuse pattern if found, or create new with justification in Section 0
+```
+
+❌ **Duplicating React components**:
+```tsx
+// WRONG: Creating new PatientCard when one exists
+export function MyCustomPatientCard() { ... }
+```
+
+✅ **Correct approach**:
+```bash
+# FIRST: Search for existing components
+find frontend/src/components -name "*Patient*.tsx"
+
+# THEN: Reuse or extend existing implementation
+```
+
+❌ **Recreating medical content that already exists**:
+```python
+# WRONG: Generating new peptic ulcer content without checking Qdrant
+new_content = generate_peptic_ulcer_scenario()
+```
+
+✅ **Correct approach**:
+```bash
+# FIRST: Search Qdrant for existing content
+curl -X POST "http://localhost:6333/collections/amc_blueprints/points/search" ...
+
+# THEN: If found (>0.70 confidence), reuse existing content
+# ONLY generate new content if truly missing from RAG database
+```
+
+### Integration with Ralph PRDs
+
+**All PRDs executed by Ralph MUST**:
+1. Include Section 0 (DISCOVERY) documenting search results across all systems:
+   - Python/FastAPI backend
+   - TypeScript/React frontend
+   - Flutter mobile (if applicable)
+   - Medical content/RAG (Qdrant)
+   - Cross-system shared infrastructure (Vault, Redis)
+
+2. Justify new code creation:
+   - Explain why existing code couldn't be reused
+   - Document searches performed (include grep/find commands used)
+   - Reference similar patterns that informed new implementation
+
+3. Reference existing patterns:
+   - FastAPI routers, SQLAlchemy models, Alembic migrations
+   - React components, custom hooks, API clients
+   - Flutter providers, repositories, widgets
+   - Medical content citations, RAG entries
+
+4. Follow cross-system coordination:
+   - Check SHARED_INFRASTRUCTURE_SPEC.md before creating infrastructure
+   - Coordinate with other system (EMR vs OSCE) to prevent conflicts
+   - Reference COMPREHENSIVE_PLATFORM_IMPLEMENTATION_MASTER.md
+
+### Token Optimization Impact (irStudy-specific)
+
+**Before Ponytail** (creating everything new):
+- FastAPI router: 200 lines (new implementation + tests)
+- React component: 150 lines (new structure + state management)
+- Medical content: 500 lines (regenerate existing AMC blueprint)
+- **Total**: 850 lines, ~17,000 tokens
+
+**After Ponytail** (reuse existing patterns + extend RAG content):
+- FastAPI router: 50 lines (reuse patient_router.py pattern)
+- React component: 40 lines (reuse PatientCard.tsx pattern)
+- Medical content: 100 lines (extend existing Qdrant entry, add new sections)
+- **Total**: 190 lines, ~3,800 tokens
+
+**Savings**: 78% fewer lines, 78% fewer tokens, 35% faster execution
+
+**Medical Content Savings** (Unique to irStudy):
+- Searching Qdrant FIRST prevents regenerating existing AMC blueprint conditions
+- Reusing existing citations (eTG, AMH, Talley) saves ~500 tokens per condition
+- Extending existing content maintains consistency and citation quality
+
+### References
+
+- **Global Ponytail Standards**: `/home/dev/Development/ralph-dashboard/docs/specifications/prd-standards/PONYTAIL_INTEGRATION.md`
+- **T-RALPH v2.2 Standards**: `/home/dev/Development/ralph-dashboard/docs/specifications/prd-standards/PRD_STANDARDS_V2_T-RALPH.md`
+- **Project-Specific Patterns**: `/home/dev/Development/irStudy/.claude/CLAUDE.md`
+- **Cross-System Coordination**: `/home/dev/Development/irStudy/COMPREHENSIVE_PLATFORM_IMPLEMENTATION_MASTER.md`
 
 ---
 
@@ -254,7 +549,385 @@ This file provides a quick reference. For detailed requirements, see individual 
 
 ---
 
+## MCQ Data Quality Constraints (CRITICAL - MANDATORY)
+
+### 15. MCQ Content Validation (Zero-Tolerance Policy)
+
+**Status**: MANDATORY - Auto-enforced in all MCQ generation and data loading
+**Last Updated**: 2026-05-27
+**Incident**: 1,046/1,613 MCQs (64.8%) were placeholder content (CRITICAL DATA QUALITY FAILURE)
+
+#### 15.1 Placeholder Content Detection (ZERO TOLERANCE)
+
+**ALL MCQ generation, data loading, and database insertion scripts MUST reject placeholder content.**
+
+**Forbidden Placeholder Patterns** (auto-reject):
+
+```python
+PLACEHOLDER_PATTERNS = [
+    # Question text placeholders
+    r"Clinical scenario for \[.*?\]",
+    r"Question about \[.*?\]",
+    r"A \d+-year-old (?:male|female) presents? (?:to|with) \[.*?\]",
+    r"\[Topic\]",
+    r"\[Condition\]",
+    r"\[Treatment\]",
+
+    # Option placeholders
+    r"Option [A-E](?:\s*\(Correct\))?$",
+    r"^[A-E][\.\)]?\s*Option [A-E]",
+    r"^[A-E][\.\)]?\s*\[.*?\]",
+    r"^Answer choice [A-E]",
+
+    # Explanation placeholders
+    r"Explanation based on Australian guidelines for \[.*?\]",
+    r"According to \[Guideline\]",
+    r"The correct answer is based on \[Source\]",
+    r"See \[Reference\] for details",
+
+    # Generic content markers
+    r"TODO:",
+    r"PLACEHOLDER",
+    r"TBD",
+    r"FIXME",
+    r"\[INSERT.*?\]",
+]
+```
+
+**Validation Requirements**:
+1. ✅ **MUST** scan ALL fields: `question_text`, `options`, `explanation`, `citation`
+2. ✅ **MUST** reject MCQs matching ANY placeholder pattern
+3. ✅ **MUST** log rejected MCQs with specific pattern match
+4. ✅ **MUST** report rejection stats (e.g., "Rejected 1,046/1,613 placeholder MCQs")
+
+#### 15.2 Database Schema Constraints (ENFORCED AT DB LEVEL)
+
+**MCQ model MUST enforce content quality via database check constraints:**
+
+```python
+# backend/src/db/models.py - MCQ model
+class MCQ(Base):
+    __tablename__ = "mcqs"
+
+    # ... existing fields ...
+
+    # NEW: Content quality constraints (CHECK constraints)
+    __table_args__ = (
+        # Reject placeholder question text
+        CheckConstraint(
+            "question_text !~* 'Clinical scenario for \\[|Question about \\[|\\[Topic\\]|\\[Condition\\]'",
+            name="check_no_placeholder_question_text"
+        ),
+
+        # Require minimum question length (real scenarios are ≥100 chars)
+        CheckConstraint(
+            "char_length(question_text) >= 100",
+            name="check_question_min_length"
+        ),
+
+        # Require citation with real source (not "[Guideline]")
+        CheckConstraint(
+            "citation !~* '\\[Guideline\\]|\\[Reference\\]|\\[Source\\]' AND char_length(citation) >= 10",
+            name="check_real_citation"
+        ),
+
+        # Require explanation with real content (≥50 chars)
+        CheckConstraint(
+            "explanation !~* 'Explanation based on.*?\\[|According to \\[' AND char_length(explanation) >= 50",
+            name="check_real_explanation"
+        ),
+    )
+```
+
+**Migration Required**: Create Alembic migration to add these CHECK constraints.
+
+#### 15.3 Data Loading Script Validation (MANDATORY)
+
+**ALL data loading scripts (`load_*.py`, `generate_*.py`) MUST include comprehensive validation.**
+
+**Example**: `scripts/load_all_data.py` (lines 54-63) - **INSUFFICIENT** (only checks "Option A"/"Option B")
+
+**REQUIRED**: Comprehensive validation function
+
+```python
+def validate_mcq_content(mcq_data: Dict) -> tuple[bool, str]:
+    """
+    Validate MCQ content for placeholder patterns.
+
+    Returns:
+        (is_valid, rejection_reason)
+    """
+    # Check question text
+    question_text = mcq_data.get('question', {}).get('scenario', '') + ' ' + mcq_data.get('question', {}).get('stem', '')
+    if len(question_text.strip()) < 100:
+        return False, "Question text too short (<100 chars)"
+
+    for pattern in PLACEHOLDER_PATTERNS:
+        if re.search(pattern, question_text, re.IGNORECASE):
+            return False, f"Placeholder pattern in question: {pattern}"
+
+    # Check options
+    options = mcq_data.get('question', {}).get('options', {})
+    for key, value in options.items():
+        if re.match(r"^Option [A-E]", str(value), re.IGNORECASE):
+            return False, f"Placeholder option: {key} = '{value}'"
+
+    # Check explanation
+    explanation = mcq_data.get('explanation', '')
+    if isinstance(explanation, dict):
+        explanation = explanation.get('text', '')
+
+    if len(explanation.strip()) < 50:
+        return False, "Explanation too short (<50 chars)"
+
+    for pattern in PLACEHOLDER_PATTERNS:
+        if re.search(pattern, explanation, re.IGNORECASE):
+            return False, f"Placeholder pattern in explanation: {pattern}"
+
+    # Check citation
+    citation = mcq_data.get('references', [])
+    if not citation or len(citation) == 0:
+        return False, "No citations provided"
+
+    # Check for placeholder citations
+    citation_text = json.dumps(citation)
+    if re.search(r"\[Guideline\]|\[Reference\]|\[Source\]", citation_text):
+        return False, "Placeholder citation detected"
+
+    return True, "Valid"
+
+# USAGE in load_mcqs_from_file():
+for mcq_data in mcqs_data:
+    is_valid, reason = validate_mcq_content(mcq_data)
+    if not is_valid:
+        logger.warning(f"REJECTED MCQ {mcq_data.get('id')}: {reason}")
+        skipped_count += 1
+        continue
+    # ... proceed to load ...
+```
+
+#### 15.4 Pre-Commit Hook for MCQ Validation (MANDATORY)
+
+**Create**: `~/.claude/hooks/skillbridge/mcq-content-validation.sh`
+
+```bash
+#!/bin/bash
+# MCQ Content Validation Hook
+# Triggers: On Write/Edit of *.json files in data/mcqs/
+
+CHANGED_FILE="$1"
+
+# Only validate MCQ JSON files
+if [[ ! "$CHANGED_FILE" =~ data/mcqs/.*\.json$ ]]; then
+    exit 0
+fi
+
+echo "🔍 Validating MCQ content in $CHANGED_FILE..."
+
+# Run validation script
+cd /home/dev/Development/irStudy
+source backend/venv/bin/activate
+
+python3 - <<EOF
+import json
+import re
+import sys
+
+PLACEHOLDER_PATTERNS = [
+    r"Clinical scenario for \[.*?\]",
+    r"Option [A-E](?:\s*\(Correct\))?$",
+    r"Explanation based on Australian guidelines for \[.*?\]",
+    r"\[Topic\]", r"\[Condition\]", r"\[Guideline\]",
+]
+
+with open("$CHANGED_FILE", "r", encoding="utf-8") as f:
+    data = json.load(f)
+
+mcqs = data.get("mcqs", data) if isinstance(data, dict) else data
+placeholder_count = 0
+
+for mcq in mcqs:
+    question_text = json.dumps(mcq.get("question", {}))
+    for pattern in PLACEHOLDER_PATTERNS:
+        if re.search(pattern, question_text, re.IGNORECASE):
+            placeholder_count += 1
+            break
+
+if placeholder_count > 0:
+    print(f"❌ REJECTED: {placeholder_count}/{len(mcqs)} MCQs contain placeholder content")
+    print(f"   File: $CHANGED_FILE")
+    print(f"   Fix: Regenerate MCQs using Claude API (NOT local LLMs)")
+    sys.exit(2)  # Exit code 2 = validation failed
+
+print(f"✅ PASSED: All {len(mcqs)} MCQs validated (no placeholder content)")
+sys.exit(0)
+EOF
+
+EXIT_CODE=$?
+
+if [ $EXIT_CODE -eq 2 ]; then
+    echo ""
+    echo "⚠️  MCQ VALIDATION FAILED"
+    echo "   Placeholder content detected in MCQ data"
+    echo "   This file will NOT be committed until fixed"
+    exit 2
+fi
+
+exit 0
+```
+
+**Installation**:
+```bash
+mkdir -p ~/.claude/hooks/skillbridge
+chmod +x ~/.claude/hooks/skillbridge/mcq-content-validation.sh
+```
+
+#### 15.5 Ralph PRD Standards for MCQ Generation (MANDATORY)
+
+**ALL PRDs creating MCQs MUST include these quality gates:**
+
+```markdown
+## 4. Quality Gates (MANDATORY - MCQ Content Validation)
+
+### 4.1 Placeholder Content Detection (ZERO TOLERANCE)
+
+**BEFORE** inserting ANY MCQs to database:
+
+bash
+cd /home/dev/Development/irStudy
+source backend/venv/bin/activate
+
+# Run comprehensive validation
+python3 scripts/validate_mcq_content.py data/mcqs/[YOUR_FILE].json
+
+# Expected output:
+# ✅ PASSED: 100/100 MCQs validated (0 placeholders detected)
+
+# FAILURE output (DO NOT PROCEED):
+# ❌ FAILED: 45/100 MCQs contain placeholder content
+#    - 23 MCQs: Placeholder options ("Option A", "Option B")
+#    - 15 MCQs: Placeholder question text ("Clinical scenario for [Topic]")
+#    - 7 MCQs: Placeholder explanations ("Explanation based on... [Guideline]")
+# REQUIRED ACTION: Regenerate failed MCQs using Claude API
+
+
+### 4.2 LLM Selection Validation (MANDATORY)
+
+**CRITICAL**: Local LLMs (Ollama 7B models) CANNOT generate quality MCQs.
+
+bash
+# ✅ CORRECT: Use Claude API for MCQ generation
+export ANTHROPIC_API_KEY=$(cat ~/.anthropic_api_key)
+python3 scripts/generate_mcqs_claude.py --specialty cardiology --count 100
+
+# ❌ WRONG: Local LLMs produce placeholder content (64.8% failure rate)
+# DO NOT USE: generate_mcqs_from_templates_ollama.py
+# DO NOT USE: generate_mcqs_ollama_simple.py
+
+
+### 4.3 Database Insertion Validation
+
+**AFTER** inserting MCQs:
+
+bash
+# Check database for placeholder content
+psql $DATABASE_URL -c "
+SELECT COUNT(*) as placeholder_count
+FROM mcqs
+WHERE question_text ~* 'Clinical scenario for \[|Option [A-E]$|Explanation based on.*\['
+"
+
+# Expected: placeholder_count = 0
+# If > 0: ROLLBACK transaction and regenerate MCQs
+```
+
+#### 15.6 Agent-Specific Constraints (medical-content-quality Skill)
+
+**File**: `.claude/skills/medical-content-quality.md`
+
+**Add to skill prompt**:
+
+```markdown
+## MCQ Content Quality Standards (ZERO TOLERANCE)
+
+When generating or validating MCQs, you MUST:
+
+### ❌ NEVER ALLOWED (Auto-Reject):
+- Placeholder question text: "Clinical scenario for [Topic]"
+- Placeholder options: "Option A", "Option B (Correct)", etc.
+- Placeholder explanations: "Explanation based on Australian guidelines for [Topic]"
+- Placeholder citations: "[Guideline]", "[Reference]", "[Source]"
+- Questions shorter than 100 characters
+- Explanations shorter than 50 characters
+- Missing or empty citations
+
+### ✅ REQUIRED (Enforce):
+- Real clinical scenarios with patient demographics, symptoms, examination findings
+- Specific answer options describing actual treatments/diagnoses/management steps
+- Evidence-based explanations citing real Australian sources (eTG, AMH, AHPRA)
+- Minimum 3 RAG citations with qdrant_point_id for traceability
+
+### Validation Checklist (Run BEFORE Returning):
+
+- [ ] Question text ≥100 chars with real clinical scenario
+- [ ] ALL options are specific medical content (no "Option A" patterns)
+- [ ] Explanation ≥50 chars with clinical reasoning
+- [ ] ≥3 real citations (eTG, AMH, AHPRA, Talley & O'Connor, etc.)
+- [ ] No forbidden placeholder patterns detected (regex scan)
+- [ ] Australian terminology used (paracetamol, GP, salbutamol)
+
+**If ANY validation fails**: REGENERATE the MCQ. DO NOT return placeholder content.
+```
+
+#### 15.7 Enforcement Summary
+
+**Before this constraint**:
+- ❌ 1,046/1,613 MCQs (64.8%) were placeholders
+- ❌ No database constraints preventing bad data
+- ❌ Weak validation in data loaders
+- ❌ No pre-commit hooks
+
+**After this constraint**:
+- ✅ Zero-tolerance placeholder detection (15 regex patterns)
+- ✅ Database CHECK constraints block bad data at schema level
+- ✅ Comprehensive validation in all data loading scripts
+- ✅ Pre-commit hook prevents placeholder content from being saved
+- ✅ Ralph PRD standards enforce Claude API usage (not local LLMs)
+- ✅ Agent skills include explicit placeholder rejection rules
+
+**Impact**: Prevents 64.8% data quality failures from recurring.
+
+---
+
 ## Recent Issues & Fixes
+
+### 2026-05-27: MCQ Placeholder Content Crisis (CRITICAL DATA QUALITY FIX)
+**Issue**: 1,046/1,613 MCQs (64.8%) were dummy/placeholder content in production database
+**Affected**: All specialties (General Practice: 406, Gastroenterology: 184, Cardiology: 126, etc.)
+**Root Causes**:
+1. Weak validation in `load_all_data.py` (only checked "Option A"/"Option B", missed other patterns)
+2. No database schema constraints (MCQ model allowed any text content)
+3. Local LLM usage (Ollama 7B models generated placeholder content, not real MCQs)
+4. No pre-commit validation hooks
+5. Missing agent constraints in medical-content-quality skill
+
+**Fix Applied**:
+- Created Constraint #15 (MCQ Content Validation) with:
+  - 15 comprehensive placeholder detection regex patterns
+  - Database CHECK constraints (question_text ≥100 chars, real citations, etc.)
+  - Mandatory validation function for all data loading scripts
+  - Pre-commit hook for MCQ JSON file validation
+  - Ralph PRD standards mandating Claude API (not local LLMs)
+  - Agent skill constraints with zero-tolerance policy
+
+**Prevention**:
+- ALL MCQ generation MUST use Claude API (see constraint 4-llm-integration.md)
+- ALL data loading scripts MUST run `validate_mcq_content()` before insertion
+- Database schema enforces quality at constraint level
+- Pre-commit hooks auto-reject placeholder content
+- Zero-tolerance policy: ANY placeholder pattern = auto-reject
+
+**Documentation**: See Constraint #15 (MCQ Content Validation) above
 
 ### 2026-02-02: Docker Python 3.12 Compatibility (CRITICAL FIX)
 **Issue**: PyTorch 2.1.2 incompatible with Python 3.12 causing Docker build failures

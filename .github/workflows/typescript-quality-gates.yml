@@ -1,0 +1,78 @@
+name: TypeScript Quality Gates
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'frontend/**/*.ts'
+      - 'frontend/**/*.tsx'
+      - 'frontend/package.json'
+      - 'frontend/package-lock.json'
+      - '.github/workflows/typescript-quality-gates.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'frontend/**/*.ts'
+      - 'frontend/**/*.tsx'
+      - 'frontend/package.json'
+      - 'frontend/package-lock.json'
+
+jobs:
+  typescript-quality:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: frontend/package-lock.json
+
+    - name: Install dependencies
+      run: |
+        cd frontend
+        npm ci
+
+    - name: TypeScript Compilation Check
+      run: |
+        cd frontend
+        if npx tsc --noEmit; then
+          echo "✅ TypeScript compilation successful - 0 errors"
+        else
+          echo "❌ TypeScript compilation failed"
+          exit 1
+        fi
+
+    - name: Run ESLint
+      run: |
+        cd frontend
+        if npm run lint; then
+          echo "✅ ESLint passed - 0 errors"
+        else
+          echo "❌ ESLint failed"
+          exit 1
+        fi
+
+    - name: Run tests
+      run: |
+        cd frontend
+        if npm test -- --watchAll=false --passWithNoTests; then
+          echo "✅ All tests passed - 100% pass rate"
+        else
+          echo "❌ Some tests failed - 100% pass rate required"
+          exit 1
+        fi
+
+    - name: Build check
+      run: |
+        cd frontend
+        if npm run build; then
+          echo "✅ Build successful"
+        else
+          echo "❌ Build failed"
+          exit 1
+        fi

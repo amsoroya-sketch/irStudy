@@ -1,0 +1,77 @@
+name: Python Quality Gates
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'backend/**/*.py'
+      - 'backend/requirements.txt'
+      - 'backend/alembic/**'
+      - '.github/workflows/python-quality-gates.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'backend/**/*.py'
+      - 'backend/requirements.txt'
+      - 'backend/alembic/**'
+
+jobs:
+  python-quality:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+        cache-dependency-path: backend/requirements.txt
+
+    - name: Install dependencies
+      run: |
+        cd backend
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pylint pytest pytest-cov
+
+    - name: Run pytest with coverage
+      run: |
+        cd backend
+        pytest --cov=src --cov-report=term-missing --cov-report=html
+
+        # Check coverage threshold (≥70%)
+        coverage_percent=$(coverage report | grep TOTAL | awk '{print $NF}' | sed 's/%//')
+        if (( $(echo "$coverage_percent < 70" | bc -l) )); then
+          echo "❌ Coverage is ${coverage_percent}% - below 70% threshold"
+          exit 1
+        else
+          echo "✅ Coverage is ${coverage_percent}% - meets 70% threshold"
+        fi
+
+    - name: Run pylint
+      run: |
+        cd backend
+        pylint_score=$(pylint src/ --exit-zero --output-format=text | grep "Your code has been rated" | awk '{print $7}' | cut -d'/' -f1)
+        echo "Pylint score: ${pylint_score}/10"
+
+        # Check pylint threshold (≥9.0/10)
+        if (( $(echo "$pylint_score < 9.0" | bc -l) )); then
+          echo "❌ Pylint score is ${pylint_score}/10 - below 9.0 threshold"
+          exit 1
+        else
+          echo "✅ Pylint score is ${pylint_score}/10 - meets 9.0 threshold"
+        fi
+
+    - name: Check test pass rate
+      run: |
+        cd backend
+        # Re-run pytest to get test count (already ran with coverage above)
+        if ! pytest --tb=short; then
+          echo "❌ Some tests failed - 100% pass rate required"
+          exit 1
+        else
+          echo "✅ All tests passed - 100% pass rate achieved"
+        fi

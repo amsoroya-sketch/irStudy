@@ -80,26 +80,9 @@ class MCQSubmitResponse(BaseModel):
     selected_answer: str = Field(..., description="User's selected answer")
     correct_answer: str = Field(..., description="Correct option letter")
     explanation: str = Field(..., description="Detailed explanation with clinical reasoning")
-    citation: str = Field(..., description="Australian guideline reference")
+    citation: Optional[str] = Field(None, description="Australian guideline reference")
     learning_points: Optional[List[str]] = Field(None, description="Key learning points")
     attempt_number: int = Field(..., description="Attempt number for this MCQ")
-
-    @field_validator("citation", mode="after")
-    def validate_australian_citation(cls, value):
-        """Ensure citation references Australian sources"""
-        citation_lower = value.lower()
-
-        has_australian_source = any(
-            source in citation_lower for source in REQUIRED_CITATION_SOURCES
-        )
-
-        if not has_australian_source:
-            raise ValueError(
-                "Citation must reference Australian medical guidelines "
-                "(eTG, PBS, AMH, AHPRA, or Therapeutic Guidelines)"
-            )
-
-        return value
 
 
 class MCQExplanation(BaseModel):
@@ -107,27 +90,19 @@ class MCQExplanation(BaseModel):
 
     correct_answer: str = Field(..., description="Correct option letter")
     explanation: str = Field(..., description="Detailed clinical explanation")
-    citation: str = Field(..., description="Australian guideline reference")
+    citation: Optional[str] = Field(None, description="Australian guideline reference")
     learning_points: Optional[List[str]] = Field(None, description="Key learning points")
     specialty: MedicalSpecialty = Field(..., description="Medical specialty")
     difficulty: DifficultyLevel = Field(..., description="Difficulty level")
 
-    @field_validator("citation", mode="after")
-    def validate_australian_citation(cls, value):
-        """Ensure citation references Australian sources"""
-        citation_lower = value.lower()
 
-        has_australian_source = any(
-            source in citation_lower for source in REQUIRED_CITATION_SOURCES
-        )
+class MCQListResponse(BaseModel):
+    """Paginated list of MCQs"""
 
-        if not has_australian_source:
-            raise ValueError(
-                "Citation must reference Australian medical guidelines "
-                "(eTG, PBS, AMH, AHPRA, or Therapeutic Guidelines)"
-            )
-
-        return value
+    items: List[MCQResponse] = Field(..., description="List of MCQs")
+    total: int = Field(..., description="Total count of MCQs matching filters")
+    skip: int = Field(..., description="Number of records skipped")
+    limit: int = Field(..., description="Maximum records returned")
 
 
 class MCQStatistics(BaseModel):

@@ -98,7 +98,7 @@ const moduleConfigs: ModuleConfig[] = [
     name: 'EMR Practice',
     icon: <EMRIcon fontSize="large" />,
     color: '#7b1fa2', // Purple
-    route: '/emr/start',
+    route: '/emr/cases',
     countLabel: 'Sessions',
   },
   {

@@ -1,0 +1,745 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Page Architecture - irStudy Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .stack-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .stack-item strong {
+            display: block;
+            color: #1e3c72;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        
+        .flow-container {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .flow-step {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .flow-step::after {
+            content: '↓';
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2em;
+            color: #667eea;
+        }
+        
+        .flow-step:last-child::after {
+            display: none;
+        }
+        
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .step-component {
+            background: #e3f2fd;
+            color: #1565c0;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        
+        .step-action {
+            font-size: 1.3em;
+            color: #1e3c72;
+            font-weight: 600;
+            margin-left: auto;
+        }
+        
+        .step-details {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+        
+        .step-details li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .step-details li::before {
+            content: '•';
+            position: absolute;
+            left: 5px;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .issue-card {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+            border-left: 5px solid #e53e3e;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        
+        .issue-card.warning {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border-left-color: #f59e0b;
+        }
+        
+        .issue-title {
+            font-size: 1.3em;
+            color: #c53030;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .issue-card.warning .issue-title {
+            color: #d97706;
+        }
+        
+        .issue-section {
+            margin-bottom: 15px;
+        }
+        
+        .issue-section strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #1e3c72;
+        }
+        
+        .component-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .component-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+        
+        .component-name {
+            font-size: 1.5em;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .component-purpose {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.05em;
+        }
+        
+        .component-section {
+            margin: 15px 0;
+        }
+        
+        .component-section-title {
+            color: #1e3c72;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #68d391;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            margin: 3px;
+        }
+        
+        .badge.success {
+            background: #48bb78;
+        }
+        
+        .badge.error {
+            background: #e53e3e;
+        }
+        
+        .badge.warning {
+            background: #f59e0b;
+        }
+        
+        .summary-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            border: 2px solid #0284c7;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .summary-title {
+            font-size: 1.5em;
+            color: #0c4a6e;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .summary-item {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(2, 132, 199, 0.2);
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        
+        .summary-item strong {
+            color: #0c4a6e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 MCQ Page Architecture Analysis</h1>
+            <p>irStudy Platform - Australian Medical Examination Preparation</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">URL: http://localhost:5173/mcqs</p>
+        </div>
+        
+        <div class="content">
+            <!-- Frontend Stack -->
+            <div class="section">
+                <h2 class="section-title">🛠️ Frontend Technology Stack</h2>
+                <div class="stack-grid">
+                    <div class="stack-item">
+                        <strong>Framework</strong>
+                        React 18 + TypeScript
+                    </div>
+                    <div class="stack-item">
+                        <strong>Routing</strong>
+                        React Router v6
+                    </div>
+                    <div class="stack-item">
+                        <strong>State Management</strong>
+                        TanStack React Query
+                    </div>
+                    <div class="stack-item">
+                        <strong>UI Library</strong>
+                        Material-UI (MUI) v5
+                    </div>
+                    <div class="stack-item">
+                        <strong>HTTP Client</strong>
+                        Axios with interceptors
+                    </div>
+                    <div class="stack-item">
+                        <strong>Build Tool</strong>
+                        Vite (dev server on port 5173)
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Request Flow -->
+            <div class="section">
+                <h2 class="section-title">🔄 Request Flow: User → MCQ List</h2>
+                <div class="flow-container">
+
+                    <div class="flow-step">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <span class="step-component">App.tsx</span>
+                            <span class="step-action">User navigates to /mcqs</span>
+                        </div>
+                        <div class="step-details">
+                            <ul>
+                                    <li>BrowserRouter intercepts route</li>
+                                <li>ProtectedRoute checks authentication</li>
+                                <li>Lazy loads MCQBrowser component</li>
+
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="flow-step">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <span class="step-component">ProtectedRoute</span>
+                            <span class="step-action">Authentication Check</span>
+                        </div>
+                        <div class="step-details">
+                            <ul>
+                                    <li>Checks localStorage for accessToken</li>
+                                <li>If missing → redirect to /login</li>
+                                <li>If present → render child component</li>
+
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="flow-step">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <span class="step-component">MCQBrowser.tsx</span>
+                            <span class="step-action">Initialize and Fetch Data</span>
+                        </div>
+                        <div class="step-details">
+                            <ul>
+                                    <li>useState for filters (category, difficulty, search, pagination)</li>
+                                <li>useQuery hook calls getMCQs() from api/mcqs.ts</li>
+                                <li>Axios adds Authorization header via interceptor</li>
+
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="flow-step">
+                        <div class="step-header">
+                            <span class="step-number">4</span>
+                            <span class="step-component">api/mcqs.ts → getMCQs()</span>
+                            <span class="step-action">HTTP GET /api/v1/mcqs/</span>
+                        </div>
+                        <div class="step-details">
+                            <ul>
+                                    <li>Base URL: http://localhost:8001/api/v1</li>
+                                <li>Endpoint: /mcqs/ (note trailing slash)</li>
+                                <li>Headers: Authorization: Bearer {token}</li>
+                                <li>Query params: skip, limit, category, difficulty, search</li>
+
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="flow-step">
+                        <div class="step-header">
+                            <span class="step-number">5</span>
+                            <span class="step-component">Backend: mcqs.py</span>
+                            <span class="step-action">list_mcqs() endpoint</span>
+                        </div>
+                        <div class="step-details">
+                            <ul>
+                                    <li>Route: @router.get('/') → /mcqs/</li>
+                                <li>Dependency: get_current_active_user (validates JWT)</li>
+                                <li>Database: Query MCQ table with filters</li>
+                                <li>Response: List[MCQPublic] (no answers)</li>
+
+                            </ul>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+            
+            <!-- Issues Identified -->
+            <div class="section">
+                <h2 class="section-title">🚨 Issues Identified</h2>
+
+                <div class="issue-card">
+                    <div class="issue-title">❌ Authentication Failure</div>
+                    
+                    <div class="issue-section">
+                        <strong>Symptoms:</strong>
+                        <ul>
+                                <li>API returns 401 Unauthorized</li>
+                            <li>User likely not logged in or token expired</li>
+                            <li>Frontend shows empty state or loading spinner</li>
+
+                        </ul>
+                    </div>
+                    
+                    <div class="issue-section">
+                        <strong>Diagnosis:</strong>
+                        <p>Backend requires valid JWT token. API call failing at step 5.</p>
+                    </div>
+                    
+                    <div class="issue-section">
+                        <strong>Solution:</strong>
+                        <p style="color: #16a34a; font-weight: bold;">✅ User must login first at /login to obtain access token</p>
+                    </div>
+                </div>
+    
+                <div class="issue-card warning">
+                    <div class="issue-title">❌ Backend Port Mismatch</div>
+                    
+                    <div class="issue-section">
+                        <strong>Symptoms:</strong>
+                        <ul>
+                                <li>Two uvicorn instances running (port 8000 and 8001)</li>
+                            <li>Frontend configured for port 8001 (VITE_API_BASE_URL)</li>
+
+                        </ul>
+                    </div>
+                    
+                    <div class="issue-section">
+                        <strong>Diagnosis:</strong>
+                        <p>Development environment has multiple backend instances</p>
+                    </div>
+                    
+                    <div class="issue-section">
+                        <strong>Solution:</strong>
+                        <p style="color: #16a34a; font-weight: bold;">✅ Ensure frontend points to correct backend (8001)</p>
+                    </div>
+                </div>
+    
+                <div class="issue-card warning">
+                    <div class="issue-title">❌ Trailing Slash Redirect</div>
+                    
+                    <div class="issue-section">
+                        <strong>Symptoms:</strong>
+                        <ul>
+                                <li>API redirects /mcqs to /mcqs/ (307 Temporary Redirect)</li>
+
+                        </ul>
+                    </div>
+                    
+                    <div class="issue-section">
+                        <strong>Diagnosis:</strong>
+                        <p>FastAPI router uses prefix='/mcqs' with route @router.get('/')</p>
+                    </div>
+                    
+                    <div class="issue-section">
+                        <strong>Solution:</strong>
+                        <p style="color: #16a34a; font-weight: bold;">✅ Not critical - axios follows redirects automatically</p>
+                    </div>
+                </div>
+    
+            </div>
+            
+            <!-- Component Breakdown -->
+            <div class="section">
+                <h2 class="section-title">📦 Component Architecture Details</h2>
+
+                <div class="component-card">
+                    <div class="component-name">App.tsx</div>
+                    <div class="component-purpose">Root application component</div>
+    
+                    <div class="component-section">
+                        <div class="component-section-title">Responsibilities:</div>
+                        <ul>
+                                        <li>Wrap app with ThemeProvider (Material-UI theme)</li>
+                            <li>Wrap app with QueryClientProvider (React Query cache)</li>
+                            <li>Wrap app with BrowserRouter (React Router)</li>
+                            <li>Wrap app with AuthProvider (authentication context)</li>
+                            <li>Define all routes with lazy loading</li>
+                            <li>Show MobileBottomNav for mobile devices</li>
+
+                        </ul>
+                    </div>
+            
+                    <div class="component-section">
+                        <div class="component-section-title">Key Features:</div>
+                        <ul>
+                                        <li>Code splitting via lazy() for performance</li>
+                            <li>LoadingFallback with CircularProgress for lazy routes</li>
+                            <li>ProtectedRoute HOC for authenticated routes</li>
+
+                        </ul>
+                    </div>
+            
+                </div>
+    
+                <div class="component-card">
+                    <div class="component-name">MCQBrowser.tsx</div>
+                    <div class="component-purpose">Browse and filter MCQs catalog</div>
+    
+                    <div class="component-section">
+                        <div class="component-section-title">State:</div>
+                                    <strong>Filters:</strong> MCQListParams (skip, limit, category, difficulty, search)<br>                        <strong>Page:</strong> Current pagination page number<br>
+                    </div>
+            
+                    <div class="component-section">
+                        <div class="component-section-title">Api Integration:</div>
+                                    <strong>Query Key:</strong> ['mcqs', filters]<br>                        <strong>Query Fn:</strong> getMCQs(filters)<br>                        <strong>Stale Time:</strong> 2 minutes<br>                        <strong>Cache:</strong> React Query handles caching, refetch, loading states<br>
+                    </div>
+            
+                    <div class="component-section">
+                        <div class="component-section-title">Ui Sections:</div>
+                        <ul>
+                                        <li>Header with title and 'Create MCQ' button (RBAC: MCQ_CREATE permission)</li>
+                            <li>Filters: Search field, Category dropdown, Difficulty dropdown</li>
+                            <li>Loading state: CircularProgress spinner</li>
+                            <li>Error state: Alert with error message</li>
+                            <li>MCQ Grid: Cards with difficulty chip, category chip, question preview, tags</li>
+                            <li>Pagination: Material-UI Pagination component</li>
+                            <li>Empty state: 'No MCQs found' message</li>
+
+                        </ul>
+                    </div>
+            
+                    <div class="component-section">
+                        <div class="component-section-title">Permissions Used:</div>
+                        <ul>
+                                        <li>MCQ_CREATE: Show 'Create MCQ' button</li>
+                            <li>MCQ_ATTEMPT: Show 'Attempt' button on cards</li>
+                            <li>MCQ_VIEW: Show 'View' button on cards</li>
+                            <li>MCQ_UPDATE: Show 'Edit' button on cards</li>
+
+                        </ul>
+                    </div>
+            
+                </div>
+    
+                <div class="component-card">
+                    <div class="component-name">api/mcqs.ts</div>
+                    <div class="component-purpose">MCQ API client functions</div>
+    
+                    <div class="component-section">
+                        <div class="component-section-title">Functions:</div>
+                        <ul>
+                                        <li>getMCQs(params): Fetch paginated MCQ list</li>
+                            <li>getMCQById(id): Get single MCQ details</li>
+                            <li>createMCQ(data): Create new MCQ (educator only)</li>
+                            <li>updateMCQ(id, data): Update MCQ (educator only)</li>
+                            <li>deleteMCQ(id): Delete MCQ (admin only)</li>
+                            <li>submitMCQAttempt(data): Submit answer attempt</li>
+                            <li>getRandomMCQ(specialty, difficulty): Get random MCQ</li>
+                            <li>submitMCQAnswer(mcqId, attemptData): Submit answer with timing</li>
+                            <li>getMCQStatistics(): Platform-wide MCQ stats</li>
+
+                        </ul>
+                    </div>
+            
+                </div>
+    
+                <div class="component-card">
+                    <div class="component-name">api/client.ts</div>
+                    <div class="component-purpose">Axios instance with auth and error handling</div>
+    
+                    <div class="component-section">
+                        <div class="component-section-title">Config:</div>
+                                    <strong>Baseurl:</strong> import.meta.env.VITE_API_BASE_URL || http://localhost:8001/api/v1<br>                        <strong>Timeout:</strong> 30 seconds<br>                        <strong>Headers:</strong> Content-Type: application/json<br>
+                    </div>
+            
+                    <div class="component-section">
+                        <div class="component-section-title">Request Interceptor:</div>
+                        <ul>
+                                        <li>Get accessToken from localStorage</li>
+                            <li>Add Authorization: Bearer {token} header to all requests</li>
+
+                        </ul>
+                    </div>
+            
+                    <div class="component-section">
+                        <div class="component-section-title">Response Interceptor:</div>
+                        <ul>
+                                        <li>On 401 Unauthorized:</li>
+                            <li>  1. Try to refresh token using /auth/refresh</li>
+                            <li>  2. If refresh succeeds: retry original request</li>
+                            <li>  3. If refresh fails: clear tokens and redirect to /login</li>
+
+                        </ul>
+                    </div>
+            
+                    <div class="component-section">
+                        <div class="component-section-title">Error Handling:</div>
+                        <ul>
+                                        <li>Network Error → 'Cannot connect to server'</li>
+                            <li>Timeout → 'Request timeout. Please try again.'</li>
+                            <li>Server error → Extract detail from response.data.detail</li>
+
+                        </ul>
+                    </div>
+            
+                </div>
+    
+                <div class="component-card">
+                    <div class="component-name">ProtectedRoute</div>
+                    <div class="component-purpose">HOC to protect routes requiring authentication</div>
+    
+                    <div class="component-section">
+                        <div class="component-section-title">Logic:</div>
+                        <ul>
+                                        <li>Check if user is authenticated (useAuth hook)</li>
+                            <li>If authenticated → render children</li>
+                            <li>If not authenticated → redirect to /login</li>
+
+                        </ul>
+                    </div>
+            
+                </div>
+    
+                <div class="component-card">
+                    <div class="component-name">PermissionGuard</div>
+                    <div class="component-purpose">Component to conditionally render based on user permissions</div>
+    
+                    <div class="component-section">
+                        <div class="component-section-title">Logic:</div>
+                        <ul>
+                                        <li>Check if current user has specified permission</li>
+                            <li>If yes → render children</li>
+                            <li>If no → render null (hide component)</li>
+
+                        </ul>
+                    </div>
+            
+                </div>
+    
+            <!-- Summary -->
+            <div class="summary-box">
+                <div class="summary-title">🎯 Root Cause Analysis Summary</div>
+                
+                <div class="summary-item">
+                    <strong>Primary Issue:</strong> 
+                    <span class="badge error">Authentication Required</span>
+                    The /api/v1/mcqs/ endpoint requires a valid JWT token (Bearer token in Authorization header).
+                </div>
+                
+                <div class="summary-item">
+                    <strong>Expected Behavior:</strong> 
+                    When user is logged in, accessToken is stored in localStorage → axios interceptor adds it to request headers → backend validates token → returns MCQ list.
+                </div>
+                
+                <div class="summary-item">
+                    <strong>Actual Behavior:</strong> 
+                    User likely not logged in or token expired → No/Invalid Authorization header → Backend returns 401 Unauthorized → Frontend shows error/empty state.
+                </div>
+                
+                <div class="summary-item">
+                    <strong>Resolution Steps:</strong>
+                    <ol style="margin-top: 10px;">
+                        <li>Navigate to <code>http://localhost:5173/login</code></li>
+                        <li>Login with valid credentials (or register new account at <code>/register</code>)</li>
+                        <li>Upon successful login, accessToken saved to localStorage</li>
+                        <li>Navigate back to <code>http://localhost:5173/mcqs</code></li>
+                        <li>MCQBrowser will fetch and display MCQs successfully</li>
+                    </ol>
+                </div>
+                
+                <div class="summary-item">
+                    <strong>API Endpoint Details:</strong>
+                    <div class="code-block">
+GET http://localhost:8001/api/v1/mcqs/?skip=0&limit=20
+Headers:
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+  Content-Type: application/json
+
+Response (200 OK):
+[
+  {
+    "id": 1,
+    "question": "A 65-year-old presents with chest pain...",
+    "options": ["A) Option A", "B) Option B", ...],
+    "specialty": "cardiology",
+    "difficulty": "medium",
+    "tags": ["amc", "clinical-exam"],
+    "image_url": null,
+    "success_rate": 0.75,
+    "attempt_count": 120
+  },
+  ...
+]
+                    </div>
+                </div>
+                
+                <div class="summary-item">
+                    <strong>Backend Architecture:</strong>
+                    FastAPI backend with SQLAlchemy ORM → PostgreSQL database → MCQ table with published MCQs → Returns List[MCQPublic] schema (excludes correct_answer field for practice mode).
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

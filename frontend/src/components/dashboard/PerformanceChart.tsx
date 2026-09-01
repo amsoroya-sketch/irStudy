@@ -22,7 +22,7 @@ interface PerformanceChartProps {
   trends: WeeklyTrend[];
 }
 
-const PerformanceChart: React.FC<PerformanceChartProps> = ({ trends }) => {
+const PerformanceChart: React.FC<PerformanceChartProps> = ({ trends = [] }) => {
   const { isMobile } = useResponsive();
 
   // Format data for Recharts

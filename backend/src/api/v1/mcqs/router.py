@@ -10,6 +10,9 @@ ENDPOINTS:
 - GET /mcqs/random - Get random MCQ by specialty/difficulty (AUTH REQUIRED)
 - GET /mcqs/{id} - Get specific MCQ by ID (AUTH REQUIRED)
 - GET /mcqs - List MCQs with filters (AUTH REQUIRED)
+- POST /mcqs - Create new MCQ (educator/admin only)
+- PUT /mcqs/{id} - Update MCQ (educator/admin only)
+- DELETE /mcqs/{id} - Delete MCQ (educator/admin only)
 - POST /mcqs/{id}/attempt - Submit answer and get explanation (AUTH REQUIRED)
 - GET /mcqs/{id}/explanation - Get explanation with citations (AUTH REQUIRED)
 - GET /mcqs/statistics - Get user statistics (AUTH REQUIRED)
@@ -18,14 +21,21 @@ ENDPOINTS:
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
 from typing import Optional, List
+from datetime import datetime
 import random
 
 from src.db.base import get_db
 from src.db.models import MCQ, MCQAttempt, MedicalSpecialty, DifficultyLevel, User
-from src.auth.dependencies import get_current_active_user
+from src.auth.dependencies import get_current_active_user, require_educator
 from src.api.v1.mcqs import schemas
+from src.schemas.mcq import MCQCreate, MCQUpdate, MCQWithAnswer
 
 router = APIRouter(prefix="/mcqs", tags=["MCQ Practice"])
+
+
+# ============================================================================
+# GET MCQ STATISTICS
+# ============================================================================
 
 
 @router.get("/statistics", response_model=schemas.MCQStatistics)
@@ -80,6 +90,11 @@ async def get_mcq_statistics(
     )
 
 
+# ============================================================================
+# GET RANDOM MCQ
+# ============================================================================
+
+
 @router.get("/random", response_model=schemas.MCQResponse)
 async def get_random_mcq(
     specialty: Optional[MedicalSpecialty] = Query(None, description="Filter by medical specialty"),
@@ -120,7 +135,12 @@ async def get_random_mcq(
     return schemas.MCQResponse.model_validate(selected_mcq)
 
 
-@router.get("/", response_model=List[schemas.MCQResponse])
+# ============================================================================
+# LIST MCQs
+# ============================================================================
+
+
+@router.get("/", response_model=schemas.MCQListResponse)
 async def list_mcqs(
     specialty: Optional[MedicalSpecialty] = Query(None, description="Filter by medical specialty"),
     difficulty: Optional[DifficultyLevel] = Query(None, description="Filter by difficulty level"),
@@ -153,8 +173,22 @@ async def list_mcqs(
         for tag in tag_list:
             query = query.filter(MCQ.tags.contains([tag]))
 
+    # Get total count before pagination
+    total = query.count()
+
     mcqs = query.offset(skip).limit(limit).all()
-    return [schemas.MCQResponse.model_validate(mcq) for mcq in mcqs]
+
+    return schemas.MCQListResponse(
+        items=[schemas.MCQResponse.model_validate(mcq) for mcq in mcqs],
+        total=total,
+        skip=skip,
+        limit=limit
+    )
+
+
+# ============================================================================
+# GET SINGLE MCQ
+# ============================================================================
 
 
 @router.get("/{mcq_id}", response_model=schemas.MCQResponse)
@@ -170,7 +204,7 @@ async def get_mcq(
 
     **Example:** GET /mcqs/1
     """
-    mcq = db.query(MCQ).filter(MCQ.id == mcq_id).first()
+    mcq = db.query(MCQ).filter(MCQ.id == mcq_id, MCQ.is_published == True).first()
 
     if not mcq:
         raise HTTPException(
@@ -179,6 +213,150 @@ async def get_mcq(
         )
 
     return schemas.MCQResponse.model_validate(mcq)
+
+
+# ============================================================================
+# CREATE MCQ (Educator/Admin only)
+# ============================================================================
+
+
+@router.post("/", response_model=MCQWithAnswer, status_code=status.HTTP_201_CREATED)
+async def create_mcq(
+    mcq_data: MCQCreate,
+    current_user: User = Depends(require_educator),
+    db: Session = Depends(get_db),
+):
+    """
+    Create new MCQ (educator/admin only).
+
+    Requirements:
+    - question_id: Unique identifier (format: MCQ-SPEC-XXX)
+    - question_text: 50-5000 characters
+    - options: 4-5 options (A-E)
+    - correct_answer: Single letter (A-E)
+    - explanation: 100-5000 characters
+    - citation: Australian guideline reference (eTG, AHPRA, AMH, PBS)
+    - specialty: Medical specialty
+    - difficulty: easy/medium/hard
+
+    Validation:
+    - Rejects American drug names (acetaminophen, epinephrine, albuterol)
+    - Requires Australian guideline citations
+    - Validates question_id format
+
+    Returns:
+    - Created MCQ with full details including answer
+    """
+    # Check if question_id already exists
+    existing_mcq = db.query(MCQ).filter(MCQ.question_id == mcq_data.question_id).first()
+    if existing_mcq:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"MCQ with question_id '{mcq_data.question_id}' already exists",
+        )
+
+    # Create new MCQ
+    new_mcq = MCQ(
+        question_id=mcq_data.question_id,
+        question_text=mcq_data.question_text,
+        options=mcq_data.options,
+        correct_answer=mcq_data.correct_answer,
+        explanation=mcq_data.explanation,
+        citation=mcq_data.citation,
+        learning_points=mcq_data.learning_points,
+        specialty=mcq_data.specialty,
+        difficulty=mcq_data.difficulty,
+        tags=mcq_data.tags,
+        image_url=mcq_data.image_url,
+        image_caption=mcq_data.image_caption,
+        is_published=False,  # Requires review before publishing
+    )
+
+    db.add(new_mcq)
+    db.commit()
+    db.refresh(new_mcq)
+
+    return new_mcq
+
+
+# ============================================================================
+# UPDATE MCQ (Educator/Admin only)
+# ============================================================================
+
+
+@router.put("/{mcq_id}", response_model=MCQWithAnswer)
+async def update_mcq(
+    mcq_id: int,
+    mcq_update: MCQUpdate,
+    current_user: User = Depends(require_educator),
+    db: Session = Depends(get_db),
+):
+    """
+    Update existing MCQ (educator/admin only).
+
+    Args:
+    - mcq_id: MCQ database ID
+    - mcq_update: Fields to update (all optional)
+
+    Returns:
+    - Updated MCQ with full details
+
+    Note:
+    - Updating published MCQ creates audit trail
+    - Consider versioning if MCQ has existing attempts
+    """
+    mcq = db.query(MCQ).filter(MCQ.id == mcq_id).first()
+
+    if not mcq:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="MCQ not found")
+
+    # Update fields
+    update_data = mcq_update.dict(exclude_unset=True)
+    for field, value in update_data.items():
+        setattr(mcq, field, value)
+
+    db.commit()
+    db.refresh(mcq)
+
+    return mcq
+
+
+# ============================================================================
+# DELETE MCQ (Educator/Admin only)
+# ============================================================================
+
+
+@router.delete("/{mcq_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_mcq(
+    mcq_id: int, current_user: User = Depends(require_educator), db: Session = Depends(get_db)
+):
+    """
+    Delete MCQ (soft delete for audit trail).
+
+    Args:
+    - mcq_id: MCQ database ID
+
+    Note:
+    - Performs soft delete (sets deleted_at timestamp)
+    - MCQ hidden from queries but data retained
+    - Existing attempts preserved for user statistics
+    """
+    mcq = db.query(MCQ).filter(MCQ.id == mcq_id).first()
+
+    if not mcq:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="MCQ not found")
+
+    # Soft delete
+    mcq.deleted_at = datetime.now(datetime.now().astimezone().tzinfo)
+
+    db.commit()
+
+    return None
+
+
+# ============================================================================
+# SUBMIT MCQ ATTEMPT
+# ============================================================================
 
 
 @router.post("/{mcq_id}/attempt", response_model=schemas.MCQSubmitResponse)
@@ -246,6 +424,11 @@ async def submit_mcq_attempt(
         learning_points=mcq.learning_points,
         attempt_number=attempt_number
     )
+
+
+# ============================================================================
+# GET MCQ EXPLANATION
+# ============================================================================
 
 
 @router.get("/{mcq_id}/explanation", response_model=schemas.MCQExplanation)

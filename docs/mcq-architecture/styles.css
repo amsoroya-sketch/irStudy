@@ -1,0 +1,479 @@
+/* Shared Styles for MCQ Architecture Documentation */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+.nav-breadcrumb {
+    background: #f8f9fa;
+    padding: 15px 40px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.nav-breadcrumb a {
+    color: #667eea;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.nav-breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    padding: 40px;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 1.8em;
+    color: #1e3c72;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #667eea;
+}
+
+.code-example {
+    background: #2d3748;
+    color: #68d391;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    overflow-x: auto;
+    margin: 15px 0;
+    position: relative;
+}
+
+.code-example .code-header {
+    background: #1a202c;
+    color: #a0aec0;
+    padding: 8px 15px;
+    margin: -20px -20px 15px -20px;
+    border-radius: 8px 8px 0 0;
+    font-size: 0.85em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.code-example .copy-btn {
+    background: #4a5568;
+    color: white;
+    border: none;
+    padding: 4px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.code-example .copy-btn:hover {
+    background: #2d3748;
+}
+
+.code-line {
+    margin: 5px 0;
+}
+
+.code-comment {
+    color: #a0aec0;
+}
+
+.code-keyword {
+    color: #f687b3;
+}
+
+.code-string {
+    color: #f6e05e;
+}
+
+.code-function {
+    color: #63b3ed;
+}
+
+.component-card {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.component-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+}
+
+.component-name {
+    font-size: 1.5em;
+    color: #667eea;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.component-location {
+    background: #e3f2fd;
+    color: #1565c0;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    display: inline-block;
+    margin-bottom: 15px;
+    font-family: 'Courier New', monospace;
+}
+
+.component-purpose {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 20px;
+    font-size: 1.05em;
+}
+
+.component-section {
+    margin: 20px 0;
+}
+
+.component-section-title {
+    color: #1e3c72;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.flow-step {
+    background: white;
+    border: 2px solid #667eea;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.flow-step::after {
+    content: '↓';
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2em;
+    color: #667eea;
+}
+
+.flow-step:last-child::after {
+    display: none;
+}
+
+.step-number {
+    background: #667eea;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 15px;
+    font-size: 1.2em;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.step-component {
+    background: #e3f2fd;
+    color: #1565c0;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.95em;
+}
+
+.step-action {
+    font-size: 1.3em;
+    color: #1e3c72;
+    font-weight: 600;
+    margin-left: auto;
+}
+
+.step-details {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.step-details ul {
+    list-style: none;
+}
+
+.step-details li {
+    margin: 8px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.step-details li::before {
+    content: '•';
+    position: absolute;
+    left: 5px;
+    color: #667eea;
+    font-weight: bold;
+}
+
+.issue-card {
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+    border-left: 5px solid #e53e3e;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.issue-card.warning {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border-left-color: #f59e0b;
+}
+
+.issue-card.info {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-left-color: #3b82f6;
+}
+
+.issue-title {
+    font-size: 1.3em;
+    color: #c53030;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.issue-card.warning .issue-title {
+    color: #d97706;
+}
+
+.issue-card.info .issue-title {
+    color: #1e40af;
+}
+
+.badge {
+    display: inline-block;
+    background: #667eea;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    margin: 3px;
+}
+
+.badge.success {
+    background: #48bb78;
+}
+
+.badge.error {
+    background: #e53e3e;
+}
+
+.badge.warning {
+    background: #f59e0b;
+}
+
+.badge.info {
+    background: #3b82f6;
+}
+
+.toc {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    margin-bottom: 30px;
+}
+
+.toc h3 {
+    color: #1e3c72;
+    margin-bottom: 15px;
+}
+
+.toc ul {
+    list-style: none;
+}
+
+.toc li {
+    margin: 10px 0;
+}
+
+.toc a {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 1.05em;
+}
+
+.toc a:hover {
+    text-decoration: underline;
+}
+
+.interactive-demo {
+    background: #f0f9ff;
+    border: 2px solid #0284c7;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.interactive-demo h4 {
+    color: #0c4a6e;
+    margin-bottom: 15px;
+}
+
+.interactive-demo button {
+    background: #0284c7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    margin: 5px;
+}
+
+.interactive-demo button:hover {
+    background: #0369a1;
+}
+
+.demo-output {
+    background: white;
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 15px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    min-height: 50px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table th {
+    background: #667eea;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+table td {
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+table tr:hover {
+    background: #f8f9fa;
+}
+
+.diagram-placeholder {
+    background: #f8f9fa;
+    border: 2px dashed #cbd5e0;
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    color: #718096;
+    margin: 20px 0;
+}
+
+.diagram-placeholder img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.note {
+    background: #fffbeb;
+    border-left: 4px solid #f59e0b;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.note strong {
+    color: #d97706;
+}
+
+.tip {
+    background: #dcfce7;
+    border-left: 4px solid #16a34a;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.tip strong {
+    color: #15803d;
+}
+
+.stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.stack-item {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.stack-item strong {
+    display: block;
+    color: #1e3c72;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}

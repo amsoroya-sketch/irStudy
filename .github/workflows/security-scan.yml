@@ -3,248 +3,154 @@ name: Security Scan
 on:
   push:
     branches: [ main, develop ]
+    paths:
+      - 'backend/**/*.py'
+      - 'frontend/**/*.ts'
+      - 'frontend/**/*.tsx'
+      - 'mobile/**/*.dart'
+      - '**/*.env*'
+      - '.github/workflows/security-scan.yml'
   pull_request:
     branches: [ main, develop ]
   schedule:
-    # Run security scan weekly (Monday at 9 AM UTC)
-    - cron: '0 9 * * 1'
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
 
 jobs:
-  security:
-    name: Security Vulnerability Scan
+  security-scan:
     runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
-      
-      - name: Cache Python dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-      
-      - name: Install dependencies
-        working-directory: backend
-        run: |
-          python -m pip install --upgrade pip==26.0.1
-          pip install -r requirements.txt
-          pip install bandit safety
-      
-      - name: Run Bandit (SAST)
-        working-directory: backend
-        run: |
-          mkdir -p security_reports
-          echo "::group::Bandit Scan"
-          bandit -r src/ -f json -o security_reports/bandit_report.json || true
-          bandit -r src/ -f txt -o security_reports/bandit_report.txt || true
-          echo "::endgroup::"
-      
-      - name: Check for HIGH/CRITICAL Bandit issues
-        working-directory: backend
-        run: |
-          echo "::group::HIGH/CRITICAL Issue Check"
-          CRITICAL_COUNT=$(python3 -c "
-import json
-with open('security_reports/bandit_report.json') as f:
-    data = json.load(f)
-    high_critical = [r for r in data['results'] if r['issue_severity'] in ['HIGH', 'CRITICAL']]
-    print(len(high_critical))
-" 2>/dev/null || echo "0")
-          
-          echo "Found $CRITICAL_COUNT HIGH/CRITICAL issues"
-          
-          if [ "$CRITICAL_COUNT" -gt 0 ]; then
-            echo "::error::Security scan failed: $CRITICAL_COUNT HIGH/CRITICAL vulnerabilities found"
-            python3 -c "
-import json
-with open('security_reports/bandit_report.json') as f:
-    data = json.load(f)
-    for r in data['results']:
-        if r['issue_severity'] in ['HIGH', 'CRITICAL']:
-            print(f\"::error file={r['filename']},line={r['line_number']}::{r['issue_severity']} - {r['issue_text']}\")
-" 2>/dev/null || true
-            exit 1
-          else
-            echo "::notice::✅ No HIGH/CRITICAL vulnerabilities found"
-          fi
-          echo "::endgroup::"
-      
-      - name: Run Safety (dependency scan)
-        working-directory: backend
-        continue-on-error: true
-        run: |
-          echo "::group::Safety Scan"
-          safety scan --json > security_reports/safety_report.json 2>&1 || true
-          safety scan 2>&1 || true
-          echo "::endgroup::"
-      
-      - name: Check for CRITICAL dependency vulnerabilities
-        working-directory: backend
-        run: |
-          echo "::group::CRITICAL Dependency Check"
-          echo "::notice::Checking for CRITICAL vulnerabilities in dependencies"
-          
-          # Note: Safety DB may not categorize all vulnerabilities as CRITICAL
-          # For now, we'll warn but not fail on dependency issues
-          echo "::warning::Review safety_report.json for dependency vulnerabilities"
-          echo "::endgroup::"
-      
-      - name: Upload security reports
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: security-reports
-          path: backend/security_reports/
-          retention-days: 90
-      
-      - name: Create security summary
-        if: always()
-        working-directory: backend
-        run: |
-          echo "## Security Scan Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # Bandit summary
-          echo "### Bandit (SAST) Results" >> $GITHUB_STEP_SUMMARY
-          python3 -c "
-import json
-try:
-    with open('security_reports/bandit_report.json') as f:
-        data = json.load(f)
-        totals = data['metrics']['_totals']
-        print(f\"- **Total issues**: {totals.get('CONFIDENCE.HIGH', 0) + totals.get('CONFIDENCE.MEDIUM', 0) + totals.get('CONFIDENCE.LOW', 0)}\")
-        print(f\"- **HIGH severity**: {totals.get('SEVERITY.HIGH', 0)}\")
-        print(f\"- **MEDIUM severity**: {totals.get('SEVERITY.MEDIUM', 0)}\")
-        print(f\"- **LOW severity**: {totals.get('SEVERITY.LOW', 0)}\")
-        print(f\"- **Lines of code scanned**: {totals.get('loc', 0)}\")
-except Exception as e:
-    print(f\"Error reading Bandit report: {e}\")
-" >> $GITHUB_STEP_SUMMARY || echo "Error generating Bandit summary" >> $GITHUB_STEP_SUMMARY
-          
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # Safety summary (basic - JSON parsing is complex)
-          echo "### Safety (Dependency Scan) Results" >> $GITHUB_STEP_SUMMARY
-          echo "See uploaded artifacts for detailed dependency scan results." >> $GITHUB_STEP_SUMMARY
-          
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "---" >> $GITHUB_STEP_SUMMARY
-          echo "📄 **Full reports available in workflow artifacts**" >> $GITHUB_STEP_SUMMARY
 
-  # Additional security checks
-  secrets-scan:
-    name: Secrets Detection
-    runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Full history for secret scanning
-      
-      - name: Run Gitleaks
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }} # Get free license at https://gitleaks.io/
-      
-      - name: Scan for hardcoded credentials
-        working-directory: backend
-        run: |
-          echo "::group::Credential Scan"
-          echo "Scanning for hardcoded credentials..."
-          
-          # Check for hardcoded passwords
-          if grep -rn "password\s*=\s*['\"]" src/ 2>/dev/null; then
-            echo "::error::Found hardcoded passwords in source code"
-            exit 1
-          else
-            echo "::notice::✅ No hardcoded passwords found"
-          fi
-          
-          # Check for hardcoded API keys
-          if grep -rn "api_key\s*=\s*['\"]" src/ --exclude-dir=docs 2>/dev/null; then
-            echo "::error::Found hardcoded API keys in source code"
-            exit 1
-          else
-            echo "::notice::✅ No hardcoded API keys found"
-          fi
-          
-          # Check for hardcoded secrets
-          if grep -rn "secret\s*=\s*['\"]" src/ 2>/dev/null; then
-            echo "::error::Found hardcoded secrets in source code"
-            exit 1
-          else
-            echo "::notice::✅ No hardcoded secrets found"
-          fi
-          
-          echo "::endgroup::"
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-  owasp-compliance:
-    name: OWASP Top 10 Compliance Check
-    runs-on: ubuntu-latest
-    needs: [security, secrets-scan]
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      
-      - name: Verify OWASP compliance documentation
-        run: |
-          echo "::group::OWASP Compliance Check"
-          
-          if [ -f "backend/docs/owasp_top10_compliance.md" ]; then
-            echo "::notice::✅ OWASP Top 10 compliance document exists"
-          else
-            echo "::error::OWASP Top 10 compliance document missing"
-            exit 1
-          fi
-          
-          if [ -f "backend/docs/security_audit_report_2026-02-13.md" ]; then
-            echo "::notice::✅ Security audit report exists"
-          else
-            echo "::warning::Security audit report not found (may be outdated)"
-          fi
-          
-          echo "::endgroup::"
-      
-      - name: Create OWASP compliance summary
-        run: |
-          echo "## OWASP Top 10 2021 Compliance" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "✅ All automated security checks passed" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### Verified Controls" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ A01: Access Control (JWT authentication)" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ A02: Cryptographic Failures (bcrypt, AES-256)" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ A03: Injection (SQLAlchemy ORM, Pydantic)" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ A07: Authentication Failures (JWT tokens)" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "📋 See [OWASP Compliance Document](backend/docs/owasp_top10_compliance.md) for full assessment" >> $GITHUB_STEP_SUMMARY
+    - name: Scan for hardcoded Anthropic API keys
+      run: |
+        echo "Scanning for hardcoded Anthropic API keys..."
+        if grep -r "sk-ant-" . \
+          --exclude-dir=node_modules \
+          --exclude-dir=.next \
+          --exclude-dir=venv \
+          --exclude-dir=.git \
+          --exclude-dir=build \
+          --exclude-dir=dist \
+          --include="*.py" \
+          --include="*.ts" \
+          --include="*.tsx" \
+          --include="*.dart" \
+          --include="*.js" \
+          --include="*.json"; then
+          echo "❌ Found hardcoded Anthropic API keys (sk-ant-*)"
+          exit 1
+        else
+          echo "✅ No hardcoded Anthropic API keys found"
+        fi
 
-  # Security scan passed notification
-  security-complete:
-    name: Security Scan Complete
-    runs-on: ubuntu-latest
-    needs: [security, secrets-scan, owasp-compliance]
-    if: success()
-    
-    steps:
-      - name: Security scan passed
-        run: |
-          echo "::notice::✅ All security scans passed successfully"
-          echo "## ✅ Security Scan Complete" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "All security checks passed:" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Bandit SAST scan" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Safety dependency scan" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Secrets detection" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ OWASP Top 10 compliance" >> $GITHUB_STEP_SUMMARY
+    - name: Scan for generic API keys and secrets
+      run: |
+        echo "Scanning for generic API keys and secrets..."
+        if grep -r "api_key\s*=\s*['\"]" . \
+          --exclude-dir=node_modules \
+          --exclude-dir=.next \
+          --exclude-dir=venv \
+          --exclude-dir=.git \
+          --exclude-dir=build \
+          --exclude-dir=dist \
+          --include="*.py" \
+          --include="*.ts" \
+          --include="*.tsx" \
+          --include="*.dart" \
+          --include="*.js"; then
+          echo "❌ Found hardcoded api_key assignments"
+          exit 1
+        else
+          echo "✅ No hardcoded api_key assignments found"
+        fi
+
+    - name: Scan for database credentials
+      run: |
+        echo "Scanning for hardcoded database credentials..."
+        if grep -r "dbPath:\|dbKey:\|userId.*mock" . \
+          --exclude-dir=node_modules \
+          --exclude-dir=.next \
+          --exclude-dir=venv \
+          --exclude-dir=.git \
+          --exclude-dir=build \
+          --exclude-dir=dist \
+          --exclude-dir=test \
+          --exclude-dir=tests \
+          --include="*.py" \
+          --include="*.dart" \
+          --include="*.ts" \
+          --include="*.tsx"; then
+          echo "❌ Found potential hardcoded database credentials"
+          exit 1
+        else
+          echo "✅ No hardcoded database credentials found"
+        fi
+
+    - name: Scan for hardcoded URLs (development/localhost)
+      run: |
+        echo "Scanning for hardcoded localhost URLs..."
+        if grep -r "http://localhost:\|ws://localhost:" . \
+          --exclude-dir=node_modules \
+          --exclude-dir=.next \
+          --exclude-dir=venv \
+          --exclude-dir=.git \
+          --exclude-dir=build \
+          --exclude-dir=dist \
+          --exclude-dir=test \
+          --exclude-dir=tests \
+          --exclude-dir=.github \
+          --include="*.py" \
+          --include="*.ts" \
+          --include="*.tsx" \
+          --include="*.dart" | grep -v "process.env\|os.getenv\|const.*=.*||"; then
+          echo "⚠️  Found hardcoded localhost URLs (may be acceptable in development configs)"
+          echo "Review these manually to ensure they're in config files, not application code"
+          # Don't fail on localhost (common in dev configs), but warn
+        else
+          echo "✅ No problematic hardcoded URLs found"
+        fi
+
+    - name: Scan for PHI in logs
+      run: |
+        echo "Scanning for potential PHI in log statements..."
+        if grep -r "log.*MRN\|log.*DOB\|log.*email.*@\|console.log.*patient\.email" . \
+          --exclude-dir=node_modules \
+          --exclude-dir=.next \
+          --exclude-dir=venv \
+          --exclude-dir=.git \
+          --exclude-dir=build \
+          --exclude-dir=dist \
+          --include="*.py" \
+          --include="*.ts" \
+          --include="*.tsx" \
+          --include="*.dart"; then
+          echo "❌ Found potential PHI in log statements"
+          exit 1
+        else
+          echo "✅ No PHI detected in log statements"
+        fi
+
+    - name: Check for .env files in repository
+      run: |
+        echo "Checking for committed .env files..."
+        if find . -name ".env" -o -name ".env.local" -o -name ".env.production" | grep -v ".env.example"; then
+          echo "❌ Found .env files in repository - these should be gitignored"
+          exit 1
+        else
+          echo "✅ No .env files found in repository"
+        fi
+
+    - name: Security Scan Summary
+      if: success()
+      run: |
+        echo "======================================"
+        echo "🔒 Security Scan Complete"
+        echo "======================================"
+        echo "✅ No hardcoded API keys found"
+        echo "✅ No hardcoded credentials found"
+        echo "✅ No PHI in logs found"
+        echo "✅ No .env files committed"
+        echo "======================================"

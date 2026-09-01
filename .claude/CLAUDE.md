@@ -151,7 +151,362 @@ Before marking work COMPLETE:
 
 ---
 
+## 0 - DISCOVERY & CODE REUSE (Ponytail Strategy)
+
+**Ponytail Principle**: Every line of code that doesn't need to exist saves tokens, time, and errors.
+
+### Section 0 in PRDs (MANDATORY as of 2026-07-01)
+
+All PRDs executed by Ralph MUST include **Section 0: DISCOVERY** that documents:
+- Existing code search results
+- Reusable components identified
+- Python packages considered
+- TypeScript/React libraries evaluated
+- Medical content sources (RAG, Qdrant)
+- Decision to reuse vs. create new
+
+**Example Section 0 for irStudy**:
+```markdown
+## 0 - DISCOVERY
+
+### Existing Code Search
+- ✅ FOUND: FastAPI router pattern in `backend/src/api/routers/patient_router.py`
+- ✅ FOUND: React component pattern in `frontend/src/components/PatientCard.tsx`
+- ❌ NOT FOUND: OSCE session management (new domain)
+
+### Reuse Decisions
+1. **FastAPI Router**: Reuse `patient_router.py` structure (SQLAlchemy + dependency injection)
+2. **React Components**: Reuse `PatientCard.tsx` patterns (TypeScript + hooks)
+3. **RAG Content**: Search Qdrant for existing medical content before creating new
+
+### Packages Considered
+- `fastapi: ^0.115.0` ✅ ALREADY INSTALLED
+- `sqlalchemy: ^2.0.0` ✅ ALREADY INSTALLED
+- `react: ^18.2.0` ✅ ALREADY INSTALLED
+```
+
+### Discovery Commands (Run BEFORE Creating Code)
+
+**Python/FastAPI Backend Search**:
+```bash
+# Search for existing routers
+find backend/src/api/routers -name "*.py"
+
+# Search for existing models
+find backend/src/models -name "*.py"
+
+# Check for similar endpoints
+grep -r "@router\." backend/src/api/
+
+# Check for existing database operations
+grep -r "session.query\|session.add" backend/src/
+
+# Check installed Python packages
+cat backend/requirements.txt | grep [package-name]
+```
+
+**TypeScript/React Frontend Search**:
+```bash
+# Search for existing components
+find frontend/src/components -name "*.tsx"
+
+# Search for existing hooks
+find frontend/src/hooks -name "*.ts"
+
+# Check for similar API calls
+grep -r "axios.get\|fetch(" frontend/src/
+
+# Check for existing state management
+grep -r "useState\|useContext\|useReducer" frontend/src/
+
+# Check installed npm packages
+cat frontend/package.json | grep [package-name]
+```
+
+**Medical Content/RAG Search**:
+```bash
+# Search Qdrant for existing medical content
+curl -X POST "http://localhost:6333/collections/amc_blueprints/points/search" \
+  -H "Content-Type: application/json" \
+  -d '{"vector": [...], "limit": 5}'
+
+# Check existing citations
+grep -r "qdrant_point_id\|citation" backend/data/
+
+# Check for similar conditions
+find backend/data/amc_blueprints -name "*condition-name*.json"
+```
+
+### Code Reuse Checklist (Complete BEFORE Creating New Code)
+
+**Python/FastAPI Backend**:
+- [ ] Does this router exist? → Search `backend/src/api/routers/`
+- [ ] Does this model exist? → Search `backend/src/models/`
+- [ ] Does this endpoint exist? → Grep for `@router.get`, `@router.post`
+- [ ] Is there a Python package? → Check requirements.txt, PyPI
+- [ ] Can I extend existing code? → Prefer extension over duplication
+
+**TypeScript/React Frontend**:
+- [ ] Does this component exist? → Search `frontend/src/components/`
+- [ ] Does this hook exist? → Search `frontend/src/hooks/`
+- [ ] Does this API call exist? → Grep for axios/fetch calls
+- [ ] Is there an npm package? → Check package.json, npmjs.com
+- [ ] Can I reuse existing state management? → Check context/hooks
+
+**Medical Content/RAG**:
+- [ ] Does this condition exist in Qdrant? → Search RAG database
+- [ ] Does this citation exist? → Check backend/data/
+- [ ] Can I extend existing content? → Prefer augmentation over recreation
+
+### Anti-Patterns (NEVER DO THIS)
+
+❌ **Creating new router without discovery**:
+```python
+# WRONG: Creating new router without checking if similar exists
+@router.post("/my-new-endpoint")
+async def my_endpoint(): ...
+```
+
+✅ **Correct approach**:
+```bash
+# FIRST: Search for existing routers
+find backend/src/api/routers -name "*patient*.py"
+grep -r "@router.post.*patient" backend/
+
+# THEN: Reuse pattern if found, or create new with justification
+```
+
+❌ **Duplicating React components**:
+```tsx
+// WRONG: Creating new PatientCard when one exists
+export function MyPatientCard() { ... }
+```
+
+✅ **Correct approach**:
+```bash
+# FIRST: Search for existing components
+find frontend/src/components -name "*Patient*.tsx"
+
+# THEN: Reuse or extend existing implementation
+```
+
+### Integration with Ralph PRDs
+
+**All PRDs executed by Ralph MUST**:
+1. Include Section 0 (DISCOVERY) documenting search results
+2. Justify new code creation (explain why reuse wasn't possible)
+3. Reference existing patterns (FastAPI routers, React components, RAG content)
+4. Follow established project patterns (cross-system coordination, security)
+
+---
+
 ## irStudy-Specific Code Patterns
+
+### Python/FastAPI Backend Patterns (MUST FOLLOW)
+
+**Router Structure** (Reuse this pattern):
+```python
+# CORRECT: Standard router pattern
+# backend/src/api/routers/patient_router.py
+
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session
+from src.database import get_db
+from src.models import Patient
+from src.schemas import PatientCreate, PatientResponse
+
+router = APIRouter(prefix="/api/v1/patients", tags=["patients"])
+
+@router.post("/", response_model=PatientResponse, status_code=201)
+async def create_patient(
+    patient: PatientCreate,
+    db: Session = Depends(get_db)
+):
+    """Create new patient record."""
+    try:
+        db_patient = Patient(**patient.dict())
+        db.add(db_patient)
+        db.commit()
+        db.refresh(db_patient)
+        return db_patient
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+
+# WRONG: Hardcoded connection strings, no dependency injection
+async def create_patient(patient: dict):
+    conn = psycopg2.connect("postgresql://...")  # ❌ VIOLATION
+```
+
+**SQLAlchemy Model Pattern**:
+```python
+# CORRECT: Model with proper relationships
+# backend/src/models/patient.py
+
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
+from sqlalchemy.orm import relationship
+from src.database import Base
+
+class Patient(Base):
+    __tablename__ = "patients"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+    age = Column(Integer, nullable=False)
+    created_at = Column(DateTime, nullable=False, server_default=func.now())
+
+    # Relationships
+    encounters = relationship("Encounter", back_populates="patient")
+```
+
+**Alembic Migration Pattern**:
+```python
+# CORRECT: Alembic migration with rollback
+# backend/alembic/versions/001_add_patients_table.py
+
+def upgrade():
+    op.create_table(
+        'patients',
+        sa.Column('id', sa.Integer(), nullable=False),
+        sa.Column('name', sa.String(), nullable=False),
+        sa.Column('age', sa.Integer(), nullable=False),
+        sa.PrimaryKeyConstraint('id')
+    )
+
+def downgrade():
+    op.drop_table('patients')
+```
+
+### TypeScript/React Frontend Patterns (MUST FOLLOW)
+
+**Component Structure** (Reuse this pattern):
+```tsx
+// CORRECT: TypeScript component with proper typing
+// frontend/src/components/PatientCard.tsx
+
+import React, { useState, useEffect } from 'react';
+import { Patient } from '@/types/patient';
+import { fetchPatient } from '@/api/patientApi';
+
+interface PatientCardProps {
+  patientId: number;
+  onSelect?: (patient: Patient) => void;
+}
+
+export const PatientCard: React.FC<PatientCardProps> = ({
+  patientId,
+  onSelect
+}) => {
+  const [patient, setPatient] = useState<Patient | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadPatient = async () => {
+      try {
+        const data = await fetchPatient(patientId);
+        setPatient(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadPatient();
+  }, [patientId]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!patient) return null;
+
+  return (
+    <div className="patient-card" onClick={() => onSelect?.(patient)}>
+      <h3>{patient.name}</h3>
+      <p>Age: {patient.age}</p>
+    </div>
+  );
+};
+
+// WRONG: No TypeScript types, hardcoded URLs
+export function PatientCard(props) {  // ❌ No type safety
+  const [data, setData] = useState(null);
+
+  fetch('http://localhost:8001/patients')  // ❌ Hardcoded URL
+    .then(res => res.json())
+    .then(setData);
+
+  return <div>{data?.name}</div>;
+}
+```
+
+**API Client Pattern**:
+```typescript
+// CORRECT: Typed API client with error handling
+// frontend/src/api/patientApi.ts
+
+import axios from 'axios';
+import { Patient, PatientCreate } from '@/types/patient';
+
+const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:8001';
+
+export const patientApi = {
+  async fetchAll(): Promise<Patient[]> {
+    const response = await axios.get<Patient[]>(`${API_BASE}/api/v1/patients`);
+    return response.data;
+  },
+
+  async create(patient: PatientCreate): Promise<Patient> {
+    const response = await axios.post<Patient>(
+      `${API_BASE}/api/v1/patients`,
+      patient
+    );
+    return response.data;
+  },
+};
+
+// WRONG: No types, no error handling
+export function getPatients() {
+  return fetch('/api/patients').then(r => r.json());  // ❌ No types
+}
+```
+
+**Custom Hook Pattern**:
+```typescript
+// CORRECT: Reusable custom hook
+// frontend/src/hooks/usePatient.ts
+
+import { useState, useEffect } from 'react';
+import { Patient } from '@/types/patient';
+import { patientApi } from '@/api/patientApi';
+
+export function usePatient(patientId: number) {
+  const [patient, setPatient] = useState<Patient | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    const loadPatient = async () => {
+      try {
+        setLoading(true);
+        const data = await patientApi.fetchById(patientId);
+        setPatient(data);
+      } catch (err) {
+        setError(err instanceof Error ? err : new Error('Unknown error'));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadPatient();
+  }, [patientId]);
+
+  return { patient, loading, error };
+}
+
+// Usage in component:
+const { patient, loading, error } = usePatient(123);
+```
 
 ### Flutter Provider Pattern (MUST FOLLOW)
 
