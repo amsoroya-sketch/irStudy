@@ -233,6 +233,93 @@ def query_live():
     return live
 
 
+def coverage_by_blueprint(conditions, content):
+    """
+    Count linked content items per AMC blueprint area, per content type.
+
+    PRD-CONDITIONS-SPINE-001.
+
+    Args:
+        conditions: list of {"id", "amc_blueprint_area", ...} (the seeded spine).
+        content: dict[content_type] -> list of items each carrying "condition_id",
+            e.g. {"mcq": [...], "osce": [...], "persona": [...], "emr_case": [...]}.
+
+    Returns:
+        dict[blueprint_area] -> {content_type: count}. Every blueprint area present
+        in ``conditions`` appears (zero-filled), so true gaps are visible. Items
+        whose ``condition_id`` doesn't resolve to a known condition are ignored
+        (never fabricated into a bucket).
+    """
+    content = content or {}
+    content_types = list(content.keys())
+
+    # condition_id -> blueprint area
+    area_by_condition = {}
+    areas = set()
+    for cond in conditions or []:
+        area = cond.get("amc_blueprint_area")
+        if area is None:
+            continue
+        areas.add(area)
+        if cond.get("id") is not None:
+            area_by_condition[cond["id"]] = area
+
+    # Zero-fill every known blueprint area across every content type.
+    rows = {area: {ct: 0 for ct in content_types} for area in areas}
+
+    for ct, items in content.items():
+        for item in items or []:
+            cid = item.get("condition_id") if isinstance(item, dict) else None
+            area = area_by_condition.get(cid)
+            if area is None:
+                continue
+            rows[area][ct] = rows[area].get(ct, 0) + 1
+
+    return rows
+
+
+def query_coverage():
+    """Best-effort live coverage-by-blueprint. Returns rows dict or None."""
+    if not os.getenv("DATABASE_URL") and not os.getenv("DATABASE_PASSWORD") \
+            and not os.path.exists("/run/secrets/db_password"):
+        return None
+    sys.path.insert(0, str(BACKEND_DIR))
+    try:
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+        from src.db.base import get_database_url
+        from src.db.models import (  # type: ignore
+            Condition, MCQ, OSCE, PatientPersona, MockPatient,
+        )
+
+        engine = create_engine(get_database_url())
+        db = sessionmaker(bind=engine)()
+    except Exception:  # noqa: BLE001
+        return None
+
+    try:
+        conditions = [
+            {"id": c.id, "amc_blueprint_area": c.amc_blueprint_area}
+            for c in db.query(Condition).all()
+        ]
+        content = {
+            "mcq": [{"condition_id": cid} for (cid,) in db.query(MCQ.condition_id).all()],
+            "osce": [{"condition_id": cid} for (cid,) in db.query(OSCE.condition_id).all()],
+            "persona": [
+                {"condition_id": cid} for (cid,) in db.query(PatientPersona.condition_id).all()
+            ],
+            "emr_case": [
+                {"condition_id": cid} for (cid,) in db.query(MockPatient.condition_id).all()
+            ],
+        }
+    except Exception:  # noqa: BLE001
+        return None
+    finally:
+        db.close()
+
+    return coverage_by_blueprint(conditions, content)
+
+
 def _print_table(authored, malformed, live):
     all_specs = sorted(
         {s for ct in CONTENT_TYPES for s in authored[ct]}
@@ -304,6 +391,16 @@ def main() -> int:
     elif live:
         print("\n  No silent import losses detected.")
 
+    coverage = query_coverage() if live else None
+    if coverage:
+        print("\n" + "=" * 72)
+        print("COVERAGE BY AMC BLUEPRINT AREA (linked content per type)")
+        print("=" * 72)
+        for area in sorted(coverage):
+            counts = coverage[area]
+            print(f"  {area:<28}" + "  ".join(f"{ct}={counts.get(ct, 0)}" for ct in
+                  ("mcq", "osce", "persona", "emr_case")))
+
     if args.json:
         REPORT_DIR.mkdir(parents=True, exist_ok=True)
         payload = {
@@ -311,6 +408,7 @@ def main() -> int:
             "malformed": {ct: dict(malformed[ct]) for ct in CONTENT_TYPES},
             "live": ({ct: dict(live[ct]) for ct in CONTENT_TYPES} if live else None),
             "db_available": live is not None,
+            "coverage_by_blueprint": coverage,
             "flags": [
                 {"content_type": ct, "specialty": s, "importable": imp, "live": lv}
                 for (ct, s, imp, lv) in flags

@@ -259,6 +259,64 @@ class User(Base):
 
 
 # ============================================================================
+# CONDITION MODEL (AMC conditions / blueprint spine — PRD-CONDITIONS-SPINE-001)
+# ============================================================================
+
+
+class Condition(Base):
+    """
+    AMC condition / blueprint-area spine.
+
+    A single, joinable anchor that every MCQ, OSCE, patient persona and EMR mock
+    patient can reference via a nullable ``condition_id`` FK. Rows are DERIVED
+    deterministically from existing content topics (no LLM, never fabricated) by
+    ``scripts/seed_conditions.py`` and mapped to an AMC blueprint area from a
+    documented specialty->blueprint dict.
+
+    FIELDS:
+    - condition_code: Stable unique code (e.g. "RESP-ASTHMA"); dedups on re-seed.
+    - name: Human-readable condition name (e.g. "Asthma").
+    - specialty: Controlled MedicalSpecialty enum value.
+    - amc_blueprint_area: AMC blueprint area (e.g. "Respiratory Medicine").
+    - aliases: Optional alternate names (JSON list) for future matching.
+    - system: Optional body-system grouping (nullable).
+    """
+
+    __tablename__ = "conditions"
+
+    # Primary key
+    id = Column(Integer, primary_key=True, index=True)
+
+    # Identity
+    condition_code = Column(String(100), unique=True, index=True, nullable=False)
+    name = Column(String(255), nullable=False, index=True)
+
+    # Classification (controlled specialty vocabulary)
+    specialty = Column(
+        SQLEnum(MedicalSpecialty, values_callable=lambda x: [e.value for e in x]),
+        nullable=False,
+        index=True,
+    )
+    amc_blueprint_area = Column(String(100), nullable=False, index=True)
+
+    # Optional enrichment (nullable)
+    aliases = Column(JSON, nullable=True)  # ["alt name", ...]
+    system = Column(String(100), nullable=True)  # e.g. "Cardiovascular"
+
+    # Audit timestamps
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    updated_at = Column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
+
+    def __repr__(self):
+        return (
+            f"<Condition(code={self.condition_code}, name={self.name}, "
+            f"specialty={self.specialty}, blueprint={self.amc_blueprint_area})>"
+        )
+
+
+# ============================================================================
 # MCQ MODEL
 # ============================================================================
 
@@ -316,6 +374,11 @@ class MCQ(Base):
         nullable=False,
     )
     tags = Column(JSON, nullable=True)  # ["hypertension", "cardiovascular", "first-line"]
+
+    # AMC conditions/blueprint spine (PRD-CONDITIONS-SPINE-001) — nullable link.
+    condition_id = Column(
+        Integer, ForeignKey("conditions.id", ondelete="SET NULL"), nullable=True, index=True
+    )
 
     # Media
     image_url = Column(String(500), nullable=True)
@@ -435,6 +498,11 @@ class OSCE(Base):
         nullable=False,
     )
     time_limit_minutes = Column(Integer, default=8, nullable=False)
+
+    # AMC conditions/blueprint spine (PRD-CONDITIONS-SPINE-001) — nullable link.
+    condition_id = Column(
+        Integer, ForeignKey("conditions.id", ondelete="SET NULL"), nullable=True, index=True
+    )
 
     # Educational content
     learning_objectives = Column(JSON, nullable=True)  # ["Objective 1", "Objective 2", ...]
@@ -735,6 +803,11 @@ class PatientPersona(Base):
     estimated_pass_rate = Column(Float, nullable=True)
     amc_blueprint_area = Column(String(100), nullable=True)
     amc_competencies = Column(JSON, nullable=True)  # TEXT[] stored as JSON
+
+    # AMC conditions/blueprint spine (PRD-CONDITIONS-SPINE-001) — nullable link.
+    condition_id = Column(
+        Integer, ForeignKey("conditions.id", ondelete="SET NULL"), nullable=True, index=True
+    )
 
     # Audit Fields
     created_by = Column(String, ForeignKey("users.id"), nullable=True)
@@ -1417,6 +1490,11 @@ class MockPatient(Base):
     investigation_results = Column(JSON, nullable=True)
     source_osce_id = Column(Integer, ForeignKey("osces.id"), nullable=True)
     validation_criteria = Column(JSON, nullable=True)
+
+    # AMC conditions/blueprint spine (PRD-CONDITIONS-SPINE-001) — nullable link.
+    condition_id = Column(
+        Integer, ForeignKey("conditions.id", ondelete="SET NULL"), nullable=True, index=True
+    )
 
 
 class EMRSession(Base):
