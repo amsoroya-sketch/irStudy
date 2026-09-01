@@ -162,27 +162,32 @@ class TestOSCEToEMRConversion:
         # Extraction confidence ≥65%
         assert data["extractionConfidence"] >= 0.65
 
-        # Redirect URL points to EMR session
-        assert "/emr/session/" in data["redirectUrl"]
+        # Redirect URL points to a real EMR route (the old /emr/session/{id}
+        # route never existed; the converter now targets /emr/select/{id}).
+        assert "/emr/select/" in data["redirectUrl"]
 
     def test_conversion_02_verify_emr_session_content(
         self, client: TestClient, db: Session, auth_headers: dict
     ):
         """
-        Test 2: Verify converted EMR session contains correct pre-filled data
+        Test 2: Verify converted EMR session references a real MockPatient and
+        stores the pre-filled SOAP note as an editable draft.
 
         Steps:
         1. Create completed OSCE attempt
         2. Convert via API endpoint
-        3. GET /api/v1/emr/sessions/{session_id}
-        4. Verify patient context and SOAP note transferred
+        3. Inspect the created EMRSession, MockPatient and draft EMRSOAPNote
+        4. GET /api/v1/emr/sessions/{session_id} loads the draft SOAP note
 
-        Expected:
-        - EMR session has source_osce_attempt_id linking back to OSCE
-        - session_data contains auto-filled SOAP note
+        Expected (MockPatient design):
+        - EMR session references a real MockPatient (patient_id NOT NULL)
+        - specialty/difficulty populated (migration-008 NOT NULL columns)
+        - status == "in_progress", source_osce_attempt_id linked
+        - SOAP note stored as an EMRSOAPNote DRAFT (is_final_submission False),
+          NOT in an un-migrated session_data JSON blob
         - conversion_metadata tracked
         """
-        from src.db.models import User, EMRSession
+        from src.db.models import User, EMRSession, MockPatient, EMRSOAPNote
 
         user = db.query(User).filter(User.email == "test@test.com").first()
         persona = self._create_patient_persona(db)
@@ -201,7 +206,7 @@ class TestOSCEToEMRConversion:
                 headers=auth_headers,
             )
 
-        assert conversion_response.status_code == 201
+        assert conversion_response.status_code == 201, conversion_response.text
         emr_session_id = conversion_response.json()["emrSessionId"]
 
         # Verify EMR session in database
@@ -213,17 +218,57 @@ class TestOSCEToEMRConversion:
         assert emr_session is not None
         assert emr_session.source_osce_attempt_id == osce_attempt.attempt_id
         assert emr_session.user_id == user.id
+        assert emr_session.status == "in_progress"
 
-        # Verify session_data contains SOAP note
-        session_data = emr_session.session_data or {}
-        assert "soap_note" in session_data
-        soap = session_data["soap_note"]
-        assert "subjective" in soap
-        assert "objective" in soap
-        assert "assessment" in soap
-        assert "plan" in soap
-        assert session_data.get("auto_filled") is True
-        assert session_data.get("conversion_source") == "osce_transcript"
+        # NOT-NULL migration-008 columns must be populated
+        assert emr_session.patient_id is not None
+        assert emr_session.specialty == persona.specialty
+        assert emr_session.difficulty  # non-empty
+
+        # The un-migrated JSON columns must not exist on the model at all.
+        assert not hasattr(emr_session, "session_data")
+        assert not hasattr(emr_session, "patient_data")
+
+        # A real MockPatient was materialised from the OSCE persona
+        mock_patient = (
+            db.query(MockPatient)
+            .filter(MockPatient.id == emr_session.patient_id)
+            .first()
+        )
+        assert mock_patient is not None
+        assert mock_patient.name == persona.name
+        assert mock_patient.age == persona.age
+        assert mock_patient.gender == persona.gender
+        assert mock_patient.specialty == persona.specialty
+        assert mock_patient.presenting_complaint == persona.chief_complaint
+        assert mock_patient.demographics is not None
+        assert mock_patient.demographics.get("source_osce_attempt_id") == osce_attempt.attempt_id
+
+        # The pre-filled SOAP note is stored as an editable DRAFT
+        draft = (
+            db.query(EMRSOAPNote)
+            .filter(
+                EMRSOAPNote.session_id == emr_session.id,
+                EMRSOAPNote.is_final_submission == False,  # noqa: E712
+            )
+            .first()
+        )
+        assert draft is not None
+        assert draft.subjective == mock_result.soap_note_draft.subjective
+        assert draft.objective == mock_result.soap_note_draft.objective
+        assert draft.assessment == mock_result.soap_note_draft.assessment
+        assert draft.plan == mock_result.soap_note_draft.plan
+
+        # The editor loads the draft via the normal GET session path
+        get_response = client.get(
+            f"/api/v1/emr/sessions/{emr_session_id}",
+            headers=auth_headers,
+        )
+        assert get_response.status_code == 200, get_response.text
+        soap_note = get_response.json()["soap_note"]
+        assert soap_note is not None
+        assert soap_note["subjective"] == mock_result.soap_note_draft.subjective
+        assert soap_note["plan"] == mock_result.soap_note_draft.plan
 
         # Verify conversion metadata
         meta = emr_session.conversion_metadata or {}

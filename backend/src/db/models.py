@@ -1393,21 +1393,24 @@ class MockPatient(Base):
     __tablename__ = "mock_patients"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
-    mrn = Column(String(20), unique=True)
-    name = Column(String(100))
-    age = Column(Integer)
-    gender = Column(String(20))
-    presenting_complaint = Column(Text)
+    # NOT-NULL columns per Alembic migration 008 (source of truth for Postgres).
+    mrn = Column(String(20), unique=True, nullable=False)
+    name = Column(String(100), nullable=False)
+    age = Column(Integer, nullable=False)
+    gender = Column(String(20), nullable=False)
+    presenting_complaint = Column(Text, nullable=False)
     vital_signs = Column(JSON)
     medical_history = Column(JSON)
-    specialty = Column(String(50), index=True)
-    difficulty = Column(String(20))
+    specialty = Column(String(50), index=True, nullable=False)
+    difficulty = Column(String(20), nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
 
     # Answer-key + clinical detail columns (already present in DB migration 008,
     # previously unmapped in the ORM). Mapping them lets the assessment engine
     # read the per-case expected findings. See PRD-EMR-PRACTICE-001.
-    demographics = Column(JSON, nullable=True)
+    # ``demographics`` is NOT NULL in migration 008; ``default=dict`` guarantees a
+    # value on INSERT even when callers don't supply one.
+    demographics = Column(JSON, nullable=False, default=dict)
     medications = Column(JSON, nullable=True)
     allergies = Column(JSON, nullable=True)
     physical_exam_findings = Column(JSON, nullable=True)
@@ -1426,10 +1429,13 @@ class EMRSession(Base):
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     user_id = Column(Integer, ForeignKey("users.id"), index=True)
-    patient_id = Column(UUID(as_uuid=True), ForeignKey("mock_patients.id"), index=True)
+    # NOT-NULL columns per Alembic migration 008 — every EMR session references a
+    # real mock_patients row and carries specialty/difficulty. The OSCE→EMR
+    # converter materialises a MockPatient so these are always populated.
+    patient_id = Column(UUID(as_uuid=True), ForeignKey("mock_patients.id"), index=True, nullable=False)
     emr_system = Column(String(20))  # "epic" or "cerner"
-    specialty = Column(String(50), index=True)
-    difficulty = Column(String(20))
+    specialty = Column(String(50), index=True, nullable=False)
+    difficulty = Column(String(20), nullable=False)
     started_at = Column(DateTime, default=datetime.utcnow, index=True)
     submitted_at = Column(DateTime, nullable=True)
     elapsed_time_seconds = Column(Integer, default=0)
@@ -1440,9 +1446,11 @@ class EMRSession(Base):
     last_auto_save_at = Column(DateTime, nullable=True)
     typing_metrics = Column(JSON, nullable=True)
 
-    # OSCE-to-EMR conversion fields
-    patient_data = Column(JSON, nullable=True)
-    session_data = Column(JSON, nullable=True)
+    # OSCE-to-EMR conversion fields (backed by migration 008).
+    # NOTE: the un-migrated ``patient_data``/``session_data`` JSON columns were
+    # removed — they had no Alembic migration and 500-ed conversions on Postgres.
+    # Converted sessions now reference a real MockPatient (``patient_id``) and
+    # store the pre-filled SOAP note as an EMRSOAPNote draft.
     source_osce_attempt_id = Column(String(255), nullable=True, index=True)
     conversion_metadata = Column(JSON, nullable=True)
 

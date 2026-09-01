@@ -24,7 +24,12 @@ It would FAIL against the old (drifted) models — which HAD
 ``validation_type`` — and PASSES against the fixed models.
 """
 
-from src.db.models import EMRPrescription, EMRValidationResult
+from src.db.models import (
+    EMRPrescription,
+    EMRSession,
+    EMRValidationResult,
+    MockPatient,
+)
 
 
 # Columns migration 008 defines for emr_validation_results (source of truth).
@@ -69,6 +74,36 @@ _REMOVED_LEGACY_COLUMNS = {
     "final_score",
     "ai_validation_score",
     "specialist_score",
+}
+
+# emr_sessions NOT-NULL columns (migration 008) that the OSCE→EMR converter must
+# populate. The original converter bug omitted patient_id/specialty/difficulty
+# (all NOT NULL) and instead wrote un-migrated patient_data/session_data JSON
+# columns — 500-ing on real Postgres.
+_MIGRATION_008_EMR_SESSION_NOT_NULL = {
+    "patient_id",
+    "specialty",
+    "difficulty",
+}
+
+# Un-migrated columns that must NOT exist on the EMRSession ORM. No Alembic
+# migration backs them, so any INSERT touching them fails on Postgres.
+_EMR_SESSION_UNMIGRATED_COLUMNS = {
+    "patient_data",
+    "session_data",
+}
+
+# mock_patients NOT-NULL columns (migration 008). The converter now materialises
+# a MockPatient from the OSCE persona, so these must be present and non-nullable.
+_MIGRATION_008_MOCK_PATIENT_NOT_NULL = {
+    "mrn",
+    "name",
+    "age",
+    "gender",
+    "demographics",
+    "presenting_complaint",
+    "specialty",
+    "difficulty",
 }
 
 
@@ -146,3 +181,56 @@ def test_prescription_has_not_null_repeats_with_check():
         "EMRPrescription is missing the repeats-range CHECK constraint "
         "(check_emr_prescriptions_repeats_range) defined in migration 008."
     )
+
+
+# ---------------------------------------------------------------------------
+# EMRSession (OSCE→EMR converter target)
+# ---------------------------------------------------------------------------
+
+
+def test_emr_session_has_not_null_converter_columns():
+    """patient_id/specialty/difficulty are NOT NULL in migration 008.
+
+    The OSCE→EMR converter previously omitted them, so every conversion INSERT
+    violated the NOT NULL constraint and 500-ed on Postgres.
+    """
+    cols = EMRSession.__table__.columns
+    for name in _MIGRATION_008_EMR_SESSION_NOT_NULL:
+        assert name in cols.keys(), (
+            f"EMRSession.{name} is absent — it is NOT NULL in migration 008 and "
+            "must be populated by the converter."
+        )
+        assert cols[name].nullable is False, (
+            f"EMRSession.{name} must be NOT NULL to match migration 008 "
+            "(the converter must always populate it)."
+        )
+
+
+def test_emr_session_drops_unmigrated_json_columns():
+    """patient_data/session_data have no Alembic migration and must NOT exist.
+
+    Their presence 500-ed conversions on Postgres ("column does not exist").
+    """
+    cols = _column_names(EMRSession)
+    resurfaced = cols & _EMR_SESSION_UNMIGRATED_COLUMNS
+    assert not resurfaced, (
+        "EMRSession still declares un-migrated JSON columns not present in any "
+        f"Alembic migration (Postgres would 500 on INSERT): {sorted(resurfaced)}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# MockPatient (materialised from the OSCE persona by the converter)
+# ---------------------------------------------------------------------------
+
+
+def test_mock_patient_has_not_null_migration_008_columns():
+    """Every migration-008 NOT-NULL mock_patients column must be non-nullable."""
+    cols = MockPatient.__table__.columns
+    for name in _MIGRATION_008_MOCK_PATIENT_NOT_NULL:
+        assert name in cols.keys(), (
+            f"MockPatient.{name} is absent — it is NOT NULL in migration 008."
+        )
+        assert cols[name].nullable is False, (
+            f"MockPatient.{name} must be NOT NULL to match migration 008."
+        )
