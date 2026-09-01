@@ -532,6 +532,7 @@ def import_mcqs(source_dir: str, dry_run: bool = False, validate: bool = False) 
                 )
                 db.add(mcq)
                 db.flush()  # surface constraint errors inside this savepoint only
+                savepoint.commit()  # RELEASE SAVEPOINT — don't let them accumulate/recurse
                 imported += 1
                 if imported % 50 == 0:
                     print(f"  Imported {imported} MCQs...")
