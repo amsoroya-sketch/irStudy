@@ -22,10 +22,13 @@ from src.core.vault import VaultClient
 logger = logging.getLogger(__name__)
 
 # Current Claude model id (configurable). Override with the EMR_CLAUDE_MODEL env
-# var; defaults to a current Sonnet id. NOTE: the exact id should be confirmed
-# against the claude-api skill when available — this default matches the model
-# ids already used elsewhere in this codebase (see src/ai/clinical_validator.py).
-DEFAULT_CLAUDE_MODEL = "claude-sonnet-4-5-20250929"
+# var. Defaults to the current Sonnet — a good speed/quality/cost fit for a
+# high-volume grading task. (Verified against the claude-api skill: the current
+# Sonnet id is the bare "claude-sonnet-5", no date suffix; use "claude-opus-4-8"
+# for the most capable grading.) NOTE: current models (Sonnet 5 / Opus 4.8) reject
+# temperature/top_p/top_k with a 400, so this module must NOT pass those params —
+# see the messages.create call below.
+DEFAULT_CLAUDE_MODEL = "claude-sonnet-5"
 
 
 def _resolve_claude_model() -> str:
@@ -90,10 +93,12 @@ class ClaudeValidator:
 
             # Call Claude API
             client = anthropic.Anthropic(api_key=api_key)
+            # NOTE: temperature/top_p/top_k are intentionally omitted — current
+            # models (Sonnet 5 / Opus 4.8) reject them with a 400. Scoring stays
+            # consistent via the low-variance grading prompt + answer-key.
             message = client.messages.create(
                 model=_resolve_claude_model(),
                 max_tokens=2048,
-                temperature=0.3,  # Lower temperature for consistent scoring
                 messages=[{
                     "role": "user",
                     "content": prompt
