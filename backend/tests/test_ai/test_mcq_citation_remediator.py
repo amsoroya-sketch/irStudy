@@ -59,3 +59,14 @@ def test_flags_low_australian_ratio():
     r = _remediator([_hit("id1", 0.8, title="StatPearls", au=False)])
     out = r.remediate({"question": {"stem": "q"}, "explanation": "e", "correct_answer": "A"})
     assert out["australian_ratio"] < 0.60
+
+
+def test_murtagh_source_classified_australian():
+    # John Murtagh's General Practice is the Australian GP standard and must not
+    # be miscounted as non-Australian (regression for the citation-classifier bug).
+    r = _remediator([_hit("550e8400-e29b-41d4-a716-446655440000", 0.8,
+                          author="John Murtagh",
+                          title="Murtagh's General Practice, 8th Ed")])
+    out = r.remediate({"question": {"stem": "q"}, "explanation": "e", "correct_answer": "A"})
+    assert out["citations"][0]["is_australian"] is True
+    assert out["australian_ratio"] >= 0.60

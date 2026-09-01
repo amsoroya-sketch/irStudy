@@ -211,12 +211,123 @@ def run(dry_run: bool, limit: Optional[int], force: bool) -> int:
     return 0
 
 
+def run_reclassify(dry_run: bool) -> int:
+    """Fast, offline re-label of existing citations' is_australian flag.
+
+    Recomputes ONLY the `is_australian` flag on every already-grounded citation
+    using the corrected AUSTRALIAN_SOURCES classifier, rewrites the citation in
+    place, and refreshes australian_ratio_after / australian_count_after in the
+    report. Never queries Qdrant and never touches qdrant_point_id / source /
+    title / any grounding data — grounding is already done; this only re-labels.
+    """
+    sys.path.insert(0, str(BACKEND_DIR))
+    from scripts.import_mcqs import _is_ignored_file, _extract_list  # backend/scripts/import_mcqs.py
+    from src.ai.mcq_citation_remediator import is_australian_source  # single source of truth for the list
+
+    candidates = sorted(p for p in DATA_DIR.glob("*.json") if not _is_ignored_file(p))
+
+    stats = {
+        "reclassify_processed": 0,
+        "point_id_present_after": 0,
+        "australian_count_after": 0,
+        "reclassified_changed": 0,
+    }
+
+    print("=" * 64)
+    print("MCQ Citation Reclassification (is_australian only, offline)")
+    print(f"Source: {DATA_DIR}")
+    print(f"Mode:   {'DRY RUN (no writes)' if dry_run else 'RECLASSIFY (writes source files)'}")
+    print("=" * 64)
+
+    for path in candidates:
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        except Exception as e:  # noqa: BLE001
+            print(f"[ERROR] Reading {path.name}: {e}")
+            continue
+
+        mcq_list = _extract_list(data)
+        if not mcq_list:
+            continue
+
+        file_changed = False
+        for mcq_data in mcq_list:
+            if not isinstance(mcq_data, dict):
+                continue
+            citations = [c for c in (mcq_data.get("citations") or []) if isinstance(c, dict)]
+            if not citations:
+                continue
+            stats["reclassify_processed"] += 1
+
+            for c in citations:
+                new_flag = is_australian_source(c.get("source", ""), c.get("title", ""))
+                if c.get("is_australian") != new_flag:
+                    c["is_australian"] = new_flag
+                    file_changed = True
+                    stats["reclassified_changed"] += 1
+                if _has_valid_point_id(c):
+                    stats["point_id_present_after"] += 1
+                    if new_flag:
+                        stats["australian_count_after"] += 1
+
+        if file_changed and not dry_run:
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+            print(f"[OK] Reclassified is_australian in {path.name}")
+
+    australian_ratio = (
+        stats["australian_count_after"] / stats["point_id_present_after"]
+        if stats["point_id_present_after"]
+        else 0.0
+    )
+
+    # Merge into the existing report so needs_regeneration_ids etc. are preserved;
+    # only the Australian-coverage fields are refreshed by the reclassify pass.
+    report: Dict[str, Any] = {}
+    if REPORT_FILE.exists():
+        try:
+            with open(REPORT_FILE, "r", encoding="utf-8") as f:
+                report = json.load(f)
+        except Exception:  # noqa: BLE001
+            report = {}
+    report.update({
+        "reclassified": True,
+        "dry_run": dry_run,
+        "australian_ratio_after": australian_ratio,
+        "australian_count_after": stats["australian_count_after"],
+        "point_id_present_after": stats["point_id_present_after"],
+        "reclassify_processed": stats["reclassify_processed"],
+        "reclassified_changed": stats["reclassified_changed"],
+    })
+
+    REPORT_DIR.mkdir(parents=True, exist_ok=True)
+    with open(REPORT_FILE, "w", encoding="utf-8") as f:
+        json.dump(report, f, indent=2, ensure_ascii=False)
+
+    print("-" * 64)
+    print(f"MCQs with citations:      {stats['reclassify_processed']}")
+    print(f"Citations (valid pt-id):  {stats['point_id_present_after']}")
+    print(f"is_australian flags flipped: {stats['reclassified_changed']}")
+    print(f"Australian ratio after:   {australian_ratio:.1%}")
+    print(f"Report written -> {REPORT_FILE}")
+
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Remediate MCQ citations with RAG-grounded qdrant_point_id")
     parser.add_argument("--dry-run", action="store_true", help="Report only, never write source files")
     parser.add_argument("--limit", type=int, default=None, help="Only process the first N MCQs (smoke test)")
     parser.add_argument("--force", action="store_true", help="Re-remediate MCQs that already have valid point-ids")
+    parser.add_argument(
+        "--reclassify",
+        action="store_true",
+        help="Offline: recompute only is_australian on existing citations (no Qdrant, no re-grounding)",
+    )
     args = parser.parse_args()
+    if args.reclassify:
+        return run_reclassify(dry_run=args.dry_run)
     return run(dry_run=args.dry_run, limit=args.limit, force=args.force)
 
 

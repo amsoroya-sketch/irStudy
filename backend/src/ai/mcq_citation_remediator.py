@@ -17,7 +17,24 @@ from typing import Any, Dict, List, Optional
 logger = logging.getLogger(__name__)
 
 # Mirrors study_card_generator.py:582 — sources treated as Australian.
-AUSTRALIAN_SOURCES = ["eTG", "AMH", "RACGP", "Talley", "AMC", "Australian", "Therapeutic Guidelines"]
+# "Murtagh" = John Murtagh's General Practice (the Australian GP standard text and
+# the single most common source in this corpus); "O'Connor" = Talley & O'Connor's
+# Clinical Examination. "Dr Amir"/"Workshop 2026" = ingested Australian AMC exam-prep.
+AUSTRALIAN_SOURCES = [
+    "eTG", "AMH", "RACGP", "Talley", "AMC", "Australian", "Therapeutic Guidelines",
+    "Murtagh", "O'Connor", "Dr Amir", "Workshop 2026",
+]
+
+
+def is_australian_source(source: str, title: str) -> bool:
+    """Substring match over source AND title against AUSTRALIAN_SOURCES.
+
+    Module-level so corpus tooling (scripts/remediate_mcq_citations.py --reclassify)
+    can reuse the exact same classifier and list without duplicating it.
+    """
+    source = source or ""
+    title = title or ""
+    return any(a in source for a in AUSTRALIAN_SOURCES) or any(a in title for a in AUSTRALIAN_SOURCES)
 
 # Sentinel point-id used as a fallback citation elsewhere (study_card_generator.py:628);
 # never a real grounded citation, so treat it as if no point-id were present.
@@ -56,7 +73,7 @@ class MCQCitationRemediator:
         return "\n".join(p for p in parts if p).strip()
 
     def _is_australian(self, source: str, title: str) -> bool:
-        return any(a in source for a in AUSTRALIAN_SOURCES) or any(a in title for a in AUSTRALIAN_SOURCES)
+        return is_australian_source(source, title)
 
     def remediate(self, mcq: Dict[str, Any]) -> Dict[str, Any]:
         """

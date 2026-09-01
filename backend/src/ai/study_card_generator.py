@@ -579,7 +579,13 @@ Return ONLY valid JSON object, no other text."""
 
             # Filter and format citations
             citations = []
-            australian_sources = ["eTG", "AMH", "RACGP", "Talley", "AMC", "Australian", "Therapeutic Guidelines"]
+            # Keep identical to mcq_citation_remediator.AUSTRALIAN_SOURCES.
+            # "Murtagh" = John Murtagh's General Practice (Australian GP standard text);
+            # "O'Connor" = Talley & O'Connor; "Dr Amir"/"Workshop 2026" = Australian AMC prep.
+            australian_sources = [
+                "eTG", "AMH", "RACGP", "Talley", "AMC", "Australian", "Therapeutic Guidelines",
+                "Murtagh", "O'Connor", "Dr Amir", "Workshop 2026",
+            ]
 
             for result in raw_results:
                 # Ensure qdrant_point_id exists (MANDATORY per constraints/11)
