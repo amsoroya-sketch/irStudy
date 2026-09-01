@@ -189,6 +189,25 @@ def _coerce_citation(mcq_data: dict) -> str:
     return citation[:500]
 
 
+def _coerce_structured_citations(mcq_data: dict) -> list:
+    """
+    Preserve the structured references[]/citations[] array (with any
+    qdrant_point_id already present) instead of collapsing it into a flat
+    string. Returns [] when no structured (dict-shaped) entries exist —
+    a bare list of plain strings carries no point-id and is not preserved
+    here (the flat `citation` summary already covers that case).
+    """
+    references = mcq_data.get("references")
+    if isinstance(references, list) and references:
+        return [ref for ref in references if isinstance(ref, dict)]
+
+    citations = mcq_data.get("citations")
+    if isinstance(citations, list) and citations:
+        return [c for c in citations if isinstance(c, dict)]
+
+    return []
+
+
 def _coerce_explanation(mcq_data: dict) -> str:
     """Coerce explanation to a non-empty string (NOT NULL column)."""
     explanation_obj = mcq_data.get("explanation", {})
@@ -294,6 +313,7 @@ def transform_mcq(mcq_data: dict) -> dict:
         "correct_answer": correct_answer,
         "explanation": _coerce_explanation(mcq_data),
         "citation": _coerce_citation(mcq_data),
+        "citations": _coerce_structured_citations(mcq_data),
         "learning_points": learning_points,
         "specialty": specialty,
         "difficulty": difficulty,
@@ -502,6 +522,7 @@ def import_mcqs(source_dir: str, dry_run: bool = False, validate: bool = False) 
                     correct_answer=record["correct_answer"],
                     explanation=record["explanation"],
                     citation=record["citation"],
+                    citations=record["citations"] or None,
                     learning_points=record["learning_points"],
                     specialty=MedicalSpecialty(record["specialty"]),
                     difficulty=DifficultyLevel(record["difficulty"]),

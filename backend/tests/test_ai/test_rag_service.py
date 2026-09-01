@@ -39,7 +39,7 @@ class TestRAGServiceInitialization:
         
         # Verify Qdrant client initialized
         assert service.client is not None
-        assert service.collection_name == "medical_guidelines"
+        assert service.collection_name == "medical_knowledge"
     
     @patch('src.ai.rag_service.QdrantClient')
     def test_custom_collection_name(self, mock_qdrant_class):

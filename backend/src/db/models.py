@@ -358,7 +358,8 @@ class MCQ(Base):
 
     # Educational content
     explanation = Column(Text, nullable=False)
-    citation = Column(String(500), nullable=False)  # Australian guideline reference
+    citation = Column(String(500), nullable=False)  # Australian guideline reference (summary)
+    citations = Column(JSON, nullable=True)  # Structured list: [{source, qdrant_point_id, ...}]
     learning_points = Column(JSON, nullable=True)  # ["Point 1", "Point 2", ...]
 
     # Metadata
