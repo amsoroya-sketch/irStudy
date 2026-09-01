@@ -9,3 +9,4 @@ export { CernerPatientBanner } from './CernerPatientBanner';
 export { CernerSOAPEditor } from './CernerSOAPEditor';
 export { CernerPrescriptionPanel } from './CernerPrescriptionPanel';
 export { CernerPathologyPanel } from './CernerPathologyPanel';
+export { CernerImagingPanel } from './CernerImagingPanel';

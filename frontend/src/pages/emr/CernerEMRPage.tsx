@@ -26,11 +26,12 @@ import {
   CernerSOAPEditor,
   CernerPrescriptionPanel,
   CernerPathologyPanel,
+  CernerImagingPanel,
 } from '../../components/emr/cerner';
 import { useAutoSave } from '../../hooks/useAutoSave';
 import axiosInstance from '../../utils/axiosInstance';
 import { ScenarioBrief } from '../../components/emr/ScenarioBrief';
-import { EMRSession, SOAPNoteDraft } from '../../types/emr';
+import { EMRSession, SOAPNoteDraft, ImagingOrderDraft } from '../../types/emr';
 
 const DEFAULT_TASK =
   'Document your clinical assessment and initial management plan for this patient.';
@@ -100,6 +101,13 @@ const CernerEMRPage: React.FC = () => {
   // Handler for pathology order changes
   const handlePathologyChange = (pathology_orders: any[]) => {
     const newData = { ...sessionData, pathology_orders };
+    setSessionData(newData);
+    debouncedSave(newData);
+  };
+
+  // Handler for imaging order changes
+  const handleImagingChange = (imaging_orders: ImagingOrderDraft[]) => {
+    const newData = { ...sessionData, imaging_orders };
     setSessionData(newData);
     debouncedSave(newData);
   };
@@ -190,38 +198,62 @@ const CernerEMRPage: React.FC = () => {
             </Alert>
           )}
 
-          {/* Scrollable Content */}
+          {/* Scrollable Content — rendered per active sidebar section */}
           <Box sx={{ flex: 1, overflow: 'auto', p: 2 }}>
-            {/* Scenario brief: presenting complaint + task shown before documenting */}
-            <ScenarioBrief
-              presentingComplaint={patient.presenting_complaint}
-              task={patient.validation_criteria?.task ?? DEFAULT_TASK}
-              specialty={session.specialty ?? patient.specialty}
-              difficulty={session.difficulty}
-            />
+            {/* CHART: scenario brief + SOAP documentation */}
+            {activeSection === 'chart' && (
+              <>
+                {/* Scenario brief: presenting complaint + task shown before documenting */}
+                <ScenarioBrief
+                  presentingComplaint={patient.presenting_complaint}
+                  task={patient.validation_criteria?.task ?? DEFAULT_TASK}
+                  specialty={session.specialty ?? patient.specialty}
+                  difficulty={session.difficulty}
+                />
 
-            {/* SOAP Note Editor */}
-            <CernerSOAPEditor
-              sessionId={sessionId || ''}
-              draft={sessionData}
-              onChange={handleSOAPChange}
-            />
+                {/* SOAP Note Editor */}
+                <CernerSOAPEditor
+                  sessionId={sessionId || ''}
+                  draft={sessionData}
+                  onChange={handleSOAPChange}
+                />
+              </>
+            )}
 
-            {/* Prescription Panel */}
-            <Box sx={{ mt: 2 }}>
-              <CernerPrescriptionPanel
-                prescriptions={sessionData.prescriptions}
-                onChange={handlePrescriptionChange}
-              />
-            </Box>
+            {/* ORDERS: prescriptions + pathology + imaging */}
+            {activeSection === 'orders' && (
+              <>
+                {/* Prescription Panel */}
+                <CernerPrescriptionPanel
+                  prescriptions={sessionData.prescriptions}
+                  onChange={handlePrescriptionChange}
+                />
 
-            {/* Pathology Panel */}
-            <Box sx={{ mt: 2 }}>
-              <CernerPathologyPanel
-                pathologyOrders={sessionData.pathology_orders}
-                onChange={handlePathologyChange}
-              />
-            </Box>
+                {/* Pathology Panel */}
+                <Box sx={{ mt: 2 }}>
+                  <CernerPathologyPanel
+                    pathologyOrders={sessionData.pathology_orders}
+                    onChange={handlePathologyChange}
+                  />
+                </Box>
+
+                {/* Imaging Panel */}
+                <Box sx={{ mt: 2 }}>
+                  <CernerImagingPanel
+                    imagingOrders={sessionData.imaging_orders}
+                    onChange={handleImagingChange}
+                  />
+                </Box>
+              </>
+            )}
+
+            {/* RESULTS: honest empty-state (no results data exists for scenarios) */}
+            {activeSection === 'results' && (
+              <Alert severity="info">
+                No investigation results are available for this scenario yet. Order
+                investigations under Orders and document your interpretation in the Plan.
+              </Alert>
+            )}
           </Box>
         </Box>
       </Box>

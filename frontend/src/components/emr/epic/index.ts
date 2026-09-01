@@ -9,3 +9,4 @@ export { EpicPatientBanner } from './EpicPatientBanner';
 export { EpicSOAPEditor } from './EpicSOAPEditor';
 export { EpicPrescriptionPanel } from './EpicPrescriptionPanel';
 export { EpicPathologyPanel } from './EpicPathologyPanel';
+export { EpicImagingPanel } from './EpicImagingPanel';

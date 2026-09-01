@@ -104,7 +104,16 @@ export const OSCEToEMRModal: React.FC<OSCEToEMRModalProps> = ({
   const handleContinueToEMR = () => {
     if (!conversionData) return;
 
-    navigate(`/emr/session/${conversionData.emr_session_id}`);
+    // Route to the correct EMR page. There is no `/emr/session/:id` route —
+    // honour the saved EMR-system preference (Epic/Cerner) like
+    // StartEMRSessionPage / EMRCaseListPage do, else fall back to the selector.
+    const sessionId = conversionData.emr_session_id;
+    const savedPreference = localStorage.getItem('emr_system_preference');
+    if (savedPreference === 'epic' || savedPreference === 'cerner') {
+      navigate(`/emr/${savedPreference}/${sessionId}`);
+    } else {
+      navigate(`/emr/select/${sessionId}`);
+    }
     onClose();
   };
 
