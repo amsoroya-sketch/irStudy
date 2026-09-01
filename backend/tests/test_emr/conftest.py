@@ -1,9 +1,39 @@
 """Local fixtures for EMR assessment-engine tests (PRD-EMR-PRACTICE-001)."""
+import os
+import sys
+from pathlib import Path
 from types import SimpleNamespace
 from uuid import uuid4
 from datetime import datetime
 
 import pytest
+
+
+# ---------------------------------------------------------------------------
+# Vault override (scoped to the EMR unit-test package)
+# ---------------------------------------------------------------------------
+# The EMR endpoint/engine tests here run entirely on the in-memory SQLite
+# session (get_db is overridden by the global `client` fixture) and authenticate
+# with JWTs signed by the SECRET_KEY env var. They do NOT touch HashiCorp Vault
+# at runtime. The global session-scoped `setup_vault` fixture, however, skips the
+# whole suite when it cannot (re)initialise Vault secrets on localhost:8200 —
+# which happens whenever the shared Vault on that port isn't the project's dev
+# instance. This override replaces that gate with a no-op for THIS package only,
+# so these Vault-independent tests execute instead of being skipped. It does not
+# weaken any assertion and leaves the global fixture untouched for other suites.
+@pytest.fixture(scope="session", autouse=True)
+def setup_vault():
+    os.environ.setdefault("VAULT_ADDR", "http://localhost:8200")
+    os.environ.setdefault("VAULT_TOKEN", "dev-only-token-change-in-prod")
+    os.environ.setdefault("VAULT_ROOT_TOKEN", "dev-only-token-change-in-prod")
+    yield
+
+# Make the project root importable so tests can reach the content-gate shim
+# (`scripts_emr.validate_practice_cases`) and the importer
+# (`backend.scripts.import_emr_practice_cases`) — PRD-EMR-PRACTICE-002.
+_PROJECT_ROOT = Path(__file__).resolve().parents[3]
+if str(_PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT))
 
 from src.db.models import MockPatient, EMRSession
 

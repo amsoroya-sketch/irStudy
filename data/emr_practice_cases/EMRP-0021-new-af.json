@@ -1,0 +1,66 @@
+{
+  "mrn": "EMRP-0021",
+  "name": "Raymond Castellano",
+  "age": 66,
+  "gender": "male",
+  "specialty": "cardiology",
+  "difficulty": "medium",
+  "presenting_complaint": "Palpitations and mild breathlessness; irregular pulse at 148 bpm",
+  "vital_signs": {
+    "bp": "128/76",
+    "hr": 148,
+    "rr": 20,
+    "spo2": 96,
+    "temp": 36.9,
+    "gcs": 15,
+    "bgl": 5.9
+  },
+  "medical_history": {
+    "conditions": ["Hypertension", "Type 2 diabetes mellitus", "Previous transient ischaemic attack"],
+    "medications": ["Perindopril 5 mg daily", "Metformin 1 g twice daily"],
+    "allergies": ["Nil known"],
+    "social": "Retired accountant. Drinks 3-4 standard drinks most evenings; heavier over the weekend. Non-smoker.",
+    "family": "Brother has atrial fibrillation."
+  },
+  "validation_criteria": {
+    "presenting_scenario": "A 66-year-old man presents with palpitations and mild breathlessness for several hours. He is haemodynamically stable but has an irregularly irregular pulse at 148 bpm. The onset time is uncertain (woke with symptoms). He has hypertension, diabetes and a prior TIA. Obs: BP 128/76, HR 148, RR 20, SpO2 96% RA, GCS 15, afebrile.",
+    "task": "Document your assessment and initial management as the admitting RMO.",
+    "expected": {
+      "subjective": [
+        "Symptom history: onset and DURATION of palpitations (explicitly establish if >48 hours or unknown), breathlessness, exertional tolerance",
+        "Screen for instability/ischaemia: chest pain, syncope/presyncope, signs of pulmonary oedema",
+        "Precipitant screen: alcohol ('holiday heart'), sepsis, PE, thyrotoxicosis, ischaemia, electrolyte disturbance, recent surgery",
+        "Stroke/bleeding risk factors and prior TIA; current anticoagulation status; medication and allergy history"
+      ],
+      "objective": [
+        "12-lead ECG to confirm AF and exclude ischaemia/pre-excitation; place on continuous cardiac monitor",
+        "Assess haemodynamic stability FIRST: BP, perfusion, conscious state, signs of heart failure (JVP, crackles, oedema)",
+        "Bloods: UEC and magnesium (electrolytes), TFTs (thyrotoxicosis), FBC, troponin if ischaemia suspected; CXR",
+        "IV access and continuous obs; assess volume status"
+      ],
+      "assessment": [
+        "New atrial fibrillation with rapid ventricular response, currently haemodynamically STABLE",
+        "Onset >48 hours or unknown duration — therefore NOT suitable for immediate cardioversion without anticoagulation/TOE",
+        "Identify precipitant (likely alcohol ± dehydration); calculate CHA2DS2-VASc for stroke risk and HAS-BLED for bleeding risk"
+      ],
+      "plan": [
+        "Confirm stability FIRST: if unstable (hypotension, ischaemic chest pain, pulmonary oedema, reduced GCS) — urgent synchronised DC cardioversion with senior and anaesthetic support; this patient is STABLE so proceed to rate control",
+        "RATE CONTROL (stable): oral/IV beta-blocker (e.g. metoprolol 25 mg PO or 2.5–5 mg IV) OR a non-dihydropyridine calcium-channel blocker (diltiazem/verapamil); avoid verapamil/diltiazem in significant systolic heart failure; use digoxin if heart failure or borderline BP",
+        "Treat the precipitant: correct electrolytes (keep K+ and Mg2+ replete), rehydrate, address alcohol, exclude sepsis/PE/thyrotoxicosis — treating the cause often controls the rate",
+        "Assess stroke risk with CHA2DS2-VASc (this patient scores high: hypertension, diabetes, age, prior TIA) and bleeding risk with HAS-BLED, then anticoagulate with a DOAC (e.g. apixaban 5 mg BD, dose-adjusted for age/weight/renal function) or warfarin",
+        "Rhythm control/cardioversion ONLY after ≥3 weeks therapeutic anticoagulation OR a TOE excludes left-atrial thrombus — because onset is >48 hours/unknown",
+        "Monitor on telemetry, reassess rate and haemodynamics; refer cardiology for ongoing rate-vs-rhythm strategy and anticoagulation plan"
+      ]
+    },
+    "critical_errors": [
+      "Cardioverting (electrical or pharmacological) AF of >48 hours or unknown duration in a stable patient without ≥3 weeks of therapeutic anticoagulation or a TOE excluding atrial thrombus — risks embolic stroke",
+      "Failing to assess haemodynamic stability first, or discharging/anticoagulating without calculating CHA2DS2-VASc stroke risk (high given prior TIA)",
+      "Using verapamil or diltiazem for rate control in a patient with significant systolic heart failure"
+    ],
+    "must_not_miss": [
+      "Haemodynamic stability assessed first (unstable = immediate synchronised DC cardioversion)",
+      "CHA2DS2-VASc calculated and anticoagulation decision documented (prior TIA = high risk)",
+      "48-hour cardioversion rule respected — no cardioversion without anticoagulation/TOE"
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "mrn": "EMRP-0015",
+  "name": "Denise Kavanagh",
+  "age": 68,
+  "gender": "female",
+  "specialty": "emergency_medicine",
+  "difficulty": "hard",
+  "presenting_complaint": "Collapse at home, found hypotensive and clammy, cause unclear",
+  "vital_signs": {
+    "bp": "78/44",
+    "hr": 128,
+    "rr": 26,
+    "spo2": 93,
+    "temp": 37.4,
+    "gcs": 14,
+    "bgl": 5.8
+  },
+  "medical_history": {
+    "conditions": ["Type 2 diabetes mellitus", "Ischaemic heart disease (prior NSTEMI)", "Atrial fibrillation"],
+    "medications": ["Metformin 1 g twice daily", "Apixaban 5 mg twice daily", "Metoprolol 50 mg twice daily", "Atorvastatin 40 mg nocte"],
+    "allergies": ["Penicillin (rash)"],
+    "social": "Lives alone, independent. Non-smoker. Rare alcohol.",
+    "family": "Nil relevant."
+  },
+  "validation_criteria": {
+    "presenting_scenario": "A 68-year-old woman is brought in by ambulance after collapsing at home. She is confused, pale, cool and clammy with a thready pulse. The cause of her hypotension is not yet clear. Background: type 2 diabetes, ischaemic heart disease and atrial fibrillation on apixaban. Obs: BP 78/44, HR 128, RR 26, SpO2 93% on room air, temp 37.4, GCS 14.",
+    "task": "Document your assessment and initial management as the admitting RMO.",
+    "expected": {
+      "subjective": [
+        "Collateral/history to categorise shock: preceding chest pain, palpitations, breathlessness, fever, bleeding (including GI/PR — she is anticoagulated), vomiting/diarrhoea, allergen exposure",
+        "Explicitly note anticoagulation (apixaban) and beta-blockade (metoprolol may blunt tachycardic response) from the drug history",
+        "Fluid losses, oral intake, recent illness/infection symptoms, and any trauma or falls",
+        "Document allergies (penicillin) and full medication list; establish time of onset and last known well"
+      ],
+      "objective": [
+        "A-to-E assessment; insert TWO large-bore IV cannulas and take bloods at cannulation",
+        "Bloods including VBG with LACTATE (marker of hypoperfusion), FBC, UEC, LFT, coags, troponin, blood cultures, group and hold/crossmatch",
+        "Bedside tests: 12-lead ECG (ischaemia/arrhythmia), BGL, pregnancy test if applicable, and POCUS if credentialed (heart/IVC/lungs/aorta/FAST)",
+        "Insert URINARY CATHETER for hourly output as a real-time perfusion marker",
+        "Focused exam for the shock categories: JVP, heart sounds/murmurs, chest auscultation, tracheal position, abdomen/aorta, calves, skin (rash/urticaria), PR for melaena"
+      ],
+      "assessment": [
+        "Undifferentiated shock with organ hypoperfusion — work systematically through the FOUR categories rather than a random differential list",
+        "Hypovolaemic: haemorrhage (GI bleed on apixaban, ruptured AAA), dehydration",
+        "Distributive: sepsis, anaphylaxis, neurogenic",
+        "Cardiogenic: MI, arrhythmia, valve failure (relevant given IHD/AF); Obstructive: PE, cardiac tamponade, tension pneumothorax"
+      ],
+      "plan": [
+        "A-to-E, two large-bore cannulas, bloods with VBG and lactate, fluid challenge, cardiac monitor, and urinary catheter for output (FIRST actions)",
+        "Give a fluid challenge (e.g. 250-500 mL balanced crystalloid bolus, up to ~30 mL/kg) and reassess response",
+        "Systematically exclude each category OUT LOUD: hypovolaemic (bleeding/dehydration), distributive (sepsis/anaphylaxis/neurogenic), cardiogenic (infarct/arrhythmia/valve), obstructive (PE/tamponade/tension pneumothorax)",
+        "Empirical treatment while investigating: if sepsis suspected, take cultures and give broad-spectrum antibiotics within 1 hour (use non-penicillin agent given allergy); if anaphylaxis, IM adrenaline; if arrhythmia, treat per ALS",
+        "Send lactate and repeat to track resuscitation; assess for occult haemorrhage given anticoagulation and consider reversal if bleeding source found",
+        "If still hypotensive after ~30 mL/kg fluid: commence vasopressors (e.g. noradrenaline) and refer ICU; escalate to ED consultant early",
+        "Serial reassessment of obs, GCS, lactate and urine output; disposition to ICU/HDU"
+      ]
+    },
+    "critical_errors": [
+      "Failing to work through ALL FOUR shock categories (hypovolaemic, distributive, cardiogenic, obstructive) and instead reeling off a random differential list, causing a treatable cause (e.g. tamponade, tension pneumothorax, occult haemorrhage) to be missed",
+      "Omitting VBG/lactate and a urinary catheter, leaving no objective marker of perfusion to guide resuscitation",
+      "Not recognising occult haemorrhage in an anticoagulated (apixaban) patient whose beta-blocker may mask the expected tachycardic response"
+    ],
+    "must_not_miss": [
+      "Obstructive shock (PE, tamponade, tension pneumothorax) actively considered and excluded",
+      "Sepsis with time-critical antibiotics and cultures if distributive shock suspected",
+      "Occult haemorrhage on anticoagulation as a hypovolaemic cause"
+    ]
+  }
+}

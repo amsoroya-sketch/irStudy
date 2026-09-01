@@ -1,0 +1,71 @@
+{
+  "mrn": "EMRP-0027",
+  "name": "Margaret Ellison",
+  "age": 72,
+  "gender": "female",
+  "specialty": "respiratory",
+  "difficulty": "medium",
+  "presenting_complaint": "Fever, productive cough and right-sided pleuritic chest pain for 3 days, now breathless and drowsy",
+  "vital_signs": {
+    "bp": "104/62",
+    "hr": 112,
+    "rr": 30,
+    "spo2": 89,
+    "temp": 38.9,
+    "gcs": 14,
+    "bgl": 7.8
+  },
+  "medical_history": {
+    "conditions": ["COPD (mild)", "Hypertension", "Osteoarthritis"],
+    "medications": ["Amlodipine 5 mg daily", "Salbutamol MDI PRN", "Paracetamol 1 g PRN"],
+    "allergies": ["Nil known"],
+    "social": "Ex-smoker, 40 pack-year history, quit 5 years ago. Lives alone, independent. Occasional alcohol.",
+    "family": "No relevant family history."
+  },
+  "validation_criteria": {
+    "presenting_scenario": "A 72-year-old woman presents to ED with 3 days of fever, productive cough with rusty sputum and right-sided pleuritic chest pain, now increasingly breathless and mildly confused. She has a background of mild COPD and is an ex-smoker with a 40 pack-year history. Obs: BP 104/62, HR 112, RR 30, SpO2 89% on room air, temp 38.9C, GCS 14. She looks unwell and is working hard to breathe.",
+    "task": "Document your assessment and initial management as the admitting RMO.",
+    "expected": {
+      "subjective": [
+        "History of presenting complaint: 3 days fever, productive cough with rusty/purulent sputum, right-sided pleuritic chest pain, progressive dyspnoea and new confusion",
+        "Screen for severity/sepsis features: new confusion, reduced urine output, rigors, drowsiness — quantify with a named severity score",
+        "Risk factors and comorbidities: mild COPD, 40 pack-year ex-smoker, age >65, lives alone (affects site-of-care decision)",
+        "Key negatives: no recent travel or aspiration event, no haemoptysis, no calf pain/PE risk, no immunosuppression",
+        "Vaccination status (pneumococcal, influenza) and current medications and allergies documented"
+      ],
+      "objective": [
+        "Calculate and document a severity score by name — CORB (Confusion, O2 sat <=90%, RR >=30, BP <90 systolic/<=60 diastolic) and/or SMART-COP; this case scores high (confusion + SpO2 89% + RR 30 + low-normal BP)",
+        "Respiratory exam: right basal crackles, bronchial breathing, dullness to percussion, reduced air entry, use of accessory muscles",
+        "Full obs including conscious state (GCS 14 with new confusion), capillary refill and perfusion — assess for septic shock",
+        "12-lead ECG and bedside VBG (documents hypoxia/lactate and CO2 retention risk in COPD)",
+        "Portable chest X-ray to confirm consolidation and exclude effusion/pneumothorax"
+      ],
+      "assessment": [
+        "Severe community-acquired pneumonia with sepsis (high CORB/SMART-COP score) — requires hospital admission, likely HDU/ICU review",
+        "Document CORB/SMART-COP score to justify severity classification and site of care",
+        "Differentials considered: pulmonary embolism, infective COPD exacerbation, aspiration pneumonia, and an underlying lung malignancy behind the pneumonia in an older ex-smoker"
+      ],
+      "plan": [
+        "Score severity FIRST by name (CORB and/or SMART-COP) — the score decides site of care and antibiotic choice",
+        "Take blood cultures BEFORE antibiotics, plus sputum culture and pneumococcal/Legionella urinary antigens (severe CAP)",
+        "Empirical antibiotics per eTG for SEVERE CAP without hurried delay: ceftriaxone 2 g IV daily PLUS azithromycin 500 mg IV daily (add cover for Pseudomonas/Burkholderia if tropical/structural lung disease)",
+        "Controlled oxygen titrated to SpO2 88-92% target given COPD (avoid over-oxygenation and CO2 narcosis)",
+        "Bloods: FBC, UEC, LFT, CRP, blood cultures, VBG with lactate; IV fluid resuscitation for sepsis and analgesia for pleuritic pain",
+        "Investigations and monitoring: CXR, continuous obs, urine output, VTE prophylaxis, early mobilisation and physiotherapy",
+        "Referral/disposition: admit under medical team, escalate to ICU/HDU given severity, senior review",
+        "Arrange follow-up chest X-ray at 6 weeks to exclude an underlying malignancy (ex-smoker >50), review antibiotics at 48 h, step down to oral once afebrile and improving, offer smoking-related and vaccination advice"
+      ]
+    },
+    "critical_errors": [
+      "Failing to score severity by name (CORB/SMART-COP) and under-triaging a severe CAP with sepsis to home or a general ward instead of ICU/HDU review",
+      "Giving high-flow uncontrolled oxygen in a COPD patient without a target range, risking CO2 narcosis",
+      "Not arranging a follow-up chest X-ray at 6 weeks in an ex-smoker >50 to exclude a lung cancer behind the pneumonia"
+    ],
+    "must_not_miss": [
+      "Sepsis/septic shock recognised and treated (fluids, blood cultures, antibiotics within 1 hour)",
+      "Severe CAP classified with a named score (CORB/SMART-COP) determining ICU/HDU escalation",
+      "Empirical antibiotics per eTG appropriate to severity (ceftriaxone 2 g IV + azithromycin for severe CAP)",
+      "Follow-up 6-week CXR planned to exclude underlying malignancy in an older ex-smoker"
+    ]
+  }
+}

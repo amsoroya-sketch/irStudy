@@ -1,0 +1,68 @@
+{
+  "mrn": "EMRP-0016",
+  "name": "Unknown male (brought in by ambulance)",
+  "age": 55,
+  "gender": "male",
+  "specialty": "emergency_medicine",
+  "difficulty": "hard",
+  "presenting_complaint": "Found drowsy and unresponsive, no history available",
+  "vital_signs": {
+    "bp": "108/68",
+    "hr": 76,
+    "rr": 8,
+    "spo2": 91,
+    "temp": 36.2,
+    "gcs": 8,
+    "bgl": 5.6
+  },
+  "medical_history": {
+    "conditions": ["Unknown — no history available"],
+    "medications": ["Unknown"],
+    "allergies": ["Unknown"],
+    "social": "Found collapsed in a public place. No identification confirmed. Estimated age 50s.",
+    "family": "Unknown — no next of kin available"
+  },
+  "validation_criteria": {
+    "presenting_scenario": "An approximately 55-year-old man is brought in by ambulance, found drowsy in a public place with no history available. GCS is 8, respiratory rate is 8 with pinpoint pupils, and SpO2 91%. No collateral information has arrived with him. This is an undifferentiated reduced-consciousness presentation.",
+    "task": "Document your assessment and initial management as the admitting RMO.",
+    "expected": {
+      "subjective": [
+        "Document that no history is available and that collateral must be actively chased (this is a TASK, not optional)",
+        "Sources to pursue: ambulance crew handover, bystanders, wallet/phone/ID, nursing home, GP, family, My Health Record, old hospital notes",
+        "Note pinpoint pupils and low respiratory rate suggest possible opioid toxicity",
+        "Ask ambulance about scene findings (needles, medication boxes, alcohol, environment)"
+      ],
+      "objective": [
+        "Airway assessment FIRST; GCS 8 or less means call anaesthetics for airway protection",
+        "Full GCS with E/V/M breakdown, pupils (size/reactivity), respiratory pattern",
+        "Check blood glucose immediately (reversible cause)",
+        "A-to-E: SpO2, capnography, temperature, signs of trauma/head injury, needle marks",
+        "Bloods: BGL, VBG (CO2), UEC, LFT, calcium, FBC, CRP, ethanol, paracetamol and salicylate levels; ECG, septic screen, CT brain"
+      ],
+      "assessment": [
+        "Reduced GCS of undifferentiated cause — likely opioid toxicity given pinpoint pupils and hypoventilation",
+        "Work through reversible causes: glucose, opioids, hypoxia, hypercapnia, hypotension",
+        "Wider differential: intracranial bleed, stroke, seizure/post-ictal, sepsis, sodium/calcium derangement, uraemia, hepatic encephalopathy, thyroid/adrenal, toxins, hypothermia"
+      ],
+      "plan": [
+        "Airway first — GCS 8, so call anaesthetics for airway management while continuing assessment (FIRST action)",
+        "High-flow oxygen, IV access, cardiac monitor",
+        "Quick reversibles in order: check glucose (give IV glucose if low); naloxone 0.1-0.4 mg IV/IM titrated for suspected opioid toxicity with pinpoint pupils and low RR; correct hypoxia and hypercapnia; treat hypotension",
+        "Bloods and screens as above; ECG; CT brain once stabilised",
+        "Actively chase collateral history: ambulance, family, nursing home, medication list, GP, My Health Record",
+        "Empirical treatment for reversible causes while investigating; escalate to ED consultant/ICU",
+        "Consider thiamine 100 mg IV before glucose if alcohol/malnutrition suspected"
+      ]
+    },
+    "critical_errors": [
+      "Treating collateral history as optional rather than an active task — failing to chase ambulance/family/nursing home/GP/My Health Record",
+      "Failing to secure/assess the airway with GCS 8 (not calling anaesthetics)",
+      "Failing to check and treat reversible causes — glucose, naloxone for opioid toxicity, hypercapnia/hypoxia"
+    ],
+    "must_not_miss": [
+      "Airway protection with GCS 8",
+      "Reversible causes actively excluded/treated (hypoglycaemia, opioid toxicity, hypercapnia, hypoxia)",
+      "Collateral history pursued as a defined task"
+    ]
+  }
+}

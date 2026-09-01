@@ -8,6 +8,100 @@
 
 ---
 
+## 0 - DISCOVERY
+
+**Ponytail Principle**: Search for existing code before creating new implementations.
+
+### Existing Code Search
+
+**FastAPI Dashboard Endpoints**:
+```bash
+find backend/src/api/routers -name "*dashboard*.py"
+# Result: 0 matches - no existing dashboard endpoints
+```
+
+**Existing Services**:
+```bash
+find backend/src/services -name "*.py"
+# Result: Found progress_service.py, analytics_service.py
+```
+
+**Database Models**:
+```bash
+find backend/src/models -name "*progress*.py" -o -name "*analytics*.py"
+# Result: Found user_progress.py with progress tracking models
+```
+
+**Existing Dashboard Queries**:
+```bash
+grep -r "session.*count\|encounter.*count" backend/src/
+# Result: Found similar aggregation queries in progress_service.py
+```
+
+### Reuse Decisions
+
+✅ **REUSE: Progress Service Pattern**
+- **Location**: `backend/src/services/progress_service.py`
+- **Decision**: Extend existing service for dashboard analytics
+- **Pattern**:
+  ```python
+  class ProgressAnalytics:
+      def __init__(self, db: Session):
+          self.db = db
+
+      def get_user_stats(self, user_id: int) -> Dict:
+          # Reuse existing query patterns
+          ...
+  ```
+
+✅ **REUSE: Database Query Patterns**
+- **Location**: `backend/src/services/progress_service.py`
+- **Decision**: Follow existing aggregation query structure
+- **Example**: SQLAlchemy `.group_by()`, `.count()`, `.filter()` patterns
+
+✅ **REUSE: FastAPI Router Structure**
+- **Location**: `backend/src/api/routers/` (existing routers)
+- **Decision**: Follow existing router pattern for new dashboard endpoints
+- **Pattern**: Dependency injection, response models, error handling
+
+❌ **CREATE NEW: Dashboard Analytics Methods**
+- **Reason**: New business logic for dashboard aggregations
+- **Approach**: Extend progress_service.py with 3 new methods
+
+### Packages Considered
+
+✅ **fastapi: ^0.115.0** (EXISTING - already installed)
+- **Purpose**: REST API endpoints
+- **Decision**: REUSE existing setup
+
+✅ **sqlalchemy: ^2.0.0** (EXISTING - already installed)
+- **Purpose**: Database aggregation queries
+- **Decision**: REUSE existing query patterns
+
+✅ **pytest: ^8.0.0** (EXISTING - already installed)
+- **Purpose**: Unit testing
+- **Decision**: Write 3 new tests following existing test patterns
+
+### Discovery Summary
+
+**Reusable Components**:
+1. Progress service structure from `progress_service.py`
+2. Database query patterns (aggregation, filtering)
+3. FastAPI router dependency injection pattern
+4. Response model patterns from existing endpoints
+
+**New Components Required**:
+1. 3 analytics methods in progress_service.py:
+   - `get_session_completion_stats()`
+   - `get_encounter_type_distribution()`
+   - `get_user_progress_timeline()`
+2. 3 unit tests for new methods
+3. Dashboard endpoint router registration
+
+**Token Savings**: ~50% reduction by reusing existing service patterns and database query structures instead of creating new architectural patterns.
+
+---
+
 ## T - TESTS (Test Specification - Write These FIRST)
 
 ### Test Inventory

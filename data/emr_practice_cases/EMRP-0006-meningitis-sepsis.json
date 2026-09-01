@@ -1,0 +1,73 @@
+{
+  "mrn": "EMRP-0006",
+  "name": "Declan Whitmore",
+  "age": 24,
+  "gender": "male",
+  "specialty": "emergency_medicine",
+  "difficulty": "hard",
+  "presenting_complaint": "Fever, severe headache and neck stiffness, now drowsy with a rash",
+  "vital_signs": {
+    "bp": "84/48",
+    "hr": 128,
+    "rr": 26,
+    "spo2": 93,
+    "temp": 39.6,
+    "gcs": 13,
+    "bgl": 6.4
+  },
+  "medical_history": {
+    "conditions": ["Nil chronic illness", "Not immunosuppressed"],
+    "medications": ["Nil regular"],
+    "allergies": ["Nil known drug allergies"],
+    "social": "University student living in shared college accommodation. Non-smoker, social alcohol. No recent travel.",
+    "family": "Nil relevant"
+  },
+  "validation_criteria": {
+    "presenting_scenario": "A 24-year-old male university student is brought to ED by housemates with a 12-hour history of fever, severe frontal headache, neck stiffness and photophobia, now increasingly drowsy. Obs: BP 84/48, HR 128, RR 26, SpO2 93% on air, temp 39.6, GCS 13 (E3 V4 M6). A spreading non-blanching purpuric rash is noted on the trunk and legs. He is a well, previously fit man in shared college accommodation.",
+    "task": "Document your assessment and initial management as the admitting RMO.",
+    "expected": {
+      "subjective": [
+        "Onset and 12-hour progression of fever, severe headache, neck stiffness and photophobia",
+        "Altered conscious state / drowsiness reported by housemates (collateral history)",
+        "Non-blanching rash noticed and progressing — screen for meningococcaemia",
+        "Red-flag screen: seizures, focal neurology, vomiting, recent head injury",
+        "Risk factors: shared college accommodation / close-contact living, vaccination status (meningococcal ACWY/B), immunocompromise, recent travel",
+        "Allergy history (specifically penicillin/cephalosporin) before empirical antibiotics",
+        "Key negatives: not immunosuppressed, not pregnant, no anticoagulation"
+      ],
+      "objective": [
+        "A-to-E assessment; document GCS with breakdown (E3 V4 M6 = 13) and pupils",
+        "Full set of vitals documenting sepsis: hypotension 84/48, tachycardia 128, tachypnoea 26, fever 39.6, SpO2 93%",
+        "Meningism signs: neck stiffness, Kernig/Brudzinski, photophobia",
+        "Skin exam for non-blanching petechial/purpuric rash (tumbler/glass test), map spread",
+        "Bedside glucose (BGL 6.4) and venous/arterial blood gas with lactate",
+        "Blood cultures drawn (before or alongside first antibiotic dose if no delay), plus FBC, UEC, CRP, coags, meningococcal/pneumococcal PCR"
+      ],
+      "assessment": [
+        "Bacterial meningitis with sepsis / septic shock — likely meningococcal (meningococcaemia given purpuric rash)",
+        "Differential: pneumococcal meningitis, other bacterial meningitis; consider viral (HSV) encephalitis",
+        "Other DDx to document/exclude: subarachnoid haemorrhage, cerebral abscess",
+        "Septic shock with hypotension refractory to consideration for fluid resuscitation"
+      ],
+      "plan": [
+        "GIVE EMPIRICAL ANTIBIOTICS IMMEDIATELY — do NOT delay for CT or LP: ceftriaxone 2 g IV stat (child dosing 100 mg/kg if applicable)",
+        "Dexamethasone 10 mg IV with or just before the first antibiotic dose",
+        "Add vancomycin (e.g. 25-30 mg/kg IV loading) per local guideline for possible resistant pneumococcus; add benzylpenicillin/amoxicillin for Listeria cover if >50, immunosuppressed or pregnant (not required here but document the reasoning)",
+        "Activate sepsis pathway: IV access x2, blood cultures, lactate, IV crystalloid bolus (e.g. 500 mL-1 L, reassess), target MAP >=65 and escalate to vasopressors if fluid-refractory",
+        "Droplet precautions and isolate the patient",
+        "CT brain BEFORE LP given reduced GCS (GCS 13) — but antibiotics are given first regardless; defer LP until safe/stable",
+        "Escalate early: notify ED consultant, ICU and Infectious Diseases",
+        "Notify public health — meningococcal disease is a notifiable condition; arrange contact prophylaxis (e.g. ciprofloxacin/rifampicin) for close contacts and document"
+      ]
+    },
+    "critical_errors": [
+      "Delaying empirical antibiotics (ceftriaxone) to wait for CT brain or lumbar puncture in suspected bacterial meningitis with sepsis — antibiotics (and dexamethasone) must be given immediately; this loses the case"
+    ],
+    "must_not_miss": [
+      "Sepsis / septic shock recognition and escalation (sepsis pathway, fluids, ICU referral)",
+      "Meningococcaemia — recognise the non-blanching purpuric rash and treat as meningococcal disease",
+      "Dexamethasone given with or before the first antibiotic dose",
+      "Notifiable-disease action: public health notification, droplet precautions and contact prophylaxis documented"
+    ]
+  }
+}

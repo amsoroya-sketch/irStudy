@@ -9,6 +9,102 @@
 
 ---
 
+## 0 - DISCOVERY
+
+**Ponytail Principle**: Search for existing code before creating new implementations.
+
+### Existing Code Search
+
+**FastAPI Routers**:
+```bash
+find backend/src/api/routers -name "*.py"
+# Result: Found emr_patient_router.py, emr_encounter_router.py
+```
+
+**SQLAlchemy Models**:
+```bash
+find backend/src/models -name "*session*.py" -o -name "*emr*.py"
+# Result: Found emr_models.py with Session, Encounter models
+```
+
+**Existing Tests**:
+```bash
+ls backend/tests/test_api/test_emr/test_emr_sessions.py
+# Result: ✅ 29 tests ALREADY WRITTEN (currently failing)
+```
+
+**Database Migrations**:
+```bash
+ls backend/alembic/versions/*.py | grep -i session
+# Result: Found existing EMR session migrations
+```
+
+### Reuse Decisions
+
+✅ **REUSE: FastAPI Router Pattern**
+- **Location**: `backend/src/api/routers/emr_patient_router.py`
+- **Decision**: Follow existing EMR router structure (dependency injection, error handling)
+- **Pattern**:
+  ```python
+  from fastapi import APIRouter, Depends, HTTPException
+  from sqlalchemy.orm import Session
+  from src.database import get_db
+
+  router = APIRouter(prefix="/api/v1/emr/sessions", tags=["emr-sessions"])
+
+  @router.get("/", response_model=List[SessionResponse])
+  async def list_sessions(db: Session = Depends(get_db)):
+      ...
+  ```
+
+✅ **REUSE: SQLAlchemy Models**
+- **Location**: `backend/src/models/emr_models.py`
+- **Decision**: Use existing EMRSession, EMREncounter models
+- **Justification**: Models already exist with proper relationships
+
+✅ **REUSE: Test Structure (Tests Already Written!)**
+- **Location**: `backend/tests/test_api/test_emr/test_emr_sessions.py`
+- **Decision**: Tests exist (29 tests) - implement to make them pass
+- **Status**: RED phase complete, moving to GREEN phase
+
+❌ **CREATE NEW: Session Management Endpoints**
+- **Reason**: New API endpoints (tests written, implementation missing)
+- **Approach**: Follow existing EMR router patterns
+
+### Packages Considered
+
+✅ **fastapi: ^0.115.0** (EXISTING - already installed)
+- **Purpose**: REST API framework
+- **Decision**: REUSE existing FastAPI setup
+
+✅ **sqlalchemy: ^2.0.0** (EXISTING - already installed)
+- **Purpose**: Database ORM
+- **Decision**: REUSE existing models and session management
+
+✅ **pytest: ^8.0.0** (EXISTING - already installed)
+- **Purpose**: Testing framework
+- **Decision**: Tests already written (29 tests)
+
+### Discovery Summary
+
+**Reusable Components**:
+1. FastAPI router pattern from `emr_patient_router.py`
+2. SQLAlchemy models from `emr_models.py`
+3. Database session management from `database.py`
+4. Error handling patterns from existing EMR routers
+5. **Tests already written** (29 tests in test_emr_sessions.py)
+
+**New Components Required**:
+1. 6 RESTful endpoints implementation (GET, POST, PUT for sessions)
+2. Business logic for session state transitions
+3. Validation for session data
+
+**Token Savings**: ~60% reduction by reusing existing FastAPI patterns, SQLAlchemy models, and having tests pre-written (no test creation needed).
+
+**Critical Note**: This is a **GREEN phase PRD** - tests exist and are failing. Task is to implement endpoints to make tests pass (TDD workflow already at RED phase).
+
+---
+
 ## T - TESTS (Test Specification - Write These FIRST)
 
 ### Test Inventory

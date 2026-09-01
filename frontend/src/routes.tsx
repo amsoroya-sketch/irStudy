@@ -15,10 +15,14 @@ export const OSCEPractice = lazy(() => import('./pages/OSCEPractice'));
 export const OSCESession = lazy(() => import('./pages/OSCESession'));
 
 // EMR pages (lazy loaded)
+export const EMRCaseListPage = lazy(() => import('./pages/emr/EMRCaseListPage'));
 export const StartEMRSessionPage = lazy(() => import('./pages/emr/StartEMRSessionPage'));
 export const EMRSelectSystemPage = lazy(() => import('./pages/emr/EMRSelectSystemPage'));
 export const EpicEMRPage = lazy(() => import('./pages/emr/EpicEMRPage'));
 export const CernerEMRPage = lazy(() => import('./pages/emr/CernerEMRPage'));
+export const EMRValidationPage = lazy(() =>
+  import('./pages/emr/EMRValidationPage').then((m) => ({ default: m.EMRValidationPage }))
+);
 
 // HTML OSCE Notes page (lazy loaded)
 export const HTMLNotesPage = lazy(() => import('./pages/HTMLNotesPage'));

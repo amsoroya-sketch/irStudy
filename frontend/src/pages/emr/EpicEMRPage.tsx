@@ -29,7 +29,11 @@ import {
 } from '../../components/emr/epic';
 import { useAutoSave } from '../../hooks/useAutoSave';
 import axiosInstance from '../../utils/axiosInstance';
-import { EMRSession, SOAPNoteDraft, MockPatient } from '../../types/emr';
+import { ScenarioBrief } from '../../components/emr/ScenarioBrief';
+import { EMRSession, SOAPNoteDraft } from '../../types/emr';
+
+const DEFAULT_TASK =
+  'Document your clinical assessment and initial management plan for this patient.';
 
 type SidebarSection = 'chart' | 'orders' | 'results';
 
@@ -62,20 +66,13 @@ const EpicEMRPage: React.FC = () => {
     enabled: !!sessionId,
   });
 
-  // Fetch patient data
-  const { data: patient } = useQuery<MockPatient>({
-    queryKey: ['patient', session?.patient_id],
-    queryFn: async () => {
-      const res = await axiosInstance.get(`/patients/${session?.patient_id}`);
-      return res.data;
-    },
-    enabled: !!session?.patient_id,
-  });
+  // Patient data is included inline in the session response
+  const patient = session?.patient;
 
   // Load existing session data
   useEffect(() => {
-    if (session?.session_data) {
-      setSessionData(session.session_data);
+    if (session?.soap_note) {
+      setSessionData(session.soap_note);
     }
   }, [session]);
 
@@ -150,7 +147,13 @@ const EpicEMRPage: React.FC = () => {
   }
 
   if (!session || !patient) {
-    return null;
+    return (
+      <ThemeProvider theme={epicTheme}>
+        <Container sx={{ py: 4 }}>
+          <Alert severity="warning">Loading patient data...</Alert>
+        </Container>
+      </ThemeProvider>
+    );
   }
 
   return (
@@ -189,6 +192,14 @@ const EpicEMRPage: React.FC = () => {
 
           {/* Scrollable Content */}
           <Box sx={{ flex: 1, overflow: 'auto', p: 2 }}>
+            {/* Scenario brief: presenting complaint + task shown before documenting */}
+            <ScenarioBrief
+              presentingComplaint={patient.presenting_complaint}
+              task={patient.validation_criteria?.task ?? DEFAULT_TASK}
+              specialty={session.specialty ?? patient.specialty}
+              difficulty={session.difficulty}
+            />
+
             {/* SOAP Note Editor */}
             <EpicSOAPEditor
               sessionId={sessionId || ''}

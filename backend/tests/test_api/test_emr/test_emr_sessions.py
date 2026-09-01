@@ -347,32 +347,50 @@ def test_submit_session_success_with_validation(
     monkeypatch
 ):
     """Test session submission with full 3-layer validation"""
+    from unittest.mock import patch
+
     session_id = mock_session_in_progress["id"]
-    
-    # Mock Claude API response
-    def mock_claude_create(*args, **kwargs):
-        return mock_claude_response_high_score
-    
-    # NOTE: Actual mocking will depend on how Claude client is implemented
-    # monkeypatch.setattr("anthropic.Anthropic.messages.create", mock_claude_create)
-    
-    response = client.post(
-        f"/api/v1/emr/sessions/{session_id}/submit",
-        json={
-            "final_soap_note": valid_soap_note,
-            "prescriptions": [valid_prescription],
-            "pathology_orders": [valid_pathology_order],
-            "typing_metrics": {
-                "total_words": 450,
-                "average_wpm": 35,
-                "total_typing_time_seconds": 770,
-                "backspace_count": 42,
-                "accuracy": 0.92
-            }
+
+    # Deterministically stub the AI assessment layer with a real GRADED result.
+    # (Without this the test would depend on live Vault/Claude; when Claude is
+    # unavailable the engine now correctly declines to grade — see the dedicated
+    # ai_unavailable test — so a graded-path test must supply a graded assessment.)
+    graded_assessment = {
+        "overall_score": 12.5,
+        "pass_fail": True,
+        "completeness": {"subjective": 90, "objective": 85, "assessment": 90, "plan": 88},
+        "captured": ["SOCRATES pain assessment", "cardiovascular risk factors"],
+        "missing_elements": [],
+        "critical_errors_committed": [],
+        "accuracy_notes": ["Correct STEMI recognition"],
+        "category_scores": {
+            "History_Taking": 3, "Clinical_Reasoning": 2.5, "Documentation_Quality": 3,
+            "Patient_Safety": 2, "Professional_Communication": 2,
         },
-        headers=auth_headers
-    )
-    
+        "strengths": ["Excellent SOCRATES pain assessment"],
+        "improvements": ["Specify exact troponin timing"],
+    }
+
+    with patch(
+        "src.api.v1.emr.sessions.assess_submission_sync", return_value=graded_assessment
+    ):
+        response = client.post(
+            f"/api/v1/emr/sessions/{session_id}/submit",
+            json={
+                "final_soap_note": valid_soap_note,
+                "prescriptions": [valid_prescription],
+                "pathology_orders": [valid_pathology_order],
+                "typing_metrics": {
+                    "total_words": 450,
+                    "average_wpm": 35,
+                    "total_typing_time_seconds": 770,
+                    "backspace_count": 42,
+                    "accuracy": 0.92
+                }
+            },
+            headers=auth_headers
+        )
+
     assert response.status_code == 200
     data = response.json()
     

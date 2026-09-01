@@ -129,28 +129,48 @@ class VaultClient:
         env_mapping = {
             ("irStudy/claude", "api_key"): "ANTHROPIC_API_KEY",
             ("secret/ai-osce/claude-api-key", "value"): "ANTHROPIC_API_KEY",  # AI OSCE specific path
+            # EMR practice validator reads the Claude key via the whole-secret
+            # form: vault.get_secret("emr/claude-api-key") with key=None. Real
+            # Vault returns the entire secret dict ({"value": "<key>"}); the
+            # env fallback below mirrors that dict shape (see _WHOLE_SECRET_DICT).
+            ("emr/claude-api-key", None): "ANTHROPIC_API_KEY",
+            ("emr/claude-api-key", "value"): "ANTHROPIC_API_KEY",
             ("irStudy/database", "password"): "DATABASE_PASSWORD",
             ("irStudy/database", None): "DATABASE_URL",
             ("irStudy/jwt", "secret_key"): "JWT_SECRET_KEY",
             ("irStudy/encryption", "key"): "ENCRYPTION_KEY",
             ("irStudy/redis", "password"): "REDIS_PASSWORD",
         }
-        
+
+        # Whole-secret (key=None) paths whose callers expect the Vault dict-of-all
+        # -keys shape rather than a bare string. Mirrors client.get_secret(path)
+        # returning secret_data (e.g. {"value": "<key>"}), so a Vault-down env can
+        # still satisfy `claude_key.get("value")` in ClaudeValidator.
+        _WHOLE_SECRET_DICT = {
+            "emr/claude-api-key": "value",
+        }
+
         env_var = env_mapping.get((path, key))
-        
+
         if not env_var:
             raise RuntimeError(
                 f"No fallback environment variable for Vault secret: {path}/{key}"
             )
-        
+
         value = os.getenv(env_var)
-        
+
         if not value:
             raise RuntimeError(
                 f"Secret not found in Vault or environment: {env_var}"
             )
-        
+
         logger.info(f"✅ Retrieved secret from environment: {env_var}")
+
+        # When the caller requested the whole secret (key=None) for a path whose
+        # consumers expect the Vault dict shape, wrap the value accordingly.
+        if key is None and path in _WHOLE_SECRET_DICT:
+            return {_WHOLE_SECRET_DICT[path]: value}
+
         return value
 
 

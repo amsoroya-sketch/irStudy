@@ -1,0 +1,70 @@
+{
+  "mrn": "EMRP-0007",
+  "name": "Chloe Harrington",
+  "age": 24,
+  "gender": "female",
+  "specialty": "endocrinology",
+  "difficulty": "hard",
+  "presenting_complaint": "Vomiting, abdominal pain and rapid deep breathing over 12 hours",
+  "vital_signs": {
+    "bp": "104/62",
+    "hr": 122,
+    "rr": 30,
+    "spo2": 98,
+    "temp": 37.2,
+    "gcs": 14,
+    "bgl": 28.4
+  },
+  "medical_history": {
+    "conditions": ["Type 1 diabetes mellitus (diagnosed age 11)"],
+    "medications": ["Insulin glargine 18 units nocte", "Insulin aspart with meals per carbohydrate counting"],
+    "allergies": ["Nil known"],
+    "social": "University student. Recent gastroenteritis in household. Admits missing several insulin doses because she 'wasn't eating'.",
+    "family": "Mother has autoimmune thyroid disease."
+  },
+  "validation_criteria": {
+    "presenting_scenario": "A 24-year-old woman with type 1 diabetes presents with 12 hours of vomiting, abdominal pain and deep rapid (Kussmaul) breathing. She has missed insulin doses during an intercurrent illness. She is drowsy (GCS 14), tachycardic and mildly hypotensive. Obs: BP 104/62, HR 122, RR 30, SpO2 98% RA, BGL 28.4 mmol/L. She has the smell of ketones on her breath.",
+    "task": "Document your assessment and initial management as the admitting RMO.",
+    "expected": {
+      "subjective": [
+        "Symptom history: polyuria, polydipsia, vomiting, abdominal pain, lethargy; onset over 12 hours",
+        "Precipitant screen: missed/reduced insulin during illness, intercurrent infection (gastroenteritis), and explicitly ask about SGLT2 inhibitor use (euglycaemic DKA)",
+        "Insulin regimen, adherence and last dose taken; usual glycaemic control",
+        "Red-flag/associated symptoms: fever, dysuria, cough, chest pain, focal infection source",
+        "Fluid intake/output, oral tolerance and conscious-state trend; document allergies and full medication list"
+      ],
+      "objective": [
+        "Assess hydration and haemodynamics: mucous membranes, capillary refill, postural BP, HR",
+        "Bedside capillary blood ketones (or urine ketones) AND venous blood gas at the bedside immediately",
+        "12-lead ECG and continuous cardiac monitoring (hyperkalaemia/hypokalaemia risk with insulin)",
+        "Full septic screen for the trigger: temperature, chest/abdominal/urinary exam, cultures as indicated",
+        "Weigh patient (or estimate) for fluid and infusion calculations; insert urinary catheter if unwell for output monitoring"
+      ],
+      "assessment": [
+        "Diabetic ketoacidosis: BGL >11, capillary ketones ≥3 mmol/L (or urine ≥2+), venous pH <7.3 or bicarbonate <15 — confirm the diagnostic triad",
+        "Precipitant identified (missed insulin plus intercurrent illness) and consider euglycaemic DKA in anyone on an SGLT2 inhibitor even if glucose is near-normal",
+        "Assess severity and consider HHS, lactic acidosis and other causes of high-anion-gap metabolic acidosis as differentials"
+      ],
+      "plan": [
+        "FLUIDS FIRST: 0.9% sodium chloride IV — give a 500–1000 mL bolus (10 mL/kg) then continue per DKA protocol; fluids precede insulin",
+        "CHECK POTASSIUM before/with insulin: DO NOT start insulin if K+ <3.5 mmol/L until replaced; add potassium chloride 10–40 mmol/L to fluids once K+ <5.5 and patient passing urine",
+        "Fixed-rate IV insulin infusion 0.1 units/kg/hour (actrapid) started AFTER fluids are running — do NOT bolus insulin",
+        "CONTINUE the patient's usual long-acting basal insulin (glargine 18 units) alongside the infusion",
+        "Add 10% glucose IV (running concurrently) once BGL falls below ~14 mmol/L, and keep insulin running to clear ketones",
+        "Monitoring: hourly BGL and capillary ketones, venous gas and electrolytes 2–hourly initially, hourly obs, strict fluid balance, cardiac monitor",
+        "Treat the precipitant (e.g. antibiotics if infection confirmed) and give VTE prophylaxis; involve endocrinology/ICU per severity",
+        "Withhold any SGLT2 inhibitor; do not use bicarbonate routinely (only on senior advice if pH <7.0)"
+      ]
+    },
+    "critical_errors": [
+      "Starting insulin before fluid resuscitation, or starting insulin without checking potassium first — insulin drives K+ into cells and can precipitate fatal hypokalaemia; do not give insulin if K+ <3.5 mmol/L until replaced",
+      "Assuming a normal or near-normal glucose excludes DKA — SGLT2 inhibitors cause euglycaemic DKA; failing to check ketones and consider it",
+      "Stopping the insulin infusion (or omitting glucose) once BGL falls, leaving ketosis/acidosis uncleared"
+    ],
+    "must_not_miss": [
+      "Hypokalaemia identified and corrected before/with insulin",
+      "Euglycaemic DKA (SGLT2 inhibitor) considered",
+      "Precipitating cause (infection, missed insulin, infarct, pancreatitis) actively sought"
+    ]
+  }
+}

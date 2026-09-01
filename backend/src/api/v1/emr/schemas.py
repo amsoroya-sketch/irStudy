@@ -150,11 +150,35 @@ class ValidationResult(BaseModel):
     """3-layer validation result"""
 
     overall_score: float = Field(..., description="Overall score (0-15 AMC rubric)")
+    pass_fail: Optional[bool] = Field(
+        None,
+        description=(
+            "Authoritative PASS/FAIL decision (from decide_pass_fail). "
+            "None when the AI layer was unavailable and the note was not graded."
+        ),
+    )
     category_scores: Optional[dict] = Field(None, description="Score breakdown by category")
+    completeness: Optional[dict] = Field(
+        None, description="Per-section (S/O/A/P) completeness percentage (0-100)"
+    )
+    captured: List[str] = Field(
+        default_factory=list, description="Answer-key elements the student documented"
+    )
+    missing_elements: List[str] = Field(
+        default_factory=list, description="Answer-key elements the student omitted"
+    )
     strengths: List[str] = Field(default_factory=list, description="Identified strengths")
     improvements: List[str] = Field(default_factory=list, description="Areas for improvement")
     red_flags: List[str] = Field(default_factory=list, description="Critical safety issues")
     australian_compliance: Optional[dict] = Field(None, description="Australian medical compliance check")
+    ai_unavailable: Optional[bool] = Field(
+        None,
+        description=(
+            "True when the Claude AI assessment layer was temporarily unavailable "
+            "(missing Vault key or API error). When True the submission is NOT graded "
+            "and the student may re-submit to re-run the assessment."
+        ),
+    )
     layer_1_zod: ValidationLayerResult = Field(
         ..., description="Layer 1: Zod/Pydantic validation"
     )
@@ -203,6 +227,39 @@ class SubmitSessionResponse(BaseModel):
     session_id: UUID4 = Field(..., description="Session UUID")
     submitted_at: datetime = Field(..., description="Submission timestamp")
     validation_result: ValidationResult = Field(..., description="Validation result")
+
+
+# ============================================================================
+# CASE CATALOG SCHEMAS (Phase 1a - "pick a case and practice" picker)
+# ============================================================================
+
+
+class EMRCaseListItem(BaseModel):
+    """
+    A single selectable EMR practice case for the picker.
+
+    NOTE: Intentionally does NOT expose ``validation_criteria`` (the per-case
+    answer key) — that must never leak to the client.
+    """
+
+    id: UUID4 = Field(..., description="Mock-patient UUID (use as patient_id to start a session)")
+    mrn: str = Field(..., description="Medical record number (stable case identifier)")
+    name: str = Field(..., description="Patient name")
+    age: int = Field(..., description="Patient age")
+    gender: str = Field(..., description="Patient gender")
+    presenting_complaint: str = Field(..., description="Chief complaint")
+    specialty: str = Field(..., description="Medical specialty")
+    difficulty: str = Field(..., description="Difficulty level (easy, medium, hard)")
+
+    class Config:
+        from_attributes = True
+
+
+class EMRCaseListResponse(BaseModel):
+    """Response for the EMR case catalog."""
+
+    total: int = Field(..., description="Total number of cases matching the filters")
+    cases: List[EMRCaseListItem] = Field(..., description="Selectable practice cases")
 
 
 # ============================================================================

@@ -284,21 +284,34 @@ async def get_validation_results(
             "plan": soap_note_record.plan
         }
 
-    # Build validation results if session is graded
+    # Build validation results when the session has been graded, OR when a prior
+    # submit hit an AI outage (score_breakdown carries ai_unavailable=True but the
+    # session was deliberately left un-graded). In the outage case we surface the
+    # ai_unavailable flag and a None pass_fail so the client never reads back a
+    # fabricated PASS/FAIL for a session the AI never actually graded.
     validation_results = None
-    if emr_session.status == "graded" and emr_session.score_breakdown:
+    breakdown = emr_session.score_breakdown or {}
+    ai_unavailable = bool(breakdown.get("ai_unavailable"))
+    if breakdown and (emr_session.status == "graded" or ai_unavailable):
+        # pass_fail is the authoritative decision persisted at submit time. It is
+        # None when the AI layer was unavailable; do NOT recompute it here.
         validation_results = ValidationResult(
-            overall_score=emr_session.score_breakdown.get("overall_score", 0.0),
-            category_scores=emr_session.score_breakdown.get("category_scores", {}),
-            strengths=emr_session.score_breakdown.get("strengths", []),
-            improvements=emr_session.score_breakdown.get("improvements", []),
-            red_flags=emr_session.score_breakdown.get("red_flags", []),
-            australian_compliance=emr_session.score_breakdown.get("australian_compliance", {}),
-            layer_1_zod=ValidationLayerResult(**emr_session.score_breakdown.get("layer_1_zod", {"passed": True, "errors": []})),
-            layer_2_python=ValidationLayerResult(**emr_session.score_breakdown.get("layer_2_python", {"passed": True, "errors": []})),
-            layer_3_ai=ValidationLayerResult(**emr_session.score_breakdown.get("layer_3_ai", {"passed": True, "errors": []})),
-            performance_summary=emr_session.score_breakdown.get("performance_summary", {}),
-            next_steps=emr_session.score_breakdown.get("next_steps", {}),
+            overall_score=breakdown.get("overall_score", 0.0),
+            pass_fail=breakdown.get("pass_fail"),
+            category_scores=breakdown.get("category_scores", {}),
+            completeness=breakdown.get("completeness") or None,
+            captured=breakdown.get("captured", []),
+            missing_elements=breakdown.get("missing_elements", []),
+            strengths=breakdown.get("strengths", []),
+            improvements=breakdown.get("improvements", []),
+            red_flags=breakdown.get("red_flags", []),
+            australian_compliance=breakdown.get("australian_compliance", {}),
+            ai_unavailable=True if ai_unavailable else None,
+            layer_1_zod=ValidationLayerResult(**breakdown.get("layer_1_zod", {"passed": True, "errors": []})),
+            layer_2_python=ValidationLayerResult(**breakdown.get("layer_2_python", {"passed": True, "errors": []})),
+            layer_3_ai=ValidationLayerResult(**breakdown.get("layer_3_ai", {"passed": True, "errors": []})),
+            performance_summary=breakdown.get("performance_summary", {}),
+            next_steps=breakdown.get("next_steps", {}),
         )
 
     return SessionResponse(

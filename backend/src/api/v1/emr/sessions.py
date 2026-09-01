@@ -56,6 +56,42 @@ router = APIRouter()
 
 
 # ============================================================================
+# SPECIALTY WHITELIST
+# ============================================================================
+# The old hardcoded list rejected 14/24 authored cases (e.g. emergency_medicine,
+# obstetrics_gynaecology, general_practice, ophthalmology, psychiatry, surgery,
+# urology). This constant is the union of the legacy specialties and every
+# specialty actually authored in the practice-case library. At request time we
+# additionally accept any specialty currently present in mock_patients, so the
+# whitelist can never again drift behind the seeded content — while an unknown
+# value (e.g. "not_a_specialty") is still rejected with a 400.
+KNOWN_SPECIALTIES = frozenset(
+    {
+        # Legacy whitelist
+        "cardiology",
+        "respiratory",
+        "gastroenterology",
+        "neurology",
+        "endocrinology",
+        "rheumatology",
+        "nephrology",
+        "haematology",
+        "oncology",
+        "infectious_diseases",
+        "general",
+        # Authored EMR practice-case specialties (Phase 1a reconciliation)
+        "emergency_medicine",
+        "obstetrics_gynaecology",
+        "general_practice",
+        "ophthalmology",
+        "psychiatry",
+        "surgery",
+        "urology",
+    }
+)
+
+
+# ============================================================================
 # ENDPOINT 1: POST /sessions/start - START NEW SESSION
 # ============================================================================
 
@@ -84,16 +120,20 @@ async def start_session(
     - Patient data uses Australian medical context
     - No hardcoded patient IDs (dependency injection)
     """
-    # Validate specialty value (Pydantic enum validation)
-    if request.specialty and request.specialty not in [
-        "cardiology", "respiratory", "gastroenterology", "neurology",
-        "endocrinology", "rheumatology", "nephrology", "haematology",
-        "oncology", "infectious_diseases", "general"
-    ]:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Invalid specialty - validation error",
-        )
+    # Validate specialty value.
+    # Accept the static whitelist plus any specialty actually present in the
+    # database, so every authored case is reachable while unknown values 400.
+    if request.specialty and request.specialty not in KNOWN_SPECIALTIES:
+        db_specialties = {
+            row[0]
+            for row in db.query(MockPatient.specialty).distinct().all()
+            if row[0]
+        }
+        if request.specialty not in db_specialties:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Invalid specialty - validation error",
+            )
 
     # Validate difficulty value
     if request.difficulty and request.difficulty not in ["easy", "medium", "hard"]:
@@ -229,16 +269,25 @@ async def get_session(
             "plan": soap_note.plan,
         }
 
-    # Build validation results if session is graded
+    # Build validation results when graded, OR when a prior submit hit an AI outage
+    # (score_breakdown carries ai_unavailable=True, session left un-graded). The
+    # authoritative pass_fail is surfaced as-is (None on outage) — never recomputed.
     validation_results = None
-    if emr_session.status == "graded" and emr_session.score_breakdown:
+    _bd = emr_session.score_breakdown or {}
+    _ai_unavailable = bool(_bd.get("ai_unavailable"))
+    if _bd and (emr_session.status == "graded" or _ai_unavailable):
         validation_results = ValidationResult(
             overall_score=emr_session.score_breakdown.get("overall_score", 0),
+            pass_fail=emr_session.score_breakdown.get("pass_fail"),
             category_scores=emr_session.score_breakdown.get("category_scores", {}),
+            completeness=emr_session.score_breakdown.get("completeness") or None,
+            captured=emr_session.score_breakdown.get("captured", []),
+            missing_elements=emr_session.score_breakdown.get("missing_elements", []),
             strengths=emr_session.score_breakdown.get("strengths", []),
             improvements=emr_session.score_breakdown.get("improvements", []),
             red_flags=emr_session.score_breakdown.get("red_flags", []),
             australian_compliance=emr_session.score_breakdown.get("australian_compliance", {}),
+            ai_unavailable=True if _ai_unavailable else None,
             layer_1_zod=ValidationLayerResult(
                 passed=emr_session.score_breakdown.get("layer_1_zod", {}).get("passed", False),
                 score=emr_session.score_breakdown.get("layer_1_zod", {}).get("score"),
@@ -526,6 +575,21 @@ async def submit_session(
             detail="Session already submitted",
         )
 
+    # Remove any prior final-submission artefacts. These only exist if an earlier
+    # submit hit an AI outage (Claude unavailable): that path deliberately leaves
+    # the session in_progress so the student can re-submit, and we must not let a
+    # re-submit accumulate duplicate final SOAP notes / orders.
+    db.query(EMRSOAPNote).filter(
+        EMRSOAPNote.session_id == session_id,
+        EMRSOAPNote.is_final_submission == True,
+    ).delete(synchronize_session=False)
+    db.query(EMRPrescription).filter(
+        EMRPrescription.session_id == session_id
+    ).delete(synchronize_session=False)
+    db.query(EMRPathologyOrder).filter(
+        EMRPathologyOrder.session_id == session_id
+    ).delete(synchronize_session=False)
+
     # Save final SOAP note
     final_soap_note = EMRSOAPNote(
         session_id=session_id,
@@ -545,6 +609,12 @@ async def submit_session(
             dose=prescription.dose,
             frequency=prescription.frequency,
             route=prescription.route,
+            # `repeats` is NOT NULL in the DB (CHECK 0..5). The current
+            # PrescriptionSubmit schema does not carry repeats/indication, so we
+            # default repeats to 0 (no repeats). Wire these through here if/when
+            # PrescriptionSubmit gains the fields.
+            repeats=getattr(prescription, "repeats", 0) or 0,
+            indication=getattr(prescription, "indication", None),
         )
         db.add(prescription_record)
 
@@ -629,20 +699,39 @@ async def submit_session(
     )
 
     overall_score = float(assessment.get("overall_score", 0.0))
-    # assess_submission already applies the rule; recompute defensively if absent.
-    pass_fail = assessment.get("pass_fail")
-    if pass_fail is None:
-        pass_fail = decide_pass_fail(assessment, validation_criteria)
+    # Claude AI outage (missing Vault key or API error): the engine echoes the
+    # validator's ``ai_unavailable`` flag. In that case we must NOT fabricate a
+    # graded FAIL from the 0.0 fallback score — see the ai_unavailable branch below.
+    ai_unavailable = bool(assessment.get("ai_unavailable"))
+
+    # assess_submission already applies the authoritative PASS/FAIL rule; recompute
+    # defensively if absent. When the AI layer is unavailable there is no
+    # authoritative decision, so pass_fail is left as None (not a fabricated FAIL).
+    if ai_unavailable:
+        pass_fail = None
+    else:
+        pass_fail = assessment.get("pass_fail")
+        if pass_fail is None:
+            pass_fail = decide_pass_fail(assessment, validation_criteria)
 
     critical_errors = assessment.get("critical_errors_committed", []) or []
     layer_3_result = {
-        "passed": bool(pass_fail),
+        "passed": False if ai_unavailable else bool(pass_fail),
         "score": overall_score,
         "feedback": (
-            "; ".join(assessment.get("accuracy_notes", []) or [])
-            or "Case-specific clinical assessment completed"
+            "AI assessment temporarily unavailable — submission not graded, please re-submit."
+            if ai_unavailable
+            else (
+                "; ".join(assessment.get("accuracy_notes", []) or [])
+                or "Case-specific clinical assessment completed"
+            )
         ),
         "errors": critical_errors,
+        # Retained so the persisted layer_3_ai JSON explains WHY the learner
+        # passed/failed (the response's ValidationLayerResult ignores these extra
+        # keys, but the DB row and score_breakdown keep the full context).
+        "critical_errors_committed": critical_errors,
+        "missing_elements": assessment.get("missing_elements", []) or [],
     }
 
     performance_summary = {
@@ -667,7 +756,11 @@ async def submit_session(
     # (for analytics / the GET read path) and the display fields the response needs.
     score_breakdown = {
         "overall_score": overall_score,
-        "pass_fail": bool(pass_fail),
+        # Authoritative decision from decide_pass_fail; None when the AI layer was
+        # unavailable (no authoritative grade). This is the single source of truth
+        # the client must display — it must never be recomputed with a different rule.
+        "pass_fail": None if ai_unavailable else bool(pass_fail),
+        "ai_unavailable": ai_unavailable,
         "completeness": assessment.get("completeness", {}),
         "captured": assessment.get("captured", []),
         "missing_elements": assessment.get("missing_elements", []),
@@ -685,36 +778,69 @@ async def submit_session(
         "next_steps": next_steps,
     }
 
-    # Update session with the REAL score
-    emr_session.status = "graded"
-    emr_session.submitted_at = datetime.utcnow()
-    emr_session.elapsed_time_seconds = int((datetime.utcnow() - emr_session.started_at).total_seconds())
-    emr_session.validation_score = overall_score
-    emr_session.score_breakdown = score_breakdown
-    emr_session.typing_metrics = data.typing_metrics
+    elapsed_seconds = int((datetime.utcnow() - emr_session.started_at).total_seconds())
+    response_message = None
 
-    # Persist a validation-result row (one per session)
-    db.add(
-        EMRValidationResult(
-            session_id=session_id,
-            rule_based_score=layer_1_result.get("score"),
-            ai_validation_score=overall_score,
-            final_score=overall_score,
-            pass_fail=bool(pass_fail),
+    if ai_unavailable:
+        # AI outage: preserve the student's work but do NOT grade. Leave the session
+        # in_progress with no authoritative score and NO EMRValidationResult row, so
+        # the student can re-submit and re-run the assessment once Claude is back.
+        emr_session.status = "in_progress"
+        emr_session.submitted_at = None
+        emr_session.elapsed_time_seconds = elapsed_seconds
+        emr_session.validation_score = None
+        emr_session.score_breakdown = score_breakdown  # carries ai_unavailable=True
+        emr_session.typing_metrics = data.typing_metrics
+        response_message = (
+            "AI assessment is temporarily unavailable. Your work has been saved but "
+            "not graded — please re-submit shortly to run the assessment."
         )
-    )
+        db.commit()
+        db.refresh(emr_session)
+    else:
+        # Update session with the REAL score
+        emr_session.status = "graded"
+        emr_session.submitted_at = datetime.utcnow()
+        emr_session.elapsed_time_seconds = elapsed_seconds
+        emr_session.validation_score = overall_score
+        emr_session.score_breakdown = score_breakdown
+        emr_session.typing_metrics = data.typing_metrics
 
-    db.commit()
-    db.refresh(emr_session)
+        # Persist a validation-result row (one per session). Columns match
+        # Alembic migration 008 (the live-DB source of truth). layer_3_ai retains
+        # the assessment's critical_errors_committed & missing_elements so the
+        # learner can see WHY they passed/failed.
+        db.add(
+            EMRValidationResult(
+                session_id=session_id,
+                validation_type="emr_practice",
+                layer_1_zod=layer_1_result,
+                layer_2_python=layer_2_result,
+                layer_3_ai=layer_3_result,
+                overall_score=overall_score,
+                passed=bool(pass_fail),
+                strengths=score_breakdown["strengths"],
+                improvements=score_breakdown["improvements"],
+                red_flags=score_breakdown["red_flags"],
+            )
+        )
+
+        db.commit()
+        db.refresh(emr_session)
 
     # Build validation results
     validation_results = ValidationResult(
         overall_score=overall_score,
+        pass_fail=None if ai_unavailable else bool(pass_fail),
         category_scores=score_breakdown["category_scores"],
+        completeness=score_breakdown["completeness"] or None,
+        captured=score_breakdown["captured"],
+        missing_elements=score_breakdown["missing_elements"],
         strengths=score_breakdown["strengths"],
         improvements=score_breakdown["improvements"],
         red_flags=score_breakdown["red_flags"],
         australian_compliance=australian_compliance,
+        ai_unavailable=True if ai_unavailable else None,
         layer_1_zod=ValidationLayerResult(**layer_1_result),
         layer_2_python=ValidationLayerResult(**layer_2_result),
         layer_3_ai=ValidationLayerResult(**layer_3_result),
@@ -750,6 +876,7 @@ async def submit_session(
         typing_metrics=emr_session.typing_metrics,
         performance_summary=performance_summary,
         next_steps=next_steps,
+        message=response_message,
     )
 
 

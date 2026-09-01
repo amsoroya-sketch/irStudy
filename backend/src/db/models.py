@@ -37,6 +37,8 @@ from sqlalchemy import (
     CHAR,
 )
 from sqlalchemy.dialects.postgresql import UUID as PGUUID
+from sqlalchemy.dialects.postgresql import ARRAY as PG_ARRAY
+from sqlalchemy import CheckConstraint
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from datetime import datetime
@@ -1474,10 +1476,34 @@ class EMRPrescription(Base):
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     session_id = Column(UUID(as_uuid=True), ForeignKey("emr_sessions.id"), index=True)
-    medication_name = Column(String(200))
-    dose = Column(String(100))
-    frequency = Column(String(50))
-    route = Column(String(50))
+
+    # Prescription details (Australian format) - matches migration 008
+    medication_name = Column(String(200), nullable=False)
+    dose = Column(String(50), nullable=False)
+    frequency = Column(String(50), nullable=False)
+    route = Column(String(20), nullable=False)
+    repeats = Column(Integer, nullable=False)
+    indication = Column(Text, nullable=True)
+
+    # PBS (Pharmaceutical Benefits Scheme) validation
+    pbs_listed = Column(Boolean, nullable=True)
+    pbs_item_code = Column(String(10), nullable=True)
+    authority_required = Column(Boolean, nullable=True)
+
+    # Validation results
+    validation_errors = Column(JSON, nullable=True)
+    is_valid = Column(Boolean, nullable=True)
+
+    # Metadata
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
+
+    __table_args__ = (
+        CheckConstraint(
+            "repeats >= 0 AND repeats <= 5",
+            name="check_emr_prescriptions_repeats_range",
+        ),
+    )
 
 
 class EMRPathologyOrder(Base):
@@ -1499,21 +1525,50 @@ class EMRValidationResult(Base):
     """
     EMR Session Validation Result (3-Layer Validation)
 
-    Validation Layers:
-    1. Rule-Based: Checks for required fields, red flags
-    2. AI Validation: Claude analyzes clinical reasoning
-    3. Specialist Review: FRACP specialist provides score
+    Schema matches Alembic migration 008 (the source of truth for the live DB).
+
+    Validation Layers (stored verbatim as JSON):
+    1. layer_1_zod: Zod/Pydantic field-level validation
+    2. layer_2_python: Python business-logic (Australian terminology, PBS) validation
+    3. layer_3_ai: Claude AI clinical assessment (retains critical_errors_committed
+       and missing_elements so the learner sees WHY they passed/failed)
+
+    ``strengths``/``improvements``/``red_flags`` are extracted for direct UI display.
     """
     __tablename__ = "emr_validation_results"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
-    session_id = Column(UUID(as_uuid=True), ForeignKey("emr_sessions.id"), unique=True, index=True)
-    rule_based_score = Column(Float)
-    ai_validation_score = Column(Float, nullable=True)
-    specialist_score = Column(Float, nullable=True)
-    final_score = Column(Float)
-    pass_fail = Column(Boolean)
-    validated_at = Column(DateTime, default=datetime.utcnow)
+    session_id = Column(
+        UUID(as_uuid=True), ForeignKey("emr_sessions.id"), unique=True, index=True, nullable=False
+    )
+
+    # Validation type discriminator (NOT NULL in the DB)
+    validation_type = Column(String(50), nullable=False)
+
+    # 3-layer validation results (stored verbatim)
+    layer_1_zod = Column(JSON, nullable=True)
+    layer_2_python = Column(JSON, nullable=True)
+    layer_3_ai = Column(JSON, nullable=True)
+
+    # Overall validation summary
+    overall_score = Column(Float, nullable=True)
+    passed = Column(Boolean, nullable=True)
+
+    # Extracted feedback (for UI display) - Postgres text[] arrays, JSON on SQLite
+    strengths = Column(PG_ARRAY(Text).with_variant(JSON(), "sqlite"), nullable=True)
+    improvements = Column(PG_ARRAY(Text).with_variant(JSON(), "sqlite"), nullable=True)
+    red_flags = Column(PG_ARRAY(Text).with_variant(JSON(), "sqlite"), nullable=True)
+
+    # Metadata
+    validated_at = Column(DateTime, server_default=func.now())
+    created_at = Column(DateTime, server_default=func.now())
+
+    __table_args__ = (
+        CheckConstraint(
+            "overall_score >= 0 AND overall_score <= 15",
+            name="check_emr_validation_overall_score",
+        ),
+    )
 
 
 # Import sqlalchemy for unique constraint

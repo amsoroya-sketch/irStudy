@@ -3,16 +3,16 @@
  *
  * Displays AMC Clinical Examination rubric scores with horizontal bars.
  *
- * Categories:
- * 1. History Taking (0-10)
- * 2. Physical Examination (0-10)
- * 3. Clinical Reasoning (0-10)
- * 4. Communication (0-10)
- * 5. Documentation (0-10)
+ * Categories (AMC 15-mark rubric, each scored 0-3):
+ * 1. History Taking
+ * 2. Clinical Reasoning
+ * 3. Documentation Quality
+ * 4. Patient Safety
+ * 5. Professional Communication
  *
  * Features:
  * - Horizontal bar charts for each category
- * - Color-coded scores (red <5, orange 5-7, green ≥7)
+ * - Color-coded scores by proportion of max (red <50%, orange 50-70%, green ≥70%)
  * - Feedback tooltips
  * - WCAG 2.2 AA accessible
  */
@@ -36,15 +36,29 @@ interface AMCRubricVisualizationProps {
 
 const categoryLabels: Record<string, string> = {
   history_taking: 'History Taking',
-  physical_examination: 'Physical Examination',
   clinical_reasoning: 'Clinical Reasoning',
+  documentation_quality: 'Documentation Quality',
+  patient_safety: 'Patient Safety',
+  professional_communication: 'Professional Communication',
+  // legacy keys (kept for backward compatibility)
+  physical_examination: 'Physical Examination',
   communication: 'Communication',
   documentation: 'Documentation',
 };
 
-const getScoreColor = (score: number): 'error' | 'warning' | 'success' => {
-  if (score < 5) return 'error';
-  if (score < 7) return 'warning';
+/** Map a backend category key (e.g. "History_Taking") to a human label. */
+const labelFor = (category: string): string =>
+  categoryLabels[category.toLowerCase()] || category.replace(/_/g, ' ');
+
+// Colour by proportion of max, so it is correct regardless of the scale
+// (0-3 per AMC category, or a legacy 0-10). Red <50%, orange 50-70%, green ≥70%.
+const getScoreColor = (
+  score: number,
+  maxScore: number
+): 'error' | 'warning' | 'success' => {
+  const pct = maxScore > 0 ? (score / maxScore) * 100 : 0;
+  if (pct < 50) return 'error';
+  if (pct < 70) return 'warning';
   return 'success';
 };
 
@@ -71,8 +85,8 @@ export const AMCRubricVisualization: React.FC<AMCRubricVisualizationProps> = ({
       <Box display="flex" flexDirection="column" gap={2}>
         {scores.map((rubricScore) => {
           const percentage = getScorePercentage(rubricScore.score, rubricScore.max_score);
-          const color = getScoreColor(rubricScore.score);
-          const label = categoryLabels[rubricScore.category] || rubricScore.category;
+          const color = getScoreColor(rubricScore.score, rubricScore.max_score);
+          const label = labelFor(rubricScore.category);
 
           return (
             <Box key={rubricScore.category}>
@@ -171,8 +185,8 @@ export const AMCRubricVisualization: React.FC<AMCRubricVisualizationProps> = ({
       {/* Overall Summary */}
       <Box sx={{ mt: 3, p: 2, backgroundColor: 'action.hover', borderRadius: 1 }}>
         <Typography variant="body2" color="text.secondary">
-          <strong>Legend:</strong> Red (&lt;5) = Needs improvement, Orange (5-7) = Satisfactory,
-          Green (≥7) = Good/Excellent
+          <strong>Legend:</strong> Red (&lt;50%) = Needs improvement, Orange (50-70%) = Satisfactory,
+          Green (≥70%) = Good/Excellent
         </Typography>
       </Box>
     </Paper>

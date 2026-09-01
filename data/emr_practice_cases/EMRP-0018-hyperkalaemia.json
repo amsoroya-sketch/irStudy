@@ -1,0 +1,66 @@
+{
+  "mrn": "EMRP-0018",
+  "name": "Desmond Whitlock",
+  "age": 71,
+  "gender": "male",
+  "specialty": "emergency_medicine",
+  "difficulty": "medium",
+  "presenting_complaint": "Generalised weakness and palpitations; potassium 7.1 mmol/L flagged on bloods",
+  "vital_signs": {
+    "bp": "146/88",
+    "hr": 52,
+    "rr": 18,
+    "spo2": 97,
+    "temp": 36.6,
+    "gcs": 15,
+    "bgl": 6.8
+  },
+  "medical_history": {
+    "conditions": ["Chronic kidney disease stage 4 (baseline eGFR 22)", "Type 2 diabetes mellitus", "Hypertension", "Heart failure with reduced ejection fraction"],
+    "medications": ["Perindopril 10 mg daily", "Spironolactone 25 mg daily", "Metformin 1 g twice daily", "Trimethoprim (day 3 for UTI)"],
+    "allergies": ["Nil known"],
+    "social": "Lives with wife. Ex-smoker. Reduced oral intake and diarrhoea over 3 days.",
+    "family": "Non-contributory."
+  },
+  "validation_criteria": {
+    "presenting_scenario": "A 71-year-old man with CKD stage 4 presents with generalised weakness and palpitations. Venous bloods flag potassium 7.1 mmol/L. He is bradycardic at 52 bpm. He takes perindopril, spironolactone and was started on trimethoprim 3 days ago for a UTI. Obs: BP 146/88, HR 52, RR 18, SpO2 97% RA, GCS 15.",
+    "task": "Document your assessment and initial management as the admitting RMO.",
+    "expected": {
+      "subjective": [
+        "Symptom history: weakness, palpitations, paraesthesia; assess for oliguria/anuria and fluid intake",
+        "Medication review for potassium-raising drugs: ACE inhibitor (perindopril), potassium-sparing diuretic (spironolactone), trimethoprim, NSAIDs, potassium supplements",
+        "Screen for causes: AKI-on-CKD, dehydration/diarrhoea, rhabdomyolysis, tumour lysis, acidosis, Addison's; ask about missed dialysis if relevant",
+        "Baseline renal function/eGFR, usual potassium, and allergy documentation"
+      ],
+      "objective": [
+        "12-lead ECG IMMEDIATELY and place on continuous cardiac monitor — look for peaked T waves, flattened P waves, widened QRS, sine-wave pattern",
+        "Repeat/confirm potassium on a formal (non-haemolysed) venous sample while treating — do NOT wait for the repeat before treating a symptomatic/ECG-positive patient",
+        "Assess volume status and urine output (catheter if needed); bloods: UEC, VBG (acidosis), calcium, magnesium, CK, glucose",
+        "Focused exam for infection source and signs of fluid overload"
+      ],
+      "assessment": [
+        "Severe hyperkalaemia (K+ 7.1) with ECG changes (bradycardia) — a medical emergency",
+        "Likely multifactorial: CKD-4 plus 'triple' potassium load (ACE inhibitor + spironolactone + trimethoprim) with intercurrent AKI from diarrhoea/dehydration",
+        "Consider and exclude pseudohyperkalaemia (haemolysed sample) but treat first if ECG changes present"
+      ],
+      "plan": [
+        "PROTECT the myocardium: calcium gluconate 10% 10 mL IV over 5–10 min (or calcium chloride 10% 10 mL via central/large-bore access), repeat if ECG changes persist — note this is cardioprotective and does NOT lower potassium",
+        "SHIFT potassium intracellularly: 10 units short-acting (actrapid) insulin in 50 mL 50% glucose IV over 15–30 min, AND salbutamol 10–20 mg nebulised; add sodium bicarbonate only if significantly acidotic",
+        "REMOVE potassium from the body: sodium/calcium resonium (or sodium zirconium cyclosilicate) enterally; loop diuretic (e.g. frusemide IV) if fluid-overloaded and passing urine; urgent dialysis if refractory or anuric",
+        "CEASE all potassium-raising drugs: stop perindopril, spironolactone and trimethoprim; withhold metformin (AKI)",
+        "Monitor: repeat potassium at 1–2 hours and monitor BGL post insulin-glucose (hypoglycaemia risk); continue cardiac monitoring throughout",
+        "Refer renal/ICU early for dialysis consideration; treat the underlying trigger (rehydrate, treat infection with a non-nephrotoxic, non-potassium-raising agent)"
+      ]
+    },
+    "critical_errors": [
+      "Believing calcium gluconate lowers the potassium — it only stabilises the myocardium; the note MUST document all three limbs: PROTECT (calcium) AND SHIFT (insulin-dextrose/salbutamol) AND REMOVE (resonium/diuretic/dialysis)",
+      "Failing to obtain an immediate ECG and cardiac monitoring in a patient with K+ 7.1",
+      "Omitting glucose with the insulin, or failing to monitor BGL afterwards (iatrogenic hypoglycaemia), or continuing the offending potassium-raising drugs"
+    ],
+    "must_not_miss": [
+      "ECG performed and interpreted immediately",
+      "All three limbs of management documented (protect, shift, remove)",
+      "Offending drugs (ACE inhibitor, spironolactone, trimethoprim) ceased and dialysis considered if refractory/anuric"
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "mrn": "EMRP-0001",
+  "name": "Gregory Nolan",
+  "age": 58,
+  "gender": "male",
+  "specialty": "cardiology",
+  "difficulty": "hard",
+  "presenting_complaint": "Central crushing chest pain for 45 minutes, diaphoretic",
+  "vital_signs": {
+    "bp": "138/86",
+    "hr": 94,
+    "rr": 20,
+    "spo2": 95,
+    "temp": 36.7,
+    "gcs": 15,
+    "bgl": 7.4
+  },
+  "medical_history": {
+    "conditions": ["Hypertension", "Hypercholesterolaemia", "Type 2 diabetes mellitus"],
+    "medications": ["Perindopril 5 mg daily", "Atorvastatin 40 mg nocte", "Metformin 1 g twice daily"],
+    "allergies": ["Nil known"],
+    "social": "Current smoker 20/day for 35 years. Drinks alcohol socially. Works as a truck driver.",
+    "family": "Father had myocardial infarction at age 55."
+  },
+  "validation_criteria": {
+    "presenting_scenario": "A 58-year-old man presents to ED with 45 minutes of central, crushing chest pain radiating to the left arm and jaw, associated with diaphoresis and nausea. He looks unwell and clammy. He has multiple cardiac risk factors: smoking, hypertension, diabetes and a family history of early MI. Obs: BP 138/86, HR 94, RR 20, SpO2 95% on room air.",
+    "task": "Document your assessment and initial management as the admitting RMO.",
+    "expected": {
+      "subjective": [
+        "SOCRATES of pain: central crushing chest pain, radiating to left arm/jaw, 45 min duration, associated diaphoresis and nausea",
+        "Cardiac risk factors: smoking, hypertension, diabetes, hypercholesterolaemia, family history of early MI",
+        "Screen for contraindications to nitrates: ask about recent sildenafil/tadalafil (PDE5 inhibitor) use",
+        "Key negatives: no tearing/radiation to back, no syncope, no recent bleeding, no anticoagulant use",
+        "Medication and allergy history documented"
+      ],
+      "objective": [
+        "12-lead ECG within 10 minutes at the bedside — the single most time-critical action",
+        "BP measured in BOTH arms (screen for dissection before antiplatelets)",
+        "Cardiovascular exam: heart sounds, murmurs, JVP, peripheral perfusion, signs of failure (crackles, oedema)",
+        "Continuous cardiac monitoring and repeat ECG if pain changes",
+        "Compare ECG with any previous ECG on file"
+      ],
+      "assessment": [
+        "Acute coronary syndrome — likely STEMI given crushing pain plus risk factors (confirm on ECG)",
+        "Consider and exclude aortic dissection (tearing pain, unequal arm BP) before antiplatelets",
+        "Consider pulmonary embolism and pericarditis as differentials"
+      ],
+      "plan": [
+        "12-lead ECG within 10 minutes of arrival (FIRST action)",
+        "Aspirin 300 mg chewed/dispersible if ACS suspected and no contraindication",
+        "Oxygen ONLY if SpO2 below 94% (currently 95%, so no routine oxygen)",
+        "IV access x2, cardiac monitor, obs including BP in both arms",
+        "Bloods: troponin (serial per pathway), FBC, UEC, coags, lipids, BGL; portable CXR",
+        "Analgesia: GTN spray/infusion ONLY if not hypotensive and no inferior/RV infarct; morphine 2.5-5 mg IV titrated for pain",
+        "If STEMI confirmed: activate STEMI pathway, call cardiology, arrange primary PCI or thrombolysis per door-to-balloon time; in regional setting involve retrieval early",
+        "Second antiplatelet (e.g. ticagrelor 180 mg) and anticoagulation per cardiology/local ACS protocol"
+      ]
+    },
+    "critical_errors": [
+      "Giving GTN/nitrates when the patient is hypotensive, has an inferior or right-ventricular infarct on ECG, or has taken a sildenafil-type (PDE5 inhibitor) drug — can cause catastrophic hypotension",
+      "Failing to obtain a 12-lead ECG within 10 minutes of arrival",
+      "Routinely giving high-flow oxygen despite normal saturations"
+    ],
+    "must_not_miss": [
+      "STEMI requiring emergent reperfusion (PCI/thrombolysis)",
+      "Aortic dissection considered and excluded (BP both arms) before giving antiplatelets/anticoagulants",
+      "Inferior/RV infarct identified so nitrates are withheld"
+    ]
+  }
+}

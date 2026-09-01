@@ -15,10 +15,22 @@ import anthropic
 from typing import Dict, Any
 import logging
 import json
+import os
 
 from src.core.vault import VaultClient
 
 logger = logging.getLogger(__name__)
+
+# Current Claude model id (configurable). Override with the EMR_CLAUDE_MODEL env
+# var; defaults to a current Sonnet id. NOTE: the exact id should be confirmed
+# against the claude-api skill when available — this default matches the model
+# ids already used elsewhere in this codebase (see src/ai/clinical_validator.py).
+DEFAULT_CLAUDE_MODEL = "claude-sonnet-4-5-20250929"
+
+
+def _resolve_claude_model() -> str:
+    """Resolve the Claude model id from env, falling back to the current default."""
+    return os.getenv("EMR_CLAUDE_MODEL", DEFAULT_CLAUDE_MODEL)
 
 
 class ClaudeValidator:
@@ -71,10 +83,15 @@ class ClaudeValidator:
                 rule_based_result
             )
 
+            # Extract the raw key. Vault (or the env fallback) returns the whole
+            # secret as a dict ({"value": "<key>"}); accept a bare string too so a
+            # change in secret shape can never reintroduce the crash.
+            api_key = claude_key.get("value") if isinstance(claude_key, dict) else claude_key
+
             # Call Claude API
-            client = anthropic.Anthropic(api_key=claude_key.get("value"))
+            client = anthropic.Anthropic(api_key=api_key)
             message = client.messages.create(
-                model="claude-3-5-sonnet-20241022",
+                model=_resolve_claude_model(),
                 max_tokens=2048,
                 temperature=0.3,  # Lower temperature for consistent scoring
                 messages=[{

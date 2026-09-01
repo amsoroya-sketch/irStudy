@@ -108,19 +108,21 @@ export const EpicAppBar: React.FC<EpicAppBarProps> = ({
             variant="body1"
             sx={{ fontWeight: 600, color: 'primary.contrastText' }}
           >
-            {patient.full_name}
+            {patient.name}
           </Typography>
+          {patient.mrn && (
+            <Typography
+              variant="body2"
+              sx={{ color: 'primary.contrastText', opacity: 0.9 }}
+            >
+              MRN: {patient.mrn}
+            </Typography>
+          )}
           <Typography
             variant="body2"
             sx={{ color: 'primary.contrastText', opacity: 0.9 }}
           >
-            MRN: {patient.mrn}
-          </Typography>
-          <Typography
-            variant="body2"
-            sx={{ color: 'primary.contrastText', opacity: 0.9 }}
-          >
-            {patient.age_years}y • {patient.gender}
+            {patient.age}y • {patient.gender}
           </Typography>
         </Box>
 

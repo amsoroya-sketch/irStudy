@@ -25,10 +25,12 @@ import {
   PerformanceDashboard,
   OSCEPractice,
   OSCESession,
+  EMRCaseListPage,
   StartEMRSessionPage,
   EMRSelectSystemPage,
   EpicEMRPage,
   CernerEMRPage,
+  EMRValidationPage,
   HTMLNotesPage,
   MockExamStart,
   MockExamStation,
@@ -142,6 +144,14 @@ function App() {
 
                 {/* EMR Routes */}
                 <Route
+                  path="/emr/cases"
+                  element={
+                    <ProtectedRoute>
+                      <EMRCaseListPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
                   path="/emr/start"
                   element={
                     <ProtectedRoute>
@@ -170,6 +180,14 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <CernerEMRPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/emr/validation/:sessionId"
+                  element={
+                    <ProtectedRoute>
+                      <EMRValidationPage />
                     </ProtectedRoute>
                   }
                 />

@@ -7,11 +7,12 @@ import axios, { AxiosInstance, AxiosError, InternalAxiosRequestConfig } from 'ax
 import { RefreshTokenResponse } from '../types/auth';
 
 // API base URL from environment variable
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8001/api/v1';
 
 // Create axios instance
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: API_BASE_URL,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },

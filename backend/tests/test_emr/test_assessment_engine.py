@@ -136,7 +136,7 @@ def test_submit_persists_validation_result(client, db_session, seeded_hard_case,
     s = db_session.query(EMRSession).filter_by(id=sid).first()
     assert s.validation_score == 6.0 and s.status == "graded"
     vr = db_session.query(EMRValidationResult).filter_by(session_id=sid).first()
-    assert vr is not None and vr.pass_fail is False
+    assert vr is not None and vr.passed is False
 
 # ---- Test 11: MockPatient ORM now maps validation_criteria ----------------
 def test_mockpatient_maps_validation_criteria(db_session):
