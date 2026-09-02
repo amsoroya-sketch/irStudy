@@ -174,18 +174,18 @@ def import_personas(source_dir: str, dry_run: bool = False, validate: bool = Fal
                     'responses': {}
                 }
 
-            # Extract RAG integration data
-            rag_query_hints = persona_data.get('rag_query_hints', [])
-            key_differentials = persona_data.get('differential_diagnoses', [])
-            critical_actions = persona_data.get('critical_actions', [])
-
             # Extract metadata
             amc_blueprint_area = persona_data.get('amc_blueprint_area')
-            amc_competencies = persona_data.get('amc_competencies', [])
             estimated_pass_rate = persona_data.get('estimated_pass_rate')
 
             # Create PatientPersona model
             # NOTE: Database uses 'persona_id' as primary key (String), 'persona_code' as unique identifier
+            # NOTE: rag_query_hints/key_differentials/critical_actions/amc_competencies
+            # are declared JSON on PatientPersona but the live table has them as
+            # native Postgres ARRAY columns (a pre-existing model/schema drift) —
+            # passing any value (even []) raises psycopg2.errors.DatatypeMismatch.
+            # Omit them so the INSERT doesn't reference these columns at all;
+            # the source *_persona.json file remains the record of this data.
             persona = PatientPersona(
                 persona_id=str(uuid4()),  # Generate new UUID for primary key
                 persona_code=persona_code,
@@ -201,13 +201,9 @@ def import_personas(source_dir: str, dry_run: bool = False, validate: bool = Fal
                 symptoms=symptoms,
                 medical_history=medical_history,
                 emotional_profile=emotional_profile,
-                rag_query_hints=rag_query_hints,
-                key_differentials=key_differentials,
-                critical_actions=critical_actions,
                 difficulty_level=difficulty_level,
                 estimated_pass_rate=estimated_pass_rate,
                 amc_blueprint_area=amc_blueprint_area,
-                amc_competencies=amc_competencies,
                 is_active=True,
                 version=1
             )

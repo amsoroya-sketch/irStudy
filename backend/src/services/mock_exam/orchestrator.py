@@ -126,6 +126,14 @@ class MockExamOrchestrator:
             if len(selected_personas) >= 16:
                 break
 
+            # Cap at 2 per specialty here (not the global len(selected_personas)
+            # check) — otherwise an early specialty can consume a 3rd (foundation
+            # fallback) slot merely because the global total hasn't hit 16 yet,
+            # starving later specialties and shrinking the paper's specialty span
+            # well below the available count. Any shortfall is topped up from any
+            # specialty in Phase 2 below.
+            specialty_added = 0
+
             # Try intermediate first
             intermediate = self.db.query(PatientPersona)\
                 .filter(
@@ -139,9 +147,10 @@ class MockExamOrchestrator:
             if intermediate and str(intermediate.persona_id) not in selected_ids:
                 selected_personas.append(str(intermediate.persona_id))
                 selected_ids.add(str(intermediate.persona_id))
+                specialty_added += 1
 
             # Try advanced
-            if len(selected_personas) < 16:
+            if specialty_added < 2 and len(selected_personas) < 16:
                 advanced = self.db.query(PatientPersona)\
                     .filter(
                         PatientPersona.specialty == specialty,
@@ -154,9 +163,10 @@ class MockExamOrchestrator:
                 if advanced and str(advanced.persona_id) not in selected_ids:
                     selected_personas.append(str(advanced.persona_id))
                     selected_ids.add(str(advanced.persona_id))
+                    specialty_added += 1
 
             # Fallback: foundation if we still need one for this specialty
-            if len(selected_personas) < 16:
+            if specialty_added < 2 and len(selected_personas) < 16:
                 foundation = self.db.query(PatientPersona)\
                     .filter(
                         PatientPersona.specialty == specialty,
@@ -169,6 +179,7 @@ class MockExamOrchestrator:
                 if foundation and str(foundation.persona_id) not in selected_ids:
                     selected_personas.append(str(foundation.persona_id))
                     selected_ids.add(str(foundation.persona_id))
+                    specialty_added += 1
 
         # Phase 2: If still <16, fill with any remaining active personas
         if len(selected_personas) < 16:
