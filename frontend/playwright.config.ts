@@ -17,6 +17,10 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
+  // The dev backend serialises requests behind in-flight Claude calls, so on
+  // high-core hosts Playwright's default (cores/2) worker count starves the REST
+  // journey specs into timeouts. Cap workers (override with PW_WORKERS).
+  workers: process.env.PW_WORKERS ? Number(process.env.PW_WORKERS) : 4,
   // Live-AI journeys can be slow; give generous per-test / assertion budgets.
   timeout: 60 * 1000,
   expect: { timeout: 15 * 1000 },

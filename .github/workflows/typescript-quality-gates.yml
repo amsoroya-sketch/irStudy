@@ -17,6 +17,8 @@ on:
       - 'frontend/package.json'
       - 'frontend/package-lock.json'
   workflow_dispatch:   # allows manual runs, incl. the full-stack E2E job below
+  schedule:
+    - cron: '0 3 * * *'   # nightly full-stack live E2E (the e2e job is gated on dispatch/schedule)
 
 jobs:
   typescript-quality:
@@ -95,17 +97,76 @@ jobs:
   # (workflow_dispatch) for now; wire the backend service stack here when
   # available, then flip it to run on PRs. Playwright auto-starts the Vite dev
   # server (:5173) via the `webServer` block in playwright.config.ts.
+  # Full-stack live Playwright E2E + visual. MANUAL/NIGHTLY only (dispatch/schedule)
+  # — fully-live (real backend + real Claude), too slow/nondeterministic to gate PRs.
+  # KNOWN LIMITATIONS (documented, not silent):
+  #   * OSCE/mock-exam specs need patient_persona + mock-exam-template seed data that
+  #     is NOT yet reproducible from disk (it lives only in the dev DB). Those specs
+  #     assert load-invariants and annotate the gap; a follow-up must add a persona
+  #     seed export so CI can seed them. EMR + MCQ + auth + dashboard seed from disk.
+  #   * AI-graded specs (EMR grade / OSCE score) need the ANTHROPIC_API_KEY secret;
+  #     without it they degrade to the app's `ai_unavailable` branch (still asserted).
+  #   * Redis is not provisioned → OSCE WebSocket scoring is not exercised (session
+  #     load is). Add a redis service to cover live WS scoring.
   e2e:
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: irstudy_e2e
+        ports:
+          - 5433:5432
+        options: >-
+          --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 10
     env:
-      E2E_STUDENT_EMAIL: ${{ secrets.E2E_STUDENT_EMAIL || 'student@test.com' }}
-      E2E_STUDENT_PASSWORD: ${{ secrets.E2E_STUDENT_PASSWORD }}
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5433/irstudy_e2e
+      DATABASE_HOST: localhost
+      DATABASE_PORT: '5433'
+      DATABASE_NAME: irstudy_e2e
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: postgres
+      # SECRET_KEY must be >=64 chars (enforced by backend/src/core/auth.py).
+      SECRET_KEY: ${{ secrets.E2E_SECRET_KEY || 'ci-only-e2e-secret-key-not-for-production-0123456789abcdefghij' }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}   # optional; AI specs -> ai_unavailable without it
+      E2E_STUDENT_EMAIL: student@test.com
+      E2E_STUDENT_PASSWORD: ${{ secrets.E2E_STUDENT_PASSWORD || 'Student123!@#' }}
       PLAYWRIGHT_BASE_URL: http://localhost:5173
       VITE_API_URL: http://localhost:8001/api/v1
+      PW_WORKERS: '4'   # backend serialises behind Claude; cap workers to avoid starvation
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install backend deps
+      run: cd backend && pip install -r requirements.txt
+
+    - name: Migrate + seed the E2E database (disk-seedable data)
+      run: |
+        cd backend
+        alembic upgrade head
+        # test user + the data that IS reproducible from disk
+        python ../scripts/create_test_users.py
+        python scripts/import_emr_practice_cases.py ../data/emr_practice_cases/ || echo "::warning::EMR case seed failed"
+        python scripts/import_mcqs.py --source ../data/mcqs/ || echo "::warning::MCQ seed failed"
+        # NOTE: personas / mock-exam templates are not disk-reproducible yet (see job header)
+
+    - name: Start backend (:8001)
+      run: |
+        cd backend
+        nohup uvicorn src.main:app --host 0.0.0.0 --port 8001 > /tmp/backend-e2e.log 2>&1 &
+        for i in $(seq 1 30); do
+          curl -sf http://localhost:8001/health && break || sleep 2
+        done
+        curl -sf http://localhost:8001/health || { echo "backend did not start"; tail -50 /tmp/backend-e2e.log; exit 1; }
 
     - name: Set up Node.js
       uses: actions/setup-node@v4
@@ -114,18 +175,16 @@ jobs:
         cache: 'npm'
         cache-dependency-path: frontend/package-lock.json
 
-    - name: Install dependencies
+    - name: Install frontend deps
       run: cd frontend && npm ci
 
     - name: Install Playwright browsers
       run: cd frontend && npx playwright install --with-deps chromium
 
-    # TODO: start the backend (:8001) + Postgres/Vault services and seed the
-    # student user here before running E2E. Until then this job is manual-only.
-    - name: Run Playwright E2E + visual
-      run: cd frontend && npm run test:e2e
+    - name: Run Playwright E2E + visual + route-coverage gate
+      run: cd frontend && npm run test:e2e   # webServer starts Vite; then verify-route-coverage.mjs
 
-    - name: Upload Playwright report
+    - name: Upload Playwright report + screenshot diffs
       if: always()
       uses: actions/upload-artifact@v4
       with:
@@ -133,4 +192,4 @@ jobs:
         path: |
           frontend/playwright-report/
           frontend/test-results/
-        retention-days: 7
+        retention-days: 14
