@@ -192,7 +192,19 @@ def make_condition_code(specialty: str, name: str) -> str:
 # Field extraction per content type
 # ---------------------------------------------------------------------------
 def _mcq_name(item: Dict[str, Any]) -> Optional[str]:
-    return normalize_name(item.get("topic") or item.get("subtopic") or item.get("title"))
+    # Many MCQ files (e.g. week3 respiratory/emergency regenerations) carry the
+    # topic under ``metadata.topic`` rather than top-level. Fall back to it (then
+    # metadata.subtopic) so those items seed a condition — and, because the backfill
+    # imports THIS same extractor, the condition names it creates are the exact
+    # strings the backfill later matches on. Same normalization throughout.
+    metadata = item.get("metadata") or {}
+    return normalize_name(
+        item.get("topic")
+        or item.get("subtopic")
+        or item.get("title")
+        or metadata.get("topic")
+        or metadata.get("subtopic")
+    )
 
 
 def _osce_name(item: Dict[str, Any]) -> Optional[str]:
