@@ -128,3 +128,65 @@ it('starts a random case with no patient_id', async () => {
     expect(navigateMock).toHaveBeenCalledWith('/emr/select/sess-99')
   );
 });
+
+// --- Loading / error / empty / filter behaviour (added coverage) ---
+
+it('shows a loading spinner while cases load', () => {
+  listEMRCases.mockReturnValue(new Promise(() => {})); // never resolves
+  renderPage();
+  expect(screen.getByLabelText('Loading EMR cases')).toBeInTheDocument();
+});
+
+it('shows an error alert when cases fail to load', async () => {
+  listEMRCases.mockRejectedValue(new Error('boom'));
+  renderPage();
+  await waitFor(() =>
+    expect(screen.getByText(/Failed to load cases/i)).toBeInTheDocument()
+  );
+});
+
+it('shows the empty-state alert when no cases match', async () => {
+  listEMRCases.mockResolvedValue({ total: 0, cases: [] });
+  renderPage();
+  await waitFor(() =>
+    expect(
+      screen.getByText(/No cases match the selected filters/i)
+    ).toBeInTheDocument()
+  );
+});
+
+it('refetches with the chosen specialty filter', async () => {
+  const user = userEvent.setup();
+  renderPage();
+  await waitFor(() =>
+    expect(screen.getByText('John Smith')).toBeInTheDocument()
+  );
+
+  await user.click(screen.getByRole('combobox', { name: 'Specialty' }));
+  await user.click(screen.getByRole('option', { name: 'Cardiology' }));
+
+  await waitFor(() =>
+    expect(listEMRCases).toHaveBeenCalledWith({
+      specialty: 'Cardiology',
+      difficulty: undefined,
+    })
+  );
+});
+
+it('refetches with the chosen difficulty filter', async () => {
+  const user = userEvent.setup();
+  renderPage();
+  await waitFor(() =>
+    expect(screen.getByText('John Smith')).toBeInTheDocument()
+  );
+
+  await user.click(screen.getByRole('combobox', { name: 'Difficulty' }));
+  await user.click(screen.getByRole('option', { name: 'Hard' }));
+
+  await waitFor(() =>
+    expect(listEMRCases).toHaveBeenCalledWith({
+      specialty: undefined,
+      difficulty: 'hard',
+    })
+  );
+});

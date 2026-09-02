@@ -9,6 +9,7 @@ import React from 'react';
 import {
   Drawer,
   List,
+  ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
@@ -90,49 +91,50 @@ export const CernerSidebar: React.FC<CernerSidebarProps> = ({
           const Icon = item.icon;
 
           return (
-            <ListItemButton
-              key={item.id}
-              selected={isActive}
-              onClick={() => onSectionChange(item.id)}
-              sx={{
-                mx: 1,
-                mb: 0.5,
-                borderRadius: 1,
-                '&.Mui-selected': {
-                  backgroundColor: 'primary.main',
-                  color: 'primary.contrastText',
-                  '&:hover': {
-                    backgroundColor: 'primary.dark',
-                  },
-                  '& .MuiListItemIcon-root': {
-                    color: 'primary.contrastText',
-                  },
-                },
-              }}
-              aria-current={isActive ? 'page' : undefined}
-              aria-label={`${item.label}: ${item.description}`}
-            >
-              <ListItemIcon
+            <ListItem key={item.id} disablePadding sx={{ display: 'block' }}>
+              <ListItemButton
+                selected={isActive}
+                onClick={() => onSectionChange(item.id)}
                 sx={{
-                  color: isActive ? 'primary.contrastText' : 'primary.main',
-                  minWidth: 40,
+                  mx: 1,
+                  mb: 0.5,
+                  borderRadius: 1,
+                  '&.Mui-selected': {
+                    backgroundColor: 'primary.main',
+                    color: 'primary.contrastText',
+                    '&:hover': {
+                      backgroundColor: 'primary.dark',
+                    },
+                    '& .MuiListItemIcon-root': {
+                      color: 'primary.contrastText',
+                    },
+                  },
                 }}
+                aria-current={isActive ? 'page' : undefined}
+                aria-label={`${item.label}: ${item.description}`}
               >
-                <Icon />
-              </ListItemIcon>
-              <ListItemText
-                primary={item.label}
-                secondary={!isActive ? item.description : undefined}
-                primaryTypographyProps={{
-                  fontWeight: isActive ? 600 : 400,
-                  variant: 'body2',
-                }}
-                secondaryTypographyProps={{
-                  variant: 'caption',
-                  sx: { fontSize: '0.75rem' },
-                }}
-              />
-            </ListItemButton>
+                <ListItemIcon
+                  sx={{
+                    color: isActive ? 'primary.contrastText' : 'primary.main',
+                    minWidth: 40,
+                  }}
+                >
+                  <Icon />
+                </ListItemIcon>
+                <ListItemText
+                  primary={item.label}
+                  secondary={!isActive ? item.description : undefined}
+                  primaryTypographyProps={{
+                    fontWeight: isActive ? 600 : 400,
+                    variant: 'body2',
+                  }}
+                  secondaryTypographyProps={{
+                    variant: 'caption',
+                    sx: { fontSize: '0.75rem' },
+                  }}
+                />
+              </ListItemButton>
+            </ListItem>
           );
         })}
       </List>

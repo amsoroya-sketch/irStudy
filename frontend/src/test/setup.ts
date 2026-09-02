@@ -3,9 +3,13 @@
  * Configures testing environment for React components
  */
 
-import { afterEach, vi } from 'vitest';
+import { afterEach, expect, vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { toHaveNoViolations } from 'jest-axe';
+
+// Register the jest-axe accessibility matcher (used via src/test/axe.ts).
+expect.extend(toHaveNoViolations);
 
 // Mock ResizeObserver for Recharts
 globalThis.ResizeObserver = class ResizeObserver {

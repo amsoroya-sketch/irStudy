@@ -293,7 +293,7 @@ const OSCEPractice: React.FC = () => {
                 <Grid size={{ xs: 12, md: 6 }}>
                   <Card>
                     <CardContent>
-                      <Typography variant="h6" gutterBottom>
+                      <Typography variant="h6" component="h3" gutterBottom>
                         Demographics
                       </Typography>
                       <Box sx={{ mb: 2 }}>
@@ -344,7 +344,7 @@ const OSCEPractice: React.FC = () => {
                 <Grid size={{ xs: 12, md: 6 }}>
                   <Card>
                     <CardContent>
-                      <Typography variant="h6" gutterBottom>
+                      <Typography variant="h6" component="h3" gutterBottom>
                         Clinical Information
                       </Typography>
                       <Box sx={{ mb: 2 }}>
@@ -389,7 +389,7 @@ const OSCEPractice: React.FC = () => {
                 <Grid size={{ xs: 12 }}>
                   <Card>
                     <CardContent>
-                      <Typography variant="h6" gutterBottom>
+                      <Typography variant="h6" component="h3" gutterBottom>
                         Chief Complaint
                       </Typography>
                       <Typography variant="body1">{personaDetail.chief_complaint}</Typography>
@@ -401,7 +401,7 @@ const OSCEPractice: React.FC = () => {
                 <Grid size={{ xs: 12 }}>
                   <Card>
                     <CardContent>
-                      <Typography variant="h6" gutterBottom>
+                      <Typography variant="h6" component="h3" gutterBottom>
                         Opening Statement
                       </Typography>
                       <Typography variant="body1" sx={{ fontStyle: 'italic' }}>
@@ -416,7 +416,7 @@ const OSCEPractice: React.FC = () => {
                   <Grid size={{ xs: 12, md: 6 }}>
                     <Card>
                       <CardContent>
-                        <Typography variant="h6" gutterBottom>
+                        <Typography variant="h6" component="h3" gutterBottom>
                           Key Differentials
                         </Typography>
                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
@@ -434,7 +434,7 @@ const OSCEPractice: React.FC = () => {
                   <Grid size={{ xs: 12, md: 6 }}>
                     <Card>
                       <CardContent>
-                        <Typography variant="h6" gutterBottom>
+                        <Typography variant="h6" component="h3" gutterBottom>
                           AMC Competencies
                         </Typography>
                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
@@ -455,7 +455,7 @@ const OSCEPractice: React.FC = () => {
       {/* Instructions (shown when no persona selected) */}
       {!selectedPersonaId && !personasLoading && personas && personas.length > 0 && (
         <Box sx={{ mt: 4, p: 3, bgcolor: 'background.paper', borderRadius: 1 }}>
-          <Typography variant="h6" gutterBottom>
+          <Typography variant="h6" component="h2" gutterBottom>
             How to Use
           </Typography>
           <Typography variant="body2" paragraph>

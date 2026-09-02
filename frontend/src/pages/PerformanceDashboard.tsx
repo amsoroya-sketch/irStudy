@@ -106,7 +106,7 @@ const PerformanceDashboard: React.FC = () => {
         sx={{ p: { xs: 2, sm: 3 }, mb: { xs: 2, sm: 3, md: 4 }, bgcolor: 'primary.main', color: 'white' }}
         role="banner"
       >
-        <Typography variant="h4" gutterBottom sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>
+        <Typography variant="h4" component="h1" gutterBottom sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' } }}>
           Performance Dashboard
         </Typography>
         <Typography variant="body1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>

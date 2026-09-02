@@ -156,7 +156,7 @@ const MCQAttempt: React.FC = () => {
         {/* Question Card */}
         <Card sx={{ mb: 4 }}>
           <CardContent>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" component="h2" gutterBottom>
               Question:
             </Typography>
             <Typography variant="body1" sx={{ whiteSpace: 'pre-wrap', mb: 3 }}>

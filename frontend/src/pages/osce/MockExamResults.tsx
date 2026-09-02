@@ -142,10 +142,10 @@ export const MockExamResults: React.FC = () => {
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <Card>
             <CardContent>
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="h6" component="h5" gutterBottom>
                 Stations Passed
               </Typography>
-              <Typography variant="h3" color="success.main" sx={{ fontWeight: 700 }}>
+              <Typography variant="h3" component="p" color="success.main" sx={{ fontWeight: 700 }}>
                 {results.summary_statistics.stations_passed}
               </Typography>
               <Typography variant="body2" color="text.secondary">
@@ -158,10 +158,10 @@ export const MockExamResults: React.FC = () => {
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <Card>
             <CardContent>
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="h6" component="h5" gutterBottom>
                 Stations Failed
               </Typography>
-              <Typography variant="h3" color="error.main" sx={{ fontWeight: 700 }}>
+              <Typography variant="h3" component="p" color="error.main" sx={{ fontWeight: 700 }}>
                 {results.summary_statistics.stations_failed}
               </Typography>
               <Typography variant="body2" color="text.secondary">
@@ -174,10 +174,10 @@ export const MockExamResults: React.FC = () => {
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <Card>
             <CardContent>
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="h6" component="h5" gutterBottom>
                 Average Per Station
               </Typography>
-              <Typography variant="h3" color="primary.main" sx={{ fontWeight: 700 }}>
+              <Typography variant="h3" component="p" color="primary.main" sx={{ fontWeight: 700 }}>
                 {results.summary_statistics.average_score_per_station.toFixed(1)}
               </Typography>
               <Typography variant="body2" color="text.secondary">
@@ -190,10 +190,10 @@ export const MockExamResults: React.FC = () => {
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <Card>
             <CardContent>
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="h6" component="h5" gutterBottom>
                 Pass Rate
               </Typography>
-              <Typography variant="h3" color="primary.main" sx={{ fontWeight: 700 }}>
+              <Typography variant="h3" component="p" color="primary.main" sx={{ fontWeight: 700 }}>
                 {((results.summary_statistics.stations_passed / 16) * 100).toFixed(0)}%
               </Typography>
               <Typography variant="body2" color="text.secondary">

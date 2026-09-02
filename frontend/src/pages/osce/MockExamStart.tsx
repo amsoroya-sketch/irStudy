@@ -93,7 +93,7 @@ export const MockExamStart: React.FC = () => {
       {/* Exam Format Card */}
       <Card sx={{ mb: 3 }}>
         <CardContent>
-          <Typography variant="h5" gutterBottom sx={{ fontWeight: 600 }}>
+          <Typography variant="h5" component="h2" gutterBottom sx={{ fontWeight: 600 }}>
             Exam Format
           </Typography>
 
@@ -175,7 +175,7 @@ export const MockExamStart: React.FC = () => {
       {/* Tips Card */}
       <Card>
         <CardContent>
-          <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
+          <Typography variant="h6" component="h2" gutterBottom sx={{ fontWeight: 600 }}>
             Preparation Tips
           </Typography>
 

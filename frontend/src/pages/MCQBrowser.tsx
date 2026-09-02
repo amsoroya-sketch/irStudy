@@ -137,8 +137,9 @@ const MCQBrowser: React.FC = () => {
           </Grid>
           <Grid size={{ xs: 12, md: 4 }}>
             <FormControl fullWidth>
-              <InputLabel>Category</InputLabel>
+              <InputLabel id="mcq-category-label">Category</InputLabel>
               <Select
+                labelId="mcq-category-label"
                 value={filters.category || ''}
                 onChange={handleCategoryChange}
                 label="Category"
@@ -156,8 +157,9 @@ const MCQBrowser: React.FC = () => {
           </Grid>
           <Grid size={{ xs: 12, md: 4 }}>
             <FormControl fullWidth>
-              <InputLabel>Difficulty</InputLabel>
+              <InputLabel id="mcq-difficulty-label">Difficulty</InputLabel>
               <Select
+                labelId="mcq-difficulty-label"
                 value={filters.difficulty || ''}
                 onChange={handleDifficultyChange}
                 label="Difficulty"

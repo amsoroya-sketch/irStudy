@@ -108,7 +108,7 @@ const ExamReadinessGauge: React.FC<ExamReadinessGaugeProps> = ({ factors }) => {
       <CardContent>
         {/* Header */}
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-          <Typography variant="h6" sx={{ flex: 1 }}>
+          <Typography variant="h6" component="h2" sx={{ flex: 1 }}>
             AMC Exam Readiness
           </Typography>
           <Tooltip
@@ -208,7 +208,7 @@ const ExamReadinessGauge: React.FC<ExamReadinessGaugeProps> = ({ factors }) => {
         <Divider sx={{ mb: 2 }} />
 
         {/* Factor breakdown */}
-        <Typography variant="subtitle2" gutterBottom>
+        <Typography variant="subtitle2" component="div" gutterBottom>
           Score Breakdown
         </Typography>
         <Stack spacing={1.5}>

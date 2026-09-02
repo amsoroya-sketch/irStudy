@@ -27,7 +27,7 @@ const WeakAreasPanel: React.FC<WeakAreasPanelProps> = ({ weakAreas }) => {
       <CardContent>
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
           <WarningIcon color="warning" sx={{ mr: 1 }} />
-          <Typography variant="h6">Areas for Improvement</Typography>
+          <Typography variant="h6" component="h2">Areas for Improvement</Typography>
         </Box>
 
         {weakAreas.length === 0 ? (
@@ -40,7 +40,7 @@ const WeakAreasPanel: React.FC<WeakAreasPanelProps> = ({ weakAreas }) => {
           <Stack spacing={2}>
             {weakAreas.map((area, index) => (
               <Alert key={index} severity="warning" sx={{ textAlign: 'left' }}>
-                <Typography variant="subtitle2" fontWeight="bold" gutterBottom>
+                <Typography variant="subtitle2" component="div" fontWeight="bold" gutterBottom>
                   {formatSpecialty(area.specialty)}
                 </Typography>
                 <Typography variant="body2" color="text.secondary" gutterBottom>

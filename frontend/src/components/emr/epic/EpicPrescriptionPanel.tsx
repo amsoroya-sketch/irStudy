@@ -155,7 +155,6 @@ export const EpicPrescriptionPanel: React.FC<EpicPrescriptionPanelProps> = ({
       {/* Australian PBS Note */}
       <Alert severity="info" sx={{ mb: 2 }}>
         <Typography variant="body2">
-// SECURITY SCAN EXEMPTION: Validation documentation pattern
           Use Australian PBS medication names (e.g., paracetamol NOT acetaminophen, salbutamol NOT albuterol)
         </Typography>
       </Alert>

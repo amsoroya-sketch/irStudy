@@ -169,7 +169,7 @@ const NoteCard: React.FC<NoteCardProps> = ({ note, onClick }) => {
           </Box>
 
           {/* Title */}
-          <Typography variant="h6" component="h3" gutterBottom>
+          <Typography variant="h6" component="h2" gutterBottom>
             {note.title}
           </Typography>
 
@@ -343,8 +343,10 @@ const HTMLNotesPage: React.FC = () => {
           </Grid>
           <Grid size={{ xs: 12, md: 3.5 }}>
             <FormControl fullWidth>
-              <InputLabel>Specialty</InputLabel>
+              <InputLabel id="html-notes-specialty-label">Specialty</InputLabel>
               <Select
+                labelId="html-notes-specialty-label"
+                id="html-notes-specialty"
                 value={selectedSpecialty}
                 onChange={(e) => setSelectedSpecialty(e.target.value)}
                 label="Specialty"
@@ -360,8 +362,10 @@ const HTMLNotesPage: React.FC = () => {
           </Grid>
           <Grid size={{ xs: 12, md: 3.5 }}>
             <FormControl fullWidth>
-              <InputLabel>Category</InputLabel>
+              <InputLabel id="html-notes-category-label">Category</InputLabel>
               <Select
+                labelId="html-notes-category-label"
+                id="html-notes-category"
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
                 label="Category"

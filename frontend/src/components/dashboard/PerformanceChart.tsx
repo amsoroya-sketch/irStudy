@@ -44,7 +44,7 @@ const PerformanceChart: React.FC<PerformanceChartProps> = ({ trends = [] }) => {
   return (
     <Card>
       <CardContent>
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="h6" component="h2" gutterBottom>
           Weekly Performance Trends
         </Typography>
         <Box sx={{ width: '100%', height: chartHeight, mt: 2 }}>

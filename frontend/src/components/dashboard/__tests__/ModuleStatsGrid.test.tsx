@@ -259,7 +259,7 @@ describe('ModuleStatsGrid - PRD-MVP-002 Phase 3', () => {
     const emrCard = screen.getByText(/EMR Practice/i).closest('[role="button"]');
     await user.click(emrCard!);
     await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith('/emr/start');
+      expect(mockNavigate).toHaveBeenCalledWith('/emr/cases');
     });
 
     // Click Mock Exam card
