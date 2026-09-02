@@ -113,11 +113,32 @@ const CernerEMRPage: React.FC = () => {
   };
 
   // Submit session mutation
+  // Backend SubmitSessionRequest expects `soap_note` (or `final_soap_note`) +
+  // top-level `prescriptions`/`pathology_orders` matching Prescription/Pathology
+  // Submit schemas — NOT a `{ session_data }` wrapper (which 422'd and broke submit).
   const submitMutation = useMutation({
     mutationFn: async () => {
       const response = await axiosInstance.post(
         `/emr/sessions/${sessionId}/submit`,
-        { session_data: sessionData }
+        {
+          soap_note: {
+            subjective: sessionData.subjective,
+            objective: sessionData.objective,
+            assessment: sessionData.assessment,
+            plan: sessionData.plan,
+          },
+          prescriptions: (sessionData.prescriptions ?? []).map((p) => ({
+            medication: p.medication,
+            dose: p.dose,
+            route: p.route,
+            frequency: p.frequency,
+          })),
+          pathology_orders: (sessionData.pathology_orders ?? []).map((o) => ({
+            test_name: o.test_name,
+            urgency: o.urgency,
+            clinical_notes: o.indication,
+          })),
+        }
       );
       return response.data;
     },

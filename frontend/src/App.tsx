@@ -4,7 +4,7 @@
  */
 
 import { Suspense } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,29 +13,11 @@ import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import theme from "./theme/theme";
 import MobileBottomNav from "./components/layout/MobileBottomNav";
-import { FlashcardReview } from "./components/study-cards/FlashcardReview";
 
-// Lazy-loaded routes for code splitting
-import {
-  Login,
-  Register,
-  UnifiedDashboard,
-  MCQBrowser,
-  MCQAttempt,
-  PerformanceDashboard,
-  OSCEPractice,
-  OSCESession,
-  EMRCaseListPage,
-  StartEMRSessionPage,
-  EMRSelectSystemPage,
-  EpicEMRPage,
-  CernerEMRPage,
-  EMRValidationPage,
-  HTMLNotesPage,
-  MockExamStart,
-  MockExamStation,
-  MockExamResults,
-} from "./routes";
+// Canonical route table (data). Re-exported so tests can import the route set.
+import { ROUTES } from "./routes.config";
+export { ROUTES } from "./routes.config";
+export type { AppRoute } from "./routes.config";
 
 // Create React Query client
 const queryClient = new QueryClient({
@@ -72,155 +54,19 @@ function App() {
           <AuthProvider>
             <Suspense fallback={<LoadingFallback />}>
               <Routes>
-                {/* Public Routes */}
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-
-                {/* Protected Routes */}
-                <Route
-                  path="/dashboard"
-                  element={
-                    <ProtectedRoute>
-                      <UnifiedDashboard />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/performance"
-                  element={
-                    <ProtectedRoute>
-                      <PerformanceDashboard />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/mcqs"
-                  element={
-                    <ProtectedRoute>
-                      <MCQBrowser />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/mcqs/:id/attempt"
-                  element={
-                    <ProtectedRoute>
-                      <MCQAttempt />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/osce-practice"
-                  element={
-                    <ProtectedRoute>
-                      <OSCEPractice />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/study-cards"
-                  element={
-                    <ProtectedRoute>
-                      <FlashcardReview />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/html-notes"
-                  element={
-                    <ProtectedRoute>
-                      <HTMLNotesPage />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/osce/session/:attemptId"
-                  element={
-                    <ProtectedRoute>
-                      <OSCESession />
-                    </ProtectedRoute>
-                  }
-                />
-
-                {/* EMR Routes */}
-                <Route
-                  path="/emr/cases"
-                  element={
-                    <ProtectedRoute>
-                      <EMRCaseListPage />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/emr/start"
-                  element={
-                    <ProtectedRoute>
-                      <StartEMRSessionPage />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/emr/select/:sessionId"
-                  element={
-                    <ProtectedRoute>
-                      <EMRSelectSystemPage />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/emr/epic/:sessionId"
-                  element={
-                    <ProtectedRoute>
-                      <EpicEMRPage />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/emr/cerner/:sessionId"
-                  element={
-                    <ProtectedRoute>
-                      <CernerEMRPage />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/emr/validation/:sessionId"
-                  element={
-                    <ProtectedRoute>
-                      <EMRValidationPage />
-                    </ProtectedRoute>
-                  }
-                />
-
-                {/* Mock Exam Routes */}
-                <Route
-                  path="/osce/mock-exam/start"
-                  element={
-                    <ProtectedRoute>
-                      <MockExamStart />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/osce/mock-exam/:examId/station/:stationNumber"
-                  element={
-                    <ProtectedRoute>
-                      <MockExamStation />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/osce/mock-exam/:examId/results"
-                  element={
-                    <ProtectedRoute>
-                      <MockExamResults />
-                    </ProtectedRoute>
-                  }
-                />
-
-                {/* Fallback Routes */}
-                <Route path="/" element={<Navigate to="/dashboard" replace />} />
-                <Route path="*" element={<Navigate to="/login" replace />} />
+                {ROUTES.map(({ path, element, public: isPublic }) => (
+                  <Route
+                    key={path}
+                    path={path}
+                    element={
+                      isPublic ? (
+                        element
+                      ) : (
+                        <ProtectedRoute>{element}</ProtectedRoute>
+                      )
+                    }
+                  />
+                ))}
               </Routes>
               {/* Mobile Bottom Navigation - shown only on mobile (<768px) */}
               <MobileBottomNav />

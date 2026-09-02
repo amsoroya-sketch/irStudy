@@ -162,10 +162,28 @@ describe('EpicEMRPage', () => {
 
     await user.click(screen.getByRole('button', { name: 'Submit for review' }));
 
+    // Must match the backend SubmitSessionRequest contract: a top-level
+    // `soap_note` (mapped to final_soap_note) + `prescriptions`/`pathology_orders`
+    // arrays. The old `{ session_data }` wrapper 422'd and broke UI submit.
     await waitFor(() =>
       expect(post).toHaveBeenCalledWith(
         '/emr/sessions/sess-1/submit',
-        expect.objectContaining({ session_data: expect.any(Object) })
+        expect.objectContaining({
+          soap_note: expect.objectContaining({
+            subjective: expect.any(String),
+            objective: expect.any(String),
+            assessment: expect.any(String),
+            plan: expect.any(String),
+          }),
+          prescriptions: expect.any(Array),
+          pathology_orders: expect.any(Array),
+        })
+      )
+    );
+    await waitFor(() =>
+      expect(post).not.toHaveBeenCalledWith(
+        '/emr/sessions/sess-1/submit',
+        expect.objectContaining({ session_data: expect.anything() })
       )
     );
     await waitFor(() =>

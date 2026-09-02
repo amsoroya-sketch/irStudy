@@ -112,12 +112,34 @@ const EpicEMRPage: React.FC = () => {
     debouncedSave(newData);
   };
 
-  // Submit session mutation
+  // Submit session mutation.
+  // The backend SubmitSessionRequest expects the SOAP note under `soap_note`
+  // (or `final_soap_note`) plus top-level `prescriptions`/`pathology_orders`
+  // arrays whose fields match PrescriptionSubmit/PathologyOrderSubmit — NOT a
+  // `{ session_data }` wrapper (which 422'd and broke submit through the UI).
   const submitMutation = useMutation({
     mutationFn: async () => {
       const response = await axiosInstance.post(
         `/emr/sessions/${sessionId}/submit`,
-        { session_data: sessionData }
+        {
+          soap_note: {
+            subjective: sessionData.subjective,
+            objective: sessionData.objective,
+            assessment: sessionData.assessment,
+            plan: sessionData.plan,
+          },
+          prescriptions: (sessionData.prescriptions ?? []).map((p) => ({
+            medication: p.medication,
+            dose: p.dose,
+            route: p.route,
+            frequency: p.frequency,
+          })),
+          pathology_orders: (sessionData.pathology_orders ?? []).map((o) => ({
+            test_name: o.test_name,
+            urgency: o.urgency,
+            clinical_notes: o.indication,
+          })),
+        }
       );
       return response.data;
     },

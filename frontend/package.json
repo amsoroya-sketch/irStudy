@@ -12,7 +12,8 @@
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "test:cov": "vitest run --coverage",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test && node tests/verify-route-coverage.mjs",
+    "test:e2e:only": "playwright test"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
