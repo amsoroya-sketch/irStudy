@@ -805,6 +805,13 @@ class PatientPersona(Base):
     amc_blueprint_area = Column(String(100), nullable=True)
     amc_competencies = Column(JSON, nullable=True)  # TEXT[] stored as JSON
 
+    # RAG grounding (PRD-PERSONA-CITATION): mirrors MCQ.citations (models.py:362)
+    # and StudyCard.citations. Structured list preserving each persona's RAG
+    # grounding: [{source, qdrant_point_id, confidence, is_australian, title, ...}].
+    # Nullable + additive so the 48 grounded personas can be backfilled without
+    # touching schema for the rest.
+    citations = Column(JSON, nullable=True)
+
     # AMC conditions/blueprint spine (PRD-CONDITIONS-SPINE-001) — nullable link.
     condition_id = Column(
         Integer, ForeignKey("conditions.id", ondelete="SET NULL"), nullable=True, index=True

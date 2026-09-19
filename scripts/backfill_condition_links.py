@@ -22,7 +22,11 @@ CRITICAL — link via AUTHORING files, not missing DB columns:
     requires re-deriving its authored ``topic`` from ``data/mcqs/*.json``, keyed
     by the SAME ``question_id`` the importer wrote (via ``transform_mcq``). OSCEs
     keep title-based matching (the ``osces`` table has ``station_title``).
-    Personas / EMR mock patients match on specialty + chief/presenting complaint.
+    Personas match on specialty + expected diagnosis / chief complaint. EMR mock
+    patients have NO diagnosis column, so they match on the expected diagnosis
+    carried in ``validation_criteria.expected.assessment[0]`` (the SOAP "A"),
+    falling back to the source OSCE title then the presenting complaint — never
+    the presenting complaint alone, which is a SYMPTOM, not a DIAGNOSIS.
 
 Correct primary keys (verified against the live schema):
     - MCQ.id (business key ``question_id``)
@@ -63,6 +67,8 @@ sys.path.insert(0, str(REPO_ROOT))
 from scripts.seed_conditions import (  # noqa: E402
     normalize_name,
     normalize_specialty,
+    resolve_specialty,
+    specialty_from_filename,
     _mcq_name,
     _osce_name,
     _persona_name,
@@ -77,6 +83,45 @@ def _item_name(item: Dict[str, Any]) -> Optional[str]:
         or _persona_name(item)
         or _mcq_name(item)
     )
+
+
+def _emr_diagnosis(validation_criteria: Any) -> Optional[str]:
+    """Primary expected diagnosis for an EMR case, from the SOAP assessment.
+
+    A ``MockPatient`` (EMR practice case) has NO diagnosis column — its
+    ``presenting_complaint`` is a SYMPTOM (e.g. "chest pain"), which essentially
+    never string-matches a condition NAME (a DIAGNOSIS, e.g. "Acute Coronary
+    Syndrome"). The authoritative expected diagnosis is instead carried in
+    ``validation_criteria.expected.assessment`` (the SOAP "A"): its FIRST line is
+    the leading clinical impression, and later lines are explicitly differentials
+    ("Consider ... as differentials"). Only the first line is used — matching on
+    the whole assessment would wrongly link a case to a differential (e.g. an
+    asthma case's assessment also names pneumothorax/anaphylaxis).
+
+    The leading clause (before an em-dash / colon / parenthesis severity
+    qualifier) is returned so a concise condition NAME can match it, e.g.
+    "Acute coronary syndrome — likely STEMI ..." -> "Acute coronary syndrome".
+    Returns None when no assessment text is present (never fabricated).
+    """
+    if not isinstance(validation_criteria, dict):
+        return None
+    expected = validation_criteria.get("expected")
+    if not isinstance(expected, dict):
+        return None
+    assessment = expected.get("assessment")
+    if isinstance(assessment, list):
+        primary = next((a for a in assessment if isinstance(a, str) and a.strip()), None)
+    elif isinstance(assessment, str):
+        primary = assessment
+    else:
+        primary = None
+    if not primary:
+        return None
+    # Keep only the leading impression clause: split at the first whitespace-led
+    # em-dash / hyphen / colon / open-paren qualifier (drops severity notes and
+    # confirmatory caveats), then normalize exactly as the seed does.
+    lead = re.split(r"\s+[—\-:(]", primary, maxsplit=1)[0]
+    return normalize_name(lead)
 
 
 def _names_match(condition_name: str, item_name: str) -> bool:
@@ -113,7 +158,10 @@ def match_condition(
     mirror how the seed derived that content type's conditions exactly.
     """
     extractor = name_fn or _item_name
-    item_spec = normalize_specialty(item.get("specialty"))
+    # Mirror the seed: resolve via own specialty -> metadata.specialty ->
+    # filename hint, so "unknown"/None rows from specialty-scoped files link to
+    # the conditions the seed derived for them (same widened logic on both sides).
+    item_spec = resolve_specialty(item)
     item_name = extractor(item)
     if item_spec is None or item_name is None:
         return None
@@ -173,6 +221,11 @@ def _build_mcq_authoring_map() -> Dict[str, Dict[str, Any]]:
             qid = transform_mcq(mcq)["question_id"]
         except Exception:  # noqa: BLE001
             continue
+        # Attach the filename-derived specialty hint so an authored MCQ whose own
+        # specialty is "unknown"/None (e.g. week3_respiratory_*) still resolves —
+        # exactly as the seed did when it derived that MCQ's condition.
+        if isinstance(mcq, dict):
+            mcq.setdefault("_specialty_hint", specialty_from_filename(_filename))
         mapping.setdefault(str(qid), mcq)
     return mapping
 
@@ -256,10 +309,24 @@ def main() -> int:
         # persona extractor, which also considers expected_diagnosis/diagnosis).
         return {"specialty": row.specialty, "chief_complaint": row.chief_complaint}
 
+    # OSCE title lookup for the EMR fallback chain (source_osce_id -> station_title).
+    osce_title_by_id = {
+        o.id: o.station_title for o in db.query(OSCE.id, OSCE.station_title).all()
+    }
+
     def _emr_item(row: Any) -> Dict[str, Any]:
-        # MockPatient (EMR case): match on specialty + presenting_complaint, mapped
-        # into chief_complaint so the persona extractor picks it up.
-        return {"specialty": row.specialty, "chief_complaint": row.presenting_complaint}
+        # MockPatient (EMR case) has NO diagnosis column. The expected diagnosis is
+        # carried in validation_criteria.expected.assessment[0]; presenting_complaint
+        # is only a SYMPTOM (rarely matches a condition NAME). Provide a fallback
+        # chain via keys the persona extractor reads in order (expected_diagnosis ->
+        # topic -> chief_complaint): expected diagnosis -> source OSCE title ->
+        # presenting_complaint. resolve_specialty still specialty-guards the match.
+        return {
+            "specialty": row.specialty,
+            "expected_diagnosis": _emr_diagnosis(row.validation_criteria),
+            "topic": osce_title_by_id.get(row.source_osce_id),
+            "chief_complaint": row.presenting_complaint,
+        }
 
     # (content_type, model, pk-attr, item-builder, seed name extractor)
     content_models = (

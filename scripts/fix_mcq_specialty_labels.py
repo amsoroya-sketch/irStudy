@@ -36,7 +36,7 @@ import sys
 import json
 import argparse
 from pathlib import Path
-from collections import Counter, defaultdict
+from collections import Counter
 
 # ---------------------------------------------------------------------------
 # Path wiring

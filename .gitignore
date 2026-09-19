@@ -62,9 +62,14 @@ scripts/scratch_*.py
 .DS_Store
 
 # Environment variables and secrets (SECURITY - NEVER COMMIT)
-.env
-.env.local
-.env.*.local
+# Ignore ALL .env* files anywhere in the tree; only *.example / *.template
+# (placeholder-only) may be committed.
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.*.example
+!**/.env.template
+!**/.env.*.template
 secrets/
 secrets/*.txt
 
@@ -81,3 +86,6 @@ archive/
 
 # Vitest coverage output
 frontend/coverage/
+
+# Generated content reports (regenerate via content_reconciliation.py; see COVERAGE.md)
+data/**/_reports/

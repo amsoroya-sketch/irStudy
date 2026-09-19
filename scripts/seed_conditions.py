@@ -40,6 +40,14 @@ from typing import Any, Dict, List, Optional
 REPO_ROOT = Path(__file__).resolve().parent.parent
 BACKEND_DIR = REPO_ROOT / "backend"
 DATA_DIR = REPO_ROOT / "data"
+# OSCE authoring lives in TWO places that were both imported into the live DB:
+#   - data/osces/*.json                       (the primary authored set)
+#   - 25-august-docs/osce_generated/*.json    (the generated station set, single
+#     OSCE object per file, carrying canonical ``specialty`` + ``title``)
+# The generated set is the ONLY on-disk source for several specialties
+# (obstetrics_gynaecology, musculoskeletal, urology, ophthalmology); omitting it
+# left those live OSCEs permanently unlinkable, so it is scanned here too.
+OSCE_DIRS = (DATA_DIR / "osces", REPO_ROOT / "25-august-docs" / "osce_generated")
 BLUEPRINT_DIR = DATA_DIR / "amc_blueprints"
 CONDITIONS_JSON = BLUEPRINT_DIR / "conditions.json"
 REPORT_DIR = BLUEPRINT_DIR / "_reports"
@@ -66,9 +74,26 @@ except Exception:  # noqa: BLE001
 # ---------------------------------------------------------------------------
 # Unmappable specialties return None (they are SKIPPED + logged, never coerced to
 # a default) so the seed never fabricates a wrong classification.
+#
+# Generic adult-internal-medicine authoring labels collapse onto ``general_practice``:
+# the 14-value ``MedicalSpecialty`` enum has no standalone "general/internal medicine"
+# or "haematology" domain, and AMC assesses adult internal-medicine GP-style
+# presentations (undifferentiated syncope, falls, anaemia, etc.) under General
+# Practice / General Medicine. These maps are the ONLY generic->GP collapses and are
+# each clinically defensible (spot-check targets):
+#   - "General Medicine" / "general medicine" -> general_practice (168 authored rows)
+#   - "internal medicine"                     -> general_practice
+#   - "haematology" / "hematology"            -> general_practice (adult IM domain)
+# Anything still unmappable (e.g. cross-specialty "Cardiology/Obstetrics") returns
+# None and is SKIPPED + logged — never coerced to a wrong specialty.
 _SPECIALTY_ALIASES: Dict[str, str] = {
     "cardiology": "cardiology",
     "cardiovascular": "cardiology",
+    "general_medicine": "general_practice",
+    "internal_medicine": "general_practice",
+    "general_and_acute_care_medicine": "general_practice",
+    "haematology": "general_practice",
+    "hematology": "general_practice",
     "respiratory": "respiratory",
     "respiratory_medicine": "respiratory",
     "pulmonology": "respiratory",
@@ -117,6 +142,76 @@ def normalize_specialty(raw: Any) -> Optional[str]:
     if mapped in _VALID_SPECIALTIES:
         return mapped
     return None
+
+
+# ---------------------------------------------------------------------------
+# Filename-based specialty inference (last-resort, for items whose OWN specialty
+# is missing/"unknown" but that live in a specialty-scoped authoring file, e.g.
+# ``week3_respiratory_200_mcqs.json`` or ``psychiatry_40_osces.json``).
+# ---------------------------------------------------------------------------
+# Only unambiguous, single-specialty filename tokens are listed. A file name is
+# accepted ONLY when it contains EXACTLY ONE distinct specialty token — an
+# ambiguous multi-specialty name (e.g. ``cardiology_obstetrics_*``) yields None so
+# nothing is coerced to a wrong specialty.
+_FILENAME_SPECIALTY_TOKENS: Dict[str, str] = {
+    "cardiology": "cardiology",
+    "respiratory": "respiratory",
+    "gastroenterology": "gastroenterology",
+    "neurology": "neurology",
+    "psychiatry": "psychiatry",
+    "endocrinology": "endocrinology",
+    "emergency": "emergency_medicine",
+    "paediatrics": "paediatrics",
+    "pediatrics": "paediatrics",
+    "obstetrics": "obstetrics_gynaecology",
+    "gynaecology": "obstetrics_gynaecology",
+    "gynecology": "obstetrics_gynaecology",
+    "surgery": "surgery",
+    "ophthalmology": "ophthalmology",
+    "urology": "urology",
+    "musculoskeletal": "musculoskeletal",
+    "orthopaedics": "musculoskeletal",
+    "rheumatology": "musculoskeletal",
+}
+
+
+def specialty_from_filename(filename: Any) -> Optional[str]:
+    """Infer a canonical specialty from a content file name, or None.
+
+    Returns a specialty ONLY when exactly one distinct specialty token appears in
+    the name; ambiguous (multi-specialty) or generic names return None so nothing
+    is coerced.
+    """
+    if not isinstance(filename, str):
+        return None
+    low = filename.lower()
+    found = {spec for tok, spec in _FILENAME_SPECIALTY_TOKENS.items() if tok in low}
+    return next(iter(found)) if len(found) == 1 else None
+
+
+def resolve_specialty(item: Dict[str, Any]) -> Optional[str]:
+    """Canonical specialty for a content item, or None.
+
+    Precedence (each source only used if the previous is unmappable):
+        1. the item's own ``specialty``
+        2. ``metadata.specialty`` (some regenerated MCQ files carry it here)
+        3. ``_specialty_hint`` — a filename-derived hint attached at load time
+           (see ``specialty_from_filename``), which lets specialty-scoped files
+           whose rows say ``unknown``/None still seed + link conditions.
+    Values like ``"unknown"`` normalize to None and fall through to the next
+    source. Never coerced to a default.
+    """
+    if not isinstance(item, dict):
+        return None
+    spec = normalize_specialty(item.get("specialty"))
+    if spec is not None:
+        return spec
+    metadata = item.get("metadata") or {}
+    if isinstance(metadata, dict):
+        spec = normalize_specialty(metadata.get("specialty"))
+        if spec is not None:
+            return spec
+    return normalize_specialty(item.get("_specialty_hint"))
 
 
 # ---------------------------------------------------------------------------
@@ -252,7 +347,7 @@ def derive_conditions(
         for item in items:
             if not isinstance(item, dict):
                 continue
-            specialty = normalize_specialty(item.get("specialty"))
+            specialty = resolve_specialty(item)
             name = name_fn(item)
             if specialty is None or name is None:
                 skip_log.append(
@@ -321,17 +416,24 @@ def _load_disk_content():
         path = Path(fp)
         if _is_ignored(path):
             continue
+        hint = specialty_from_filename(path.name)
         for it in _extract_items(_load_json(path), ("mcqs", "questions")):
             if isinstance(it, dict):
+                it.setdefault("_specialty_hint", hint)
                 mcqs.append(it)
 
-    for fp in sorted(glob.glob(str(DATA_DIR / "osces" / "*.json"))):
-        path = Path(fp)
-        if _is_ignored(path):
+    for osce_dir in OSCE_DIRS:
+        if not osce_dir.exists():
             continue
-        for it in _extract_items(_load_json(path), ("osces",)):
-            if isinstance(it, dict):
-                osces.append(it)
+        for fp in sorted(glob.glob(str(osce_dir / "*.json"))):
+            path = Path(fp)
+            if _is_ignored(path):
+                continue
+            hint = specialty_from_filename(path.name)
+            for it in _extract_items(_load_json(path), ("osces",)):
+                if isinstance(it, dict):
+                    it.setdefault("_specialty_hint", hint)
+                    osces.append(it)
 
     # EMR practice cases carry an expected diagnosis-like specialty/complaint; feed
     # them through the persona extractor.
@@ -341,8 +443,10 @@ def _load_disk_content():
             path = Path(fp)
             if _is_ignored(path):
                 continue
+            hint = specialty_from_filename(path.name)
             for it in _extract_items(_load_json(path), ()):
                 if isinstance(it, dict):
+                    it.setdefault("_specialty_hint", hint)
                     personas.append(it)
 
     return mcqs, osces, personas

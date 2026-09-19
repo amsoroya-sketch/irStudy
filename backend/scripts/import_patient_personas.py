@@ -17,7 +17,6 @@ import json
 import argparse
 from pathlib import Path
 from uuid import uuid4
-from datetime import datetime
 
 # Add backend directory to path
 backend_dir = Path(__file__).parent.parent
@@ -133,6 +132,7 @@ def import_personas(source_dir: str, dry_run: bool = False, validate: bool = Fal
 
     imported_count = 0
     skipped_count = 0
+    backfilled_count = 0
     error_count = 0
 
     for idx, persona_data in enumerate(personas_data, 1):
@@ -141,10 +141,22 @@ def import_personas(source_dir: str, dry_run: bool = False, validate: bool = Fal
             persona_id = persona_data.get('id') or str(uuid4())
             persona_code = persona_data.get('persona_code') or persona_id
 
+            # Structured RAG grounding (5 point-ids w/ qdrant_point_id, is_australian).
+            # Preserved in the source *_persona.json under "citations"; persisted to
+            # the additive PatientPersona.citations JSON column (migration 015).
+            citations = persona_data.get('citations')
+
             # Check if persona already exists
             existing = db.query(PatientPersona).filter(PatientPersona.persona_code == persona_code).first()
             if existing:
-                skipped_count += 1
+                # Idempotent backfill: if the row predates the citations column
+                # (citations is NULL) and this file carries grounding, update in
+                # place instead of duplicating. Otherwise leave untouched.
+                if citations and getattr(existing, 'citations', None) is None:
+                    existing.citations = citations
+                    backfilled_count += 1
+                else:
+                    skipped_count += 1
                 continue
 
             # Map specialty and difficulty
@@ -204,6 +216,7 @@ def import_personas(source_dir: str, dry_run: bool = False, validate: bool = Fal
                 difficulty_level=difficulty_level,
                 estimated_pass_rate=estimated_pass_rate,
                 amc_blueprint_area=amc_blueprint_area,
+                citations=citations,
                 is_active=True,
                 version=1
             )
@@ -215,7 +228,7 @@ def import_personas(source_dir: str, dry_run: bool = False, validate: bool = Fal
                 print(f"  Imported {imported_count} personas...")
                 db.commit()  # Commit in batches
 
-        except IntegrityError as e:
+        except IntegrityError:
             db.rollback()
             skipped_count += 1
             print(f"  ⚠️  Skipped duplicate persona: {persona_code}")
@@ -232,6 +245,7 @@ def import_personas(source_dir: str, dry_run: bool = False, validate: bool = Fal
         print("Import Summary")
         print("=" * 60)
         print(f"✓ Imported: {imported_count} personas")
+        print(f"↻ Backfilled citations (existing rows): {backfilled_count} personas")
         print(f"⚠ Skipped (duplicates): {skipped_count} personas")
         print(f"✗ Errors: {error_count} personas")
         print("")
