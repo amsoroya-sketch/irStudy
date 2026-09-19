@@ -145,9 +145,17 @@ app.add_middleware(
     expose_headers=["X-Total-Count", "X-Request-ID"],
 )
 
-# Trusted host middleware (prevent host header attacks)
+# Trusted host middleware (prevent host header attacks).
+# Host allowlist is env-configurable so the same image works behind the real
+# domain AND a temporary tunnel hostname (e.g. *.trycloudflare.com). Comma-
+# separated ALLOWED_HOSTS overrides the default. Behind Caddy the backend still
+# sees the original Host header, so this must include the public hostname(s).
 if os.getenv("ENV") == "production":
-    app.add_middleware(TrustedHostMiddleware, allowed_hosts=["irstudy.com", "*.irstudy.com"])
+    allowed_hosts = os.getenv(
+        "ALLOWED_HOSTS",
+        "irstudy.com,*.irstudy.com"
+    ).split(",")
+    app.add_middleware(TrustedHostMiddleware, allowed_hosts=[h.strip() for h in allowed_hosts])
 
 
 # ============================================================================

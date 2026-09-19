@@ -85,4 +85,21 @@ export default defineConfig({
       },
     }),
   ],
+  // Dev server proxies /api and /ws to the backend so the frontend can use
+  // ORIGIN-RELATIVE URLs (/api/v1, /ws/...). Same code then works unchanged
+  // behind Caddy in production and behind any tunnel hostname (no rebuild).
+  // Override the backend target with VITE_DEV_BACKEND if it isn't on :8001.
+  server: {
+    proxy: {
+      '/api': {
+        target: process.env.VITE_DEV_BACKEND || 'http://localhost:8001',
+        changeOrigin: true,
+      },
+      '/ws': {
+        target: process.env.VITE_DEV_BACKEND || 'http://localhost:8001',
+        changeOrigin: true,
+        ws: true,
+      },
+    },
+  },
 })

@@ -353,9 +353,15 @@ export function WebSocketChat({
     setIsAITyping(false);
   }, []);
 
+  // Derive the WebSocket origin from the page so it works behind Caddy / any
+  // tunnel hostname over wss://. VITE_WS_URL overrides to a different origin.
+  const wsOrigin =
+    import.meta.env.VITE_WS_URL ||
+    `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}`;
+
   // Initialize WebSocket connection
   const { sendMessage, connectionState, reconnecting, lastError } = useWebSocket({
-    url: `ws://localhost:8001/ws/osce/${attemptId}`,
+    url: `${wsOrigin}/ws/osce/${attemptId}`,
     token,
     onMessage: handleWebSocketMessage,
     onError: handleWebSocketError,

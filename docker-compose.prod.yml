@@ -1,0 +1,71 @@
+# Production overlay. Use together with the base file:
+#
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+#
+# What it changes vs. the base (dev) stack:
+#   - Adds Caddy as the ONLY internet-facing service (publishes 80/443).
+#     Every base service is bound to 127.0.0.1 in docker-compose.yml, so the DBs,
+#     admin UIs and the raw backend port are NOT reachable from the public IP.
+#   - Runs the backend in production mode (no --reload, multiple workers,
+#     ENV=production, host allowlist).
+#
+# Configure via a repo-root .env (see .env.deploy.example):
+#   SITE_ADDRESS   -> "app.example.com" for auto-HTTPS, or ":80" behind a tunnel
+#   ALLOWED_HOSTS  -> comma-separated public hostnames (or "*" for a quick tunnel)
+#   CORS_ORIGINS   -> usually unneeded (same-origin); set if you split origins
+
+services:
+  caddy:
+    build:
+      context: .
+      dockerfile: docker/caddy/Dockerfile
+    image: irstudy-caddy:custom
+    container_name: irstudy-caddy
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-:80}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"   # HTTP/3
+    volumes:
+      - caddy_data:/data      # persisted TLS certificates
+      - caddy_config:/config
+    networks:
+      - irstudy-network
+
+  backend:
+    # Production mode: real host allowlist + no source auto-reload.
+    environment:
+      ENV: production
+      PYTHON_ENV: production
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-*}
+      CORS_ORIGINS: ${CORS_ORIGINS:-}
+    # Same secret-loading preamble as the base command, but launches uvicorn
+    # with workers and WITHOUT --reload.
+    command: >
+      sh -c "
+        echo '🔐 Loading credentials from secrets...' &&
+        export DATABASE_URL=$$(cat /run/secrets/db_password | sed 's|^|postgresql://postgres:|; s|$$|@postgres:5432/irstudy_medical|') &&
+        export REDIS_URL=$$(cat /run/secrets/redis_password | sed 's|^|redis://:|; s|$$|@redis:6379/0|') &&
+        export QDRANT_API_KEY=$$(cat /run/secrets/qdrant_api_key) &&
+        export NEO4J_PASSWORD=$$(cat /run/secrets/neo4j_auth | cut -d'/' -f2) &&
+        export OPENAI_API_KEY=$$(cat /run/secrets/openai_api_key) &&
+        export ANTHROPIC_API_KEY=$$(cat /run/secrets/anthropic_api_key) &&
+        export SECRET_KEY=$$(cat /run/secrets/jwt_secret) &&
+        export PYTHONPATH=/app/src:$$PYTHONPATH &&
+        echo '✅ Credentials loaded securely' &&
+        echo '🔧 Running database migrations...' &&
+        alembic upgrade head &&
+        echo '✅ Migrations complete' &&
+        echo '🚀 Starting FastAPI backend (production, no reload)...' &&
+        uvicorn src.main:app --host 0.0.0.0 --port 8000 --workers 4
+      "
+
+volumes:
+  caddy_data:
+    driver: local
+  caddy_config:
+    driver: local

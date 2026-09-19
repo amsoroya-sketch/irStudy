@@ -5,8 +5,10 @@
 
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 
-// Base URL for API requests
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8001/api/v1';
+// Base URL for API requests.
+// Origin-relative by default (see axiosInstance.ts / vite.config.ts proxy) so
+// the build is host-agnostic. VITE_API_BASE_URL overrides to a different origin.
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api/v1';
 
 /**
  * Main axios instance for API requests

@@ -6,8 +6,11 @@
 import axios, { AxiosInstance, AxiosError, InternalAxiosRequestConfig } from 'axios';
 import { RefreshTokenResponse } from '../types/auth';
 
-// API base URL from environment variable
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8001/api/v1';
+// API base URL from environment variable.
+// Defaults to an ORIGIN-RELATIVE path so the same build works behind Caddy /
+// any tunnel hostname; in dev, Vite's proxy (see vite.config.ts) forwards
+// /api to the backend. Set VITE_API_URL only to point at a different origin.
+export const API_BASE_URL = import.meta.env.VITE_API_URL || '/api/v1';
 
 // Create axios instance
 const axiosInstance: AxiosInstance = axios.create({

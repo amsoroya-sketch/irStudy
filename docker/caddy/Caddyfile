@@ -1,0 +1,41 @@
+# irStudy edge reverse proxy (TLS termination + static SPA + API/WS proxy).
+#
+# SITE_ADDRESS controls how Caddy listens:
+#   - Real domain (e.g. "app.example.com")  -> Caddy auto-provisions a Let's
+#     Encrypt cert and serves HTTPS on 443 (redirects 80 -> 443).
+#   - ":80"                                  -> plain HTTP on 80 only; use this
+#     when TLS is terminated upstream (Cloudflare Tunnel / quick tunnel).
+# Defaults to :80 so a bare `docker compose up` never blocks on ACME.
+{$SITE_ADDRESS::80} {
+	encode gzip zstd
+
+	# API and WebSocket traffic -> FastAPI backend (same Docker network).
+	# Caddy upgrades WebSocket connections on /ws automatically.
+	@backend path /api/* /ws/*
+	handle @backend {
+		# Defaults to the in-compose backend service; override BACKEND_UPSTREAM to
+		# point at a host-run dev backend (e.g. host.docker.internal:8001).
+		reverse_proxy {$BACKEND_UPSTREAM:backend:8000}
+	}
+
+	# Everything else -> the built React SPA, with history-mode fallback.
+	handle {
+		root * /srv
+		try_files {path} /index.html
+		file_server
+	}
+
+	# Security headers (HSTS only meaningful over HTTPS; harmless otherwise).
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "geolocation=(), microphone=(), camera=()"
+		Cross-Origin-Opener-Policy "same-origin"
+		# MUI/emotion inject runtime <style> tags -> style-src needs unsafe-inline.
+		# connect-src allows same-origin XHR + WebSocket (ws/wss).
+		Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' ws: wss:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+		-Server
+	}
+}
