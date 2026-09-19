@@ -53,38 +53,29 @@ echo ""
 # 2. Start Backend Server (in background)
 echo -e "${YELLOW}[2/3] Starting Backend FastAPI server...${NC}"
 
-# Check if virtual environment exists
-if [ ! -d "venv" ]; then
-    echo -e "${RED}❌ Virtual environment not found. Creating...${NC}"
-    python3 -m venv venv
-    source venv/bin/activate
-    pip install -r backend/requirements.txt
-else
-    source venv/bin/activate
+# Backend deps live in backend/venv (the global uvicorn is missing prometheus_client).
+if [ ! -x "backend/venv/bin/uvicorn" ]; then
+    echo -e "${RED}❌ backend/venv not found. Creating...${NC}"
+    python3 -m venv backend/venv
+    backend/venv/bin/pip install -r backend/requirements.txt
 fi
 
-# Set environment variables
-export DATABASE_PASSWORD="$(cat secrets/db_password.txt)"
-export DATABASE_HOST="localhost"
-export DATABASE_PORT="5433"
-export DATABASE_NAME="irstudy_medical"
-export SECRET_KEY="$(cat secrets/jwt_secret.txt)"
-export REDIS_URL="redis://localhost:6380"
-export QDRANT_HOST="localhost"
-export QDRANT_PORT="6333"
+# Environment comes from backend/.env (DB password, JWT secret, CORS, ANTHROPIC_API_KEY).
+export $(grep -v '^#' backend/.env | xargs)
 
 # Kill any existing backend process
-pkill -f "uvicorn.*main:app" || true
+pkill -f "venv/bin/uvicorn src.main:app" || true
 
-# Start backend in background
+# Start backend in background — MUST pin :8001 (the frontend hardcodes localhost:8001,
+# and :8000 is taken by an unrelated container).
 cd backend
-nohup uvicorn src.main:app --reload --host 0.0.0.0 --port 8000 > ../logs/backend.log 2>&1 &
+nohup venv/bin/uvicorn src.main:app --reload --host 0.0.0.0 --port 8001 > ../logs/backend.log 2>&1 &
 BACKEND_PID=$!
 cd ..
 
 echo -e "${GREEN}✅ Backend started (PID: $BACKEND_PID)${NC}"
 echo -e "${BLUE}   Backend logs: tail -f logs/backend.log${NC}"
-echo -e "${BLUE}   Backend API: http://localhost:8000${NC}"
+echo -e "${BLUE}   Backend API: http://localhost:8001 (health: /health, docs: /api/docs)${NC}"
 echo ""
 
 # Wait for backend to start
@@ -115,7 +106,7 @@ cd ..
 
 echo -e "${GREEN}✅ Frontend started (PID: $FRONTEND_PID)${NC}"
 echo -e "${BLUE}   Frontend logs: tail -f logs/frontend.log${NC}"
-echo -e "${BLUE}   Frontend URL: http://localhost:5174${NC}"
+echo -e "${BLUE}   Frontend URL: http://localhost:5173${NC}"
 echo ""
 
 # Summary
@@ -127,8 +118,8 @@ echo -e "${BLUE}Services:${NC}"
 echo -e "  🗄️  PostgreSQL: localhost:5433"
 echo -e "  💾 Redis: localhost:6380"
 echo -e "  🔍 Qdrant: localhost:6333"
-echo -e "  🚀 Backend API: http://localhost:8000"
-echo -e "  🎨 Frontend: http://localhost:5174"
+echo -e "  🚀 Backend API: http://localhost:8001"
+echo -e "  🎨 Frontend: http://localhost:5173"
 echo ""
 
 echo -e "${BLUE}Useful commands:${NC}"
@@ -139,4 +130,4 @@ echo -e "  Check status:       docker ps | grep irstudy"
 echo ""
 
 echo -e "${YELLOW}Note: Backend and frontend are running in background.${NC}"
-echo -e "${YELLOW}To stop them, use: pkill -f 'uvicorn.*main:app' && pkill -f 'vite'${NC}\n"
+echo -e "${YELLOW}To stop them, use: pkill -f 'uvicorn.*src.main:app' && pkill -f 'vite'${NC}\n"

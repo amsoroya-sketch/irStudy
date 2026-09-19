@@ -18,7 +18,7 @@ echo ""
 
 echo "3. Running integration tests..."
 export PYTHONPATH=/home/dev/Development/irStudy/backend
-export SECRET_KEY="eb61d3eecfd9ed9bc71c388675b36105b54692fea0f1d34c568b56e5bf88f20d"
+export SECRET_KEY="${SECRET_KEY:-$(openssl rand -hex 32)}"  # ephemeral test key; never hardcode
 export DATABASE_URL="sqlite:///./test_progress.db"
 venv/bin/pytest tests/test_api/test_emr_api.py -v --tb=short -q 2>&1 | tail -5
 echo ""

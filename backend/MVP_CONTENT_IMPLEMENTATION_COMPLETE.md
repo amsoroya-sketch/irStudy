@@ -228,7 +228,7 @@ All 12 tests from PRD-MVP-003 (T section) have been implemented:
    ```bash
    cd /home/dev/Development/irStudy/backend
    source venv/bin/activate
-   export DATABASE_PASSWORD=3K4cnsyxYOOHGzCcxmOesU7PExXHCMaH
+   export DATABASE_PASSWORD=<DATABASE_PASSWORD>
 
    # Execute orchestration script
    ./scripts/populate_mvp_content.sh

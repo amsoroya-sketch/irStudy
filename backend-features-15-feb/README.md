@@ -152,7 +152,7 @@ uvicorn src.main:app --reload --port 8001
 
 **Run Tests**:
 ```bash
-DATABASE_PASSWORD="MUVkFS6TlWR2IhYm6VTqXXMW2Nz+EkkARbdu/s1dYBs=" \
+DATABASE_PASSWORD="<POSTGRES_PASSWORD>" \
 PYTHONPATH=/home/dev/Development/irStudy/backend \
 pytest backend/tests/ -v --cov=backend/src --cov-report=term-missing
 ```

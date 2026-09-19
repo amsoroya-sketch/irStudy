@@ -8,7 +8,7 @@
 # Solution: Add columns to all content tables
 #
 # Usage:
-#   export DATABASE_PASSWORD="3K4cnsyxYOOHGzCcxmOesU7PExXHCMaH"
+#   export DATABASE_PASSWORD="<your-db-password>"   # from backend/.env, never commit
 #   export DATABASE_HOST="localhost"
 #   export DATABASE_PORT="5433"
 #   bash scripts/fix_database_schema.sh

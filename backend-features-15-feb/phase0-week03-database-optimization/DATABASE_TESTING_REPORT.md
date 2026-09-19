@@ -434,7 +434,7 @@ ORDER BY function_name;
 
 **Connection Used**:
 ```bash
-PGPASSWORD=3K4cnsyxYOOHGzCcxmOesU7PExXHCMaH \
+PGPASSWORD=<DATABASE_PASSWORD> \
 psql -h localhost -p 5433 -U postgres -d irstudy_medical
 ```
 

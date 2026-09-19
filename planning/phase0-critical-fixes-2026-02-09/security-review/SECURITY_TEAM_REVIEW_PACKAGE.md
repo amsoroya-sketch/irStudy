@@ -316,7 +316,7 @@ tests/test_schemas/test_osce_schemas.py::test_session_type_enum_valid_values PAS
 
 **Environment Variable**:
 ```bash
-OSCE_ENCRYPTION_KEY=E7D4M8k6DOVNc5BCT/1d8m/S4B1j9JSdoeEBjR6JXrE=
+OSCE_ENCRYPTION_KEY=<OSCE_ENCRYPTION_KEY>
 ```
 
 **Key Generation** (for reference):

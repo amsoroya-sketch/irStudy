@@ -112,7 +112,7 @@ file_path: Medicine/10_Emergency_Anaphylaxis_Management.html
 
 **Verify Database:**
 ```bash
-PGPASSWORD="3K4cnsyxYOOHGzCcxmOesU7PExXHCMaH" psql -h localhost -p 5433 -U postgres -d irstudy_medical -c "SELECT COUNT(*) FROM html_osce_notes;"
+PGPASSWORD="<DATABASE_PASSWORD>" psql -h localhost -p 5433 -U postgres -d irstudy_medical -c "SELECT COUNT(*) FROM html_osce_notes;"
 # Expected: 63
 ```
 
@@ -242,8 +242,8 @@ export DATABASE_HOST=localhost
 export DATABASE_PORT=5433
 export DATABASE_NAME=irstudy_medical
 export DATABASE_USER=postgres
-export DATABASE_PASSWORD="3K4cnsyxYOOHGzCcxmOesU7PExXHCMaH"
-export SECRET_KEY="eb61d3eecfd9ed9bc71c388675b36105b54692fea0f1d34c568b56e5bf88f20d"
+export DATABASE_PASSWORD="<DATABASE_PASSWORD>"
+export SECRET_KEY="<SECRET_KEY>"
 ```
 
 ### Start Backend Server

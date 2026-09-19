@@ -112,7 +112,7 @@ This document provides a comprehensive handover for implementing world-class bac
 **Tasks**:
 - [ ] Run comprehensive security test suite (21 tests):
   ```bash
-  DATABASE_PASSWORD="MUVkFS6TlWR2IhYm6VTqXXMW2Nz+EkkARbdu/s1dYBs=" \
+  DATABASE_PASSWORD="<POSTGRES_PASSWORD>" \
   PYTHONPATH=/home/dev/Development/irStudy/backend \
   pytest backend/tests/test_api/test_gdpr.py -v --tb=short
   ```
@@ -315,7 +315,7 @@ VITE_DEBUG=true
 Backend `.env.dev` must include:
 ```bash
 DATABASE_URL=postgresql://user:pass@localhost:5432/irstudy
-DATABASE_PASSWORD=MUVkFS6TlWR2IhYm6VTqXXMW2Nz+EkkARbdu/s1dYBs=
+DATABASE_PASSWORD=<POSTGRES_PASSWORD>
 REDIS_URL=redis://localhost:7379
 VAULT_ADDR=http://localhost:8200
 VAULT_ROOT_TOKEN=dev-only-token-change-in-prod
@@ -708,7 +708,7 @@ uvicorn src.main:app --reload --port 8001
 
 **Run Tests**:
 ```bash
-DATABASE_PASSWORD="MUVkFS6TlWR2IhYm6VTqXXMW2Nz+EkkARbdu/s1dYBs=" \
+DATABASE_PASSWORD="<POSTGRES_PASSWORD>" \
 PYTHONPATH=/home/dev/Development/irStudy/backend \
 pytest backend/tests/ -v --cov=backend/src --cov-report=term-missing
 ```

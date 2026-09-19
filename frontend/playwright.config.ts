@@ -40,6 +40,8 @@ export default defineConfig({
     // Reuse the logged-in student state written by global-setup. Auth specs
     // opt out per-file with test.use({ storageState: { cookies: [], origins: [] } }).
     storageState: 'tests/.auth/user.json',
+    // Optional slow-motion for watching headed runs: PW_SLOWMO=800 npx playwright test --headed
+    launchOptions: { slowMo: Number(process.env.PW_SLOWMO) || 0 },
   },
   projects: [
     {

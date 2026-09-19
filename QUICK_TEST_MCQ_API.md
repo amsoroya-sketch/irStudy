@@ -37,7 +37,7 @@ TOKEN=$(curl -s -X POST http://localhost:8001/api/v1/auth/login \
 echo "Token: $TOKEN"
 
 # Verify user (check database)
-export PGPASSWORD='3K4cnsyxYOOHGzCcxmOesU7PExXHCMaH'
+export PGPASSWORD='<DATABASE_PASSWORD>'
 psql -h localhost -p 5433 -U postgres -d irstudy_medical \
   -c "UPDATE users SET is_verified = true WHERE email = 'quicktest@test.com';"
 
@@ -106,7 +106,7 @@ If incognito works, clear cache in main browser:
 ### "Email not verified" error
 ```bash
 # Verify your user in database
-export PGPASSWORD='3K4cnsyxYOOHGzCcxmOesU7PExXHCMaH'
+export PGPASSWORD='<DATABASE_PASSWORD>'
 psql -h localhost -p 5433 -U postgres -d irstudy_medical \
   -c "UPDATE users SET is_verified = true WHERE email = 'YOUR_EMAIL@example.com';"
 ```
@@ -114,7 +114,7 @@ psql -h localhost -p 5433 -U postgres -d irstudy_medical \
 ### "Incorrect email or password" error
 ```bash
 # Check if user exists
-export PGPASSWORD='3K4cnsyxYOOHGzCcxmOesU7PExXHCMaH'
+export PGPASSWORD='<DATABASE_PASSWORD>'
 psql -h localhost -p 5433 -U postgres -d irstudy_medical \
   -c "SELECT email, is_verified, is_active FROM users WHERE email = 'YOUR_EMAIL@example.com';"
 ```

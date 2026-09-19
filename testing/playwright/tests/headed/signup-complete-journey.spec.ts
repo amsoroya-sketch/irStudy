@@ -57,8 +57,12 @@ test('🎭 Headed: Complete User Journey (Signup → Dashboard → Modules)', as
   // Verify email in database so login works (email verification gate)
   console.log('📧 Verifying email in database...');
   const { execSync } = require('child_process');
+  const dbPassword = process.env.DATABASE_PASSWORD;
+  if (!dbPassword) {
+    throw new Error('DATABASE_PASSWORD not set — export it (or load backend/.env) before running this test.');
+  }
   execSync(
-    `PGPASSWORD=3K4cnsyxYOOHGzCcxmOesU7PExXHCMaH psql -h localhost -p 5433 -U postgres -d irstudy_medical -c "UPDATE users SET is_verified = true WHERE email = '${TEST_USER.email}';"`,
+    `PGPASSWORD=${dbPassword} psql -h localhost -p 5433 -U postgres -d irstudy_medical -c "UPDATE users SET is_verified = true WHERE email = '${TEST_USER.email}';"`,
     { stdio: 'ignore' }
   );
   console.log('✅ Email verified in DB');

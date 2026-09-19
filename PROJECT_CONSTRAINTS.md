@@ -975,7 +975,7 @@ When generating or validating MCQs, you MUST:
    ```bash
    # Create test users
    cd /home/dev/Development/irStudy
-   export DATABASE_URL='postgresql://postgres:3K4cnsyxYOOHGzCcxmOesU7PExXHCMaH@localhost:5433/irstudy_medical'
+   export DATABASE_URL='postgresql://postgres:<DATABASE_PASSWORD>@localhost:5433/irstudy_medical'
    source backend/venv/bin/activate && python scripts/create_test_users.py
 
    # Start backend with env vars

@@ -3,7 +3,7 @@
 
 # Set environment variables
 export PYTHONPATH=/home/dev/Development/irStudy/backend
-export SECRET_KEY="eb61d3eecfd9ed9bc71c388675b36105b54692fea0f1d34c568b56e5bf88f20d"
+export SECRET_KEY="${SECRET_KEY:-$(openssl rand -hex 32)}"  # ephemeral test key; never hardcode
 export DATABASE_URL="sqlite:///./test_progress.db"
 export DATABASE_PASSWORD="test_password"
 export ACCESS_TOKEN_EXPIRE_MINUTES=30

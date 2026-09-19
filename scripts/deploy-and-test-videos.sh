@@ -93,7 +93,7 @@ log_success "Python dependencies installed"
 print_header "🗄️  Step 3: Running Database Migration"
 
 log_info "Setting database environment variables..."
-export DATABASE_PASSWORD="${DATABASE_PASSWORD:-MUVkFS6TlWR2IhYm6VTqXXMW2Nz+EkkARbdu/s1dYBs=}"
+export DATABASE_PASSWORD="${DATABASE_PASSWORD:?DATABASE_PASSWORD must be set (see backend/.env)}"
 export DATABASE_URL="postgresql://postgres:${DATABASE_PASSWORD}@localhost:5433/irstudy_medical"
 
 log_info "Running Alembic migration..."

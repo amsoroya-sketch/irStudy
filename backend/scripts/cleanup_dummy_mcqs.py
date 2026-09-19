@@ -8,18 +8,25 @@ Identifies and deletes MCQs with placeholder content patterns:
 - Placeholder IDs
 """
 
+import os
 import psycopg2
 import sys
 from datetime import datetime
 
 def connect_db():
-    """Connect to the PostgreSQL database."""
+    """Connect to the PostgreSQL database.
+
+    Credentials come from the environment (see backend/.env); never hardcode secrets.
+    """
+    password = os.environ.get("DATABASE_PASSWORD")
+    if not password:
+        sys.exit("DATABASE_PASSWORD not set. Export it or load backend/.env before running.")
     return psycopg2.connect(
-        host="localhost",
-        port=5433,
-        database="irstudy_medical",
-        user="postgres",
-        password="3K4cnsyxYOOHGzCcxmOesU7PExXHCMaH"
+        host=os.environ.get("DATABASE_HOST", "localhost"),
+        port=int(os.environ.get("DATABASE_PORT", "5433")),
+        database=os.environ.get("DATABASE_NAME", "irstudy_medical"),
+        user=os.environ.get("DATABASE_USER", "postgres"),
+        password=password,
     )
 
 def analyze_mcqs(cursor):

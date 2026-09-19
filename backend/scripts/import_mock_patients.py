@@ -9,6 +9,7 @@ Usage:
     python scripts/import_patient_personas.py [--env test|dev|prod]
 """
 
+import os
 import sys
 import json
 from pathlib import Path
@@ -209,8 +210,18 @@ def main():
         print("⚠️  Using in-memory SQLite - data will be lost after script exits")
         print("⚠️  For pytest tests, use conftest.py fixtures instead")
     elif args.env == 'dev':
-        # Dev environment (local PostgreSQL)
-        database_url = "postgresql://postgres:3K4cnsyxYOOHGzCcxmOesU7PExXHCMaH@localhost:5433/irstudy_medical"
+        # Dev environment (local PostgreSQL). Credentials come from the environment
+        # (see backend/.env); never hardcode secrets in source.
+        db_password = os.environ.get("DATABASE_PASSWORD")
+        if not db_password:
+            print("❌ DATABASE_PASSWORD not set. Export it or load backend/.env, "
+                  "or pass --database-url explicitly.")
+            sys.exit(1)
+        db_host = os.environ.get("DATABASE_HOST", "localhost")
+        db_port = os.environ.get("DATABASE_PORT", "5433")
+        db_name = os.environ.get("DATABASE_NAME", "irstudy_medical")
+        db_user = os.environ.get("DATABASE_USER", "postgres")
+        database_url = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
     elif args.env == 'prod':
         print("❌ Production import not implemented (requires encrypted credentials)")
         sys.exit(1)

@@ -61,7 +61,7 @@
 - **Changes**:
   - Fixed SECRET_KEY length: 47 chars → 64 chars (32 bytes hex)
   - Generated with: `openssl rand -hex 32`
-  - New secret: `91f7e4919717fb5549b845e6ccc79fcd1e822b792b31bf660d359aa17e2dd306`
+  - New secret: `<SECRET_KEY>`
 - **Created**: `/home/dev/Development/irStudy/backend/run_tests.sh` (test runner script)
 
 ## Test Results Analysis

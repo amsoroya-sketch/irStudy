@@ -15,7 +15,7 @@ echo -e "${BLUE}========================================${NC}\n"
 
 # Stop backend
 echo -e "${YELLOW}Stopping Backend FastAPI server...${NC}"
-pkill -f "uvicorn.*main:app" && echo -e "${GREEN}✅ Backend stopped${NC}" || echo -e "${YELLOW}⚠️  No backend process found${NC}"
+pkill -f "uvicorn.*src.main:app" && echo -e "${GREEN}✅ Backend stopped${NC}" || echo -e "${YELLOW}⚠️  No backend process found${NC}"
 
 # Stop frontend
 echo -e "${YELLOW}Stopping Frontend Vite server...${NC}"
