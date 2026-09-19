@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link as RouterLink } from "react-router-dom";
 import { Container, TextField, Button, Card, CardContent, Typography, Box, Alert, CircularProgress, FormControlLabel, Checkbox, Link } from "@mui/material";
 import { useAuth } from "../context/AuthContext";
-import { validateEmail, validatePassword } from "../utils/validation";
+import { validateEmail } from "../utils/validation";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -38,8 +38,10 @@ const Login: React.FC = () => {
       const err = validateEmail(formData.email);
       setFormErrors((prev) => ({ ...prev, email: err || "" }));
     } else if (name === "password") {
-      const err = validatePassword(formData.password);
-      setFormErrors((prev) => ({ ...prev, password: err || "" }));
+      // Login only requires a non-empty password — do NOT enforce the
+      // registration strength policy here (it would block valid accounts).
+      const err = formData.password ? "" : "Password is required";
+      setFormErrors((prev) => ({ ...prev, password: err }));
     }
   };
 
@@ -51,7 +53,9 @@ const Login: React.FC = () => {
     try {
       await login({ email: formData.email, password: formData.password, rememberMe: formData.rememberMe });
       // Navigation handled by useEffect watching isAuthenticated (lines 21-23)
-    } catch (err) {}
+    } catch {
+      // Login failure is surfaced to the user via the auth-context `error` state.
+    }
   };
 
   return (
